@@ -1,5 +1,5 @@
-import { Command, Github } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Command, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -16,10 +16,7 @@ const Footer = () => {
         {/* Top section */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           {/* Brand */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-bold text-lg sm:text-xl"
-          >
+          <Link to="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl">
             <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white shadow-md">
               <Command className="h-5 w-5" />
             </div>

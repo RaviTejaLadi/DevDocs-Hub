@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { X } from "lucide-react";
+import { useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { X } from 'lucide-react';
 
-import Footer from "./components/Layout/Footer";
-import NavBar from "./components/Layout/NavBar";
-import SidebarWrapperMobile from "./components/Layout/SidebarWrapperMobile";
-import SidebarWrapperDesktop from "./components/Layout/SidebarWrapperDesktop";
-import LandingPage from "./pages/LandingPage";
-import DocumentationPage from "./pages/DocumentationPage";
+import Footer from './components/Layout/Footer';
+import NavBar from './components/Layout/NavBar';
+import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
+import SidebarWrapperDesktop from './components/Layout/SidebarWrapperDesktop';
+import LandingPage from './pages/LandingPage';
+import DocumentationPage from './pages/DocumentationPage';
 
 export default function Platform() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
-  const showSidebar = location.pathname.startsWith("/docs/");
+  const showSidebar = location.pathname.startsWith('/docs/');
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -54,9 +54,7 @@ export default function Platform() {
             <Routes>
               <Route
                 path="/docs/:categoryId/:slug"
-                element={
-                  <SidebarWrapperMobile close={() => setSidebarOpen(false)} />
-                }
+                element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
               />
             </Routes>
           </div>
@@ -77,23 +75,17 @@ export default function Platform() {
             "
           >
             <Routes>
-              <Route
-                path="/docs/:categoryId/:slug"
-                element={<SidebarWrapperDesktop />}
-              />
+              <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
             </Routes>
           </aside>
         )}
 
         {/* Content */}
-        <main className={`flex-1 ${showSidebar ? "md:ml-80" : ""}`}>
+        <main className={`flex-1 ${showSidebar ? 'md:ml-80' : ''}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-slate-900 dark:text-slate-100">
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route
-                path="/docs/:categoryId/:slug"
-                element={<DocumentationPage />}
-              />
+              <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
             </Routes>
           </div>
         </main>

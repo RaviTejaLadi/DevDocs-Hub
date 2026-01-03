@@ -1,12 +1,6 @@
-import {
-  ArrowRight,
-  BookOpen,
-  ChevronRight,
-  Terminal,
-  Zap,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { TOPICS } from "../topics";
+import { ArrowRight, BookOpen, ChevronRight, Terminal, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { TOPICS } from '../topics';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -27,9 +21,7 @@ const LandingPage = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          <span className="text-green-700 dark:text-green-400">
-            v2.0 Released
-          </span>
+          <span className="text-green-700 dark:text-green-400">v2.0 Released</span>
         </div>
 
         <h1
@@ -53,13 +45,13 @@ const LandingPage = () => {
             leading-relaxed px-4
           "
         >
-          Your ultimate resource for modern web development. Detailed guides,
-          interactive examples, and best practices all in one place.
+          Your ultimate resource for modern web development. Detailed guides, interactive examples, and best practices
+          all in one place.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
           <button
-            onClick={() => navigate("/docs/html/intro")}
+            onClick={() => navigate('/docs/html/intro')}
             className="
               w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4
               bg-gradient-to-r from-indigo-600 to-purple-600
@@ -182,9 +174,7 @@ const LandingPage = () => {
             <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-3 sm:mb-4">
               <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />
             </div>
-            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">
-              Fast Learning
-            </h3>
+            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">Fast Learning</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               Quick, concise tutorials to get you productive fast
             </p>
@@ -195,9 +185,7 @@ const LandingPage = () => {
             <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-3 sm:mb-4">
               <Terminal className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-500" />
             </div>
-            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">
-              Code Examples
-            </h3>
+            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">Code Examples</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               Real-world examples you can copy and customize
             </p>
@@ -208,9 +196,7 @@ const LandingPage = () => {
             <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-3 sm:mb-4">
               <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
             </div>
-            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">
-              Comprehensive
-            </h3>
+            <h3 className="font-bold text-base sm:text-lg mb-2 text-slate-900 dark:text-slate-100">Comprehensive</h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               Everything from basics to advanced concepts
             </p>

@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
-import { TOPICS } from "../../topics";
-import { BookOpen, ChevronRight } from "lucide-react";
+import { Link, useNavigate } from 'react-router-dom';
+import { TOPICS } from '../../topics';
+import { BookOpen, ChevronRight } from 'lucide-react';
 
 const SidebarContent = ({
   currentTopicId,
@@ -18,9 +18,7 @@ const SidebarContent = ({
     return (
       <div className="p-6 text-center">
         <BookOpen className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Select a topic to view contents
-        </p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">Select a topic to view contents</p>
       </div>
     );
 
@@ -51,16 +49,10 @@ const SidebarContent = ({
         </Link>
 
         <div className="flex items-center gap-3">
-          <div
-            className={`p-2.5 rounded-xl ${topic.bgColor} ${topic.color} shadow-sm`}
-          >
-            {topic.icon}
-          </div>
+          <div className={`p-2.5 rounded-xl ${topic.bgColor} ${topic.color} shadow-sm`}>{topic.icon}</div>
 
           <div>
-            <div className="font-semibold text-lg text-slate-900 dark:text-slate-100">
-              {topic.title}
-            </div>
+            <div className="font-semibold text-lg text-slate-900 dark:text-slate-100">{topic.title}</div>
             <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 mt-0.5">
               <span className="w-1 h-1 rounded-full bg-green-500 animate-pulse"></span>
               {topic.items.length} chapters available
@@ -104,14 +96,10 @@ const SidebarContent = ({
                   <span
                     className={`
                       text-xs font-semibold
-                      ${
-                        isActive
-                          ? "text-white/80"
-                          : "text-slate-400 dark:text-slate-500"
-                      }
+                      ${isActive ? 'text-white/80' : 'text-slate-400 dark:text-slate-500'}
                     `}
                   >
-                    {String(index + 1).padStart(2, "0")}
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                   <span>{item.title}</span>
                 </div>

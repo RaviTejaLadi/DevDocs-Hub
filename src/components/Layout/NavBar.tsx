@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, Command, Github, Search } from "lucide-react";
-import { TOPICS } from "../../topics";
-import { ModeToggle } from "../Theme/ModeToggle";
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, Github, Search } from 'lucide-react';
+import { TOPICS } from '../../topics';
+import { ModeToggle } from '../Theme/ModeToggle';
+import type { SearchResult } from '../../types';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
-const NavBar = ({
-  setSidebarOpen,
-}: {
-  setSidebarOpen: (open: boolean) => void;
-}) => {
+const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isDocsPage = location.pathname.startsWith("/docs");
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<any[]>([]);
+  const isDocsPage = location.pathname.startsWith('/docs');
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
     if (!query) {
@@ -22,7 +21,7 @@ const NavBar = ({
       return;
     }
 
-    const hits: any[] = [];
+    const hits: SearchResult[] = [];
     TOPICS.forEach((topic) => {
       topic.items.forEach((item) => {
         if (
@@ -50,19 +49,11 @@ const NavBar = ({
       backdrop-blur-lg shadow-sm dark:shadow-none
     "
     >
-      <div className="flex h-16 items-center px-4 sm:px-6 max-w-450 mx-auto">
+      <div className="flex h-16 items-center px-4 sm:px-6 max-w-7xl mx-auto">
         {/* Left */}
         <div className="flex items-center gap-4 flex-1">
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-bold text-lg text-slate-900 dark:text-slate-100"
-          >
-            <div className="p-2 rounded-xl bg-linear-to-br from-indigo-600 via-purple-600 to-pink-600 text-white">
-              <Command className="h-5 w-5" />
-            </div>
-            <span className="bg-linear-to-br from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Dev Docs Hub
-            </span>
+          <Link to="/" className="flex items-center gap-2 font-bold text-lg text-foreground">
+            ⚡ Dev Docs Hub
           </Link>
 
           {isDocsPage && (
@@ -84,17 +75,15 @@ const NavBar = ({
           <div className="relative w-72">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-500 dark:text-slate-400" />
 
-            <input
+            <Input
               type="search"
               placeholder="Search documentation..."
               className="
                 w-full rounded-md border
-                border-slate-200 dark:border-slate-700
-                bg-slate-50 dark:bg-slate-900
+                bg-slate-50 dark:bg-slate-900/10
                 px-8 py-2 text-sm
-                text-slate-900 dark:text-slate-100
-                placeholder:text-slate-400 dark:placeholder:text-slate-500
-                focus:outline-none focus:ring-2 focus:ring-indigo-500
+                text-foreground dark:text-foreground
+                placeholder:text-muted-foreground dark:placeholder:text-muted-foreground
               "
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -109,23 +98,21 @@ const NavBar = ({
                   p-2 shadow-lg z-50
                 "
               >
-                {results.map((res, idx) => (
+                {results.map((res) => (
                   <div
-                    key={idx}
+                    key={`${res.categoryId}-${res.id}`}
                     className="
                       p-2 rounded cursor-pointer text-sm
-                      text-slate-800 dark:text-slate-200
+                       text-foreground dark:text-foreground
                       hover:bg-slate-100 dark:hover:bg-slate-800
                     "
                     onClick={() => {
                       navigate(`/docs/${res.categoryId}/${res.id}`);
-                      setQuery("");
+                      setQuery('');
                     }}
                   >
-                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                      {res.category}
-                    </span>{" "}
-                    / {res.title}
+                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">{res.category}</span> /{' '}
+                    {res.title}
                   </div>
                 ))}
               </div>
@@ -133,19 +120,9 @@ const NavBar = ({
           </div>
 
           <ModeToggle />
-
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              p-2 rounded-lg
-              text-slate-700 dark:text-slate-200
-              hover:bg-slate-100 dark:hover:bg-slate-800
-            "
-          >
+          <Button variant="outline" size="icon">
             <Github size={18} />
-          </a>
+          </Button>
         </div>
       </div>
     </header>
