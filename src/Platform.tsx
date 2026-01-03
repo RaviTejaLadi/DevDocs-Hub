@@ -8,6 +8,7 @@ import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from './components/Layout/SidebarWrapperDesktop';
 import LandingPage from './pages/LandingPage';
 import DocumentationPage from './pages/DocumentationPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 export default function Platform() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -86,6 +87,7 @@ export default function Platform() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
+              <Route path="/terms" element={<TermsOfServicePage />} />
             </Routes>
           </div>
         </main>

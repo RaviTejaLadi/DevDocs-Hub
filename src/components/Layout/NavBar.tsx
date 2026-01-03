@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, Github, Search } from 'lucide-react';
+import { Menu, Github, Search, FileText } from 'lucide-react';
 import { TOPICS } from '../../topics';
 import { ModeToggle } from '../Theme/ModeToggle';
 import type { SearchResult } from '../../types';
@@ -49,7 +49,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
       backdrop-blur-lg shadow-sm dark:shadow-none
     "
     >
-      <div className="flex h-16 items-center px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="flex h-12 items-center px-4 sm:px-6 max-w-7xl mx-auto">
         {/* Left */}
         <div className="flex items-center gap-4 flex-1">
           <Link to="/" className="flex items-center gap-2 font-bold text-lg text-foreground">
@@ -71,7 +71,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
         </div>
 
         {/* Right */}
-        <div className="flex items-center gap-3 relative">
+        <div className="flex items-center gap-2 relative">
           <div className="relative w-72">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-500 dark:text-slate-400" />
 
@@ -119,10 +119,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             )}
           </div>
 
-          <ModeToggle />
-          <Button variant="outline" size="icon">
-            <Github size={18} />
+          <Button variant="outline" size="icon" onClick={() => navigate('/terms')} className="text-sm font-medium">
+            <FileText className="h-4 w-4" />
           </Button>
+          <Button variant="outline" size="icon">
+            <Github className="h-4 w-4" />
+          </Button>
+          <ModeToggle />
         </div>
       </div>
     </header>
