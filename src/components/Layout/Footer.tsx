@@ -6,7 +6,7 @@ const Footer = () => {
       className="
         mt-20 border-t
         border-slate-200 dark:border-slate-800
-        dark:from-slate-950 dark:to-slate-900
+        bg-inherit
       "
     >
       <div className=" items-center p-3 sm:px-6 max-w-7xl mx-auto">

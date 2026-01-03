@@ -32,7 +32,6 @@ export default function Platform() {
           <div
             className="
               fixed left-0 top-0 bottom-0 w-80
-              bg-white dark:bg-slate-900
               border-r border-slate-200 dark:border-slate-800
               shadow-2xl dark:shadow-none
               animate-slide-in
@@ -68,8 +67,7 @@ export default function Platform() {
         {showSidebar && (
           <aside
             className="
-              hidden md:block w-80 fixed left-0 top-16 bottom-0
-              bg-white dark:bg-slate-900
+              hidden md:block w-80 fixed left-0 top-12 bottom-0
               border-r border-slate-200 dark:border-slate-800
               overflow-y-auto
               shadow-lg dark:shadow-none
