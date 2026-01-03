@@ -1,84 +1,121 @@
-# React + TypeScript + Vite
+# 📘 DevDocs Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+**DevDocs Hub** is a modern, fast, and responsive documentation platform designed to host high-quality learning resources for web technologies. From the fundamentals of **HTML & CSS** to advanced **React** patterns and so on..., DevDocs Hub provides a clean, distraction-free environment for developers to master their craft.
 
-Currently, two official plugins are available:
+## 🚀 About The Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)
-  uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in
-  [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+DevDocs Hub was built to solve the problem of scattered coding tutorials. It acts as a centralized repository where developers can find structured, easy-to-read documentation.
 
-## React Compiler
+**Key Goals:**
 
-The React Compiler is not enabled on this template because of its impact on dev
-& build performances. To add it, see
-[this documentation](https://react.dev/learn/react-compiler/installation).
+* **Centralization:** One place for HTML, CSS, React, and other tech stack guides.
+* **Readability:** A UI focused purely on content consumption with excellent typography and syntax highlighting.
+* **Speed:** Instant navigation between topics without page reloads.
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend updating the
-configuration to enable type-aware lint rules:
+* **📚 Multi-Technology Support:** Organized sections for HTML, CSS, JavaScript, React, and more.
+* **🎨 Dark Mode Native:** Built-in dark mode toggle for late-night coding sessions.
+* **📱 Fully Responsive:** Mobile-first architecture featuring a smooth slide-out drawer menu for learning on the go.
+* **⚡ Blazing Fast:** Powered by Vite and React Router for immediate page transitions.
+* **🌈 Syntax Highlighting:** Beautiful code blocks (VS Code Dark Plus theme) for better code readability.
+* **📋 One-Click Copy:** Easily copy code snippets to your clipboard.
+* **🧠 Context-Aware Navigation:** Sidebar automatically adjusts to show only the subtopics relevant to the technology you are currently studying.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Frontend Framework:** React 18
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS (with `clsx` & `tailwind-merge`)
+* **Routing:** React Router DOM v6
+* **Content Rendering:** React Markdown & Syntax Highlighter
+* **Icons:** Lucide React
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## 🏁 Getting Started
+
+Follow these steps to set up DevDocs Hub locally on your machine.
+
+### Prerequisites
+
+* Node.js (v16 or higher)
+* npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/RaviTejaLadi/DevDocs-Hub
+cd DevDocs-Hub
+
 ```
 
-You can also install
-[eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x)
-and
-[eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom)
-for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+2. **Install dependencies**
+```bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
 ```
+
+
+3. **Start the development server**
+```bash
+npm run dev
+
+```
+
+
+4. Open your browser and navigate to `http://localhost:1234`.
+
+## 📝 How to Add Content
+
+DevDocs Hub is designed to be easily extensible. All content is managed in the `TOPICS` data structure (located in `Platform.tsx` or separated into `src/data/content.ts`).
+
+To add a new technology (e.g., TypeScript):
+
+1. Open the data file.
+2. Add a new entry to the `TOPICS` array:
+
+```javascript
+{
+  id: "typescript",
+  title: "TypeScript",
+  description: "JavaScript with syntax for types.",
+  icon: <FileCode />, 
+  color: "text-blue-600",
+  items: [
+    {
+      id: "basics",
+      title: "The Basics",
+      content: "# TypeScript Basics\n\nTypeScript is a strongly typed superset of JavaScript..."
+    }
+  ]
+}
+
+```
+
+## 🗺️ Roadmap
+
+* [x] Core Platform UI (Sidebar, Navbar, Content Viewer)
+* [x] Dark/Light Mode
+* [x] Mobile Responsiveness
+* [ ] **Search Functionality:** Enhanced full-text search across all docs.
+* [ ] **MDX Support:** Allow interactive React components inside documentation.
+* [ ] **Progress Tracking:** Allow users to mark topics as "Completed".
+
+## 🤝 Contributing
+
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make to **DevDocs Hub** are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+**DevDocs Hub** — *Code. Learn. Build.*
