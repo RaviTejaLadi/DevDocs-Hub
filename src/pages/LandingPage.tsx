@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, ChevronRight, Terminal, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { TOPICS } from '../topics';
+import Footer from '@/components/Layout/Footer';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -134,6 +135,7 @@ const LandingPage = () => {
           <p className="text-sm sm:text-base text-muted-foreground">Everything from basics to advanced concepts</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

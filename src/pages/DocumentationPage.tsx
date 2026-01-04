@@ -2,7 +2,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS } from '../topics';
 import { useEffect } from 'react';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import {
@@ -55,8 +55,7 @@ const DocumentationPage = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/" className="flex items-center gap-1.5">
-                <Home className="h-4 w-4" />
+              <Link to="/" className="flex items-center gap-1.5">                
                 <span>Documentation</span>
               </Link>
             </BreadcrumbLink>
@@ -68,7 +67,7 @@ const DocumentationPage = () => {
             <BreadcrumbLink asChild>
               <Link
                 to={`/docs/${topic.id}/${topic.items[0].id}`}
-                className={`flex items-center gap-1.5 ${topic.color}`}
+                className={`flex items-center gap-1.5`}
               >
                 {topic.icon}
                 <span>{topic.title}</span>

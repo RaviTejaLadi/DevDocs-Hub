@@ -5,6 +5,7 @@ import { BookOpen, ChevronLeft, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 const SidebarContent = ({
   currentTopicId,
@@ -31,8 +32,7 @@ const SidebarContent = ({
 
   return (
     <div className="flex h-full flex-col bg-inherit">
-      {/* Header */}
-      <div className="px-6 py-4 border-b">
+      <div className="shrink-0 px-6 py-4 border-b">
         <Link
           to="/"
           onClick={closeSheet}
@@ -52,7 +52,6 @@ const SidebarContent = ({
           </div>
         </div>
 
-        {/* Search Bar */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -75,41 +74,44 @@ const SidebarContent = ({
         </div>
       </div>
 
-      {/* Content */}
-      <ScrollArea className="flex-1">
-        <div className="p-3 space-y-1">
-          {filteredItems.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-sm text-muted-foreground">No topic found</p>
-            </div>
-          ) : (
-            filteredItems.map((item) => {
-              const isActive = activeSlug === item.id;
-              const originalIndex = topic.items.findIndex((i) => i.id === item.id);
+      <div className="flex-1 min-h-0">
+        <ScrollArea className="h-full">
+          <div className="p-3 space-y-1">
+            {filteredItems.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-sm text-muted-foreground">No topic found</p>
+              </div>
+            ) : (
+              filteredItems.map((item) => {
+                const isActive = activeSlug === item.id;
+                const originalIndex = topic.items.findIndex((i) => i.id === item.id);
 
-              return (
-                <Button
-                  key={item.id}
-                  variant={isActive ? 'default' : 'ghost'}
-                  className={`
-                    w-full justify-start h-auto py-2.5 px-3 font-normal
-                    ${isActive ? '' : 'text-muted-foreground hover:text-foreground'}
-                  `}
-                  onClick={() => {
-                    navigate(`/docs/${topic.id}/${item.id}`);
-                    if (closeSheet) closeSheet();
-                  }}
-                >
-                  <div className="flex items-center gap-3 w-full">
-                    <span className="text-xs font-medium opacity-60">{String(originalIndex + 1).padStart(2, '0')}</span>
-                    <span className="text-sm text-left flex-1">{item.title}</span>
-                  </div>
-                </Button>
-              );
-            })
-          )}
-        </div>
-      </ScrollArea>
+                return (
+                  <Button
+                    key={item.id}
+                    variant={isActive ? 'default' : 'ghost'}
+                    className={cn(
+                      'w-[95%] justify-start h-auto py-2.5 px-3 font-normal',
+                      isActive ? '' : 'text-muted-foreground hover:text-foreground'
+                    )}
+                    onClick={() => {
+                      navigate(`/docs/${topic.id}/${item.id}`);
+                      if (closeSheet) closeSheet();
+                    }}
+                  >
+                    <div className="flex items-center gap-3 w-full">
+                      <span className="text-xs font-medium opacity-60">
+                        {String(originalIndex + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm text-left flex-1">{item.title}</span>
+                    </div>
+                  </Button>
+                );
+              })
+            )}
+          </div>
+        </ScrollArea>
+      </div>
     </div>
   );
 };
