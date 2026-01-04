@@ -1,3 +1,5 @@
+# Introduction
+
 **HTML (HyperText Markup Language)** is the standard language used to create and
 structure content on the web. Every website you see in a browser is built on
 HTML. It defines **what content exists** on a page—such as headings, paragraphs,

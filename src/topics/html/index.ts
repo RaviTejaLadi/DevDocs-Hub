@@ -1,6 +1,23 @@
 import intro from './intro.md?raw';
 import htmlMustKnowTopics from './html-must-know-topics.md?raw';
 import type { TopicItem } from '..';
+import htmlBasics from './html-basics.md?raw';
+import coreTextAndContentTags from './core-text-and-content-tags.md?raw';
+import linksAndNavigation from './links-and-navigation.md?raw';
+import imagesAndMedia from './images-and-media.md?raw';
+import lists from './lists.md?raw';
+import tables from './tables.md?raw';
+import forms from './forms.md?raw';
+import semanticHtml from './semantic-html.md?raw';
+import metadataAndSeoBasics from './metadata-and-seo-basics.md?raw';
+import htmlAttributes from './html-attributes.md?raw';
+import accessibility from './accessibility.md?raw';
+import htmlAndCssRelationship from './html-and-css-relationship.md?raw';
+import htmlAndJsRelationship from './html-and-js-relationship.md?raw';
+import html5Apis from './html5-apis.md?raw';
+import bestPractices from './best-practices.md?raw';
+import commonHtmlMistakes from './common-html-mistakes.md?raw';
+import top50QAndA from './top-50-q-and-a.md?raw';
 
 export const htmlTopics: TopicItem[] = [
   {
@@ -9,38 +26,93 @@ export const htmlTopics: TopicItem[] = [
     content: intro,
   },
   {
+    id: 'html-q-and-a',
+    title: 'Top 50 Q&A',
+    content: top50QAndA,
+  },
+  {
     id: 'html-must-know-topics',
     title: 'HTML topics every developer must know',
     content: htmlMustKnowTopics,
   },
   {
-    id: 'forms',
-    title: 'Forms & Inputs',
-    content:
-      '# Forms\n\nThe HTML `<form>` element is used to create an HTML form for user input.\n\n```html\n<form action="/action_page.php" method="post">\n  <label for="fname">First name:</label><br>\n  <input type="text" id="fname" name="fname" value="John"><br>\n  <label for="lname">Last name:</label><br>\n  <input type="text" id="lname" name="lname" value="Doe"><br><br>\n  <input type="submit" value="Submit">\n</form>\n```\n\n## Input Types\n\nThe `<input>` element can be displayed in several ways, depending on the type attribute:\n\n* `text` - Displays a single-line text input field\n* `password` - Displays a password field\n* `email` - Displays an email input field\n* `number` - Displays a numeric input field\n* `checkbox` - Displays a checkbox\n* `radio` - Displays a radio button',
+    id: 'html-basics',
+    title: 'HTML Basics',
+    content: htmlBasics,
   },
   {
-    id: 'attributes',
-    title: 'HTML Attributes',
-    content:
-      '# HTML Attributes (Deep Understanding)\n\n- Global attributes (`id`, `class`, `data-*`, `hidden`)\n- `contenteditable`\n- `tabindex`\n- `role`',
+    id: 'core-text-and-content-tags',
+    title: 'Core Text & Content Tags',
+    content: coreTextAndContentTags,
   },
   {
-    id: 'seo',
-    title: 'SEO Essentials',
-    content:
-      '# SEO Essentials\n\n- Correct heading structure\n- Meta tags for SEO\n- Semantic markup for crawlers\n- Image alt text\n- Canonical links',
+    id: 'links-and-navigation',
+    title: 'Links & Navigation',
+    content: linksAndNavigation,
+  },
+  {
+    id: 'images-and-media',
+    title: 'Images & Media',
+    content: imagesAndMedia,
+  },
+  {
+    id: 'lists',
+    title: 'Lists',
+    content: lists,
   },
   {
     id: 'tables',
     title: 'Tables',
-    content:
-      '# Tables (Use Carefully)\n\n- `<table>`, `<thead>`, `<tbody>`, `<tfoot>`\n- `<tr>`, `<th>`, `<td>`\n- Table accessibility (`scope`, captions)',
+    content: tables,
   },
   {
-    id: 'images-media',
-    title: 'Images & Media',
-    content:
-      '# Images & Media\n\n- `<img>` and `alt` text (non-optional)\n- Responsive images (`srcset`, `sizes`)\n- `<picture>`\n- Audio & video (`<audio>`, `<video>`)\n- Lazy loading (`loading="lazy"`)',
+    id: 'forms',
+    title: 'Forms',
+    content: forms,
+  },
+  {
+    id: 'semantic-html',
+    title: 'Semantic HTML',
+    content: semanticHtml,
+  },
+  {
+    id: 'metadata-and-seo-basics',
+    title: 'Metadata & SEO Basics',
+    content: metadataAndSeoBasics,
+  },
+  {
+    id: 'html-attributes',
+    title: 'HTML Attributes',
+    content: htmlAttributes,
+  },
+  {
+    id: 'accessibility',
+    title: 'Accessibility',
+    content: accessibility,
+  },
+  {
+    id: 'html-and-css-relationship',
+    title: 'HTML & CSS Relationship',
+    content: htmlAndCssRelationship,
+  },
+  {
+    id: 'html-and-js-relationship',
+    title: 'HTML & JavaScript Relationship',
+    content: htmlAndJsRelationship,
+  },
+  {
+    id: 'html5-apis',
+    title: 'HTML5 APIs',
+    content: html5Apis,
+  },
+  {
+    id: 'best-practices',
+    title: 'Best Practices',
+    content: bestPractices,
+  },
+  {
+    id: 'common-html-mistakes',
+    title: 'Common HTML Mistakes',
+    content: commonHtmlMistakes,
   },
 ];

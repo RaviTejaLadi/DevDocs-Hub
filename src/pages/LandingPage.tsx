@@ -42,7 +42,6 @@ const LandingPage = () => {
             <div
               className={`
                   absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40
-                  ${topic.bgColor}
                   rounded-bl-full opacity-40
                   group-hover:scale-150 transition-transform duration-500
                 `}
@@ -53,7 +52,7 @@ const LandingPage = () => {
               <div className="flex items-start justify-between mb-4 sm:mb-5">
                 <div
                   className={`
-                      p-3 rounded-xl ${topic.bgColor} ${topic.color} 
+                      p-3 rounded-xl
                       group-hover:scale-110 transition-transform shadow-sm
                     `}
                 >

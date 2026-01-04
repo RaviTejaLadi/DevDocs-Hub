@@ -1,123 +1,174 @@
-## Core HTML Fundamentals
+# HTML topics every developer must know
 
+## 1. HTML Basics (Non-negotiable)
+
+- What HTML is & how browsers parse it
 - HTML document structure (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`)
-- Metadata (`<title>`, `<meta>`, charset, viewport)
-- Comments and formatting rules
+- Elements vs attributes
 - Block vs inline elements
+- Void/self-closing elements
+- Comments
+- Case sensitivity rules
 
 ---
 
-## Semantic HTML (Critical)
+## 2. Core Text & Content Tags
 
-- Semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`,
-  `<aside>`, `<footer>`)
-- When to use `<div>` vs semantic elements
-- Accessibility benefits of semantic markup
-
----
-
-## Text & Content Elements
-
-- Headings (`<h1>`–`<h6>`) hierarchy
-- Paragraphs, line breaks, horizontal rules
-- Text formatting (`<strong>`, `<em>`, `<mark>`, `<code>`, `<pre>`)
-- Lists (`<ul>`, `<ol>`, `<li>`, `<dl>`)
+- Headings (`h1–h6`)
+- Paragraphs (`p`)
+- Line breaks (`br`)
+- Horizontal rules (`hr`)
+- Text formatting (`strong`, `em`, `b`, `i`, `u`, `mark`, `small`)
+- Superscript & subscript (`sup`, `sub`)
+- Preformatted text (`pre`, `code`)
 
 ---
 
-## Links & Navigation
+## 3. Links & Navigation
 
-- Anchor tag (`<a>`)
+- Anchor tag (`a`)
 - Relative vs absolute URLs
-- `target`, `rel` (`noopener`, `noreferrer`)
-- In-page navigation (hash links)
+- `target`, `rel`, `download`
+- Internal page navigation (hash links)
+- Email & phone links (`mailto`, `tel`)
 
 ---
 
-## Images & Media
+## 4. Images & Media
 
-- `<img>` and `alt` text (non-optional)
+- Image tag (`img`)
+- `src`, `alt`, `title`
 - Responsive images (`srcset`, `sizes`)
-- `<picture>`
-- Audio & video (`<audio>`, `<video>`)
-- Lazy loading (`loading="lazy"`)
+- Audio (`audio`)
+- Video (`video`)
+- Media formats & browser support
 
 ---
 
-## Tables (Use Carefully)
+## 5. Lists
 
-- `<table>`, `<thead>`, `<tbody>`, `<tfoot>`
-- `<tr>`, `<th>`, `<td>`
-- Table accessibility (`scope`, captions)
+- Ordered lists (`ol`)
+- Unordered lists (`ul`)
+- Description lists (`dl`, `dt`, `dd`)
+- Nested lists
 
 ---
 
-## Forms (Very Important)
+## 6. Tables (Still Used a Lot)
 
-- Form structure (`<form>`, `action`, `method`)
-- Input types (`text`, `email`, `password`, `number`, `file`, `date`)
+- Table structure (`table`, `thead`, `tbody`, `tfoot`)
+- Rows & cells (`tr`, `th`, `td`)
+- `colspan`, `rowspan`
+- Table accessibility basics
+
+---
+
+## 7. Forms (Very Important)
+
+- Form tag (`form`)
+- Input types (`text`, `email`, `password`, `number`, `file`, `date`, etc.)
 - Labels & accessibility
-- Validation attributes (`required`, `pattern`, `min`, `max`)
-- `<select>`, `<option>`, `<textarea>`
-- `<fieldset>` and `<legend>`
+- `placeholder`, `required`, `disabled`, `readonly`
+- Checkboxes & radio buttons
+- Select & options (`select`, `option`)
+- Textarea
+- Button types (`submit`, `reset`, `button`)
+- Form validation (HTML-only)
+- `name`, `action`, `method`
 
 ---
 
-## Accessibility (A11y) – Mandatory Knowledge
+## 8. Semantic HTML (Critical for Jobs)
 
-- Proper use of labels
-- ARIA basics (`aria-label`, `aria-hidden`, roles)
-- Keyboard navigation
-- Screen reader considerations
-- Accessible forms and buttons
+- `header`
+- `nav`
+- `main`
+- `section`
+- `article`
+- `aside`
+- `footer`
+- `figure` & `figcaption`
+- Why semantics matter (SEO + accessibility)
 
 ---
 
-## HTML Attributes (Deep Understanding)
+## 9. Metadata & SEO Basics
 
-- Global attributes (`id`, `class`, `data-*`, `hidden`)
-- `contenteditable`
+- `<title>`
+- Meta tags (`description`, `keywords`, `viewport`)
+- Charset (`utf-8`)
+- Favicon
+- Open Graph basics (preview links)
+
+---
+
+## 10. HTML Attributes You Must Know
+
+- `id`
+- `class`
+- `style`
+- `title`
+- `hidden`
 - `tabindex`
-- `role`
-
----
-
-## SEO Essentials
-
-- Correct heading structure
-- Meta tags for SEO
-- Semantic markup for crawlers
-- Image alt text
-- Canonical links
-
----
-
-## HTML5 APIs (Awareness Level)
-
-- `data-*` attributes
 - `contenteditable`
-- Drag and Drop API
-- Web Storage basics (localStorage/sessionStorage – concept)
+- `data-*` attributes
 
 ---
 
-## Performance & Best Practices
+## 11. Accessibility (Don’t Ignore This)
 
-- Minimal, clean markup
-- Avoid div-soup
-- Correct nesting
-- HTML validation
-- Progressive enhancement
-
----
-
-## Security Basics
-
-- HTML injection awareness
-- Escaping user input
-- `rel="noopener noreferrer"` for external links
+- `alt` text rules
+- Labels for inputs
+- ARIA basics (`aria-label`, `aria-hidden`)
+- Keyboard navigation
+- Semantic tags for screen readers
 
 ---
 
-If you’re a frontend developer and **don’t fully understand these**, your CSS
-and React skills are built on shaky ground.
+## 12. HTML & CSS Relationship
+
+- Inline styles vs internal vs external CSS
+- How classes & ids are used by CSS
+- Cascade basics (HTML side understanding)
+
+---
+
+## 13. HTML & JavaScript Relationship
+
+- DOM concept (HTML → DOM)
+- `id` & `class` usage in JS
+- `data-*` attributes for JS
+- Script loading (`defer`, `async`)
+- Where to place `<script>`
+
+---
+
+## 14. HTML5 APIs (Awareness Level)
+
+- Canvas
+- Local storage & session storage (HTML side)
+- Geolocation (basic idea)
+- Drag & Drop
+- Web workers (concept only)
+
+---
+
+## 15. Best Practices (Interview Stuff)
+
+- Proper nesting
+- Clean, readable markup
+- Avoid div-spam
+- When to use semantic vs div
+- Performance basics
+- Cross-browser considerations
+
+---
+
+## 16. Common HTML Mistakes (Know These)
+
+- Missing `alt` attributes
+- Multiple `h1`s misuse
+- Using div instead of semantic tags
+- Inline styles everywhere
+- Invalid nesting
+- Ignoring accessibility

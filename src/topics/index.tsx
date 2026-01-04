@@ -1,6 +1,7 @@
-import { FileCode, Layout, Terminal } from 'lucide-react';
+import { Layout, Terminal } from 'lucide-react';
 import { htmlTopics } from './html';
 import type { JSX } from 'react';
+import { Icons } from '@/assets/Icons';
 
 export interface TopicItem {
   id: string;
@@ -13,10 +14,6 @@ export interface Topic {
   title: string;
   description: string;
   icon: JSX.Element;
-  color: string;
-  bgColor: string;
-  borderColor: string;
-  hoverBg: string;
   items: TopicItem[];
 }
 
@@ -27,11 +24,7 @@ export const TOPICS: Topics = [
     id: 'html',
     title: 'HTML',
     description: 'Structure web pages with semantic markup.',
-    icon: <FileCode className="w-5 h-5" />,
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-50',
-    borderColor: 'border-orange-200',
-    hoverBg: 'hover:bg-orange-50',
+    icon: Icons.Html,
     items: htmlTopics,
   },
   {
@@ -39,10 +32,6 @@ export const TOPICS: Topics = [
     title: 'CSS',
     description: 'Style your web pages with modern layouts.',
     icon: <Layout className="w-5 h-5" />,
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-50',
-    borderColor: 'border-blue-200',
-    hoverBg: 'hover:bg-blue-50',
     items: [
       {
         id: 'box-model',
@@ -69,10 +58,6 @@ export const TOPICS: Topics = [
     title: 'React',
     description: 'The library for web and native user interfaces.',
     icon: <Terminal className="w-5 h-5" />,
-    color: 'text-cyan-600',
-    bgColor: 'bg-cyan-50',
-    borderColor: 'border-cyan-200',
-    hoverBg: 'hover:bg-cyan-50',
     items: [
       {
         id: 'components',
