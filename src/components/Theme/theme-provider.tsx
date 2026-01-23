@@ -15,13 +15,13 @@ export type ThemeProviderState = {
 };
 
 const softColorThemes = [
-  'soft-pastel-dreams',      // Sunday
-  'soft-serene-neutrals',    // Monday
-  'soft-whispering-garden',  // Tuesday
-  'soft-gentle-sunset',      // Wednesday
-  'soft-nordic-calm',        // Thursday
-  'soft-lavender-dream',     // Friday
-  'soft-rose-garden',        // Saturday
+  'soft-pastel-dreams', // Sunday
+  'soft-serene-neutrals', // Monday
+  'soft-whispering-garden', // Tuesday
+  'soft-gentle-sunset', // Wednesday
+  'soft-nordic-calm', // Thursday
+  'soft-lavender-dream', // Friday
+  'soft-rose-garden', // Saturday
 ];
 
 function getDailyTheme(): string {
@@ -46,7 +46,7 @@ export function ThemeProvider({
     if (theme === 'system') {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.classList.add(systemTheme);
-      
+
       // Add daily soft color theme only for light mode
       if (systemTheme === 'light') {
         root.classList.add(getDailyTheme());
@@ -55,7 +55,7 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme);
-    
+
     // Add daily soft color theme only for light mode
     if (theme === 'light') {
       root.classList.add(getDailyTheme());

@@ -31,7 +31,7 @@ const SidebarContent = ({
   const filteredItems = topic.items.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="flex h-full flex-col bg-inherit">
+    <div className="flex h-full flex-col bg-inherit rounded-md">
       <div className="shrink-0 px-6 py-4 border-b">
         <Link
           to="/"
@@ -42,7 +42,7 @@ const SidebarContent = ({
           <span>Back to Overview</span>
         </Link>
 
-        <div className="flex items-center gap-3 mb-4">
+        {/* <div className="flex items-center gap-3 mb-4">
           <div className="p-2 rounded-lg border bg-background">{topic.icon}</div>
           <div>
             <h2 className="font-semibold text-foreground">{topic.title}</h2>
@@ -50,27 +50,29 @@ const SidebarContent = ({
               {topic.items.length} {topic.items.length === 1 ? 'chapter' : 'chapters'}
             </p>
           </div>
-        </div>
-
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder="Search topics..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 pr-9 h-9"
-          />
-          {searchQuery && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
-              onClick={() => setSearchQuery('')}
-            >
-              <X className="h-3 w-3" />
-            </Button>
-          )}
+        </div> */}
+        <div className="flex gap-2 items-center">
+          <div className="p-2 rounded-md border bg-background">{topic.icon}</div>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search topics..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 pr-9 h-9"
+            />
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
+                onClick={() => setSearchQuery('')}
+              >
+                <X className="h-3 w-3" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -91,7 +93,7 @@ const SidebarContent = ({
                     key={item.id}
                     variant={isActive ? 'default' : 'ghost'}
                     className={cn(
-                      'w-[95%] justify-start h-auto py-2.5 px-3 font-normal',
+                      'w-[95%] justify-start  h-auto py-2.5 px-3 font-normal',
                       isActive ? '' : 'text-muted-foreground hover:text-foreground'
                     )}
                     onClick={() => {
@@ -103,7 +105,7 @@ const SidebarContent = ({
                       <span className="text-xs font-medium opacity-60">
                         {String(originalIndex + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-sm text-left flex-1">{item.title}</span>
+                      <span className="text-sm truncate text-left flex-1">{item.title}</span>
                     </div>
                   </Button>
                 );

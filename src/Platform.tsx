@@ -36,23 +36,21 @@ export default function Platform() {
         {showSidebar && (
           <aside
             className="
-              hidden md:block w-80
-              border-r border-slate-200 dark:border-slate-800
-              shadow-lg dark:shadow-none
-              bg-white dark:bg-slate-950
+              hidden md:block w-80 h-[97%]
+               dark:shadow-none
+              bg-inherit dark:bg-slate-950 mx-4 
+              
             "
           >
-            <ScrollArea className="h-full">
-              <Routes>
-                <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
-              </Routes>
-            </ScrollArea>
+            <Routes>
+              <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
+            </Routes>
           </aside>
         )}
 
         <main className="flex-1 overflow-hidden">
           <ScrollArea className="h-full">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-slate-900 dark:text-slate-100">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-slate-900 dark:text-slate-100">
               <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />

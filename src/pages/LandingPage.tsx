@@ -1,7 +1,8 @@
-import { ArrowRight, BookOpen, ChevronRight, Terminal, Zap } from 'lucide-react';
+import { BookOpen, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { TOPICS } from '../topics';
 import Footer from '@/components/Layout/Footer';
+import FeaturesSection from '@/components/FeaturesSection';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const LandingPage = () => {
             className="
                 group relative p-6 sm:p-7 
                 border-2 border-slate-200 dark:border-slate-800
-                rounded-2xl
+                rounded-md
                 bg-white dark:bg-slate-900
                 hover:border-indigo-300 dark:hover:border-indigo-600
                 hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-indigo-900/20
@@ -53,7 +54,7 @@ const LandingPage = () => {
               <div className="flex items-start justify-between mb-4 sm:mb-5">
                 <div
                   className={`
-                      p-3 rounded-xl
+                      p-3 rounded-md
                       group-hover:scale-110 transition-transform shadow-sm
                     `}
                 >
@@ -76,7 +77,7 @@ const LandingPage = () => {
               </div>
 
               {/* Preview Items */}
-              <div className="space-y-2 mb-5 grow">
+              <div className="space-y-2 grow">
                 {topic.items.slice(0, 3).map((item) => (
                   <div
                     key={item.id}
@@ -93,48 +94,14 @@ const LandingPage = () => {
                   </div>
                 )}
               </div>
-
-              {/* CTA */}
-              <div className="flex items-center text-sm font-semibold text-foreground group-hover:gap-3 gap-2 transition-all pt-3 border-t border-slate-200 dark:border-slate-800">
-                <span>Start learning</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
             </div>
           </div>
         ))}
       </div>
 
       {/* Features Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {/* Fast Learning */}
-        <div className="text-center p-6 sm:p-8 rounded-2xl bg-linear-to-br from-amber-50 to-orange-50 dark:from-slate-900 dark:to-slate-800 border border-amber-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
-          <div className="inline-flex p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-4">
-            <Zap className="w-7 h-7 sm:w-8 sm:h-8 text-amber-500" />
-          </div>
-          <h3 className="font-bold text-lg sm:text-xl mb-2 text-foreground">Fast Learning</h3>
-          <p className="text-sm sm:text-base text-muted-foreground">
-            Quick, concise tutorials to get you productive fast
-          </p>
-        </div>
+      <FeaturesSection />
 
-        {/* Code Examples */}
-        <div className="text-center p-6 sm:p-8 rounded-2xl bg-linear-to-br from-emerald-50 to-green-50 dark:from-slate-900 dark:to-slate-800 border border-emerald-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300">
-          <div className="inline-flex p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-4">
-            <Terminal className="w-7 h-7 sm:w-8 sm:h-8 text-emerald-500" />
-          </div>
-          <h3 className="font-bold text-lg sm:text-xl mb-2 text-foreground">Code Examples</h3>
-          <p className="text-sm sm:text-base text-muted-foreground">Real-world examples you can copy and customize</p>
-        </div>
-
-        {/* Comprehensive */}
-        <div className="text-center p-6 sm:p-8 rounded-2xl bg-linear-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 border border-blue-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
-          <div className="inline-flex p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-sm mb-4">
-            <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" />
-          </div>
-          <h3 className="font-bold text-lg sm:text-xl mb-2 text-foreground">Comprehensive</h3>
-          <p className="text-sm sm:text-base text-muted-foreground">Everything from basics to advanced concepts</p>
-        </div>
-      </div>
       <Footer />
     </div>
   );

@@ -55,7 +55,7 @@ const DocumentationPage = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/" className="flex items-center gap-1.5">                
+              <Link to="/" className="flex items-center gap-1.5">
                 <span>Documentation</span>
               </Link>
             </BreadcrumbLink>
@@ -65,10 +65,7 @@ const DocumentationPage = () => {
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link
-                to={`/docs/${topic.id}/${topic.items[0].id}`}
-                className={`flex items-center gap-1.5`}
-              >
+              <Link to={`/docs/${topic.id}/${topic.items[0].id}`} className={`flex items-center gap-1.5`}>
                 {topic.icon}
                 <span>{topic.title}</span>
               </Link>

@@ -1,4 +1,4 @@
-import {Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 import { htmlTopics } from './html';
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
@@ -33,8 +33,7 @@ export const TOPICS: Topics = [
     title: 'CSS',
     description: 'Style your web pages with modern layouts.',
     icon: Icons.CSS,
-    items: cssTopics
-
+    items: cssTopics,
   },
   {
     id: 'react',
