@@ -1,7 +1,8 @@
-import { Layout, Terminal } from 'lucide-react';
+import {Terminal } from 'lucide-react';
 import { htmlTopics } from './html';
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
+import { cssTopics } from './css';
 
 export interface TopicItem {
   id: string;
@@ -24,34 +25,16 @@ export const TOPICS: Topics = [
     id: 'html',
     title: 'HTML',
     description: 'Structure web pages with semantic markup.',
-    icon: Icons.Html,
+    icon: Icons.HTML,
     items: htmlTopics,
   },
   {
     id: 'css',
     title: 'CSS',
     description: 'Style your web pages with modern layouts.',
-    icon: <Layout className="w-5 h-5" />,
-    items: [
-      {
-        id: 'box-model',
-        title: 'Box Model',
-        content:
-          '# The Box Model\n\nAll HTML elements can be considered as boxes. In CSS, the term "box model" is used when talking about design and layout.\n\n## Box Model Components\n\nThe CSS box model consists of:\n\n* **Content** - The content of the box, where text and images appear\n* **Padding** - Clears an area around the content (transparent)\n* **Border** - A border that goes around the padding and content\n* **Margin** - Clears an area outside the border (transparent)\n\n```css\ndiv {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid gray;\n  margin: 10px;\n}\n```',
-      },
-      {
-        id: 'flexbox',
-        title: 'Flexbox',
-        content:
-          '# Flexbox\n\nThe Flexible Box Layout Module makes it easier to design flexible responsive layout structure without using float or positioning.\n\n## Main Properties\n\n```css\n.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n}\n```\n\n### Key Concepts\n\n* `flex-direction` - Defines the direction of flex items\n* `justify-content` - Aligns items horizontally\n* `align-items` - Aligns items vertically\n* `flex-wrap` - Specifies whether flex items should wrap\n* `gap` - Sets the gap between flex items',
-      },
-      {
-        id: 'grid',
-        title: 'CSS Grid',
-        content:
-          '# CSS Grid Layout\n\nCSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position, and layer.\n\n```css\n.grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}\n```\n\n## Grid Properties\n\n* `grid-template-columns` - Defines the columns\n* `grid-template-rows` - Defines the rows\n* `gap` - Sets the spacing between grid items\n* `grid-column` - Specifies how many columns an item will span\n* `grid-row` - Specifies how many rows an item will span',
-      },
-    ],
+    icon: Icons.CSS,
+    items: cssTopics
+
   },
   {
     id: 'react',
