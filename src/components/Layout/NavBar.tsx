@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Github, Search, FileText } from 'lucide-react';
-import { TOPICS } from '../../topics';
+import { TOPICS, type TopicItem } from '../../topics';
 import { ModeToggle } from '../Theme/ModeToggle';
 import type { SearchResult } from '../../types';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 
 const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void }) => {
   const location = useLocation();
@@ -27,39 +21,61 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   // Toggle Search with Keyboard Shortcut (Cmd/Ctrl + K)
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
       }
     };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
   }, []);
 
   // Search Logic
+  const searchRecursive = (
+    items: TopicItem[],
+    categoryId: string,
+    categoryTitle: string,
+    query: string
+  ): SearchResult[] => {
+    let hits: SearchResult[] = [];
+
+    items.forEach((item) => {
+      // Check current item
+      const matchTitle = item.title.toLowerCase().includes(query.toLowerCase());
+      const matchContent = item.content && item.content.toLowerCase().includes(query.toLowerCase());
+
+      if (matchTitle || matchContent) {
+        hits.push({
+          ...item,
+          category: categoryTitle,
+          categoryId: categoryId,
+        });
+      }
+
+      // Recurse if children exist
+      if (item.items && item.items.length > 0) {
+        hits = [...hits, ...searchRecursive(item.items, categoryId, categoryTitle, query)];
+      }
+    });
+
+    return hits;
+  };
+
+  // Search Logic Effect
   useEffect(() => {
     if (!query) {
       setResults([]);
       return;
     }
 
-    const hits: SearchResult[] = [];
+    let globalHits: SearchResult[] = [];
+
     TOPICS.forEach((topic) => {
-      topic.items.forEach((item) => {
-        if (
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
-          item.content.toLowerCase().includes(query.toLowerCase())
-        ) {
-          hits.push({
-            ...item,
-            category: topic.title,
-            categoryId: topic.id,
-          });
-        }
-      });
+      const topicHits = searchRecursive(topic.items, topic.id, topic.title, query);
+      globalHits = [...globalHits, ...topicHits];
     });
 
-    setResults(hits);
+    setResults(globalHits);
   }, [query]);
 
   const handleSelectResult = (categoryId: string, id: string) => {
@@ -94,7 +110,6 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
         {/* Right: Actions & Search */}
         <div className="flex items-center gap-2">
-          
           {/* SEARCH DIALOG */}
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -111,7 +126,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                 </Button>
               </div>
             </DialogTrigger>
-            
+
             {/* Mobile Search Icon Trigger */}
             <DialogTrigger asChild>
               <Button variant="ghost" size="icon" className="sm:hidden">
@@ -121,36 +136,32 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
             <DialogContent className="p-0 gap-0 max-w-137.5 overflow-hidden">
               <DialogHeader className="px-4 py-2 border-b">
-                 <DialogTitle className="sr-only">Search Documentation</DialogTitle>
-                 <div className="flex items-center gap-2">
-                    <Search className="h-4 w-4 text-muted-foreground" />
-                    <Input 
-                      placeholder="Type to search..." 
-                      className="border-none focus-visible:ring-0 shadow-none px-0 text-base h-10 bg-transparent"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                    />
-                 </div>
+                <DialogTitle className="sr-only">Search Documentation</DialogTitle>
+                <div className="flex items-center gap-2">
+                  <Search className="h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Type to search..."
+                    className="border-none focus-visible:ring-0 shadow-none px-0 text-base h-10 bg-transparent"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                </div>
               </DialogHeader>
 
               <div className="max-h-87.5 overflow-y-auto p-2">
                 {results.length === 0 && query && (
-                   <div className="py-6 text-center text-sm text-muted-foreground">
-                     No results found.
-                   </div>
+                  <div className="py-6 text-center text-sm text-muted-foreground">No results found.</div>
                 )}
 
                 {results.length === 0 && !query && (
-                   <div className="py-6 text-center text-sm text-muted-foreground">
-                     Type something to search documentation...
-                   </div>
+                  <div className="py-6 text-center text-sm text-muted-foreground">
+                    Type something to search documentation...
+                  </div>
                 )}
 
                 {results.length > 0 && (
                   <div className="flex flex-col gap-1">
-                    <h4 className="px-2 py-1 text-xs font-semibold text-muted-foreground mb-1">
-                      Search Results
-                    </h4>
+                    <h4 className="px-2 py-1 text-xs font-semibold text-muted-foreground mb-1">Search Results</h4>
                     {results.map((res) => (
                       <div
                         key={`${res.categoryId}-${res.id}`}
@@ -166,24 +177,29 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                           {res.title}
                         </span>
                         <span className="text-xs text-muted-foreground group-hover:text-accent-foreground pl-5.5">
-                           In <span className="text-indigo-500 dark:text-indigo-400">{res.category}</span>
+                          In <span className="text-indigo-500 dark:text-indigo-400">{res.category}</span>
                         </span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
-              
+
               <div className="p-2 border-t bg-muted/30 flex items-center justify-end">
-                  <span className="text-[10px] text-muted-foreground mr-2">
-                    Press <kbd className="font-sans bg-background border rounded px-1">Esc</kbd> to close
-                  </span>
+                <span className="text-[10px] text-muted-foreground mr-2">
+                  Press <kbd className="font-sans bg-background border rounded px-1">Esc</kbd> to close
+                </span>
               </div>
             </DialogContent>
           </Dialog>
 
           {/* Other Navbar Actions */}
-          <Button variant="outline" size="icon" onClick={() => navigate('/terms')} className="text-sm font-medium hidden sm:flex">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => navigate('/terms')}
+            className="text-sm font-medium hidden sm:flex"
+          >
             <FileText className="h-4 w-4" />
           </Button>
           <Button variant="outline" size="icon" className="hidden sm:flex">
