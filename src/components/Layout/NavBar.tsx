@@ -195,14 +195,14 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
           {/* Other Navbar Actions */}
           <Button
-            variant="outline"
-            size="icon"
+            variant="ghost"
+            size="sm"
             onClick={() => navigate('/terms')}
             className="text-sm font-medium hidden sm:flex"
           >
             <FileText className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" className="hidden sm:flex">
+          <Button variant="ghost" size="sm" className="hidden sm:flex">
             <Github className="h-4 w-4" />
           </Button>
           <ModeToggle />

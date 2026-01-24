@@ -10,7 +10,7 @@ export function ModeToggle() {
   };
 
   return (
-    <Button variant="outline" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
+    <Button variant="ghost" size="sm" onClick={toggleTheme} aria-label="Toggle theme">
       {theme === 'dark' ? <Sun className="h-[1.2rem] w-[1.2rem]" /> : <Moon className="h-[1.2rem] w-[1.2rem]" />}
     </Button>
   );
