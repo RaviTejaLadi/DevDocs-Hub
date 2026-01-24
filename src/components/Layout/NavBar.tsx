@@ -87,11 +87,11 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   return (
     <header
       className="
-      sticky top-0 z-50 border
+      sticky top-2 z-50 border
       border-slate-200 dark:border-slate-800
       bg-white/95 dark:bg-slate-950/95
       backdrop-blur-lg shadow-sm dark:shadow-none
-      mx-auto m-2 rounded-md w-[98%]
+      mx-auto rounded-md w-[98%]
     "
     >
       <div className="flex h-12 items-center px-4 sm:px-6 max-w-7xl mx-auto">

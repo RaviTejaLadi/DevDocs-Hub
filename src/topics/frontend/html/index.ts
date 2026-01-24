@@ -1,6 +1,5 @@
 import intro from './intro.md?raw';
 import htmlMustKnowTopics from './html-must-know-topics.md?raw';
-import type { TopicItem } from '..';
 import htmlBasics from './html-basics.md?raw';
 import coreTextAndContentTags from './core-text-and-content-tags.md?raw';
 import linksAndNavigation from './links-and-navigation.md?raw';
@@ -18,6 +17,7 @@ import html5Apis from './html5-apis.md?raw';
 import bestPractices from './best-practices.md?raw';
 import commonHtmlMistakes from './common-html-mistakes.md?raw';
 import top50QAndA from './top-50-q-and-a.md?raw';
+import type { TopicItem } from '@/topics';
 
 export const htmlTopics: TopicItem[] = [
   {

@@ -1,8 +1,13 @@
 import { Terminal } from 'lucide-react';
-import { htmlTopics } from './html';
+import { htmlTopics } from './frontend/html';
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
-import { cssTopics } from './css';
+import { cssTopics } from './frontend/css';
+import { reactTopics } from './frontend/react';
+import { jsTopics } from './frontend/js';
+import { tsConcepts } from './frontend/ts';
+import { nextTopics } from './frontend/Next';
+import { vueTopics } from './frontend/vue';
 
 // 1. Update Interface for Recursion
 export interface TopicItem {
@@ -38,34 +43,38 @@ export const TOPICS: Topics = [
     items: cssTopics,
   },
   {
+    id: 'js',
+    title: 'JavaScript',
+    description: 'javascript is the programming language of the web.',
+    icon: Icons.CSS,
+    items: jsTopics,
+  },
+  {
+    id: 'typescript',
+    title: 'TypeScript',
+    description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.',
+    icon: Icons.CSS,
+    items: tsConcepts,
+  },
+  {
+    id: 'nextjs',
+    title: 'Next.js',
+    description: 'The React framework for production.',
+    icon: Icons.CSS,
+    items: nextTopics,
+  },
+  {
     id: 'react',
-    title: 'React',
+    title: 'React.js',
     description: 'The library for web and native user interfaces.',
     icon: <Terminal className="w-5 h-5" />,
-    items: [
-      {
-        id: 'components',
-        title: 'Your First Component',
-        content: '# Components content...',
-      },
-      // 2. Example of Nested Structure
-      {
-        id: 'hooks',
-        title: 'Hooks',
-        content: '# Hooks Overview...',
-        items: [
-          {
-            id: 'use-state',
-            title: 'useState',
-            content: '# useState Hook...',
-          },
-          {
-            id: 'use-effect',
-            title: 'useEffect',
-            content: '# useEffect Hook...',
-          },
-        ],
-      },
-    ],
+    items: reactTopics,
+  },
+  {
+    id: 'vue',
+    title: 'Vue.js',
+    description: 'The Progressive JavaScript Framework.',
+    icon: <Terminal className="w-5 h-5" />,
+    items: vueTopics,
   },
 ];

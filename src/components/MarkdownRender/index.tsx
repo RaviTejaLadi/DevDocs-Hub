@@ -232,7 +232,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 {copied ? (
                   <Check className="h-4 w-4 text-green-400" />
                 ) : (
-                  <Copy className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                  <Copy className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
                 )}
               </Button>
 

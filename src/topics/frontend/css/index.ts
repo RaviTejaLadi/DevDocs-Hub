@@ -1,4 +1,5 @@
-import type { TopicItem } from '..';
+
+import type { TopicItem } from '@/topics';
 import intro from './intro.md?raw';
 import top50QAndA from './top-50-q-and-a.md?raw';
 
