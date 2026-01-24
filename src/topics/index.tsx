@@ -7,13 +7,14 @@ import { jsTopics } from './frontend/js';
 import { tsConcepts } from './frontend/ts';
 import { nextTopics } from './frontend/Next';
 import { vueTopics } from './frontend/vue';
+import { expressTopics } from './Backend/express';
+import { nodeTopics } from './Backend/node';
 
-// 1. Update Interface for Recursion
 export interface TopicItem {
   id: string;
   title: string;
   content: string;
-  items?: TopicItem[]; // New optional property for sub-items
+  items?: TopicItem[]; 
 }
 
 export interface Topic {
@@ -75,5 +76,19 @@ export const TOPICS: Topics = [
     description: 'The Progressive JavaScript Framework.',
     icon: Icons.VUE,
     items: vueTopics,
+  },
+  {
+    id: 'express',
+    title: 'Express.js',
+    description: 'Fast, unopinionated, minimalist web framework for Node.js',
+    icon: Icons.EXPRESS,
+    items: expressTopics,
+  },
+  {
+    id: 'node',
+    title: 'Node.js',
+    description: "JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    icon: Icons.NODE,
+    items: nodeTopics,
   },
 ];
