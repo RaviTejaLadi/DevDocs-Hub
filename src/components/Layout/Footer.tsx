@@ -4,9 +4,10 @@ const Footer = () => {
   return (
     <footer
       className="
-        mt-20 border-t
-        border-slate-200 dark:border-slate-800
-        bg-inherit shadow-sm dark:shadow-none rounded-md
+        mt-20 border
+      border-slate-200 dark:border-slate-800
+      bg-white/95 dark:bg-slate-950/95
+        shadow-sm dark:shadow-none rounded-md
       "
     >
       <div className=" items-center p-3 sm:px-6 max-w-7xl mx-auto">
