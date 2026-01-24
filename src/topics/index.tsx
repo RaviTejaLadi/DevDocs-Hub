@@ -1,4 +1,3 @@
-import { Terminal } from 'lucide-react';
 import { htmlTopics } from './frontend/html';
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
@@ -46,35 +45,35 @@ export const TOPICS: Topics = [
     id: 'js',
     title: 'JavaScript',
     description: 'javascript is the programming language of the web.',
-    icon: Icons.CSS,
+    icon: Icons.JS,
     items: jsTopics,
   },
   {
     id: 'typescript',
     title: 'TypeScript',
     description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.',
-    icon: Icons.CSS,
+    icon: Icons.TS,
     items: tsConcepts,
   },
   {
     id: 'nextjs',
     title: 'Next.js',
     description: 'The React framework for production.',
-    icon: Icons.CSS,
+    icon: Icons.NEXT,
     items: nextTopics,
   },
   {
     id: 'react',
     title: 'React.js',
     description: 'The library for web and native user interfaces.',
-    icon: <Terminal className="w-5 h-5" />,
+    icon: Icons.REACT,
     items: reactTopics,
   },
   {
     id: 'vue',
     title: 'Vue.js',
     description: 'The Progressive JavaScript Framework.',
-    icon: <Terminal className="w-5 h-5" />,
+    icon: Icons.VUE,
     items: vueTopics,
   },
 ];
