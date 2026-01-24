@@ -17,16 +17,16 @@ import networking from './networking.md?raw';
 import errorLogging from './logging-and-monitoring.md?raw';
 import owasp from './owasp.md?raw';
 
-import Introduction from '@/assets/Icons/Introduction';
-import QandA from '@/assets/Icons/QandA';
-import Pattern from '@/assets/Icons/Pattern';
-import Rules from '@/assets/Icons/Rules';
+// import Introduction from '@/assets/Icons/Introduction';
+// import QandA from '@/assets/Icons/QandA';
+// import Pattern from '@/assets/Icons/Pattern';
+// import Rules from '@/assets/Icons/Rules';
 
 export const systemDesignData = [
   {
     id: 'system-design-intro',
     title: 'Introduction',
-    Icon: Introduction,
+    // Icon: Introduction,
     document: {
       id: 'sys-intro',
       title: '📌 Introduction',
@@ -36,7 +36,7 @@ export const systemDesignData = [
   {
     id: 'system-design-q-and-a',
     title: 'Q&A',
-    Icon: QandA,
+    // Icon: QandA,
     documents: [
       {
         id: 'web-security-intro',
@@ -63,7 +63,7 @@ export const systemDesignData = [
   {
     id: 'solid-principles',
     title: 'Solid Principles',
-    Icon: Rules,
+    // Icon: Rules,
     documents: [
       {
         id: 'solid-principles-intro',
@@ -100,7 +100,7 @@ export const systemDesignData = [
   {
     id: 'design-patterns',
     title: ' Design Patterns',
-    Icon: Pattern,
+    // Icon: Pattern,
     documents: [
       {
         id: 'lld',

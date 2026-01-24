@@ -1,4 +1,4 @@
-import { AWS, AZURE } from '@/assets/technologies';
+// import { AWS, AZURE } from '@/assets/technologies';
 import awsIntro from './AWS/intro.md?raw';
 import awsTheoryQuestions from './AWS/theory-questions.md?raw';
 
@@ -9,7 +9,7 @@ export const cloudServicesData = [
   {
     id: 'aws',
     title: 'AWS',
-    Icon: AWS,
+    // Icon: AWS,
     documents: [
       {
         id: 'aws-intro',
@@ -26,7 +26,7 @@ export const cloudServicesData = [
   {
     id: 'azure',
     title: 'Azure',
-    Icon: AZURE,
+    // Icon: AZURE,
     documents: [
       {
         id: 'azure-intro',

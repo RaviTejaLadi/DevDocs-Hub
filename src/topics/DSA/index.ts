@@ -1,4 +1,4 @@
-import { ArrayIcon, Dsa } from '@/assets/technologies';
+// import { ArrayIcon, Dsa } from '@/assets/technologies';
 
 import dsaRoadMap from './dsa-intro/dsa-roadmap.md?raw';
 import dsaIntro from './dsa-intro/intro.md?raw';
@@ -21,7 +21,7 @@ export const dsaData = [
   {
     id: 'dsa',
     title: 'DSA Introduction',
-    Icon: Dsa,
+    // Icon: Dsa,
     documents: [
       {
         id: 'dsa-intro',
@@ -38,7 +38,7 @@ export const dsaData = [
   {
     id: 'dsa-topics',
     title: 'DSA Topics',
-    Icon: Dsa,
+    // Icon: Dsa,
     documents: [
       {
         id: 'dsa-arrays',
@@ -90,7 +90,7 @@ export const dsaData = [
   {
     id: 'dsa-q-and-a',
     title: 'Q&A',
-    Icon: ArrayIcon,
+    // Icon: ArrayIcon,
     documents: [
       {
         id: 'top-35-most-asked-dsa-questions',

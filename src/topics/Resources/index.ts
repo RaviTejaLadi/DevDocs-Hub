@@ -17,13 +17,13 @@ import pythonCheatSheet from './cheat-sheets/python.md?raw';
 import reactRouterDomCheatSheet from './cheat-sheets/react-router-dom.md?raw';
 import mySqlCheatSheet from './cheat-sheets/my-sql.md?raw';
 
-import { Sheets } from '@/assets/technologies';
+// import { Sheets } from '@/assets/technologies';
 
 export const resourcesData = [
   {
     id: 'cheat-sheets',
     title: 'Cheat Sheets',
-    Icon: Sheets,
+    // Icon: Sheets,
     children: [
       {
         id: 'frontend-cheats',

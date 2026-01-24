@@ -6,13 +6,13 @@ import sqlIntro from './sql/intro.md?raw';
 import sqlTheoryQuestions from './sql/theory-questions.md?raw';
 import sqlCodingQuestions from './sql/coding-questions.md?raw';
 
-import { MongoDB, Sql } from '@/assets/technologies';
+// import { MongoDB, Sql } from '@/assets/technologies';
 
 export const databaseData = [
   {
     id: 'mongoDB',
     title: 'Mongo DB',
-    Icon: MongoDB,
+    // Icon: MongoDB,
     documents: [
       {
         id: 'mongo-intro',
@@ -34,7 +34,7 @@ export const databaseData = [
   {
     id: 'sql',
     title: 'SQL',
-    Icon: Sql,
+    // Icon: Sql,
     documents: [
       {
         id: 'sql-intro',
