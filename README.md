@@ -1,14 +1,14 @@
-# 📘 DevDocs Hub
+# 📘 Revise Stack
 
-**DevDocs Hub** is a modern, fast, and responsive documentation platform
+**Revise Stack** is a modern, fast, and responsive documentation platform
 designed to host high-quality learning resources for web technologies. From the
 fundamentals of **HTML & CSS** to advanced **React** patterns and so on...,
-DevDocs Hub provides a clean, distraction-free environment for developers to
+Revise Stack provides a clean, distraction-free environment for developers to
 master their craft.
 
 ## 🚀 About The Project
 
-DevDocs Hub was built to solve the problem of scattered coding tutorials. It
+Revise Stack was built to solve the problem of scattered coding tutorials. It
 acts as a centralized repository where developers can find structured,
 easy-to-read documentation.
 
@@ -47,7 +47,7 @@ easy-to-read documentation.
 
 ## 🏁 Getting Started
 
-Follow these steps to set up DevDocs Hub locally on your machine.
+Follow these steps to set up Revise Stack locally on your machine.
 
 ### Prerequisites
 
@@ -82,7 +82,7 @@ npm run dev
 
 ## 📝 How to Add Content
 
-DevDocs Hub is designed to be easily extensible. All content is managed in the
+Revise Stack is designed to be easily extensible. All content is managed in the
 `TOPICS` data structure (located in `Platform.tsx` or separated into
 `src/data/content.ts`).
 
@@ -121,7 +121,7 @@ To add a new technology (e.g., TypeScript):
 ## 🤝 Contributing
 
 Contributions make the open-source community an amazing place to learn, inspire,
-and create. Any contributions you make to **DevDocs Hub** are **greatly
+and create. Any contributions you make to **Revise Stack** are **greatly
 appreciated**.
 
 1. Fork the Project
@@ -136,4 +136,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-**DevDocs Hub** — _Code. Learn. Build._
+**Revise Stack** — _Code. Learn. Build._
