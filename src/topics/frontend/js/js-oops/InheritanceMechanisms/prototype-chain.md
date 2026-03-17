@@ -5,21 +5,6 @@ inherit features from other objects. Let’s break it down step-by-step.
 
 ---
 
-## 📑 Table of Contents
-
-1. 📌 [Definition](#definition)
-2. ❓ [Why is it Important?](#why-is-it-important)
-3. 🧱 [Syntax/Structure](#syntaxstructure)
-4. 🔍 [Examples](#examples)
-
-   - 💡 [Basic Example](#basic-example)
-   - 🌐 [Real-World Use Case](#real-world-use-case)
-
-5. 🛠️ [When/Where to Use It](#whenwhere-to-use-it)
-6. ⚠️ [Gotchas/Tips](#gotchastips)
-
----
-
 ## 📌 Definition
 
 The **prototype chain** is a mechanism in JavaScript where objects can inherit

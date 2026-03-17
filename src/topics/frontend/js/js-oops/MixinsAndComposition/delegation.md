@@ -1,20 +1,5 @@
 # 📘 Delegation: Objects Forwarding Method Calls to Other Objects
 
-## 📑 Table of Contents
-
-1. 📖 [Definition](#definition)
-2. ❓ [Why is it Important?](#why-is-it-important)
-3. 🛠️ [Syntax / Structure](#syntax--structure)
-4. 🧪 [Examples](#examples)
-
-   - 🔹 [Basic Example](#basic-example)
-   - 🌍 [Real-World Use Case](#real-world-use-case)
-
-5. 📍 [When / Where to Use It](#when--where-to-use-it)
-6. ⚠️ [Gotchas / Tips](#gotchas--tips)
-
----
-
 ## 📖 Definition
 
 **Delegation** in JavaScript means one object uses another object's method as if

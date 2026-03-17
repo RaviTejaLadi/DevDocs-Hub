@@ -1,20 +1,5 @@
 # 🛠️ Constructor Method
 
-## 📚 Table of Contents
-
-1. [📖 Definition](#definition)
-2. [❓ Why Is It Important?](#importance)
-3. [🧱 Syntax / Structure](#syntax)
-4. [💡 Examples](#examples)
-
-   - [🔹 Basic Example](#basic-example)
-   - [🌍 Real-World Use Case](#real-world-use-case)
-
-5. [📌 When/Where to Use It](#when-to-use)
-6. [⚠️ Gotchas / Tips](#tips)
-
----
-
 ## 📖 Definition
 
 In JavaScript, the **constructor method** is a special function inside a class

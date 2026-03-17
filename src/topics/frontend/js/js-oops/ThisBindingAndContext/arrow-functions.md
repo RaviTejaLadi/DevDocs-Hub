@@ -1,20 +1,5 @@
 # 🔰 Arrow Functions: How They Inherit `this` from Lexical Scope
 
-## 📚 Table of Contents
-
-1. [📝 Definition](#-definition)
-2. [❓ Why Is It Important?](#-why-is-it-important)
-3. [🔧 Syntax / Structure](#-syntax--structure)
-4. [💡 Examples](#-examples)
-
-   - [📌 Basic Example](#-basic-example)
-   - [🌍 Real-World Use Case](#-real-world-use-case)
-
-5. [✅ When / Where to Use It](#-when--where-to-use-it)
-6. [⚠️ Gotchas / Tips](#-gotchas--tips)
-
----
-
 ## 📝 Definition
 
 **Arrow functions** in JavaScript are a shorter way to write functions. They

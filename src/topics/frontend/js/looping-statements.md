@@ -37,12 +37,12 @@ for (let i = 0; i < 5; i++) {
 
 | Step | i Value | Condition (i < 5) | Action              | Output         |
 | ---- | ------- | ----------------- | ------------------- | -------------- |
-| 1    | 0       | ✅ true            | Execute & increment | "Iteration: 0" |
-| 2    | 1       | ✅ true            | Execute & increment | "Iteration: 1" |
-| 3    | 2       | ✅ true            | Execute & increment | "Iteration: 2" |
-| 4    | 3       | ✅ true            | Execute & increment | "Iteration: 3" |
-| 5    | 4       | ✅ true            | Execute & increment | "Iteration: 4" |
-| 6    | 5       | ❌ false           | Exit loop           | -              |
+| 1    | 0       | ✅ true           | Execute & increment | "Iteration: 0" |
+| 2    | 1       | ✅ true           | Execute & increment | "Iteration: 1" |
+| 3    | 2       | ✅ true           | Execute & increment | "Iteration: 2" |
+| 4    | 3       | ✅ true           | Execute & increment | "Iteration: 3" |
+| 5    | 4       | ✅ true           | Execute & increment | "Iteration: 4" |
+| 6    | 5       | ❌ false          | Exit loop           | -              |
 
 ---
 
@@ -82,10 +82,10 @@ while (count < 3) {
 
 | Step | count Value | Condition (count < 3) | Action              | Output     |
 | ---- | ----------- | --------------------- | ------------------- | ---------- |
-| 1    | 0           | ✅ true                | Execute & increment | "Count: 0" |
-| 2    | 1           | ✅ true                | Execute & increment | "Count: 1" |
-| 3    | 2           | ✅ true                | Execute & increment | "Count: 2" |
-| 4    | 3           | ❌ false               | Exit loop           | -          |
+| 1    | 0           | ✅ true               | Execute & increment | "Count: 0" |
+| 2    | 1           | ✅ true               | Execute & increment | "Count: 1" |
+| 3    | 2           | ✅ true               | Execute & increment | "Count: 2" |
+| 4    | 3           | ❌ false              | Exit loop           | -          |
 
 ---
 
@@ -127,9 +127,9 @@ do {
 
 | Step | num Value | Action          | Output      | Condition (num < 2) |
 | ---- | --------- | --------------- | ----------- | ------------------- |
-| 1    | 0         | Execute first   | "Number: 0" | ✅ true (continue)   |
-| 2    | 1         | Execute         | "Number: 1" | ✅ true (continue)   |
-| 3    | 2         | Check condition | -           | ❌ false (exit)      |
+| 1    | 0         | Execute first   | "Number: 0" | ✅ true (continue)  |
+| 2    | 1         | Execute         | "Number: 1" | ✅ true (continue)  |
+| 3    | 2         | Check condition | -           | ❌ false (exit)     |
 
 ---
 
@@ -242,13 +242,13 @@ flowchart TD
 
 ## 🆚 Loop Comparison Table
 
-| Loop Type  | Best Used For                       | Pre-condition Check   | Minimum Executions |
-| ---------- | ----------------------------------- | --------------------- | ------------------ |
+| Loop Type  | Best Used For                       | Pre-condition Check    | Minimum Executions |
+| ---------- | ----------------------------------- | ---------------------- | ------------------ |
 | `for`      | Known number of iterations          | ✅ Yes                 | 0                  |
 | `while`    | Unknown iterations, condition-based | ✅ Yes                 | 0                  |
 | `do-while` | At least one execution needed       | ❌ No (post-condition) | 1                  |
-| `for...in` | Object property iteration           | N/A                   | 0                  |
-| `for...of` | Array/iterable iteration            | N/A                   | 0                  |
+| `for...in` | Object property iteration           | N/A                    | 0                  |
+| `for...of` | Array/iterable iteration            | N/A                    | 0                  |
 
 ---
 
@@ -303,13 +303,13 @@ for (let i = 1; i <= 3; i++) {
 
 ✅ **Do:**
 
-* Use `for` loops when you know the iteration count
-* Use `for...of` for arrays and iterables
-* Use `for...in` for object properties
-* Always update the condition variable in `while` loops
+- Use `for` loops when you know the iteration count
+- Use `for...of` for arrays and iterables
+- Use `for...in` for object properties
+- Always update the condition variable in `while` loops
 
 ❌ **Don't:**
 
-* Forget to update counters in `while` loops (infinite loops)
-* Modify arrays during `for...in` iteration
-* Use `for...in` with arrays (use `for...of` instead)
+- Forget to update counters in `while` loops (infinite loops)
+- Modify arrays during `for...in` iteration
+- Use `for...in` with arrays (use `for...of` instead)

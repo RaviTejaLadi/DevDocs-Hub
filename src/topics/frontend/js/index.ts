@@ -36,7 +36,6 @@ import { jsOOPSConcepts } from './js-oops';
 import type { TopicItem } from '@/topics';
 
 export const jsTopics: TopicItem[] = [
-
   {
     id: 'js-fundamentals',
     title: '📚 Fundamentals',

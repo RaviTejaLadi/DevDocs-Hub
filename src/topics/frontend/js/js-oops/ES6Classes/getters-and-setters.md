@@ -1,20 +1,5 @@
 # 🧠 Getters and Setters
 
-## 📑 Table of Contents
-
-1. 📌 [Definition](#definition)
-2. ❓ [Why Is It Important?](#why-is-it-important)
-3. 🧱 [Syntax / Structure](#syntax--structure)
-4. 💡 [Examples](#examples)
-
-   - 🔹 [Basic Example](#basic-example)
-   - 🌍 [Real-World Use Case](#real-world-use-case)
-
-5. 📍 [When / Where to Use It](#when--where-to-use-it)
-6. ⚠️ [Gotchas / Tips](#gotchas--tips)
-
----
-
 ## 📌 Definition
 
 **Getters** and **Setters** are special methods in JavaScript that allow you to

@@ -5,21 +5,6 @@ objects more efficiently. Let’s break it down!
 
 ---
 
-## 📚 Table of Contents
-
-1. [🧾 Definition](#definition)
-2. [❓ Why Is It Important?](#why-is-it-important)
-3. [🔧 Syntax/Structure](#syntaxstructure)
-4. [💡 Examples](#examples)
-
-   - [Basic Example](#basic-example)
-   - [Real-World Use Case](#real-world-use-case)
-
-5. [📍 When/Where to Use It](#whenwhere-to-use-it)
-6. [⚠️ Gotchas/Tips](#gotchastips)
-
----
-
 ## 🧾 Definition
 
 A **factory function** is a function that returns a new object every time it's
