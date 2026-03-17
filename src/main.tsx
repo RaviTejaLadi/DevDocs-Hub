@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider attribute="class" defaultTheme="dark" storageKey="dev-docs-hub-ui-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="dev-docs-hub-ui-theme">
         <Platform />
       </ThemeProvider>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Github, Search, FileText, HelpCircle } from 'lucide-react';
 import { Logo } from '../Logo';
 import { TOPICS, type TopicItem } from '../../topics';

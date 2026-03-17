@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, type ClassAttributes, type HTMLAttributes } from 'react';
 import ReactMarkdown from 'react-markdown';
+import type { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+
+type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
 export function AnswerMarkdown({
   content,
@@ -46,10 +49,10 @@ export function AnswerMarkdown({
           strong: ({ children }) => (
             <strong className="font-semibold text-foreground">{children}</strong>
           ),
-          code: ({ inline, className: codeClassName, children, ...props }: Record<string, unknown>) => {
-            const match = /language-(\w+)/.exec((codeClassName as string) || '');
-            const isBlock = !inline && match;
-            const codeString = String(children).replace(/\n$/, '');
+          code: ({ className: codeClassName, children }: CodeComponentProps) => {
+            const match = /language-(\w+)/.exec(codeClassName || '');
+            const isBlock = Boolean(match);
+            const codeString = String(children ?? '').replace(/\n$/, '');
 
             if (isBlock) {
               return (
@@ -68,11 +71,10 @@ export function AnswerMarkdown({
                   <div className="overflow-x-auto p-4">
                     <SyntaxHighlighter
                       style={atomDark}
-                      language={match[1]}
+                      language={match?.[1]}
                       PreTag="div"
                       className="m-0! bg-transparent! p-0! text-sm!"
                       showLineNumbers={false}
-                      {...props}
                     >
                       {codeString}
                     </SyntaxHighlighter>
@@ -87,7 +89,6 @@ export function AnswerMarkdown({
                   'bg-rose-100 text-rose-900 dark:bg-rose-950/70 dark:text-rose-200',
                   'border border-rose-200/60 dark:border-rose-800/50'
                 )}
-                {...props}
               >
                 {children}
               </code>
