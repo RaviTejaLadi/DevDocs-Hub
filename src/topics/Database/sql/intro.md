@@ -1,18 +1,5 @@
 # Introduction to SQL
 
-## Table of Contents
-
-- [What is SQL?](#what-is-sql?)
-- [Key Characteristics](#key-characteristics)
-- [Basic SQL Commands Categories](#basic-sql-commands-categories)
-  - [1. Data Query Language (DQL)](<#1.-data-query-language-(dql)>)
-  - [2. Data Manipulation Language (DML)](<#2.-data-manipulation-language-(dml)>)
-  - [3. Data Definition Language (DDL)](<#3.-data-definition-language-(ddl)>)
-  - [4. Data Control Language (DCL)](<#4.-data-control-language-(dcl)>)
-  - [5. Transaction Control Language (TCL)](<#5.-transaction-control-language-(tcl)>)
-- [Basic SQL Syntax Examples](#basic-sql-syntax-examples)
-- [Why Learn SQL?](#why-learn-sql?)
-
 ## What is SQL?
 
 SQL (Structured Query Language) is a standard programming language designed for:

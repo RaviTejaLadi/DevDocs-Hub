@@ -1,18 +1,5 @@
 # React State Management - Complete Guide
 
-## Table of Contents
-
-1. [Introduction to State](#introduction-to-state)
-2. [useState Hook](#usestate-hook)
-3. [useReducer Hook](#usereducer-hook)
-4. [Context API](#context-api)
-5. [State Lifting](#state-lifting)
-6. [Local vs Global State](#local-vs-global-state)
-7. [Advanced State Patterns](#advanced-state-patterns)
-8. [Best Practices](#best-practices)
-
----
-
 ## Introduction to State
 
 ### Definition

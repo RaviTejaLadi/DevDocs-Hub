@@ -1,10 +1,5 @@
 # **Login Form with Validation**
 
-## Table of Contents
-
-1. [JavaScript Version](#javascript-version)
-2. [TypeScript Version](#typescript-version)
-
 ## JavaScript Versions
 
 ### 1. Using useState

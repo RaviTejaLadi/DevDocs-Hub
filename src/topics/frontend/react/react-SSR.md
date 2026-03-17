@@ -1,20 +1,5 @@
 # **React Server-Side Rendering (SSR) Complete Guide**
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Key Definitions](#key-definitions)
-3. [How SSR Works](#how-ssr-works)
-4. [Benefits and Drawbacks](#benefits-and-drawbacks)
-5. [Core APIs and Syntax](#core-apis-and-syntax)
-6. [Basic Implementation](#basic-implementation)
-7. [Advanced Patterns](#advanced-patterns)
-8. [Frameworks and Tools](#frameworks-and-tools)
-9. [Performance Considerations](#performance-considerations)
-10. [Best Practices](#best-practices)
-11. [Common Pitfalls](#common-pitfalls)
-12. [Examples](#examples)
-
 ## Introduction
 
 React Server-Side Rendering (SSR) is a technique where React components are

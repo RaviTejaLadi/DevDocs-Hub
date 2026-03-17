@@ -1,23 +1,5 @@
 # **React Table Hooks Syntax Guide**
 
-Here's a breakdown of the most commonly used React-Table hooks with their syntax
-and explanations:
-
----
-
-## Table of Contents
-
-- [1. useReactTable (Core Hook)](<#1.-usereacttable-(core-hook)>)
-- [2. Row Model Hooks](#2.-row-model-hooks)
-- [3. State Management Hooks](#3.-state-management-hooks)
-- [4. Row Selection Hooks](#4.-row-selection-hooks)
-- [5. Column Visibility](#5.-column-visibility)
-- [6. Expanded Rows](#6.-expanded-rows)
-- [7. Column Ordering (Drag & Drop)](<#7.-column-ordering-(drag-and-drop)>)
-- [8. Global Filtering](#8.-global-filtering)
-- [Key Utility Methods](#key-utility-methods)
-- [Complete Feature Setup Example](#complete-feature-setup-example)
-
 ### 1. useReactTable (Core Hook)
 
 The main hook that creates a table instance.

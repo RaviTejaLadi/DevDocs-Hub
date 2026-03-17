@@ -1,26 +1,5 @@
 # Top 30 Vue.js Coding Questions and Answers
 
-## Table of Contents
-
-1. [Basics](#basics)
-2. [Components](#components)
-3. [State Management](#state-management)
-4. [Lifecycle Hooks](#lifecycle-hooks)
-5. [Routing](#routing)
-6. [Advanced Concepts](#advanced-concepts)
-7. [Directives](#directives)
-8. [Performance](#performance)
-9. [Composition API (Vue 3)](<#composition-api-(vue-3)>)
-10. [Reactivity](#reactivity)
-11. [Slots](#slots)
-12. [Mixins](#mixins)
-13. [Transitions](#transitions)
-14. [Custom Directives](#custom-directives)
-15. [Filters](#filters)
-16. [Testing](#testing)
-17. [Vue 3 Features](#vue-3-features)
-18. [Error Handling](#error-handling)
-
 ## Basics
 
 ### 1. How do you create a new Vue instance?

@@ -1,38 +1,5 @@
 # Vue.js Top 30 Theory Questions & Answers
 
-## Table of Contents
-
-1. [What is Vue.js?](#1.-what-is-vue.js?)
-2. [Explain Vue's Reactivity System.](#2.-explain-vue's-reactivity-system.)
-3. [What are Vue Directives? List Examples.](#3.-what-are-vue-directives?-list-examples.)
-4. [Differences Between v-if and v-show?](#4.-differences-between-v-if-and-v-show?)
-5. [What is the Virtual DOM?](#5.-what-is-the-virtual-dom?)
-6. [Explain Vue Components.](#6.-explain-vue-components.)
-7. [How to Pass Data to Child Components?](#7.-how-to-pass-data-to-child-components?)
-8. [How to Emit Events from Child to Parent?](#8.-how-to-emit-events-from-child-to-parent?)
-9. [What is Vuex?](#9.-what-is-vuex?)
-10. [Vue 3 vs Vue 2 Key Differences.](#10.-vue-3-vs-vue-2-key-differences)
-11. [What is the Composition API?](#11.-what-is-the-composition-api)
-12. [Explain ref() vs reactive().](<#12.-explain-ref()-vs-reactive().>)
-13. [What is Pinia?](#13.-what-is-pinia?)
-14. [How to Handle Async Operations?](#14.-how-to-handle-async-operations?)
-15. [What are Mixins? Drawbacks?](#15.-what-are-mixins-drawbacks?)
-16. [Explain Slots.](#16.-explain-slots.)
-17. [What is Scoped CSS?](#17.-what-is-scoped-css?)
-18. [What is tsx Router?](#18.-what-is-tsx-router?)
-19. [How to Guard Routes?](#19.-how-to-guard-routes?)
-20. [What is Server-Side Rendering (SSR)?](<#20.-what-is-server-side-rendering-(ssr)?>)
-21. [Explain Vue Custom Directives.](#21.-explain-vue-custom-directives.)
-22. [What are Vue Plugins?](#22.-what-are-vue-plugins?)
-23. [Key Differences: Vue vs React vs Angular.](#23.-key-differences-vue-vs-react-vs-angular.)
-24. [What is nextTick() ?](<#24.-what-is-nexttick()?>)
-25. [How to Optimize Vue Performance?](#25.-how-to-optimize-vue-performance?)
-26. [What is Renderless Components?](#26.-what-is-renderless-components?)
-27. [Explain Provide/Inject.](#27.-explain-provide/inject.)
-28. [What is Suspense?](#28.-what-is-suspense?)
-29. [How to Test Vue Apps?](#29.-how-to-test-vue-apps?)
-30. [What is Teleport?](#30.-what-is-teleport?)
-
 #### 1. What is Vue.js?
 
 **Answer:** Vue.js is a **progressive JavaScript framework** for building user

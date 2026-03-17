@@ -1,19 +1,5 @@
 # React Component Lifecycle Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Component Lifecycle Overview](#component-lifecycle-overview)
-3. [Mounting Phase](#mounting-phase)
-4. [Updating Phase](#updating-phase)
-5. [Unmounting Phase](#unmounting-phase)
-6. [Error Handling Phase](#error-handling-phase)
-7. [Hooks vs Class Components](#hooks-vs-class-components)
-8. [Best Practices](#best-practices)
-9. [Common Patterns](#common-patterns)
-
----
-
 ## Introduction
 
 React component lifecycle refers to the series of methods that are invoked in

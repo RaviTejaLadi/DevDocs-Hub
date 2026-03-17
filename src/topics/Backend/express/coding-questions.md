@@ -1,38 +1,5 @@
 # Top 30 Coding Interview Questions and Answers
 
-## Table of Contents
-
-1. [Basic Express Server](#1.-basic-express-server)
-2. [Route with URL Parameter](#2.-route-with-url-parameter)
-3. [Route with Query Parameter](#3.-route-with-query-parameter)
-4. [POST Request Handling](#4.-post-request-handling)
-5. [Middleware Function](#5.-middleware-function)
-6. [Static Files Serving](#6.-static-files-serving)
-7. [404 Error Handling](#7.-404-error-handling)
-8. [Error Handling Middleware](#8.-error-handling-middleware)
-9. [Route Chaining](#9.-route-chaining)
-10. [Router Module (Separate File)](<#10.-router-module-(separate-file)>)
-11. [JSON Response](#11.-json-response)
-12. [Redirect](#12.-redirect)
-13. [Download File](#13.-download-file)
-14. [Set Cookies](#14.-set-cookies)
-15. [Read Cookies](#15.-read-cookies)
-16. [File Upload (Multer)](<#16.-file-upload-(multer)>)
-17. [Basic Authentication Middleware](#17.-basic-authentication-middleware)
-18. [CORS Handling](#18.-cors-handling)
-19. [Rate Limiting](#19.-rate-limiting)
-20. [HTTPS Redirect](#20.-https-redirect)
-21. [Template Engine (EJS)](<#21.-template-engine-(ejs)>)
-22. [Async/Await in Route](#22.-async/await-in-route)
-23. [WebSocket (Socket.io)](<#23.-websocket-(socket.io)>)
-24. [Environment Variables](#24.-environment-variables)
-25. [Request Validation](#25.-request-validation)
-26. [JWT Authentication](#26.-jwt-authentication)
-27. [Database Query (MongoDB)](<#27.-database-query-(mongodb)>)
-28. [Testing with Supertest](#28.-testing-with-supertest)
-29. [Graceful Shutdown](#29.-graceful-shutdown)
-30. [Cluster Mode (Performance)](<#30.-cluster-mode-(performance)>)
-
 ### 1. Basic Express Server
 
 ```javascript

@@ -1,20 +1,5 @@
 # Top 30 Theory Interview Questions and Answers
 
-## Table of Contents
-
-- [Fundamentals](#fundamentals)
-- [Data Modeling](#data-modeling)
-- [Indexing](#indexing)
-- [Performance](#performance)
-- [Aggregation](#aggregation)
-- [Replication and Sharding](#replication-and-sharding)
-- [Transactions](#transactions)
-- [Security](#security)
-- [Administration](#administration)
-- [Advanced Concepts](#advanced-concepts)
-- [Optimization](#optimization)
-- [Miscellaneous](#miscellaneous)
-
 ## Fundamentals
 
 ### 1. What is MongoDB?

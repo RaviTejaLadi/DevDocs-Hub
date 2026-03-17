@@ -4,14 +4,6 @@ Express.js is a fast, unopinionated, and minimalist web framework for Node.js.
 It's one of the most popular frameworks for building web applications and APIs
 in the Node.js ecosystem.
 
-## Table of Contents
-
-- [Key Features](#key-features)
-- [Basic Setup](#basic-setup)
-- [Core Concepts](#core-concepts)
-- [Common Use Cases](#common-use-cases)
-- [Advantages](#advantages)
-
 ## Key Features
 
 1. **Minimalist**: Express provides a thin layer of fundamental web application

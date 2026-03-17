@@ -1,30 +1,5 @@
 # JavaScript Cheat Sheet
 
-## Table of Contents
-
-1. [Basics](#basics)
-2. [Variables](#variables)
-3. [Data Types](#data-types)
-4. [Operators](#operators)
-   - [Arithmetic](#arithmetic)
-   - [Comparison](#comparison)
-   - [Logical](#logical)
-5. [Conditionals](#conditionals)
-6. [Loops](#loops)
-7. [Functions](#functions)
-8. [Objects](#objects)
-9. [Arrays](#arrays)
-10. [Strings](#strings)
-11. [Regular Expressions](#regular-expressions)
-12. [Numbers and Math](#numbers-and-math)
-13. [Dates](#dates)
-14. [Error Handling](#error-handling)
-15. [Promises and Async/Await](#promises-and-asyncawait)
-16. [Modules](#modules)
-17. [Browser APIs](#browser-apis)
-18. [JSON](#json)
-19. [Miscellaneous](#miscellaneous)
-
 ## Basics
 
 | Syntax         | Description          | Example                    |

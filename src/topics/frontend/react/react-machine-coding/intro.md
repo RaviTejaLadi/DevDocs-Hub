@@ -1,11 +1,5 @@
 # **React Machine Coding Questions by Difficulty Level**
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Key Skills to Demonstrate](#key-skills-to-demonstrate)
-- [Interview Tips](#interview-tips)
-
 ## Introduction
 
 Welcome to the most comprehensive collection of React machine coding questions

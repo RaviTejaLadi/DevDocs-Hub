@@ -1,19 +1,5 @@
 # Tailwind CSS Cheat Sheet
 
-## Table of Contents
-
-- [Layout](#layout)
-- [Spacing (Padding & Margin)](#spacing-padding-and-margin)
-- [Typography](#typography)
-- [Colors](#colors)
-- [Borders](#borders)
-- [Flexbox & Grid](#flexbox-and-grid)
-- [Sizing](#sizing)
-- [Effects & Filters](#effects-and-filters)
-- [Transitions & Animations](#transitions-and-animations)
-- [Responsive Design](#responsive-design)
-- [Pseudo-classes & States](#pseudo-classes-and-states)
-
 ## Layout
 
 | Class          | Description                                |

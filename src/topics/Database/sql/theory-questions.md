@@ -1,50 +1,5 @@
 # Top 30 Theory Interview Questions and Answers
 
-## Table of Contents
-
-1. [Basic SQL Concepts](#basic-sql-concepts)
-   1. [What is SQL?](#1.-what-is-sql?)
-   2. [Types of SQL commands](#2.-what-are-the-different-types-of-sql-commands?)
-   3. [Primary key](#3.-what-is-a-primary-key?)
-   4. [Foreign key](#4.-what-is-a-foreign-key?)
-2. [Database Design](#database-design)
-   1. [Database normalization](#5.-what-is-database-normalization?)
-   2. [Advantages of normalization](#6.-what-are-the-advantages-of-normalization?)
-   3. [Denormalization](#7.-what-is-denormalization-and-when-would-you-use-it?)
-3. [SQL Queries](#sql-queries)
-   1. [WHERE vs HAVING](#8.-what-is-the-difference-between-where-and-having-clauses?)
-   2. [DELETE vs TRUNCATE vs DROP](#9.-what-is-the-difference-between-delete-truncate-and-drop?)
-   3. [UNION vs UNION ALL](#10.-what-is-the-difference-between-union-and-union-all?)
-4. [Joins and Relationships](#joins-and-relationships)
-   1. [Types of joins](#11.-what-are-the-different-types-of-joins-in-sql?)
-   2. [Self-join](#12.-what-is-a-self-join?)
-5. [Advanced SQL Concepts](#advanced-sql-concepts)
-   1. [Indexes](#13.-what-are-indexes-and-why-are-they-important?)
-   2. [Stored procedure](#14.-what-is-a-stored-procedure?)
-   3. [Trigger](#15.-what-is-a-trigger?)
-6. [Performance and Optimization](#performance-and-optimization)
-   1. [Optimizing SQL queries](#16.-how-would-you-optimize-a-slow-sql-query?)
-   2. [Execution plan](#17.-what-is-an-execution-plan?)
-7. [Transactions and Concurrency](#transactions-and-concurrency)
-   1. [Transaction](#18.-what-is-a-transaction-in-sql?)
-   2. [Transaction isolation levels](#19.-what-are-the-different-transaction-isolation-levels?)
-   3. [Dirty read, non-repeatable read, phantom read](#20.-what-are-dirty-read-non-repeatable-read-and-phantom-read?)
-8. [Functions and Operators](#functions-and-operators)
-   1. [CHAR vs VARCHAR](#21.-what-is-the-difference-between-char-and-varchar?)
-   2. [Aggregate functions](#22.-what-are-aggregate-functions-in-sql?)
-   3. [GROUP BY vs ORDER BY](#23.-what-is-the-difference-between-group-by-and-order-by?)
-9. [Advanced Topics](#advanced-topics)
-   1. [Window functions](#24.-what-are-window-functions?)
-   2. [CTE (Common Table Expression)](#25.-what-is-a-cte-common-table-expression?)
-   3. [View vs Materialized View](#26.-what-is-the-difference-between-a-view-and-a-materialized-view?)
-   4. [Correlated subquery](#27.-what-is-a-correlated-subquery?)
-10. [Database Management](#database-management)
-    1. [Database sharding](#28.-what-is-database-sharding?)
-    2. [CAP theorem](#29.-what-is-the-cap-theorem?)
-    3. [NoSQL databases](#30.-what-are-nosql-databases-and-how-do-they-differ-from-sql-databases?)
-
----
-
 ## Basic SQL Concepts
 
 ### 1. What is SQL?

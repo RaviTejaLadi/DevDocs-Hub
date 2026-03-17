@@ -1,4 +1,3 @@
-// import { AWS, AZURE } from '@/assets/technologies';
 import awsIntro from './AWS/intro.md?raw';
 import awsTheoryQuestions from './AWS/theory-questions.md?raw';
 

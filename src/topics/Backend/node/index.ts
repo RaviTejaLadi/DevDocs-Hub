@@ -5,18 +5,18 @@ import nodeCoding from './coding-questions.md?raw';
 
 export const nodeTopics: TopicItem[] = [
   {
-        id: 'node-intro',
-        title: '📚 Introduction',
-        content: nodeIntro,
-      },
-      {
-        id: 'theory-questions',
-        title: '❓ Theory Questions',
-        content: nodeTheory,
-      },
-      {
-        id: 'coding-questions',
-        title: '💻 Coding Questions',
-        content: nodeCoding,
-      },
+    id: 'node-intro',
+    title: '📚 Introduction',
+    content: nodeIntro,
+  },
+  {
+    id: 'theory-questions',
+    title: '❓ Theory Questions',
+    content: nodeTheory,
+  },
+  {
+    id: 'coding-questions',
+    title: '💻 Coding Questions',
+    content: nodeCoding,
+  },
 ];

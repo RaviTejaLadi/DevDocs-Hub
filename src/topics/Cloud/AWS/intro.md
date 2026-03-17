@@ -1,30 +1,5 @@
 # **Complete Introduction to Amazon Web Services (AWS)**
 
-## Table of Contents
-
-1. [What is AWS?](#1.-what-is-aws?)
-2. [AWS History and Evolution](#2.-aws-history-and-evolution)
-3. [AWS Global Infrastructure](#3.-aws-global-infrastructure)
-4. [Core AWS Services](#4.-core-aws-services)
-   - 4.1 [Compute Services](#4.1-compute-services)
-   - 4.2 [Storage Services](#4.2-storage-services)
-   - 4.3 [Database Services](#4.3-database-services)
-   - 4.4 [Networking Services](#4.4-networking-services)
-   - 4.5 [Security and Identity Services](#4.5-security-and-identity-services)
-5. [AWS Pricing Model](#5.-aws-pricing-model)
-6. [AWS Management Console](#6.-aws-management-console)
-7. [AWS CLI and SDKs](#7.-aws-cli-and-sdks)
-8. [AWS Well-Architected Framework](#8.-aws-well-architected-framework)
-9. [Getting Started with AWS](#9.-getting-started-with-aws)
-10. [AWS Certifications](#10.-aws-certifications)
-11. [Benefits of Using AWS](#11.-benefits-of-using-aws)
-12. [Common Use Cases](#12.-common-use-cases)
-13. [AWS vs Competitors](#13.-aws-vs-competitors)
-14. [Best Practices](#14.-best-practices)
-15. [Conclusion](#15.-conclusion)
-
----
-
 ## 1. What is AWS?
 
 Amazon Web Services (AWS) is a comprehensive cloud computing platform provided

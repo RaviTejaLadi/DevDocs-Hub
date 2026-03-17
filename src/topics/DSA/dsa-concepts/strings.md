@@ -1,17 +1,5 @@
 # **JavaScript Strings - Complete Guide 📝**
 
-## Table of Contents 📚
-
-- [Definition](#definition)
-- [Key Characteristics](#key-characteristics)
-- [Syntax/Implementation](#syntaximplementation)
-- [Visualization](#visualization)
-- [Example](#example)
-- [Code Example](#code-example)
-- [Common Pitfalls](#common-pitfalls)
-
----
-
 ## Definition 🎯
 
 A **string** in JavaScript is a sequence of characters used to represent text

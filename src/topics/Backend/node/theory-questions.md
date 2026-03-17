@@ -1,38 +1,5 @@
 # Top 30 theory interview questions 🚀
 
-## Table of Contents
-
-1. [What is Node.js?](#1.-what-is-node.js?)
-2. [How does Node.js work?](#2.-how-does-node.js-work?)
-3. [What is the Event Loop in Node.js?](#3.-what-is-the-event-loop-in-node.js?)
-4. [What is libuv?](#4.-what-is-libuv?)
-5. [Explain Non-Blocking I/O in Node.js.](#5.-explain-non-blocking-i/o-in-node.js.)
-6. [What is the difference between `setImmediate()` and `setTimeout()`?](<#6.-what-is-the-difference-between-setimmediate()-and-settimeout()?>)
-7. [What is the purpose of `process.nextTick()`?](<#7.-what-is-the-purpose-of-process.nexttick()?>)
-8. [What are Streams in Node.js?](#8.-what-are-streams-in-node.js?)
-9. [How does Node.js handle child threads?](#9.-how-does-nodejs-handle-child-threads?)
-10. [What is the Global Object in Node.js?](#10.-what-is-the-global-object-in-node.js?)
-11. [Explain the `require()` function.](<#11.-explain-the-require()-function.>)
-12. [What is `module.exports`?](#12.-what-is-module.exports?)
-13. [What is the difference between `exports` and `module.exports`?](#13.-what-is-the-difference-between-exports-and-module.exports?)
-14. [What is the purpose of the `Buffer` class?](#14.-what-is-the-purpose-of-the-buffer-class?)
-15. [What is clustering in Node.js?](#15.-what-is-clustering-in-node.js?)
-16. [How does Node.js handle errors?](#16.-how-does-node.js-handle-errors?)
-17. [What is the purpose of middleware in Express.js?](#17.-what-is-the-purpose-of-middleware-in-express.js?)
-18. [What is REPL in Node.js?](#18.-what-is-repl-in-node.js?)
-19. [What is the `package.json` file?](#19.-what-is-the-package.json-file?)
-20. [Explain Event Emitters in Node.js.](#20.-explain-event-emitters-in-node.js?)
-21. [What is the purpose of `NODE_ENV`?](#21.-what-is-the-purpose-of-node_env?)
-22. [How does Node.js support ES6 modules?](#22.-how-does-node.js-support-es6-modules?)
-23. [What is the difference between `require()` and ES6 `import`?](<#23.-what-is-the-difference-between-require()-and-es6-import?>)
-24. [What is the purpose of the `fs` module?](#24.-what-is-the-purpose-of-the-fs-module?)
-25. [What is the `util` module used for?](#25.-what-is-the-util-module-used-for?)
-26. [What is the `path` module?](#26.-what-is-the-path-module?)
-27. [How does Node.js handle memory leaks?](#27.-how-does-node.js-handle-memory-leaks?)
-28. [What is the purpose of the `os` module?](#28.-what-is-the-purpose-of-the-os-module?)
-29. [What is the difference between `process.exit()` and `process.kill()`?](<#29.-what-is-the-difference-between-process.exit()-and-process.kill()?>)
-30. [What are some key features of Node.js?](#30.-what-are-some-key-features-of-node.js?)
-
 ### 1. What is Node.js?
 
 **Answer:** Node.js is an open-source, cross-platform JavaScript runtime

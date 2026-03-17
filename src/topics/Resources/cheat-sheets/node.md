@@ -1,20 +1,5 @@
 # Node.js Cheat sheet
 
-## Table of Contents
-
-- [Core Modules](#core-modules)
-- [File System Operations](#file-system-operations)
-- [HTTP Methods](#http-methods)
-- [NPM Commands](#npm-commands)
-- [Process & Environment](#process--environment)
-- [Error Handling](#error-handling)
-- [Common Patterns](#common-patterns)
-- [Buffer Operations](#buffer-operations)
-- [Stream Types](#stream-types)
-- [Event Emitter](#event-emitter)
-- [URL Parsing](#url-parsing)
-- [Common Status Codes](#common-status-codes)
-
 ## Core Modules
 
 | Module          | Description                 | Common Methods/Properties                                     |

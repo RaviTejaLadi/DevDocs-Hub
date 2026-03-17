@@ -1,17 +1,5 @@
 # **🏭 Factory Design Pattern in Frontend Development**
 
-## 📋 Table of Contents
-
-- [What is Factory Pattern?](#what-is-factory-pattern)
-- [Types of Factory Patterns](#types-of-factory-patterns)
-- [Key Characteristics](#key-characteristics)
-- [Theory and Concepts](#theory-and-concepts)
-- [Implementation Approaches](#implementation-approaches)
-- [Frontend Use Cases](#frontend-use-cases)
-- [Advantages and Disadvantages](#advantages-and-disadvantages)
-- [Best Practices](#best-practices)
-- [Common Pitfalls](#common-pitfalls)
-
 ## 🎯 What is Factory Pattern?
 
 The **Factory pattern** is a creational design pattern that provides an

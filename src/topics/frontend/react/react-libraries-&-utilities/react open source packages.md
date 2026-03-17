@@ -1,17 +1,5 @@
 # The most useful and widely adopted React open-source packages
 
-## Table of Contents
-
-- [Core Utilities and Hooks](#core-utilities-and-hooks)
-- [UI Component Libraries](#ui-component-libraries)
-- [Forms & Validation](#forms-and-validation)
-- [Routing](#routing)
-- [Animations](#animations)
-- [Tables, Charts, and Visualizations](#tables,charts,and-visualizations)
-- [Testing](#testing)
-- [Developer Experience / Build Tools](#developer-experience/build-tools)
-- [Honorable Mentions](#honorable-mentions)
-
 ## Core Utilities and Hooks
 
 1. **[react-use](https://github.com/streamich/react-use)** A collection of

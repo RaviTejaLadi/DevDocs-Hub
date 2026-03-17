@@ -73,11 +73,11 @@ const DocumentationPage = () => {
   if (!topic || !content) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Card className="max-w-md w-full">
-          <CardContent className="pt-6 text-center">
+        <Card className="max-w-md border-none bg-inherit w-full">
+          <CardContent className="pt-6  text-center">
             <div className="text-6xl mb-4">📚</div>
             <h2 className="text-2xl font-bold mb-2 text-foreground">Page Not Found</h2>
-            <p className="text-muted-foreground mb-6">The documentation page you're looking for doesn't exist.</p>
+            <p className="text-muted-foreground mb-6">This topic doesn't exist or couldn't be found.</p>
             <Button onClick={() => navigate('/')} className="w-full">
               <Home className="mr-2 h-4 w-4" />
               Back to Home
@@ -99,85 +99,78 @@ const DocumentationPage = () => {
   }
 
   return (
-    <div className="w-full space-y-6">
-      {/* Breadcrumb Navigation */}
+    <div className="w-full space-y-8">
       <Breadcrumb>
-        <BreadcrumbList>
+        <BreadcrumbList className="flex-wrap gap-1 text-sm text-muted-foreground">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/" className="flex items-center gap-1.5">
-                <span>Documentation</span>
+              <Link to="/" className="hover:text-foreground transition-colors">
+                Docs
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-3.5 w-3.5 opacity-60" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={`/docs/${topic.id}/${topic.items[0].id}`} className={`flex items-center gap-1.5`}>
+              <Link to={`/docs/${topic.id}/${topic.items[0].id}`} className="hover:text-foreground transition-colors flex items-center gap-1.5">
                 {topic.icon}
                 <span>{topic.title}</span>
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-3.5 w-3.5 opacity-60" />
           </BreadcrumbSeparator>
           <BreadcrumbItem>
-            <BreadcrumbPage className="font-medium">{content.title}</BreadcrumbPage>
+            <BreadcrumbPage className="font-medium text-foreground">{content.title}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
-      <Separator />
-
-      {/* Main Content */}
-      <div className="prose prose-slate dark:prose-invert max-w-none">
+      <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
         <MarkdownRender content={content.content} />
       </div>
 
-      <Separator className="mb-6 h-px!" />
-      {/* Navigation Footer */}
-      <div className="mt-12">
-        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
-          {prevItem ? (
-            <Button
-              onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
-              variant="outline"
-              className="h-auto p-4  group  bg-inherit hover:bg-accent/40"
-            >
-              <div className="text-left w-full space-y-1">
-                <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Previous</div>
-                <div className="flex items-center gap-2 text-foreground font-semibold">
-                  <ChevronRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
-                  <span className="truncate">{prevItem.title}</span>
-                </div>
-              </div>
-            </Button>
-          ) : (
-            <div />
-          )}
+      <Separator className="my-8" />
 
-          {nextItem ? (
-            <Button
-              variant="outline"
-              onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
-              className="h-auto p-4 group  bg-inherit hover:bg-accent/40"
-            >
-              <div className="text-right w-full space-y-1">
-                <div className="text-xs font-medium uppercase tracking-wide opacity-90">Next</div>
-                <div className="flex items-center justify-end gap-2 font-semibold">
-                  <span className="truncate">{nextItem.title}</span>
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
+      <nav className="grid grid-cols-2 gap-4" aria-label="Document navigation">
+        {prevItem ? (
+          <Button
+            onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
+            variant="outline"
+            className="h-auto p-4 justify-start text-left border-border hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+          >
+            <div className="w-full space-y-1">
+              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Previous</span>
+              <div className="flex items-center gap-2 font-medium text-foreground">
+                <ChevronRight className="w-4 h-4 rotate-180 shrink-0 group-hover:-translate-x-0.5 transition-transform" />
+                <span className="truncate">{prevItem.title}</span>
               </div>
-            </Button>
-          ) : (
-            <div />
-          )}
-        </div>
-      </div>
+            </div>
+          </Button>
+        ) : (
+          <div />
+        )}
+        {nextItem ? (
+          <Button
+            variant="outline"
+            onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
+            className="h-auto p-4 justify-end text-right border-border hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+          >
+            <div className="w-full space-y-1">
+              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Next</span>
+              <div className="flex items-center justify-end gap-2 font-medium text-foreground">
+                <span className="truncate">{nextItem.title}</span>
+                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+              </div>
+            </div>
+          </Button>
+        ) : (
+          <div />
+        )}
+      </nav>
     </div>
   );
 };

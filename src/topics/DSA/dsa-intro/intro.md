@@ -3,12 +3,6 @@
 As a beginner starting with Data Structures and Algorithms (DSA) using
 JavaScript, here's a structured approach to your learning journey:
 
-## Table of Contents
-
-1. [Core Topics to Cover](#core-topics-to-cover)
-2. [Practice Approach](#practice-approach)
-3. [JavaScript-Specific Tips](#javascript-specific-tips)
-
 ## Core Topics to Cover
 
 ### 1️⃣ **Basic Programming Concepts**

@@ -1,17 +1,5 @@
 # **JavaScript Arrays (1D & 2D) Complete Guide 📚**
 
-## Table of Contents 📑
-
-- [Definition 🎯](#definition)
-- [Key Characteristics 🔑](#key-characteristics)
-- [Syntax/Implementation 💻](#syntaximplementation)
-- [Visualization 📊](#visualization)
-- [Example 🌍](#example)
-- [Code Example 🧑‍💻](#code-example)
-- [Common Pitfalls ⚠️](#common-pitfalls)
-
----
-
 ## Definition 🎯
 
 **Arrays in JavaScript** are ordered collections of elements that can store

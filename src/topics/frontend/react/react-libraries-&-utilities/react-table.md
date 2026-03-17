@@ -1,12 +1,5 @@
 # React-Table: Complete Guide with TypeScript (TSX)
 
-## Table of Contents
-
-- [What is React-Table?](#what-is-react-table?)
-- [Key Advantages of React-Table](#key-advantages-of-react-table)
-- [Complete Setup Guide (TypeScript)](<#complete-setup-guide-(typescript)>)
-- [Tips for Using React-Table](#tips-for-using-react-table)
-
 ## What is React-Table?
 
 React-Table is a lightweight, headless utility for building powerful tables and

@@ -1,60 +1,44 @@
-import { Zap, Terminal, BookOpen } from 'lucide-react';
+import { Zap, Code, BookOpen } from 'lucide-react';
 
 const FEATURES = [
   {
     id: 'fast-learning',
-    title: 'Fast Learning',
-    description: 'Quick, concise tutorials to get you productive fast',
+    title: 'Quick revision',
+    description: 'Simplified explanations so you can brush up fast—before interviews or deep dives.',
     icon: Zap,
-    gradient: 'from-amber-50 to-orange-50',
-    border: 'border-amber-200',
-    iconColor: 'text-amber-500',
   },
   {
     id: 'code-examples',
-    title: 'Code Examples',
-    description: 'Real-world examples you can copy and customize',
-    icon: Terminal,
-    gradient: 'from-emerald-50 to-green-50',
-    border: 'border-emerald-200',
-    iconColor: 'text-emerald-500',
+    title: 'Code & examples',
+    description: 'Practical snippets and examples you can copy and use on the job.',
+    icon: Code,
   },
   {
     id: 'comprehensive',
-    title: 'Comprehensive',
-    description: 'Everything from basics to advanced concepts',
+    title: 'Fullstack coverage',
+    description: 'Frontend, backend, DSA, system design, databases, and more—all in one place.',
     icon: BookOpen,
-    gradient: 'from-blue-50 to-indigo-50',
-    border: 'border-blue-200',
-    iconColor: 'text-blue-500',
-    colSpan: 'sm:col-span-2 lg:col-span-1',
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      {FEATURES.map(({ id, title, description, icon: Icon, gradient, border, iconColor, colSpan }) => (
-        <div
-          key={id}
-          className={`
-              text-center p-6 sm:p-8 rounded-md
-              bg-linear-to-br ${gradient}
-              dark:from-slate-900 dark:to-slate-800
-              border ${border} dark:border-slate-700
-              hover:shadow-lg transition-all duration-300
-              ${colSpan ?? ''}
-            `}
-        >
-          <div className="inline-flex p-4 rounded-md bg-white dark:bg-slate-900 shadow-sm mb-4">
-            <Icon className={`w-7 h-7 sm:w-8 sm:h-8 ${iconColor}`} />
+    <section className="mt-20 pt-16 border-t border-border">
+      <h2 className="text-lg font-semibold text-foreground mb-6 tracking-tight">Why use ReviseStack</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {FEATURES.map(({ id, title, description, icon: Icon }) => (
+          <div
+            key={id}
+            className="rounded-lg border border-border bg-card p-6 text-left transition-colors hover:bg-muted/30"
+          >
+            <div className="inline-flex p-2.5 rounded-lg bg-primary/10 text-primary mb-4">
+              <Icon className="w-5 h-5" />
+            </div>
+            <h3 className="font-semibold text-foreground mb-2">{title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
           </div>
-
-          <h3 className="font-bold text-lg sm:text-xl mb-2 text-foreground">{title}</h3>
-
-          <p className="text-sm sm:text-base text-muted-foreground">{description}</p>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }

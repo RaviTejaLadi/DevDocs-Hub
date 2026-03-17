@@ -1,31 +1,5 @@
 # Top 24 Coding Interview Questions & Answers
 
-## Table of Contents
-
-- [1. Write a simple HTTP server](#1.-write-a-simple-http-server)
-- [2. Read a file asynchronously](#2.-read-a-file-asynchronously)
-- [3. Create a custom EventEmitter](#3.-create-a-custom-eventemitter)
-- [4. Implement a middleware function](#4.-implement-a-middleware-function)
-- [6. Implement file upload handling](#6.-implement-file-upload-handling)
-- [7. Connect to MongoDB](#7.-connect-to-mongodb)
-- [8. Implement JWT authentication](#8.-implement-jwt-authentication)
-- [9. Create a rate limiter](#9.-create-a-rate-limiter)
-- [10. Implement caching with Redis](#10.-implement-caching-with-redis)
-- [11. Create a WebSocket server](#11.-create-a-websocket-server)
-- [12. Implement error handling](#12.-implement-error-handling)
-- [13. Create a worker thread pool](#13.-create-a-worker-thread-pool)
-- [14. Implement file system watcher](#14.-implement-file-system-watcher)
-- [15. Create a REST API with CRUD operations](#15.-create-a-rest-api-with-crud-operations)
-- [16. Implement request validation](#16.-implement-request-validation)
-- [17. Create a task queue with Bull](#17.-create-a-task-queue-with-bull)
-- [18. Implement database connection pooling](#18.-implement-database-connection-pooling)
-- [19. Create a GraphQL server](#19.-create-a-graphql-server)
-- [20. Implement session management](#20.-implement-session-management)
-- [21. Create a proxy server](#21.-create-a-proxy-server)
-- [22. Implement file compression](#22.-implement-file-compression)
-- [23. Create a CLI application](#23.-create-a-cli-application)
-- [24. Implement real-time notifications](#24.-implement-real-time-notifications)
-
 ## 1. Write a simple HTTP server
 
 ```javascript

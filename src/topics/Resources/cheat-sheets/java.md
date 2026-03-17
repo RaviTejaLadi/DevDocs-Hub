@@ -1,16 +1,5 @@
 # Java Cheat Sheet in Table Format
 
-## Table of Contents
-
-1. [Basic Syntax](#basic-syntax)
-2. [Data Types](#data-types)
-3. [Control Flow](#control-flow)
-4. [Arrays](#arrays)
-5. [Methods (Functions)](<#methods-(functions)>)
-6. [Object-Oriented Programming (OOP)](<#object-oriented-programming-(oop)>)
-7. [Exception Handling](#exception-handling)
-8. [Collections Framework](#collections-framework)
-
 ## Basic Syntax
 
 | **Category**         | **Syntax**                                       | **Example**                                      |

@@ -1,17 +1,5 @@
 # React-Router-Dom Cheat Sheet
 
-## Table of Contents
-
-1. [Installation](#installation)
-2. [Basic Components](#basic-components)
-3. [Navigation](#navigation)
-4. [Route Configuration](#route-configuration)
-5. [Dynamic Routing](#dynamic-routing)
-6. [Nested Routes](#nested-routes)
-7. [Navigation Hooks](#navigation-hooks)
-8. [Redirects & 404 Handling](#redirects--404-handling)
-9. [Programmatic Navigation](#programmatic-navigation)
-
 ---
 
 ## Installation

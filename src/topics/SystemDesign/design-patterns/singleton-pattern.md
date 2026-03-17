@@ -1,16 +1,5 @@
 # **🔒 Singleton Design Pattern in Frontend Development**
 
-## 📋 Table of Contents
-
-- [What is Singleton Pattern?](#what-is-singleton-pattern)
-- [Key Characteristics](#key-characteristics)
-- [Theory and Concepts](#theory-and-concepts)
-- [Implementation Approaches](#implementation-approaches)
-- [Frontend Use Cases](#frontend-use-cases)
-- [Advantages and Disadvantages](#advantages-and-disadvantages)
-- [Best Practices](#best-practices)
-- [Common Pitfalls](#common-pitfalls)
-
 ## 🎯 What is Singleton Pattern?
 
 The **Singleton pattern** is a creational design pattern that ensures a class

@@ -1,14 +1,5 @@
 # 📚 Complete Guide to Queues in JavaScript
 
-## 📋 Table of Contents
-
-1. [🔄 Queues (FIFO)](#queues-fifo)
-2. [⭕ Circular Queue](#circular-queue)
-3. [⚡ Priority Queue](#priority-queue)
-4. [↔️ Deque (Double-ended Queue)](#️deque-double-ended-queue)
-
----
-
 ## 🔄 Queues (FIFO)
 
 ### 📖 Definition

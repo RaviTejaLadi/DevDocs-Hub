@@ -1,23 +1,5 @@
 # Complete React Testing Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Core Definitions](#core-definitions)
-3. [Testing Libraries and Tools](#testing-libraries-and-tools)
-4. [Basic Syntax and Setup](#basic-syntax-and-setup)
-5. [Testing Fundamentals](#testing-fundamentals)
-6. [Component Testing](#component-testing)
-7. [Event Testing](#event-testing)
-8. [Async Testing](#async-testing)
-9. [Mocking in React Tests](#mocking-in-react-tests)
-10. [Integration Testing](#integration-testing)
-11. [Best Practices](#best-practices)
-12. [Common Patterns](#common-patterns)
-13. [Troubleshooting](#troubleshooting)
-
----
-
 ## Introduction
 
 React Testing is the practice of verifying that React components and

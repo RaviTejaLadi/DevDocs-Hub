@@ -1,22 +1,5 @@
 # React Performance Optimization - Complete Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [React.memo()](<#react.memo()>)
-3. [useMemo Hook](#usememo-hook)
-4. [useCallback Hook](#usecallback-hook)
-5. [Code Splitting with React.lazy()](<#code-splitting-with-react.lazy()>)
-6. [Virtual Scrolling](#virtual-scrolling)
-7. [Bundle Analysis](#bundle-analysis)
-8. [Image Optimization](#image-optimization)
-9. [State Management Optimization](#state-management-optimization)
-10. [Avoiding Unnecessary Re-renders](#avoiding-unnecessary-re-renders)
-11. [Performance Monitoring Tools](#performance-monitoring-tools)
-12. [Best Practices Summary](#best-practices-summary)
-
----
-
 ## Introduction
 
 React Performance Optimization involves techniques and strategies to improve the

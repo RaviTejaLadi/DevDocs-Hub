@@ -1,53 +1,5 @@
 # **Top 30 AWS Interview Questions and Answers**
 
-## Table of Contents
-
-#### **Fundamentals & Core Concepts (Questions 1-10)**
-
-1. [What is AWS and what are its key benefits?](#1.-what-is-aws-and-what-are-its-key-benefits?)
-2. [Explain the difference between Region and Availability Zone](#2.-explain-the-difference-between-region-and-availability-zone)
-3. [What is EC2 and what are its instance types?](#3.-what-is-ec2-and-what-are-its-instance-types?)
-4. [Difference between On-Demand, Reserved, and Spot instances](#4.-difference-between-on-demand-reserved-and-spot-instances)
-5. [What is S3 and explain its storage classes](#5.-what-is-s3-and-explain-its-storage-classes)
-6. [What is VPC and its components?](#6.-what-is-vpc-and-its-components?)
-7. [Explain Security Groups vs NACLs](#7.-explain-security-groups-vs-nacls)
-8. [What is IAM and its components?](#8.-what-is-iam-and-its-components?)
-9. [What is Auto Scaling and how does it work?](#9.-what-is-auto-scaling-and-how-does-it-work?)
-10. [What is ELB and its types?](#10.-what-is-elb-and-its-types?)
-
-#### **Storage & Database (Questions 11-15)**
-
-11. [Difference between EBS and Instance Store](#11.-difference-between-ebs-and-instance-store)
-12. [What is RDS and its advantages?](#12.-what-is-rds-and-its-advantages?)
-13. [Difference between RDS and DynamoDB](#13.-difference-between-rds-and-dynamodb)
-14. [What is CloudFront and how does it work?](#14.-what-is-cloudfront-and-how-does-it-work?)
-15. [Explain S3 versioning and lifecycle policies](#15.-explain-s3-versioning-and-lifecycle-policies)
-
-#### **Advanced Services (Questions 16-25)**
-
-16. [What is Lambda and serverless computing?](#16.-what-is-lambda-and-serverless-computing?)
-17. [What is CloudFormation?](#17.-what-is-cloudformation?)
-18. [Explain CloudWatch and its features](#18.-explain-cloudwatch-and-its-features)
-19. [What is Route 53 and its routing policies?](#19.-what-is-route-53-and-its-routing-policies?)
-20. [What is SNS vs SQS?](#20.-what-is-sns-vs-sqs?)
-21. [What is API Gateway?](#21.-what-is-api-gateway?)
-22. [Explain Container services: ECS vs EKS](#22.-explain-container-services:-ecs-vs-eks)
-23. [What is CodePipeline and CI/CD in AWS?](#23.-what-is-codepipeline-and-ci/cd-in-aws?)
-24. [What is Elastic Beanstalk?](#24.-what-is-elastic-beanstalk?)
-25. [What is CloudTrail?](#25.-what-is-cloudtrail?)
-
-#### **Scenario-Based & Best Practices (Questions 26-30)**
-
-26. [How to secure data in AWS?](#26.-how-to-secure-data-in-aws?)
-27. [Design a highly available web application architecture](#27.-design-a-highly-available-web-application-architecture)
-28. [Cost optimization strategies in AWS](#28.-cost-optimization-strategies-in-aws)
-29. [Disaster recovery strategies in AWS](#29.-disaster-recovery-strategies-in-aws)
-30. [Migration strategies to AWS](#30.-migration-strategies-to-aws)
-
----
-
-## Questions and Answers
-
 ### 1. What is AWS and what are its key benefits?
 
 **Answer:** Amazon Web Services (AWS) is a comprehensive cloud computing

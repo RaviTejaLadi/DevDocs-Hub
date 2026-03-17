@@ -1,11 +1,5 @@
 # **Vue.js Default File Structure Explanation**
 
-## Table of Contents
-
-1. [Default Folder Structure](#default-folder-structure)
-2. [Key Files and Folders Explained](#key-files-and-folders-explained)
-3. [Additional Notes](#additional-notes)
-
 ## Default Folder Structure
 
 ```bash

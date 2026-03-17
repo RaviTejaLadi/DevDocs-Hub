@@ -1,15 +1,7 @@
-# Introduction to Node.js 🚀
+# Introduction to Node.js
 
 Node.js is an open-source, cross-platform JavaScript runtime environment that
 allows developers to execute JavaScript code outside of a web browser. 🌐
-
-## Table of Contents
-
-- [Key Features of Node.js](#key-features-of-nodejs)
-- [Basic Components](#basic-components)
-- [Simple Node.js Server Example](#simple-nodejs-server-example)
-- [Common Use Cases](#common-use-cases)
-- [Getting Started](#getting-started)
 
 ## Key Features of Node.js
 

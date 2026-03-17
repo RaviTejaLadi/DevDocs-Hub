@@ -1,24 +1,5 @@
 # React Cheat Sheet
 
-## Table of Contents
-
-- [Basics](#basics)
-- [Hooks](#hooks)
-- [Lifecycle (Class Components)](#lifecycle-class-components)
-- [Event Handling](#event-handling)
-- [Conditional Rendering](#conditional-rendering)
-- [Lists & Keys](#lists--keys)
-- [Forms](#forms)
-- [Context API](#context-api)
-- [Refs](#refs)
-- [Performance](#performance)
-- [Error Handling](#error-handling)
-- [Type Checking (PropTypes)](#type-checking-proptypes)
-- [React Router (v6)](#react-router-v6)
-- [Styling](#styling)
-- [Testing](#testing)
-- [Advanced Patterns](#advanced-patterns)
-
 ## Basics
 
 | Concept             | Syntax/Example                                                                              | Description                                   |

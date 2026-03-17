@@ -1,32 +1,5 @@
 # React-Window: A Comprehensive Guide
 
-## Table of Contents
-
-- [Introduction to React-Window](#introduction-to-react-window)
-  - [Why React-Window?](#why-react-window?)
-- [Setup and Installation](#setup-and-installation)
-  - [Installation](#installation)
-  - [Basic Setup](#basic-setup)
-- [Usage Examples](#usage-examples)
-  - [1. Basic List](#1.-basic-list)
-  - [2. List with Dynamic Content](#2.-list-with-dynamic-content)
-  - [3. Grid Layout](#3.-grid-layout)
-  - [4. Variable Sized List](#4.-variable-sized-list)
-- [Key Advantages of React-Window](#key-advantages-of-react-window)
-- [Real-world Use Cases](#real-world-use-cases)
-- [Alternatives to React-Window](#alternatives-to-react-window)
-  - [1. react-virtualized (by the same author)](<#1.-react-virtualized-(by-the-same-author)>)
-  - [2. react-virtuoso](#2.-react-virtuoso)
-  - [3. react-tiny-virtual-list](#3.-react-tiny-virtual-list)
-  - [4. react-infinite-scroller](#4.-react-infinite-scroller)
-- [Performance Comparison Example](#performance-comparison-example)
-- [Advanced Techniques](#advanced-techniques)
-  - [1. Lazy Loading Images](#1.-lazy-loading-images)
-  - [2. Infinite Loading](#2.-infinite-loading)
-  - [3. Sticky Headers](#3.-sticky-headers)
-- [Common Pitfalls and Solutions](#common-pitfalls-and-solutions)
-- [Conclusion](#conclusion)
-
 ## Introduction to React-Window
 
 React-Window is a popular library for efficiently rendering large lists and

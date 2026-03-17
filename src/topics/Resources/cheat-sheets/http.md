@@ -1,15 +1,5 @@
 # HTTP cheat sheet
 
-## Table of Contents
-
-1. [HTTP Methods (Verbs)](#http-methods-verbs)
-2. [HTTP Status Codes](#http-status-codes)
-3. [Common HTTP Headers](#common-http-headers)
-4. [URL Structure](#url-structure)
-5. [HTTP vs HTTPS](#http-vs-https)
-6. [Common Content Types (MIME)](#common-content-types-mime)
-7. [Quick Tips](#quick-tips)
-
 ### HTTP Methods (Verbs)
 
 | Method  | Description                             | Idempotent | Safe |

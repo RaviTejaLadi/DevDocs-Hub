@@ -1,19 +1,5 @@
 # **🚀 Complete Data Structures & Algorithms Roadmap with JavaScript**
 
-## Table of Contents
-
-1. [Learning Path Overview](#learning-path-overview)
-2. [Phase 1: Foundation (2-3 weeks)](<#phase-1:-foundation-(2-3-weeks)>)
-3. [Phase 2: Basic Data Structures (4-6 weeks)](<#phase-2:-basic-data-structures-(4-6-weeks)>)
-4. [Phase 3: Intermediate Data Structures (6-8 weeks)](<#phase-3:-intermediate-data-structures-(6-8-weeks)>)
-5. [Phase 4: Algorithms (8-10 weeks)](<#phase-4:-algorithms-(8-10-weeks)>)
-6. [Phase 5: Advanced Topics (8-10 weeks)](<#phase-5:-advanced-topics-(8-10-weeks)>)
-7. [Phase 6: Practice & Problem Solving (Ongoing)](#phase-6:-practice--problem-solving-ongoing)
-8. [Phase 7: System Design Basics (4-6 weeks)](<#phase-7:-system-design-basics-(4-6-weeks)>)
-9. [JavaScript-Specific DSA Tips](#javascript-specific-dsa-tips)
-10. [Progress Tracking](#progress-tracking)
-11. [Final Tips for Success](#final-tips-for-success)
-
 ## Learning Path Overview
 
 ```bash

@@ -1,25 +1,5 @@
 # HTML Cheat Sheet
 
-## Table of Contents
-
-- [Basic Structure](#basic-structure)
-- [Document Metadata](#document-metadata)
-- [Text Content Elements](#text-content-elements)
-- [Inline Text Elements](#inline-text-elements)
-- [List Elements](#list-elements)
-- [Link and Navigation Elements](#link-and-navigation-elements)
-- [Image and Media Elements](#image-and-media-elements)
-- [Table Elements](#table-elements)
-- [Form Elements](#form-elements)
-- [Semantic Elements (HTML5)](#semantic-elements-html5)
-- [Container Elements](#container-elements)
-- [Global Attributes](#global-attributes)
-- [ARIA Attributes (Accessibility)](#aria-attributes-accessibility)
-- [Input Attributes](#input-attributes)
-- [HTML Entities (Special Characters)](#html-entities-special-characters)
-- [Best Practices Summary](#best-practices-summary)
-- [Comments](#comments)
-
 ## Basic Structure
 
 | Element           | Description                 | Example                     |

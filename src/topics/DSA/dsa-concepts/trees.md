@@ -1,18 +1,5 @@
 # 🌳 Complete Guide to Trees in JavaScript
 
-## 📚 Table of Contents
-
-1. [Binary Trees](#1-binary-trees)
-2. [Binary Search Trees (BST)](#2-binary-search-trees-bst)
-3. [AVL Trees (Balanced BST)](#3-avl-trees-balanced-bst)
-4. [Red-Black Trees](#4-red-black-trees)
-5. [B-Trees (for disk-based storage)](#5-b-trees-for-disk-based-storage)
-6. [Trie (Prefix Tree)](#6-trie-prefix-tree)
-7. [Segment Tree](#7-segment-tree)
-8. [Fenwick Tree (Binary Indexed Tree)](#8-fenwick-tree-binary-indexed-tree)
-
----
-
 ## 1. Binary Trees 🌲
 
 ### Definition

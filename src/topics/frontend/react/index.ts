@@ -18,7 +18,7 @@ import reactComponentTypes from './react-Component-Types.md?raw';
 import top25ImportantQuestions from './top-25.md?raw';
 import type { TopicItem } from '@/topics';
 
-export const reactTopics:TopicItem[] = [
+export const reactTopics: TopicItem[] = [
   {
     id: 'intro-to-react',
     title: '👋 Introduction to React',

@@ -1,22 +1,5 @@
 # Complete React Redux State Management Guide
 
-## Table of Contents
-
-1. [Introduction to Redux](#1.-introduction-to-redux)
-2. [Core Concepts](#2.-core-concepts)
-3. [Redux Toolkit (RTK) - Modern Redux](<#3.-redux-toolkit-(rtk)---modern-redux>)
-4. [Setting Up Redux in React](#4.-setting-up-redux-in-react)
-5. [Actions and Action Creators](#5.-actions-and-action-creators)
-6. [Reducers](#6.-reducers)
-7. [Store Configuration](#7.-store-configuration)
-8. [React-Redux Hooks](#8.-react-redux-hooks)
-9. [Async Operations with Redux Toolkit Query](#9.-async-operations-with-redux-toolkit-query)
-10. [Middleware](#10.-middleware)
-11. [Best Practices](#11.-best-practices)
-12. [Complete Example](#12.-complete-example)
-
----
-
 ## 1. Introduction to Redux
 
 ### Definition

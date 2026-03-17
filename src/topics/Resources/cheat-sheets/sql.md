@@ -1,13 +1,5 @@
 # SQL Cheat Sheet
 
-## Table of Contents
-
-- [Basic SQL Commands](#basic-sql-commands)
-- [SQL Clauses](#sql-clauses)
-- [SQL Joins](#sql-joins)
-- [SQL Functions](#sql-functions)
-- [SQL Constraints](#sql-constraints)
-
 ## Basic SQL Commands
 
 | Command        | Description                    | Example                                                  |

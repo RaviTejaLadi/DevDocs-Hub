@@ -1,18 +1,5 @@
 # **React-Query: Complete Guide with TypeScript**
 
-## Table of Contents
-
-- [What is React-Query?](#what-is-react-query?)
-- [Advantages of React-Query](#advantages-of-react-query)
-- [Complete Setup Guide with TypeScript (TSX)](<#complete-setup-guide-with-typescript-(tsx)>)
-  - [1. Installation](#1.-installation)
-  - [2. Basic Setup](#2.-basic-setup)
-  - [3. Default Options Configuration](#3.-default-options-configuration)
-  - [4. Basic Query Example](#4.-basic-query-example)
-  - [5. Mutations (Creating/Updating Data)](<#5.-mutations-(creating/updating-data)>)
-  - [6. Paginated Queries](#6.-paginated-queries)
-- [Best Practices](#best-practices)
-
 ## What is React-Query?
 
 React-Query is a powerful data-fetching library for React applications that:

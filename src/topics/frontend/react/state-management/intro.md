@@ -1,15 +1,5 @@
 # 🌐 **State Management in React: The Complete Guide** 🧠
 
-## Table of Contents
-
-- [What is State Management?](#what-is-state-management?)
-- [Why State Management Matters](#why-state-management-matters)
-- [State Management Solutions](#state-management-solutions)
-- [How to Choose? Decision Guide](#how-to-choose-decision-guide)
-- [State Management Patterns](#state-management-patterns)
-- [Pro Tips for State Management](#pro-tips-for-state-management)
-- [The Future of State Management](#the-future-of-state-management)
-
 ## What is State Management?
 
 State management is how we **store**, **access**, and **update** data across

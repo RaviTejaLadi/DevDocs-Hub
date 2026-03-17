@@ -4,17 +4,6 @@ Redux Toolkit (RTK) is the official, opinionated, batteries-included toolset for
 efficient Redux development. It simplifies most Redux tasks, prevents common
 mistakes, and makes your Redux code simpler and easier to maintain.
 
-## Table of Contents
-
-- [Why Redux Toolkit?](#why-redux-toolkit?)
-- [Complete Setup Guide](#complete-setup-guide)
-- [Creating Two Basic Slices](#creating-two-basic-slices)
-- [Using Redux in Components](#using-redux-in-components)
-- [Best Practices](#best-practices)
-- [Error Handling](#error-handling)
-- [Debugging](#debugging)
-- [Easy-to-Remember Summary](#easy-to-remember-summary)
-
 ## Why Redux Toolkit?
 
 - Simplifies Redux setup

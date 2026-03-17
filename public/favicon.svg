@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="rs-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#rs-grad)"/>
+  <!-- Stack: three horizontal bars -->
+  <rect x="5" y="7" width="22" height="3.5" rx="1.5" fill="white" fill-opacity="0.98"/>
+  <rect x="5" y="14.25" width="22" height="3.5" rx="1.5" fill="white" fill-opacity="0.9"/>
+  <rect x="5" y="21.5" width="15" height="3.5" rx="1.5" fill="white" fill-opacity="0.8"/>
+</svg>

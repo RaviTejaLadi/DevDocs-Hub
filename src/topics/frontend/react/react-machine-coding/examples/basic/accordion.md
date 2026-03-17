@@ -1,10 +1,5 @@
 # **📂 Accordion Component**
 
-## Table of Contents
-
-1. [JavaScript Version](#javascript-version)
-2. [TypeScript Version](#typescript-version)
-
 ### JavaScript Version
 
 ```jsx

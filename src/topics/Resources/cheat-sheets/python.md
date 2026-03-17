@@ -1,21 +1,5 @@
 # Python Cheat Sheet
 
-## Table of Contents
-
-1. [Variables & Data Types](#1.variables-&-data-types)
-2. [Operators](#2.operators)
-3. [Strings](#3.strings)
-4. [Lists](#4.lists)
-5. [Dictionaries](#5.dictionaries)
-6. [Tuples](#6.tuples)
-7. [Sets](#7.sets)
-8. [Conditionals](#8.conditionals)
-9. [Loops](#9.loops)
-10. [Functions](#10.functions)
-11. [File Handling](#11.file-handling)
-12. [Exception Handling](#12.exception-handling)
-13. [Classes & OOP](#13.classes-&-oop)
-
 ---
 
 ### 1.Variables & Data Types

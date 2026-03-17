@@ -1,22 +1,5 @@
 # React Hook Form Implementation with TypeScript and Zod
 
-## Table of Contents
-
-- [What is React Hook Form?](#what-is-react-hook-form?)
-- [What is Zod?](#what-is-zod?)
-- [Why Use TypeScript + Zod + React Hook Form?](#why-use-typescript-+-zod-+-react-hook-form?)
-- [Installation](#installation)
-- [Basic Syntax](#basic-syntax)
-- [Usage](#usage)
-- [Integrating React Hook Form with Zod](#integrating-react-hook-form-with-zod)
-- [Example: Simple Form Validation](#example:-simple-form-validation)
-- [Example: Nested Objects + Arrays](#example:-nested-objects-+-arrays)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Features and Best Practices:](#key-features-and-best-practices:)
-- [Conclusion](#conclusion)
-
----
-
 ## What is React Hook Form?
 
 **React Hook Form (RHF)** is a lightweight, performant library for managing

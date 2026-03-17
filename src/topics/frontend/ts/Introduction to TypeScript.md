@@ -1,25 +1,5 @@
 # 🚀 Introduction to TypeScript - Complete Guide
 
-## Table of Contents
-
-- [What is TypeScript?](#what-is-typescript?)
-- [Why Use TypeScript?](#why-use-typescript?)
-- [Setting Up TypeScript](#setting-up-typescript)
-- [Basic Types](#basic-types)
-- [Arrays and Objects](#arrays-and-objects)
-- [Functions](#functions)
-- [Interfaces](#interfaces)
-- [Type Aliases](#type-aliases)
-- [Union and Intersection Types](#union-and-intersection-types)
-- [Enums](#enums)
-- [Classes](#classes)
-- [Generics](#generics)
-- [Modules](#modules)
-- [Type Assertions](#type-assertions)
-- [Best Practices](#best-practices)
-- [Next Steps](#next-steps)
-- [Common Pitfalls to Avoid](#common-pitfalls-to-avoid)
-
 ## What is TypeScript?
 
 TypeScript is a **strongly typed programming language** 💪 developed by

@@ -6,7 +6,7 @@ import pagesRouterNextInterviewQuestions from './pages-router-questions.md?raw';
 import appRouterNextInterviewQuestions from './app-router-questions.md?raw';
 import type { TopicItem } from '@/topics';
 
-export const nextTopics:TopicItem[] = [
+export const nextTopics: TopicItem[] = [
   {
     id: 'next-js-intro',
     title: '📚 Introduction',

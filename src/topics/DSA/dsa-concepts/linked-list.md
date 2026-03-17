@@ -1,36 +1,5 @@
 # 🔗 Complete Guide to Linked Lists in JavaScript
 
-## 📚 Table of Contents
-
-1. [🎯 What are Linked Lists?](#what-are-linked-lists)
-2. [📝 Singly Linked Lists](#singly-linked-lists)
-   - [Definition](#definition)
-   - [Key Characteristics](#key-characteristics)
-   - [Syntax/Implementation](#syntaximplementation)
-   - [Visualization](#visualization)
-   - [Real-World Example](#real-world-example)
-   - [Code Example](#code-example)
-   - [Common Pitfalls](#common-pitfalls)
-3. [🔄 Doubly Linked Lists](#doubly-linked-lists)
-   - [Definition](#definition)
-   - [Key Characteristics](#key-characteristics)
-   - [Syntax/Implementation](#syntaximplementation)
-   - [Visualization](#visualization)
-   - [Real-World Example](#real-world-example)
-   - [Code Example](#code-example)
-   - [Common Pitfalls](#common-pitfalls)
-4. [🔄 Circular Linked Lists](#circular-linked-lists)
-   - [Definition](#definition)
-   - [Key Characteristics](#key-characteristics)
-   - [Syntax/Implementation](#syntaximplementation)
-   - [Visualization](#visualization)
-   - [Real-World Example](#real-world-example)
-   - [Code Example](#code-example)
-   - [Common Pitfalls](#common-pitfalls)
-5. [📊 Comparison Summary](#comparison-summary)
-
----
-
 ## 🎯 What are Linked Lists?
 
 Linked Lists are data structures where elements (called nodes) are stored in a

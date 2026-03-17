@@ -4,21 +4,6 @@ React Router is the standard routing library for React applications, enabling
 navigation between different components while maintaining a single-page
 application (SPA) architecture.
 
-## Table of Contents
-
-1. [Core Concepts](#core-concepts)
-2. [Installation](#installation)
-3. [Basic Routing](#basic-routing)
-4. [Route Parameters](#route-parameters)
-5. [Nested Routes](#nested-routes)
-6. [Navigation](#navigation)
-7. [Programmatic Navigation](#programmatic-navigation)
-8. [Protected Routes](#protected-routes)
-9. [404 Handling](#404-handling)
-10. [Advanced Features](#advanced-features)
-
----
-
 ## Core Concepts
 
 ### 1. Router

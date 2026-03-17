@@ -1,31 +1,5 @@
 # **Complete Introduction to Microsoft Azure**
 
-## Table of Contents
-
-1. [What is Microsoft Azure?](#what-is-microsoft-azure?)
-2. [History and Evolution of Azure](#history-and-evolution-of-azure)
-3. [Key Benefits of Azure](#key-benefits-of-azure)
-4. [Azure Service Categories](#azure-service-categories)
-   - 4.1 [Compute Services](#compute-services)
-   - 4.2 [Storage Services](#storage-services)
-   - 4.3 [Networking Services](#networking-services)
-   - 4.4 [Database Services](#database-services)
-   - 4.5 [AI and Machine Learning Services](#ai-and-machine-learning-services)
-   - 4.6 [Analytics Services](#analytics-services)
-   - 4.7 [Security and Identity Services](#security-and-identity-services)
-   - 4.8 [DevOps and Development Tools](#devops-and-development-tools)
-5. [Azure Global Infrastructure](#azure-global-infrastructure)
-6. [Azure Pricing Models](#azure-pricing-models)
-7. [Getting Started with Azure](#getting-started-with-azure)
-8. [Azure Management Tools](#azure-management-tools)
-9. [Common Use Cases](#common-use-cases)
-10. [Azure vs Other Cloud Providers](#azure-vs-other-cloud-providers)
-11. [Best Practices and Security](#best-practices-and-security)
-12. [Learning Path and Certifications](#learning-path-and-certifications)
-13. [Conclusion](#conclusion)
-
----
-
 ## What is Microsoft Azure?
 
 Microsoft Azure is a comprehensive cloud computing platform and service offered

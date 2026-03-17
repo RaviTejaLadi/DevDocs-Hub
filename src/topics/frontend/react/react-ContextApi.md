@@ -1,23 +1,5 @@
 # React Context API - Complete Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Definitions](#definitions)
-3. [Core Concepts](#core-concepts)
-4. [Syntax](#syntax)
-5. [Basic Usage](#basic-usage)
-6. [Examples](#examples)
-   - [Simple Theme Context](#simple-theme-context)
-   - [User Authentication Context](#user-authentication-context)
-   - [Shopping Cart Context](#shopping-cart-context)
-7. [Best Practices](#best-practices)
-8. [Common Patterns](#common-patterns)
-9. [Performance Considerations](#performance-considerations)
-10. [Troubleshooting](#troubleshooting)
-
----
-
 ## Introduction
 
 The React Context API is a powerful feature that allows you to share data

@@ -1,45 +1,5 @@
 # Top 30 Coding Interview Questions and Answers
 
-## Table of Contents
-
-1. [Basic SQL Questions](#basic-sql-questions)
-   1. [What is SQL and what are its main components?](#1.-what-is-sql-and-what-are-its-main-components?)
-   2. [What is the difference between DELETE, TRUNCATE, and DROP?](#2.-what-is-the-difference-between-delete-truncate-and-drop?)
-   3. [What are the different types of joins in SQL?](#3.-what-are-the-different-types-of-joins-in-sql?)
-2. [Intermediate SQL Questions](#intermediate-sql-questions)
-   1. [What is the difference between WHERE and HAVING clauses?](#4.-what-is-the-difference-between-where-and-having-clauses?)
-   2. [How do you find the second highest salary from an Employee table?](#5.-how-do-you-find-the-second-highest-salary-from-an-employee-table?)
-   3. [What is a subquery and what are its types?](#6.-what-is-a-subquery-and-what-are-its-types?)
-   4. [How do you find duplicate records in a table?](#7.-how-do-you-find-duplicate-records-in-a-table?)
-   5. [What is the difference between UNION and UNION ALL?](#8.-what-is-the-difference-between-union-and-union-all?)
-   6. [How do you find the nth highest salary using window functions?](#9.-how-do-you-find-the-nth-highest-salary-using-window-functions?)
-   7. [What are indexes and why are they used?](#10.-what-are-indexes-and-why-are-they-used?)
-3. [Advanced SQL Questions](#advanced-sql-questions)
-   1. [What are window functions and give examples?](#11.-what-are-window-functions-and-give-examples?)
-   2. [How do you calculate a running total in SQL?](#12.-how-do-you-calculate-a-running-total-in-sql?)
-   3. [What is a CTE and how is it different from a subquery?](#13.-what-is-a-cte-and-how-is-it-different-from-a-subquery?)
-   4. [How do you implement pagination in SQL?](#14.-how-do-you-implement-pagination-in-sql?)
-   5. [What is a stored procedure and what are its advantages?](#15.-what-is-a-stored-procedure-and-what-are-its-advantages?)
-4. [Database Design Questions](#database-design-questions)
-   1. [What is normalization and what are its common forms?](#16.-what-is-normalization-and-what-are-its-common-forms?)
-   2. [What are primary keys, foreign keys, and unique keys?](#17.-what-are-primary-keys-foreign-keys-and-unique-keys?)
-   3. [What is the difference between a clustered and non-clustered index?](#18.-what-is-the-difference-between-a-clustered-and-non-clustered-index?)
-   4. [What is ACID in database transactions?](#19.-what-is-acid-in-database-transactions?)
-   5. [What are database triggers and when would you use them?](#20.-what-are-database-triggers-and-when-would-you-use-them?)
-5. [Complex Query Questions](#complex-query-questions)
-   1. [How do you find employees who earn more than their managers?](#21.-how-do-you-find-employees-who-earn-more-than-their-managers?)
-   2. [How do you find the department with the highest average salary?](#22.-how-do-you-find-the-department-with-the-highest-average-salary?)
-   3. [How do you calculate the cumulative distribution of salaries?](#23.-how-do-you-calculate-the-cumulative-distribution-of-salaries?)
-   4. [How do you find gaps in sequential data (like missing IDs)?](#24.-how-do-you-find-gaps-in-sequential-data-like-missing-ids?)
-   5. [How do you swap male and female values in a single update statement?](#25.-how-do-you-swap-male-and-female-values-in-a-single-update-statement?)
-6. [Performance Tuning Questions](#performance-tuning-questions)
-   1. [How would you optimize a slow-running query?](#26.-how-would-you-optimize-a-slow-running-query?)
-   2. [What is query execution plan and how do you read it?](#27.-what-is-query-execution-plan-and-how-do-you-read-it?)
-   3. [What are covering indexes and how do they help?](#28.-what-are-covering-indexes-and-how-do-they-help?)
-7. [Scenario-Based Questions](#scenario-based-questions)
-   1. [How would you design a database for a social media platform?](#29.-how-would-you-design-a-database-for-a-social-media-platform?)
-   2. [How would you handle a database with millions of records that's performing poorly?](#30.-how-would-you-handle-a-database-with-millions-of-records-thats-performing-poorly?)
-
 ## Basic SQL Questions
 
 ### 1. What is SQL and what are its main components?

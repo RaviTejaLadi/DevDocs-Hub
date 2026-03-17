@@ -1,41 +1,5 @@
 # 🚀 Top 20 JavaScript Objects DSA Interview Questions
 
-## 📋 Table of Contents
-
-### 🟢 Easy Questions (1-10)
-
-1. [Two Sum using Objects](#1-two-sum-using-objects) - _Google, Amazon_
-2. [Valid Anagram using Object](#2-valid-anagram-using-object) - _Facebook,
-   Microsoft_
-3. [First Unique Character](#3-first-unique-character) - _Amazon, Apple_
-4. [Object Deep Clone](#4-object-deep-clone) - _Netflix, Uber_
-5. [Merge Two Objects](#5-merge-two-objects) - _Airbnb, Spotify_
-6. [Count Character Frequency](#6-count-character-frequency) - _Google,
-   LinkedIn_
-7. [Group Anagrams using Objects](#7-group-anagrams-using-objects) - _Amazon,
-   Facebook_
-8. [Object Key-Value Swap](#8-object-key-value-swap) - _Microsoft, Adobe_
-9. [Find Missing Number using Object](#9-find-missing-number-using-object) -
-   _Apple, Tesla_
-10. [Object Property Sum](#10-object-property-sum) - _Salesforce, Twitter_
-
-### 🟡 Medium Questions (11-20)
-
-11. [LRU Cache Implementation](#11-lru-cache-implementation) - _Google,
-    Facebook_
-12. [Design HashMap](#12-design-hashmap) - _Amazon, Microsoft_
-13. [Word Pattern Matching](#13-word-pattern-matching) - _LinkedIn, Uber_
-14. [Top K Frequent Elements](#14-top-k-frequent-elements) - _Facebook, Netflix_
-15. [Design Twitter Feed](#15-design-twitter-feed) - _Twitter, Meta_
-16. [Serialize/Deserialize Object](#16-serializedeserialize-object) - _Google,
-    Amazon_
-17. [Object Path Sum](#17-object-path-sum) - _Airbnb, Stripe_
-18. [Flatten Nested Object](#18-flatten-nested-object) - _Microsoft, Adobe_
-19. [Object Diff Algorithm](#19-object-diff-algorithm) - _GitHub, Atlassian_
-20. [Design Phone Directory](#20-design-phone-directory) - _Apple, Snapchat_
-
----
-
 ## 🟢 Easy Questions
 
 ### 1. Two Sum using Objects 📊

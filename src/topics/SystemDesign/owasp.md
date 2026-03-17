@@ -1,17 +1,5 @@
 # **OWASP Best Practices with JS/HTML/React Examples 🔐**
 
-## Table of Contents
-
-1. [Input Validation & XSS Prevention](#️input-validation-and-xss-prevention)
-2. [Authentication & Session Management](#authentication-and-session-management)
-3. [CSRF Protection](#csrf-protection)
-4. [Content Security Policy (CSP)](<#content-security-policy-(csp)>)
-5. [Secure File Upload](#secure-file-upload)
-6. [Rate Limiting (Client-side)](<#rate-limiting-(client-side)>)
-7. [Secure Local Storage](#secure-local-storage)
-8. [Error Handling](#error-handling)
-9. [Input Sanitization Hook](#input-sanitization-hook)
-
 ## Input Validation and XSS Prevention
 
 **HTML - Escaping User Input:**

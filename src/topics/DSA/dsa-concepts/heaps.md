@@ -1,17 +1,5 @@
 # 🏗️ Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript
 
-## 📚 Table of Contents
-
-1. [📖 Definition](#definition)
-2. [🔑 Key Characteristics](#key-characteristics)
-3. [💻 Syntax/Implementation](#syntaximplementation)
-4. [👁️ Visualization](#️visualization)
-5. [🌍 Example (Real-world Analogy)](#example-real-world-analogy)
-6. [⚡ Code Example](#code-example)
-7. [⚠️ Common Pitfalls](#️common-pitfalls)
-
----
-
 ## 📖 Definition
 
 A **Heap** is a special tree-based data structure that satisfies the heap

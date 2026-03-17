@@ -1,38 +1,5 @@
 # Top 30 TypeScript Theory Questions for Interviews
 
-## Table of Contents
-
-1. [What is TypeScript and how does it differ from JavaScript?](#1.-what-is-typescript-and-how-does-it-differ-from-javascript?)
-2. [What are the primitive types in TypeScript?](#2.-what-are-the-primitive-types-in-typescript?)
-3. [What is the difference between any and unknown types?](#3.-what-is-the-difference-between-any-and-unknown-types?)
-4. [Explain the difference between interface and type in TypeScript.](#4.-explain-the-difference-between-interface-and-type-in-typescript.)
-5. [What are Union Types and Intersection Types?](#5.-what-are-union-types-and-intersection-types?)
-6. [What is Type Assertion and when should you use it?](#6.-what-is-type-assertion-and-when-should-you-use-it?)
-7. [What are Generics in TypeScript and why are they useful?](#7.-what-are-generics-in-typescript-and-why-are-they-useful?)
-8. [Explain the never type and provide use cases.](#8.-explain-the-never-type-and-provide-use-cases.)
-9. [What is the difference between let, const, and var in TypeScript?](#9.-what-is-the-difference-between-let-const-and-var-in-typescript?)
-10. [What are Conditional Types in TypeScript?](#10.-what-are-conditional-types-in-typescript?)
-11. [What is Type Inference and how does it work?](#11.-what-is-type-inference-and-how-does-it-work?)
-12. [Explain Mapped Types with examples.](#12.-explain-mapped-types-with-examples.)
-13. [What are Utility Types in TypeScript?](#13.-what-are-utility-types-in-typescript?)
-14. [What is the difference between readonly and const?](#14.-what-is-the-difference-between-readonly-and-const?)
-15. [What are Index Signatures in TypeScript?](#15.-what-are-index-signatures-in-typescript?)
-16. [Explain the concept of Type Guards.](#16.-explain-the-concept-of-type-guards.)
-17. [What are Abstract Classes and how do they differ from Interfaces?](#17.-what-are-abstract-classes-and-how-do-they-differ-from-interfaces?)
-18. [What is the keyof operator and how is it used?](#18.-what-is-the-keyof-operator-and-how-is-it-used?)
-19. [Explain Function Overloading in TypeScript.](#19.-explain-function-overloading-in-typescript.)
-20. [What are Template Literal Types?](#20.-what-are-template-literal-types?)
-21. [What is the difference between Structural and Nominal typing?](#21.-what-is-the-difference-between-structural-and-nominal-typing?)
-22. [What are Decorators in TypeScript?](#22.-what-are-decorators-in-typescript?)
-23. [Explain the infer keyword in Conditional Types.](#23.-explain-the-infer-keyword-in-conditional-types.)
-24. [What is Type Narrowing and what techniques achieve it?](#24.-what-is-type-narrowing-and-what-techniques-achieve-it?)
-25. [What are Module Declaration Merging and Namespace Merging?](#25.-what-are-module-declaration-merging-and-namespace-merging?)
-26. [What is the difference between Array<T> and T[] syntax?](#26.-what-is-the-difference-between-array<t>-and-t[]-syntax?)
-27. [What are Ambient Declarations and when are they used?](#27.-what-are-ambient-declarations-and-when-are-they-used?)
-28. [Explain the concept of Discriminated Unions.](#28.-explain-the-concept-of-discriminated-unions.)
-29. [What is the satisfies operator in TypeScript?](#29.-what-is-the-satisfies-operator-in-typescript?)
-30. [What are Higher-Order Types and provide examples?](#30.-what-are-higher-order-types-and-provide-examples?)
-
 ## 1. What is TypeScript and how does it differ from JavaScript?
 
 **Answer:** TypeScript is a superset of JavaScript that adds static type

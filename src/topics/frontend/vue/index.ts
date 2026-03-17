@@ -4,7 +4,7 @@ import vueTheoryQuestions from './theory-questions.md?raw';
 import vueCodingQuestions from './coding-questions.md?raw';
 import type { TopicItem } from '@/topics';
 
-export const vueTopics:TopicItem[] = [
+export const vueTopics: TopicItem[] = [
   {
     id: 'vue-js-intro',
     title: '📚 Introduction',

@@ -18,10 +18,6 @@ import { dsaData } from './DSA';
 import { resourcesData } from './Resources';
 import { systemDesignData } from './SystemDesign';
 
-/* -------------------------------------------------------------------------- */
-/*                                    Types                                   */
-/* -------------------------------------------------------------------------- */
-
 export interface TopicItem {
   id: string;
   title: string;
@@ -43,16 +39,22 @@ export interface Topic {
 
 export type Topics = Topic[];
 
-/* -------------------------------------------------------------------------- */
-/*                              Transform Helpers                             */
-/* -------------------------------------------------------------------------- */
+const cloudIconByServiceId: Partial<Record<string, JSX.Element>> = {
+  aws: Icons.AWS,
+  azure: Icons.AZURE,
+};
+
+const databaseIconByDBId: Partial<Record<string, JSX.Element>> = {
+  mongoDB: Icons.MONGODB,
+  sql: Icons.SQL,
+};
 
 const transformCloudData = (): Topic[] =>
   cloudServicesData.map((service) => ({
     id: service.id,
     title: service.title,
     description: `Learn about ${service.title}, a leading cloud platform.`,
-    icon: Icons.NODE,
+    icon: cloudIconByServiceId[service.id],
     items: service.documents,
     type: 'cloud',
     category: 'cloud',
@@ -63,7 +65,7 @@ const transformDatabaseData = (): Topic[] =>
     id: db.id,
     title: db.title,
     description: `Explore ${db.title}, a popular database solution.`,
-    icon: Icons.NODE,
+    icon: databaseIconByDBId[db.id],
     items: db.documents,
     type: 'database',
     category: 'database',
@@ -111,10 +113,6 @@ const transformSystemDesignData = (): Topic[] =>
       category: 'system-design',
     };
   });
-
-/* -------------------------------------------------------------------------- */
-/*                                Main Export                                 */
-/* -------------------------------------------------------------------------- */
 
 export const TOPICS: Topics = [
   {

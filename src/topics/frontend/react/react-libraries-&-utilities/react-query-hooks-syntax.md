@@ -1,16 +1,5 @@
 # **React Query Hooks Syntax Guide**
 
-## Table of Contents
-
-- [1. useQuery - Fetch Data](#1.-usequery---fetch-data)
-- [2. useMutation - Modify Data](#2.-usemutation---modify-data)
-- [3. useQueryClient - Access Query Client](#3.-usequeryclient---access-query-client)
-- [4. useInfiniteQuery - Paginated/Lazy Data](#4.-useinfinitequery---paginatedlazy-data)
-- [5. useIsFetching - Global Loading Indicator](#5.-useisfetching---global-loading-indicator)
-- [6. useQueries - Parallel Queries (Dynamic)](<#6.-usequeries---parallel-queries-(dynamic)>)
-- [Key Patterns](#key-patterns)
-- [TypeScript Tip](#typescript-tip)
-
 ## 1. useQuery - Fetch Data
 
 ```tsx

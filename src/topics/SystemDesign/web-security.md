@@ -3,17 +3,6 @@
 Web security is crucial for protecting applications and users from various
 attacks. Here are the key concepts with JavaScript examples:
 
-## Table of Contents
-
-- [Cross-Site Scripting (XSS)](<#cross-site-scripting-(xss)>)
-- [Cross-Site Request Forgery (CSRF)](<#cross-site-request-forgery-(csrf)>)
-- [IFrame Security](#iframe-security)
-- [Authentication vs Authorization](#authentication-vs-authorization)
-- [Security Headers](#security-headers)
-- [Client-Side Storage Security](#client-side-storage-security)
-- [HTTPS and SSL/TLS](#https-and-ssl/tls)
-- [Dependency Security](#dependency-security)
-
 ## Cross-Site Scripting (XSS)
 
 ### 1. What is XSS, and how does it pose a security risk in web applications?

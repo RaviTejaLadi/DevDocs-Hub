@@ -1,51 +1,5 @@
 # **Top 30 Azure Interview Questions and Answers**
 
-## Table of Contents
-
-### **Fundamentals (Questions 1-10)**
-
-1. [What is Microsoft Azure?](#1.-what-is-microsoft-azure?)
-2. [What are the main service categories in Azure?](#2.-what-are-the-main-service-categories-in-azure?)
-3. [What is the difference between IaaS, PaaS, and SaaS?](#3.-what-is-the-difference-between-iaas,-paas,-and-saas?)
-4. [What are Azure Regions and Availability Zones?](#4.-what-are-azure-regions-and-availability-zones?)
-5. [What is Azure Resource Manager (ARM)?](<#5.-what-is-azure-resource-manager-(arm)?>)
-6. [What are Resource Groups in Azure?](#6.-what-are-resource-groups-in-azure?)
-7. [What is Azure Active Directory (Azure AD)?](<#7.-what-is-azure-active-directory-(azure-ad)?>)
-8. [What are Azure Subscriptions?](#8.-what-are-azure-subscriptions?)
-9. [What is the Azure Portal?](#9.-what-is-the-azure-portal?)
-10. [What are Azure Management Groups?](#10.-what-are-azure-management-groups?)
-
-### **Compute Services (Questions 11-15)**
-
-11. [What are Azure Virtual Machines?](#11.-what-are-azure-virtual-machines?)
-12. [What is Azure App Service?](#12.-what-is-azure-app-service?)
-13. [What are Azure Functions?](#13.-what-are-azure-functions?)
-14. [What is Azure Container Instances (ACI)?](<#14.-what-is-azure-container-instances-(aci)?>)
-15. [What is Azure Kubernetes Service (AKS)?](<#15.-what-is-azure-kubernetes-service-(aks)?>)
-
-### **Storage and Networking (Questions 16-22)**
-
-16. [What are the different types of Azure Storage?](#16.-what-are-the-different-types-of-azure-storage?)
-17. [What is Azure Blob Storage?](#17.-what-is-azure-blob-storage?)
-18. [What is Azure Virtual Network (VNet)?](<#18.-what-is-azure-virtual-network-(vnet)?>)
-19. [What is Azure Load Balancer?](#19.-what-is-azure-load-balancer?)
-20. [What is Azure Application Gateway?](#20.-what-is-azure-application-gateway?)
-21. [What is Azure DNS?](#21.-what-is-azure-dns?)
-22. [What is Azure Content Delivery Network (CDN)?](<#22.-what-is-azure-content-delivery-network-(cdn)?>)
-
-### **Advanced Topics (Questions 23-30)**
-
-23. [What is Azure Monitor?](#23.-what-is-azure-monitor?)
-24. [What is Azure Key Vault?](#24.-what-is-azure-key-vault?)
-25. [What are Azure Policies?](#25.-what-are-azure-policies?)
-26. [What is Azure DevOps?](#26.-what-is-azure-devops?)
-27. [What is Azure Logic Apps?](#27.-what-is-azure-logic-apps?)
-28. [What is Azure Service Bus?](#28.-what-is-azure-service-bus?)
-29. [What is Azure Cosmos DB?](#29.-what-is-azure-cosmos-db?)
-30. [What is Azure Site Recovery?](#30.-what-is-azure-site-recovery?)
-
----
-
 ## Fundamentals (Questions 1-10)
 
 ### 1. What is Microsoft Azure?

@@ -1,14 +1,5 @@
 # React Components and Props - Complete Guide
 
-## Table of Contents
-
-1. [React Components](#react-components)
-2. [React Props](#react-props)
-3. [Combining Components and Props](#combining-components-and-props)
-4. [Best Practices](#best-practices)
-
----
-
 ## React Components
 
 ### Definition

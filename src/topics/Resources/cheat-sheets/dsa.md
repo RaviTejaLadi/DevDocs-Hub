@@ -1,27 +1,5 @@
 # Data Structures & Algorithms - JavaScript Cheat sheet
 
-## Table of Contents
-
-1. [Time & Space Complexity](#time-and-space-complexity)
-2. [Array Operations](#array-operations)
-3. [String Operations](#string-operations)
-4. [Array Methods for Algorithms](#array-methods-for-algorithms)
-5. [Stack Implementation](#stack-implementation)
-6. [Queue Implementation](#queue-implementation)
-7. [Linked List Implementation](#linked-list-implementation)
-8. [Binary Tree Implementation](#binary-tree-implementation)
-9. [Hash Table (Map) Operations](#hash-table-map-operations)
-10. [Set Operations](#set-operations)
-11. [Sorting Algorithms](#sorting-algorithms)
-12. [Searching Algorithms](#searching-algorithms)
-13. [Graph Representation](#graph-representation)
-14. [Graph Traversal](#graph-traversal)
-15. [Dynamic Programming Patterns](#dynamic-programming-patterns)
-16. [Common Algorithm Patterns](#common-algorithm-patterns)
-17. [Binary Search Variations](#binary-search-variations)
-18. [Bit Manipulation](#bit-manipulation)
-19. [Heap Operations](#heap-operations)
-
 ## Time and Space Complexity
 
 | Notation   | Name         | Description                        | Example                     |

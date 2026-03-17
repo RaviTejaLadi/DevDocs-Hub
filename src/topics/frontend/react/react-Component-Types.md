@@ -1,20 +1,5 @@
 # React Functional vs Class Components: Complete Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Definitions](#definitions)
-3. [Basic Syntax Comparison](#basic-syntax-comparison)
-4. [Component Lifecycle](#component-lifecycle)
-5. [State Management](#state-management)
-6. [Props Handling](#props-handling)
-7. [Event Handling](#event-handling)
-8. [Performance Considerations](#performance-considerations)
-9. [Modern Usage Patterns](#modern-usage-patterns)
-10. [Migration Guidelines](#migration-guidelines)
-11. [Best Practices](#best-practices)
-12. [Conclusion](#conclusion)
-
 ## Introduction
 
 React components are the building blocks of React applications. There are two

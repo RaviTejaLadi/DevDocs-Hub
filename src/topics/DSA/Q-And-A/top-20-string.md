@@ -1,42 +1,5 @@
 # **🚀 Top 20 DSA String Interview Questions in JavaScript**
 
-## 📋 Table of Contents
-
-1. [🔄 Reverse a String](#1-reverse-a-string) - _Google, Amazon, Microsoft_
-2. [🔍 Check if String is Palindrome](#2-check-if-string-is-palindrome) -
-   _Facebook, Apple, Netflix_
-3. [📊 First Non-Repeating Character](#3-first-non-repeating-character) -
-   _Amazon, Google, Uber_
-4. [🎯 Valid Anagram](#4-valid-anagram) - _Facebook, Microsoft, Adobe_
-5. [🔤 Longest Substring Without Repeating Characters](#5-longest-substring-without-repeating-characters) -
-   _Amazon, Google, Facebook_
-6. [🔗 Group Anagrams](#6-group-anagrams) - _Google, Amazon, Microsoft_
-7. [✅ Valid Parentheses](#7-valid-parentheses) - _Google, Facebook, Amazon_
-8. [🔍 String to Integer (atoi)](#8-string-to-integer-atoi) - _Google,
-   Microsoft, Amazon_
-9. [🎨 Longest Palindromic Substring](#9-longest-palindromic-substring) -
-   _Amazon, Microsoft, Google_
-10. [🔤 Implement strStr()](#10-implement-strstr) - _Facebook, Google,
-    Microsoft_
-11. [📝 Count and Say](#11-count-and-say) - _Facebook, Google, Amazon_
-12. [🔄 Reverse Words in a String](#12-reverse-words-in-a-string) - _Microsoft,
-    Amazon, Google_
-13. [📊 Character Frequency](#13-character-frequency) - _Amazon, Google,
-    Facebook_
-14. [🎯 Longest Common Prefix](#14-longest-common-prefix) - _Google, Amazon,
-    Microsoft_
-15. [🔍 Valid Palindrome II](#15-valid-palindrome-ii) - _Facebook, Amazon,
-    Google_
-16. [🎨 Minimum Window Substring](#16-minimum-window-substring) - _Google,
-    Facebook, Amazon_
-17. [🔤 Letter Combinations of Phone Number](#17-letter-combinations-of-phone-number) -
-    _Amazon, Google, Microsoft_
-18. [📝 Decode String](#18-decode-string) - _Google, Amazon, Facebook_
-19. [🔄 Rotate String](#19-rotate-string) - _Amazon, Google, Microsoft_
-20. [🎯 Isomorphic Strings](#20-isomorphic-strings) - _Google, Facebook, Amazon_
-
----
-
 ## 1. 🔄 Reverse a String
 
 **Companies:** Google, Amazon, Microsoft

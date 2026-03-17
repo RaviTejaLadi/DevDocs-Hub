@@ -16,7 +16,6 @@ import htmlAndJsRelationship from './html-and-js-relationship.md?raw';
 import html5Apis from './html5-apis.md?raw';
 import bestPractices from './best-practices.md?raw';
 import commonHtmlMistakes from './common-html-mistakes.md?raw';
-import top50QAndA from './top-50-q-and-a.md?raw';
 import type { TopicItem } from '@/topics';
 
 export const htmlTopics: TopicItem[] = [
@@ -24,11 +23,6 @@ export const htmlTopics: TopicItem[] = [
     id: 'intro',
     title: 'Introduction',
     content: intro,
-  },
-  {
-    id: 'html-q-and-a',
-    title: 'Top 50 Q&A',
-    content: top50QAndA,
   },
   {
     id: 'html-must-know-topics',

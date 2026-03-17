@@ -1,21 +1,5 @@
 # **Complete Guide to React Error Handling**
 
-## Table of Contents
-
-1. [Introduction](#1.-introduction)
-2. [Core Concepts](#2.-core-concepts)
-3. [Error Boundaries](#3.-error-boundaries)
-4. [Error Boundary Lifecycle Methods](#4.-error-boundary-lifecycle-methods)
-5. [Error Boundary Implementation](#5.-error-boundary-implementation)
-6. [Error Types in React](#6.-error-types-in-react)
-7. [Best Practices](#7.-best-practices)
-8. [Advanced Error Handling Patterns](#8.-advanced-error-handling-patterns)
-9. [Testing Error Boundaries](#9.-testing-error-boundaries)
-10. [Common Pitfalls](#10.-common-pitfalls)
-11. [Production Considerations](#11.-production-considerations)
-
----
-
 ## 1. Introduction
 
 ### Definition

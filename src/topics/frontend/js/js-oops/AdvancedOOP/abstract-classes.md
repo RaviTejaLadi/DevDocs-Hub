@@ -1,20 +1,5 @@
 # 📘 Abstract Classes - Explained Simply
 
-## 📚 Table of Contents
-
-1. 🔍 [What is an Abstract Class?](#what-is-an-abstract-class)
-2. ❓ [Why Are Abstract Classes Important?](#why-are-abstract-classes-important)
-3. 🧱 [Syntax & Structure](#syntax--structure)
-4. 🧪 [Examples](#examples)
-
-   - ✅ [Basic Example](#basic-example)
-   - 🌍 [Real-World Use Case](#real-world-use-case)
-
-5. 📍 [When to Use Abstract Classes](#when-to-use-abstract-classes)
-6. ⚠️ [Gotchas & Tips](#gotchas--tips)
-
----
-
 ## 🔍 What is an Abstract Class?
 
 An **abstract class** is a class that **cannot be instantiated directly** and is

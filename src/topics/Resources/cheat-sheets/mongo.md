@@ -1,14 +1,5 @@
 # MongoDB Cheat Sheet
 
-## Table of Contents
-
-1. [Basic MongoDB Commands](#basic-mongodb-commands)
-2. [CRUD Operations](#crud-operations)
-3. [Query Operators](#query-operators)
-4. [Update Operators](#update-operators)
-5. [Aggregation](#aggregation)
-6. [Indexing](#indexing)
-
 ## Basic MongoDB Commands
 
 | Command                  | Description                               | Example                        |

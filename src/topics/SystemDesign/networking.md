@@ -1,15 +1,5 @@
 # **Networking Interview Questions & Answers Guide**
 
-## Table of Contents
-
-- [Internet Fundamentals](#internet-fundamentals)
-- [REST API Concepts](#rest-api-concepts)
-- [GraphQL Concepts](#graphql-concepts)
-- [HTTP Methods Deep Dive](#http-methods-deep-dive)
-- [HTTP Headers](#http-headers)
-- [gRPC Concepts](#grpc-concepts)
-- [Quick Reference Summary](#quick-reference-summary)
-
 ## Internet Fundamentals
 
 ### 1. How the Internet Works (Non-Technical Explanation)

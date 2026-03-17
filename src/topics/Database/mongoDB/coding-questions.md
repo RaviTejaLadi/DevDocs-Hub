@@ -1,18 +1,5 @@
 # Top 30 Coding Interview Questions and Answers
 
-## Table of Contents
-
-- [Basic Questions](#basic-questions)
-- [Querying Questions](#querying-questions)
-- [Update Operations](#update-operations)
-- [Delete Operations](#delete-operations)
-- [Indexing Questions](#indexing-questions)
-- [Aggregation Questions](#aggregation-questions)
-- [Advanced Questions](#advanced-questions)
-- [Performance Questions](#performance-questions)
-- [Schema Design Questions](#schema-design-questions)
-- [Security Questions](#security-questions)
-
 ## Basic Questions
 
 ### 1. How do you create a new database in MongoDB?

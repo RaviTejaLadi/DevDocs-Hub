@@ -59,10 +59,10 @@ const SidebarContent = ({
         return (
           <div key={item.id} className="w-full">
             <Button
-              variant={isActive ? 'default' : 'ghost'}
+              variant={isActive ? 'secondary' : 'ghost'}
               className={cn(
-                'w-[95%] justify-start h-auto py-2 px-3 font-normal mb-0.5',
-                isActive ? '' : 'text-muted-foreground hover:text-foreground'
+                'w-full justify-start h-auto py-2 px-3 font-normal rounded-lg',
+                isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
               )}
               style={{ paddingLeft: `${depth * 12 + 12}px` }}
               onClick={() => topic && handleNavigate(topic.id, item.id)}
@@ -137,33 +137,34 @@ const SidebarContent = ({
   }, [topic.items, searchQuery, activeSlug, renderTree, handleNavigate, topic.id]);
 
   return (
-    <div className="flex h-full flex-col bg-inherit rounded-md">
-      <div className="shrink-0 px-6 py-4 border-b">
+    <div className="flex h-full flex-col bg-inherit">
+      <div className="shrink-0 px-4 py-4 border-b border-border">
         <Link
           to="/"
           onClick={closeSheet}
           className="flex items-center gap-2 mb-4 text-sm text-muted-foreground hover:text-foreground transition-colors group"
         >
-          <ChevronLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
-          <span>Back to Overview</span>
+          <ChevronLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform shrink-0" />
+          <span>Back to overview</span>
         </Link>
         <div className="flex gap-2 items-center">
-          <div className="p-2 rounded-md border bg-background">{topic.icon}</div>
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <div className="p-2 rounded-lg border border-border bg-background shrink-0">{topic.icon}</div>
+          <div className="relative flex-1 min-w-0">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
               type="text"
-              placeholder="Filter..."
+              placeholder="Search in this section..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-8 h-9 w-full"
+              className="pl-9 pr-8 h-9 w-full rounded-lg border-border bg-background"
             />
             {searchQuery && (
               <Button
                 variant="ghost"
                 size="sm"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0 shrink-0"
                 onClick={() => setSearchQuery('')}
+                aria-label="Clear search"
               >
                 <X className="h-3 w-3" />
               </Button>
@@ -174,7 +175,9 @@ const SidebarContent = ({
 
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full">
-          <div className="p-3 space-y-0.5">{displayContent}</div>
+          <nav className="p-3 space-y-0.5" aria-label="Topic sections">
+            {displayContent}
+          </nav>
         </ScrollArea>
       </div>
     </div>

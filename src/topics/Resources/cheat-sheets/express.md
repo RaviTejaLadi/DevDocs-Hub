@@ -1,29 +1,5 @@
 # Express.js Cheat sheet
 
-## Table of Contents
-
-1. [Basic Setup](#basic-setup)
-2. [HTTP Methods](#http-methods)
-3. [Route Parameters](#route-parameters)
-4. [Request Object Properties](#request-object-properties)
-5. [Response Object Methods](#response-object-methods)
-6. [Middleware](#middleware)
-7. [Built-in Middleware](#built-in-middleware)
-8. [Popular Third-party Middleware](#popular-third-party-middleware)
-9. [Router](#router)
-10. [Error Handling](#error-handling)
-11. [Template Engines](#template-engines)
-12. [Application Settings](#application-settings)
-13. [Common Settings](#common-settings)
-14. [Route Handlers](#route-handlers)
-15. [Path Patterns](#path-patterns)
-16. [Validation & Sanitization](#validation--sanitization)
-17. [Security Best Practices](#security-best-practices)
-18. [Environment Configuration](#environment-configuration)
-19. [Testing](#testing)
-20. [Common Response Patterns](#common-response-patterns)
-21. [Debugging](#debugging)
-
 ## Basic Setup
 
 | Task            | Code                                                    |

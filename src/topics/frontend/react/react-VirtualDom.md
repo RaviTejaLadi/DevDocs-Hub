@@ -1,24 +1,5 @@
 # React Virtual DOM Complete Guide
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [What is Virtual DOM](#what-is-virtual-dom)
-3. [Key Definitions](#key-definitions)
-4. [How Virtual DOM Works](#how-virtual-dom-works)
-5. [Virtual DOM vs Real DOM](#virtual-dom-vs-real-dom)
-6. [Reconciliation Process](#reconciliation-process)
-7. [Diffing Algorithm](#diffing-algorithm)
-8. [Virtual DOM Syntax and Structure](#virtual-dom-syntax-and-structure)
-9. [Practical Examples](#practical-examples)
-10. [Performance Benefits](#performance-benefits)
-11. [Best Practices](#best-practices)
-12. [Common Misconceptions](#common-misconceptions)
-13. [Limitations](#limitations)
-14. [Advanced Concepts](#advanced-concepts)
-
----
-
 ## Introduction
 
 The Virtual DOM is one of React's most significant innovations, serving as a

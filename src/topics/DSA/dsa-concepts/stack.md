@@ -1,15 +1,5 @@
 # 📚 Stacks (LIFO) in JavaScript - Complete Guide
 
-## 📋 Table of Contents
-
-- [📖 Definition](#definition)
-- [🔑 Key Characteristics](#key-characteristics)
-- [💻 Syntax/Implementation](#syntaximplementation)
-- [🎨 Visualization](#visualization)
-- [🌍 Real-World Example](#real-world-example)
-- [⚡ Code Example](#code-example)
-- [⚠️ Common Pitfalls](#️common-pitfalls)
-
 ## 📖 Definition
 
 A **Stack** is a linear data structure that follows the **LIFO (Last In, First
