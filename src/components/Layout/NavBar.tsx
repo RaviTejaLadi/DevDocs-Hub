@@ -121,9 +121,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                   <div className="py-8 text-center text-sm text-muted-foreground">No results found.</div>
                 )}
                 {results.length === 0 && !query && (
-                  <div className="py-8 text-center text-sm text-muted-foreground">
-                    Type to search across topics...
-                  </div>
+                  <div className="py-8 text-center text-sm text-muted-foreground">Type to search across topics...</div>
                 )}
                 {results.length > 0 && (
                   <div className="flex flex-col gap-0.5">
@@ -158,10 +156,22 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </DialogContent>
           </Dialog>
 
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex px-3" onClick={() => navigate('/interview-questions')} aria-label="Interview questions">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden sm:inline-flex px-3"
+            onClick={() => navigate('/interview-questions')}
+            aria-label="Interview questions"
+          >
             <HelpCircle className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex px-3" onClick={() => navigate('/terms')} aria-label="Terms">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden sm:inline-flex px-3"
+            onClick={() => navigate('/terms')}
+            aria-label="Terms"
+          >
             <FileText className="h-4 w-4" />
           </Button>
           <Button variant="ghost" size="icon" className="hidden sm:inline-flex px-3" aria-label="GitHub">

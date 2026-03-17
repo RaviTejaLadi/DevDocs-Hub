@@ -152,12 +152,7 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What are Conditional Types in TypeScript?',
-    answer: [
-      'Conditional types choose types based on conditions.',
-      '',
-      'Syntax:',
-      'T extends U ? X : Y',
-    ].join('\n\n'),
+    answer: ['Conditional types choose types based on conditions.', '', 'Syntax:', 'T extends U ? X : Y'].join('\n\n'),
   },
 
   {
@@ -217,11 +212,9 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'junior',
     questionType: 'theory',
     question: 'What is the difference between readonly and const?',
-    answer: [
-      'const prevents variable reassignment.',
-      '',
-      'readonly prevents modification of object properties.',
-    ].join('\n\n'),
+    answer: ['const prevents variable reassignment.', '', 'readonly prevents modification of object properties.'].join(
+      '\n\n'
+    ),
   },
 
   {
@@ -230,12 +223,7 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What are Index Signatures in TypeScript?',
-    answer: [
-      'Index signatures allow dynamic property keys.',
-      '',
-      'Example:',
-      '{ [key: string]: number }',
-    ].join('\n\n'),
+    answer: ['Index signatures allow dynamic property keys.', '', 'Example:', '{ [key: string]: number }'].join('\n\n'),
   },
 
   {
@@ -260,11 +248,7 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What are Abstract Classes and how do they differ from Interfaces?',
-    answer: [
-      'Abstract classes can contain implementation.',
-      '',
-      'Interfaces only define contracts.',
-    ].join('\n\n'),
+    answer: ['Abstract classes can contain implementation.', '', 'Interfaces only define contracts.'].join('\n\n'),
   },
 
   {
@@ -273,12 +257,9 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What is the keyof operator and how is it used?',
-    answer: [
-      'keyof creates a union of property names from a type.',
-      '',
-      'Example:',
-      'type Keys = keyof User',
-    ].join('\n\n'),
+    answer: ['keyof creates a union of property names from a type.', '', 'Example:', 'type Keys = keyof User'].join(
+      '\n\n'
+    ),
   },
 
   {
@@ -314,11 +295,7 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What is Structural Typing?',
-    answer: [
-      'TypeScript uses structural typing.',
-      '',
-      'Types are compatible if their structure matches.',
-    ].join('\n\n'),
+    answer: ['TypeScript uses structural typing.', '', 'Types are compatible if their structure matches.'].join('\n\n'),
   },
 
   {
@@ -385,11 +362,9 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'entry',
     questionType: 'theory',
     question: 'What is the difference between Array<T> and T[]?',
-    answer: [
-      'Both represent arrays of type T.',
-      '',
-      'T[] is shorthand while Array<T> uses generic syntax.',
-    ].join('\n\n'),
+    answer: ['Both represent arrays of type T.', '', 'T[] is shorthand while Array<T> uses generic syntax.'].join(
+      '\n\n'
+    ),
   },
 
   {
@@ -424,9 +399,7 @@ export const typescriptQuestions: InterviewQA[] = [
     level: 'senior',
     questionType: 'theory',
     question: 'What is the satisfies operator in TypeScript?',
-    answer: [
-      'satisfies ensures a value conforms to a type while preserving the inferred type.',
-    ].join('\n\n'),
+    answer: ['satisfies ensures a value conforms to a type while preserving the inferred type.'].join('\n\n'),
   },
 
   {

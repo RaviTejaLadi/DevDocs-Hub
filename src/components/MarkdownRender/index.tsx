@@ -133,9 +133,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 </div>
               );
             },
-            p: ({ children }: any) => (
-              <p className="text-muted-foreground leading-8 mb-6 text-[1.04rem]">{children}</p>
-            ),
+            p: ({ children }: any) => <p className="text-muted-foreground leading-8 mb-6 text-[1.04rem]">{children}</p>,
             ul: ({ children }: any) => (
               <ul className="mb-8 ml-6 list-disc marker:text-primary/80 space-y-2.5">{children}</ul>
             ),
@@ -209,12 +207,8 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 </a>
               );
             },
-            strong: ({ children }: any) => (
-              <strong className="font-semibold text-foreground">{children}</strong>
-            ),
-            em: ({ children }: any) => (
-              <em className="italic text-foreground/90 font-medium">{children}</em>
-            ),
+            strong: ({ children }: any) => <strong className="font-semibold text-foreground">{children}</strong>,
+            em: ({ children }: any) => <em className="italic text-foreground/90 font-medium">{children}</em>,
             kbd: ({ children }: any) => (
               <kbd className="inline-flex items-center justify-center min-w-6 px-2 h-6 rounded-md border border-border/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
                 {children}
@@ -250,13 +244,13 @@ const MarkdownRender = ({ content }: { content: string }) => {
 
             // Code Blocks and Inline Code
             code: ({ inline, className, children, ...props }: any) => {
-              const match = /language-(\w+)/.exec(className || "")
-              const language = match?.[1]
-              const codeString = String(children).replace(/\n$/, "")
-            
+              const match = /language-(\w+)/.exec(className || '');
+              const language = match?.[1];
+              const codeString = String(children).replace(/\n$/, '');
+
               // MERMAID SUPPORT
-              if (!inline && language === "mermaid") {
-                return <MermaidRenderer chart={codeString} />
+              if (!inline && language === 'mermaid') {
+                return <MermaidRenderer chart={codeString} />;
               }
               // const language = match?.[1] ?? 'text';
               return !inline && match ? (
@@ -264,18 +258,18 @@ const MarkdownRender = ({ content }: { content: string }) => {
                   {/* <div className="flex items-center justify-between px-4 py-2 border-b border-slate-700/80 bg-slate-900/70 backdrop-blur">
                     <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">{language}</span>
                   </div> */}
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 bg-slate-800/65 hover:bg-slate-800/90 rounded-md border border-slate-700/70 shadow-sm group"
-                      onClick={() => handleCopy(String(children))}
-                    >
-                      {copied ? (
-                        <Check className="h-4 w-4 text-green-400" />
-                      ) : (
-                        <Copy className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
-                      )}
-                    </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 bg-slate-800/65 hover:bg-slate-800/90 rounded-md border border-slate-700/70 shadow-sm group"
+                    onClick={() => handleCopy(String(children))}
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4 text-green-400" />
+                    ) : (
+                      <Copy className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
+                    )}
+                  </Button>
 
                   <div className="overflow-x-auto">
                     <SyntaxHighlighter

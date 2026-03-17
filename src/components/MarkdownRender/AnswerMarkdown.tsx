@@ -10,13 +10,7 @@ import { cn } from '@/lib/utils';
 
 type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
-export function AnswerMarkdown({
-  content,
-  className,
-}: {
-  content: string;
-  className?: string;
-}) {
+export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (text: string) => {
@@ -30,9 +24,7 @@ export function AnswerMarkdown({
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          p: ({ children }) => (
-            <p className="mb-3 last:mb-0 leading-[1.7]">{children}</p>
-          ),
+          p: ({ children }) => <p className="mb-3 last:mb-0 leading-[1.7]">{children}</p>,
           ul: ({ children }) => (
             <ul className="my-3 pl-5 space-y-1.5 list-disc list-outside" role="list">
               {children}
@@ -43,12 +35,8 @@ export function AnswerMarkdown({
               {children}
             </ol>
           ),
-          li: ({ children }) => (
-            <li className="leading-[1.6] pl-0.5">{children}</li>
-          ),
-          strong: ({ children }) => (
-            <strong className="font-semibold text-foreground">{children}</strong>
-          ),
+          li: ({ children }) => <li className="leading-[1.6] pl-0.5">{children}</li>,
+          strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
           code: ({ className: codeClassName, children }: CodeComponentProps) => {
             const match = /language-(\w+)/.exec(codeClassName || '');
             const isBlock = Boolean(match);

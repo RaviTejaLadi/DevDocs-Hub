@@ -16,11 +16,7 @@ const Footer = () => {
             <Logo showText size="md" className="font-semibold w-fit" />
             <nav className="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
               {FOOTER_LINKS.map(({ to, label }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  className="hover:text-foreground transition-colors"
-                >
+                <Link key={to} to={to} className="hover:text-foreground transition-colors">
                   {label}
                 </Link>
               ))}
@@ -38,10 +34,7 @@ const Footer = () => {
               <Github className="h-4 w-4" />
               <span className="hidden sm:inline">GitHub</span>
             </a>
-            <Link
-              to="/terms"
-              className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
-            >
+            <Link to="/terms" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <FileText className="h-4 w-4" />
               <span className="hidden sm:inline">Terms</span>
             </Link>

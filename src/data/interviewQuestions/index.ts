@@ -1,11 +1,5 @@
 import type { TopicId, InterviewQA } from './types';
-import {
-  INTERVIEW_TOPICS,
-  TOPIC_CATEGORIES,
-  LEVEL_ORDER,
-  LEVEL_LABELS,
-  getTopicById,
-} from './types';
+import { INTERVIEW_TOPICS, TOPIC_CATEGORIES, LEVEL_ORDER, LEVEL_LABELS, getTopicById } from './types';
 import { htmlQuestions } from './html';
 import { cssQuestions } from './css';
 import { javascriptQuestions } from './javascript';
@@ -33,17 +27,10 @@ export const INTERVIEW_QUESTIONS: InterviewQA[] = Object.values(topicModules).fl
 
 export function getQuestionsByTopic(topicId: TopicId): InterviewQA[] {
   const questions = topicModules[topicId] ?? [];
-  return [...questions].sort(
-    (a, b) => LEVEL_ORDER.indexOf(a.level) - LEVEL_ORDER.indexOf(b.level)
-  );
+  return [...questions].sort((a, b) => LEVEL_ORDER.indexOf(a.level) - LEVEL_ORDER.indexOf(b.level));
 }
 
 export { getTopicById };
 
-export {
-  INTERVIEW_TOPICS,
-  TOPIC_CATEGORIES,
-  LEVEL_ORDER,
-  LEVEL_LABELS,
-};
+export { INTERVIEW_TOPICS, TOPIC_CATEGORIES, LEVEL_ORDER, LEVEL_LABELS };
 export type { TopicId, InterviewQA, InterviewTopic, ExperienceLevel, QuestionType } from './types';

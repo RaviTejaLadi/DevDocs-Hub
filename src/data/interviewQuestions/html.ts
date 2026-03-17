@@ -74,8 +74,7 @@ export const htmlQuestions: InterviewQA[] = [
     level: 'entry',
     questionType: 'theory',
     question: 'How do you serve a page in multiple languages?',
-    answer:
-      'Use the `lang` attribute in the `<html>` tag (e.g., `<html lang="en">` or `<html lang="fr">`).',
+    answer: 'Use the `lang` attribute in the `<html>` tag (e.g., `<html lang="en">` or `<html lang="fr">`).',
   },
   {
     id: 'html-09',
@@ -156,8 +155,7 @@ export const htmlQuestions: InterviewQA[] = [
     level: 'junior',
     questionType: 'theory',
     question: 'How do you create a definition list?',
-    answer:
-      'Using `<dl>` (Definition List), `<dt>` (Definition Term), and `<dd>` (Definition Description).',
+    answer: 'Using `<dl>` (Definition List), `<dt>` (Definition Term), and `<dd>` (Definition Description).',
   },
   {
     id: 'html-18',
@@ -184,7 +182,7 @@ export const htmlQuestions: InterviewQA[] = [
     questionType: 'theory',
     question: 'Explain the hierarchy of headings.',
     answer:
-      '`<h1>` is the most important, descending to `<h6>`. Headings should not be skipped (e.g., don\'t jump from H1 to H3) as this breaks the accessibility tree.',
+      "`<h1>` is the most important, descending to `<h6>`. Headings should not be skipped (e.g., don't jump from H1 to H3) as this breaks the accessibility tree.",
   },
   // Part 3: Forms & User Interaction (mid)
   {
@@ -255,8 +253,7 @@ export const htmlQuestions: InterviewQA[] = [
     level: 'mid',
     questionType: 'theory',
     question: 'What are the new form input types in HTML5?',
-    answer:
-      '`email`, `url`, `number`, `range`, `date`, `time`, `color`, `search`, `tel`.',
+    answer: '`email`, `url`, `number`, `range`, `date`, `time`, `color`, `search`, `tel`.',
   },
   {
     id: 'html-29',
@@ -304,7 +301,7 @@ export const htmlQuestions: InterviewQA[] = [
     questionType: 'theory',
     question: 'What are `srcset` and `sizes`?',
     answer:
-      'Attributes used for responsive images. They allow the browser to choose the most appropriate image size to download based on the device\'s screen width and pixel density.',
+      "Attributes used for responsive images. They allow the browser to choose the most appropriate image size to download based on the device's screen width and pixel density.",
   },
   {
     id: 'html-34',
@@ -340,7 +337,7 @@ export const htmlQuestions: InterviewQA[] = [
     questionType: 'theory',
     question: 'What is `preload` vs `prefetch`?',
     answer:
-      '`preload` tells the browser to download a resource **immediately** because it\'s needed for the current page. `prefetch` tells the browser to download a resource **in the background** because it might be needed for the **next** page.',
+      "`preload` tells the browser to download a resource **immediately** because it's needed for the current page. `prefetch` tells the browser to download a resource **in the background** because it might be needed for the **next** page.",
   },
   {
     id: 'html-38',
@@ -421,8 +418,7 @@ export const htmlQuestions: InterviewQA[] = [
     level: 'expert',
     questionType: 'theory',
     question: 'What is Open Graph protocol?',
-    answer:
-      'Meta tags (like `og:title`, `og:image`) that control how URLs look when shared on social media.',
+    answer: 'Meta tags (like `og:title`, `og:image`) that control how URLs look when shared on social media.',
   },
   {
     id: 'html-47',
@@ -439,8 +435,7 @@ export const htmlQuestions: InterviewQA[] = [
     level: 'expert',
     questionType: 'theory',
     question: 'What is the `download` attribute?',
-    answer:
-      'When used on an `<a>` tag, it instructs the browser to download the URL rather than navigating to it.',
+    answer: 'When used on an `<a>` tag, it instructs the browser to download the URL rather than navigating to it.',
   },
   {
     id: 'html-49',

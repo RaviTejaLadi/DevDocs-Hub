@@ -114,7 +114,10 @@ const DocumentationPage = () => {
           </BreadcrumbSeparator>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={`/docs/${topic.id}/${topic.items[0].id}`} className="hover:text-foreground transition-colors flex items-center gap-1.5">
+              <Link
+                to={`/docs/${topic.id}/${topic.items[0].id}`}
+                className="hover:text-foreground transition-colors flex items-center gap-1.5"
+              >
                 {topic.icon}
                 <span>{topic.title}</span>
               </Link>

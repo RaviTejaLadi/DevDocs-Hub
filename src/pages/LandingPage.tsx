@@ -56,7 +56,8 @@ const LandingPage = () => {
           <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
         </h1>
         <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
-          Fullstack developer topics in a simplified way—your go-to place for quick revision before interviews or day-to-day coding.
+          Fullstack developer topics in a simplified way—your go-to place for quick revision before interviews or
+          day-to-day coding.
         </p>
 
         <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
@@ -123,9 +124,7 @@ const LandingPage = () => {
             {!isCollapsed && (
               <div
                 className={cn(
-                  viewMode === 'grid'
-                    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'
-                    : 'flex flex-col gap-3'
+                  viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' : 'flex flex-col gap-3'
                 )}
               >
                 {topics.map((topic, index) => {
@@ -182,7 +181,11 @@ const LandingPage = () => {
                           {topic.description}
                         </p>
 
-                        <ul className={cn(viewMode === 'list' ? 'hidden sm:flex gap-4 text-xs text-muted-foreground/90' : 'space-y-1')}>
+                        <ul
+                          className={cn(
+                            viewMode === 'list' ? 'hidden sm:flex gap-4 text-xs text-muted-foreground/90' : 'space-y-1'
+                          )}
+                        >
                           {topic.items.slice(0, viewMode === 'list' ? 2 : 3).map((item) => (
                             <li
                               key={item.id}

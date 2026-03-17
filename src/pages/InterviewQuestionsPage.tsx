@@ -1,15 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  ArrowRight,
-  BookOpen,
-  ChevronLeft,
-  Code2,
-  HelpCircle,
-  Search,
-  SlidersHorizontal,
-  X,
-} from 'lucide-react';
+import { ArrowRight, BookOpen, ChevronLeft, Code2, HelpCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import {
   INTERVIEW_QUESTIONS,
   INTERVIEW_TOPICS,
@@ -22,12 +13,7 @@ import {
   type ExperienceLevel,
   type InterviewQA,
 } from '@/data/interviewQuestions';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -62,8 +48,7 @@ function TopicListPage() {
     return acc;
   }, {});
 
-  const countForTopic = (topicId: string) =>
-    INTERVIEW_QUESTIONS.filter((q) => q.topicId === topicId).length;
+  const countForTopic = (topicId: string) => INTERVIEW_QUESTIONS.filter((q) => q.topicId === topicId).length;
 
   const totalQuestions = INTERVIEW_QUESTIONS.length;
   const totalTopics = INTERVIEW_TOPICS.length;
@@ -138,9 +123,7 @@ function TopicListPage() {
                           </div>
                           <div className="min-w-0">
                             <p className="font-semibold text-foreground truncate">{topic.label}</p>
-                            <p className="text-xs text-muted-foreground mt-0.5">
-                              {count} interview questions
-                            </p>
+                            <p className="text-xs text-muted-foreground mt-0.5">{count} interview questions</p>
                           </div>
                         </div>
                         <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
@@ -172,9 +155,7 @@ function TopicDetailPage() {
   const filteredQuestions = useMemo(() => {
     return allQuestions.filter((q) => {
       const matchLevel = levelFilter === 'all' || q.level === levelFilter;
-      const matchSearch =
-        !searchQuery.trim() ||
-        q.question.toLowerCase().includes(searchQuery.trim().toLowerCase());
+      const matchSearch = !searchQuery.trim() || q.question.toLowerCase().includes(searchQuery.trim().toLowerCase());
       const type = q.questionType ?? 'theory';
       const matchType =
         (!onlyCodeChallenges && !onlyTheory) ||
@@ -194,9 +175,7 @@ function TopicDetailPage() {
           </Link>
         </Button>
         <Card className="border-dashed">
-          <CardContent className="py-12 text-center text-muted-foreground">
-            Topic not found.
-          </CardContent>
+          <CardContent className="py-12 text-center text-muted-foreground">Topic not found.</CardContent>
         </Card>
       </div>
     );
@@ -373,12 +352,7 @@ function TopicDetailPage() {
         ) : (
           <Accordion type="single" collapsible className="w-full">
             {filteredQuestions.map((item, index) => (
-              <QuestionBlock
-                key={item.id}
-                item={item}
-                index={index + 1}
-                levelPillClass={levelPillClass}
-              />
+              <QuestionBlock key={item.id} item={item} index={index + 1} levelPillClass={levelPillClass} />
             ))}
           </Accordion>
         )}
@@ -418,12 +392,7 @@ function QuestionBlock({
             >
               {questionTypeLabel[item.questionType ?? 'theory']}
             </span>
-            <span
-              className={cn(
-                'px-2.5 py-0.5 rounded-full text-xs font-medium border',
-                levelPillClass[item.level]
-              )}
-            >
+            <span className={cn('px-2.5 py-0.5 rounded-full text-xs font-medium border', levelPillClass[item.level])}>
               {LEVEL_LABELS[item.level]}
             </span>
           </div>
@@ -431,9 +400,7 @@ function QuestionBlock({
       </AccordionTrigger>
       <AccordionContent className="px-4 sm:px-5 pb-5 pt-0">
         <div className="pt-4 border-t border-border mt-0">
-          <h3 className="text-sm font-semibold text-foreground mb-3 w-fit">
-            Answer
-          </h3>
+          <h3 className="text-sm font-semibold text-foreground mb-3 w-fit">Answer</h3>
           <AnswerMarkdown content={item.answer} />
         </div>
       </AccordionContent>

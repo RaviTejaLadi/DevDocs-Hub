@@ -1,14 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  FileCode,
-  Palette,
-  Code2,
-  Type,
-  Globe,
-  Database,
-  Server,
-  Boxes,
-} from 'lucide-react';
+import { FileCode, Palette, Code2, Type, Globe, Database, Server, Boxes } from 'lucide-react';
 
 export type TopicId =
   | 'html'

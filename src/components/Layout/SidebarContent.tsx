@@ -62,7 +62,9 @@ const SidebarContent = ({
               variant={isActive ? 'secondary' : 'ghost'}
               className={cn(
                 'w-full justify-start h-auto py-2 px-3 font-normal rounded-lg',
-                isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                isActive
+                  ? 'bg-accent text-accent-foreground'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
               )}
               style={{ paddingLeft: `${depth * 12 + 12}px` }}
               onClick={() => topic && handleNavigate(topic.id, item.id)}
