@@ -1,6 +1,4 @@
 import jsIntro from './js-intro.md?raw';
-import jsInterviewQuestions from './top-30-q-&-a.md?raw';
-import JSL1andL2InterviewQuestions from './21-programs-inL1&L2.md?raw';
 import Arrays from './arrays.md?raw';
 import objects from './objects.md?raw';
 import eventHandling from './event-handling.md?raw';
@@ -38,15 +36,7 @@ import { jsOOPSConcepts } from './js-oops';
 import type { TopicItem } from '@/topics';
 
 export const jsTopics: TopicItem[] = [
-  {
-    id: 'js-interview-prep',
-    title: '🎯 Interview Prep',
-    content: '',
-    items: [
-      { id: 'js-top30q&a', title: '❓ Top 30 Q&A', content: jsInterviewQuestions },
-      { id: 'js-l1-l2-interview', title: '📝 L1 & L2 Interviews', content: JSL1andL2InterviewQuestions },
-    ],
-  },
+
   {
     id: 'js-fundamentals',
     title: '📚 Fundamentals',
