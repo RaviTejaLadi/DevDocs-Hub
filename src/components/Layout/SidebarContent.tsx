@@ -57,7 +57,7 @@ const SidebarContent = ({
         const isExpanded = expandedIds[item.id];
 
         return (
-          <div key={item.id} className="w-full">
+          <div key={item.id} className="w-[80%]">
             <Button
               variant={isActive ? 'secondary' : 'ghost'}
               className={cn(
@@ -74,7 +74,9 @@ const SidebarContent = ({
                   <span className="text-xs font-medium opacity-60 w-5">{String(index + 1).padStart(2, '0')}</span>
                 )}
 
-                <span className="text-sm truncate text-left flex-1">{item.title}</span>
+                <span className="text-sm truncate text-left flex-1" title={item.title}>
+                  {item.title}
+                </span>
 
                 {hasChildren && (
                   <button
@@ -130,7 +132,7 @@ const SidebarContent = ({
       <Button
         key={item.id}
         variant={activeSlug === item.id ? 'default' : 'ghost'}
-        className="w-[95%] justify-start py-2 px-3 font-normal"
+        className="w-[90%] justify-start py-2 px-3 font-normal"
         onClick={() => handleNavigate(topic.id, item.id)}
       >
         <span className="text-sm truncate">{item.title}</span>
