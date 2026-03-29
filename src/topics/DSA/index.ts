@@ -16,13 +16,14 @@ import linkedList from './dsa-concepts/linked-list.md?raw';
 import queues from './dsa-concepts/queues.md?raw';
 import stack from './dsa-concepts/stack.md?raw';
 import trees from './dsa-concepts/trees.md?raw';
+import type { TopicItem } from '..';
 
-export const dsaData = [
+export const dsaData: TopicItem[] = [
   {
     id: 'dsa',
     title: 'DSA Introduction',
-    // Icon: Dsa,
-    documents: [
+    content: '',
+    items: [
       {
         id: 'dsa-intro',
         title: '📚 Introduction',
@@ -38,8 +39,8 @@ export const dsaData = [
   {
     id: 'dsa-topics',
     title: 'DSA Topics',
-    // Icon: Dsa,
-    documents: [
+    content: '',
+    items: [
       {
         id: 'dsa-arrays',
         title: '🔢 Arrays',
@@ -90,8 +91,8 @@ export const dsaData = [
   {
     id: 'dsa-q-and-a',
     title: 'Q&A',
-    // Icon: ArrayIcon,
-    documents: [
+    content: '',
+    items: [
       {
         id: 'top-35-most-asked-dsa-questions',
         title: '🧠 Top 35 General Questions',

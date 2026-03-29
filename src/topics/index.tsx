@@ -71,17 +71,6 @@ const transformDatabaseData = (): Topic[] =>
     category: 'database',
   }));
 
-const transformDsaData = (): Topic[] =>
-  dsaData.map((dsa) => ({
-    id: dsa.id,
-    title: dsa.title,
-    description: `Master Data Structures and Algorithms with ${dsa.title}.`,
-    icon: Icons.NODE,
-    items: dsa.documents,
-    type: 'dsa',
-    category: 'dsa',
-  }));
-
 const transformResourcesData = (): Topic[] =>
   resourcesData.map((resource) => ({
     id: resource.id,
@@ -97,22 +86,6 @@ const transformResourcesData = (): Topic[] =>
     type: 'resources',
     category: 'resources',
   }));
-
-const transformSystemDesignData = (): Topic[] =>
-  systemDesignData.map((sd) => {
-    const items =
-      'documents' in sd && sd.documents ? sd.documents : 'document' in sd && sd.document ? [sd.document] : [];
-
-    return {
-      id: sd.id,
-      title: sd.title,
-      description: `Learn the principles of System Design with ${sd.title}.`,
-      icon: Icons.NODE,
-      items,
-      type: 'system-design',
-      category: 'system-design',
-    };
-  });
 
 export const TOPICS: Topics = [
   {
@@ -196,10 +169,25 @@ export const TOPICS: Topics = [
     type: 'backend',
     category: 'backend',
   },
-
   ...transformCloudData(),
   ...transformDatabaseData(),
-  ...transformDsaData(),
+  {
+    id: 'dsa',
+    title: 'DSA',
+    description: "data structures and algorithms",
+    icon: Icons.NODE,
+    items: dsaData,
+    type: 'dsa',
+    category: 'dsa',
+  },
+  {
+    id: 'system-design',
+    title: 'System Design',
+    description: "system design",
+    icon: Icons.NODE,
+    items: systemDesignData,
+    type: 'system-design',
+    category: 'system-design',
+  },
   ...transformResourcesData(),
-  ...transformSystemDesignData(),
 ];
