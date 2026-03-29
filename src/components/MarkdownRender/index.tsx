@@ -10,6 +10,7 @@ import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import MermaidRenderer from '../MermaidRenderer';
 import { useTheme } from '../../hooks/useTheme';
+import { cn } from '@/lib/utils';
 
 const MarkdownRender = ({ content }: { content: string }) => {
   const [copied, setCopied] = useState(false);
@@ -59,7 +60,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
     <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-12">
       <div
         ref={contentRef}
-        className="flex-1 min-w-0 mx-auto w-full max-w-4xl rounded-2xl border border-border/40/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
+        className="flex-1 min-w-0 mx-auto w-full  rounded-2xl border border-border/40/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
       >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
@@ -264,9 +265,10 @@ const MarkdownRender = ({ content }: { content: string }) => {
               // const language = match?.[1] ?? 'text';
               return !inline && match ? (
                 <div
-                  className={`relative group my-8 rounded-xl border overflow-hidden shadow-xl ${
+                  className={cn(
+                    'relative group my-8 rounded-xl border overflow-hidden',
                     isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
-                  }`}
+                  )}
                 >
                   {/* <div className="flex items-center justify-between px-4 py-2 border-b border-slate-700/80 bg-slate-900/70 backdrop-blur">
                     <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">{language}</span>
@@ -274,20 +276,22 @@ const MarkdownRender = ({ content }: { content: string }) => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className={`absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 rounded-md border shadow-sm group ${
+                    className={cn(
+                      'absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 rounded-md border shadow-sm group',
                       isDarkTheme
                         ? 'bg-slate-800/65 hover:bg-slate-800/90 border-slate-700/70'
                         : 'bg-white/90 hover:bg-white border-slate-300'
-                    }`}
+                    )}
                     onClick={() => handleCopy(String(children))}
                   >
                     {copied ? (
                       <Check className="h-4 w-4 text-green-400" />
                     ) : (
                       <Copy
-                        className={`h-4 w-4 group-hover:scale-110 transition-transform ${
+                        className={cn(
+                          'h-4 w-4 group-hover:scale-110 transition-transform',
                           isDarkTheme ? 'text-white' : 'text-slate-700'
-                        }`}
+                        )}
                       />
                     )}
                   </Button>
@@ -355,7 +359,10 @@ const MarkdownRender = ({ content }: { content: string }) => {
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }
                     }}
-                    className={`${indent} block w-full text-left py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/70 transition-colors duration-150 text-xs`}
+                    className={cn(
+                      indent,
+                      'block w-full text-left py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/70 transition-colors duration-150 text-xs'
+                    )}
                   >
                     <span className="block truncate">{heading.text}</span>
                   </button>
