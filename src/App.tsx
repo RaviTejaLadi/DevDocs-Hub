@@ -11,7 +11,7 @@ import DocumentationPage from './pages/DocumentationPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
 
-export default function Platform() {
+const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(false);
   const location = useLocation();
@@ -40,7 +40,9 @@ export default function Platform() {
           <aside
             className={cn(
               'hidden md:block h-[97%] bg-card/30 shrink-0 transition-all duration-200 ease-in-out',
-              docsSidebarCollapsed ? 'w-0 overflow-hidden border-r-0 pointer-events-none' : 'w-72 border-r border-border'
+              docsSidebarCollapsed
+                ? 'w-0 overflow-hidden border-r-0 pointer-events-none'
+                : 'w-72 border-r border-border'
             )}
             aria-hidden={docsSidebarCollapsed}
           >
@@ -73,4 +75,5 @@ export default function Platform() {
       </div>
     </div>
   );
-}
+};
+export default App;

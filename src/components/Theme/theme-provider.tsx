@@ -24,17 +24,35 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
+    const body = window.document.body;
+    const resolvedTheme = theme === 'system'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+      : theme;
 
-    // Remove all theme classes
-    root.classList.remove('light', 'dark');
+    // Keep switching atomic to prevent flicker-heavy routes (docs/markdown) from flashing.
+    root.classList.add('theme-switching');
+    body.classList.add('theme-switching');
+    root.classList.remove('light');
+    root.classList.toggle('dark', resolvedTheme === 'dark');
+    root.style.colorScheme = resolvedTheme;
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.classList.add(systemTheme);
-      return;
-    }
+    let raf1 = 0;
+    let raf2 = 0;
+    raf1 = window.requestAnimationFrame(() => {
+      raf2 = window.requestAnimationFrame(() => {
+        root.classList.remove('theme-switching');
+        body.classList.remove('theme-switching');
+      });
+    });
 
-    root.classList.add(theme);
+    return () => {
+      window.cancelAnimationFrame(raf1);
+      window.cancelAnimationFrame(raf2);
+      root.classList.remove('theme-switching');
+      body.classList.remove('theme-switching');
+    };
   }, [theme]);
 
   const value = {

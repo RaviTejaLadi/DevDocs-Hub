@@ -120,6 +120,13 @@
 @layer base {
   html {
     min-height: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
   }
 
   * {
@@ -130,6 +137,14 @@
     @apply bg-background text-foreground;
     position: relative;
     min-height: 100vh;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .theme-switching,
+  .theme-switching * {
+    transition: none !important;
+    animation: none !important;
   }
 
 }
