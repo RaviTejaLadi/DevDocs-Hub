@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useMemo, useCallback, type JSX } from 'react';
+import { useState, useCallback, type JSX } from 'react';
 import { TOPICS, type TopicItem } from '../../topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -48,62 +48,60 @@ const SidebarContent = ({
     [navigate, closeSheet]
   );
 
-  // Recursive Render Component - moved outside useMemo
-  const renderTree = useCallback(
-    (items: TopicItem[], depth = 0): JSX.Element[] => {
-      return items.map((item, index) => {
-        const isActive = activeSlug === item.id;
-        const hasChildren = item.items && item.items.length > 0;
-        const isExpanded = expandedIds[item.id];
+  // Recursive tree renderer
+  const renderTree = (items: TopicItem[], depth = 0): JSX.Element[] => {
+    return items.map((item, index) => {
+      const isActive = activeSlug === item.id;
+      const hasChildren = item.items && item.items.length > 0;
+      const isExpanded = expandedIds[item.id];
 
-        return (
-          <div key={item.id} className="w-[90%]">
-            <Button
-              variant={isActive ? 'secondary' : 'ghost'}
-              className={cn(
-                'w-full justify-start h-auto py-2 px-3 font-normal rounded-lg',
-                isActive
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
-              )}
-              style={{ paddingLeft: `${depth * 12 + 12}px` }}
-              onClick={() => topic && handleNavigate(topic.id, item.id)}
-            >
-              <div className="flex items-center gap-2 w-full">
-                {depth === 0 && (
-                  <span className="text-xs font-medium opacity-60 w-5">{String(index + 1).padStart(2, '0')}</span>
-                )}
-
-                <span className="text-sm truncate text-left flex-1" title={item.title}>
-                  {item.title}
-                </span>
-
-                {hasChildren && (
-                  <button
-                    type="button"
-                    onClick={(e) => toggleExpand(e, item.id)}
-                    className="p-1 hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0"
-                    aria-label={isExpanded ? 'Collapse' : 'Expand'}
-                  >
-                    {isExpanded ? (
-                      <ChevronDown className="h-3.5 w-3.5 opacity-70" />
-                    ) : (
-                      <ChevronRight className="h-3.5 w-3.5 opacity-70" />
-                    )}
-                  </button>
-                )}
-              </div>
-            </Button>
-
-            {hasChildren && isExpanded && (
-              <div className="ml-2">{renderTree(item.items!, depth + 1)}</div>
+      return (
+        <div key={item.id} className="w-full max-w-full overflow-hidden">
+          <Button
+            variant={isActive ? 'secondary' : 'ghost'}
+            className={cn(
+              'flex  min-w-0 max-w-full justify-start h-auto py-2 px-3 font-normal rounded-lg overflow-hidden box-border',
+              hasChildren ? 'w-full' : 'w-[80%]',
+              isActive
+                ? 'bg-accent text-accent-foreground'
+                : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
             )}
-          </div>
-        );
-      });
-    },
-    [activeSlug, expandedIds, toggleExpand, handleNavigate, topic]
-  );
+            style={{ paddingLeft: `${depth * 12 + 12}px` }}
+            onClick={() => topic && handleNavigate(topic.id, item.id)}
+          >
+            <div className="flex items-center gap-2 w-full min-w-0">
+              {depth === 0 && (
+                <span className="text-xs font-medium opacity-60 w-5 shrink-0">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              )}
+
+              <span className="text-sm truncate text-left flex-1 min-w-0" title={item.title}>
+                {item.title}
+              </span>
+
+              {hasChildren && (
+                <button
+                  type="button"
+                  onClick={(e) => toggleExpand(e, item.id)}
+                  className="p-1 hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0"
+                  aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                >
+                  {isExpanded ? (
+                    <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                  ) : (
+                    <ChevronRight className="h-3.5 w-3.5 opacity-70" />
+                  )}
+                </button>
+              )}
+            </div>
+          </Button>
+
+          {hasChildren && isExpanded && <div className="w-full">{renderTree(item.items!, depth + 1)}</div>}
+        </div>
+      );
+    });
+  };
 
   if (!topic)
     return (
@@ -114,31 +112,31 @@ const SidebarContent = ({
     );
 
   // Filter Logic
-  const displayContent = useMemo(() => {
-    if (!searchQuery) return renderTree(topic.items);
+  const displayContent = !searchQuery
+    ? renderTree(topic.items)
+    : (() => {
+        const allItems = flattenItems(topic.items);
+        const filtered = allItems.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const allItems = flattenItems(topic.items);
-    const filtered = allItems.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
+        if (filtered.length === 0) {
+          return (
+            <div className="text-center py-8">
+              <p className="text-sm text-muted-foreground">No topic found</p>
+            </div>
+          );
+        }
 
-    if (filtered.length === 0) {
-      return (
-        <div className="text-center py-8">
-          <p className="text-sm text-muted-foreground">No topic found</p>
-        </div>
-      );
-    }
-
-    return filtered.map((item) => (
-      <Button
-        key={item.id}
-        variant={activeSlug === item.id ? 'default' : 'ghost'}
-        className="w-[90%] justify-start py-2 px-3 font-normal"
-        onClick={() => handleNavigate(topic.id, item.id)}
-      >
-        <span className="text-sm truncate">{item.title}</span>
-      </Button>
-    ));
-  }, [topic.items, searchQuery, activeSlug, renderTree, handleNavigate, topic.id]);
+        return filtered.map((item) => (
+          <Button
+            key={item.id}
+            variant={activeSlug === item.id ? 'default' : 'ghost'}
+            className="flex w-[90%] justify-start py-2 px-3 font-normal overflow-hidden box-border"
+            onClick={() => handleNavigate(topic.id, item.id)}
+          >
+            <span className="text-sm truncate min-w-0 block w-full text-left">{item.title}</span>
+          </Button>
+        ));
+      })();
 
   return (
     <div className="flex h-full flex-col bg-inherit">
@@ -178,8 +176,8 @@ const SidebarContent = ({
       </div>
 
       <div className="flex-1 min-h-0">
-        <ScrollArea className="h-full">
-          <nav className="p-3 space-y-0.5" aria-label="Topic sections">
+        <ScrollArea className="h-full overflow-hidden">
+          <nav className="p-3 space-y-0.5 w-full max-w-full overflow-x-hidden" aria-label="Topic sections">
             {displayContent}
           </nav>
         </ScrollArea>
