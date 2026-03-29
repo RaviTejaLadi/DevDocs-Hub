@@ -8,52 +8,52 @@ const initMermaid = (isDark: boolean) => {
     theme: 'base',
     themeVariables: isDark
       ? {
-          // ── Dark theme (oklch 0.13 base) ──────────────────────────
-          background: '#1a1b26',
-          mainBkg: '#1e2030',
-          primaryColor: '#1e2030',
-          primaryTextColor: '#f0f0f5',
-          primaryBorderColor: '#4a5080',
+          // ── Dark theme (higher contrast + softer surfaces) ────────
+          background: '#0f1420',
+          mainBkg: '#151d30',
+          primaryColor: '#1b2640',
+          primaryTextColor: '#e8ecff',
+          primaryBorderColor: '#7a8fd4',
 
-          secondaryColor: '#252840',
-          secondaryTextColor: '#c8cae0',
-          secondaryBorderColor: '#3a3d5c',
+          secondaryColor: '#22304d',
+          secondaryTextColor: '#d3dbf9',
+          secondaryBorderColor: '#6a7fc2',
 
-          tertiaryColor: '#1a1d2e',
-          tertiaryTextColor: '#c8cae0',
-          tertiaryBorderColor: '#3a3d5c',
+          tertiaryColor: '#172035',
+          tertiaryTextColor: '#d3dbf9',
+          tertiaryBorderColor: '#6174b4',
 
-          lineColor: '#5a6090',
-          edgeLabelBackground: '#1e2030',
+          lineColor: '#8fa3ea',
+          edgeLabelBackground: '#1b2640',
 
-          clusterBkg: '#161826',
-          clusterBorder: '#3a3d5c',
+          clusterBkg: '#111a2c',
+          clusterBorder: '#5f72b4',
 
-          nodeTextColor: '#f0f0f5',
+          nodeTextColor: '#e8ecff',
           //   labelTextColor:       '#c8cae0',
 
           fontSize: '14px',
           fontFamily: 'system-ui, -apple-system, sans-serif',
 
           // Sequence
-          actorBorder: '#5a6090',
-          actorBkg: '#1e2030',
-          actorTextColor: '#f0f0f5',
-          actorLineColor: '#3a3d5c',
-          signalColor: '#8890c0',
-          signalTextColor: '#f0f0f5',
-          labelBoxBkgColor: '#1e2030',
-          labelBoxBorderColor: '#3a3d5c',
-          labelTextColor: '#c8cae0',
-          noteBkgColor: '#252840',
-          noteBorderColor: '#3a3d5c',
-          noteTextColor: '#c8cae0',
-          activationBorderColor: '#5a6090',
-          activationBkgColor: '#252840',
+          actorBorder: '#7a8fd4',
+          actorBkg: '#1b2640',
+          actorTextColor: '#e8ecff',
+          actorLineColor: '#5f72b4',
+          signalColor: '#98adf2',
+          signalTextColor: '#e8ecff',
+          labelBoxBkgColor: '#1b2640',
+          labelBoxBorderColor: '#5f72b4',
+          labelTextColor: '#d3dbf9',
+          noteBkgColor: '#22304d',
+          noteBorderColor: '#5f72b4',
+          noteTextColor: '#d3dbf9',
+          activationBorderColor: '#7a8fd4',
+          activationBkgColor: '#22304d',
 
           // ER
-          attributeBackgroundColorEven: '#1e2030',
-          attributeBackgroundColorOdd: '#252840',
+          attributeBackgroundColorEven: '#1b2640',
+          attributeBackgroundColorOdd: '#22304d',
 
           // Pie
           pie1: '#6b7ab5',
@@ -64,27 +64,27 @@ const initMermaid = (isDark: boolean) => {
           pie6: '#ab4a6b',
           pie7: '#4a6bab',
           pie8: '#7aab5a',
-          pieTextColor: '#f0f0f5',
-          pieLegendTextColor: '#c8cae0',
+          pieTextColor: '#e8ecff',
+          pieLegendTextColor: '#d3dbf9',
           pieSectionTextColor: '#ffffff',
 
           // Gantt
-          sectionBkgColor: '#1a1d2e',
-          altSectionBkgColor: '#161826',
-          sectionBkgColor2: '#1e2030',
-          taskBorderColor: '#5a6090',
-          taskBkgColor: '#2a2e4a',
-          taskTextColor: '#f0f0f5',
-          taskTextOutsideColor: '#c8cae0',
-          taskTextClickableColor: '#a0a8e0',
-          activeTaskBorderColor: '#7a80c0',
-          activeTaskBkgColor: '#30355a',
-          gridColor: '#2a2d40',
-          doneTaskBkgColor: '#1a1d2e',
-          doneTaskBorderColor: '#3a3d5c',
+          sectionBkgColor: '#172035',
+          altSectionBkgColor: '#111a2c',
+          sectionBkgColor2: '#1b2640',
+          taskBorderColor: '#7a8fd4',
+          taskBkgColor: '#263654',
+          taskTextColor: '#e8ecff',
+          taskTextOutsideColor: '#d3dbf9',
+          taskTextClickableColor: '#a8b8f8',
+          activeTaskBorderColor: '#95a8ee',
+          activeTaskBkgColor: '#30456b',
+          gridColor: '#27324a',
+          doneTaskBkgColor: '#172035',
+          doneTaskBorderColor: '#5f72b4',
           critBorderColor: '#8b3a4a',
           critBkgColor: '#2a1a20',
-          todayLineColor: '#6b7ab5',
+          todayLineColor: '#8fa3ea',
 
           // Git
           git0: '#6b7ab5',
@@ -103,11 +103,11 @@ const initMermaid = (isDark: boolean) => {
           gitBranchLabel5: '#ffffff',
           gitBranchLabel6: '#ffffff',
           gitBranchLabel7: '#ffffff',
-          commitLabelColor: '#c8cae0',
-          commitLabelBackground: '#1e2030',
+          commitLabelColor: '#d3dbf9',
+          commitLabelBackground: '#1b2640',
           tagLabelColor: '#ffffff',
-          tagLabelBackground: '#6b7ab5',
-          tagLabelBorder: '#4a5080',
+          tagLabelBackground: '#7a8fd4',
+          tagLabelBorder: '#5f72b4',
         }
       : {
           // ── Light theme (oklch 0.99 base) ─────────────────────────
@@ -243,16 +243,44 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
         const svgEl = ref.current.querySelector('svg');
         if (!svgEl) return;
 
+        // Avoid fixed dark/light backgrounds inside the SVG.
+        svgEl.style.backgroundColor = 'transparent';
+
         // Consistent edge styling
         svgEl.querySelectorAll('.edgePath path, .flowchart-link').forEach((el) => {
           (el as SVGElement).style.strokeWidth = '1.8px';
+          if (isDark) (el as SVGElement).style.stroke = '#8fa3ea';
         });
 
         // Edge label text
         svgEl.querySelectorAll('.edgeLabel span, .edgeLabel div').forEach((el) => {
           (el as HTMLElement).style.fontSize = '12px';
           (el as HTMLElement).style.fontWeight = '500';
+          if (isDark) {
+            (el as HTMLElement).style.color = '#dbe3ff';
+            (el as HTMLElement).style.background = '#1b2640';
+            (el as HTMLElement).style.border = '1px solid #5f72b4';
+            (el as HTMLElement).style.borderRadius = '8px';
+            (el as HTMLElement).style.padding = '2px 6px';
+          }
         });
+
+        if (isDark) {
+          // Dark mode readability polish for nodes/clusters/arrows.
+          svgEl.querySelectorAll('.node rect, .node circle, .node ellipse, .node polygon').forEach((el) => {
+            (el as SVGElement).style.strokeWidth = '1.8px';
+          });
+
+          svgEl.querySelectorAll('.cluster rect').forEach((el) => {
+            (el as SVGElement).style.fill = '#111a2c';
+            (el as SVGElement).style.stroke = '#5f72b4';
+          });
+
+          svgEl.querySelectorAll('marker path').forEach((el) => {
+            (el as SVGElement).style.fill = '#8fa3ea';
+            (el as SVGElement).style.stroke = '#8fa3ea';
+          });
+        }
       })
       .catch(() => {
         if (ref.current) {
@@ -265,7 +293,7 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
   return (
     <div
       ref={ref}
-      className="my-6 rounded-md bg-slate-100/30 backdrop-blur-sm overflow-x-auto p-4 sm:p-6 [&>svg]:max-w-full [&>svg]:h-auto [&>svg]:mx-auto"
+      className="my-6 rounded-md border border-slate-200/60 bg-slate-100/30 backdrop-blur-sm dark:border-slate-700/70 dark:bg-slate-900/40 overflow-x-auto p-4 sm:p-6 [&>svg]:max-w-full [&>svg]:h-auto [&>svg]:mx-auto"
     />
   );
 };
