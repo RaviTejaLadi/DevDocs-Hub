@@ -71,7 +71,13 @@ const SidebarContent = ({
           >
             <div className="flex items-center gap-2 w-full min-w-0">
               {depth === 0 && (
-                <span className="text-xs font-medium opacity-60 w-5 shrink-0">
+                <span
+                  className={cn(
+                    'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-[11px] font-semibold tabular-nums tracking-wide',
+                    'bg-linear-to-b from-zinc-50 to-zinc-200/90 text-zinc-700 shadow-sm',
+                    'dark:from-zinc-800 dark:to-zinc-900 dark:text-zinc-200 dark:border-zinc-700/80'
+                  )}
+                >
                   {String(index + 1).padStart(2, '0')}
                 </span>
               )}
