@@ -13,6 +13,17 @@ import { colors } from '@/constants/colors';
 
 type ViewMode = 'grid' | 'list';
 
+const badgeToneClasses = [
+  'border-sky-400/25 bg-sky-500/10 text-sky-200',
+  'border-violet-400/25 bg-violet-500/10 text-violet-200',
+  'border-emerald-400/25 bg-emerald-500/10 text-emerald-200',
+  'border-amber-400/25 bg-amber-500/10 text-amber-200',
+  'border-rose-400/25 bg-rose-500/10 text-rose-200',
+  'border-cyan-400/25 bg-cyan-500/10 text-cyan-200',
+  'border-fuchsia-400/25 bg-fuchsia-500/10 text-fuchsia-200',
+  'border-teal-400/25 bg-teal-500/10 text-teal-200',
+];
+
 const LandingPage = () => {
   const navigate = useNavigate();
 
@@ -124,11 +135,15 @@ const LandingPage = () => {
             {!isCollapsed && (
               <div
                 className={cn(
-                  viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' : 'flex flex-col gap-3'
+                  viewMode === 'grid'
+                    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr'
+                    : 'flex flex-col gap-3'
                 )}
               >
                 {topics.map((topic, index) => {
                   const color = colors[index % colors.length];
+                  const badgeItems = topic.items.slice(0, 8);
+                  const extraBadgeCount = Math.max(topic.items.length - 8, 0);
 
                   return (
                     <article
@@ -147,7 +162,7 @@ const LandingPage = () => {
                         'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                         viewMode === 'grid'
-                          ? 'p-5'
+                          ? 'p-5 h-full flex flex-col'
                           : 'p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'
                       )}
                     >
@@ -162,13 +177,13 @@ const LandingPage = () => {
                           {topic.icon}
                         </div>
                         {viewMode === 'grid' && (
-                          <span className={cn('text-xs font-medium px-2 py-0.5 rounded-md shrink-0', color.badge)}>
+                          <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
                             {topic.items.length} topics
                           </span>
                         )}
                       </div>
 
-                      <div className={viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : ''}>
+                      <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
                         <h3 className={cn('font-semibold text-foreground', viewMode === 'list' ? 'text-base' : 'mb-1')}>
                           {topic.title}
                         </h3>
@@ -181,29 +196,29 @@ const LandingPage = () => {
                           {topic.description}
                         </p>
 
-                        <ul
-                          className={cn(
-                            viewMode === 'list' ? 'hidden sm:flex gap-4 text-xs text-muted-foreground/90' : 'space-y-1'
-                          )}
-                        >
-                          {topic.items.slice(0, viewMode === 'list' ? 2 : 3).map((item) => (
-                            <li
+                        <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
+                          {badgeItems.map((item, badgeIndex) => (
+                            <span
                               key={item.id}
                               className={cn(
-                                'flex items-center gap-1.5 text-muted-foreground',
-                                viewMode === 'list' ? 'min-w-0' : 'text-sm'
+                                'inline-flex max-w-full items-center rounded-md border px-2.5 py-1 text-xs',
+                                badgeToneClasses[badgeIndex % badgeToneClasses.length]
                               )}
                             >
-                              <ChevronRight className="w-3.5 h-3.5 shrink-0 text-muted-foreground/70" />
                               <span className="truncate">{item.title}</span>
-                            </li>
+                            </span>
                           ))}
-                        </ul>
+                          {extraBadgeCount > 0 && (
+                            <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
+                              +{extraBadgeCount} more
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       {viewMode === 'list' && (
                         <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
-                          <span className={cn('text-xs font-medium px-2 py-1 rounded-md shrink-0', color.badge)}>
+                          <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
                             {topic.items.length} topics
                           </span>
                           <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
