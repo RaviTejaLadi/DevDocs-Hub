@@ -56,23 +56,26 @@ const MarkdownRender = ({ content }: { content: string }) => {
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-10">
-      <div ref={contentRef} className="flex-1 min-w-0">
+    <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-12">
+      <div
+        ref={contentRef}
+        className="flex-1 min-w-0 mx-auto w-full max-w-4xl rounded-2xl border border-border/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
+      >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }: any) => {
               const id = generateId(children);
               return (
-                <div className="group relative mb-8">
+                <div className="group relative mb-10">
                   <h1
                     id={id}
-                    className="scroll-mt-28 text-4xl  mb-6 pb-6 border-b-2 font-extrabold flex text-foreground "
+                    className="scroll-mt-28 text-4xl mb-7 pb-7 border-b border-border/60 font-extrabold tracking-tight flex text-foreground"
                   >
                     {children}
                     <a
                       href={`#${id}`}
-                      className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary"
+                      className="mt-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary"
                       aria-label="Link to this heading"
                     >
                       <Hash className="w-8 h-8" />
@@ -84,9 +87,9 @@ const MarkdownRender = ({ content }: { content: string }) => {
             h2: ({ children }: any) => {
               const id = generateId(children);
               return (
-                <div className="group relative mt-16 mb-6 flex items-center gap-3">
+                <div className="group relative mt-16 mb-7 flex items-center gap-3">
                   <div className="w-1 h-8 bg-linear-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h2 id={id} className="scroll-mt-28 text-3xl  font-bold text-foreground">
+                  <h2 id={id} className="scroll-mt-28 text-3xl font-bold tracking-tight text-foreground">
                     {children}
                   </h2>
                   <a
@@ -102,9 +105,9 @@ const MarkdownRender = ({ content }: { content: string }) => {
             h3: ({ children }: any) => {
               const id = generateId(children);
               return (
-                <div className="group relative mt-12 mb-4 flex items-center gap-2">
+                <div className="group relative mt-12 mb-5 flex items-center gap-2">
                   <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
-                  <h3 id={id} className="scroll-mt-28 text-2xl  font-semibold text-foreground">
+                  <h3 id={id} className="scroll-mt-28 text-2xl font-semibold tracking-tight text-foreground">
                     {children}
                   </h3>
                   <a
@@ -120,7 +123,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
             h4: ({ children }: any) => {
               const id = generateId(children);
               return (
-                <div className="group relative mt-8 mb-3 flex items-center gap-2">
+                <div className="group relative mt-9 mb-3 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <h4 id={id} className="scroll-mt-28 text-xl font-semibold text-foreground">
                     {children}
@@ -135,14 +138,18 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 </div>
               );
             },
-            p: ({ children }: any) => <p className="text-muted-foreground leading-8 mb-6 text-[1.04rem]">{children}</p>,
+            p: ({ children }: any) => (
+              <p className="text-foreground/80 leading-8 mb-6 text-[1.04rem] first-of-type:text-foreground/90 first-of-type:leading-9 first-of-type:mb-8 first-of-type:text-[1.18rem] sm:first-of-type:text-[1.24rem] first-of-type:font-medium">
+                {children}
+              </p>
+            ),
             ul: ({ children }: any) => (
-              <ul className="mb-8 ml-6 list-disc marker:text-primary/80 space-y-2.5">{children}</ul>
+              <ul className="mb-8 ml-6 list-disc marker:text-primary/80 space-y-2.5 text-[1.02rem]">{children}</ul>
             ),
             ol: ({ children }: any) => (
-              <ol className="mb-8 ml-7 list-decimal marker:text-primary/80 space-y-2.5">{children}</ol>
+              <ol className="mb-8 ml-7 list-decimal marker:text-primary/80 space-y-2.5 text-[1.02rem]">{children}</ol>
             ),
-            li: ({ children }: any) => <li className="text-muted-foreground leading-7 pl-1">{children}</li>,
+            li: ({ children }: any) => <li className="text-foreground/80 leading-8 pl-1">{children}</li>,
             blockquote: ({ children }: any) => (
               <div className="relative my-8">
                 <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-transparent rounded-r-xl"></div>
@@ -158,7 +165,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
             ),
 
             table: ({ children }: any) => (
-              <div className="my-8 overflow-hidden rounded-md border border-border/50 shadow-lg bg-card/30 backdrop-blur-sm">
+              <div className="my-8 overflow-hidden rounded-xl border border-border/50 shadow-lg bg-card/30 backdrop-blur-sm">
                 <div className="w-full overflow-x-auto">
                   <Table className="min-w-full">{children}</Table>
                 </div>
@@ -209,7 +216,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 </a>
               );
             },
-            strong: ({ children }: any) => <strong className="font-semibold text-foreground">{children}</strong>,
+            strong: ({ children }: any) => <strong className="font-bold text-foreground">{children}</strong>,
             em: ({ children }: any) => <em className="italic text-foreground/90 font-medium">{children}</em>,
             kbd: ({ children }: any) => (
               <kbd className="inline-flex items-center justify-center min-w-6 px-2 h-6 rounded-md border border-border/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
@@ -257,7 +264,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               // const language = match?.[1] ?? 'text';
               return !inline && match ? (
                 <div
-                  className={`relative group my-8 rounded-md border overflow-hidden shadow-xl ${
+                  className={`relative group my-8 rounded-xl border overflow-hidden shadow-xl ${
                     isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
                   }`}
                 >
@@ -328,7 +335,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
 
       {headings.length > 0 && (
         <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] border-l border-border/40 pl-6">
-          <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">Contents</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground mb-4">Contents</div>
           <ScrollArea className="h-[calc(100vh-10rem)] pr-2">
             <nav className="space-y-1 text-sm">
               {headings.map((heading) => {
@@ -339,15 +346,16 @@ const MarkdownRender = ({ content }: { content: string }) => {
                   <button
                     key={heading.id}
                     type="button"
+                    title={heading.text}
                     onClick={() => {
                       const element = document.getElementById(heading.id);
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }
                     }}
-                    className={`${indent} block w-full text-left py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors duration-150 truncate text-xs`}
+                    className={`${indent} block w-full text-left py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/70 transition-colors duration-150 text-xs`}
                   >
-                    {heading.text}
+                    <span className="block truncate">{heading.text}</span>
                   </button>
                 );
               })}
