@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { cn } from '@/lib/utils';
 import NavBar from './components/Layout/NavBar';
 import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from './components/Layout/SidebarWrapperDesktop';
@@ -12,6 +13,7 @@ import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
 
 export default function Platform() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(false);
   const location = useLocation();
   const showSidebar = location.pathname.startsWith('/docs/');
 
@@ -35,7 +37,13 @@ export default function Platform() {
       <div className="h-[calc(100vh-3rem)] flex">
         {/* Desktop Sidebar with ScrollArea */}
         {showSidebar && (
-          <aside className="hidden md:block w-72 h-[97%] border-r border-border bg-card/30 shrink-0">
+          <aside
+            className={cn(
+              'hidden md:block h-[97%] bg-card/30 shrink-0 transition-all duration-200 ease-in-out',
+              docsSidebarCollapsed ? 'w-0 overflow-hidden border-r-0 pointer-events-none' : 'w-72 border-r border-border'
+            )}
+            aria-hidden={docsSidebarCollapsed}
+          >
             <Routes>
               <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
             </Routes>
@@ -47,7 +55,15 @@ export default function Platform() {
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 text-foreground">
               <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
+                <Route
+                  path="/docs/:categoryId/:slug"
+                  element={
+                    <DocumentationPage
+                      isSidebarCollapsed={docsSidebarCollapsed}
+                      onToggleSidebar={() => setDocsSidebarCollapsed((prev) => !prev)}
+                    />
+                  }
+                />
                 <Route path="/terms" element={<TermsOfServicePage />} />
                 <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
               </Routes>

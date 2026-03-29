@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
 import { useEffect, useMemo } from 'react';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Home } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import {
@@ -44,7 +43,13 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
   return flattened.filter((i) => i.content);
 };
 
-const DocumentationPage = () => {
+const DocumentationPage = ({
+  isSidebarCollapsed,
+  onToggleSidebar,
+}: {
+  isSidebarCollapsed: boolean;
+  onToggleSidebar: () => void;
+}) => {
   const { categoryId, slug } = useParams();
   const navigate = useNavigate();
   const topic = TOPICS.find((t) => t.id === categoryId);
@@ -100,37 +105,51 @@ const DocumentationPage = () => {
 
   return (
     <div className="w-full space-y-8">
-      <Breadcrumb>
-        <BreadcrumbList className="flex-wrap gap-1 text-sm text-muted-foreground">
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/" className="hover:text-foreground transition-colors">
-                Docs
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator>
-            <ChevronRight className="h-3.5 w-3.5 opacity-60" />
-          </BreadcrumbSeparator>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link
-                to={`/docs/${topic.id}/${topic.items[0].id}`}
-                className="hover:text-foreground transition-colors flex items-center gap-1.5"
-              >
-                {topic.icon}
-                <span>{topic.title}</span>
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator>
-            <ChevronRight className="h-3.5 w-3.5 opacity-60" />
-          </BreadcrumbSeparator>
-          <BreadcrumbItem>
-            <BreadcrumbPage className="font-medium text-foreground">{content.title}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="flex items-center gap-3">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={onToggleSidebar}
+          aria-label={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
+          title={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
+          className="hidden md:inline-flex gap-2 shrink-0"
+        >
+          {isSidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+          {/* <span>{isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}</span> */}
+        </Button>
+        <Breadcrumb>
+          <BreadcrumbList className="flex-wrap gap-1 text-sm text-muted-foreground">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/" className="hover:text-foreground transition-colors">
+                  Docs
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link
+                  to={`/docs/${topic.id}/${topic.items[0].id}`}
+                  className="hover:text-foreground transition-colors flex items-center gap-1.5"
+                >
+                  {topic.icon}
+                  <span>{topic.title}</span>
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbPage className="font-medium text-foreground">{content.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+      </div>
 
       <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
         <MarkdownRender content={content.content} />
