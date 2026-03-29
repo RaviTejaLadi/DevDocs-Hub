@@ -57,7 +57,7 @@ const SidebarContent = ({
         const isExpanded = expandedIds[item.id];
 
         return (
-          <div key={item.id} className="w-[80%]">
+          <div key={item.id} className="w-[90%]">
             <Button
               variant={isActive ? 'secondary' : 'ghost'}
               className={cn(
@@ -96,7 +96,7 @@ const SidebarContent = ({
             </Button>
 
             {hasChildren && isExpanded && (
-              <div className="border-l border-border/50 ml-5">{renderTree(item.items!, depth + 1)}</div>
+              <div className="ml-2">{renderTree(item.items!, depth + 1)}</div>
             )}
           </div>
         );
