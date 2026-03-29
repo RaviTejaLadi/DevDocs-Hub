@@ -21,16 +21,19 @@ Your task is to list ALL important topics required to master the following:
 Group topics into these levels:
 
 ### Beginner
+
 - Topic 1
 - Topic 2
 - Topic 3
 
 ### Intermediate
+
 - Topic 1
 - Topic 2
 - Topic 3
 
 ### Advanced
+
 - Topic 1
 - Topic 2
 - Topic 3
@@ -46,5 +49,5 @@ Group topics into these levels:
 
 ---
 
-Now generate the topic list for:
-👉 Subject: [INSERT LANGUAGE / FRAMEWORK / TECHNOLOGY]
+Now generate the topic list for: 👉 Subject: [INSERT LANGUAGE / FRAMEWORK /
+TECHNOLOGY]

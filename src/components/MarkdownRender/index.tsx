@@ -335,7 +335,9 @@ const MarkdownRender = ({ content }: { content: string }) => {
 
       {headings.length > 0 && (
         <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] border-l border-border/40/40 pl-6">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground mb-4">Contents</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground mb-4">
+            Contents
+          </div>
           <ScrollArea className="h-[calc(100vh-10rem)] pr-2">
             <nav className="space-y-1 text-sm">
               {headings.map((heading) => {

@@ -148,7 +148,6 @@ const DocumentationPage = ({
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-
       </div>
 
       <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">

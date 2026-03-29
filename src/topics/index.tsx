@@ -174,7 +174,7 @@ export const TOPICS: Topics = [
   {
     id: 'dsa',
     title: 'DSA',
-    description: "data structures and algorithms",
+    description: 'data structures and algorithms',
     icon: Icons.NODE,
     items: dsaData,
     type: 'dsa',
@@ -183,7 +183,7 @@ export const TOPICS: Topics = [
   {
     id: 'system-design',
     title: 'System Design',
-    description: "system design",
+    description: 'system design',
     icon: Icons.NODE,
     items: systemDesignData,
     type: 'system-design',

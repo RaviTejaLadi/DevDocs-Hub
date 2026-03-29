@@ -25,11 +25,8 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement;
     const body = window.document.body;
-    const resolvedTheme = theme === 'system'
-      ? window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-      : theme;
+    const resolvedTheme =
+      theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
 
     // Keep switching atomic to prevent flicker-heavy routes (docs/markdown) from flashing.
     root.classList.add('theme-switching');
