@@ -2,18 +2,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { Table, TableHeader, TableHead, TableCell } from '../ui/table';
 import { Check, Copy, ExternalLink, Hash, Quote } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import MermaidRenderer from '../MermaidRenderer';
+import { useTheme } from '../../hooks/useTheme';
 
 const MarkdownRender = ({ content }: { content: string }) => {
   const [copied, setCopied] = useState(false);
   const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([]);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -64,18 +67,17 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 <div className="group relative mb-8">
                   <h1
                     id={id}
-                    className="scroll-mt-28 text-4xl lg:text-5xl mb-6 pb-6 border-b-2 font-extrabold bg-linear-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent border-gradient-to-r relative"
+                    className="scroll-mt-28 text-4xl lg:text-5xl mb-6 pb-6 border-b-2 font-extrabold flex text-foreground "
                   >
                     {children}
                     <a
                       href={`#${id}`}
-                      className="absolute -left-8 top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary"
+                      className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary"
                       aria-label="Link to this heading"
                     >
-                      <Hash className="w-6 h-6" />
+                      <Hash className="w-8 h-8" />
                     </a>
                   </h1>
-                  <div className="absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-primary to-primary/30 w-1/3"></div>
                 </div>
               );
             },
@@ -254,26 +256,38 @@ const MarkdownRender = ({ content }: { content: string }) => {
               }
               // const language = match?.[1] ?? 'text';
               return !inline && match ? (
-                <div className="relative group my-8 rounded-md border-input border overflow-hidden bg-slate-950 shadow-xl">
+                <div
+                  className={`relative group my-8 rounded-md border overflow-hidden shadow-xl ${
+                    isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
+                  }`}
+                >
                   {/* <div className="flex items-center justify-between px-4 py-2 border-b border-slate-700/80 bg-slate-900/70 backdrop-blur">
                     <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">{language}</span>
                   </div> */}
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 bg-slate-800/65 hover:bg-slate-800/90 rounded-md border border-slate-700/70 shadow-sm group"
+                    className={`absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 rounded-md border shadow-sm group ${
+                      isDarkTheme
+                        ? 'bg-slate-800/65 hover:bg-slate-800/90 border-slate-700/70'
+                        : 'bg-white/90 hover:bg-white border-slate-300'
+                    }`}
                     onClick={() => handleCopy(String(children))}
                   >
                     {copied ? (
                       <Check className="h-4 w-4 text-green-400" />
                     ) : (
-                      <Copy className="h-4 w-4 text-white group-hover:scale-110 transition-transform" />
+                      <Copy
+                        className={`h-4 w-4 group-hover:scale-110 transition-transform ${
+                          isDarkTheme ? 'text-white' : 'text-slate-700'
+                        }`}
+                      />
                     )}
                   </Button>
 
                   <div className="overflow-x-auto">
                     <SyntaxHighlighter
-                      style={atomDark}
+                      style={isDarkTheme ? atomDark : oneLight}
                       language={match[1]}
                       PreTag="div"
                       className="m-0! bg-transparent! p-6! text-sm sm:text-base"
