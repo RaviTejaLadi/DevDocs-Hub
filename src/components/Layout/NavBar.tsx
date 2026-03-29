@@ -87,12 +87,12 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center  gap-2">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className="relative h-9 min-w-9 sm:min-w-0 sm:w-full sm:max-w-56 lg:max-w-72 justify-start gap-2 text-muted-foreground font-normal border-border bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+                className="relative h-9 w-[20rem]  justify-start gap-2 text-muted-foreground font-normal border-border bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
               >
                 <Search className="h-4 w-4 shrink-0" />
                 <span className="hidden sm:inline truncate">Search topics...</span>
