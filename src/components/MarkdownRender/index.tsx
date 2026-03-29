@@ -67,7 +67,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 <div className="group relative mb-8">
                   <h1
                     id={id}
-                    className="scroll-mt-28 text-4xl lg:text-5xl mb-6 pb-6 border-b-2 font-extrabold flex text-foreground "
+                    className="scroll-mt-28 text-4xl  mb-6 pb-6 border-b-2 font-extrabold flex text-foreground "
                   >
                     {children}
                     <a
@@ -86,7 +86,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               return (
                 <div className="group relative mt-16 mb-6 flex items-center gap-3">
                   <div className="w-1 h-8 bg-linear-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h2 id={id} className="scroll-mt-28 text-3xl lg:text-4xl font-bold text-foreground">
+                  <h2 id={id} className="scroll-mt-28 text-3xl  font-bold text-foreground">
                     {children}
                   </h2>
                   <a
@@ -104,7 +104,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               return (
                 <div className="group relative mt-12 mb-4 flex items-center gap-2">
                   <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
-                  <h3 id={id} className="scroll-mt-28 text-2xl lg:text-3xl font-semibold text-foreground">
+                  <h3 id={id} className="scroll-mt-28 text-2xl  font-semibold text-foreground">
                     {children}
                   </h3>
                   <a
@@ -122,7 +122,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               return (
                 <div className="group relative mt-8 mb-3 flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <h4 id={id} className="scroll-mt-28 text-xl lg:text-2xl font-semibold text-foreground">
+                  <h4 id={id} className="scroll-mt-28 text-xl font-semibold text-foreground">
                     {children}
                   </h4>
                   <a
