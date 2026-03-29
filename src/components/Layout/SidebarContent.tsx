@@ -140,7 +140,7 @@ const SidebarContent = ({
 
   return (
     <div className="flex h-full flex-col bg-inherit">
-      <div className="shrink-0 px-4 py-4 border-b border-border">
+      <div className="shrink-0 px-4 py-4 border-b border-border/40">
         <Link
           to="/"
           onClick={closeSheet}
@@ -150,7 +150,7 @@ const SidebarContent = ({
           <span>Back to overview</span>
         </Link>
         <div className="flex gap-2 items-center">
-          <div className="p-2 rounded-lg border border-border bg-background shrink-0">{topic.icon}</div>
+          <div className="p-2 rounded-lg border border-border/40 bg-background shrink-0">{topic.icon}</div>
           <div className="relative flex-1 min-w-0">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
@@ -158,7 +158,7 @@ const SidebarContent = ({
               placeholder="Search in this section..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-8 h-9 w-full rounded-lg border-border bg-background"
+              className="pl-9 pr-8 h-9 w-full rounded-lg border-border/40 bg-background"
             />
             {searchQuery && (
               <Button

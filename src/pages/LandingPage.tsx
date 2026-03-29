@@ -67,10 +67,10 @@ const LandingPage = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search topics..."
-              className="pl-10 h-11 rounded-lg border-border bg-background text-foreground placeholder:text-muted-foreground"
+              className="pl-10 h-11 rounded-lg border-border/40 bg-background text-foreground placeholder:text-muted-foreground"
             />
           </div>
-          <div className="flex items-center justify-center gap-1 rounded-lg border border-border bg-muted/30 p-1">
+          <div className="flex items-center justify-center gap-1 rounded-lg border border-border/40 bg-muted/30 p-1">
             <Button
               size="icon"
               variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
@@ -93,7 +93,7 @@ const LandingPage = () => {
         <div className="mt-6">
           <Button
             variant="outline"
-            className="gap-2 border-border bg-card/50 hover:bg-accent"
+            className="gap-2 border-border/40 bg-card/50 hover:bg-accent"
             onClick={() => navigate('/interview-questions')}
           >
             <HelpCircle className="h-4 w-4" />
@@ -143,7 +143,7 @@ const LandingPage = () => {
                         }
                       }}
                       className={cn(
-                        'group cursor-pointer rounded-lg border border-border bg-card text-card-foreground',
+                        'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
                         'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                         viewMode === 'grid'

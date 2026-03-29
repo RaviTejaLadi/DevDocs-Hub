@@ -69,7 +69,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
       <div className="flex h-14 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <Logo showText size="sm" className="font-semibold" />
@@ -92,7 +92,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className="relative h-9 w-[20rem]  justify-start gap-2 text-muted-foreground font-normal border-border bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+                className="relative h-9 w-[20rem]  justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
               >
                 <Search className="h-4 w-4 shrink-0" />
                 <span className="hidden sm:inline truncate">Search topics...</span>
@@ -102,8 +102,8 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               </Button>
             </DialogTrigger>
 
-            <DialogContent className="p-0 gap-0 max-w-xl bg-background border-border overflow-hidden rounded-lg">
-              <DialogHeader className="px-4 py-3 border-b border-border">
+            <DialogContent className="p-0 gap-0 max-w-xl bg-background border-border/40 overflow-hidden rounded-lg">
+              <DialogHeader className="px-4 py-3 border-b border-border/40">
                 <DialogTitle className="sr-only">Search topics</DialogTitle>
                 <div className="flex items-center gap-2">
                   <Search className="h-4 w-4 text-muted-foreground shrink-0" />
@@ -148,7 +148,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                 )}
               </ScrollArea>
 
-              <div className="px-3 py-2 border-t border-border bg-muted/30 flex items-center justify-end">
+              <div className="px-3 py-2 border-t border-border/40 bg-muted/30 flex items-center justify-end">
                 <span className="text-[10px] text-muted-foreground">
                   <kbd className="rounded border bg-background px-1 font-mono">Esc</kbd> to close
                 </span>

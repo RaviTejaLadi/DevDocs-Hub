@@ -22,7 +22,7 @@ const App = () => {
       <NavBar setSidebarOpen={setSidebarOpen} />
 
       <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-        <SheetContent side="left" className="w-80 p-0 border-r border-border">
+        <SheetContent side="left" className="w-80 p-0 border-r border-border/40">
           <ScrollArea className="h-full">
             <Routes>
               <Route
@@ -42,7 +42,7 @@ const App = () => {
               'hidden md:block h-[97%] bg-card/30 shrink-0 transition-all duration-200 ease-in-out',
               docsSidebarCollapsed
                 ? 'w-0 overflow-hidden border-r-0 pointer-events-none'
-                : 'w-72 border-r border-border'
+                : 'w-72 border-r border-border/40'
             )}
             aria-hidden={docsSidebarCollapsed}
           >

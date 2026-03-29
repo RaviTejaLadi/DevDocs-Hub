@@ -59,7 +59,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
     <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-12">
       <div
         ref={contentRef}
-        className="flex-1 min-w-0 mx-auto w-full max-w-4xl rounded-2xl border border-border/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
+        className="flex-1 min-w-0 mx-auto w-full max-w-4xl rounded-2xl border border-border/40/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
       >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
@@ -70,7 +70,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 <div className="group relative mb-10">
                   <h1
                     id={id}
-                    className="scroll-mt-28 text-4xl mb-7 pb-7 border-b border-border/60 font-extrabold tracking-tight flex text-foreground"
+                    className="scroll-mt-28 text-4xl mb-7 pb-7 border-b border-border/40/60 font-extrabold tracking-tight flex text-foreground"
                   >
                     {children}
                     <a
@@ -165,7 +165,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
             ),
 
             table: ({ children }: any) => (
-              <div className="my-8 overflow-hidden rounded-xl border border-border/50 shadow-lg bg-card/30 backdrop-blur-sm">
+              <div className="my-8 overflow-hidden rounded-xl border border-border/40/50 shadow-lg bg-card/30 backdrop-blur-sm">
                 <div className="w-full overflow-x-auto">
                   <Table className="min-w-full">{children}</Table>
                 </div>
@@ -180,7 +180,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               </TableHead>
             ),
             td: ({ children }: any) => (
-              <TableCell className="border-t border-border/30 px-6 py-4 text-muted-foreground odd:bg-background/40 even:bg-muted/10">
+              <TableCell className="border-t border-border/40/30 px-6 py-4 text-muted-foreground odd:bg-background/40 even:bg-muted/10">
                 {children}
               </TableCell>
             ),
@@ -219,7 +219,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
             strong: ({ children }: any) => <strong className="font-bold text-foreground">{children}</strong>,
             em: ({ children }: any) => <em className="italic text-foreground/90 font-medium">{children}</em>,
             kbd: ({ children }: any) => (
-              <kbd className="inline-flex items-center justify-center min-w-6 px-2 h-6 rounded-md border border-border/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
+              <kbd className="inline-flex items-center justify-center min-w-6 px-2 h-6 rounded-md border border-border/40/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
                 {children}
               </kbd>
             ),
@@ -242,7 +242,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                   <img
                     src={src}
                     alt={altText}
-                    className="rounded-xl shadow-xl border border-border/40 ring-1 ring-border/20 max-w-full h-auto"
+                    className="rounded-xl shadow-xl border border-border/40/40 ring-1 ring-border/20 max-w-full h-auto"
                   />
                   {caption && (
                     <figcaption className="mt-3 text-sm text-muted-foreground italic text-center">{caption}</figcaption>
@@ -307,7 +307,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 </div>
               ) : (
                 <code
-                  className="px-1.5 py-0.5 mx-0.5 rounded-md bg-muted/60 border border-border/60 text-[0.92em] font-mono text-foreground/90"
+                  className="px-1.5 py-0.5 mx-0.5 rounded-md bg-muted/60 border border-border/40/60 text-[0.92em] font-mono text-foreground/90"
                   {...props}
                 >
                   {children}
@@ -334,7 +334,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
       </div>
 
       {headings.length > 0 && (
-        <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] border-l border-border/40 pl-6">
+        <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] border-l border-border/40/40 pl-6">
           <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground mb-4">Contents</div>
           <ScrollArea className="h-[calc(100vh-10rem)] pr-2">
             <nav className="space-y-1 text-sm">

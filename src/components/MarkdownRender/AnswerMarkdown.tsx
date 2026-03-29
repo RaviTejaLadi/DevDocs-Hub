@@ -44,7 +44,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
 
             if (isBlock) {
               return (
-                <div className="my-4 rounded-lg overflow-hidden border border-border bg-[#1e293b]">
+                <div className="my-4 rounded-lg overflow-hidden border border-border/40 bg-[#1e293b]">
                   <div className="flex items-center justify-end px-2 py-1.5 border-b border-white/10 bg-black/20">
                     <Button
                       variant="ghost"

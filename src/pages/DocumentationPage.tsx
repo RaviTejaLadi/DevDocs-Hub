@@ -162,7 +162,7 @@ const DocumentationPage = ({
           <Button
             onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
             variant="outline"
-            className="h-auto p-4 justify-start text-left border-border hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+            className="h-auto p-4 justify-start text-left border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
           >
             <div className="w-full space-y-1">
               <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Previous</span>
@@ -179,7 +179,7 @@ const DocumentationPage = ({
           <Button
             variant="outline"
             onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
-            className="h-auto p-4 justify-end text-right border-border hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+            className="h-auto p-4 justify-end text-right border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
           >
             <div className="w-full space-y-1">
               <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Next</span>

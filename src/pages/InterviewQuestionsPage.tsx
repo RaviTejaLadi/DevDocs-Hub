@@ -56,7 +56,7 @@ function TopicListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
-      <section className="rounded-2xl border border-border/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
+      <section className="rounded-2xl border border-border/40/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-4">
             <Link
@@ -98,7 +98,7 @@ function TopicListPage() {
           if (!topics.length) return null;
 
           return (
-            <section key={category} className="rounded-xl border border-border/60 bg-card/40 p-5 sm:p-6">
+            <section key={category} className="rounded-xl border border-border/40/60 bg-card/40 p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3 mb-4">
                 <h2 className="text-lg font-semibold text-foreground">{category}</h2>
                 <Badge variant="outline">{topics.length} topics</Badge>
@@ -112,7 +112,7 @@ function TopicListPage() {
                       key={topic.id}
                       to={`/interview-questions/${topic.id}`}
                       className={cn(
-                        'group rounded-xl border border-border/70 bg-card p-4 transition-all duration-200',
+                        'group rounded-xl border border-border/40/70 bg-card p-4 transition-all duration-200',
                         'hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5'
                       )}
                     >
@@ -194,7 +194,7 @@ function TopicDetailPage() {
         </Link>
       </Button>
 
-      <Card className="overflow-hidden border-border/70 bg-linear-to-br from-card via-card to-primary/5">
+      <Card className="overflow-hidden border-border/40/70 bg-linear-to-br from-card via-card to-primary/5">
         <CardHeader className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-start gap-3">
@@ -224,7 +224,7 @@ function TopicDetailPage() {
         </CardHeader>
       </Card>
 
-      <Card className="border-border/70 bg-card/60">
+      <Card className="border-border/40/70 bg-card/60">
         <CardContent className="pt-6 space-y-5">
           <div className="flex items-center gap-2 text-sm font-medium text-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
@@ -373,12 +373,12 @@ function QuestionBlock({
   return (
     <AccordionItem
       value={item.id}
-      className="group border border-border/70 rounded-xl bg-card overflow-hidden mb-3 last:mb-0 shadow-sm hover:shadow-md transition-shadow"
+      className="group border border-border/40/70 rounded-xl bg-card overflow-hidden mb-3 last:mb-0 shadow-sm hover:shadow-md transition-shadow"
     >
       <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/20 data-[state=open]:bg-muted/30">
         <div className="flex flex-wrap items-center justify-between gap-2 w-full text-left">
           <div className="flex items-start gap-2.5 min-w-0 flex-1">
-            <span className="shrink-0 text-muted-foreground font-semibold text-xs rounded-md border border-border px-2 py-1 mt-0.5">
+            <span className="shrink-0 text-muted-foreground font-semibold text-xs rounded-md border border-border/40 px-2 py-1 mt-0.5">
               Q{index}
             </span>
             <span className="font-medium text-foreground leading-relaxed">{item.question}</span>
@@ -399,7 +399,7 @@ function QuestionBlock({
         </div>
       </AccordionTrigger>
       <AccordionContent className="px-4 sm:px-5 pb-5 pt-0">
-        <div className="pt-4 border-t border-border mt-0">
+        <div className="pt-4 border-t border-border/40 mt-0">
           <h3 className="text-sm font-semibold text-foreground mb-3 w-fit">Answer</h3>
           <AnswerMarkdown content={item.answer} />
         </div>

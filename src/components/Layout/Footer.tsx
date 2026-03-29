@@ -9,7 +9,7 @@ const FOOTER_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="mt-24 border-t border-border bg-muted/20">
+    <footer className="mt-24 border-t border-border/40 bg-muted/20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="mt-6 pt-6 border-t border-border text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
+        <p className="mt-6 pt-6 border-t border-border/40 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
           © {new Date().getFullYear()} ReviseStack. Fullstack topics simplified for quick revision.
         </p>
       </div>
