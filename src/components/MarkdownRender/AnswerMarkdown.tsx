@@ -2,16 +2,19 @@ import { useState, type ClassAttributes, type HTMLAttributes } from 'react';
 import ReactMarkdown from 'react-markdown';
 import type { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/hooks/useTheme';
 
 type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
 export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
   const [copied, setCopied] = useState(false);
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -44,24 +47,38 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
 
             if (isBlock) {
               return (
-                <div className="my-4 rounded-lg overflow-hidden border border-border/40 bg-[#1e293b]">
-                  <div className="flex items-center justify-end px-2 py-1.5 border-b border-white/10 bg-black/20">
+                <div
+                  className={cn(
+                    'my-4 rounded-lg overflow-hidden border border-border/40 bg-[#1e293b] relative',
+                    isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
+                  )}
+                >
+                  <div className="absolute top-0 right-0 flex items-center justify-end px-2 py-1.5 ">
                     <Button
                       variant="ghost"
                       size="sm"
                       className="h-7 gap-1.5 text-xs text-slate-300 hover:text-white"
                       onClick={() => handleCopy(codeString)}
                     >
-                      {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                      {copied ? (
+                        <Check className="h-4 w-4 text-green-400" />
+                      ) : (
+                        <Copy
+                          className={cn(
+                            'h-4 w-4 group-hover:scale-110 transition-transform',
+                            isDarkTheme ? 'text-white' : 'text-slate-700'
+                          )}
+                        />
+                      )}
                       {copied ? 'Copied' : 'Copy'}
                     </Button>
                   </div>
-                  <div className="overflow-x-auto p-4">
+                  <div className="overflow-x-auto">
                     <SyntaxHighlighter
-                      style={atomDark}
+                      style={isDarkTheme ? atomDark : oneLight}
                       language={match?.[1]}
                       PreTag="div"
-                      className="m-0! bg-transparent! p-0! text-sm!"
+                      className="m-0! bg-transparent! p-6! text-sm sm:text-base"
                       showLineNumbers={false}
                     >
                       {codeString}

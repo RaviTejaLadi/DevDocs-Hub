@@ -31,57 +31,51 @@ export const dsaData: TopicItem[] = [
   },
 
   {
-    id: 'dsa-topics',
-    title: 'DSA Topics',
-    content: '',
-    items: [
-      {
-        id: 'dsa-arrays',
-        title: '🔢 Arrays',
-        content: arrays,
-      },
-      {
-        id: 'dsa-strings',
-        title: '🔠 Strings',
-        content: strings,
-      },
-      {
-        id: 'dsa-graphs',
-        title: '📊 Graphs',
-        content: graphs,
-      },
-      {
-        id: 'dsa-hash-tables',
-        title: '🏷️ Hash Tables',
-        content: hashTables,
-      },
-      {
-        id: 'dsa-heaps',
-        title: '⛰️ Heaps',
-        content: heaps,
-      },
-      {
-        id: 'dsa-linked-List',
-        title: '🔗 Linked List',
-        content: linkedList,
-      },
-      {
-        id: 'dsa-queues',
-        title: '🔄 Queues',
-        content: queues,
-      },
-      {
-        id: 'dsa-stack',
-        title: '📚 Stack',
-        content: stack,
-      },
-      {
-        id: 'dsa-trees',
-        title: '🌳 Trees',
-        content: trees,
-      },
-    ],
+    id: 'dsa-arrays',
+    title: '🔢 Arrays',
+    content: arrays,
   },
+  {
+    id: 'dsa-strings',
+    title: '🔠 Strings',
+    content: strings,
+  },
+  {
+    id: 'dsa-graphs',
+    title: '📊 Graphs',
+    content: graphs,
+  },
+  {
+    id: 'dsa-hash-tables',
+    title: '🏷️ Hash Tables',
+    content: hashTables,
+  },
+  {
+    id: 'dsa-heaps',
+    title: '⛰️ Heaps',
+    content: heaps,
+  },
+  {
+    id: 'dsa-linked-List',
+    title: '🔗 Linked List',
+    content: linkedList,
+  },
+  {
+    id: 'dsa-queues',
+    title: '🔄 Queues',
+    content: queues,
+  },
+  {
+    id: 'dsa-stack',
+    title: '📚 Stack',
+    content: stack,
+  },
+  {
+    id: 'dsa-trees',
+    title: '🌳 Trees',
+    content: trees,
+  },
+
   {
     id: 'dsa-q-and-a',
     title: 'Q&A',

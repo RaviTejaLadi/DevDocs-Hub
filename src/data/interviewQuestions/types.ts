@@ -10,7 +10,8 @@ export type TopicId =
   | 'node'
   | 'sql'
   | 'mongodb'
-  | 'system-design';
+  | 'system-design'
+  | 'dsa';
 
 export type ExperienceLevel = 'entry' | 'junior' | 'mid' | 'senior' | 'expert';
 
@@ -60,6 +61,7 @@ export const INTERVIEW_TOPICS: InterviewTopic[] = [
   { id: 'node', label: 'Node.js', icon: Server, category: 'Backend & Data' },
   { id: 'sql', label: 'SQL', icon: Database, category: 'Backend & Data' },
   { id: 'mongodb', label: 'MongoDB', icon: Database, category: 'Backend & Data' },
+  { id: 'dsa', label: 'DSA', icon: Boxes, category: 'Architecture' },
   { id: 'system-design', label: 'System Design', icon: Boxes, category: 'Architecture' },
 ];
 

@@ -9,6 +9,7 @@ import { nodeQuestions } from './node';
 import { sqlQuestions } from './sql';
 import { mongodbQuestions } from './mongodb';
 import { systemDesignQuestions } from './system-design';
+import { dsaQuestions } from './dsa';
 
 const topicModules: Record<TopicId, InterviewQA[]> = {
   html: htmlQuestions,
@@ -20,6 +21,7 @@ const topicModules: Record<TopicId, InterviewQA[]> = {
   sql: sqlQuestions,
   mongodb: mongodbQuestions,
   'system-design': systemDesignQuestions,
+  dsa: dsaQuestions,
 };
 
 /** All questions across topics (for counts on list page). */
