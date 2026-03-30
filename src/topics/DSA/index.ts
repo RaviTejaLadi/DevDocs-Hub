@@ -20,22 +20,16 @@ import type { TopicItem } from '..';
 
 export const dsaData: TopicItem[] = [
   {
-    id: 'dsa',
-    title: 'DSA Introduction',
-    content: '',
-    items: [
-      {
-        id: 'dsa-intro',
-        title: '📚 Introduction',
-        content: dsaIntro,
-      },
-      {
-        id: 'dsa-roadmap',
-        title: '🗺️ Roadmap',
-        content: dsaRoadMap,
-      },
-    ],
+    id: 'dsa-intro',
+    title: '📚 Introduction',
+    content: dsaIntro,
   },
+  {
+    id: 'dsa-roadmap',
+    title: '🗺️ Roadmap',
+    content: dsaRoadMap,
+  },
+
   {
     id: 'dsa-topics',
     title: 'DSA Topics',
