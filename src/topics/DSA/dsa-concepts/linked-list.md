@@ -53,9 +53,11 @@ class SinglyLinkedList {
 
 ### Visualization
 
-```bash
-Head → [Data|Next] → [Data|Next] → [Data|null]
-       Node 1        Node 2        Node 3
+```mermaid
+flowchart LR
+  H["Head"] --> N1["Node 1<br/>Data | Next"]
+  N1 --> N2["Node 2<br/>Data | Next"]
+  N2 --> N3["Node 3<br/>Data | null"]
 ```
 
 ### Real-World Example
@@ -178,11 +180,12 @@ class DoublyLinkedList {
 
 ### Visualization
 
-```bash
-      ↔     ↔     ↔
-null←[Prev|Data|Next]↔[Prev|Data|Next]↔[Prev|Data|Next]→null
-     Node 1           Node 2           Node 3
-     (Head)                            (Tail)
+```mermaid
+flowchart LR
+  NULLL["null"] <--> D1["Node 1 (Head)<br/>Prev | Data | Next"]
+  D1 <--> D2["Node 2<br/>Prev | Data | Next"]
+  D2 <--> D3["Node 3 (Tail)<br/>Prev | Data | Next"]
+  D3 <--> NULLR["null"]
 ```
 
 ### Real-World Example
@@ -323,12 +326,10 @@ class CircularLinkedList {
 
 ### Visualization
 
-```bash
-     ┌─────────────────────────────────┐
-     ↓                                 │
-[Data|Next] → [Data|Next] → [Data|Next]┘
-Node 1        Node 2        Node 3
-(Head)
+```mermaid
+flowchart LR
+  C1["Node 1 (Head)<br/>Data | Next"] --> C2["Node 2<br/>Data | Next"] --> C3["Node 3<br/>Data | Next"]
+  C3 --> C1
 ```
 
 ### Real-World Example

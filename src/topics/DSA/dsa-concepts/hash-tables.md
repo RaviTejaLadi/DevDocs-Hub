@@ -74,8 +74,9 @@ console.log(hashMap.get('key2')); // "value2"
 
 ### How Hash Tables Work:
 
-```bash
-Key → Hash Function → Index → Value
+```mermaid
+flowchart LR
+  K["Key"] --> H["Hash Function"] --> I["Index"] --> V["Value"]
 ```
 
 **Step-by-Step Process:**
@@ -85,18 +86,15 @@ Key → Hash Function → Index → Value
 3. **Index**: Stores value at array position 5
 4. **Storage**: ["", "", "", "", "", "red fruit", ...]
 
-```bash
-Hash Table Structure:
-┌─────────────┬─────────────┐
-│    Index    │    Value    │
-├─────────────┼─────────────┤
-│      0      │    empty    │
-│      1      │   "banana"  │
-│      2      │    empty    │
-│      3      │   "orange"  │
-│      4      │    empty    │
-│      5      │   "apple"   │
-└─────────────┴─────────────┘
+```mermaid
+flowchart TB
+  I0["Index 0: empty"]
+  I1["Index 1: banana"]
+  I2["Index 2: empty"]
+  I3["Index 3: orange"]
+  I4["Index 4: empty"]
+  I5["Index 5: apple"]
+  I0 --> I1 --> I2 --> I3 --> I4 --> I5
 ```
 
 ---

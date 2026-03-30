@@ -57,30 +57,20 @@ This is line 3`;
 
 ## Visualization 📊
 
-```bash
-String Structure: "HELLO"
-┌─────┬─────┬─────┬─────┬─────┐
-│  H  │  E  │  L  │  L  │  O  │
-├─────┼─────┼─────┼─────┼─────┤
-│  0  │  1  │  2  │  3  │  4  │  ← Index positions
-└─────┴─────┴─────┴─────┴─────┘
-
-String Operations Flow:
-Original String: "Hello"
-      ↓
-   .toUpperCase()
-      ↓
-New String: "HELLO" (original unchanged)
+```mermaid
+flowchart TB
+  subgraph Structure["String: HELLO"]
+    H0["0:H"] --> H1["1:E"] --> H2["2:L"] --> H3["3:L"] --> H4["4:O"]
+  end
+  O["Original: Hello"] --> OP["toUpperCase()"] --> N["New: HELLO (original unchanged)"]
 ```
 
 ### String Immutability Concept:
 
-```bash
-str = "Cat" → [C][a][t] (Memory Location A)
-      ↓
-str = "Dog" → [D][o][g] (Memory Location B)
-
-"Cat" still exists in Location A until garbage collected
+```mermaid
+flowchart TB
+  A["str = Cat (Memory Location A)"] --> B["str = Dog (Memory Location B)"]
+  B --> C["Old value Cat remains in A until garbage collected"]
 ```
 
 ---

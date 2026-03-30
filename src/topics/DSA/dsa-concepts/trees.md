@@ -29,12 +29,12 @@ class TreeNode {
 
 ### Visualization
 
-```bash
-       1
-      / \
-     2   3
-    / \
-   4   5
+```mermaid
+flowchart TB
+  N1["1"] --> N2["2"]
+  N1 --> N3["3"]
+  N2 --> N4["4"]
+  N2 --> N5["5"]
 ```
 
 ### Example
@@ -132,14 +132,16 @@ class BSTNode {
 
 ### Visualization
 
-```bash
-       8
-      / \
-     3   10
-    / \    \
-   1   6    14
-      / \   /
-     4   7 13
+```mermaid
+flowchart TB
+  B8["8"] --> B3["3"]
+  B8 --> B10["10"]
+  B3 --> B1["1"]
+  B3 --> B6["6"]
+  B6 --> B4["4"]
+  B6 --> B7["7"]
+  B10 --> B14["14"]
+  B14 --> B13["13"]
 ```
 
 ### Example
@@ -231,13 +233,15 @@ class AVLNode {
 
 ### Visualization
 
-```bash
-Before rotation:     After rotation:
-    1                    2
-     \                  / \
-      2        -->     1   3
-       \
-        3
+```mermaid
+flowchart LR
+  subgraph Before["Before rotation"]
+    A1["1"] --> A2["2"] --> A3["3"]
+  end
+  subgraph After["After rotation"]
+    C2["2"] --> C1["1"]
+    C2 --> C3["3"]
+  end
 ```
 
 ### Example
@@ -377,14 +381,16 @@ class RBNode {
 
 ### Visualization
 
-```bash
-       B(8)
-      /     \
-   R(3)     R(10)
-   /  \        \
-B(1) B(6)    B(14)
-     / \      /
-  R(4) R(7) R(13)
+```mermaid
+flowchart TB
+  RB8["B(8)"] --> RB3["R(3)"]
+  RB8 --> RB10["R(10)"]
+  RB3 --> RB1["B(1)"]
+  RB3 --> RB6["B(6)"]
+  RB6 --> RB4["R(4)"]
+  RB6 --> RB7["R(7)"]
+  RB10 --> RB14["B(14)"]
+  RB14 --> RB13["R(13)"]
 ```
 
 ### Example
@@ -520,12 +526,20 @@ class BTreeNode {
 
 ### Visualization
 
-```bash
-        [10, 20]
-       /    |    \
-   [5,8]  [12,15] [25,30]
-   / | |   | | |   | | |
-  [] [] []  [] [] []  [] [] []
+```mermaid
+flowchart TB
+  ROOT["[10, 20]"] --> C1["[5, 8]"]
+  ROOT --> C2["[12, 15]"]
+  ROOT --> C3["[25, 30]"]
+  C1 --> L1["leaf"]
+  C1 --> L2["leaf"]
+  C1 --> L3["leaf"]
+  C2 --> L4["leaf"]
+  C2 --> L5["leaf"]
+  C2 --> L6["leaf"]
+  C3 --> L7["leaf"]
+  C3 --> L8["leaf"]
+  C3 --> L9["leaf"]
 ```
 
 ### Example
@@ -675,15 +689,14 @@ class TrieNode {
 
 ### Visualization
 
-```bash
-        root
-       /  |  \
-     c    d    s
-    /     |     \
-   a      o      u
-  /       |       \
- t        g        n
-(cat)   (dog)    (sun)
+```mermaid
+flowchart TB
+  RT["root"] --> C["c"]
+  RT --> D["d"]
+  RT --> S["s"]
+  C --> CA["a"] --> CAT["t (cat)"]
+  D --> DO["o"] --> DOG["g (dog)"]
+  S --> SU["u"] --> SUN["n (sun)"]
 ```
 
 ### Example
@@ -814,16 +827,18 @@ class SegmentTree {
 
 ### Visualization
 
-```bash
-Array: [1, 3, 5, 7, 9, 11]
-Tree representation:
-         36(sum of all)
-        /              \
-    9(sum 0-2)      27(sum 3-5)
-    /        \      /          \
-4(sum 0-1) 5   16(sum 3-4)   11
-  /    \        /         \
- 1      3      7           9
+```mermaid
+flowchart TB
+  S36["36 (sum 0-5)"] --> S9["9 (sum 0-2)"]
+  S36 --> S27["27 (sum 3-5)"]
+  S9 --> S4["4 (sum 0-1)"]
+  S9 --> S5["5 (index 2)"]
+  S27 --> S16["16 (sum 3-4)"]
+  S27 --> S11["11 (index 5)"]
+  S4 --> V1["1"]
+  S4 --> V3["3"]
+  S16 --> V7["7"]
+  S16 --> V9["9"]
 ```
 
 ### Example
@@ -955,15 +970,13 @@ class FenwickTree {
 
 ### Visualization
 
-```bash
-Array:  [0, 1, 3, 5, 7, 9, 11] (1-indexed)
-BIT:    [0, 1, 4, 5, 16, 9, 20]
-
-Index binary representation and responsibility:
-1 (001): covers [1,1]
-2 (010): covers [1,2]
-3 (011): covers [3,3]
-4 (100): covers [1,4]
+```mermaid
+flowchart TB
+  ARR["Array (1-indexed): [1, 3, 5, 7, 9, 11]"] --> BIT["BIT array: [1, 4, 5, 16, 9, 20]"]
+  BIT --> I1["Index 1 (001): covers [1,1]"]
+  BIT --> I2["Index 2 (010): covers [1,2]"]
+  BIT --> I3["Index 3 (011): covers [3,3]"]
+  BIT --> I4["Index 4 (100): covers [1,4]"]
 ```
 
 ### Example

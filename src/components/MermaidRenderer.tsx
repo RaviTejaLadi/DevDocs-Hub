@@ -210,7 +210,7 @@ const initMermaid = (isDark: boolean) => {
           tagLabelBackground: '#5a6aa8',
           tagLabelBorder: '#3a4888',
         },
-    flowchart: { curve: 'basis', padding: 20, nodeSpacing: 50, rankSpacing: 70, htmlLabels: true, useMaxWidth: true },
+    flowchart: { curve: 'basis', padding: 20, nodeSpacing: 50, rankSpacing: 70, htmlLabels: false, useMaxWidth: true },
     sequence: { actorMargin: 60, mirrorActors: false, useMaxWidth: true },
     gantt: { barHeight: 24, barGap: 6, topPadding: 40, leftPadding: 80, gridLineStartPadding: 40 },
     er: { layoutDirection: 'TB', useMaxWidth: true },
@@ -233,15 +233,16 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
       .then(({ svg }) => {
         if (!ref.current) return;
 
-        const patched = svg
-          .replace(/<rect /g, '<rect rx="4" ry="4" ')
-          .replace(/width="[^"]*"/, 'width="100%"')
-          .replace(/height="[^"]*"/, 'height="auto"');
-
-        ref.current.innerHTML = patched;
+        ref.current.innerHTML = svg;
 
         const svgEl = ref.current.querySelector('svg');
         if (!svgEl) return;
+
+        // Keep responsive sizing without mutating internal SVG nodes.
+        svgEl.removeAttribute('height');
+        svgEl.style.width = '100%';
+        svgEl.style.maxWidth = '100%';
+        svgEl.style.height = 'auto';
 
         // Avoid fixed dark/light backgrounds inside the SVG.
         svgEl.style.backgroundColor = 'transparent';
@@ -252,16 +253,20 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
           if (isDark) (el as SVGElement).style.stroke = '#8fa3ea';
         });
 
-        // Edge label text
-        svgEl.querySelectorAll('.edgeLabel span, .edgeLabel div').forEach((el) => {
-          (el as HTMLElement).style.fontSize = '12px';
-          (el as HTMLElement).style.fontWeight = '500';
+        // Edge label text (SVG labels, no foreignObject HTML)
+        svgEl.querySelectorAll('.edgeLabel text').forEach((el) => {
+          (el as SVGElement).style.fontSize = '12px';
+          (el as SVGElement).style.fontWeight = '500';
           if (isDark) {
-            (el as HTMLElement).style.color = '#dbe3ff';
-            (el as HTMLElement).style.background = '#1b2640';
-            (el as HTMLElement).style.border = '1px solid #5f72b4';
-            (el as HTMLElement).style.borderRadius = '8px';
-            (el as HTMLElement).style.padding = '2px 6px';
+            (el as SVGElement).style.fill = '#dbe3ff';
+          }
+        });
+
+        // Edge label backgrounds
+        svgEl.querySelectorAll('.edgeLabel rect').forEach((el) => {
+          if (isDark) {
+            (el as SVGElement).style.fill = '#1b2640';
+            (el as SVGElement).style.stroke = '#5f72b4';
           }
         });
 

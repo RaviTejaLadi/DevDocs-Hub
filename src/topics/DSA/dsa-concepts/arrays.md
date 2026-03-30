@@ -85,34 +85,43 @@ function create2DArray(rows, cols, defaultValue = 0) {
 
 ### 1D Array Structure
 
-```bash
-Index:  0    1    2    3    4
-Value: [🍎] [🍌] [🍊] [🍇] [🥝]
-       ↑
-   fruits[0] = '🍎'
+```mermaid
+flowchart LR
+  A0["0: 🍎"] --> A1["1: 🍌"] --> A2["2: 🍊"] --> A3["3: 🍇"] --> A4["4: 🥝"]
+  REF["fruits[0] = 🍎"]
+  A0 -.-> REF
 ```
 
 ### 2D Array Structure (3×3 Matrix)
 
-```bash
-     Col: 0   1   2
-Row 0: [1] [2] [3]
-Row 1: [4] [5] [6]
-Row 2: [7] [8] [9]
-       ↑
-   matrix[1][2] = 6
+```mermaid
+flowchart TB
+  subgraph R0["Row 0"]
+    R00["(0,0)=1"] --- R01["(0,1)=2"] --- R02["(0,2)=3"]
+  end
+  subgraph R1["Row 1"]
+    R10["(1,0)=4"] --- R11["(1,1)=5"] --- R12["(1,2)=6"]
+  end
+  subgraph R2["Row 2"]
+    R20["(2,0)=7"] --- R21["(2,1)=8"] --- R22["(2,2)=9"]
+  end
+  ACCESS["matrix[1][2] = 6"]
+  R12 -.-> ACCESS
 ```
 
 ### Memory Layout
 
-```bash
-1D Array: [element0][element1][element2][element3]...
-                ↑        ↑        ↑        ↑
-              index0   index1   index2   index3
+```mermaid
+flowchart TB
+  subgraph OneD["1D Array"]
+    E0["element0"] --> E1["element1"] --> E2["element2"] --> E3["element3"] --> EN["..."]
+  end
 
-2D Array: [row0_pointer][row1_pointer][row2_pointer]...
-             ↓             ↓             ↓
-           [col0][col1]  [col0][col1]  [col0][col1]...
+  subgraph TwoD["2D Array"]
+    RP0["row0_pointer"] --> RPA["row0: col0, col1, ..."]
+    RP1["row1_pointer"] --> RPB["row1: col0, col1, ..."]
+    RP2["row2_pointer"] --> RPC["row2: col0, col1, ..."]
+  end
 ```
 
 ---

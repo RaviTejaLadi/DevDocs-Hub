@@ -45,10 +45,11 @@ class Queue {
 
 ### 🎨 Visualization
 
-```bash
-Front → [A] [B] [C] [D] ← Rear
-         ↑           ↑
-    Remove here   Add here
+```mermaid
+flowchart LR
+  F["Front"] --> QA["A"] --> QB["B"] --> QC["C"] --> QD["D"] --> R["Rear"]
+  QA -.-> RM["Dequeue here"]
+  QD -.-> ADD["Enqueue here"]
 ```
 
 **Step-by-step:**
@@ -169,17 +170,14 @@ class CircularQueue {
 
 ### 🎨 Visualization
 
-```bash
-     [0] [1] [2]
-      A   B   C
-     ↑       ↑
-   front   rear
-
-After adding D when full:
-     [0] [1] [2]
-      D   B   C
-          ↑   ↑
-        front rear
+```mermaid
+flowchart TB
+  subgraph Before["Before wrap-around"]
+    B0["0:A (front)"] --> B1["1:B"] --> B2["2:C (rear)"]
+  end
+  subgraph After["After enqueue D with circular indexing"]
+    A0["0:D"] --> A1["1:B (front)"] --> A2["2:C (rear)"]
+  end
 ```
 
 ### 🌍 Example
@@ -314,14 +312,11 @@ class PriorityQueue {
 
 ### 🎨 Visualization
 
-```bash
-Priority Queue (Higher number = Higher priority):
-[(element: "Emergency", priority: 5)]
-[(element: "Urgent", priority: 3)]
-[(element: "Normal", priority: 1)]
-[(element: "Low", priority: 1)]
-
-Dequeue order: Emergency → Urgent → Normal → Low
+```mermaid
+flowchart TB
+  P1["Emergency (5)"] --> P2["Urgent (3)"] --> P3["Normal (1)"] --> P4["Low (1)"]
+  NOTE["Dequeue order follows highest priority first"]
+  P1 -.-> NOTE
 ```
 
 ### 🌍 Example
@@ -461,17 +456,19 @@ class Deque {
 
 ### 🎨 Visualization
 
-```bash
-Front ← [A] [B] [C] [D] → Rear
-         ↑             ↑
-    Add/Remove    Add/Remove
-     from here    from here
-
-Operations:
-- addFront('X'): [X] [A] [B] [C] [D]
-- addRear('Y'): [A] [B] [C] [D] [Y]
-- removeFront(): [B] [C] [D]
-- removeRear(): [A] [B] [C]
+```mermaid
+flowchart TB
+  subgraph Deque["Deque state"]
+    F["Front"] --> DA["A"] --> DB["B"] --> DC["C"] --> DD["D"] --> R["Rear"]
+  end
+  OP1["addFront('X') => [X,A,B,C,D]"]
+  OP2["addRear('Y') => [A,B,C,D,Y]"]
+  OP3["removeFront() => [B,C,D]"]
+  OP4["removeRear() => [A,B,C]"]
+  Deque --> OP1
+  Deque --> OP2
+  Deque --> OP3
+  Deque --> OP4
 ```
 
 ### 🌍 Example

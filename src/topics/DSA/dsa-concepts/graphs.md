@@ -20,12 +20,20 @@ streets. If you can go from A to B, you can also go from B to A.
 
 ### Visualization
 
-```bash
-Directed Graph:          Undirected Graph:
-A -----> B               A ------ B
-|        |               |        |
-v        v               |        |
-C -----> D               C ------ D
+```mermaid
+flowchart LR
+  subgraph Directed["Directed Graph"]
+    DA["A"] --> DB["B"]
+    DA --> DC["C"]
+    DB --> DD["D"]
+    DC --> DD
+  end
+  subgraph Undirected["Undirected Graph"]
+    UA["A"] --- UB["B"]
+    UA --- UC["C"]
+    UB --- UD["D"]
+    UC --- UD
+  end
 ```
 
 ### Example
@@ -89,13 +97,20 @@ distance, or any metric.
 
 ### Visualization
 
-```bash
-Weighted Graph:          Unweighted Graph:
-A ---5--- B              A ------- B
-|         |              |         |
-3         2              |         |
-|         |              |         |
-C ---7--- D              C ------- D
+```mermaid
+flowchart LR
+  subgraph Weighted["Weighted Graph"]
+    WA["A"] ---|5| WB["B"]
+    WA ---|3| WC["C"]
+    WB ---|2| WD["D"]
+    WC ---|7| WD
+  end
+  subgraph Unweighted["Unweighted Graph"]
+    UA["A"] --- UB["B"]
+    UA --- UC["C"]
+    UB --- UD["D"]
+    UC --- UD
+  end
 ```
 
 ### Example
@@ -239,15 +254,16 @@ before backtracking.
 
 ### Visualization
 
-```bash
-Graph:    A
-         / \
-        B   C
-       /     \
-      D       E
-
-BFS Order: A → B → C → D → E (level by level)
-DFS Order: A → B → D → C → E (depth first)
+```mermaid
+flowchart TB
+  A["A"] --> B["B"]
+  A --> C["C"]
+  B --> D["D"]
+  C --> E["E"]
+  BFS["BFS: A -> B -> C -> D -> E"]
+  DFS["DFS: A -> B -> D -> C -> E"]
+  D -.-> BFS
+  E -.-> DFS
 ```
 
 ### Example
@@ -332,15 +348,16 @@ v), vertex u comes before v in the ordering.
 
 ### Visualization
 
-```bash
-Graph:     A → B → D
-           ↓     ↗
-           C → E
-
-Valid Topological Orders:
-- A, C, B, E, D
-- A, C, E, B, D
-- A, B, C, E, D
+```mermaid
+flowchart LR
+  TA["A"] --> TB["B"] --> TD["D"]
+  TA --> TC["C"] --> TE["E"] --> TD
+  O1["Valid order: A, C, B, E, D"]
+  O2["Valid order: A, C, E, B, D"]
+  O3["Valid order: A, B, C, E, D"]
+  TD -.-> O1
+  TD -.-> O2
+  TD -.-> O3
 ```
 
 ### Example
@@ -432,13 +449,20 @@ a tree (no cycles).
 
 ### Visualization
 
-```bash
-Original Graph:      MST Result:
-A ---1--- B          A ---1--- B
-|    \    |          |
-4     3   2          4
-|      \  |          |
-C ---5--- D          C
+```mermaid
+flowchart LR
+  subgraph Original["Original Graph"]
+    OA["A"] ---|1| OB["B"]
+    OA ---|4| OC["C"]
+    OA ---|3| OD["D"]
+    OB ---|2| OD
+    OC ---|5| OD
+  end
+  subgraph MST["MST Result"]
+    MA["A"] ---|1| MB["B"]
+    MA ---|4| MC["C"]
+    MB ---|2| MD["D"]
+  end
 ```
 
 ### Example

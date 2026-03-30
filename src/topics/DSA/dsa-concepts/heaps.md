@@ -73,16 +73,21 @@ class MinHeap {
 
 ### Array to Tree Representation
 
-```bash
-Array: [3, 5, 8, 9, 6, 12, 15]
-Index:  0  1  2  3  4   5   6
-
-Tree Structure (Min-Heap):
-        3 (index 0)
-       / \
-      5   8 (index 1,2)
-     / \ / \
-    9  6 12 15 (index 3,4,5,6)
+```mermaid
+flowchart TB
+  R["3 (index 0)"]
+  L1["5 (index 1)"]
+  R1["8 (index 2)"]
+  L2["9 (index 3)"]
+  L3["6 (index 4)"]
+  R2["12 (index 5)"]
+  R3["15 (index 6)"]
+  R --> L1
+  R --> R1
+  L1 --> L2
+  L1 --> L3
+  R1 --> R2
+  R1 --> R3
 ```
 
 ### Index Relationships
@@ -107,14 +112,21 @@ Tree Structure (Min-Heap):
 Imagine an emergency room where patients are prioritized by severity (1 = most
 critical):
 
-```bash
-Priority Queue: [1, 3, 2, 7, 4, 8, 5]
-
-        1 (Critical)
-       / \
-      3   2 (High)
-     / \ / \
-    7  4 8  5 (Medium/Low)
+```mermaid
+flowchart TB
+  P0["1 (Critical)"]
+  P1["3 (High)"]
+  P2["2 (High)"]
+  P3["7 (Medium/Low)"]
+  P4["4 (Medium/Low)"]
+  P5["8 (Medium/Low)"]
+  P6["5 (Medium/Low)"]
+  P0 --> P1
+  P0 --> P2
+  P1 --> P3
+  P1 --> P4
+  P2 --> P5
+  P2 --> P6
 ```
 
 - **Most critical patient (1)** is always at the top

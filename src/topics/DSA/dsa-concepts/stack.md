@@ -50,18 +50,10 @@ let isEmpty = stack.length === 0;
 
 ## 🎨 Visualization
 
-```bash
-Stack Operations Visualization:
-
-Initial: []
-
-push(1):  [1]     ← Top
-push(2):  [2, 1]  ← Top
-push(3):  [3, 2, 1] ← Top
-
-pop():    [2, 1]  ← Top (removed 3)
-pop():    [1]     ← Top (removed 2)
-peek():   [1]     ← Top (just viewing, not removing)
+```mermaid
+flowchart TB
+  S0["Initial: []"] --> S1["push(1): [1] (Top=1)"] --> S2["push(2): [2,1] (Top=2)"] --> S3["push(3): [3,2,1] (Top=3)"]
+  S3 --> S4["pop(): [2,1] (removed 3)"] --> S5["pop(): [1] (removed 2)"] --> S6["peek(): [1] (view top only)"]
 ```
 
 ### 📊 Step-by-Step Breakdown:
@@ -79,12 +71,12 @@ peek():   [1]     ← Top (just viewing, not removing)
 - When you click the "Back" button, the most recent page gets "popped" off
 - You always go back to the last page you visited (LIFO)
 
-```bash
-Visit google.com     → [google.com]
-Visit youtube.com    → [youtube.com, google.com]
-Visit stackoverflow  → [stackoverflow, youtube.com, google.com]
-Click Back          → [youtube.com, google.com] (removed stackoverflow)
-Click Back          → [google.com] (removed youtube.com)
+```mermaid
+flowchart TB
+  H1["Visit google.com<br/>[google.com]"] --> H2["Visit youtube.com<br/>[youtube.com, google.com]"]
+  H2 --> H3["Visit stackoverflow<br/>[stackoverflow, youtube.com, google.com]"]
+  H3 --> H4["Click Back<br/>[youtube.com, google.com]"]
+  H4 --> H5["Click Back<br/>[google.com]"]
 ```
 
 ## ⚡ Code Example
