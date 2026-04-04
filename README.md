@@ -80,6 +80,63 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:1234`.
 
+## ▲ Deploy To Vercel
+
+This project is now configured for Vercel (`vercel.json`) with SPA rewrites.
+
+1. Install Vercel CLI (optional if deploying from dashboard):
+
+```bash
+npm i -g vercel
+```
+
+2. Deploy:
+
+```bash
+vercel
+```
+
+3. For production deployment:
+
+```bash
+vercel --prod
+```
+
+4. After deploy, update the `homepage` value in `package.json` with your final
+   Vercel URL.
+
+## 📦 Publish As npm Package
+
+The package now includes a CLI command: `revise-stack`.
+
+### What users can do
+
+- Run directly with npx:
+
+```bash
+npx revise-stack
+```
+
+- Or install globally and use:
+
+```bash
+npm i -g revise-stack
+revise-stack
+```
+
+This opens your deployed docs website in the default browser.
+
+### Publish steps
+
+```bash
+npm login
+npm run build
+npm publish --access public
+```
+
+> Note: `prepublishOnly` already runs `npm run build` automatically as a safety
+> check before publishing.
+
 ## 📝 How to Add Content
 
 Revise Stack is designed to be easily extensible. All content is managed in the

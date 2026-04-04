@@ -1,14 +1,30 @@
 {
   "name": "revise-stack",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Revise Stack docs platform with CLI launcher.",
+  "homepage": "https://dev-docs-hub.vercel.app",
+  "license": "MIT",
   "type": "module",
+  "bin": {
+    "revise-stack": "./bin/revise-stack.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --ignore-path .prettierignore --write \"**/*.{js,ts,tsx,json,md}\""
+    "format": "prettier --ignore-path .prettierignore --write \"**/*.{js,ts,tsx,json,md}\"",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
