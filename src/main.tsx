@@ -8,7 +8,7 @@ import App from './App';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" storageKey="dev-docs-hub-ui-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="revise-stack-ui-theme">
         <App />
       </ThemeProvider>
     </BrowserRouter>

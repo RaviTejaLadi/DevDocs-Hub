@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageJsonPath = path.resolve(__dirname, "..", "package.json");
 
-const fallbackUrl = "https://dev-docs-hub.vercel.app";
+const fallbackUrl = "https://revise-stack.vercel.app";
 let siteUrl = process.env.REVISE_STACK_URL || fallbackUrl;
 
 if (existsSync(packageJsonPath)) {
