@@ -117,6 +117,12 @@ The package now includes a CLI command: `revise-stack`.
 npx revise-stack
 ```
 
+- Open directly inside VS Code (Simple Browser tab):
+
+```bash
+npx revise-stack --vscode
+```
+
 - Or install globally and use:
 
 ```bash
@@ -124,7 +130,8 @@ npm i -g revise-stack
 revise-stack
 ```
 
-This opens your deployed docs website in the default browser.
+From VS Code terminal, `revise-stack` now prefers opening in VS Code for quick
+access. Use `--browser` to force system browser.
 
 ### Publish steps
 
