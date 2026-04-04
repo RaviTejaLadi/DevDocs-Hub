@@ -105,45 +105,6 @@ vercel --prod
 4. After deploy, update the `homepage` value in `package.json` with your final
    Vercel URL.
 
-## 📦 Publish As npm Package
-
-The package now includes a CLI command: `revise-stack`.
-
-### What users can do
-
-- Run directly with npx:
-
-```bash
-npx revise-stack
-```
-
-- Open directly inside VS Code (Simple Browser tab):
-
-```bash
-npx revise-stack --vscode
-```
-
-- Or install globally and use:
-
-```bash
-npm i -g revise-stack
-revise-stack
-```
-
-From VS Code terminal, `revise-stack` now prefers opening in VS Code for quick
-access. Use `--browser` to force system browser.
-
-### Publish steps
-
-```bash
-npm login
-npm run build
-npm publish --access public
-```
-
-> Note: `prepublishOnly` already runs `npm run build` automatically as a safety
-> check before publishing.
-
 ## 📝 How to Add Content
 
 Revise Stack is designed to be easily extensible. All content is managed in the
