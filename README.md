@@ -59,8 +59,8 @@ Follow these steps to set up Revise Stack locally on your machine.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/RaviTejaLadi/DevDocs-Hub
-cd DevDocs-Hub
+git clone https://github.com/RaviTejaLadi/revise-stack
+cd revise-stack
 
 ```
 

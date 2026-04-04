@@ -1,7 +1,7 @@
 {
   "name": "revise-stack",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Revise Stack docs platform with CLI launcher.",
   "homepage": "https://revise-stack.vercel.app",
   "license": "MIT",
