@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
+import { Binary, Network, NotebookTabs } from 'lucide-react';
 
 import { htmlTopics } from './frontend/html';
 import { cssTopics } from './frontend/css';
@@ -76,7 +77,7 @@ const transformResourcesData = (): Topic[] =>
     id: resource.id,
     title: resource.title,
     description: 'Find helpful cheat sheets for various technologies.',
-    icon: Icons.CS,
+    icon: <NotebookTabs className="h-5 w-5" />,
     items: resource.children.map((child) => ({
       id: child.id,
       title: child.title,
@@ -175,7 +176,7 @@ export const TOPICS: Topics = [
     id: 'dsa',
     title: 'DSA',
     description: 'data structures and algorithms',
-    icon: Icons.DSA,
+    icon: <Binary className="h-5 w-5" />,
     items: dsaData,
     type: 'dsa',
     category: 'dsa',
@@ -184,7 +185,7 @@ export const TOPICS: Topics = [
     id: 'system-design',
     title: 'System Design',
     description: 'system design',
-    icon: Icons.SD,
+    icon: <Network className="h-5 w-5" />,
     items: systemDesignData,
     type: 'system-design',
     category: 'system-design',
