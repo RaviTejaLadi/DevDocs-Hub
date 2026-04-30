@@ -8,13 +8,17 @@ import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/hooks/useTheme';
+import { useTranslatedText } from '@/i18n/useTranslatedText';
+import { useI18n } from '@/i18n/I18nProvider';
 
 type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
 export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
   const [copied, setCopied] = useState(false);
   const { theme } = useTheme();
+  const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
+  const translatedContent = useTranslatedText(content);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -70,7 +74,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
                           )}
                         />
                       )}
-                      {copied ? 'Copied' : 'Copy'}
+                      {copied ? t('common.copied') : t('common.copy')}
                     </Button>
                   </div>
                   <div className="overflow-x-auto">
@@ -102,7 +106,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
           pre: ({ children }) => <>{children}</>,
         }}
       >
-        {content}
+        {translatedContent}
       </ReactMarkdown>
     </div>
   );

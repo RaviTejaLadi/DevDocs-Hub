@@ -10,6 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { colors } from '@/constants/colors';
+import { useI18n } from '@/i18n/I18nProvider';
+import { TranslatedText } from '@/i18n/TranslatedText';
 
 type ViewMode = 'grid' | 'list';
 
@@ -26,6 +28,7 @@ const badgeToneClasses = [
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -67,8 +70,7 @@ const LandingPage = () => {
           <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
         </h1>
         <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
-          Fullstack developer topics in a simplified way—your go-to place for quick revision before interviews or
-          day-to-day coding.
+          {t('landing.heroDescription')}
         </p>
 
         <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
@@ -77,7 +79,7 @@ const LandingPage = () => {
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search topics..."
+              placeholder={t('landing.searchTopics')}
               className="pl-10 h-11 rounded-lg border-border/40 bg-background text-foreground placeholder:text-muted-foreground"
             />
           </div>
@@ -108,7 +110,7 @@ const LandingPage = () => {
             onClick={() => navigate('/interview-questions')}
           >
             <HelpCircle className="h-4 w-4" />
-            Interview Questions (by level)
+            {t('landing.interviewQuestionsByLevel')}
           </Button>
         </div>
       </header>
@@ -178,14 +180,14 @@ const LandingPage = () => {
                         </div>
                         {viewMode === 'grid' && (
                           <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                            {topic.items.length} topics
+                            {t('landing.topicsCount', { count: topic.items.length })}
                           </span>
                         )}
                       </div>
 
                       <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
                         <h3 className={cn('font-semibold text-foreground', viewMode === 'list' ? 'text-base' : 'mb-1')}>
-                          {topic.title}
+                          <TranslatedText text={topic.title} />
                         </h3>
                         <p
                           className={cn(
@@ -193,7 +195,7 @@ const LandingPage = () => {
                             viewMode === 'list' ? 'line-clamp-1 sm:line-clamp-2' : 'mb-3 line-clamp-2'
                           )}
                         >
-                          {topic.description}
+                          <TranslatedText text={topic.description} />
                         </p>
 
                         <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
@@ -205,12 +207,14 @@ const LandingPage = () => {
                                 badgeToneClasses[badgeIndex % badgeToneClasses.length]
                               )}
                             >
-                              <span className="truncate">{item.title}</span>
+                              <span className="truncate">
+                                <TranslatedText text={item.title} />
+                              </span>
                             </span>
                           ))}
                           {extraBadgeCount > 0 && (
                             <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
-                              +{extraBadgeCount} more
+                              {t('landing.more', { count: extraBadgeCount })}
                             </span>
                           )}
                         </div>
@@ -219,7 +223,7 @@ const LandingPage = () => {
                       {viewMode === 'list' && (
                         <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
                           <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                            {topic.items.length} topics
+                            {t('landing.topicsCount', { count: topic.items.length })}
                           </span>
                           <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                         </div>

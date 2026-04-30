@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/i18n/I18nProvider';
+import { TranslatedText } from '@/i18n/TranslatedText';
 
 // Helper to flatten tree for searching
 const flattenItems = (items: TopicItem[]): TopicItem[] => {
@@ -27,6 +29,7 @@ const SidebarContent = ({
   activeSlug?: string;
   closeSheet?: () => void;
 }) => {
+  const { t } = useI18n();
   const topic = TOPICS.find((t) => t.id === currentTopicId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
@@ -82,7 +85,7 @@ const SidebarContent = ({
               )}
 
               <span className="text-sm truncate text-left flex-1 min-w-0" title={item.title}>
-                {item.title}
+                <TranslatedText text={item.title} />
               </span>
 
               {hasChildren && (
@@ -90,7 +93,7 @@ const SidebarContent = ({
                   type="button"
                   onClick={(e) => toggleExpand(e, item.id)}
                   className="p-1 hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0"
-                  aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                  aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
                 >
                   {isExpanded ? (
                     <ChevronDown className="h-3.5 w-3.5 opacity-70" />
@@ -112,7 +115,7 @@ const SidebarContent = ({
     return (
       <div className="p-6 text-center">
         <BookOpen className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
-        <p className="text-sm text-muted-foreground">Select a topic</p>
+        <p className="text-sm text-muted-foreground">{t('sidebar.selectTopic')}</p>
       </div>
     );
 
@@ -126,7 +129,7 @@ const SidebarContent = ({
         if (filtered.length === 0) {
           return (
             <div className="text-center py-8">
-              <p className="text-sm text-muted-foreground">No topic found</p>
+              <p className="text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
             </div>
           );
         }
@@ -138,7 +141,9 @@ const SidebarContent = ({
             className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
             onClick={() => handleNavigate(topic.id, item.id)}
           >
-            <span className="text-sm truncate min-w-0 block w-full text-left">{item.title}</span>
+            <span className="text-sm truncate min-w-0 block w-full text-left">
+              <TranslatedText text={item.title} />
+            </span>
           </Button>
         ));
       })();
@@ -152,7 +157,7 @@ const SidebarContent = ({
           className="flex items-center gap-2 mb-4 text-sm text-muted-foreground hover:text-foreground transition-colors group"
         >
           <ChevronLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform shrink-0" />
-          <span>Back to overview</span>
+          <span>{t('sidebar.backToOverview')}</span>
         </Link>
         <div className="flex gap-2 items-center">
           <div className="p-2 rounded-lg border border-border/40 bg-background shrink-0">{topic.icon}</div>
@@ -160,7 +165,7 @@ const SidebarContent = ({
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
             <Input
               type="text"
-              placeholder="Search in this section..."
+              placeholder={t('sidebar.searchSection')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9 pr-8 h-9 w-full rounded-lg border-border/40 bg-background"
@@ -171,7 +176,7 @@ const SidebarContent = ({
                 size="sm"
                 className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0 shrink-0"
                 onClick={() => setSearchQuery('')}
-                aria-label="Clear search"
+                aria-label={t('sidebar.clearSearch')}
               >
                 <X className="h-3 w-3" />
               </Button>

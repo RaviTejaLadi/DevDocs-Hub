@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft } from 'lucide-react';
+import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Languages, ChevronDown } from 'lucide-react';
 import { Logo } from '../Logo';
 import { TOPICS, type TopicItem } from '../../topics';
 import { ModeToggle } from '../Theme/ModeToggle';
@@ -9,6 +9,18 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
 import { ScrollArea } from '../ui/scroll-area';
+import { useI18n } from '@/i18n/I18nProvider';
+import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
+import { TranslatedText } from '@/i18n/TranslatedText';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
 
 type RankedSearchResult = SearchResult & { score: number };
 
@@ -16,6 +28,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
+  const { t, language, setLanguage } = useI18n();
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -120,22 +133,6 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
     setQuery('');
   };
 
-  const highlightMatch = (value: string, q: string) => {
-    if (!q.trim()) return value;
-    const index = value.toLowerCase().indexOf(q.trim().toLowerCase());
-    if (index === -1) return value;
-    const before = value.slice(0, index);
-    const match = value.slice(index, index + q.length);
-    const after = value.slice(index + q.length);
-    return (
-      <>
-        {before}
-        <span className="bg-primary/15 text-foreground rounded-sm px-0.5">{match}</span>
-        {after}
-      </>
-    );
-  };
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
       <div className="flex h-14 items-center px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -148,7 +145,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               size="icon"
               className="md:hidden shrink-0"
               onClick={() => setSidebarOpen(true)}
-              aria-label="Open sidebar"
+              aria-label={t('nav.openSidebar')}
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -163,7 +160,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                 className="relative h-9 w-9 sm:w-[18rem] md:w-[20rem] justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
               >
                 <Search className="h-4 w-4 shrink-0" />
-                <span className="hidden sm:inline truncate pr-12">Search topics...</span>
+                <span className="hidden sm:inline truncate pr-12">{t('nav.searchTopics')}</span>
                 <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 lg:flex">
                   <span className="text-xs">⌘</span>K
                 </kbd>
@@ -175,13 +172,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
             >
               <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
-                <DialogTitle className="sr-only">Search topics</DialogTitle>
+                <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
                 <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
                   <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
                     <Search className="h-4 w-4 text-muted-foreground" />
                   </div>
                   <Input
-                    placeholder="Type to search..."
+                    placeholder={t('nav.searchType')}
                     className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -197,20 +194,20 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
                 {results.length === 0 && query && (
                   <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">No matching topics found</p>
-                    <p>Try a different keyword, like React, SQL, system design...</p>
+                    <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
+                    <p>{t('nav.tryDifferentKeyword')}</p>
                   </div>
                 )}
                 {results.length === 0 && !query && (
                   <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">Search across all docs</p>
-                    <p>Start typing to find topics instantly.</p>
+                    <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
+                    <p>{t('nav.startTyping')}</p>
                   </div>
                 )}
                 {results.length > 0 && (
                   <div className="space-y-2">
                     <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
-                      Results
+                      {t('nav.results')}
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       {results.map((res) => (
@@ -225,10 +222,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                           </div>
                           <span className="min-w-0 flex-1">
                             <span className="font-medium text-foreground line-clamp-2 leading-5">
-                              {highlightMatch(res.title, query)}
+                              <TranslatedText text={res.title} />
                             </span>
                             <span className="text-xs text-muted-foreground block mt-1.5 truncate">
-                              in <span className="text-primary">{res.category}</span>
+                              {t('nav.in')}{' '}
+                              <span className="text-primary">
+                                <TranslatedText text={res.category} />
+                              </span>
                             </span>
                           </span>
                           <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -241,21 +241,50 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
               <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
                 <span className="text-[10px] text-muted-foreground hidden sm:inline">
-                  Use <kbd className="rounded border bg-background px-1 font-mono">⌘K</kbd> anytime to reopen
+                  {t('nav.useShortcut', { shortcut: '⌘K' })}
                 </span>
                 <span className="text-[10px] text-muted-foreground ml-auto">
-                  <kbd className="rounded border bg-background px-1 font-mono">Esc</kbd> to close
+                  {t('nav.toClose', { key: 'Esc' })}
                 </span>
               </div>
             </DialogContent>
           </Dialog>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                id="language-select"
+                variant="outline"
+                className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
+                aria-label={t('language.label')}
+              >
+                <Languages className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="max-w-16 truncate">{LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}</span>
+                <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup
+                value={language}
+                onValueChange={(value) => setLanguage(value as SupportedLanguage)}
+              >
+                {LANGUAGE_OPTIONS.map((option) => (
+                  <DropdownMenuRadioItem key={option.code} value={option.code}>
+                    {option.label}
+                  </DropdownMenuRadioItem>
+                ))}
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <Button
             variant="ghost"
             size="icon"
             className="hidden md:inline-flex px-3"
             onClick={() => navigate('/interview-questions')}
-            aria-label="Interview questions"
+            aria-label={t('nav.interviewQuestions')}
           >
             <HelpCircle className="h-4 w-4" />
           </Button>
@@ -264,11 +293,11 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             size="icon"
             className="hidden md:inline-flex px-3"
             onClick={() => navigate('/terms')}
-            aria-label="Terms"
+            aria-label={t('nav.terms')}
           >
             <FileText className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label="GitHub">
+          <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
             <Github className="h-4 w-4" />
           </Button>
           <ModeToggle />

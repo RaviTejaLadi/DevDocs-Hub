@@ -10,6 +10,8 @@ import { ScrollArea } from '../ui/scroll-area';
 import MermaidRenderer from '../MermaidRenderer';
 import { useTheme } from '../../hooks/useTheme';
 import { cn } from '@/lib/utils';
+import { useTranslatedText } from '@/i18n/useTranslatedText';
+import { useI18n } from '@/i18n/I18nProvider';
 
 type Heading = { id: string; text: string; level: number };
 
@@ -21,7 +23,9 @@ const MarkdownRender = ({ content }: { content: string }) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const scrollContainerRef = useRef<HTMLElement | null>(null);
   const { theme } = useTheme();
+  const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
+  const translatedContent = useTranslatedText(content);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -34,7 +38,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
         level: Number(el.tagName.substring(1)),
       }));
     setHeadings(collected);
-  }, [content]);
+  }, [translatedContent]);
 
   // Scroll spy + reading-progress ring
   useEffect(() => {
@@ -318,11 +322,11 @@ const MarkdownRender = ({ content }: { content: string }) => {
                         >
                           {copiedKey === codeKey ? (
                             <>
-                              <Check className="h-3 w-3" /> Copied
+                              <Check className="h-3 w-3" /> {t('common.copied')}
                             </>
                           ) : (
                             <>
-                              <Copy className="h-3 w-3" /> Copy
+                              <Copy className="h-3 w-3" /> {t('common.copy')}
                             </>
                           )}
                         </Button>
@@ -360,7 +364,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
               ),
             }}
           >
-            {content}
+            {translatedContent}
           </ReactMarkdown>
         </div>
       </article>
@@ -371,7 +375,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
           <div className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 shadow-[0_12px_30px_-22px_hsl(var(--foreground)/0.25)]">
             <div className="flex items-center justify-between mb-3">
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                On this page
+                {t('markdown.onThisPage')}
               </span>
               <div
                 className="md-progress-ring"

@@ -14,6 +14,8 @@ import {
 } from '../components/ui/breadcrumb';
 import { Separator } from '../components/ui/separator';
 import MarkdownRender from '../components/MarkdownRender';
+import { useI18n } from '@/i18n/I18nProvider';
+import { TranslatedText } from '@/i18n/TranslatedText';
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -50,6 +52,7 @@ const DocumentationPage = ({
   isSidebarCollapsed: boolean;
   onToggleSidebar: () => void;
 }) => {
+  const { t } = useI18n();
   const { categoryId, slug } = useParams();
   const navigate = useNavigate();
   const topic = TOPICS.find((t) => t.id === categoryId);
@@ -81,11 +84,11 @@ const DocumentationPage = ({
         <Card className="max-w-md border-none bg-inherit w-full">
           <CardContent className="pt-6  text-center">
             <div className="text-6xl mb-4">📚</div>
-            <h2 className="text-2xl font-bold mb-2 text-foreground">Page Not Found</h2>
-            <p className="text-muted-foreground mb-6">This topic doesn't exist or couldn't be found.</p>
+            <h2 className="text-2xl font-bold mb-2 text-foreground">{t('docs.pageNotFound')}</h2>
+            <p className="text-muted-foreground mb-6">{t('docs.notFoundDescription')}</p>
             <Button onClick={() => navigate('/')} className="w-full">
               <Home className="mr-2 h-4 w-4" />
-              Back to Home
+              {t('docs.backHome')}
             </Button>
           </CardContent>
         </Card>
@@ -98,7 +101,7 @@ const DocumentationPage = ({
     // You can render a loading state or a specific category page here
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <p>Loading...</p>
+        <p>{t('docs.loading')}</p>
       </div>
     );
   }
@@ -110,8 +113,8 @@ const DocumentationPage = ({
           variant="outline"
           size="sm"
           onClick={onToggleSidebar}
-          aria-label={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
-          title={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
+          aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+          title={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
           className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
         >
           {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
@@ -125,7 +128,7 @@ const DocumentationPage = ({
                   to="/"
                   className="rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
                 >
-                  Docs
+                  {t('docs.breadcrumbDocs')}
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -139,7 +142,9 @@ const DocumentationPage = ({
                   className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
                 >
                   <span className="text-base opacity-85">{topic.icon}</span>
-                  <span className="max-w-30 sm:max-w-none truncate">{topic.title}</span>
+                  <span className="max-w-30 sm:max-w-none truncate">
+                    <TranslatedText text={topic.title} />
+                  </span>
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -148,7 +153,7 @@ const DocumentationPage = ({
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage className="max-w-38 sm:max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
-                {content.title}
+                <TranslatedText text={content.title} />
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -169,10 +174,12 @@ const DocumentationPage = ({
             className="h-auto p-4 justify-start text-left border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
           >
             <div className="w-full space-y-1">
-              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Previous</span>
+              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t('docs.previous')}</span>
               <div className="flex items-center gap-2 font-medium text-foreground">
                 <ChevronRight className="w-4 h-4 rotate-180 shrink-0 group-hover:-translate-x-0.5 transition-transform" />
-                <span className="truncate">{prevItem.title}</span>
+                <span className="truncate">
+                  <TranslatedText text={prevItem.title} />
+                </span>
               </div>
             </div>
           </Button>
@@ -186,9 +193,11 @@ const DocumentationPage = ({
             className="h-auto p-4 justify-end text-right border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
           >
             <div className="w-full space-y-1">
-              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Next</span>
+              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t('docs.next')}</span>
               <div className="flex items-center justify-end gap-2 font-medium text-foreground">
-                <span className="truncate">{nextItem.title}</span>
+                <span className="truncate">
+                  <TranslatedText text={nextItem.title} />
+                </span>
                 <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </div>
