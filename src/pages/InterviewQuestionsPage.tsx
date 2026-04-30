@@ -24,6 +24,7 @@ import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
+import { Reveal, Stagger, StaggerItem } from '@/components/Animation';
 
 const levelPillClass: Record<ExperienceLevel, string> = {
   entry: 'text-emerald-600 border-emerald-500/60 bg-emerald-500/10',
@@ -38,7 +39,6 @@ const questionTypePillClass = {
   theory: 'text-indigo-600 border-indigo-500/60 bg-indigo-500/10',
 } as const;
 
-/** Topic list page with category sections and topic cards */
 function TopicListPage() {
   const { t } = useI18n();
   const categories = Object.keys(TOPIC_CATEGORIES);
@@ -55,41 +55,43 @@ function TopicListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
-      <section className="text-fade-up rounded-2xl border border-border/40/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="space-y-4">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ChevronLeft className="h-4 w-4" />
-              {t('interview.backToOverview')}
-            </Link>
-            <div className="flex items-start gap-3">
-              <div className="p-2.5 rounded-xl border border-primary/20 bg-primary/10">
-                <HelpCircle className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">{t('interview.pageTitle')}</h1>
-                <p className="text-fade-up text-fade-up-delay-1 text-muted-foreground mt-1 max-w-2xl">
-                  {t('interview.pageDescription')}
-                </p>
+      <Reveal>
+        <section className="rounded-2xl border border-border/40/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="space-y-4">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                {t('interview.backToOverview')}
+              </Link>
+              <div className="flex items-start gap-3">
+                <div className="p-2.5 rounded-xl border border-primary/20 bg-primary/10">
+                  <HelpCircle className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">
+                    {t('interview.pageTitle')}
+                  </h1>
+                  <p className="text-muted-foreground mt-1 max-w-2xl">{t('interview.pageDescription')}</p>
+                </div>
               </div>
             </div>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="secondary" className="h-7 px-3">
+                {t('interview.questions', { count: totalQuestions })}
+              </Badge>
+              <Badge variant="secondary" className="h-7 px-3">
+                {t('interview.topics', { count: totalTopics })}
+              </Badge>
+              <Badge variant="secondary" className="h-7 px-3">
+                {t('interview.categories', { count: totalCategories })}
+              </Badge>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary" className="h-7 px-3">
-              {t('interview.questions', { count: totalQuestions })}
-            </Badge>
-            <Badge variant="secondary" className="h-7 px-3">
-              {t('interview.topics', { count: totalTopics })}
-            </Badge>
-            <Badge variant="secondary" className="h-7 px-3">
-              {t('interview.categories', { count: totalCategories })}
-            </Badge>
-          </div>
-        </div>
-      </section>
+        </section>
+      </Reveal>
 
       <div className="space-y-6">
         {categories.map((category) => {
@@ -97,47 +99,50 @@ function TopicListPage() {
           if (!topics.length) return null;
 
           return (
-            <section key={category} className="text-fade-up rounded-xl border border-border/40/60 bg-card/40 p-5 sm:p-6">
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <h2 className="text-lg font-semibold text-foreground">
-                  <TranslatedText text={category} />
-                </h2>
-                <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
-              </div>
-              <div className="motion-stagger grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {topics.map((topic) => {
-                  const count = countForTopic(topic.id);
-                  const Icon = topic.icon;
-                  return (
-                    <Link
-                      key={topic.id}
-                      to={`/interview-questions/${topic.id}`}
-                      className={cn(
-                        'group rounded-xl border border-border/40/70 bg-card p-4 transition-all duration-200',
-                        'hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5'
-                      )}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
-                            <Icon className="h-5 w-5" />
+            <Reveal key={category}>
+              <section className="rounded-xl border border-border/40/60 bg-card/40 p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <h2 className="text-lg font-semibold text-foreground">
+                    <TranslatedText text={category} />
+                  </h2>
+                  <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
+                </div>
+                <Stagger gap={0.05} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {topics.map((topic) => {
+                    const count = countForTopic(topic.id);
+                    const Icon = topic.icon;
+                    return (
+                      <StaggerItem key={topic.id}>
+                        <Link
+                          to={`/interview-questions/${topic.id}`}
+                          className={cn(
+                            'group rounded-xl border border-border/40/70 bg-card p-4 transition-all duration-200 block',
+                            'hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5'
+                          )}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                                <Icon className="h-5 w-5" />
+                              </div>
+                              <div className="min-w-0">
+                                <p className="font-semibold text-foreground truncate">
+                                  <TranslatedText text={topic.label} />
+                                </p>
+                                <p className="text-xs text-muted-foreground mt-0.5">
+                                  {t('interview.topicQuestionsCount', { count })}
+                                </p>
+                              </div>
+                            </div>
+                            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
                           </div>
-                          <div className="min-w-0">
-                            <p className="font-semibold text-foreground truncate">
-                              <TranslatedText text={topic.label} />
-                            </p>
-                            <p className="text-xs text-muted-foreground mt-0.5">
-                              {t('interview.topicQuestionsCount', { count })}
-                            </p>
-                          </div>
-                        </div>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </section>
+                        </Link>
+                      </StaggerItem>
+                    );
+                  })}
+                </Stagger>
+              </section>
+            </Reveal>
           );
         })}
       </div>
@@ -145,7 +150,6 @@ function TopicListPage() {
   );
 }
 
-/** Topic detail page with filters, search, and expandable Q&A */
 function TopicDetailPage() {
   const { t } = useI18n();
   const { topicId } = useParams<{ topicId: string }>();
@@ -201,136 +205,138 @@ function TopicDetailPage() {
         </Link>
       </Button>
 
-      <Card className="text-fade-up overflow-hidden border-border/40/70 bg-linear-to-br from-card via-card to-primary/5">
-        <CardHeader className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-start gap-3">
-              <div className="p-3 rounded-xl border border-primary/20 bg-primary/10">
-                <Icon className="h-7 w-7 text-primary" />
+      <Reveal>
+        <Card className="overflow-hidden border-border/40/70 bg-linear-to-br from-card via-card to-primary/5">
+          <CardHeader className="space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="p-3 rounded-xl border border-primary/20 bg-primary/10">
+                  <Icon className="h-7 w-7 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
+                    {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
+                  </CardTitle>
+                  <CardDescription className="mt-2 text-sm sm:text-base">
+                    {t('interview.filterDescription')}
+                  </CardDescription>
+                </div>
               </div>
-              <div>
-                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
-                  {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
-                </CardTitle>
-                <CardDescription className="text-fade-up text-fade-up-delay-1 mt-2 text-sm sm:text-base">
-                  {t('interview.filterDescription')}
-                </CardDescription>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="h-7 px-3">
+                  <Code2 className="h-3.5 w-3.5 mr-1" />
+                  {codingCount} {t('interview.coding')}
+                </Badge>
+                <Badge variant="secondary" className="h-7 px-3">
+                  <BookOpen className="h-3.5 w-3.5 mr-1" />
+                  {theoryCount} {t('interview.theory')}
+                </Badge>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="h-7 px-3">
-                <Code2 className="h-3.5 w-3.5 mr-1" />
-                {codingCount} {t('interview.coding')}
-              </Badge>
-              <Badge variant="secondary" className="h-7 px-3">
-                <BookOpen className="h-3.5 w-3.5 mr-1" />
-                {theoryCount} {t('interview.theory')}
-              </Badge>
+          </CardHeader>
+        </Card>
+      </Reveal>
+
+      <Reveal delay={0.06}>
+        <Card className="border-border/40/70 bg-card/60">
+          <CardContent className="pt-6 space-y-5">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <SlidersHorizontal className="h-4 w-4 text-primary" />
+              {t('interview.filters')}
             </div>
-          </div>
-        </CardHeader>
-      </Card>
 
-      <Card className="text-fade-up text-fade-up-delay-1 border-border/40/70 bg-card/60">
-        <CardContent className="pt-6 space-y-5">
-          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <SlidersHorizontal className="h-4 w-4 text-primary" />
-            {t('interview.filters')}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setLevelFilter('all')}
-              className={cn(
-                'px-3 py-1.5 rounded-md text-sm font-medium border transition-colors',
-                levelFilter === 'all'
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'bg-muted/50 text-muted-foreground border-transparent hover:bg-muted'
-              )}
-            >
-              {t('interview.allLevels')}
-            </button>
-            {LEVEL_ORDER.map((lvl) => (
+            <div className="flex flex-wrap items-center gap-2">
               <button
-                key={lvl}
                 type="button"
-                onClick={() => setLevelFilter(lvl)}
+                onClick={() => setLevelFilter('all')}
                 className={cn(
-                  'px-2.5 py-1 rounded-md text-sm font-semibold border transition-all',
-                  levelPillClass[lvl],
-                  levelFilter === lvl
-                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20'
-                    : 'opacity-80 hover:opacity-100'
+                  'px-3 py-1.5 rounded-md text-sm font-medium border transition-colors',
+                  levelFilter === 'all'
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-muted/50 text-muted-foreground border-transparent hover:bg-muted'
                 )}
               >
-                {LEVEL_LABELS[lvl]}
+                {t('interview.allLevels')}
               </button>
-            ))}
-          </div>
+              {LEVEL_ORDER.map((lvl) => (
+                <button
+                  key={lvl}
+                  type="button"
+                  onClick={() => setLevelFilter(lvl)}
+                  className={cn(
+                    'px-2.5 py-1 rounded-md text-sm font-semibold border transition-all',
+                    levelPillClass[lvl],
+                    levelFilter === lvl
+                      ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20'
+                      : 'opacity-80 hover:opacity-100'
+                  )}
+                >
+                  {LEVEL_LABELS[lvl]}
+                </button>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-            <div className="flex items-center gap-2">
-              <Switch
-                id="only-code"
-                checked={onlyCodeChallenges}
-                onCheckedChange={(checked) => {
-                  setOnlyCodeChallenges(checked);
-                  if (checked) setOnlyTheory(false);
-                }}
-              />
-              <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
-                {t('interview.onlyCoding')}
-              </label>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+              <div className="flex items-center gap-2">
+                <Switch
+                  id="only-code"
+                  checked={onlyCodeChallenges}
+                  onCheckedChange={(checked) => {
+                    setOnlyCodeChallenges(checked);
+                    if (checked) setOnlyTheory(false);
+                  }}
+                />
+                <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
+                  {t('interview.onlyCoding')}
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Switch
+                  id="only-theory"
+                  checked={onlyTheory}
+                  onCheckedChange={(checked) => {
+                    setOnlyTheory(checked);
+                    if (checked) setOnlyCodeChallenges(false);
+                  }}
+                />
+                <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
+                  {t('interview.onlyTheory')}
+                </label>
+              </div>
+              <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                <Input
+                  type="search"
+                  placeholder={t('interview.searchQuestions')}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 h-10"
+                />
+              </div>
+              {hasAnyFilters && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground"
+                  onClick={() => {
+                    setLevelFilter('all');
+                    setOnlyCodeChallenges(false);
+                    setOnlyTheory(false);
+                    setSearchQuery('');
+                  }}
+                >
+                  <X className="h-4 w-4 mr-1" />
+                  {t('interview.clearFilters')}
+                </Button>
+              )}
             </div>
-            <div className="flex items-center gap-2">
-              <Switch
-                id="only-theory"
-                checked={onlyTheory}
-                onCheckedChange={(checked) => {
-                  setOnlyTheory(checked);
-                  if (checked) setOnlyCodeChallenges(false);
-                }}
-              />
-              <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
-                {t('interview.onlyTheory')}
-              </label>
-            </div>
-            <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-              <Input
-                type="search"
-                placeholder={t('interview.searchQuestions')}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 h-10"
-              />
-            </div>
-            {hasAnyFilters && (
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground"
-                onClick={() => {
-                  setLevelFilter('all');
-                  setOnlyCodeChallenges(false);
-                  setOnlyTheory(false);
-                  setSearchQuery('');
-                }}
-              >
-                <X className="h-4 w-4 mr-1" />
-                {t('interview.clearFilters')}
-              </Button>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </Reveal>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground">
-        <p>
-          {t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}
-        </p>
+        <p>{t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}</p>
       </div>
 
       <div className="space-y-2">
@@ -356,11 +362,15 @@ function TopicDetailPage() {
             </CardContent>
           </Card>
         ) : (
-          <Accordion type="single" collapsible className="motion-stagger w-full">
-            {filteredQuestions.map((item, index) => (
-              <QuestionBlock key={item.id} item={item} index={index + 1} levelPillClass={levelPillClass} />
-            ))}
-          </Accordion>
+          <Stagger gap={0.04}>
+            <Accordion type="single" collapsible className="w-full">
+              {filteredQuestions.map((item, index) => (
+                <StaggerItem key={item.id}>
+                  <QuestionBlock item={item} index={index + 1} levelPillClass={levelPillClass} />
+                </StaggerItem>
+              ))}
+            </Accordion>
+          </Stagger>
         )}
       </div>
     </div>
@@ -421,7 +431,6 @@ function QuestionBlock({
   );
 }
 
-/** Renders topic list or topic detail based on route */
 const InterviewQuestionsPage = () => {
   const { topicId } = useParams<{ topicId?: string }>();
 

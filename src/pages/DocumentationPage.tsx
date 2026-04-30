@@ -17,6 +17,7 @@ import MarkdownRender from '../components/MarkdownRender';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Reveal, useScrollViewport } from '@/components/Animation';
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -57,6 +58,7 @@ const DocumentationPage = ({
   const { categoryId, slug } = useParams();
   const navigate = useNavigate();
   const topic = TOPICS.find((t) => t.id === categoryId);
+  const viewportRef = useScrollViewport();
 
   const content = useMemo(() => {
     if (!topic || !slug) return undefined;
@@ -76,8 +78,13 @@ const DocumentationPage = ({
   const prevItem = currentIndex !== -1 ? flatItems[currentIndex - 1] : undefined;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [categoryId, slug]);
+    const el = viewportRef?.current;
+    if (el) {
+      el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [categoryId, slug, viewportRef]);
 
   if (!topic || !content) {
     return (
@@ -97,9 +104,7 @@ const DocumentationPage = ({
     );
   }
 
-  // If content has no actual content (it's a category), don't render the main page content
   if (!content.content) {
-    // You can render a loading state or a specific category page here
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <p>{t('docs.loading')}</p>
@@ -109,111 +114,121 @@ const DocumentationPage = ({
 
   return (
     <div className="w-full space-y-8">
-      <div className="text-fade-up flex items-start sm:items-center gap-2 sm:gap-3">
-        <TooltipProvider delayDuration={200}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onToggleSidebar}
-                aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-                className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
-              >
-                {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">
-              {isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-        <Breadcrumb className="min-w-0 flex-1">
-          <BreadcrumbList className="flex-wrap min-h-9 gap-1 rounded-md border border-border/40 bg-card/45 backdrop-blur-sm px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link
-                  to="/"
-                  className="rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
+      <Reveal>
+        <div className="flex items-start sm:items-center gap-2 sm:gap-3">
+          <TooltipProvider delayDuration={200}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={onToggleSidebar}
+                  aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+                  className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
                 >
-                  {t('docs.breadcrumbDocs')}
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <ChevronRight className="h-3.5 w-3.5 opacity-45" />
-            </BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link
-                  to={`/docs/${topic.id}/${topic.items[0].id}`}
-                  className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
-                >
-                  <span className="text-base opacity-85">{topic.icon}</span>
-                  <span className="max-w-30 sm:max-w-none truncate">
-                    <TranslatedText text={topic.title} />
-                  </span>
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <ChevronRight className="h-3.5 w-3.5 opacity-45" />
-            </BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbPage className="max-w-38 sm:max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
-                <TranslatedText text={content.title} />
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
+                  {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                {isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <Breadcrumb className="min-w-0 flex-1">
+            <BreadcrumbList className="flex-wrap min-h-9 gap-1 rounded-md border border-border/40 bg-card/45 backdrop-blur-sm px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    to="/"
+                    className="rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
+                  >
+                    {t('docs.breadcrumbDocs')}
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight className="h-3.5 w-3.5 opacity-45" />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    to={`/docs/${topic.id}/${topic.items[0].id}`}
+                    className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
+                  >
+                    <span className="text-base opacity-85">{topic.icon}</span>
+                    <span className="max-w-30 sm:max-w-none truncate">
+                      <TranslatedText text={topic.title} />
+                    </span>
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight className="h-3.5 w-3.5 opacity-45" />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbPage className="max-w-38 sm:max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
+                  <TranslatedText text={content.title} />
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </Reveal>
 
-      <div className="text-fade-up text-fade-up-delay-1 prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
-        <MarkdownRender content={content.content} />
-      </div>
+      <Reveal delay={0.06}>
+        <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
+          <MarkdownRender content={content.content} />
+        </div>
+      </Reveal>
 
       <Separator className="my-8" />
 
-      <nav className="text-fade-up text-fade-up-delay-2 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
-        {prevItem ? (
-          <Button
-            onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
-            variant="outline"
-            className="h-auto p-4 justify-start text-left border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
-          >
-            <div className="w-full space-y-1">
-              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t('docs.previous')}</span>
-              <div className="flex items-center gap-2 font-medium text-foreground">
-                <ChevronRight className="w-4 h-4 rotate-180 shrink-0 group-hover:-translate-x-0.5 transition-transform" />
-                <span className="truncate">
-                  <TranslatedText text={prevItem.title} />
+      <Reveal delay={0.04}>
+        <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
+          {prevItem ? (
+            <Button
+              onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
+              variant="outline"
+              className="h-auto p-4 justify-start text-left border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+            >
+              <div className="w-full space-y-1">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t('docs.previous')}
                 </span>
+                <div className="flex items-center gap-2 font-medium text-foreground">
+                  <ChevronRight className="w-4 h-4 rotate-180 shrink-0 group-hover:-translate-x-0.5 transition-transform" />
+                  <span className="truncate">
+                    <TranslatedText text={prevItem.title} />
+                  </span>
+                </div>
               </div>
-            </div>
-          </Button>
-        ) : (
-          <div />
-        )}
-        {nextItem ? (
-          <Button
-            variant="outline"
-            onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
-            className="h-auto p-4 justify-end text-right border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
-          >
-            <div className="w-full space-y-1">
-              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{t('docs.next')}</span>
-              <div className="flex items-center justify-end gap-2 font-medium text-foreground">
-                <span className="truncate">
-                  <TranslatedText text={nextItem.title} />
+            </Button>
+          ) : (
+            <div />
+          )}
+          {nextItem ? (
+            <Button
+              variant="outline"
+              onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
+              className="h-auto p-4 justify-end text-right border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
+            >
+              <div className="w-full space-y-1">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+                  {t('docs.next')}
                 </span>
-                <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                <div className="flex items-center justify-end gap-2 font-medium text-foreground">
+                  <span className="truncate">
+                    <TranslatedText text={nextItem.title} />
+                  </span>
+                  <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                </div>
               </div>
-            </div>
-          </Button>
-        ) : (
-          <div />
-        )}
-      </nav>
+            </Button>
+          ) : (
+            <div />
+          )}
+        </nav>
+      </Reveal>
     </div>
   );
 };
