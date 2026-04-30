@@ -109,7 +109,7 @@ const DocumentationPage = ({
 
   return (
     <div className="w-full space-y-8">
-      <div className="flex items-start sm:items-center gap-2 sm:gap-3">
+      <div className="text-fade-up flex items-start sm:items-center gap-2 sm:gap-3">
         <TooltipProvider delayDuration={200}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -168,13 +168,13 @@ const DocumentationPage = ({
         </Breadcrumb>
       </div>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
+      <div className="text-fade-up text-fade-up-delay-1 prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
         <MarkdownRender content={content.content} />
       </div>
 
       <Separator className="my-8" />
 
-      <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
+      <nav className="text-fade-up text-fade-up-delay-2 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
         {prevItem ? (
           <Button
             onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}

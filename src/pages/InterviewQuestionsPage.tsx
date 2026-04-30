@@ -55,7 +55,7 @@ function TopicListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
-      <section className="rounded-2xl border border-border/40/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
+      <section className="text-fade-up rounded-2xl border border-border/40/60 bg-linear-to-br from-card via-card to-primary/5 p-6 sm:p-8 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-4">
             <Link
@@ -70,8 +70,8 @@ function TopicListPage() {
                 <HelpCircle className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t('interview.pageTitle')}</h1>
-                <p className="text-muted-foreground mt-1 max-w-2xl">
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">{t('interview.pageTitle')}</h1>
+                <p className="text-fade-up text-fade-up-delay-1 text-muted-foreground mt-1 max-w-2xl">
                   {t('interview.pageDescription')}
                 </p>
               </div>
@@ -97,14 +97,14 @@ function TopicListPage() {
           if (!topics.length) return null;
 
           return (
-            <section key={category} className="rounded-xl border border-border/40/60 bg-card/40 p-5 sm:p-6">
+            <section key={category} className="text-fade-up rounded-xl border border-border/40/60 bg-card/40 p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3 mb-4">
                 <h2 className="text-lg font-semibold text-foreground">
                   <TranslatedText text={category} />
                 </h2>
                 <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div className="motion-stagger grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 {topics.map((topic) => {
                   const count = countForTopic(topic.id);
                   const Icon = topic.icon;
@@ -201,7 +201,7 @@ function TopicDetailPage() {
         </Link>
       </Button>
 
-      <Card className="overflow-hidden border-border/40/70 bg-linear-to-br from-card via-card to-primary/5">
+      <Card className="text-fade-up overflow-hidden border-border/40/70 bg-linear-to-br from-card via-card to-primary/5">
         <CardHeader className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-start gap-3">
@@ -209,10 +209,10 @@ function TopicDetailPage() {
                 <Icon className="h-7 w-7 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-2xl sm:text-3xl">
+                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
                   {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
                 </CardTitle>
-                <CardDescription className="mt-2 text-sm sm:text-base">
+                <CardDescription className="text-fade-up text-fade-up-delay-1 mt-2 text-sm sm:text-base">
                   {t('interview.filterDescription')}
                 </CardDescription>
               </div>
@@ -231,7 +231,7 @@ function TopicDetailPage() {
         </CardHeader>
       </Card>
 
-      <Card className="border-border/40/70 bg-card/60">
+      <Card className="text-fade-up text-fade-up-delay-1 border-border/40/70 bg-card/60">
         <CardContent className="pt-6 space-y-5">
           <div className="flex items-center gap-2 text-sm font-medium text-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
@@ -356,7 +356,7 @@ function TopicDetailPage() {
             </CardContent>
           </Card>
         ) : (
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="motion-stagger w-full">
             {filteredQuestions.map((item, index) => (
               <QuestionBlock key={item.id} item={item} index={index + 1} levelPillClass={levelPillClass} />
             ))}

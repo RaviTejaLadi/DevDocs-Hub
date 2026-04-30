@@ -193,13 +193,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
               <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
                 {results.length === 0 && query && (
-                  <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
                     <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
                     <p>{t('nav.tryDifferentKeyword')}</p>
                   </div>
                 )}
                 {results.length === 0 && !query && (
-                  <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
                     <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
                     <p>{t('nav.startTyping')}</p>
                   </div>
@@ -209,7 +209,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                     <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
                       {t('nav.results')}
                     </p>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="motion-stagger grid grid-cols-2 gap-2">
                       {results.map((res) => (
                         <button
                           type="button"

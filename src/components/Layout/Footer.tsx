@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <Logo showText size="md" className="font-semibold w-fit" />
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
+            <nav className="text-fade-up text-fade-up-delay-1 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
               {FOOTER_LINKS.map(({ to, label }) => (
                 <Link key={to} to={to} className="hover:text-foreground transition-colors">
                   {label}
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="mt-6 pt-6 border-t border-border/40 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
+        <p className="text-fade-up text-fade-up-delay-2 mt-6 pt-6 border-t border-border/40 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
           © {new Date().getFullYear()} ReviseStack. {t('footer.tagline')}
         </p>
       </div>

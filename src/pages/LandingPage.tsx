@@ -69,11 +69,11 @@ const LandingPage = () => {
         <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3">
           <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
         </h1>
-        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-fade-up text-fade-up-delay-1 text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
           {t('landing.heroDescription')}
         </p>
 
-        <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <div className="text-fade-up text-fade-up-delay-2 max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
@@ -103,7 +103,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="text-fade-up text-fade-up-delay-3 mt-6">
           <Button
             variant="outline"
             className="gap-2 border-border/40 bg-card/50 hover:bg-accent"
@@ -126,7 +126,7 @@ const LandingPage = () => {
               onClick={() => toggleSection(category)}
               className="w-full flex items-center justify-between py-2 text-left group"
             >
-              <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
+              <h2 className="text-fade-up text-lg font-semibold text-foreground capitalize tracking-tight">
                 {category.replace(/-/g, ' ')}
               </h2>
               <ChevronDown
@@ -137,6 +137,7 @@ const LandingPage = () => {
             {!isCollapsed && (
               <div
                 className={cn(
+                  'motion-stagger',
                   viewMode === 'grid'
                     ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr'
                     : 'flex flex-col gap-3'
@@ -186,7 +187,12 @@ const LandingPage = () => {
                       </div>
 
                       <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
-                        <h3 className={cn('font-semibold text-foreground', viewMode === 'list' ? 'text-base' : 'mb-1')}>
+                        <h3
+                          className={cn(
+                            'font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
+                            viewMode === 'list' ? 'text-base' : 'mb-1'
+                          )}
+                        >
                           <TranslatedText text={topic.title} />
                         </h3>
                         <p

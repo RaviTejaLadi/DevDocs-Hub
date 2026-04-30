@@ -8,8 +8,10 @@ const TermsOfServicePage = () => {
     <div className="container mx-auto p-3 sm:p-4 md:p-8 bg-inherit min-h-screen">
       <Card className="max-w-4xl mx-auto bg-inherit border-none shadow-none">
         <CardHeader>
-          <CardTitle className="text-2xl sm:text-3xl font-bold">{t('terms.title')}</CardTitle>
-          <p className="text-sm text-muted-foreground">{t('terms.lastUpdated')}: January 3, 2026</p>
+          <CardTitle className="text-fade-up text-2xl sm:text-3xl font-bold text-gradient-sheen">{t('terms.title')}</CardTitle>
+          <p className="text-fade-up text-fade-up-delay-1 text-sm text-muted-foreground">
+            {t('terms.lastUpdated')}: January 3, 2026
+          </p>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">

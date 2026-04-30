@@ -165,7 +165,7 @@ const SidebarContent = ({
 
   return (
     <div className="flex h-full flex-col bg-inherit">
-      <div className="shrink-0 px-4 py-4 border-b border-border/40">
+      <div className="text-fade-up shrink-0 px-4 py-4 border-b border-border/40">
         <Link
           to="/"
           onClick={closeSheet}
@@ -203,7 +203,7 @@ const SidebarContent = ({
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full overflow-hidden">
           <TooltipProvider delayDuration={250}>
-            <nav className="p-3 space-y-0.5 w-full max-w-full overflow-x-hidden" aria-label="Topic sections">
+            <nav className="motion-stagger p-3 space-y-0.5 w-full max-w-full overflow-x-hidden" aria-label="Topic sections">
               {displayContent}
             </nav>
           </TooltipProvider>

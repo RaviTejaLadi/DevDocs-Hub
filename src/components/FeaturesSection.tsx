@@ -35,18 +35,22 @@ export default function FeaturesSection() {
 
   return (
     <section className="mt-20 pt-16 border-t border-border/40">
-      <h2 className="text-lg font-semibold text-foreground mb-6 tracking-tight">{t('features.whyUse')}</h2>
+      <h2 className="text-fade-up text-lg font-semibold text-foreground mb-6 tracking-tight">{t('features.whyUse')}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {FEATURES.map(({ id, icon: Icon }) => (
           <div
             key={id}
-            className="rounded-lg border border-border/40 bg-card p-6 text-left transition-colors hover:bg-muted/30"
+            className="group rounded-lg border border-border/40 bg-card p-6 text-left transition-colors hover:bg-muted/30"
           >
             <div className="inline-flex p-2.5 rounded-lg bg-primary/10 text-primary mb-4">
               <Icon className="w-5 h-5" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{featureLabels[id].title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{featureLabels[id].description}</p>
+            <h3 className="font-semibold text-foreground mb-2 transition-colors duration-200 group-hover:text-primary">
+              {featureLabels[id].title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed text-fade-up text-fade-up-delay-1">
+              {featureLabels[id].description}
+            </p>
           </div>
         ))}
       </div>

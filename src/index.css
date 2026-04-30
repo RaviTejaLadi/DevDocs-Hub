@@ -547,3 +547,129 @@
   font-weight: 700;
   color: var(--md-purple-deep);
 }
+
+/* ==========================================================================
+   Global text motion (subtle, production-friendly)
+   ========================================================================== */
+@keyframes text-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes text-sheen {
+  0% {
+    background-position: 180% 50%;
+  }
+  100% {
+    background-position: -20% 50%;
+  }
+}
+
+@layer utilities {
+  .text-fade-up {
+    opacity: 0;
+    animation: text-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: transform, opacity, filter;
+  }
+
+  .text-fade-up-delay-1 {
+    animation-delay: 80ms;
+  }
+
+  .text-fade-up-delay-2 {
+    animation-delay: 160ms;
+  }
+
+  .text-fade-up-delay-3 {
+    animation-delay: 240ms;
+  }
+
+  .text-fade-up-delay-4 {
+    animation-delay: 320ms;
+  }
+
+  .text-gradient-sheen {
+    background-image: linear-gradient(
+      115deg,
+      color-mix(in oklab, var(--foreground) 82%, transparent) 0%,
+      color-mix(in oklab, var(--primary) 70%, var(--foreground) 30%) 48%,
+      color-mix(in oklab, var(--foreground) 84%, transparent) 100%
+    );
+    background-size: 220% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text-sheen 7.5s linear infinite;
+  }
+
+  .motion-stagger > * {
+    opacity: 0;
+    animation: text-fade-up 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: transform, opacity, filter;
+  }
+
+  .motion-stagger > :nth-child(1) {
+    animation-delay: 40ms;
+  }
+
+  .motion-stagger > :nth-child(2) {
+    animation-delay: 90ms;
+  }
+
+  .motion-stagger > :nth-child(3) {
+    animation-delay: 140ms;
+  }
+
+  .motion-stagger > :nth-child(4) {
+    animation-delay: 190ms;
+  }
+
+  .motion-stagger > :nth-child(5) {
+    animation-delay: 240ms;
+  }
+
+  .motion-stagger > :nth-child(6) {
+    animation-delay: 290ms;
+  }
+
+  .motion-stagger > :nth-child(7) {
+    animation-delay: 340ms;
+  }
+
+  .motion-stagger > :nth-child(8) {
+    animation-delay: 390ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-fade-up,
+  .text-fade-up-delay-1,
+  .text-fade-up-delay-2,
+  .text-fade-up-delay-3,
+  .text-fade-up-delay-4 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .text-gradient-sheen {
+    animation: none !important;
+    background-position: 50% 50%;
+  }
+
+  .motion-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

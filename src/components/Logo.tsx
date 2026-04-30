@@ -40,7 +40,17 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className }:
   const content = (
     <>
       {logoSvg}
-      {showText && <span className={cn('font-semibold text-foreground tracking-tight', textClass)}>ReviseStack</span>}
+      {showText && (
+        <span
+          className={cn(
+            'font-semibold text-foreground tracking-tight',
+            size === 'lg' && 'text-gradient-sheen text-fade-up',
+            textClass
+          )}
+        >
+          ReviseStack
+        </span>
+      )}
     </>
   );
 
