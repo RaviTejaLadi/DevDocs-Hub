@@ -4,35 +4,80 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
-import { Table, TableHeader, TableHead, TableCell } from '../ui/table';
-import { Check, Copy, ExternalLink, Hash, Quote } from 'lucide-react';
+import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import MermaidRenderer from '../MermaidRenderer';
 import { useTheme } from '../../hooks/useTheme';
 import { cn } from '@/lib/utils';
 
+type Heading = { id: string; text: string; level: number };
+
 const MarkdownRender = ({ content }: { content: string }) => {
-  const [copied, setCopied] = useState(false);
-  const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([]);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const [headings, setHeadings] = useState<Heading[]>([]);
+  const [activeId, setActiveId] = useState<string>('');
+  const [progress, setProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
   const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
 
   useEffect(() => {
     if (!contentRef.current) return;
-
     const elements = contentRef.current.querySelectorAll('h1, h2, h3, h4');
-    const collectedHeadings = Array.from(elements)
+    const collected = Array.from(elements)
       .filter((el) => el.id)
       .map((el) => ({
         id: el.id,
         text: el.textContent ?? '',
         level: Number(el.tagName.substring(1)),
       }));
-
-    setHeadings(collectedHeadings);
+    setHeadings(collected);
   }, [content]);
+
+  // Scroll spy + reading-progress ring
+  useEffect(() => {
+    if (!contentRef.current || headings.length === 0) return;
+
+    const headingEls = headings
+      .map((h) => document.getElementById(h.id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target.id) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: '-96px 0px -68% 0px', threshold: [0, 1] }
+    );
+    headingEls.forEach((el) => observer.observe(el));
+
+    let scrollEl: HTMLElement | null = contentRef.current.parentElement;
+    while (scrollEl && scrollEl !== document.body) {
+      const overflowY = window.getComputedStyle(scrollEl).overflowY;
+      if (overflowY === 'auto' || overflowY === 'scroll') break;
+      scrollEl = scrollEl.parentElement;
+    }
+    scrollContainerRef.current = scrollEl ?? null;
+
+    const updateProgress = () => {
+      const target = scrollContainerRef.current ?? document.scrollingElement ?? document.documentElement;
+      const scrollTop = target.scrollTop;
+      const max = target.scrollHeight - target.clientHeight;
+      setProgress(max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0);
+    };
+    const target = scrollContainerRef.current ?? window;
+    target.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    return () => {
+      observer.disconnect();
+      target.removeEventListener('scroll', updateProgress);
+    };
+  }, [headings]);
 
   const extractText = (node: React.ReactNode): string => {
     if (typeof node === 'string' || typeof node === 'number') return String(node);
@@ -44,332 +89,316 @@ const MarkdownRender = ({ content }: { content: string }) => {
     return '';
   };
 
-  const generateId = (text: React.ReactNode): string => {
-    return extractText(text)
+  const generateId = (text: React.ReactNode): string =>
+    extractText(text)
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
+
+  const handleCopy = (key: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1800);
   };
 
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+
   return (
     <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-12">
-      <div
+      {/* ARTICLE CARD — uses the site's standard card surface */}
+      <article
         ref={contentRef}
-        className="flex-1 min-w-0 mx-auto w-full  rounded-2xl border border-border/40/40 bg-card/35 backdrop-blur-sm px-5 py-7 sm:px-8 sm:py-10 lg:px-12 shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]"
+        className={cn(
+          'md-render flex-1 min-w-0 mx-auto w-full overflow-hidden',
+          'rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm',
+          'px-5 py-7 sm:px-8 sm:py-10 lg:px-12',
+          'shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]'
+        )}
       >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            h1: ({ children }: any) => {
-              const id = generateId(children);
-              return (
-                <div className="group relative mb-10">
-                  <h1
-                    id={id}
-                    className="scroll-mt-28 text-4xl mb-7 pb-7 border-b border-border/40/60 font-extrabold tracking-tight flex text-foreground"
-                  >
-                    {children}
-                    <a
-                      href={`#${id}`}
-                      className="mt-3 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary"
-                      aria-label="Link to this heading"
+        <div className="relative z-1">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: ({ children }: any) => {
+                const id = generateId(children);
+                return (
+                  <header className="relative mb-9 mt-1">
+                    <h1
+                      id={id}
+                      className="scroll-mt-28 text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight leading-[1.15] text-foreground"
                     >
-                      <Hash className="w-8 h-8" />
-                    </a>
-                  </h1>
-                </div>
-              );
-            },
-            h2: ({ children }: any) => {
-              const id = generateId(children);
-              return (
-                <div className="group relative mt-16 mb-7 flex items-center gap-3">
-                  <div className="w-1 h-8 bg-linear-to-b from-primary to-primary/50 rounded-full"></div>
-                  <h2 id={id} className="scroll-mt-28 text-3xl font-bold tracking-tight text-foreground">
-                    {children}
-                  </h2>
-                  <a
-                    href={`#${id}`}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                    aria-label="Link to this heading"
-                  >
-                    <Hash className="w-5 h-5" />
-                  </a>
-                </div>
-              );
-            },
-            h3: ({ children }: any) => {
-              const id = generateId(children);
-              return (
-                <div className="group relative mt-12 mb-5 flex items-center gap-2">
-                  <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
-                  <h3 id={id} className="scroll-mt-28 text-2xl font-semibold tracking-tight text-foreground">
-                    {children}
-                  </h3>
-                  <a
-                    href={`#${id}`}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                    aria-label="Link to this heading"
-                  >
-                    <Hash className="w-4 h-4" />
-                  </a>
-                </div>
-              );
-            },
-            h4: ({ children }: any) => {
-              const id = generateId(children);
-              return (
-                <div className="group relative mt-9 mb-3 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <h4 id={id} className="scroll-mt-28 text-xl font-semibold text-foreground">
-                    {children}
-                  </h4>
-                  <a
-                    href={`#${id}`}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                    aria-label="Link to this heading"
-                  >
-                    <Hash className="w-3 h-3" />
-                  </a>
-                </div>
-              );
-            },
-            p: ({ children }: any) => (
-              <p className="text-foreground/80 leading-8 mb-6 text-[1.04rem] first-of-type:text-foreground/90 first-of-type:leading-9 first-of-type:mb-8 first-of-type:text-[1.18rem] sm:first-of-type:text-[1.24rem] first-of-type:font-medium">
-                {children}
-              </p>
-            ),
-            ul: ({ children }: any) => (
-              <ul className="mb-8 ml-6 list-disc marker:text-primary/80 space-y-2.5 text-[1.02rem]">{children}</ul>
-            ),
-            ol: ({ children }: any) => (
-              <ol className="mb-8 ml-7 list-decimal marker:text-primary/80 space-y-2.5 text-[1.02rem]">{children}</ol>
-            ),
-            li: ({ children }: any) => <li className="text-foreground/80 leading-8 pl-1">{children}</li>,
-            blockquote: ({ children }: any) => (
-              <div className="relative my-8">
-                <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-transparent rounded-r-xl"></div>
-                <blockquote className="relative h-auto border-l-4 border-primary p-5 bg-muted/35 backdrop-blur-sm rounded-r-xl">
-                  <div className="flex items-start gap-3">
-                    <Quote className="w-5 h-5 text-primary mt-1 shrink-0" />
-                    <div className="text-foreground/90 italic text-[1.02rem] leading-relaxed font-medium">
-                      {children}
+                      <span className="md-h1-title">{children}</span>
+                    </h1>
+                    <div className="mt-5 flex items-center gap-2">
+                      <span className="h-px w-10 bg-(--md-purple)/60 rounded-full"></span>
+                      <span className="h-px flex-1 bg-border/60 rounded-full"></span>
+                    </div>
+                  </header>
+                );
+              },
+              h2: ({ children }: any) => {
+                const id = generateId(children);
+                return (
+                  <div className="md-h2 group relative mt-14 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={cn(
+                          'md-h2-num grid place-items-center min-w-9 h-9 px-2 rounded-lg',
+                          'bg-(--md-purple-tint) text-(--md-purple-deep) text-[0.78rem] font-bold tracking-tight',
+                          'border border-(--md-purple-line)'
+                        )}
+                      ></div>
+                      <h2
+                        id={id}
+                        className="scroll-mt-28 flex-1 text-2xl sm:text-[1.7rem] font-bold tracking-tight leading-tight text-foreground"
+                      >
+                        {children}
+                      </h2>
                     </div>
                   </div>
-                </blockquote>
-              </div>
-            ),
-
-            table: ({ children }: any) => (
-              <div className="my-8 overflow-hidden rounded-xl border border-border/40/50 shadow-lg bg-card/30 backdrop-blur-sm">
-                <div className="w-full overflow-x-auto">
-                  <Table className="min-w-full">{children}</Table>
+                );
+              },
+              h3: ({ children }: any) => {
+                const id = generateId(children);
+                return (
+                  <div className="group relative mt-10 mb-4 flex items-center gap-2.5">
+                    <span className="inline-block w-1.5 h-1.5 rounded-sm bg-(--md-purple) rotate-45 shrink-0"></span>
+                    <h3
+                      id={id}
+                      className="scroll-mt-28 text-xl sm:text-[1.35rem] font-semibold tracking-tight text-foreground"
+                    >
+                      {children}
+                    </h3>
+                  </div>
+                );
+              },
+              h4: ({ children }: any) => {
+                const id = generateId(children);
+                return (
+                  <div className="group relative mt-8 mb-3 flex items-center gap-2">
+                    <span className="inline-block w-1 h-1 rounded-full bg-(--md-purple)"></span>
+                    <h4 id={id} className="scroll-mt-28 text-lg font-semibold tracking-tight text-foreground">
+                      {children}
+                    </h4>
+                  </div>
+                );
+              },
+              p: ({ children }: any) => (
+                <p className="mb-5 leading-[1.8] text-[1.02rem] text-foreground/80 first-of-type:text-[1.12rem] sm:first-of-type:text-[1.16rem] first-of-type:leading-[1.75] first-of-type:mb-7 first-of-type:text-foreground/90">
+                  {children}
+                </p>
+              ),
+              ul: ({ children }: any) => <ul className="md-ul mb-6 space-y-2 text-[1.01rem]">{children}</ul>,
+              ol: ({ children }: any) => <ol className="md-ol mb-6 space-y-2.5 text-[1.01rem]">{children}</ol>,
+              li: ({ children, className }: any) => {
+                const isTask = (className || '').includes('task-list-item');
+                return (
+                  <li className={cn('leading-[1.7] text-foreground/80', isTask && 'list-none pl-0')}>{children}</li>
+                );
+              },
+              blockquote: ({ children }: any) => (
+                <div className="my-7">
+                  <blockquote className="md-quote">
+                    <div className="flex items-start gap-3">
+                      <Quote className="w-5 h-5 mt-0.5 shrink-0 text-(--md-purple) -scale-x-100" strokeWidth={2.2} />
+                      <div className="text-foreground/90 text-[1rem] leading-[1.75] font-medium [&_p]:mb-2 [&_p:last-child]:mb-0">
+                        {children}
+                      </div>
+                    </div>
+                  </blockquote>
                 </div>
-              </div>
-            ),
-            thead: ({ children }: any) => (
-              <TableHeader className="bg-linear-to-r from-muted to-muted/50 sticky top-0 z-10">{children}</TableHeader>
-            ),
-            th: ({ children }: any) => (
-              <TableHead className="border-none px-6 py-3 text-left font-bold text-foreground text-xs uppercase tracking-wider">
-                {children}
-              </TableHead>
-            ),
-            td: ({ children }: any) => (
-              <TableCell className="border-t border-border/40/30 px-6 py-4 text-muted-foreground odd:bg-background/40 even:bg-muted/10">
-                {children}
-              </TableCell>
-            ),
-            a: ({ children, href }: any) => {
-              if (href?.startsWith('#')) {
+              ),
+              table: ({ children }: any) => (
+                <div className="md-table-wrap">
+                  <div className="w-full overflow-x-auto">
+                    <table className="md-table">{children}</table>
+                  </div>
+                </div>
+              ),
+              thead: ({ children }: any) => <thead>{children}</thead>,
+              tbody: ({ children }: any) => <tbody>{children}</tbody>,
+              tr: ({ children }: any) => <tr>{children}</tr>,
+              th: ({ children }: any) => <th>{children}</th>,
+              td: ({ children }: any) => <td>{children}</td>,
+              a: ({ children, href }: any) => {
+                const isExternal = href?.startsWith('http');
+                if (href?.startsWith('#')) {
+                  return (
+                    <a
+                      href={href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToId(href.substring(1));
+                      }}
+                      className="md-link"
+                    >
+                      {children}
+                    </a>
+                  );
+                }
                 return (
                   <a
                     href={href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const id = href.substring(1);
-                      const element = document.getElementById(id);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="inline-flex items-center gap-1 text-primary hover:text-primary/80 underline decoration-2 underline-offset-4 decoration-primary/50 hover:decoration-primary transition-all duration-200 font-medium"
+                    className="md-link"
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
                   >
                     {children}
+                    {isExternal && <ExternalLink className="inline-block w-3 h-3 ml-1 -translate-y-px opacity-70" />}
                   </a>
                 );
-              }
-
-              return (
-                <a
-                  href={href}
-                  className="inline-flex items-center gap-1 text-primary hover:text-primary/80 underline decoration-2 underline-offset-4 decoration-primary/50 hover:decoration-primary transition-all duration-200 font-medium"
-                  target={href?.startsWith('http') ? '_blank' : undefined}
-                  rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
+              },
+              strong: ({ children }: any) => <strong>{children}</strong>,
+              em: ({ children }: any) => <em>{children}</em>,
+              kbd: ({ children }: any) => (
+                <kbd className="inline-flex items-center justify-center min-w-6 px-1.5 h-5 rounded border border-border/60 bg-muted/60 text-[0.75rem] font-mono text-foreground/80 shadow-[0_1px_0_0_color-mix(in_oklab,var(--foreground)_15%,transparent)]">
                   {children}
-                  {href?.startsWith('http') && <ExternalLink className="w-3 h-3 ml-1 opacity-70" />}
-                </a>
-              );
-            },
-            strong: ({ children }: any) => <strong className="font-bold text-foreground">{children}</strong>,
-            em: ({ children }: any) => <em className="italic text-foreground/90 font-medium">{children}</em>,
-            kbd: ({ children }: any) => (
-              <kbd className="inline-flex items-center justify-center min-w-6 px-2 h-6 rounded-md border border-border/40/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
-                {children}
-              </kbd>
-            ),
-            hr: () => (
-              <div className="my-12 flex items-center justify-center">
-                <div className="flex-1 h-px bg-linear-to-r from-transparent via-border to-transparent"></div>
-                <div className="px-6 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary/60"></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary/35"></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary/60"></span>
+                </kbd>
+              ),
+              hr: () => (
+                <div className="md-hr">
+                  <div className="md-hr-line"></div>
+                  <span className="md-hr-dot bg-(--md-red)"></span>
+                  <span className="md-hr-dot bg-(--md-yellow)"></span>
+                  <span className="md-hr-dot bg-(--md-purple)"></span>
+                  <div className="md-hr-line"></div>
                 </div>
-                <div className="flex-1 h-px bg-linear-to-r from-transparent via-border to-transparent"></div>
-              </div>
-            ),
-            // Image with rounded corners and subtle shadow
-            img: ({ src, alt }: any) => {
-              const [altText, caption] = (alt ?? '').split('|').map((s: string) => s.trim());
-              return (
-                <figure className="my-8 flex flex-col items-center">
-                  <img
-                    src={src}
-                    alt={altText}
-                    className="rounded-xl shadow-xl border border-border/40/40 ring-1 ring-border/20 max-w-full h-auto"
-                  />
-                  {caption && (
-                    <figcaption className="mt-3 text-sm text-muted-foreground italic text-center">{caption}</figcaption>
-                  )}
-                </figure>
-              );
-            },
-
-            // Code Blocks and Inline Code
-            code: ({ inline, className, children, ...props }: any) => {
-              const match = /language-(\w+)/.exec(className || '');
-              const language = match?.[1];
-              const codeString = String(children).replace(/\n$/, '');
-
-              // MERMAID SUPPORT
-              if (!inline && language === 'mermaid') {
-                return <MermaidRenderer chart={codeString} />;
-              }
-              // const language = match?.[1] ?? 'text';
-              return !inline && match ? (
-                <div
-                  className={cn(
-                    'relative group my-8 rounded-xl border overflow-hidden',
-                    isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
-                  )}
-                >
-                  {/* <div className="flex items-center justify-between px-4 py-2 border-b border-slate-700/80 bg-slate-900/70 backdrop-blur">
-                    <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">{language}</span>
-                  </div> */}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn(
-                      'absolute group-hover:opacity-100 opacity-0 top-2 right-2 h-8 w-8 p-1.5 rounded-md border shadow-sm group',
-                      isDarkTheme
-                        ? 'bg-slate-800/65 hover:bg-slate-800/90 border-slate-700/70'
-                        : 'bg-white/90 hover:bg-white border-slate-300'
-                    )}
-                    onClick={() => handleCopy(String(children))}
-                  >
-                    {copied ? (
-                      <Check className="h-4 w-4 text-green-400" />
-                    ) : (
-                      <Copy
-                        className={cn(
-                          'h-4 w-4 group-hover:scale-110 transition-transform',
-                          isDarkTheme ? 'text-white' : 'text-slate-700'
-                        )}
-                      />
-                    )}
-                  </Button>
-
-                  <div className="overflow-x-auto">
-                    <SyntaxHighlighter
-                      style={isDarkTheme ? atomDark : oneLight}
-                      language={match[1]}
-                      PreTag="div"
-                      className="m-0! bg-transparent! p-6! text-sm sm:text-base"
-                      showLineNumbers={false}
-                      {...props}
-                    >
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  </div>
-                </div>
-              ) : (
-                <code
-                  className="px-1.5 py-0.5 mx-0.5 rounded-md bg-muted/60 border border-border/40/60 text-[0.92em] font-mono text-foreground/90"
-                  {...props}
-                >
-                  {children}
-                </code>
-              );
-            },
-            pre: ({ ...props }) => <pre className="my-6" {...props} />,
-
-            // Task Lists (GFM)
-            input: ({ ...props }: any) => (
-              <input
-                className="mr-2 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                disabled
-                {...props}
-              />
-            ),
-
-            // Strikethrough (GFM)
-            del: ({ ...props }) => <del className="text-muted-foreground line-through" {...props} />,
-          }}
-        >
-          {content}
-        </ReactMarkdown>
-      </div>
-
-      {headings.length > 0 && (
-        <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)] border-l border-border/40/40 pl-6">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground mb-4">
-            Contents
-          </div>
-          <ScrollArea className="h-[calc(100vh-10rem)] pr-2">
-            <nav className="space-y-1 text-sm">
-              {headings.map((heading) => {
-                const indent =
-                  heading.level === 1 ? 'ml-0' : heading.level === 2 ? 'ml-2' : heading.level === 3 ? 'ml-4' : 'ml-6';
-
+              ),
+              img: ({ src, alt }: any) => {
+                const [altText, caption] = (alt ?? '').split('|').map((s: string) => s.trim());
                 return (
-                  <button
-                    key={heading.id}
-                    type="button"
-                    title={heading.text}
-                    onClick={() => {
-                      const element = document.getElementById(heading.id);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }
-                    }}
-                    className={cn(
-                      indent,
-                      'block w-full text-left py-1.5 px-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/70 transition-colors duration-150 text-xs'
+                  <figure className="my-7 flex flex-col items-center">
+                    <div className="md-polaroid">
+                      <img src={src} alt={altText} className="rounded-md max-w-full h-auto block" />
+                    </div>
+                    {caption && (
+                      <figcaption className="mt-2.5 text-sm text-muted-foreground italic text-center">
+                        {caption}
+                      </figcaption>
                     )}
-                  >
-                    <span className="block truncate">{heading.text}</span>
-                  </button>
+                  </figure>
                 );
-              })}
-            </nav>
-          </ScrollArea>
+              },
+              code: ({ inline, className, children, ...props }: any) => {
+                const match = /language-(\w+)/.exec(className || '');
+                const language = match?.[1];
+                const codeString = String(children).replace(/\n$/, '');
+                const codeKey = codeString.slice(0, 64);
+
+                if (!inline && language === 'mermaid') {
+                  return <MermaidRenderer chart={codeString} />;
+                }
+
+                return !inline && match ? (
+                  <div className="md-code-card group my-6">
+                    <div className="md-code-head">
+                      <span className="md-code-dot" />
+                      <span className="md-code-dot" />
+                      <span className="md-code-dot" />
+                      <span className="ml-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase text-white/55">
+                        {language}
+                      </span>
+                      <div className="ml-auto flex items-center">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleCopy(codeKey, codeString)}
+                          className="h-6 gap-1.5 px-2 text-[0.7rem] font-medium text-white/65 hover:text-white hover:bg-white/5 rounded"
+                        >
+                          {copiedKey === codeKey ? (
+                            <>
+                              <Check className="h-3 w-3" /> Copied
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="h-3 w-3" /> Copy
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <SyntaxHighlighter
+                        style={isDarkTheme ? atomDark : oneLight}
+                        language={language}
+                        PreTag="div"
+                        className="m-0! bg-transparent! p-5! text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!"
+                        showLineNumbers={false}
+                        customStyle={{ background: 'transparent', margin: 0 }}
+                        {...props}
+                      >
+                        {codeString}
+                      </SyntaxHighlighter>
+                    </div>
+                  </div>
+                ) : (
+                  <code className="md-inline-code" {...props}>
+                    {children}
+                  </code>
+                );
+              },
+              pre: ({ children }: any) => <>{children}</>,
+              input: ({ checked, ...props }: any) => (
+                <input className="md-task-checkbox" type="checkbox" checked={checked} disabled {...props} />
+              ),
+              del: ({ children }: any) => (
+                <del className="text-muted-foreground/80 line-through decoration-(--md-red)/70 decoration-1">
+                  {children}
+                </del>
+              ),
+            }}
+          >
+            {content}
+          </ReactMarkdown>
+        </div>
+      </article>
+
+      {/* TABLE OF CONTENTS */}
+      {headings.length > 0 && (
+        <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)]">
+          <div className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 shadow-[0_12px_30px_-22px_hsl(var(--foreground)/0.25)]">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                On this page
+              </span>
+              <div
+                className="md-progress-ring"
+                data-label={`${Math.round(progress)}%`}
+                style={{ ['--progress' as any]: progress }}
+              />
+            </div>
+            <div className="-mx-1 mb-3 h-px bg-border/40" />
+
+            <ScrollArea className="h-[calc(100vh-13rem)] pr-1.5">
+              <nav className="space-y-0.5">
+                {headings.map((heading) => {
+                  const indent =
+                    heading.level === 1
+                      ? 'pl-3'
+                      : heading.level === 2
+                        ? 'pl-3'
+                        : heading.level === 3
+                          ? 'pl-7'
+                          : 'pl-10';
+                  return (
+                    <button
+                      key={heading.id}
+                      type="button"
+                      title={heading.text}
+                      onClick={() => scrollToId(heading.id)}
+                      className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+                    >
+                      <span className="block truncate">{heading.text}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </ScrollArea>
+          </div>
         </aside>
       )}
     </div>

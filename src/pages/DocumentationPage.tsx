@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
 import { useEffect, useMemo } from 'react';
-import { ChevronLeft, ChevronRight, Home } from 'lucide-react';
+import { ChevronRight, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import {
@@ -112,39 +112,44 @@ const DocumentationPage = ({
           onClick={onToggleSidebar}
           aria-label={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
           title={isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}
-          className="hidden md:inline-flex gap-2 shrink-0"
+          className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
         >
-          {isSidebarCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+          {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
           {/* <span>{isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}</span> */}
         </Button>
-        <Breadcrumb>
-          <BreadcrumbList className="flex-wrap gap-1 text-sm text-muted-foreground">
+        <Breadcrumb className="min-w-0">
+          <BreadcrumbList className="flex-wrap h-9 gap-1.5 rounded-xl border border-border/40 bg-card/45 backdrop-blur-sm px-3 py-1 text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/" className="hover:text-foreground transition-colors">
+                <Link
+                  to="/"
+                  className="rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
+                >
                   Docs
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+              <ChevronRight className="h-3.5 w-3.5 opacity-45" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link
                   to={`/docs/${topic.id}/${topic.items[0].id}`}
-                  className="hover:text-foreground transition-colors flex items-center gap-1.5"
+                  className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
                 >
-                  {topic.icon}
+                  <span className="text-base opacity-85">{topic.icon}</span>
                   <span>{topic.title}</span>
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+              <ChevronRight className="h-3.5 w-3.5 opacity-45" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
-              <BreadcrumbPage className="font-medium text-foreground">{content.title}</BreadcrumbPage>
+              <BreadcrumbPage className="max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
+                {content.title}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

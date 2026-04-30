@@ -134,6 +134,23 @@
     @apply border-border/40 outline-ring/50;
   }
 
+  /* Global radius normalization: use one rounded style everywhere */
+  :where(
+    .rounded-none,
+    .rounded-sm,
+    .rounded,
+    .rounded-md,
+    .rounded-lg,
+    .rounded-xl,
+    .rounded-2xl,
+    .rounded-3xl,
+    .rounded-4xl,
+    .rounded-full,
+    [class*="rounded-["]
+  ) {
+    border-radius: var(--radius-md) !important;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: "IBM Plex Sans", sans-serif;
@@ -149,4 +166,362 @@
     animation: none !important;
   }
 
+}
+
+/* ==========================================================================
+   Markdown Render — refined editorial theme
+   Palette accents only: Tan #fceed1 · Purple #7d3cff · Yellow #f2d53c · Red #c80e13
+   All decoration uses soft alpha tints so the article still belongs to the
+   site's neutral card surface rather than becoming a sticker book.
+   ========================================================================== */
+.md-render {
+  --md-purple:       #7d3cff;
+  --md-purple-deep:  #5a1fd4;
+  --md-purple-soft:  rgba(125, 60, 255, 0.07);
+  --md-purple-tint:  rgba(125, 60, 255, 0.12);
+  --md-purple-line:  rgba(125, 60, 255, 0.22);
+  --md-yellow:       #f2d53c;
+  --md-yellow-soft:  rgba(242, 213, 60, 0.22);
+  --md-yellow-line:  rgba(242, 213, 60, 0.45);
+  --md-red:          #c80e13;
+  --md-red-soft:     rgba(200, 14, 19, 0.08);
+  --md-tan-tint:     rgba(252, 238, 209, 0.45);
+
+  position: relative;
+  counter-reset: md-h2;
+}
+
+.dark .md-render {
+  --md-purple:       #b693ff;
+  --md-purple-deep:  #d2bcff;
+  --md-purple-soft:  rgba(182, 147, 255, 0.08);
+  --md-purple-tint:  rgba(182, 147, 255, 0.14);
+  --md-purple-line:  rgba(182, 147, 255, 0.22);
+  --md-yellow:       #f7df5c;
+  --md-yellow-soft:  rgba(247, 223, 92, 0.10);
+  --md-yellow-line:  rgba(247, 223, 92, 0.22);
+  --md-red:          #ff8085;
+  --md-red-soft:     rgba(255, 128, 133, 0.10);
+  --md-tan-tint:     rgba(182, 147, 255, 0.04);
+}
+
+/* Subtle warm tint at the top of the article — replaces the loud paper bg */
+.md-render::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--md-tan-tint) 0%, transparent 320px);
+  z-index: 0;
+}
+
+/* Drop cap — purple letter on soft yellow tint, no shadow stack */
+.md-render > p:first-of-type::first-letter {
+  float: left;
+  font-weight: 800;
+  font-size: 3.4rem;
+  line-height: 0.95;
+  margin: 0.4rem 0.6rem 0 0;
+  padding: 0.1rem 0.4rem 0.05rem;
+  color: var(--md-purple-deep);
+  background: var(--md-yellow-soft);
+  border: 1px solid var(--md-yellow-line);
+  border-radius: 0.4rem;
+}
+
+/* <strong> — gentle yellow underline highlight */
+.md-render strong {
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 72%,
+    var(--md-yellow-soft) 72%,
+    var(--md-yellow-soft) 95%,
+    transparent 95%
+  );
+  background-repeat: no-repeat;
+  padding: 0 0.1em;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* <em> — soft purple italic */
+.md-render em {
+  color: var(--md-purple-deep);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Link — thin purple underline that grows slightly on hover */
+.md-render .md-link {
+  color: var(--md-purple-deep);
+  font-weight: 500;
+  text-decoration: none;
+  background-image: linear-gradient(var(--md-purple), var(--md-purple));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1.5px;
+  transition: background-size 0.25s ease, color 0.2s ease;
+  padding: 0 0.04em;
+}
+.md-render .md-link:hover {
+  background-size: 100% 0.32em;
+  color: var(--foreground);
+}
+
+/* Inline code — soft yellow chip */
+.md-render .md-inline-code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  padding: 0.12em 0.4em;
+  margin: 0 0.08em;
+  border-radius: 0.35rem;
+  background: var(--md-yellow-soft);
+  color: var(--foreground);
+  border: 1px solid var(--md-yellow-line);
+}
+
+/* H1 highlight — narrow yellow underline marker */
+.md-render .md-h1-title {
+  display: inline;
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 82%,
+    var(--md-yellow-soft) 82%,
+    var(--md-yellow-soft) 96%,
+    transparent 96%
+  );
+  background-repeat: no-repeat;
+  padding: 0 0.04em;
+}
+
+/* H2 chapter counter */
+.md-render .md-h2 { counter-increment: md-h2; }
+.md-render .md-h2-num::before {
+  content: counter(md-h2, decimal-leading-zero);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Blockquote — clean purple stripe on soft purple tint */
+.md-render .md-quote {
+  background: var(--md-purple-soft);
+  border: 1px solid var(--md-purple-line);
+  border-left: 3px solid var(--md-purple);
+  border-radius: 0 0.6rem 0.6rem 0;
+  padding: 1rem 1.25rem;
+}
+
+/* Image — simple framed image, no rotation, no fake polaroid */
+.md-render .md-polaroid {
+  background: var(--card);
+  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  padding: 0.4rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 14px 32px -22px color-mix(in oklab, var(--foreground) 30%, transparent);
+}
+
+/* Lists — small markers, no shadow ghosts */
+.md-render .md-ul { list-style: none; padding-left: 0.25rem; }
+.md-render .md-ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.md-render .md-ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.78em;
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--md-purple);
+  border-radius: 0.1rem;
+  transform: rotate(45deg);
+}
+
+.md-render .md-ol { list-style: none; padding-left: 0.25rem; counter-reset: md-ol; }
+.md-render .md-ol > li {
+  position: relative;
+  padding-left: 2.1rem;
+  counter-increment: md-ol;
+}
+.md-render .md-ol > li::before {
+  content: counter(md-ol);
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  background: var(--md-purple-tint);
+  color: var(--md-purple-deep);
+  border: 1px solid var(--md-purple-line);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Task checkbox */
+.md-render .md-task-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid var(--md-purple);
+  border-radius: 0.25rem;
+  vertical-align: -2px;
+  margin-right: 0.5rem;
+  position: relative;
+  background: transparent;
+  cursor: not-allowed;
+}
+.md-render .md-task-checkbox:checked {
+  background: var(--md-purple);
+  border-color: var(--md-purple);
+}
+.md-render .md-task-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  inset: 1px 0 0 3px;
+  width: 0.36rem;
+  height: 0.58rem;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Code card — clean dark slate matching the rest of the site */
+.md-render .md-code-card {
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  background: #0f172a;
+  overflow: hidden;
+}
+.dark .md-render .md-code-card {
+  background: #0a0e1a;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+.md-render .md-code-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.md-render .md-code-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  opacity: 0.55;
+}
+
+/* Horizontal rule — small muted dots */
+.md-render .md-hr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2.5rem 0;
+}
+.md-render .md-hr-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--foreground) 18%, transparent), transparent);
+}
+.md-render .md-hr-dot {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 999px;
+  opacity: 0.5;
+}
+
+/* Tables — soft purple header, gentle zebra */
+.md-render .md-table-wrap {
+  margin: 2rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  background: var(--card);
+}
+.md-render .md-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.md-render .md-table thead {
+  background: var(--md-purple-tint);
+}
+.md-render .md-table th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  color: var(--md-purple-deep);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--md-purple-line);
+}
+.md-render .md-table tbody tr { transition: background 0.18s ease; }
+.md-render .md-table tbody tr:nth-child(odd)  { background: color-mix(in oklab, var(--muted) 30%, transparent); }
+.md-render .md-table tbody tr:nth-child(even) { background: transparent; }
+.md-render .md-table tbody tr:hover { background: var(--md-purple-soft); }
+.md-render .md-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  color: var(--foreground);
+}
+
+/* TOC */
+.md-toc-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.6rem 0.4rem 0.75rem;
+  border-radius: 0.4rem;
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  border-left: 2px solid transparent;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.md-toc-item:hover {
+  background: color-mix(in oklab, var(--muted) 60%, transparent);
+  color: var(--foreground);
+}
+.md-toc-item.active {
+  background: var(--md-purple-soft);
+  color: var(--md-purple-deep);
+  border-left-color: var(--md-purple);
+  font-weight: 600;
+}
+
+/* Reading-progress ring */
+.md-progress-ring {
+  --progress: 0;
+  --size: 2.1rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  background: conic-gradient(
+    var(--md-purple) calc(var(--progress) * 1%),
+    color-mix(in oklab, var(--foreground) 10%, transparent) 0
+  );
+  display: grid;
+  place-items: center;
+}
+.md-progress-ring::after {
+  content: attr(data-label);
+  width: calc(var(--size) - 0.45rem);
+  height: calc(var(--size) - 0.45rem);
+  background: var(--card);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--md-purple-deep);
 }
