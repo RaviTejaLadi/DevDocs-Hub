@@ -160,24 +160,6 @@
     overflow: hidden;
   }
 
-  /* Subtle global grain texture */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.035;
-    background-image: radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.3) 0.6px, transparent 0.7px);
-    background-size: 3px 3px;
-    mix-blend-mode: multiply;
-  }
-
-  .dark body::before {
-    opacity: 0.05;
-    mix-blend-mode: screen;
-  }
-
   .theme-switching,
   .theme-switching * {
     transition: none !important;
