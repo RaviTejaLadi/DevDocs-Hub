@@ -5,6 +5,7 @@ import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'luc
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -57,6 +58,7 @@ const SidebarContent = ({
       const isActive = activeSlug === item.id;
       const hasChildren = item.items && item.items.length > 0;
       const isExpanded = expandedIds[item.id];
+      const shouldShowTitleTooltip = item.title.length > 28;
 
       return (
         <div key={item.id} className="w-full max-w-full overflow-hidden">
@@ -84,9 +86,22 @@ const SidebarContent = ({
                 </span>
               )}
 
-              <span className="text-sm truncate text-left flex-1 min-w-0" title={item.title}>
-                <TranslatedText text={item.title} />
-              </span>
+              {shouldShowTitleTooltip ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="text-sm truncate text-left flex-1 min-w-0">
+                      <TranslatedText text={item.title} />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="right" align="start" className="max-w-64 wrap-break-word">
+                    <TranslatedText text={item.title} />
+                  </TooltipContent>
+                </Tooltip>
+              ) : (
+                <span className="text-sm truncate text-left flex-1 min-w-0">
+                  <TranslatedText text={item.title} />
+                </span>
+              )}
 
               {hasChildren && (
                 <button
@@ -187,9 +202,11 @@ const SidebarContent = ({
 
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full overflow-hidden">
-          <nav className="p-3 space-y-0.5 w-full max-w-full overflow-x-hidden" aria-label="Topic sections">
-            {displayContent}
-          </nav>
+          <TooltipProvider delayDuration={250}>
+            <nav className="p-3 space-y-0.5 w-full max-w-full overflow-x-hidden" aria-label="Topic sections">
+              {displayContent}
+            </nav>
+          </TooltipProvider>
         </ScrollArea>
       </div>
     </div>

@@ -12,6 +12,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { cn } from '@/lib/utils';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
 import { useI18n } from '@/i18n/I18nProvider';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 type Heading = { id: string; text: string; level: number };
 
@@ -386,29 +387,50 @@ const MarkdownRender = ({ content }: { content: string }) => {
             <div className="-mx-1 mb-3 h-px bg-border/40" />
 
             <ScrollArea className="h-[calc(100vh-13rem)] pr-1.5">
-              <nav className="space-y-0.5">
-                {headings.map((heading) => {
-                  const indent =
-                    heading.level === 1
-                      ? 'pl-3'
-                      : heading.level === 2
+              <TooltipProvider delayDuration={300}>
+                <nav className="space-y-0.5">
+                  {headings.map((heading) => {
+                    const indent =
+                      heading.level === 1
                         ? 'pl-3'
-                        : heading.level === 3
-                          ? 'pl-7'
-                          : 'pl-10';
-                  return (
-                    <button
-                      key={heading.id}
-                      type="button"
-                      title={heading.text}
-                      onClick={() => scrollToId(heading.id)}
-                      className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
-                    >
-                      <span className="block truncate">{heading.text}</span>
-                    </button>
-                  );
-                })}
-              </nav>
+                        : heading.level === 2
+                          ? 'pl-3'
+                          : heading.level === 3
+                            ? 'pl-7'
+                            : 'pl-10';
+                    const shouldShowHeadingTooltip = heading.text.length > 42;
+                    if (!shouldShowHeadingTooltip) {
+                      return (
+                        <button
+                          key={heading.id}
+                          type="button"
+                          onClick={() => scrollToId(heading.id)}
+                          className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+                        >
+                          <span className="block truncate">{heading.text}</span>
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <Tooltip key={heading.id}>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            onClick={() => scrollToId(heading.id)}
+                            className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+                          >
+                            <span className="block truncate">{heading.text}</span>
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent side="left" className="max-w-80 wrap-break-word">
+                          {heading.text}
+                        </TooltipContent>
+                      </Tooltip>
+                    );
+                  })}
+                </nav>
+              </TooltipProvider>
             </ScrollArea>
           </div>
         </aside>

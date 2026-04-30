@@ -16,6 +16,7 @@ import { Separator } from '../components/ui/separator';
 import MarkdownRender from '../components/MarkdownRender';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -109,17 +110,24 @@ const DocumentationPage = ({
   return (
     <div className="w-full space-y-8">
       <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onToggleSidebar}
-          aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-          title={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-          className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
-        >
-          {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-          {/* <span>{isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}</span> */}
-        </Button>
+        <TooltipProvider delayDuration={200}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onToggleSidebar}
+                aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+                className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
+              >
+                {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              {isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
         <Breadcrumb className="min-w-0 flex-1">
           <BreadcrumbList className="flex-wrap min-h-9 gap-1 rounded-md border border-border/40 bg-card/45 backdrop-blur-sm px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
             <BreadcrumbItem>
