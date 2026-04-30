@@ -20,9 +20,9 @@ const MarkdownRender = ({ content }: { content: string }) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
-  const [progress, setProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const scrollContainerRef = useRef<HTMLElement | null>(null);
+  const progressRingRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
   const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
@@ -68,11 +68,21 @@ const MarkdownRender = ({ content }: { content: string }) => {
     }
     scrollContainerRef.current = scrollEl ?? null;
 
+    let frameId = 0;
     const updateProgress = () => {
-      const target = scrollContainerRef.current ?? document.scrollingElement ?? document.documentElement;
-      const scrollTop = target.scrollTop;
-      const max = target.scrollHeight - target.clientHeight;
-      setProgress(max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0);
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0;
+        if (!progressRingRef.current) return;
+
+        const target = scrollContainerRef.current ?? document.scrollingElement ?? document.documentElement;
+        const scrollTop = target.scrollTop;
+        const max = target.scrollHeight - target.clientHeight;
+        const progress = max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0;
+
+        progressRingRef.current.style.setProperty('--progress', String(progress));
+        progressRingRef.current.dataset.label = `${Math.round(progress)}%`;
+      });
     };
     const target = scrollContainerRef.current ?? window;
     target.addEventListener('scroll', updateProgress, { passive: true });
@@ -81,6 +91,7 @@ const MarkdownRender = ({ content }: { content: string }) => {
     return () => {
       observer.disconnect();
       target.removeEventListener('scroll', updateProgress);
+      if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, [headings]);
 
@@ -379,9 +390,10 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 {t('markdown.onThisPage')}
               </span>
               <div
+                ref={progressRingRef}
                 className="md-progress-ring"
-                data-label={`${Math.round(progress)}%`}
-                style={{ ['--progress' as any]: progress }}
+                data-label="0%"
+                style={{ ['--progress' as any]: 0 }}
               />
             </div>
             <div className="-mx-1 mb-3 h-px bg-border/40" />

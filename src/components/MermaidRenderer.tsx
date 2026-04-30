@@ -1,14 +1,28 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
+
+type MermaidThemeMode = 'light' | 'dark';
+
+const renderedDiagramCache = new Map<string, string>();
+
+const cacheRenderedDiagram = (key: string, svg: string) => {
+  renderedDiagramCache.set(key, svg);
+  if (renderedDiagramCache.size > 50) {
+    const oldestKey = renderedDiagramCache.keys().next().value;
+    if (oldestKey) renderedDiagramCache.delete(oldestKey);
+  }
+};
 
 const initMermaid = (isDark: boolean) => {
   mermaid.initialize({
     startOnLoad: false,
     securityLevel: 'loose',
     theme: 'base',
+    deterministicIds: true,
+    maxTextSize: 90000,
+    fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
     themeVariables: isDark
       ? {
-          // ── Dark theme (higher contrast + softer surfaces) ────────
           background: '#0f1420',
           mainBkg: '#151d30',
           primaryColor: '#1b2640',
@@ -33,9 +47,8 @@ const initMermaid = (isDark: boolean) => {
           //   labelTextColor:       '#c8cae0',
 
           fontSize: '14px',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
+          fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
 
-          // Sequence
           actorBorder: '#7a8fd4',
           actorBkg: '#1b2640',
           actorTextColor: '#e8ecff',
@@ -55,7 +68,6 @@ const initMermaid = (isDark: boolean) => {
           attributeBackgroundColorEven: '#1b2640',
           attributeBackgroundColorOdd: '#22304d',
 
-          // Pie
           pie1: '#6b7ab5',
           pie2: '#4a8fa8',
           pie3: '#5a9e7a',
@@ -68,7 +80,6 @@ const initMermaid = (isDark: boolean) => {
           pieLegendTextColor: '#d3dbf9',
           pieSectionTextColor: '#ffffff',
 
-          // Gantt
           sectionBkgColor: '#172035',
           altSectionBkgColor: '#111a2c',
           sectionBkgColor2: '#1b2640',
@@ -86,7 +97,6 @@ const initMermaid = (isDark: boolean) => {
           critBkgColor: '#2a1a20',
           todayLineColor: '#8fa3ea',
 
-          // Git
           git0: '#6b7ab5',
           git1: '#4a8fa8',
           git2: '#5a9e7a',
@@ -110,7 +120,6 @@ const initMermaid = (isDark: boolean) => {
           tagLabelBorder: '#5f72b4',
         }
       : {
-          // ── Light theme (oklch 0.99 base) ─────────────────────────
           background: '#ffffff',
           mainBkg: '#f6f7fb',
           primaryColor: '#edf0fa',
@@ -132,12 +141,10 @@ const initMermaid = (isDark: boolean) => {
           clusterBorder: '#c0c4de',
 
           nodeTextColor: '#1a1c2e',
-          //   labelTextColor:       '#2a2d45',
 
           fontSize: '14px',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
+          fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
 
-          // Sequence
           actorBorder: '#9098c8',
           actorBkg: '#edf0fa',
           actorTextColor: '#1a1c2e',
@@ -156,7 +163,6 @@ const initMermaid = (isDark: boolean) => {
           attributeBackgroundColorEven: '#f0f2fb',
           attributeBackgroundColorOdd: '#f8f9fd',
 
-          // Pie
           pie1: '#5a6aa8',
           pie2: '#3a7e9a',
           pie3: '#4a8e6a',
@@ -169,7 +175,6 @@ const initMermaid = (isDark: boolean) => {
           pieLegendTextColor: '#2a2d45',
           pieSectionTextColor: '#ffffff',
 
-          // Gantt
           sectionBkgColor: '#f0f2fb',
           altSectionBkgColor: '#f8f9fd',
           sectionBkgColor2: '#edf0fa',
@@ -187,7 +192,6 @@ const initMermaid = (isDark: boolean) => {
           critBkgColor: '#fce8ea',
           todayLineColor: '#5a6aa8',
 
-          // Git
           git0: '#5a6aa8',
           git1: '#3a7e9a',
           git2: '#4a8e6a',
@@ -210,97 +214,189 @@ const initMermaid = (isDark: boolean) => {
           tagLabelBackground: '#5a6aa8',
           tagLabelBorder: '#3a4888',
         },
-    flowchart: { curve: 'basis', padding: 20, nodeSpacing: 50, rankSpacing: 70, htmlLabels: false, useMaxWidth: true },
-    sequence: { actorMargin: 60, mirrorActors: false, useMaxWidth: true },
-    gantt: { barHeight: 24, barGap: 6, topPadding: 40, leftPadding: 80, gridLineStartPadding: 40 },
+    flowchart: {
+      curve: 'basis',
+      padding: 16,
+      nodeSpacing: 42,
+      rankSpacing: 54,
+      htmlLabels: true,
+      useMaxWidth: false,
+    },
+    sequence: { actorMargin: 44, boxMargin: 10, messageMargin: 36, mirrorActors: false, useMaxWidth: false },
+    gantt: { barHeight: 22, barGap: 5, topPadding: 36, leftPadding: 72, gridLineStartPadding: 36 },
     er: { layoutDirection: 'TB', useMaxWidth: true },
   });
 };
 
+const getThemeMode = (): MermaidThemeMode =>
+  document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+const getSvgSize = (svgEl: SVGSVGElement) => {
+  const viewBox = svgEl.getAttribute('viewBox')?.trim().split(/[\s,]+/).map(Number);
+  const viewBoxWidth = viewBox?.length === 4 && Number.isFinite(viewBox[2]) ? viewBox[2] : 0;
+  const viewBoxHeight = viewBox?.length === 4 && Number.isFinite(viewBox[3]) ? viewBox[3] : 0;
+  const attrWidth = Number.parseFloat(svgEl.getAttribute('width') ?? '');
+  const attrHeight = Number.parseFloat(svgEl.getAttribute('height') ?? '');
+
+  return {
+    width: viewBoxWidth || (Number.isFinite(attrWidth) ? attrWidth : 640),
+    height: viewBoxHeight || (Number.isFinite(attrHeight) ? attrHeight : 360),
+  };
+};
+
+const roundMermaidCorners = (svgEl: SVGSVGElement) => {
+  svgEl.querySelectorAll('rect').forEach((el) => {
+    const rect = el as SVGRectElement;
+    const width = Number.parseFloat(rect.getAttribute('width') ?? '');
+    const height = Number.parseFloat(rect.getAttribute('height') ?? '');
+    const radius = Number.isFinite(width) && Number.isFinite(height) && Math.min(width, height) < 18 ? 4 : 8;
+
+    rect.setAttribute('rx', String(radius));
+    rect.setAttribute('ry', String(radius));
+  });
+
+  svgEl.querySelectorAll('foreignObject div, .nodeLabel, .edgeLabel, .labelBkg').forEach((el) => {
+    (el as HTMLElement | SVGElement).style.borderRadius = '8px';
+  });
+};
+
+const polishSvg = (svgEl: SVGSVGElement, isDark: boolean) => {
+  const { width, height } = getSvgSize(svgEl);
+  const aspectRatio = width > 0 ? height / width : 1;
+  const targetWidth = Math.min(Math.max(width, 360), aspectRatio > 1.35 ? 760 : 940);
+
+  svgEl.removeAttribute('width');
+  svgEl.removeAttribute('height');
+  svgEl.setAttribute('role', 'img');
+  svgEl.setAttribute('aria-label', 'Mermaid diagram');
+  svgEl.style.display = 'block';
+  svgEl.style.width = `${targetWidth}px`;
+  svgEl.style.maxWidth = '100%';
+  svgEl.style.maxHeight = 'min(72vh, 680px)';
+  svgEl.style.height = 'auto';
+  svgEl.style.marginInline = 'auto';
+  svgEl.style.backgroundColor = 'transparent';
+  svgEl.style.objectFit = 'contain';
+  svgEl.style.overflow = 'visible';
+
+  roundMermaidCorners(svgEl);
+
+  svgEl.querySelectorAll('.edgePath path, .flowchart-link, .messageLine0, .messageLine1').forEach((el) => {
+    (el as SVGElement).style.strokeWidth = '1.7px';
+    if (isDark) (el as SVGElement).style.stroke = '#8fa3ea';
+  });
+
+  svgEl.querySelectorAll('.edgeLabel text, .messageText, .loopText, .labelText').forEach((el) => {
+    (el as SVGElement).style.fontSize = '12px';
+    (el as SVGElement).style.fontWeight = '500';
+    if (isDark) (el as SVGElement).style.fill = '#dbe3ff';
+  });
+
+  svgEl.querySelectorAll('.node rect, .node circle, .node ellipse, .node polygon, .cluster rect').forEach((el) => {
+    (el as SVGElement).style.strokeWidth = '1.6px';
+  });
+
+  if (isDark) {
+    svgEl.querySelectorAll('.cluster rect').forEach((el) => {
+      (el as SVGElement).style.fill = '#111a2c';
+      (el as SVGElement).style.stroke = '#5f72b4';
+    });
+
+    svgEl.querySelectorAll('.edgeLabel rect, .labelBkg').forEach((el) => {
+      (el as SVGElement).style.fill = '#1b2640';
+      (el as SVGElement).style.stroke = '#5f72b4';
+    });
+
+    svgEl.querySelectorAll('marker path').forEach((el) => {
+      (el as SVGElement).style.fill = '#8fa3ea';
+      (el as SVGElement).style.stroke = '#8fa3ea';
+    });
+  }
+};
+
 const MermaidRenderer = ({ chart }: { chart: string }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const errorBoxRef = useRef<HTMLDivElement>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
+  const [themeMode, setThemeMode] = useState<MermaidThemeMode>(() => getThemeMode());
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setThemeMode(getThemeMode());
+    });
+
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!ref.current) return;
 
-    const isDark = document.documentElement.classList.contains('dark');
+    let isCancelled = false;
+    const isDark = themeMode === 'dark';
+    const cacheKey = `${themeMode}:${chart}`;
     initMermaid(isDark);
+    ref.current.innerHTML = '';
+    if (errorRef.current) errorRef.current.textContent = '';
+    if (errorBoxRef.current) errorBoxRef.current.hidden = true;
+
+    const cachedSvg = renderedDiagramCache.get(cacheKey);
+    if (cachedSvg) {
+      ref.current.innerHTML = cachedSvg;
+      const svgEl = ref.current.querySelector('svg');
+      if (svgEl) polishSvg(svgEl, isDark);
+      return;
+    }
 
     const id = 'mermaid-' + Math.random().toString(36).slice(2);
 
     mermaid
       .render(id, chart)
       .then(({ svg }) => {
-        if (!ref.current) return;
+        if (!ref.current || isCancelled) return;
 
+        cacheRenderedDiagram(cacheKey, svg);
         ref.current.innerHTML = svg;
 
         const svgEl = ref.current.querySelector('svg');
         if (!svgEl) return;
 
-        // Keep responsive sizing without mutating internal SVG nodes.
-        svgEl.removeAttribute('height');
-        svgEl.style.width = '100%';
-        svgEl.style.maxWidth = '100%';
-        svgEl.style.height = 'auto';
-
-        // Avoid fixed dark/light backgrounds inside the SVG.
-        svgEl.style.backgroundColor = 'transparent';
-
-        // Consistent edge styling
-        svgEl.querySelectorAll('.edgePath path, .flowchart-link').forEach((el) => {
-          (el as SVGElement).style.strokeWidth = '1.8px';
-          if (isDark) (el as SVGElement).style.stroke = '#8fa3ea';
-        });
-
-        // Edge label text (SVG labels, no foreignObject HTML)
-        svgEl.querySelectorAll('.edgeLabel text').forEach((el) => {
-          (el as SVGElement).style.fontSize = '12px';
-          (el as SVGElement).style.fontWeight = '500';
-          if (isDark) {
-            (el as SVGElement).style.fill = '#dbe3ff';
-          }
-        });
-
-        // Edge label backgrounds
-        svgEl.querySelectorAll('.edgeLabel rect').forEach((el) => {
-          if (isDark) {
-            (el as SVGElement).style.fill = '#1b2640';
-            (el as SVGElement).style.stroke = '#5f72b4';
-          }
-        });
-
-        if (isDark) {
-          // Dark mode readability polish for nodes/clusters/arrows.
-          svgEl.querySelectorAll('.node rect, .node circle, .node ellipse, .node polygon').forEach((el) => {
-            (el as SVGElement).style.strokeWidth = '1.8px';
-          });
-
-          svgEl.querySelectorAll('.cluster rect').forEach((el) => {
-            (el as SVGElement).style.fill = '#111a2c';
-            (el as SVGElement).style.stroke = '#5f72b4';
-          });
-
-          svgEl.querySelectorAll('marker path').forEach((el) => {
-            (el as SVGElement).style.fill = '#8fa3ea';
-            (el as SVGElement).style.stroke = '#8fa3ea';
-          });
-        }
+        polishSvg(svgEl, isDark);
       })
-      .catch(() => {
-        if (ref.current) {
-          ref.current.innerHTML =
-            '<p style="padding:16px;font-size:13px;color:#c05060">Unable to render diagram — please check syntax.</p>';
+      .catch((renderError: unknown) => {
+        if (isCancelled) return;
+        if (ref.current) ref.current.innerHTML = '';
+        if (errorBoxRef.current) errorBoxRef.current.hidden = false;
+        if (errorRef.current) {
+          errorRef.current.textContent =
+            renderError instanceof Error ? renderError.message : 'Unable to render diagram. Please check syntax.';
         }
       });
-  }, [chart]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [chart, themeMode]);
 
   return (
-    <div
-      ref={ref}
-      className="my-6 rounded-md border border-slate-200/60 bg-slate-100/30 backdrop-blur-sm dark:border-slate-700/70 dark:bg-slate-900/40 overflow-x-auto p-4 sm:p-6 [&>svg]:max-w-full [&>svg]:h-auto [&>svg]:mx-auto"
-    />
+    <figure className="my-7 overflow-hidden rounded-xl border border-border/60 bg-card/70 shadow-[0_14px_38px_-30px_hsl(var(--foreground)/0.45)] backdrop-blur-sm">
+      <div className="flex items-center justify-between gap-3 border-b border-border/50 bg-muted/35 px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+        <span>Diagram</span>
+        <span className="hidden normal-case tracking-normal sm:inline">Scroll to inspect larger diagrams</span>
+      </div>
+      <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-slate-50/70 p-3 sm:p-5 dark:bg-slate-950/35">
+        <div ref={ref} className="min-w-0 [&_svg_*]:font-sans" />
+        <div
+          ref={errorBoxRef}
+          hidden
+          className="rounded-lg border border-red-200/70 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"
+        >
+          <span>Unable to render this Mermaid diagram.</span>
+          <span ref={errorRef} className="mt-1 block text-xs opacity-80" />
+        </div>
+      </div>
+    </figure>
   );
 };
 
-export default MermaidRenderer;
+export default memo(MermaidRenderer);
