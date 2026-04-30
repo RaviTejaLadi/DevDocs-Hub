@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -296,10 +296,12 @@ const MarkdownRender = ({ content }: { content: string }) => {
                 return !inline && match ? (
                   <div className="md-code-card group my-6">
                     <div className="md-code-head">
-                      <span className="md-code-dot" />
-                      <span className="md-code-dot" />
-                      <span className="md-code-dot" />
-                      <span className="ml-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase text-white/55">
+                      <span
+                        className={cn(
+                          'ml-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase',
+                          isDarkTheme ? 'text-white/55' : 'text-slate-600'
+                        )}
+                      >
                         {language}
                       </span>
                       <div className="ml-auto flex items-center">
@@ -307,7 +309,12 @@ const MarkdownRender = ({ content }: { content: string }) => {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleCopy(codeKey, codeString)}
-                          className="h-6 gap-1.5 px-2 text-[0.7rem] font-medium text-white/65 hover:text-white hover:bg-white/5 rounded"
+                          className={cn(
+                            'h-6 gap-1.5 px-2 text-[0.7rem] font-medium rounded',
+                            isDarkTheme
+                              ? 'text-white/65 hover:text-white hover:bg-white/5'
+                              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                          )}
                         >
                           {copiedKey === codeKey ? (
                             <>
@@ -323,12 +330,13 @@ const MarkdownRender = ({ content }: { content: string }) => {
                     </div>
                     <div className="overflow-x-auto">
                       <SyntaxHighlighter
-                        style={isDarkTheme ? atomDark : oneLight}
+                        style={isDarkTheme ? atomDark : prism}
                         language={language}
                         PreTag="div"
                         className="m-0! bg-transparent! p-5! text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!"
                         showLineNumbers={false}
                         customStyle={{ background: 'transparent', margin: 0 }}
+                        codeTagProps={{ style: { background: 'transparent' } }}
                         {...props}
                       >
                         {codeString}

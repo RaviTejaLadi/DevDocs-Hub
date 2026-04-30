@@ -400,7 +400,7 @@
 .md-render .md-code-card {
   border-radius: 0.75rem;
   border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
-  background: #0f172a;
+  background: #f8fafc;
   overflow: hidden;
 }
 .dark .md-render .md-code-card {
@@ -412,6 +412,10 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 0.85rem;
+  background: color-mix(in oklab, var(--muted) 55%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+}
+.dark .md-render .md-code-head {
   background: rgba(255, 255, 255, 0.025);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
