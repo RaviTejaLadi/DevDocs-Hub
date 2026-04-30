@@ -70,7 +70,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="flex h-14 items-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="flex h-14 items-center px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <Logo showText size="sm" className="font-semibold" />
 
@@ -87,15 +87,15 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
           )}
         </div>
 
-        <div className="flex items-center  gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className="relative h-9 w-[20rem]  justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+                className="relative h-9 w-9 sm:w-[18rem] md:w-[20rem] justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
               >
                 <Search className="h-4 w-4 shrink-0" />
-                <span className="hidden sm:inline truncate">Search topics...</span>
+                <span className="hidden sm:inline truncate pr-12">Search topics...</span>
                 <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 lg:flex">
                   <span className="text-xs">⌘</span>K
                 </kbd>
@@ -159,7 +159,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
           <Button
             variant="ghost"
             size="icon"
-            className="hidden sm:inline-flex px-3"
+            className="hidden md:inline-flex px-3"
             onClick={() => navigate('/interview-questions')}
             aria-label="Interview questions"
           >
@@ -168,13 +168,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
           <Button
             variant="ghost"
             size="icon"
-            className="hidden sm:inline-flex px-3"
+            className="hidden md:inline-flex px-3"
             onClick={() => navigate('/terms')}
             aria-label="Terms"
           >
             <FileText className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex px-3" aria-label="GitHub">
+          <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label="GitHub">
             <Github className="h-4 w-4" />
           </Button>
           <ModeToggle />

@@ -60,8 +60,7 @@ const SidebarContent = ({
           <Button
             variant={isActive ? 'secondary' : 'ghost'}
             className={cn(
-              'flex  min-w-0 max-w-full justify-start h-auto py-2 px-3 font-normal rounded-lg overflow-hidden box-border',
-              hasChildren ? 'w-full' : 'w-[80%]',
+              'flex min-w-0 w-full max-w-full justify-start h-auto py-2 px-3 font-normal rounded-md overflow-hidden box-border',
               isActive
                 ? 'bg-accent text-accent-foreground'
                 : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
@@ -136,7 +135,7 @@ const SidebarContent = ({
           <Button
             key={item.id}
             variant={activeSlug === item.id ? 'default' : 'ghost'}
-            className="flex w-[90%] justify-start py-2 px-3 font-normal overflow-hidden box-border"
+            className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
             onClick={() => handleNavigate(topic.id, item.id)}
           >
             <span className="text-sm truncate min-w-0 block w-full text-left">{item.title}</span>

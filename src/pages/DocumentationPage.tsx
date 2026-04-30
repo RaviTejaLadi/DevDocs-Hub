@@ -105,7 +105,7 @@ const DocumentationPage = ({
 
   return (
     <div className="w-full space-y-8">
-      <div className="flex items-center gap-3">
+      <div className="flex items-start sm:items-center gap-2 sm:gap-3">
         <Button
           variant="outline"
           size="sm"
@@ -117,8 +117,8 @@ const DocumentationPage = ({
           {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
           {/* <span>{isSidebarCollapsed ? 'Show sidebar' : 'Hide sidebar'}</span> */}
         </Button>
-        <Breadcrumb className="min-w-0">
-          <BreadcrumbList className="flex-wrap h-9 gap-1.5 rounded-xl border border-border/40 bg-card/45 backdrop-blur-sm px-3 py-1 text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
+        <Breadcrumb className="min-w-0 flex-1">
+          <BreadcrumbList className="flex-wrap min-h-9 gap-1 rounded-md border border-border/40 bg-card/45 backdrop-blur-sm px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link
@@ -139,7 +139,7 @@ const DocumentationPage = ({
                   className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
                 >
                   <span className="text-base opacity-85">{topic.icon}</span>
-                  <span>{topic.title}</span>
+                  <span className="max-w-30 sm:max-w-none truncate">{topic.title}</span>
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -147,7 +147,7 @@ const DocumentationPage = ({
               <ChevronRight className="h-3.5 w-3.5 opacity-45" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
-              <BreadcrumbPage className="max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
+              <BreadcrumbPage className="max-w-38 sm:max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
                 {content.title}
               </BreadcrumbPage>
             </BreadcrumbItem>
@@ -161,7 +161,7 @@ const DocumentationPage = ({
 
       <Separator className="my-8" />
 
-      <nav className="grid grid-cols-2 gap-4" aria-label="Document navigation">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
         {prevItem ? (
           <Button
             onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}

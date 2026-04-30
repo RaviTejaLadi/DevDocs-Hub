@@ -262,7 +262,7 @@ function TopicDetailPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
             <div className="flex items-center gap-2">
               <Switch
                 id="only-code"
@@ -289,7 +289,7 @@ function TopicDetailPage() {
                 Only Theory
               </label>
             </div>
-            <div className="relative flex-1 min-w-[220px] max-w-md ml-auto">
+            <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
                 type="search"
@@ -320,7 +320,7 @@ function TopicDetailPage() {
         </CardContent>
       </Card>
 
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground">
         <p>
           Showing <span className="font-semibold text-foreground">{filteredQuestions.length}</span> of{' '}
           <span className="font-semibold text-foreground">{allQuestions.length}</span> questions
@@ -376,14 +376,14 @@ function QuestionBlock({
       className="group border border-border/40/70 rounded-xl bg-card overflow-hidden mb-3 last:mb-0 shadow-sm hover:shadow-md transition-shadow"
     >
       <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/20 data-[state=open]:bg-muted/30">
-        <div className="flex flex-wrap items-center justify-between gap-2 w-full text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 w-full text-left pr-2">
           <div className="flex items-start gap-2.5 min-w-0 flex-1">
             <span className="shrink-0 text-muted-foreground font-semibold text-xs rounded-md border border-border/40 px-2 py-1 mt-0.5">
               Q{index}
             </span>
             <span className="font-medium text-foreground leading-relaxed">{item.question}</span>
           </div>
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto justify-start sm:justify-end">
             <span
               className={cn(
                 'px-2.5 py-0.5 rounded-full text-xs font-medium border',
