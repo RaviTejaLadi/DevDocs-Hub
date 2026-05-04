@@ -40,6 +40,14 @@ export interface Topic {
 
 export type Topics = Topic[];
 
+type BaseTopic = Omit<Topic, 'type' | 'category'>;
+
+const createTopic = (category: TopicCategory, topic: BaseTopic): Topic => ({
+  ...topic,
+  type: category,
+  category,
+});
+
 const cloudIconByServiceId: Partial<Record<string, JSX.Element>> = {
   aws: Icons.AWS,
   azure: Icons.AZURE,
@@ -51,144 +59,122 @@ const databaseIconByDBId: Partial<Record<string, JSX.Element>> = {
 };
 
 const transformCloudData = (): Topic[] =>
-  cloudServicesData.map((service) => ({
-    id: service.id,
-    title: service.title,
-    description: `Learn about ${service.title}, a leading cloud platform.`,
-    icon: cloudIconByServiceId[service.id],
-    items: service.documents,
-    type: 'cloud',
-    category: 'cloud',
-  }));
+  cloudServicesData.map((service) =>
+    createTopic('cloud', {
+      id: service.id,
+      title: service.title,
+      description: `Learn about ${service.title}, a leading cloud platform.`,
+      icon: cloudIconByServiceId[service.id],
+      items: service.documents,
+    })
+  );
 
 const transformDatabaseData = (): Topic[] =>
-  databaseData.map((db) => ({
-    id: db.id,
-    title: db.title,
-    description: `Explore ${db.title}, a popular database solution.`,
-    icon: databaseIconByDBId[db.id],
-    items: db.documents,
-    type: 'database',
-    category: 'database',
-  }));
+  databaseData.map((db) =>
+    createTopic('database', {
+      id: db.id,
+      title: db.title,
+      description: `Explore ${db.title}, a popular database solution.`,
+      icon: databaseIconByDBId[db.id],
+      items: db.documents,
+    })
+  );
 
 const transformResourcesData = (): Topic[] =>
-  resourcesData.map((resource) => ({
-    id: resource.id,
-    title: resource.title,
-    description: 'Find helpful cheat sheets for various technologies.',
-    icon: <NotebookTabs className="h-5 w-5" />,
-    items: resource.children.map((child) => ({
-      id: child.id,
-      title: child.title,
-      content: '',
-      items: child.documents,
-    })),
-    type: 'resources',
-    category: 'resources',
-  }));
+  resourcesData.map((resource) =>
+    createTopic('resources', {
+      id: resource.id,
+      title: resource.title,
+      description: 'Find helpful cheat sheets for various technologies.',
+      icon: <NotebookTabs className="h-5 w-5" />,
+      items: resource.children.map((child) => ({
+        id: child.id,
+        title: child.title,
+        content: '',
+        items: child.documents,
+      })),
+    })
+  );
 
 export const TOPICS: Topics = [
-  {
+  createTopic('frontend', {
     id: 'html',
     title: 'HTML',
     description: 'Structure web pages with semantic markup.',
     icon: Icons.HTML,
     items: htmlTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'css',
     title: 'CSS',
     description: 'Style your web pages with modern layouts.',
     icon: Icons.CSS,
     items: cssTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'js',
     title: 'JavaScript',
     description: 'JavaScript is the programming language of the web.',
     icon: Icons.JS,
     items: jsTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'typescript',
     title: 'TypeScript',
     description: 'A typed superset of JavaScript that compiles to plain JS.',
     icon: Icons.TS,
     items: tsConcepts,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'nextjs',
     title: 'Next.js',
     description: 'The React framework for production.',
     icon: Icons.NEXT,
     items: nextTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'react',
     title: 'React.js',
     description: 'The library for web and native user interfaces.',
     icon: Icons.REACT,
     items: reactTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('frontend', {
     id: 'vue',
     title: 'Vue.js',
     description: 'The Progressive JavaScript Framework.',
     icon: Icons.VUE,
     items: vueTopics,
-    type: 'frontend',
-    category: 'frontend',
-  },
-  {
+  }),
+  createTopic('backend', {
     id: 'express',
     title: 'Express.js',
     description: 'Fast, unopinionated, minimalist web framework for Node.js.',
     icon: Icons.EXPRESS,
     items: expressTopics,
-    type: 'backend',
-    category: 'backend',
-  },
-  {
+  }),
+  createTopic('backend', {
     id: 'node',
     title: 'Node.js',
     description: "JavaScript runtime built on Chrome's V8 engine.",
     icon: Icons.NODE,
     items: nodeTopics,
-    type: 'backend',
-    category: 'backend',
-  },
+  }),
   ...transformCloudData(),
   ...transformDatabaseData(),
-  {
+  createTopic('dsa', {
     id: 'dsa',
     title: 'DSA',
     description: 'data structures and algorithms',
     icon: <Binary className="h-5 w-5" />,
     items: dsaData,
-    type: 'dsa',
-    category: 'dsa',
-  },
-  {
+  }),
+  createTopic('system-design', {
     id: 'system-design',
     title: 'System Design',
     description: 'system design',
     icon: <Network className="h-5 w-5" />,
     items: systemDesignData,
-    type: 'system-design',
-    category: 'system-design',
-  },
+  }),
   ...transformResourcesData(),
 ];
