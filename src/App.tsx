@@ -11,6 +11,7 @@ import LandingPage from './pages/LandingPage';
 import DocumentationPage from './pages/DocumentationPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
+import CodeEditorPage from './pages/CodeEditorPage';
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -71,6 +72,7 @@ const App = () => {
                     />
                     <Route path="/terms" element={<TermsOfServicePage />} />
                     <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
+                    <Route path="/code-editor" element={<CodeEditorPage />} />
                   </Routes>
                 </PageTransition>
               </div>

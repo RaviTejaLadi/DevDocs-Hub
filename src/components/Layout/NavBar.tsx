@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Languages, ChevronDown } from 'lucide-react';
+import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Languages, ChevronDown, Code2 } from 'lucide-react';
 import { Logo } from '../Logo';
 import { TOPICS, type TopicItem } from '../../topics';
 import { ModeToggle } from '../Theme/ModeToggle';
@@ -279,6 +279,15 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </DropdownMenuContent>
           </DropdownMenu>
 
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden md:inline-flex px-3"
+            onClick={() => navigate('/code-editor')}
+            aria-label="Live code editor"
+          >
+            <Code2 className="h-4 w-4" />
+          </Button>
           <Button
             variant="ghost"
             size="icon"
