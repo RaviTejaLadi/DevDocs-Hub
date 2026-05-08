@@ -12,6 +12,7 @@ import { ScrollArea } from '../ui/scroll-area';
 import { useI18n } from '@/i18n/I18nProvider';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -152,7 +153,8 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
           )}
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <TooltipProvider delayDuration={120}>
+          <div className="flex items-center gap-1.5 sm:gap-2">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
@@ -279,38 +281,59 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:inline-flex px-3"
-            onClick={() => navigate('/code-editor')}
-            aria-label="Live code editor"
-          >
-            <Code2 className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:inline-flex px-3"
-            onClick={() => navigate('/interview-questions')}
-            aria-label={t('nav.interviewQuestions')}
-          >
-            <HelpCircle className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:inline-flex px-3"
-            onClick={() => navigate('/terms')}
-            aria-label={t('nav.terms')}
-          >
-            <FileText className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
-            <Github className="h-4 w-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/code-editor')}
+                aria-label="Live code editor"
+              >
+                <Code2 className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Live code editor</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/interview-questions')}
+                aria-label={t('nav.interviewQuestions')}
+              >
+                <HelpCircle className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/terms')}
+                aria-label={t('nav.terms')}
+              >
+                <FileText className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
+                <Github className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
+          </Tooltip>
           <ModeToggle />
-        </div>
+          </div>
+        </TooltipProvider>
       </div>
     </header>
   );
