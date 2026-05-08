@@ -277,7 +277,7 @@ function TopicDetailPage() {
   const theoryCount = allQuestions.length - codingCount;
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 pb-4">
+    <div className="max-w-6xl mx-auto space-y-6 pb-10 sm:pb-12">
       <Button variant="outline" size="sm" asChild className="border-border/35 bg-card/50 hover:bg-accent/55 w-fit">
         <Link to="/interview-questions" className="inline-flex items-center gap-2">
           <ChevronLeft className="h-4 w-4" />
@@ -433,7 +433,7 @@ function TopicDetailPage() {
           </Card>
         ) : (
           <Stagger gap={0.04}>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full flex flex-col gap-3">
               {filteredQuestions.map((item, index) => (
                 <StaggerItem key={item.id}>
                   <QuestionBlock item={item} index={index + 1} levelPillClass={levelPillClass} />
@@ -466,7 +466,7 @@ function QuestionBlock({
   return (
     <AccordionItem
       value={item.id}
-      className="group border border-border/40 rounded-xl bg-card/80 backdrop-blur-sm overflow-hidden mb-3 last:mb-0 shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.8)] hover:shadow-[0_18px_36px_-24px_hsl(var(--foreground)/0.65)] hover:border-primary/30 transition-all duration-200"
+      className="group border border-border/40 border-b! rounded-xl bg-card/80 backdrop-blur-sm overflow-hidden shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.8)] hover:shadow-[0_18px_36px_-24px_hsl(var(--foreground)/0.65)] hover:border-primary/30 transition-all duration-200"
     >
       <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/20 data-[state=open]:bg-muted/35">
         <div className="flex flex-wrap items-center justify-between gap-2 w-full text-left pr-2">
