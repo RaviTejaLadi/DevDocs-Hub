@@ -2,9 +2,9 @@ import { useState, type ClassAttributes, type HTMLAttributes } from 'react';
 import ReactMarkdown from 'react-markdown';
 import type { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
-import { Check, Copy } from 'lucide-react';
+import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/hooks/useTheme';
@@ -14,76 +14,143 @@ import { useI18n } from '@/i18n/I18nProvider';
 type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
 export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
-  const [copied, setCopied] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const { theme } = useTheme();
   const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
   const translatedContent = useTranslatedText(content);
 
-  const handleCopy = (text: string) => {
+  const handleCopy = (key: string, text: string) => {
     navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey((currentKey) => (currentKey === key ? null : currentKey)), 1800);
   };
 
   return (
-    <div className={cn('interview-answer text-[15px] text-foreground/90', className)}>
+    <div className={cn('md-render interview-answer text-[15px] leading-relaxed text-foreground/90', className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          p: ({ children }) => <p className="mb-3 last:mb-0 leading-[1.7]">{children}</p>,
+          h2: ({ children }) => (
+            <div className="mt-6 mb-3 flex items-center gap-2.5 first:mt-0">
+              <span className="h-1.5 w-1.5 rotate-45 rounded-sm  shrink-0" />
+              <h2 className="text-lg font-semibold tracking-tight text-foreground">{children}</h2>
+            </div>
+          ),
+          h3: ({ children }) => (
+            <div className="mt-5 mb-2.5 flex items-center gap-2 first:mt-0">
+              <span className="h-1 w-1 rounded-full shrink-0" />
+              <h3 className="text-base font-semibold tracking-tight text-foreground">{children}</h3>
+            </div>
+          ),
+          p: ({ children }) => <p className="mb-3.5 last:mb-0 leading-[1.75] text-foreground/85">{children}</p>,
           ul: ({ children }) => (
-            <ul className="my-3 pl-5 space-y-1.5 list-disc list-outside" role="list">
+            <ul className="md-ul my-3.5 space-y-1.5 text-[0.95rem]" role="list">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="my-3 pl-5 space-y-1.5 list-decimal list-outside" role="list">
+            <ol className="md-ol my-3.5 space-y-1.5 text-[0.95rem]" role="list">
               {children}
             </ol>
           ),
-          li: ({ children }) => <li className="leading-[1.6] pl-0.5">{children}</li>,
-          strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+          li: ({ children, className: listItemClassName }) => {
+            const isTask = (listItemClassName || '').includes('task-list-item');
+            return <li className={cn('leading-[1.65] text-foreground/85', isTask && 'list-none pl-0')}>{children}</li>;
+          },
+          blockquote: ({ children }) => (
+            <div className="my-4">
+              <blockquote className="md-quote py-3 px-4">
+                <div className="flex items-start gap-2.5">
+                  <Quote className="mt-0.5 h-4 w-4 shrink-0 -scale-x-100 text-(--md-purple)" strokeWidth={2.2} />
+                  <div className="text-[0.94rem] font-medium leading-[1.7] text-foreground/90 [&_p]:mb-2 [&_p:last-child]:mb-0">
+                    {children}
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+          ),
+          table: ({ children }) => (
+            <div className="md-table-wrap my-4">
+              <div className="w-full overflow-x-auto">
+                <table className="md-table text-sm">{children}</table>
+              </div>
+            </div>
+          ),
+          thead: ({ children }) => <thead>{children}</thead>,
+          tbody: ({ children }) => <tbody>{children}</tbody>,
+          tr: ({ children }) => <tr>{children}</tr>,
+          th: ({ children }) => <th>{children}</th>,
+          td: ({ children }) => <td>{children}</td>,
+          a: ({ children, href }) => {
+            const isExternal = href?.startsWith('http');
+            return (
+              <a
+                href={href}
+                className="md-link"
+                target={isExternal ? '_blank' : undefined}
+                rel={isExternal ? 'noopener noreferrer' : undefined}
+              >
+                {children}
+                {isExternal && <ExternalLink className="ml-1 inline-block h-3 w-3 -translate-y-px opacity-70" />}
+              </a>
+            );
+          },
+          strong: ({ children }) => <strong>{children}</strong>,
+          em: ({ children }) => <em>{children}</em>,
+          input: ({ checked, ...props }) => (
+            <input className="md-task-checkbox" type="checkbox" checked={checked} disabled {...props} />
+          ),
           code: ({ className: codeClassName, children }: CodeComponentProps) => {
             const match = /language-(\w+)/.exec(codeClassName || '');
             const isBlock = Boolean(match);
+            const language = match?.[1];
             const codeString = String(children ?? '').replace(/\n$/, '');
+            const codeKey = `${language ?? 'code'}:${codeString.slice(0, 64)}`;
 
             if (isBlock) {
               return (
-                <div
-                  className={cn(
-                    'my-4 rounded-lg overflow-hidden border border-border/40 bg-[#1e293b] relative',
-                    isDarkTheme ? 'border-slate-800/80 bg-slate-950' : 'border-slate-200 bg-slate-50'
-                  )}
-                >
-                  <div className="absolute top-0 right-0 flex items-center justify-end px-2 py-1.5 ">
+                <div className="md-code-card group my-4">
+                  <div className="md-code-head">
+                    <span
+                      className={cn(
+                        'ml-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em]',
+                        isDarkTheme ? 'text-white/55' : 'text-slate-600'
+                      )}
+                    >
+                      {language}
+                    </span>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-7 gap-1.5 text-xs text-slate-300 hover:text-white"
-                      onClick={() => handleCopy(codeString)}
-                    >
-                      {copied ? (
-                        <Check className="h-4 w-4 text-green-400" />
-                      ) : (
-                        <Copy
-                          className={cn(
-                            'h-4 w-4 group-hover:scale-110 transition-transform',
-                            isDarkTheme ? 'text-white' : 'text-slate-700'
-                          )}
-                        />
+                      className={cn(
+                        'ml-auto h-6 gap-1.5 rounded px-2 text-[0.7rem] font-medium',
+                        isDarkTheme
+                          ? 'text-white/65 hover:bg-white/5 hover:text-white'
+                          : 'text-slate-600 hover:bg-slate-200/60 hover:text-slate-900'
                       )}
-                      {copied ? t('common.copied') : t('common.copy')}
+                      onClick={() => handleCopy(codeKey, codeString)}
+                    >
+                      {copiedKey === codeKey ? (
+                        <>
+                          <Check className="h-3 w-3" /> {t('common.copied')}
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3 w-3" /> {t('common.copy')}
+                        </>
+                      )}
                     </Button>
                   </div>
                   <div className="overflow-x-auto">
                     <SyntaxHighlighter
-                      style={isDarkTheme ? atomDark : oneLight}
-                      language={match?.[1]}
+                      style={isDarkTheme ? atomDark : prism}
+                      language={language}
                       PreTag="div"
-                      className="m-0! bg-transparent! p-6! text-sm sm:text-base"
+                      className="m-0! bg-transparent! p-4! text-[0.86rem] leading-[1.65]!"
                       showLineNumbers={false}
+                      customStyle={{ background: 'transparent', margin: 0 }}
+                      codeTagProps={{ style: { background: 'transparent' } }}
                     >
                       {codeString}
                     </SyntaxHighlighter>
@@ -93,11 +160,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
             }
             return (
               <code
-                className={cn(
-                  'font-mono text-[13px] px-1.5 py-0.5 rounded',
-                  'bg-rose-100 text-rose-900 dark:bg-rose-950/70 dark:text-rose-200',
-                  'border border-rose-200/60 dark:border-rose-800/50'
-                )}
+                className="md-inline-code"
               >
                 {children}
               </code>

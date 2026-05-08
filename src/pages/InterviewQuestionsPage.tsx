@@ -432,15 +432,25 @@ function TopicDetailPage() {
             </CardContent>
           </Card>
         ) : (
-          <Stagger gap={0.04}>
-            <Accordion type="single" collapsible className="w-full flex flex-col gap-3">
-              {filteredQuestions.map((item, index) => (
-                <StaggerItem key={item.id}>
-                  <QuestionBlock item={item} index={index + 1} levelPillClass={levelPillClass} />
-                </StaggerItem>
+          <Accordion type="multiple" className="w-full">
+            <Stagger
+              gap={0.04}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start"
+            >
+              {[0, 1].map((col) => (
+                <div key={col} className="flex flex-col gap-4 sm:gap-5">
+                  {filteredQuestions
+                    .map((item, index) => ({ item, index }))
+                    .filter(({ index }) => index % 2 === col)
+                    .map(({ item, index }) => (
+                      <StaggerItem key={item.id}>
+                        <QuestionBlock item={item} index={index + 1} levelPillClass={levelPillClass} />
+                      </StaggerItem>
+                    ))}
+                </div>
               ))}
-            </Accordion>
-          </Stagger>
+            </Stagger>
+          </Accordion>
         )}
       </div>
     </div>
@@ -468,7 +478,7 @@ function QuestionBlock({
       value={item.id}
       className="group border border-border/40 border-b! rounded-xl bg-card/80 backdrop-blur-sm overflow-hidden shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.8)] hover:shadow-[0_18px_36px_-24px_hsl(var(--foreground)/0.65)] hover:border-primary/30 transition-all duration-200"
     >
-      <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/20 data-[state=open]:bg-muted/35">
+      <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/20 data-[state=open]:bg-muted/35 transition-colors duration-200 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg]:ease-[cubic-bezier(0.22,1,0.36,1)]">
         <div className="flex flex-wrap items-center justify-between gap-2 w-full text-left pr-2">
           <div className="flex items-start gap-2.5 min-w-0 flex-1">
             <span className="shrink-0 text-muted-foreground font-semibold text-xs rounded-md border border-border/40 bg-muted/30 px-2 py-1 mt-0.5">
