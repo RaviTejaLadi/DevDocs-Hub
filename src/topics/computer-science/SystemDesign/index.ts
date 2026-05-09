@@ -16,7 +16,7 @@ import webSecurity from './web-security.md?raw';
 import networking from './networking.md?raw';
 import errorLogging from './logging-and-monitoring.md?raw';
 import owasp from './owasp.md?raw';
-import type { TopicItem } from '..';
+import type { TopicItem } from '@/topics';
 
 export const systemDesignData: TopicItem[] = [
   {

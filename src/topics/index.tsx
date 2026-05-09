@@ -1,27 +1,24 @@
 /* eslint-disable react-refresh/only-export-components -- This is a data-aggregation module, not a component module. Multiple constant + helper exports are intentional. */
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
-import { Binary, Network, NotebookTabs, Code2, Cog, Atom } from 'lucide-react';
+import { Binary, Network, NotebookTabs, Code2 } from 'lucide-react';
 
-import { htmlTopics } from './frontend/html';
-import { cssTopics } from './frontend/css';
-import { reactTopics } from './frontend/react';
-import { jsTopics } from './frontend/js';
-import { tsConcepts } from './frontend/ts';
-import { nextTopics } from './frontend/Next';
-import { vueTopics } from './frontend/vue';
+import { htmlTopics } from './computer-science/frontend/html';
+import { cssTopics } from './computer-science/frontend/css';
+import { reactTopics } from './computer-science/frontend/react';
+import { jsTopics } from './computer-science/frontend/js';
+import { tsConcepts } from './computer-science/frontend/ts';
+import { nextTopics } from './computer-science/frontend/Next';
+import { vueTopics } from './computer-science/frontend/vue';
 
-import { expressTopics } from './Backend/express';
-import { nodeTopics } from './Backend/node';
+import { expressTopics } from './computer-science/Backend/express';
+import { nodeTopics } from './computer-science/Backend/node';
 
-import { cloudServicesData } from './Cloud';
-import { databaseData } from './Database';
-import { dsaData } from './DSA';
-import { resourcesData } from './Resources';
-import { systemDesignData } from './SystemDesign';
-
-import { mechanicalTopics } from './Mechanical';
-import { basicScienceTopics } from './BasicScience';
+import { cloudServicesData } from './computer-science/Cloud';
+import { databaseData } from './computer-science/Database';
+import { dsaData } from './computer-science/DSA';
+import { resourcesData } from './computer-science/Resources';
+import { systemDesignData } from './computer-science/SystemDesign';
 
 export interface TopicItem {
   id: string;
@@ -55,6 +52,8 @@ export type Topics = Topic[];
  * To add a new stream:
  *   1. Create a folder under `src/topics/<YourStream>/` exporting `Topic[]`.
  *   2. Append a new entry to `STREAMS` below.
+ *
+ * Computer-science topic modules live under `src/topics/computer-science/`.
  *
  * Every Topic.id must remain globally unique because routes live at
  * `/docs/:categoryId/:slug` regardless of stream.
@@ -218,6 +217,7 @@ export const STREAMS: Stream[] = [
     icon: <Code2 className="h-5 w-5" />,
     topics: computerScienceTopics,
   },
+  // Uncomment below and re-import `mechanicalTopics`, `basicScienceTopics`, `Cog`, `Atom` from above.
   // {
   //   id: 'mechanical-engineering',
   //   title: 'Mechanical Engineering',
