@@ -19,8 +19,8 @@ let username: string | null = null;
 
 ## Interview Angle
 
-Null handling is a frequent source of production bugs; interviewers expect
-clear handling strategy under `strictNullChecks`.
+Null handling is a frequent source of production bugs; interviewers expect clear
+handling strategy under `strictNullChecks`.
 
 ## Safe Guard Pattern
 

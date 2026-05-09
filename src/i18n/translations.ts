@@ -47,11 +47,13 @@ const en: TranslationMap = {
   'landing.noTopicsInStream': 'No topics found in this stream yet.',
   'features.whyUse': 'Why use ReviseStack',
   'features.quickRevision.title': 'Quick revision',
-  'features.quickRevision.description': 'Simplified explanations so you can brush up fast-before interviews or deep dives.',
+  'features.quickRevision.description':
+    'Simplified explanations so you can brush up fast-before interviews or deep dives.',
   'features.codeExamples.title': 'Code & examples',
   'features.codeExamples.description': 'Practical snippets and examples you can copy and use on the job.',
   'features.fullstackCoverage.title': 'Fullstack coverage',
-  'features.fullstackCoverage.description': 'Frontend, backend, DSA, system design, databases, and more-all in one place.',
+  'features.fullstackCoverage.description':
+    'Frontend, backend, DSA, system design, databases, and more-all in one place.',
   'sidebar.collapse': 'Collapse',
   'sidebar.expand': 'Expand',
   'sidebar.selectTopic': 'Select a topic',
@@ -72,7 +74,8 @@ const en: TranslationMap = {
   'terms.lastUpdated': 'Last Updated',
   'interview.backToOverview': 'Back to overview',
   'interview.pageTitle': 'Interview Questions',
-  'interview.pageDescription': 'Curated topic-wise questions with concise answers to practice faster and revise smarter.',
+  'interview.pageDescription':
+    'Curated topic-wise questions with concise answers to practice faster and revise smarter.',
   'interview.questions': '{{count}} Questions',
   'interview.topics': '{{count}} Topics',
   'interview.categories': '{{count}} Categories',
@@ -81,7 +84,8 @@ const en: TranslationMap = {
   'interview.backToInterviewQuestions': 'Back to Interview Questions',
   'interview.topicNotFound': 'Topic not found.',
   'interview.topQuestions': 'Top {{count}} {{topic}} Interview Questions',
-  'interview.filterDescription': 'Filter by level, question type, and search keyword to practice exactly what you need.',
+  'interview.filterDescription':
+    'Filter by level, question type, and search keyword to practice exactly what you need.',
   'interview.coding': 'Coding',
   'interview.theory': 'Theory',
   'interview.filters': 'Filters',
@@ -158,7 +162,7 @@ const partialTranslations: Record<Exclude<SupportedLanguage, 'en'>, Partial<Tran
 };
 
 const mergeWithEnglish = (partial: Partial<TranslationMap>): TranslationMap =>
-  ({ ...en, ...partial }) as TranslationMap;
+  ({ ...en, ...partial } as TranslationMap);
 
 export const translations: Record<SupportedLanguage, TranslationMap> = {
   en,

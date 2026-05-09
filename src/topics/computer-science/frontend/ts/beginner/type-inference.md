@@ -20,8 +20,8 @@ Use inference when type is obvious.
 
 ## Interview Angle
 
-Good TypeScript style balances **explicitness and inference**.
-Interviewers often check if you know where inference fails.
+Good TypeScript style balances **explicitness and inference**. Interviewers
+often check if you know where inference fails.
 
 ## When To Annotate Explicitly
 

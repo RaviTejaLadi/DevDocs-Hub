@@ -15,4 +15,5 @@ const parsed = JSON.parse(raw) as Product;
 
 ## Interview Angle
 
-Strong answer: "Type assertion is not runtime validation. Use schema validation for untrusted JSON."
+Strong answer: "Type assertion is not runtime validation. Use schema validation
+for untrusted JSON."

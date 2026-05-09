@@ -33,8 +33,8 @@
 
 ## Interview Angle
 
-`tsconfig.json` is often discussed as the **contract of type safety** for a repo.
-Strong candidates can justify each key flag.
+`tsconfig.json` is often discussed as the **contract of type safety** for a
+repo. Strong candidates can justify each key flag.
 
 ## High-Value Compiler Options
 

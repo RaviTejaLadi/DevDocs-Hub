@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Languages, ChevronDown, Code2 } from 'lucide-react';
+import {
+  Menu,
+  Github,
+  Search,
+  FileText,
+  HelpCircle,
+  CornerDownLeft,
+  Languages,
+  ChevronDown,
+  Code2,
+} from 'lucide-react';
 import { Logo } from '../Logo';
 import { TOPICS, type TopicItem } from '../../topics';
 import { ModeToggle } from '../Theme/ModeToggle';
@@ -119,9 +129,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
       globalHits = [...globalHits, ...searchRecursive(topic.items, topic.id, topic.title, topic.icon, query)];
     });
 
-    const deduped = Array.from(
-      new Map(globalHits.map((hit) => [`${hit.categoryId}:${hit.id}`, hit])).values()
-    );
+    const deduped = Array.from(new Map(globalHits.map((hit) => [`${hit.categoryId}:${hit.id}`, hit])).values());
 
     deduped.sort((a, b) => b.score - a.score || a.title.length - b.title.length);
 
@@ -155,183 +163,183 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
         <TooltipProvider delayDuration={120}>
           <div className="flex items-center gap-1.5 sm:gap-2">
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="relative h-9 w-9 sm:w-[18rem] md:w-[20rem] justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="relative h-9 w-9 sm:w-[18rem] md:w-[20rem] justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+                >
+                  <Search className="h-4 w-4 shrink-0" />
+                  <span className="hidden sm:inline truncate pr-12">{t('nav.searchTopics')}</span>
+                  <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 lg:flex">
+                    <span className="text-xs">⌘</span>K
+                  </kbd>
+                </Button>
+              </DialogTrigger>
+
+              <DialogContent
+                showCloseButton={false}
+                className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
               >
-                <Search className="h-4 w-4 shrink-0" />
-                <span className="hidden sm:inline truncate pr-12">{t('nav.searchTopics')}</span>
-                <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 lg:flex">
-                  <span className="text-xs">⌘</span>K
-                </kbd>
-              </Button>
-            </DialogTrigger>
-
-            <DialogContent
-              showCloseButton={false}
-              className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
-            >
-              <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
-                <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
-                <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
-                  <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
-                    <Search className="h-4 w-4 text-muted-foreground" />
+                <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
+                  <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
+                  <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
+                    <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
+                      <Search className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                    <Input
+                      placeholder={t('nav.searchType')}
+                      className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                    {query && (
+                      <span className="text-[11px] text-muted-foreground shrink-0">
+                        {results.length} result{results.length === 1 ? '' : 's'}
+                      </span>
+                    )}
                   </div>
-                  <Input
-                    placeholder={t('nav.searchType')}
-                    className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                  {query && (
-                    <span className="text-[11px] text-muted-foreground shrink-0">
-                      {results.length} result{results.length === 1 ? '' : 's'}
-                    </span>
+                </DialogHeader>
+
+                <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
+                  {results.length === 0 && query && (
+                    <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                      <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
+                      <p>{t('nav.tryDifferentKeyword')}</p>
+                    </div>
                   )}
-                </div>
-              </DialogHeader>
-
-              <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
-                {results.length === 0 && query && (
-                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
-                    <p>{t('nav.tryDifferentKeyword')}</p>
-                  </div>
-                )}
-                {results.length === 0 && !query && (
-                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
-                    <p>{t('nav.startTyping')}</p>
-                  </div>
-                )}
-                {results.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
-                      {t('nav.results')}
-                    </p>
-                    <div className="motion-stagger grid grid-cols-2 gap-2">
-                      {results.map((res) => (
-                        <button
-                          type="button"
-                          key={`${res.categoryId}-${res.id}`}
-                          onClick={() => handleSelectResult(res.categoryId, res.id)}
-                          className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-sm"
-                        >
-                          <div className="h-8 w-8 rounded-md bg-primary/10 text-primary grid place-items-center shrink-0">
-                            {res.icon ?? <FileText className="h-4 w-4" />}
-                          </div>
-                          <span className="min-w-0 flex-1">
-                            <span className="font-medium text-foreground line-clamp-2 leading-5">
-                              <TranslatedText text={res.title} />
-                            </span>
-                            <span className="text-xs text-muted-foreground block mt-1.5 truncate">
-                              {t('nav.in')}{' '}
-                              <span className="text-primary">
-                                <TranslatedText text={res.category} />
+                  {results.length === 0 && !query && (
+                    <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                      <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
+                      <p>{t('nav.startTyping')}</p>
+                    </div>
+                  )}
+                  {results.length > 0 && (
+                    <div className="space-y-2">
+                      <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
+                        {t('nav.results')}
+                      </p>
+                      <div className="motion-stagger grid grid-cols-2 gap-2">
+                        {results.map((res) => (
+                          <button
+                            type="button"
+                            key={`${res.categoryId}-${res.id}`}
+                            onClick={() => handleSelectResult(res.categoryId, res.id)}
+                            className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-sm"
+                          >
+                            <div className="h-8 w-8 rounded-md bg-primary/10 text-primary grid place-items-center shrink-0">
+                              {res.icon ?? <FileText className="h-4 w-4" />}
+                            </div>
+                            <span className="min-w-0 flex-1">
+                              <span className="font-medium text-foreground line-clamp-2 leading-5">
+                                <TranslatedText text={res.title} />
+                              </span>
+                              <span className="text-xs text-muted-foreground block mt-1.5 truncate">
+                                {t('nav.in')}{' '}
+                                <span className="text-primary">
+                                  <TranslatedText text={res.category} />
+                                </span>
                               </span>
                             </span>
-                          </span>
-                          <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </button>
-                      ))}
+                            <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </ScrollArea>
+                  )}
+                </ScrollArea>
 
-              <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
-                <span className="text-[10px] text-muted-foreground hidden sm:inline">
-                  {t('nav.useShortcut', { shortcut: '⌘K' })}
-                </span>
-                <span className="text-[10px] text-muted-foreground ml-auto">
-                  {t('nav.toClose', { key: 'Esc' })}
-                </span>
-              </div>
-            </DialogContent>
-          </Dialog>
+                <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
+                  <span className="text-[10px] text-muted-foreground hidden sm:inline">
+                    {t('nav.useShortcut', { shortcut: '⌘K' })}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground ml-auto">{t('nav.toClose', { key: 'Esc' })}</span>
+                </div>
+              </DialogContent>
+            </Dialog>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                id="language-select"
-                variant="outline"
-                className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
-                aria-label={t('language.label')}
-              >
-                <Languages className="h-3.5 w-3.5 text-muted-foreground" />
-                <span className="max-w-16 truncate">{LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}</span>
-                <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-44">
-              <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup
-                value={language}
-                onValueChange={(value) => setLanguage(value as SupportedLanguage)}
-              >
-                {LANGUAGE_OPTIONS.map((option) => (
-                  <DropdownMenuRadioItem key={option.code} value={option.code}>
-                    {option.label}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  id="language-select"
+                  variant="outline"
+                  className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
+                  aria-label={t('language.label')}
+                >
+                  <Languages className="h-3.5 w-3.5 text-muted-foreground" />
+                  <span className="max-w-16 truncate">
+                    {LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}
+                  </span>
+                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-44">
+                <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={language}
+                  onValueChange={(value) => setLanguage(value as SupportedLanguage)}
+                >
+                  {LANGUAGE_OPTIONS.map((option) => (
+                    <DropdownMenuRadioItem key={option.code} value={option.code}>
+                      {option.label}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hidden md:inline-flex px-3"
-                onClick={() => navigate('/code-editor')}
-                aria-label="Live code editor"
-              >
-                <Code2 className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">Live code editor</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hidden md:inline-flex px-3"
-                onClick={() => navigate('/interview-questions')}
-                aria-label={t('nav.interviewQuestions')}
-              >
-                <HelpCircle className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hidden md:inline-flex px-3"
-                onClick={() => navigate('/terms')}
-                aria-label={t('nav.terms')}
-              >
-                <FileText className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
-                <Github className="h-4 w-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
-          </Tooltip>
-          <ModeToggle />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:inline-flex px-3"
+                  onClick={() => navigate('/code-editor')}
+                  aria-label="Live code editor"
+                >
+                  <Code2 className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Live code editor</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:inline-flex px-3"
+                  onClick={() => navigate('/interview-questions')}
+                  aria-label={t('nav.interviewQuestions')}
+                >
+                  <HelpCircle className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:inline-flex px-3"
+                  onClick={() => navigate('/terms')}
+                  aria-label={t('nav.terms')}
+                >
+                  <FileText className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
+                  <Github className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
+            </Tooltip>
+            <ModeToggle />
           </div>
         </TooltipProvider>
       </div>

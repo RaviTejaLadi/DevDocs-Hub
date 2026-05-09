@@ -406,10 +406,10 @@ const MarkdownRender = ({ content }: { content: string }) => {
                       heading.level === 1
                         ? 'pl-3'
                         : heading.level === 2
-                          ? 'pl-3'
-                          : heading.level === 3
-                            ? 'pl-7'
-                            : 'pl-10';
+                        ? 'pl-3'
+                        : heading.level === 3
+                        ? 'pl-7'
+                        : 'pl-10';
                     const shouldShowHeadingTooltip = heading.text.length > 42;
                     if (!shouldShowHeadingTooltip) {
                       return (

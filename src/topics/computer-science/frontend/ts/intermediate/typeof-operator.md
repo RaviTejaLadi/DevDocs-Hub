@@ -17,7 +17,8 @@ type Settings = typeof settings;
 
 ## Interview Angle
 
-Useful when you want one source of truth for both runtime object and compile-time type.
+Useful when you want one source of truth for both runtime object and
+compile-time type.
 
 ## Common Pattern
 

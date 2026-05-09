@@ -27,7 +27,8 @@ const items: Array<number> = [1, 2];
 
 ## Interview Angle
 
-Generics measure whether you can write reusable logic while preserving type safety.
+Generics measure whether you can write reusable logic while preserving type
+safety.
 
 ## Generic API Response
 

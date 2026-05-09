@@ -20,7 +20,10 @@ function printLength<T extends { length: number }>(value: T): number {
 ## Practical Pattern
 
 ```ts
-function getById<T extends { id: string }>(items: T[], id: string): T | undefined {
+function getById<T extends { id: string }>(
+  items: T[],
+  id: string
+): T | undefined {
   return items.find((item) => item.id === id);
 }
 ```

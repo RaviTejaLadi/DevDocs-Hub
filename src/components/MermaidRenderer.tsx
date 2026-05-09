@@ -228,11 +228,14 @@ const initMermaid = (isDark: boolean) => {
   });
 };
 
-const getThemeMode = (): MermaidThemeMode =>
-  document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+const getThemeMode = (): MermaidThemeMode => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
 const getSvgSize = (svgEl: SVGSVGElement) => {
-  const viewBox = svgEl.getAttribute('viewBox')?.trim().split(/[\s,]+/).map(Number);
+  const viewBox = svgEl
+    .getAttribute('viewBox')
+    ?.trim()
+    .split(/[\s,]+/)
+    .map(Number);
   const viewBoxWidth = viewBox?.length === 4 && Number.isFinite(viewBox[2]) ? viewBox[2] : 0;
   const viewBoxHeight = viewBox?.length === 4 && Number.isFinite(viewBox[3]) ? viewBox[3] : 0;
   const attrWidth = Number.parseFloat(svgEl.getAttribute('width') ?? '');

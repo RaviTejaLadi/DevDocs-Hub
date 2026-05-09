@@ -26,8 +26,8 @@ import greet from './greet';
 
 ## Interview Angle
 
-Strong answers explain default vs named exports and how module boundaries improve
-maintainability.
+Strong answers explain default vs named exports and how module boundaries
+improve maintainability.
 
 ## Recommended Pattern
 

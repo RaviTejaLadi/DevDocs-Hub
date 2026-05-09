@@ -30,7 +30,8 @@ type ID = string | number;
 
 ## Interview Angle
 
-Type aliases shine when composing union/intersection types and reusable API shapes.
+Type aliases shine when composing union/intersection types and reusable API
+shapes.
 
 ## Advanced Composition
 

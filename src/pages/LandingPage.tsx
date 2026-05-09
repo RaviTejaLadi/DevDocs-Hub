@@ -129,10 +129,7 @@ const LandingPage = () => {
       </header>
 
       <Reveal>
-        <nav
-          aria-label={t('landing.streamTabs')}
-          className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto"
-        >
+        <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
           <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
             {STREAMS.map((stream) => {
               const isActive = stream.id === activeStream?.id;

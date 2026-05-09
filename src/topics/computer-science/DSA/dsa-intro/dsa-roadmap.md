@@ -9,12 +9,12 @@ graph LR
     C --> D[Advanced <br/> 8-10 weeks]
     D --> E[System Design <br/> 4-6 weeks]
     E --> F[Practice & <br/> Mock Tests]
-    
+
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style F fill:#00ff00,stroke:#333,stroke-width:4px
 ```
 
------
+---
 
 ## Phase 1: Foundation (2-3 weeks)
 
@@ -22,11 +22,12 @@ graph LR
 
 **Key Topics:**
 
-  * **Big O Notation**: Understanding time and space complexity $O(n), O(\log n), O(n^2)$
-  * **JS Engines**: V8, JIT Compilation, Call Stack, and Memory Heap.
-  * **Closures & Scopes**: Essential for functional programming patterns in DSA.
+- **Big O Notation**: Understanding time and space complexity
+  $O(n), O(\log n), O(n^2)$
+- **JS Engines**: V8, JIT Compilation, Call Stack, and Memory Heap.
+- **Closures & Scopes**: Essential for functional programming patterns in DSA.
 
------
+---
 
 ## Phase 2: Basic Data Structures (4-6 weeks)
 
@@ -47,14 +48,14 @@ graph TD
     direction BT
     Data1[1] --- Data2[2] --- Data3[3] --- Top[4]
     end
-    
+
     subgraph Queue_FIFO
     direction LR
     In[Enqueue] --> Q1[1] --> Q2[2] --> Q3[3] --> Out[Dequeue]
     end
 ```
 
------
+---
 
 ## Phase 3: Intermediate Data Structures (6-8 weeks)
 
@@ -92,17 +93,17 @@ graph RL
     end
 ```
 
------
+---
 
 ## Phase 4: Algorithms (8-10 weeks)
 
 ### 📊 Sorting Comparison
 
-| Algorithm | Best Case | Average Case | Worst Case | Space |
-| :--- | :--- | :--- | :--- | :--- |
-| **Bubble** | $O(n)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$ |
-| **Merge** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$ |
-| **Quick** | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$ | $O(\log n)$ |
+| Algorithm  | Best Case     | Average Case  | Worst Case    | Space       |
+| :--------- | :------------ | :------------ | :------------ | :---------- |
+| **Bubble** | $O(n)$        | $O(n^2)$      | $O(n^2)$      | $O(1)$      |
+| **Merge**  | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$      |
+| **Quick**  | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$      | $O(\log n)$ |
 
 ### 🎯 Dynamic Programming (Fibonacci Memoization)
 
@@ -115,13 +116,13 @@ graph TD
     style F3_2 fill:#f96,stroke:#333
 ```
 
------
+---
 
 ## Phase 5: Advanced Topics (8-10 weeks)
 
 ### 🌳 Trie (Prefix Tree)
 
------
+---
 
 ## Phase 6: Practice & Problem Solving (Ongoing)
 
@@ -134,7 +135,7 @@ pie title "Problem Distribution Goal"
     "LeetCode Hard" : 10
 ```
 
------
+---
 
 ## Phase 7: System Design Basics (4-6 weeks)
 
@@ -158,25 +159,30 @@ sequenceDiagram
     App-->>Client: HTTP 200 OK
 ```
 
------
+---
 
 ## JavaScript-Specific DSA Tips
 
 ### ⚡ Performance Considerations
 
-  * **Delete vs Map.delete**: Using `delete obj.prop` is significantly slower than `Map.prototype.delete()`.
-  * **Array Spreading**: Be careful with `[...arr]`. Inside a loop, this turns an $O(n)$ operation into $O(n^2)$.
-  * **TypedArrays**: For heavy mathematical algorithms, use `Int32Array` or `Float64Array` for better memory management.
+- **Delete vs Map.delete**: Using `delete obj.prop` is significantly slower than
+  `Map.prototype.delete()`.
+- **Array Spreading**: Be careful with `[...arr]`. Inside a loop, this turns an
+  $O(n)$ operation into $O(n^2)$.
+- **TypedArrays**: For heavy mathematical algorithms, use `Int32Array` or
+  `Float64Array` for better memory management.
 
------
+---
 
 ## Final Tips for Success
 
-> **Crucial Rule**: Don't just "grind" LeetCode. If you can't explain the logic to a 10-year-old, you don't understand the algorithm yet.
+> **Crucial Rule**: Don't just "grind" LeetCode. If you can't explain the logic
+> to a 10-year-old, you don't understand the algorithm yet.
 
 ### 🎯 Mock Interview Structure
 
-1.  **Clarification**: Ask about input size, constraints, and edge cases (empty input, nulls).
+1.  **Clarification**: Ask about input size, constraints, and edge cases (empty
+    input, nulls).
 2.  **Strategy**: Verbalize the brute force, then optimize.
 3.  **Big O**: State the complexity **before** you type a single line.
 4.  **Dry Run**: Trace your code with a small example.

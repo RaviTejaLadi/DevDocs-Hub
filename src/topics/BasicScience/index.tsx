@@ -18,14 +18,12 @@ const physicsTopics: Topic = {
     {
       id: 'work-energy',
       title: 'Work, Energy & Power',
-      content:
-        '# Work, Energy & Power\n\n`W = F · d`\n\n`KE = ½ m v²`\n\n`P = W / t`',
+      content: '# Work, Energy & Power\n\n`W = F · d`\n\n`KE = ½ m v²`\n\n`P = W / t`',
     },
     {
       id: 'electromagnetism',
       title: 'Electromagnetism',
-      content:
-        "# Electromagnetism\n\nCoulomb's law, electric and magnetic fields, Maxwell's equations.",
+      content: "# Electromagnetism\n\nCoulomb's law, electric and magnetic fields, Maxwell's equations.",
     },
   ],
 };
@@ -53,8 +51,7 @@ const chemistryTopics: Topic = {
     {
       id: 'stoichiometry',
       title: 'Stoichiometry',
-      content:
-        '# Stoichiometry\n\nQuantitative relationships between reactants and products in a chemical reaction.',
+      content: '# Stoichiometry\n\nQuantitative relationships between reactants and products in a chemical reaction.',
     },
   ],
 };
@@ -70,20 +67,17 @@ const mathematicsTopics: Topic = {
     {
       id: 'calculus-basics',
       title: 'Calculus Basics',
-      content:
-        '# Calculus Basics\n\nLimits, derivatives and integrals form the foundations of calculus.',
+      content: '# Calculus Basics\n\nLimits, derivatives and integrals form the foundations of calculus.',
     },
     {
       id: 'linear-algebra',
       title: 'Linear Algebra',
-      content:
-        '# Linear Algebra\n\nVectors, matrices, eigenvalues and linear transformations.',
+      content: '# Linear Algebra\n\nVectors, matrices, eigenvalues and linear transformations.',
     },
     {
       id: 'probability',
       title: 'Probability & Statistics',
-      content:
-        '# Probability & Statistics\n\nRandom variables, distributions, hypothesis testing and inference.',
+      content: '# Probability & Statistics\n\nRandom variables, distributions, hypothesis testing and inference.',
     },
   ],
 };
@@ -99,21 +93,14 @@ const biologyTopics: Topic = {
     {
       id: 'cell-biology',
       title: 'Cell Biology',
-      content:
-        '# Cell Biology\n\nThe cell is the basic structural and functional unit of all known living organisms.',
+      content: '# Cell Biology\n\nThe cell is the basic structural and functional unit of all known living organisms.',
     },
     {
       id: 'genetics',
       title: 'Genetics',
-      content:
-        '# Genetics\n\nThe study of genes, genetic variation and heredity in living organisms.',
+      content: '# Genetics\n\nThe study of genes, genetic variation and heredity in living organisms.',
     },
   ],
 };
 
-export const basicScienceTopics: Topic[] = [
-  physicsTopics,
-  chemistryTopics,
-  mathematicsTopics,
-  biologyTopics,
-];
+export const basicScienceTopics: Topic[] = [physicsTopics, chemistryTopics, mathematicsTopics, biologyTopics];

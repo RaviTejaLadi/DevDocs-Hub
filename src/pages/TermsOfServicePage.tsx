@@ -44,8 +44,8 @@ const TermsOfServicePage = () => {
               Website as an alternative to professional advice from a qualified expert.
             </li>
             <li>
-              We make no representations or warranties of any kind, express or implied, about the completeness, accuracy,
-              reliability, suitability, or availability of the content.
+              We make no representations or warranties of any kind, express or implied, about the completeness,
+              accuracy, reliability, suitability, or availability of the content.
             </li>
           </ul>
         </>
@@ -90,8 +90,7 @@ const TermsOfServicePage = () => {
           limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access
           to or use of or inability to access or use the Website; (ii) any conduct or content of any third party on the
           Website; (iii) any content obtained from the Website, whether based on warranty, contract, tort (including
-          negligence) or any other legal theory, whether or not we have been informed of the possibility of such
-          damage.
+          negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage.
         </p>
       ),
     },

@@ -29,12 +29,15 @@ function check(person: User | Admin) {
 
 ## Interview Angle
 
-Type narrowing is critical for handling union types from APIs and component state.
+Type narrowing is critical for handling union types from APIs and component
+state.
 
 ## Additional Narrowing Techniques
 
 ```ts
-type Shape = { kind: 'circle'; radius: number } | { kind: 'square'; side: number };
+type Shape =
+  | { kind: 'circle'; radius: number }
+  | { kind: 'square'; side: number };
 
 function area(shape: Shape): number {
   switch (shape.kind) {

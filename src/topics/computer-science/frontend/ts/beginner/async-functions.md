@@ -22,7 +22,8 @@ async function load() {
 
 ## Interview Angle
 
-Async functions are used to test your understanding of control flow and error handling.
+Async functions are used to test your understanding of control flow and error
+handling.
 
 ## Error Handling Pattern
 

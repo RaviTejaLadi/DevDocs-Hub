@@ -35,7 +35,8 @@ npx ts-node index.ts
 
 ## Interview Angle
 
-- Explain **why teams use TypeScript**: safer refactors, better IDE autocomplete, and fewer runtime bugs.
+- Explain **why teams use TypeScript**: safer refactors, better IDE
+  autocomplete, and fewer runtime bugs.
 - Mention that TypeScript checks happen at **build time**, not runtime.
 
 ## Production Setup Checklist

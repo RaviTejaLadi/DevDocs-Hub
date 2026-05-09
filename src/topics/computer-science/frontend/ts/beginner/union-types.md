@@ -33,4 +33,5 @@ let status: ApiStatus = 'idle';
 ## Pitfalls
 
 - Accessing properties that are not shared across union members.
-- Using broad unions (`string | number | boolean | object`) without narrowing strategy.
+- Using broad unions (`string | number | boolean | object`) without narrowing
+  strategy.

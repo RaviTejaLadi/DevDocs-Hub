@@ -28,8 +28,8 @@ const multiply = (a: number, b: number): number => a * b;
 
 ## Interview Angle
 
-Functions are a favorite interview topic because they combine parameters,
-return types, optional/default args, and async behavior.
+Functions are a favorite interview topic because they combine parameters, return
+types, optional/default args, and async behavior.
 
 ## Advanced Patterns
 

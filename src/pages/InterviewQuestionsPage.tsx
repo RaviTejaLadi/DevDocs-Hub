@@ -62,7 +62,10 @@ function TopicListPage() {
       const categoryMatches = category.toLowerCase().includes(normalizedTopicSearchQuery);
       acc[category] = topicsByCategory[category].filter((topic) => {
         if (categoryMatches) return true;
-        return topic.label.toLowerCase().includes(normalizedTopicSearchQuery) || topic.id.toLowerCase().includes(normalizedTopicSearchQuery);
+        return (
+          topic.label.toLowerCase().includes(normalizedTopicSearchQuery) ||
+          topic.id.toLowerCase().includes(normalizedTopicSearchQuery)
+        );
       });
       return acc;
     }, {});
@@ -420,12 +423,7 @@ function TopicDetailPage() {
             <CardContent className="py-10 text-center">
               <p className="text-muted-foreground">{t('interview.noQuestionsMatch')}</p>
               {hasAnyFilters && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="mt-4"
-                  onClick={clearAllFilters}
-                >
+                <Button variant="outline" size="sm" className="mt-4" onClick={clearAllFilters}>
                   {t('interview.resetFilters')}
                 </Button>
               )}
@@ -433,10 +431,7 @@ function TopicDetailPage() {
           </Card>
         ) : (
           <Accordion type="multiple" className="w-full">
-            <Stagger
-              gap={0.04}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start"
-            >
+            <Stagger gap={0.04} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start">
               {[0, 1].map((col) => (
                 <div key={col} className="flex flex-col gap-4 sm:gap-5">
                   {filteredQuestions

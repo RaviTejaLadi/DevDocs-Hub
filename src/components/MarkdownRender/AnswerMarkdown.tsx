@@ -158,13 +158,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
                 </div>
               );
             }
-            return (
-              <code
-                className="md-inline-code"
-              >
-                {children}
-              </code>
-            );
+            return <code className="md-inline-code">{children}</code>;
           },
           pre: ({ children }) => <>{children}</>,
         }}

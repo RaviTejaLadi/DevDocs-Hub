@@ -1,4 +1,3 @@
-
 import type { InterviewQA } from './types';
 
 export const systemDesignQuestions: InterviewQA[] = [
@@ -1580,6 +1579,5 @@ export const systemDesignQuestions: InterviewQA[] = [
       '3. Handle eventual consistency tradeoffs.',
       '4. Configure disaster recovery strategies.',
     ].join('\\n\\n'),
-  }
+  },
 ];
-

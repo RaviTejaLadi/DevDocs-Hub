@@ -18,8 +18,8 @@ let big: bigint = 123n;
 
 ## Interview Angle
 
-Primitive types are used to test whether you understand **type safety at boundaries**
-(API data, form values, and config inputs).
+Primitive types are used to test whether you understand **type safety at
+boundaries** (API data, form values, and config inputs).
 
 ## Practical Example
 
@@ -31,8 +31,10 @@ function isEligible(age: number, isBlocked: boolean): boolean {
 
 ## Pitfalls
 
-- Avoid `Number`, `String`, `Boolean` object types; use `number`, `string`, `boolean`.
-- `null` and `undefined` are distinct values, especially under strict null checks.
+- Avoid `Number`, `String`, `Boolean` object types; use `number`, `string`,
+  `boolean`.
+- `null` and `undefined` are distinct values, especially under strict null
+  checks.
 
 ## Quick Interview Prompt
 

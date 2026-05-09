@@ -3,7 +3,8 @@
 ## What is TypeScript?
 
 TypeScript is a typed superset of JavaScript developed by Microsoft.  
-It adds static type checking during development and compiles to plain JavaScript.
+It adds static type checking during development and compiles to plain
+JavaScript.
 
 ## Why use TypeScript?
 
@@ -109,10 +110,7 @@ type Theme = 'light' | 'dark';
 
 ```typescript
 class Person {
-  constructor(
-    public name: string,
-    private age: number
-  ) {}
+  constructor(public name: string, private age: number) {}
 
   getAge(): number {
     return this.age;

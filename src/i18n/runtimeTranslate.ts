@@ -74,9 +74,7 @@ export const translateText = async (text: string, targetLanguage: SupportedLangu
 
   const promise = (async () => {
     try {
-      const translatedChunks = await Promise.all(
-        splitText(text).map((chunk) => translateChunk(chunk, targetLanguage))
-      );
+      const translatedChunks = await Promise.all(splitText(text).map((chunk) => translateChunk(chunk, targetLanguage)));
       const translated = translatedChunks.join('');
       memoryCache.set(key, translated);
       setLocalStorageCache(key, translated);

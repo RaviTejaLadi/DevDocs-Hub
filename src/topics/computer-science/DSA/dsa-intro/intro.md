@@ -1,20 +1,34 @@
 # Mastering Data Structures and Algorithms (DSA) in Modern Web Development
 
-In the world of software engineering, **Data Structures and Algorithms (DSA)** represent the fundamental building blocks of efficient computing. While many web developers spend their days working with high-level frameworks like React or Next.js, understanding the underlying mechanics of how data is stored and manipulated is what separates a coder from an architect.
+In the world of software engineering, **Data Structures and Algorithms (DSA)**
+represent the fundamental building blocks of efficient computing. While many web
+developers spend their days working with high-level frameworks like React or
+Next.js, understanding the underlying mechanics of how data is stored and
+manipulated is what separates a coder from an architect.
 
 ## 1. Introduction
 
 ### What is DSA?
-**Data Structures** are specialized formats for organizing, processing, retrieving, and storing data. **Algorithms** are step-by-step procedures or formulas for solving a problem or performing a computation. Together, they form the "logic" of your application.
+
+**Data Structures** are specialized formats for organizing, processing,
+retrieving, and storing data. **Algorithms** are step-by-step procedures or
+formulas for solving a problem or performing a computation. Together, they form
+the "logic" of your application.
 
 ### Why it matters in modern web development
-As web applications move from simple document viewers to complex, data-heavy platforms (like Figma, Google Maps, or Netflix), performance becomes critical. Inefficient data handling leads to slow UI updates, "janky" animations, and high server costs. DSA provides the tools to write code that scales.
+
+As web applications move from simple document viewers to complex, data-heavy
+platforms (like Figma, Google Maps, or Netflix), performance becomes critical.
+Inefficient data handling leads to slow UI updates, "janky" animations, and high
+server costs. DSA provides the tools to write code that scales.
 
 ### Where it is commonly used
-* **Search engines:** Indexing and retrieving web pages.
-* **Social Media feeds:** Sorting and filtering thousands of posts in milliseconds.
-* **State Management:** Efficiently updating the DOM in libraries like React.
-* **Routing:** Finding the shortest path between network nodes or URL paths.
+
+- **Search engines:** Indexing and retrieving web pages.
+- **Social Media feeds:** Sorting and filtering thousands of posts in
+  milliseconds.
+- **State Management:** Efficiently updating the DOM in libraries like React.
+- **Routing:** Finding the shortest path between network nodes or URL paths.
 
 ---
 
@@ -25,71 +39,91 @@ To master DSA, we must look at the two halves of the whole.
 ### Part A: Data Structures (The "How" of Storage)
 
 #### 1. Arrays
-* **What it is:** A collection of items stored at contiguous memory locations.
-* **Why it is used:** To store multiple items of the same type together, allowing for fast access via an index.
-* **Where it is used:** Listing products on an e-commerce page or storing a simple list of strings.
+
+- **What it is:** A collection of items stored at contiguous memory locations.
+- **Why it is used:** To store multiple items of the same type together,
+  allowing for fast access via an index.
+- **Where it is used:** Listing products on an e-commerce page or storing a
+  simple list of strings.
 
 #### 2. Linked Lists
-* **What it is:** A linear data structure where elements are not stored in contiguous memory; instead, each element (node) points to the next.
-* **Why it is used:** To allow for efficient insertion and deletion of elements without reorganizing the entire structure (unlike arrays).
-* **Where it is used:** Implementing "Undo/Redo" functionality in text editors.
+
+- **What it is:** A linear data structure where elements are not stored in
+  contiguous memory; instead, each element (node) points to the next.
+- **Why it is used:** To allow for efficient insertion and deletion of elements
+  without reorganizing the entire structure (unlike arrays).
+- **Where it is used:** Implementing "Undo/Redo" functionality in text editors.
 
 #### 3. Hash Tables (Objects/Maps in JS)
-* **What it is:** A structure that maps keys to values using a "hash function."
-* **Why it is used:** To provide near-instantaneous ($O(1)$) data retrieval.
-* **Where it is used:** Storing user session data or caching API responses.
 
-
+- **What it is:** A structure that maps keys to values using a "hash function."
+- **Why it is used:** To provide near-instantaneous ($O(1)$) data retrieval.
+- **Where it is used:** Storing user session data or caching API responses.
 
 #### 4. Trees
-* **What it is:** A hierarchical structure with a root value and subtrees of children with a parent node.
-* **Why it is used:** To represent data that has a natural hierarchy.
-* **Where it is used:** The **DOM (Document Object Model)** in your browser is a tree structure.
+
+- **What it is:** A hierarchical structure with a root value and subtrees of
+  children with a parent node.
+- **Why it is used:** To represent data that has a natural hierarchy.
+- **Where it is used:** The **DOM (Document Object Model)** in your browser is a
+  tree structure.
 
 ### Part B: Algorithms (The "How" of Logic)
 
 #### 1. Sorting Algorithms (e.g., QuickSort, MergeSort)
-* **What it is:** Procedures to put elements of a list in a specific order (numerical or alphabetical).
-* **Why it is used:** Humans and computers process organized data much faster than random data.
-* **Where it is used:** Sorting search results by "Price: Low to High."
+
+- **What it is:** Procedures to put elements of a list in a specific order
+  (numerical or alphabetical).
+- **Why it is used:** Humans and computers process organized data much faster
+  than random data.
+- **Where it is used:** Sorting search results by "Price: Low to High."
 
 #### 2. Search Algorithms (e.g., Binary Search)
-* **What it is:** A method to find a specific item within a data structure.
-* **Why it is used:** To avoid checking every single item (Linear Search), which is too slow for large datasets.
-* **Where it is used:** Looking up a user in a database of millions.
+
+- **What it is:** A method to find a specific item within a data structure.
+- **Why it is used:** To avoid checking every single item (Linear Search), which
+  is too slow for large datasets.
+- **Where it is used:** Looking up a user in a database of millions.
 
 ---
 
 ## 3. Practical Example: Solving a Common Task
 
-Imagine you are building a search feature for a massive list of usernames. Using a standard `find()` on a large array is $O(n)$, meaning it gets slower as the list grows.
+Imagine you are building a search feature for a massive list of usernames. Using
+a standard `find()` on a large array is $O(n)$, meaning it gets slower as the
+list grows.
 
 ### Using a Set (Hash-based) for Instant Lookups
 
 ```javascript
 // The Data: 1 million usernames
-const usersArray = ["alice", "bob", "charlie", /* ... 999,997 more */];
+const usersArray = ['alice', 'bob', 'charlie' /* ... 999,997 more */];
 
 // Problem: Check if "zach" exists in the list.
 
 // ❌ Inefficient Approach: Linear Search
-const existsInArray = usersArray.includes("zach"); 
+const existsInArray = usersArray.includes('zach');
 // This must check every single item until it finds "zach".
 
 // ✅ Efficient Approach: Using a Set (Hash Table)
-const userSet = new Set(usersArray); 
+const userSet = new Set(usersArray);
 
 function checkUser(name) {
-    return userSet.has(name); // Constant time lookup O(1)
+  return userSet.has(name); // Constant time lookup O(1)
 }
 
-console.log(checkUser("zach")); 
+console.log(checkUser('zach'));
 ```
 
 **Step-by-Step Explanation:**
-1.  **Conversion:** We convert the array into a `Set`. JavaScript Sets use a hash-table mechanism internally.
-2.  **Lookup:** When we call `.has()`, the computer doesn't "scan" the list. It calculates the hash of "zach" and jumps directly to the memory address where that value would be.
-3.  **Performance:** Regardless of whether the list has 10 users or 10 million, the lookup time remains virtually the same.
+
+1.  **Conversion:** We convert the array into a `Set`. JavaScript Sets use a
+    hash-table mechanism internally.
+2.  **Lookup:** When we call `.has()`, the computer doesn't "scan" the list. It
+    calculates the hash of "zach" and jumps directly to the memory address where
+    that value would be.
+3.  **Performance:** Regardless of whether the list has 10 users or 10 million,
+    the lookup time remains virtually the same.
 
 ---
 
@@ -97,31 +131,46 @@ console.log(checkUser("zach"));
 
 In DSA, we measure efficiency using **Big O Notation**.
 
-* **$O(1)$ - Constant Time:** The fastest. The size of the data doesn't matter (e.g., accessing an array index).
-* **$O(\log n)$ - Logarithmic Time:** Very fast. Efficiency increases significantly as data grows (e.g., Binary Search).
-* **$O(n)$ - Linear Time:** Performance drops proportionally to data size (e.g., a standard `for` loop).
-* **$O(n^2)$ - Quadratic Time:** Very slow for large data. Usually involves nested loops.
+- **$O(1)$ - Constant Time:** The fastest. The size of the data doesn't matter
+  (e.g., accessing an array index).
+- **$O(\log n)$ - Logarithmic Time:** Very fast. Efficiency increases
+  significantly as data grows (e.g., Binary Search).
+- **$O(n)$ - Linear Time:** Performance drops proportionally to data size (e.g.,
+  a standard `for` loop).
+- **$O(n^2)$ - Quadratic Time:** Very slow for large data. Usually involves
+  nested loops.
 
-> **Pro Tip:** Always aim to move from $O(n^2)$ to $O(n \log n)$ or $O(n)$ when dealing with front-end data processing.
+> **Pro Tip:** Always aim to move from $O(n^2)$ to $O(n \log n)$ or $O(n)$ when
+> dealing with front-end data processing.
 
 ---
 
 ## 5. Actionable Tips for Developers
 
-1.  **Use Objects/Maps for Lookups:** If you find yourself using `.find()` or `.includes()` inside a loop, you have an $O(n^2)$ problem. Convert your list to a Map or Object first.
-2.  **Understand the DOM is a Tree:** When you manipulate the DOM, remember that deep nesting makes traversals slower. Keep your HTML flat where possible.
-3.  **Pick the Right Loop:** While `.forEach` is readable, a standard `for` loop or `for...of` is often more performant in high-frequency operations.
+1.  **Use Objects/Maps for Lookups:** If you find yourself using `.find()` or
+    `.includes()` inside a loop, you have an $O(n^2)$ problem. Convert your list
+    to a Map or Object first.
+2.  **Understand the DOM is a Tree:** When you manipulate the DOM, remember that
+    deep nesting makes traversals slower. Keep your HTML flat where possible.
+3.  **Pick the Right Loop:** While `.forEach` is readable, a standard `for` loop
+    or `for...of` is often more performant in high-frequency operations.
 
 ## 6. Conclusion
 
-DSA isn't just for whiteboard interviews; it is the science of writing code that works at scale. By choosing a Hash Map over an Array for lookups, or a Tree for hierarchical data, you ensure your web applications remain snappy and professional.
+DSA isn't just for whiteboard interviews; it is the science of writing code that
+works at scale. By choosing a Hash Map over an Array for lookups, or a Tree for
+hierarchical data, you ensure your web applications remain snappy and
+professional.
 
 **Summary Takeaways:**
-* **Data Structures** organize your data; **Algorithms** process it.
-* **Big O** is your yardstick for measuring performance.
-* In JavaScript, `Objects`, `Maps`, and `Sets` are your best friends for optimization.
 
-**What to learn next?**
-I recommend diving into **Recursion**—it is the foundation for navigating complex Tree structures like the DOM or file systems.
+- **Data Structures** organize your data; **Algorithms** process it.
+- **Big O** is your yardstick for measuring performance.
+- In JavaScript, `Objects`, `Maps`, and `Sets` are your best friends for
+  optimization.
 
-Would you like me to create a deep-dive guide on **Recursion** or perhaps explain **Big O Notation** with more visual examples?
+**What to learn next?** I recommend diving into **Recursion**—it is the
+foundation for navigating complex Tree structures like the DOM or file systems.
+
+Would you like me to create a deep-dive guide on **Recursion** or perhaps
+explain **Big O Notation** with more visual examples?

@@ -8,14 +8,7 @@ interface StaggerProps extends Omit<HTMLMotionProps<'div'>, 'initial' | 'animate
   startDelay?: number;
 }
 
-export function Stagger({
-  gap = 0.06,
-  startDelay = 0,
-  className,
-  children,
-  style,
-  ...rest
-}: StaggerProps) {
+export function Stagger({ gap = 0.06, startDelay = 0, className, children, style, ...rest }: StaggerProps) {
   const reduceMotion = useReducedMotion();
 
   const containerVariants: Variants = {

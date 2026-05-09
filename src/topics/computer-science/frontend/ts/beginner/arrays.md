@@ -38,7 +38,8 @@ const names = users.map((u) => u.name); // string[]
 ## Pitfalls
 
 - `readonly` blocks mutation methods like `push`.
-- Mixed arrays should usually be represented with unions intentionally, not by accident.
+- Mixed arrays should usually be represented with unions intentionally, not by
+  accident.
 
 ## Practice Prompt
 

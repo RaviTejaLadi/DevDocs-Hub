@@ -18,8 +18,7 @@ const thermodynamicsTopics: Topic = {
     {
       id: 'second-law',
       title: 'Second Law of Thermodynamics',
-      content:
-        '# Second Law of Thermodynamics\n\nThe entropy of an isolated system can never decrease over time.',
+      content: '# Second Law of Thermodynamics\n\nThe entropy of an isolated system can never decrease over time.',
     },
     {
       id: 'thermo-cycles',
@@ -41,8 +40,7 @@ const fluidMechanicsTopics: Topic = {
     {
       id: 'fluid-properties',
       title: 'Properties of Fluids',
-      content:
-        '# Properties of Fluids\n\nDensity, viscosity, surface tension, compressibility, and vapor pressure.',
+      content: '# Properties of Fluids\n\nDensity, viscosity, surface tension, compressibility, and vapor pressure.',
     },
     {
       id: 'bernoulli-equation',
@@ -70,8 +68,7 @@ const machineDesignTopics: Topic = {
     {
       id: 'stress-strain',
       title: 'Stress & Strain',
-      content:
-        '# Stress and Strain\n\n`σ = F / A` &nbsp;&nbsp; (Stress)\n\n`ε = ΔL / L₀` (Strain)',
+      content: '# Stress and Strain\n\n`σ = F / A` &nbsp;&nbsp; (Stress)\n\n`ε = ΔL / L₀` (Strain)',
     },
   ],
 };
@@ -93,8 +90,7 @@ const manufacturingTopics: Topic = {
     {
       id: 'machining',
       title: 'Machining',
-      content:
-        '# Machining\n\nMaterial removal processes — turning, milling, drilling, grinding.',
+      content: '# Machining\n\nMaterial removal processes — turning, milling, drilling, grinding.',
     },
   ],
 };
