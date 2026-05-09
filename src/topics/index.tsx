@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components -- This is a data-aggregation module, not a component module. Multiple constant + helper exports are intentional. */
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
-import { Binary, Network, NotebookTabs } from 'lucide-react';
+import { Binary, Network, NotebookTabs, Code2, Cog, Atom } from 'lucide-react';
 
 import { htmlTopics } from './frontend/html';
 import { cssTopics } from './frontend/css';
@@ -19,6 +20,9 @@ import { dsaData } from './DSA';
 import { resourcesData } from './Resources';
 import { systemDesignData } from './SystemDesign';
 
+import { mechanicalTopics } from './Mechanical';
+import { basicScienceTopics } from './BasicScience';
+
 export interface TopicItem {
   id: string;
   title: string;
@@ -26,7 +30,10 @@ export interface TopicItem {
   items?: TopicItem[];
 }
 
-export type TopicCategory = 'frontend' | 'backend' | 'cloud' | 'database' | 'dsa' | 'resources' | 'system-design';
+// Free-form category string – each Stream is free to define its own categories.
+// Keeping it as `string` allows new streams (Mechanical, Basic Science, ...) to add
+// their own grouping labels without having to widen a fixed union.
+export type TopicCategory = string;
 
 export interface Topic {
   id: string;
@@ -39,6 +46,26 @@ export interface Topic {
 }
 
 export type Topics = Topic[];
+
+/**
+ * A "Stream" is a top-level grouping of Topics — e.g. Computer Science,
+ * Mechanical Engineering, Basic Science. The landing page renders one tab per
+ * Stream and shows that stream's topics underneath.
+ *
+ * To add a new stream:
+ *   1. Create a folder under `src/topics/<YourStream>/` exporting `Topic[]`.
+ *   2. Append a new entry to `STREAMS` below.
+ *
+ * Every Topic.id must remain globally unique because routes live at
+ * `/docs/:categoryId/:slug` regardless of stream.
+ */
+export interface Stream {
+  id: string;
+  title: string;
+  description: string;
+  icon?: JSX.Element;
+  topics: Topic[];
+}
 
 type BaseTopic = Omit<Topic, 'type' | 'category'>;
 
@@ -96,7 +123,7 @@ const transformResourcesData = (): Topic[] =>
     })
   );
 
-export const TOPICS: Topics = [
+const computerScienceTopics: Topic[] = [
   createTopic('frontend', {
     id: 'html',
     title: 'HTML',
@@ -178,3 +205,41 @@ export const TOPICS: Topics = [
   }),
   ...transformResourcesData(),
 ];
+
+/**
+ * Add a new stream by appending an entry to this array.
+ * Each stream has its own tab on the landing page.
+ */
+export const STREAMS: Stream[] = [
+  {
+    id: 'computer-science',
+    title: 'Computer Science',
+    description: 'Frontend, backend, DSA, system design, databases, cloud and more.',
+    icon: <Code2 className="h-5 w-5" />,
+    topics: computerScienceTopics,
+  },
+  // {
+  //   id: 'mechanical-engineering',
+  //   title: 'Mechanical Engineering',
+  //   description: 'Thermodynamics, fluid mechanics, machine design and manufacturing.',
+  //   icon: <Cog className="h-5 w-5" />,
+  //   topics: mechanicalTopics,
+  // },
+  // {
+  //   id: 'basic-science',
+  //   title: 'Basic Science',
+  //   description: 'Physics, chemistry, mathematics and biology fundamentals.',
+  //   icon: <Atom className="h-5 w-5" />,
+  //   topics: basicScienceTopics,
+  // },
+];
+
+/**
+ * Backward-compatible flat list of all topics across every stream.
+ * Used by the global search (NavBar), DocumentationPage routing and SidebarContent.
+ */
+export const TOPICS: Topics = STREAMS.flatMap((stream) => stream.topics);
+
+/** Lookup the stream a given topic id belongs to. */
+export const getStreamByTopicId = (topicId: string): Stream | undefined =>
+  STREAMS.find((stream) => stream.topics.some((topic) => topic.id === topicId));

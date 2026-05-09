@@ -2,7 +2,7 @@ import { ChevronRight, Search, Grid3x3, List, ChevronDown, HelpCircle } from 'lu
 import { useNavigate } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 
-import { TOPICS } from '../topics';
+import { STREAMS, type Stream, type Topic } from '../topics';
 import Footer from '@/components/Layout/Footer';
 import FeaturesSection from '@/components/FeaturesSection';
 import { Logo } from '@/components/Logo';
@@ -34,22 +34,29 @@ const LandingPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [activeStreamId, setActiveStreamId] = useState<string>(STREAMS[0]?.id ?? '');
 
-  const filteredTopics = useMemo(() => {
-    if (!searchQuery) return TOPICS;
+  const activeStream: Stream | undefined = useMemo(
+    () => STREAMS.find((stream) => stream.id === activeStreamId) ?? STREAMS[0],
+    [activeStreamId]
+  );
+
+  const filteredTopics = useMemo<Topic[]>(() => {
+    const topics = activeStream?.topics ?? [];
+    if (!searchQuery) return topics;
 
     const query = searchQuery.toLowerCase();
 
-    return TOPICS.filter(
+    return topics.filter(
       (topic) =>
         topic.title.toLowerCase().includes(query) ||
         topic.description.toLowerCase().includes(query) ||
         topic.items.some((item) => item.title.toLowerCase().includes(query))
     );
-  }, [searchQuery]);
+  }, [activeStream, searchQuery]);
 
   const groupedTopics = useMemo(() => {
-    return filteredTopics.reduce<Record<string, typeof TOPICS>>((acc, topic) => {
+    return filteredTopics.reduce<Record<string, Topic[]>>((acc, topic) => {
       if (!acc[topic.category]) acc[topic.category] = [];
       acc[topic.category].push(topic);
       return acc;
@@ -121,15 +128,72 @@ const LandingPage = () => {
         </Reveal>
       </header>
 
+      <Reveal>
+        <nav
+          aria-label={t('landing.streamTabs')}
+          className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto"
+        >
+          <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+            {STREAMS.map((stream) => {
+              const isActive = stream.id === activeStream?.id;
+              return (
+                <button
+                  key={stream.id}
+                  type="button"
+                  onClick={() => setActiveStreamId(stream.id)}
+                  aria-pressed={isActive}
+                  className={cn(
+                    'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-all',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    isActive
+                      ? 'border-primary/50 bg-primary/10 text-primary shadow-sm'
+                      : 'border-border/40 bg-card/40 text-muted-foreground hover:bg-accent hover:text-foreground'
+                  )}
+                >
+                  {stream.icon && <span className="shrink-0">{stream.icon}</span>}
+                  <span className="font-medium">
+                    <TranslatedText text={stream.title} />
+                  </span>
+                  <span
+                    className={cn(
+                      'ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold',
+                      isActive ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
+                    )}
+                  >
+                    {stream.topics.length}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+      </Reveal>
+
+      {activeStream?.description && (
+        <Reveal delay={0.05}>
+          <p className="mb-8 text-sm text-muted-foreground">
+            <TranslatedText text={activeStream.description} />
+          </p>
+        </Reveal>
+      )}
+
+      {Object.keys(groupedTopics).length === 0 && (
+        <Reveal>
+          <div className="rounded-lg border border-dashed border-border/50 bg-card/40 p-10 text-center text-sm text-muted-foreground">
+            {t('landing.noTopicsInStream')}
+          </div>
+        </Reveal>
+      )}
+
       {Object.entries(groupedTopics).map(([category, topics]) => {
-        const isCollapsed = collapsed[category];
+        const isCollapsed = collapsed[`${activeStream?.id}:${category}`];
 
         return (
-          <section key={category} className="mb-14">
+          <section key={`${activeStream?.id}:${category}`} className="mb-14">
             <Reveal>
               <button
                 type="button"
-                onClick={() => toggleSection(category)}
+                onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
                 className="w-full flex items-center justify-between py-2 text-left group"
               >
                 <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
