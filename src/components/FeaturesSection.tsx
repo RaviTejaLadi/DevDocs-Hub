@@ -29,8 +29,8 @@ export default function FeaturesSection() {
       description: t('features.codeExamples.description'),
     },
     comprehensive: {
-      title: t('features.fullstackCoverage.title'),
-      description: t('features.fullstackCoverage.description'),
+      title: t('features.multiStreamCoverage.title'),
+      description: t('features.multiStreamCoverage.description'),
     },
   } as const;
 

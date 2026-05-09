@@ -23,7 +23,8 @@ const en: TranslationMap = {
   'nav.searchTitle': 'Search topics',
   'nav.searchType': 'Type to search...',
   'nav.noResults': 'No matching topics found',
-  'nav.tryDifferentKeyword': 'Try a different keyword, like React, SQL, system design...',
+  'nav.tryDifferentKeyword':
+    'Try a different keyword — for example React, thermodynamics, organic chemistry, or machine design...',
   'nav.searchAcrossDocs': 'Search across all docs',
   'nav.startTyping': 'Start typing to find topics instantly.',
   'nav.results': 'Results',
@@ -36,9 +37,10 @@ const en: TranslationMap = {
   'nav.github': 'GitHub',
   'footer.overview': 'Overview',
   'footer.terms': 'Terms',
-  'footer.tagline': 'Fullstack topics simplified for quick revision.',
+  'footer.tagline':
+    'Study topics across multiple streams — simplified notes for quick revision whenever you need them.',
   'landing.heroDescription':
-    'Fullstack developer topics in a simplified way-your go-to place for quick revision before interviews or day-to-day coding.',
+    'Browse organized topics by stream — from computer science and software to engineering, sciences, and beyond. Clear explanations for quick revision before exams, interviews, or whenever you need a refresher.',
   'landing.searchTopics': 'Search topics...',
   'landing.interviewQuestionsByLevel': 'Interview Questions (by level)',
   'landing.topicsCount': '{{count}} topics',
@@ -48,12 +50,13 @@ const en: TranslationMap = {
   'features.whyUse': 'Why use ReviseStack',
   'features.quickRevision.title': 'Quick revision',
   'features.quickRevision.description':
-    'Simplified explanations so you can brush up fast-before interviews or deep dives.',
+    'Short, readable explanations so you can brush up fast — before exams, interviews, labs, or deeper study.',
   'features.codeExamples.title': 'Code & examples',
-  'features.codeExamples.description': 'Practical snippets and examples you can copy and use on the job.',
-  'features.fullstackCoverage.title': 'Fullstack coverage',
-  'features.fullstackCoverage.description':
-    'Frontend, backend, DSA, system design, databases, and more-all in one place.',
+  'features.codeExamples.description':
+    'Where a topic includes code or formulas, you get concrete examples you can copy, adapt, or compare against your notes.',
+  'features.multiStreamCoverage.title': 'Many streams, one place',
+  'features.multiStreamCoverage.description':
+    'Switch between streams — development, engineering, basic sciences, and more — and grow the library over time without juggling dozens of bookmarks.',
   'sidebar.collapse': 'Collapse',
   'sidebar.expand': 'Expand',
   'sidebar.selectTopic': 'Select a topic',

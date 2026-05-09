@@ -2,7 +2,7 @@
   "name": "revise-stack",
   "private": true,
   "version": "1.0.2",
-  "description": "Revise Stack docs platform.",
+  "description": "Revise Stack — multi-stream revision docs (CS, engineering, sciences, and more).",
   "homepage": "https://revise-stack.vercel.app",
   "license": "MIT",
   "type": "module",
