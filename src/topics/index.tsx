@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components -- This is a data-aggregation module, not a component module. Multiple constant + helper exports are intentional. */
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
-import { Binary, Network, NotebookTabs, Code2 } from 'lucide-react';
+import { Binary, Network, NotebookTabs, Code2, Cog, Atom } from 'lucide-react';
 
 import { htmlTopics } from './computer-science/frontend/html';
 import { cssTopics } from './computer-science/frontend/css';
@@ -19,6 +19,8 @@ import { databaseData } from './computer-science/Database';
 import { dsaData } from './computer-science/DSA';
 import { resourcesData } from './computer-science/Resources';
 import { systemDesignData } from './computer-science/SystemDesign';
+import { mechanicalTopics } from './Mechanical';
+import { basicScienceTopics } from './BasicScience';
 
 export interface TopicItem {
   id: string;
@@ -218,20 +220,20 @@ export const STREAMS: Stream[] = [
     topics: computerScienceTopics,
   },
   // Uncomment below and re-import `mechanicalTopics`, `basicScienceTopics`, `Cog`, `Atom` from above.
-  // {
-  //   id: 'mechanical-engineering',
-  //   title: 'Mechanical Engineering',
-  //   description: 'Thermodynamics, fluid mechanics, machine design and manufacturing.',
-  //   icon: <Cog className="h-5 w-5" />,
-  //   topics: mechanicalTopics,
-  // },
-  // {
-  //   id: 'basic-science',
-  //   title: 'Basic Science',
-  //   description: 'Physics, chemistry, mathematics and biology fundamentals.',
-  //   icon: <Atom className="h-5 w-5" />,
-  //   topics: basicScienceTopics,
-  // },
+  {
+    id: 'mechanical-engineering',
+    title: 'Mechanical Engineering',
+    description: 'Thermodynamics, fluid mechanics, machine design and manufacturing.',
+    icon: <Cog className="h-5 w-5" />,
+    topics: mechanicalTopics,
+  },
+  {
+    id: 'basic-science',
+    title: 'Basic Science',
+    description: 'Physics, chemistry, mathematics and biology fundamentals.',
+    icon: <Atom className="h-5 w-5" />,
+    topics: basicScienceTopics,
+  },
 ];
 
 /**
