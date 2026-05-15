@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronRight, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -17,6 +17,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
+import { cn } from '@/lib/utils';
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -46,6 +47,10 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
   return flattened.filter((i) => i.content);
 };
 
+/** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding). */
+const DOC_FEED_TOPIC_CARD_CLASS =
+  'h-[calc(100dvh-12.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-13.25rem)] sm:max-h-[calc(100dvh-13.25rem)]';
+
 const DocumentationPage = ({
   isSidebarCollapsed,
   onToggleSidebar,
@@ -71,10 +76,18 @@ const DocumentationPage = ({
   }, [content, categoryId, navigate]);
 
   const flatItems = useMemo(() => (topic ? flattenTopicItems(topic.items) : []), [topic]);
-  const currentIndex = useMemo(() => flatItems.findIndex((i) => i.id === slug), [flatItems, slug]);
 
-  const nextItem = currentIndex !== -1 ? flatItems[currentIndex + 1] : undefined;
-  const prevItem = currentIndex !== -1 ? flatItems[currentIndex - 1] : undefined;
+  const topicIdRef = useRef(topic?.id);
+  const slugRef = useRef(slug);
+  topicIdRef.current = topic?.id;
+  slugRef.current = slug;
+
+  const [inViewSlug, setInViewSlug] = useState(slug ?? '');
+  const skipSlugScrollIntoViewRef = useRef(false);
+
+  useEffect(() => {
+    setInViewSlug(slug ?? '');
+  }, [slug]);
 
   useEffect(() => {
     const el = viewportRef?.current;
@@ -83,7 +96,92 @@ const DocumentationPage = ({
     } else {
       window.scrollTo(0, 0);
     }
-  }, [categoryId, slug, viewportRef]);
+  }, [categoryId, viewportRef]);
+
+  /** Scroll selected topic card into view — skipped when URL was updated by the feed observer. */
+  useEffect(() => {
+    if (!slug || !viewportRef?.current) return;
+    if (skipSlugScrollIntoViewRef.current) {
+      skipSlugScrollIntoViewRef.current = false;
+      return;
+    }
+    const el = document.getElementById(`doc-feed-${slug}`);
+    if (!el) return;
+
+    window.requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+    });
+  }, [slug, topic?.id, flatItems.length, viewportRef]);
+
+  /** Debounced URL + sidebar sync (replace) so scrolling does not jitter. */
+  useEffect(() => {
+    const root = viewportRef?.current;
+    const catId = topicIdRef.current;
+    if (!root || !catId || flatItems.length === 0) return;
+
+    let obs: IntersectionObserver | null = null;
+    let cancelled = false;
+    /** DOM lib typing: browser timers are numeric ids. */
+    let debounceTimerId: number | undefined;
+
+    const start = () => {
+      if (cancelled) return;
+      obs = new IntersectionObserver(
+        (entries) => {
+          const hits = entries.filter((e) => e.isIntersecting && e.target.id.startsWith('doc-feed-'));
+          if (!hits.length) return;
+          const rr = root.getBoundingClientRect();
+          const focusY = rr.top + rr.height * 0.38;
+          const scored = hits.map((e) => {
+            const rect = e.boundingClientRect;
+            const mid = rect.top + rect.height / 2;
+            const dist = Math.abs(mid - focusY);
+            return {
+              e,
+              score: e.intersectionRatio - (dist / Math.max(rr.height, 1)) * 0.4,
+            };
+          });
+          scored.sort((a, b) => b.score - a.score);
+          const winner = scored[0]?.e.target;
+          if (!winner?.id.startsWith('doc-feed-')) return;
+          const id = winner.id.slice('doc-feed-'.length);
+
+          window.clearTimeout(debounceTimerId);
+          debounceTimerId = window.setTimeout(() => {
+            setInViewSlug(id);
+            if (id !== slugRef.current) {
+              skipSlugScrollIntoViewRef.current = true;
+              navigate(`/docs/${catId}/${id}`, { replace: true });
+            }
+          }, 140);
+        },
+        {
+          root,
+          threshold: [0.12, 0.22, 0.38, 0.55],
+          rootMargin: '-12% 0px -32% 0px',
+        }
+      );
+
+      flatItems.forEach((item) => {
+        const section = document.getElementById(`doc-feed-${item.id}`);
+        if (section) obs!.observe(section);
+      });
+    };
+
+    let raf1 = 0;
+    let raf2 = 0;
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(start);
+    });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(debounceTimerId);
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      obs?.disconnect();
+    };
+  }, [flatItems, navigate, topic?.id, viewportRef]);
 
   if (!topic || !content) {
     return (
@@ -172,19 +270,56 @@ const DocumentationPage = ({
           </Breadcrumb>
         </div>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none min-w-0 prose-headings:font-semibold prose-headings:tracking-tight">
-        <MarkdownRender
-          content={content.content}
-          slideMode
-          hasNextDocument={Boolean(nextItem)}
-          onReachDocumentEnd={() => {
-            if (nextItem) navigate(`/docs/${topic.id}/${nextItem.id}`);
-          }}
-          hasPrevDocument={Boolean(prevItem)}
-          onReachDocumentStart={() => {
-            if (prevItem) navigate(`/docs/${topic.id}/${prevItem.id}`);
-          }}
-        />
+      <div className="max-w-none min-w-0 space-y-6 pb-20">
+        {flatItems.map((item, idx) => (
+          <section
+            key={item.id}
+            id={`doc-feed-${item.id}`}
+            className={cn(
+              'snap-start snap-always not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
+              'scroll-mt-28',
+              DOC_FEED_TOPIC_CARD_CLASS
+            )}
+          >
+            <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 px-1">
+              <span className="inline-flex h-7 shrink-0 items-center rounded-full border border-border/50 bg-muted/40 px-2.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground tabular-nums">
+                {idx + 1}/{flatItems.length}
+              </span>
+              <h2 className="min-w-0 text-balance text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl">
+                <TranslatedText text={item.title} />
+              </h2>
+            </div>
+
+            <div className="prose prose-slate dark:prose-invert flex min-h-0 flex-1 flex-col overflow-hidden max-w-none min-w-0 prose-headings:font-semibold prose-headings:tracking-tight">
+              <MarkdownRender
+                content={item.content}
+                slideMode
+                fillViewportCard
+                headingIdScope={item.id}
+                scrollIntentActive={inViewSlug === item.id}
+                keyboardActive={inViewSlug === item.id}
+                hasNextDocument={idx < flatItems.length - 1}
+                hasPrevDocument={idx > 0}
+                onReachDocumentEnd={() => {
+                  const next = flatItems[idx + 1];
+                  if (!next || !viewportRef?.current) return;
+                  skipSlugScrollIntoViewRef.current = true;
+                  document.getElementById(`doc-feed-${next.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+                  navigate(`/docs/${topic.id}/${next.id}`, { replace: true });
+                  setInViewSlug(next.id);
+                }}
+                onReachDocumentStart={() => {
+                  const prev = flatItems[idx - 1];
+                  if (!prev || !viewportRef?.current) return;
+                  skipSlugScrollIntoViewRef.current = true;
+                  document.getElementById(`doc-feed-${prev.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+                  navigate(`/docs/${topic.id}/${prev.id}`, { replace: true });
+                  setInViewSlug(prev.id);
+                }}
+              />
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );

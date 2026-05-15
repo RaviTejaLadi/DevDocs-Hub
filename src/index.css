@@ -288,6 +288,11 @@
   all: unset;
 }
 
+/* Slide card body — no drop cap, normal first paragraph flow */
+.md-render.md-render-slide > p:first-of-type::first-letter {
+  all: unset;
+}
+
 /* <strong> — gentle yellow underline highlight */
 .md-render strong {
   background-image: linear-gradient(

@@ -20,13 +20,22 @@ const App = () => {
   const showSidebar = location.pathname.startsWith('/docs/');
   const contentViewportRef = useRef<HTMLDivElement>(null);
 
+  const docsCategoryScrollRef = useRef<string | null>(null);
+
   useEffect(() => {
     const el = contentViewportRef.current;
-    if (!el) {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const m = location.pathname.match(/^\/docs\/([^/]+)\//);
+    const docsCat = m?.[1];
+
+    if (docsCat !== undefined && docsCat === docsCategoryScrollRef.current) {
+      /** Same docs category — slug swaps (replaceState) must not snap the feed back to scroll top. */
       return;
     }
-    el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    docsCategoryScrollRef.current = docsCat ?? null;
+
+    if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    else window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname, location.search]);
 
   return (
@@ -68,7 +77,7 @@ const App = () => {
             <ScrollArea
               className="h-full"
               viewportRef={contentViewportRef}
-              viewportClassName={showSidebar ? 'snap-y snap-mandatory scroll-pt-2 scroll-pb-4' : undefined}
+              viewportClassName={showSidebar ? 'snap-y snap-proximity scroll-pt-2 scroll-pb-4' : undefined}
             >
               <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
                 <Routes location={location}>

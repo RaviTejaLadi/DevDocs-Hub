@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -15,8 +15,18 @@ import { buildMarkdownComponents } from './buildMarkdownComponents';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
 
+/** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
+const DOC_READING_PANE_MAX_CLASS =
+  'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
+
+/** Scrollable body max = pane cap minus compact footer (outline sm button + py). */
+const DOC_SLIDE_BODY_MAX_CLASS =
+  'max-h-[calc(100dvh-9rem-2.875rem)] sm:max-h-[calc(100dvh-9.5rem-2.875rem)]';
+
 const MAX_SLIDE_CHARS = 4200;
 const MERGE_TINY_UNDER = 260;
+/** Merge H2-based chunks forward until roughly this full to reduce “one line + huge whitespace” slides. */
+const TARGET_SLIDE_CHARS = 1050;
 
 /**
  * Dynamic slides: primary split on `##` (code-fence aware), then sub-split only
@@ -32,8 +42,29 @@ export function splitMarkdownIntoSlides(markdown: string): string[] {
   slides = slides.flatMap((s) => (s.length > MAX_SLIDE_CHARS ? splitRoughlyEvenChunk(s, MAX_SLIDE_CHARS) : [s]));
 
   slides = mergeAdjacentTinySlides(slides, MERGE_TINY_UNDER);
+  slides = mergeForwardToTargetSize(slides, TARGET_SLIDE_CHARS, MAX_SLIDE_CHARS);
 
   return slides.length > 0 ? slides : [normalized];
+}
+
+/** Pack consecutive slides until the current buffer reaches target size (or merge would exceed max). */
+function mergeForwardToTargetSize(slides: string[], targetMin: number, maxChars: number): string[] {
+  if (slides.length <= 1) return slides;
+  const out: string[] = [];
+  let buf = slides[0];
+
+  for (let i = 1; i < slides.length; i++) {
+    const next = slides[i];
+    const combined = buf.length + next.length + 2;
+    if (buf.length < targetMin && combined <= maxChars) {
+      buf = `${buf}\n\n${next}`;
+    } else {
+      out.push(buf);
+      buf = next;
+    }
+  }
+  out.push(buf);
+  return out;
 }
 
 function splitByH2Headings(markdown: string): string[] {
@@ -151,7 +182,16 @@ export function extractSlideTitle(markdown: string): string {
   return (line ?? '').replace(/^#+\s*/, '').trim().slice(0, 96) || '—';
 }
 
-function parseHeadingsFromSlides(slides: string[]): Heading[] {
+function scopePrefixFromTopicId(topicIdOrScope?: string): string {
+  if (!topicIdOrScope) return '';
+  const s = topicIdOrScope
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return s ? `${s}-` : '';
+}
+
+function parseHeadingsFromSlides(slides: string[], scopePrefix = ''): Heading[] {
   const out: Heading[] = [];
   slides.forEach((slide, slideIndex) => {
     const used = new Map<string, number>();
@@ -164,7 +204,7 @@ function parseHeadingsFromSlides(slides: string[]): Heading[] {
       const n = (used.get(base) ?? 0) + 1;
       used.set(base, n);
       if (n > 1) base = `${base}-${n}`;
-      out.push({ id: `s${slideIndex}-${base}`, text, level, slideIndex });
+      out.push({ id: `${scopePrefix}s${slideIndex}-${base}`, text, level, slideIndex });
     }
   });
   return out;
@@ -173,6 +213,16 @@ function parseHeadingsFromSlides(slides: string[]): Heading[] {
 type MarkdownRenderProps = {
   content: string;
   slideMode?: boolean;
+  /** Unique topic id (slug) prefix so DOM heading ids stay unique in multi-topic feeds. */
+  headingIdScope?: string;
+  /** Omit right-hand TOC (e.g. when rendering a stacked feed — sidebar lists topics already). */
+  hideToc?: boolean;
+  /** Only the foreground topic registers wheel → next/previous-topic behavior. */
+  scrollIntentActive?: boolean;
+  /** Arrow keys navigate slides only when this topic is the active feed item. */
+  keyboardActive?: boolean;
+  /** When true, slide + TOC stretch to fill a fixed-height feed card (parents must be flex + min-h-0). */
+  fillViewportCard?: boolean;
   hasNextDocument?: boolean;
   onReachDocumentEnd?: () => void;
   hasPrevDocument?: boolean;
@@ -182,6 +232,11 @@ type MarkdownRenderProps = {
 const MarkdownRender = ({
   content,
   slideMode = false,
+  headingIdScope = '',
+  hideToc = false,
+  fillViewportCard = false,
+  scrollIntentActive = true,
+  keyboardActive = true,
   hasNextDocument = false,
   onReachDocumentEnd,
   hasPrevDocument = false,
@@ -198,13 +253,40 @@ const MarkdownRender = ({
   const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
   const translatedContent = useTranslatedText(content);
+  const headingPrefix = scopePrefixFromTopicId(headingIdScope);
+  const slideIdPrefix = useMemo(() => `${headingPrefix}s`, [headingPrefix]);
   const [pendingScrollHeadingId, setPendingScrollHeadingId] = useState<string | null>(null);
   const viewportScrollRootRef = useScrollViewport();
   const slides = useMemo(() => splitMarkdownIntoSlides(translatedContent), [translatedContent]);
-  const slideTitles = useMemo(() => slides.map(extractSlideTitle), [slides]);
   const [activeSlide, setActiveSlide] = useState(0);
   const endBumpLockRef = useRef(false);
   const startBumpLockRef = useRef(false);
+  const slideDocNavRef = useRef({
+    activeSlide: 0,
+    slidesLength: 1,
+    hasNextDocument: false,
+    hasPrevDocument: false,
+    onReachDocumentEnd: undefined as (() => void) | undefined,
+    onReachDocumentStart: undefined as (() => void) | undefined,
+  });
+
+  useLayoutEffect(() => {
+    slideDocNavRef.current = {
+      activeSlide,
+      slidesLength: slides.length,
+      hasNextDocument,
+      hasPrevDocument,
+      onReachDocumentEnd,
+      onReachDocumentStart,
+    };
+  }, [
+    activeSlide,
+    slides.length,
+    hasNextDocument,
+    hasPrevDocument,
+    onReachDocumentEnd,
+    onReachDocumentStart,
+  ]);
 
   useEffect(() => {
     setActiveSlide(0);
@@ -212,7 +294,7 @@ const MarkdownRender = ({
 
   useEffect(() => {
     if (slideMode) {
-      setHeadings(parseHeadingsFromSlides(slides));
+      setHeadings(parseHeadingsFromSlides(slides, headingPrefix));
       return;
     }
     if (!contentRef.current) return;
@@ -225,7 +307,7 @@ const MarkdownRender = ({
         level: Number(el.tagName.substring(1)),
       }));
     setHeadings(collected);
-  }, [slideMode, slides, translatedContent]);
+  }, [slideMode, slides, translatedContent, headingPrefix]);
 
   // Scroll spy + reading-progress (TOC + ring) — slide body vs main viewport
   useEffect(() => {
@@ -349,48 +431,64 @@ const MarkdownRender = ({
     });
   }, [activeSlide, pendingScrollHeadingId]);
 
+  /**
+   * “Infinite” doc nav: on last slide / first slide, when both the main scroll viewport and the
+   * slide body are at the end (non-scrollable counts as at end), wheel crosses into next/prev topic.
+   */
   useEffect(() => {
-    if (!slideMode || !hasNextDocument || !onReachDocumentEnd) return;
+    if (!slideMode || !scrollIntentActive) return;
     const viewport = viewportScrollRootRef?.current;
     if (!viewport) return;
 
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY < 8) return;
-      const { scrollTop, scrollHeight, clientHeight } = viewport;
-      const overflow = scrollHeight - clientHeight;
-      if (overflow < 64) return;
-      if (scrollTop < overflow - 10) return;
-      if (endBumpLockRef.current) return;
-      endBumpLockRef.current = true;
-      onReachDocumentEnd();
-      window.setTimeout(() => {
-        endBumpLockRef.current = false;
-      }, 900);
+    const atVerticalEnd = (el: HTMLElement | null) => {
+      if (!el) return true;
+      const max = el.scrollHeight - el.clientHeight;
+      if (max <= 12) return true;
+      return el.scrollTop >= max - 12;
     };
 
-    viewport.addEventListener('wheel', onWheel, { passive: true });
-    return () => viewport.removeEventListener('wheel', onWheel);
-  }, [slideMode, hasNextDocument, onReachDocumentEnd, translatedContent, viewportScrollRootRef]);
-
-  useEffect(() => {
-    if (!slideMode || !hasPrevDocument || !onReachDocumentStart) return;
-    const viewport = viewportScrollRootRef?.current;
-    if (!viewport) return;
-
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY > -8) return;
-      if (viewport.scrollTop > 10) return;
-      if (startBumpLockRef.current) return;
-      startBumpLockRef.current = true;
-      onReachDocumentStart();
-      window.setTimeout(() => {
-        startBumpLockRef.current = false;
-      }, 900);
+    const atVerticalStart = (el: HTMLElement | null) => {
+      if (!el) return true;
+      return el.scrollTop <= 12;
     };
 
-    viewport.addEventListener('wheel', onWheel, { passive: true });
-    return () => viewport.removeEventListener('wheel', onWheel);
-  }, [slideMode, hasPrevDocument, onReachDocumentStart, translatedContent, viewportScrollRootRef]);
+    const onWheel = (e: WheelEvent) => {
+      const nav = slideDocNavRef.current;
+      const body = slideBodyRef.current;
+      const vpAtEnd = atVerticalEnd(viewport);
+      const bodyAtEnd = atVerticalEnd(body);
+      const vpAtStart = atVerticalStart(viewport);
+      const bodyAtStart = atVerticalStart(body);
+
+      if (e.deltaY > 8) {
+        if (nav.activeSlide !== nav.slidesLength - 1) return;
+        if (!nav.hasNextDocument || !nav.onReachDocumentEnd) return;
+        if (!vpAtEnd || !bodyAtEnd) return;
+        if (endBumpLockRef.current) return;
+        endBumpLockRef.current = true;
+        nav.onReachDocumentEnd();
+        window.setTimeout(() => {
+          endBumpLockRef.current = false;
+        }, 900);
+        return;
+      }
+
+      if (e.deltaY < -8) {
+        if (nav.activeSlide !== 0) return;
+        if (!nav.hasPrevDocument || !nav.onReachDocumentStart) return;
+        if (!vpAtStart || !bodyAtStart) return;
+        if (startBumpLockRef.current) return;
+        startBumpLockRef.current = true;
+        nav.onReachDocumentStart();
+        window.setTimeout(() => {
+          startBumpLockRef.current = false;
+        }, 900);
+      }
+    };
+
+    viewport.addEventListener('wheel', onWheel, { passive: true, capture: true });
+    return () => viewport.removeEventListener('wheel', onWheel, true);
+  }, [slideMode, scrollIntentActive, translatedContent, viewportScrollRootRef]);
 
   const handleCopy = useCallback((key: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -433,7 +531,7 @@ const MarkdownRender = ({
   }, [activeSlide, hasNextDocument, onReachDocumentEnd, slides.length]);
 
   useEffect(() => {
-    if (!slideMode) return;
+    if (!slideMode || !keyboardActive) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.key === 'ArrowLeft') {
@@ -447,7 +545,7 @@ const MarkdownRender = ({
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [slideMode, handlePrevSlide, handleNextSlide]);
+  }, [slideMode, keyboardActive, handlePrevSlide, handleNextSlide]);
 
   const singleDocComponents = useMemo(
     () =>
@@ -469,55 +567,55 @@ const MarkdownRender = ({
   );
 
   return (
-    <div className="relative grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem] gap-8 xl:gap-12">
-      <div className="flex min-h-0 min-w-0 flex-col">
-        <div ref={contentRef} className="min-h-0 min-w-0">
+    <div
+      className={cn(
+        'relative grid gap-4 xl:gap-5',
+        fillViewportCard && 'h-full min-h-0',
+        hideToc ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem]',
+        slideMode && !hideToc ? 'xl:items-stretch' : !hideToc ? 'xl:items-start' : undefined
+      )}
+    >
+      <div className={cn('flex min-h-0 min-w-0 flex-col', fillViewportCard && 'h-full min-h-0')}>
+        <div ref={contentRef} className={cn('min-h-0 min-w-0', fillViewportCard && 'flex h-full min-h-0 flex-col')}>
           {slideMode ? (
-            <section className="w-full min-h-0 min-w-0 shrink-0 pb-0 pt-0">
+            <section
+              className={cn(
+                'w-full min-w-0 pb-0 pt-0',
+                fillViewportCard ? 'flex min-h-0 flex-1 flex-col' : 'min-h-0 shrink-0'
+              )}
+            >
               <div
                 className={cn(
-                  'flex w-full min-h-0 min-w-0 shrink-0 flex-col overflow-hidden',
-                  // Fits below navbar + docs chrome so the whole card stays in view; body scrolls inside.
-                  'h-[calc(100dvh-9rem)] max-h-[calc(100dvh-9rem)] sm:h-[calc(100dvh-9.5rem)] sm:max-h-[calc(100dvh-9.5rem)]',
+                  'flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
+                  fillViewportCard
+                    ? 'h-full max-h-full min-h-0 flex-1'
+                    : DOC_READING_PANE_MAX_CLASS,
                   'rounded-[1.35rem] border border-border/50 bg-card/65 backdrop-blur-md',
                   'shadow-[0_28px_70px_-32px_hsl(var(--foreground)/0.42)] ring-1 ring-black/4 dark:ring-white/6'
                 )}
                 role="region"
                 aria-label={t('markdown.slideCarouselLabel')}
               >
-                <header className="shrink-0 space-y-2 border-b border-border/35 px-5 pb-3 pt-4">
-                  <div className="flex items-start gap-3">
-                    <span
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-linear-to-br from-violet-500/90 to-fuchsia-500/90 text-xs font-bold text-white shadow-sm ring-2 ring-background"
-                      aria-hidden
-                    >
-                      {activeSlide + 1}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                        {t('markdown.slideLabel')} {activeSlide + 1}/{slides.length}
-                      </p>
-                      <h2 className="mt-1 text-lg font-semibold leading-snug tracking-tight text-foreground line-clamp-3">
-                        {slideTitles[activeSlide] ?? '—'}
-                      </h2>
-                    </div>
-                  </div>
-                </header>
-
                 <div
                   ref={slideBodyRef}
-                  className="md-render min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-5 py-3"
+                  className={cn(
+                    'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pt-2 pb-3',
+                    fillViewportCard
+                      ? 'min-h-0 flex-1'
+                      : DOC_SLIDE_BODY_MAX_CLASS
+                  )}
                 >
                   <div className="relative z-1">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={buildMarkdownComponents({
-                        idPrefix: `s${activeSlide}-`,
+                        idPrefix: `${slideIdPrefix}${activeSlide}-`,
                         isDarkTheme,
                         copiedKey,
                         t,
                         handleCopy,
                         scrollToId,
+                        compactSlide: true,
                       })}
                     >
                       {slides[activeSlide] ?? ''}
@@ -525,28 +623,35 @@ const MarkdownRender = ({
                   </div>
                 </div>
 
-                <footer className="flex shrink-0 items-stretch gap-2 border-t border-border/40 bg-card/45 px-3 py-3 sm:px-4">
+                <footer className="flex shrink-0 items-center gap-2 border-t border-border/40 bg-muted/25 px-2.5 py-1.5 sm:gap-3 sm:px-3.5">
                   <Button
                     type="button"
                     variant="outline"
-                    className="h-11 flex-1 gap-2 border-border/50"
+                    size="sm"
+                    className="h-8 shrink-0 border-border/60 bg-background/80 px-2 shadow-none sm:min-w-19"
                     onClick={handlePrevSlide}
                     disabled={activeSlide === 0 && !hasPrevDocument}
                     aria-label={t('markdown.prevSlide')}
                   >
-                    <ChevronLeft className="h-4 w-4 shrink-0" />
-                    <span className="truncate">{t('markdown.prevSlide')}</span>
+                    <ChevronLeft className="size-3.5 shrink-0 opacity-70" aria-hidden />
+                    <span className="text-xs">{t('markdown.prevSlide')}</span>
                   </Button>
+                  <div className="min-w-0 flex-1 text-center">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground tabular-nums">
+                      {t('markdown.slideLabel')} {activeSlide + 1}/{slides.length}
+                    </span>
+                  </div>
                   <Button
                     type="button"
                     variant="outline"
-                    className="h-11 flex-1 gap-2 border-border/50"
+                    size="sm"
+                    className="h-8 shrink-0 border-border/60 bg-background/80 px-2 shadow-none sm:min-w-19"
                     onClick={handleNextSlide}
                     disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
                     aria-label={t('markdown.nextSlide')}
                   >
-                    <span className="truncate">{t('markdown.nextSlide')}</span>
-                    <ChevronRight className="h-4 w-4 shrink-0" />
+                    <span className="text-xs">{t('markdown.nextSlide')}</span>
+                    <ChevronRight className="size-3.5 shrink-0 opacity-70" aria-hidden />
                   </Button>
                 </footer>
               </div>
@@ -564,10 +669,27 @@ const MarkdownRender = ({
       </div>
 
       {/* TABLE OF CONTENTS */}
-      {headings.length > 0 && (
-        <aside className="hidden xl:block w-72 shrink-0 sticky top-24 self-start max-h-[calc(100vh-7rem)]">
-          <div className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 shadow-[0_12px_30px_-22px_hsl(var(--foreground)/0.25)]">
-            <div className="flex items-center justify-between mb-3">
+      {!hideToc && headings.length > 0 && (
+        <aside
+          className={cn(
+            'hidden min-h-0 shrink-0 xl:flex xl:w-72 xl:flex-col',
+            slideMode && 'xl:self-stretch',
+            fillViewportCard ? 'xl:relative xl:top-auto' : 'sticky top-24',
+            slideMode
+              ? fillViewportCard
+                ? 'h-full min-h-0 max-h-full'
+                : DOC_READING_PANE_MAX_CLASS
+              : 'max-h-[calc(100vh-7rem)]',
+            !slideMode && 'self-start'
+          )}
+        >
+          <div
+            className={cn(
+              'rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 shadow-[0_12px_30px_-22px_hsl(var(--foreground)/0.25)]',
+              slideMode && 'flex h-full min-h-0 flex-col overflow-hidden'
+            )}
+          >
+            <div className="flex items-center justify-between mb-3 shrink-0">
               <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                 {t('markdown.onThisPage')}
               </span>
@@ -578,9 +700,14 @@ const MarkdownRender = ({
                 style={{ ['--progress' as any]: 0 }}
               />
             </div>
-            <div className="-mx-1 mb-3 h-px bg-border/40" />
+            <div className="-mx-1 mb-3 h-px shrink-0 bg-border/40" />
 
-            <ScrollArea className="h-[calc(100vh-13rem)] pr-1.5">
+            <ScrollArea
+              className={cn(
+                'pr-1.5',
+                slideMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
+              )}
+            >
               <TooltipProvider delayDuration={300}>
                 <nav className="space-y-0.5">
                   {headings.map((heading) => {
