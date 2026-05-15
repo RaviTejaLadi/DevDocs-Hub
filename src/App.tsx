@@ -53,7 +53,7 @@ const DocsDesktopSidebarToggle = ({
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(false);
+  const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(true);
   const location = useLocation();
   const showSidebar = location.pathname.startsWith('/docs/');
   const contentViewportRef = useRef<HTMLDivElement>(null);
