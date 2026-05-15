@@ -143,7 +143,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+    <header className="sticky top-2 rounded-md z-50 w-[99%] mx-auto border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
       <div className="flex h-14 items-center px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <Logo showText size="sm" className="font-semibold" />
