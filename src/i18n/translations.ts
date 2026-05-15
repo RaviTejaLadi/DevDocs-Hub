@@ -74,6 +74,8 @@ const en: TranslationMap = {
   'docs.scrollToTop': 'Scroll to top',
   'docs.previous': 'Previous',
   'docs.next': 'Next',
+  'docs.showOutline': 'Show on-this-page outline',
+  'docs.hideOutline': 'Hide on-this-page outline',
   'terms.title': 'Terms of Service',
   'terms.lastUpdated': 'Last Updated',
   'interview.backToOverview': 'Back to overview',

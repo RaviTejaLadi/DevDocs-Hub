@@ -7,6 +7,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { cn } from '@/lib/utils';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
 
@@ -42,7 +43,7 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
 
 /** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding). */
 const DOC_FEED_TOPIC_CARD_CLASS =
-  'h-[calc(100dvh-12.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-13.25rem)] sm:max-h-[calc(100dvh-13.25rem)]';
+  'h-[calc(100dvh-8.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-8.25rem)] sm:max-h-[calc(100dvh-8.25rem)]';
 
 /** Section shell: fixed viewport card height; inner post chrome lives in DocsFeedTopicSection. */
 const DOC_FEED_SECTION_SHELL_CLASS = cn(
@@ -260,21 +261,23 @@ const DocumentationPage = () => {
 
   return (
     <div className="w-full">
-      <div className="max-w-none min-w-0 flex flex-col gap-8 pb-24 sm:gap-10 lg:gap-14">
-        {flatItems.map((item, idx) => (
-          <DocsFeedTopicSection
-            key={item.id}
-            item={item}
-            idx={idx}
-            total={flatItems.length}
-            routeSlug={slug}
-            viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
-            feedNav={feedNav}
-            inViewSlug={inViewSlug}
-            sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
-          />
-        ))}
-      </div>
+      <TooltipProvider delayDuration={200}>
+        <div className="max-w-none min-w-0 flex flex-col gap-8 pb-24 sm:gap-10 lg:gap-14">
+          {flatItems.map((item, idx) => (
+            <DocsFeedTopicSection
+              key={item.id}
+              item={item}
+              idx={idx}
+              total={flatItems.length}
+              routeSlug={slug}
+              viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
+              feedNav={feedNav}
+              inViewSlug={inViewSlug}
+              sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
+            />
+          ))}
+        </div>
+      </TooltipProvider>
 
       {showScrollTop && (
         <Button

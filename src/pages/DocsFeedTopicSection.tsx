@@ -1,8 +1,12 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import type { TopicItem } from '../topics';
+import { ListTree } from 'lucide-react';
 import MarkdownRender from '../components/MarkdownRender';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { useI18n } from '@/i18n/I18nProvider';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 const EAGER_MOUNT_COUNT = 2;
@@ -35,7 +39,9 @@ function DocsFeedTopicSectionInner({
   inViewSlug,
   sectionClassName,
 }: DocsFeedTopicSectionProps) {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
+  const [outlineOpen, setOutlineOpen] = useState(false);
   const [contentMounted, setContentMounted] = useState(
     () => idx < EAGER_MOUNT_COUNT || item.id === routeSlug
   );
@@ -127,6 +133,26 @@ function DocsFeedTopicSectionInner({
           <h2 className="min-w-0 flex-1 text-pretty text-base font-semibold leading-tight tracking-tight text-foreground sm:text-lg">
             <TranslatedText text={item.title} />
           </h2>
+          <div className="hidden shrink-0 xl:block">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  aria-pressed={outlineOpen}
+                  aria-label={outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
+                  onClick={() => setOutlineOpen((open) => !open)}
+                  className="h-8 w-8 border-border/50 bg-background/80 shadow-none hover:bg-accent/70 sm:h-9 sm:w-9"
+                >
+                  <ListTree className="size-4 opacity-90" aria-hidden />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="max-w-[16rem] text-center">
+                {outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
+              </TooltipContent>
+            </Tooltip>
+          </div>
         </header>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-muted/15 px-2 pt-2.5 pb-2 dark:bg-muted/10 sm:px-3 sm:pt-3 sm:pb-3">
@@ -143,6 +169,7 @@ function DocsFeedTopicSectionInner({
                 hasPrevDocument={idx > 0}
                 onReachDocumentEnd={onReachEnd}
                 onReachDocumentStart={onReachStart}
+                hideToc={!outlineOpen}
               />
             ) : (
               <div
