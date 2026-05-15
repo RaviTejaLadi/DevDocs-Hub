@@ -113,7 +113,7 @@ const DocumentationPage = ({
   }
 
   return (
-    <div className="w-full space-y-8">
+    <div className="w-full space-y-4">
       <Reveal>
         <div className="flex items-start sm:items-center gap-2 sm:gap-3">
           <TooltipProvider delayDuration={200}>
