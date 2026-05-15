@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, startTransition, type RefObject } from 'react';
 import { ChevronRight, ChevronUp, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -12,12 +12,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '../components/ui/breadcrumb';
-import MarkdownRender from '../components/MarkdownRender';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { cn } from '@/lib/utils';
+import DocsFeedTopicSection from './DocsFeedTopicSection';
+import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
+
+const FALLBACK_SCROLL_ROOT: RefObject<HTMLDivElement | null> = { current: null };
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -50,6 +53,13 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
 /** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding). */
 const DOC_FEED_TOPIC_CARD_CLASS =
   'h-[calc(100dvh-12.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-13.25rem)] sm:max-h-[calc(100dvh-13.25rem)]';
+
+/** Section shell (title + body area) — shared with lazy-loaded body. */
+const DOC_FEED_SECTION_SHELL_CLASS = cn(
+  'not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
+  'scroll-mt-28',
+  DOC_FEED_TOPIC_CARD_CLASS
+);
 
 const DocumentationPage = ({
   isSidebarCollapsed,
@@ -89,8 +99,23 @@ const DocumentationPage = ({
   useEffect(() => {
     const vp = viewportRef?.current;
     if (!vp) return;
-    const onScroll = () => setShowScrollTop(vp.scrollTop > 360);
-    onScroll();
+    let ticking = false;
+    let lastShown = vp.scrollTop > 360;
+    setShowScrollTop(lastShown);
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const nextShown = vp.scrollTop > 360;
+        if (nextShown !== lastShown) {
+          lastShown = nextShown;
+          setShowScrollTop(nextShown);
+        }
+      });
+    };
+
     vp.addEventListener('scroll', onScroll, { passive: true });
     return () => vp.removeEventListener('scroll', onScroll);
   }, [viewportRef, categoryId, flatItems.length]);
@@ -162,17 +187,19 @@ const DocumentationPage = ({
 
           window.clearTimeout(debounceTimerId);
           debounceTimerId = window.setTimeout(() => {
-            setInViewSlug(id);
-            if (id !== slugRef.current) {
-              skipSlugScrollIntoViewRef.current = true;
-              navigate(`/docs/${catId}/${id}`, { replace: true });
-            }
-          }, 140);
+            startTransition(() => {
+              setInViewSlug(id);
+              if (id !== slugRef.current) {
+                skipSlugScrollIntoViewRef.current = true;
+                navigate(`/docs/${catId}/${id}`, { replace: true });
+              }
+            });
+          }, 200);
         },
         {
           root,
-          threshold: [0.12, 0.22, 0.38, 0.55],
-          rootMargin: '-12% 0px -32% 0px',
+          threshold: [0.2, 0.45],
+          rootMargin: '-15% 0px -35% 0px',
         }
       );
 
@@ -196,6 +223,28 @@ const DocumentationPage = ({
       obs?.disconnect();
     };
   }, [flatItems, navigate, topic?.id, viewportRef]);
+
+  const feedNav = useMemo<DocsFeedNavHandlers>(
+    () => ({
+      goToNextFrom: (i) => {
+        const next = flatItems[i + 1];
+        if (!next || !viewportRef?.current || !topic) return;
+        skipSlugScrollIntoViewRef.current = true;
+        document.getElementById(`doc-feed-${next.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+        navigate(`/docs/${topic.id}/${next.id}`, { replace: true });
+        startTransition(() => setInViewSlug(next.id));
+      },
+      goToPrevFrom: (i) => {
+        const prev = flatItems[i - 1];
+        if (!prev || !viewportRef?.current || !topic) return;
+        skipSlugScrollIntoViewRef.current = true;
+        document.getElementById(`doc-feed-${prev.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+        navigate(`/docs/${topic.id}/${prev.id}`, { replace: true });
+        startTransition(() => setInViewSlug(prev.id));
+      },
+    }),
+    [flatItems, navigate, viewportRef, topic]
+  );
 
   if (!topic || !content) {
     return (
@@ -286,53 +335,17 @@ const DocumentationPage = ({
 
       <div className="max-w-none min-w-0 space-y-6 pb-20">
         {flatItems.map((item, idx) => (
-          <section
+          <DocsFeedTopicSection
             key={item.id}
-            id={`doc-feed-${item.id}`}
-            className={cn(
-              'not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
-              'scroll-mt-28',
-              DOC_FEED_TOPIC_CARD_CLASS
-            )}
-          >
-            <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 px-1">
-              <span className="inline-flex h-7 shrink-0 items-center rounded-full border border-border/50 bg-muted/40 px-2.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground tabular-nums">
-                {idx + 1}/{flatItems.length}
-              </span>
-              <h2 className="min-w-0 text-balance text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl">
-                <TranslatedText text={item.title} />
-              </h2>
-            </div>
-
-            <div className="prose prose-slate dark:prose-invert flex min-h-0 flex-1 flex-col overflow-hidden max-w-none min-w-0 prose-headings:font-semibold prose-headings:tracking-tight">
-              <MarkdownRender
-                content={item.content}
-                slideMode
-                fillViewportCard
-                headingIdScope={item.id}
-                scrollIntentActive={inViewSlug === item.id}
-                keyboardActive={inViewSlug === item.id}
-                hasNextDocument={idx < flatItems.length - 1}
-                hasPrevDocument={idx > 0}
-                onReachDocumentEnd={() => {
-                  const next = flatItems[idx + 1];
-                  if (!next || !viewportRef?.current) return;
-                  skipSlugScrollIntoViewRef.current = true;
-                  document.getElementById(`doc-feed-${next.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
-                  navigate(`/docs/${topic.id}/${next.id}`, { replace: true });
-                  setInViewSlug(next.id);
-                }}
-                onReachDocumentStart={() => {
-                  const prev = flatItems[idx - 1];
-                  if (!prev || !viewportRef?.current) return;
-                  skipSlugScrollIntoViewRef.current = true;
-                  document.getElementById(`doc-feed-${prev.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
-                  navigate(`/docs/${topic.id}/${prev.id}`, { replace: true });
-                  setInViewSlug(prev.id);
-                }}
-              />
-            </div>
-          </section>
+            item={item}
+            idx={idx}
+            total={flatItems.length}
+            routeSlug={slug}
+            viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
+            feedNav={feedNav}
+            inViewSlug={inViewSlug}
+            sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
+          />
         ))}
       </div>
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -229,7 +229,7 @@ type MarkdownRenderProps = {
   onReachDocumentStart?: () => void;
 };
 
-const MarkdownRender = ({
+const MarkdownRenderInner = ({
   content,
   slideMode = false,
   headingIdScope = '',
@@ -759,5 +759,8 @@ const MarkdownRender = ({
     </div>
   );
 };
+
+const MarkdownRender = memo(MarkdownRenderInner);
+MarkdownRender.displayName = 'MarkdownRender';
 
 export default MarkdownRender;
