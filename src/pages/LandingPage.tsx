@@ -12,8 +12,6 @@ import { cn } from '@/lib/utils';
 import { colors } from '@/constants/colors';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
-import { Reveal, Stagger, StaggerItem } from '@/components/Animation';
-
 type ViewMode = 'grid' | 'list';
 
 const badgeToneClasses = [
@@ -73,19 +71,14 @@ const LandingPage = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8 pb-20 max-w-5xl mx-auto">
       <header className="text-center pt-8 sm:pt-12 pb-12 sm:pb-16">
-        <Reveal duration={0.5}>
-          <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3">
-            <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
-          </h1>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
-            {t('landing.heroDescription')}
-          </p>
-        </Reveal>
+        <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3">
+          <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
+        </h1>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
+          {t('landing.heroDescription')}
+        </p>
 
-        <Reveal delay={0.16}>
-          <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
@@ -112,24 +105,20 @@ const LandingPage = () => {
               </Button>
             </div>
           </div>
-        </Reveal>
 
-        <Reveal delay={0.24}>
-          <div className="mt-6">
-            <Button
-              variant="outline"
-              className="gap-2 border-border/40 bg-card/50 hover:bg-accent"
-              onClick={() => navigate('/interview-questions')}
-            >
-              <HelpCircle className="h-4 w-4" />
-              {t('landing.interviewQuestionsByLevel')}
-            </Button>
-          </div>
-        </Reveal>
+        <div className="mt-6">
+          <Button
+            variant="outline"
+            className="gap-2 border-border/40 bg-card/50 hover:bg-accent"
+            onClick={() => navigate('/interview-questions')}
+          >
+            <HelpCircle className="h-4 w-4" />
+            {t('landing.interviewQuestionsByLevel')}
+          </Button>
+        </div>
       </header>
 
-      <Reveal>
-        <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
+      <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
           <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
             {STREAMS.map((stream) => {
               const isActive = stream.id === activeStream?.id;
@@ -163,23 +152,18 @@ const LandingPage = () => {
               );
             })}
           </div>
-        </nav>
-      </Reveal>
+      </nav>
 
       {activeStream?.description && (
-        <Reveal delay={0.05}>
-          <p className="mb-8 text-sm text-muted-foreground">
-            <TranslatedText text={activeStream.description} />
-          </p>
-        </Reveal>
+        <p className="mb-8 text-sm text-muted-foreground">
+          <TranslatedText text={activeStream.description} />
+        </p>
       )}
 
       {Object.keys(groupedTopics).length === 0 && (
-        <Reveal>
-          <div className="rounded-lg border border-dashed border-border/50 bg-card/40 p-10 text-center text-sm text-muted-foreground">
-            {t('landing.noTopicsInStream')}
-          </div>
-        </Reveal>
+        <div className="rounded-lg border border-dashed border-border/50 bg-card/40 p-10 text-center text-sm text-muted-foreground">
+          {t('landing.noTopicsInStream')}
+        </div>
       )}
 
       {Object.entries(groupedTopics).map(([category, topics]) => {
@@ -187,24 +171,21 @@ const LandingPage = () => {
 
         return (
           <section key={`${activeStream?.id}:${category}`} className="mb-14">
-            <Reveal>
-              <button
-                type="button"
-                onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
-                className="w-full flex items-center justify-between py-2 text-left group"
-              >
-                <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
-                  {category.replace(/-/g, ' ')}
-                </h2>
-                <ChevronDown
-                  className={cn('w-5 h-5 text-muted-foreground transition-transform', isCollapsed && '-rotate-90')}
-                />
-              </button>
-            </Reveal>
+            <button
+              type="button"
+              onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
+              className="w-full flex items-center justify-between py-2 text-left group"
+            >
+              <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
+                {category.replace(/-/g, ' ')}
+              </h2>
+              <ChevronDown
+                className={cn('w-5 h-5 text-muted-foreground transition-transform', isCollapsed && '-rotate-90')}
+              />
+            </button>
 
             {!isCollapsed && (
-              <Stagger
-                gap={0.05}
+              <div
                 className={cn(
                   viewMode === 'grid'
                     ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr'
@@ -217,8 +198,8 @@ const LandingPage = () => {
                   const extraBadgeCount = Math.max(topic.items.length - 8, 0);
 
                   return (
-                    <StaggerItem key={topic.id}>
-                      <article
+                    <article
+                      key={topic.id}
                         role="button"
                         tabIndex={0}
                         onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
@@ -303,10 +284,9 @@ const LandingPage = () => {
                           </div>
                         )}
                       </article>
-                    </StaggerItem>
                   );
                 })}
-              </Stagger>
+              </div>
             )}
           </section>
         );

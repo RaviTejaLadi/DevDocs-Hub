@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { ScrollViewportProvider, PageTransition } from '@/components/Animation';
+import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import NavBar from './components/Layout/NavBar';
 import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from './components/Layout/SidebarWrapperDesktop';
@@ -19,6 +19,15 @@ const App = () => {
   const location = useLocation();
   const showSidebar = location.pathname.startsWith('/docs/');
   const contentViewportRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = contentViewportRef.current;
+    if (!el) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      return;
+    }
+    el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location.pathname, location.search]);
 
   return (
     <ScrollViewportProvider value={contentViewportRef}>
@@ -58,23 +67,21 @@ const App = () => {
           <main className="flex-1 overflow-hidden">
             <ScrollArea className="h-full" viewportRef={contentViewportRef}>
               <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
-                <PageTransition routeKey={location.pathname}>
-                  <Routes location={location}>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route
-                      path="/docs/:categoryId/:slug"
-                      element={
-                        <DocumentationPage
-                          isSidebarCollapsed={docsSidebarCollapsed}
-                          onToggleSidebar={() => setDocsSidebarCollapsed((prev) => !prev)}
-                        />
-                      }
-                    />
-                    <Route path="/terms" element={<TermsOfServicePage />} />
-                    <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
-                    <Route path="/code-editor" element={<CodeEditorPage />} />
-                  </Routes>
-                </PageTransition>
+                <Routes location={location}>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route
+                    path="/docs/:categoryId/:slug"
+                    element={
+                      <DocumentationPage
+                        isSidebarCollapsed={docsSidebarCollapsed}
+                        onToggleSidebar={() => setDocsSidebarCollapsed((prev) => !prev)}
+                      />
+                    }
+                  />
+                  <Route path="/terms" element={<TermsOfServicePage />} />
+                  <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
+                  <Route path="/code-editor" element={<CodeEditorPage />} />
+                </Routes>
               </div>
             </ScrollArea>
           </main>

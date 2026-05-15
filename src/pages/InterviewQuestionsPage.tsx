@@ -24,7 +24,6 @@ import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
-import { Reveal, Stagger, StaggerItem } from '@/components/Animation';
 
 const levelPillClass: Record<ExperienceLevel, string> = {
   entry: 'text-emerald-600 border-emerald-500/60 bg-emerald-500/10',
@@ -79,8 +78,7 @@ function TopicListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
-      <Reveal>
-        <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-primary/10 p-6 sm:p-8 shadow-[0_18px_45px_-32px_hsl(var(--foreground)/0.5)]">
+      <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-primary/10 p-6 sm:p-8 shadow-[0_18px_45px_-32px_hsl(var(--foreground)/0.5)]">
           <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="space-y-4">
@@ -116,10 +114,8 @@ function TopicListPage() {
             </div>
           </div>
         </section>
-      </Reveal>
 
-      <Reveal delay={0.05}>
-        <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
+      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
           <CardContent className="pt-6 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2 text-sm font-medium text-foreground">
@@ -156,7 +152,6 @@ function TopicListPage() {
             </div>
           </CardContent>
         </Card>
-      </Reveal>
 
       <div className="space-y-6">
         {categories.map((category) => {
@@ -164,21 +159,20 @@ function TopicListPage() {
           if (!topics.length) return null;
 
           return (
-            <Reveal key={category}>
-              <section className="rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm p-5 sm:p-6 shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.65)]">
+            <section key={category} className="rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm p-5 sm:p-6 shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.65)]">
                 <div className="flex items-center justify-between gap-3 mb-4">
                   <h2 className="text-lg font-semibold text-foreground">
                     <TranslatedText text={category} />
                   </h2>
                   <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
                 </div>
-                <Stagger gap={0.05} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                   {topics.map((topic) => {
                     const count = countForTopic(topic.id);
                     const Icon = topic.icon;
                     return (
-                      <StaggerItem key={topic.id}>
                         <Link
+                          key={topic.id}
                           to={`/interview-questions/${topic.id}`}
                           className={cn(
                             'group rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-4 transition-all duration-200 block shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
@@ -202,12 +196,10 @@ function TopicListPage() {
                             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
                           </div>
                         </Link>
-                      </StaggerItem>
                     );
                   })}
-                </Stagger>
+                </div>
               </section>
-            </Reveal>
           );
         })}
         {filteredTopicsCount === 0 && (
@@ -288,8 +280,7 @@ function TopicDetailPage() {
         </Link>
       </Button>
 
-      <Reveal>
-        <Card className="overflow-hidden border-border/40 bg-linear-to-br from-card via-card to-primary/10 shadow-[0_20px_45px_-30px_hsl(var(--foreground)/0.55)]">
+      <Card className="overflow-hidden border-border/40 bg-linear-to-br from-card via-card to-primary/10 shadow-[0_20px_45px_-30px_hsl(var(--foreground)/0.55)]">
           <CardHeader className="space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-start gap-3">
@@ -318,10 +309,8 @@ function TopicDetailPage() {
             </div>
           </CardHeader>
         </Card>
-      </Reveal>
 
-      <Reveal delay={0.06}>
-        <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
+      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
           <CardContent className="pt-6 space-y-5">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <SlidersHorizontal className="h-4 w-4 text-primary" />
@@ -411,7 +400,6 @@ function TopicDetailPage() {
             </div>
           </CardContent>
         </Card>
-      </Reveal>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground">
         <p>{t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}</p>
@@ -431,20 +419,18 @@ function TopicDetailPage() {
           </Card>
         ) : (
           <Accordion type="multiple" className="w-full">
-            <Stagger gap={0.04} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 items-start">
               {[0, 1].map((col) => (
                 <div key={col} className="flex flex-col gap-4 sm:gap-5">
                   {filteredQuestions
                     .map((item, index) => ({ item, index }))
                     .filter(({ index }) => index % 2 === col)
                     .map(({ item, index }) => (
-                      <StaggerItem key={item.id}>
-                        <QuestionBlock item={item} index={index + 1} levelPillClass={levelPillClass} />
-                      </StaggerItem>
+                      <QuestionBlock key={item.id} item={item} index={index + 1} levelPillClass={levelPillClass} />
                     ))}
                 </div>
               ))}
-            </Stagger>
+            </div>
           </Accordion>
         )}
       </div>

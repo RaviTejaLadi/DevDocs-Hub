@@ -17,7 +17,7 @@ import MarkdownRender from '../components/MarkdownRender';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Reveal, useScrollViewport } from '@/components/Animation';
+import { useScrollViewport } from '@/context/scrollViewportContext';
 
 const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {
@@ -114,8 +114,7 @@ const DocumentationPage = ({
 
   return (
     <div className="w-full space-y-4">
-      <Reveal>
-        <div className="flex items-start sm:items-center gap-2 sm:gap-3">
+      <div className="flex items-start sm:items-center gap-2 sm:gap-3">
           <TooltipProvider delayDuration={200}>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -173,18 +172,14 @@ const DocumentationPage = ({
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-      </Reveal>
 
-      <Reveal delay={0.06}>
-        <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
-          <MarkdownRender content={content.content} />
-        </div>
-      </Reveal>
+      <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
+        <MarkdownRender content={content.content} />
+      </div>
 
       <Separator className="my-8" />
 
-      <Reveal delay={0.04}>
-        <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
           {prevItem ? (
             <Button
               onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
@@ -228,7 +223,6 @@ const DocumentationPage = ({
             <div />
           )}
         </nav>
-      </Reveal>
     </div>
   );
 };
