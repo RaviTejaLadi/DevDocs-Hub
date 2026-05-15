@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, type JSX } from 'react';
-import { TOPICS, type TopicItem } from '../../topics';
+import { TOPICS, type TopicItem } from '@/topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';

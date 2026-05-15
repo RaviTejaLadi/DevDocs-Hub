@@ -11,18 +11,18 @@ import {
   ChevronDown,
   Code2,
 } from 'lucide-react';
-import { Logo } from '../Logo';
-import { TOPICS, type TopicItem } from '../../topics';
-import { ModeToggle } from '../Theme/ModeToggle';
-import type { SearchResult } from '../../types';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
-import { ScrollArea } from '../ui/scroll-area';
+import { Logo } from '@/components/brand/Logo';
+import { TOPICS, type TopicItem } from '@/topics';
+import { ModeToggle } from '@/components/theme/ModeToggle';
+import type { SearchResult } from '@/types';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { useI18n } from '@/i18n/I18nProvider';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
 import { TranslatedText } from '@/i18n/TranslatedText';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,7 +31,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 type RankedSearchResult = SearchResult & { score: number };
 

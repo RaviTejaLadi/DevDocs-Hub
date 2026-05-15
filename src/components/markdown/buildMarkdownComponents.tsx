@@ -3,8 +3,8 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
-import { Button } from '../ui/button';
-import MermaidRenderer from '../MermaidRenderer';
+import { Button } from '@/components/ui/button';
+import MermaidRenderer from './MermaidRenderer';
 import { cn } from '@/lib/utils';
 
 function extractTextFromNode(node: React.ReactNode): string {

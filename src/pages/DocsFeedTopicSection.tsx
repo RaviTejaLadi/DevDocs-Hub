@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import type { TopicItem } from '../topics';
 import { ListTree } from 'lucide-react';
-import MarkdownRender from '../components/MarkdownRender';
+import MarkdownRender from '@/components/markdown';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Button } from '@/components/ui/button';

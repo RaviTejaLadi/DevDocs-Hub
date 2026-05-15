@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { TOPICS, type TopicItem } from '../topics';
+import { TOPICS, type TopicItem } from '@/topics';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, startTransition, type RefObject } from 'react';
 import { ChevronUp, Home } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { cn } from '@/lib/utils';

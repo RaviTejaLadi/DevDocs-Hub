@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Github, FileText } from 'lucide-react';
-import { Logo } from '../Logo';
+import { Logo } from '@/components/brand/Logo';
 import { useI18n } from '@/i18n/I18nProvider';
 
 const Footer = () => {

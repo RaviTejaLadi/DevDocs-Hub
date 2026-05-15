@@ -8,14 +8,14 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
-import NavBar from './components/Layout/NavBar';
-import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
-import SidebarWrapperDesktop from './components/Layout/SidebarWrapperDesktop';
-import LandingPage from './pages/LandingPage';
-import DocumentationPage from './pages/DocumentationPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
-import CodeEditorPage from './pages/CodeEditorPage';
+import NavBar from '@/components/layout/NavBar';
+import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
+import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
+import LandingPage from '@/pages/LandingPage';
+import DocumentationPage from '@/pages/DocumentationPage';
+import TermsOfServicePage from '@/pages/TermsOfServicePage';
+import InterviewQuestionsPage from '@/pages/InterviewQuestionsPage';
+import CodeEditorPage from '@/pages/CodeEditorPage';
 
 const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 
 import { STREAMS, type Stream, type Topic } from '../topics';
-import Footer from '@/components/Layout/Footer';
-import FeaturesSection from '@/components/FeaturesSection';
-import { Logo } from '@/components/Logo';
+import Footer from '@/components/layout/Footer';
+import FeaturesSection from '@/components/landing/FeaturesSection';
+import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
