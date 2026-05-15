@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronRight, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { ChevronRight, ChevronUp, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import {
@@ -83,7 +83,21 @@ const DocumentationPage = ({
   slugRef.current = slug;
 
   const [inViewSlug, setInViewSlug] = useState(slug ?? '');
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const skipSlugScrollIntoViewRef = useRef(false);
+
+  useEffect(() => {
+    const vp = viewportRef?.current;
+    if (!vp) return;
+    const onScroll = () => setShowScrollTop(vp.scrollTop > 360);
+    onScroll();
+    vp.addEventListener('scroll', onScroll, { passive: true });
+    return () => vp.removeEventListener('scroll', onScroll);
+  }, [viewportRef, categoryId, flatItems.length]);
+
+  const scrollFeedToTop = () => {
+    viewportRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     setInViewSlug(slug ?? '');
@@ -276,7 +290,7 @@ const DocumentationPage = ({
             key={item.id}
             id={`doc-feed-${item.id}`}
             className={cn(
-              'snap-start snap-always not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
+              'not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
               'scroll-mt-28',
               DOC_FEED_TOPIC_CARD_CLASS
             )}
@@ -321,6 +335,19 @@ const DocumentationPage = ({
           </section>
         ))}
       </div>
+
+      {showScrollTop && (
+        <Button
+          type="button"
+          variant="secondary"
+          size="icon"
+          onClick={scrollFeedToTop}
+          className="fixed bottom-6 right-5 z-40 h-11 w-11 rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+          aria-label={t('docs.scrollToTop')}
+        >
+          <ChevronUp className="size-5" />
+        </Button>
+      )}
     </div>
   );
 };

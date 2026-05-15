@@ -154,8 +154,17 @@
     overscroll-behavior: contain;
   }
 
+  /** Docs feed: native wheel steps must feel immediate; keep smooth only for explicit JS scroll APIs. */
+  [data-slot='scroll-area-viewport'].docs-feed-scroll {
+    scroll-behavior: auto;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     [data-slot="scroll-area-viewport"] {
+      scroll-behavior: auto;
+    }
+
+    [data-slot='scroll-area-viewport'].docs-feed-scroll {
       scroll-behavior: auto;
     }
   }

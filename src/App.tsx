@@ -77,7 +77,7 @@ const App = () => {
             <ScrollArea
               className="h-full"
               viewportRef={contentViewportRef}
-              viewportClassName={showSidebar ? 'snap-y snap-proximity scroll-pt-2 scroll-pb-4' : undefined}
+              viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
             >
               <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
                 <Routes location={location}>

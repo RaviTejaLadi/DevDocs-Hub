@@ -71,6 +71,7 @@ const en: TranslationMap = {
   'docs.showSidebar': 'Show sidebar',
   'docs.hideSidebar': 'Hide sidebar',
   'docs.breadcrumbDocs': 'Docs',
+  'docs.scrollToTop': 'Scroll to top',
   'docs.previous': 'Previous',
   'docs.next': 'Next',
   'terms.title': 'Terms of Service',

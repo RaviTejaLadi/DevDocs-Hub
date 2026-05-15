@@ -599,7 +599,7 @@ const MarkdownRender = ({
                 <div
                   ref={slideBodyRef}
                   className={cn(
-                    'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-contain px-4 pt-2 pb-3',
+                    'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto px-4 pt-2 pb-3',
                     fillViewportCard
                       ? 'min-h-0 flex-1'
                       : DOC_SLIDE_BODY_MAX_CLASS
