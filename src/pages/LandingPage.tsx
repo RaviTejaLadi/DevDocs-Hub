@@ -1,8 +1,8 @@
 import { ChevronRight, Search, Grid3x3, List, ChevronDown, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { STREAMS, type Stream, type Topic } from '../topics';
+import type { Stream, Topic } from '@/topics';
 import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import { Logo } from '@/components/brand/Logo';
@@ -29,15 +29,27 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const { t } = useI18n();
 
+  const [streams, setStreams] = useState<Stream[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void import('@/topics').then((m) => {
+      if (!cancelled) setStreams(m.STREAMS);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
-  const [activeStreamId, setActiveStreamId] = useState<string>(STREAMS[0]?.id ?? '');
+  const [activeStreamId, setActiveStreamId] = useState<string>('computer-science');
 
-  const activeStream: Stream | undefined = useMemo(
-    () => STREAMS.find((stream) => stream.id === activeStreamId) ?? STREAMS[0],
-    [activeStreamId]
-  );
+  const activeStream: Stream | undefined = useMemo(() => {
+    if (!streams?.length) return undefined;
+    return streams.find((stream) => stream.id === activeStreamId) ?? streams[0];
+  }, [streams, activeStreamId]);
 
   const filteredTopics = useMemo<Topic[]>(() => {
     const topics = activeStream?.topics ?? [];
@@ -118,179 +130,196 @@ const LandingPage = () => {
         </div>
       </header>
 
-      <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
-        <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
-          {STREAMS.map((stream) => {
-            const isActive = stream.id === activeStream?.id;
-            return (
-              <button
-                key={stream.id}
-                type="button"
-                onClick={() => setActiveStreamId(stream.id)}
-                aria-pressed={isActive}
-                className={cn(
-                  'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-all',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                  isActive
-                    ? 'border-primary/50 bg-primary/10 text-primary shadow-sm'
-                    : 'border-border/40 bg-card/40 text-muted-foreground hover:bg-accent hover:text-foreground'
-                )}
-              >
-                {stream.icon && <span className="shrink-0">{stream.icon}</span>}
-                <span className="font-medium">
-                  <TranslatedText text={stream.title} />
-                </span>
-                <span
-                  className={cn(
-                    'ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold',
-                    isActive ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
-                  )}
-                >
-                  {stream.topics.length}
-                </span>
-              </button>
-            );
-          })}
+      {streams === null ? (
+        <div className="mb-14 space-y-6" aria-busy="true" aria-live="polite">
+          <div className="flex flex-wrap gap-2">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-10 w-36 animate-pulse rounded-full bg-muted/35" />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-44 animate-pulse rounded-xl border border-border/25 bg-muted/20" />
+            ))}
+          </div>
         </div>
-      </nav>
-
-      {activeStream?.description && (
-        <p className="mb-8 text-sm text-muted-foreground">
-          <TranslatedText text={activeStream.description} />
-        </p>
-      )}
-
-      {Object.keys(groupedTopics).length === 0 && (
-        <div className="rounded-lg border border-dashed border-border/50 bg-card/40 p-10 text-center text-sm text-muted-foreground">
-          {t('landing.noTopicsInStream')}
-        </div>
-      )}
-
-      {Object.entries(groupedTopics).map(([category, topics]) => {
-        const isCollapsed = collapsed[`${activeStream?.id}:${category}`];
-
-        return (
-          <section key={`${activeStream?.id}:${category}`} className="mb-14">
-            <button
-              type="button"
-              onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
-              className="w-full flex items-center justify-between py-2 text-left group"
-            >
-              <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
-                {category.replace(/-/g, ' ')}
-              </h2>
-              <ChevronDown
-                className={cn('w-5 h-5 text-muted-foreground transition-transform', isCollapsed && '-rotate-90')}
-              />
-            </button>
-
-            {!isCollapsed && (
-              <div
-                className={cn(
-                  viewMode === 'grid'
-                    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr'
-                    : 'flex flex-col gap-3'
-                )}
-              >
-                {topics.map((topic, index) => {
-                  const color = colors[index % colors.length];
-                  const badgeItems = topic.items.slice(0, 8);
-                  const extraBadgeCount = Math.max(topic.items.length - 8, 0);
-
-                  return (
-                    <article
-                      key={topic.id}
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          navigate(`/docs/${topic.id}/${topic.items[0].id}`);
-                        }
-                      }}
+      ) : (
+        <>
+          <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
+            <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+              {streams.map((stream) => {
+                const isActive = stream.id === activeStream?.id;
+                return (
+                  <button
+                    key={stream.id}
+                    type="button"
+                    onClick={() => setActiveStreamId(stream.id)}
+                    aria-pressed={isActive}
+                    className={cn(
+                      'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-all',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                      isActive
+                        ? 'border-primary/50 bg-primary/10 text-primary shadow-sm'
+                        : 'border-border/40 bg-card/40 text-muted-foreground hover:bg-accent hover:text-foreground'
+                    )}
+                  >
+                    {stream.icon && <span className="shrink-0">{stream.icon}</span>}
+                    <span className="font-medium">
+                      <TranslatedText text={stream.title} />
+                    </span>
+                    <span
                       className={cn(
-                        'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
-                        'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
-                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                        viewMode === 'grid'
-                          ? 'p-5 h-full flex flex-col'
-                          : 'p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'
+                        'ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold',
+                        isActive ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
                       )}
                     >
-                      <div
-                        className={cn(
-                          viewMode === 'grid'
-                            ? 'flex items-start justify-between gap-2 mb-3'
-                            : 'flex items-center gap-3 shrink-0'
-                        )}
-                      >
-                        <div className={cn('shrink-0 p-2.5 rounded-lg', color.iconBg, color.iconColor)}>
-                          {topic.icon}
-                        </div>
-                        {viewMode === 'grid' && (
-                          <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                            {t('landing.topicsCount', { count: topic.items.length })}
-                          </span>
-                        )}
-                      </div>
+                      {stream.topics.length}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
 
-                      <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
-                        <h3
+          {activeStream?.description && (
+            <p className="mb-8 text-sm text-muted-foreground">
+              <TranslatedText text={activeStream.description} />
+            </p>
+          )}
+
+          {Object.keys(groupedTopics).length === 0 && (
+            <div className="rounded-lg border border-dashed border-border/50 bg-card/40 p-10 text-center text-sm text-muted-foreground">
+              {t('landing.noTopicsInStream')}
+            </div>
+          )}
+
+          {Object.entries(groupedTopics).map(([category, topics]) => {
+            const isCollapsed = collapsed[`${activeStream?.id}:${category}`];
+
+            return (
+              <section key={`${activeStream?.id}:${category}`} className="mb-14">
+                <button
+                  type="button"
+                  onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
+                  className="w-full flex items-center justify-between py-2 text-left group"
+                >
+                  <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
+                    {category.replace(/-/g, ' ')}
+                  </h2>
+                  <ChevronDown
+                    className={cn('w-5 h-5 text-muted-foreground transition-transform', isCollapsed && '-rotate-90')}
+                  />
+                </button>
+
+                {!isCollapsed && (
+                  <div
+                    className={cn(
+                      viewMode === 'grid'
+                        ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr'
+                        : 'flex flex-col gap-3'
+                    )}
+                  >
+                    {topics.map((topic, index) => {
+                      const color = colors[index % colors.length];
+                      const badgeItems = topic.items.slice(0, 8);
+                      const extraBadgeCount = Math.max(topic.items.length - 8, 0);
+
+                      return (
+                        <article
+                          key={topic.id}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              navigate(`/docs/${topic.id}/${topic.items[0].id}`);
+                            }
+                          }}
                           className={cn(
-                            'font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
-                            viewMode === 'list' ? 'text-base' : 'mb-1'
+                            'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
+                            'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
+                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                            viewMode === 'grid'
+                              ? 'p-5 h-full flex flex-col'
+                              : 'p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'
                           )}
                         >
-                          <TranslatedText text={topic.title} />
-                        </h3>
-                        <p
-                          className={cn(
-                            'text-sm text-muted-foreground',
-                            viewMode === 'list' ? 'line-clamp-1 sm:line-clamp-2' : 'mb-3 line-clamp-2'
-                          )}
-                        >
-                          <TranslatedText text={topic.description} />
-                        </p>
+                          <div
+                            className={cn(
+                              viewMode === 'grid'
+                                ? 'flex items-start justify-between gap-2 mb-3'
+                                : 'flex items-center gap-3 shrink-0'
+                            )}
+                          >
+                            <div className={cn('shrink-0 p-2.5 rounded-lg', color.iconBg, color.iconColor)}>
+                              {topic.icon}
+                            </div>
+                            {viewMode === 'grid' && (
+                              <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
+                                {t('landing.topicsCount', { count: topic.items.length })}
+                              </span>
+                            )}
+                          </div>
 
-                        <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
-                          {badgeItems.map((item, badgeIndex) => (
-                            <span
-                              key={item.id}
+                          <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
+                            <h3
                               className={cn(
-                                'inline-flex max-w-full items-center rounded-md border px-2.5 py-1 text-xs',
-                                badgeToneClasses[badgeIndex % badgeToneClasses.length]
+                                'font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
+                                viewMode === 'list' ? 'text-base' : 'mb-1'
                               )}
                             >
-                              <span className="truncate">
-                                <TranslatedText text={item.title} />
-                              </span>
-                            </span>
-                          ))}
-                          {extraBadgeCount > 0 && (
-                            <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
-                              {t('landing.more', { count: extraBadgeCount })}
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                              <TranslatedText text={topic.title} />
+                            </h3>
+                            <p
+                              className={cn(
+                                'text-sm text-muted-foreground',
+                                viewMode === 'list' ? 'line-clamp-1 sm:line-clamp-2' : 'mb-3 line-clamp-2'
+                              )}
+                            >
+                              <TranslatedText text={topic.description} />
+                            </p>
 
-                      {viewMode === 'list' && (
-                        <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
-                          <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                            {t('landing.topicsCount', { count: topic.items.length })}
-                          </span>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-                        </div>
-                      )}
-                    </article>
-                  );
-                })}
-              </div>
-            )}
-          </section>
-        );
-      })}
+                            <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
+                              {badgeItems.map((item, badgeIndex) => (
+                                <span
+                                  key={item.id}
+                                  className={cn(
+                                    'inline-flex max-w-full items-center rounded-md border px-2.5 py-1 text-xs',
+                                    badgeToneClasses[badgeIndex % badgeToneClasses.length]
+                                  )}
+                                >
+                                  <span className="truncate">
+                                    <TranslatedText text={item.title} />
+                                  </span>
+                                </span>
+                              ))}
+                              {extraBadgeCount > 0 && (
+                                <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
+                                  {t('landing.more', { count: extraBadgeCount })}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {viewMode === 'list' && (
+                            <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
+                              <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
+                                {t('landing.topicsCount', { count: topic.items.length })}
+                              </span>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                            </div>
+                          )}
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </>
+      )}
 
       <FeaturesSection />
       <Footer />

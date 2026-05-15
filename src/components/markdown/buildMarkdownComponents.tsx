@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import MermaidRenderer from './MermaidRenderer';
+import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
 
 function extractTextFromNode(node: React.ReactNode): string {
@@ -283,7 +283,7 @@ export function buildMarkdownComponents({
       const codeKey = `${idPrefix}${codeString.slice(0, 64)}`;
 
       if (!inline && language === 'mermaid') {
-        return <MermaidRenderer chart={codeString} />;
+        return <MermaidChartLazy chart={codeString} />;
       }
 
       return !inline && match ? (

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, type JSX } from 'react';
-import { TOPICS, type TopicItem } from '@/topics';
+import type { Topic, TopicItem } from '@/topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -43,7 +43,13 @@ const SidebarContent = ({
   closeSheet?: () => void;
 }) => {
   const { t } = useI18n();
-  const topic = TOPICS.find((t) => t.id === currentTopicId);
+  const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
+
+  useEffect(() => {
+    void import('@/topics').then((m) => setTopicsIndex(m.TOPICS));
+  }, []);
+
+  const topic = topicsIndex?.find((t) => t.id === currentTopicId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -159,6 +165,20 @@ const SidebarContent = ({
       );
     });
   };
+
+  if (!topicsIndex) {
+    return (
+      <div className="flex h-full flex-col gap-3 p-4" aria-busy="true">
+        <div className="h-8 animate-pulse rounded-md bg-muted/35" />
+        <div className="h-9 animate-pulse rounded-lg bg-muted/25" />
+        <div className="flex-1 space-y-2 pt-2">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-10 animate-pulse rounded-md bg-muted/20" />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (!topic)
     return (

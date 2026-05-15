@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, BookOpen, ChevronLeft, Code2, HelpCircle, Search, SlidersHorizontal, X } from 'lucide-react';
 import {
@@ -19,11 +19,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
-import { AnswerMarkdown } from '@/components/markdown/AnswerMarkdown';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
+
+const AnswerMarkdownLazy = lazy(() =>
+  import('@/components/markdown/AnswerMarkdown').then((mod) => ({ default: mod.AnswerMarkdown }))
+);
 
 const levelPillClass: Record<ExperienceLevel, string> = {
   entry: 'text-emerald-600 border-emerald-500/60 bg-emerald-500/10',
@@ -488,7 +491,11 @@ function QuestionBlock({
       <AccordionContent className="px-4 sm:px-5 pb-5 pt-0">
         <div className="pt-4 border-t border-border/40 mt-0 bg-linear-to-b from-transparent to-muted/10 -mx-4 sm:-mx-5 px-4 sm:px-5">
           <h3 className="text-sm font-semibold text-foreground mb-3 w-fit">{t('interview.answer')}</h3>
-          <AnswerMarkdown content={item.answer} />
+          <Suspense
+            fallback={<div className="min-h-16 animate-pulse rounded-md bg-muted/30" aria-hidden />}
+          >
+            <AnswerMarkdownLazy content={item.answer} />
+          </Suspense>
         </div>
       </AccordionContent>
     </AccordionItem>

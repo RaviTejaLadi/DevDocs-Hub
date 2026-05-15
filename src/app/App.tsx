@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
@@ -11,11 +11,22 @@ import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import NavBar from '@/components/layout/NavBar';
 import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
-import LandingPage from '@/pages/LandingPage';
-import DocumentationPage from '@/pages/DocumentationPage';
-import TermsOfServicePage from '@/pages/TermsOfServicePage';
-import InterviewQuestionsPage from '@/pages/InterviewQuestionsPage';
-import CodeEditorPage from '@/pages/CodeEditorPage';
+
+const LandingPage = lazy(() => import('@/pages/LandingPage'));
+const DocumentationPage = lazy(() => import('@/pages/DocumentationPage'));
+const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
+const InterviewQuestionsPage = lazy(() => import('@/pages/InterviewQuestionsPage'));
+const CodeEditorPage = lazy(() => import('@/pages/CodeEditorPage'));
+
+const RouteFallback = () => (
+  <div
+    className="flex min-h-[50vh] items-center justify-center text-sm text-muted-foreground"
+    aria-busy="true"
+    aria-live="polite"
+  >
+    Loading…
+  </div>
+);
 
 const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();
@@ -118,13 +129,15 @@ const App = () => {
               viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
             >
               <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
-                <Routes location={location}>
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
-                  <Route path="/terms" element={<TermsOfServicePage />} />
-                  <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
-                  <Route path="/code-editor" element={<CodeEditorPage />} />
-                </Routes>
+                <Suspense fallback={<RouteFallback />}>
+                  <Routes location={location}>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
+                    <Route path="/terms" element={<TermsOfServicePage />} />
+                    <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
+                    <Route path="/code-editor" element={<CodeEditorPage />} />
+                  </Routes>
+                </Suspense>
               </div>
             </ScrollArea>
           </main>

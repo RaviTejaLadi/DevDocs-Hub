@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Menu,
@@ -12,7 +12,7 @@ import {
   Code2,
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
-import { TOPICS, type TopicItem } from '@/topics';
+import type { Topic, TopicItem } from '@/topics';
 import { ModeToggle } from '@/components/theme/ModeToggle';
 import type { SearchResult } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -43,7 +43,13 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [results, setResults] = useState<RankedSearchResult[]>([]);
+  const [topics, setTopics] = useState<Topic[] | null>(null);
+
+  useEffect(() => {
+    if (!open || topics !== null) return;
+    void import('@/topics').then((m) => setTopics(m.TOPICS));
+  }, [open, topics]);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -103,7 +109,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
     items: TopicItem[],
     categoryId: string,
     categoryTitle: string,
-    topicIcon: React.ReactNode,
+    topicIcon: ReactNode,
     q: string
   ): RankedSearchResult[] => {
     let hits: RankedSearchResult[] = [];
@@ -124,8 +130,12 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
       setResults([]);
       return;
     }
+    if (!topics) {
+      setResults([]);
+      return;
+    }
     let globalHits: RankedSearchResult[] = [];
-    TOPICS.forEach((topic) => {
+    topics.forEach((topic) => {
       globalHits = [...globalHits, ...searchRecursive(topic.items, topic.id, topic.title, topic.icon, query)];
     });
 
@@ -134,7 +144,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
     deduped.sort((a, b) => b.score - a.score || a.title.length - b.title.length);
 
     setResults(deduped.slice(0, 24));
-  }, [query]);
+  }, [query, topics]);
 
   const handleSelectResult = (categoryId: string, id: string) => {
     navigate(`/docs/${categoryId}/${id}`);
