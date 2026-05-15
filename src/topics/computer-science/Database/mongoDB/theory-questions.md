@@ -291,4 +291,4 @@ Better for offline-first apps |
 - For applications requiring strong schema enforcement at database level
 - When your team has strong RDBMS expertise but no MongoDB experience
 
-**[⬆ Back to Top](#table-of-contents)**
+

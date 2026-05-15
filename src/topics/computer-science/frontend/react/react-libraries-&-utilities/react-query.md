@@ -406,4 +406,4 @@ React-Query significantly simplifies data management in React applications while
 providing powerful features out of the box. The TypeScript integration ensures
 type safety throughout your data fetching logic.
 
-**[⬆ Back to Top](#table-of-contents)**
+

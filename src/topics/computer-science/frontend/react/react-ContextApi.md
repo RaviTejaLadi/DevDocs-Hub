@@ -688,4 +688,4 @@ can significantly improve your application's architecture and maintainability.
 Remember to keep contexts focused, provide good defaults, and consider
 performance implications when designing your context structure.
 
-**[⬆ Back to Top](#table-of-contents)**
+

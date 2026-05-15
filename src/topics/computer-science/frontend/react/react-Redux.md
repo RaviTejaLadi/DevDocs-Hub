@@ -998,4 +998,4 @@ management, from basic concepts to advanced patterns and real-world examples.
 The modern Redux Toolkit approach is emphasized throughout, as it's the
 recommended way to use Redux in new applications.
 
-**[⬆ Back to Top](#table-of-contents)**
+

@@ -759,4 +759,4 @@ basic concepts to advanced implementation patterns. Each section builds upon the
 previous one, providing a structured learning path for understanding and
 implementing SSR in React applications.
 
-**[⬆ Back to Top](#table-of-contents)**
+

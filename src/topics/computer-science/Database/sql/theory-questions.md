@@ -369,4 +369,4 @@ tolerance) or AP (availability and partition tolerance).
 - Often no joins or complex transactions
 - Better for unstructured or semi-structured data
 
-**[⬆ Back to Top](#table-of-contents)**
+

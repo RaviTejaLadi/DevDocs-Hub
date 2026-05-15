@@ -2170,4 +2170,4 @@ echo "✅ Security checks passed."
 against common web vulnerabilities. Always implement multiple layers of security
 rather than relying on a single protection mechanism! 🛡️✨
 
-**[⬆ Back to Top](#table-of-contents)**
+

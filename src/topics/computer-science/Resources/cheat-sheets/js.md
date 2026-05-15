@@ -266,4 +266,4 @@
 | `debugger`   | Breakpoint            | `debugger;`              |
 | `eval()`     | Evaluate string       | `eval('2 + 2')`          |
 
-**[⬆ Back to Top](#table-of-contents)**
+

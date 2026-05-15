@@ -796,4 +796,4 @@ This comprehensive guide covers all aspects of React component lifecycle methods
 with practical examples and best practices for both class components and modern
 function components with hooks.
 
-**[⬆ Back to Top](#table-of-contents)**
+

@@ -81,4 +81,4 @@ DELETE FROM employees WHERE id = 1;
 SQL remains one of the most valuable skills for anyone working with data, from
 analysts to software developers to data scientists.
 
-**[⬆ Back to Top](#table-of-contents)**
+

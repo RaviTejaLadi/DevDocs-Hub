@@ -94,4 +94,4 @@
 This cheat sheet covers **React Router v6+**. Let me know if you'd like any
 additions or modifications! 🚀
 
-**[⬆ Back to Top](#table-of-contents)**
+

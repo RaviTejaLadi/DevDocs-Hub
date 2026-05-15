@@ -74,4 +74,4 @@ This cheat sheet covers essential MongoDB commands, CRUD operations, query
 operators, update operators, aggregation, and indexing. Let me know if you'd
 like any additions!
 
-**[⬆ Back to Top](#table-of-contents)**
+

@@ -282,4 +282,4 @@ operations to advanced topics like transactions and performance optimization.
 Being able to answer these and write the corresponding code will prepare you
 well for most MongoDB coding interviews.
 
-**[⬆ Back to Top](#table-of-contents)**
+

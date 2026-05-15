@@ -111,4 +111,4 @@
 4. Always sanitize inputs to prevent SQLi/XSS.
 5. Prefer HTTPS over HTTP for security.
 
-**[⬆ Back to Top](#table-of-contents)**
+

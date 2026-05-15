@@ -868,4 +868,4 @@ This comprehensive guide covers the essential aspects of React testing, from
 basic concepts to advanced patterns. Each section provides practical examples
 that you can adapt to your specific testing needs.
 
-**[⬆ Back to Top](#table-of-contents)**
+

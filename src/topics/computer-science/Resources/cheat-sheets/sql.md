@@ -59,4 +59,4 @@
 This cheat sheet covers the most essential SQL commands, clauses, joins,
 functions, and constraints. Let me know if you'd like any additions!
 
-**[⬆ Back to Top](#table-of-contents)**
+

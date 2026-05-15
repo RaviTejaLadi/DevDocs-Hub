@@ -172,4 +172,4 @@ print(p.greet())
 ---
 
 This cheat sheet covers essential Python syntax. Bookmark it for quick
-reference! 🚀 **[⬆ Back to Top](#table-of-contents)**
+reference! 🚀 

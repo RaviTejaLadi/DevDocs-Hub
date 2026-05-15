@@ -608,4 +608,4 @@ npm install react-hook-form @hookform/resolvers zod
 - Less boilerplate
 - Automatic TypeScript type generation
 
-**[⬆ Back to Top](#table-of-contents)**
+

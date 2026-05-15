@@ -126,4 +126,4 @@ This structure provides a solid foundation that scales well for small to
 medium-sized applications while remaining flexible enough to adapt to larger
 projects.
 
-**[⬆ Back to Top](#table-of-contents)**
+

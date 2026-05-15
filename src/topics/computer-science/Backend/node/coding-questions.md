@@ -1934,4 +1934,4 @@ async function verifyToken(token) {
 }
 ```
 
-**[⬆ Back to Top](#table-of-contents)**
+

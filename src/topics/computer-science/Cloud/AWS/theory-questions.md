@@ -699,4 +699,4 @@ scenarios to deepen your understanding.
 - Study AWS Well-Architected Framework
 - Review AWS case studies and whitepapers
 
-**[⬆ Back to Top](#table-of-contents)**
+

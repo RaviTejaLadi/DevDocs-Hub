@@ -334,4 +334,4 @@ React-Table's headless approach means you can integrate it with any styling
 solution (CSS, Tailwind, Material-UI, etc.) and customize the table behavior to
 your exact needs.
 
-**[⬆ Back to Top](#table-of-contents)**
+

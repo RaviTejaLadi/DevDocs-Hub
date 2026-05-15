@@ -260,4 +260,4 @@
 | HTML Comment       | `<!-- comment -->` | `<!-- This is a comment -->`                       |
 | Multi-line Comment | `<!-- comment -->` | `<!-- This comment<br>spans multiple<br>lines -->` |
 
-**[⬆ Back to Top](#table-of-contents)**
+

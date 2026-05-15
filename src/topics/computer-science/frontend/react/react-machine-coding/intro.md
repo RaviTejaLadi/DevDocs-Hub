@@ -144,4 +144,4 @@ Ready to level up your React skills? Let's dive into the questions!
 7. **Testing Mindset**: Consider how you would test your components
 8. **Performance Awareness**: Discuss optimization strategies when relevant
 
-**[⬆ Back to Top](#table-of-contents)**
+

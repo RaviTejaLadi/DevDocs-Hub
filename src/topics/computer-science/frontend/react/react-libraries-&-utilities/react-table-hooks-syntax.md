@@ -305,4 +305,4 @@ while maintaining a clean, composable API. The headless nature means you're
 responsible for rendering the UI, but you get complete control over the markup
 and styling.
 
-**[⬆ Back to Top](#table-of-contents)**
+
