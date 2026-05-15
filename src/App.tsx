@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import NavBar from './components/Layout/NavBar';
 import SidebarWrapperMobile from './components/Layout/SidebarWrapperMobile';
@@ -12,6 +16,40 @@ import DocumentationPage from './pages/DocumentationPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
 import CodeEditorPage from './pages/CodeEditorPage';
+
+const DocsDesktopSidebarToggle = ({
+  collapsed,
+  onToggle,
+}: {
+  collapsed: boolean;
+  onToggle: () => void;
+}) => {
+  const { t } = useI18n();
+  return (
+    <TooltipProvider delayDuration={200}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            type="button"
+            variant="secondary"
+            size="icon"
+            onClick={onToggle}
+            aria-label={collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+            className={cn(
+              'fixed z-60 h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+              'hidden md:inline-flex',
+              /** NavBar: sticky top-2 + h-14 — sit just under it, outside scroll layout. */
+              'top-[calc(0.5rem+3.5rem+0.5rem)] right-4 sm:right-6'
+            )}
+          >
+            {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -58,6 +96,12 @@ const App = () => {
 
         <div className="h-[calc(100dvh-3.5rem)] flex">
           {showSidebar && (
+            <DocsDesktopSidebarToggle
+              collapsed={docsSidebarCollapsed}
+              onToggle={() => setDocsSidebarCollapsed((prev) => !prev)}
+            />
+          )}
+          {showSidebar && (
             <aside
               className={cn(
                 'hidden md:block h-full mx-2 my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
@@ -82,15 +126,7 @@ const App = () => {
               <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
                 <Routes location={location}>
                   <Route path="/" element={<LandingPage />} />
-                  <Route
-                    path="/docs/:categoryId/:slug"
-                    element={
-                      <DocumentationPage
-                        isSidebarCollapsed={docsSidebarCollapsed}
-                        onToggleSidebar={() => setDocsSidebarCollapsed((prev) => !prev)}
-                      />
-                    }
-                  />
+                  <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
                   <Route path="/terms" element={<TermsOfServicePage />} />
                   <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
                   <Route path="/code-editor" element={<CodeEditorPage />} />

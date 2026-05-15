@@ -1,20 +1,10 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
 import { useEffect, useMemo, useRef, useState, startTransition, type RefObject } from 'react';
-import { ChevronRight, ChevronUp, Home, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { ChevronUp, Home } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '../components/ui/breadcrumb';
 import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { cn } from '@/lib/utils';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
@@ -61,13 +51,7 @@ const DOC_FEED_SECTION_SHELL_CLASS = cn(
   DOC_FEED_TOPIC_CARD_CLASS
 );
 
-const DocumentationPage = ({
-  isSidebarCollapsed,
-  onToggleSidebar,
-}: {
-  isSidebarCollapsed: boolean;
-  onToggleSidebar: () => void;
-}) => {
+const DocumentationPage = () => {
   const { t } = useI18n();
   const { categoryId, slug } = useParams();
   const navigate = useNavigate();
@@ -273,66 +257,7 @@ const DocumentationPage = ({
   }
 
   return (
-    <div className="w-full space-y-4">
-      <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-          <TooltipProvider delayDuration={200}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={onToggleSidebar}
-                  aria-label={isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-                  className="hidden md:inline-flex h-9 w-9 shrink-0 p-0 border-border/40 bg-card/60 hover:bg-accent/60"
-                >
-                  {isSidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                {isSidebarCollapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <Breadcrumb className="min-w-0 flex-1">
-            <BreadcrumbList className="flex-wrap min-h-9 gap-1 rounded-md border border-border/40 bg-card/45 backdrop-blur-sm px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-muted-foreground shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.35)]">
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link
-                    to="/"
-                    className="rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
-                  >
-                    {t('docs.breadcrumbDocs')}
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight className="h-3.5 w-3.5 opacity-45" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link
-                    to={`/docs/${topic.id}/${topic.items[0].id}`}
-                    className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 font-medium transition-colors hover:bg-accent/55 hover:text-foreground"
-                  >
-                    <span className="text-base opacity-85">{topic.icon}</span>
-                    <span className="max-w-30 sm:max-w-none truncate">
-                      <TranslatedText text={topic.title} />
-                    </span>
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <ChevronRight className="h-3.5 w-3.5 opacity-45" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage className="max-w-38 sm:max-w-md truncate rounded-md bg-primary/8 px-2 py-0.5 font-semibold text-foreground">
-                  <TranslatedText text={content.title} />
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-
+    <div className="w-full">
       <div className="max-w-none min-w-0 space-y-6 pb-20">
         {flatItems.map((item, idx) => (
           <DocsFeedTopicSection
@@ -355,7 +280,7 @@ const DocumentationPage = ({
           variant="secondary"
           size="icon"
           onClick={scrollFeedToTop}
-          className="fixed bottom-6 right-5 z-40 h-11 w-11 rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+          className="fixed bottom-6 right-5 z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
           aria-label={t('docs.scrollToTop')}
         >
           <ChevronUp className="size-5" />
