@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useCallback, type JSX } from 'react';
+import { useState, useCallback, useEffect, type JSX } from 'react';
 import { TOPICS, type TopicItem } from '../../topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -10,7 +10,19 @@ import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 
-// Helper to flatten tree for searching
+/** Parent topic ids needed to reveal `targetId` in the tree (not including target). */
+const findAncestorIds = (items: TopicItem[], targetId: string, chain: string[] = []): string[] | null => {
+  for (const item of items) {
+    if (item.id === targetId) return chain;
+    if (item.items?.length) {
+      const found = findAncestorIds(item.items, targetId, [...chain, item.id]);
+      if (found) return found;
+    }
+  }
+  return null;
+};
+
+/** Flatten topic tree for search results. */
 const flattenItems = (items: TopicItem[]): TopicItem[] => {
   return items.reduce((acc: TopicItem[], item) => {
     acc.push(item);
@@ -38,6 +50,27 @@ const SidebarContent = ({
   // State to track expanded parent items
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
 
+  useEffect(() => {
+    if (!topic || !activeSlug || searchQuery) return;
+    const ancestors = findAncestorIds(topic.items, activeSlug);
+    if (!ancestors?.length) return;
+    setExpandedIds((prev) => {
+      const next = { ...prev };
+      for (const id of ancestors) next[id] = true;
+      return next;
+    });
+  }, [topic, activeSlug, searchQuery]);
+
+  useEffect(() => {
+    if (!activeSlug) return;
+    const t = window.setTimeout(() => {
+      document
+        .querySelector(`[data-sidebar-doc-id="${CSS.escape(activeSlug)}"]`)
+        ?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }, 50);
+    return () => window.clearTimeout(t);
+  }, [activeSlug, currentTopicId, searchQuery, expandedIds]);
+
   const toggleExpand = useCallback((e: React.MouseEvent, id: string) => {
     e.preventDefault();
     e.stopPropagation();
@@ -64,6 +97,7 @@ const SidebarContent = ({
         <div key={item.id} className="w-full max-w-full overflow-hidden">
           <Button
             variant={isActive ? 'secondary' : 'ghost'}
+            data-sidebar-doc-id={item.id}
             className={cn(
               'flex min-w-0 w-full max-w-full justify-start h-auto py-2 px-3 font-normal rounded-md overflow-hidden box-border',
               isActive
@@ -153,6 +187,7 @@ const SidebarContent = ({
           <Button
             key={item.id}
             variant={activeSlug === item.id ? 'default' : 'ghost'}
+            data-sidebar-doc-id={item.id}
             className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
             onClick={() => handleNavigate(topic.id, item.id)}
           >

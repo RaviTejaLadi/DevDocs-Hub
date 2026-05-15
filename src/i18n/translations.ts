@@ -104,6 +104,10 @@ const en: TranslationMap = {
   'common.copy': 'Copy',
   'common.copied': 'Copied',
   'markdown.onThisPage': 'On this page',
+  'markdown.slideLabel': 'Slide',
+  'markdown.slideCarouselLabel': 'Document slides',
+  'markdown.prevSlide': 'Previous',
+  'markdown.nextSlide': 'Next',
 };
 
 const partialTranslations: Record<Exclude<SupportedLanguage, 'en'>, Partial<TranslationMap>> = {

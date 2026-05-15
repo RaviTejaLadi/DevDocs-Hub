@@ -12,7 +12,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '../components/ui/breadcrumb';
-import { Separator } from '../components/ui/separator';
 import MarkdownRender from '../components/MarkdownRender';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -173,56 +172,20 @@ const DocumentationPage = ({
           </Breadcrumb>
         </div>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight">
-        <MarkdownRender content={content.content} />
+      <div className="prose prose-slate dark:prose-invert max-w-none min-w-0 prose-headings:font-semibold prose-headings:tracking-tight">
+        <MarkdownRender
+          content={content.content}
+          slideMode
+          hasNextDocument={Boolean(nextItem)}
+          onReachDocumentEnd={() => {
+            if (nextItem) navigate(`/docs/${topic.id}/${nextItem.id}`);
+          }}
+          hasPrevDocument={Boolean(prevItem)}
+          onReachDocumentStart={() => {
+            if (prevItem) navigate(`/docs/${topic.id}/${prevItem.id}`);
+          }}
+        />
       </div>
-
-      <Separator className="my-8" />
-
-      <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4" aria-label="Document navigation">
-          {prevItem ? (
-            <Button
-              onClick={() => navigate(`/docs/${topic.id}/${prevItem.id}`)}
-              variant="outline"
-              className="h-auto p-4 justify-start text-left border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
-            >
-              <div className="w-full space-y-1">
-                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t('docs.previous')}
-                </span>
-                <div className="flex items-center gap-2 font-medium text-foreground">
-                  <ChevronRight className="w-4 h-4 rotate-180 shrink-0 group-hover:-translate-x-0.5 transition-transform" />
-                  <span className="truncate">
-                    <TranslatedText text={prevItem.title} />
-                  </span>
-                </div>
-              </div>
-            </Button>
-          ) : (
-            <div />
-          )}
-          {nextItem ? (
-            <Button
-              variant="outline"
-              onClick={() => navigate(`/docs/${topic.id}/${nextItem.id}`)}
-              className="h-auto p-4 justify-end text-right border-border/40 hover:bg-accent/50 hover:border-primary/20 transition-colors group"
-            >
-              <div className="w-full space-y-1">
-                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
-                  {t('docs.next')}
-                </span>
-                <div className="flex items-center justify-end gap-2 font-medium text-foreground">
-                  <span className="truncate">
-                    <TranslatedText text={nextItem.title} />
-                  </span>
-                  <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                </div>
-              </div>
-            </Button>
-          ) : (
-            <div />
-          )}
-        </nav>
     </div>
   );
 };
