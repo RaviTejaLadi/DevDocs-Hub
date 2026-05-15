@@ -19,9 +19,9 @@ type Heading = { id: string; text: string; level: number; slideIndex?: number };
 const DOC_READING_PANE_MAX_CLASS =
   'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
 
-/** Scrollable body max = pane cap minus compact footer (outline sm button + py). */
+/** Scrollable body max = pane cap minus slide footer (controls + border). */
 const DOC_SLIDE_BODY_MAX_CLASS =
-  'max-h-[calc(100dvh-9rem-2.875rem)] sm:max-h-[calc(100dvh-9.5rem-2.875rem)]';
+  'max-h-[calc(100dvh-9rem-3rem)] sm:max-h-[calc(100dvh-9.5rem-3rem)]';
 
 const MAX_SLIDE_CHARS = 4200;
 const MERGE_TINY_UNDER = 260;
@@ -561,9 +561,9 @@ const MarkdownRenderInner = ({
   );
 
   const articleSurface = cn(
-    'md-render overflow-hidden rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm',
-    'px-5 py-7 sm:px-8 sm:py-10 lg:px-12',
-    'shadow-[0_18px_45px_-28px_hsl(var(--foreground)/0.35)]'
+    'md-render overflow-hidden rounded-2xl border border-border/35 bg-card/55 backdrop-blur-sm',
+    'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11',
+    'shadow-[0_22px_52px_-30px_hsl(var(--foreground)/0.32)]'
   );
 
   return (
@@ -590,8 +590,8 @@ const MarkdownRenderInner = ({
                   fillViewportCard
                     ? 'h-full max-h-full min-h-0 flex-1'
                     : DOC_READING_PANE_MAX_CLASS,
-                  'rounded-[1.35rem] border border-border/50 bg-card/65 backdrop-blur-md',
-                  'shadow-[0_28px_70px_-32px_hsl(var(--foreground)/0.42)] ring-1 ring-black/4 dark:ring-white/6'
+                  'rounded-2xl border border-border/40 bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
+                  'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
                 role="region"
                 aria-label={t('markdown.slideCarouselLabel')}
@@ -599,13 +599,14 @@ const MarkdownRenderInner = ({
                 <div
                   ref={slideBodyRef}
                   className={cn(
-                    'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto px-4 pt-2 pb-3',
+                    'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
+                    'px-5 pt-4 pb-5 sm:px-8 sm:pt-5 sm:pb-6',
                     fillViewportCard
                       ? 'min-h-0 flex-1'
                       : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
-                  <div className="relative z-1">
+                  <div className="relative z-10 mx-auto w-full max-w-200">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={buildMarkdownComponents({
@@ -623,7 +624,7 @@ const MarkdownRenderInner = ({
                   </div>
                 </div>
 
-                <footer className="flex shrink-0 items-center gap-2 border-t border-border/40 bg-muted/25 px-2.5 py-1.5 sm:gap-3 sm:px-3.5">
+                <footer className="flex shrink-0 items-center gap-2 border-t border-border/35 bg-muted/20 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5">
                   <Button
                     type="button"
                     variant="outline"
@@ -637,7 +638,7 @@ const MarkdownRenderInner = ({
                     <span className="text-xs">{t('markdown.prevSlide')}</span>
                   </Button>
                   <div className="min-w-0 flex-1 text-center">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground tabular-nums">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground tabular-nums">
                       {t('markdown.slideLabel')} {activeSlide + 1}/{slides.length}
                     </span>
                   </div>
@@ -685,12 +686,12 @@ const MarkdownRenderInner = ({
         >
           <div
             className={cn(
-              'rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 shadow-[0_12px_30px_-22px_hsl(var(--foreground)/0.25)]',
+              'rounded-xl border border-border/35 bg-card/50 backdrop-blur-sm p-4 shadow-[0_14px_36px_-24px_hsl(var(--foreground)/0.28)]',
               slideMode && 'flex h-full min-h-0 flex-col overflow-hidden'
             )}
           >
-            <div className="flex items-center justify-between mb-3 shrink-0">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            <div className="flex items-center justify-between mb-3.5 shrink-0">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 {t('markdown.onThisPage')}
               </span>
               <div

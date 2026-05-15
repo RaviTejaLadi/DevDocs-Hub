@@ -32,7 +32,7 @@ export type BuildMarkdownComponentsOpts = {
   t: (key: string) => string;
   handleCopy: (key: string, text: string) => void;
   scrollToId: (id: string) => void;
-  /** Tighter vertical rhythm inside slide card */
+  /** Slide viewport: comfortable type + spacing (still slightly denser than full article) */
   compactSlide?: boolean;
 };
 
@@ -52,12 +52,14 @@ export function buildMarkdownComponents({
     h1: ({ children }: any) => {
       const id = nid(children);
       return (
-        <header className={cn('relative', c ? 'mb-3 mt-0' : 'mb-9 mt-1')}>
+        <header className={cn('relative', c ? 'mb-5 mt-0' : 'mb-9 mt-1')}>
           <h1
             id={id}
             className={cn(
-              'scroll-mt-28 font-bold tracking-tight text-foreground',
-              c ? 'text-2xl sm:text-[1.75rem] leading-tight' : 'text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.15]'
+              'scroll-mt-28 font-bold text-foreground',
+              c
+                ? 'text-[1.65rem] sm:text-[1.875rem] leading-[1.2] tracking-[-0.02em]'
+                : 'text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.15] tracking-tight'
             )}
           >
             <span className={cn(!c && 'md-h1-title')}>{children}</span>
@@ -68,7 +70,7 @@ export function buildMarkdownComponents({
               <span className="h-px flex-1 bg-border/60 rounded-full"></span>
             </div>
           ) : (
-            <div className="mt-2.5 border-b border-border/45" />
+            <div className="mt-3 border-b border-border/40" />
           )}
         </header>
       );
@@ -76,21 +78,23 @@ export function buildMarkdownComponents({
     h2: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('md-h2 group relative', c ? 'mt-6 mb-3' : 'mt-14 mb-6')}>
+        <div className={cn('md-h2 group relative', c ? 'mt-8 mb-4' : 'mt-14 mb-6')}>
           <div className="flex items-center gap-2.5 sm:gap-3">
             <div
               className={cn(
                 'md-h2-num grid place-items-center rounded-lg',
-                'bg-(--md-purple-tint) text-(--md-purple-deep) font-bold tracking-tight',
+                'bg-(--md-purple-tint) text-(--md-purple-deep) font-bold tabular-nums',
                 'border border-(--md-purple-line)',
-                c ? 'min-w-8 h-8 px-1.5 text-[0.7rem]' : 'min-w-9 h-9 px-2 text-[0.78rem]'
+                c ? 'min-w-9 h-9 px-2 text-[0.75rem] tracking-normal' : 'min-w-9 h-9 px-2 text-[0.78rem] tracking-tight'
               )}
             ></div>
             <h2
               id={id}
               className={cn(
-                'scroll-mt-28 flex-1 font-bold tracking-tight leading-tight text-foreground',
-                c ? 'text-lg sm:text-xl' : 'text-2xl sm:text-[1.7rem]'
+                'scroll-mt-28 flex-1 font-bold text-foreground',
+                c
+                  ? 'text-xl sm:text-[1.35rem] leading-snug tracking-[-0.015em]'
+                  : 'text-2xl sm:text-[1.7rem] leading-tight tracking-tight'
               )}
             >
               {children}
@@ -102,13 +106,15 @@ export function buildMarkdownComponents({
     h3: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('group relative flex items-center gap-2.5', c ? 'mt-5 mb-2.5' : 'mt-10 mb-4')}>
+        <div className={cn('group relative flex items-center gap-2.5', c ? 'mt-7 mb-3' : 'mt-10 mb-4')}>
           <span className="inline-block w-1.5 h-1.5 rounded-sm bg-(--md-purple) rotate-45 shrink-0"></span>
           <h3
             id={id}
             className={cn(
-              'scroll-mt-28 font-semibold tracking-tight text-foreground',
-              c ? 'text-base sm:text-lg' : 'text-xl sm:text-[1.35rem]'
+              'scroll-mt-28 font-semibold text-foreground',
+              c
+                ? 'text-[1.08rem] sm:text-[1.2rem] leading-snug tracking-normal'
+                : 'text-xl sm:text-[1.35rem] tracking-tight'
             )}
           >
             {children}
@@ -119,13 +125,13 @@ export function buildMarkdownComponents({
     h4: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('group relative flex items-center gap-2', c ? 'mt-4 mb-2' : 'mt-8 mb-3')}>
+        <div className={cn('group relative flex items-center gap-2', c ? 'mt-5 mb-2.5' : 'mt-8 mb-3')}>
           <span className="inline-block w-1 h-1 rounded-full bg-(--md-purple)"></span>
           <h4
             id={id}
             className={cn(
-              'scroll-mt-28 font-semibold tracking-tight text-foreground',
-              c ? 'text-[0.98rem]' : 'text-lg'
+              'scroll-mt-28 font-semibold text-foreground',
+              c ? 'text-[1.02rem] sm:text-[1.06rem] leading-snug tracking-normal' : 'text-lg tracking-tight'
             )}
           >
             {children}
@@ -136,43 +142,60 @@ export function buildMarkdownComponents({
     p: ({ children }: any) => (
       <p
         className={cn(
-          'text-foreground/80 leading-[1.78]',
           c
-            ? 'mb-3 text-[0.96rem] first-of-type:mt-0 first-of-type:mb-3.5 first-of-type:text-[1.02rem] first-of-type:text-foreground/90 first-of-type:leading-snug'
-            : 'mb-5 text-[1.02rem] first-of-type:text-[1.12rem] sm:first-of-type:text-[1.16rem] first-of-type:leading-[1.75] first-of-type:mb-7 first-of-type:text-foreground/90'
+            ? 'mb-4 text-[1.02rem] sm:text-[1.055rem] leading-[1.72] tracking-[0.012em] text-foreground/88 first-of-type:mt-0 first-of-type:mb-4 first-of-type:text-[1.06rem] sm:first-of-type:text-[1.09rem] first-of-type:leading-[1.68] first-of-type:tracking-[0.01em] first-of-type:text-foreground/92'
+            : 'mb-5 text-[1.02rem] leading-[1.78] text-foreground/80 first-of-type:text-[1.12rem] sm:first-of-type:text-[1.16rem] first-of-type:leading-[1.75] first-of-type:mb-7 first-of-type:text-foreground/90'
         )}
       >
         {children}
       </p>
     ),
     ul: ({ children }: any) => (
-      <ul className={cn('md-ul space-y-2 text-[1.01rem]', c ? 'mb-3 text-[0.96rem]' : 'mb-6')}>{children}</ul>
+      <ul
+        className={cn(
+          'md-ul',
+          c ? 'mb-4 space-y-2.5 text-[1.01rem] sm:text-[1.035rem] tracking-[0.01em]' : 'mb-6 space-y-2 text-[1.01rem]'
+        )}
+      >
+        {children}
+      </ul>
     ),
     ol: ({ children }: any) => (
-      <ol className={cn('md-ol space-y-2 text-[1.01rem]', c ? 'mb-3 space-y-1.5 text-[0.96rem]' : 'mb-6 space-y-2.5')}>
+      <ol
+        className={cn(
+          'md-ol',
+          c ? 'mb-4 space-y-2.5 text-[1.01rem] sm:text-[1.035rem] tracking-[0.01em]' : 'mb-6 space-y-2.5 text-[1.01rem]'
+        )}
+      >
         {children}
       </ol>
     ),
     li: ({ children, className }: any) => {
       const isTask = (className || '').includes('task-list-item');
       return (
-        <li className={cn('text-foreground/80 leading-[1.65]', isTask && 'list-none pl-0', c ? 'text-[0.93rem]' : 'leading-[1.7]')}>
+        <li
+          className={cn(
+            'text-foreground/85',
+            isTask && 'list-none pl-0',
+            c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'leading-[1.7] text-[1.01rem]'
+          )}
+        >
           {children}
         </li>
       );
     },
     blockquote: ({ children }: any) => (
-      <div className={c ? 'my-4' : 'my-7'}>
+      <div className={c ? 'my-5' : 'my-7'}>
         <blockquote className="md-quote">
-          <div className={cn('flex items-start', c ? 'gap-2.5' : 'gap-3')}>
+          <div className={cn('flex items-start', c ? 'gap-3' : 'gap-3')}>
             <Quote
-              className={cn('shrink-0 text-(--md-purple) -scale-x-100', c ? 'mt-0.5 h-4 w-4' : 'mt-0.5 h-5 w-5')}
+              className={cn('shrink-0 text-(--md-purple) -scale-x-100', c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5')}
               strokeWidth={2.2}
             />
             <div
               className={cn(
-                'font-medium text-foreground/90 [&_p]:mb-2 [&_p:last-child]:mb-0',
-                c ? 'text-[0.93rem] leading-[1.65]' : 'text-[1rem] leading-[1.75]'
+                'font-medium text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
+                c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'text-[1rem] leading-[1.75]'
               )}
             >
               {children}
@@ -240,7 +263,7 @@ export function buildMarkdownComponents({
     img: ({ src, alt }: any) => {
       const [altText, caption] = (alt ?? '').split('|').map((s: string) => s.trim());
       return (
-        <figure className={cn('flex flex-col items-center', c ? 'my-4' : 'my-7')}>
+        <figure className={cn('flex flex-col items-center', c ? 'my-5' : 'my-7')}>
           <div className="md-polaroid">
             <img src={src} alt={altText} className="rounded-md max-w-full h-auto block" />
           </div>
@@ -261,7 +284,7 @@ export function buildMarkdownComponents({
       }
 
       return !inline && match ? (
-        <div className={cn('md-code-card group', c ? 'my-4' : 'my-6')}>
+        <div className={cn('md-code-card group', c ? 'my-5' : 'my-6')}>
           <div className="md-code-head">
             <span
               className={cn(
@@ -300,7 +323,10 @@ export function buildMarkdownComponents({
               style={isDarkTheme ? atomDark : prism}
               language={language}
               PreTag="div"
-              className="m-0! bg-transparent! p-5! text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!"
+              className={cn(
+                'm-0! bg-transparent! p-5!',
+                c ? 'text-[0.9rem] sm:text-[0.94rem] leading-[1.72]! tracking-[0.02em]!' : 'text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!'
+              )}
               showLineNumbers={false}
               customStyle={{ background: 'transparent', margin: 0 }}
               codeTagProps={{ style: { background: 'transparent' } }}
