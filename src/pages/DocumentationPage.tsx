@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { TOPICS, type TopicItem } from '../topics';
-import { useEffect, useMemo, useRef, useState, startTransition, type RefObject } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, startTransition, type RefObject } from 'react';
 import { ChevronUp, Home } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -44,9 +44,9 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
 const DOC_FEED_TOPIC_CARD_CLASS =
   'h-[calc(100dvh-12.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-13.25rem)] sm:max-h-[calc(100dvh-13.25rem)]';
 
-/** Section shell (title + body area) — shared with lazy-loaded body. */
+/** Section shell: fixed viewport card height; inner post chrome lives in DocsFeedTopicSection. */
 const DOC_FEED_SECTION_SHELL_CLASS = cn(
-  'not-prose flex min-w-0 flex-col gap-3 overflow-hidden',
+  'not-prose doc-feed-post flex min-w-0 flex-col',
   'scroll-mt-28',
   DOC_FEED_TOPIC_CARD_CLASS
 );
@@ -73,8 +73,10 @@ const DocumentationPage = () => {
 
   const topicIdRef = useRef(topic?.id);
   const slugRef = useRef(slug);
-  topicIdRef.current = topic?.id;
-  slugRef.current = slug;
+  useLayoutEffect(() => {
+    topicIdRef.current = topic?.id;
+    slugRef.current = slug;
+  });
 
   const [inViewSlug, setInViewSlug] = useState(slug ?? '');
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -258,7 +260,7 @@ const DocumentationPage = () => {
 
   return (
     <div className="w-full">
-      <div className="max-w-none min-w-0 space-y-6 pb-20">
+      <div className="max-w-none min-w-0 flex flex-col gap-8 pb-24 sm:gap-10 lg:gap-14">
         {flatItems.map((item, idx) => (
           <DocsFeedTopicSection
             key={item.id}

@@ -162,7 +162,7 @@
   /* Off-screen doc feed cards: skip layout/paint until needed (works with native scroll). */
   .doc-feed-section {
     content-visibility: auto;
-    contain-intrinsic-size: 720px 640px;
+    contain-intrinsic-size: 740px 720px;
   }
 
   @media (prefers-reduced-motion: reduce) {
