@@ -201,5 +201,3 @@
 
 This cheat sheet covers most **Tailwind CSS** utilities. For more details, check
 the [official docs](https://tailwindcss.com/docs). 🚀
-
-

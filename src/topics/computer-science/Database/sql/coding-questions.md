@@ -339,5 +339,3 @@ the database to satisfy the query without accessing the table. Benefits:
 These questions cover a wide range of SQL concepts that are commonly tested in
 technical interviews, from basic syntax to advanced database design and
 optimization techniques.
-
-

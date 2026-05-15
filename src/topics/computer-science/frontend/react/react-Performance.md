@@ -1512,5 +1512,3 @@ Focus on the most impactful optimizations first:
 By following these practices and using the techniques outlined in this guide,
 you can build React applications that are fast, responsive, and provide
 excellent user experiences across all devices and network conditions.
-
-

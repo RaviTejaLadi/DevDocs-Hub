@@ -495,5 +495,3 @@ management in React with TypeScript. Each example follows the same pattern:
 
 This pattern provides a clean separation of concerns and makes your state
 management predictable and type-safe.
-
-

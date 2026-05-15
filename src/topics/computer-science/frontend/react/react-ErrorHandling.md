@@ -645,5 +645,3 @@ errors in React applications. Key takeaways:
 Error boundaries are essential for building resilient React applications that
 gracefully handle failures and maintain good user experience even when things go
 wrong.
-
-

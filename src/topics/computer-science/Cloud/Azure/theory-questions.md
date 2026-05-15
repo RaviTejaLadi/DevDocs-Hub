@@ -770,5 +770,3 @@ interviews. The topics range from basic cloud concepts to advanced Azure
 services, providing a comprehensive foundation for Azure-related roles. Remember
 to supplement this knowledge with hands-on experience using the Azure portal and
 services to better understand practical implementations.
-
-

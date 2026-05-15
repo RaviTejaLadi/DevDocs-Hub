@@ -229,5 +229,3 @@ useMutation<ResponseData, Error, Variables>({...});
 
 These hooks cover 95% of React-Query use cases. The library handles caching,
 retries, deduping, and more automatically!
-
-

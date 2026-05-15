@@ -273,5 +273,3 @@
 These questions cover fundamental to advanced Express.js concepts that are
 commonly asked in interviews. Understanding these will give you a solid
 foundation for Express.js development roles.
-
-

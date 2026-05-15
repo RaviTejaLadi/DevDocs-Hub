@@ -867,5 +867,3 @@ test('should not have accessibility violations', async () => {
 This comprehensive guide covers the essential aspects of React testing, from
 basic concepts to advanced patterns. Each section provides practical examples
 that you can adapt to your specific testing needs.
-
-

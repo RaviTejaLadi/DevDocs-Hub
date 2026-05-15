@@ -2169,5 +2169,3 @@ echo "✅ Security checks passed."
 🎯 These security measures work together to create a comprehensive defense
 against common web vulnerabilities. Always implement multiple layers of security
 rather than relying on a single protection mechanism! 🛡️✨
-
-

@@ -98,5 +98,3 @@ app.get('/users/:userId', (req, res) => {
 Express provides just the core features you need while allowing you to add other
 libraries as needed (for databases, authentication, etc.), making it extremely
 flexible for various use cases.
-
-

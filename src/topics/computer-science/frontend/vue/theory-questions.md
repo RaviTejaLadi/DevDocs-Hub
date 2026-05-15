@@ -314,5 +314,3 @@ const user = inject('user');
 These questions cover core concepts like reactivity, components, state
 management (Vuex/Pinia), Vue 3 features (Composition API, Suspense), and best
 practices. Mastery of these topics is essential for Vue.js proficiency!
-
-

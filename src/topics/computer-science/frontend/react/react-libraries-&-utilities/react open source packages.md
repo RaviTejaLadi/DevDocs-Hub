@@ -121,5 +121,3 @@
 - **immer** – Immutability made easy (used internally in Zustand, Redux
   Toolkit).
 - **react-error-boundary** – Better way to handle error boundaries.
-
-

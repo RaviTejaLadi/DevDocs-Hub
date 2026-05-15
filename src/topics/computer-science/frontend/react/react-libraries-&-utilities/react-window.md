@@ -313,5 +313,3 @@ bundle size.
 For most applications with large scrollable content, implementing React-Window
 will lead to immediate and noticeable performance improvements, creating a much
 better user experience.
-
-

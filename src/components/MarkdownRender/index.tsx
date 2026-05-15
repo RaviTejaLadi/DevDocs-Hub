@@ -16,12 +16,10 @@ import { buildMarkdownComponents } from './buildMarkdownComponents';
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
 
 /** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
-const DOC_READING_PANE_MAX_CLASS =
-  'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
+const DOC_READING_PANE_MAX_CLASS = 'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
 
 /** Scrollable body max = pane cap minus slide footer (controls + border). */
-const DOC_SLIDE_BODY_MAX_CLASS =
-  'max-h-[calc(100dvh-9rem-3rem)] sm:max-h-[calc(100dvh-9.5rem-3rem)]';
+const DOC_SLIDE_BODY_MAX_CLASS = 'max-h-[calc(100dvh-9rem-3rem)] sm:max-h-[calc(100dvh-9.5rem-3rem)]';
 
 const MAX_SLIDE_CHARS = 4200;
 const MERGE_TINY_UNDER = 260;
@@ -179,7 +177,12 @@ export function extractSlideTitle(markdown: string): string {
   const m2 = /^\s*##\s+(.+)$/m.exec(markdown);
   if (m2) return m2[1].trim();
   const line = markdown.split('\n').find((l) => l.trim().length > 0);
-  return (line ?? '').replace(/^#+\s*/, '').trim().slice(0, 96) || '—';
+  return (
+    (line ?? '')
+      .replace(/^#+\s*/, '')
+      .trim()
+      .slice(0, 96) || '—'
+  );
 }
 
 function scopePrefixFromTopicId(topicIdOrScope?: string): string {
@@ -279,14 +282,7 @@ const MarkdownRenderInner = ({
       onReachDocumentEnd,
       onReachDocumentStart,
     };
-  }, [
-    activeSlide,
-    slides.length,
-    hasNextDocument,
-    hasPrevDocument,
-    onReachDocumentEnd,
-    onReachDocumentStart,
-  ]);
+  }, [activeSlide, slides.length, hasNextDocument, hasPrevDocument, onReachDocumentEnd, onReachDocumentStart]);
 
   useEffect(() => {
     setActiveSlide(0);
@@ -587,9 +583,7 @@ const MarkdownRenderInner = ({
               <div
                 className={cn(
                   'flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
-                  fillViewportCard
-                    ? 'h-full max-h-full min-h-0 flex-1'
-                    : DOC_READING_PANE_MAX_CLASS,
+                  fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
                   'rounded-2xl border border-border/40 bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
                   'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
@@ -601,9 +595,7 @@ const MarkdownRenderInner = ({
                   className={cn(
                     'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
                     'px-5 pt-4 pb-5 sm:px-8 sm:pt-5 sm:pb-6',
-                    fillViewportCard
-                      ? 'min-h-0 flex-1'
-                      : DOC_SLIDE_BODY_MAX_CLASS
+                    fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
                   <div className="relative z-10 mx-auto w-full max-w-200">

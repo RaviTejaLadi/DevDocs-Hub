@@ -251,5 +251,3 @@ export function TodoList() {
 
 Zustand keeps state management simple while being powerful enough for most
 applications!
-
-

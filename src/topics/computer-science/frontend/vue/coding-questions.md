@@ -393,5 +393,3 @@ errorCaptured(err, vm, info) {
 
 These questions cover fundamental to advanced Vue.js concepts that are commonly
 asked in interviews and practical coding scenarios.
-
-

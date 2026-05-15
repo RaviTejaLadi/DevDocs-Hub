@@ -451,5 +451,3 @@ function CommentForm() {
 
 These examples provide practical, client-side security implementations that
 align with OWASP best practices! 🎯✨
-
-

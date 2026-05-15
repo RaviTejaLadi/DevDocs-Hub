@@ -189,7 +189,10 @@ export function buildMarkdownComponents({
         <blockquote className="md-quote">
           <div className={cn('flex items-start', c ? 'gap-3' : 'gap-3')}>
             <Quote
-              className={cn('shrink-0 text-(--md-purple) -scale-x-100', c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5')}
+              className={cn(
+                'shrink-0 text-(--md-purple) -scale-x-100',
+                c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5'
+              )}
               strokeWidth={2.2}
             />
             <div
@@ -325,7 +328,9 @@ export function buildMarkdownComponents({
               PreTag="div"
               className={cn(
                 'm-0! bg-transparent! p-5!',
-                c ? 'text-[0.9rem] sm:text-[0.94rem] leading-[1.72]! tracking-[0.02em]!' : 'text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!'
+                c
+                  ? 'text-[0.9rem] sm:text-[0.94rem] leading-[1.72]! tracking-[0.02em]!'
+                  : 'text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!'
               )}
               showLineNumbers={false}
               customStyle={{ background: 'transparent', margin: 0 }}

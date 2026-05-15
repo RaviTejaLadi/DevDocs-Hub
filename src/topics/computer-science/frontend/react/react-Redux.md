@@ -997,5 +997,3 @@ This comprehensive guide covers all essential aspects of React Redux state
 management, from basic concepts to advanced patterns and real-world examples.
 The modern Redux Toolkit approach is emphasized throughout, as it's the
 recommended way to use Redux in new applications.
-
-

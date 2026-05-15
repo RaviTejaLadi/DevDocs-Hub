@@ -79,32 +79,32 @@ const LandingPage = () => {
         </p>
 
         <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t('landing.searchTopics')}
-                className="pl-10 h-11 rounded-lg border-border/40 bg-background text-foreground placeholder:text-muted-foreground"
-              />
-            </div>
-            <div className="flex items-center justify-center gap-1 rounded-lg border border-border/40 bg-muted/30 p-1">
-              <Button
-                size="icon"
-                variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
-                onClick={() => setViewMode('grid')}
-              >
-                <Grid3x3 className="w-4 h-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant={viewMode === 'list' ? 'secondary' : 'ghost'}
-                onClick={() => setViewMode('list')}
-              >
-                <List className="w-4 h-4" />
-              </Button>
-            </div>
+          <div className="relative flex-1">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t('landing.searchTopics')}
+              className="pl-10 h-11 rounded-lg border-border/40 bg-background text-foreground placeholder:text-muted-foreground"
+            />
           </div>
+          <div className="flex items-center justify-center gap-1 rounded-lg border border-border/40 bg-muted/30 p-1">
+            <Button
+              size="icon"
+              variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
+              onClick={() => setViewMode('grid')}
+            >
+              <Grid3x3 className="w-4 h-4" />
+            </Button>
+            <Button
+              size="icon"
+              variant={viewMode === 'list' ? 'secondary' : 'ghost'}
+              onClick={() => setViewMode('list')}
+            >
+              <List className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
 
         <div className="mt-6">
           <Button
@@ -119,39 +119,39 @@ const LandingPage = () => {
       </header>
 
       <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
-          <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
-            {STREAMS.map((stream) => {
-              const isActive = stream.id === activeStream?.id;
-              return (
-                <button
-                  key={stream.id}
-                  type="button"
-                  onClick={() => setActiveStreamId(stream.id)}
-                  aria-pressed={isActive}
+        <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+          {STREAMS.map((stream) => {
+            const isActive = stream.id === activeStream?.id;
+            return (
+              <button
+                key={stream.id}
+                type="button"
+                onClick={() => setActiveStreamId(stream.id)}
+                aria-pressed={isActive}
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-all',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  isActive
+                    ? 'border-primary/50 bg-primary/10 text-primary shadow-sm'
+                    : 'border-border/40 bg-card/40 text-muted-foreground hover:bg-accent hover:text-foreground'
+                )}
+              >
+                {stream.icon && <span className="shrink-0">{stream.icon}</span>}
+                <span className="font-medium">
+                  <TranslatedText text={stream.title} />
+                </span>
+                <span
                   className={cn(
-                    'inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-all',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    isActive
-                      ? 'border-primary/50 bg-primary/10 text-primary shadow-sm'
-                      : 'border-border/40 bg-card/40 text-muted-foreground hover:bg-accent hover:text-foreground'
+                    'ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold',
+                    isActive ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
                   )}
                 >
-                  {stream.icon && <span className="shrink-0">{stream.icon}</span>}
-                  <span className="font-medium">
-                    <TranslatedText text={stream.title} />
-                  </span>
-                  <span
-                    className={cn(
-                      'ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold',
-                      isActive ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground'
-                    )}
-                  >
-                    {stream.topics.length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+                  {stream.topics.length}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </nav>
 
       {activeStream?.description && (
@@ -200,90 +200,90 @@ const LandingPage = () => {
                   return (
                     <article
                       key={topic.id}
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            navigate(`/docs/${topic.id}/${topic.items[0].id}`);
-                          }
-                        }}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          navigate(`/docs/${topic.id}/${topic.items[0].id}`);
+                        }
+                      }}
+                      className={cn(
+                        'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
+                        'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                        viewMode === 'grid'
+                          ? 'p-5 h-full flex flex-col'
+                          : 'p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'
+                      )}
+                    >
+                      <div
                         className={cn(
-                          'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
-                          'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
-                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                           viewMode === 'grid'
-                            ? 'p-5 h-full flex flex-col'
-                            : 'p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5'
+                            ? 'flex items-start justify-between gap-2 mb-3'
+                            : 'flex items-center gap-3 shrink-0'
                         )}
                       >
-                        <div
+                        <div className={cn('shrink-0 p-2.5 rounded-lg', color.iconBg, color.iconColor)}>
+                          {topic.icon}
+                        </div>
+                        {viewMode === 'grid' && (
+                          <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
+                            {t('landing.topicsCount', { count: topic.items.length })}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
+                        <h3
                           className={cn(
-                            viewMode === 'grid'
-                              ? 'flex items-start justify-between gap-2 mb-3'
-                              : 'flex items-center gap-3 shrink-0'
+                            'font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
+                            viewMode === 'list' ? 'text-base' : 'mb-1'
                           )}
                         >
-                          <div className={cn('shrink-0 p-2.5 rounded-lg', color.iconBg, color.iconColor)}>
-                            {topic.icon}
-                          </div>
-                          {viewMode === 'grid' && (
-                            <span className="text-xs font-medium px-2 py-0.5 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                              {t('landing.topicsCount', { count: topic.items.length })}
+                          <TranslatedText text={topic.title} />
+                        </h3>
+                        <p
+                          className={cn(
+                            'text-sm text-muted-foreground',
+                            viewMode === 'list' ? 'line-clamp-1 sm:line-clamp-2' : 'mb-3 line-clamp-2'
+                          )}
+                        >
+                          <TranslatedText text={topic.description} />
+                        </p>
+
+                        <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
+                          {badgeItems.map((item, badgeIndex) => (
+                            <span
+                              key={item.id}
+                              className={cn(
+                                'inline-flex max-w-full items-center rounded-md border px-2.5 py-1 text-xs',
+                                badgeToneClasses[badgeIndex % badgeToneClasses.length]
+                              )}
+                            >
+                              <span className="truncate">
+                                <TranslatedText text={item.title} />
+                              </span>
+                            </span>
+                          ))}
+                          {extraBadgeCount > 0 && (
+                            <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
+                              {t('landing.more', { count: extraBadgeCount })}
                             </span>
                           )}
                         </div>
+                      </div>
 
-                        <div className={cn(viewMode === 'list' ? 'flex-1 min-w-0 space-y-2' : 'flex-1')}>
-                          <h3
-                            className={cn(
-                              'font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
-                              viewMode === 'list' ? 'text-base' : 'mb-1'
-                            )}
-                          >
-                            <TranslatedText text={topic.title} />
-                          </h3>
-                          <p
-                            className={cn(
-                              'text-sm text-muted-foreground',
-                              viewMode === 'list' ? 'line-clamp-1 sm:line-clamp-2' : 'mb-3 line-clamp-2'
-                            )}
-                          >
-                            <TranslatedText text={topic.description} />
-                          </p>
-
-                          <div className={cn('flex flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
-                            {badgeItems.map((item, badgeIndex) => (
-                              <span
-                                key={item.id}
-                                className={cn(
-                                  'inline-flex max-w-full items-center rounded-md border px-2.5 py-1 text-xs',
-                                  badgeToneClasses[badgeIndex % badgeToneClasses.length]
-                                )}
-                              >
-                                <span className="truncate">
-                                  <TranslatedText text={item.title} />
-                                </span>
-                              </span>
-                            ))}
-                            {extraBadgeCount > 0 && (
-                              <span className="inline-flex items-center rounded-md border border-border/40 bg-muted/35 px-2.5 py-1 text-xs text-muted-foreground/90">
-                                {t('landing.more', { count: extraBadgeCount })}
-                              </span>
-                            )}
-                          </div>
+                      {viewMode === 'list' && (
+                        <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
+                          <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
+                            {t('landing.topicsCount', { count: topic.items.length })}
+                          </span>
+                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                         </div>
-
-                        {viewMode === 'list' && (
-                          <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto pt-1 sm:pt-0">
-                            <span className="text-xs font-medium px-2 py-1 rounded-md shrink-0 border border-border/40 bg-muted/35 text-muted-foreground/90">
-                              {t('landing.topicsCount', { count: topic.items.length })}
-                            </span>
-                            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-                          </div>
-                        )}
-                      </article>
+                      )}
+                    </article>
                   );
                 })}
               </div>

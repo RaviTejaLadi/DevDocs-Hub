@@ -758,5 +758,3 @@ This comprehensive guide covers all aspects of React Server-Side Rendering, from
 basic concepts to advanced implementation patterns. Each section builds upon the
 previous one, providing a structured learning path for understanding and
 implementing SSR in React applications.
-
-

@@ -68,5 +68,3 @@ server.listen(3000, () => {
 Node.js has revolutionized backend development by allowing developers to use
 JavaScript on both the frontend and backend, enabling full-stack JavaScript
 development. 🔄
-
-

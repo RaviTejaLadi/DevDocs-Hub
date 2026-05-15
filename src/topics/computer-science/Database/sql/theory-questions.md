@@ -368,5 +368,3 @@ tolerance) or AP (availability and partition tolerance).
 - BASE (Basically Available, Soft state, Eventually consistent) vs. ACID
 - Often no joins or complex transactions
 - Better for unstructured or semi-structured data
-
-

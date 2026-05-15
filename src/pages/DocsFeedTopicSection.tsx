@@ -42,9 +42,7 @@ function DocsFeedTopicSectionInner({
   const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const [outlineOpen, setOutlineOpen] = useState(false);
-  const [contentMounted, setContentMounted] = useState(
-    () => idx < EAGER_MOUNT_COUNT || item.id === routeSlug
-  );
+  const [contentMounted, setContentMounted] = useState(() => idx < EAGER_MOUNT_COUNT || item.id === routeSlug);
 
   useEffect(() => {
     if (item.id === routeSlug) {
@@ -104,11 +102,7 @@ function DocsFeedTopicSectionInner({
   const isActive = inViewSlug === item.id;
 
   return (
-    <section
-      ref={sectionRef}
-      id={`doc-feed-${item.id}`}
-      className={cn('doc-feed-section', sectionClassName)}
-    >
+    <section ref={sectionRef} id={`doc-feed-${item.id}`} className={cn('doc-feed-section', sectionClassName)}>
       <div
         className={cn(
           'doc-feed-post-surface flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',

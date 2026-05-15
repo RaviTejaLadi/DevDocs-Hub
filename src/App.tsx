@@ -17,13 +17,7 @@ import TermsOfServicePage from './pages/TermsOfServicePage';
 import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
 import CodeEditorPage from './pages/CodeEditorPage';
 
-const DocsDesktopSidebarToggle = ({
-  collapsed,
-  onToggle,
-}: {
-  collapsed: boolean;
-  onToggle: () => void;
-}) => {
+const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();
   return (
     <TooltipProvider delayDuration={200}>

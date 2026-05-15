@@ -79,79 +79,79 @@ function TopicListPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
       <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-primary/10 p-6 sm:p-8 shadow-[0_18px_45px_-32px_hsl(var(--foreground)/0.5)]">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div className="space-y-4">
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 rounded-md border border-border/35 bg-card/45 px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <ChevronLeft className="h-4 w-4" />
-                {t('interview.backToOverview')}
-              </Link>
-              <div className="flex items-start gap-3">
-                <div className="p-2.5 rounded-xl border border-primary/20 bg-primary/10">
-                  <HelpCircle className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">
-                    {t('interview.pageTitle')}
-                  </h1>
-                  <p className="text-muted-foreground mt-1 max-w-2xl">{t('interview.pageDescription')}</p>
-                </div>
+        <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="space-y-4">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-md border border-border/35 bg-card/45 px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t('interview.backToOverview')}
+            </Link>
+            <div className="flex items-start gap-3">
+              <div className="p-2.5 rounded-xl border border-primary/20 bg-primary/10">
+                <HelpCircle className="h-6 w-6 text-primary" />
               </div>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                {t('interview.questions', { count: totalQuestions })}
-              </Badge>
-              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                {t('interview.topics', { count: totalTopics })}
-              </Badge>
-              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                {t('interview.categories', { count: totalCategories })}
-              </Badge>
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">
+                  {t('interview.pageTitle')}
+                </h1>
+                <p className="text-muted-foreground mt-1 max-w-2xl">{t('interview.pageDescription')}</p>
+              </div>
             </div>
           </div>
-        </section>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
+              {t('interview.questions', { count: totalQuestions })}
+            </Badge>
+            <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
+              {t('interview.topics', { count: totalTopics })}
+            </Badge>
+            <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
+              {t('interview.categories', { count: totalCategories })}
+            </Badge>
+          </div>
+        </div>
+      </section>
 
       <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
-          <CardContent className="pt-6 space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <Search className="h-4 w-4 text-primary" />
-                {t('interview.filters')}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                {t('interview.showing', { shown: filteredTopicsCount, total: totalTopics })}
-              </p>
+        <CardContent className="pt-6 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <Search className="h-4 w-4 text-primary" />
+              {t('interview.filters')}
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="relative min-w-0 flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-                <Input
-                  type="search"
-                  placeholder={t('interview.searchQuestions')}
-                  value={topicSearchQuery}
-                  onChange={(e) => setTopicSearchQuery(e.target.value)}
-                  className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30"
-                />
-              </div>
-              {hasTopicSearch && (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="text-muted-foreground"
-                  onClick={() => setTopicSearchQuery('')}
-                >
-                  <X className="h-4 w-4 mr-1" />
-                  {t('interview.clearFilters')}
-                </Button>
-              )}
+            <p className="text-xs text-muted-foreground">
+              {t('interview.showing', { shown: filteredTopicsCount, total: totalTopics })}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="relative min-w-0 flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+              <Input
+                type="search"
+                placeholder={t('interview.searchQuestions')}
+                value={topicSearchQuery}
+                onChange={(e) => setTopicSearchQuery(e.target.value)}
+                className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30"
+              />
             </div>
-          </CardContent>
-        </Card>
+            {hasTopicSearch && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground"
+                onClick={() => setTopicSearchQuery('')}
+              >
+                <X className="h-4 w-4 mr-1" />
+                {t('interview.clearFilters')}
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="space-y-6">
         {categories.map((category) => {
@@ -159,47 +159,50 @@ function TopicListPage() {
           if (!topics.length) return null;
 
           return (
-            <section key={category} className="rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm p-5 sm:p-6 shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.65)]">
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <h2 className="text-lg font-semibold text-foreground">
-                    <TranslatedText text={category} />
-                  </h2>
-                  <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {topics.map((topic) => {
-                    const count = countForTopic(topic.id);
-                    const Icon = topic.icon;
-                    return (
-                        <Link
-                          key={topic.id}
-                          to={`/interview-questions/${topic.id}`}
-                          className={cn(
-                            'group rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-4 transition-all duration-200 block shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
-                            'hover:border-primary/40 hover:bg-card hover:shadow-[0_14px_28px_-20px_hsl(var(--foreground)/0.6)] hover:-translate-y-0.5'
-                          )}
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
-                                <Icon className="h-5 w-5" />
-                              </div>
-                              <div className="min-w-0">
-                                <p className="font-semibold text-foreground truncate">
-                                  <TranslatedText text={topic.label} />
-                                </p>
-                                <p className="text-xs text-muted-foreground mt-0.5">
-                                  {t('interview.topicQuestionsCount', { count })}
-                                </p>
-                              </div>
-                            </div>
-                            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
+            <section
+              key={category}
+              className="rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm p-5 sm:p-6 shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.65)]"
+            >
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <h2 className="text-lg font-semibold text-foreground">
+                  <TranslatedText text={category} />
+                </h2>
+                <Badge variant="outline">{t('interview.topicCount', { count: topics.length })}</Badge>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {topics.map((topic) => {
+                  const count = countForTopic(topic.id);
+                  const Icon = topic.icon;
+                  return (
+                    <Link
+                      key={topic.id}
+                      to={`/interview-questions/${topic.id}`}
+                      className={cn(
+                        'group rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-4 transition-all duration-200 block shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
+                        'hover:border-primary/40 hover:bg-card hover:shadow-[0_14px_28px_-20px_hsl(var(--foreground)/0.6)] hover:-translate-y-0.5'
+                      )}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <Icon className="h-5 w-5" />
                           </div>
-                        </Link>
-                    );
-                  })}
-                </div>
-              </section>
+                          <div className="min-w-0">
+                            <p className="font-semibold text-foreground truncate">
+                              <TranslatedText text={topic.label} />
+                            </p>
+                            <p className="text-xs text-muted-foreground mt-0.5">
+                              {t('interview.topicQuestionsCount', { count })}
+                            </p>
+                          </div>
+                        </div>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
           );
         })}
         {filteredTopicsCount === 0 && (
@@ -281,125 +284,125 @@ function TopicDetailPage() {
       </Button>
 
       <Card className="overflow-hidden border-border/40 bg-linear-to-br from-card via-card to-primary/10 shadow-[0_20px_45px_-30px_hsl(var(--foreground)/0.55)]">
-          <CardHeader className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-start gap-3">
-                <div className="p-3 rounded-xl border border-primary/20 bg-primary/10">
-                  <Icon className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
-                    {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
-                  </CardTitle>
-                  <CardDescription className="mt-2 text-sm sm:text-base">
-                    {t('interview.filterDescription')}
-                  </CardDescription>
-                </div>
+        <CardHeader className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="p-3 rounded-xl border border-primary/20 bg-primary/10">
+                <Icon className="h-7 w-7 text-primary" />
               </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                  <Code2 className="h-3.5 w-3.5 mr-1" />
-                  {codingCount} {t('interview.coding')}
-                </Badge>
-                <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                  <BookOpen className="h-3.5 w-3.5 mr-1" />
-                  {theoryCount} {t('interview.theory')}
-                </Badge>
+              <div>
+                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
+                  {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
+                </CardTitle>
+                <CardDescription className="mt-2 text-sm sm:text-base">
+                  {t('interview.filterDescription')}
+                </CardDescription>
               </div>
             </div>
-          </CardHeader>
-        </Card>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
+                <Code2 className="h-3.5 w-3.5 mr-1" />
+                {codingCount} {t('interview.coding')}
+              </Badge>
+              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
+                <BookOpen className="h-3.5 w-3.5 mr-1" />
+                {theoryCount} {t('interview.theory')}
+              </Badge>
+            </div>
+          </div>
+        </CardHeader>
+      </Card>
 
       <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
-          <CardContent className="pt-6 space-y-5">
-            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
-              <SlidersHorizontal className="h-4 w-4 text-primary" />
-              {t('interview.filters')}
-            </div>
+        <CardContent className="pt-6 space-y-5">
+          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <SlidersHorizontal className="h-4 w-4 text-primary" />
+            {t('interview.filters')}
+          </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setLevelFilter('all')}
+              className={cn(
+                'px-3 py-1.5 rounded-md text-sm font-medium border transition-colors',
+                levelFilter === 'all'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                  : 'bg-muted/35 text-muted-foreground border-border/30 hover:bg-muted/65 hover:text-foreground'
+              )}
+            >
+              {t('interview.allLevels')}
+            </button>
+            {LEVEL_ORDER.map((lvl) => (
               <button
+                key={lvl}
                 type="button"
-                onClick={() => setLevelFilter('all')}
+                onClick={() => setLevelFilter(lvl)}
                 className={cn(
-                  'px-3 py-1.5 rounded-md text-sm font-medium border transition-colors',
-                  levelFilter === 'all'
-                    ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                    : 'bg-muted/35 text-muted-foreground border-border/30 hover:bg-muted/65 hover:text-foreground'
+                  'px-2.5 py-1 rounded-md text-sm font-semibold border transition-all',
+                  levelPillClass[lvl],
+                  levelFilter === lvl
+                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-sm'
+                    : 'opacity-85 hover:opacity-100'
                 )}
               >
-                {t('interview.allLevels')}
+                {LEVEL_LABELS[lvl]}
               </button>
-              {LEVEL_ORDER.map((lvl) => (
-                <button
-                  key={lvl}
-                  type="button"
-                  onClick={() => setLevelFilter(lvl)}
-                  className={cn(
-                    'px-2.5 py-1 rounded-md text-sm font-semibold border transition-all',
-                    levelPillClass[lvl],
-                    levelFilter === lvl
-                      ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-sm'
-                      : 'opacity-85 hover:opacity-100'
-                  )}
-                >
-                  {LEVEL_LABELS[lvl]}
-                </button>
-              ))}
-            </div>
+            ))}
+          </div>
 
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-              <div className="flex items-center gap-2">
-                <Switch
-                  id="only-code"
-                  checked={onlyCodeChallenges}
-                  onCheckedChange={(checked) => {
-                    setOnlyCodeChallenges(checked);
-                    if (checked) setOnlyTheory(false);
-                  }}
-                />
-                <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
-                  {t('interview.onlyCoding')}
-                </label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Switch
-                  id="only-theory"
-                  checked={onlyTheory}
-                  onCheckedChange={(checked) => {
-                    setOnlyTheory(checked);
-                    if (checked) setOnlyCodeChallenges(false);
-                  }}
-                />
-                <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
-                  {t('interview.onlyTheory')}
-                </label>
-              </div>
-              <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-                <Input
-                  type="search"
-                  placeholder={t('interview.searchQuestions')}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30"
-                />
-              </div>
-              {hasAnyFilters && (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="text-muted-foreground"
-                  onClick={clearAllFilters}
-                >
-                  <X className="h-4 w-4 mr-1" />
-                  {t('interview.clearFilters')}
-                </Button>
-              )}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+            <div className="flex items-center gap-2">
+              <Switch
+                id="only-code"
+                checked={onlyCodeChallenges}
+                onCheckedChange={(checked) => {
+                  setOnlyCodeChallenges(checked);
+                  if (checked) setOnlyTheory(false);
+                }}
+              />
+              <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
+                {t('interview.onlyCoding')}
+              </label>
             </div>
-          </CardContent>
-        </Card>
+            <div className="flex items-center gap-2">
+              <Switch
+                id="only-theory"
+                checked={onlyTheory}
+                onCheckedChange={(checked) => {
+                  setOnlyTheory(checked);
+                  if (checked) setOnlyCodeChallenges(false);
+                }}
+              />
+              <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
+                {t('interview.onlyTheory')}
+              </label>
+            </div>
+            <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+              <Input
+                type="search"
+                placeholder={t('interview.searchQuestions')}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30"
+              />
+            </div>
+            {hasAnyFilters && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground"
+                onClick={clearAllFilters}
+              >
+                <X className="h-4 w-4 mr-1" />
+                {t('interview.clearFilters')}
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground">
         <p>{t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}</p>

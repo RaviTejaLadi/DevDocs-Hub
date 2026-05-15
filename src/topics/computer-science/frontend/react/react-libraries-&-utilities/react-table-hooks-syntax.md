@@ -304,5 +304,3 @@ Each hook integrates with the table instance to provide specific functionality
 while maintaining a clean, composable API. The headless nature means you're
 responsible for rendering the UI, but you get complete control over the markup
 and styling.
-
-

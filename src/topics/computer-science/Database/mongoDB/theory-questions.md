@@ -290,5 +290,3 @@ Better for offline-first apps |
 - When your data is highly relational
 - For applications requiring strong schema enforcement at database level
 - When your team has strong RDBMS expertise but no MongoDB experience
-
-

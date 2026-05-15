@@ -687,5 +687,3 @@ prop drilling. When used correctly with proper patterns and optimizations, it
 can significantly improve your application's architecture and maintainability.
 Remember to keep contexts focused, provide good defaults, and consider
 performance implications when designing your context structure.
-
-

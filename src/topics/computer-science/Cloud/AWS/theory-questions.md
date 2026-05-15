@@ -698,5 +698,3 @@ scenarios to deepen your understanding.
 - Understand cost optimization principles
 - Study AWS Well-Architected Framework
 - Review AWS case studies and whitepapers
-
-

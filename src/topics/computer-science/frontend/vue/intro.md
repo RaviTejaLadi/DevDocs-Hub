@@ -114,5 +114,3 @@ popularity due to its simplicity, flexibility, and performance.
 Vue.js is an excellent choice for developers who want a framework that's
 powerful yet approachable, with a gentle learning curve that doesn't sacrifice
 capability.
-
-

@@ -607,5 +607,3 @@ npm install react-hook-form @hookform/resolvers zod
 - Cleaner code
 - Less boilerplate
 - Automatic TypeScript type generation
-
-

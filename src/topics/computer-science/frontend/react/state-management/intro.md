@@ -181,5 +181,3 @@ Manage state transitions explicitly
 your problem with the least complexity"
 
 Happy state managing! 🎛️
-
-

@@ -358,5 +358,3 @@ createRoot(document.getElementById('root')!).render(
 React Router DOM provides a flexible and powerful way to handle routing in React
 applications, from small single-page apps to large enterprise applications with
 complex routing needs.
-
-

@@ -1933,5 +1933,3 @@ async function verifyToken(token) {
   return token === 'valid-token';
 }
 ```
-
-

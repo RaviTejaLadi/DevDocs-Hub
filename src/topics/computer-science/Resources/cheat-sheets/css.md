@@ -33,15 +33,15 @@
 
 ### Attribute Selectors
 
-| Selector             | Description                      | Example                                           |
-| -------------------- | -------------------------------- | ------------------------------------------------- |
-| `[attr]`             | Has attribute                    | `[title] { cursor: help; }`                       |
-| `[attr="value"]`     | Exact match                      | `[type="text"] { border: 1px solid; }`            |
-| `[attr^="value"]`    | Starts with                      | `[href^="https"] { color: green; }`               |
-| `[attr$="value"]`    | Ends with                        | `[href$=".pdf"] { color: red; }`                  |
-| `[attr*="value"]`    | Contains                         | `[class*="btn"] { padding: 10px; }`               |
-| `[attr~="value"]`    | Word match                       | `[class~="active"] { font-weight: bold; }`        |
-| `[attr\|="value"]`   | Language prefix (hyphen match)   | `[lang\|="en"] { font-family: Arial, sans-serif; }` |
+| Selector           | Description                    | Example                                             |
+| ------------------ | ------------------------------ | --------------------------------------------------- |
+| `[attr]`           | Has attribute                  | `[title] { cursor: help; }`                         |
+| `[attr="value"]`   | Exact match                    | `[type="text"] { border: 1px solid; }`              |
+| `[attr^="value"]`  | Starts with                    | `[href^="https"] { color: green; }`                 |
+| `[attr$="value"]`  | Ends with                      | `[href$=".pdf"] { color: red; }`                    |
+| `[attr*="value"]`  | Contains                       | `[class*="btn"] { padding: 10px; }`                 |
+| `[attr~="value"]`  | Word match                     | `[class~="active"] { font-weight: bold; }`          |
+| `[attr\|="value"]` | Language prefix (hyphen match) | `[lang\|="en"] { font-family: Arial, sans-serif; }` |
 
 ### Pseudo-classes
 
@@ -448,5 +448,3 @@
 | **Conic**        | Gradient rotates around a center point, creating a pie-chart-like effect.         | `conic-gradient(red, yellow, green)` sweeps through colors like a color wheel.           |
 | **Repeating**    | Repeats a gradient pattern until filling the space.                               | `repeating-linear-gradient(45deg, red, red 10px, blue 10px, blue 20px)` creates stripes. |
 | **Custom Stops** | Allows precise control over color transition points.                              | `linear-gradient(red 0%, yellow 50%, green 100%)` places yellow at the midpoint.         |
-
-
