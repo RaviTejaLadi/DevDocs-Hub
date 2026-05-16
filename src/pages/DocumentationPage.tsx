@@ -13,7 +13,7 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
-import { ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -1006,7 +1006,10 @@ const DocumentationPage = () => {
           aria-expanded={topicBrowserOpen}
           aria-label={t('docs.topicBrowserTrigger')}
           className={cn(
-            'fixed z-60 inline-flex h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+            'fixed z-60 inline-flex size-11 rounded-full bg-card/85 shadow-lg backdrop-blur-md',
+            'bg-linear-to-br from-card/95 via-card/88 to-muted/25 dark:from-card/90 dark:via-card/82 dark:to-muted/15',
+            'shadow-[0_10px_34px_-14px_hsl(var(--primary)/0.42)]',
+            'transition-[transform,box-shadow] duration-200 hover:shadow-[0_14px_40px_-16px_hsl(var(--primary)/0.48)] active:scale-[0.96]',
             /** Below `DocsDesktopSidebarToggle` — same column, second control. */
             'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
             'right-[max(1rem,env(safe-area-inset-right))] sm:right-6',
@@ -1014,66 +1017,87 @@ const DocumentationPage = () => {
           )}
           onClick={() => onTopicBrowserOpenChange(true)}
         >
-          <Library className="size-[1.05rem]" strokeWidth={1.75} />
+          <Library className="size-[1.1rem] text-primary" strokeWidth={1.75} />
         </Button>
         <SheetContent
           side="right"
-          overlayClassName="z-[68]"
+          overlayClassName="z-[68] backdrop-blur-[2px]"
           className={cn(
-            'flex h-full flex-col gap-0 border-border/50 border-l p-0 rounded-none shadow-xl',
-            'z-70',
+            'flex h-full flex-col gap-0 overflow-hidden border-l border-border/30 p-0 sm:rounded-l-2xl',
+            'z-70 bg-background/95 shadow-2xl backdrop-blur-xl supports-backdrop-filter:bg-background/78',
             /** Match primary docs aside widths */
-            'w-[min(18rem,calc(100vw-1rem))] max-w-full sm:w-64 lg:w-72',
-            '[&>button]:z-71 [&>button]:top-3 [&>button]:right-3'
+            'max-w-full w-80',
+            '[&>button]:z-71 [&>button]:top-3.5 [&>button]:right-3.5 [&>button]:rounded-full [&>button]:bg-background/85 [&>button]:p-2 [&>button]:shadow-md [&>button]:backdrop-blur-sm'
           )}
         >
-          <SheetHeader className="shrink-0 space-y-0.5 border-b border-border/40 px-3 py-2.5 text-left sm:px-3">
-            <SheetTitle className="pr-8 text-sm font-semibold leading-tight">
-              {t('docs.topicBrowserTitle')}
-            </SheetTitle>
-            <SheetDescription className="text-[11px] leading-snug text-muted-foreground line-clamp-2">
-              {t('docs.topicBrowserSubtitle')}
-            </SheetDescription>
+          <SheetHeader className="relative shrink-0 gap-0 overflow-hidden border-b border-border/25 px-4 pb-4 pt-5 text-left">
+            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+              <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/14 blur-3xl dark:bg-primary/18" />
+              <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
+            </div>
+            <div className="flex gap-3 pr-11">
+              <div
+                className={cn(
+                  'flex size-10 shrink-0 items-center justify-center rounded-xl',
+                  'bg-muted/45 text-primary shadow-inner [&_svg]:size-[1.15rem]'
+                )}
+                aria-hidden
+              >
+                <Library strokeWidth={1.75} />
+              </div>
+              <div className="min-w-0 flex-1 space-y-1">
+                <SheetTitle className="text-base font-semibold leading-snug tracking-tight">
+                  {t('docs.topicBrowserTitle')}
+                </SheetTitle>
+                <SheetDescription className="text-xs leading-relaxed text-muted-foreground">
+                  {t('docs.topicBrowserSubtitle')}
+                </SheetDescription>
+              </div>
+            </div>
           </SheetHeader>
-          <ScrollArea className="min-h-0 flex-1 [&>[data-slot=scroll-area-viewport]]:pb-2">
-            <div className="space-y-3 px-2 py-2 sm:px-2.5">
+          <ScrollArea className="min-h-0 flex-1 *:data-[slot=scroll-area-viewport]:pb-4">
+            <div className="px-3 py-4">
               {docsTopicBrowserSections.map(({ stream, categories }, si) => (
-                <div key={stream.id}>
-                  {si > 0 ? <Separator className="my-3" /> : null}
-                  <div className="mb-2 flex items-center gap-2">
+                <Fragment key={stream.id}>
+                  {si > 0 ? <Separator className="my-5 bg-border/30" decorative /> : null}
+                  <section className="rounded-xl bg-muted/15 p-3 dark:bg-muted/10">
+                  <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
                     <div
                       className={cn(
-                        'flex size-7 shrink-0 items-center justify-center rounded-md border border-border/45',
-                        'bg-muted/25 text-primary [&_svg]:size-[0.95rem]'
+                        'flex size-9 shrink-0 items-center justify-center rounded-lg',
+                        'bg-background/80 text-primary shadow-inner backdrop-blur-sm [&_svg]:size-[1.05rem]'
                       )}
                       aria-hidden
                     >
-                      {stream.icon ?? <FileText className="size-[0.95rem]" strokeWidth={1.75} />}
+                      {stream.icon ?? <FileText className="size-[1.05rem]" strokeWidth={1.75} />}
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-xs font-semibold leading-tight">
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <p className="truncate text-[13px] font-semibold leading-tight tracking-tight">
                         <TranslatedText text={stream.title} />
                       </p>
-                      <p className="line-clamp-1 text-[10px] leading-snug text-muted-foreground">
+                      <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-muted-foreground">
                         <TranslatedText text={stream.description} />
                       </p>
                     </div>
                   </div>
-                  <div className="space-y-0.5">
+                  <div className="flex flex-col gap-0">
                     {categories.map((cat) => {
                       const ck = `${stream.id}::${cat.key}`;
                       const open = topicBrowserOpenCats[ck] ?? false;
                       return (
-                        <div
-                          key={ck}
-                          className="overflow-hidden rounded-md border border-border/35 bg-muted/10 dark:bg-muted/5"
-                        >
+                        <Fragment key={ck}>
+                          <div
+                            className={cn(
+                              'overflow-hidden rounded-lg transition-colors',
+                              open ? 'bg-background/55 dark:bg-background/35' : 'bg-background/35 dark:bg-background/20'
+                            )}
+                          >
                           <button
                             type="button"
                             className={cn(
-                              'flex w-full items-center gap-1 px-1.5 py-1 text-left',
-                              'text-[10px] font-semibold uppercase tracking-wider text-muted-foreground',
-                              'hover:bg-muted/40 dark:hover:bg-muted/20'
+                              'flex w-full min-h-10 items-center gap-2 rounded-lg px-2 py-2 text-left transition-colors',
+                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                              open ? 'bg-muted/25 dark:bg-muted/15' : 'hover:bg-muted/30 dark:hover:bg-muted/12'
                             )}
                             aria-expanded={open}
                             onClick={() =>
@@ -1084,13 +1108,26 @@ const DocumentationPage = () => {
                             }
                           >
                             <ChevronRight
-                              className={cn('size-3.5 shrink-0 text-muted-foreground transition-transform', open && 'rotate-90')}
+                              className={cn(
+                                'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out',
+                                open && 'rotate-90 text-foreground'
+                              )}
                               aria-hidden
                             />
-                            <span className="min-w-0 truncate">{cat.label}</span>
+                            <span className="min-w-0 flex-1 truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-foreground/85">
+                              {cat.label}
+                            </span>
+                            <span
+                              className={cn(
+                                'tabular-nums rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium text-muted-foreground',
+                                open && 'bg-primary/12 text-foreground/80'
+                              )}
+                            >
+                              {cat.topics.length}
+                            </span>
                           </button>
                           {open ? (
-                            <ul className="border-t border-border/30 px-1 pb-1 pt-0.5">
+                            <ul className="animate-in fade-in slide-in-from-top-1 space-y-1 px-1.5 pb-1.5 pt-1 duration-200">
                               {cat.topics.map((visTopic) => {
                                 const jumpItem = flattenTopicItems(visTopic.items)[0];
                                 if (!jumpItem) return null;
@@ -1109,10 +1146,15 @@ const DocumentationPage = () => {
                                       variant="ghost"
                                       aria-current={isCurrentTopic ? 'page' : undefined}
                                       className={cn(
-                                        'h-auto min-h-8 w-full justify-start gap-1.5 rounded-sm px-1.5 py-1 text-left shadow-none',
-                                        'bg-transparent hover:bg-muted/55 dark:hover:bg-muted/25',
+                                        'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-lg px-2 py-2 text-left shadow-none',
+                                        'transition-colors',
+                                        'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22',
+                                        'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                                         isCurrentTopic &&
-                                          'bg-primary/12 text-foreground hover:bg-primary/15 dark:bg-primary/18'
+                                          cn(
+                                            'bg-primary/11 hover:bg-primary/14 dark:bg-primary/14 dark:hover:bg-primary/17',
+                                            'shadow-[inset_3px_0_0_0_hsl(var(--primary))]'
+                                          )
                                       )}
                                       onClick={() => {
                                         setTopicBrowserOpen(false);
@@ -1122,23 +1164,42 @@ const DocumentationPage = () => {
                                         });
                                       }}
                                     >
-                                      <span className="flex size-6 shrink-0 items-center justify-center rounded border border-border/30 bg-background/90 [&_svg]:size-3.5">
+                                      <span
+                                        className={cn(
+                                          'flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted/35 [&_svg]:size-[0.95rem]',
+                                          isCurrentTopic
+                                            ? 'bg-primary/15 text-primary'
+                                            : 'text-muted-foreground group-hover:bg-muted/50 group-hover:text-primary'
+                                        )}
+                                      >
                                         {iconEl}
                                       </span>
-                                      <span className="min-w-0 flex-1 text-[12px] font-medium leading-snug">
+                                      <span className="min-w-0 flex-1 text-[13px] font-medium leading-snug">
                                         <TranslatedText text={visTopic.title} />
                                       </span>
+                                      <ArrowRight
+                                        className={cn(
+                                          'size-4 shrink-0 transition-opacity duration-200',
+                                          isCurrentTopic
+                                            ? 'text-primary opacity-90'
+                                            : 'text-muted-foreground opacity-0 group-hover:opacity-70'
+                                        )}
+                                        strokeWidth={2}
+                                        aria-hidden
+                                      />
                                     </Button>
                                   </li>
                                 );
                               })}
                             </ul>
                           ) : null}
-                        </div>
+                          </div>
+                        </Fragment>
                       );
                     })}
                   </div>
-                </div>
+                </section>
+                </Fragment>
               ))}
             </div>
           </ScrollArea>
