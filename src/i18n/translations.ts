@@ -87,6 +87,8 @@ const en: TranslationMap = {
   'docs.searchFeedSectionLabel': 'Find in this topic',
   'docs.searchFeedHint': 'Search titles, slugs, or keywords. Use arrow keys and Enter.',
   'docs.searchFeedKbdThen': 'then',
+  'docs.feedTopicJumpNav': 'Topics loaded in this feed',
+  'docs.feedTopicJump': 'Jump to {{topic}}',
   'terms.title': 'Terms of Service',
   'terms.lastUpdated': 'Last Updated',
   'interview.backToOverview': 'Back to overview',

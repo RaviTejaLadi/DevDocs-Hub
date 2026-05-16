@@ -20,7 +20,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { useDocsFeedSync } from '@/context/docsFeedSyncContext';
 import { cn } from '@/lib/utils';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
@@ -743,11 +743,13 @@ const DocumentationPage = () => {
   );
 
   const navigateToFeedItem = useCallback(
-    (item: TopicItem, itemTopicId: string) => {
+    (item: TopicItem, itemTopicId: string, scrollBehavior: ScrollBehavior = 'auto') => {
       if (!viewportRef?.current) return;
       skipSlugScrollIntoViewRef.current = true;
       setFeedOverlay({ topicId: itemTopicId, slug: item.id, pathRevision: pathRevisionRef.current });
-      document.getElementById(docFeedSectionDomId(itemTopicId, item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      document
+        .getElementById(docFeedSectionDomId(itemTopicId, item.id))
+        ?.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
       navigate(`/docs/${itemTopicId}/${item.id}`, { replace: true });
       setInViewFeedKey(`${itemTopicId}/${item.id}`);
     },
@@ -786,8 +788,8 @@ const DocumentationPage = () => {
   }
 
   return (
-    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
-      <TooltipProvider delayDuration={200}>
+    <TooltipProvider delayDuration={200}>
+      <div className="w-full min-w-0 max-w-full overflow-x-hidden">
         <div className="max-w-none min-w-0 flex flex-col gap-5 pb-24 sm:gap-6">
           {activeStream ? (
             <div className="mb-1">
@@ -843,21 +845,67 @@ const DocumentationPage = () => {
           ))}
           {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
         </div>
-      </TooltipProvider>
 
-      {showScrollTop && (
-        <Button
-          type="button"
-          variant="secondary"
-          size="icon"
-          onClick={scrollFeedToTop}
-          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
-          aria-label={t('docs.scrollToTop')}
-        >
-          <ChevronUp className="size-5" />
-        </Button>
-      )}
-    </div>
+        {visibleTopics.length > 1 ? (
+          <nav
+            aria-label={t('docs.feedTopicJumpNav')}
+            className={cn(
+              'fixed z-60 hidden max-h-[min(50dvh,22rem)] w-10 flex-col gap-1.5 overflow-y-auto overflow-x-hidden py-0.5 pe-0.5 md:flex',
+              /** Directly under `DocsDesktopSidebarToggle` in App.tsx (nav strip + h-10 + gap). */
+              'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
+              'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+            )}
+          >
+            {visibleTopics.map((visTopic) => {
+              const firstRow = feedRows.find((r) => r.topic.id === visTopic.id);
+              if (!firstRow) return null;
+              const iconEl =
+                visTopic.icon ?? <FileText className="size-[0.95rem] shrink-0 text-primary" strokeWidth={1.75} aria-hidden />;
+              const railTopicId = inViewFeedKey ? inViewFeedKey.split('/')[0] : categoryId;
+              const isActive = railTopicId === visTopic.id;
+              return (
+                <Tooltip key={visTopic.id}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="icon"
+                      aria-current={isActive ? 'true' : undefined}
+                      aria-label={t('docs.feedTopicJump', { topic: visTopic.title })}
+                      className={cn(
+                        'h-9 w-9 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+                        isActive && 'border-primary/45 bg-primary/12 ring-1 ring-primary/25'
+                      )}
+                      onClick={() => navigateToFeedItem(firstRow.item, firstRow.topic.id, 'smooth')}
+                    >
+                      <span className="flex size-[1.35rem] items-center justify-center [&_svg]:size-[0.95rem]">{iconEl}</span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left" className="max-w-56">
+                    <span className="font-medium">
+                      <TranslatedText text={visTopic.title} />
+                    </span>
+                  </TooltipContent>
+                </Tooltip>
+              );
+            })}
+          </nav>
+        ) : null}
+
+        {showScrollTop && (
+          <Button
+            type="button"
+            variant="secondary"
+            size="icon"
+            onClick={scrollFeedToTop}
+            className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+            aria-label={t('docs.scrollToTop')}
+          >
+            <ChevronUp className="size-5" />
+          </Button>
+        )}
+      </div>
+    </TooltipProvider>
   );
 };
 
