@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { flushSync } from 'react-dom';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
-import { TOPICS, getStreamByTopicId, type Stream, type Topic, type TopicItem } from '@/topics';
+import { TOPICS, STREAMS, getStreamByTopicId, type Stream, type Topic, type TopicItem } from '@/topics';
 import {
   Fragment,
   useCallback,
@@ -9,18 +10,20 @@ import {
   useMemo,
   useRef,
   useState,
-  startTransition,
   type ReactNode,
   type RefObject,
 } from 'react';
-import { ChevronUp, Home, FileText } from 'lucide-react';
+import { ChevronUp, Home, FileText, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { useDocsFeedSync } from '@/context/docsFeedSyncContext';
 import { cn } from '@/lib/utils';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { DOCS_NAV_PRESERVE_SCROLL, DOCS_NAV_RESET_SCROLL, isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
@@ -68,6 +71,21 @@ const parseDocFeedSectionDomId = (elementId: string): { topicId: string; itemId:
 };
 
 type FeedRow = { topic: Topic; item: TopicItem };
+
+/** Options for jumping to a doc in the feed (search vs topic browser behave differently). */
+type NavigateToFeedItemOptions = {
+  scrollBehavior?: ScrollBehavior;
+  /** When true, collapse the chain to this topic only and scroll the main docs viewport to the top (banner + hero). */
+  scrollToTopicStart?: boolean;
+};
+
+const normalizeNavigateToFeedItemOptions = (
+  third?: ScrollBehavior | NavigateToFeedItemOptions
+): NavigateToFeedItemOptions => {
+  if (third === undefined) return {};
+  if (typeof third === 'string') return { scrollBehavior: third };
+  return third;
+};
 
 /** Visual polish for `/docs/:categoryId/*` — topic metadata from `@/topics`. */
 function formatTopicTrackLabel(type: string): string {
@@ -296,6 +314,7 @@ const DOC_FEED_SECTION_SHELL_CLASS = cn(
 const DocumentationPage = () => {
   const { t } = useI18n();
   const { categoryId, slug } = useDocsRouteParams();
+  const location = useLocation();
   const { setFeedOverlay, pathRevisionRef } = useDocsFeedSync();
   const navigate = useNavigate();
   const topic = TOPICS.find((t) => t.id === categoryId);
@@ -320,19 +339,51 @@ const DocumentationPage = () => {
   const pendingScrollToDomIdRef = useRef<string | null>(null);
   const feedRowsCountBeforeMutationRef = useRef(0);
   const prependSentinelRef = useRef<HTMLDivElement | null>(null);
+  const inViewSyncSuppressedUntilRef = useRef(0);
 
-  useEffect(() => {
+  /**
+   * Keep `feedRange` consistent with the route *before paint*.
+   * Critical: sidebar / search use `docsScroll: 'reset'` (or no state). Those navigations must collapse
+   * to exactly the route topic. The old “only if outside range” rule broke when the chain already
+   * included the target index (HTML…React) — the hero came from the URL but prior topics stayed mounted.
+   */
+  useLayoutEffect(() => {
     if (!categoryId) return;
     const newIdx = TOPICS.findIndex((t) => t.id === categoryId);
     if (newIdx < 0) return;
+
+    const preserve = isDocsPreserveScrollState(location.state);
     const { start, end } = feedRangeRef.current;
-    if (newIdx < start || newIdx > end) {
+    let didMutateRange = false;
+
+    if (!preserve) {
+      if (start !== newIdx || end !== newIdx) {
+        prependSnapRef.current = null;
+        prependPreserveOnlyRef.current = false;
+        pendingScrollToDomIdRef.current = null;
+        flushSync(() => setFeedRange({ start: newIdx, end: newIdx }));
+        didMutateRange = true;
+      }
+    } else if (newIdx < start || newIdx > end) {
       prependSnapRef.current = null;
       prependPreserveOnlyRef.current = false;
       pendingScrollToDomIdRef.current = null;
-      startTransition(() => setFeedRange({ start: newIdx, end: newIdx }));
+      flushSync(() => setFeedRange({ start: newIdx, end: newIdx }));
+      didMutateRange = true;
     }
-  }, [categoryId]);
+
+    if (didMutateRange) {
+      inViewSyncSuppressedUntilRef.current = Date.now() + 1200;
+    }
+
+    const vp = viewportRef?.current;
+    if (!preserve && vp) {
+      vp.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      requestAnimationFrame(() => {
+        vp.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+    }
+  }, [categoryId, location.key, location.state, viewportRef]);
 
   const activeStream = useMemo(() => (categoryId ? getStreamByTopicId(categoryId) : undefined), [categoryId]);
 
@@ -354,6 +405,29 @@ const DocumentationPage = () => {
       flattenTopicItems(visTopic.items).map((item) => ({ topic: visTopic, item }))
     );
   }, [visibleTopics]);
+
+  /** Full catalog for topic browser sheet: each stream → categories → topics. */
+  const docsTopicBrowserSections = useMemo(() => {
+    type CategoryBlock = { key: string; label: string; topics: Topic[] };
+    return STREAMS.map((stream) => {
+      const categories: CategoryBlock[] = [];
+      const byKey = new Map<string, CategoryBlock>();
+      for (const top of stream.topics) {
+        let block = byKey.get(top.category);
+        if (!block) {
+          block = {
+            key: top.category,
+            label: formatTopicTrackLabel(top.category) || top.category,
+            topics: [],
+          };
+          byKey.set(top.category, block);
+          categories.push(block);
+        }
+        block.topics.push(top);
+      }
+      return { stream, categories };
+    });
+  }, []);
 
   const chainHasMoreBelow = useMemo(() => {
     if (visibleTopics.length === 0) return false;
@@ -380,7 +454,7 @@ const DocumentationPage = () => {
 
   useEffect(() => {
     if (content && !content.content && content.items?.[0]) {
-      navigate(`/docs/${categoryId}/${content.items[0].id}`, { replace: true });
+      navigate(`/docs/${categoryId}/${content.items[0].id}`, { replace: true, state: DOCS_NAV_RESET_SCROLL });
     }
   }, [content, categoryId, navigate]);
 
@@ -392,12 +466,11 @@ const DocumentationPage = () => {
   });
 
   const [inViewFeedKey, setInViewFeedKey] = useState(() => (categoryId && slug ? `${categoryId}/${slug}` : ''));
+  const [topicBrowserOpen, setTopicBrowserOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const skipSlugScrollIntoViewRef = useRef(false);
   const appendSentinelRef = useRef<HTMLDivElement | null>(null);
-  const prevRouteTopicForScrollRef = useRef<string | undefined>(undefined);
   const prevCatSlugForScrollSyncRef = useRef<{ c?: string; s?: string }>({});
-
   useEffect(() => {
     const vp = viewportRef?.current;
     if (!vp) return;
@@ -428,51 +501,20 @@ const DocumentationPage = () => {
     viewportRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!categoryId || !slug) return;
     setFeedOverlay({ topicId: categoryId, slug, pathRevision: pathRevisionRef.current });
+  }, [categoryId, slug, setFeedOverlay, pathRevisionRef]);
+
+  useEffect(() => {
+    if (!categoryId || !slug) return;
     const id = requestAnimationFrame(() => {
       setInViewFeedKey(`${categoryId}/${slug}`);
     });
     return () => cancelAnimationFrame(id);
-  }, [categoryId, slug, setFeedOverlay, pathRevisionRef]);
+  }, [categoryId, slug]);
 
-  useEffect(() => {
-    const el = viewportRef?.current;
-    if (!categoryId) {
-      if (!el && typeof window !== 'undefined') window.scrollTo(0, 0);
-      return;
-    }
-    const newIdx = TOPICS.findIndex((t) => t.id === categoryId);
-    if (newIdx < 0) return;
-
-    const prevCat = prevRouteTopicForScrollRef.current;
-    prevRouteTopicForScrollRef.current = categoryId;
-
-    if (prevCat === undefined) {
-      if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      else if (typeof window !== 'undefined') window.scrollTo(0, 0);
-      return;
-    }
-    if (prevCat === categoryId) return;
-
-    const prevIdx = TOPICS.findIndex((t) => t.id === prevCat);
-    if (prevIdx < 0) {
-      if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      else if (typeof window !== 'undefined') window.scrollTo(0, 0);
-      return;
-    }
-
-    /* Chained feed: URL advances to the next topic in `TOPICS` — do not reset scroll (avoids jumping back to HTML). */
-    if (newIdx === prevIdx + 1) {
-      return;
-    }
-
-    if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    else if (typeof window !== 'undefined') window.scrollTo(0, 0);
-  }, [categoryId, viewportRef]);
-
-  /** Scroll viewport to the route’s card when the *target doc* changes — not when the chained feed merely grows (avoids jumping back to HTML). */
+  /** Scroll viewport to the route’s card when the *target doc* changes within the same topic. */
   useEffect(() => {
     if (!slug || !categoryId || !viewportRef?.current) return;
 
@@ -483,7 +525,12 @@ const DocumentationPage = () => {
     }
 
     const prev = prevCatSlugForScrollSyncRef.current;
-    const routeUnchanged = prev.c === categoryId && prev.s === slug;
+    if (prev.c !== categoryId) {
+      prevCatSlugForScrollSyncRef.current = { c: categoryId, s: slug };
+      return;
+    }
+
+    const routeUnchanged = prev.s === slug;
     if (routeUnchanged) {
       return;
     }
@@ -551,9 +598,22 @@ const DocumentationPage = () => {
       const p = pendingNav;
       pendingNav = null;
       if (!p || cancelled) return;
-      if (p.itemId !== slugRef.current || p.topicId !== routeTopicIdRef.current) {
+
+      const rt = routeTopicIdRef.current;
+      const sl = slugRef.current;
+      const { start: frStart, end: frEnd } = feedRangeRef.current;
+
+      /**
+       * Stale RAF: a pending winner can be from the previous multi-topic feed after a discrete jump
+       * collapsed the range. Do not let observer navigation overwrite `/docs/typescript/...` with CSS.
+       */
+      if (frStart === frEnd && p.topicId !== rt) return;
+
+      if (p.itemId === sl && p.topicId === rt) return;
+
+      if (p.itemId !== sl || p.topicId !== rt) {
         skipSlugScrollIntoViewRef.current = true;
-        navigate(`/docs/${p.topicId}/${p.itemId}`, { replace: true });
+        navigate(`/docs/${p.topicId}/${p.itemId}`, { replace: true, state: DOCS_NAV_PRESERVE_SCROLL });
       }
     };
 
@@ -567,6 +627,7 @@ const DocumentationPage = () => {
       if (cancelled) return;
       obs = new IntersectionObserver(
         (entries) => {
+          if (Date.now() < inViewSyncSuppressedUntilRef.current) return;
           const hits = entries.filter((e) => e.isIntersecting && e.target.id.startsWith('doc-feed-'));
           if (!hits.length) return;
           const rr = root.getBoundingClientRect();
@@ -590,8 +651,15 @@ const DocumentationPage = () => {
           if (!parsed) return;
           const { topicId, itemId } = parsed;
 
-          const winnerOrd = feedOrdinalByDomId.get(winner.id);
+          const { start: frStart, end: frEnd } = feedRangeRef.current;
+          const topicInMountedRange = TOPICS.slice(frStart, frEnd + 1).some((t) => t.id === topicId);
+          if (!topicInMountedRange) return;
+
           const rt = routeTopicIdRef.current;
+          /** Single-topic window must match the URL topic so a stale node can’t rewrite the route. */
+          if (frStart === frEnd && rt && topicId !== rt) return;
+
+          const winnerOrd = feedOrdinalByDomId.get(winner.id);
           const sl = slugRef.current;
           if (rt && sl) {
             const curOrd = feedOrdinalByDomId.get(docFeedSectionDomId(rt, sl));
@@ -700,7 +768,10 @@ const DocumentationPage = () => {
           document
             .getElementById(docFeedSectionDomId(nextRow.topic.id, nextRow.item.id))
             ?.scrollIntoView({ behavior: 'auto', block: 'start' });
-          navigate(`/docs/${nextRow.topic.id}/${nextRow.item.id}`, { replace: true });
+          navigate(`/docs/${nextRow.topic.id}/${nextRow.item.id}`, {
+            replace: true,
+            state: DOCS_NAV_PRESERVE_SCROLL,
+          });
           setInViewFeedKey(`${nextRow.topic.id}/${nextRow.item.id}`);
           return;
         }
@@ -715,7 +786,7 @@ const DocumentationPage = () => {
         setFeedRange((r) => ({ ...r, end: r.end + 1 }));
         skipSlugScrollIntoViewRef.current = true;
         setFeedOverlay({ topicId: nextTopic.id, slug: first.id, pathRevision: pathRevisionRef.current });
-        navigate(`/docs/${nextTopic.id}/${first.id}`, { replace: true });
+        navigate(`/docs/${nextTopic.id}/${first.id}`, { replace: true, state: DOCS_NAV_PRESERVE_SCROLL });
         setInViewFeedKey(`${nextTopic.id}/${first.id}`);
       },
       goToPrevFrom: (i) => {
@@ -731,7 +802,10 @@ const DocumentationPage = () => {
           document
             .getElementById(docFeedSectionDomId(prevRow.topic.id, prevRow.item.id))
             ?.scrollIntoView({ behavior: 'auto', block: 'start' });
-          navigate(`/docs/${prevRow.topic.id}/${prevRow.item.id}`, { replace: true });
+          navigate(`/docs/${prevRow.topic.id}/${prevRow.item.id}`, {
+            replace: true,
+            state: DOCS_NAV_PRESERVE_SCROLL,
+          });
           setInViewFeedKey(`${prevRow.topic.id}/${prevRow.item.id}`);
           return;
         }
@@ -749,7 +823,7 @@ const DocumentationPage = () => {
         setFeedRange((r) => ({ ...r, start: prevTopicIx }));
         skipSlugScrollIntoViewRef.current = true;
         setFeedOverlay({ topicId: prevTopic.id, slug: lastItem.id, pathRevision: pathRevisionRef.current });
-        navigate(`/docs/${prevTopic.id}/${lastItem.id}`, { replace: true });
+        navigate(`/docs/${prevTopic.id}/${lastItem.id}`, { replace: true, state: DOCS_NAV_PRESERVE_SCROLL });
         setInViewFeedKey(`${prevTopic.id}/${lastItem.id}`);
       },
     }),
@@ -767,22 +841,46 @@ const DocumentationPage = () => {
   );
 
   const navigateToFeedItem = useCallback(
-    (item: TopicItem, itemTopicId: string, scrollBehavior: ScrollBehavior = 'auto') => {
+    (item: TopicItem, itemTopicId: string, third?: ScrollBehavior | NavigateToFeedItemOptions) => {
       if (!viewportRef?.current) return;
+
+      const { scrollBehavior = 'auto', scrollToTopicStart = false } = normalizeNavigateToFeedItemOptions(third);
+      const newIdx = TOPICS.findIndex((t) => t.id === itemTopicId);
+      if (newIdx >= 0) {
+        prependSnapRef.current = null;
+        prependPreserveOnlyRef.current = false;
+        pendingScrollToDomIdRef.current = null;
+        /** Feed range follows `categoryId` in layout effect after `navigate` — avoid updating range before the URL (split UI + stale observer RAF). */
+      }
+
+      inViewSyncSuppressedUntilRef.current = Date.now() + (scrollToTopicStart ? 1800 : 1000);
       skipSlugScrollIntoViewRef.current = true;
-      setFeedOverlay({ topicId: itemTopicId, slug: item.id, pathRevision: pathRevisionRef.current });
-      document
-        .getElementById(docFeedSectionDomId(itemTopicId, item.id))
-        ?.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
-      navigate(`/docs/${itemTopicId}/${item.id}`, { replace: true });
+
+      if (!scrollToTopicStart) {
+        document
+          .getElementById(docFeedSectionDomId(itemTopicId, item.id))
+          ?.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+      }
+
+      navigate(`/docs/${itemTopicId}/${item.id}`, { replace: true, state: DOCS_NAV_RESET_SCROLL });
       setInViewFeedKey(`${itemTopicId}/${item.id}`);
     },
-    [navigate, viewportRef, setFeedOverlay, pathRevisionRef]
+    [navigate, viewportRef]
   );
 
   const feedSearchRows = useMemo(
     () => feedRows.map((r) => ({ topicId: r.topic.id, topicTitle: r.topic.title, item: r.item })),
     [feedRows]
+  );
+
+  const handleFeedSearchNavigate = useCallback(
+    (item: TopicItem, topicId: string) => {
+      navigateToFeedItem(item, topicId, {
+        scrollBehavior: 'auto',
+        scrollToTopicStart: topicId !== categoryId,
+      });
+    },
+    [navigateToFeedItem, categoryId]
   );
 
   if (!topic || !content) {
@@ -829,7 +927,7 @@ const DocumentationPage = () => {
               activeSlug={slug ?? ''}
               activeTopicId={categoryId}
               multiTopicRows={feedSearchRows}
-              onNavigateToItem={navigateToFeedItem}
+              onNavigateToItem={handleFeedSearchNavigate}
             />
           }
         />
@@ -869,54 +967,113 @@ const DocumentationPage = () => {
         {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
       </div>
 
-      {visibleTopics.length > 1 ? (
-        <nav
-          aria-label={t('docs.feedTopicJumpNav')}
+      <Sheet open={topicBrowserOpen} onOpenChange={setTopicBrowserOpen}>
+        <Button
+          type="button"
+          variant="secondary"
+          size="icon"
+          aria-haspopup="dialog"
+          aria-expanded={topicBrowserOpen}
+          aria-label={t('docs.topicBrowserTrigger')}
           className={cn(
-            'fixed z-60 hidden max-h-[min(50dvh,22rem)] w-10 flex-col gap-1.5 overflow-y-auto overflow-x-hidden py-0.5 pe-0.5 md:flex',
-            /** Directly under `DocsDesktopSidebarToggle` in App.tsx (nav strip + h-10 + gap). */
+            'fixed z-60 inline-flex h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+            /** Below `DocsDesktopSidebarToggle` — same column, second control. */
             'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
-            'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+            'right-[max(1rem,env(safe-area-inset-right))] sm:right-6',
+            topicBrowserOpen && 'hidden'
           )}
+          onClick={() => setTopicBrowserOpen(true)}
         >
-          {visibleTopics.map((visTopic) => {
-            const firstRow = feedRows.find((r) => r.topic.id === visTopic.id);
-            if (!firstRow) return null;
-            const iconEl = visTopic.icon ?? (
-              <FileText className="size-[0.95rem] shrink-0 text-primary" strokeWidth={1.75} aria-hidden />
-            );
-            const railTopicId = inViewFeedKey ? inViewFeedKey.split('/')[0] : categoryId;
-            const isActive = railTopicId === visTopic.id;
-            return (
-              <Tooltip key={visTopic.id}>
-                <TooltipTrigger asChild>
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    size="icon"
-                    aria-current={isActive ? 'true' : undefined}
-                    aria-label={t('docs.feedTopicJump', { topic: visTopic.title })}
-                    className={cn(
-                      'h-9 w-9 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
-                      isActive && 'border-primary/45 bg-primary/12 ring-1 ring-primary/25'
-                    )}
-                    onClick={() => navigateToFeedItem(firstRow.item, firstRow.topic.id, 'smooth')}
-                  >
-                    <span className="flex size-[1.35rem] items-center justify-center [&_svg]:size-[0.95rem]">
-                      {iconEl}
-                    </span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="left" className="max-w-56">
-                  <span className="font-medium">
-                    <TranslatedText text={visTopic.title} />
-                  </span>
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
-        </nav>
-      ) : null}
+          <Library className="size-[1.05rem]" strokeWidth={1.75} />
+        </Button>
+        <SheetContent
+          side="right"
+          className="flex h-full w-full max-w-md flex-col gap-0 border-border/50 p-0 sm:max-w-md [&>button]:z-[60]"
+        >
+          <SheetHeader className="shrink-0 space-y-1.5 border-b border-border/40 px-5 pb-4 pt-5 text-left">
+            <SheetTitle className="text-lg pr-8">{t('docs.topicBrowserTitle')}</SheetTitle>
+            <SheetDescription className="text-sm leading-relaxed">
+              {t('docs.topicBrowserSubtitle')}
+            </SheetDescription>
+          </SheetHeader>
+          <ScrollArea className="min-h-0 flex-1 [&>[data-slot=scroll-area-viewport]]:pb-6">
+            <div className="space-y-8 px-5 py-5">
+              {docsTopicBrowserSections.map(({ stream, categories }, si) => (
+                <div key={stream.id}>
+                  {si > 0 ? <Separator className="mb-8" /> : null}
+                  <div className="mb-5 flex items-start gap-3">
+                    <div
+                      className={cn(
+                        'mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/50',
+                        'bg-muted/30 text-primary [&_svg]:size-5'
+                      )}
+                      aria-hidden
+                    >
+                      {stream.icon ?? <FileText className="size-5" strokeWidth={1.75} />}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-base font-semibold leading-snug tracking-tight">{stream.title}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{stream.description}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-6">
+                    {categories.map((cat) => (
+                      <div key={`${stream.id}-${cat.key}`}>
+                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          {cat.label}
+                        </p>
+                        <ul className="flex flex-col gap-2 rounded-xl border border-border/40 bg-muted/15 p-2 dark:bg-muted/10">
+                          {cat.topics.map((visTopic) => {
+                            const jumpItem = flattenTopicItems(visTopic.items)[0];
+                            if (!jumpItem) return null;
+                            const iconEl = visTopic.icon ?? (
+                              <FileText
+                                className="size-4 shrink-0 text-primary"
+                                strokeWidth={1.75}
+                                aria-hidden
+                              />
+                            );
+                            const isCurrentTopic = categoryId === visTopic.id;
+                            return (
+                              <li key={visTopic.id}>
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  aria-current={isCurrentTopic ? 'page' : undefined}
+                                  className={cn(
+                                    'h-auto min-h-11 w-full justify-start gap-3 rounded-lg border border-transparent px-3 py-2.5 text-left shadow-none',
+                                    'bg-background/80 hover:bg-muted/70 dark:bg-background/50 dark:hover:bg-muted/50',
+                                    isCurrentTopic &&
+                                      'border-primary/30 bg-primary/10 hover:bg-primary/12 dark:bg-primary/15'
+                                  )}
+                                  onClick={() => {
+                                    setTopicBrowserOpen(false);
+                                    navigateToFeedItem(jumpItem, visTopic.id, {
+                                      scrollBehavior: 'auto',
+                                      scrollToTopicStart: true,
+                                    });
+                                  }}
+                                >
+                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border/35 bg-background [&_svg]:size-4">
+                                    {iconEl}
+                                  </span>
+                                  <span className="min-w-0 flex-1 text-sm font-medium leading-snug">
+                                    <TranslatedText text={visTopic.title} />
+                                  </span>
+                                </Button>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </SheetContent>
+      </Sheet>
 
       {showScrollTop && (
         <Button

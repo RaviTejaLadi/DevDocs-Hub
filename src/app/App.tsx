@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
-import { TOPICS } from '@/topics';
+import { isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import NavBar from '@/components/layout/NavBar';
 import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
@@ -75,27 +75,21 @@ const App = () => {
       return;
     }
 
-    const prevCat = docsCategoryScrollRef.current;
-
     /**
-     * Chained docs feed: URL moves to the next catalog topic (html → css → js …).
-     * Must not reset the ScrollArea viewport — that was jumping the user to the top
-     * (HTML hero / first card) whenever the next topic loaded.
+     * Only in-feed / observer-driven navigation sets `location.state.docsScroll === 'preserve'`.
+     * Sidebar / landing / search use `reset` (or default). Adjacent catalog indices (e.g. html→css)
+     * are *not* implicitly “chain” — without this, sidebar jumps kept the old scroll position.
      */
-    if (prevCat && docsCat) {
-      const prevIdx = TOPICS.findIndex((t) => t.id === prevCat);
-      const nextIdx = TOPICS.findIndex((t) => t.id === docsCat);
-      if (prevIdx >= 0 && nextIdx >= 0 && nextIdx === prevIdx + 1) {
-        docsCategoryScrollRef.current = docsCat;
-        return;
-      }
+    if (isDocsPreserveScrollState(location.state)) {
+      docsCategoryScrollRef.current = docsCat ?? null;
+      return;
     }
 
     docsCategoryScrollRef.current = docsCat ?? null;
 
     if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [location.pathname, location.search]);
+  }, [location.pathname, location.search, location.state]);
 
   return (
     <DocsFeedSyncProvider>

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 
@@ -83,7 +84,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
   const handleNavigate = useCallback(
     (topicId: string, itemId: string) => {
-      navigate(`/docs/${topicId}/${itemId}`);
+      navigate(`/docs/${topicId}/${itemId}`, { state: DOCS_NAV_RESET_SCROLL });
       if (closeSheet) closeSheet();
     },
     [navigate, closeSheet]

@@ -23,6 +23,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { useI18n } from '@/i18n/I18nProvider';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   DropdownMenu,
@@ -158,7 +159,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   }, [query, topics]);
 
   const handleSelectResult = (categoryId: string, id: string) => {
-    navigate(`/docs/${categoryId}/${id}`);
+    navigate(`/docs/${categoryId}/${id}`, { state: DOCS_NAV_RESET_SCROLL });
     setOpen(false);
     setQuery('');
   };

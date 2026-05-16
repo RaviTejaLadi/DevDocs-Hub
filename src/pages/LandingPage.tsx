@@ -9,6 +9,7 @@ import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { colors } from '@/constants/colors';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -229,11 +230,11 @@ const LandingPage = () => {
                           key={topic.id}
                           role="button"
                           tabIndex={0}
-                          onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`)}
+                          onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`, { state: DOCS_NAV_RESET_SCROLL })}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                               e.preventDefault();
-                              navigate(`/docs/${topic.id}/${topic.items[0].id}`);
+                              navigate(`/docs/${topic.id}/${topic.items[0].id}`, { state: DOCS_NAV_RESET_SCROLL });
                             }
                           }}
                           className={cn(

@@ -285,8 +285,9 @@ const MarkdownRenderInner = ({
   }, [activeSlide, slides.length, hasNextDocument, hasPrevDocument, onReachDocumentEnd, onReachDocumentStart]);
 
   useEffect(() => {
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- reset deck when the bound document / topic changes */
     setActiveSlide(0);
-  }, [translatedContent, slideMode]);
+  }, [translatedContent, slideMode, headingIdScope]);
 
   useEffect(() => {
     if (slideMode) {
@@ -414,9 +415,10 @@ const MarkdownRenderInner = ({
     };
   }, [slideMode, activeSlide, headings, slides.length, translatedContent, viewportScrollRootRef]);
 
-  useEffect(() => {
+  /** Reset slide body scroll when the document or slide changes (topic jump must land at intro, not mid-card). */
+  useLayoutEffect(() => {
     slideBodyRef.current?.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [activeSlide]);
+  }, [headingIdScope, translatedContent, activeSlide]);
 
   useEffect(() => {
     if (!pendingScrollHeadingId) return;
