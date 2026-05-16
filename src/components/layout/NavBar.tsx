@@ -156,7 +156,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
     deduped.sort((a, b) => b.score - a.score || a.title.length - b.title.length);
 
     setResults(deduped.slice(0, 24));
-  }, [query, topics]);
+  }, [query, topics,]);
 
   const handleSelectResult = (categoryId: string, id: string) => {
     navigate(`/docs/${categoryId}/${id}`, { state: DOCS_NAV_RESET_SCROLL });
