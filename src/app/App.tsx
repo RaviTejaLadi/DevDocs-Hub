@@ -43,6 +43,7 @@ const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean;
           aria-label={collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
           className={cn(
             'fixed z-60 h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+            'docs-desktop-sidebar-toggle',
             'hidden md:inline-flex',
             /** NavBar: sticky top-2 + h-14 — sit just under it, outside scroll layout. */
             'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)] right-[max(1rem,env(safe-area-inset-right))] sm:right-6'

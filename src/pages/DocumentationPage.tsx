@@ -13,7 +13,7 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react';
-import { ChevronUp, Home, FileText, Library } from 'lucide-react';
+import { ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -467,10 +467,40 @@ const DocumentationPage = () => {
 
   const [inViewFeedKey, setInViewFeedKey] = useState(() => (categoryId && slug ? `${categoryId}/${slug}` : ''));
   const [topicBrowserOpen, setTopicBrowserOpen] = useState(false);
+  const [topicBrowserOpenCats, setTopicBrowserOpenCats] = useState<Record<string, boolean>>({});
   const [showScrollTop, setShowScrollTop] = useState(false);
   const skipSlugScrollIntoViewRef = useRef(false);
   const appendSentinelRef = useRef<HTMLDivElement | null>(null);
   const prevCatSlugForScrollSyncRef = useRef<{ c?: string; s?: string }>({});
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (topicBrowserOpen) root.setAttribute('data-docs-topic-browser', 'open');
+    else root.removeAttribute('data-docs-topic-browser');
+    return () => root.removeAttribute('data-docs-topic-browser');
+  }, [topicBrowserOpen]);
+
+  const buildTopicBrowserExpandedMap = useCallback((): Record<string, boolean> => {
+    const initial: Record<string, boolean> = {};
+    for (const { stream, categories } of docsTopicBrowserSections) {
+      for (const cat of categories) {
+        const ck = `${stream.id}::${cat.key}`;
+        initial[ck] = Boolean(categoryId && cat.topics.some((t) => t.id === categoryId));
+      }
+    }
+    return initial;
+  }, [categoryId, docsTopicBrowserSections]);
+
+  const onTopicBrowserOpenChange = useCallback(
+    (open: boolean) => {
+      if (open) {
+        setTopicBrowserOpenCats(buildTopicBrowserExpandedMap());
+      }
+      setTopicBrowserOpen(open);
+    },
+    [buildTopicBrowserExpandedMap],
+  );
+
   useEffect(() => {
     const vp = viewportRef?.current;
     if (!vp) return;
@@ -967,7 +997,7 @@ const DocumentationPage = () => {
         {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
       </div>
 
-      <Sheet open={topicBrowserOpen} onOpenChange={setTopicBrowserOpen}>
+      <Sheet open={topicBrowserOpen} onOpenChange={onTopicBrowserOpenChange}>
         <Button
           type="button"
           variant="secondary"
@@ -982,91 +1012,131 @@ const DocumentationPage = () => {
             'right-[max(1rem,env(safe-area-inset-right))] sm:right-6',
             topicBrowserOpen && 'hidden'
           )}
-          onClick={() => setTopicBrowserOpen(true)}
+          onClick={() => onTopicBrowserOpenChange(true)}
         >
           <Library className="size-[1.05rem]" strokeWidth={1.75} />
         </Button>
         <SheetContent
           side="right"
-          className="flex h-full w-full max-w-md flex-col gap-0 border-border/50 p-0 sm:max-w-md [&>button]:z-[60]"
+          overlayClassName="z-[68]"
+          className={cn(
+            'flex h-full flex-col gap-0 border-border/50 border-l p-0 rounded-none shadow-xl',
+            'z-70',
+            /** Match primary docs aside widths */
+            'w-[min(18rem,calc(100vw-1rem))] max-w-full sm:w-64 lg:w-72',
+            '[&>button]:z-71 [&>button]:top-3 [&>button]:right-3'
+          )}
         >
-          <SheetHeader className="shrink-0 space-y-1.5 border-b border-border/40 px-5 pb-4 pt-5 text-left">
-            <SheetTitle className="text-lg pr-8">{t('docs.topicBrowserTitle')}</SheetTitle>
-            <SheetDescription className="text-sm leading-relaxed">
+          <SheetHeader className="shrink-0 space-y-0.5 border-b border-border/40 px-3 py-2.5 text-left sm:px-3">
+            <SheetTitle className="pr-8 text-sm font-semibold leading-tight">
+              {t('docs.topicBrowserTitle')}
+            </SheetTitle>
+            <SheetDescription className="text-[11px] leading-snug text-muted-foreground line-clamp-2">
               {t('docs.topicBrowserSubtitle')}
             </SheetDescription>
           </SheetHeader>
-          <ScrollArea className="min-h-0 flex-1 [&>[data-slot=scroll-area-viewport]]:pb-6">
-            <div className="space-y-8 px-5 py-5">
+          <ScrollArea className="min-h-0 flex-1 [&>[data-slot=scroll-area-viewport]]:pb-2">
+            <div className="space-y-3 px-2 py-2 sm:px-2.5">
               {docsTopicBrowserSections.map(({ stream, categories }, si) => (
                 <div key={stream.id}>
-                  {si > 0 ? <Separator className="mb-8" /> : null}
-                  <div className="mb-5 flex items-start gap-3">
+                  {si > 0 ? <Separator className="my-3" /> : null}
+                  <div className="mb-2 flex items-center gap-2">
                     <div
                       className={cn(
-                        'mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/50',
-                        'bg-muted/30 text-primary [&_svg]:size-5'
+                        'flex size-7 shrink-0 items-center justify-center rounded-md border border-border/45',
+                        'bg-muted/25 text-primary [&_svg]:size-[0.95rem]'
                       )}
                       aria-hidden
                     >
-                      {stream.icon ?? <FileText className="size-5" strokeWidth={1.75} />}
+                      {stream.icon ?? <FileText className="size-[0.95rem]" strokeWidth={1.75} />}
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-base font-semibold leading-snug tracking-tight">{stream.title}</p>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{stream.description}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-xs font-semibold leading-tight">
+                        <TranslatedText text={stream.title} />
+                      </p>
+                      <p className="line-clamp-1 text-[10px] leading-snug text-muted-foreground">
+                        <TranslatedText text={stream.description} />
+                      </p>
                     </div>
                   </div>
-                  <div className="space-y-6">
-                    {categories.map((cat) => (
-                      <div key={`${stream.id}-${cat.key}`}>
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                          {cat.label}
-                        </p>
-                        <ul className="flex flex-col gap-2 rounded-xl border border-border/40 bg-muted/15 p-2 dark:bg-muted/10">
-                          {cat.topics.map((visTopic) => {
-                            const jumpItem = flattenTopicItems(visTopic.items)[0];
-                            if (!jumpItem) return null;
-                            const iconEl = visTopic.icon ?? (
-                              <FileText
-                                className="size-4 shrink-0 text-primary"
-                                strokeWidth={1.75}
-                                aria-hidden
-                              />
-                            );
-                            const isCurrentTopic = categoryId === visTopic.id;
-                            return (
-                              <li key={visTopic.id}>
-                                <Button
-                                  type="button"
-                                  variant="ghost"
-                                  aria-current={isCurrentTopic ? 'page' : undefined}
-                                  className={cn(
-                                    'h-auto min-h-11 w-full justify-start gap-3 rounded-lg border border-transparent px-3 py-2.5 text-left shadow-none',
-                                    'bg-background/80 hover:bg-muted/70 dark:bg-background/50 dark:hover:bg-muted/50',
-                                    isCurrentTopic &&
-                                      'border-primary/30 bg-primary/10 hover:bg-primary/12 dark:bg-primary/15'
-                                  )}
-                                  onClick={() => {
-                                    setTopicBrowserOpen(false);
-                                    navigateToFeedItem(jumpItem, visTopic.id, {
-                                      scrollBehavior: 'auto',
-                                      scrollToTopicStart: true,
-                                    });
-                                  }}
-                                >
-                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border/35 bg-background [&_svg]:size-4">
-                                    {iconEl}
-                                  </span>
-                                  <span className="min-w-0 flex-1 text-sm font-medium leading-snug">
-                                    <TranslatedText text={visTopic.title} />
-                                  </span>
-                                </Button>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    ))}
+                  <div className="space-y-0.5">
+                    {categories.map((cat) => {
+                      const ck = `${stream.id}::${cat.key}`;
+                      const open = topicBrowserOpenCats[ck] ?? false;
+                      return (
+                        <div
+                          key={ck}
+                          className="overflow-hidden rounded-md border border-border/35 bg-muted/10 dark:bg-muted/5"
+                        >
+                          <button
+                            type="button"
+                            className={cn(
+                              'flex w-full items-center gap-1 px-1.5 py-1 text-left',
+                              'text-[10px] font-semibold uppercase tracking-wider text-muted-foreground',
+                              'hover:bg-muted/40 dark:hover:bg-muted/20'
+                            )}
+                            aria-expanded={open}
+                            onClick={() =>
+                              setTopicBrowserOpenCats((prev) => ({
+                                ...prev,
+                                [ck]: !(prev[ck] ?? false),
+                              }))
+                            }
+                          >
+                            <ChevronRight
+                              className={cn('size-3.5 shrink-0 text-muted-foreground transition-transform', open && 'rotate-90')}
+                              aria-hidden
+                            />
+                            <span className="min-w-0 truncate">{cat.label}</span>
+                          </button>
+                          {open ? (
+                            <ul className="border-t border-border/30 px-1 pb-1 pt-0.5">
+                              {cat.topics.map((visTopic) => {
+                                const jumpItem = flattenTopicItems(visTopic.items)[0];
+                                if (!jumpItem) return null;
+                                const iconEl = visTopic.icon ?? (
+                                  <FileText
+                                    className="size-3.5 shrink-0 text-primary"
+                                    strokeWidth={1.75}
+                                    aria-hidden
+                                  />
+                                );
+                                const isCurrentTopic = categoryId === visTopic.id;
+                                return (
+                                  <li key={visTopic.id}>
+                                    <Button
+                                      type="button"
+                                      variant="ghost"
+                                      aria-current={isCurrentTopic ? 'page' : undefined}
+                                      className={cn(
+                                        'h-auto min-h-8 w-full justify-start gap-1.5 rounded-sm px-1.5 py-1 text-left shadow-none',
+                                        'bg-transparent hover:bg-muted/55 dark:hover:bg-muted/25',
+                                        isCurrentTopic &&
+                                          'bg-primary/12 text-foreground hover:bg-primary/15 dark:bg-primary/18'
+                                      )}
+                                      onClick={() => {
+                                        setTopicBrowserOpen(false);
+                                        navigateToFeedItem(jumpItem, visTopic.id, {
+                                          scrollBehavior: 'auto',
+                                          scrollToTopicStart: true,
+                                        });
+                                      }}
+                                    >
+                                      <span className="flex size-6 shrink-0 items-center justify-center rounded border border-border/30 bg-background/90 [&_svg]:size-3.5">
+                                        {iconEl}
+                                      </span>
+                                      <span className="min-w-0 flex-1 text-[12px] font-medium leading-snug">
+                                        <TranslatedText text={visTopic.title} />
+                                      </span>
+                                    </Button>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : null}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
