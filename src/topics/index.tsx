@@ -91,7 +91,7 @@ const transformCloudData = (): Topic[] =>
     createTopic('cloud', {
       id: service.id,
       title: service.title,
-      description: `Learn about ${service.title}, a leading cloud platform.`,
+      description: `Master ${service.title} by learning cloud infrastructure, deployment strategies, scalability, monitoring, networking, security, and real-world production workflows used in modern applications.`,
       icon: cloudIconByServiceId[service.id],
       items: service.documents,
     })
@@ -102,7 +102,7 @@ const transformDatabaseData = (): Topic[] =>
     createTopic('database', {
       id: db.id,
       title: db.title,
-      description: `Explore ${db.title}, a popular database solution.`,
+      description: `Learn ${db.title} concepts including data modeling, querying, indexing, optimization, relationships, transactions, scaling, and database management for production-grade applications.`,
       icon: databaseIconByDBId[db.id],
       items: db.documents,
     })
@@ -113,7 +113,8 @@ const transformResourcesData = (): Topic[] =>
     createTopic('resources', {
       id: resource.id,
       title: resource.title,
-      description: 'Find helpful cheat sheets for various technologies.',
+      description:
+        'Access curated developer resources, cheat sheets, reference guides, best practices, interview preparation materials, and quick learning assets across multiple technologies.',
       icon: <NotebookTabs className="h-5 w-5" />,
       items: resource.children.map((child) => ({
         id: child.id,
@@ -128,63 +129,72 @@ const computerScienceTopics: Topic[] = [
   createTopic('frontend', {
     id: 'html',
     title: 'HTML',
-    description: 'Structure web pages with semantic markup.',
+    description:
+      'Learn HTML from fundamentals to advanced concepts including semantic elements, forms, accessibility, SEO-friendly markup, multimedia integration, and modern web document structure.',
     icon: Icons.HTML,
     items: htmlTopics,
   }),
   createTopic('frontend', {
     id: 'css',
     title: 'CSS',
-    description: 'Style your web pages with modern layouts.',
+    description:
+      'Master CSS for building responsive, accessible, and visually engaging interfaces using Flexbox, Grid, animations, transitions, media queries, and modern styling techniques.',
     icon: Icons.CSS,
     items: cssTopics,
   }),
   createTopic('frontend', {
     id: 'js',
     title: 'JavaScript',
-    description: 'JavaScript is the programming language of the web.',
+    description:
+      'Understand JavaScript deeply by learning core language concepts, asynchronous programming, DOM manipulation, ES features, browser APIs, performance optimization, and application architecture.',
     icon: Icons.JS,
     items: jsTopics,
   }),
   createTopic('frontend', {
     id: 'typescript',
     title: 'TypeScript',
-    description: 'A typed superset of JavaScript that compiles to plain JS.',
+    description:
+      'Build scalable and maintainable applications with TypeScript by mastering static typing, interfaces, generics, advanced types, tooling, and enterprise-level development patterns.',
     icon: Icons.TS,
     items: tsConcepts,
   }),
   createTopic('frontend', {
     id: 'nextjs',
     title: 'Next.js',
-    description: 'The React framework for production.',
+    description:
+      'Develop production-ready full-stack React applications using Next.js with server-side rendering, static generation, routing, API handling, caching, authentication, and performance optimization.',
     icon: Icons.NEXT,
     items: nextTopics,
   }),
   createTopic('frontend', {
     id: 'react',
     title: 'React.js',
-    description: 'The library for web and native user interfaces.',
+    description:
+      'Learn React.js to create modern interactive user interfaces using components, hooks, state management, routing, performance optimization, reusable architecture, and ecosystem best practices.',
     icon: Icons.REACT,
     items: reactTopics,
   }),
   createTopic('frontend', {
     id: 'vue',
     title: 'Vue.js',
-    description: 'The Progressive JavaScript Framework.',
+    description:
+      'Explore Vue.js for building reactive frontend applications with component-driven architecture, directives, composition API, routing, state management, and smooth developer experience.',
     icon: Icons.VUE,
     items: vueTopics,
   }),
   createTopic('backend', {
     id: 'express',
     title: 'Express.js',
-    description: 'Fast, unopinionated, minimalist web framework for Node.js.',
+    description:
+      'Learn Express.js for building scalable backend APIs and web applications with middleware, routing, authentication, error handling, REST architecture, and backend best practices.',
     icon: Icons.EXPRESS,
     items: expressTopics,
   }),
   createTopic('backend', {
     id: 'node',
     title: 'Node.js',
-    description: "JavaScript runtime built on Chrome's V8 engine.",
+    description:
+      'Master Node.js by understanding event-driven architecture, asynchronous programming, APIs, streams, authentication, scalability, performance tuning, and backend application development.',
     icon: Icons.NODE,
     items: nodeTopics,
   }),
@@ -193,14 +203,16 @@ const computerScienceTopics: Topic[] = [
   createTopic('dsa', {
     id: 'dsa',
     title: 'DSA',
-    description: 'data structures and algorithms',
+    description:
+      'Strengthen problem-solving skills with data structures and algorithms covering arrays, linked lists, trees, graphs, recursion, dynamic programming, searching, sorting, and coding interview preparation.',
     icon: <Binary className="h-5 w-5" />,
     items: dsaData,
   }),
   createTopic('system-design', {
     id: 'system-design',
     title: 'System Design',
-    description: 'system design',
+    description:
+      'Understand scalable system architecture including distributed systems, databases, caching, load balancing, microservices, messaging systems, reliability, scalability, and high-level application design.',
     icon: <Network className="h-5 w-5" />,
     items: systemDesignData,
   }),
@@ -215,22 +227,24 @@ export const STREAMS: Stream[] = [
   {
     id: 'computer-science',
     title: 'Computer Science',
-    description: 'Frontend, backend, DSA, system design, databases, cloud and more.',
+    description:
+      'Comprehensive learning resources covering frontend, backend, databases, cloud computing, system design, DSA, software engineering practices, and modern web development technologies.',
     icon: <Code2 className="h-5 w-5" />,
     topics: computerScienceTopics,
   },
-  // Uncomment below and re-import `mechanicalTopics`, `basicScienceTopics`, `Cog`, `Atom` from above.
   {
     id: 'mechanical-engineering',
     title: 'Mechanical Engineering',
-    description: 'Thermodynamics, fluid mechanics, machine design and manufacturing.',
+    description:
+      'Explore core mechanical engineering subjects including thermodynamics, fluid mechanics, machine design, manufacturing processes, mechanics, material science, and industrial engineering concepts.',
     icon: <Cog className="h-5 w-5" />,
     topics: mechanicalTopics,
   },
   {
     id: 'basic-science',
     title: 'Basic Science',
-    description: 'Physics, chemistry, mathematics and biology fundamentals.',
+    description:
+      'Learn foundational science subjects including physics, chemistry, biology, and mathematics with concepts essential for engineering, research, academics, and technical problem solving.',
     icon: <Atom className="h-5 w-5" />,
     topics: basicScienceTopics,
   },
