@@ -41,6 +41,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
+  const isHomePage = location.pathname === '/';
   const { t, language, setLanguage } = useI18n();
 
   const [open, setOpen] = useState(false);
@@ -56,13 +57,21 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        if (location.pathname !== '/') return;
         e.preventDefault();
         setOpen((o) => !o);
       }
     };
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, []);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setOpen(false);
+      setQuery('');
+    }
+  }, [location.pathname]);
 
   const normalize = (value: string) =>
     value
@@ -175,6 +184,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
 
         <TooltipProvider delayDuration={120}>
           <div className="flex items-center gap-1.5 sm:gap-2">
+            {isHomePage && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button
@@ -269,6 +279,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                 </div>
               </DialogContent>
             </Dialog>
+            )}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
