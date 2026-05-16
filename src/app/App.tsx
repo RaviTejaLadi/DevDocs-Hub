@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { Loader2, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
@@ -20,15 +20,22 @@ const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
 const InterviewQuestionsPage = lazy(() => import('@/pages/InterviewQuestionsPage'));
 const CodeEditorPage = lazy(() => import('@/pages/CodeEditorPage'));
 
-const RouteFallback = () => (
-  <div
-    className="flex min-h-[50vh] items-center justify-center text-sm text-muted-foreground"
-    aria-busy="true"
-    aria-live="polite"
-  >
-    Loading…
-  </div>
-);
+const RouteFallback = () => {
+  const { t } = useI18n();
+  return (
+    <div
+      className="flex min-h-[50vh] items-center justify-center gap-2.5 text-sm text-muted-foreground"
+      role="status"
+      aria-live="polite"
+    >
+      <Loader2
+        className="h-5 w-5 shrink-0 animate-spin text-muted-foreground motion-reduce:animate-none"
+        aria-hidden
+      />
+      <span>{t('common.loading')}</span>
+    </div>
+  );
+};
 
 const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();

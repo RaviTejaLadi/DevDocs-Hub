@@ -122,6 +122,7 @@ const en: TranslationMap = {
   'interview.answer': 'Answer',
   'common.copy': 'Copy',
   'common.copied': 'Copied',
+  'common.loading': 'Loading...',
   'markdown.onThisPage': 'On this page',
   'markdown.slideLabel': 'Slide',
   'markdown.slideCarouselLabel': 'Document slides',
