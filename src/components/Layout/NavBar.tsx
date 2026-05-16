@@ -10,6 +10,7 @@ import {
   Languages,
   ChevronDown,
   Code2,
+  MoreHorizontal,
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import type { Topic, TopicItem } from '@/topics';
@@ -26,6 +27,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
@@ -153,10 +155,10 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   };
 
   return (
-    <header className="sticky top-2 rounded-md z-50 w-[99%] mx-auto border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="flex h-14 items-center px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 flex-1 min-w-0">
-          <Logo showText size="sm" className="font-semibold" />
+    <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(99%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)))] mx-auto border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+      <div className="flex h-14 items-center gap-2 max-w-7xl mx-auto ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8">
+        <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
+          <Logo showText size="sm" className="min-w-0 font-semibold" textClassName="max-[360px]:hidden" />
 
           {isDocsPage && (
             <Button
@@ -229,7 +231,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                       <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
                         {t('nav.results')}
                       </p>
-                      <div className="motion-stagger grid grid-cols-2 gap-2">
+                      <div className="motion-stagger grid grid-cols-1 min-[480px]:grid-cols-2 gap-2">
                         {results.map((res) => (
                           <button
                             type="button"
@@ -306,12 +308,12 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                   size="icon"
                   className="hidden md:inline-flex px-3"
                   onClick={() => navigate('/code-editor')}
-                  aria-label="Live code editor"
+                  aria-label={t('nav.codeEditor')}
                 >
                   <Code2 className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="bottom">Live code editor</TooltipContent>
+              <TooltipContent side="bottom">{t('nav.codeEditor')}</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -343,12 +345,76 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" className="hidden lg:inline-flex px-3" aria-label={t('nav.github')}>
+                <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={t('nav.github')}>
                   <Github className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
             </Tooltip>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  className="md:hidden shrink-0 border-border/40"
+                  aria-label={t('nav.moreMenu')}
+                >
+                  <MoreHorizontal className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
+                <div className="sm:hidden">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
+                  <DropdownMenuRadioGroup
+                    value={language}
+                    onValueChange={(value) => setLanguage(value as SupportedLanguage)}
+                  >
+                    {LANGUAGE_OPTIONS.map((option) => (
+                      <DropdownMenuRadioItem key={option.code} value={option.code}>
+                        {option.label}
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                  <DropdownMenuSeparator />
+                </div>
+                <DropdownMenuItem
+                  onClick={() => {
+                    navigate('/code-editor');
+                  }}
+                  className="gap-2"
+                >
+                  <Code2 className="h-4 w-4 shrink-0" />
+                  {t('nav.codeEditor')}
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => {
+                    navigate('/interview-questions');
+                  }}
+                  className="gap-2"
+                >
+                  <HelpCircle className="h-4 w-4 shrink-0" />
+                  {t('nav.interviewQuestions')}
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => {
+                    navigate('/terms');
+                  }}
+                  className="gap-2"
+                >
+                  <FileText className="h-4 w-4 shrink-0" />
+                  {t('nav.terms')}
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="gap-2">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 cursor-pointer">
+                    <Github className="h-4 w-4 shrink-0" />
+                    {t('nav.github')}
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <ModeToggle />
           </div>
         </TooltipProvider>

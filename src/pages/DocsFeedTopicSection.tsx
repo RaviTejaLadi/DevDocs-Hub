@@ -127,7 +127,7 @@ function DocsFeedTopicSectionInner({
           <h2 className="min-w-0 flex-1 text-pretty text-base font-semibold leading-tight tracking-tight text-foreground sm:text-lg">
             <TranslatedText text={item.title} />
           </h2>
-          <div className="hidden shrink-0 xl:block">
+          <div className="hidden shrink-0 lg:block">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button

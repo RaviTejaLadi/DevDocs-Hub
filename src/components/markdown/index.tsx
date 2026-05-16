@@ -565,10 +565,10 @@ const MarkdownRenderInner = ({
   return (
     <div
       className={cn(
-        'relative grid gap-4 xl:gap-5',
+        'relative grid gap-4 lg:gap-5',
         fillViewportCard && 'h-full min-h-0',
-        hideToc ? 'grid-cols-1' : 'grid-cols-1 xl:grid-cols-[minmax(0,1fr)_18rem]',
-        slideMode && !hideToc ? 'xl:items-stretch' : !hideToc ? 'xl:items-start' : undefined
+        hideToc ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
+        slideMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
       )}
     >
       <div className={cn('flex min-h-0 min-w-0 flex-col', fillViewportCard && 'h-full min-h-0')}>
@@ -665,9 +665,9 @@ const MarkdownRenderInner = ({
       {!hideToc && headings.length > 0 && (
         <aside
           className={cn(
-            'hidden min-h-0 shrink-0 xl:flex xl:w-72 xl:flex-col',
-            slideMode && 'xl:self-stretch',
-            fillViewportCard ? 'xl:relative xl:top-auto' : 'sticky top-24',
+            'hidden min-h-0 shrink-0 lg:flex lg:w-72 lg:flex-col',
+            slideMode && 'lg:self-stretch',
+            fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-24',
             slideMode
               ? fillViewportCard
                 ? 'h-full min-h-0 max-h-full'

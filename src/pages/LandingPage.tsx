@@ -81,7 +81,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 pb-20 max-w-5xl mx-auto">
+    <div className="pb-20 max-w-5xl mx-auto w-full min-w-0">
       <header className="text-center pt-8 sm:pt-12 pb-12 sm:pb-16">
         <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3">
           <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
@@ -145,7 +145,7 @@ const LandingPage = () => {
         </div>
       ) : (
         <>
-          <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto">
+          <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-2 px-2 sm:mx-0 sm:px-0 overflow-x-auto">
             <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
               {streams.map((stream) => {
                 const isActive = stream.id === activeStream?.id;

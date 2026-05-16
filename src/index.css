@@ -823,7 +823,33 @@
 .live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionIcon,
 .live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionDetail,
 .live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionLabel,
-.live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionMatchedText {
-  color: inherit !important;
-  opacity: 1 !important;
+.md-render .md-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-render .md-code-card pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 639px) {
+  .md-render > p:first-of-type::first-letter {
+    font-size: 2.55rem;
+    line-height: 0.92;
+    margin: 0.25rem 0.45rem 0 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .live-code-editor .live-code-editor-layout {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .live-code-editor .live-code-editor-layout > * {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    min-height: 220px;
+  }
 }

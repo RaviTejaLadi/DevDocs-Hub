@@ -323,7 +323,7 @@ function TopicDetailPage() {
             {t('interview.filters')}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0 [scrollbar-width:thin]">
             <button
               type="button"
               onClick={() => setLevelFilter('all')}

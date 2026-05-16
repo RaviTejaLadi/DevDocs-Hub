@@ -35,6 +35,8 @@ const en: TranslationMap = {
   'nav.interviewQuestions': 'Interview questions',
   'nav.terms': 'Terms',
   'nav.github': 'GitHub',
+  'nav.moreMenu': 'More navigation',
+  'nav.codeEditor': 'Live code editor',
   'footer.overview': 'Overview',
   'footer.terms': 'Terms',
   'footer.tagline':

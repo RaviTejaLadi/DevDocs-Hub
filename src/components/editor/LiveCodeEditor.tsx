@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { autocompletion, completeFromList, type Completion } from '@codemirror/autocomplete';
 import { cssLanguage } from '@codemirror/lang-css';
 import { htmlLanguage } from '@codemirror/lang-html';
@@ -222,6 +222,25 @@ const TAILWIND_PRESET: PresetConfig = {
 };
 
 const PRESETS: PresetConfig[] = [HTML_PRESET, CSS_PRESET, JAVASCRIPT_PRESET, REACT_PRESET, TAILWIND_PRESET];
+
+function useSandpackEditorHeight() {
+  const [height, setHeight] = useState(640);
+
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      if (w < 640) setHeight(280);
+      else if (w < 1024) setHeight(440);
+      else setHeight(680);
+    };
+
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+  }, []);
+
+  return height;
+}
 const HTML_SUGGESTIONS: Completion[] = [
   { label: 'div', type: 'keyword' },
   { label: 'section', type: 'keyword' },
@@ -278,7 +297,7 @@ const TAILWIND_SUGGESTIONS: Completion[] = [
 export const LiveCodeEditor = ({ className, defaultPreset = 'react' }: LiveCodeEditorProps) => {
   const [activePreset, setActivePreset] = useState<EditorPreset>(defaultPreset);
   const { theme } = useTheme();
-  const editorHeight = 680;
+  const editorHeight = useSandpackEditorHeight();
 
   const selectedPreset = useMemo(
     () => PRESETS.find((preset) => preset.id === activePreset) ?? REACT_PRESET,
@@ -373,6 +392,7 @@ export const LiveCodeEditor = ({ className, defaultPreset = 'react' }: LiveCodeE
         >
           <SandpackThemeProvider theme={sandpackTheme}>
             <SandpackLayout
+              className="live-code-editor-layout"
               style={{
                 borderRadius: 10,
                 overflow: 'hidden',

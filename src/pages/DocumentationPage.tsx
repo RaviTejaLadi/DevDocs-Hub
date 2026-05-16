@@ -41,9 +41,9 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
   return flattened.filter((i) => i.content);
 };
 
-/** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding). */
+/** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding + safe areas). */
 const DOC_FEED_TOPIC_CARD_CLASS =
-  'h-[calc(100dvh-8.75rem)] min-h-[20rem] max-h-[calc(100dvh-12.75rem)] sm:h-[calc(100dvh-8.25rem)] sm:max-h-[calc(100dvh-8.25rem)]';
+  'h-[calc(100dvh-8.75rem-env(safe-area-inset-bottom))] min-h-[18rem] max-h-[calc(100dvh-12.75rem-env(safe-area-inset-bottom))] sm:h-[calc(100dvh-8.25rem-env(safe-area-inset-bottom))] sm:min-h-[20rem] sm:max-h-[calc(100dvh-8.25rem-env(safe-area-inset-bottom))]';
 
 /** Section shell: fixed viewport card height; inner post chrome lives in DocsFeedTopicSection. */
 const DOC_FEED_SECTION_SHELL_CLASS = cn(
@@ -285,7 +285,7 @@ const DocumentationPage = () => {
           variant="secondary"
           size="icon"
           onClick={scrollFeedToTop}
-          className="fixed bottom-6 right-5 z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
           aria-label={t('docs.scrollToTop')}
         >
           <ChevronUp className="size-5" />

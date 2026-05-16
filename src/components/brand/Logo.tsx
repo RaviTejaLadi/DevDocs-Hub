@@ -9,6 +9,8 @@ type LogoProps = {
   /** Use as link to home (default true when not inside a link) */
   asLink?: boolean;
   className?: string;
+  /** Classes applied to the wordmark span (e.g. hide or truncate on narrow viewports) */
+  textClassName?: string;
 };
 
 const sizeClasses = {
@@ -17,7 +19,7 @@ const sizeClasses = {
   lg: { icon: 'w-12 h-12 sm:w-12 sm:h-12', text: 'text-3xl sm:text-4xl md:text-5xl' },
 };
 
-export function Logo({ showText = true, size = 'sm', asLink = true, className }: LogoProps) {
+export function Logo({ showText = true, size = 'sm', asLink = true, className, textClassName }: LogoProps) {
   const { icon: iconClass, text: textClass } = sizeClasses[size];
 
   const logoSvg = (
@@ -45,7 +47,8 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className }:
           className={cn(
             'font-semibold text-foreground tracking-tight',
             size === 'lg' && 'text-gradient-sheen text-fade-up',
-            textClass
+            textClass,
+            textClassName
           )}
         >
           ReviseStack

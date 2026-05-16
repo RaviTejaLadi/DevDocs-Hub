@@ -44,7 +44,7 @@ const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean;
               'fixed z-60 h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
               'hidden md:inline-flex',
               /** NavBar: sticky top-2 + h-14 — sit just under it, outside scroll layout. */
-              'top-[calc(0.5rem+3.5rem+0.5rem)] right-4 sm:right-6'
+              'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)] right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
             )}
           >
             {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
@@ -99,7 +99,7 @@ const App = () => {
           </SheetContent>
         </Sheet>
 
-        <div className="h-[calc(100dvh-3.5rem)] flex">
+        <div className="h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] min-h-0 flex">
           {showSidebar && (
             <DocsDesktopSidebarToggle
               collapsed={docsSidebarCollapsed}
@@ -128,7 +128,7 @@ const App = () => {
               viewportRef={contentViewportRef}
               viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
             >
-              <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 text-foreground">
+              <div className="mx-auto w-full max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
                 <Suspense fallback={<RouteFallback />}>
                   <Routes location={location}>
                     <Route path="/" element={<LandingPage />} />
