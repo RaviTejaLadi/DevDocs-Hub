@@ -20,7 +20,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { useDocsFeedSync } from '@/context/docsFeedSyncContext';
 import { cn } from '@/lib/utils';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
@@ -77,7 +77,9 @@ function formatTopicTrackLabel(type: string): string {
 }
 
 function DocumentationTopicHero({ topic, search }: { topic: Topic; search: ReactNode }) {
-  const iconEl = topic.icon ?? <FileText className="size-[1.05rem] shrink-0 text-primary sm:size-5" strokeWidth={1.75} aria-hidden />;
+  const iconEl = topic.icon ?? (
+    <FileText className="size-[1.05rem] shrink-0 text-primary sm:size-5" strokeWidth={1.75} aria-hidden />
+  );
   const track = formatTopicTrackLabel(topic.category || topic.type);
 
   return (
@@ -173,7 +175,9 @@ function DocumentationTopicHero({ topic, search }: { topic: Topic; search: React
 
 /** Full-width stream ribbon (Computer Science, Mechanical Engineering, …) above the topic hero. */
 function DocsFeedStreamBanner({ stream }: { stream: Stream }) {
-  const iconEl = stream.icon ?? <FileText className="size-[1.1rem] shrink-0 text-primary sm:size-5" strokeWidth={1.75} aria-hidden />;
+  const iconEl = stream.icon ?? (
+    <FileText className="size-[1.1rem] shrink-0 text-primary sm:size-5" strokeWidth={1.75} aria-hidden />
+  );
 
   return (
     <div
@@ -200,7 +204,9 @@ function DocsFeedStreamBanner({ stream }: { stream: Stream }) {
           {iconEl}
         </div>
         <div className="min-w-0 flex-1 space-y-1">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/90 sm:text-[11px]">Learning stream</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/90 sm:text-[11px]">
+            Learning stream
+          </p>
           <h2 className="text-balance text-base font-semibold leading-snug text-foreground sm:text-lg md:text-xl">
             <TranslatedText text={stream.title} />
           </h2>
@@ -215,7 +221,9 @@ function DocsFeedStreamBanner({ stream }: { stream: Stream }) {
 
 /** Shown when the infinite feed chains another topic below the first — keeps orientation without duplicating the full hero + search chrome. */
 function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
-  const iconEl = topic.icon ?? <FileText className="size-[1.05rem] shrink-0 text-primary sm:size-4" strokeWidth={1.75} aria-hidden />;
+  const iconEl = topic.icon ?? (
+    <FileText className="size-[1.05rem] shrink-0 text-primary sm:size-4" strokeWidth={1.75} aria-hidden />
+  );
   const track = formatTopicTrackLabel(topic.category || topic.type);
 
   return (
@@ -227,7 +235,10 @@ function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
       role="separator"
       aria-label={topic.title}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.08),transparent_55%)] dark:bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.06),transparent_55%)]" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.08),transparent_55%)] dark:bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.06),transparent_55%)]"
+        aria-hidden
+      />
       <div className="relative flex min-w-0 items-center gap-2.5 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3">
         <div
           className={cn(
@@ -259,7 +270,6 @@ function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
     </div>
   );
 }
-
 
 /** How many catalog topics to append when the user nears the end of the chained feed (sentinel). */
 /** How many topic "chapters" to load per sentinel hit (global catalog, all streams). */
@@ -687,7 +697,9 @@ const DocumentationPage = () => {
             slug: nextRow.item.id,
             pathRevision: pathRevisionRef.current,
           });
-          document.getElementById(docFeedSectionDomId(nextRow.topic.id, nextRow.item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+          document
+            .getElementById(docFeedSectionDomId(nextRow.topic.id, nextRow.item.id))
+            ?.scrollIntoView({ behavior: 'auto', block: 'start' });
           navigate(`/docs/${nextRow.topic.id}/${nextRow.item.id}`, { replace: true });
           setInViewFeedKey(`${nextRow.topic.id}/${nextRow.item.id}`);
           return;
@@ -716,7 +728,9 @@ const DocumentationPage = () => {
             slug: prevRow.item.id,
             pathRevision: pathRevisionRef.current,
           });
-          document.getElementById(docFeedSectionDomId(prevRow.topic.id, prevRow.item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+          document
+            .getElementById(docFeedSectionDomId(prevRow.topic.id, prevRow.item.id))
+            ?.scrollIntoView({ behavior: 'auto', block: 'start' });
           navigate(`/docs/${prevRow.topic.id}/${prevRow.item.id}`, { replace: true });
           setInViewFeedKey(`${prevRow.topic.id}/${prevRow.item.id}`);
           return;
@@ -739,7 +753,17 @@ const DocumentationPage = () => {
         setInViewFeedKey(`${prevTopic.id}/${lastItem.id}`);
       },
     }),
-    [feedRange.end, feedRange.start, feedRows, navigate, viewportRef, catalogBounds.end, catalogBounds.start, setFeedOverlay, pathRevisionRef]
+    [
+      feedRange.end,
+      feedRange.start,
+      feedRows,
+      navigate,
+      viewportRef,
+      catalogBounds.end,
+      catalogBounds.start,
+      setFeedOverlay,
+      pathRevisionRef,
+    ]
   );
 
   const navigateToFeedItem = useCallback(
@@ -788,124 +812,125 @@ const DocumentationPage = () => {
   }
 
   return (
-    <TooltipProvider delayDuration={200}>
-      <div className="w-full min-w-0 max-w-full overflow-x-hidden">
-        <div className="max-w-none min-w-0 flex flex-col gap-5 pb-24 sm:gap-6">
-          {activeStream ? (
-            <div className="mb-1">
-              <DocsFeedStreamBanner stream={activeStream} />
-            </div>
-          ) : null}
-          <DocumentationTopicHero
-            topic={topic}
-            search={
-              <DocsTopicFeedSearch
-                variant="embedded"
-                parentTopicTitle={topic.title}
-                items={[]}
-                activeSlug={slug ?? ''}
-                activeTopicId={categoryId}
-                multiTopicRows={feedSearchRows}
-                onNavigateToItem={navigateToFeedItem}
-              />
-            }
-          />
-          {chainHasMoreAbove ? <div ref={prependSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
-          {feedRows.map((row, idx) => (
-            <Fragment key={`${row.topic.id}-${row.item.id}`}>
-              {idx > 0 && row.topic.id !== feedRows[idx - 1]!.topic.id ? (
-                <>
-                  {(() => {
-                    const prevT = feedRows[idx - 1]!.topic;
-                    const sp = getStreamByTopicId(prevT.id);
-                    const sc = getStreamByTopicId(row.topic.id);
-                    return sp && sc && sp.id !== sc.id ? (
-                      <div className="mb-1 mt-2 sm:mt-3">
-                        <DocsFeedStreamBanner stream={sc} />
-                      </div>
-                    ) : null;
-                  })()}
-                  <DocsFeedTopicContinuationHero topic={row.topic} />
-                </>
-              ) : null}
-              <DocsFeedTopicSection
-                item={row.item}
-                idx={idx}
-                total={feedRows.length}
-                sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
-                isCurrentRoute={slug === row.item.id && categoryId === row.topic.id}
-                viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
-                feedNav={feedNav}
-                isActive={inViewFeedKey === `${row.topic.id}/${row.item.id}`}
-                sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
-                chainHasMoreToNextTopic={chainHasMoreBelow && idx === feedRows.length - 1}
-                chainHasMoreToPrevTopic={chainHasMoreAbove && idx === 0}
-              />
-            </Fragment>
-          ))}
-          {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
-        </div>
-
-        {visibleTopics.length > 1 ? (
-          <nav
-            aria-label={t('docs.feedTopicJumpNav')}
-            className={cn(
-              'fixed z-60 hidden max-h-[min(50dvh,22rem)] w-10 flex-col gap-1.5 overflow-y-auto overflow-x-hidden py-0.5 pe-0.5 md:flex',
-              /** Directly under `DocsDesktopSidebarToggle` in App.tsx (nav strip + h-10 + gap). */
-              'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
-              'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
-            )}
-          >
-            {visibleTopics.map((visTopic) => {
-              const firstRow = feedRows.find((r) => r.topic.id === visTopic.id);
-              if (!firstRow) return null;
-              const iconEl =
-                visTopic.icon ?? <FileText className="size-[0.95rem] shrink-0 text-primary" strokeWidth={1.75} aria-hidden />;
-              const railTopicId = inViewFeedKey ? inViewFeedKey.split('/')[0] : categoryId;
-              const isActive = railTopicId === visTopic.id;
-              return (
-                <Tooltip key={visTopic.id}>
-                  <TooltipTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="secondary"
-                      size="icon"
-                      aria-current={isActive ? 'true' : undefined}
-                      aria-label={t('docs.feedTopicJump', { topic: visTopic.title })}
-                      className={cn(
-                        'h-9 w-9 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
-                        isActive && 'border-primary/45 bg-primary/12 ring-1 ring-primary/25'
-                      )}
-                      onClick={() => navigateToFeedItem(firstRow.item, firstRow.topic.id, 'smooth')}
-                    >
-                      <span className="flex size-[1.35rem] items-center justify-center [&_svg]:size-[0.95rem]">{iconEl}</span>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="left" className="max-w-56">
-                    <span className="font-medium">
-                      <TranslatedText text={visTopic.title} />
-                    </span>
-                  </TooltipContent>
-                </Tooltip>
-              );
-            })}
-          </nav>
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
+      <div className="max-w-none min-w-0 flex flex-col gap-5 pb-24 sm:gap-6">
+        {activeStream ? (
+          <div className="mb-1">
+            <DocsFeedStreamBanner stream={activeStream} />
+          </div>
         ) : null}
-
-        {showScrollTop && (
-          <Button
-            type="button"
-            variant="secondary"
-            size="icon"
-            onClick={scrollFeedToTop}
-            className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
-            aria-label={t('docs.scrollToTop')}
-          >
-            <ChevronUp className="size-5" />
-          </Button>
-        )}
+        <DocumentationTopicHero
+          topic={topic}
+          search={
+            <DocsTopicFeedSearch
+              variant="embedded"
+              parentTopicTitle={topic.title}
+              items={[]}
+              activeSlug={slug ?? ''}
+              activeTopicId={categoryId}
+              multiTopicRows={feedSearchRows}
+              onNavigateToItem={navigateToFeedItem}
+            />
+          }
+        />
+        {chainHasMoreAbove ? <div ref={prependSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
+        {feedRows.map((row, idx) => (
+          <Fragment key={`${row.topic.id}-${row.item.id}`}>
+            {idx > 0 && row.topic.id !== feedRows[idx - 1]!.topic.id ? (
+              <>
+                {(() => {
+                  const prevT = feedRows[idx - 1]!.topic;
+                  const sp = getStreamByTopicId(prevT.id);
+                  const sc = getStreamByTopicId(row.topic.id);
+                  return sp && sc && sp.id !== sc.id ? (
+                    <div className="mb-1 mt-2 sm:mt-3">
+                      <DocsFeedStreamBanner stream={sc} />
+                    </div>
+                  ) : null;
+                })()}
+                <DocsFeedTopicContinuationHero topic={row.topic} />
+              </>
+            ) : null}
+            <DocsFeedTopicSection
+              item={row.item}
+              idx={idx}
+              total={feedRows.length}
+              sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
+              isCurrentRoute={slug === row.item.id && categoryId === row.topic.id}
+              viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
+              feedNav={feedNav}
+              isActive={inViewFeedKey === `${row.topic.id}/${row.item.id}`}
+              sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
+              chainHasMoreToNextTopic={chainHasMoreBelow && idx === feedRows.length - 1}
+              chainHasMoreToPrevTopic={chainHasMoreAbove && idx === 0}
+            />
+          </Fragment>
+        ))}
+        {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
       </div>
-    </TooltipProvider>
+
+      {visibleTopics.length > 1 ? (
+        <nav
+          aria-label={t('docs.feedTopicJumpNav')}
+          className={cn(
+            'fixed z-60 hidden max-h-[min(50dvh,22rem)] w-10 flex-col gap-1.5 overflow-y-auto overflow-x-hidden py-0.5 pe-0.5 md:flex',
+            /** Directly under `DocsDesktopSidebarToggle` in App.tsx (nav strip + h-10 + gap). */
+            'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
+            'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+          )}
+        >
+          {visibleTopics.map((visTopic) => {
+            const firstRow = feedRows.find((r) => r.topic.id === visTopic.id);
+            if (!firstRow) return null;
+            const iconEl = visTopic.icon ?? (
+              <FileText className="size-[0.95rem] shrink-0 text-primary" strokeWidth={1.75} aria-hidden />
+            );
+            const railTopicId = inViewFeedKey ? inViewFeedKey.split('/')[0] : categoryId;
+            const isActive = railTopicId === visTopic.id;
+            return (
+              <Tooltip key={visTopic.id}>
+                <TooltipTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="icon"
+                    aria-current={isActive ? 'true' : undefined}
+                    aria-label={t('docs.feedTopicJump', { topic: visTopic.title })}
+                    className={cn(
+                      'h-9 w-9 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+                      isActive && 'border-primary/45 bg-primary/12 ring-1 ring-primary/25'
+                    )}
+                    onClick={() => navigateToFeedItem(firstRow.item, firstRow.topic.id, 'smooth')}
+                  >
+                    <span className="flex size-[1.35rem] items-center justify-center [&_svg]:size-[0.95rem]">
+                      {iconEl}
+                    </span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="left" className="max-w-56">
+                  <span className="font-medium">
+                    <TranslatedText text={visTopic.title} />
+                  </span>
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </nav>
+      ) : null}
+
+      {showScrollTop && (
+        <Button
+          type="button"
+          variant="secondary"
+          size="icon"
+          onClick={scrollFeedToTop}
+          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+          aria-label={t('docs.scrollToTop')}
+        >
+          <ChevronUp className="size-5" />
+        </Button>
+      )}
+    </div>
   );
 };
 

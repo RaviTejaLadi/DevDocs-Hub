@@ -59,9 +59,13 @@ function DocsFeedMarkdownSkeleton({ loadingLabel }: { loadingLabel: string }) {
         </div>
 
         <div className="flex shrink-0 items-center gap-2 border-t border-border/35 bg-muted/20 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5 dark:bg-muted/12">
-          <div className={cn('h-8 w-19 shrink-0 rounded-md border border-border/25 bg-muted/40 sm:w-19.5', shimmerBar)} />
+          <div
+            className={cn('h-8 w-19 shrink-0 rounded-md border border-border/25 bg-muted/40 sm:w-19.5', shimmerBar)}
+          />
           <div className={cn('mx-auto h-3 w-28 rounded-md bg-muted/35 sm:w-32', shimmerBar)} />
-          <div className={cn('h-8 w-19 shrink-0 rounded-md border border-border/25 bg-muted/40 sm:w-19.5', shimmerBar)} />
+          <div
+            className={cn('h-8 w-19 shrink-0 rounded-md border border-border/25 bg-muted/40 sm:w-19.5', shimmerBar)}
+          />
         </div>
       </div>
     </div>

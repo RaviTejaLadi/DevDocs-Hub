@@ -6,7 +6,7 @@ import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'luc
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -210,13 +210,13 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
               key={item.id}
               variant={isActive ? 'default' : 'ghost'}
               data-sidebar-route={routeKey}
-            className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
-            onClick={() => handleNavigate(topic.id, item.id)}
-          >
-            <span className="text-sm truncate min-w-0 block w-full text-left">
-              <TranslatedText text={item.title} />
-            </span>
-          </Button>
+              className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
+              onClick={() => handleNavigate(topic.id, item.id)}
+            >
+              <span className="text-sm truncate min-w-0 block w-full text-left">
+                <TranslatedText text={item.title} />
+              </span>
+            </Button>
           );
         });
       })();
@@ -260,14 +260,12 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
       <div className="flex-1 min-h-0">
         <ScrollArea className="h-full overflow-hidden">
-          <TooltipProvider delayDuration={250}>
-            <nav
-              className="motion-stagger p-3 space-y-0.5 w-full max-w-full overflow-x-hidden"
-              aria-label="Topic sections"
-            >
-              {displayContent}
-            </nav>
-          </TooltipProvider>
+          <nav
+            className="motion-stagger p-3 space-y-0.5 w-full max-w-full overflow-x-hidden"
+            aria-label="Topic sections"
+          >
+            {displayContent}
+          </nav>
         </ScrollArea>
       </div>
     </div>

@@ -183,7 +183,10 @@ export function DocsTopicFeedSearch({
   };
 
   return (
-    <div ref={containerRef} className={cn('relative min-w-0 w-full max-w-full', variant === 'embedded' ? 'z-20' : 'z-30')}>
+    <div
+      ref={containerRef}
+      className={cn('relative min-w-0 w-full max-w-full', variant === 'embedded' ? 'z-20' : 'z-30')}
+    >
       <p id={labelId} className="sr-only">
         {t('docs.searchFeedSectionLabel')}. {t('docs.searchFeedHint')}
       </p>
@@ -205,7 +208,11 @@ export function DocsTopicFeedSearch({
               )
         )}
       >
-        <Search className={cn('shrink-0 text-muted-foreground', variant === 'embedded' ? 'size-3.5' : 'size-4')} strokeWidth={2} aria-hidden />
+        <Search
+          className={cn('shrink-0 text-muted-foreground', variant === 'embedded' ? 'size-3.5' : 'size-4')}
+          strokeWidth={2}
+          aria-hidden
+        />
         <Input
           ref={inputRef}
           type="text"
@@ -234,7 +241,9 @@ export function DocsTopicFeedSearch({
           onKeyDown={onKeyDown}
           className={cn(
             'min-w-0 flex-1 border-0 bg-transparent px-0.5 shadow-none  pl-4 focus-visible:ring-0',
-            variant === 'embedded' ? 'h-8 py-0 text-sm placeholder:text-muted-foreground/65' : 'h-9 placeholder:text-muted-foreground'
+            variant === 'embedded'
+              ? 'h-8 py-0 text-sm placeholder:text-muted-foreground/65'
+              : 'h-9 placeholder:text-muted-foreground'
           )}
         />
         {query.length > 0 ? (
@@ -323,7 +332,9 @@ export function DocsTopicFeedSearch({
               );
             })
           ) : (
-            <p className="px-3 py-4 text-center text-sm text-muted-foreground sm:px-4">{t('docs.searchFeedNoResults')}</p>
+            <p className="px-3 py-4 text-center text-sm text-muted-foreground sm:px-4">
+              {t('docs.searchFeedNoResults')}
+            </p>
           )}
         </div>
       ) : null}

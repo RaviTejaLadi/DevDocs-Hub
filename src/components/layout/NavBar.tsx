@@ -23,7 +23,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { useI18n } from '@/i18n/I18nProvider';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
 import { TranslatedText } from '@/i18n/TranslatedText';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -181,10 +181,8 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </Button>
           )}
         </div>
-
-        <TooltipProvider delayDuration={120}>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {isHomePage && (
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          {isHomePage && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button
@@ -279,26 +277,105 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                 </div>
               </DialogContent>
             </Dialog>
-            )}
+          )}
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  id="language-select"
-                  variant="outline"
-                  className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
-                  aria-label={t('language.label')}
-                >
-                  <Languages className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="max-w-16 truncate">
-                    {LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}
-                  </span>
-                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-44">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                id="language-select"
+                variant="outline"
+                className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
+                aria-label={t('language.label')}
+              >
+                <Languages className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="max-w-16 truncate">
+                  {LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}
+                </span>
+                <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup
+                value={language}
+                onValueChange={(value) => setLanguage(value as SupportedLanguage)}
+              >
+                {LANGUAGE_OPTIONS.map((option) => (
+                  <DropdownMenuRadioItem key={option.code} value={option.code}>
+                    {option.label}
+                  </DropdownMenuRadioItem>
+                ))}
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/code-editor')}
+                aria-label={t('nav.codeEditor')}
+              >
+                <Code2 className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.codeEditor')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/interview-questions')}
+                aria-label={t('nav.interviewQuestions')}
+              >
+                <HelpCircle className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/terms')}
+                aria-label={t('nav.terms')}
+              >
+                <FileText className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={t('nav.github')}>
+                <Github className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
+          </Tooltip>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                className="md:hidden shrink-0 border-border/40"
+                aria-label={t('nav.moreMenu')}
+              >
+                <MoreHorizontal className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
+              <div className="sm:hidden">
                 <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
                 <DropdownMenuRadioGroup
                   value={language}
                   onValueChange={(value) => setLanguage(value as SupportedLanguage)}
@@ -309,126 +386,51 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
                     </DropdownMenuRadioItem>
                   ))}
                 </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <DropdownMenuSeparator />
+              </div>
+              <DropdownMenuItem
+                onClick={() => {
+                  navigate('/code-editor');
+                }}
+                className="gap-2"
+              >
+                <Code2 className="h-4 w-4 shrink-0" />
+                {t('nav.codeEditor')}
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  navigate('/interview-questions');
+                }}
+                className="gap-2"
+              >
+                <HelpCircle className="h-4 w-4 shrink-0" />
+                {t('nav.interviewQuestions')}
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  navigate('/terms');
+                }}
+                className="gap-2"
+              >
+                <FileText className="h-4 w-4 shrink-0" />
+                {t('nav.terms')}
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="gap-2">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 cursor-pointer"
+                >
+                  <Github className="h-4 w-4 shrink-0" />
+                  {t('nav.github')}
+                </a>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hidden md:inline-flex px-3"
-                  onClick={() => navigate('/code-editor')}
-                  aria-label={t('nav.codeEditor')}
-                >
-                  <Code2 className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">{t('nav.codeEditor')}</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hidden md:inline-flex px-3"
-                  onClick={() => navigate('/interview-questions')}
-                  aria-label={t('nav.interviewQuestions')}
-                >
-                  <HelpCircle className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hidden md:inline-flex px-3"
-                  onClick={() => navigate('/terms')}
-                  aria-label={t('nav.terms')}
-                >
-                  <FileText className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={t('nav.github')}>
-                  <Github className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
-            </Tooltip>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  className="md:hidden shrink-0 border-border/40"
-                  aria-label={t('nav.moreMenu')}
-                >
-                  <MoreHorizontal className="h-5 w-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
-                <div className="sm:hidden">
-                  <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
-                  <DropdownMenuRadioGroup
-                    value={language}
-                    onValueChange={(value) => setLanguage(value as SupportedLanguage)}
-                  >
-                    {LANGUAGE_OPTIONS.map((option) => (
-                      <DropdownMenuRadioItem key={option.code} value={option.code}>
-                        {option.label}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                  <DropdownMenuSeparator />
-                </div>
-                <DropdownMenuItem
-                  onClick={() => {
-                    navigate('/code-editor');
-                  }}
-                  className="gap-2"
-                >
-                  <Code2 className="h-4 w-4 shrink-0" />
-                  {t('nav.codeEditor')}
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => {
-                    navigate('/interview-questions');
-                  }}
-                  className="gap-2"
-                >
-                  <HelpCircle className="h-4 w-4 shrink-0" />
-                  {t('nav.interviewQuestions')}
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => {
-                    navigate('/terms');
-                  }}
-                  className="gap-2"
-                >
-                  <FileText className="h-4 w-4 shrink-0" />
-                  {t('nav.terms')}
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="gap-2">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 cursor-pointer">
-                    <Github className="h-4 w-4 shrink-0" />
-                    {t('nav.github')}
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <ModeToggle />
-          </div>
-        </TooltipProvider>
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );

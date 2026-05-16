@@ -491,9 +491,7 @@ function QuestionBlock({
       <AccordionContent className="px-4 sm:px-5 pb-5 pt-0">
         <div className="pt-4 border-t border-border/40 mt-0 bg-linear-to-b from-transparent to-muted/10 -mx-4 sm:-mx-5 px-4 sm:px-5">
           <h3 className="text-sm font-semibold text-foreground mb-3 w-fit">{t('interview.answer')}</h3>
-          <Suspense
-            fallback={<div className="min-h-16 animate-pulse rounded-md bg-muted/30" aria-hidden />}
-          >
+          <Suspense fallback={<div className="min-h-16 animate-pulse rounded-md bg-muted/30" aria-hidden />}>
             <AnswerMarkdownLazy content={item.answer} />
           </Suspense>
         </div>

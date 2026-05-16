@@ -4,7 +4,7 @@ import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
@@ -33,28 +33,26 @@ const RouteFallback = () => (
 const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();
   return (
-    <TooltipProvider delayDuration={200}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            type="button"
-            variant="secondary"
-            size="icon"
-            onClick={onToggle}
-            aria-label={collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-            className={cn(
-              'fixed z-60 h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
-              'hidden md:inline-flex',
-              /** NavBar: sticky top-2 + h-14 — sit just under it, outside scroll layout. */
-              'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)] right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
-            )}
-          >
-            {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent side="bottom">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          type="button"
+          variant="secondary"
+          size="icon"
+          onClick={onToggle}
+          aria-label={collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
+          className={cn(
+            'fixed z-60 h-10 w-10 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+            'hidden md:inline-flex',
+            /** NavBar: sticky top-2 + h-14 — sit just under it, outside scroll layout. */
+            'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)] right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+          )}
+        >
+          {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
+    </Tooltip>
   );
 };
 
@@ -103,64 +101,64 @@ const App = () => {
     <DocsFeedSyncProvider>
       <ScrollViewportProvider value={contentViewportRef}>
         <div className="min-h-dvh h-dvh overflow-hidden bg-background">
-        <NavBar setSidebarOpen={setSidebarOpen} />
+          <NavBar setSidebarOpen={setSidebarOpen} />
 
-        <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-          <SheetContent side="left" className="w-[88vw] max-w-sm p-0 border-r border-border/40">
+          <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+            <SheetContent side="left" className="w-[88vw] max-w-sm p-0 border-r border-border/40">
               <ScrollArea className="h-full">
-              <Routes location={location}>
-                <Route
-                  path="/docs/:categoryId/:slug"
-                  element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
-                />
-              </Routes>
-            </ScrollArea>
-          </SheetContent>
-        </Sheet>
+                <Routes location={location}>
+                  <Route
+                    path="/docs/:categoryId/:slug"
+                    element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
+                  />
+                </Routes>
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
 
-        <div className="h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] min-h-0 flex">
-          {showSidebar && (
-            <DocsDesktopSidebarToggle
-              collapsed={docsSidebarCollapsed}
-              onToggle={() => setDocsSidebarCollapsed((prev) => !prev)}
-            />
-          )}
-          {showSidebar && (
-            <aside
-              className={cn(
-                'hidden md:block h-full my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
-                docsSidebarCollapsed
-                  ? 'mx-0 w-0 overflow-hidden border-r-0 pointer-events-none'
-                  : 'mx-2 w-64 lg:w-72 border-r border-border/40'
-              )}
-              aria-hidden={docsSidebarCollapsed}
-            >
-              <Routes location={location}>
-                <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
-              </Routes>
-            </aside>
-          )}
+          <div className="h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] min-h-0 flex">
+            {showSidebar && (
+              <DocsDesktopSidebarToggle
+                collapsed={docsSidebarCollapsed}
+                onToggle={() => setDocsSidebarCollapsed((prev) => !prev)}
+              />
+            )}
+            {showSidebar && (
+              <aside
+                className={cn(
+                  'hidden md:block h-full my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
+                  docsSidebarCollapsed
+                    ? 'mx-0 w-0 overflow-hidden border-r-0 pointer-events-none'
+                    : 'mx-2 w-64 lg:w-72 border-r border-border/40'
+                )}
+                aria-hidden={docsSidebarCollapsed}
+              >
+                <Routes location={location}>
+                  <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
+                </Routes>
+              </aside>
+            )}
 
-          <main className="flex-1 overflow-hidden">
-            <ScrollArea
-              className="h-full"
-              viewportRef={contentViewportRef}
-              viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
-            >
-              <div className="mx-auto w-full max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
-                <Suspense fallback={<RouteFallback />}>
-                  <Routes location={location}>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
-                    <Route path="/terms" element={<TermsOfServicePage />} />
-                    <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
-                    <Route path="/code-editor" element={<CodeEditorPage />} />
-                  </Routes>
-                </Suspense>
-              </div>
-            </ScrollArea>
-          </main>
-        </div>
+            <main className="flex-1 overflow-hidden">
+              <ScrollArea
+                className="h-full"
+                viewportRef={contentViewportRef}
+                viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
+              >
+                <div className="mx-auto w-full max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
+                  <Suspense fallback={<RouteFallback />}>
+                    <Routes location={location}>
+                      <Route path="/" element={<LandingPage />} />
+                      <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
+                      <Route path="/terms" element={<TermsOfServicePage />} />
+                      <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
+                      <Route path="/code-editor" element={<CodeEditorPage />} />
+                    </Routes>
+                  </Suspense>
+                </div>
+              </ScrollArea>
+            </main>
+          </div>
         </div>
       </ScrollViewportProvider>
     </DocsFeedSyncProvider>
