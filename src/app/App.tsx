@@ -52,7 +52,7 @@ const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean;
           {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
         </Button>
       </TooltipTrigger>
-      <TooltipContent side="bottom">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
+      <TooltipContent side="left">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
     </Tooltip>
   );
 };

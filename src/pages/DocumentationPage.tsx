@@ -1019,6 +1019,7 @@ const DocumentationPage = () => {
         >
           <Library className="size-[1.1rem] text-primary" strokeWidth={1.75} />
         </Button>
+
         <SheetContent
           side="right"
           overlayClassName="z-[68] backdrop-blur-[2px]"
