@@ -498,7 +498,7 @@ const DocumentationPage = () => {
       }
       setTopicBrowserOpen(open);
     },
-    [buildTopicBrowserExpandedMap],
+    [buildTopicBrowserExpandedMap]
   );
 
   useEffect(() => {
@@ -1061,144 +1061,146 @@ const DocumentationPage = () => {
                 <Fragment key={stream.id}>
                   {si > 0 ? <Separator className="my-5 bg-border/30" decorative /> : null}
                   <section className="rounded-xl bg-muted/15 p-3 dark:bg-muted/10">
-                  <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
-                    <div
-                      className={cn(
-                        'flex size-9 shrink-0 items-center justify-center rounded-lg',
-                        'bg-background/80 text-primary shadow-inner backdrop-blur-sm [&_svg]:size-[1.05rem]'
-                      )}
-                      aria-hidden
-                    >
-                      {stream.icon ?? <FileText className="size-[1.05rem]" strokeWidth={1.75} />}
+                    <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
+                      <div
+                        className={cn(
+                          'flex size-9 shrink-0 items-center justify-center rounded-lg',
+                          'bg-background/80 text-primary shadow-inner backdrop-blur-sm [&_svg]:size-[1.05rem]'
+                        )}
+                        aria-hidden
+                      >
+                        {stream.icon ?? <FileText className="size-[1.05rem]" strokeWidth={1.75} />}
+                      </div>
+                      <div className="min-w-0 flex-1 pt-0.5">
+                        <p className="truncate text-[13px] font-semibold leading-tight tracking-tight">
+                          <TranslatedText text={stream.title} />
+                        </p>
+                        <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-muted-foreground">
+                          <TranslatedText text={stream.description} />
+                        </p>
+                      </div>
                     </div>
-                    <div className="min-w-0 flex-1 pt-0.5">
-                      <p className="truncate text-[13px] font-semibold leading-tight tracking-tight">
-                        <TranslatedText text={stream.title} />
-                      </p>
-                      <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-muted-foreground">
-                        <TranslatedText text={stream.description} />
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-0">
-                    {categories.map((cat) => {
-                      const ck = `${stream.id}::${cat.key}`;
-                      const open = topicBrowserOpenCats[ck] ?? false;
-                      return (
-                        <Fragment key={ck}>
-                          <div
-                            className={cn(
-                              'overflow-hidden rounded-lg transition-colors',
-                              open ? 'bg-background/55 dark:bg-background/35' : 'bg-background/35 dark:bg-background/20'
-                            )}
-                          >
-                          <button
-                            type="button"
-                            className={cn(
-                              'flex w-full min-h-10 items-center gap-2 rounded-lg px-2 py-2 text-left transition-colors',
-                              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                              open ? 'bg-muted/25 dark:bg-muted/15' : 'hover:bg-muted/30 dark:hover:bg-muted/12'
-                            )}
-                            aria-expanded={open}
-                            onClick={() =>
-                              setTopicBrowserOpenCats((prev) => ({
-                                ...prev,
-                                [ck]: !(prev[ck] ?? false),
-                              }))
-                            }
-                          >
-                            <ChevronRight
+                    <div className="flex flex-col gap-0">
+                      {categories.map((cat) => {
+                        const ck = `${stream.id}::${cat.key}`;
+                        const open = topicBrowserOpenCats[ck] ?? false;
+                        return (
+                          <Fragment key={ck}>
+                            <div
                               className={cn(
-                                'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out',
-                                open && 'rotate-90 text-foreground'
-                              )}
-                              aria-hidden
-                            />
-                            <span className="min-w-0 flex-1 truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-foreground/85">
-                              {cat.label}
-                            </span>
-                            <span
-                              className={cn(
-                                'tabular-nums rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium text-muted-foreground',
-                                open && 'bg-primary/12 text-foreground/80'
+                                'overflow-hidden rounded-lg transition-colors',
+                                open
+                                  ? 'bg-background/55 dark:bg-background/35'
+                                  : 'bg-background/35 dark:bg-background/20'
                               )}
                             >
-                              {cat.topics.length}
-                            </span>
-                          </button>
-                          {open ? (
-                            <ul className="animate-in fade-in slide-in-from-top-1 space-y-1 px-1.5 pb-1.5 pt-1 duration-200">
-                              {cat.topics.map((visTopic) => {
-                                const jumpItem = flattenTopicItems(visTopic.items)[0];
-                                if (!jumpItem) return null;
-                                const iconEl = visTopic.icon ?? (
-                                  <FileText
-                                    className="size-3.5 shrink-0 text-primary"
-                                    strokeWidth={1.75}
-                                    aria-hidden
-                                  />
-                                );
-                                const isCurrentTopic = categoryId === visTopic.id;
-                                return (
-                                  <li key={visTopic.id}>
-                                    <Button
-                                      type="button"
-                                      variant="ghost"
-                                      aria-current={isCurrentTopic ? 'page' : undefined}
-                                      className={cn(
-                                        'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-lg px-2 py-2 text-left shadow-none',
-                                        'transition-colors',
-                                        'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22',
-                                        'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                                        isCurrentTopic &&
-                                          cn(
-                                            'bg-primary/11 hover:bg-primary/14 dark:bg-primary/14 dark:hover:bg-primary/17',
-                                            'shadow-[inset_3px_0_0_0_hsl(var(--primary))]'
-                                          )
-                                      )}
-                                      onClick={() => {
-                                        setTopicBrowserOpen(false);
-                                        navigateToFeedItem(jumpItem, visTopic.id, {
-                                          scrollBehavior: 'auto',
-                                          scrollToTopicStart: true,
-                                        });
-                                      }}
-                                    >
-                                      <span
-                                        className={cn(
-                                          'flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted/35 [&_svg]:size-[0.95rem]',
-                                          isCurrentTopic
-                                            ? 'bg-primary/15 text-primary'
-                                            : 'text-muted-foreground group-hover:bg-muted/50 group-hover:text-primary'
-                                        )}
-                                      >
-                                        {iconEl}
-                                      </span>
-                                      <span className="min-w-0 flex-1 text-[13px] font-medium leading-snug">
-                                        <TranslatedText text={visTopic.title} />
-                                      </span>
-                                      <ArrowRight
-                                        className={cn(
-                                          'size-4 shrink-0 transition-opacity duration-200',
-                                          isCurrentTopic
-                                            ? 'text-primary opacity-90'
-                                            : 'text-muted-foreground opacity-0 group-hover:opacity-70'
-                                        )}
-                                        strokeWidth={2}
+                              <button
+                                type="button"
+                                className={cn(
+                                  'flex w-full min-h-10 items-center gap-2 rounded-lg px-2 py-2 text-left transition-colors',
+                                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                                  open ? 'bg-muted/25 dark:bg-muted/15' : 'hover:bg-muted/30 dark:hover:bg-muted/12'
+                                )}
+                                aria-expanded={open}
+                                onClick={() =>
+                                  setTopicBrowserOpenCats((prev) => ({
+                                    ...prev,
+                                    [ck]: !(prev[ck] ?? false),
+                                  }))
+                                }
+                              >
+                                <ChevronRight
+                                  className={cn(
+                                    'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out',
+                                    open && 'rotate-90 text-foreground'
+                                  )}
+                                  aria-hidden
+                                />
+                                <span className="min-w-0 flex-1 truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-foreground/85">
+                                  {cat.label}
+                                </span>
+                                <span
+                                  className={cn(
+                                    'tabular-nums rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium text-muted-foreground',
+                                    open && 'bg-primary/12 text-foreground/80'
+                                  )}
+                                >
+                                  {cat.topics.length}
+                                </span>
+                              </button>
+                              {open ? (
+                                <ul className="animate-in fade-in slide-in-from-top-1 space-y-1 px-1.5 pb-1.5 pt-1 duration-200">
+                                  {cat.topics.map((visTopic) => {
+                                    const jumpItem = flattenTopicItems(visTopic.items)[0];
+                                    if (!jumpItem) return null;
+                                    const iconEl = visTopic.icon ?? (
+                                      <FileText
+                                        className="size-3.5 shrink-0 text-primary"
+                                        strokeWidth={1.75}
                                         aria-hidden
                                       />
-                                    </Button>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          ) : null}
-                          </div>
-                        </Fragment>
-                      );
-                    })}
-                  </div>
-                </section>
+                                    );
+                                    const isCurrentTopic = categoryId === visTopic.id;
+                                    return (
+                                      <li key={visTopic.id}>
+                                        <Button
+                                          type="button"
+                                          variant="ghost"
+                                          aria-current={isCurrentTopic ? 'page' : undefined}
+                                          className={cn(
+                                            'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-lg px-2 py-2 text-left shadow-none',
+                                            'transition-colors',
+                                            'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22',
+                                            'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                                            isCurrentTopic &&
+                                              cn(
+                                                'bg-primary/11 hover:bg-primary/14 dark:bg-primary/14 dark:hover:bg-primary/17',
+                                                'shadow-[inset_3px_0_0_0_hsl(var(--primary))]'
+                                              )
+                                          )}
+                                          onClick={() => {
+                                            setTopicBrowserOpen(false);
+                                            navigateToFeedItem(jumpItem, visTopic.id, {
+                                              scrollBehavior: 'auto',
+                                              scrollToTopicStart: true,
+                                            });
+                                          }}
+                                        >
+                                          <span
+                                            className={cn(
+                                              'flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted/35 [&_svg]:size-[0.95rem]',
+                                              isCurrentTopic
+                                                ? 'bg-primary/15 text-primary'
+                                                : 'text-muted-foreground group-hover:bg-muted/50 group-hover:text-primary'
+                                            )}
+                                          >
+                                            {iconEl}
+                                          </span>
+                                          <span className="min-w-0 flex-1 text-[13px] font-medium leading-snug">
+                                            <TranslatedText text={visTopic.title} />
+                                          </span>
+                                          <ArrowRight
+                                            className={cn(
+                                              'size-4 shrink-0 transition-opacity duration-200',
+                                              isCurrentTopic
+                                                ? 'text-primary opacity-90'
+                                                : 'text-muted-foreground opacity-0 group-hover:opacity-70'
+                                            )}
+                                            strokeWidth={2}
+                                            aria-hidden
+                                          />
+                                        </Button>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              ) : null}
+                            </div>
+                          </Fragment>
+                        );
+                      })}
+                    </div>
+                  </section>
                 </Fragment>
               ))}
             </div>

@@ -230,7 +230,9 @@ const LandingPage = () => {
                           key={topic.id}
                           role="button"
                           tabIndex={0}
-                          onClick={() => navigate(`/docs/${topic.id}/${topic.items[0].id}`, { state: DOCS_NAV_RESET_SCROLL })}
+                          onClick={() =>
+                            navigate(`/docs/${topic.id}/${topic.items[0].id}`, { state: DOCS_NAV_RESET_SCROLL })
+                          }
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                               e.preventDefault();
