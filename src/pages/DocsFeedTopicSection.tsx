@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import type { TopicItem } from '../topics';
 import { ListTree } from 'lucide-react';
@@ -22,10 +22,12 @@ type DocsFeedTopicSectionProps = {
   item: TopicItem;
   idx: number;
   total: number;
-  routeSlug: string | undefined;
+  /** Avoid passing route slug string to every row — only rows where this flips re-render. */
+  isCurrentRoute: boolean;
   viewportRef: RefObject<HTMLDivElement | null>;
   feedNav: DocsFeedNavHandlers;
-  inViewSlug: string;
+  /** Only the centered card is true; booleans keep `memo` from re-rendering every section. */
+  isActive: boolean;
   sectionClassName: string;
 };
 
@@ -33,22 +35,24 @@ function DocsFeedTopicSectionInner({
   item,
   idx,
   total,
-  routeSlug,
+  isCurrentRoute,
   viewportRef,
   feedNav,
-  inViewSlug,
+  isActive,
   sectionClassName,
 }: DocsFeedTopicSectionProps) {
   const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const [outlineOpen, setOutlineOpen] = useState(false);
-  const [contentMounted, setContentMounted] = useState(() => idx < EAGER_MOUNT_COUNT || item.id === routeSlug);
+  /** Lazy path: intersection unlocks mount; `contentMounted` only ever flips to true. */
+  const [unlockedByIntersection, setUnlockedByIntersection] = useState(false);
+  const [contentMounted, setContentMounted] = useState(() => idx < EAGER_MOUNT_COUNT || isCurrentRoute);
 
-  useEffect(() => {
-    if (item.id === routeSlug) {
-      setContentMounted(true);
-    }
-  }, [item.id, routeSlug]);
+  /* One-way latch: after eager load, deep-link, or lazy reveal, keep markdown mounted when URL sync moves on. */
+  useLayoutEffect(() => {
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- idempotent OR; avoids unmount flash */
+    setContentMounted((prev) => prev || idx < EAGER_MOUNT_COUNT || isCurrentRoute || unlockedByIntersection);
+  }, [idx, isCurrentRoute, unlockedByIntersection]);
 
   useEffect(() => {
     if (contentMounted) return;
@@ -75,7 +79,7 @@ function DocsFeedTopicSectionInner({
         (entries) => {
           for (const e of entries) {
             if (e.isIntersecting) {
-              setContentMounted(true);
+              setUnlockedByIntersection(true);
               io?.disconnect();
               io = null;
               return;
@@ -99,16 +103,18 @@ function DocsFeedTopicSectionInner({
   const onReachEnd = useCallback(() => feedNav.goToNextFrom(idx), [feedNav, idx]);
   const onReachStart = useCallback(() => feedNav.goToPrevFrom(idx), [feedNav, idx]);
 
-  const isActive = inViewSlug === item.id;
-
   return (
-    <section ref={sectionRef} id={`doc-feed-${item.id}`} className={cn('doc-feed-section min-w-0 w-full max-w-full', sectionClassName)}>
+    <section
+      ref={sectionRef}
+      id={`doc-feed-${item.id}`}
+      className={cn('doc-feed-section isolate min-w-0 w-full max-w-full contain-[layout_style]', sectionClassName)}
+    >
       <div
         className={cn(
           'doc-feed-post-surface flex h-full min-h-0 w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',
-          'border-border/70 bg-card/90 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)] backdrop-blur-md',
-          'dark:border-border/50 dark:bg-card/30 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
-          'transition-[box-shadow,border-color] duration-300 ease-out',
+          /* Lighter blur + solid tint: heavy backdrop-filter repaints during feed scroll. */
+          'border-border/70 bg-card/92 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)] backdrop-blur-sm',
+          'dark:border-border/50 dark:bg-card/40 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
           isActive &&
             'border-primary/40 shadow-[0_28px_64px_-36px_hsl(var(--primary)/0.35)] ring-1 ring-primary/25 dark:shadow-[0_30px_70px_-36px_hsl(var(--primary)/0.22)]'
         )}
@@ -157,8 +163,8 @@ function DocsFeedTopicSectionInner({
                 slideMode
                 fillViewportCard
                 headingIdScope={item.id}
-                scrollIntentActive={inViewSlug === item.id}
-                keyboardActive={inViewSlug === item.id}
+                scrollIntentActive={isActive}
+                keyboardActive={isActive}
                 hasNextDocument={idx < total - 1}
                 hasPrevDocument={idx > 0}
                 onReachDocumentEnd={onReachEnd}

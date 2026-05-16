@@ -369,10 +369,10 @@ const DocumentationPage = () => {
               item={item}
               idx={idx}
               total={flatItems.length}
-              routeSlug={slug}
+              isCurrentRoute={slug === item.id}
               viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
               feedNav={feedNav}
-              inViewSlug={inViewSlug}
+              isActive={inViewSlug === item.id}
               sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
             />
           ))}
