@@ -259,3 +259,12 @@ export const TOPICS: Topics = STREAMS.flatMap((stream) => stream.topics);
 /** Lookup the stream a given topic id belongs to. */
 export const getStreamByTopicId = (topicId: string): Stream | undefined =>
   STREAMS.find((stream) => stream.topics.some((topic) => topic.id === topicId));
+
+/** Inclusive `[start, end]` indices in `TOPICS` for every topic in this stream (contiguous block). */
+export function getCatalogBoundsForStream(stream: Stream): { start: number; end: number } | null {
+  const firstId = stream.topics[0]?.id;
+  if (!firstId) return null;
+  const start = TOPICS.findIndex((t) => t.id === firstId);
+  if (start < 0) return null;
+  return { start, end: start + stream.topics.length - 1 };
+}

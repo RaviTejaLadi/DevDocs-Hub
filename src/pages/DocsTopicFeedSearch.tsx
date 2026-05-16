@@ -62,7 +62,14 @@ export type DocsTopicFeedSearchProps = {
   parentTopicTitle: string;
   items: TopicItem[];
   activeSlug: string;
-  onNavigateToItem: (item: TopicItem) => void;
+  /** When the feed spans multiple topics, disambiguate the “current doc” chip in results. */
+  activeTopicId?: string;
+  /**
+   * Optional corpus: multiple topics in one feed (e.g. chained infinite scroll).
+   * When set, search runs across these rows instead of `items` / `parentTopicTitle`.
+   */
+  multiTopicRows?: Array<{ topicId: string; topicTitle: string; item: TopicItem }>;
+  onNavigateToItem: (item: TopicItem, topicId: string) => void;
   /** `embedded`: sits inside the topic hero dock (lighter chrome). Default matches standalone card. */
   variant?: 'card' | 'embedded';
 };
@@ -71,6 +78,8 @@ export function DocsTopicFeedSearch({
   parentTopicTitle,
   items,
   activeSlug,
+  activeTopicId,
+  multiTopicRows,
   onNavigateToItem,
   variant = 'card',
 }: DocsTopicFeedSearchProps) {
@@ -85,9 +94,19 @@ export function DocsTopicFeedSearch({
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const ranked = useMemo((): RankedItem[] => {
+  const ranked = useMemo((): Array<RankedItem & { topicId?: string }> => {
     const q = query.trim();
     if (!q) return [];
+    if (multiTopicRows?.length) {
+      const rankedInner = multiTopicRows
+        .map((row) => {
+          const score = rankFeedTopicItem(row.item, row.topicTitle, q);
+          return score > 0 ? { item: row.item, score, topicId: row.topicId } : null;
+        })
+        .filter((x): x is RankedItem & { topicId: string } => x !== null);
+      rankedInner.sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title));
+      return rankedInner.slice(0, MAX_RESULTS);
+    }
     const rankedInner = items
       .map((item) => {
         const score = rankFeedTopicItem(item, parentTopicTitle, q);
@@ -96,7 +115,7 @@ export function DocsTopicFeedSearch({
       .filter((x): x is RankedItem => x !== null);
     rankedInner.sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title));
     return rankedInner.slice(0, MAX_RESULTS);
-  }, [items, parentTopicTitle, query]);
+  }, [items, multiTopicRows, parentTopicTitle, query]);
 
   const showPanel = open && query.trim().length > 0;
   const hasResults = ranked.length > 0;
@@ -124,13 +143,15 @@ export function DocsTopicFeedSearch({
   }, []);
 
   const pick = useCallback(
-    (entry: RankedItem) => {
-      onNavigateToItem(entry.item);
+    (entry: RankedItem & { topicId?: string }) => {
+      const topicId = entry.topicId ?? activeTopicId;
+      if (!topicId) return;
+      onNavigateToItem(entry.item, topicId);
       setQuery('');
       setOpen(false);
       inputRef.current?.blur();
     },
-    [onNavigateToItem]
+    [activeTopicId, onNavigateToItem]
   );
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -266,10 +287,12 @@ export function DocsTopicFeedSearch({
           {hasResults ? (
             ranked.map((row, idx) => {
               const isActive = idx === activeIndex;
-              const isCurrent = row.item.id === activeSlug;
+              const rowTopicId = row.topicId ?? activeTopicId;
+              const isCurrent =
+                row.item.id === activeSlug && (!rowTopicId || !activeTopicId || rowTopicId === activeTopicId);
               return (
                 <div
-                  key={row.item.id}
+                  key={row.topicId ? `${row.topicId}-${row.item.id}` : row.item.id}
                   ref={isActive ? activeOptionRef : undefined}
                   id={`${listId}-opt-${idx}`}
                   role="option"

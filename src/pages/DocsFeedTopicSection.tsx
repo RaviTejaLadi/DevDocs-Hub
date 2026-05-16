@@ -22,6 +22,8 @@ type DocsFeedTopicSectionProps = {
   item: TopicItem;
   idx: number;
   total: number;
+  /** Stable within a topic feed — include topic id when the same slug can exist across topics. */
+  sectionDomId: string;
   /** Avoid passing route slug string to every row — only rows where this flips re-render. */
   isCurrentRoute: boolean;
   viewportRef: RefObject<HTMLDivElement | null>;
@@ -29,17 +31,24 @@ type DocsFeedTopicSectionProps = {
   /** Only the centered card is true; booleans keep `memo` from re-rendering every section. */
   isActive: boolean;
   sectionClassName: string;
+  /** When true, the last card can advance into the next topic’s feed (infinite chain). */
+  chainHasMoreToNextTopic?: boolean;
+  /** When true (typically first row), the user can load the previous topic above the window. */
+  chainHasMoreToPrevTopic?: boolean;
 };
 
 function DocsFeedTopicSectionInner({
   item,
   idx,
   total,
+  sectionDomId,
   isCurrentRoute,
   viewportRef,
   feedNav,
   isActive,
   sectionClassName,
+  chainHasMoreToNextTopic = false,
+  chainHasMoreToPrevTopic = false,
 }: DocsFeedTopicSectionProps) {
   const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
@@ -106,15 +115,15 @@ function DocsFeedTopicSectionInner({
   return (
     <section
       ref={sectionRef}
-      id={`doc-feed-${item.id}`}
+      id={sectionDomId}
       className={cn('doc-feed-section isolate min-w-0 w-full max-w-full contain-[layout_style]', sectionClassName)}
     >
       <div
         className={cn(
           'doc-feed-post-surface flex h-full min-h-0 w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',
           /* Lighter blur + solid tint: heavy backdrop-filter repaints during feed scroll. */
-          'border-border/70 bg-card/92 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)] backdrop-blur-sm',
-          'dark:border-border/50 dark:bg-card/40 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
+          'border-border/70 bg-card/95 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)]',
+          'dark:border-border/50 dark:bg-card/45 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
           isActive &&
             'border-primary/40 shadow-[0_28px_64px_-36px_hsl(var(--primary)/0.35)] ring-1 ring-primary/25 dark:shadow-[0_30px_70px_-36px_hsl(var(--primary)/0.22)]'
         )}
@@ -165,8 +174,8 @@ function DocsFeedTopicSectionInner({
                 headingIdScope={item.id}
                 scrollIntentActive={isActive}
                 keyboardActive={isActive}
-                hasNextDocument={idx < total - 1}
-                hasPrevDocument={idx > 0}
+                hasNextDocument={idx < total - 1 || chainHasMoreToNextTopic}
+                hasPrevDocument={idx > 0 || chainHasMoreToPrevTopic}
                 onReachDocumentEnd={onReachEnd}
                 onReachDocumentStart={onReachStart}
                 hideToc={!outlineOpen}

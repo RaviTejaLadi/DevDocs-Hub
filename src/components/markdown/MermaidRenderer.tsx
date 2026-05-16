@@ -1,5 +1,20 @@
 import { memo, useEffect, useRef, useState } from 'react';
-import mermaid from 'mermaid';
+
+type MermaidAPI = typeof import('mermaid').default;
+
+let mermaidSingleton: MermaidAPI | null = null;
+let mermaidLoadPromise: Promise<MermaidAPI> | null = null;
+
+function ensureMermaid(): Promise<MermaidAPI> {
+  if (mermaidSingleton) return Promise.resolve(mermaidSingleton);
+  if (!mermaidLoadPromise) {
+    mermaidLoadPromise = import('mermaid').then((mod) => {
+      mermaidSingleton = mod.default;
+      return mermaidSingleton;
+    });
+  }
+  return mermaidLoadPromise;
+}
 
 type MermaidThemeMode = 'light' | 'dark';
 
@@ -13,8 +28,8 @@ const cacheRenderedDiagram = (key: string, svg: string) => {
   }
 };
 
-const initMermaid = (isDark: boolean) => {
-  mermaid.initialize({
+const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
+  mermaidApi.initialize({
     startOnLoad: false,
     securityLevel: 'loose',
     theme: 'base',
@@ -336,37 +351,36 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
     if (!ref.current) return;
 
     let isCancelled = false;
+    const el = ref.current;
     const isDark = themeMode === 'dark';
     const cacheKey = `${themeMode}:${chart}`;
-    initMermaid(isDark);
-    ref.current.innerHTML = '';
-    if (errorRef.current) errorRef.current.textContent = '';
-    if (errorBoxRef.current) errorBoxRef.current.hidden = true;
 
-    const cachedSvg = renderedDiagramCache.get(cacheKey);
-    if (cachedSvg) {
-      ref.current.innerHTML = cachedSvg;
-      const svgEl = ref.current.querySelector('svg');
-      if (svgEl) polishSvg(svgEl, isDark);
-      return;
-    }
+    void (async () => {
+      const api = await ensureMermaid();
+      if (isCancelled || !ref.current) return;
 
-    const id = 'mermaid-' + Math.random().toString(36).slice(2);
+      initMermaid(api, isDark);
+      el.innerHTML = '';
+      if (errorRef.current) errorRef.current.textContent = '';
+      if (errorBoxRef.current) errorBoxRef.current.hidden = true;
 
-    mermaid
-      .render(id, chart)
-      .then(({ svg }) => {
+      const cachedSvg = renderedDiagramCache.get(cacheKey);
+      if (cachedSvg) {
+        el.innerHTML = cachedSvg;
+        const svgEl = el.querySelector('svg');
+        if (svgEl) polishSvg(svgEl, isDark);
+        return;
+      }
+
+      const id = 'mermaid-' + Math.random().toString(36).slice(2);
+      try {
+        const { svg } = await api.render(id, chart);
         if (!ref.current || isCancelled) return;
-
         cacheRenderedDiagram(cacheKey, svg);
         ref.current.innerHTML = svg;
-
         const svgEl = ref.current.querySelector('svg');
-        if (!svgEl) return;
-
-        polishSvg(svgEl, isDark);
-      })
-      .catch((renderError: unknown) => {
+        if (svgEl) polishSvg(svgEl, isDark);
+      } catch (renderError: unknown) {
         if (isCancelled) return;
         if (ref.current) ref.current.innerHTML = '';
         if (errorBoxRef.current) errorBoxRef.current.hidden = false;
@@ -374,7 +388,8 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
           errorRef.current.textContent =
             renderError instanceof Error ? renderError.message : 'Unable to render diagram. Please check syntax.';
         }
-      });
+      }
+    })();
 
     return () => {
       isCancelled = true;
@@ -382,7 +397,7 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
   }, [chart, themeMode]);
 
   return (
-    <figure className="my-7 overflow-hidden rounded-xl border border-border/60 bg-card/70 shadow-[0_14px_38px_-30px_hsl(var(--foreground)/0.45)] backdrop-blur-sm">
+    <figure className="my-7 overflow-hidden rounded-xl border border-border/60 bg-card/85 shadow-[0_14px_38px_-30px_hsl(var(--foreground)/0.45)]">
       <div className="flex items-center justify-between gap-3 border-b border-border/50 bg-muted/35 px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
         <span>Diagram</span>
         <span className="hidden normal-case tracking-normal sm:inline">Scroll to inspect larger diagrams</span>

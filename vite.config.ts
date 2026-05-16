@@ -11,6 +11,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  /** Pre-bundle mermaid so lazy `MermaidRenderer` loads a stable chunk (avoids 504 Outdated Optimize Dep in dev). */
+  optimizeDeps: {
+    include: ['mermaid'],
+  },
   build: {
     modulePreload: {
       resolveDependencies(_filename, deps) {

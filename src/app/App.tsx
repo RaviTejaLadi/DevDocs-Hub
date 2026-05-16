@@ -8,6 +8,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
+import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
+import { TOPICS } from '@/topics';
 import NavBar from '@/components/layout/NavBar';
 import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
@@ -75,6 +77,22 @@ const App = () => {
       return;
     }
 
+    const prevCat = docsCategoryScrollRef.current;
+
+    /**
+     * Chained docs feed: URL moves to the next catalog topic (html → css → js …).
+     * Must not reset the ScrollArea viewport — that was jumping the user to the top
+     * (HTML hero / first card) whenever the next topic loaded.
+     */
+    if (prevCat && docsCat) {
+      const prevIdx = TOPICS.findIndex((t) => t.id === prevCat);
+      const nextIdx = TOPICS.findIndex((t) => t.id === docsCat);
+      if (prevIdx >= 0 && nextIdx >= 0 && nextIdx === prevIdx + 1) {
+        docsCategoryScrollRef.current = docsCat;
+        return;
+      }
+    }
+
     docsCategoryScrollRef.current = docsCat ?? null;
 
     if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -82,14 +100,15 @@ const App = () => {
   }, [location.pathname, location.search]);
 
   return (
-    <ScrollViewportProvider value={contentViewportRef}>
-      <div className="min-h-dvh h-dvh overflow-hidden bg-background">
+    <DocsFeedSyncProvider>
+      <ScrollViewportProvider value={contentViewportRef}>
+        <div className="min-h-dvh h-dvh overflow-hidden bg-background">
         <NavBar setSidebarOpen={setSidebarOpen} />
 
         <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
           <SheetContent side="left" className="w-[88vw] max-w-sm p-0 border-r border-border/40">
-            <ScrollArea className="h-full">
-              <Routes>
+              <ScrollArea className="h-full">
+              <Routes location={location}>
                 <Route
                   path="/docs/:categoryId/:slug"
                   element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
@@ -116,7 +135,7 @@ const App = () => {
               )}
               aria-hidden={docsSidebarCollapsed}
             >
-              <Routes>
+              <Routes location={location}>
                 <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
               </Routes>
             </aside>
@@ -142,8 +161,9 @@ const App = () => {
             </ScrollArea>
           </main>
         </div>
-      </div>
-    </ScrollViewportProvider>
+        </div>
+      </ScrollViewportProvider>
+    </DocsFeedSyncProvider>
   );
 };
 export default App;

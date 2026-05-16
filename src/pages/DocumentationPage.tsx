@@ -1,11 +1,24 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { TOPICS, type Topic, type TopicItem } from '@/topics';
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, startTransition, type ReactNode, type RefObject } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
+import { TOPICS, getStreamByTopicId, type Stream, type Topic, type TopicItem } from '@/topics';
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  startTransition,
+  type ReactNode,
+  type RefObject,
+} from 'react';
 import { ChevronUp, Home, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useI18n } from '@/i18n/I18nProvider';
 import { useScrollViewport } from '@/context/scrollViewportContext';
+import { useDocsFeedSync } from '@/context/docsFeedSyncContext';
 import { cn } from '@/lib/utils';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -42,6 +55,19 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
   }
   return flattened.filter((i) => i.content);
 };
+
+/** Stable section id: avoids slug collisions across topics and encodes route segment for URL sync. */
+const docFeedSectionDomId = (topicId: string, itemId: string) => `doc-feed-${topicId}__${itemId}`;
+
+const parseDocFeedSectionDomId = (elementId: string): { topicId: string; itemId: string } | null => {
+  if (!elementId.startsWith('doc-feed-')) return null;
+  const rest = elementId.slice('doc-feed-'.length);
+  const sep = rest.indexOf('__');
+  if (sep < 0) return null;
+  return { topicId: rest.slice(0, sep), itemId: rest.slice(sep + 2) };
+};
+
+type FeedRow = { topic: Topic; item: TopicItem };
 
 /** Visual polish for `/docs/:categoryId/*` — topic metadata from `@/topics`. */
 function formatTopicTrackLabel(type: string): string {
@@ -145,6 +171,100 @@ function DocumentationTopicHero({ topic, search }: { topic: Topic; search: React
   );
 }
 
+/** Full-width stream ribbon (Computer Science, Mechanical Engineering, …) above the topic hero. */
+function DocsFeedStreamBanner({ stream }: { stream: Stream }) {
+  const iconEl = stream.icon ?? <FileText className="size-[1.1rem] shrink-0 text-primary sm:size-5" strokeWidth={1.75} aria-hidden />;
+
+  return (
+    <div
+      className={cn(
+        'not-prose relative mb-3 overflow-hidden rounded-lg border border-primary/25 bg-linear-to-r from-primary/12 via-primary/6 to-transparent',
+        'shadow-[inset_0_1px_0_0_hsl(var(--foreground)/0.06)] sm:mb-4 sm:rounded-xl',
+        'dark:from-primary/16 dark:via-primary/8 dark:border-primary/30'
+      )}
+      role="banner"
+      aria-label={stream.title}
+    >
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(ellipse_80%_120%_at_100%_50%,hsl(var(--primary)/0.12),transparent_62%)] dark:bg-[radial-gradient(ellipse_80%_120%_at_100%_50%,hsl(var(--primary)/0.1),transparent_62%)]"
+        aria-hidden
+      />
+      <div className="relative flex min-w-0 items-start gap-3 px-3 py-3 sm:gap-4 sm:px-4 sm:py-3.5 md:px-5">
+        <div
+          className={cn(
+            'flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background/90 text-primary sm:size-11 sm:rounded-xl',
+            'shadow-[0_8px_24px_-14px_hsl(var(--primary)/0.35)] dark:bg-card/80'
+          )}
+          aria-hidden
+        >
+          {iconEl}
+        </div>
+        <div className="min-w-0 flex-1 space-y-1">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/90 sm:text-[11px]">Learning stream</p>
+          <h2 className="text-balance text-base font-semibold leading-snug text-foreground sm:text-lg md:text-xl">
+            <TranslatedText text={stream.title} />
+          </h2>
+          <p className="line-clamp-2 max-w-3xl text-pretty text-xs leading-snug text-muted-foreground sm:text-sm">
+            <TranslatedText text={stream.description} />
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Shown when the infinite feed chains another topic below the first — keeps orientation without duplicating the full hero + search chrome. */
+function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
+  const iconEl = topic.icon ?? <FileText className="size-[1.05rem] shrink-0 text-primary sm:size-4" strokeWidth={1.75} aria-hidden />;
+  const track = formatTopicTrackLabel(topic.category || topic.type);
+
+  return (
+    <div
+      className={cn(
+        'not-prose relative mb-1 mt-6 overflow-hidden rounded-lg border border-border/50 bg-card/40 shadow-sm sm:rounded-xl sm:mt-7',
+        'dark:border-border/40 dark:bg-card/25'
+      )}
+      role="separator"
+      aria-label={topic.title}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.08),transparent_55%)] dark:bg-[radial-gradient(ellipse_80%_45%_at_50%_-20%,hsl(var(--primary)/0.06),transparent_55%)]" aria-hidden />
+      <div className="relative flex min-w-0 items-center gap-2.5 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3">
+        <div
+          className={cn(
+            'relative flex size-8 shrink-0 items-center justify-center rounded-lg border border-border/55 bg-linear-to-br from-background/95 via-background/85 to-muted/25 text-primary sm:size-9 sm:rounded-xl',
+            'dark:from-card/90 dark:via-card/75 dark:to-muted/20'
+          )}
+          aria-hidden
+        >
+          {iconEl}
+        </div>
+        <div className="min-w-0 flex-1 space-y-0.5">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            {track ? (
+              <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-muted-foreground/90 sm:text-[10px]">
+                <span className="rounded-md border border-border/45 bg-muted/30 px-1.5 py-px text-foreground/75 dark:bg-muted/18">
+                  {track}
+                </span>
+              </span>
+            ) : null}
+            <h2 className="min-w-0 text-balance text-sm font-semibold leading-snug tracking-tight text-foreground sm:text-base">
+              <TranslatedText text={topic.title} />
+            </h2>
+          </div>
+          <p className="line-clamp-2 text-pretty text-[11px] leading-snug text-muted-foreground sm:text-xs">
+            <TranslatedText text={topic.description} />
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/** How many catalog topics to append when the user nears the end of the chained feed (sentinel). */
+/** How many topic "chapters" to load per sentinel hit (global catalog, all streams). */
+const CHAIN_TOPICS_PREFETCH_BATCH = 2;
+
 /** Fits one topic “screen” inside the ScrollArea viewport (navbar + outer py + safe areas — see App.tsx wrapper). */
 const DOC_FEED_TOPIC_CARD_CLASS = cn(
   'h-[calc(100dvh-9rem-env(safe-area-inset-bottom))] min-h-[18rem]',
@@ -165,10 +285,83 @@ const DOC_FEED_SECTION_SHELL_CLASS = cn(
 
 const DocumentationPage = () => {
   const { t } = useI18n();
-  const { categoryId, slug } = useParams();
+  const { categoryId, slug } = useDocsRouteParams();
+  const { setFeedOverlay, pathRevisionRef } = useDocsFeedSync();
   const navigate = useNavigate();
   const topic = TOPICS.find((t) => t.id === categoryId);
   const viewportRef = useScrollViewport();
+
+  /** Inclusive topic indices in `TOPICS` currently mounted in the feed (within the active stream). */
+  const [feedRange, setFeedRange] = useState(() => {
+    const i = categoryId ? TOPICS.findIndex((t) => t.id === categoryId) : -1;
+    const ix = i >= 0 ? i : 0;
+    return { start: ix, end: ix };
+  });
+
+  const feedRangeRef = useRef(feedRange);
+  useLayoutEffect(() => {
+    feedRangeRef.current = feedRange;
+  }, [feedRange]);
+
+  const prependSnapRef = useRef<{ sh: number; st: number } | null>(null);
+  /** Prepended rows from top sentinel only — preserve scroll, no `scrollIntoView`. */
+  const prependPreserveOnlyRef = useRef(false);
+  const pendingScrollWasPrependRef = useRef(false);
+  const pendingScrollToDomIdRef = useRef<string | null>(null);
+  const feedRowsCountBeforeMutationRef = useRef(0);
+  const prependSentinelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!categoryId) return;
+    const newIdx = TOPICS.findIndex((t) => t.id === categoryId);
+    if (newIdx < 0) return;
+    const { start, end } = feedRangeRef.current;
+    if (newIdx < start || newIdx > end) {
+      prependSnapRef.current = null;
+      prependPreserveOnlyRef.current = false;
+      pendingScrollToDomIdRef.current = null;
+      startTransition(() => setFeedRange({ start: newIdx, end: newIdx }));
+    }
+  }, [categoryId]);
+
+  const activeStream = useMemo(() => (categoryId ? getStreamByTopicId(categoryId) : undefined), [categoryId]);
+
+  /** Full flat catalog — feed can chain across Computer Science → Mechanical → Basic Science (same order as `TOPICS`). */
+  const catalogBounds = useMemo(() => ({ start: 0, end: Math.max(0, TOPICS.length - 1) }), []);
+
+  const visibleTopics = useMemo(() => {
+    const { start, end } = feedRange;
+    const { start: c0, end: c1 } = catalogBounds;
+    if (start > c1 || end < c0) return [];
+    const lo = Math.max(c0, start);
+    const hi = Math.min(c1, end);
+    if (hi < lo) return [];
+    return TOPICS.slice(lo, hi + 1);
+  }, [feedRange, catalogBounds]);
+
+  const feedRows = useMemo((): FeedRow[] => {
+    return visibleTopics.flatMap((visTopic) =>
+      flattenTopicItems(visTopic.items).map((item) => ({ topic: visTopic, item }))
+    );
+  }, [visibleTopics]);
+
+  const chainHasMoreBelow = useMemo(() => {
+    if (visibleTopics.length === 0) return false;
+    return feedRange.end < catalogBounds.end;
+  }, [feedRange.end, catalogBounds.end, visibleTopics.length]);
+
+  const chainHasMoreAbove = useMemo(() => {
+    if (visibleTopics.length === 0) return false;
+    return feedRange.start > catalogBounds.start;
+  }, [feedRange.start, catalogBounds.start, visibleTopics.length]);
+
+  const feedOrdinalByDomId = useMemo(() => {
+    const m = new Map<string, number>();
+    feedRows.forEach((row, i) => {
+      m.set(docFeedSectionDomId(row.topic.id, row.item.id), i);
+    });
+    return m;
+  }, [feedRows]);
 
   const content = useMemo(() => {
     if (!topic || !slug) return undefined;
@@ -181,25 +374,28 @@ const DocumentationPage = () => {
     }
   }, [content, categoryId, navigate]);
 
-  const flatItems = useMemo(() => (topic ? flattenTopicItems(topic.items) : []), [topic]);
-
-  const topicIdRef = useRef(topic?.id);
+  const routeTopicIdRef = useRef(categoryId);
   const slugRef = useRef(slug);
   useLayoutEffect(() => {
-    topicIdRef.current = topic?.id;
+    routeTopicIdRef.current = categoryId;
     slugRef.current = slug;
   });
 
-  const [inViewSlug, setInViewSlug] = useState(slug ?? '');
+  const [inViewFeedKey, setInViewFeedKey] = useState(() => (categoryId && slug ? `${categoryId}/${slug}` : ''));
   const [showScrollTop, setShowScrollTop] = useState(false);
   const skipSlugScrollIntoViewRef = useRef(false);
+  const appendSentinelRef = useRef<HTMLDivElement | null>(null);
+  const prevRouteTopicForScrollRef = useRef<string | undefined>(undefined);
+  const prevCatSlugForScrollSyncRef = useRef<{ c?: string; s?: string }>({});
 
   useEffect(() => {
     const vp = viewportRef?.current;
     if (!vp) return;
     let ticking = false;
     let lastShown = vp.scrollTop > 360;
-    setShowScrollTop(lastShown);
+    queueMicrotask(() => {
+      setShowScrollTop(lastShown);
+    });
 
     const onScroll = () => {
       if (ticking) return;
@@ -216,50 +412,146 @@ const DocumentationPage = () => {
 
     vp.addEventListener('scroll', onScroll, { passive: true });
     return () => vp.removeEventListener('scroll', onScroll);
-  }, [viewportRef, categoryId, flatItems.length]);
+  }, [viewportRef, categoryId, feedRows.length]);
 
   const scrollFeedToTop = () => {
     viewportRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
-    setInViewSlug(slug ?? '');
-  }, [slug]);
+    if (!categoryId || !slug) return;
+    setFeedOverlay({ topicId: categoryId, slug, pathRevision: pathRevisionRef.current });
+    const id = requestAnimationFrame(() => {
+      setInViewFeedKey(`${categoryId}/${slug}`);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [categoryId, slug, setFeedOverlay, pathRevisionRef]);
 
   useEffect(() => {
     const el = viewportRef?.current;
-    if (el) {
-      el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [categoryId, viewportRef]);
-
-  /** Scroll selected topic card into view — skipped when URL was updated by the feed observer. */
-  useEffect(() => {
-    if (!slug || !viewportRef?.current) return;
-    if (skipSlugScrollIntoViewRef.current) {
-      skipSlugScrollIntoViewRef.current = false;
+    if (!categoryId) {
+      if (!el && typeof window !== 'undefined') window.scrollTo(0, 0);
       return;
     }
-    const el = document.getElementById(`doc-feed-${slug}`);
-    if (!el) return;
+    const newIdx = TOPICS.findIndex((t) => t.id === categoryId);
+    if (newIdx < 0) return;
+
+    const prevCat = prevRouteTopicForScrollRef.current;
+    prevRouteTopicForScrollRef.current = categoryId;
+
+    if (prevCat === undefined) {
+      if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      else if (typeof window !== 'undefined') window.scrollTo(0, 0);
+      return;
+    }
+    if (prevCat === categoryId) return;
+
+    const prevIdx = TOPICS.findIndex((t) => t.id === prevCat);
+    if (prevIdx < 0) {
+      if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      else if (typeof window !== 'undefined') window.scrollTo(0, 0);
+      return;
+    }
+
+    /* Chained feed: URL advances to the next topic in `TOPICS` — do not reset scroll (avoids jumping back to HTML). */
+    if (newIdx === prevIdx + 1) {
+      return;
+    }
+
+    if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    else if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }, [categoryId, viewportRef]);
+
+  /** Scroll viewport to the route’s card when the *target doc* changes — not when the chained feed merely grows (avoids jumping back to HTML). */
+  useEffect(() => {
+    if (!slug || !categoryId || !viewportRef?.current) return;
+
+    if (skipSlugScrollIntoViewRef.current) {
+      skipSlugScrollIntoViewRef.current = false;
+      prevCatSlugForScrollSyncRef.current = { c: categoryId, s: slug };
+      return;
+    }
+
+    const prev = prevCatSlugForScrollSyncRef.current;
+    const routeUnchanged = prev.c === categoryId && prev.s === slug;
+    if (routeUnchanged) {
+      return;
+    }
+
+    const el = document.getElementById(docFeedSectionDomId(categoryId, slug));
+    if (!el) {
+      return;
+    }
+
+    prevCatSlugForScrollSyncRef.current = { c: categoryId, s: slug };
 
     window.requestAnimationFrame(() => {
       el.scrollIntoView({ behavior: 'auto', block: 'start' });
     });
-  }, [slug, topic?.id, flatItems.length, viewportRef]);
+  }, [slug, categoryId, feedRows.length, viewportRef]);
 
-  /** Debounced URL + sidebar sync (replace) so scrolling does not jitter. */
+  /** After prepending or appending feed rows: restore scroll or scroll to pending section. */
+  useLayoutEffect(() => {
+    const applyPrependScrollPreserve = () => {
+      const snap = prependSnapRef.current;
+      prependSnapRef.current = null;
+      const vp = viewportRef?.current;
+      if (vp && snap) {
+        vp.scrollTop = snap.st + (vp.scrollHeight - snap.sh);
+      }
+    };
+
+    const pending = pendingScrollToDomIdRef.current;
+    if (pending) {
+      if (feedRows.length <= feedRowsCountBeforeMutationRef.current) return;
+      pendingScrollToDomIdRef.current = null;
+      const wasPrepend = pendingScrollWasPrependRef.current;
+      pendingScrollWasPrependRef.current = false;
+      if (wasPrepend) applyPrependScrollPreserve();
+      const el = document.getElementById(pending);
+      if (el) {
+        skipSlugScrollIntoViewRef.current = true;
+        el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+      return;
+    }
+
+    if (prependPreserveOnlyRef.current) {
+      prependPreserveOnlyRef.current = false;
+      if (feedRows.length <= feedRowsCountBeforeMutationRef.current) return;
+      applyPrependScrollPreserve();
+    }
+  }, [feedRows.length, feedRows, viewportRef]);
+
+  /** URL + sidebar sync: update overlay immediately; path `replace` at most once per frame. */
   useEffect(() => {
     const root = viewportRef?.current;
-    const catId = topicIdRef.current;
-    if (!root || !catId || flatItems.length === 0) return;
+    if (!root || feedRows.length === 0) return;
 
     let obs: IntersectionObserver | null = null;
     let cancelled = false;
-    /** DOM lib typing: browser timers are numeric ids. */
-    let debounceTimerId: number | undefined;
+    let navRafId = 0;
+    let pendingNav: { topicId: string; itemId: string } | null = null;
+
+    const MIN_WINNER_RATIO = 0.14;
+    const MAX_ORDINAL_JUMP = 36;
+
+    const flushNav = () => {
+      navRafId = 0;
+      const p = pendingNav;
+      pendingNav = null;
+      if (!p || cancelled) return;
+      if (p.itemId !== slugRef.current || p.topicId !== routeTopicIdRef.current) {
+        skipSlugScrollIntoViewRef.current = true;
+        navigate(`/docs/${p.topicId}/${p.itemId}`, { replace: true });
+      }
+    };
+
+    const scheduleNav = (topicId: string, itemId: string) => {
+      pendingNav = { topicId, itemId };
+      if (navRafId) return;
+      navRafId = requestAnimationFrame(flushNav);
+    };
 
     const start = () => {
       if (cancelled) return;
@@ -268,41 +560,54 @@ const DocumentationPage = () => {
           const hits = entries.filter((e) => e.isIntersecting && e.target.id.startsWith('doc-feed-'));
           if (!hits.length) return;
           const rr = root.getBoundingClientRect();
-          const focusY = rr.top + rr.height * 0.38;
+          const focusY = rr.top + rr.height * 0.36;
           const scored = hits.map((e) => {
             const rect = e.boundingClientRect;
             const mid = rect.top + rect.height / 2;
             const dist = Math.abs(mid - focusY);
             return {
-              e,
-              score: e.intersectionRatio - (dist / Math.max(rr.height, 1)) * 0.4,
+              target: e.target as HTMLElement,
+              intersectionRatio: e.intersectionRatio,
+              score: e.intersectionRatio * 1.12 - (dist / Math.max(rr.height, 1)) * 0.42,
             };
           });
           scored.sort((a, b) => b.score - a.score);
-          const winner = scored[0]?.e.target;
-          if (!winner?.id.startsWith('doc-feed-')) return;
-          const id = winner.id.slice('doc-feed-'.length);
+          const best = scored[0];
+          if (!best || best.intersectionRatio < MIN_WINNER_RATIO) return;
 
-          window.clearTimeout(debounceTimerId);
-          debounceTimerId = window.setTimeout(() => {
-            startTransition(() => {
-              setInViewSlug(id);
-              if (id !== slugRef.current) {
-                skipSlugScrollIntoViewRef.current = true;
-                navigate(`/docs/${catId}/${id}`, { replace: true });
-              }
-            });
-          }, 200);
+          const winner = best.target;
+          const parsed = parseDocFeedSectionDomId(winner.id);
+          if (!parsed) return;
+          const { topicId, itemId } = parsed;
+
+          const winnerOrd = feedOrdinalByDomId.get(winner.id);
+          const rt = routeTopicIdRef.current;
+          const sl = slugRef.current;
+          if (rt && sl) {
+            const curOrd = feedOrdinalByDomId.get(docFeedSectionDomId(rt, sl));
+            if (
+              winnerOrd !== undefined &&
+              curOrd !== undefined &&
+              Math.abs(winnerOrd - curOrd) > MAX_ORDINAL_JUMP &&
+              best.intersectionRatio < 0.38
+            ) {
+              return;
+            }
+          }
+
+          setFeedOverlay({ topicId, slug: itemId, pathRevision: pathRevisionRef.current });
+          setInViewFeedKey(`${topicId}/${itemId}`);
+          scheduleNav(topicId, itemId);
         },
         {
           root,
-          threshold: [0.2, 0.45],
-          rootMargin: '-15% 0px -35% 0px',
+          threshold: [0.12, 0.28, 0.52],
+          rootMargin: '-18% 0px -42% 0px',
         }
       );
 
-      flatItems.forEach((item) => {
-        const section = document.getElementById(`doc-feed-${item.id}`);
+      feedRows.forEach((row) => {
+        const section = document.getElementById(docFeedSectionDomId(row.topic.id, row.item.id));
         if (section) obs!.observe(section);
       });
     };
@@ -315,44 +620,143 @@ const DocumentationPage = () => {
 
     return () => {
       cancelled = true;
-      window.clearTimeout(debounceTimerId);
+      if (navRafId) cancelAnimationFrame(navRafId);
       cancelAnimationFrame(raf1);
       cancelAnimationFrame(raf2);
       obs?.disconnect();
     };
-  }, [flatItems, navigate, topic?.id, viewportRef]);
+  }, [feedRows, feedOrdinalByDomId, navigate, viewportRef, setFeedOverlay, pathRevisionRef]);
+
+  /** Prefetch older topics when the user scrolls up toward the hero. */
+  useEffect(() => {
+    const root = viewportRef?.current;
+    const el = prependSentinelRef.current;
+    if (!root || !el || !chainHasMoreAbove) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.some((e) => e.isIntersecting);
+        if (!hit) return;
+        const vp = viewportRef.current;
+        if (vp) prependSnapRef.current = { sh: vp.scrollHeight, st: vp.scrollTop };
+        feedRowsCountBeforeMutationRef.current = feedRows.length;
+        prependPreserveOnlyRef.current = true;
+        setFeedRange((r) => {
+          const nextStart = Math.max(catalogBounds.start, r.start - CHAIN_TOPICS_PREFETCH_BATCH);
+          if (nextStart >= r.start) return r;
+          return { ...r, start: nextStart };
+        });
+      },
+      { root, rootMargin: '520px 0px 520px 0px', threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [viewportRef, chainHasMoreAbove, feedRows.length, catalogBounds.start, feedRange.start]);
+
+  /** Infinite chain: prefetch the next topic when the sentinel below the feed nears the viewport. */
+  useEffect(() => {
+    const root = viewportRef?.current;
+    const el = appendSentinelRef.current;
+    if (!root || !el || !chainHasMoreBelow) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.some((e) => e.isIntersecting);
+        if (!hit) return;
+        setFeedRange((r) => {
+          const nextEnd = Math.min(catalogBounds.end, r.end + CHAIN_TOPICS_PREFETCH_BATCH);
+          if (nextEnd <= r.end) return r;
+          return { ...r, end: nextEnd };
+        });
+      },
+      { root, rootMargin: '480px 0px 640px 0px', threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [viewportRef, chainHasMoreBelow, feedRange.end, feedRows.length, catalogBounds.end]);
 
   const feedNav = useMemo<DocsFeedNavHandlers>(
     () => ({
       goToNextFrom: (i) => {
-        const next = flatItems[i + 1];
-        if (!next || !viewportRef?.current || !topic) return;
+        if (!viewportRef?.current) return;
+        const nextRow = feedRows[i + 1];
+        if (nextRow) {
+          skipSlugScrollIntoViewRef.current = true;
+          setFeedOverlay({
+            topicId: nextRow.topic.id,
+            slug: nextRow.item.id,
+            pathRevision: pathRevisionRef.current,
+          });
+          document.getElementById(docFeedSectionDomId(nextRow.topic.id, nextRow.item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+          navigate(`/docs/${nextRow.topic.id}/${nextRow.item.id}`, { replace: true });
+          setInViewFeedKey(`${nextRow.topic.id}/${nextRow.item.id}`);
+          return;
+        }
+        const nextTopicIx = feedRange.end + 1;
+        if (nextTopicIx > catalogBounds.end) return;
+        const nextTopic = TOPICS[nextTopicIx];
+        const first = flattenTopicItems(nextTopic.items)[0];
+        if (!first) return;
+        pendingScrollWasPrependRef.current = false;
+        feedRowsCountBeforeMutationRef.current = feedRows.length;
+        pendingScrollToDomIdRef.current = docFeedSectionDomId(nextTopic.id, first.id);
+        setFeedRange((r) => ({ ...r, end: r.end + 1 }));
         skipSlugScrollIntoViewRef.current = true;
-        document.getElementById(`doc-feed-${next.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
-        navigate(`/docs/${topic.id}/${next.id}`, { replace: true });
-        startTransition(() => setInViewSlug(next.id));
+        setFeedOverlay({ topicId: nextTopic.id, slug: first.id, pathRevision: pathRevisionRef.current });
+        navigate(`/docs/${nextTopic.id}/${first.id}`, { replace: true });
+        setInViewFeedKey(`${nextTopic.id}/${first.id}`);
       },
       goToPrevFrom: (i) => {
-        const prev = flatItems[i - 1];
-        if (!prev || !viewportRef?.current || !topic) return;
+        if (!viewportRef?.current) return;
+        if (i > 0) {
+          const prevRow = feedRows[i - 1];
+          skipSlugScrollIntoViewRef.current = true;
+          setFeedOverlay({
+            topicId: prevRow.topic.id,
+            slug: prevRow.item.id,
+            pathRevision: pathRevisionRef.current,
+          });
+          document.getElementById(docFeedSectionDomId(prevRow.topic.id, prevRow.item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+          navigate(`/docs/${prevRow.topic.id}/${prevRow.item.id}`, { replace: true });
+          setInViewFeedKey(`${prevRow.topic.id}/${prevRow.item.id}`);
+          return;
+        }
+        if (feedRange.start <= catalogBounds.start) return;
+        const prevTopicIx = feedRange.start - 1;
+        const prevTopic = TOPICS[prevTopicIx];
+        const prevItems = flattenTopicItems(prevTopic.items);
+        const lastItem = prevItems[prevItems.length - 1];
+        if (!lastItem) return;
+        const vp = viewportRef.current;
+        if (vp) prependSnapRef.current = { sh: vp.scrollHeight, st: vp.scrollTop };
+        pendingScrollWasPrependRef.current = true;
+        feedRowsCountBeforeMutationRef.current = feedRows.length;
+        pendingScrollToDomIdRef.current = docFeedSectionDomId(prevTopic.id, lastItem.id);
+        setFeedRange((r) => ({ ...r, start: prevTopicIx }));
         skipSlugScrollIntoViewRef.current = true;
-        document.getElementById(`doc-feed-${prev.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
-        navigate(`/docs/${topic.id}/${prev.id}`, { replace: true });
-        startTransition(() => setInViewSlug(prev.id));
+        setFeedOverlay({ topicId: prevTopic.id, slug: lastItem.id, pathRevision: pathRevisionRef.current });
+        navigate(`/docs/${prevTopic.id}/${lastItem.id}`, { replace: true });
+        setInViewFeedKey(`${prevTopic.id}/${lastItem.id}`);
       },
     }),
-    [flatItems, navigate, viewportRef, topic]
+    [feedRange.end, feedRange.start, feedRows, navigate, viewportRef, catalogBounds.end, catalogBounds.start, setFeedOverlay, pathRevisionRef]
   );
 
   const navigateToFeedItem = useCallback(
-    (item: TopicItem) => {
-      if (!topic || !viewportRef?.current) return;
+    (item: TopicItem, itemTopicId: string) => {
+      if (!viewportRef?.current) return;
       skipSlugScrollIntoViewRef.current = true;
-      document.getElementById(`doc-feed-${item.id}`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
-      navigate(`/docs/${topic.id}/${item.id}`, { replace: true });
-      startTransition(() => setInViewSlug(item.id));
+      setFeedOverlay({ topicId: itemTopicId, slug: item.id, pathRevision: pathRevisionRef.current });
+      document.getElementById(docFeedSectionDomId(itemTopicId, item.id))?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      navigate(`/docs/${itemTopicId}/${item.id}`, { replace: true });
+      setInViewFeedKey(`${itemTopicId}/${item.id}`);
     },
-    [navigate, topic, viewportRef]
+    [navigate, viewportRef, setFeedOverlay, pathRevisionRef]
+  );
+
+  const feedSearchRows = useMemo(
+    () => feedRows.map((r) => ({ topicId: r.topic.id, topicTitle: r.topic.title, item: r.item })),
+    [feedRows]
   );
 
   if (!topic || !content) {
@@ -385,31 +789,59 @@ const DocumentationPage = () => {
     <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       <TooltipProvider delayDuration={200}>
         <div className="max-w-none min-w-0 flex flex-col gap-5 pb-24 sm:gap-6">
+          {activeStream ? (
+            <div className="mb-1">
+              <DocsFeedStreamBanner stream={activeStream} />
+            </div>
+          ) : null}
           <DocumentationTopicHero
             topic={topic}
             search={
               <DocsTopicFeedSearch
                 variant="embedded"
                 parentTopicTitle={topic.title}
-                items={flatItems}
+                items={[]}
                 activeSlug={slug ?? ''}
+                activeTopicId={categoryId}
+                multiTopicRows={feedSearchRows}
                 onNavigateToItem={navigateToFeedItem}
               />
             }
           />
-          {flatItems.map((item, idx) => (
-            <DocsFeedTopicSection
-              key={item.id}
-              item={item}
-              idx={idx}
-              total={flatItems.length}
-              isCurrentRoute={slug === item.id}
-              viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
-              feedNav={feedNav}
-              isActive={inViewSlug === item.id}
-              sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
-            />
+          {chainHasMoreAbove ? <div ref={prependSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
+          {feedRows.map((row, idx) => (
+            <Fragment key={`${row.topic.id}-${row.item.id}`}>
+              {idx > 0 && row.topic.id !== feedRows[idx - 1]!.topic.id ? (
+                <>
+                  {(() => {
+                    const prevT = feedRows[idx - 1]!.topic;
+                    const sp = getStreamByTopicId(prevT.id);
+                    const sc = getStreamByTopicId(row.topic.id);
+                    return sp && sc && sp.id !== sc.id ? (
+                      <div className="mb-1 mt-2 sm:mt-3">
+                        <DocsFeedStreamBanner stream={sc} />
+                      </div>
+                    ) : null;
+                  })()}
+                  <DocsFeedTopicContinuationHero topic={row.topic} />
+                </>
+              ) : null}
+              <DocsFeedTopicSection
+                item={row.item}
+                idx={idx}
+                total={feedRows.length}
+                sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
+                isCurrentRoute={slug === row.item.id && categoryId === row.topic.id}
+                viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
+                feedNav={feedNav}
+                isActive={inViewFeedKey === `${row.topic.id}/${row.item.id}`}
+                sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
+                chainHasMoreToNextTopic={chainHasMoreBelow && idx === feedRows.length - 1}
+                chainHasMoreToPrevTopic={chainHasMoreAbove && idx === 0}
+              />
+            </Fragment>
           ))}
+          {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
         </div>
       </TooltipProvider>
 

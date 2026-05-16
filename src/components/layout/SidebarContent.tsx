@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, type JSX } from 'react';
+import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
 import type { Topic, TopicItem } from '@/topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -33,16 +34,9 @@ const flattenItems = (items: TopicItem[]): TopicItem[] => {
   }, []);
 };
 
-const SidebarContent = ({
-  currentTopicId,
-  activeSlug,
-  closeSheet,
-}: {
-  currentTopicId: string | undefined;
-  activeSlug?: string;
-  closeSheet?: () => void;
-}) => {
+const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   const { t } = useI18n();
+  const { topicId: currentTopicId, slug: activeSlug } = useSidebarDocsRouteKeys();
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
   useEffect(() => {
@@ -52,6 +46,9 @@ const SidebarContent = ({
   const topic = topicsIndex?.find((t) => t.id === currentTopicId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+
+  /** Matches `/docs/:topicId/:itemId` — avoids highlighting wrong row when item ids repeat across topics. */
+  const activeRouteKey = currentTopicId && activeSlug ? `${currentTopicId}/${activeSlug}` : '';
 
   // State to track expanded parent items
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
@@ -68,14 +65,15 @@ const SidebarContent = ({
   }, [topic, activeSlug, searchQuery]);
 
   useEffect(() => {
-    if (!activeSlug) return;
-    const t = window.setTimeout(() => {
+    if (!activeRouteKey) return;
+    const ms = 320;
+    const id = window.setTimeout(() => {
       document
-        .querySelector(`[data-sidebar-doc-id="${CSS.escape(activeSlug)}"]`)
-        ?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }, 50);
-    return () => window.clearTimeout(t);
-  }, [activeSlug, currentTopicId, searchQuery, expandedIds]);
+        .querySelector(`[data-sidebar-route="${CSS.escape(activeRouteKey)}"]`)
+        ?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+    }, ms);
+    return () => window.clearTimeout(id);
+  }, [activeRouteKey, searchQuery, expandedIds]);
 
   const toggleExpand = useCallback((e: React.MouseEvent, id: string) => {
     e.preventDefault();
@@ -94,7 +92,8 @@ const SidebarContent = ({
   // Recursive tree renderer
   const renderTree = (items: TopicItem[], depth = 0): JSX.Element[] => {
     return items.map((item, index) => {
-      const isActive = activeSlug === item.id;
+      const routeKey = topic ? `${topic.id}/${item.id}` : '';
+      const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
       const hasChildren = item.items && item.items.length > 0;
       const isExpanded = expandedIds[item.id];
       const shouldShowTitleTooltip = item.title.length > 28;
@@ -103,7 +102,7 @@ const SidebarContent = ({
         <div key={item.id} className="w-full max-w-full overflow-hidden">
           <Button
             variant={isActive ? 'secondary' : 'ghost'}
-            data-sidebar-doc-id={item.id}
+            data-sidebar-route={routeKey}
             className={cn(
               'flex min-w-0 w-full max-w-full justify-start h-auto py-2 px-3 font-normal rounded-md overflow-hidden box-border',
               isActive
@@ -203,11 +202,14 @@ const SidebarContent = ({
           );
         }
 
-        return filtered.map((item) => (
-          <Button
-            key={item.id}
-            variant={activeSlug === item.id ? 'default' : 'ghost'}
-            data-sidebar-doc-id={item.id}
+        return filtered.map((item) => {
+          const routeKey = `${topic.id}/${item.id}`;
+          const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
+          return (
+            <Button
+              key={item.id}
+              variant={isActive ? 'default' : 'ghost'}
+              data-sidebar-route={routeKey}
             className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
             onClick={() => handleNavigate(topic.id, item.id)}
           >
@@ -215,7 +217,8 @@ const SidebarContent = ({
               <TranslatedText text={item.title} />
             </span>
           </Button>
-        ));
+          );
+        });
       })();
 
   return (

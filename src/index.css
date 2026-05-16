@@ -157,12 +157,14 @@
   /** Docs feed: native wheel steps must feel immediate; keep smooth only for explicit JS scroll APIs. */
   [data-slot='scroll-area-viewport'].docs-feed-scroll {
     scroll-behavior: auto;
+    /* Avoid browser scroll anchoring fighting programmatic layout when chained topics mount. */
+    overflow-anchor: none;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Off-screen doc feed cards: skip layout/paint until needed (works with native scroll). */
+  /* Doc feed cards: content-visibility:auto caused jank when cards entered viewport during scroll. */
   .doc-feed-section {
-    content-visibility: auto;
-    contain-intrinsic-size: 740px 720px;
+    contain: layout style;
   }
 
   @media (prefers-reduced-motion: reduce) {
