@@ -41,14 +41,21 @@ const flattenTopicItems = (items: TopicItem[]): TopicItem[] => {
   return flattened.filter((i) => i.content);
 };
 
-/** Fits one topic “screen” inside the ScrollArea viewport (navbar + breadcrumbs + padding + safe areas). */
-const DOC_FEED_TOPIC_CARD_CLASS =
-  'h-[calc(100dvh-8.75rem-env(safe-area-inset-bottom))] min-h-[18rem] max-h-[calc(100dvh-12.75rem-env(safe-area-inset-bottom))] sm:h-[calc(100dvh-8.25rem-env(safe-area-inset-bottom))] sm:min-h-[20rem] sm:max-h-[calc(100dvh-8.25rem-env(safe-area-inset-bottom))]';
+/** Fits one topic “screen” inside the ScrollArea viewport (navbar + outer py + safe areas — see App.tsx wrapper). */
+const DOC_FEED_TOPIC_CARD_CLASS = cn(
+  'h-[calc(100dvh-9rem-env(safe-area-inset-bottom))] min-h-[18rem]',
+  'max-h-[calc(100dvh-9rem-env(safe-area-inset-bottom))]',
+  'sm:h-[calc(100dvh-8.5rem-env(safe-area-inset-bottom))] sm:min-h-[20rem] sm:max-h-[calc(100dvh-8.5rem-env(safe-area-inset-bottom))]',
+  'md:h-[calc(100dvh-8.85rem-env(safe-area-inset-bottom))] md:max-h-[calc(100dvh-8.85rem-env(safe-area-inset-bottom))]',
+  /** lg: outer content uses py-10 — reserve a touch more vertical space than sm:py-8. */
+  'lg:h-[calc(100dvh-9rem-env(safe-area-inset-bottom))] lg:min-h-[21rem]',
+  'lg:max-h-[calc(100dvh-9rem-env(safe-area-inset-bottom))]'
+);
 
 /** Section shell: fixed viewport card height; inner post chrome lives in DocsFeedTopicSection. */
 const DOC_FEED_SECTION_SHELL_CLASS = cn(
-  'not-prose doc-feed-post flex min-w-0 flex-col',
-  'scroll-mt-28',
+  'not-prose doc-feed-post flex min-w-0 w-full max-w-full flex-col overflow-x-hidden',
+  'scroll-mt-24 md:scroll-mt-28',
   DOC_FEED_TOPIC_CARD_CLASS
 );
 
@@ -260,9 +267,9 @@ const DocumentationPage = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       <TooltipProvider delayDuration={200}>
-        <div className="max-w-none min-w-0 flex flex-col gap-8 pb-24 sm:gap-10 lg:gap-14">
+        <div className="max-w-none min-w-0 flex flex-col gap-7 pb-24 sm:gap-9 md:gap-10 lg:gap-14">
           {flatItems.map((item, idx) => (
             <DocsFeedTopicSection
               key={item.id}

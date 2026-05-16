@@ -102,10 +102,10 @@ function DocsFeedTopicSectionInner({
   const isActive = inViewSlug === item.id;
 
   return (
-    <section ref={sectionRef} id={`doc-feed-${item.id}`} className={cn('doc-feed-section', sectionClassName)}>
+    <section ref={sectionRef} id={`doc-feed-${item.id}`} className={cn('doc-feed-section min-w-0 w-full max-w-full', sectionClassName)}>
       <div
         className={cn(
-          'doc-feed-post-surface flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',
+          'doc-feed-post-surface flex h-full min-h-0 w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',
           'border-border/70 bg-card/90 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)] backdrop-blur-md',
           'dark:border-border/50 dark:bg-card/30 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
           'transition-[box-shadow,border-color] duration-300 ease-out',
@@ -149,7 +149,7 @@ function DocsFeedTopicSectionInner({
           </div>
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-muted/15 px-2 pt-2.5 pb-2 dark:bg-muted/10 sm:px-3 sm:pt-3 sm:pb-3">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-muted/15 px-3 pt-2.5 pb-2 dark:bg-muted/10 sm:px-3.5 sm:pt-3 sm:pb-3 md:px-4">
           <div className="prose prose-slate dark:prose-invert flex min-h-0 flex-1 flex-col overflow-hidden max-w-none min-w-0 prose-headings:font-semibold prose-headings:tracking-tight">
             {contentMounted ? (
               <MarkdownRender

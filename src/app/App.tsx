@@ -109,10 +109,10 @@ const App = () => {
           {showSidebar && (
             <aside
               className={cn(
-                'hidden md:block h-full mx-2 my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
+                'hidden md:block h-full my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
                 docsSidebarCollapsed
-                  ? 'w-0 overflow-hidden border-r-0 pointer-events-none'
-                  : 'w-64 lg:w-72 border-r border-border/40'
+                  ? 'mx-0 w-0 overflow-hidden border-r-0 pointer-events-none'
+                  : 'mx-2 w-64 lg:w-72 border-r border-border/40'
               )}
               aria-hidden={docsSidebarCollapsed}
             >
