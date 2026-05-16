@@ -1,0 +1,7 @@
+{
+  "name": "empty-intersection-observer-placeholder",
+  "version": "0.10.0",
+  "private": true,
+  "description": "No-op shim; Intersection Observer is baseline in browsers this app targets. Replaces intersection-observer via overrides.",
+  "main": "./index.js"
+}
