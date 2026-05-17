@@ -61,7 +61,12 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className, t
     </>
   );
 
-  const wrapperClass = cn('inline-flex items-center gap-2 shrink-0 hover:opacity-90 transition-opacity', className);
+  const wrapperClass = cn(
+    'inline-flex items-center gap-2 hover:opacity-90 transition-opacity',
+    /** Navbar / compact surfaces — don’t shrink so the click target stays stable */
+    size !== 'lg' && 'shrink-0',
+    className
+  );
 
   if (asLink) {
     return (

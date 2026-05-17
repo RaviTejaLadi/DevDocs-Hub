@@ -159,7 +159,7 @@ const App = () => {
                 viewportRef={contentViewportRef}
                 viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
               >
-                <div className="mx-auto w-full max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
+                <div className="mx-auto w-full min-w-0 max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
                   <Suspense fallback={<RouteFallback />}>
                     <Routes location={location}>
                       <Route path="/" element={<LandingPage />} />

@@ -154,6 +154,20 @@
     overscroll-behavior: contain;
   }
 
+  /**
+   * Radix ScrollArea injects a wrapper with display:table and min-width:100% but no max-width.
+   * Wide content grows past the viewport; with only a vertical ScrollBar, overflow-x stays hidden
+   * and narrow viewports clip the right edge. Pin the wrapper to the viewport width so layouts
+   * wrap and use their own horizontal scroll (e.g. code blocks).
+   */
+  [data-radix-scroll-area-viewport] > div {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
   /** Docs feed: native wheel steps must feel immediate; keep smooth only for explicit JS scroll APIs. */
   [data-slot='scroll-area-viewport'].docs-feed-scroll {
     scroll-behavior: auto;

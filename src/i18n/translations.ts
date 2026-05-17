@@ -48,6 +48,8 @@ const en: TranslationMap = {
   'landing.topicsCount': '{{count}} topics',
   'landing.more': '+{{count}} more',
   'landing.streamTabs': 'Streams',
+  'landing.streamTabsScrollLeft': 'Scroll streams left',
+  'landing.streamTabsScrollRight': 'Scroll streams right',
   'landing.noTopicsInStream': 'No topics found in this stream yet.',
   'features.whyUse': 'Why use ReviseStack',
   'features.quickRevision.title': 'Quick revision',
