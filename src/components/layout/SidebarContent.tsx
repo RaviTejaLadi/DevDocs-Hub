@@ -11,6 +11,11 @@ import { cn } from '@/lib/utils';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import {
+  docsSidePanelHeaderSurfaceClass,
+  docsSidePanelNavSurfaceClass,
+  docsSidePanelScrollAreaClass,
+} from '@/constants/docsSidePanel';
 
 /** Parent topic ids needed to reveal `targetId` in the tree (not including target). */
 const findAncestorIds = (items: TopicItem[], targetId: string, chain: string[] = []): string[] | null => {
@@ -105,7 +110,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
             variant={isActive ? 'secondary' : 'ghost'}
             data-sidebar-route={routeKey}
             className={cn(
-              'flex min-w-0 w-full max-w-full justify-start h-auto py-2 px-3 font-normal rounded-md overflow-hidden box-border',
+              'flex min-w-0 w-full max-w-full justify-start min-h-11 py-2.5 px-3 font-normal rounded-md overflow-hidden box-border touch-manipulation',
               isActive
                 ? 'bg-accent text-accent-foreground'
                 : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
@@ -147,7 +152,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
                 <button
                   type="button"
                   onClick={(e) => toggleExpand(e, item.id)}
-                  className="p-1 hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0"
+                  className="inline-flex size-10 items-center justify-center hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0 touch-manipulation"
                   aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
                 >
                   {isExpanded ? (
@@ -168,7 +173,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
   if (!topicsIndex) {
     return (
-      <div className="flex h-full flex-col gap-3 p-4" aria-busy="true">
+      <div className="flex min-h-0 flex-1 flex-col gap-3 p-4" aria-busy="true">
         <div className="h-8 animate-pulse rounded-md bg-muted/35" />
         <div className="h-9 animate-pulse rounded-lg bg-muted/25" />
         <div className="flex-1 space-y-2 pt-2">
@@ -182,7 +187,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
   if (!topic)
     return (
-      <div className="p-6 text-center">
+      <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
         <BookOpen className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
         <p className="text-sm text-muted-foreground">{t('sidebar.selectTopic')}</p>
       </div>
@@ -211,7 +216,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
               key={item.id}
               variant={isActive ? 'default' : 'ghost'}
               data-sidebar-route={routeKey}
-              className="flex w-full justify-start py-2 px-3 font-normal overflow-hidden box-border"
+              className="flex w-full justify-start min-h-11 py-2.5 px-3 font-normal overflow-hidden box-border touch-manipulation"
               onClick={() => handleNavigate(topic.id, item.id)}
             >
               <span className="text-sm truncate min-w-0 block w-full text-left">
@@ -223,32 +228,49 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
       })();
 
   return (
-    <div className="flex h-full flex-col bg-inherit">
-      <div className="text-fade-up shrink-0 px-4 py-4 border-b border-border/40">
+    <div className="flex min-h-0 min-w-0 max-w-full flex-1 touch-manipulation flex-col overflow-x-hidden bg-inherit">
+      <div
+        className={cn(
+          docsSidePanelHeaderSurfaceClass,
+          'text-fade-up min-w-0',
+          closeSheet ? 'px-3 pb-4 pt-5 sm:px-4' : 'px-4 pb-4 pt-5'
+        )}
+      >
+        {!closeSheet ? (
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+            <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
+            <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
+          </div>
+        ) : null}
         <Link
           to="/"
           onClick={closeSheet}
-          className="flex items-center gap-2 mb-4 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+          className="group mb-3 flex max-w-full min-w-0 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-4"
         >
-          <ChevronLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform shrink-0" />
+          <ChevronLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
           <span>{t('sidebar.backToOverview')}</span>
         </Link>
-        <div className="flex gap-2 items-center">
-          <div className="p-2 rounded-lg border border-border/40 bg-background shrink-0">{topic.icon}</div>
-          <div className="relative flex-1 min-w-0">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+          <div
+            className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted/45 text-primary shadow-inner [&_svg]:size-[1.15rem]"
+            aria-hidden
+          >
+            {topic.icon}
+          </div>
+          <div className="relative min-w-0 flex-1">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               type="text"
               placeholder={t('sidebar.searchSection')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-8 h-9 w-full rounded-lg border-border/40 bg-background"
+              className="h-9 w-full rounded-lg border-border/40 bg-background pl-9 pr-8 shadow-[inset_0_1px_2px_hsl(var(--foreground)/0.05)] dark:shadow-[inset_0_1px_3px_hsl(0_0%_0%/0.18)]"
             />
             {searchQuery && (
               <Button
                 variant="ghost"
                 size="sm"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 p-0 shrink-0"
+                className="absolute right-1 top-1/2 h-7 w-7 shrink-0 -translate-y-1/2 p-0"
                 onClick={() => setSearchQuery('')}
                 aria-label={t('sidebar.clearSearch')}
               >
@@ -259,14 +281,13 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0">
-        <ScrollArea className="h-full overflow-hidden">
-          <nav
-            className="motion-stagger p-3 space-y-0.5 w-full max-w-full overflow-x-hidden"
-            aria-label="Topic sections"
-          >
-            {displayContent}
-          </nav>
+      <div className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-2 sm:px-3">
+        <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}>
+          <div className={docsSidePanelNavSurfaceClass}>
+            <nav className="motion-stagger space-y-0.5" aria-label="Topic sections">
+              {displayContent}
+            </nav>
+          </div>
         </ScrollArea>
       </div>
     </div>

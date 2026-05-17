@@ -16,7 +16,11 @@ type LogoProps = {
 const sizeClasses = {
   sm: { icon: 'w-7 h-7', text: 'text-lg' },
   md: { icon: 'w-6 h-6', text: 'text-base' },
-  lg: { icon: 'w-12 h-12 sm:w-12 sm:h-12', text: 'text-3xl sm:text-4xl md:text-5xl' },
+  /** Hero: scale smoothly from phones to desktops */
+  lg: {
+    icon: 'w-9 h-9 min-[380px]:w-10 min-[380px]:h-10 sm:w-12 sm:h-12',
+    text: 'text-2xl min-[380px]:text-3xl sm:text-4xl md:text-5xl',
+  },
 };
 
 export function Logo({ showText = true, size = 'sm', asLink = true, className, textClassName }: LogoProps) {

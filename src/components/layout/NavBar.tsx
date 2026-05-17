@@ -165,8 +165,8 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   };
 
   return (
-    <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(99%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)))] mx-auto border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="flex h-14 items-center gap-2 max-w-7xl mx-auto ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8">
+    <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(100%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1px))] mx-auto max-w-full border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 box-border">
+      <div className="flex h-14 min-w-0 items-center gap-1.5 max-sm:gap-1 max-w-7xl mx-auto ps-[max(0.5rem,env(safe-area-inset-left))] pe-[max(0.5rem,env(safe-area-inset-right))] sm:gap-2 sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8">
         <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
           <Logo showText size="sm" className="min-w-0 font-semibold" textClassName="max-[360px]:hidden" />
 
@@ -182,7 +182,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
             </Button>
           )}
         </div>
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex shrink-0 min-w-0 items-center gap-1.5 sm:gap-2">
           {isHomePage && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>

@@ -13,6 +13,7 @@ import { isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import NavBar from '@/components/layout/NavBar';
 import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
 import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
+import { docsSidePanelWidthClass } from '@/constants/docsSidePanel';
 
 const LandingPage = lazy(() => import('@/pages/LandingPage'));
 const DocumentationPage = lazy(() => import('@/pages/DocumentationPage'));
@@ -102,23 +103,32 @@ const App = () => {
   return (
     <DocsFeedSyncProvider>
       <ScrollViewportProvider value={contentViewportRef}>
-        <div className="min-h-dvh h-dvh overflow-hidden bg-background">
+        <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-background max-w-[100vw]">
           <NavBar setSidebarOpen={setSidebarOpen} />
 
           <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-            <SheetContent side="left" className="w-[88vw] max-w-sm p-0 border-r border-border/40">
-              <ScrollArea className="h-full">
+            <SheetContent
+              side="left"
+              className={cn(
+                'gap-0 p-0 border-r border-border/40 flex flex-col min-h-0',
+                /** Full usable height on mobile — single scroll surface lives inside SidebarContent */
+                'h-dvh max-h-dvh w-[min(92vw,20rem)] max-w-sm',
+                /** Clear device notches / home indicator; avoid clipping the fixed close affordance area */
+                'pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] ps-[env(safe-area-inset-left)]'
+              )}
+            >
+              <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
                 <Routes location={location}>
                   <Route
                     path="/docs/:categoryId/:slug"
                     element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
                   />
                 </Routes>
-              </ScrollArea>
+              </div>
             </SheetContent>
           </Sheet>
 
-          <div className="h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] min-h-0 flex">
+          <div className="box-border flex min-h-0 h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-nowrap gap-3 overflow-x-hidden overscroll-none px-3 py-4 sm:px-4">
             {showSidebar && (
               <DocsDesktopSidebarToggle
                 collapsed={docsSidebarCollapsed}
@@ -128,22 +138,24 @@ const App = () => {
             {showSidebar && (
               <aside
                 className={cn(
-                  'hidden md:block h-full my-4 rounded-md border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 shrink-0 transition-all duration-200 ease-in-out',
+                  'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border bg-background/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-background/80 transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
                   docsSidebarCollapsed
-                    ? 'mx-0 w-0 overflow-hidden border-r-0 pointer-events-none'
-                    : 'mx-2 w-64 lg:w-72 border-r border-border/40'
+                    ? 'w-0 min-w-0 max-w-0 shrink-0 border-transparent p-0 opacity-0 pointer-events-none'
+                    : cn(docsSidePanelWidthClass, 'h-full border-border/40 opacity-100')
                 )}
                 aria-hidden={docsSidebarCollapsed}
               >
-                <Routes location={location}>
-                  <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
-                </Routes>
+                <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+                  <Routes location={location}>
+                    <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
+                  </Routes>
+                </div>
               </aside>
             )}
 
-            <main className="flex-1 overflow-hidden">
+            <main className="min-h-0 flex-1 min-w-0 overflow-hidden">
               <ScrollArea
-                className="h-full"
+                className="h-full min-h-0"
                 viewportRef={contentViewportRef}
                 viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
               >

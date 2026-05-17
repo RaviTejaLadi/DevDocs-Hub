@@ -28,6 +28,12 @@ import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
 import { DocsTopicFeedSearch } from './DocsTopicFeedSearch';
+import {
+  docsSidePanelHeaderSurfaceClass,
+  docsSidePanelNavSurfaceClass,
+  docsSidePanelScrollAreaClass,
+  docsSidePanelWidthClass,
+} from '@/constants/docsSidePanel';
 
 const FALLBACK_SCROLL_ROOT: RefObject<HTMLDivElement | null> = { current: null };
 
@@ -1024,19 +1030,19 @@ const DocumentationPage = () => {
           side="right"
           overlayClassName="z-[68] backdrop-blur-[2px]"
           className={cn(
-            'flex h-full flex-col gap-0 overflow-hidden border-l border-border/30 p-0 sm:rounded-l-2xl',
+            'flex min-h-0 flex-col gap-0 overflow-hidden border-l border-border/30 p-0 sm:rounded-l-2xl',
             'z-70 bg-background/95 shadow-2xl backdrop-blur-xl supports-backdrop-filter:bg-background/78',
-            /** Match primary docs aside widths */
-            'max-w-full w-80',
-            '[&>button]:z-71 [&>button]:top-3.5 [&>button]:right-3.5 [&>button]:rounded-full [&>button]:bg-background/85 [&>button]:p-2 [&>button]:shadow-md [&>button]:backdrop-blur-sm'
+            docsSidePanelWidthClass
           )}
         >
-          <SheetHeader className="relative shrink-0 gap-0 overflow-hidden border-b border-border/25 px-4 pb-4 pt-5 text-left">
+          <SheetHeader
+            className={cn(docsSidePanelHeaderSurfaceClass, 'px-4 pb-4 pt-5 text-left')}
+          >
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
-              <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/14 blur-3xl dark:bg-primary/18" />
+              <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
               <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
             </div>
-            <div className="flex gap-3 pr-11">
+            <div className="flex gap-3">
               <div
                 className={cn(
                   'flex size-10 shrink-0 items-center justify-center rounded-xl',
@@ -1056,12 +1062,12 @@ const DocumentationPage = () => {
               </div>
             </div>
           </SheetHeader>
-          <ScrollArea className="min-h-0 flex-1 *:data-[slot=scroll-area-viewport]:pb-4">
+          <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'min-h-0 overflow-hidden')}>
             <div className="px-3 py-4">
               {docsTopicBrowserSections.map(({ stream, categories }, si) => (
                 <Fragment key={stream.id}>
                   {si > 0 ? <Separator className="my-5 bg-border/30" decorative /> : null}
-                  <section className="rounded-xl bg-muted/15 p-3 dark:bg-muted/10">
+                  <section className={docsSidePanelNavSurfaceClass}>
                     <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
                       <div
                         className={cn(

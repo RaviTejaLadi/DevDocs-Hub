@@ -82,17 +82,23 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="pb-20 max-w-5xl mx-auto w-full min-w-0">
-      <header className="text-center pt-8 sm:pt-12 pb-12 sm:pb-16">
-        <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3">
-          <Logo showText size="lg" asLink={false} className="justify-center hover:opacity-100" />
+    <div className="pb-16 sm:pb-20 max-w-5xl mx-auto w-full min-w-0 overflow-x-hidden px-1 sm:px-0">
+      <header className="text-center pt-6 sm:pt-12 pb-10 sm:pb-16 px-0.5">
+        <h1 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-3 px-1 min-w-0">
+          <Logo
+            showText
+            size="lg"
+            asLink={false}
+            className="justify-center hover:opacity-100 max-w-full min-w-0"
+            textClassName="text-center text-balance"
+          />
         </h1>
-        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 px-1 text-pretty leading-relaxed">
           {t('landing.heroDescription')}
         </p>
 
-        <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1">
+        <div className="max-w-xl mx-auto w-full min-w-0 flex flex-col gap-3 sm:flex-row sm:items-stretch px-1">
+          <div className="relative flex-1 min-w-0">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               value={searchQuery}
@@ -101,7 +107,7 @@ const LandingPage = () => {
               className="pl-10 h-11 rounded-lg border-border/40 bg-background text-foreground placeholder:text-muted-foreground"
             />
           </div>
-          <div className="flex items-center justify-center gap-1 rounded-lg border border-border/40 bg-muted/30 p-1">
+          <div className="flex items-center justify-center gap-1 rounded-lg border border-border/40 bg-muted/30 p-1 sm:shrink-0 w-full sm:w-auto max-sm:mx-auto">
             <Button
               size="icon"
               variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
@@ -119,10 +125,10 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 flex justify-center px-1">
           <Button
             variant="outline"
-            className="gap-2 border-border/40 bg-card/50 hover:bg-accent"
+            className="gap-2 border-border/40 bg-card/50 hover:bg-accent w-full max-w-md sm:w-auto min-h-11 touch-manipulation"
             onClick={() => navigate('/interview-questions')}
           >
             <HelpCircle className="h-4 w-4" />
@@ -146,8 +152,11 @@ const LandingPage = () => {
         </div>
       ) : (
         <>
-          <nav aria-label={t('landing.streamTabs')} className="mb-8 -mx-2 px-2 sm:mx-0 sm:px-0 overflow-x-auto">
-            <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap">
+          <nav
+            aria-label={t('landing.streamTabs')}
+            className="mb-8 -mx-1 px-1 sm:mx-0 sm:px-0 overflow-x-auto overscroll-x-contain [scrollbar-width:thin]"
+          >
+            <div className="flex items-center gap-2 min-w-max sm:min-w-0 sm:flex-wrap pb-0.5">
               {streams.map((stream) => {
                 const isActive = stream.id === activeStream?.id;
                 return (
@@ -202,9 +211,9 @@ const LandingPage = () => {
                 <button
                   type="button"
                   onClick={() => toggleSection(`${activeStream?.id}:${category}`)}
-                  className="w-full flex items-center justify-between py-2 text-left group"
+                  className="w-full min-w-0 flex items-center justify-between gap-3 py-2.5 text-left group touch-manipulation"
                 >
-                  <h2 className="text-lg font-semibold text-foreground capitalize tracking-tight">
+                  <h2 className="text-base sm:text-lg font-semibold text-foreground capitalize tracking-tight wrap-break-word hyphens-auto pr-2 min-w-0">
                     {category.replace(/-/g, ' ')}
                   </h2>
                   <ChevronDown
@@ -239,8 +248,8 @@ const LandingPage = () => {
                               navigate(`/docs/${topic.id}/${topic.items[0].id}`, { state: DOCS_NAV_RESET_SCROLL });
                             }
                           }}
-                          className={cn(
-                            'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground',
+                            className={cn(
+                            'group cursor-pointer rounded-lg border border-border/40 bg-card text-card-foreground touch-manipulation',
                             'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                             viewMode === 'grid'
