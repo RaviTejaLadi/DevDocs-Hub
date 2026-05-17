@@ -10,11 +10,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { cn } from '@/lib/utils';
 import { EAGER_MOUNT_COUNT, LAZY_ROOT_MARGIN } from '../constants';
 import { DocsFeedMarkdownSkeleton } from './DocsFeedMarkdownSkeleton';
-
-export type DocsFeedNavHandlers = {
-  goToNextFrom: (idx: number) => void;
-  goToPrevFrom: (idx: number) => void;
-};
+import type { DocsFeedNavHandlers } from '../types';
 
 type DocsFeedTopicSectionProps = {
   item: TopicItem;

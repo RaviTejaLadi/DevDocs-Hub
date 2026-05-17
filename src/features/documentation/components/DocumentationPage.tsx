@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 import { DOCS_NAV_PRESERVE_SCROLL, DOCS_NAV_RESET_SCROLL, isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
-import type { DocsFeedNavHandlers } from './DocsFeedTopicSection';
+import type { DocsFeedNavHandlers } from '../types';
 import {
   docsSidePanelHeaderSurfaceClass,
   docsSidePanelNavSurfaceClass,

@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react';
-
-export type TermsSection = { title: string; body: ReactNode };
+import type { TermsSection } from '../types';
 
 export const termsSections: TermsSection[] = [
     {

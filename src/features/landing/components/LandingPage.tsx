@@ -14,7 +14,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { badgeToneClasses } from '../constants';
 import { useLandingStreams } from '../hooks';
-import type { ViewMode } from '../utils';
+import type { ViewMode } from '../types';
 import { LandingStreamTabs } from './LandingStreamTabs';
 
 const LandingPage = () => {
