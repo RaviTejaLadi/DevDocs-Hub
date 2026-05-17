@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
+import { useAppLayoutStore } from '@/stores';
 import { isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import NavBar from '@/components/layout/NavBar';
 import { docsSidePanelWidthClass } from '@/constants/docsSidePanel';
@@ -48,8 +49,10 @@ const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean;
 };
 
 const App = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(true);
+  const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
+  const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
+  const docsSidebarCollapsed = useAppLayoutStore((s) => s.docsSidebarCollapsed);
+  const toggleDocsSidebarCollapsed = useAppLayoutStore((s) => s.toggleDocsSidebarCollapsed);
   const location = useLocation();
   const showSidebar = isDocsRoute(location.pathname);
   const contentViewportRef = useRef<HTMLDivElement>(null);
@@ -82,15 +85,15 @@ const App = () => {
     else window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname, location.search, location.state]);
 
-  const closeSidebar = () => setSidebarOpen(false);
+  const closeSidebar = () => setMobileSidebarOpen(false);
 
   return (
     <DocsFeedSyncProvider>
       <ScrollViewportProvider value={contentViewportRef}>
         <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-background max-w-[100vw]">
-          <NavBar setSidebarOpen={setSidebarOpen} />
+          <NavBar />
 
-          <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+          <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
             <SheetContent
               side="left"
               className={cn(
@@ -111,7 +114,7 @@ const App = () => {
             {showSidebar && (
               <DocsDesktopSidebarToggle
                 collapsed={docsSidebarCollapsed}
-                onToggle={() => setDocsSidebarCollapsed((prev) => !prev)}
+                onToggle={toggleDocsSidebarCollapsed}
               />
             )}
             {showSidebar && (

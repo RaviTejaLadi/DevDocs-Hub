@@ -24,6 +24,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
+import { useAppLayoutStore } from '@/stores';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   DropdownMenu,
@@ -38,11 +39,12 @@ import {
 
 type RankedSearchResult = SearchResult & { score: number };
 
-const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void }) => {
+const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
   const { t, language, setLanguage } = useI18n();
+  const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -190,7 +192,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               variant="outline"
               size="icon"
               className="md:hidden shrink-0"
-              onClick={() => setSidebarOpen(true)}
+              onClick={() => setMobileSidebarOpen(true)}
               aria-label={t('nav.openSidebar')}
             >
               <Menu className="h-5 w-5" />
