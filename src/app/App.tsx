@@ -1,6 +1,6 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { Loader2, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
@@ -11,32 +11,14 @@ import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
 import { isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import NavBar from '@/components/layout/NavBar';
-import SidebarWrapperMobile from '@/components/layout/SidebarWrapperMobile';
-import SidebarWrapperDesktop from '@/components/layout/SidebarWrapperDesktop';
 import { docsSidePanelWidthClass } from '@/constants/docsSidePanel';
-
-const LandingPage = lazy(() => import('@/pages/LandingPage'));
-const DocumentationPage = lazy(() => import('@/pages/DocumentationPage'));
-const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
-const InterviewQuestionsPage = lazy(() => import('@/pages/InterviewQuestionsPage'));
-const CodeEditorPage = lazy(() => import('@/pages/CodeEditorPage'));
-
-const RouteFallback = () => {
-  const { t } = useI18n();
-  return (
-    <div
-      className="flex min-h-[50vh] items-center justify-center gap-2.5 text-sm text-muted-foreground"
-      role="status"
-      aria-live="polite"
-    >
-      <Loader2
-        className="h-5 w-5 shrink-0 animate-spin text-muted-foreground motion-reduce:animate-none"
-        aria-hidden
-      />
-      <span>{t('common.loading')}</span>
-    </div>
-  );
-};
+import {
+  DocsSidebarDesktopRoutes,
+  DocsSidebarMobileRoutes,
+  isDocsRoute,
+  MainAppRoutes,
+  RouteFallback,
+} from '@/app/routes';
 
 const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
   const { t } = useI18n();
@@ -69,7 +51,7 @@ const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [docsSidebarCollapsed, setDocsSidebarCollapsed] = useState(true);
   const location = useLocation();
-  const showSidebar = location.pathname.startsWith('/docs/');
+  const showSidebar = isDocsRoute(location.pathname);
   const contentViewportRef = useRef<HTMLDivElement>(null);
 
   const docsCategoryScrollRef = useRef<string | null>(null);
@@ -100,6 +82,8 @@ const App = () => {
     else window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname, location.search, location.state]);
 
+  const closeSidebar = () => setSidebarOpen(false);
+
   return (
     <DocsFeedSyncProvider>
       <ScrollViewportProvider value={contentViewportRef}>
@@ -118,12 +102,7 @@ const App = () => {
               )}
             >
               <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                <Routes location={location}>
-                  <Route
-                    path="/docs/:categoryId/:slug"
-                    element={<SidebarWrapperMobile close={() => setSidebarOpen(false)} />}
-                  />
-                </Routes>
+                <DocsSidebarMobileRoutes location={location} closeSidebar={closeSidebar} />
               </div>
             </SheetContent>
           </Sheet>
@@ -146,9 +125,7 @@ const App = () => {
                 aria-hidden={docsSidebarCollapsed}
               >
                 <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                  <Routes location={location}>
-                    <Route path="/docs/:categoryId/:slug" element={<SidebarWrapperDesktop />} />
-                  </Routes>
+                  <DocsSidebarDesktopRoutes location={location} />
                 </div>
               </aside>
             )}
@@ -161,13 +138,7 @@ const App = () => {
               >
                 <div className="mx-auto w-full min-w-0 max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
                   <Suspense fallback={<RouteFallback />}>
-                    <Routes location={location}>
-                      <Route path="/" element={<LandingPage />} />
-                      <Route path="/docs/:categoryId/:slug" element={<DocumentationPage />} />
-                      <Route path="/terms" element={<TermsOfServicePage />} />
-                      <Route path="/interview-questions/:topicId?" element={<InterviewQuestionsPage />} />
-                      <Route path="/code-editor" element={<CodeEditorPage />} />
-                    </Routes>
+                    <MainAppRoutes location={location} />
                   </Suspense>
                 </div>
               </ScrollArea>
