@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Markdown Render — refined editorial theme
+   Palette accents only: Tan #fceed1 · Purple #7d3cff · Yellow #f2d53c · Red #c80e13
+   All decoration uses soft alpha tints so the article still belongs to the
+   site's neutral card surface rather than becoming a sticker book.
+   ========================================================================== */
+.md-render {
+  --md-purple:       #7d3cff;
+  --md-purple-deep:  #5a1fd4;
+  --md-purple-soft:  rgba(125, 60, 255, 0.07);
+  --md-purple-tint:  rgba(125, 60, 255, 0.12);
+  --md-purple-line:  rgba(125, 60, 255, 0.22);
+  --md-yellow:       #f2d53c;
+  --md-yellow-soft:  rgba(242, 213, 60, 0.22);
+  --md-yellow-line:  rgba(242, 213, 60, 0.45);
+  --md-red:          #c80e13;
+  --md-red-soft:     rgba(200, 14, 19, 0.08);
+  --md-tan-tint:     rgba(252, 238, 209, 0.45);
+
+  position: relative;
+  counter-reset: md-h2;
+}
+
+.dark .md-render {
+  --md-purple:       #b693ff;
+  --md-purple-deep:  #d2bcff;
+  --md-purple-soft:  rgba(182, 147, 255, 0.08);
+  --md-purple-tint:  rgba(182, 147, 255, 0.14);
+  --md-purple-line:  rgba(182, 147, 255, 0.22);
+  --md-yellow:       #f7df5c;
+  --md-yellow-soft:  rgba(247, 223, 92, 0.10);
+  --md-yellow-line:  rgba(247, 223, 92, 0.22);
+  --md-red:          #ff8085;
+  --md-red-soft:     rgba(255, 128, 133, 0.10);
+  --md-tan-tint:     rgba(182, 147, 255, 0.04);
+}

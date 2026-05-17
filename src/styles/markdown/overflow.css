@@ -1,0 +1,20 @@
+.live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionIcon,
+.live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionDetail,
+.live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li .cm-completionLabel,
+.md-render .md-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-render .md-code-card pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 639px) {
+  .md-render > p:first-of-type::first-letter {
+    font-size: 2.55rem;
+    line-height: 0.92;
+    margin: 0.25rem 0.45rem 0 0;
+  }
+}

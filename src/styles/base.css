@@ -1,0 +1,125 @@
+@layer base {
+  html {
+    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  * {
+    @apply border-border/40 outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  /* Smooth scrolling inside the Radix scroll viewport (the actual scroll
+     container in this app). Native CSS smooth scroll is GPU-accelerated and
+     works for programmatic and anchor-link scrolls without external libs. */
+  [data-slot="scroll-area-viewport"] {
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
+    overscroll-behavior: contain;
+  }
+
+  /**
+   * Radix ScrollArea injects a wrapper with display:table and min-width:100% but no max-width.
+   * Wide content grows past the viewport; with only a vertical ScrollBar, overflow-x stays hidden
+   * and narrow viewports clip the right edge. Pin the wrapper to the viewport width so layouts
+   * wrap and use their own horizontal scroll (e.g. code blocks).
+   */
+  [data-radix-scroll-area-viewport] > div {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /** Docs feed: native wheel steps must feel immediate; keep smooth only for explicit JS scroll APIs. */
+  [data-slot='scroll-area-viewport'].docs-feed-scroll {
+    scroll-behavior: auto;
+    /* Avoid browser scroll anchoring fighting programmatic layout when chained topics mount. */
+    overflow-anchor: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Doc feed cards: content-visibility:auto caused jank when cards entered viewport during scroll. */
+  .doc-feed-section {
+    contain: layout style;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-slot="scroll-area-viewport"] {
+      scroll-behavior: auto;
+    }
+
+    [data-slot='scroll-area-viewport'].docs-feed-scroll {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Scrollbars — WebKit (Chrome, Edge, Safari); Firefox uses * { scrollbar-* } above */
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--radius-md);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Global radius normalization: use one rounded style everywhere */
+  :where(
+    .rounded-none,
+    .rounded-sm,
+    .rounded,
+    .rounded-md,
+    .rounded-lg,
+    .rounded-xl,
+    .rounded-2xl,
+    .rounded-3xl,
+    .rounded-4xl,
+    .rounded-full,
+    [class*="rounded-["]
+  ) {
+    border-radius: var(--radius-md) !important;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "IBM Plex Sans", sans-serif;
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .theme-switching,
+  .theme-switching * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

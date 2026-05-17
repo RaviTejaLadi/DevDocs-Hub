@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Radix Accordion smooth open/close (Tailwind v4 + tailwindcss-animate v1
+   does not register these by default). The animations rely on the
+   --radix-accordion-content-height variable that Radix sets on the content.
+   ========================================================================== */
+@theme {
+  --animate-accordion-down: accordion-down 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-accordion-up: accordion-up 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
