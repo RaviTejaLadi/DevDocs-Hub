@@ -1,4 +1,4 @@
-import LiveCodeEditor from '@/components/editor/LiveCodeEditor';
+import LiveCodeEditor from './LiveCodeEditor';
 
 const CodeEditorPage = () => {
   return (
