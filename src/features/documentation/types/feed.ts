@@ -1,4 +1,4 @@
-import type { Topic, TopicItem } from '@/topics';
+import type { Topic, TopicItem } from '@/data/topics';
 
 export type FeedRow = { topic: Topic; item: TopicItem };
 

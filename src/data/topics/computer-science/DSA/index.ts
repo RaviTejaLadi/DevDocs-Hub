@@ -16,7 +16,7 @@ import linkedList from './dsa-concepts/linked-list.md?raw';
 import queues from './dsa-concepts/queues.md?raw';
 import stack from './dsa-concepts/stack.md?raw';
 import trees from './dsa-concepts/trees.md?raw';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const dsaData: TopicItem[] = [
   {

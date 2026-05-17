@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, type JSX } from 'react';
 import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
-import type { Topic, TopicItem } from '@/topics';
+import type { Topic, TopicItem } from '@/data/topics';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -46,7 +46,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
   useEffect(() => {
-    void import('@/topics').then((m) => setTopicsIndex(m.TOPICS));
+    void import('@/data/topics').then((m) => setTopicsIndex(m.TOPICS));
   }, []);
 
   const topic = topicsIndex?.find((t) => t.id === currentTopicId);

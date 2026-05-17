@@ -1,4 +1,4 @@
-import type { Topic } from '@/topics';
+import type { Topic } from '@/data/topics';
 import { Atom, FlaskConical, Calculator, Leaf } from 'lucide-react';
 
 const physicsTopics: Topic = {

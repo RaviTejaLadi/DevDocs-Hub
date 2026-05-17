@@ -1,4 +1,4 @@
-/** Visual polish for `/docs/:categoryId/*` — topic metadata from `@/topics`. */
+/** Visual polish for `/docs/:categoryId/*` — topic metadata from `@/data/topics`. */
 export function formatTopicTrackLabel(type: string): string {
   const t = type.trim().toLowerCase();
   if (!t) return '';

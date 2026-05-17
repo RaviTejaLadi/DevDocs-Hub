@@ -1,5 +1,5 @@
 import { FileText } from 'lucide-react';
-import type { Topic } from '@/topics';
+import type { Topic } from '@/data/topics';
 import { cn } from '@/lib/utils';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { formatTopicTrackLabel } from '../utils';

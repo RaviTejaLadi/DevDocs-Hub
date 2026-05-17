@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 import { ListTree } from 'lucide-react';
 import MarkdownRender from '@/components/markdown';
 import { TranslatedText } from '@/i18n/TranslatedText';

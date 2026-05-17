@@ -1,4 +1,4 @@
-import type { Topic } from '@/topics';
+import type { Topic } from '@/data/topics';
 import { Cog, Thermometer, Wrench, GitBranch } from 'lucide-react';
 
 const thermodynamicsTopics: Topic = {

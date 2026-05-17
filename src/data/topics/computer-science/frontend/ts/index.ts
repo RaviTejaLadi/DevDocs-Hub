@@ -1,4 +1,4 @@
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 import tsIntro from './Introduction to TypeScript.md?raw';
 import typescriptSetup from './beginner/typescript-setup.md?raw';
 import tsconfigBasics from './beginner/tsconfig-basics.md?raw';

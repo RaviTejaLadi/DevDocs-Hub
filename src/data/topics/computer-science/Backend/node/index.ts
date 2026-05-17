@@ -1,4 +1,4 @@
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 import nodeIntro from './intro.md?raw';
 import nodeTheory from './theory-questions.md?raw';
 import nodeCoding from './coding-questions.md?raw';

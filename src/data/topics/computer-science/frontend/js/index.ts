@@ -33,7 +33,7 @@ import generators from './generators.md?raw';
 import proxyAndReflect from './proxyAndReflect.md?raw';
 import polyfills from './polyfills.md?raw';
 import { jsOOPSConcepts } from './js-oops';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const jsTopics: TopicItem[] = [
   {

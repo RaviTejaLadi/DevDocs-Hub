@@ -1,4 +1,4 @@
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const findTopicItem = (items: TopicItem[], slug: string): TopicItem | undefined => {
   for (const item of items) {

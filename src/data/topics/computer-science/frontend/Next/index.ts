@@ -4,7 +4,7 @@ import nextQuickReview from './quick-review-checklist.md?raw';
 import commonNextInterviewQuestions from './common-questions.md?raw';
 import pagesRouterNextInterviewQuestions from './pages-router-questions.md?raw';
 import appRouterNextInterviewQuestions from './app-router-questions.md?raw';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const nextTopics: TopicItem[] = [
   {

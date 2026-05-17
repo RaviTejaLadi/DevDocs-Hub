@@ -1,5 +1,5 @@
 import { FileText } from 'lucide-react';
-import type { Stream } from '@/topics';
+import type { Stream } from '@/data/topics';
 import { cn } from '@/lib/utils';
 import { TranslatedText } from '@/i18n/TranslatedText';
 

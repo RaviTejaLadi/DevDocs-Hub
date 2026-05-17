@@ -1,7 +1,7 @@
 import { Search, Grid3x3, List, ChevronDown, HelpCircle, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useMemo, useState } from 'react';
-import type { Stream, Topic } from '@/topics';
+import type { Stream, Topic } from '@/data/topics';
 import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import { Logo } from '@/components/brand/Logo';

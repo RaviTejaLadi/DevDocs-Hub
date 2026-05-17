@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { flushSync } from 'react-dom';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
-import { TOPICS, STREAMS, getStreamByTopicId, type Topic, type TopicItem } from '@/topics';
+import { TOPICS, STREAMS, getStreamByTopicId, type Topic, type TopicItem } from '@/data/topics';
 import {
   Fragment,
   useCallback,

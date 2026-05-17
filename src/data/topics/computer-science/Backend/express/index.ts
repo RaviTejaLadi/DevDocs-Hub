@@ -1,4 +1,4 @@
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 import expressIntro from './intro.md?raw';
 import expressTheory from './theory-questions.md?raw';
 import expressCoding from './coding-questions.md?raw';

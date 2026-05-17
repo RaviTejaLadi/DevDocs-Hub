@@ -2,7 +2,7 @@ import vueIntro from './intro.md?raw';
 import vueFilesAndFoldersStructure from './files-and-folders-structure.md?raw';
 import vueTheoryQuestions from './theory-questions.md?raw';
 import vueCodingQuestions from './coding-questions.md?raw';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const vueTopics: TopicItem[] = [
   {

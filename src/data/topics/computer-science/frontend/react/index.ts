@@ -16,7 +16,7 @@ import reactErrorHandling from './react-ErrorHandling.md?raw';
 import reactSSR from './react-SSR.md?raw';
 import reactComponentTypes from './react-Component-Types.md?raw';
 import top25ImportantQuestions from './top-25.md?raw';
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 
 export const reactTopics: TopicItem[] = [
   {

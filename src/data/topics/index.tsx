@@ -52,10 +52,10 @@ export type Topics = Topic[];
  * Stream and shows that stream's topics underneath.
  *
  * To add a new stream:
- *   1. Create a folder under `src/topics/<YourStream>/` exporting `Topic[]`.
+ *   1. Create a folder under `src/data/topics/<YourStream>/` exporting `Topic[]`.
  *   2. Append a new entry to `STREAMS` below.
  *
- * Computer-science topic modules live under `src/topics/computer-science/`.
+ * Computer-science topic modules live under `src/data/topics/computer-science/`.
  *
  * Every Topic.id must remain globally unique because routes live at
  * `/docs/:categoryId/:slug` regardless of stream.

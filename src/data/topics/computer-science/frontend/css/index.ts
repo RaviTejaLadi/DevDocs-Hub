@@ -1,4 +1,4 @@
-import type { TopicItem } from '@/topics';
+import type { TopicItem } from '@/data/topics';
 import intro from './intro.md?raw';
 import top50QAndA from './top-50-q-and-a.md?raw';
 import cssMustKnowTopics from './css-must-know-topics.md?raw';

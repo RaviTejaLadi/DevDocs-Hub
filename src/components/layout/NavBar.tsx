@@ -13,7 +13,7 @@ import {
   MoreHorizontal,
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
-import type { Topic, TopicItem } from '@/topics';
+import type { Topic, TopicItem } from '@/data/topics';
 import { ModeToggle } from '@/components/theme/ModeToggle';
 import type { SearchResult } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -55,7 +55,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   }, [open]);
 
   useEffect(() => {
-    void import('@/topics').then((m) => setTopics(m.TOPICS));
+    void import('@/data/topics').then((m) => setTopics(m.TOPICS));
   }, []);
 
   useEffect(() => {
