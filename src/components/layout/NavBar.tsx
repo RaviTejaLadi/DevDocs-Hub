@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Menu,
@@ -42,36 +42,51 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
-  const isHomePage = location.pathname === '/';
   const { t, language, setLanguage } = useI18n();
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<RankedSearchResult[]>([]);
   const [topics, setTopics] = useState<Topic[] | null>(null);
+  const openSearchRef = useRef(false);
 
   useEffect(() => {
-    if (!open || topics !== null) return;
+    openSearchRef.current = open;
+  }, [open]);
+
+  useEffect(() => {
     void import('@/topics').then((m) => setTopics(m.TOPICS));
-  }, [open, topics]);
+  }, []);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        if (location.pathname !== '/') return;
+      if (e.key !== 'k' || !(e.metaKey || e.ctrlKey)) return;
+      if (openSearchRef.current) {
         e.preventDefault();
-        setOpen((o) => !o);
+        setOpen(false);
+        return;
       }
+      const el = e.target as HTMLElement | null;
+      if (el?.closest?.('textarea,select,[contenteditable="true"]')) return;
+      const inp = el?.closest?.('input') as HTMLInputElement | null;
+      const type = inp?.type ?? '';
+      if (
+        inp &&
+        !inp.readOnly &&
+        !['radio', 'checkbox', 'button', 'submit', 'reset', 'hidden', 'file'].includes(type)
+      ) {
+        return;
+      }
+      e.preventDefault();
+      setOpen(true);
     };
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, [location.pathname]);
+  }, []);
 
   useEffect(() => {
-    if (location.pathname !== '/') {
-      setOpen(false);
-      setQuery('');
-    }
+    setOpen(false);
+    setQuery('');
   }, [location.pathname]);
 
   const normalize = (value: string) =>
@@ -156,7 +171,7 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
     deduped.sort((a, b) => b.score - a.score || a.title.length - b.title.length);
 
     setResults(deduped.slice(0, 24));
-  }, [query, topics,]);
+  }, [query, topics]);
 
   const handleSelectResult = (categoryId: string, id: string) => {
     navigate(`/docs/${categoryId}/${id}`, { state: DOCS_NAV_RESET_SCROLL });
@@ -167,8 +182,8 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
   return (
     <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(100%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1px))] mx-auto max-w-full border border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 box-border">
       <div className="flex h-14 min-w-0 items-center gap-1.5 max-sm:gap-1 max-w-7xl mx-auto ps-[max(0.5rem,env(safe-area-inset-left))] pe-[max(0.5rem,env(safe-area-inset-right))] sm:gap-2 sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8">
-        <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
-          <Logo showText size="sm" className="min-w-0 font-semibold" textClassName="max-[360px]:hidden" />
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+          <Logo showText size="sm" className="min-w-0 shrink-0 font-semibold" textClassName="max-[360px]:hidden" />
 
           {isDocsPage && (
             <Button
@@ -181,105 +196,103 @@ const NavBar = ({ setSidebarOpen }: { setSidebarOpen: (open: boolean) => void })
               <Menu className="h-5 w-5" />
             </Button>
           )}
-        </div>
-        <div className="flex shrink-0 min-w-0 items-center gap-1.5 sm:gap-2">
-          {isHomePage && (
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="relative h-9 w-9 sm:w-[18rem] md:w-[20rem] justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
-                >
-                  <Search className="h-4 w-4 shrink-0" />
-                  <span className="hidden sm:inline truncate pr-12">{t('nav.searchTopics')}</span>
-                  <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden h-5 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 lg:flex">
-                    <span className="text-xs">⌘</span>K
-                  </kbd>
-                </Button>
-              </DialogTrigger>
-
-              <DialogContent
-                showCloseButton={false}
-                className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <Button
+                type="button"
+                variant="outline"
+                className="relative h-9 min-w-0 flex-1 sm:max-w-md md:max-w-xl justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+                aria-label={t('nav.searchTopics')}
               >
-                <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
-                  <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
-                  <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
-                    <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
-                      <Search className="h-4 w-4 text-muted-foreground" />
-                    </div>
-                    <Input
-                      placeholder={t('nav.searchType')}
-                      className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                    />
-                    {query && (
-                      <span className="text-[11px] text-muted-foreground shrink-0">
-                        {results.length} result{results.length === 1 ? '' : 's'}
-                      </span>
-                    )}
-                  </div>
-                </DialogHeader>
+                <Search className="h-4 w-4 shrink-0" />
+                <span className="min-w-0 truncate pr-11 text-left">{t('nav.searchTopics')}</span>
+                <kbd className="pointer-events-none absolute right-2 top-1/2 hidden h-5 -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 sm:flex">
+                  <span className="text-xs">⌘</span>K
+                </kbd>
+              </Button>
+            </DialogTrigger>
 
-                <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
-                  {results.length === 0 && query && (
-                    <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                      <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
-                      <p>{t('nav.tryDifferentKeyword')}</p>
-                    </div>
+            <DialogContent
+              showCloseButton={false}
+              className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
+            >
+              <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
+                <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
+                <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
+                  <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
+                    <Search className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <Input
+                    autoFocus
+                    placeholder={t('nav.searchType')}
+                    className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                  {query && (
+                    <span className="text-[11px] text-muted-foreground shrink-0">
+                      {results.length} result{results.length === 1 ? '' : 's'}
+                    </span>
                   )}
-                  {results.length === 0 && !query && (
-                    <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                      <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
-                      <p>{t('nav.startTyping')}</p>
-                    </div>
-                  )}
-                  {results.length > 0 && (
-                    <div className="space-y-2">
-                      <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
-                        {t('nav.results')}
-                      </p>
-                      <div className="motion-stagger grid grid-cols-1 min-[480px]:grid-cols-2 gap-2">
-                        {results.map((res) => (
-                          <button
-                            type="button"
-                            key={`${res.categoryId}-${res.id}`}
-                            onClick={() => handleSelectResult(res.categoryId, res.id)}
-                            className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-sm"
-                          >
-                            <div className="h-8 w-8 rounded-md bg-primary/10 text-primary grid place-items-center shrink-0">
-                              {res.icon ?? <FileText className="h-4 w-4" />}
-                            </div>
-                            <span className="min-w-0 flex-1">
-                              <span className="font-medium text-foreground line-clamp-2 leading-5">
-                                <TranslatedText text={res.title} />
-                              </span>
-                              <span className="text-xs text-muted-foreground block mt-1.5 truncate">
-                                {t('nav.in')}{' '}
-                                <span className="text-primary">
-                                  <TranslatedText text={res.category} />
-                                </span>
+                </div>
+              </DialogHeader>
+
+              <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
+                {results.length === 0 && query && (
+                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                    <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
+                    <p>{t('nav.tryDifferentKeyword')}</p>
+                  </div>
+                )}
+                {results.length === 0 && !query && (
+                  <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+                    <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
+                    <p>{t('nav.startTyping')}</p>
+                  </div>
+                )}
+                {results.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
+                      {t('nav.results')}
+                    </p>
+                    <div className="motion-stagger grid grid-cols-1 min-[480px]:grid-cols-2 gap-2">
+                      {results.map((res) => (
+                        <button
+                          type="button"
+                          key={`${res.categoryId}-${res.id}`}
+                          onClick={() => handleSelectResult(res.categoryId, res.id)}
+                          className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-sm"
+                        >
+                          <div className="h-8 w-8 rounded-md bg-primary/10 text-primary grid place-items-center shrink-0">
+                            {res.icon ?? <FileText className="h-4 w-4" />}
+                          </div>
+                          <span className="min-w-0 flex-1">
+                            <span className="font-medium text-foreground line-clamp-2 leading-5">
+                              <TranslatedText text={res.title} />
+                            </span>
+                            <span className="text-xs text-muted-foreground block mt-1.5 truncate">
+                              {t('nav.in')}{' '}
+                              <span className="text-primary">
+                                <TranslatedText text={res.category} />
                               </span>
                             </span>
-                            <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </button>
-                        ))}
-                      </div>
+                          </span>
+                          <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </button>
+                      ))}
                     </div>
-                  )}
-                </ScrollArea>
+                  </div>
+                )}
+              </ScrollArea>
 
-                <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
-                  <span className="text-[10px] text-muted-foreground hidden sm:inline">
-                    {t('nav.useShortcut', { shortcut: '⌘K' })}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground ml-auto">{t('nav.toClose', { key: 'Esc' })}</span>
-                </div>
-              </DialogContent>
-            </Dialog>
-          )}
-
+              <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
+                <span className="text-[10px] text-muted-foreground hidden sm:inline">{t('nav.useShortcut', { shortcut: '⌘K / Ctrl K' })}</span>
+                <span className="text-[10px] text-muted-foreground ml-auto">{t('nav.toClose', { key: 'Esc' })}</span>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+        <div className="flex shrink-0 min-w-0 items-center gap-1.5 sm:gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
