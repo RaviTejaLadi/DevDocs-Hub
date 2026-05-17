@@ -39,7 +39,9 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
         'group min-w-0 max-w-full cursor-pointer rounded-lg mt-2 border border-border/40 bg-card text-card-foreground touch-manipulation',
         'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        isGrid ? 'flex h-32 flex-col overflow-hidden p-4' : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
+        isGrid
+          ? 'flex h-32 flex-col overflow-hidden p-4'
+          : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
       )}
     >
       {isGrid ? (

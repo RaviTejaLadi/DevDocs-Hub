@@ -6,10 +6,7 @@ type TopicBrowserSection = {
   categories: { key: string; label: string; topics: Topic[] }[];
 };
 
-export function useDocsTopicBrowser(
-  categoryId: string | undefined,
-  docsTopicBrowserSections: TopicBrowserSection[]
-) {
+export function useDocsTopicBrowser(categoryId: string | undefined, docsTopicBrowserSections: TopicBrowserSection[]) {
   const [topicBrowserOpen, setTopicBrowserOpen] = useState(false);
   const [topicBrowserOpenCats, setTopicBrowserOpenCats] = useState<Record<string, boolean>>({});
 

@@ -79,8 +79,7 @@ export function useLiveCodeEditor(defaultPreset: EditorPreset = 'react') {
       borderRadius: 10,
       overflow: 'hidden' as const,
       border: '1px solid hsl(var(--border))',
-      boxShadow:
-        resolvedTheme === 'dark' ? '0 8px 32px rgba(2, 6, 23, 0.4)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
+      boxShadow: resolvedTheme === 'dark' ? '0 8px 32px rgba(2, 6, 23, 0.4)' : '0 8px 24px rgba(15, 23, 42, 0.08)',
     }),
     [resolvedTheme]
   );

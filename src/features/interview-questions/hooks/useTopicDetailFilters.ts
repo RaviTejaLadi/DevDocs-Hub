@@ -1,11 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  getQuestionsByTopic,
-  getTopicById,
-  type ExperienceLevel,
-  type TopicId,
-} from '@/data/interviewQuestions';
+import { getQuestionsByTopic, getTopicById, type ExperienceLevel, type TopicId } from '@/data/interviewQuestions';
 
 export function useTopicDetailFilters() {
   const { topicId } = useParams<{ topicId: string }>();

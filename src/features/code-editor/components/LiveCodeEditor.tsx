@@ -54,10 +54,7 @@ export function LiveCodeEditor({ className, defaultPreset = 'react' }: LiveCodeE
           }}
         >
           <SandpackThemeProvider theme={sandpackTheme}>
-            <SandpackLayout
-              className="live-code-editor-layout"
-              style={{ ...layoutStyle, minHeight: editorHeight }}
-            >
+            <SandpackLayout className="live-code-editor-layout" style={{ ...layoutStyle, minHeight: editorHeight }}>
               <SandpackCodeEditor
                 showTabs
                 showLineNumbers
