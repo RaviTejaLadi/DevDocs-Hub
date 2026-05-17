@@ -1,4 +1,4 @@
-import { Search, Grid3x3, List, HelpCircle } from 'lucide-react';
+import { Search, Grid3x3, List, HelpCircle, FlaskConical } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ type LandingHeroProps = {
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
   onInterviewClick: () => void;
+  onPlaygroundClick: () => void;
 };
 
 export function LandingHero({
@@ -19,6 +20,7 @@ export function LandingHero({
   viewMode,
   onViewModeChange,
   onInterviewClick,
+  onPlaygroundClick,
 }: LandingHeroProps) {
   const { t } = useI18n();
 
@@ -65,14 +67,22 @@ export function LandingHero({
         </div>
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3 px-1">
         <Button
           variant="outline"
-          className="gap-2 border-border/40 bg-card/50 hover:bg-accent w-full max-w-md sm:w-auto min-h-11 touch-manipulation"
+          className="gap-2 border-border/40 bg-card/50 hover:bg-accent w-full sm:w-auto min-h-11 touch-manipulation sm:min-w-[220px]"
           onClick={onInterviewClick}
         >
-          <HelpCircle className="h-4 w-4" />
+          <HelpCircle className="h-4 w-4 shrink-0" />
           {t('landing.interviewQuestionsByLevel')}
+        </Button>
+        <Button
+          variant="outline"
+          className="gap-2 border-violet-500/30 bg-violet-500/5 hover:bg-violet-500/10 w-full sm:w-auto min-h-11 touch-manipulation sm:min-w-[220px]"
+          onClick={onPlaygroundClick}
+        >
+          <FlaskConical className="h-4 w-4 shrink-0 text-violet-500" />
+          {t('landing.playground')}
         </Button>
       </div>
     </header>

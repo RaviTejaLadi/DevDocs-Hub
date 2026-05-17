@@ -35,6 +35,7 @@ const LandingPage = () => {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
         onInterviewClick={() => navigate('/interview-questions')}
+        onPlaygroundClick={() => navigate('/playground')}
       />
 
       {streams === null ? (

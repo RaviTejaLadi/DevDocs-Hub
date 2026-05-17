@@ -10,6 +10,7 @@ import {
   Languages,
   ChevronDown,
   Code2,
+  FlaskConical,
   MoreHorizontal,
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
@@ -362,6 +363,20 @@ const NavBar = () => {
                 variant="ghost"
                 size="icon"
                 className="hidden md:inline-flex px-3"
+                onClick={() => navigate('/playground')}
+                aria-label={t('nav.playground')}
+              >
+                <FlaskConical className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{t('nav.playground')}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex px-3"
                 onClick={() => navigate('/terms')}
                 aria-label={t('nav.terms')}
               >
@@ -423,6 +438,15 @@ const NavBar = () => {
               >
                 <HelpCircle className="h-4 w-4 shrink-0" />
                 {t('nav.interviewQuestions')}
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  navigate('/playground');
+                }}
+                className="gap-2"
+              >
+                <FlaskConical className="h-4 w-4 shrink-0" />
+                {t('nav.playground')}
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
