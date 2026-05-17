@@ -1,14 +1,6 @@
-import { useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BookOpen, ChevronLeft, Code2, Search, SlidersHorizontal, X } from 'lucide-react';
-import {
-  getQuestionsByTopic,
-  getTopicById,
-  LEVEL_ORDER,
-  LEVEL_LABELS,
-  type ExperienceLevel,
-  type TopicId,
-} from '@/data/interviewQuestions';
+import { LEVEL_ORDER, LEVEL_LABELS } from '@/data/interviewQuestions';
 import { Accordion } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,38 +12,28 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
 import { levelPillClass } from '../constants/pillClasses';
 import { QuestionBlock } from './QuestionBlock';
+import { useTopicDetailFilters } from '../hooks';
 
 export function TopicDetailPage() {
   const { t } = useI18n();
-  const { topicId } = useParams<{ topicId: string }>();
-  const topic = topicId ? getTopicById(topicId as TopicId) : undefined;
-  const allQuestions = useMemo(() => (topic ? getQuestionsByTopic(topic.id) : []), [topic]);
+  const {
+    topic,
+    allQuestions,
+    filteredQuestions,
+    levelFilter,
+    setLevelFilter,
+    searchQuery,
+    setSearchQuery,
+    onlyCodeChallenges,
+    onlyTheory,
+    setOnlyCodeWithExclusion,
+    setOnlyTheoryWithExclusion,
+    hasAnyFilters,
+    clearAllFilters,
+    codingCount,
+    theoryCount,
+  } = useTopicDetailFilters();
   const translatedTopicLabel = useTranslatedText(topic?.label ?? '');
-
-  const [levelFilter, setLevelFilter] = useState<ExperienceLevel | 'all'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [onlyCodeChallenges, setOnlyCodeChallenges] = useState(false);
-  const [onlyTheory, setOnlyTheory] = useState(false);
-  const hasAnyFilters = levelFilter !== 'all' || onlyCodeChallenges || onlyTheory || Boolean(searchQuery.trim());
-  const clearAllFilters = () => {
-    setLevelFilter('all');
-    setOnlyCodeChallenges(false);
-    setOnlyTheory(false);
-    setSearchQuery('');
-  };
-
-  const filteredQuestions = useMemo(() => {
-    return allQuestions.filter((q) => {
-      const matchLevel = levelFilter === 'all' || q.level === levelFilter;
-      const matchSearch = !searchQuery.trim() || q.question.toLowerCase().includes(searchQuery.trim().toLowerCase());
-      const type = q.questionType ?? 'theory';
-      const matchType =
-        (!onlyCodeChallenges && !onlyTheory) ||
-        (onlyCodeChallenges && type === 'coding') ||
-        (onlyTheory && type === 'theory');
-      return matchLevel && matchSearch && matchType;
-    });
-  }, [allQuestions, levelFilter, searchQuery, onlyCodeChallenges, onlyTheory]);
 
   if (!topic) {
     return (
@@ -70,8 +52,6 @@ export function TopicDetailPage() {
   }
 
   const Icon = topic.icon;
-  const codingCount = allQuestions.filter((q) => (q.questionType ?? 'theory') === 'coding').length;
-  const theoryCount = allQuestions.length - codingCount;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-10 sm:pb-12">
@@ -152,27 +132,13 @@ export function TopicDetailPage() {
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
             <div className="flex items-center gap-2">
-              <Switch
-                id="only-code"
-                checked={onlyCodeChallenges}
-                onCheckedChange={(checked) => {
-                  setOnlyCodeChallenges(checked);
-                  if (checked) setOnlyTheory(false);
-                }}
-              />
+              <Switch id="only-code" checked={onlyCodeChallenges} onCheckedChange={setOnlyCodeWithExclusion} />
               <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
                 {t('interview.onlyCoding')}
               </label>
             </div>
             <div className="flex items-center gap-2">
-              <Switch
-                id="only-theory"
-                checked={onlyTheory}
-                onCheckedChange={(checked) => {
-                  setOnlyTheory(checked);
-                  if (checked) setOnlyCodeChallenges(false);
-                }}
-              />
+              <Switch id="only-theory" checked={onlyTheory} onCheckedChange={setOnlyTheoryWithExclusion} />
               <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
                 {t('interview.onlyTheory')}
               </label>

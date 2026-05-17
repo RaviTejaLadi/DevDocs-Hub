@@ -1,7 +1,5 @@
 import { Search, Grid3x3, List, ChevronDown, HelpCircle, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState } from 'react';
-import type { Stream, Topic } from '@/data/topics';
 import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import { Logo } from '@/components/brand/Logo';
@@ -13,8 +11,7 @@ import { colors } from '@/constants/colors';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { badgeToneClasses } from '../constants';
-import { useLandingStreams } from '../hooks';
-import type { ViewMode } from '../types';
+import { useLandingStreams, useLandingTopics } from '../hooks';
 import { LandingStreamTabs } from './LandingStreamTabs';
 
 const LandingPage = () => {
@@ -22,45 +19,18 @@ const LandingPage = () => {
   const { t } = useI18n();
 
   const streams = useLandingStreams();
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
-  const [activeStreamId, setActiveStreamId] = useState<string>('computer-science');
-
-  const activeStream: Stream | undefined = useMemo(() => {
-    if (!streams?.length) return undefined;
-    return streams.find((stream) => stream.id === activeStreamId) ?? streams[0];
-  }, [streams, activeStreamId]);
-
-  const filteredTopics = useMemo<Topic[]>(() => {
-    const topics = activeStream?.topics ?? [];
-    if (!searchQuery) return topics;
-
-    const query = searchQuery.toLowerCase();
-
-    return topics.filter(
-      (topic) =>
-        topic.title.toLowerCase().includes(query) ||
-        topic.description.toLowerCase().includes(query) ||
-        topic.items.some((item) => item.title.toLowerCase().includes(query))
-    );
-  }, [activeStream, searchQuery]);
-
-  const groupedTopics = useMemo(() => {
-    return filteredTopics.reduce<Record<string, Topic[]>>((acc, topic) => {
-      if (!acc[topic.category]) acc[topic.category] = [];
-      acc[topic.category].push(topic);
-      return acc;
-    }, {});
-  }, [filteredTopics]);
-
-  const toggleSection = (category: string) => {
-    setCollapsed((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
-  };
+  const {
+    searchQuery,
+    setSearchQuery,
+    viewMode,
+    setViewMode,
+    collapsed,
+    activeStreamId,
+    setActiveStreamId,
+    activeStream,
+    groupedTopics,
+    toggleSection,
+  } = useLandingTopics(streams);
 
   return (
     <div className="pb-16 sm:pb-20 max-w-5xl mx-auto w-full min-w-0 px-0 sm:px-0">

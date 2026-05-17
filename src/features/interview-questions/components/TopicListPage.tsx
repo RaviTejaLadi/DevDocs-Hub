@@ -1,7 +1,5 @@
-import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, HelpCircle, Search, X } from 'lucide-react';
-import { INTERVIEW_QUESTIONS, INTERVIEW_TOPICS, TOPIC_CATEGORIES } from '@/data/interviewQuestions';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,44 +7,23 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { useTopicListFilter } from '../hooks';
 
 export function TopicListPage() {
   const { t } = useI18n();
-  const categories = Object.keys(TOPIC_CATEGORIES);
-  const [topicSearchQuery, setTopicSearchQuery] = useState('');
-  const topicsByCategory = categories.reduce<Record<string, typeof INTERVIEW_TOPICS>>((acc, cat) => {
-    acc[cat] = INTERVIEW_TOPICS.filter((t) => t.category === cat);
-    return acc;
-  }, {});
-
-  const countForTopic = (topicId: string) => INTERVIEW_QUESTIONS.filter((q) => q.topicId === topicId).length;
-
-  const totalQuestions = INTERVIEW_QUESTIONS.length;
-  const totalTopics = INTERVIEW_TOPICS.length;
-  const totalCategories = categories.length;
-  const normalizedTopicSearchQuery = topicSearchQuery.trim().toLowerCase();
-
-  const filteredTopicsByCategory = useMemo(() => {
-    if (!normalizedTopicSearchQuery) return topicsByCategory;
-
-    return categories.reduce<Record<string, typeof INTERVIEW_TOPICS>>((acc, category) => {
-      const categoryMatches = category.toLowerCase().includes(normalizedTopicSearchQuery);
-      acc[category] = topicsByCategory[category].filter((topic) => {
-        if (categoryMatches) return true;
-        return (
-          topic.label.toLowerCase().includes(normalizedTopicSearchQuery) ||
-          topic.id.toLowerCase().includes(normalizedTopicSearchQuery)
-        );
-      });
-      return acc;
-    }, {});
-  }, [categories, normalizedTopicSearchQuery, topicsByCategory]);
-
-  const filteredTopicsCount = useMemo(
-    () => Object.values(filteredTopicsByCategory).reduce((count, topics) => count + topics.length, 0),
-    [filteredTopicsByCategory]
-  );
-  const hasTopicSearch = Boolean(normalizedTopicSearchQuery);
+  const {
+    categories,
+    topicSearchQuery,
+    setTopicSearchQuery,
+    filteredTopicsByCategory,
+    filteredTopicsCount,
+    hasTopicSearch,
+    clearTopicSearch,
+    countForTopic,
+    totalQuestions,
+    totalTopics,
+    totalCategories,
+  } = useTopicListFilter();
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
@@ -115,7 +92,7 @@ export function TopicListPage() {
                 variant="ghost"
                 size="sm"
                 className="text-muted-foreground"
-                onClick={() => setTopicSearchQuery('')}
+                onClick={clearTopicSearch}
               >
                 <X className="h-4 w-4 mr-1" />
                 {t('interview.clearFilters')}
