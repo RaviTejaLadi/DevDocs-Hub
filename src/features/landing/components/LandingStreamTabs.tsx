@@ -13,12 +13,7 @@ type LandingStreamTabsProps = {
   onSelectStream: (id: string) => void;
 };
 
-export function LandingStreamTabs({
-  streams,
-  activeStreamId,
-  activeStream,
-  onSelectStream,
-}: LandingStreamTabsProps) {
+export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSelectStream }: LandingStreamTabsProps) {
   const { t } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

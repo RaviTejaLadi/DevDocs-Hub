@@ -1,10 +1,5 @@
 import { Route, Routes, type Location } from 'react-router-dom';
-import {
-  docsSidebarDesktopElement,
-  docsSidebarMobileElement,
-  mainRoutes,
-  type SidebarRouteContext,
-} from './config';
+import { docsSidebarDesktopElement, docsSidebarMobileElement, mainRoutes, type SidebarRouteContext } from './config';
 import { ROUTE_PATHS } from './paths';
 
 type AppRoutesProps = {
@@ -19,10 +14,7 @@ export const MainAppRoutes = ({ location }: AppRoutesProps) => (
   </Routes>
 );
 
-export const DocsSidebarMobileRoutes = ({
-  location,
-  closeSidebar,
-}: AppRoutesProps & SidebarRouteContext) => (
+export const DocsSidebarMobileRoutes = ({ location, closeSidebar }: AppRoutesProps & SidebarRouteContext) => (
   <Routes location={location}>
     <Route path={ROUTE_PATHS.docs} element={docsSidebarMobileElement({ closeSidebar })} />
   </Routes>

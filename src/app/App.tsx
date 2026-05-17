@@ -112,10 +112,7 @@ const App = () => {
 
           <div className="box-border flex min-h-0 h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-nowrap gap-3 overflow-x-hidden overscroll-none px-3 py-4 sm:px-4">
             {showSidebar && (
-              <DocsDesktopSidebarToggle
-                collapsed={docsSidebarCollapsed}
-                onToggle={toggleDocsSidebarCollapsed}
-              />
+              <DocsDesktopSidebarToggle collapsed={docsSidebarCollapsed} onToggle={toggleDocsSidebarCollapsed} />
             )}
             {showSidebar && (
               <aside

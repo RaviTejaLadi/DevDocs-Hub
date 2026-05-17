@@ -288,7 +288,9 @@ const NavBar = () => {
               </ScrollArea>
 
               <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
-                <span className="text-[10px] text-muted-foreground hidden sm:inline">{t('nav.useShortcut', { shortcut: '⌘K / Ctrl K' })}</span>
+                <span className="text-[10px] text-muted-foreground hidden sm:inline">
+                  {t('nav.useShortcut', { shortcut: '⌘K / Ctrl K' })}
+                </span>
                 <span className="text-[10px] text-muted-foreground ml-auto">{t('nav.toClose', { key: 'Esc' })}</span>
               </div>
             </DialogContent>

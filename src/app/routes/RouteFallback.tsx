@@ -10,10 +10,7 @@ const RouteFallback = () => {
       role="status"
       aria-live="polite"
     >
-      <Loader2
-        className="h-5 w-5 shrink-0 animate-spin text-muted-foreground motion-reduce:animate-none"
-        aria-hidden
-      />
+      <Loader2 className="h-5 w-5 shrink-0 animate-spin text-muted-foreground motion-reduce:animate-none" aria-hidden />
       <span>{t('common.loading')}</span>
     </div>
   );

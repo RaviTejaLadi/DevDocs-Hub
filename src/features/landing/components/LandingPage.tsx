@@ -227,11 +227,7 @@ const LandingPage = () => {
                             )}
                           </div>
 
-                          <div
-                            className={cn(
-                              viewMode === 'list' ? 'min-w-0 flex-1 space-y-2' : 'min-w-0 flex-1'
-                            )}
-                          >
+                          <div className={cn(viewMode === 'list' ? 'min-w-0 flex-1 space-y-2' : 'min-w-0 flex-1')}>
                             <h3
                               className={cn(
                                 'wrap-break-word font-semibold text-foreground transition-colors duration-200 group-hover:text-primary',
@@ -249,12 +245,7 @@ const LandingPage = () => {
                               <TranslatedText text={topic.description} />
                             </p>
 
-                            <div
-                              className={cn(
-                                'flex min-w-0 flex-wrap gap-2',
-                                viewMode === 'grid' ? 'mt-4' : 'mt-2'
-                              )}
-                            >
+                            <div className={cn('flex min-w-0 flex-wrap gap-2', viewMode === 'grid' ? 'mt-4' : 'mt-2')}>
                               {badgeItems.map((item, badgeIndex) => (
                                 <span
                                   key={item.id}

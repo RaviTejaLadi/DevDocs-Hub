@@ -2,15 +2,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { flushSync } from 'react-dom';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
 import { TOPICS, STREAMS, getStreamByTopicId, type Topic, type TopicItem } from '@/data/topics';
-import {
-  Fragment,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -32,10 +24,7 @@ import {
   docsSidePanelWidthClass,
 } from '@/constants/docsSidePanel';
 import { FALLBACK_SCROLL_ROOT } from '../constants';
-import {
-  CHAIN_TOPICS_PREFETCH_BATCH,
-  DOC_FEED_SECTION_SHELL_CLASS,
-} from '../constants';
+import { CHAIN_TOPICS_PREFETCH_BATCH, DOC_FEED_SECTION_SHELL_CLASS } from '../constants';
 import { findTopicItem, flattenTopicItems, docFeedSectionDomId, parseDocFeedSectionDomId } from '../utils';
 import { formatTopicTrackLabel } from '../utils/formatTopicTrackLabel';
 import type { FeedRow, NavigateToFeedItemOptions } from '../types';
@@ -43,8 +32,6 @@ import { normalizeNavigateToFeedItemOptions } from '../types';
 import { DocsFeedStreamBanner } from './DocsFeedStreamBanner';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DocsFeedTopicContinuationHero } from './DocsFeedTopicContinuationHero';
-
-
 
 const DocumentationPage = () => {
   const { t } = useI18n();
@@ -736,9 +723,7 @@ const DocumentationPage = () => {
             docsSidePanelWidthClass
           )}
         >
-          <SheetHeader
-            className={cn(docsSidePanelHeaderSurfaceClass, 'px-4 pb-4 pt-5 text-left')}
-          >
+          <SheetHeader className={cn(docsSidePanelHeaderSurfaceClass, 'px-4 pb-4 pt-5 text-left')}>
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
               <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
               <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
