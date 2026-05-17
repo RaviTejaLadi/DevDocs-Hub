@@ -1,0 +1,1 @@
+export { badgeToneClasses } from './badgeToneClasses';
