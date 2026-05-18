@@ -50,6 +50,7 @@ function DocsFeedTopicSectionInner({
 
   const onReachEnd = useCallback(() => feedNav.goToNextFrom(idx), [feedNav, idx]);
   const onReachStart = useCallback(() => feedNav.goToPrevFrom(idx), [feedNav, idx]);
+  const progressPct = ((idx + 1) / total) * 100;
 
   return (
     <section
@@ -67,39 +68,108 @@ function DocsFeedTopicSectionInner({
             'border-primary/40 shadow-[0_28px_64px_-36px_hsl(var(--primary)/0.35)] ring-1 ring-primary/25 dark:shadow-[0_30px_70px_-36px_hsl(var(--primary)/0.22)]'
         )}
       >
-        <header className="flex min-h-11 shrink-0 items-center gap-2.5 border-b border-border/40 bg-muted/20 px-3 py-2.5 sm:min-h-12 sm:gap-3 sm:px-4 sm:py-3">
-          <span
-            className="inline-flex h-7 shrink-0 items-center justify-center rounded-md border border-border/50 bg-background/80 px-2 font-mono text-[10px] font-semibold tabular-nums text-muted-foreground sm:h-8 sm:text-[11px]"
+        <header
+          className={cn(
+            'relative isolate flex min-h-13 shrink-0 flex-col overflow-hidden border-b sm:min-h-14',
+            isActive ? 'border-primary/25' : 'border-border/45'
+          )}
+        >
+          <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+            <div
+              className={cn(
+                'absolute inset-0',
+                isActive
+                  ? 'bg-[linear-gradient(102deg,hsl(var(--primary)/0.14)_0%,hsl(var(--card)/0.98)_36%,hsl(var(--muted)/0.22)_100%)] dark:bg-[linear-gradient(102deg,hsl(var(--primary)/0.18)_0%,hsl(var(--card)/0.52)_40%,hsl(var(--muted)/0.14)_100%)]'
+                  : 'bg-[linear-gradient(102deg,hsl(var(--muted)/0.38)_0%,hsl(var(--card)/0.97)_48%,hsl(var(--card)/0.99)_100%)] dark:bg-[linear-gradient(102deg,hsl(var(--muted)/0.22)_0%,hsl(var(--card)/0.48)_52%,hsl(var(--card)/0.42)_100%)]'
+              )}
+            />
+            <div className="absolute -right-6 -top-8 size-20 rounded-full bg-primary/10 blur-2xl dark:bg-primary/14 sm:size-24" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_90%_at_0%_45%,hsl(var(--primary)/0.09),transparent_58%)] dark:bg-[radial-gradient(ellipse_65%_90%_at_0%_45%,hsl(var(--primary)/0.07),transparent_58%)]" />
+            <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/12 to-transparent dark:via-foreground/8" />
+          </div>
+
+          <div className="relative flex items-center gap-2.5 px-3 py-2.5 sm:gap-3.5 sm:px-4 sm:py-3">
+            <div
+              className={cn(
+                'relative flex shrink-0 flex-col items-center justify-center rounded-xl border px-2 py-1.5 min-w-[2.65rem]',
+                'bg-linear-to-br from-background/95 via-background/88 to-muted/30',
+                'shadow-[0_6px_22px_-12px_hsl(var(--primary)/0.38),0_0_0_1px_hsl(var(--foreground)/0.04)_inset]',
+                'dark:from-card/95 dark:via-card/82 dark:to-muted/22 dark:shadow-[0_8px_26px_-14px_hsl(var(--primary)/0.28),0_0_0_1px_hsl(0_0%_100%/0.05)_inset]',
+                'sm:min-w-[2.85rem] sm:px-2.5 sm:py-2',
+                isActive ? 'border-primary/40 ring-1 ring-primary/20' : 'border-border/55'
+              )}
+              aria-label={`${idx + 1} of ${total}`}
+            >
+              <span
+                className={cn(
+                  'font-mono text-[0.8125rem] font-bold tabular-nums leading-none sm:text-sm',
+                  isActive ? 'text-primary' : 'text-foreground'
+                )}
+              >
+                {String(idx + 1).padStart(2, '0')}
+              </span>
+              <span className="mt-0.5 text-[8px] font-semibold uppercase tracking-[0.16em] text-muted-foreground/80 sm:text-[9px]">
+                of {total}
+              </span>
+            </div>
+
+            <div className="hidden h-9 w-px shrink-0 bg-border/50 sm:block" aria-hidden />
+
+            <div className="min-w-0 flex-1 py-px">
+              <h2
+                className={cn(
+                  'min-w-0 text-pretty text-base font-semibold leading-snug tracking-tight sm:text-lg',
+                  isActive
+                    ? 'bg-linear-to-br from-foreground via-foreground to-foreground/76 bg-clip-text text-transparent dark:to-foreground/70'
+                    : 'text-foreground'
+                )}
+              >
+                <TranslatedText text={item.title} />
+              </h2>
+            </div>
+
+            <div className="hidden shrink-0 lg:block">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-pressed={outlineOpen}
+                    aria-label={outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
+                    onClick={() => setOutlineOpen((open) => !open)}
+                    className={cn(
+                      'h-8 w-8 border-border/55 bg-background/90 shadow-[0_4px_14px_-8px_hsl(var(--foreground)/0.35)] hover:bg-accent/70 sm:h-9 sm:w-9',
+                      'dark:bg-card/85',
+                      outlineOpen && 'border-primary/45 bg-primary/10 text-primary hover:bg-primary/14',
+                      isActive && !outlineOpen && 'border-primary/30'
+                    )}
+                  >
+                    <ListTree className="size-4 opacity-90" aria-hidden />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="max-w-[16rem] text-center">
+                  {outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div
+            className="relative h-0.5 w-full bg-border/30 dark:bg-border/40"
+            role="progressbar"
+            aria-valuenow={idx + 1}
+            aria-valuemin={1}
+            aria-valuemax={total}
             aria-label={`${idx + 1} of ${total}`}
           >
-            {String(idx + 1).padStart(2, '0')}
-            <span className="mx-0.5 opacity-40" aria-hidden>
-              /
-            </span>
-            {total}
-          </span>
-          <h2 className="min-w-0 flex-1 text-pretty text-base font-semibold leading-tight tracking-tight text-foreground sm:text-lg">
-            <TranslatedText text={item.title} />
-          </h2>
-          <div className="hidden shrink-0 lg:block">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  aria-pressed={outlineOpen}
-                  aria-label={outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
-                  onClick={() => setOutlineOpen((open) => !open)}
-                  className="h-8 w-8 border-border/50 bg-background/80 shadow-none hover:bg-accent/70 sm:h-9 sm:w-9"
-                >
-                  <ListTree className="size-4 opacity-90" aria-hidden />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom" className="max-w-[16rem] text-center">
-                {outlineOpen ? t('docs.hideOutline') : t('docs.showOutline')}
-              </TooltipContent>
-            </Tooltip>
+            <div
+              className={cn(
+                'h-full bg-linear-to-r from-primary/55 via-primary to-primary/75 transition-[width] duration-300 ease-out',
+                isActive && 'shadow-[0_0_10px_hsl(var(--primary)/0.4)]'
+              )}
+              style={{ width: `${progressPct}%` }}
+            />
           </div>
         </header>
 
