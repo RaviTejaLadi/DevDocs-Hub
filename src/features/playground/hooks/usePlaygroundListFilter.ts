@@ -1,22 +1,23 @@
 import { useMemo, useState } from 'react';
-import { PLAYGROUNDS } from '../constants';
+import { getPlaygrounds } from '../constants';
 
 export function usePlaygroundListFilter() {
   const [searchQuery, setSearchQuery] = useState('');
+  const playgrounds = useMemo(() => getPlaygrounds(), []);
 
   const filtered = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return PLAYGROUNDS;
-    return PLAYGROUNDS.filter(
+    if (!q) return playgrounds;
+    return playgrounds.filter(
       (p) =>
         p.label.toLowerCase().includes(q) ||
         p.description.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q)
     );
-  }, [searchQuery]);
+  }, [searchQuery, playgrounds]);
 
-  const availableCount = PLAYGROUNDS.filter((p) => p.available).length;
-  const comingSoonCount = PLAYGROUNDS.length - availableCount;
+  const availableCount = playgrounds.filter((p) => p.available).length;
+  const comingSoonCount = playgrounds.length - availableCount;
 
   return {
     playgrounds: filtered,
@@ -24,7 +25,7 @@ export function usePlaygroundListFilter() {
     setSearchQuery,
     hasSearch: searchQuery.trim().length > 0,
     clearSearch: () => setSearchQuery(''),
-    totalCount: PLAYGROUNDS.length,
+    totalCount: playgrounds.length,
     availableCount,
     comingSoonCount,
   };
