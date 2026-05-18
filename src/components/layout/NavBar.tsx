@@ -357,7 +357,7 @@ const NavBar = () => {
             </TooltipTrigger>
             <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
           </Tooltip>
-          <Tooltip>
+          {/* <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
@@ -370,7 +370,7 @@ const NavBar = () => {
               </Button>
             </TooltipTrigger>
             <TooltipContent side="bottom">{t('nav.playground')}</TooltipContent>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -439,7 +439,7 @@ const NavBar = () => {
                 <HelpCircle className="h-4 w-4 shrink-0" />
                 {t('nav.interviewQuestions')}
               </DropdownMenuItem>
-              <DropdownMenuItem
+              {/* <DropdownMenuItem
                 onClick={() => {
                   navigate('/playground');
                 }}
@@ -447,7 +447,7 @@ const NavBar = () => {
               >
                 <FlaskConical className="h-4 w-4 shrink-0" />
                 {t('nav.playground')}
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuItem
                 onClick={() => {
                   navigate('/terms');
