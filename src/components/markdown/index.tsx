@@ -567,7 +567,7 @@ const MarkdownRenderInner = ({
   return (
     <div
       className={cn(
-        'relative grid gap-4 lg:gap-5',
+        'relative grid gap-2 lg:gap-2',
         fillViewportCard && 'h-full min-h-0',
         hideToc ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
         slideMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
@@ -586,7 +586,7 @@ const MarkdownRenderInner = ({
                 className={cn(
                   'flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
                   fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
-                  'rounded-2xl border border-border/40 bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
+                  'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
                   'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
                 role="region"
@@ -618,36 +618,117 @@ const MarkdownRenderInner = ({
                   </div>
                 </div>
 
-                <footer className="flex shrink-0 items-center gap-2 border-t border-border/35 bg-muted/20 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    className="h-8 shrink-0 border-border/60 bg-background/80 px-2 shadow-none sm:min-w-19"
-                    onClick={handlePrevSlide}
-                    disabled={activeSlide === 0 && !hasPrevDocument}
-                    aria-label={t('markdown.prevSlide')}
-                  >
-                    <ChevronLeft className="size-3.5 shrink-0 opacity-70" aria-hidden />
-                    <span className="text-xs">{t('markdown.prevSlide')}</span>
-                  </Button>
-                  <div className="min-w-0 flex-1 text-center">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground tabular-nums">
-                      {t('markdown.slideLabel')} {activeSlide + 1}/{slides.length}
-                    </span>
+                <footer className="relative isolate flex shrink-0 flex-col overflow-hidden border-t border-border/45">
+                  <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+                    <div
+                      className={cn(
+                        'absolute inset-0',
+                        keyboardActive
+                          ? 'bg-[linear-gradient(278deg,hsl(var(--muted)/0.28)_0%,hsl(var(--card)/0.97)_42%,hsl(var(--primary)/0.08)_100%)] dark:bg-[linear-gradient(278deg,hsl(var(--muted)/0.16)_0%,hsl(var(--card)/0.5)_45%,hsl(var(--primary)/0.12)_100%)]'
+                          : 'bg-[linear-gradient(278deg,hsl(var(--muted)/0.35)_0%,hsl(var(--card)/0.98)_55%,hsl(var(--card)/0.99)_100%)] dark:bg-[linear-gradient(278deg,hsl(var(--muted)/0.2)_0%,hsl(var(--card)/0.48)_58%,hsl(var(--card)/0.42)_100%)]'
+                      )}
+                    />
+                    <div className="absolute -left-4 -bottom-6 size-16 rounded-full bg-primary/8 blur-2xl dark:bg-primary/12 sm:size-20" />
+                    <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent dark:via-foreground/7" />
                   </div>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    className="h-8 shrink-0 border-border/60 bg-background/80 px-2 shadow-none sm:min-w-19"
-                    onClick={handleNextSlide}
-                    disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
-                    aria-label={t('markdown.nextSlide')}
+
+                  <div
+                    className="relative h-0.5 w-full bg-border/30 dark:bg-border/40"
+                    role="progressbar"
+                    aria-valuenow={activeSlide + 1}
+                    aria-valuemin={1}
+                    aria-valuemax={slides.length}
+                    aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
                   >
-                    <span className="text-xs">{t('markdown.nextSlide')}</span>
-                    <ChevronRight className="size-3.5 shrink-0 opacity-70" aria-hidden />
-                  </Button>
+                    <div
+                      className={cn(
+                        'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
+                        keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
+                      )}
+                      style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
+                    />
+                  </div>
+
+                  <div className="relative flex items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className={cn(
+                        'h-9 shrink-0 gap-1.5 border-border/55 bg-linear-to-b from-background/95 to-muted/25 px-2.5 shadow-[0_4px_14px_-8px_hsl(var(--foreground)/0.32)] hover:border-primary/35 hover:bg-primary/5 sm:min-w-22',
+                        'dark:from-card/90 dark:to-muted/20',
+                        keyboardActive && 'border-primary/25'
+                      )}
+                      onClick={handlePrevSlide}
+                      disabled={activeSlide === 0 && !hasPrevDocument}
+                      aria-label={t('markdown.prevSlide')}
+                    >
+                      <ChevronLeft className="size-4 shrink-0 opacity-80" aria-hidden />
+                      <span className="hidden text-xs font-medium sm:inline">{t('markdown.prevSlide')}</span>
+                    </Button>
+
+                    <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+                      <span
+                        className={cn(
+                          'text-[9px] font-semibold uppercase tracking-[0.18em] sm:text-[10px]',
+                          keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
+                        )}
+                      >
+                        {t('markdown.slideLabel')}
+                      </span>
+                      {/* <div
+                        className={cn(
+                          'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
+                          'bg-linear-to-br from-background/95 via-background/88 to-muted/25',
+                          'shadow-[0_4px_16px_-10px_hsl(var(--primary)/0.35),0_0_0_1px_hsl(var(--foreground)/0.04)_inset]',
+                          'dark:from-card/92 dark:via-card/78 dark:to-muted/18',
+                          keyboardActive ? 'border-primary/35 ring-1 ring-primary/15' : 'border-border/55'
+                        )}
+                        aria-live="polite"
+                        aria-atomic="true"
+                      >
+                        <span className="font-mono text-sm font-bold tabular-nums text-primary">{activeSlide + 1}</span>
+                        <span className="text-[10px] font-medium text-muted-foreground/50" aria-hidden>
+                          /
+                        </span>
+                        <span className="font-mono text-sm font-semibold tabular-nums text-muted-foreground">
+                          {slides.length}
+                        </span>
+                      </div> */}
+                      {slides.length > 1 && slides.length <= 12 ? (
+                        <div className="flex max-w-full items-center justify-center gap-1 px-1" aria-hidden>
+                          {slides.map((_, slideIdx) => (
+                            <span
+                              key={slideIdx}
+                              className={cn(
+                                'h-1 rounded-full transition-all duration-300',
+                                slideIdx === activeSlide
+                                  ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
+                                  : 'w-1 bg-border/55 dark:bg-border/65'
+                              )}
+                            />
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className={cn(
+                        'h-9 shrink-0 gap-1.5 border-border/55 bg-linear-to-b from-background/95 to-muted/25 px-2.5 shadow-[0_4px_14px_-8px_hsl(var(--foreground)/0.32)] hover:border-primary/35 hover:bg-primary/5 sm:min-w-22',
+                        'dark:from-card/90 dark:to-muted/20',
+                        keyboardActive && 'border-primary/25'
+                      )}
+                      onClick={handleNextSlide}
+                      disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
+                      aria-label={t('markdown.nextSlide')}
+                    >
+                      <span className="hidden text-xs font-medium sm:inline">{t('markdown.nextSlide')}</span>
+                      <ChevronRight className="size-4 shrink-0 opacity-80" aria-hidden />
+                    </Button>
+                  </div>
                 </footer>
               </div>
             </section>
@@ -680,7 +761,7 @@ const MarkdownRenderInner = ({
         >
           <div
             className={cn(
-              'rounded-xl border border-border/35 bg-card/50 backdrop-blur-sm p-4 shadow-[0_14px_36px_-24px_hsl(var(--foreground)/0.28)]',
+              'rounded-xl  bg-card/50 backdrop-blur-sm p-4 shadow-[0_14px_36px_-24px_hsl(var(--foreground)/0.28)]',
               slideMode && 'flex h-full min-h-0 flex-col overflow-hidden'
             )}
           >
