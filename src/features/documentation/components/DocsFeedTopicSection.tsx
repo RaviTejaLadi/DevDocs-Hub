@@ -63,7 +63,7 @@ function DocsFeedTopicSectionInner({
           'doc-feed-post-surface flex h-full min-h-0 w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border sm:rounded-3xl',
           /* Lighter blur + solid tint: heavy backdrop-filter repaints during feed scroll. */
           'border-border/70 bg-card/95 shadow-[0_22px_55px_-40px_hsl(var(--foreground)/0.48)]',
-          'dark:border-border/50 dark:bg-card/45 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]',
+          'dark:border-border/50 dark:bg-card/45 dark:shadow-[0_26px_60px_-38px_hsl(0_0%_0%/0.55)]'
           // isActive &&
           //   'border-primary/40 shadow-[0_28px_64px_-36px_hsl(var(--primary)/0.35)] ring-1 ring-primary/25 dark:shadow-[0_30px_70px_-36px_hsl(var(--primary)/0.22)]'
         )}
