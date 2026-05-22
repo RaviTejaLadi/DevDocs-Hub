@@ -400,7 +400,6 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
     <figure className="my-7 overflow-hidden rounded-xl border border-border/60 bg-card/85 shadow-[0_14px_38px_-30px_hsl(var(--foreground)/0.45)]">
       <div className="flex items-center justify-between gap-3 border-b border-border/50 bg-muted/35 px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
         <span>Diagram</span>
-        <span className="hidden normal-case tracking-normal sm:inline">Scroll to inspect larger diagrams</span>
       </div>
       <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-slate-50/70 p-3 sm:p-5 dark:bg-slate-950/35">
         <div ref={ref} className="min-w-0 [&_svg_*]:font-sans" />

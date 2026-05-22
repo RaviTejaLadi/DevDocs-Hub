@@ -1,5 +1,20 @@
 # Python Cheat Sheet
 
+```mermaid
+mindmap
+  root((Python Types))
+    Mutable
+      list
+      dict
+      set
+    Immutable
+      int
+      float
+      str
+      tuple
+      bool
+```
+
 ---
 
 ### 1.Variables & Data Types

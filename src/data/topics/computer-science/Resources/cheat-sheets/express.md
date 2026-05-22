@@ -67,6 +67,17 @@
 
 ## Middleware
 
+```mermaid
+flowchart LR
+    REQ["Incoming Request"]
+    M1["Logger middleware"]
+    M2["express.json()"]
+    M3["Auth middleware"]
+    R["Route handler"]
+    RES["Response"]
+    REQ --> M1 --> M2 --> M3 --> R --> RES
+```
+
 | Type              | Description                 | Example                                |
 | ----------------- | --------------------------- | -------------------------------------- |
 | Application-level | Executes for all routes     | `app.use(middleware)`                  |

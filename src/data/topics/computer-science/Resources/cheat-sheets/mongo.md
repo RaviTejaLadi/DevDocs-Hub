@@ -1,5 +1,14 @@
 # MongoDB Cheat Sheet
 
+```mermaid
+flowchart TB
+    Cluster["Cluster"]
+    DB["Database"]
+    Coll["Collection"]
+    Doc["Document (BSON)"]
+    Cluster --> DB --> Coll --> Doc
+```
+
 ## Basic MongoDB Commands
 
 | Command                  | Description                               | Example                        |
@@ -52,6 +61,16 @@
 | `$addToSet` | Adds element only if not present | `db.users.updateOne({ name: "John" }, { $addToSet: { hobbies: "Reading" } })` |
 
 ## Aggregation
+
+```mermaid
+flowchart LR
+    M["$match<br/>filter"]
+    G["$group<br/>aggregate"]
+    S["$sort"]
+    P["$project<br/>reshape"]
+    L["$limit"]
+    M --> G --> S --> P --> L
+```
 
 | Stage      | Description        | Example                                                                        |
 | ---------- | ------------------ | ------------------------------------------------------------------------------ |

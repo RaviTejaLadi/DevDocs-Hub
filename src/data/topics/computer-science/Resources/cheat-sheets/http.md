@@ -14,9 +14,29 @@
 | TRACE   | Echoes the received request (debugging) | Yes        | Yes  |
 | CONNECT | Establish a tunnel (e.g., for HTTPS)    | No         | No   |
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: HTTP Request<br/>Method + URL + Headers + Body
+    Server->>Client: HTTP Response<br/>Status + Headers + Body
+```
+
 ---
 
 ### HTTP Status Codes
+
+```mermaid
+flowchart TB
+    subgraph status["Status code families"]
+        s1["1xx Informational"]
+        s2["2xx Success"]
+        s3["3xx Redirection"]
+        s4["4xx Client Error"]
+        s5["5xx Server Error"]
+    end
+```
 
 | Code                   | Name                  | Description                                        |
 | ---------------------- | --------------------- | -------------------------------------------------- |

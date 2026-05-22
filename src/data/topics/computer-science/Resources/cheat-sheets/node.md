@@ -1,5 +1,26 @@
 # Node.js Cheat sheet
 
+```mermaid
+flowchart TB
+    subgraph node["Node.js runtime"]
+        V8["V8 JavaScript Engine"]
+        LibUV["libuv<br/>event loop + I/O"]
+        APIs["Node APIs<br/>fs, http, crypto..."]
+    end
+    V8 --> LibUV
+    APIs --> LibUV
+```
+
+```mermaid
+flowchart LR
+    CS["Call Stack"]
+    Q["Callback Queue"]
+    EL["Event Loop"]
+    CS --> EL
+    EL -->|poll| Q
+    Q --> CS
+```
+
 ## Core Modules
 
 | Module          | Description                 | Common Methods/Properties                                     |

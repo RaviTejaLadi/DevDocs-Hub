@@ -1,5 +1,15 @@
 # Java Cheat Sheet in Table Format
 
+```mermaid
+flowchart TB
+    Source[".java source"]
+    Javac["javac compiler"]
+    Bytecode[".class bytecode"]
+    JVM["JVM"]
+    OS["Operating System"]
+    Source --> Javac --> Bytecode --> JVM --> OS
+```
+
 ## Basic Syntax
 
 | **Category**         | **Syntax**                                       | **Example**                                      |
@@ -62,6 +72,19 @@
 ---
 
 ## Object-Oriented Programming (OOP)
+
+```mermaid
+classDiagram
+    class Parent {
+        +String name
+        +display()
+    }
+    class Child {
+        +int grade
+        +display()
+    }
+    Parent <|-- Child : extends
+```
 
 | **Concept**           | **Syntax**                             | **Example**                                    |
 | --------------------- | -------------------------------------- | ---------------------------------------------- |

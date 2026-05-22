@@ -20,6 +20,20 @@
 | `<Link>`          | Navigation link (prevents full page reload) | `<Link to="/about">About</Link>`                                                        |
 | `<NavLink>`       | Link with active styling                    | `<NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>` |
 
+```mermaid
+flowchart TB
+    BR["BrowserRouter"]
+    Routes["Routes"]
+    R1["Route path='/'"]
+    R2["Route path='/about'"]
+    R3["Route path='/users/:id'"]
+    BR --> Routes
+    Routes --> R1
+    Routes --> R2
+    Routes --> R3
+    Link["Link / NavLink"] -.->|navigate| BR
+```
+
 ---
 
 ## Navigation

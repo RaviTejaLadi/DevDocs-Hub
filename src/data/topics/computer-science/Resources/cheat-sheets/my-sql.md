@@ -1,5 +1,15 @@
 # MySQL Cheat Sheet
 
+```mermaid
+flowchart LR
+    App["Application"]
+    MySQL["MySQL Server"]
+    Schema["Database / Schema"]
+    Tables["Tables"]
+    App -->|SQL over TCP| MySQL
+    MySQL --> Schema --> Tables
+```
+
 ## Getting Started {.cols-2}
 
 ### Connect MySQL

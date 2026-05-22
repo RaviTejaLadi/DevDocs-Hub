@@ -1,5 +1,29 @@
 # Git Cheat Sheet
 
+```mermaid
+flowchart LR
+    WD["Working Directory<br/><i>untracked / modified</i>"]
+    ST["Staging Area<br/><i>git add</i>"]
+    LR["Local Repository<br/><i>git commit</i>"]
+    REM["Remote Repository<br/><i>push / pull</i>"]
+
+    WD -->|git add| ST
+    ST -->|git commit| LR
+    LR -->|git push| REM
+    REM -->|git pull / fetch| LR
+```
+
+```mermaid
+gitGraph
+    commit id: "Initial"
+    branch feature
+    checkout feature
+    commit id: "Feature work"
+    checkout main
+    commit id: "Hotfix"
+    merge feature id: "Merge feature"
+```
+
 | **Category**        | **Command**                              | **Description**                                              |
 | ------------------- | ---------------------------------------- | ------------------------------------------------------------ |
 | **Setup**           | `git config --global user.name "Name"`   | Set your username globally.                                  |

@@ -1,5 +1,13 @@
 # Sass Cheat Sheet
 
+```mermaid
+flowchart LR
+    SCSS[".scss source<br/>variables, mixins, nesting"]
+    Compiler["Sass compiler"]
+    CSS[".css output"]
+    SCSS --> Compiler --> CSS
+```
+
 ## Sass Basics
 
 ### Variables

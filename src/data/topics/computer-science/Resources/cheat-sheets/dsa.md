@@ -12,6 +12,20 @@
 | O(2ⁿ)      | Exponential  | Doubles with each addition         | Recursive Fibonacci         |
 | O(n!)      | Factorial    | Extremely slow growth              | Permutations                |
 
+```mermaid
+flowchart LR
+    subgraph growth["Complexity growth (input size →)"]
+        direction LR
+        O1["O(1)"]
+        Olog["O(log n)"]
+        On["O(n)"]
+        Onlog["O(n log n)"]
+        On2["O(n²)"]
+        O2n["O(2ⁿ)"]
+    end
+    O1 --> Olog --> On --> Onlog --> On2 --> O2n
+```
+
 ## Array Operations
 
 | Operation         | Method      | Time | Space | Example               |
@@ -60,6 +74,14 @@
 | Is Empty  | `length === 0` | O(1) | O(1)  | `stack.length === 0`      |
 | Size      | `length`       | O(1) | O(1)  | `stack.length`            |
 
+```mermaid
+flowchart TB
+    push["push() →"] --> top["Top"]
+    top --> mid["..."]
+    mid --> bottom["Bottom"]
+    pop["← pop()"] --> top
+```
+
 ```javascript
 class Stack {
   constructor() {
@@ -93,6 +115,13 @@ class Stack {
 | Is Empty  | `length === 0` | O(1) | O(1)  | `queue.length === 0` |
 | Size      | `length`       | O(1) | O(1)  | `queue.length`       |
 
+```mermaid
+flowchart LR
+    enqueue["enqueue() →"] --> front["Front (dequeue)"]
+    front --> mid["..."]
+    mid --> rear["Rear"]
+```
+
 ```javascript
 class Queue {
   constructor() {
@@ -125,6 +154,11 @@ class Queue {
 | Delete         | O(n) | O(1)  | Remove node      |
 | Search         | O(n) | O(1)  | Find node        |
 | Access         | O(n) | O(1)  | Get by index     |
+
+```mermaid
+flowchart LR
+    head["head"] --> n1["val | next"] --> n2["val | next"] --> n3["val | null"]
+```
 
 ```javascript
 class ListNode {
@@ -163,6 +197,14 @@ class LinkedList {
 | Insert    | O(log n) - O(n) | O(1)  | Add node        |
 | Delete    | O(log n) - O(n) | O(1)  | Remove node     |
 | Traversal | O(n)            | O(h)  | Visit all nodes |
+
+```mermaid
+flowchart TB
+    root["root (8)"] --> left["left (3)"]
+    root --> right["right (10)"]
+    left --> ll["left (1)"]
+    left --> lr["right (6)"]
+```
 
 ```javascript
 class TreeNode {
@@ -269,6 +311,19 @@ class Graph {
 | DFS (Recursive) | O(V+E) | O(V)  | Path finding, topological sort | `function dfs(vertex) { visited[vertex] = true; for(neighbor of adj[vertex]) if(!visited[neighbor]) dfs(neighbor); }`                                                |
 | DFS (Iterative) | O(V+E) | O(V)  | Same as recursive              | Use stack instead of recursion                                                                                                                                       |
 | BFS             | O(V+E) | O(V)  | Shortest path, level order     | Use queue: `while(queue.length) { vertex = queue.shift(); for(neighbor of adj[vertex]) if(!visited[neighbor]) { visited[neighbor] = true; queue.push(neighbor); } }` |
+
+```mermaid
+flowchart TB
+    subgraph DFS["DFS — depth first (stack / recursion)"]
+        A1["A"] --> B1["B"] --> D1["D"]
+        A1 --> C1["C"]
+    end
+    subgraph BFSg["BFS — breadth first (queue)"]
+        A2["A"] --> B2["B"]
+        A2 --> C2["C"]
+        B2 --> D2["D"]
+    end
+```
 
 ## Dynamic Programming Patterns
 

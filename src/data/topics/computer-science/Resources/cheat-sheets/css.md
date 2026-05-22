@@ -116,6 +116,18 @@
 
 ## Box Model Properties
 
+```mermaid
+flowchart TB
+    subgraph box["CSS Box Model (content-box)"]
+        direction TB
+        margin["margin"]
+        border["border"]
+        padding["padding"]
+        content["content"]
+    end
+    margin --- border --- padding --- content
+```
+
 ### Dimensions
 
 | Property     | Description    | Values                      | Example                           |
@@ -208,6 +220,17 @@
 | `overflow-x` | `visible`, `hidden`, `scroll`, `auto` | Horizontal overflow | `overflow-x: scroll;` |
 | `overflow-y` | `visible`, `hidden`, `scroll`, `auto` | Vertical overflow   | `overflow-y: auto;`   |
 
+```mermaid
+flowchart LR
+    container["flex container<br/>display: flex"]
+    item1["flex item"]
+    item2["flex item"]
+    item3["flex item"]
+    container --> item1
+    container --> item2
+    container --> item3
+```
+
 ## Flexbox Properties
 
 ### Container Properties
@@ -235,6 +258,20 @@
 | `order`       | Number                                                            | Display order        | `order: 2;`             |
 
 ## Grid Properties
+
+```mermaid
+flowchart TB
+    subgraph grid["CSS Grid layout"]
+        H["header"]
+        M["main"]
+        S["sidebar"]
+        F["footer"]
+    end
+    H --- M
+    H --- S
+    M --- F
+    S --- F
+```
 
 ### Container Properties
 

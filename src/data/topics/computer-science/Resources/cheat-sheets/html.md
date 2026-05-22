@@ -10,6 +10,15 @@
 | `<body>`          | Document content container  | `<body>...</body>`          |
 | `<title>`         | Document title              | `<title>Page Title</title>` |
 
+```mermaid
+flowchart TB
+    html["&lt;html&gt;"]
+    head["&lt;head&gt;<br/>meta, title, link, script"]
+    body["&lt;body&gt;<br/>header, main, footer, content"]
+    html --> head
+    html --> body
+```
+
 ## Document Metadata
 
 | Element                     | Description        | Example                                                                  |

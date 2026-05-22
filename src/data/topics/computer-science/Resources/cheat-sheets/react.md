@@ -11,6 +11,16 @@
 | **Props**           | `function Greet({name}) { return <h1>Hello {name}</h1> }`                                   | Passing data to components                    |
 | **Children Prop**   | `<Box>Child content</Box>` then `function Box({children}) { return <div>{children}</div> }` | Access content between component tags         |
 
+```mermaid
+flowchart TB
+    App["App"]
+    Parent["Parent Component<br/>props ↓"]
+    Child["Child Component"]
+    DOM["DOM"]
+    App --> Parent --> Child --> DOM
+    Child -.->|events ↑| Parent
+```
+
 ## Hooks
 
 | Hook                    | Syntax                                                                     | Description                                           |
@@ -85,6 +95,17 @@
 | **Provider**        | `<MyContext.Provider value={someValue}>`                                 | Provides value to descendants |
 | **Consumer**        | `<MyContext.Consumer>{value => <div>{value}</div>}</MyContext.Consumer>` | Legacy way to consume context |
 | **useContext Hook** | `const value = useContext(MyContext)`                                    | Modern way to consume context |
+
+```mermaid
+flowchart TB
+    Provider["Context.Provider<br/>value={state}"]
+    C1["Child A<br/>useContext"]
+    C2["Child B<br/>useContext"]
+    C3["Nested Child<br/>useContext"]
+    Provider --> C1
+    Provider --> C2
+    C2 --> C3
+```
 
 ## Refs
 

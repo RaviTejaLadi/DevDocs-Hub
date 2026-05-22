@@ -1,5 +1,13 @@
 # Tailwind CSS Cheat Sheet
 
+```mermaid
+flowchart LR
+    HTML["HTML markup"]
+    TW["Tailwind utility classes<br/>e.g. flex, p-4, text-lg"]
+    CSS["Generated CSS"]
+    HTML --> TW --> CSS
+```
+
 ## Layout
 
 | Class          | Description                                |

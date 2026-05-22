@@ -31,6 +31,22 @@
 | `Array`     | Ordered list             | `[1, 2, 3]`               |
 | `Symbol`    | Unique identifier        | `Symbol('id')`            |
 
+```mermaid
+mindmap
+  root((JavaScript Types))
+    Primitives
+      Number
+      String
+      Boolean
+      null
+      undefined
+      Symbol
+    Reference
+      Object
+      Array
+      Function
+```
+
 ## Operators
 
 ### Arithmetic
@@ -100,6 +116,14 @@
 | `...`       | Rest parameters      | `function sum(...nums) { ... }`                          |
 
 ## Objects
+
+```mermaid
+flowchart BT
+    obj["object instance"]
+    proto["Object.prototype"]
+    nullNode["null"]
+    obj -->|[[Prototype]]| proto --> nullNode
+```
 
 | Syntax        | Description        | Example                         |
 | ------------- | ------------------ | ------------------------------- |
@@ -222,6 +246,20 @@
 | `Promise.race()` | First to settle   | `Promise.race([p1, p2])`                |
 | `async`          | Async function    | `async function foo() { ... }`          |
 | `await`          | Wait for promise  | `await promise`                         |
+
+```mermaid
+sequenceDiagram
+    participant C as Call Stack
+    participant W as Web APIs
+    participant Q as Task Queue
+    participant M as Microtask Queue
+
+    C->>W: setTimeout / fetch
+    W-->>M: Promise.then / await
+    M-->>C: microtasks first
+    W-->>Q: timer / I/O callback
+    Q-->>C: macrotasks next
+```
 
 ## Modules
 

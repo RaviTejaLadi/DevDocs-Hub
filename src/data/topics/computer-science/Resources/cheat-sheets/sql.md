@@ -1,5 +1,14 @@
 # SQL Cheat Sheet
 
+```mermaid
+flowchart LR
+    Client["Client / App"]
+    DB["Database Server"]
+    Tables["Tables + Indexes"]
+    Client -->|SQL queries| DB
+    DB --> Tables
+```
+
 ## Basic SQL Commands
 
 | Command        | Description                    | Example                                                  |
@@ -31,6 +40,16 @@
 | `RIGHT JOIN` | Returns all rows from the right table + matches from the left | `SELECT e.name, d.name FROM employees e RIGHT JOIN departments d ON e.dept_id = d.id;` |
 | `FULL JOIN`  | Returns all rows when there’s a match in either table         | `SELECT e.name, d.name FROM employees e FULL JOIN departments d ON e.dept_id = d.id;`  |
 | `CROSS JOIN` | Returns the Cartesian product of both tables                  | `SELECT e.name, d.name FROM employees e CROSS JOIN departments d;`                     |
+
+```mermaid
+flowchart TB
+    subgraph joins["SQL Join types (conceptual)"]
+        INNER["INNER JOIN<br/>matching rows only"]
+        LEFT["LEFT JOIN<br/>all left + matches"]
+        RIGHT["RIGHT JOIN<br/>all right + matches"]
+        FULL["FULL JOIN<br/>all from both"]
+    end
+```
 
 ## SQL Functions
 
