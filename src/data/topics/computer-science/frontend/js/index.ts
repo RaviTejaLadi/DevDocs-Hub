@@ -33,6 +33,7 @@ import generators from './generators.md?raw';
 import proxyAndReflect from './proxyAndReflect.md?raw';
 import polyfills from './polyfills.md?raw';
 import { jsOOPSConcepts } from './js-oops';
+import top25JavascriptQuestions from './interview-prep/top-25-javascript-questions.md?raw';
 import type { TopicItem } from '@/data/topics';
 
 export const jsTopics: TopicItem[] = [
@@ -114,5 +115,13 @@ export const jsTopics: TopicItem[] = [
     title: '📖 JS OOPS',
     content: '',
     items: jsOOPSConcepts,
+  },
+  {
+    id: 'js-interview',
+    title: '💼 Interview Preparation',
+    content: '',
+    items: [
+      { id: 'js-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: top25JavascriptQuestions },
+    ],
   },
 ];

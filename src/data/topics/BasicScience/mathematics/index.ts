@@ -8,6 +8,7 @@ import { coordinateGeometryTopics } from './coordinate-geometry';
 import { calculusTopics } from './calculus';
 import { vectorsTopics } from './vectors';
 import { matricesTopics } from './matrices';
+import { discreteMathematicsTopics } from './discrete-mathematics';
 import type { TopicItem } from '@/data/topics';
 
 export const mathematicsTopics: TopicItem[] = [
@@ -69,5 +70,11 @@ export const mathematicsTopics: TopicItem[] = [
     title: '🔲 Matrices',
     content: '',
     items: matricesTopics,
+  },
+  {
+    id: 'discrete-mathematics',
+    title: '🧩 Discrete Mathematics',
+    content: '',
+    items: discreteMathematicsTopics,
   },
 ];

@@ -44,6 +44,13 @@ import eslintIntegration from './intermediate/eslint-integration.md?raw';
 import reactTypescript from './intermediate/react-typescript.md?raw';
 import jsxTyping from './intermediate/jsx-typing.md?raw';
 import nodejsTyping from './intermediate/nodejs-typing.md?raw';
+import genericsDeepDive from './advanced/generics-deep-dive.md?raw';
+import declarationFiles from './advanced/declaration-files.md?raw';
+import moduleAugmentation from './advanced/module-augmentation.md?raw';
+import satisfiesOperator from './advanced/satisfies-operator.md?raw';
+import constTypeParameters from './advanced/const-type-parameters.md?raw';
+import brandedTypes from './advanced/branded-types.md?raw';
+import top25TypescriptQuestions from './interview-prep/top-25-typescript-questions.md?raw';
 
 export const tsConcepts: TopicItem[] = [
   {
@@ -107,6 +114,27 @@ export const tsConcepts: TopicItem[] = [
       { id: 'ts-react-typescript', title: '⚛️ React TypeScript', content: reactTypescript },
       { id: 'ts-jsx-typing', title: '🧩 JSX Typing', content: jsxTyping },
       { id: 'ts-nodejs-typing', title: '🟢 Node.js Typing', content: nodejsTyping },
+    ],
+  },
+  {
+    id: 'ts-advanced-concepts',
+    title: '🔬 Advanced',
+    content: '',
+    items: [
+      { id: 'ts-generics-deep-dive', title: '🌀 Generics Deep Dive', content: genericsDeepDive },
+      { id: 'ts-declaration-files', title: '📄 Declaration Files (.d.ts)', content: declarationFiles },
+      { id: 'ts-module-augmentation', title: '➕ Module Augmentation', content: moduleAugmentation },
+      { id: 'ts-satisfies-operator', title: '✅ satisfies Operator', content: satisfiesOperator },
+      { id: 'ts-const-type-parameters', title: '🔒 const Type Parameters', content: constTypeParameters },
+      { id: 'ts-branded-types', title: '🏷️ Branded Types', content: brandedTypes },
+    ],
+  },
+  {
+    id: 'ts-interview',
+    title: '💼 Interview Preparation',
+    content: '',
+    items: [
+      { id: 'ts-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: top25TypescriptQuestions },
     ],
   },
 ];

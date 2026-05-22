@@ -1,0 +1,589 @@
+# Template Syntax (Important Concepts Only)
+
+# What is Template Syntax?
+
+Vue templates allow you to connect:
+
+```txt
+JavaScript Data → HTML UI
+```
+
+Vue automatically updates the UI whenever data changes.
+
+---
+
+# Basic Example
+
+```vue
+<template>
+  <h1>{{ title }}</h1>
+</template>
+
+<script setup>
+const title = 'Hello Vue'
+</script>
+```
+
+---
+
+# Core Template Syntax
+
+| Feature | Purpose |
+|---|---|
+| `{{ }}` | Show dynamic data |
+| `v-bind` / `:` | Bind attributes |
+| `v-on` / `@` | Handle events |
+| `v-if` | Conditional rendering |
+| `v-for` | Loop through lists |
+| `v-model` | Two-way form binding |
+
+---
+
+# 1. Text Interpolation
+
+Used to display data.
+
+---
+
+## Syntax
+
+```vue
+{{ variable }}
+```
+
+---
+
+## Example
+
+```vue
+<template>
+  <h1>{{ message }}</h1>
+</template>
+
+<script setup>
+const message = 'Welcome to Vue'
+</script>
+```
+
+---
+
+# Expressions
+
+Vue supports JavaScript expressions.
+
+```vue
+<template>
+  <p>{{ count + 1 }}</p>
+
+  <p>{{ isAdmin ? 'Admin' : 'User' }}</p>
+</template>
+```
+
+---
+
+# 2. Attribute Binding (`v-bind`)
+
+Used to bind dynamic values to HTML attributes.
+
+---
+
+## Syntax
+
+```vue
+:attribute="value"
+```
+
+---
+
+## Example
+
+```vue
+<template>
+  <img :src="imageUrl" :alt="title" />
+</template>
+
+<script setup>
+const imageUrl = '/vue.png'
+const title = 'Vue Logo'
+</script>
+```
+
+---
+
+# Dynamic Classes
+
+```vue
+<template>
+  <button :class="{ active: isActive }">
+    Save
+  </button>
+</template>
+
+<script setup>
+const isActive = true
+</script>
+```
+
+---
+
+# Dynamic Styles
+
+```vue
+<template>
+  <p :style="{ color: textColor }">
+    Vue Styling
+  </p>
+</template>
+
+<script setup>
+const textColor = 'red'
+</script>
+```
+
+---
+
+# 3. Event Handling (`v-on`)
+
+Used to listen to user actions.
+
+---
+
+## Syntax
+
+```vue
+@click="function"
+```
+
+---
+
+## Example
+
+```vue
+<template>
+  <button @click="increment">
+    Increment
+  </button>
+</template>
+
+<script setup>
+const increment = () => {
+  console.log('Clicked')
+}
+</script>
+```
+
+---
+
+# Inline Events
+
+```vue
+<button @click="count++">
+  Add
+</button>
+```
+
+---
+
+# Event Modifiers
+
+| Modifier | Purpose |
+|---|---|
+| `.prevent` | Prevent page reload |
+| `.stop` | Stop event bubbling |
+| `.once` | Trigger once |
+
+---
+
+## Example
+
+```vue
+<form @submit.prevent="submitForm">
+</form>
+```
+
+---
+
+# 4. Conditional Rendering (`v-if`)
+
+Render UI conditionally.
+
+---
+
+## Example
+
+```vue
+<template>
+  <p v-if="isLoggedIn">
+    Welcome Back
+  </p>
+
+  <p v-else>
+    Please Login
+  </p>
+</template>
+
+<script setup>
+const isLoggedIn = true
+</script>
+```
+
+---
+
+# `v-if` vs `v-show`
+
+| v-if | v-show |
+|---|---|
+| Adds/removes DOM | Uses display:none |
+| Better for rare toggle | Better for frequent toggle |
+
+---
+
+# Example
+
+```vue
+<p v-show="visible">
+  Hello Vue
+</p>
+```
+
+---
+
+# 5. List Rendering (`v-for`)
+
+Used to render arrays.
+
+---
+
+## Example
+
+```vue
+<template>
+  <li
+    v-for="user in users"
+    :key="user.id"
+  >
+    {{ user.name }}
+  </li>
+</template>
+
+<script setup>
+const users = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Jane' },
+]
+</script>
+```
+
+---
+
+# Why `key` is Important
+
+Vue uses `key` to track elements efficiently.
+
+✅ Good
+
+```vue
+:key="user.id"
+```
+
+❌ Bad
+
+```vue
+:key="index"
+```
+
+---
+
+# Access Index
+
+```vue
+<li
+  v-for="(user, index) in users"
+  :key="user.id"
+>
+  {{ index }} - {{ user.name }}
+</li>
+```
+
+---
+
+# 6. Two-Way Binding (`v-model`)
+
+Sync input value with state.
+
+---
+
+## Example
+
+```vue
+<template>
+  <input v-model="name" />
+
+  <p>{{ name }}</p>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const name = ref('')
+</script>
+```
+
+---
+
+# Works Like
+
+```vue
+<input
+  :value="name"
+  @input="name = $event.target.value"
+/>
+```
+
+---
+
+# Form Examples
+
+## Text Input
+
+```vue
+<input v-model="username" />
+```
+
+---
+
+## Textarea
+
+```vue
+<textarea v-model="message"></textarea>
+```
+
+---
+
+## Checkbox
+
+```vue
+<input
+  type="checkbox"
+  v-model="isChecked"
+/>
+```
+
+---
+
+## Select
+
+```vue
+<select v-model="selected">
+  <option value="vue">Vue</option>
+</select>
+```
+
+---
+
+# 7. Computed Properties
+
+Used for derived/calculated values.
+
+---
+
+## Example
+
+```vue
+<template>
+  <h1>{{ fullName }}</h1>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const firstName = 'John'
+const lastName = 'Doe'
+
+const fullName = computed(() => {
+  return `${firstName} ${lastName}`
+})
+</script>
+```
+
+---
+
+# Why Use Computed?
+
+| Benefit | Reason |
+|---|---|
+| Cached | Better performance |
+| Reactive | Auto updates |
+| Cleaner templates | Less logic inside HTML |
+
+---
+
+# 8. Template Refs
+
+Access DOM elements directly.
+
+---
+
+## Example
+
+```vue
+<template>
+  <input ref="inputRef" />
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const inputRef = ref(null)
+
+onMounted(() => {
+  inputRef.value.focus()
+})
+</script>
+```
+
+---
+
+# 9. Slots
+
+Used for reusable layouts/components.
+
+---
+
+## Parent Component
+
+```vue
+<Card>
+  <h1>Hello</h1>
+</Card>
+```
+
+---
+
+## Child Component
+
+```vue
+<template>
+  <div class="card">
+    <slot />
+  </div>
+</template>
+```
+
+---
+
+# Important Directives Summary
+
+| Directive | Purpose |
+|---|---|
+| `v-bind` | Bind attributes |
+| `v-on` | Handle events |
+| `v-if` | Conditional rendering |
+| `v-for` | Render lists |
+| `v-model` | Form binding |
+| `v-show` | Toggle visibility |
+
+---
+
+# Best Practices
+
+---
+
+# Use Computed for Complex Logic
+
+❌ Bad
+
+```vue
+{{ users.filter(user => user.active).length }}
+```
+
+✅ Good
+
+```js
+const activeUsers = computed(() => {
+  return users.filter(user => user.active)
+})
+```
+
+---
+
+# Always Use `key` in `v-for`
+
+Improves rendering performance.
+
+---
+
+# Keep Templates Clean
+
+Move business logic to:
+
+- composables
+- computed
+- methods
+
+---
+
+# Avoid Large Components
+
+Break UI into smaller reusable components.
+
+---
+
+# Real World Example
+
+```vue
+<template>
+  <section>
+    <input
+      v-model="search"
+      placeholder="Search users"
+    />
+
+    <ul>
+      <li
+        v-for="user in filteredUsers"
+        :key="user.id"
+      >
+        {{ user.name }}
+      </li>
+    </ul>
+
+    <p v-if="filteredUsers.length === 0">
+      No users found
+    </p>
+  </section>
+</template>
+
+<script setup>
+import { computed, ref } from 'vue'
+
+const search = ref('')
+
+const users = ref([
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Jane' },
+])
+
+const filteredUsers = computed(() => {
+  return users.value.filter(user =>
+    user.name
+      .toLowerCase()
+      .includes(search.value.toLowerCase())
+  )
+})
+</script>
+```
+
+---
+
+# Most Important Things to Learn First
+
+1. Interpolation
+2. v-bind
+3. v-on
+4. v-if
+5. v-for
+6. v-model
+7. computed
+8. components
+9. slots

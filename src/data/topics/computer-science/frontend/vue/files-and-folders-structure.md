@@ -1,127 +1,1000 @@
-# **Vue.js Default File Structure Explanation**
+# Files & Folder Structure (Vue 3 + Vite)
 
-## Default Folder Structure
+# Introduction
 
-```bash
-my-vue-project/
-├── node_modules/          # All npm dependencies
-├── public/                # Static files
-│   ├── favicon.ico        # Website icon
-│   └── index.html         # Main HTML template
-├── src/                   # Main source code
-│   ├── assets/            # Static assets (images, fonts, etc.)
-│   ├── components/        # Reusable Vue components
-│   ├── router/            # Vue Router configuration
-│   ├── store/             # Vuex store (state management)
-│   ├── views/             # Page-level components
-│   ├── App.vue            # Root Vue component
-│   └── main.js            # Application entry point
-├── .gitignore             # Git ignore rules
-├── babel.config.js        # Babel configuration
-├── package.json           # Project metadata and dependencies
-├── package-lock.json      # Exact dependency versions
-└── README.md              # Project documentation
+A good folder structure helps with:
+
+- Scalability
+- Maintainability
+- Reusability
+- Team collaboration
+- Clean architecture
+- Easier debugging
+
+Modern Vue applications usually follow a **feature-driven + modular structure**.
+
+---
+
+# Default Vue Project Structure
+
+After creating a Vue app using Vite:
+
+```txt
+my-vue-app/
+│
+├── node_modules/
+├── public/
+├── src/
+│
+├── .gitignore
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
 ```
 
-## Key Files and Folders Explained
+---
 
-### 1. `public/` Directory
+# Root Level Files & Folders
 
-- **index.html**: The single HTML page that serves as the entry point. Contains
-  a `<div id="app">` where Vue mounts.
-- **favicon.ico**: The website icon displayed in browser tabs.
+---
 
-### 2. `src/` Directory (Core of your application)
+# node_modules/
 
-#### `main.js`
+Contains all installed dependencies.
 
-- The JavaScript entry point that:
-  - Creates the Vue application instance
-  - Imports the root App component
-  - Mounts the app to the DOM
-  - Includes global plugins (router, store, etc.)
+```txt
+node_modules/
+```
 
-#### `App.vue`
+Examples:
 
-- The root Vue component that contains:
-  - Common layout structure
-  - Router-view for displaying pages
-  - Global styles or components
+- vue
+- vite
+- pinia
+- vue-router
+- axios
 
-#### `components/`
+---
 
-- Contains reusable Vue components (`.vue` files)
-- Typically includes:
-  - Buttons, cards, modals, forms
-  - Layout components (headers, footers)
-  - Other UI elements used across the app
+## Important
 
-#### `views/` or `pages/`
+- Automatically generated
+- Never edit manually
+- Never push to Git
 
-- Contains page-level components
-- Each represents a full page/route
-- Examples: Home.vue, About.vue, Contact.vue
+Ignored using:
 
-#### `router/`
+```txt
+.gitignore
+```
 
-- Contains Vue Router configuration
-- Defines all application routes and their components
-- May include route guards for authentication
+---
 
-#### `store/`
+# public/
 
-- Contains Vuex state management files
-- Includes:
-  - `index.js` (main store configuration)
-  - Modules for organizing state (optional)
+Contains static files.
 
-#### `assets/`
+```txt
+public/
+```
 
-- Contains static assets like:
-  - Images
-  - Fonts
-  - SCSS/CSS files
-  - Other media files
+Files inside `public` are copied directly during build.
 
-### 3. Configuration Files
+---
 
-#### `package.json`
+## Example
 
-- Lists all project dependencies and scripts
-- Contains:
-  - `dependencies` (runtime required)
-  - `devDependencies` (build-time required)
-  - Scripts like `serve`, `build`, `test`
+```txt
+public/
+├── favicon.ico
+├── robots.txt
+└── images/
+```
 
-#### `babel.config.js`
+---
 
-- Configures Babel for transpiling modern JavaScript
-- Ensures compatibility with older browsers
+## Use Cases
 
-#### `.gitignore`
+| File Type | Example |
+|---|---|
+| Favicons | favicon.ico |
+| Static images | logo.png |
+| robots.txt | SEO |
+| manifest.json | PWA |
 
-- Specifies files/folders not to track in version control
-- Typically excludes node_modules, dist, etc.
+---
 
-## Additional Notes
+## Accessing Public Files
 
-1. **Single File Components (`.vue` files)**: Each typically contains three
-   sections:
+```html
+<img src="/images/logo.png" />
+```
 
-   - `<template>` (HTML markup)
-   - `<script>` (JavaScript logic)
-   - `<style>` (CSS/scoped CSS)
+---
 
-2. **Modern Variations**:
+# src/
 
-   - Vue 3 projects may use `src/composables/` for composition API functions
-   - Some projects use `src/api/` for API service files
-   - Larger projects might have `src/utils/` for helper functions
+Main application source code.
 
-3. **Build Process**:
-   - Files in `public/` are copied directly to the build output
-   - Files in `src/` are processed by webpack/vite (bundled, optimized)
+Most development happens here.
 
-This structure provides a solid foundation that scales well for small to
-medium-sized applications while remaining flexible enough to adapt to larger
-projects.
+```txt
+src/
+```
+
+---
+
+# Typical Professional Structure
+
+```txt
+src/
+│
+├── api/
+├── assets/
+├── components/
+├── composables/
+├── constants/
+├── layouts/
+├── pages/
+├── router/
+├── services/
+├── stores/
+├── styles/
+├── types/
+├── utils/
+├── views/
+│
+├── App.vue
+└── main.js
+```
+
+---
+
+# src/main.js
+
+Application entry point.
+
+This is where Vue app starts.
+
+---
+
+## Responsibilities
+
+- Create Vue app
+- Register plugins
+- Mount application
+- Import global CSS
+
+---
+
+## Example
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+import './styles/main.css'
+
+const app = createApp(App)
+
+app.mount('#app')
+```
+
+---
+
+# src/App.vue
+
+Root component of the application.
+
+Every component renders inside this component.
+
+---
+
+## Example
+
+```vue
+<template>
+  <router-view />
+</template>
+```
+
+---
+
+## Responsibilities
+
+| Responsibility | Description |
+|---|---|
+| Root Layout | Base app wrapper |
+| Shared UI | Navbar/Footer |
+| Route Rendering | router-view |
+
+---
+
+# assets/
+
+Contains processed assets.
+
+```txt
+assets/
+```
+
+---
+
+## Examples
+
+```txt
+assets/
+├── images/
+├── icons/
+├── fonts/
+└── styles/
+```
+
+---
+
+## Use Cases
+
+| Asset Type | Example |
+|---|---|
+| Images | PNG, JPG, SVG |
+| Fonts | Custom fonts |
+| CSS | Global styles |
+| Icons | SVG icons |
+
+---
+
+## Import Example
+
+```js
+import logo from '@/assets/images/logo.png'
+```
+
+---
+
+# components/
+
+Reusable UI components.
+
+---
+
+# Purpose
+
+Build modular UI.
+
+---
+
+## Example Structure
+
+```txt
+components/
+│
+├── ui/
+├── common/
+├── forms/
+├── tables/
+└── cards/
+```
+
+---
+
+# ui/
+
+Reusable low-level components.
+
+---
+
+## Examples
+
+```txt
+ui/
+├── Button.vue
+├── Input.vue
+├── Modal.vue
+└── Dialog.vue
+```
+
+---
+
+## Characteristics
+
+- Highly reusable
+- Generic
+- No business logic
+
+---
+
+# common/
+
+Shared components used across application.
+
+---
+
+## Examples
+
+```txt
+common/
+├── Navbar.vue
+├── Sidebar.vue
+├── Footer.vue
+└── Loader.vue
+```
+
+---
+
+# Feature Components Example
+
+```txt
+components/
+└── users/
+    ├── UserCard.vue
+    ├── UserTable.vue
+    └── UserForm.vue
+```
+
+---
+
+# views/ or pages/
+
+Page-level components.
+
+---
+
+## Purpose
+
+Represent routes/pages.
+
+---
+
+## Example
+
+```txt
+views/
+├── HomeView.vue
+├── AboutView.vue
+├── LoginView.vue
+└── DashboardView.vue
+```
+
+---
+
+# Difference Between components and views
+
+| components | views |
+|---|---|
+| Reusable | Route-specific |
+| Small UI parts | Full page |
+| Used multiple times | Usually once |
+
+---
+
+# router/
+
+Contains routing configuration.
+
+---
+
+# Example Structure
+
+```txt
+router/
+├── index.js
+└── routes.js
+```
+
+---
+
+# router/index.js
+
+Creates Vue Router instance.
+
+---
+
+## Example
+
+```js
+import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = []
+
+export const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+```
+
+---
+
+# stores/
+
+Contains Pinia stores.
+
+---
+
+# Purpose
+
+Global state management.
+
+---
+
+## Example
+
+```txt
+stores/
+├── authStore.js
+├── userStore.js
+└── cartStore.js
+```
+
+---
+
+# Example Store
+
+```js
+import { defineStore } from 'pinia'
+
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    user: null,
+  }),
+})
+```
+
+---
+
+# composables/
+
+Vue Composition API reusable logic.
+
+Equivalent to React custom hooks.
+
+---
+
+# Purpose
+
+Reuse business logic.
+
+---
+
+## Examples
+
+```txt
+composables/
+├── useAuth.js
+├── useFetch.js
+├── useTheme.js
+└── useDebounce.js
+```
+
+---
+
+# Example
+
+```js
+import { ref } from 'vue'
+
+export function useCounter() {
+  const count = ref(0)
+
+  const increment = () => {
+    count.value++
+  }
+
+  return {
+    count,
+    increment,
+  }
+}
+```
+
+---
+
+# services/
+
+Contains API and external service logic.
+
+---
+
+# Example Structure
+
+```txt
+services/
+├── api.js
+├── auth.service.js
+└── user.service.js
+```
+
+---
+
+# Purpose
+
+Separate:
+
+- API calls
+- Backend logic
+- HTTP requests
+
+from UI components.
+
+---
+
+# Example
+
+```js
+import axios from 'axios'
+
+export async function getUsers() {
+  return axios.get('/api/users')
+}
+```
+
+---
+
+# api/
+
+Sometimes used separately for API clients.
+
+---
+
+## Example
+
+```txt
+api/
+├── axios.js
+├── endpoints.js
+└── interceptors.js
+```
+
+---
+
+# Example Axios Instance
+
+```js
+import axios from 'axios'
+
+export const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+})
+```
+
+---
+
+# layouts/
+
+Application layouts.
+
+---
+
+## Examples
+
+```txt
+layouts/
+├── DefaultLayout.vue
+├── AuthLayout.vue
+└── DashboardLayout.vue
+```
+
+---
+
+# Purpose
+
+Different page structures.
+
+---
+
+## Example
+
+```txt
+Auth Pages
+→ No sidebar
+
+Dashboard Pages
+→ Sidebar + Navbar
+```
+
+---
+
+# utils/
+
+Utility/helper functions.
+
+---
+
+# Examples
+
+```txt
+utils/
+├── formatDate.js
+├── debounce.js
+├── currency.js
+└── validators.js
+```
+
+---
+
+# Example
+
+```js
+export function formatCurrency(value) {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+  }).format(value)
+}
+```
+
+---
+
+# constants/
+
+Application constants.
+
+---
+
+## Example
+
+```txt
+constants/
+├── routes.js
+├── roles.js
+└── config.js
+```
+
+---
+
+# Why Use Constants
+
+Avoid hardcoded values.
+
+Bad:
+
+```js
+if (role === 'admin')
+```
+
+Better:
+
+```js
+if (role === ROLES.ADMIN)
+```
+
+---
+
+# styles/
+
+Global styles.
+
+---
+
+## Example
+
+```txt
+styles/
+├── main.css
+├── variables.css
+└── animations.css
+```
+
+---
+
+# Purpose
+
+- Global CSS
+- Tailwind imports
+- CSS variables
+- Themes
+
+---
+
+# types/
+
+TypeScript types/interfaces.
+
+---
+
+## Example
+
+```txt
+types/
+├── user.ts
+├── api.ts
+└── auth.ts
+```
+
+---
+
+# Example
+
+```ts
+export interface User {
+  id: number
+  name: string
+  email: string
+}
+```
+
+---
+
+# index.html
+
+Main HTML file.
+
+Located outside `src`.
+
+---
+
+# Purpose
+
+Vite injects app here.
+
+---
+
+## Example
+
+```html
+<div id="app"></div>
+```
+
+Vue mounts application into:
+
+```txt
+#app
+```
+
+---
+
+# package.json
+
+Most important project configuration file.
+
+---
+
+# Contains
+
+| Property | Purpose |
+|---|---|
+| dependencies | Packages |
+| scripts | Commands |
+| version | App version |
+| name | Project name |
+
+---
+
+# Example
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  }
+}
+```
+
+---
+
+# vite.config.js
+
+Vite configuration file.
+
+---
+
+# Responsibilities
+
+- Plugins
+- Aliases
+- Build configuration
+- Environment setup
+
+---
+
+## Example
+
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+})
+```
+
+---
+
+# .env Files
+
+Environment variables.
+
+---
+
+# Examples
+
+```txt
+.env
+.env.development
+.env.production
+```
+
+---
+
+# Example
+
+```env
+VITE_API_URL=https://api.example.com
+```
+
+---
+
+# Important Rule
+
+Vite environment variables must start with:
+
+```txt
+VITE_
+```
+
+---
+
+# Professional Large Scale Structure
+
+```txt
+src/
+│
+├── api/
+├── assets/
+├── components/
+│   ├── ui/
+│   ├── common/
+│   └── feature/
+│
+├── composables/
+├── constants/
+├── features/
+│   ├── auth/
+│   ├── dashboard/
+│   └── users/
+│
+├── layouts/
+├── router/
+├── services/
+├── stores/
+├── styles/
+├── types/
+├── utils/
+│
+├── App.vue
+└── main.js
+```
+
+---
+
+# Feature-Based Structure
+
+Modern scalable architecture.
+
+---
+
+# Example
+
+```txt
+features/
+└── auth/
+    ├── components/
+    ├── composables/
+    ├── services/
+    ├── stores/
+    └── pages/
+```
+
+---
+
+# Benefits
+
+| Benefit | Description |
+|---|---|
+| Better scalability | Large applications |
+| Easier maintenance | Isolated features |
+| Cleaner imports | Organized code |
+| Team collaboration | Clear ownership |
+
+---
+
+# Best Practices
+
+---
+
+# Keep Components Small
+
+Each component should do one thing well.
+
+---
+
+# Use Feature-Based Architecture
+
+Better for medium-large apps.
+
+---
+
+# Avoid Deep Nesting
+
+Bad:
+
+```txt
+components/common/ui/shared/base/
+```
+
+Good:
+
+```txt
+components/ui/
+```
+
+---
+
+# Separate Business Logic
+
+Use:
+
+- composables
+- services
+- stores
+
+instead of putting everything inside components.
+
+---
+
+# Use Aliases
+
+Instead of:
+
+```js
+../../../components/Button.vue
+```
+
+Use:
+
+```js
+@/components/Button.vue
+```
+
+---
+
+# Recommended Structure for Most Projects
+
+```txt
+src/
+│
+├── assets/
+├── components/
+├── composables/
+├── layouts/
+├── pages/
+├── router/
+├── services/
+├── stores/
+├── styles/
+├── utils/
+│
+├── App.vue
+└── main.js
+```
+
+---
+
+# Folder Responsibilities Summary
+
+| Folder | Responsibility |
+|---|---|
+| assets | Static processed assets |
+| components | Reusable UI |
+| composables | Reusable logic |
+| views/pages | Route pages |
+| router | Routing |
+| stores | Global state |
+| services | API calls |
+| utils | Helper functions |
+| layouts | Page layouts |
+| styles | Global styling |
+| constants | App constants |
+| types | TypeScript types |
