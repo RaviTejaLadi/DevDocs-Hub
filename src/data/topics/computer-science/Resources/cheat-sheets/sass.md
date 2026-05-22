@@ -2,12 +2,6 @@
 
 ## Sass Basics
 
-### Introduction
-
-- [Documentation](https://sass-lang.com/documentation) _(sass-lang.com)_
-- [Learn X in Y minutes](https://learnxinyminutes.com/docs/sass/)
-  _(learnxinyminutes.com)_
-
 ### Variables
 
 ```scss

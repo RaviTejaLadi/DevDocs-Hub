@@ -70,11 +70,18 @@
 
 ### URL Structure
 
-```bash
-  https://example.com:443/path?query=param#fragment
-  \___/   \_________/ \__/\____/ \_________/ \______/
-    |          |       |    |         |          |
-  Scheme     Host    Port  Path     Query    Fragment
+Example: `https://example.com:443/path?query=param#fragment`
+
+```mermaid
+flowchart LR
+    scheme["https<br/><b>Scheme</b>"]
+    host["example.com<br/><b>Host</b>"]
+    port[":443<br/><b>Port</b>"]
+    path["/path<br/><b>Path</b>"]
+    query["?query=param<br/><b>Query</b>"]
+    fragment["#fragment<br/><b>Fragment</b>"]
+
+    scheme --> host --> port --> path --> query --> fragment
 ```
 
 ---
