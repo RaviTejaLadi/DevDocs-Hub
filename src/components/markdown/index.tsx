@@ -194,6 +194,23 @@ function scopePrefixFromTopicId(topicIdOrScope?: string): string {
   return s ? `${s}-` : '';
 }
 
+function parseHeadingsFromMarkdown(markdown: string, scopePrefix = ''): Heading[] {
+  const out: Heading[] = [];
+  const used = new Map<string, number>();
+  for (const line of markdown.split('\n')) {
+    const m = /^(\#{1,4})\s+(.+)$/.exec(line.trim());
+    if (!m) continue;
+    const level = m[1].length;
+    const text = m[2].trim();
+    let base = slugifyHeading(text) || 'heading';
+    const n = (used.get(base) ?? 0) + 1;
+    used.set(base, n);
+    if (n > 1) base = `${base}-${n}`;
+    out.push({ id: `${scopePrefix}${base}`, text, level });
+  }
+  return out;
+}
+
 function parseHeadingsFromSlides(slides: string[], scopePrefix = ''): Heading[] {
   const out: Heading[] = [];
   slides.forEach((slide, slideIndex) => {
@@ -226,6 +243,11 @@ type MarkdownRenderProps = {
   keyboardActive?: boolean;
   /** When true, slide + TOC stretch to fill a fixed-height feed card (parents must be flex + min-h-0). */
   fillViewportCard?: boolean;
+  /**
+   * Feed card: full document scrolls in one pane; footer prev/next jumps between feed posts
+   * (not in-document slides). Use instead of `slideMode` in the docs feed.
+   */
+  feedScrollMode?: boolean;
   hasNextDocument?: boolean;
   onReachDocumentEnd?: () => void;
   hasPrevDocument?: boolean;
@@ -235,6 +257,7 @@ type MarkdownRenderProps = {
 const MarkdownRenderInner = ({
   content,
   slideMode = false,
+  feedScrollMode = false,
   headingIdScope = '',
   hideToc = false,
   fillViewportCard = false,
@@ -245,6 +268,7 @@ const MarkdownRenderInner = ({
   hasPrevDocument = false,
   onReachDocumentStart,
 }: MarkdownRenderProps) => {
+  const cardScrollMode = slideMode || feedScrollMode;
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
@@ -287,9 +311,13 @@ const MarkdownRenderInner = ({
   useEffect(() => {
     /* eslint-disable-next-line react-hooks/set-state-in-effect -- reset deck when the bound document / topic changes */
     setActiveSlide(0);
-  }, [translatedContent, slideMode, headingIdScope]);
+  }, [translatedContent, slideMode, feedScrollMode, headingIdScope]);
 
   useEffect(() => {
+    if (feedScrollMode) {
+      setHeadings(parseHeadingsFromMarkdown(translatedContent, headingPrefix));
+      return;
+    }
     if (slideMode) {
       setHeadings(parseHeadingsFromSlides(slides, headingPrefix));
       return;
@@ -304,15 +332,15 @@ const MarkdownRenderInner = ({
         level: Number(el.tagName.substring(1)),
       }));
     setHeadings(collected);
-  }, [slideMode, slides, translatedContent, headingPrefix]);
+  }, [slideMode, feedScrollMode, slides, translatedContent, headingPrefix]);
 
-  // Scroll spy + reading-progress (TOC + ring) — slide body vs main viewport
+  // Scroll spy + reading-progress (TOC + ring) — card scroll body vs main viewport
   useEffect(() => {
-    if (slideMode) {
+    if (cardScrollMode) {
       if (!slideBodyRef.current) return;
       const body = slideBodyRef.current;
       const headingEls = headings
-        .filter((h) => h.slideIndex === activeSlide)
+        .filter((h) => (slideMode ? h.slideIndex === activeSlide : true))
         .map((h) => document.getElementById(h.id))
         .filter((el): el is HTMLElement => Boolean(el));
 
@@ -339,9 +367,11 @@ const MarkdownRenderInner = ({
           if (!progressRingRef.current || !slideBodyRef.current) return;
           const b = slideBodyRef.current;
           const max = b.scrollHeight - b.clientHeight;
-          const intra = max > 0 ? (b.scrollTop / max) * (100 / Math.max(slides.length, 1)) : 0;
-          const base = (activeSlide / Math.max(slides.length, 1)) * 100;
-          const pct = Math.min(100, base + intra);
+          const intra = max > 0 ? b.scrollTop / max : 0;
+          const base = slideMode ? (activeSlide / Math.max(slides.length, 1)) * 100 : 0;
+          const pct = slideMode
+            ? Math.min(100, base + intra * (100 / Math.max(slides.length, 1)))
+            : Math.min(100, intra * 100);
           progressRingRef.current.style.setProperty('--progress', String(pct));
           progressRingRef.current.dataset.label = `${Math.round(pct)}%`;
         });
@@ -413,12 +443,12 @@ const MarkdownRenderInner = ({
       tgt.removeEventListener('scroll', updateProgress);
       if (frameId) window.cancelAnimationFrame(frameId);
     };
-  }, [slideMode, activeSlide, headings, slides.length, translatedContent, viewportScrollRootRef]);
+  }, [cardScrollMode, slideMode, activeSlide, headings, slides.length, translatedContent, viewportScrollRootRef]);
 
-  /** Reset slide body scroll when the document or slide changes (topic jump must land at intro, not mid-card). */
+  /** Reset card scroll body when the document or slide changes (topic jump must land at intro, not mid-card). */
   useLayoutEffect(() => {
     slideBodyRef.current?.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [headingIdScope, translatedContent, activeSlide]);
+  }, [headingIdScope, translatedContent, slideMode ? activeSlide : -1]);
 
   useEffect(() => {
     if (!pendingScrollHeadingId) return;
@@ -434,7 +464,7 @@ const MarkdownRenderInner = ({
    * slide body are at the end (non-scrollable counts as at end), wheel crosses into next/prev topic.
    */
   useEffect(() => {
-    if (!slideMode || !scrollIntentActive) return;
+    if (!cardScrollMode || !scrollIntentActive) return;
     const viewport = viewportScrollRootRef?.current;
     if (!viewport) return;
 
@@ -459,7 +489,7 @@ const MarkdownRenderInner = ({
       const bodyAtStart = atVerticalStart(body);
 
       if (e.deltaY > 8) {
-        if (nav.activeSlide !== nav.slidesLength - 1) return;
+        if (slideMode && nav.activeSlide !== nav.slidesLength - 1) return;
         if (!nav.hasNextDocument || !nav.onReachDocumentEnd) return;
         if (!vpAtEnd || !bodyAtEnd) return;
         if (endBumpLockRef.current) return;
@@ -472,7 +502,7 @@ const MarkdownRenderInner = ({
       }
 
       if (e.deltaY < -8) {
-        if (nav.activeSlide !== 0) return;
+        if (slideMode && nav.activeSlide !== 0) return;
         if (!nav.hasPrevDocument || !nav.onReachDocumentStart) return;
         if (!vpAtStart || !bodyAtStart) return;
         if (startBumpLockRef.current) return;
@@ -486,7 +516,7 @@ const MarkdownRenderInner = ({
 
     viewport.addEventListener('wheel', onWheel, { passive: true, capture: true });
     return () => viewport.removeEventListener('wheel', onWheel, true);
-  }, [slideMode, scrollIntentActive, translatedContent, viewportScrollRootRef]);
+  }, [cardScrollMode, slideMode, scrollIntentActive, translatedContent, viewportScrollRootRef]);
 
   const handleCopy = useCallback((key: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -521,29 +551,45 @@ const MarkdownRenderInner = ({
   }, [activeSlide, hasPrevDocument, onReachDocumentStart]);
 
   const handleNextSlide = useCallback(() => {
-    if (activeSlide < slides.length - 1) {
+    if (slideMode && activeSlide < slides.length - 1) {
       setActiveSlide((p) => p + 1);
       return;
     }
     if (hasNextDocument) onReachDocumentEnd?.();
-  }, [activeSlide, hasNextDocument, onReachDocumentEnd, slides.length]);
+  }, [activeSlide, hasNextDocument, onReachDocumentEnd, slideMode, slides.length]);
+
+  const handleCardNavPrev = useCallback(() => {
+    if (slideMode) {
+      handlePrevSlide();
+      return;
+    }
+    if (hasPrevDocument) onReachDocumentStart?.();
+  }, [slideMode, handlePrevSlide, hasPrevDocument, onReachDocumentStart]);
+
+  const handleCardNavNext = useCallback(() => {
+    if (slideMode) {
+      handleNextSlide();
+      return;
+    }
+    if (hasNextDocument) onReachDocumentEnd?.();
+  }, [slideMode, handleNextSlide, hasNextDocument, onReachDocumentEnd]);
 
   useEffect(() => {
-    if (!slideMode || !keyboardActive) return;
+    if (!cardScrollMode || !keyboardActive) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        handlePrevSlide();
+        handleCardNavPrev();
       }
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        handleNextSlide();
+        handleCardNavNext();
       }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [slideMode, keyboardActive, handlePrevSlide, handleNextSlide]);
+  }, [cardScrollMode, keyboardActive, handleCardNavPrev, handleCardNavNext]);
 
   const singleDocComponents = useMemo(
     () =>
@@ -570,12 +616,12 @@ const MarkdownRenderInner = ({
         'relative grid gap-2 lg:gap-2',
         fillViewportCard && 'h-full min-h-0',
         hideToc ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
-        slideMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
+        cardScrollMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
       )}
     >
       <div className={cn('flex min-h-0 min-w-0 flex-col', fillViewportCard && 'h-full min-h-0')}>
         <div ref={contentRef} className={cn('min-h-0 min-w-0', fillViewportCard && 'flex h-full min-h-0 flex-col')}>
-          {slideMode ? (
+          {cardScrollMode ? (
             <section
               className={cn(
                 'w-full min-w-0 pb-0 pt-0',
@@ -590,7 +636,7 @@ const MarkdownRenderInner = ({
                   'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
                 role="region"
-                aria-label={t('markdown.slideCarouselLabel')}
+                aria-label={slideMode ? t('markdown.slideCarouselLabel') : undefined}
               >
                 <div
                   ref={slideBodyRef}
@@ -604,7 +650,7 @@ const MarkdownRenderInner = ({
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={buildMarkdownComponents({
-                        idPrefix: `${slideIdPrefix}${activeSlide}-`,
+                        idPrefix: slideMode ? `${slideIdPrefix}${activeSlide}-` : headingPrefix,
                         isDarkTheme,
                         copiedKey,
                         t,
@@ -613,7 +659,7 @@ const MarkdownRenderInner = ({
                         compactSlide: true,
                       })}
                     >
-                      {slides[activeSlide] ?? ''}
+                      {slideMode ? (slides[activeSlide] ?? '') : translatedContent}
                     </ReactMarkdown>
                   </div>
                 </div>
@@ -632,24 +678,31 @@ const MarkdownRenderInner = ({
                     <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent dark:via-foreground/7" />
                   </div>
 
-                  <div
-                    className="relative h-0.5 w-full bg-border/30 dark:bg-border/40"
-                    role="progressbar"
-                    aria-valuenow={activeSlide + 1}
-                    aria-valuemin={1}
-                    aria-valuemax={slides.length}
-                    aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
-                  >
+                  {slideMode ? (
                     <div
-                      className={cn(
-                        'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
-                        keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
-                      )}
-                      style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
-                    />
-                  </div>
+                      className="relative h-0.5 w-full bg-border/30 dark:bg-border/40"
+                      role="progressbar"
+                      aria-valuenow={activeSlide + 1}
+                      aria-valuemin={1}
+                      aria-valuemax={slides.length}
+                      aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
+                    >
+                      <div
+                        className={cn(
+                          'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
+                          keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
+                        )}
+                        style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
+                      />
+                    </div>
+                  ) : null}
 
-                  <div className="relative flex items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3">
+                  <div
+                    className={cn(
+                      'relative flex items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3',
+                      !slideMode && 'justify-between'
+                    )}
+                  >
                     <Button
                       type="button"
                       variant="outline"
@@ -659,58 +712,43 @@ const MarkdownRenderInner = ({
                         'dark:from-card/90 dark:to-muted/20',
                         keyboardActive && 'border-primary/25'
                       )}
-                      onClick={handlePrevSlide}
-                      disabled={activeSlide === 0 && !hasPrevDocument}
+                      onClick={handleCardNavPrev}
+                      disabled={slideMode ? activeSlide === 0 && !hasPrevDocument : !hasPrevDocument}
                       aria-label={t('markdown.prevSlide')}
                     >
                       <ChevronLeft className="size-4 shrink-0 opacity-80" aria-hidden />
                       <span className="hidden text-xs font-medium sm:inline">{t('markdown.prevSlide')}</span>
                     </Button>
 
-                    <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
-                      <span
-                        className={cn(
-                          'text-[9px] font-semibold uppercase tracking-[0.18em] sm:text-[10px]',
-                          keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
-                        )}
-                      >
-                        {t('markdown.slideLabel')}
-                      </span>
-                      {/* <div
-                        className={cn(
-                          'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
-                          'bg-linear-to-br from-background/95 via-background/88 to-muted/25',
-                          'shadow-[0_4px_16px_-10px_hsl(var(--primary)/0.35),0_0_0_1px_hsl(var(--foreground)/0.04)_inset]',
-                          'dark:from-card/92 dark:via-card/78 dark:to-muted/18',
-                          keyboardActive ? 'border-primary/35 ring-1 ring-primary/15' : 'border-border/55'
-                        )}
-                        aria-live="polite"
-                        aria-atomic="true"
-                      >
-                        <span className="font-mono text-sm font-bold tabular-nums text-primary">{activeSlide + 1}</span>
-                        <span className="text-[10px] font-medium text-muted-foreground/50" aria-hidden>
-                          /
+                    {slideMode ? (
+                      <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+                        <span
+                          className={cn(
+                            'text-[9px] font-semibold uppercase tracking-[0.18em] sm:text-[10px]',
+                            keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
+                          )}
+                        >
+                          {t('markdown.slideLabel')}
                         </span>
-                        <span className="font-mono text-sm font-semibold tabular-nums text-muted-foreground">
-                          {slides.length}
-                        </span>
-                      </div> */}
-                      {slides.length > 1 && slides.length <= 12 ? (
-                        <div className="flex max-w-full items-center justify-center gap-1 px-1" aria-hidden>
-                          {slides.map((_, slideIdx) => (
-                            <span
-                              key={slideIdx}
-                              className={cn(
-                                'h-1 rounded-full transition-all duration-300',
-                                slideIdx === activeSlide
-                                  ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
-                                  : 'w-1 bg-border/55 dark:bg-border/65'
-                              )}
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
+                        {slides.length > 1 && slides.length <= 12 ? (
+                          <div className="flex max-w-full items-center justify-center gap-1 px-1" aria-hidden>
+                            {slides.map((_, slideIdx) => (
+                              <span
+                                key={slideIdx}
+                                className={cn(
+                                  'h-1 rounded-full transition-all duration-300',
+                                  slideIdx === activeSlide
+                                    ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
+                                    : 'w-1 bg-border/55 dark:bg-border/65'
+                                )}
+                              />
+                            ))}
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : (
+                      <div className="min-w-0 flex-1" aria-hidden />
+                    )}
 
                     <Button
                       type="button"
@@ -721,8 +759,8 @@ const MarkdownRenderInner = ({
                         'dark:from-card/90 dark:to-muted/20',
                         keyboardActive && 'border-primary/25'
                       )}
-                      onClick={handleNextSlide}
-                      disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
+                      onClick={handleCardNavNext}
+                      disabled={slideMode ? activeSlide >= slides.length - 1 && !hasNextDocument : !hasNextDocument}
                       aria-label={t('markdown.nextSlide')}
                     >
                       <span className="hidden text-xs font-medium sm:inline">{t('markdown.nextSlide')}</span>
@@ -749,20 +787,20 @@ const MarkdownRenderInner = ({
         <aside
           className={cn(
             'hidden min-h-0 shrink-0 lg:flex lg:w-72 lg:flex-col',
-            slideMode && 'lg:self-stretch',
+            cardScrollMode && 'lg:self-stretch',
             fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-24',
-            slideMode
+            cardScrollMode
               ? fillViewportCard
                 ? 'h-full min-h-0 max-h-full'
                 : DOC_READING_PANE_MAX_CLASS
               : 'max-h-[calc(100vh-7rem)]',
-            !slideMode && 'self-start'
+            !cardScrollMode && 'self-start'
           )}
         >
           <div
             className={cn(
               'rounded-xl  bg-card/50 backdrop-blur-sm p-4 shadow-[0_14px_36px_-24px_hsl(var(--foreground)/0.28)]',
-              slideMode && 'flex h-full min-h-0 flex-col overflow-hidden'
+              cardScrollMode && 'flex h-full min-h-0 flex-col overflow-hidden'
             )}
           >
             <div className="flex items-center justify-between mb-3.5 shrink-0">
@@ -781,7 +819,7 @@ const MarkdownRenderInner = ({
             <ScrollArea
               className={cn(
                 'pr-1.5',
-                slideMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
+                cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
               )}
             >
               <nav className="space-y-0.5">

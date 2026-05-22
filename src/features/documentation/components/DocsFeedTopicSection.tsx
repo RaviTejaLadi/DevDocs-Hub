@@ -178,7 +178,7 @@ function DocsFeedTopicSectionInner({
             {contentMounted ? (
               <MarkdownRender
                 content={item.content}
-                slideMode
+                feedScrollMode
                 fillViewportCard
                 headingIdScope={item.id}
                 scrollIntentActive={isActive}
@@ -200,7 +200,7 @@ function DocsFeedTopicSectionInner({
 }
 
 /**
- * One topic “card” in the infinite feed. Heavy markdown/slide UI mounts only when the section
+ * One topic “card” in the infinite feed. Heavy markdown UI mounts only when the section
  * nears the viewport so scrolling stays smooth.
  */
 const DocsFeedTopicSection = memo(DocsFeedTopicSectionInner);
