@@ -1,7 +1,25 @@
 /* eslint-disable react-refresh/only-export-components -- This is a data-aggregation module, not a component module. Multiple constant + helper exports are intentional. */
 import type { JSX } from 'react';
 import { Icons } from '@/assets/Icons';
-import { Binary, Network, NotebookTabs, Code2, Cog, Atom } from 'lucide-react';
+import {
+  Binary,
+  Network,
+  NotebookTabs,
+  Code2,
+  Cog,
+  Atom,
+  Zap,
+  Radio,
+  Building2,
+  Brain,
+  Shield,
+  GraduationCap,
+  FlaskConical,
+  FileCode2,
+  Coffee,
+  GitBranch,
+  Workflow,
+} from 'lucide-react';
 
 import { htmlTopics } from './computer-science/frontend/html';
 import { cssTopics } from './computer-science/frontend/css';
@@ -21,6 +39,17 @@ import { resourcesData } from './computer-science/Resources';
 import { systemDesignData } from './computer-science/SystemDesign';
 import { mechanicalTopics } from './Mechanical';
 import { basicScienceTopics } from './BasicScience';
+import { electricalEngineeringTopics } from './Electrical-Engineering';
+import { electronicsCommunicationTopics } from './Electronics-Communication';
+import { civilEngineeringTopics } from './Civil-Engineering';
+import { dataScienceAiTopics } from './Data-Science-AI';
+import { cybersecurityTopics } from './Cybersecurity';
+import { aptitudePlacementTopics } from './Aptitude-Placement';
+import { chemicalEngineeringTopics } from './Chemical-Engineering';
+import { pythonTopics } from './computer-science/python';
+import { javaTopics } from './computer-science/java';
+import { gitTopics } from './computer-science/git';
+import { devopsTopics } from './computer-science/devops';
 
 export interface TopicItem {
   id: string;
@@ -217,6 +246,38 @@ const computerScienceTopics: Topic[] = [
     items: systemDesignData,
   }),
   ...transformResourcesData(),
+  createTopic('languages', {
+    id: 'python',
+    title: 'Python',
+    description:
+      'Learn Python programming from basics to OOP, modules, file handling, virtual environments, and popular libraries for automation and development.',
+    icon: <FileCode2 className="h-5 w-5" />,
+    items: pythonTopics,
+  }),
+  createTopic('languages', {
+    id: 'java',
+    title: 'Java',
+    description:
+      'Master Java with syntax, OOP, collections, multithreading, exception handling, and Spring Boot fundamentals for enterprise applications.',
+    icon: <Coffee className="h-5 w-5" />,
+    items: javaTopics,
+  }),
+  createTopic('devops', {
+    id: 'git',
+    title: 'Git & Version Control',
+    description:
+      'Learn Git fundamentals, branching, merging, rebasing, and collaborative workflows with GitHub for professional development.',
+    icon: <GitBranch className="h-5 w-5" />,
+    items: gitTopics,
+  }),
+  createTopic('devops', {
+    id: 'devops',
+    title: 'DevOps',
+    description:
+      'Understand DevOps practices including CI/CD, Kubernetes, monitoring, infrastructure as code, and Linux for modern software delivery.',
+    icon: <Workflow className="h-5 w-5" />,
+    items: devopsTopics,
+  }),
 ];
 
 /**
@@ -247,6 +308,62 @@ export const STREAMS: Stream[] = [
       'Learn foundational science subjects including physics, chemistry, biology, and mathematics with concepts essential for engineering, research, academics, and technical problem solving.',
     icon: <Atom className="h-5 w-5" />,
     topics: basicScienceTopics,
+  },
+  {
+    id: 'electrical-engineering',
+    title: 'Electrical Engineering',
+    description:
+      'Study circuit theory, electrical machines, power systems, power electronics, and control systems for electrical engineering curricula and exams.',
+    icon: <Zap className="h-5 w-5" />,
+    topics: electricalEngineeringTopics,
+  },
+  {
+    id: 'electronics-communication',
+    title: 'Electronics & Communication',
+    description:
+      'Explore digital and analog electronics, signals and systems, communication engineering, and microprocessors for ECE students.',
+    icon: <Radio className="h-5 w-5" />,
+    topics: electronicsCommunicationTopics,
+  },
+  {
+    id: 'civil-engineering',
+    title: 'Civil Engineering',
+    description:
+      'Learn structural engineering, concrete technology, geotechnical engineering, surveying, and transportation for civil engineering programs.',
+    icon: <Building2 className="h-5 w-5" />,
+    topics: civilEngineeringTopics,
+  },
+  {
+    id: 'chemical-engineering',
+    title: 'Chemical Engineering',
+    description:
+      'Cover unit operations, reaction engineering, process control, and plant design for chemical engineering students and professionals.',
+    icon: <FlaskConical className="h-5 w-5" />,
+    topics: chemicalEngineeringTopics,
+  },
+  {
+    id: 'data-science-ai',
+    title: 'Data Science & AI',
+    description:
+      'Build skills in Python for data science, statistics, machine learning, deep learning, NLP, and data engineering pipelines.',
+    icon: <Brain className="h-5 w-5" />,
+    topics: dataScienceAiTopics,
+  },
+  {
+    id: 'cybersecurity',
+    title: 'Cybersecurity',
+    description:
+      'Learn security fundamentals, network and application security, cryptography, and ethical hacking for modern IT roles.',
+    icon: <Shield className="h-5 w-5" />,
+    topics: cybersecurityTopics,
+  },
+  {
+    id: 'aptitude-placement',
+    title: 'Aptitude & Placement',
+    description:
+      'Prepare for placements with quantitative aptitude, logical reasoning, verbal ability, and interview preparation guides.',
+    icon: <GraduationCap className="h-5 w-5" />,
+    topics: aptitudePlacementTopics,
   },
 ];
 
