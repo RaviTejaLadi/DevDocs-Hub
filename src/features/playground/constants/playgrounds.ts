@@ -1,8 +1,9 @@
 import { Braces, Layers, ListOrdered, Type } from 'lucide-react';
 import { ARRAY_METHODS } from './arrayMethods';
-import type { PlaygroundDefinition } from '../types';
+import { OBJECT_METHODS } from './objectMethods';
+import type { PlaygroundMeta } from '../types';
 
-export const PLAYGROUNDS: PlaygroundDefinition[] = [
+export const PLAYGROUNDS: PlaygroundMeta[] = [
   {
     id: 'js-arrays',
     label: 'JavaScript Arrays',
@@ -11,7 +12,6 @@ export const PLAYGROUNDS: PlaygroundDefinition[] = [
     category: 'javascript',
     icon: ListOrdered,
     methodCount: ARRAY_METHODS.length,
-    available: true,
   },
   {
     id: 'js-strings',
@@ -19,7 +19,6 @@ export const PLAYGROUNDS: PlaygroundDefinition[] = [
     description: 'Interactive string methods playground — slice, split, replace, and template patterns.',
     category: 'javascript',
     icon: Type,
-    available: false,
   },
   {
     id: 'js-objects',
@@ -27,7 +26,7 @@ export const PLAYGROUNDS: PlaygroundDefinition[] = [
     description: 'Keys, values, entries, spread, and Object static helpers in one place.',
     category: 'javascript',
     icon: Braces,
-    available: false,
+    methodCount: OBJECT_METHODS.length,
   },
   {
     id: 'js-map-set',
@@ -35,8 +34,5 @@ export const PLAYGROUNDS: PlaygroundDefinition[] = [
     description: 'Collections beyond arrays — Map, Set, WeakMap, and WeakSet operations.',
     category: 'javascript',
     icon: Layers,
-    available: false,
   },
 ];
-
-export const getPlaygroundById = (id: string) => PLAYGROUNDS.find((p) => p.id === id);
