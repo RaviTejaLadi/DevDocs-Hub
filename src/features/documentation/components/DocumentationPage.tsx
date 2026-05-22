@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { getStreamByTopicId } from '@/data/topics';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -21,10 +21,12 @@ import {
 } from '@/constants/docsSidePanel';
 import { FALLBACK_SCROLL_ROOT } from '../constants';
 import { DOC_FEED_SECTION_SHELL_CLASS } from '../constants';
-import { flattenTopicItems, docFeedSectionDomId } from '../utils';
+import { flattenTopicItems, docFeedSectionDomId, groupFeedRowsByTopic } from '../utils';
 import { DocsFeedStreamBanner } from './DocsFeedStreamBanner';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DocsFeedTopicContinuationHero } from './DocsFeedTopicContinuationHero';
+import { DocsFeedTopicZone } from './DocsFeedTopicZone';
+import { DocsFeedScrollTopicIndicator } from './DocsFeedScrollTopicIndicator';
 import { useDocumentationPage } from '../hooks';
 
 const DocumentationPage = () => {
@@ -50,6 +52,8 @@ const DocumentationPage = () => {
     showScrollTop,
     scrollFeedToTop,
   } = useDocumentationPage();
+
+  const topicBlocks = useMemo(() => groupFeedRowsByTopic(feedRows), [feedRows]);
 
   const {
     topicBrowserOpen,
@@ -95,38 +99,46 @@ const DocumentationPage = () => {
         ) : null}
         <DocumentationTopicHero topic={topic} />
         {chainHasMoreAbove ? <div ref={prependSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
-        {feedRows.map((row, idx) => (
-          <Fragment key={`${row.topic.id}-${row.item.id}`}>
-            {idx > 0 && row.topic.id !== feedRows[idx - 1]!.topic.id ? (
-              <>
-                {(() => {
-                  const prevT = feedRows[idx - 1]!.topic;
-                  const sp = getStreamByTopicId(prevT.id);
-                  const sc = getStreamByTopicId(row.topic.id);
-                  return sp && sc && sp.id !== sc.id ? (
-                    <div className="mb-1 mt-2 sm:mt-3">
-                      <DocsFeedStreamBanner stream={sc} />
-                    </div>
-                  ) : null;
-                })()}
-                <DocsFeedTopicContinuationHero topic={row.topic} />
-              </>
-            ) : null}
-            <DocsFeedTopicSection
-              item={row.item}
-              idx={idx}
-              total={feedRows.length}
-              sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
-              isCurrentRoute={slug === row.item.id && categoryId === row.topic.id}
-              viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
-              feedNav={feedNav}
-              isActive={inViewFeedKey === `${row.topic.id}/${row.item.id}`}
-              sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
-              chainHasMoreToNextTopic={chainHasMoreBelow && idx === feedRows.length - 1}
-              chainHasMoreToPrevTopic={chainHasMoreAbove && idx === 0}
-            />
-          </Fragment>
-        ))}
+        {topicBlocks.map((block) => {
+          const firstGlobalIdx = block.entries[0]!.globalIdx;
+          return (
+            <Fragment key={block.topic.id}>
+              {firstGlobalIdx > 0 ? (
+                <>
+                  {(() => {
+                    const prevT = feedRows[firstGlobalIdx - 1]!.topic;
+                    const sp = getStreamByTopicId(prevT.id);
+                    const sc = getStreamByTopicId(block.topic.id);
+                    return sp && sc && sp.id !== sc.id ? (
+                      <div className="mb-1 mt-2 sm:mt-3">
+                        <DocsFeedStreamBanner stream={sc} />
+                      </div>
+                    ) : null;
+                  })()}
+                  <DocsFeedTopicContinuationHero topic={block.topic} />
+                </>
+              ) : null}
+              <DocsFeedTopicZone topic={block.topic}>
+                {block.entries.map(({ row, globalIdx }) => (
+                  <DocsFeedTopicSection
+                    key={`${row.topic.id}-${row.item.id}`}
+                    item={row.item}
+                    idx={globalIdx}
+                    total={feedRows.length}
+                    sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
+                    isCurrentRoute={slug === row.item.id && categoryId === row.topic.id}
+                    viewportRef={viewportRef ?? FALLBACK_SCROLL_ROOT}
+                    feedNav={feedNav}
+                    isActive={inViewFeedKey === `${row.topic.id}/${row.item.id}`}
+                    sectionClassName={DOC_FEED_SECTION_SHELL_CLASS}
+                    chainHasMoreToNextTopic={chainHasMoreBelow && globalIdx === feedRows.length - 1}
+                    chainHasMoreToPrevTopic={chainHasMoreAbove && globalIdx === 0}
+                  />
+                ))}
+              </DocsFeedTopicZone>
+            </Fragment>
+          );
+        })}
         {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
       </div>
 
@@ -334,6 +346,12 @@ const DocumentationPage = () => {
           </ScrollArea>
         </SheetContent>
       </Sheet>
+
+      <DocsFeedScrollTopicIndicator
+        inViewFeedKey={inViewFeedKey}
+        feedRows={feedRows}
+        visible={feedRows.length > 1}
+      />
 
       {showScrollTop && (
         <Button
