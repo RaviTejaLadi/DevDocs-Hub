@@ -76,14 +76,14 @@ export function LandingHero({
           <HelpCircle className="h-4 w-4 shrink-0" />
           {t('landing.interviewQuestionsByLevel')}
         </Button>
-        {/* <Button
+        <Button
           variant="outline"
-          className="gap-2 border-violet-500/30 bg-violet-500/5 hover:bg-violet-500/10 w-full sm:w-auto min-h-11 touch-manipulation sm:min-w-[220px]"
+          className="hidden gap-2 border-violet-500/30 bg-violet-500/5 hover:bg-violet-500/10 w-full sm:w-auto min-h-11 touch-manipulation sm:min-w-[220px]"
           onClick={onPlaygroundClick}
         >
           <FlaskConical className="h-4 w-4 shrink-0 text-violet-500" />
           {t('landing.playground')}
-        </Button> */}
+        </Button>
       </div>
     </header>
   );

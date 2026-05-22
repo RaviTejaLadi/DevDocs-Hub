@@ -10,7 +10,6 @@ import {
   Languages,
   ChevronDown,
   Code2,
-  FlaskConical,
   MoreHorizontal,
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
