@@ -11,3 +11,19 @@ export const docsSidePanelNavSurfaceClass =
 
 /** Scroll region: flex child must shrink; bottom padding clears last row above sheet/home affordances. */
 export const docsSidePanelScrollAreaClass = cn('min-h-0 min-w-0 flex-1 *:data-[slot=scroll-area-viewport]:pb-4');
+
+/** Shared chrome for fixed circular docs controls (primary sidebar toggle, topic browser trigger). */
+export const docsFloatingActionButtonClass = cn(
+  'fixed z-60 inline-flex size-10 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',
+  'text-secondary-foreground transition-[transform,box-shadow] duration-200',
+  'hover:bg-card hover:shadow-lg active:scale-[0.96]',
+  'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+);
+
+/** Below NavBar (sticky top-2 + h-14 + safe-area). */
+export const docsFloatingActionButtonTopClass =
+  'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)]';
+
+/** Second slot in the vertical stack (toggle height + gap). */
+export const docsFloatingActionButtonTopStackedClass =
+  'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]';

@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import {
+  docsFloatingActionButtonClass,
+  docsFloatingActionButtonTopStackedClass,
   docsSidePanelHeaderSurfaceClass,
   docsSidePanelNavSurfaceClass,
   docsSidePanelScrollAreaClass,
@@ -137,17 +139,13 @@ const DocumentationPage = () => {
           aria-expanded={topicBrowserOpen}
           aria-label={t('docs.topicBrowserTrigger')}
           className={cn(
-            'fixed z-60 inline-flex size-11 rounded-full bg-card/85 shadow-lg backdrop-blur-md',
-            'bg-linear-to-br from-card/95 via-card/88 to-muted/25 dark:from-card/90 dark:via-card/82 dark:to-muted/15',
-            'shadow-[0_10px_34px_-14px_hsl(var(--primary)/0.42)]',
-            'transition-[transform,box-shadow] duration-200 hover:shadow-[0_14px_40px_-16px_hsl(var(--primary)/0.48)] active:scale-[0.96]',
-            'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem+2.5rem+0.375rem)]',
-            'right-[max(1rem,env(safe-area-inset-right))] sm:right-6',
+            docsFloatingActionButtonClass,
+            docsFloatingActionButtonTopStackedClass,
             topicBrowserOpen && 'hidden'
           )}
           onClick={() => onTopicBrowserOpenChange(true)}
         >
-          <Library className="size-[1.1rem] text-primary" strokeWidth={1.75} />
+          <Library className="h-4 w-4" />
         </Button>
 
         <SheetContent
