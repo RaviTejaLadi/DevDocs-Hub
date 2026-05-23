@@ -38,7 +38,7 @@ export const gitTopics: TopicItem[] = [
     title: '🚀 Getting Started',
     content: '',
     items: [
-      { id: 'git-introduction', title: '📖 Introduction', content: gitIntroduction },
+      { id: 'git-introduction', title: '📖 Introduction', content: gitIntroduction, badge: 'beginner' },
       { id: 'git-installation-and-setup', title: '🛠️ Installation & Setup', content: gitInstallationAndSetup },
       { id: 'git-version-control-concepts', title: '📚 Version Control Concepts', content: gitVersionControlConcepts },
       { id: 'git-basics', title: '🧱 Git Basics', content: gitBasics },
@@ -123,6 +123,7 @@ export const gitTopics: TopicItem[] = [
         id: 'git-top-25-interview-questions',
         title: '📌 Top 25 Interview Questions',
         content: gitTop25InterviewQuestions,
+        badge: 'must-know',
       },
     ],
   },

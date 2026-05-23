@@ -51,10 +51,17 @@ import { javaTopics } from './computer-science/java';
 import { gitTopics } from './computer-science/git';
 import { devopsTopics } from './computer-science/devops';
 
+import type { TopicBadgeKind } from './topicBadges';
+
+export type { TopicBadgeKind } from './topicBadges';
+export { resolveTopicBadge, TOPIC_BADGE_LABELS, topicBadgeToneClasses } from './topicBadges';
+
 export interface TopicItem {
   id: string;
   title: string;
   content: string;
+  /** Optional override; when omitted, badge is inferred from title and section context. */
+  badge?: TopicBadgeKind;
   items?: TopicItem[];
 }
 

@@ -2,6 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, type JSX } from 'react';
 import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
 import type { Topic, TopicItem } from '@/data/topics';
+import { resolveTopicBadge } from '@/data/topics';
+import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
+import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -27,6 +30,14 @@ const findAncestorIds = (items: TopicItem[], targetId: string, chain: string[] =
     }
   }
   return null;
+};
+
+/** Leaf docs only — section headers with empty content are expanders, not articles. */
+const isDocumentItem = (item: TopicItem) => Boolean(item.content?.trim());
+
+const countDocumentItems = (item: TopicItem): number => {
+  if (isDocumentItem(item)) return 1;
+  return item.items?.reduce((sum, child) => sum + countDocumentItems(child), 0) ?? 0;
 };
 
 /** Flatten topic tree for search results. */
@@ -96,76 +107,118 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   );
 
   // Recursive tree renderer
-  const renderTree = (items: TopicItem[], depth = 0): JSX.Element[] => {
+  const renderTree = (items: TopicItem[], depth = 0, parentTitle?: string): JSX.Element[] => {
     return items.map((item, index) => {
       const routeKey = topic ? `${topic.id}/${item.id}` : '';
       const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
       const hasChildren = item.items && item.items.length > 0;
       const isExpanded = expandedIds[item.id];
       const shouldShowTitleTooltip = item.title.length > 28;
+      const isDoc = isDocumentItem(item);
+      const badgeKind = resolveTopicBadge(item.title, item.badge, {
+        parentTitle,
+        siblingIndex: index,
+        siblingCount: items.length,
+        depth,
+      });
+      const lessonCount = hasChildren ? countDocumentItems(item) : 0;
 
       return (
         <div key={item.id} className="w-full max-w-full overflow-hidden">
           <Button
-            variant={isActive ? 'secondary' : 'ghost'}
+            variant="ghost"
             data-sidebar-route={routeKey}
             className={cn(
-              'flex min-w-0 w-full max-w-full justify-start min-h-11 py-2.5 px-3 font-normal rounded-md overflow-hidden box-border touch-manipulation',
-              isActive
-                ? 'bg-accent text-accent-foreground'
-                : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+              'group/nav flex min-w-0 w-full max-w-full justify-start rounded-lg overflow-hidden box-border touch-manipulation',
+              'border-l-2 transition-[background-color,border-color,box-shadow,color] duration-200',
+              depth === 0 ? 'min-h-11 py-2 px-2.5' : 'min-h-9 py-1.5 px-2',
+              !isActive || !isDoc ? 'border-l-transparent' : topicBadgeAccentBorder[badgeKind],
+              isActive && isDoc
+                ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)]'
+                : isActive && !isDoc
+                ? 'bg-muted/55 text-foreground'
+                : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/35 hover:text-foreground'
             )}
-            style={{ paddingLeft: `${depth * 12 + 12}px` }}
+            style={{ paddingLeft: `${depth * 10 + 8}px` }}
             onClick={() => topic && handleNavigate(topic.id, item.id)}
           >
-            <div className="flex items-center gap-2 w-full min-w-0">
+            <div className="flex w-full min-w-0 items-center gap-2">
               {depth === 0 && (
                 <span
                   className={cn(
-                    'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-[11px] font-semibold tabular-nums tracking-wide',
-                    'bg-linear-to-b from-zinc-50 to-zinc-200/90 text-zinc-700 shadow-sm',
-                    'dark:from-zinc-800 dark:to-zinc-900 dark:text-zinc-200 dark:border-zinc-700/80'
+                    'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums',
+                    isActive
+                      ? 'border-primary/35 bg-primary/15 text-primary shadow-[0_0_0_1px_hsl(var(--primary)/0.12)]'
+                      : 'border-border/50 bg-background/80 text-muted-foreground dark:bg-card/80'
                   )}
                 >
                   {String(index + 1).padStart(2, '0')}
                 </span>
               )}
 
-              {shouldShowTitleTooltip ? (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <span className="text-sm truncate text-left flex-1 min-w-0">
+              <div className="flex min-w-0 flex-1 items-center gap-1 overflow-hidden">
+                {shouldShowTitleTooltip ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span
+                        className={cn(
+                          'min-w-0 flex-1 truncate text-left',
+                          depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
+                        )}
+                      >
+                        <TranslatedText text={item.title} />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" align="start" className="max-w-64 wrap-break-word">
                       <TranslatedText text={item.title} />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent side="right" align="start" className="max-w-64 wrap-break-word">
+                    </TooltipContent>
+                  </Tooltip>
+                ) : (
+                  <span
+                    className={cn(
+                      'min-w-0 flex-1 truncate text-left',
+                      depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
+                    )}
+                  >
                     <TranslatedText text={item.title} />
-                  </TooltipContent>
-                </Tooltip>
-              ) : (
-                <span className="text-sm truncate text-left flex-1 min-w-0">
-                  <TranslatedText text={item.title} />
-                </span>
-              )}
+                  </span>
+                )}
+
+                {hasChildren && lessonCount > 0 && (
+                  <span className="shrink-0 rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium tabular-nums text-muted-foreground">
+                    {lessonCount}
+                  </span>
+                )}
+
+                {isDoc && <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} />}
+              </div>
 
               {hasChildren && (
                 <button
                   type="button"
                   onClick={(e) => toggleExpand(e, item.id)}
-                  className="inline-flex size-10 items-center justify-center hover:bg-black/10 dark:hover:bg-white/10 rounded shrink-0 touch-manipulation"
+                  className={cn(
+                    'inline-flex size-8 shrink-0 items-center justify-center rounded-md touch-manipulation transition-colors',
+                    'hover:bg-foreground/8 dark:hover:bg-foreground/10',
+                    isExpanded && 'bg-foreground/6 dark:bg-foreground/8'
+                  )}
                   aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
                 >
                   {isExpanded ? (
-                    <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                    <ChevronDown className="size-3.5 text-foreground/70" />
                   ) : (
-                    <ChevronRight className="h-3.5 w-3.5 opacity-70" />
+                    <ChevronRight className="size-3.5 text-muted-foreground" />
                   )}
                 </button>
               )}
             </div>
           </Button>
 
-          {hasChildren && isExpanded && <div className="w-full">{renderTree(item.items!, depth + 1)}</div>}
+          {hasChildren && isExpanded && (
+            <div className={cn('ml-4 border-l border-border/30 pl-1', depth === 0 && 'mb-1 ml-5')}>
+              {renderTree(item.items!, depth + 1, item.title)}
+            </div>
+          )}
         </div>
       );
     });
@@ -211,17 +264,30 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
         return filtered.map((item) => {
           const routeKey = `${topic.id}/${item.id}`;
           const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
+          const badgeKind = resolveTopicBadge(item.title, item.badge);
           return (
             <Button
               key={item.id}
-              variant={isActive ? 'default' : 'ghost'}
+              variant="ghost"
               data-sidebar-route={routeKey}
-              className="flex w-full justify-start min-h-11 py-2.5 px-3 font-normal overflow-hidden box-border touch-manipulation"
+              className={cn(
+                'group/nav flex w-full justify-start min-h-10 rounded-lg border-l-2 py-2 px-2.5 font-normal overflow-hidden box-border touch-manipulation transition-colors',
+                isActive && isDocumentItem(item)
+                  ? cn(
+                      'border-l-2',
+                      topicBadgeAccentBorder[badgeKind],
+                      'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground'
+                    )
+                  : 'border-l-transparent hover:bg-muted/35'
+              )}
               onClick={() => handleNavigate(topic.id, item.id)}
             >
-              <span className="text-sm truncate min-w-0 block w-full text-left">
-                <TranslatedText text={item.title} />
-              </span>
+              <div className="flex min-w-0 w-full items-center gap-1 overflow-hidden text-left">
+                <span className="min-w-0 flex-1 truncate text-[13px]">
+                  <TranslatedText text={item.title} />
+                </span>
+                {isDocumentItem(item) && <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} />}
+              </div>
             </Button>
           );
         });
@@ -284,7 +350,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
       <div className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-2 sm:px-3">
         <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}>
           <div className={docsSidePanelNavSurfaceClass}>
-            <nav className="motion-stagger space-y-0.5" aria-label="Topic sections">
+            <nav className="motion-stagger space-y-0.5 group/nav" aria-label="Topic sections">
               {displayContent}
             </nav>
           </div>

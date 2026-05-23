@@ -1,6 +1,8 @@
 import { memo, useCallback, useState } from 'react';
 import type { RefObject } from 'react';
 import type { TopicItem } from '@/data/topics';
+import { resolveTopicBadge } from '@/data/topics';
+import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
 import { ListTree } from 'lucide-react';
 import MarkdownRender from '@/components/markdown';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -51,6 +53,10 @@ function DocsFeedTopicSectionInner({
   const onReachEnd = useCallback(() => feedNav.goToNextFrom(idx), [feedNav, idx]);
   const onReachStart = useCallback(() => feedNav.goToPrevFrom(idx), [feedNav, idx]);
   const progressPct = ((idx + 1) / total) * 100;
+  const badgeKind = resolveTopicBadge(item.title, item.badge, {
+    siblingIndex: idx,
+    siblingCount: total,
+  });
 
   return (
     <section
@@ -113,10 +119,10 @@ function DocsFeedTopicSectionInner({
 
             <div className="hidden h-9 w-px shrink-0 bg-border/50 sm:block" aria-hidden />
 
-            <div className="min-w-0 flex-1 py-px">
+            <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden py-px sm:gap-2.5">
               <h2
                 className={cn(
-                  'min-w-0 text-pretty text-base font-semibold leading-snug tracking-tight sm:text-lg',
+                  'min-w-0 flex-1 truncate text-base font-semibold leading-snug tracking-tight sm:text-lg',
                   isActive
                     ? 'bg-linear-to-br from-foreground via-foreground to-foreground/76 bg-clip-text text-transparent dark:to-foreground/70'
                     : 'text-foreground'
@@ -124,6 +130,7 @@ function DocsFeedTopicSectionInner({
               >
                 <TranslatedText text={item.title} />
               </h2>
+              <TopicBadgeChip kind={badgeKind} variant="header" active={isActive} />
             </div>
 
             <div className="hidden shrink-0 lg:block">
