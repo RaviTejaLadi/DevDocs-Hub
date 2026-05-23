@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { getStreamEmoji } from '../constants';
 
 type LandingStreamTabsProps = {
   streams: Stream[];
@@ -113,6 +114,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
           <div className="flex w-max items-center gap-2 px-0.5 py-0.5 sm:w-full sm:min-w-0 sm:flex-wrap sm:px-0 sm:py-0">
             {streams.map((stream) => {
               const isActive = stream.id === activeStream?.id;
+              const emoji = getStreamEmoji(stream.id);
               return (
                 <button
                   key={stream.id}
@@ -121,16 +123,19 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   onClick={() => onSelectStream(stream.id)}
                   aria-pressed={isActive}
                   className={cn(
-                    'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all',
+                    'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all duration-200',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                     'max-sm:shadow-sm',
                     isActive
-                      ? 'border-primary/55 bg-primary/12 text-primary shadow-sm ring-1 ring-primary/15'
-                      : 'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground'
+                      ? 'border-primary/55 bg-primary/12 text-primary shadow-md ring-1 ring-primary/15 scale-[1.02]'
+                      : 'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground hover:border-border/60'
                   )}
                 >
+                  <span className="text-base leading-none" aria-hidden>
+                    {emoji}
+                  </span>
                   {STREAM_ICONS[stream.id] ? (
-                    <ColoredIcon size={22}>{STREAM_ICONS[stream.id]}</ColoredIcon>
+                    <ColoredIcon size={20}>{STREAM_ICONS[stream.id]}</ColoredIcon>
                   ) : null}
                   <span className="font-medium">
                     <TranslatedText text={stream.title} />

@@ -36,14 +36,17 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
       onClick={firstItemId ? activate : undefined}
       onKeyDown={firstItemId ? onKeyDown : undefined}
       className={cn(
-        'group min-w-0 max-w-full cursor-pointer rounded-lg mt-2 border border-border/40 bg-card text-card-foreground touch-manipulation',
-        'transition-all duration-200 hover:border-primary/30 hover:shadow-sm',
+        'group relative min-w-0 max-w-full cursor-pointer overflow-hidden rounded-xl border border-border/35 bg-card/90 text-card-foreground touch-manipulation',
+        'shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
+        'transition-all duration-300 hover:border-primary/35 hover:bg-card hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-22px_hsl(var(--foreground)/0.55)]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        isGrid
-          ? 'flex h-32 flex-col overflow-hidden p-4'
-          : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
+        isGrid ? 'flex h-[8.5rem] flex-col p-4' : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
       )}
     >
+      <div
+        className="pointer-events-none absolute -right-3 -top-3 size-16 rounded-full bg-primary/5 blur-2xl transition-opacity duration-300 group-hover:bg-primary/10"
+        aria-hidden
+      />
       {isGrid ? (
         <LandingTopicCardGrid topic={topic} color={color} />
       ) : (

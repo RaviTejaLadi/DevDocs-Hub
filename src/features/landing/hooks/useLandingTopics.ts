@@ -27,6 +27,10 @@ export function useLandingTopics(streams: Stream[] | null) {
     );
   }, [activeStream, searchQuery]);
 
+  const totalTopicsInStream = activeStream?.topics.length ?? 0;
+  const filteredTopicsCount = filteredTopics.length;
+  const hasSearch = Boolean(searchQuery.trim());
+
   const groupedTopics = useMemo(() => {
     return filteredTopics.reduce<Record<string, Topic[]>>((acc, topic) => {
       if (!acc[topic.category]) acc[topic.category] = [];
@@ -53,5 +57,8 @@ export function useLandingTopics(streams: Stream[] | null) {
     activeStream,
     groupedTopics,
     toggleSection,
+    totalTopicsInStream,
+    filteredTopicsCount,
+    hasSearch,
   };
 }

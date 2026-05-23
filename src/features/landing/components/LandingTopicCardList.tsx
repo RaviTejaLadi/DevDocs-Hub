@@ -18,12 +18,18 @@ export function LandingTopicCardList({ topic, color }: LandingTopicCardListProps
 
   return (
     <>
-      <div className="flex shrink-0 items-center gap-3">
-        <div className={cn('shrink-0 rounded-lg p-2.5', color.iconBg, color.iconColor)}>
-          <ColoredIcon size={20}>{topic.icon}</ColoredIcon>
+      <div className="relative flex shrink-0 items-center gap-3">
+        <div
+          className={cn(
+            'shrink-0 rounded-xl border border-border/30 p-2.5 shadow-sm transition-transform duration-300 group-hover:scale-105',
+            color.iconBg,
+            color.iconColor
+          )}
+        >
+          <ColoredIcon size={22}>{topic.icon}</ColoredIcon>
         </div>
       </div>
-      <div className="min-w-0 flex-1 space-y-1.5">
+      <div className="relative min-w-0 flex-1 space-y-1.5">
         <h3 className="wrap-break-word text-base font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
           <TranslatedText text={topic.title} />
         </h3>
@@ -32,11 +38,11 @@ export function LandingTopicCardList({ topic, color }: LandingTopicCardListProps
         </p>
         <LandingTopicBadges items={topic.items} viewMode="list" />
       </div>
-      <div className="flex min-w-0 w-full items-center justify-between gap-2 pt-1 sm:w-auto sm:justify-end sm:pt-0">
-        <span className="shrink-0 rounded-md border border-border/40 bg-muted/35 px-2 py-0.5 text-xs font-medium text-muted-foreground/90">
+      <div className="relative flex min-w-0 w-full items-center justify-between gap-2 pt-1 sm:w-auto sm:justify-end sm:pt-0">
+        <span className="shrink-0 rounded-md border border-border/40 bg-muted/35 px-2 py-0.5 text-xs font-semibold text-muted-foreground/90 tabular-nums">
           {t('landing.topicsCount', { count: topic.items.length })}
         </span>
-        <ChevronRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" />
+        <ChevronRight className="h-4 w-4 text-muted-foreground/70 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-primary" />
       </div>
     </>
   );
