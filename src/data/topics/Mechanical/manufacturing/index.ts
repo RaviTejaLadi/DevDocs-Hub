@@ -16,7 +16,11 @@ export const manufacturingTopics: TopicItem[] = [
     title: '🏭 Manufacturing Processes',
     content: '',
     items: [
-      { id: 'manufacturing-introduction', title: '📖 Introduction to Manufacturing', content: manufacturingIntroduction },
+      {
+        id: 'manufacturing-introduction',
+        title: '📖 Introduction to Manufacturing',
+        content: manufacturingIntroduction,
+      },
       { id: 'casting', title: '🔥 Casting', content: casting },
       { id: 'machining', title: '🔧 Machining', content: machining },
       { id: 'manufacturing-forming', title: '🔨 Forming Processes', content: formingProcesses },

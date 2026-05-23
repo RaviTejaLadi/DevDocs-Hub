@@ -34,11 +34,7 @@ export type ArrayMethodDefinition = {
 
 export type ArrayRunResult = { ok: true; result: unknown; arrayAfter: unknown[] } | { ok: false; error: string };
 
-export type ObjectMethodCategory =
-  | 'static'
-  | 'inspection'
-  | 'transformation'
-  | 'mutation';
+export type ObjectMethodCategory = 'static' | 'inspection' | 'transformation' | 'mutation';
 
 export interface ObjectMethodDefinition {
   id: string;

@@ -4,11 +4,7 @@ function parseJson(value: string) {
   return Function(`"use strict"; return (${value})`)();
 }
 
-export function runObjectMethod(
-  method: ObjectMethodDefinition,
-  objectInput: string,
-  extraArgs: string
-) {
+export function runObjectMethod(method: ObjectMethodDefinition, objectInput: string, extraArgs: string) {
   try {
     const originalObject = parseJson(objectInput);
 

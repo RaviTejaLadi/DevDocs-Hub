@@ -347,11 +347,7 @@ const DocumentationPage = () => {
         </SheetContent>
       </Sheet>
 
-      <DocsFeedScrollTopicIndicator
-        inViewFeedKey={inViewFeedKey}
-        feedRows={feedRows}
-        visible={feedRows.length > 1}
-      />
+      <DocsFeedScrollTopicIndicator inViewFeedKey={inViewFeedKey} feedRows={feedRows} visible={feedRows.length > 1} />
 
       {showScrollTop && (
         <Button

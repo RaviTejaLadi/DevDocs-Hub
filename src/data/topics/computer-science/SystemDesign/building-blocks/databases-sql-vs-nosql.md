@@ -1,2 +1,1 @@
 # Databases (SQL vs NoSQL)
-

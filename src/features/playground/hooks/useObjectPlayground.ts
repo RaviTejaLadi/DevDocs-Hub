@@ -57,10 +57,7 @@ export function useObjectPlayground() {
     [filteredMethods, selectedMethod.id]
   );
 
-  const globalIndex = useMemo(
-    () => OBJECT_METHODS.findIndex((m) => m.id === selectedMethod.id),
-    [selectedMethod.id]
-  );
+  const globalIndex = useMemo(() => OBJECT_METHODS.findIndex((m) => m.id === selectedMethod.id), [selectedMethod.id]);
 
   const selectMethod = useCallback(
     (id: string) => {
@@ -87,10 +84,7 @@ export function useObjectPlayground() {
 
       const base = idx >= 0 ? idx : 0;
 
-      const next =
-        direction === 'next'
-          ? (base + 1) % pool.length
-          : (base - 1 + pool.length) % pool.length;
+      const next = direction === 'next' ? (base + 1) % pool.length : (base - 1 + pool.length) % pool.length;
 
       const target = pool[next];
 

@@ -1,2 +1,1 @@
 # Managed Identities
-

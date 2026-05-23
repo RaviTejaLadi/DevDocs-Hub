@@ -36,7 +36,11 @@ export const nextTopics: TopicItem[] = [
     items: [
       { id: 'next-js-intro', title: '📚 Introduction', content: nextIntro },
       { id: 'next-installation-and-setup', title: '🛠️ Installation & Setup', content: nextInstallationAndSetup },
-      { id: 'next-js-files-and-folders-structure', title: '📁 Files and Folders Structure', content: nextFilesAndFoldersStructure },
+      {
+        id: 'next-js-files-and-folders-structure',
+        title: '📁 Files and Folders Structure',
+        content: nextFilesAndFoldersStructure,
+      },
       { id: 'next-quick-review-checklist', title: '📝 Quick Review Checklist', content: nextQuickReview },
     ],
   },
@@ -82,7 +86,11 @@ export const nextTopics: TopicItem[] = [
       { id: 'next-metadata-seo', title: '🔍 Metadata & SEO', content: nextMetadataSeo },
       { id: 'next-image-optimization', title: '🖼️ Image Optimization', content: nextImageOptimization },
       { id: 'next-font-optimization', title: '🔤 Font Optimization', content: nextFontOptimization },
-      { id: 'next-performance-optimization', title: '🚀 Performance Optimization', content: nextPerformanceOptimization },
+      {
+        id: 'next-performance-optimization',
+        title: '🚀 Performance Optimization',
+        content: nextPerformanceOptimization,
+      },
     ],
   },
   {
@@ -100,10 +108,26 @@ export const nextTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'next-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: nextTop25InterviewQuestions },
-      { id: 'common-next-js-interview-questions', title: '❓ Common Interview Questions', content: commonNextInterviewQuestions },
-      { id: 'pages-routers-next-js-interview-questions', title: '📄 Pages Router Interview Questions', content: pagesRouterNextInterviewQuestions },
-      { id: 'app-routers-next-js-interview-questions', title: '📱 App Router Interview Questions', content: appRouterNextInterviewQuestions },
+      {
+        id: 'next-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: nextTop25InterviewQuestions,
+      },
+      {
+        id: 'common-next-js-interview-questions',
+        title: '❓ Common Interview Questions',
+        content: commonNextInterviewQuestions,
+      },
+      {
+        id: 'pages-routers-next-js-interview-questions',
+        title: '📄 Pages Router Interview Questions',
+        content: pagesRouterNextInterviewQuestions,
+      },
+      {
+        id: 'app-routers-next-js-interview-questions',
+        title: '📱 App Router Interview Questions',
+        content: appRouterNextInterviewQuestions,
+      },
     ],
   },
 ];

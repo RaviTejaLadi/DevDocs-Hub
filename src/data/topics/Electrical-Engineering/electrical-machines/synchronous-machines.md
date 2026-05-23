@@ -1,2 +1,1 @@
 # Synchronous Machines
-

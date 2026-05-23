@@ -1,2 +1,1 @@
 # Trade-offs Cheatsheet
-

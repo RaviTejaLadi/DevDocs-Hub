@@ -11,14 +11,14 @@ import popular_libraries from './popular-libraries.md?raw';
 import virtual_environments from './virtual-environments.md?raw';
 
 export const pythonTopics: TopicItem[] = [
-  { id: 'python-control-flow', title: "Control Flow", content: control_flow },
-  { id: 'python-data-types', title: "Data Types", content: data_types },
-  { id: 'python-file-handling', title: "File Handling", content: file_handling },
-  { id: 'python-functions', title: "Functions", content: functions },
-  { id: 'python-installation', title: "Installation", content: installation },
-  { id: 'python-introduction', title: "📖 Introduction", content: introduction },
-  { id: 'python-modules', title: "Modules", content: modules },
-  { id: 'python-oops', title: "Oops", content: oops },
-  { id: 'python-popular-libraries', title: "Popular Libraries", content: popular_libraries },
-  { id: 'python-virtual-environments', title: "Virtual Environments", content: virtual_environments },
+  { id: 'python-control-flow', title: 'Control Flow', content: control_flow },
+  { id: 'python-data-types', title: 'Data Types', content: data_types },
+  { id: 'python-file-handling', title: 'File Handling', content: file_handling },
+  { id: 'python-functions', title: 'Functions', content: functions },
+  { id: 'python-installation', title: 'Installation', content: installation },
+  { id: 'python-introduction', title: '📖 Introduction', content: introduction },
+  { id: 'python-modules', title: 'Modules', content: modules },
+  { id: 'python-oops', title: 'Oops', content: oops },
+  { id: 'python-popular-libraries', title: 'Popular Libraries', content: popular_libraries },
+  { id: 'python-virtual-environments', title: 'Virtual Environments', content: virtual_environments },
 ];

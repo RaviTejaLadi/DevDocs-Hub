@@ -1,2 +1,1 @@
 # Global Infrastructure (Regions & AZ)
-

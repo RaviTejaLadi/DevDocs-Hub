@@ -57,7 +57,11 @@ export const reactTopics: TopicItem[] = [
       { id: 'react-props-and-state', title: '📦 Props & State', content: propsAndState },
       { id: 'react-jsx', title: '📝 JSX Syntax', content: reactJsx },
       { id: 'react-functional-vs-class', title: '⚖️ Functional vs Class Components', content: reactComponentTypes },
-      { id: 'react-controlled-uncontrolled', title: '🎛️ Controlled vs Uncontrolled', content: controlledUncontrolledComponents },
+      {
+        id: 'react-controlled-uncontrolled',
+        title: '🎛️ Controlled vs Uncontrolled',
+        content: controlledUncontrolledComponents,
+      },
       { id: 'react-virtual-dom', title: '👻 Virtual DOM', content: reactVirtualDom },
       { id: 'react-lifecycle', title: '⏳ Component Lifecycle', content: reactLifecycle },
       { id: 'react-forms', title: '📋 Forms in React', content: formsInReact },
@@ -70,7 +74,11 @@ export const reactTopics: TopicItem[] = [
     items: [
       { id: 'react-hooks', title: '🎣 Hooks in React', content: hooks },
       { id: 'react-custom-hooks', title: '🪝 Custom Hooks', content: customHooks },
-      { id: 'react-memo-usememo-usecallback', title: '⚡ memo, useMemo & useCallback', content: reactMemoUsememoUsecallback },
+      {
+        id: 'react-memo-usememo-usecallback',
+        title: '⚡ memo, useMemo & useCallback',
+        content: reactMemoUsememoUsecallback,
+      },
       { id: 'react-suspense', title: '⏳ Suspense', content: reactSuspense },
       { id: 'react-portals', title: '🌀 Portals', content: reactPortals },
     ],

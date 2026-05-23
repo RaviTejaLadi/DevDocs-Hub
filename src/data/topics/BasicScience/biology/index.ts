@@ -47,8 +47,6 @@ export const biologyTopics: TopicItem[] = [
     id: 'biology-applied',
     title: '🧬 Applied Biology',
     content: '',
-    items: [
-      { id: 'biology-biotechnology-basics', title: '🔬 Biotechnology Basics', content: biotechnologyBasics },
-    ],
+    items: [{ id: 'biology-biotechnology-basics', title: '🔬 Biotechnology Basics', content: biotechnologyBasics }],
   },
 ];

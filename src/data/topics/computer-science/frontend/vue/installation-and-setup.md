@@ -37,14 +37,14 @@ npm -v
 
 # Recommended Stack
 
-| Tool | Recommended |
-|---|---|
-| Framework | Vue 3 |
-| Build Tool | Vite |
-| Package Manager | pnpm |
-| State Management | Pinia |
-| Routing | Vue Router |
-| Styling | Tailwind CSS |
+| Tool             | Recommended  |
+| ---------------- | ------------ |
+| Framework        | Vue 3        |
+| Build Tool       | Vite         |
+| Package Manager  | pnpm         |
+| State Management | Pinia        |
+| Routing          | Vue Router   |
+| Styling          | Tailwind CSS |
 
 ---
 
@@ -187,16 +187,13 @@ npm install -D tailwindcss @tailwindcss/vite
 # Update vite.config.js
 
 ```js
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    tailwindcss(),
-  ],
-})
+  plugins: [vue(), tailwindcss()],
+});
 ```
 
 ---
@@ -210,7 +207,7 @@ src/assets/main.css
 Add:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 ```
 
 ---
@@ -220,7 +217,7 @@ Add:
 ## main.js
 
 ```js
-import './assets/main.css'
+import './assets/main.css';
 ```
 
 ---
@@ -238,19 +235,19 @@ npm install vue-router
 ## src/router/index.js
 
 ```js
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/',
     component: () => import('../views/HomeView.vue'),
   },
-]
+];
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 ```
 
 ---
@@ -260,13 +257,11 @@ export const router = createRouter({
 ## main.js
 
 ```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import { router } from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import { router } from './router';
 
-createApp(App)
-  .use(router)
-  .mount('#app')
+createApp(App).use(router).mount('#app');
 ```
 
 ---
@@ -284,15 +279,15 @@ npm install pinia
 ## main.js
 
 ```js
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
+app.use(createPinia());
 
-app.mount('#app')
+app.mount('#app');
 ```
 
 ---
@@ -340,29 +335,29 @@ VITE_API_URL=https://api.example.com
 # Access Variables
 
 ```js
-const apiUrl = import.meta.env.VITE_API_URL
+const apiUrl = import.meta.env.VITE_API_URL;
 ```
 
 ---
 
 # Useful Commands
 
-| Command | Purpose |
-|---|---|
-| npm run dev | Start development |
-| npm run build | Production build |
+| Command         | Purpose            |
+| --------------- | ------------------ |
+| npm run dev     | Start development  |
+| npm run build   | Production build   |
 | npm run preview | Preview production |
-| npm run lint | Run ESLint |
+| npm run lint    | Run ESLint         |
 
 ---
 
 # Recommended VS Code Extensions
 
-| Extension | Purpose |
-|---|---|
-| Vue Official (Volar) | Vue support |
-| ESLint | Linting |
-| Prettier | Formatting |
+| Extension                 | Purpose               |
+| ------------------------- | --------------------- |
+| Vue Official (Volar)      | Vue support           |
+| ESLint                    | Linting               |
+| Prettier                  | Formatting            |
 | Tailwind CSS IntelliSense | Tailwind autocomplete |
 
 ---

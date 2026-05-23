@@ -1,2 +1,1 @@
 # Scalability Concepts
-

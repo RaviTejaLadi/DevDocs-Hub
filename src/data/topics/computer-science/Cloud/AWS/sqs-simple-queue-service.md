@@ -1,2 +1,1 @@
 # SQS (Simple Queue Service)
-

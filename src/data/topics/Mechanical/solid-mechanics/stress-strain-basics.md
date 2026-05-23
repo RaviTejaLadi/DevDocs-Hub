@@ -1,2 +1,1 @@
 # Stress & Strain Basics
-

@@ -97,12 +97,12 @@ public/
 
 ## Use Cases
 
-| File Type | Example |
-|---|---|
-| Favicons | favicon.ico |
-| Static images | logo.png |
-| robots.txt | SEO |
-| manifest.json | PWA |
+| File Type     | Example     |
+| ------------- | ----------- |
+| Favicons      | favicon.ico |
+| Static images | logo.png    |
+| robots.txt    | SEO         |
+| manifest.json | PWA         |
 
 ---
 
@@ -172,14 +172,14 @@ This is where Vue app starts.
 ## Example
 
 ```js
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-import './styles/main.css'
+import './styles/main.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.mount('#app')
+app.mount('#app');
 ```
 
 ---
@@ -204,11 +204,11 @@ Every component renders inside this component.
 
 ## Responsibilities
 
-| Responsibility | Description |
-|---|---|
-| Root Layout | Base app wrapper |
-| Shared UI | Navbar/Footer |
-| Route Rendering | router-view |
+| Responsibility  | Description      |
+| --------------- | ---------------- |
+| Root Layout     | Base app wrapper |
+| Shared UI       | Navbar/Footer    |
+| Route Rendering | router-view      |
 
 ---
 
@@ -236,19 +236,19 @@ assets/
 
 ## Use Cases
 
-| Asset Type | Example |
-|---|---|
-| Images | PNG, JPG, SVG |
-| Fonts | Custom fonts |
-| CSS | Global styles |
-| Icons | SVG icons |
+| Asset Type | Example       |
+| ---------- | ------------- |
+| Images     | PNG, JPG, SVG |
+| Fonts      | Custom fonts  |
+| CSS        | Global styles |
+| Icons      | SVG icons     |
 
 ---
 
 ## Import Example
 
 ```js
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/logo.png';
 ```
 
 ---
@@ -361,11 +361,11 @@ views/
 
 # Difference Between components and views
 
-| components | views |
-|---|---|
-| Reusable | Route-specific |
-| Small UI parts | Full page |
-| Used multiple times | Usually once |
+| components          | views          |
+| ------------------- | -------------- |
+| Reusable            | Route-specific |
+| Small UI parts      | Full page      |
+| Used multiple times | Usually once   |
 
 ---
 
@@ -394,14 +394,14 @@ Creates Vue Router instance.
 ## Example
 
 ```js
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
-const routes = []
+const routes = [];
 
 export const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 ```
 
 ---
@@ -432,13 +432,13 @@ stores/
 # Example Store
 
 ```js
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null,
   }),
-})
+});
 ```
 
 ---
@@ -472,19 +472,19 @@ composables/
 # Example
 
 ```js
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 export function useCounter() {
-  const count = ref(0)
+  const count = ref(0);
 
   const increment = () => {
-    count.value++
-  }
+    count.value++;
+  };
 
   return {
     count,
     increment,
-  }
+  };
 }
 ```
 
@@ -522,10 +522,10 @@ from UI components.
 # Example
 
 ```js
-import axios from 'axios'
+import axios from 'axios';
 
 export async function getUsers() {
-  return axios.get('/api/users')
+  return axios.get('/api/users');
 }
 ```
 
@@ -551,11 +551,11 @@ api/
 # Example Axios Instance
 
 ```js
-import axios from 'axios'
+import axios from 'axios';
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-})
+});
 ```
 
 ---
@@ -620,7 +620,7 @@ export function formatCurrency(value) {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
-  }).format(value)
+  }).format(value);
 }
 ```
 
@@ -708,9 +708,9 @@ types/
 
 ```ts
 export interface User {
-  id: number
-  name: string
-  email: string
+  id: number;
+  name: string;
+  email: string;
 }
 ```
 
@@ -752,12 +752,12 @@ Most important project configuration file.
 
 # Contains
 
-| Property | Purpose |
-|---|---|
-| dependencies | Packages |
-| scripts | Commands |
-| version | App version |
-| name | Project name |
+| Property     | Purpose      |
+| ------------ | ------------ |
+| dependencies | Packages     |
+| scripts      | Commands     |
+| version      | App version  |
+| name         | Project name |
 
 ---
 
@@ -792,12 +792,12 @@ Vite configuration file.
 ## Example
 
 ```js
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   plugins: [vue()],
-})
+});
 ```
 
 ---
@@ -891,12 +891,12 @@ features/
 
 # Benefits
 
-| Benefit | Description |
-|---|---|
+| Benefit            | Description        |
+| ------------------ | ------------------ |
 | Better scalability | Large applications |
-| Easier maintenance | Isolated features |
-| Cleaner imports | Organized code |
-| Team collaboration | Clear ownership |
+| Easier maintenance | Isolated features  |
+| Cleaner imports    | Organized code     |
+| Team collaboration | Clear ownership    |
 
 ---
 
@@ -984,17 +984,17 @@ src/
 
 # Folder Responsibilities Summary
 
-| Folder | Responsibility |
-|---|---|
-| assets | Static processed assets |
-| components | Reusable UI |
-| composables | Reusable logic |
-| views/pages | Route pages |
-| router | Routing |
-| stores | Global state |
-| services | API calls |
-| utils | Helper functions |
-| layouts | Page layouts |
-| styles | Global styling |
-| constants | App constants |
-| types | TypeScript types |
+| Folder      | Responsibility          |
+| ----------- | ----------------------- |
+| assets      | Static processed assets |
+| components  | Reusable UI             |
+| composables | Reusable logic          |
+| views/pages | Route pages             |
+| router      | Routing                 |
+| stores      | Global state            |
+| services    | API calls               |
+| utils       | Helper functions        |
+| layouts     | Page layouts            |
+| styles      | Global styling          |
+| constants   | App constants           |
+| types       | TypeScript types        |

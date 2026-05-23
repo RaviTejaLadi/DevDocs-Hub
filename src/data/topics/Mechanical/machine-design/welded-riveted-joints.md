@@ -1,2 +1,1 @@
 # Welded & Riveted Joints
-

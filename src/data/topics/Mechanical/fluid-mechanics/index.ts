@@ -38,8 +38,6 @@ export const fluidMechanicsTopics: TopicItem[] = [
     id: 'fluid-applications',
     title: '⚙️ Applications',
     content: '',
-    items: [
-      { id: 'fluid-turbomachinery', title: '🔧 Turbomachinery', content: turbomachinery },
-    ],
+    items: [{ id: 'fluid-turbomachinery', title: '🔧 Turbomachinery', content: turbomachinery }],
   },
 ];

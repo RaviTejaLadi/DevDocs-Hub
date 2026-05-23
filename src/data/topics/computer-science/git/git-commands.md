@@ -1,2 +1,1 @@
 # Essential Git Commands
-

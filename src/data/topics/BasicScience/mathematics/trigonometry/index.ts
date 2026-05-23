@@ -12,7 +12,11 @@ import applicationsTrigonometry from './applications-trigonometry.md?raw';
 export const trigonometryTopics: TopicItem[] = [
   { id: 'trigonometry-introduction', title: '📖 Introduction', content: introduction },
   { id: 'trigonometry-trigonometric-ratios', title: '📐 Trigonometric Ratios', content: trigonometricRatios },
-  { id: 'trigonometry-trigonometric-identities', title: '🆔 Trigonometric Identities', content: trigonometricIdentities },
+  {
+    id: 'trigonometry-trigonometric-identities',
+    title: '🆔 Trigonometric Identities',
+    content: trigonometricIdentities,
+  },
   { id: 'trigonometry-heights-distances', title: '🏔️ Heights and Distances', content: heightsDistances },
   { id: 'trigonometry-trigonometric-equations', title: '✖️ Trigonometric Equations', content: trigonometricEquations },
   {

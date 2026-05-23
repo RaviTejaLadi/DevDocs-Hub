@@ -1,2 +1,1 @@
 # Third Law of Thermodynamics
-

@@ -58,7 +58,11 @@ export const sqlTopics: TopicItem[] = [
     title: '✏️ DDL & DML',
     content: '',
     items: [
-      { id: 'sql-create-alter-drop-tables', title: '🏗️ CREATE, ALTER & DROP Tables', content: sqlCreateAlterDropTables },
+      {
+        id: 'sql-create-alter-drop-tables',
+        title: '🏗️ CREATE, ALTER & DROP Tables',
+        content: sqlCreateAlterDropTables,
+      },
       { id: 'sql-insert-update-delete', title: '📝 INSERT, UPDATE & DELETE', content: sqlInsertUpdateDelete },
       { id: 'sql-constraints', title: '🔒 Constraints (Primary & Foreign Key)', content: sqlConstraints },
       { id: 'sql-indexes', title: '📇 Indexes', content: sqlIndexes },
@@ -103,7 +107,11 @@ export const sqlTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'sql-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: sqlTop25InterviewQuestions },
+      {
+        id: 'sql-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: sqlTop25InterviewQuestions,
+      },
       { id: 'sql-theory-questions', title: '❓ Theory Questions', content: sqlTheoryQuestions },
       { id: 'sql-coding-questions', title: '💻 Coding Questions', content: sqlCodingQuestions },
     ],

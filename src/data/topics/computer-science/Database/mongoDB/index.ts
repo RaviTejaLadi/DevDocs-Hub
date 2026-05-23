@@ -44,7 +44,11 @@ export const mongoDBTopics: TopicItem[] = [
     title: '📖 Core Concepts',
     content: '',
     items: [
-      { id: 'mongo-documents-and-collections', title: '📄 Documents & Collections', content: mongoDocumentsAndCollections },
+      {
+        id: 'mongo-documents-and-collections',
+        title: '📄 Documents & Collections',
+        content: mongoDocumentsAndCollections,
+      },
       { id: 'mongo-crud-operations', title: '✏️ CRUD Operations', content: mongoCrudOperations },
       { id: 'mongo-query-operators', title: '🔍 Query Operators', content: mongoQueryOperators },
       { id: 'mongo-aggregation-framework', title: '📊 Aggregation Framework', content: mongoAggregationFramework },
@@ -57,7 +61,11 @@ export const mongoDBTopics: TopicItem[] = [
     content: '',
     items: [
       { id: 'mongo-schema-design', title: '🏗️ Schema Design', content: mongoSchemaDesign },
-      { id: 'mongo-embedding-vs-referencing', title: '🔗 Embedding vs Referencing', content: mongoEmbeddingVsReferencing },
+      {
+        id: 'mongo-embedding-vs-referencing',
+        title: '🔗 Embedding vs Referencing',
+        content: mongoEmbeddingVsReferencing,
+      },
     ],
   },
   {
@@ -94,7 +102,11 @@ export const mongoDBTopics: TopicItem[] = [
         content: mongoAuthenticationAuthorization,
       },
       { id: 'mongo-backup-and-restore', title: '💾 Backup & Restore', content: mongoBackupAndRestore },
-      { id: 'mongo-performance-optimization', title: '🚀 Performance Optimization', content: mongoPerformanceOptimization },
+      {
+        id: 'mongo-performance-optimization',
+        title: '🚀 Performance Optimization',
+        content: mongoPerformanceOptimization,
+      },
       { id: 'mongo-monitoring', title: '📈 Monitoring', content: mongoMonitoring },
     ],
   },
@@ -103,7 +115,11 @@ export const mongoDBTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'mongo-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: mongoTop25InterviewQuestions },
+      {
+        id: 'mongo-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: mongoTop25InterviewQuestions,
+      },
       { id: 'mongo-theory-questions', title: '❓ Theory Questions', content: mongoTheoryQuestions },
       { id: 'mongo-coding-questions', title: '💻 Coding Questions', content: mongoCodingQuestions },
     ],

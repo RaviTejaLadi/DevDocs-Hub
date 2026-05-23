@@ -23,7 +23,11 @@ export const matricesTopics: TopicItem[] = [
     title: '✅ Solving Linear Equations using Matrices',
     content: solvingLinearEquations,
   },
-  { id: 'matrices-eigenvalues-eigenvectors', title: 'λ Eigenvalues and Eigenvectors', content: eigenvaluesEigenvectors },
+  {
+    id: 'matrices-eigenvalues-eigenvectors',
+    title: 'λ Eigenvalues and Eigenvectors',
+    content: eigenvaluesEigenvectors,
+  },
   {
     id: 'matrices-transformations-matrices',
     title: '🔃 Transformations using Matrices',

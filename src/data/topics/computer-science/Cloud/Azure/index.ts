@@ -51,9 +51,17 @@ export const azureTopics: TopicItem[] = [
     content: '',
     items: [
       { id: 'azure-intro', title: '📚 Introduction', content: azureIntro },
-      { id: 'azure-account-setup-and-billing', title: '💳 Account Setup & Billing', content: azureAccountSetupAndBilling },
+      {
+        id: 'azure-account-setup-and-billing',
+        title: '💳 Account Setup & Billing',
+        content: azureAccountSetupAndBilling,
+      },
       { id: 'azure-cli-and-portal', title: '🖥️ Azure CLI & Portal', content: azureCliAndPortal },
-      { id: 'azure-regions-and-resource-groups', title: '🌍 Regions & Resource Groups', content: azureRegionsAndResourceGroups },
+      {
+        id: 'azure-regions-and-resource-groups',
+        title: '🌍 Regions & Resource Groups',
+        content: azureRegionsAndResourceGroups,
+      },
     ],
   },
   {

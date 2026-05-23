@@ -6,9 +6,9 @@ import levelling from './levelling.md?raw';
 import theodolite from './theodolite.md?raw';
 
 export const surveyingTopics: TopicItem[] = [
-  { id: 'surveying-chain-surveying', title: "Chain Surveying", content: chain_surveying },
-  { id: 'surveying-compass-surveying', title: "Compass Surveying", content: compass_surveying },
-  { id: 'surveying-introduction', title: "📖 Introduction", content: introduction },
-  { id: 'surveying-levelling', title: "Levelling", content: levelling },
-  { id: 'surveying-theodolite', title: "Theodolite", content: theodolite },
+  { id: 'surveying-chain-surveying', title: 'Chain Surveying', content: chain_surveying },
+  { id: 'surveying-compass-surveying', title: 'Compass Surveying', content: compass_surveying },
+  { id: 'surveying-introduction', title: '📖 Introduction', content: introduction },
+  { id: 'surveying-levelling', title: 'Levelling', content: levelling },
+  { id: 'surveying-theodolite', title: 'Theodolite', content: theodolite },
 ];

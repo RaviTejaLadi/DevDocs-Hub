@@ -134,7 +134,11 @@ export const tsConcepts: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'ts-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: top25TypescriptQuestions },
+      {
+        id: 'ts-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: top25TypescriptQuestions,
+      },
     ],
   },
 ];

@@ -659,7 +659,7 @@ const MarkdownRenderInner = ({
                         compactSlide: true,
                       })}
                     >
-                      {slideMode ? (slides[activeSlide] ?? '') : translatedContent}
+                      {slideMode ? slides[activeSlide] ?? '' : translatedContent}
                     </ReactMarkdown>
                   </div>
                 </div>

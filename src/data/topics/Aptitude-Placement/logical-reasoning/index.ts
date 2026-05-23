@@ -7,10 +7,10 @@ import puzzles from './puzzles.md?raw';
 import syllogisms from './syllogisms.md?raw';
 
 export const logicalReasoningTopics: TopicItem[] = [
-  { id: 'logical-reasoning-blood-relations', title: "Blood Relations", content: blood_relations },
-  { id: 'logical-reasoning-coding-decoding', title: "Coding Decoding", content: coding_decoding },
-  { id: 'logical-reasoning-direction-sense', title: "Direction Sense", content: direction_sense },
-  { id: 'logical-reasoning-introduction', title: "📖 Introduction", content: introduction },
-  { id: 'logical-reasoning-puzzles', title: "Puzzles", content: puzzles },
-  { id: 'logical-reasoning-syllogisms', title: "Syllogisms", content: syllogisms },
+  { id: 'logical-reasoning-blood-relations', title: 'Blood Relations', content: blood_relations },
+  { id: 'logical-reasoning-coding-decoding', title: 'Coding Decoding', content: coding_decoding },
+  { id: 'logical-reasoning-direction-sense', title: 'Direction Sense', content: direction_sense },
+  { id: 'logical-reasoning-introduction', title: '📖 Introduction', content: introduction },
+  { id: 'logical-reasoning-puzzles', title: 'Puzzles', content: puzzles },
+  { id: 'logical-reasoning-syllogisms', title: 'Syllogisms', content: syllogisms },
 ];

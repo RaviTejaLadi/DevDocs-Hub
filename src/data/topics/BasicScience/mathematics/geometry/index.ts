@@ -27,7 +27,11 @@ export const geometryTopics: TopicItem[] = [
   { id: 'geometry-quadrilaterals', title: '⬜ Quadrilaterals', content: quadrilaterals },
   { id: 'geometry-mensuration', title: '📏 Mensuration', content: mensuration },
   { id: 'geometry-surface-area-volume', title: '📦 Surface Area and Volume', content: surfaceAreaVolume },
-  { id: 'geometry-coordinate-geometry-basics', title: '🗺️ Coordinate Geometry Basics', content: coordinateGeometryBasics },
+  {
+    id: 'geometry-coordinate-geometry-basics',
+    title: '🗺️ Coordinate Geometry Basics',
+    content: coordinateGeometryBasics,
+  },
   { id: 'geometry-transformations', title: '🔃 Transformations', content: transformations },
   { id: 'geometry-symmetry', title: '🪞 Symmetry', content: symmetry },
   { id: 'geometry-conic-sections', title: '🌙 Conic Sections', content: conicSections },

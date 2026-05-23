@@ -81,10 +81,7 @@ export function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
                   {track}
                 </span>
               ) : null}
-              <span
-                className="hidden h-3.5 w-px shrink-0 bg-border/50 sm:block"
-                aria-hidden
-              />
+              <span className="hidden h-3.5 w-px shrink-0 bg-border/50 sm:block" aria-hidden />
               <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/75 sm:text-[10px]">
                 Up next
               </span>
@@ -99,10 +96,7 @@ export function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
             </p>
           </div>
 
-          <div
-            className="pointer-events-none hidden shrink-0 sm:flex sm:items-center sm:justify-center"
-            aria-hidden
-          >
+          <div className="pointer-events-none hidden shrink-0 sm:flex sm:items-center sm:justify-center" aria-hidden>
             <div
               className={cn(
                 'flex size-8 items-center justify-center rounded-full border',

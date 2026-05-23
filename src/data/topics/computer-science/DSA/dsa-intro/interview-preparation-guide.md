@@ -1,2 +1,1 @@
 # Interview Preparation Guide
-

@@ -121,7 +121,11 @@ export const jsTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'js-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: top25JavascriptQuestions },
+      {
+        id: 'js-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: top25JavascriptQuestions,
+      },
     ],
   },
 ];

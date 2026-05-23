@@ -1,2 +1,1 @@
 # Bearing Capacity
-

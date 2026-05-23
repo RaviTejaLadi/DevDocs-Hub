@@ -6,9 +6,9 @@ import synchronous_machines from './synchronous-machines.md?raw';
 import transformers from './transformers.md?raw';
 
 export const electricalMachinesTopics: TopicItem[] = [
-  { id: 'electrical-machines-dc-machines', title: "Dc Machines", content: dc_machines },
-  { id: 'electrical-machines-induction-machines', title: "Induction Machines", content: induction_machines },
-  { id: 'electrical-machines-introduction', title: "📖 Introduction", content: introduction },
-  { id: 'electrical-machines-synchronous-machines', title: "Synchronous Machines", content: synchronous_machines },
-  { id: 'electrical-machines-transformers', title: "Transformers", content: transformers },
+  { id: 'electrical-machines-dc-machines', title: 'Dc Machines', content: dc_machines },
+  { id: 'electrical-machines-induction-machines', title: 'Induction Machines', content: induction_machines },
+  { id: 'electrical-machines-introduction', title: '📖 Introduction', content: introduction },
+  { id: 'electrical-machines-synchronous-machines', title: 'Synchronous Machines', content: synchronous_machines },
+  { id: 'electrical-machines-transformers', title: 'Transformers', content: transformers },
 ];

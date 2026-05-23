@@ -20,7 +20,7 @@ Vue automatically updates the UI whenever data changes.
 </template>
 
 <script setup>
-const title = 'Hello Vue'
+const title = 'Hello Vue';
 </script>
 ```
 
@@ -28,14 +28,14 @@ const title = 'Hello Vue'
 
 # Core Template Syntax
 
-| Feature | Purpose |
-|---|---|
-| `{{ }}` | Show dynamic data |
-| `v-bind` / `:` | Bind attributes |
-| `v-on` / `@` | Handle events |
-| `v-if` | Conditional rendering |
-| `v-for` | Loop through lists |
-| `v-model` | Two-way form binding |
+| Feature        | Purpose               |
+| -------------- | --------------------- |
+| `{{ }}`        | Show dynamic data     |
+| `v-bind` / `:` | Bind attributes       |
+| `v-on` / `@`   | Handle events         |
+| `v-if`         | Conditional rendering |
+| `v-for`        | Loop through lists    |
+| `v-model`      | Two-way form binding  |
 
 ---
 
@@ -61,7 +61,7 @@ Used to display data.
 </template>
 
 <script setup>
-const message = 'Welcome to Vue'
+const message = 'Welcome to Vue';
 </script>
 ```
 
@@ -103,8 +103,8 @@ Used to bind dynamic values to HTML attributes.
 </template>
 
 <script setup>
-const imageUrl = '/vue.png'
-const title = 'Vue Logo'
+const imageUrl = '/vue.png';
+const title = 'Vue Logo';
 </script>
 ```
 
@@ -114,13 +114,11 @@ const title = 'Vue Logo'
 
 ```vue
 <template>
-  <button :class="{ active: isActive }">
-    Save
-  </button>
+  <button :class="{ active: isActive }">Save</button>
 </template>
 
 <script setup>
-const isActive = true
+const isActive = true;
 </script>
 ```
 
@@ -130,13 +128,11 @@ const isActive = true
 
 ```vue
 <template>
-  <p :style="{ color: textColor }">
-    Vue Styling
-  </p>
+  <p :style="{ color: textColor }">Vue Styling</p>
 </template>
 
 <script setup>
-const textColor = 'red'
+const textColor = 'red';
 </script>
 ```
 
@@ -160,15 +156,13 @@ Used to listen to user actions.
 
 ```vue
 <template>
-  <button @click="increment">
-    Increment
-  </button>
+  <button @click="increment">Increment</button>
 </template>
 
 <script setup>
 const increment = () => {
-  console.log('Clicked')
-}
+  console.log('Clicked');
+};
 </script>
 ```
 
@@ -186,11 +180,11 @@ const increment = () => {
 
 # Event Modifiers
 
-| Modifier | Purpose |
-|---|---|
+| Modifier   | Purpose             |
+| ---------- | ------------------- |
 | `.prevent` | Prevent page reload |
-| `.stop` | Stop event bubbling |
-| `.once` | Trigger once |
+| `.stop`    | Stop event bubbling |
+| `.once`    | Trigger once        |
 
 ---
 
@@ -213,17 +207,13 @@ Render UI conditionally.
 
 ```vue
 <template>
-  <p v-if="isLoggedIn">
-    Welcome Back
-  </p>
+  <p v-if="isLoggedIn">Welcome Back</p>
 
-  <p v-else>
-    Please Login
-  </p>
+  <p v-else>Please Login</p>
 </template>
 
 <script setup>
-const isLoggedIn = true
+const isLoggedIn = true;
 </script>
 ```
 
@@ -231,9 +221,9 @@ const isLoggedIn = true
 
 # `v-if` vs `v-show`
 
-| v-if | v-show |
-|---|---|
-| Adds/removes DOM | Uses display:none |
+| v-if                   | v-show                     |
+| ---------------------- | -------------------------- |
+| Adds/removes DOM       | Uses display:none          |
 | Better for rare toggle | Better for frequent toggle |
 
 ---
@@ -258,10 +248,7 @@ Used to render arrays.
 
 ```vue
 <template>
-  <li
-    v-for="user in users"
-    :key="user.id"
-  >
+  <li v-for="user in users" :key="user.id">
     {{ user.name }}
   </li>
 </template>
@@ -270,7 +257,7 @@ Used to render arrays.
 const users = [
   { id: 1, name: 'John' },
   { id: 2, name: 'Jane' },
-]
+];
 </script>
 ```
 
@@ -297,10 +284,7 @@ Vue uses `key` to track elements efficiently.
 # Access Index
 
 ```vue
-<li
-  v-for="(user, index) in users"
-  :key="user.id"
->
+<li v-for="(user, index) in users" :key="user.id">
   {{ index }} - {{ user.name }}
 </li>
 ```
@@ -323,9 +307,9 @@ Sync input value with state.
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const name = ref('')
+const name = ref('');
 </script>
 ```
 
@@ -334,10 +318,7 @@ const name = ref('')
 # Works Like
 
 ```vue
-<input
-  :value="name"
-  @input="name = $event.target.value"
-/>
+<input :value="name" @input="name = $event.target.value" />
 ```
 
 ---
@@ -363,10 +344,7 @@ const name = ref('')
 ## Checkbox
 
 ```vue
-<input
-  type="checkbox"
-  v-model="isChecked"
-/>
+<input type="checkbox" v-model="isChecked" />
 ```
 
 ---
@@ -395,14 +373,14 @@ Used for derived/calculated values.
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
-const firstName = 'John'
-const lastName = 'Doe'
+const firstName = 'John';
+const lastName = 'Doe';
 
 const fullName = computed(() => {
-  return `${firstName} ${lastName}`
-})
+  return `${firstName} ${lastName}`;
+});
 </script>
 ```
 
@@ -410,10 +388,10 @@ const fullName = computed(() => {
 
 # Why Use Computed?
 
-| Benefit | Reason |
-|---|---|
-| Cached | Better performance |
-| Reactive | Auto updates |
+| Benefit           | Reason                 |
+| ----------------- | ---------------------- |
+| Cached            | Better performance     |
+| Reactive          | Auto updates           |
 | Cleaner templates | Less logic inside HTML |
 
 ---
@@ -432,13 +410,13 @@ Access DOM elements directly.
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 
-const inputRef = ref(null)
+const inputRef = ref(null);
 
 onMounted(() => {
-  inputRef.value.focus()
-})
+  inputRef.value.focus();
+});
 </script>
 ```
 
@@ -474,14 +452,14 @@ Used for reusable layouts/components.
 
 # Important Directives Summary
 
-| Directive | Purpose |
-|---|---|
-| `v-bind` | Bind attributes |
-| `v-on` | Handle events |
-| `v-if` | Conditional rendering |
-| `v-for` | Render lists |
-| `v-model` | Form binding |
-| `v-show` | Toggle visibility |
+| Directive | Purpose               |
+| --------- | --------------------- |
+| `v-bind`  | Bind attributes       |
+| `v-on`    | Handle events         |
+| `v-if`    | Conditional rendering |
+| `v-for`   | Render lists          |
+| `v-model` | Form binding          |
+| `v-show`  | Toggle visibility     |
 
 ---
 
@@ -494,15 +472,15 @@ Used for reusable layouts/components.
 ❌ Bad
 
 ```vue
-{{ users.filter(user => user.active).length }}
+{{ users.filter((user) => user.active).length }}
 ```
 
 ✅ Good
 
 ```js
 const activeUsers = computed(() => {
-  return users.filter(user => user.active)
-})
+  return users.filter((user) => user.active);
+});
 ```
 
 ---
@@ -534,43 +512,33 @@ Break UI into smaller reusable components.
 ```vue
 <template>
   <section>
-    <input
-      v-model="search"
-      placeholder="Search users"
-    />
+    <input v-model="search" placeholder="Search users" />
 
     <ul>
-      <li
-        v-for="user in filteredUsers"
-        :key="user.id"
-      >
+      <li v-for="user in filteredUsers" :key="user.id">
         {{ user.name }}
       </li>
     </ul>
 
-    <p v-if="filteredUsers.length === 0">
-      No users found
-    </p>
+    <p v-if="filteredUsers.length === 0">No users found</p>
   </section>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const search = ref('')
+const search = ref('');
 
 const users = ref([
   { id: 1, name: 'John' },
   { id: 2, name: 'Jane' },
-])
+]);
 
 const filteredUsers = computed(() => {
-  return users.value.filter(user =>
-    user.name
-      .toLowerCase()
-      .includes(search.value.toLowerCase())
-  )
-})
+  return users.value.filter((user) =>
+    user.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 </script>
 ```
 

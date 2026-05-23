@@ -21,8 +21,7 @@ export const docsFloatingActionButtonClass = cn(
 );
 
 /** Below NavBar (sticky top-2 + h-14 + safe-area). */
-export const docsFloatingActionButtonTopClass =
-  'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)]';
+export const docsFloatingActionButtonTopClass = 'top-[calc(0.5rem+3.5rem+max(0px,env(safe-area-inset-top))+0.5rem)]';
 
 /** Second slot in the vertical stack (toggle height + gap). */
 export const docsFloatingActionButtonTopStackedClass =

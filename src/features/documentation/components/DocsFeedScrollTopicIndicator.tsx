@@ -10,11 +10,7 @@ type DocsFeedScrollTopicIndicatorProps = {
 };
 
 /** Floating pill: which topic chapter is currently in view while scrolling the feed. */
-export function DocsFeedScrollTopicIndicator({
-  inViewFeedKey,
-  feedRows,
-  visible,
-}: DocsFeedScrollTopicIndicatorProps) {
+export function DocsFeedScrollTopicIndicator({ inViewFeedKey, feedRows, visible }: DocsFeedScrollTopicIndicatorProps) {
   const activeTopic = useMemo(() => {
     if (!inViewFeedKey) return null;
     const topicId = inViewFeedKey.split('/')[0];

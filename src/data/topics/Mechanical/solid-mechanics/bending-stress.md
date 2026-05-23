@@ -1,2 +1,1 @@
 # Bending Stress
-

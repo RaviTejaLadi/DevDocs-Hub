@@ -1,2 +1,1 @@
 # SNS (Simple Notification Service)
-

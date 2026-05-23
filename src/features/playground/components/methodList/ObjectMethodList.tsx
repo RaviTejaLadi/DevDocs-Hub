@@ -8,19 +8,10 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 
-
-import type {
-  ObjectMethodCategory,
-  ObjectMethodDefinition,
-} from '../../types';
+import type { ObjectMethodCategory, ObjectMethodDefinition } from '../../types';
 import { OBJECT_METHOD_CATEGORIES } from '../../constants/objectMethods';
 
-const CATEGORY_ORDER: ObjectMethodCategory[] = [
-  'static',
-  'inspection',
-  'transformation',
-  'mutation',
-];
+const CATEGORY_ORDER: ObjectMethodCategory[] = ['static', 'inspection', 'transformation', 'mutation'];
 
 type ObjectMethodListProps = {
   methods: ObjectMethodDefinition[];
@@ -29,18 +20,13 @@ type ObjectMethodListProps = {
 
   categoryFilter: ObjectMethodCategory | 'all';
 
-  onCategoryChange: (
-    cat: ObjectMethodCategory | 'all'
-  ) => void;
+  onCategoryChange: (cat: ObjectMethodCategory | 'all') => void;
 
   methodSearch: string;
 
   onMethodSearchChange: (q: string) => void;
 
-  categoryCounts: Record<
-    ObjectMethodCategory | 'all',
-    number
-  >;
+  categoryCounts: Record<ObjectMethodCategory | 'all', number>;
 
   className?: string;
 
@@ -68,19 +54,10 @@ export function ObjectMethodList({
   };
 
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-3 min-h-0',
-        className
-      )}
-    >
+    <div className={cn('flex flex-col gap-3 min-h-0', className)}>
       <Tabs
         value={categoryFilter}
-        onValueChange={(v) =>
-          onCategoryChange(
-            v as ObjectMethodCategory | 'all'
-          )
-        }
+        onValueChange={(v) => onCategoryChange(v as ObjectMethodCategory | 'all')}
         className="w-full"
       >
         <ScrollArea className="w-full whitespace-nowrap">
@@ -88,32 +65,19 @@ export function ObjectMethodList({
             variant="line"
             className="w-max min-w-full justify-start h-auto flex-wrap gap-0.5 p-0 bg-transparent"
           >
-            <TabsTrigger
-              value="all"
-              className="text-xs px-2.5 py-1.5"
-            >
+            <TabsTrigger value="all" className="text-xs px-2.5 py-1.5">
               {t('playground.allCategories')}
 
-              <Badge
-                variant="secondary"
-                className="ml-1 h-4 px-1 text-[10px]"
-              >
+              <Badge variant="secondary" className="ml-1 h-4 px-1 text-[10px]">
                 {categoryCounts.all}
               </Badge>
             </TabsTrigger>
 
             {CATEGORY_ORDER.map((cat) => (
-              <TabsTrigger
-                key={cat}
-                value={cat}
-                className="text-xs px-2.5 py-1.5"
-              >
+              <TabsTrigger key={cat} value={cat} className="text-xs px-2.5 py-1.5">
                 {OBJECT_METHOD_CATEGORIES[cat].label}
 
-                <Badge
-                  variant="secondary"
-                  className="ml-1 h-4 px-1 text-[10px]"
-                >
+                <Badge variant="secondary" className="ml-1 h-4 px-1 text-[10px]">
                   {categoryCounts[cat]}
                 </Badge>
               </TabsTrigger>
@@ -127,9 +91,7 @@ export function ObjectMethodList({
 
         <Input
           value={methodSearch}
-          onChange={(e) =>
-            onMethodSearchChange(e.target.value)
-          }
+          onChange={(e) => onMethodSearchChange(e.target.value)}
           placeholder={t('playground.searchMethods')}
           className="pl-8 h-9 text-sm border-border/35"
         />
@@ -141,9 +103,7 @@ export function ObjectMethodList({
             <button
               key={method.id}
               type="button"
-              onClick={() =>
-                handleSelect(method.id)
-              }
+              onClick={() => handleSelect(method.id)}
               className={cn(
                 'w-full text-left rounded-lg px-3 py-2.5 text-sm transition-all duration-150',
                 selectedId === method.id
@@ -152,9 +112,7 @@ export function ObjectMethodList({
               )}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-xs sm:text-sm">
-                  {method.name}
-                </span>
+                <span className="font-mono text-xs sm:text-sm">{method.name}</span>
 
                 {method.mutates && (
                   <Badge
@@ -167,19 +125,13 @@ export function ObjectMethodList({
               </div>
 
               <span className="block text-[10px] uppercase tracking-wide opacity-70 mt-0.5">
-                {
-                  OBJECT_METHOD_CATEGORIES[
-                    method.category
-                  ].label
-                }
+                {OBJECT_METHOD_CATEGORIES[method.category].label}
               </span>
             </button>
           ))}
 
           {methods.length === 0 && (
-            <p className="text-sm text-muted-foreground text-center py-8">
-              {t('playground.noMethodsMatch')}
-            </p>
+            <p className="text-sm text-muted-foreground text-center py-8">{t('playground.noMethodsMatch')}</p>
           )}
         </div>
       </ScrollArea>

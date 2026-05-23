@@ -1,2 +1,1 @@
 # SQL for Analytics
-

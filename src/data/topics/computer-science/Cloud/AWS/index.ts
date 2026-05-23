@@ -149,7 +149,11 @@ export const awsTopics: TopicItem[] = [
     title: '🏗️ Architecture & Best Practices',
     content: '',
     items: [
-      { id: 'aws-well-architected-framework', title: '✅ Well-Architected Framework', content: awsWellArchitectedFramework },
+      {
+        id: 'aws-well-architected-framework',
+        title: '✅ Well-Architected Framework',
+        content: awsWellArchitectedFramework,
+      },
       {
         id: 'aws-high-availability-disaster-recovery',
         title: '🔄 High Availability & Disaster Recovery',
@@ -164,7 +168,11 @@ export const awsTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'aws-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: awsTop25InterviewQuestions },
+      {
+        id: 'aws-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: awsTop25InterviewQuestions,
+      },
       { id: 'aws-theory-questions', title: '❓ Theory Questions', content: awsTheoryQuestions },
       { id: 'aws-coding-questions', title: '💻 Coding Questions', content: awsCodingQuestions },
     ],

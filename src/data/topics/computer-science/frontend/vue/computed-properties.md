@@ -45,14 +45,14 @@ With computed:
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const firstName = ref('John')
-const lastName = ref('Doe')
+const firstName = ref('John');
+const lastName = ref('Doe');
 
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 </script>
 ```
 
@@ -76,8 +76,8 @@ B -->|Recalculate| C
 
 ```js
 const value = computed(() => {
-  return derivedValue
-})
+  return derivedValue;
+});
 ```
 
 ---
@@ -86,10 +86,10 @@ const value = computed(() => {
 
 Computed values are:
 
-| Feature | Description |
-|---|---|
-| Reactive | Auto updates |
-| Cached | Runs only when needed |
+| Feature              | Description            |
+| -------------------- | ---------------------- |
+| Reactive             | Auto updates           |
+| Cached               | Runs only when needed  |
 | Read-only by default | Cannot modify directly |
 
 ---
@@ -104,10 +104,10 @@ This is the biggest advantage.
 
 ```js
 const fullName = computed(() => {
-  console.log('Running')
+  console.log('Running');
 
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 ```
 
 The function runs only when dependencies change.
@@ -144,8 +144,8 @@ computed recalculates
 
 <script setup>
 const getFullName = () => {
-  return `${firstName.value} ${lastName.value}`
-}
+  return `${firstName.value} ${lastName.value}`;
+};
 </script>
 ```
 
@@ -161,8 +161,8 @@ Runs every render
 
 ```js
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 ```
 
 Benefit:
@@ -175,11 +175,11 @@ Cached until dependency changes
 
 # Difference
 
-| computed | method |
-|---|---|
-| Cached | Not cached |
-| Better for derived values | Better for actions |
-| Performance optimized | Re-runs every render |
+| computed                  | method               |
+| ------------------------- | -------------------- |
+| Cached                    | Not cached           |
+| Better for derived values | Better for actions   |
+| Performance optimized     | Re-runs every render |
 
 ---
 
@@ -192,33 +192,28 @@ Cached until dependency changes
   <input v-model="search" />
 
   <ul>
-    <li
-      v-for="user in filteredUsers"
-      :key="user.id"
-    >
+    <li v-for="user in filteredUsers" :key="user.id">
       {{ user.name }}
     </li>
   </ul>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const search = ref('')
+const search = ref('');
 
 const users = ref([
   { id: 1, name: 'John' },
   { id: 2, name: 'Jane' },
   { id: 3, name: 'Alex' },
-])
+]);
 
 const filteredUsers = computed(() => {
-  return users.value.filter(user =>
-    user.name
-      .toLowerCase()
-      .includes(search.value.toLowerCase())
-  )
-})
+  return users.value.filter((user) =>
+    user.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 </script>
 ```
 
@@ -250,8 +245,8 @@ Computed can depend on multiple reactive values.
 
 ```js
 const totalPrice = computed(() => {
-  return price.value * quantity.value
-})
+  return price.value * quantity.value;
+});
 ```
 
 Dependencies:
@@ -265,16 +260,16 @@ Dependencies:
 
 ```vue
 <script setup>
-import { computed, reactive } from 'vue'
+import { computed, reactive } from 'vue';
 
 const user = reactive({
   firstName: 'John',
   lastName: 'Doe',
-})
+});
 
 const fullName = computed(() => {
-  return `${user.firstName} ${user.lastName}`
-})
+  return `${user.firstName} ${user.lastName}`;
+});
 </script>
 ```
 
@@ -292,23 +287,23 @@ But Vue supports getter/setter.
 
 ```vue
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const firstName = ref('John')
-const lastName = ref('Doe')
+const firstName = ref('John');
+const lastName = ref('Doe');
 
 const fullName = computed({
   get() {
-    return `${firstName.value} ${lastName.value}`
+    return `${firstName.value} ${lastName.value}`;
   },
 
   set(value) {
-    const names = value.split(' ')
+    const names = value.split(' ');
 
-    firstName.value = names[0]
-    lastName.value = names[1]
+    firstName.value = names[0];
+    lastName.value = names[1];
   },
-})
+});
 </script>
 ```
 
@@ -317,7 +312,7 @@ const fullName = computed({
 # Usage
 
 ```js
-fullName.value = 'Jane Smith'
+fullName.value = 'Jane Smith';
 ```
 
 Updates:
@@ -331,14 +326,14 @@ lastName → Smith
 
 # Common Use Cases
 
-| Use Case | Example |
-|---|---|
-| Filtering | Search results |
-| Sorting | Product sorting |
-| Formatting | Currency/date |
-| Derived state | Full name |
-| Calculations | Cart totals |
-| Validation | Form checks |
+| Use Case      | Example         |
+| ------------- | --------------- |
+| Filtering     | Search results  |
+| Sorting       | Product sorting |
+| Formatting    | Currency/date   |
+| Derived state | Full name       |
+| Calculations  | Cart totals     |
+| Validation    | Form checks     |
 
 ---
 
@@ -346,18 +341,18 @@ lastName → Smith
 
 ```vue
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
 const cart = ref([
   { price: 100, quantity: 2 },
   { price: 50, quantity: 1 },
-])
+]);
 
 const total = computed(() => {
   return cart.value.reduce((sum, item) => {
-    return sum + item.price * item.quantity
-  }, 0)
-})
+    return sum + item.price * item.quantity;
+  }, 0);
+});
 </script>
 ```
 
@@ -367,11 +362,8 @@ const total = computed(() => {
 
 ```js
 const isFormValid = computed(() => {
-  return (
-    email.value.length > 0 &&
-    password.value.length >= 6
-  )
-})
+  return email.value.length > 0 && password.value.length >= 6;
+});
 ```
 
 ---
@@ -389,8 +381,8 @@ const buttonClass = computed(() => {
   return {
     active: isActive.value,
     disabled: loading.value,
-  }
-})
+  };
+});
 ```
 
 ---
@@ -413,12 +405,12 @@ Computed can depend on computed.
 
 ```js
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 
 const greeting = computed(() => {
-  return `Hello ${fullName.value}`
-})
+  return `Hello ${fullName.value}`;
+});
 ```
 
 ---
@@ -433,10 +425,10 @@ Computed runs only when accessed.
 
 ```js
 const expensiveCalculation = computed(() => {
-  console.log('Running')
+  console.log('Running');
 
-  return heavyOperation()
-})
+  return heavyOperation();
+});
 ```
 
 If unused:
@@ -455,8 +447,8 @@ Function never runs
 
 ```js
 computed(() => {
-  fetchUsers()
-})
+  fetchUsers();
+});
 ```
 
 Use `watch()` instead.
@@ -469,8 +461,8 @@ Use `watch()` instead.
 
 ```js
 const total = computed(() => {
-  count.value++
-})
+  count.value++;
+});
 ```
 
 Computed should stay pure.
@@ -482,26 +474,26 @@ Computed should stay pure.
 ❌ Bad
 
 ```vue
-{{ users.filter(user => user.active).length }}
+{{ users.filter((user) => user.active).length }}
 ```
 
 ✅ Better
 
 ```js
 const activeUsers = computed(() => {
-  return users.value.filter(user => user.active)
-})
+  return users.value.filter((user) => user.active);
+});
 ```
 
 ---
 
 # computed vs watch
 
-| computed | watch |
-|---|---|
-| Derived values | Side effects |
-| Returns value | Executes logic |
-| Cached | Not cached |
+| computed          | watch            |
+| ----------------- | ---------------- |
+| Derived values    | Side effects     |
+| Returns value     | Executes logic   |
+| Cached            | Not cached       |
 | Used in templates | Used for effects |
 
 ---
@@ -568,21 +560,21 @@ Avoid giant computed functions.
 
 ```js
 const completedTasks = computed(() => {
-  return tasks.value.filter(task => task.completed)
-})
+  return tasks.value.filter((task) => task.completed);
+});
 ```
 
 ---
 
 # Quick Summary
 
-| Concept | Meaning |
-|---|---|
-| computed | Derived reactive value |
-| Cached | Runs only when needed |
-| Reactive | Updates automatically |
-| Getter | Read value |
-| Setter | Optional writable value |
+| Concept  | Meaning                 |
+| -------- | ----------------------- |
+| computed | Derived reactive value  |
+| Cached   | Runs only when needed   |
+| Reactive | Updates automatically   |
+| Getter   | Read value              |
+| Setter   | Optional writable value |
 
 ---
 

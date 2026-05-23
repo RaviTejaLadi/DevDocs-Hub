@@ -1,2 +1,1 @@
 # Geospatial Queries
-

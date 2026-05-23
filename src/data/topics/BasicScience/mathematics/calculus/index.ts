@@ -17,7 +17,11 @@ export const calculusTopics: TopicItem[] = [
   { id: 'calculus-limits', title: '➰ Limits', content: limits },
   { id: 'calculus-continuity', title: '🔗 Continuity', content: continuity },
   { id: 'calculus-differentiation', title: '∂ Differentiation', content: differentiation },
-  { id: 'calculus-derivatives-applications', title: '📉 Derivatives and Applications', content: derivativesApplications },
+  {
+    id: 'calculus-derivatives-applications',
+    title: '📉 Derivatives and Applications',
+    content: derivativesApplications,
+  },
   { id: 'calculus-tangents-normals', title: '📐 Tangents and Normals', content: tangentsNormals },
   { id: 'calculus-maxima-minima', title: '⬆️ Maxima and Minima', content: maximaMinima },
   { id: 'calculus-integration', title: '∫ Integration', content: integration },

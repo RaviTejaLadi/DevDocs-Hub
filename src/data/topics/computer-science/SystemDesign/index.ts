@@ -115,7 +115,11 @@ export const systemDesignData: TopicItem[] = [
         content: requirementsAndCapacityEstimation,
       },
       { id: 'sys-scalability-concepts', title: '📈 Scalability Concepts', content: scalabilityConcepts },
-      { id: 'sys-reliability-availability', title: '✅ Reliability & Availability', content: reliabilityAndAvailability },
+      {
+        id: 'sys-reliability-availability',
+        title: '✅ Reliability & Availability',
+        content: reliabilityAndAvailability,
+      },
       { id: 'sys-latency-throughput', title: '⚡ Latency & Throughput', content: latencyAndThroughput },
       { id: 'sys-cap-theorem', title: '🔺 CAP Theorem', content: capTheorem },
       { id: 'sys-consistency-models', title: '🔄 Consistency Models', content: consistencyModels },

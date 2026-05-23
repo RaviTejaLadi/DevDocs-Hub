@@ -92,7 +92,11 @@ export const htmlTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'html-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: top25InterviewQuestions },
+      {
+        id: 'html-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: top25InterviewQuestions,
+      },
     ],
   },
 ];

@@ -18,15 +18,13 @@ Vue tracks data changes and updates only the affected parts of the DOM.
 <template>
   <h1>{{ count }}</h1>
 
-  <button @click="count++">
-    Increment
-  </button>
+  <button @click="count++">Increment</button>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const count = ref(0)
+const count = ref(0);
 </script>
 ```
 
@@ -54,12 +52,12 @@ C --> D[DOM Updates Automatically]
 
 # Core Reactivity APIs
 
-| API | Purpose |
-|---|---|
-| `ref()` | Reactive primitive values |
-| `reactive()` | Reactive objects |
-| `computed()` | Derived reactive values |
-| `watch()` | Watch state changes |
+| API             | Purpose                    |
+| --------------- | -------------------------- |
+| `ref()`         | Reactive primitive values  |
+| `reactive()`    | Reactive objects           |
+| `computed()`    | Derived reactive values    |
+| `watch()`       | Watch state changes        |
 | `watchEffect()` | Auto reactive side effects |
 
 ---
@@ -80,7 +78,7 @@ Used for:
 # Syntax
 
 ```js
-const state = ref(value)
+const state = ref(value);
 ```
 
 ---
@@ -89,9 +87,9 @@ const state = ref(value)
 
 ```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const count = ref(0)
+const count = ref(0);
 </script>
 ```
 
@@ -102,7 +100,7 @@ const count = ref(0)
 Inside JavaScript:
 
 ```js
-count.value
+count.value;
 ```
 
 Inside template:
@@ -121,19 +119,17 @@ Vue automatically unwraps refs in templates.
 <template>
   <h1>{{ count }}</h1>
 
-  <button @click="increment">
-    Add
-  </button>
+  <button @click="increment">Add</button>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const count = ref(0)
+const count = ref(0);
 
 const increment = () => {
-  count.value++
-}
+  count.value++;
+};
 </script>
 ```
 
@@ -144,14 +140,14 @@ const increment = () => {
 `ref()` returns a reactive wrapper object.
 
 ```js
-console.log(count)
+console.log(count);
 ```
 
 Output:
 
 ```js
 {
-  value: 0
+  value: 0;
 }
 ```
 
@@ -162,7 +158,7 @@ Vue tracks changes through `.value`.
 # Reactive Arrays
 
 ```js
-const users = ref([])
+const users = ref([]);
 ```
 
 ---
@@ -173,7 +169,7 @@ const users = ref([])
 users.value.push({
   id: 1,
   name: 'John',
-})
+});
 ```
 
 ---
@@ -184,13 +180,13 @@ users.value.push({
 const user = ref({
   name: 'John',
   age: 25,
-})
+});
 ```
 
 Access:
 
 ```js
-user.value.name
+user.value.name;
 ```
 
 ---
@@ -204,7 +200,7 @@ Used for reactive objects.
 # Syntax
 
 ```js
-const state = reactive({})
+const state = reactive({});
 ```
 
 ---
@@ -213,12 +209,12 @@ const state = reactive({})
 
 ```vue
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from 'vue';
 
 const user = reactive({
   name: 'John',
   age: 25,
-})
+});
 </script>
 ```
 
@@ -229,7 +225,7 @@ const user = reactive({
 No `.value` needed.
 
 ```js
-user.name
+user.name;
 ```
 
 ---
@@ -237,29 +233,29 @@ user.name
 # Update Values
 
 ```js
-user.age++
+user.age++;
 ```
 
 ---
 
 # reactive vs ref
 
-| ref | reactive |
-|---|---|
-| Best for primitives | Best for objects |
-| Requires `.value` in JS | Direct access |
-| Can hold anything | Object types only |
+| ref                     | reactive          |
+| ----------------------- | ----------------- |
+| Best for primitives     | Best for objects  |
+| Requires `.value` in JS | Direct access     |
+| Can hold anything       | Object types only |
 
 ---
 
 # Recommended Practice
 
-| Use Case | Recommended |
-|---|---|
-| Primitive values | `ref()` |
-| Complex objects | `reactive()` |
-| Forms | Usually `reactive()` |
-| Arrays | `ref()` |
+| Use Case         | Recommended          |
+| ---------------- | -------------------- |
+| Primitive values | `ref()`              |
+| Complex objects  | `reactive()`         |
+| Forms            | Usually `reactive()` |
+| Arrays           | `ref()`              |
 
 ---
 
@@ -289,14 +285,14 @@ Use computed.
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const firstName = ref('John')
-const lastName = ref('Doe')
+const firstName = ref('John');
+const lastName = ref('Doe');
 
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 </script>
 ```
 
@@ -304,11 +300,11 @@ const fullName = computed(() => {
 
 # Benefits of computed
 
-| Benefit | Description |
-|---|---|
-| Cached | Better performance |
-| Reactive | Updates automatically |
-| Cleaner templates | Less logic in HTML |
+| Benefit           | Description           |
+| ----------------- | --------------------- |
+| Cached            | Better performance    |
+| Reactive          | Updates automatically |
+| Cleaner templates | Less logic in HTML    |
 
 ---
 
@@ -321,7 +317,7 @@ Runs only when dependencies change.
 # Bad Example
 
 ```vue
-{{ users.filter(user => user.active) }}
+{{ users.filter((user) => user.active) }}
 ```
 
 ---
@@ -330,8 +326,8 @@ Runs only when dependencies change.
 
 ```js
 const activeUsers = computed(() => {
-  return users.value.filter(user => user.active)
-})
+  return users.value.filter((user) => user.active);
+});
 ```
 
 ---
@@ -345,7 +341,7 @@ Used to observe state changes.
 # Syntax
 
 ```js
-watch(source, callback)
+watch(source, callback);
 ```
 
 ---
@@ -354,13 +350,13 @@ watch(source, callback)
 
 ```vue
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch } from 'vue';
 
-const search = ref('')
+const search = ref('');
 
 watch(search, (newValue, oldValue) => {
-  console.log(newValue)
-})
+  console.log(newValue);
+});
 </script>
 ```
 
@@ -368,12 +364,12 @@ watch(search, (newValue, oldValue) => {
 
 # Common Use Cases
 
-| Use Case | Example |
-|---|---|
-| API calls | Search input |
-| Local storage sync | Save settings |
-| Form validation | Input tracking |
-| Analytics | Track changes |
+| Use Case           | Example        |
+| ------------------ | -------------- |
+| API calls          | Search input   |
+| Local storage sync | Save settings  |
+| Form validation    | Input tracking |
+| Analytics          | Track changes  |
 
 ---
 
@@ -381,8 +377,8 @@ watch(search, (newValue, oldValue) => {
 
 ```js
 watch([firstName, lastName], () => {
-  console.log('Changed')
-})
+  console.log('Changed');
+});
 ```
 
 ---
@@ -394,7 +390,7 @@ Runs immediately.
 ```js
 watch(search, fetchUsers, {
   immediate: true,
-})
+});
 ```
 
 ---
@@ -406,7 +402,7 @@ Used for nested objects.
 ```js
 watch(user, () => {}, {
   deep: true,
-})
+});
 ```
 
 ---
@@ -421,13 +417,13 @@ Automatically tracks dependencies.
 
 ```vue
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue';
 
-const count = ref(0)
+const count = ref(0);
 
 watchEffect(() => {
-  console.log(count.value)
-})
+  console.log(count.value);
+});
 </script>
 ```
 
@@ -435,10 +431,10 @@ watchEffect(() => {
 
 # Difference Between watch and watchEffect
 
-| watch | watchEffect |
-|---|---|
-| Explicit dependencies | Auto dependency tracking |
-| More control | Simpler |
+| watch                       | watchEffect              |
+| --------------------------- | ------------------------ |
+| Explicit dependencies       | Auto dependency tracking |
+| More control                | Simpler                  |
 | Better for specific sources | Better for quick effects |
 
 ---
@@ -452,9 +448,9 @@ Vue batches DOM updates for performance.
 # Example
 
 ```js
-count.value++
-count.value++
-count.value++
+count.value++;
+count.value++;
+count.value++;
 ```
 
 Vue avoids unnecessary renders.
@@ -470,9 +466,9 @@ Wait for DOM updates to complete.
 # Example
 
 ```js
-import { nextTick } from 'vue'
+import { nextTick } from 'vue';
 
-await nextTick()
+await nextTick();
 ```
 
 ---
@@ -521,12 +517,12 @@ Template re-renders automatically
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from 'vue';
 
 const form = reactive({
   name: '',
   email: '',
-})
+});
 </script>
 ```
 
@@ -537,16 +533,10 @@ const form = reactive({
 ```vue
 <template>
   <section>
-    <input
-      v-model="search"
-      placeholder="Search users"
-    />
+    <input v-model="search" placeholder="Search users" />
 
     <ul>
-      <li
-        v-for="user in filteredUsers"
-        :key="user.id"
-      >
+      <li v-for="user in filteredUsers" :key="user.id">
         {{ user.name }}
       </li>
     </ul>
@@ -554,23 +544,21 @@ const form = reactive({
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref } from 'vue';
 
-const search = ref('')
+const search = ref('');
 
 const users = ref([
   { id: 1, name: 'John' },
   { id: 2, name: 'Jane' },
   { id: 3, name: 'Alex' },
-])
+]);
 
 const filteredUsers = computed(() => {
-  return users.value.filter(user =>
-    user.name
-      .toLowerCase()
-      .includes(search.value.toLowerCase())
-  )
-})
+  return users.value.filter((user) =>
+    user.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 </script>
 ```
 
@@ -583,13 +571,13 @@ const filteredUsers = computed(() => {
 ❌ Wrong
 
 ```js
-count++
+count++;
 ```
 
 ✅ Correct
 
 ```js
-count.value++
+count.value++;
 ```
 
 ---
@@ -599,15 +587,15 @@ count.value++
 ❌ Bad
 
 ```vue
-{{ users.filter(user => user.active).length }}
+{{ users.filter((user) => user.active).length }}
 ```
 
 ✅ Better
 
 ```js
 const activeUsers = computed(() => {
-  return users.value.filter(user => user.active)
-})
+  return users.value.filter((user) => user.active);
+});
 ```
 
 ---
@@ -616,10 +604,10 @@ const activeUsers = computed(() => {
 
 Use:
 
-| Use | API |
-|---|---|
+| Use            | API      |
+| -------------- | -------- |
 | Derived values | computed |
-| Side effects | watch |
+| Side effects   | watch    |
 
 ---
 
@@ -665,16 +653,16 @@ Reusable reactive logic.
 
 ```js
 export function useCounter() {
-  const count = ref(0)
+  const count = ref(0);
 
   const increment = () => {
-    count.value++
-  }
+    count.value++;
+  };
 
   return {
     count,
     increment,
-  }
+  };
 }
 ```
 
@@ -682,14 +670,14 @@ export function useCounter() {
 
 # Quick Summary
 
-| API | Main Purpose |
-|---|---|
-| `ref()` | Primitive reactive state |
-| `reactive()` | Reactive objects |
-| `computed()` | Derived state |
-| `watch()` | Watch changes |
-| `watchEffect()` | Auto reactive effects |
-| `nextTick()` | Wait for DOM update |
+| API             | Main Purpose             |
+| --------------- | ------------------------ |
+| `ref()`         | Primitive reactive state |
+| `reactive()`    | Reactive objects         |
+| `computed()`    | Derived state            |
+| `watch()`       | Watch changes            |
+| `watchEffect()` | Auto reactive effects    |
+| `nextTick()`    | Wait for DOM update      |
 
 ---
 

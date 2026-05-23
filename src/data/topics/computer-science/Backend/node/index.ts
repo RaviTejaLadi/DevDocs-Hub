@@ -64,7 +64,11 @@ export const nodeTopics: TopicItem[] = [
     items: [
       { id: 'node-modules-commonjs-esm', title: '📚 Modules (CommonJS & ESM)', content: nodeModulesCommonjsEsm },
       { id: 'node-globals-and-process', title: '⚙️ Globals & Process', content: nodeGlobalsAndProcess },
-      { id: 'node-npm-and-package-management', title: '📦 npm & Package Management', content: nodeNpmAndPackageManagement },
+      {
+        id: 'node-npm-and-package-management',
+        title: '📦 npm & Package Management',
+        content: nodeNpmAndPackageManagement,
+      },
       { id: 'node-file-system', title: '📂 File System (fs)', content: nodeFileSystem },
       { id: 'node-path-module', title: '🛤️ Path Module', content: nodePathModule },
     ],
@@ -123,7 +127,11 @@ export const nodeTopics: TopicItem[] = [
       { id: 'node-clustering', title: '🔗 Clustering', content: nodeClustering },
       { id: 'node-worker-threads', title: '🧵 Worker Threads', content: nodeWorkerThreads },
       { id: 'node-caching-redis', title: '⚡ Caching with Redis', content: nodeCachingRedis },
-      { id: 'node-performance-optimization', title: '🚀 Performance Optimization', content: nodePerformanceOptimization },
+      {
+        id: 'node-performance-optimization',
+        title: '🚀 Performance Optimization',
+        content: nodePerformanceOptimization,
+      },
     ],
   },
   {
@@ -145,7 +153,11 @@ export const nodeTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'node-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: nodeTop25InterviewQuestions },
+      {
+        id: 'node-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: nodeTop25InterviewQuestions,
+      },
       { id: 'theory-questions', title: '❓ Theory Questions', content: nodeTheory },
       { id: 'coding-questions', title: '💻 Coding Questions', content: nodeCoding },
     ],

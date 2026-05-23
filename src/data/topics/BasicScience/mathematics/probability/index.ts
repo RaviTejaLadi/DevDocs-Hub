@@ -21,10 +21,18 @@ export const probabilityTopics: TopicItem[] = [
     content: independentDependentEvents,
   },
   { id: 'probability-random-variables', title: '🎯 Random Variables', content: randomVariables },
-  { id: 'probability-probability-distributions', title: '📊 Probability Distributions', content: probabilityDistributions },
+  {
+    id: 'probability-probability-distributions',
+    title: '📊 Probability Distributions',
+    content: probabilityDistributions,
+  },
   { id: 'probability-bayes-theorem', title: "🧠 Bayes' Theorem", content: bayesTheorem },
   { id: 'probability-expected-value', title: '💰 Expected Value', content: expectedValue },
-  { id: 'probability-combinations-probability', title: '🔢 Combinations in Probability', content: combinationsProbability },
+  {
+    id: 'probability-combinations-probability',
+    title: '🔢 Combinations in Probability',
+    content: combinationsProbability,
+  },
   {
     id: 'probability-real-life-applications',
     title: '🌍 Real-life Probability Applications',

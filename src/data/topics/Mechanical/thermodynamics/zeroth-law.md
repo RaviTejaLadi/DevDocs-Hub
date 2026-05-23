@@ -1,2 +1,1 @@
 # Zeroth Law of Thermodynamics
-

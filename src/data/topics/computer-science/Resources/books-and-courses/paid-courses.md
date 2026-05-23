@@ -1,2 +1,1 @@
 # Paid Courses
-

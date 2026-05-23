@@ -1,2 +1,1 @@
 # Hybrid Cloud & Azure Arc
-

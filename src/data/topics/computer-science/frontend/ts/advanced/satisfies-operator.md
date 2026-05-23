@@ -1,2 +1,1 @@
 # satisfies Operator
-

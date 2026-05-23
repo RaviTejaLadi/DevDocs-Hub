@@ -60,13 +60,21 @@ export const dsaData: TopicItem[] = [
       { id: 'dsa-intro', title: '📚 Introduction', content: dsaIntro },
       { id: 'dsa-roadmap', title: '🗺️ Roadmap', content: dsaRoadMap },
       { id: 'dsa-complexity-analysis', title: '📈 Complexity Analysis (Big O)', content: dsaComplexityAnalysis },
-      { id: 'dsa-how-to-approach-problems', title: '🎯 How to Approach DSA Problems', content: dsaHowToApproachProblems },
+      {
+        id: 'dsa-how-to-approach-problems',
+        title: '🎯 How to Approach DSA Problems',
+        content: dsaHowToApproachProblems,
+      },
       {
         id: 'dsa-problem-solving-patterns-overview',
         title: '🧩 Problem Solving Patterns Overview',
         content: dsaProblemSolvingPatternsOverview,
       },
-      { id: 'dsa-interview-preparation-guide', title: '💼 Interview Preparation Guide', content: dsaInterviewPreparationGuide },
+      {
+        id: 'dsa-interview-preparation-guide',
+        title: '💼 Interview Preparation Guide',
+        content: dsaInterviewPreparationGuide,
+      },
     ],
   },
   {
@@ -143,7 +151,11 @@ export const dsaData: TopicItem[] = [
       { id: 'dsa-linked-list-questions', title: '🔗 Top 25 Linked List Questions', content: top25LinkedList },
       { id: 'dsa-tree-questions', title: '🌳 Top 25 Tree Questions', content: top25Tree },
       { id: 'dsa-graph-questions', title: '📊 Top 25 Graph Questions', content: top25Graph },
-      { id: 'dsa-dynamic-programming-questions', title: '🧠 Top 25 Dynamic Programming Questions', content: top25DynamicProgramming },
+      {
+        id: 'dsa-dynamic-programming-questions',
+        title: '🧠 Top 25 Dynamic Programming Questions',
+        content: top25DynamicProgramming,
+      },
       { id: 'dsa-stack-queue-questions', title: '📚 Top 25 Stack & Queue Questions', content: top25StackQueue },
       { id: 'dsa-binary-search-questions', title: '🔍 Top 25 Binary Search Questions', content: top25BinarySearch },
       {

@@ -1,2 +1,1 @@
 # Declaration Files (.d.ts)
-

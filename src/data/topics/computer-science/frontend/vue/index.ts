@@ -86,7 +86,11 @@ export const vueTopics: TopicItem[] = [
       { id: 'vue-slots', title: '🎰 Slots', content: vueSlots },
       { id: 'vue-provide-inject', title: '💉 Provide / Inject', content: vueProvideInject },
       { id: 'vue-single-file-components', title: '📄 Single File Components', content: vueSingleFileComponents },
-      { id: 'vue-dynamic-and-async-components', title: '🔄 Dynamic & Async Components', content: vueDynamicAndAsyncComponents },
+      {
+        id: 'vue-dynamic-and-async-components',
+        title: '🔄 Dynamic & Async Components',
+        content: vueDynamicAndAsyncComponents,
+      },
       { id: 'vue-teleport', title: '🌀 Teleport', content: vueTeleport },
       { id: 'vue-keep-alive', title: '💾 KeepAlive', content: vueKeepAlive },
       { id: 'vue-suspense', title: '⏳ Suspense', content: vueSuspense },
@@ -130,7 +134,11 @@ export const vueTopics: TopicItem[] = [
     title: '🎬 UI & Animations',
     content: '',
     items: [
-      { id: 'vue-transitions-and-animations', title: '✨ Transitions & Animations', content: vueTransitionsAndAnimations },
+      {
+        id: 'vue-transitions-and-animations',
+        title: '✨ Transitions & Animations',
+        content: vueTransitionsAndAnimations,
+      },
     ],
   },
   {
@@ -151,7 +159,11 @@ export const vueTopics: TopicItem[] = [
     title: '💼 Interview Preparation',
     content: '',
     items: [
-      { id: 'vue-top-25-interview-questions', title: '📌 Top 25 Interview Questions', content: vueTop25InterviewQuestions },
+      {
+        id: 'vue-top-25-interview-questions',
+        title: '📌 Top 25 Interview Questions',
+        content: vueTop25InterviewQuestions,
+      },
       { id: 'theory-vue-js-interview-questions', title: '❓ Theory Interview Questions', content: vueTheoryQuestions },
       { id: 'coding-vue-js-interview-questions', title: '💻 Coding Interview Questions', content: vueCodingQuestions },
     ],

@@ -1,2 +1,1 @@
 # SSR, SSG & ISR
-
