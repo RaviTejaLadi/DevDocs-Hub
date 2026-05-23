@@ -1,0 +1,90 @@
+# 📜 Viewing History (log & diff)
+
+Saving snapshots of your code is only useful if you can actually look back at
+them. Git provides powerful tools to inspect your project's past: `git log` lets
+you view your timeline of commits, while `git diff` shows you the exact
+line-by-line changes inside your files. 🔍
+
+---
+
+## 🕒 Inspecting the Timeline (`git log`)
+
+Running a simple `git log` prints out a complete chronological list of your
+commits, starting with the most recent. However, the default output can quickly
+get overwhelming.
+
+Here are the most practical flags to clean up your history view:
+
+```bash
+// View a highly compressed, one-line version of your history
+git log --oneline
+
+```
+
+```bash
+// Limit the history to the last 3 commits
+git log -n 3
+
+```
+
+```bash
+// View your commit history represented as a visual text graph
+git log --graph --oneline
+
+```
+
+```mermaid
+graph TD
+    A[fe34b21: Fix checkout bug] --> B[7a12d90: Add stripe payment integration]
+    B --> C[1c45e82: Initial commit]
+
+```
+
+---
+
+## 🔍 Spotting the Differences (`git diff`)
+
+While `git log` tells you _when_ and _why_ a save happened, `git diff` tells you
+exactly _what_ changed inside your code. It displays changes using color-coded
+markers: lines starting with a red minus (`-`) were deleted, and lines starting
+with a green plus (`+`) were added.
+
+```bash
+// Compare your current working directory with your staging area
+git diff
+
+```
+
+```bash
+// Compare your staging area with your last saved commit
+git diff --staged
+
+```
+
+```bash
+// Compare two specific commits using their short SHA hashes
+git diff 1c45e82 7a12d90
+
+```
+
+---
+
+## 💡 A Quick Diagnostic Scenario
+
+Imagine your app suddenly stops working, and you cannot remember what you
+changed over the last hour. You can use this rapid terminal checklist to find
+the culprit:
+
+```bash
+// 1. See which files have modifications
+git status
+
+// 2. Look at the exact line-by-line changes you made since your last save
+git diff
+
+// 3. Review your team's recent commits to ensure nothing conflicts
+git log --oneline -n 5
+
+```
+
+---

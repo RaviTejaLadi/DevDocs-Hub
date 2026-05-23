@@ -1,1 +1,63 @@
-# Git Basics
+# 🧱 Git Basics
+
+Now that you understand the core concepts, it is time to look at how Git works
+in action. Tracking a project involves moving files smoothly through the three
+states we discussed earlier. 🛠️
+
+---
+
+## 🏗️ The 4 Lifecycle Stages of a File
+
+Inside your working directory, every single file falls into one of two major
+categories: **Untracked** or **Tracked**. Tracked files are further broken down
+into three distinct stages.
+
+```mermaid
+graph LR
+    Untracked -- "git add" --> Staged
+    Tracked-Unmodified -- "Edit file" --> Modified
+    Modified -- "git add" --> Staged
+    Staged -- "git commit" --> Tracked-Unmodified
+
+```
+
+- **Untracked:** Files that Git sees in your project folder but isn't watching.
+  New files always start here.
+- **Staged (Staging Area):** Files you have marked to be included in your next
+  permanent snapshot.
+- **Modified:** Files you have changed since your last snapshot, but haven't
+  added to the staging area yet.
+- **Unmodified:** Files that match your last saved snapshot exactly.
+
+---
+
+## 🔄 The Core Local Workflow
+
+Every day as a developer, you will repeat a simple 3-step cycle to save your
+progress locally. Think of it like taking a photo:
+
+1. **Modify:** You write code, add images, or edit files in your project
+   directory.
+2. **Stage:** You pick which changes are ready for the photo by adding them to
+   the staging area.
+3. **Commit:** You snap the photo, permanently saving that bundle of changes
+   into your local history database.
+
+---
+
+## 📊 Checking Status
+
+Because files change stages constantly as you type, you need a way to check
+where everything stands. Git provides a command that gives you a quick
+bird's-eye view of your repository.
+
+It tells you exactly which files are modified, which are staged, and which are
+completely untracked so you never feel lost. 🗺️
+
+```bash
+// Check the status of your working directory and staging area
+git status
+
+```
+
+---
