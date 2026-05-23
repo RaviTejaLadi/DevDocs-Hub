@@ -1,4 +1,5 @@
 import type { Topic } from '@/data/topics';
+import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -17,7 +18,9 @@ export function LandingTopicCardGrid({ topic, color }: LandingTopicCardGridProps
   return (
     <>
       <div className="flex min-h-0 flex-1 items-start gap-3 overflow-hidden">
-        <div className={cn('shrink-0 rounded-md p-2 [&_svg]:size-5', color.iconBg, color.iconColor)}>{topic.icon}</div>
+        <div className={cn('shrink-0 rounded-md p-2', color.iconBg, color.iconColor)}>
+          <ColoredIcon size={20}>{topic.icon}</ColoredIcon>
+        </div>
         <div className="min-w-0 flex-1 overflow-hidden">
           <div className="flex items-start justify-between gap-2">
             <h3 className="truncate text-[15px] font-semibold leading-snug text-foreground transition-colors duration-200 group-hover:text-primary">

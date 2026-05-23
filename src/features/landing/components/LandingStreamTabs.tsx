@@ -1,6 +1,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Stream } from '@/data/topics';
+import { STREAM_ICONS } from '@/assets/StreamIcons';
+import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -127,7 +129,9 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                       : 'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground'
                   )}
                 >
-                  {stream.icon && <span className="shrink-0 [&_svg]:text-current">{stream.icon}</span>}
+                  {STREAM_ICONS[stream.id] ? (
+                    <ColoredIcon size={22}>{STREAM_ICONS[stream.id]}</ColoredIcon>
+                  ) : null}
                   <span className="font-medium">
                     <TranslatedText text={stream.title} />
                   </span>

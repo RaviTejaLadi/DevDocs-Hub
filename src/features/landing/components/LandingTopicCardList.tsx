@@ -1,5 +1,6 @@
 import { ChevronRight } from 'lucide-react';
 import type { Topic } from '@/data/topics';
+import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
@@ -18,7 +19,9 @@ export function LandingTopicCardList({ topic, color }: LandingTopicCardListProps
   return (
     <>
       <div className="flex shrink-0 items-center gap-3">
-        <div className={cn('shrink-0 rounded-lg p-2.5', color.iconBg, color.iconColor)}>{topic.icon}</div>
+        <div className={cn('shrink-0 rounded-lg p-2.5', color.iconBg, color.iconColor)}>
+          <ColoredIcon size={20}>{topic.icon}</ColoredIcon>
+        </div>
       </div>
       <div className="min-w-0 flex-1 space-y-1.5">
         <h3 className="wrap-break-word text-base font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
