@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, ChevronLeft, Code2, Search, SlidersHorizontal, X } from 'lucide-react';
+import { BookOpen, ChevronLeft, Code2, Search, SlidersHorizontal, Sparkles, X } from 'lucide-react';
 import { LEVEL_ORDER, LEVEL_LABELS } from '@/data/interviewQuestions';
 import { Accordion } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
@@ -10,7 +10,7 @@ import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslatedText } from '@/i18n/useTranslatedText';
-import { levelPillClass } from '../constants/pillClasses';
+import { LEVEL_EMOJI, TOPIC_VISUALS, levelPillClass } from '../constants';
 import { QuestionBlock } from './QuestionBlock';
 import { useTopicDetailFilters } from '../hooks';
 
@@ -38,54 +38,97 @@ export function TopicDetailPage() {
   if (!topic) {
     return (
       <div className="max-w-4xl mx-auto">
-        <Button variant="ghost" size="sm" asChild className="mb-5">
+        <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to="/interview-questions" className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
             {t('interview.backToInterviewQuestions')}
           </Link>
         </Button>
         <Card className="border-dashed">
-          <CardContent className="py-12 text-center text-muted-foreground">{t('interview.topicNotFound')}</CardContent>
+          <CardContent className="py-12 text-center space-y-2">
+            <span className="text-4xl block" aria-hidden>
+              😕
+            </span>
+            <p className="text-muted-foreground">{t('interview.topicNotFound')}</p>
+          </CardContent>
         </Card>
       </div>
     );
   }
 
   const Icon = topic.icon;
+  const visual = TOPIC_VISUALS[topic.id];
+  const matchPercent = allQuestions.length ? Math.round((filteredQuestions.length / allQuestions.length) * 100) : 0;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-10 sm:pb-12">
-      <Button variant="outline" size="sm" asChild className="border-border/35 bg-card/50 hover:bg-accent/55 w-fit">
+      <Button
+        variant="outline"
+        size="sm"
+        asChild
+        className="border-border/35 bg-card/50 hover:bg-accent/55 w-fit rounded-xl"
+      >
         <Link to="/interview-questions" className="inline-flex items-center gap-2">
           <ChevronLeft className="h-4 w-4" />
           {t('interview.backToInterviewQuestions')}
         </Link>
       </Button>
 
-      <Card className="overflow-hidden border-border/40 bg-linear-to-br from-card via-card to-primary/10 shadow-[0_20px_45px_-30px_hsl(var(--foreground)/0.55)]">
-        <CardHeader className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-start gap-3">
-              <div className="p-3 rounded-xl border border-primary/20 bg-primary/10">
-                <Icon className="h-7 w-7 text-primary" />
+      <Card
+        className={cn(
+          'relative overflow-hidden border-border/45 shadow-[0_20px_50px_-28px_hsl(var(--foreground)/0.45)]',
+          'bg-linear-to-br from-card via-card to-primary/8'
+        )}
+      >
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+        </div>
+        <CardHeader className="relative space-y-5 pb-6">
+          <div className="flex flex-wrap items-start justify-between gap-5">
+            <div className="flex items-start gap-4 min-w-0">
+              <div className="relative shrink-0">
+                <div
+                  className={cn(
+                    'flex size-14 items-center justify-center rounded-2xl border border-border/35 shadow-[0_10px_28px_-14px_hsl(var(--primary)/0.35)]',
+                    visual.iconBg
+                  )}
+                >
+                  <Icon className={cn('h-7 w-7', visual.iconColor)} />
+                </div>
+                <span
+                  className="absolute -bottom-1.5 -right-1.5 flex size-7 items-center justify-center rounded-full border border-border/40 bg-background text-sm shadow-sm"
+                  aria-hidden
+                >
+                  {visual.emoji}
+                </span>
               </div>
-              <div>
-                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen">
+              <div className="min-w-0 space-y-2">
+                <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/8 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
+                  <Sparkles className="h-3 w-3" />
+                  Topic practice
+                </div>
+                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen leading-tight">
                   {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
                 </CardTitle>
-                <CardDescription className="mt-2 text-sm sm:text-base">
+                <CardDescription className="text-sm sm:text-base leading-relaxed">
                   {t('interview.filterDescription')}
                 </CardDescription>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                <Code2 className="h-3.5 w-3.5 mr-1" />
-                {codingCount} {t('interview.coding')}
+              <Badge
+                variant="secondary"
+                className="h-8 px-3.5 border border-sky-500/25 bg-sky-500/10 text-sky-700 dark:text-sky-300"
+              >
+                <Code2 className="h-3.5 w-3.5 mr-1.5" />
+                💻 {codingCount} {t('interview.coding')}
               </Badge>
-              <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-                <BookOpen className="h-3.5 w-3.5 mr-1" />
-                {theoryCount} {t('interview.theory')}
+              <Badge
+                variant="secondary"
+                className="h-8 px-3.5 border border-indigo-500/25 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300"
+              >
+                <BookOpen className="h-3.5 w-3.5 mr-1.5" />
+                📖 {theoryCount} {t('interview.theory')}
               </Badge>
             </div>
           </div>
@@ -94,8 +137,9 @@ export function TopicDetailPage() {
 
       <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
         <CardContent className="pt-6 space-y-5">
-          <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
+            <span aria-hidden>🎛️</span>
             {t('interview.filters')}
           </div>
 
@@ -104,13 +148,13 @@ export function TopicDetailPage() {
               type="button"
               onClick={() => setLevelFilter('all')}
               className={cn(
-                'px-3 py-1.5 rounded-md text-sm font-medium border transition-colors',
+                'px-3.5 py-2 rounded-xl text-sm font-medium border transition-all duration-200 shrink-0',
                 levelFilter === 'all'
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-md scale-[1.02]'
                   : 'bg-muted/35 text-muted-foreground border-border/30 hover:bg-muted/65 hover:text-foreground'
               )}
             >
-              {t('interview.allLevels')}
+              ✨ {t('interview.allLevels')}
             </button>
             {LEVEL_ORDER.map((lvl) => (
               <button
@@ -118,29 +162,29 @@ export function TopicDetailPage() {
                 type="button"
                 onClick={() => setLevelFilter(lvl)}
                 className={cn(
-                  'px-2.5 py-1 rounded-md text-sm font-semibold border transition-all',
+                  'px-3 py-1.5 rounded-xl text-sm font-semibold border transition-all shrink-0',
                   levelPillClass[lvl],
                   levelFilter === lvl
-                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-sm'
-                    : 'opacity-85 hover:opacity-100'
+                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-md scale-[1.02]'
+                    : 'opacity-85 hover:opacity-100 hover:scale-[1.01]'
                 )}
               >
-                {LEVEL_LABELS[lvl]}
+                {LEVEL_EMOJI[lvl]} {LEVEL_LABELS[lvl]}
               </button>
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-1">
+            <div className="flex items-center gap-2.5 rounded-xl border border-border/35 bg-muted/20 px-3 py-2">
               <Switch id="only-code" checked={onlyCodeChallenges} onCheckedChange={setOnlyCodeWithExclusion} />
-              <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer">
-                {t('interview.onlyCoding')}
+              <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer select-none">
+                💻 {t('interview.onlyCoding')}
               </label>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5 rounded-xl border border-border/35 bg-muted/20 px-3 py-2">
               <Switch id="only-theory" checked={onlyTheory} onCheckedChange={setOnlyTheoryWithExclusion} />
-              <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer">
-                {t('interview.onlyTheory')}
+              <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer select-none">
+                📖 {t('interview.onlyTheory')}
               </label>
             </div>
             <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
@@ -150,7 +194,7 @@ export function TopicDetailPage() {
                 placeholder={t('interview.searchQuestions')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30"
+                className="pl-9 h-11 border-border/35 bg-background/85 focus-visible:ring-primary/30 rounded-xl"
               />
             </div>
             {hasAnyFilters && (
@@ -158,7 +202,7 @@ export function TopicDetailPage() {
                 type="button"
                 variant="ghost"
                 size="sm"
-                className="text-muted-foreground"
+                className="text-muted-foreground rounded-xl"
                 onClick={clearAllFilters}
               >
                 <X className="h-4 w-4 mr-1" />
@@ -169,17 +213,36 @@ export function TopicDetailPage() {
         </CardContent>
       </Card>
 
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground">
-        <p>{t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}</p>
+      <div className="rounded-xl border border-border/35 bg-muted/20 px-4 py-3 space-y-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
+          <p className="text-muted-foreground font-medium">
+            📊 {t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}
+          </p>
+          <p className="text-xs text-muted-foreground/80 tabular-nums">{matchPercent}% matched</p>
+        </div>
+        <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-linear-to-r from-primary/70 to-primary transition-all duration-500 ease-out"
+            style={{ width: `${matchPercent}%` }}
+            role="progressbar"
+            aria-valuenow={filteredQuestions.length}
+            aria-valuemin={0}
+            aria-valuemax={allQuestions.length}
+            aria-label={t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}
+          />
+        </div>
       </div>
 
       <div className="space-y-2">
         {filteredQuestions.length === 0 ? (
           <Card className="border-dashed border-border/50 bg-card/50">
-            <CardContent className="py-10 text-center">
+            <CardContent className="py-12 text-center space-y-3">
+              <span className="text-4xl block" aria-hidden>
+                🎯
+              </span>
               <p className="text-muted-foreground">{t('interview.noQuestionsMatch')}</p>
               {hasAnyFilters && (
-                <Button variant="outline" size="sm" className="mt-4" onClick={clearAllFilters}>
+                <Button variant="outline" size="sm" className="mt-2 rounded-xl" onClick={clearAllFilters}>
                   {t('interview.resetFilters')}
                 </Button>
               )}
