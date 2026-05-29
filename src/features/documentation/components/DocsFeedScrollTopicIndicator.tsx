@@ -33,11 +33,14 @@ export function DocsFeedScrollTopicIndicator({ inViewFeedKey, feedRows, visible 
     >
       <div
         className={cn(
-          'flex max-w-[min(14rem,calc(100vw-5rem))] items-center gap-2 rounded-full border border-border/50 px-3 py-1.5 shadow-lg',
-          'bg-card/90 backdrop-blur-xl supports-backdrop-filter:backdrop-blur-2xl dark:bg-card/75'
+          'flex max-w-[min(16rem,calc(100vw-5rem))] items-center gap-2 rounded-full border border-primary/25 px-3.5 py-2 shadow-lg',
+          'bg-card/92 backdrop-blur-xl supports-backdrop-filter:backdrop-blur-2xl dark:bg-card/78'
         )}
       >
-        <span className="size-2 shrink-0 rounded-full bg-primary" aria-hidden />
+        <span className="text-sm leading-none shrink-0" aria-hidden>
+          📖
+        </span>
+        <span className="size-2 shrink-0 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.5)]" aria-hidden />
         <span className="min-w-0 truncate text-xs font-semibold text-foreground">
           <TranslatedText text={activeTopic.title} />
         </span>

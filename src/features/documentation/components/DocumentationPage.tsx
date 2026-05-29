@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { getStreamByTopicId } from '@/data/topics';
 import { Fragment, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
@@ -10,6 +11,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '
 import { useI18n } from '@/i18n/I18nProvider';
 import { cn } from '@/lib/utils';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
 import {
   docsFloatingActionButtonClass,
@@ -66,12 +68,12 @@ const DocumentationPage = () => {
   if (!topic || !content) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Card className="max-w-md border-none bg-inherit w-full">
-          <CardContent className="pt-6  text-center">
-            <div className="text-6xl mb-4">📚</div>
-            <h2 className="text-2xl font-bold mb-2 text-foreground">{t('docs.pageNotFound')}</h2>
-            <p className="text-muted-foreground mb-6">{t('docs.notFoundDescription')}</p>
-            <Button onClick={() => navigate('/')} className="w-full">
+        <Card className="max-w-md border-dashed border-border/50 bg-card/50 w-full">
+          <CardContent className="pt-8 pb-8 text-center space-y-4">
+            <span className="text-5xl block" aria-hidden>📚</span>
+            <h2 className="text-2xl font-bold text-foreground">{t('docs.pageNotFound')}</h2>
+            <p className="text-muted-foreground">{t('docs.notFoundDescription')}</p>
+            <Button onClick={() => navigate('/')} className="w-full rounded-xl">
               <Home className="mr-2 h-4 w-4" />
               {t('docs.backHome')}
             </Button>
@@ -153,6 +155,7 @@ const DocumentationPage = () => {
           className={cn(
             docsFloatingActionButtonClass,
             docsFloatingActionButtonTopStackedClass,
+            'border-primary/25 bg-primary/8 hover:bg-primary/12 text-primary shadow-lg',
             topicBrowserOpen && 'hidden'
           )}
           onClick={() => onTopicBrowserOpenChange(true)}
@@ -173,19 +176,30 @@ const DocumentationPage = () => {
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
               <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
               <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
+              <div
+                className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.35)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.35)_1px,transparent_1px)] bg-size-[18px_18px] opacity-[0.12]"
+                aria-hidden
+              />
             </div>
             <div className="flex gap-3">
               <div
                 className={cn(
-                  'flex size-10 shrink-0 items-center justify-center rounded-xl',
-                  'bg-muted/45 text-primary shadow-inner [&_svg]:size-[1.15rem]'
+                  'relative flex size-11 shrink-0 items-center justify-center rounded-xl',
+                  'border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-primary shadow-sm [&_svg]:size-[1.15rem]'
                 )}
                 aria-hidden
               >
                 <Library strokeWidth={1.75} />
+                <span className="absolute -bottom-1 -right-1 text-sm leading-none" aria-hidden>
+                  🗂️
+                </span>
               </div>
-              <div className="min-w-0 flex-1 space-y-1">
-                <SheetTitle className="text-base font-semibold leading-snug tracking-tight">
+              <div className="min-w-0 flex-1 space-y-1.5">
+                <div className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/8 px-2 py-0.5 text-[10px] font-semibold text-primary">
+                  <Sparkles className="h-3 w-3" />
+                  Explorer
+                </div>
+                <SheetTitle className="text-base font-bold leading-snug tracking-tight text-gradient-sheen">
                   {t('docs.topicBrowserTitle')}
                 </SheetTitle>
                 <SheetDescription className="text-xs leading-relaxed text-muted-foreground">
@@ -199,12 +213,18 @@ const DocumentationPage = () => {
               {docsTopicBrowserSections.map(({ stream, categories }, si) => (
                 <Fragment key={stream.id}>
                   {si > 0 ? <Separator className="my-5 bg-border/30" decorative /> : null}
-                  <section className={docsSidePanelNavSurfaceClass}>
+                  <section className={cn(docsSidePanelNavSurfaceClass, 'overflow-hidden')}>
                     <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
+                      <span
+                        className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-background/80 text-lg shadow-sm"
+                        aria-hidden
+                      >
+                        {getStreamEmoji(stream.id)}
+                      </span>
                       <div
                         className={cn(
-                          'flex size-9 shrink-0 items-center justify-center rounded-lg',
-                          'bg-background/80 text-primary shadow-inner backdrop-blur-sm [&_svg]:size-[1.05rem]'
+                          'flex size-10 shrink-0 items-center justify-center rounded-xl',
+                          'bg-background/80 text-primary shadow-sm backdrop-blur-sm [&_svg]:size-[1.05rem]'
                         )}
                         aria-hidden
                       >
@@ -217,26 +237,30 @@ const DocumentationPage = () => {
                         <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-muted-foreground">
                           <TranslatedText text={stream.description} />
                         </p>
+                        <Badge variant="outline" className="mt-1.5 h-5 px-1.5 text-[10px] border-border/40">
+                          {stream.topics.length} topics
+                        </Badge>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-0">
+                    <div className="flex flex-col gap-1.5">
                       {categories.map((cat) => {
                         const ck = `${stream.id}::${cat.key}`;
                         const open = topicBrowserOpenCats[ck] ?? false;
+                        const catVisual = getCategoryVisual(cat.label);
                         return (
                           <Fragment key={ck}>
                             <div
                               className={cn(
-                                'overflow-hidden rounded-lg transition-colors',
+                                'overflow-hidden rounded-xl border transition-all duration-200',
                                 open
-                                  ? 'bg-background/55 dark:bg-background/35'
-                                  : 'bg-background/35 dark:bg-background/20'
+                                  ? cn('bg-background/60 dark:bg-background/40', catVisual.ring)
+                                  : 'border-transparent bg-background/35 dark:bg-background/20'
                               )}
                             >
                               <button
                                 type="button"
                                 className={cn(
-                                  'flex w-full min-h-10 items-center gap-2 rounded-lg px-2 py-2 text-left transition-colors',
+                                  'flex w-full min-h-10 items-center gap-2 rounded-xl px-2.5 py-2 text-left transition-colors',
                                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                                   open ? 'bg-muted/25 dark:bg-muted/15' : 'hover:bg-muted/30 dark:hover:bg-muted/12'
                                 )}
@@ -248,6 +272,9 @@ const DocumentationPage = () => {
                                   }))
                                 }
                               >
+                                <span className="text-base leading-none shrink-0" aria-hidden>
+                                  {catVisual.emoji}
+                                </span>
                                 <ChevronRight
                                   className={cn(
                                     'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out',
@@ -287,9 +314,9 @@ const DocumentationPage = () => {
                                           variant="ghost"
                                           aria-current={isCurrentTopic ? 'page' : undefined}
                                           className={cn(
-                                            'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-lg px-2 py-2 text-left shadow-none',
-                                            'transition-colors',
-                                            'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22',
+                                            'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-xl px-2.5 py-2 text-left shadow-none',
+                                            'transition-all duration-200',
+                                            'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22 hover:shadow-sm',
                                             'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                                             isCurrentTopic &&
                                               cn(
@@ -355,7 +382,7 @@ const DocumentationPage = () => {
           variant="secondary"
           size="icon"
           onClick={scrollFeedToTop}
-          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40  rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm md:right-8"
+          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm hover:bg-card hover:shadow-xl md:right-8 size-11"
           aria-label={t('docs.scrollToTop')}
         >
           <ChevronUp className="size-5" />

@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useCallback, useEffect, type JSX } from 'react';
+import { useState, useCallback, useEffect, useMemo, type JSX } from 'react';
 import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
 import type { Topic, TopicItem } from '@/data/topics';
 import { resolveTopicBadge } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
-import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight, ListTree } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -63,6 +64,11 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   const topic = topicsIndex?.find((t) => t.id === currentTopicId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+
+  const totalLessons = useMemo(() => {
+    if (!topic) return 0;
+    return topic.items.reduce((sum, item) => sum + countDocumentItems(item), 0);
+  }, [topic]);
 
   /** Matches `/docs/:topicId/:itemId` — avoids highlighting wrong row when item ids repeat across topics. */
   const activeRouteKey = currentTopicId && activeSlug ? `${currentTopicId}/${activeSlug}` : '';
@@ -129,15 +135,15 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
             variant="ghost"
             data-sidebar-route={routeKey}
             className={cn(
-              'group/nav flex min-w-0 w-full max-w-full justify-start rounded-lg overflow-hidden box-border touch-manipulation',
-              'border-l-2 transition-[background-color,border-color,box-shadow,color] duration-200',
+              'group/nav flex min-w-0 w-full max-w-full justify-start rounded-xl overflow-hidden box-border touch-manipulation',
+              'border-l-2 transition-all duration-200',
               depth === 0 ? 'min-h-11 py-2 px-2.5' : 'min-h-9 py-1.5 px-2',
               !isActive || !isDoc ? 'border-l-transparent' : topicBadgeAccentBorder[badgeKind],
               isActive && isDoc
-                ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)]'
+                ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)] ring-1 ring-primary/10'
                 : isActive && !isDoc
                 ? 'bg-muted/55 text-foreground'
-                : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/35 hover:text-foreground'
+                : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/40 hover:text-foreground hover:shadow-sm'
             )}
             style={{ paddingLeft: `${depth * 10 + 8}px` }}
             onClick={() => topic && handleNavigate(topic.id, item.id)}
@@ -240,8 +246,9 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
   if (!topic)
     return (
-      <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
-        <BookOpen className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
+      <div className="flex flex-1 flex-col items-center justify-center p-6 text-center space-y-3">
+        <span className="text-4xl" aria-hidden>📚</span>
+        <BookOpen className="w-10 h-10 mx-auto text-muted-foreground/70" />
         <p className="text-sm text-muted-foreground">{t('sidebar.selectTopic')}</p>
       </div>
     );
@@ -255,7 +262,8 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
         if (filtered.length === 0) {
           return (
-            <div className="text-center py-8">
+            <div className="text-center py-10 space-y-2">
+              <span className="text-3xl block" aria-hidden>🔎</span>
               <p className="text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
             </div>
           );
@@ -311,39 +319,49 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
         <Link
           to="/"
           onClick={closeSheet}
-          className="group mb-3 flex max-w-full min-w-0 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-4"
+          className="group mb-3 flex max-w-full min-w-0 items-center gap-2 rounded-lg border border-border/35 bg-background/60 px-2.5 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-sm sm:mb-4"
         >
           <ChevronLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
           <span>{t('sidebar.backToOverview')}</span>
         </Link>
-        <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+
+        <div className="flex min-w-0 items-start gap-3 mb-3 sm:mb-4">
           <div
-            className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted/45 text-primary shadow-inner [&_svg]:size-[1.15rem]"
+            className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/40  text-primary shadow-sm [&_svg]:size-[1.15rem]"
             aria-hidden
           >
-            {topic.icon}
+            {topic.icon ?? <BookOpen className="size-[1.15rem]" strokeWidth={1.75} />}
           </div>
-          <div className="relative min-w-0 flex-1">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder={t('sidebar.searchSection')}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-9 w-full rounded-lg border-border/40 bg-background pl-9 pr-8 shadow-[inset_0_1px_2px_hsl(var(--foreground)/0.05)] dark:shadow-[inset_0_1px_3px_hsl(0_0%_0%/0.18)]"
-            />
-            {searchQuery && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-1 top-1/2 h-7 w-7 shrink-0 -translate-y-1/2 p-0"
-                onClick={() => setSearchQuery('')}
-                aria-label={t('sidebar.clearSearch')}
-              >
-                <X className="h-3 w-3" />
-              </Button>
-            )}
+          <div className="min-w-0 flex-1 space-y-1">
+            <p className="truncate text-sm font-semibold leading-snug text-foreground">
+              <TranslatedText text={topic.title} />
+            </p>
+            <Badge variant="outline" className="h-5 px-1.5 text-[10px] border-border/40 bg-muted/30">
+              📖 {t('sidebar.lessonsInTopic', { count: totalLessons })}
+            </Badge>
           </div>
+        </div>
+
+        <div className="relative min-w-0 flex-1">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder={t('sidebar.searchSection')}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="h-10 w-full rounded-xl border-border/35 bg-background/85 pl-9 pr-8 focus-visible:ring-primary/30"
+          />
+          {searchQuery && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute right-1 top-1/2 h-7 w-7 shrink-0 -translate-y-1/2 p-0 rounded-lg"
+              onClick={() => setSearchQuery('')}
+              aria-label={t('sidebar.clearSearch')}
+            >
+              <X className="h-3 w-3" />
+            </Button>
+          )}
         </div>
       </div>
 

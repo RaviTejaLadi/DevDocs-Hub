@@ -82,7 +82,8 @@ export function DocsFeedTopicContinuationHero({ topic }: { topic: Topic }) {
                 </span>
               ) : null}
               <span className="hidden h-3.5 w-px shrink-0 bg-border/50 sm:block" aria-hidden />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/75 sm:text-[10px]">
+              <span className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/75 sm:text-[10px]">
+                <span aria-hidden>⏭️</span>
                 Up next
               </span>
             </div>
