@@ -5,7 +5,7 @@ import type { Topic, TopicItem } from '@/data/topics';
 import { resolveTopicBadge } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
-import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight, ListTree } from 'lucide-react';
+import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';

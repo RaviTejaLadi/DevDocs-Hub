@@ -1,29 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { getStreamByTopicId } from '@/data/topics';
 import { Fragment, useMemo } from 'react';
-import { ArrowRight, ChevronRight, ChevronUp, Home, FileText, Library, Sparkles } from 'lucide-react';
+import { ChevronUp, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useI18n } from '@/i18n/I18nProvider';
-import { cn } from '@/lib/utils';
-import { TranslatedText } from '@/i18n/TranslatedText';
-import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
 import DocsFeedTopicSection from './DocsFeedTopicSection';
-import {
-  docsFloatingActionButtonClass,
-  docsFloatingActionButtonTopStackedClass,
-  docsSidePanelHeaderSurfaceClass,
-  docsSidePanelNavSurfaceClass,
-  docsSidePanelScrollAreaClass,
-  docsSidePanelWidthClass,
-} from '@/constants/docsSidePanel';
+import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
 import { FALLBACK_SCROLL_ROOT } from '../constants';
 import { DOC_FEED_SECTION_SHELL_CLASS } from '../constants';
-import { flattenTopicItems, docFeedSectionDomId, groupFeedRowsByTopic } from '../utils';
+import { docFeedSectionDomId, groupFeedRowsByTopic } from '../utils';
 import { DocsFeedStreamBanner } from './DocsFeedStreamBanner';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DocsFeedTopicContinuationHero } from './DocsFeedTopicContinuationHero';
@@ -144,235 +130,26 @@ const DocumentationPage = () => {
         {chainHasMoreBelow ? <div ref={appendSentinelRef} className="h-1 w-full shrink-0" aria-hidden /> : null}
       </div>
 
-      <Sheet open={topicBrowserOpen} onOpenChange={onTopicBrowserOpenChange}>
-        <Button
-          type="button"
-          variant="secondary"
-          size="icon"
-          aria-haspopup="dialog"
-          aria-expanded={topicBrowserOpen}
-          aria-label={t('docs.topicBrowserTrigger')}
-          className={cn(
-            docsFloatingActionButtonClass,
-            docsFloatingActionButtonTopStackedClass,
-            'border-primary/25 bg-primary/8 hover:bg-primary/12 text-primary shadow-lg',
-            topicBrowserOpen && 'hidden'
-          )}
-          onClick={() => onTopicBrowserOpenChange(true)}
-        >
-          <Library className="h-4 w-4" />
-        </Button>
-
-        <SheetContent
-          side="right"
-          overlayClassName="z-[68] backdrop-blur-[2px]"
-          className={cn(
-            'flex min-h-0 flex-col gap-0 overflow-hidden border-l border-border/30 p-0 sm:rounded-l-2xl',
-            'z-70 bg-background/95 shadow-2xl backdrop-blur-xl supports-backdrop-filter:bg-background/78',
-            docsSidePanelWidthClass
-          )}
-        >
-          <SheetHeader className={cn(docsSidePanelHeaderSurfaceClass, 'px-4 pb-4 pt-5 text-left')}>
-            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
-              <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
-              <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
-              <div
-                className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.35)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.35)_1px,transparent_1px)] bg-size-[18px_18px] opacity-[0.12]"
-                aria-hidden
-              />
-            </div>
-            <div className="flex gap-3">
-              <div
-                className={cn(
-                  'relative flex size-11 shrink-0 items-center justify-center rounded-xl',
-                  'border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-primary shadow-sm [&_svg]:size-[1.15rem]'
-                )}
-                aria-hidden
-              >
-                <Library strokeWidth={1.75} />
-                <span className="absolute -bottom-1 -right-1 text-sm leading-none" aria-hidden>
-                  🗂️
-                </span>
-              </div>
-              <div className="min-w-0 flex-1 space-y-1.5">
-                <div className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/8 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                  <Sparkles className="h-3 w-3" />
-                  Explorer
-                </div>
-                <SheetTitle className="text-base font-bold leading-snug tracking-tight text-gradient-sheen">
-                  {t('docs.topicBrowserTitle')}
-                </SheetTitle>
-                <SheetDescription className="text-xs leading-relaxed text-muted-foreground">
-                  {t('docs.topicBrowserSubtitle')}
-                </SheetDescription>
-              </div>
-            </div>
-          </SheetHeader>
-          <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'min-h-0 overflow-hidden')}>
-            <div className="px-3 py-4">
-              {docsTopicBrowserSections.map(({ stream, categories }, si) => (
-                <Fragment key={stream.id}>
-                  {si > 0 ? <Separator className="my-5 bg-border/30" decorative /> : null}
-                  <section className={cn(docsSidePanelNavSurfaceClass, 'overflow-hidden')}>
-                    <div className="mb-3 flex items-start gap-2.5 border-b border-border/20 pb-3">
-                      <span
-                        className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-background/80 text-lg shadow-sm"
-                        aria-hidden
-                      >
-                        {getStreamEmoji(stream.id)}
-                      </span>
-                      <div
-                        className={cn(
-                          'flex size-10 shrink-0 items-center justify-center rounded-xl',
-                          'bg-background/80 text-primary shadow-sm backdrop-blur-sm [&_svg]:size-[1.05rem]'
-                        )}
-                        aria-hidden
-                      >
-                        {stream.icon ?? <FileText className="size-[1.05rem]" strokeWidth={1.75} />}
-                      </div>
-                      <div className="min-w-0 flex-1 pt-0.5">
-                        <p className="truncate text-[13px] font-semibold leading-tight tracking-tight">
-                          <TranslatedText text={stream.title} />
-                        </p>
-                        <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-muted-foreground">
-                          <TranslatedText text={stream.description} />
-                        </p>
-                        <Badge variant="outline" className="mt-1.5 h-5 px-1.5 text-[10px] border-border/40">
-                          {stream.topics.length} topics
-                        </Badge>
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      {categories.map((cat) => {
-                        const ck = `${stream.id}::${cat.key}`;
-                        const open = topicBrowserOpenCats[ck] ?? false;
-                        const catVisual = getCategoryVisual(cat.label);
-                        return (
-                          <Fragment key={ck}>
-                            <div
-                              className={cn(
-                                'overflow-hidden rounded-xl border transition-all duration-200',
-                                open
-                                  ? cn('bg-background/60 dark:bg-background/40', catVisual.ring)
-                                  : 'border-transparent bg-background/35 dark:bg-background/20'
-                              )}
-                            >
-                              <button
-                                type="button"
-                                className={cn(
-                                  'flex w-full min-h-10 items-center gap-2 rounded-xl px-2.5 py-2 text-left transition-colors',
-                                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                                  open ? 'bg-muted/25 dark:bg-muted/15' : 'hover:bg-muted/30 dark:hover:bg-muted/12'
-                                )}
-                                aria-expanded={open}
-                                onClick={() =>
-                                  setTopicBrowserOpenCats((prev) => ({
-                                    ...prev,
-                                    [ck]: !(prev[ck] ?? false),
-                                  }))
-                                }
-                              >
-                                <span className="text-base leading-none shrink-0" aria-hidden>
-                                  {catVisual.emoji}
-                                </span>
-                                <ChevronRight
-                                  className={cn(
-                                    'size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out',
-                                    open && 'rotate-90 text-foreground'
-                                  )}
-                                  aria-hidden
-                                />
-                                <span className="min-w-0 flex-1 truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-foreground/85">
-                                  {cat.label}
-                                </span>
-                                <span
-                                  className={cn(
-                                    'tabular-nums rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium text-muted-foreground',
-                                    open && 'bg-primary/12 text-foreground/80'
-                                  )}
-                                >
-                                  {cat.topics.length}
-                                </span>
-                              </button>
-                              {open ? (
-                                <ul className="animate-in fade-in slide-in-from-top-1 space-y-1 px-1.5 pb-1.5 pt-1 duration-200">
-                                  {cat.topics.map((visTopic) => {
-                                    const jumpItem = flattenTopicItems(visTopic.items)[0];
-                                    if (!jumpItem) return null;
-                                    const iconEl = visTopic.icon ?? (
-                                      <FileText
-                                        className="size-3.5 shrink-0 text-primary"
-                                        strokeWidth={1.75}
-                                        aria-hidden
-                                      />
-                                    );
-                                    const isCurrentTopic = categoryId === visTopic.id;
-                                    return (
-                                      <li key={visTopic.id}>
-                                        <Button
-                                          type="button"
-                                          variant="ghost"
-                                          aria-current={isCurrentTopic ? 'page' : undefined}
-                                          className={cn(
-                                            'group relative h-auto min-h-11 w-full justify-start gap-2.5 rounded-xl px-2.5 py-2 text-left shadow-none',
-                                            'transition-all duration-200',
-                                            'bg-transparent hover:bg-muted/50 dark:hover:bg-muted/22 hover:shadow-sm',
-                                            'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                                            isCurrentTopic &&
-                                              cn(
-                                                'bg-primary/11 hover:bg-primary/14 dark:bg-primary/14 dark:hover:bg-primary/17',
-                                                'shadow-[inset_3px_0_0_0_hsl(var(--primary))]'
-                                              )
-                                          )}
-                                          onClick={() => {
-                                            setTopicBrowserOpen(false);
-                                            navigateToFeedItem(jumpItem, visTopic.id, {
-                                              scrollBehavior: 'auto',
-                                              scrollToTopicStart: true,
-                                            });
-                                          }}
-                                        >
-                                          <span
-                                            className={cn(
-                                              'flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted/35 [&_svg]:size-[0.95rem]',
-                                              isCurrentTopic
-                                                ? 'bg-primary/15 text-primary'
-                                                : 'text-muted-foreground group-hover:bg-muted/50 group-hover:text-primary'
-                                            )}
-                                          >
-                                            {iconEl}
-                                          </span>
-                                          <span className="min-w-0 flex-1 text-[13px] font-medium leading-snug">
-                                            <TranslatedText text={visTopic.title} />
-                                          </span>
-                                          <ArrowRight
-                                            className={cn(
-                                              'size-4 shrink-0 transition-opacity duration-200',
-                                              isCurrentTopic
-                                                ? 'text-primary opacity-90'
-                                                : 'text-muted-foreground opacity-0 group-hover:opacity-70'
-                                            )}
-                                            strokeWidth={2}
-                                            aria-hidden
-                                          />
-                                        </Button>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              ) : null}
-                            </div>
-                          </Fragment>
-                        );
-                      })}
-                    </div>
-                  </section>
-                </Fragment>
-              ))}
-            </div>
-          </ScrollArea>
-        </SheetContent>
-      </Sheet>
+      <DocsTopicBrowserSheet
+        open={topicBrowserOpen}
+        onOpenChange={onTopicBrowserOpenChange}
+        sections={docsTopicBrowserSections}
+        activeTopicId={categoryId}
+        openCategories={topicBrowserOpenCats}
+        onToggleCategory={(ck) =>
+          setTopicBrowserOpenCats((prev) => ({
+            ...prev,
+            [ck]: !(prev[ck] ?? false),
+          }))
+        }
+        onSelectTopic={(item, topicId) => {
+          setTopicBrowserOpen(false);
+          navigateToFeedItem(item, topicId, {
+            scrollBehavior: 'auto',
+            scrollToTopicStart: true,
+          });
+        }}
+      />
 
       <DocsFeedScrollTopicIndicator inViewFeedKey={inViewFeedKey} feedRows={feedRows} visible={feedRows.length > 1} />
 

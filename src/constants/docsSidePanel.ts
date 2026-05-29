@@ -12,6 +12,14 @@ export const docsSidePanelNavSurfaceClass =
 /** Scroll region: flex child must shrink; bottom padding clears last row above sheet/home affordances. */
 export const docsSidePanelScrollAreaClass = cn('min-h-0 min-w-0 flex-1 *:data-[slot=scroll-area-viewport]:pb-4');
 
+/** Right topic-browser sheet: inset from viewport with rounded panel at `md+`. */
+export const docsTopicBrowserSheetContentClass = cn(
+  'flex min-h-0 flex-col gap-0 overflow-hidden border border-border/40 p-0 shadow-xl',
+  'top-2 right-2 bottom-2 left-auto m-0 h-[calc(100%-1rem)] max-h-[calc(100%-1rem)] md:rounded-xl',
+  'z-70 bg-background supports-backdrop-filter:bg-background/95',
+  docsSidePanelWidthClass
+);
+
 /** Shared chrome for fixed circular docs controls (primary sidebar toggle, topic browser trigger). */
 export const docsFloatingActionButtonClass = cn(
   'fixed z-60 inline-flex size-10 shrink-0 rounded-full border border-border/50 bg-card/90 shadow-md backdrop-blur-sm',

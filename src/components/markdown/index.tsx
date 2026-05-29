@@ -18,8 +18,17 @@ type Heading = { id: string; text: string; level: number; slideIndex?: number };
 /** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
 const DOC_READING_PANE_MAX_CLASS = 'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
 
-/** Scrollable body max = pane cap minus slide footer (controls + border). */
-const DOC_SLIDE_BODY_MAX_CLASS = 'max-h-[calc(100dvh-9rem-3rem)] sm:max-h-[calc(100dvh-9.5rem-3rem)]';
+/** Scrollable body max = pane cap minus floating nav clearance. */
+const DOC_SLIDE_BODY_MAX_CLASS = 'max-h-[calc(100dvh-9rem-2.5rem)] sm:max-h-[calc(100dvh-9.5rem-2.5rem)]';
+
+const CARD_FLOAT_NAV_BTN_CLASS = cn(
+  'absolute z-20 inline-flex size-10 shrink-0 items-center justify-center rounded-full',
+  'border border-border/50 bg-card/90 text-foreground shadow-md backdrop-blur-sm',
+  'transition-[transform,opacity,box-shadow] duration-200',
+  'hover:bg-card hover:shadow-lg active:scale-[0.96]',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+  'disabled:pointer-events-none disabled:opacity-30'
+);
 
 const MAX_SLIDE_CHARS = 4200;
 const MERGE_TINY_UNDER = 260;
@@ -630,7 +639,7 @@ const MarkdownRenderInner = ({
             >
               <div
                 className={cn(
-                  'flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
+                  'relative flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
                   fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
                   'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
                   'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
@@ -642,7 +651,7 @@ const MarkdownRenderInner = ({
                   ref={slideBodyRef}
                   className={cn(
                     'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
-                    'px-5 pt-4 pb-5 sm:px-8 sm:pt-5 sm:pb-6',
+                    'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
                     fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
@@ -664,110 +673,97 @@ const MarkdownRenderInner = ({
                   </div>
                 </div>
 
-                <footer className="relative isolate flex shrink-0 flex-col overflow-hidden border-t border-border/45">
-                  <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+                {slideMode ? (
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-0.5 bg-border/30 dark:bg-border/40"
+                    role="progressbar"
+                    aria-valuenow={activeSlide + 1}
+                    aria-valuemin={1}
+                    aria-valuemax={slides.length}
+                    aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
+                  >
                     <div
                       className={cn(
-                        'absolute inset-0',
-                        keyboardActive
-                          ? 'bg-[linear-gradient(278deg,hsl(var(--muted)/0.28)_0%,hsl(var(--card)/0.97)_42%,hsl(var(--primary)/0.08)_100%)] dark:bg-[linear-gradient(278deg,hsl(var(--muted)/0.16)_0%,hsl(var(--card)/0.5)_45%,hsl(var(--primary)/0.12)_100%)]'
-                          : 'bg-[linear-gradient(278deg,hsl(var(--muted)/0.35)_0%,hsl(var(--card)/0.98)_55%,hsl(var(--card)/0.99)_100%)] dark:bg-[linear-gradient(278deg,hsl(var(--muted)/0.2)_0%,hsl(var(--card)/0.48)_58%,hsl(var(--card)/0.42)_100%)]'
+                        'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
+                        keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
                       )}
+                      style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
                     />
-                    <div className="absolute -left-4 -bottom-6 size-16 rounded-full bg-primary/8 blur-2xl dark:bg-primary/12 sm:size-20" />
-                    <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/10 to-transparent dark:via-foreground/7" />
                   </div>
+                ) : null}
 
-                  {slideMode ? (
-                    <div
-                      className="relative h-0.5 w-full bg-border/30 dark:bg-border/40"
-                      role="progressbar"
-                      aria-valuenow={activeSlide + 1}
-                      aria-valuemin={1}
-                      aria-valuemax={slides.length}
-                      aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
-                    >
-                      <div
-                        className={cn(
-                          'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
-                          keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
-                        )}
-                        style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
-                      />
-                    </div>
-                  ) : null}
-
-                  <div
-                    className={cn(
-                      'relative flex items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3',
-                      !slideMode && 'justify-between'
-                    )}
-                  >
+                <Tooltip>
+                  <TooltipTrigger asChild>
                     <Button
                       type="button"
-                      variant="outline"
-                      size="sm"
+                      variant="ghost"
+                      size="icon"
                       className={cn(
-                        'h-9 shrink-0 gap-1.5 border-border/55 bg-linear-to-b from-background/95 to-muted/25 px-2.5 shadow-[0_4px_14px_-8px_hsl(var(--foreground)/0.32)] hover:border-primary/35 hover:bg-primary/5 sm:min-w-22',
-                        'dark:from-card/90 dark:to-muted/20',
-                        keyboardActive && 'border-primary/25'
+                        CARD_FLOAT_NAV_BTN_CLASS,
+                        'bottom-3 left-3 sm:bottom-4 sm:left-4',
+                        keyboardActive && 'border-primary/30 shadow-lg'
                       )}
                       onClick={handleCardNavPrev}
                       disabled={slideMode ? activeSlide === 0 && !hasPrevDocument : !hasPrevDocument}
-                      aria-label={t('markdown.prevSlide')}
+                      aria-label={feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}
                     >
-                      <ChevronLeft className="size-4 shrink-0 opacity-80" aria-hidden />
-                      <span className="hidden text-xs font-medium sm:inline">{t('markdown.prevSlide')}</span>
+                      <ChevronLeft className="size-5" aria-hidden />
                     </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">{feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}</TooltipContent>
+                </Tooltip>
 
-                    {slideMode ? (
-                      <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
-                        <span
-                          className={cn(
-                            'text-[9px] font-semibold uppercase tracking-[0.18em] sm:text-[10px]',
-                            keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
-                          )}
-                        >
-                          {t('markdown.slideLabel')}
-                        </span>
-                        {slides.length > 1 && slides.length <= 12 ? (
-                          <div className="flex max-w-full items-center justify-center gap-1 px-1" aria-hidden>
-                            {slides.map((_, slideIdx) => (
-                              <span
-                                key={slideIdx}
-                                className={cn(
-                                  'h-1 rounded-full transition-all duration-300',
-                                  slideIdx === activeSlide
-                                    ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
-                                    : 'w-1 bg-border/55 dark:bg-border/65'
-                                )}
-                              />
-                            ))}
-                          </div>
-                        ) : null}
+                {slideMode ? (
+                  <div
+                    className="pointer-events-none absolute bottom-3 left-1/2 z-10 flex max-w-[min(12rem,calc(100%-7rem))] -translate-x-1/2 flex-col items-center gap-1 sm:bottom-4"
+                    aria-hidden
+                  >
+                    <span
+                      className={cn(
+                        'text-[9px] font-semibold uppercase tracking-[0.18em] sm:text-[10px]',
+                        keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
+                      )}
+                    >
+                      {t('markdown.slideLabel')}
+                    </span>
+                    {slides.length > 1 && slides.length <= 12 ? (
+                      <div className="flex max-w-full items-center justify-center gap-1">
+                        {slides.map((_, slideIdx) => (
+                          <span
+                            key={slideIdx}
+                            className={cn(
+                              'h-1 rounded-full transition-all duration-300',
+                              slideIdx === activeSlide
+                                ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
+                                : 'w-1 bg-border/55 dark:bg-border/65'
+                            )}
+                          />
+                        ))}
                       </div>
-                    ) : (
-                      <div className="min-w-0 flex-1" aria-hidden />
-                    )}
+                    ) : null}
+                  </div>
+                ) : null}
 
+                <Tooltip>
+                  <TooltipTrigger asChild>
                     <Button
                       type="button"
-                      variant="outline"
-                      size="sm"
+                      variant="ghost"
+                      size="icon"
                       className={cn(
-                        'h-9 shrink-0 gap-1.5 border-border/55 bg-linear-to-b from-background/95 to-muted/25 px-2.5 shadow-[0_4px_14px_-8px_hsl(var(--foreground)/0.32)] hover:border-primary/35 hover:bg-primary/5 sm:min-w-22',
-                        'dark:from-card/90 dark:to-muted/20',
-                        keyboardActive && 'border-primary/25'
+                        CARD_FLOAT_NAV_BTN_CLASS,
+                        'bottom-3 right-3 sm:bottom-4 sm:right-4',
+                        keyboardActive && 'border-primary/30 shadow-lg'
                       )}
                       onClick={handleCardNavNext}
                       disabled={slideMode ? activeSlide >= slides.length - 1 && !hasNextDocument : !hasNextDocument}
-                      aria-label={t('markdown.nextSlide')}
+                      aria-label={feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}
                     >
-                      <span className="hidden text-xs font-medium sm:inline">{t('markdown.nextSlide')}</span>
-                      <ChevronRight className="size-4 shrink-0 opacity-80" aria-hidden />
+                      <ChevronRight className="size-5" aria-hidden />
                     </Button>
-                  </div>
-                </footer>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">{feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}</TooltipContent>
+                </Tooltip>
               </div>
             </section>
           ) : (
