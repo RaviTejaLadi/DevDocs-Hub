@@ -3,7 +3,7 @@ import { learningResourcesTopics } from './learning-resources';
 // import { interviewPrepTopics } from './interview-prep';
 import { developerToolsTopics } from './developer-tools';
 // import { practicePlatformsTopics } from './practice-platforms';
-import { booksAndCoursesTopics } from './books-and-courses';
+// import { booksAndCoursesTopics } from './books-and-courses';
 import { documentationReferencesTopics } from './documentation-references';
 import { communityAndNetworkingTopics } from './community-and-networking';
 
@@ -57,17 +57,17 @@ export const resourcesData = [
   //     },
   //   ],
   // },
-  {
-    id: 'books-and-courses-resources',
-    title: 'Books & Courses',
-    children: [
-      {
-        id: 'learning-materials',
-        title: 'Learning Materials',
-        documents: booksAndCoursesTopics,
-      },
-    ],
-  },
+  // {
+  //   id: 'books-and-courses-resources',
+  //   title: 'Books & Courses',
+  //   children: [
+  //     {
+  //       id: 'learning-materials',
+  //       title: 'Learning Materials',
+  //       documents: booksAndCoursesTopics,
+  //     },
+  //   ],
+  // },
   {
     id: 'documentation-resources',
     title: 'Documentation & References',
