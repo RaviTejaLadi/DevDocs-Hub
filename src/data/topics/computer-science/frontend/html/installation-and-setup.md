@@ -1,1 +1,223 @@
-# Installation & Setup
+# 🌐 HTML Installation and Setup
+
+HTML (HyperText Markup Language) is the foundation of every web page. The good news is that HTML does not require any special installation. All you need is a text editor and a web browser.
+
+## 🎯 What You Need
+
+Before writing HTML code, make sure you have:
+
+* A text editor
+* A web browser
+* Basic knowledge of files and folders
+
+### Recommended Tools
+
+| Tool    | Purpose                         |
+| ------- | ------------------------------- |
+| VS Code | Writing HTML code               |
+| Chrome  | Viewing and testing web pages   |
+| Firefox | Alternative browser for testing |
+
+---
+
+## 💻 Installing VS Code
+
+### Step 1: Download VS Code
+
+Visit the official website:
+
+[Visual Studio Code](https://code.visualstudio.com?utm_source=chatgpt.com)
+
+### Step 2: Install
+
+#### Windows
+
+1. Download the Windows installer.
+2. Run the setup file.
+3. Click **Next** until installation completes.
+4. Launch VS Code.
+
+#### macOS
+
+1. Download the macOS version.
+2. Open the downloaded file.
+3. Drag VS Code into the Applications folder.
+
+#### Linux
+
+```bash
+sudo apt install code
+```
+
+or download the package from the official website.
+
+---
+
+## 🌍 Installing a Web Browser
+
+Most computers already have a browser installed.
+
+Popular choices:
+
+* [Google Chrome](https://www.google.com/chrome/?utm_source=chatgpt.com)
+* [Mozilla Firefox](https://www.mozilla.org/firefox/?utm_source=chatgpt.com)
+* Microsoft Edge
+
+---
+
+## 📁 Creating Your First HTML Project
+
+Create a folder:
+
+```text
+html-project/
+│
+└── index.html
+```
+
+### Create index.html
+
+```html
+<!-- My first HTML page -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Welcome to HTML.</p>
+</body>
+</html>
+```
+
+Save the file as:
+
+```text
+index.html
+```
+
+---
+
+## ▶️ Running an HTML File
+
+### Method 1: Open in Browser
+
+1. Locate `index.html`
+2. Double-click the file
+3. It opens in your default browser
+
+### Method 2: Open with Live Server
+
+Live Server automatically refreshes the page whenever you save changes.
+
+### Install Live Server Extension
+
+1. Open VS Code
+2. Go to Extensions (`Ctrl + Shift + X`)
+3. Search for **Live Server**
+4. Install it
+5. Right-click `index.html`
+6. Select **Open with Live Server**
+
+---
+
+## ⚡ Recommended VS Code Extensions
+
+### Live Server
+
+Automatically reloads pages during development.
+
+### HTML CSS Support
+
+Provides autocomplete for HTML and CSS.
+
+### Prettier
+
+Formats your code automatically.
+
+### Auto Rename Tag
+
+Renames opening and closing tags together.
+
+Example:
+
+```html
+<h1>Hello</h1>
+```
+
+If you change `<h1>` to `<h2>`, the closing tag updates automatically.
+
+---
+
+## 📂 Typical HTML Project Structure
+
+```text
+my-website/
+│
+├── index.html
+├── about.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── script.js
+│
+└── images/
+    └── logo.png
+```
+
+---
+
+## 🔗 Linking CSS and JavaScript
+
+### Connect CSS
+
+```html
+<!-- Link external CSS -->
+<link rel="stylesheet" href="css/style.css">
+```
+
+### Connect JavaScript
+
+```html
+<!-- Link external JavaScript -->
+<script src="js/script.js"></script>
+```
+
+---
+
+## ✅ Verify Your Setup
+
+Create this file:
+
+```html
+<!-- Test HTML setup -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Setup Test</title>
+</head>
+<body>
+    <h1>🎉 HTML Setup Successful!</h1>
+</body>
+</html>
+```
+
+If you can open it in a browser and see the heading, your HTML environment is ready.
+
+## 🚀 Next Steps
+
+After setting up HTML, learn:
+
+1. HTML Elements
+2. HTML Attributes
+3. Headings and Paragraphs
+4. Links and Images
+5. Lists and Tables
+6. Forms
+7. CSS Styling
+8. JavaScript Basics
+
+HTML is the starting point of web development. Once your setup is ready, you can begin building web pages immediately without installing any special runtime or compiler.
