@@ -1,8 +1,11 @@
 # 🐧 Linux Command Line
 
-The Linux command line is one of the most powerful tools for developers. It allows you to manage files, run applications, automate tasks, and work efficiently without a graphical interface.
+The Linux command line is one of the most powerful tools for developers. It
+allows you to manage files, run applications, automate tasks, and work
+efficiently without a graphical interface.
 
-Think of the terminal as a direct communication channel with your operating system.
+Think of the terminal as a direct communication channel with your operating
+system.
 
 ---
 
@@ -136,7 +139,7 @@ Ctrl + X
 
 Search files:
 
-find . -name "*.js"
+find . -name "\*.js"
 
 Search text inside files:
 
@@ -534,30 +537,15 @@ pnpm build
 
 Commit changes:
 
-git add .
-git commit -m "Add authentication"
-git push
+git add . git commit -m "Add authentication" git push
 
 ---
 
 ## ⭐ Must-Know Commands
 
-pwd
-ls -la
-cd
-mkdir
-touch
-rm
-cat
-grep
-find
-chmod
-ps
-kill
-curl
-git
-npm
-pnpm
+pwd ls -la cd mkdir touch rm cat grep find chmod ps kill curl git npm pnpm
 docker
 
-Mastering these commands will significantly improve your productivity as a developer and make working with servers, containers, and development environments much easier.
+Mastering these commands will significantly improve your productivity as a
+developer and make working with servers, containers, and development
+environments much easier.

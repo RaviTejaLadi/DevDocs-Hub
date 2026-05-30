@@ -1,8 +1,10 @@
 # ✅ CSS Best Practices
 
-Writing CSS that works is good. Writing CSS that is **maintainable, scalable, performant, and easy to understand** is even better.
+Writing CSS that works is good. Writing CSS that is **maintainable, scalable,
+performant, and easy to understand** is even better.
 
-CSS Best Practices help teams build applications that remain clean and manageable as they grow.
+CSS Best Practices help teams build applications that remain clean and
+manageable as they grow.
 
 ---
 
@@ -363,11 +365,14 @@ Popular choice:
 ### BEM
 
 ```css
-.card {}
+.card {
+}
 
-.card__title {}
+.card__title {
+}
 
-.card--featured {}
+.card--featured {
+}
 ```
 
 ---
@@ -517,7 +522,8 @@ flowchart LR
 .card {
   .header {
     .title {
-      .icon {}
+      .icon {
+      }
     }
   }
 }
@@ -529,7 +535,8 @@ flowchart LR
 
 ```scss
 .card {
-  .title {}
+  .title {
+  }
 }
 ```
 
@@ -556,23 +563,30 @@ flowchart TB
 Instead of:
 
 ```css
-.button-primary {}
+.button-primary {
+}
 
-.button-secondary {}
+.button-secondary {
+}
 
-.button-success {}
+.button-success {
+}
 ```
 
 Create:
 
 ```css
-.button {}
+.button {
+}
 
-.button--primary {}
+.button--primary {
+}
 
-.button--secondary {}
+.button--secondary {
+}
 
-.button--success {}
+.button--success {
+}
 ```
 
 ---
@@ -697,9 +711,9 @@ Unused CSS increases bundle size.
 
 Use tools:
 
-* Chrome Coverage
-* PurgeCSS
-* Tailwind Content Scanner
+- Chrome Coverage
+- PurgeCSS
+- Tailwind Content Scanner
 
 ---
 
@@ -808,15 +822,16 @@ flowchart LR
 
 # 🚀 Key Takeaways
 
-* Use classes instead of IDs.
-* Keep selectors simple and predictable.
-* Build mobile-first responsive layouts.
-* Use Flexbox and Grid for layouts.
-* Store reusable values in CSS Variables.
-* Optimize animations using `transform` and `opacity`.
-* Follow a consistent architecture like BEM or component-based CSS.
-* Prioritize accessibility and performance from the start.
-* Write CSS that future developers (including yourself) can easily understand and maintain.
+- Use classes instead of IDs.
+- Keep selectors simple and predictable.
+- Build mobile-first responsive layouts.
+- Use Flexbox and Grid for layouts.
+- Store reusable values in CSS Variables.
+- Optimize animations using `transform` and `opacity`.
+- Follow a consistent architecture like BEM or component-based CSS.
+- Prioritize accessibility and performance from the start.
+- Write CSS that future developers (including yourself) can easily understand
+  and maintain.
 
 ---
 

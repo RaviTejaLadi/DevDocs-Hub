@@ -1,6 +1,7 @@
 # ✨ Pseudo-classes & Pseudo-elements
 
-Pseudo-classes and pseudo-elements let you style elements based on their **state**, **position**, or **specific parts** without adding extra HTML.
+Pseudo-classes and pseudo-elements let you style elements based on their
+**state**, **position**, or **specific parts** without adding extra HTML.
 
 Think of them as special selectors that make your CSS smarter and cleaner.
 
@@ -72,7 +73,7 @@ input:focus {
 ```
 
 ```html
-<input type="text" placeholder="Enter Name">
+<input type="text" placeholder="Enter Name" />
 ```
 
 ---
@@ -88,7 +89,7 @@ input:checked {
 ```
 
 ```html
-<input type="checkbox" checked>
+<input type="checkbox" checked />
 ```
 
 ---
@@ -201,7 +202,7 @@ Adds content before an element.
 
 ```css
 .title::before {
-  content: "🔥 ";
+  content: '🔥 ';
 }
 ```
 
@@ -223,7 +224,7 @@ Adds content after an element.
 
 ```css
 .title::after {
-  content: " 🚀";
+  content: ' 🚀';
 }
 ```
 
@@ -288,14 +289,12 @@ input::placeholder {
 # Real-World Card Example
 
 ```html
-<div class="card">
-  New Product
-</div>
+<div class="card">New Product</div>
 ```
 
 ```css
 .card::before {
-  content: "🆕 ";
+  content: '🆕 ';
 }
 
 .card:hover {
@@ -305,8 +304,8 @@ input::placeholder {
 
 Result:
 
-* Shows a "New" badge
-* Lifts the card on hover
+- Shows a "New" badge
+- Lifts the card on hover
 
 No extra HTML required.
 
@@ -316,7 +315,7 @@ No extra HTML required.
 
 ```css
 button:hover::after {
-  content: " 🚀";
+  content: ' 🚀';
 }
 ```
 
@@ -331,7 +330,7 @@ Submit 🚀
 # Useful Form Example
 
 ```html
-<input type="email" required>
+<input type="email" required />
 ```
 
 ```css
@@ -438,18 +437,18 @@ Modern browsers now support it.
 
 # ✅ Best Practices
 
-* Use pseudo-elements to avoid unnecessary HTML.
-* Use `:focus` for accessibility.
-* Prefer `:is()` and `:where()` for cleaner selectors.
-* Use `:has()` carefully on large DOM trees.
-* Keep hover effects subtle and performant.
+- Use pseudo-elements to avoid unnecessary HTML.
+- Use `:focus` for accessibility.
+- Prefer `:is()` and `:where()` for cleaner selectors.
+- Use `:has()` carefully on large DOM trees.
+- Keep hover effects subtle and performant.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Pseudo-classes target element states and positions.
-* Pseudo-elements target specific parts of elements.
-* They reduce extra markup and improve maintainability.
-* Modern selectors like `:is()`, `:where()`, and `:has()` make CSS more powerful than ever.
-
+- Pseudo-classes target element states and positions.
+- Pseudo-elements target specific parts of elements.
+- They reduce extra markup and improve maintainability.
+- Modern selectors like `:is()`, `:where()`, and `:has()` make CSS more powerful
+  than ever.

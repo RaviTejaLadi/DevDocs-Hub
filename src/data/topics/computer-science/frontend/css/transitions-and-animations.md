@@ -1,6 +1,7 @@
 # ✨ Transitions & Animations
 
-Modern websites feel interactive because elements can **move, fade, scale, rotate, and animate smoothly**.
+Modern websites feel interactive because elements can **move, fade, scale,
+rotate, and animate smoothly**.
 
 CSS provides two powerful tools:
 
@@ -46,11 +47,11 @@ flowchart LR
 
 | Feature            | Transition | Animation |
 | ------------------ | ---------- | --------- |
-| Triggered by Event | ✅          | ❌         |
-| Multiple Steps     | ❌          | ✅         |
-| Auto Play          | ❌          | ✅         |
-| Hover Effects      | ✅          | ❌         |
-| Complex Motion     | ❌          | ✅         |
+| Triggered by Event | ✅         | ❌        |
+| Multiple Steps     | ❌         | ✅        |
+| Auto Play          | ❌         | ✅        |
+| Hover Effects      | ✅         | ❌        |
+| Complex Motion     | ❌         | ✅        |
 
 ---
 
@@ -106,22 +107,14 @@ button:hover {
 # 🎯 Transition Properties
 
 ```css
-transition:
-  property
-  duration
-  timing-function
-  delay;
+transition: property duration timing-function delay;
 ```
 
 Example:
 
 ```css
 .card {
-  transition:
-    transform
-    0.4s
-    ease
-    0.1s;
+  transition: transform 0.4s ease 0.1s;
 }
 ```
 
@@ -141,9 +134,7 @@ Multiple properties:
 
 ```css
 .card {
-  transition-property:
-    transform,
-    background-color;
+  transition-property: transform, background-color;
 }
 ```
 
@@ -351,13 +342,7 @@ flowchart LR
 # 🎯 animation Property
 
 ```css
-animation:
-  name
-  duration
-  timing-function
-  delay
-  iteration-count
-  direction
+animation: name duration timing-function delay iteration-count direction
   fill-mode;
 ```
 
@@ -365,12 +350,7 @@ Example:
 
 ```css
 .card {
-  animation:
-    slideIn
-    1s
-    ease-out
-    0s
-    1;
+  animation: slideIn 1s ease-out 0s 1;
 }
 ```
 
@@ -431,11 +411,7 @@ flowchart LR
 
 ```css
 .spinner {
-  animation:
-    spin
-    1s
-    linear
-    infinite;
+  animation: spin 1s linear infinite;
 }
 ```
 
@@ -564,10 +540,7 @@ animation-fill-mode: backwards;
 
 ```css
 .skeleton {
-  animation:
-    shimmer
-    1.5s
-    infinite;
+  animation: shimmer 1.5s infinite;
 }
 ```
 
@@ -577,23 +550,18 @@ animation-fill-mode: backwards;
 
 ```html
 <!-- Product Card -->
-<div class="card">
-  Product
-</div>
+<div class="card">Product</div>
 ```
 
 ```css
 .card {
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
   transform: translateY(-8px);
 
-  box-shadow:
-    0 10px 20px rgba(0,0,0,.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 ```
 
@@ -603,8 +571,7 @@ animation-fill-mode: backwards;
 
 ```css
 button {
-  transition:
-    transform 0.2s;
+  transition: transform 0.2s;
 }
 
 button:active {
@@ -689,7 +656,8 @@ transform: rotate(180deg);
 
 transform: translateY(-10px);
 
-@keyframes fadeIn {}
+@keyframes fadeIn {
+}
 
 animation: fadeIn 1s ease;
 
@@ -704,21 +672,21 @@ animation-fill-mode: forwards;
 
 # ✅ Best Practices
 
-* Keep animations subtle.
-* Use transitions for hover effects.
-* Use keyframes for complex motion.
-* Prefer `transform` and `opacity`.
-* Avoid excessive animation.
-* Respect `prefers-reduced-motion`.
-* Keep durations between 200ms–500ms for UI interactions.
+- Keep animations subtle.
+- Use transitions for hover effects.
+- Use keyframes for complex motion.
+- Prefer `transform` and `opacity`.
+- Avoid excessive animation.
+- Respect `prefers-reduced-motion`.
+- Keep durations between 200ms–500ms for UI interactions.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Transitions animate property changes between states.
-* Animations use keyframes for complex motion.
-* `transform` and `opacity` provide the best performance.
-* Timing functions control motion feel.
-* Accessibility should always be considered.
-* Well-designed animations improve user experience without becoming distracting.
+- Transitions animate property changes between states.
+- Animations use keyframes for complex motion.
+- `transform` and `opacity` provide the best performance.
+- Timing functions control motion feel.
+- Accessibility should always be considered.
+- Well-designed animations improve user experience without becoming distracting.

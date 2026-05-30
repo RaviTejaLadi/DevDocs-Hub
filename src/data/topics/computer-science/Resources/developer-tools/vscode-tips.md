@@ -1,26 +1,27 @@
 # 📝 VS Code Tips
 
-VS Code is one of the most popular code editors because of its speed, extensions, and developer-friendly features.
+VS Code is one of the most popular code editors because of its speed,
+extensions, and developer-friendly features.
 
 ## 🚀 Essential Keyboard Shortcuts
 
 ### General
 
-| Action | Windows/Linux | Mac |
-|----------|----------|----------|
+| Action          | Windows/Linux    | Mac             |
+| --------------- | ---------------- | --------------- |
 | Command Palette | Ctrl + Shift + P | Cmd + Shift + P |
-| Quick Open File | Ctrl + P | Cmd + P |
-| Settings | Ctrl + , | Cmd + , |
-| Toggle Terminal | Ctrl + \` | Cmd + \` |
+| Quick Open File | Ctrl + P         | Cmd + P         |
+| Settings        | Ctrl + ,         | Cmd + ,         |
+| Toggle Terminal | Ctrl + \`        | Cmd + \`        |
 
 ### Editing
 
-| Action | Windows/Linux | Mac |
-|----------|----------|----------|
-| Duplicate Line | Shift + Alt + Down | Shift + Option + Down |
-| Move Line Up/Down | Alt + Up/Down | Option + Up/Down |
-| Delete Line | Ctrl + Shift + K | Cmd + Shift + K |
-| Multi Cursor | Alt + Click | Option + Click |
+| Action            | Windows/Linux      | Mac                   |
+| ----------------- | ------------------ | --------------------- |
+| Duplicate Line    | Shift + Alt + Down | Shift + Option + Down |
+| Move Line Up/Down | Alt + Up/Down      | Option + Up/Down      |
+| Delete Line       | Ctrl + Shift + K   | Cmd + Shift + K       |
+| Multi Cursor      | Alt + Click        | Option + Click        |
 
 ---
 
@@ -67,8 +68,7 @@ Example:
 
 Before:
 
-const userName = "";
-console.log(userName);
+const userName = ""; console.log(userName);
 
 Select all userName instances and edit together.
 
@@ -193,21 +193,15 @@ simultaneously.
 
 settings.json
 
-{
-  "editor.formatOnSave": true
-}
+{ "editor.formatOnSave": true }
 
 ### Auto Save
 
-{
-  "files.autoSave": "afterDelay"
-}
+{ "files.autoSave": "afterDelay" }
 
 ### Word Wrap
 
-{
-  "editor.wordWrap": "on"
-}
+{ "editor.wordWrap": "on" }
 
 ---
 
@@ -278,9 +272,7 @@ rafce
 
 Creates:
 
-const Component = () => {
-  return <div>Component</div>;
-};
+const Component = () => { return <div>Component</div>; };
 
 export default Component;
 

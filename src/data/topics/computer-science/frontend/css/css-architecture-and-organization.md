@@ -14,7 +14,8 @@ Without a proper architecture, stylesheets often suffer from:
 
 ❌ Unpredictable styling bugs
 
-CSS Architecture provides a structured way to organize styles and scale projects effectively.
+CSS Architecture provides a structured way to organize styles and scale projects
+effectively.
 
 ---
 
@@ -151,17 +152,16 @@ Layout styles define page structure.
 
 Examples:
 
-* Header
-* Footer
-* Sidebar
-* Grid Layouts
+- Header
+- Footer
+- Sidebar
+- Grid Layouts
 
 ```css
 .layout {
   display: grid;
 
-  grid-template-columns:
-    250px 1fr;
+  grid-template-columns: 250px 1fr;
 }
 ```
 
@@ -173,10 +173,10 @@ Components are reusable UI pieces.
 
 Examples:
 
-* Buttons
-* Cards
-* Modals
-* Alerts
+- Buttons
+- Cards
+- Modals
+- Alerts
 
 ```css
 .card {
@@ -264,7 +264,8 @@ flowchart TB
 Standalone component.
 
 ```css
-.card {}
+.card {
+}
 ```
 
 ---
@@ -274,9 +275,11 @@ Standalone component.
 Part of a block.
 
 ```css
-.card__title {}
+.card__title {
+}
 
-.card__image {}
+.card__image {
+}
 ```
 
 ---
@@ -286,9 +289,11 @@ Part of a block.
 Variation of a block.
 
 ```css
-.card--featured {}
+.card--featured {
+}
 
-.card--large {}
+.card--large {
+}
 ```
 
 ---
@@ -297,16 +302,16 @@ Variation of a block.
 
 ```html
 <div class="card card--featured">
-  <h2 class="card__title">
-    Product
-  </h2>
+  <h2 class="card__title">Product</h2>
 </div>
 ```
 
 ```css
-.card {}
+.card {
+}
 
-.card__title {}
+.card__title {
+}
 
 .card--featured {
   border: 2px solid gold;
@@ -466,7 +471,6 @@ Store design values centrally.
 
 ```css
 :root {
-
   --primary-color: #2563eb;
 
   --spacing-sm: 8px;
@@ -513,8 +517,7 @@ Usage:
 
 ```css
 .button {
-  background:
-    var(--color-primary);
+  background: var(--color-primary);
 }
 ```
 
@@ -526,10 +529,10 @@ Modern frameworks encourage component-scoped styles.
 
 Examples:
 
-* React Components
-* Vue Components
-* Angular Components
-* Web Components
+- React Components
+- Vue Components
+- Angular Components
+- Web Components
 
 ---
 
@@ -578,11 +581,9 @@ Import:
 
 ```javascript
 // CSS Modules Example
-import styles from "./Button.module.css";
+import styles from './Button.module.css';
 
-<button className={styles.button}>
-  Save
-</button>;
+<button className={styles.button}>Save</button>;
 ```
 
 ---
@@ -620,9 +621,7 @@ Instead of:
 Use:
 
 ```html
-<div class="p-4 rounded-lg">
-  Content
-</div>
+<div class="p-4 rounded-lg">Content</div>
 ```
 
 ---
@@ -646,11 +645,14 @@ flowchart LR
 Good:
 
 ```css
-.product-card {}
+.product-card {
+}
 
-.product-card__title {}
+.product-card__title {
+}
 
-.product-card--featured {}
+.product-card--featured {
+}
 ```
 
 ---
@@ -658,11 +660,14 @@ Good:
 Bad:
 
 ```css
-.box1 {}
+.box1 {
+}
 
-.box2 {}
+.box2 {
+}
 
-.blue-box {}
+.blue-box {
+}
 ```
 
 Names should describe purpose, not appearance.
@@ -722,7 +727,8 @@ flowchart LR
 .card {
   .header {
     .title {
-      .icon {}
+      .icon {
+      }
     }
   }
 }
@@ -735,7 +741,8 @@ flowchart LR
 ❌
 
 ```css
-#page .sidebar ul li a {}
+#page .sidebar ul li a {
+}
 ```
 
 Prefer classes.
@@ -783,23 +790,24 @@ Utility-First CSS
 
 # ✅ Best Practices
 
-* Organize CSS into logical folders.
-* Use BEM or another naming convention.
-* Keep specificity low.
-* Prefer reusable components.
-* Store design values as variables.
-* Avoid deep nesting.
-* Separate layout from components.
-* Use CSS Modules or scoped styles in component-based apps.
+- Organize CSS into logical folders.
+- Use BEM or another naming convention.
+- Keep specificity low.
+- Prefer reusable components.
+- Store design values as variables.
+- Avoid deep nesting.
+- Separate layout from components.
+- Use CSS Modules or scoped styles in component-based apps.
 
 ---
 
 # 🚀 Key Takeaways
 
-* CSS Architecture helps projects scale without becoming messy.
-* BEM is one of the most widely used naming conventions.
-* ITCSS, SMACSS, and CUBE CSS provide structured approaches to organizing styles.
-* Design Tokens and CSS Variables improve consistency.
-* Component-based CSS is the modern standard in React, Vue, Angular, and other frameworks.
-* Well-organized CSS is easier to maintain, debug, and extend.
-
+- CSS Architecture helps projects scale without becoming messy.
+- BEM is one of the most widely used naming conventions.
+- ITCSS, SMACSS, and CUBE CSS provide structured approaches to organizing
+  styles.
+- Design Tokens and CSS Variables improve consistency.
+- Component-based CSS is the modern standard in React, Vue, Angular, and other
+  frameworks.
+- Well-organized CSS is easier to maintain, debug, and extend.

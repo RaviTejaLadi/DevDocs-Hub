@@ -51,100 +51,238 @@ import privateMethods from './AdvancedOOP/private-methods.md?raw';
 export const jsOOPSConcepts = [
   {
     id: 'js-oops-introduction',
-    title: '📖 Introduction',
-    content: '',
-    items: [{ id: 'intro-to-js-oops', title: 'Introduction to JS OOPS', content: jsOOPSIntro }],
-  },
-  {
-    id: 'js-oops-core-concepts',
-    title: '🔷 OOPS Concepts',
+    title: '📖 JavaScript OOP Fundamentals',
     content: '',
     items: [
-      { id: 'oops-abstraction', title: 'Abstraction', content: abstraction },
-      { id: 'oops-encapsulation', title: 'Encapsulation', content: encapsulation },
-      { id: 'oops-inheritance', title: 'Inheritance', content: inheritance },
-      { id: 'oops-polymorphism', title: 'Polymorphism', content: polymorphism },
+      {
+        id: 'intro-to-js-oops',
+        title: '🚀 Introduction to JavaScript OOP',
+        content: jsOOPSIntro,
+      },
     ],
   },
+
+  {
+    id: 'js-oops-object-creation-patterns',
+    title: '🏗️ Object Creation Patterns',
+    content: '',
+    items: [
+      {
+        id: 'object-literals',
+        title: '📦 Object Literals',
+        content: objectLiterals,
+      },
+      {
+        id: 'factory-functions',
+        title: '🏭 Factory Functions',
+        content: factoryFunctions,
+      },
+      {
+        id: 'constructor-functions',
+        title: '🔨 Constructor Functions',
+        content: constructorFunctions,
+      },
+      {
+        id: 'object-create',
+        title: '🧬 Object.create()',
+        content: objectCreate,
+      },
+    ],
+  },
+
+  {
+    id: 'js-oops-core-concepts',
+    title: '🎯 Core OOP Concepts',
+    content: '',
+    items: [
+      {
+        id: 'oops-encapsulation',
+        title: '🔒 Encapsulation',
+        content: encapsulation,
+      },
+      {
+        id: 'oops-abstraction',
+        title: '🎭 Abstraction',
+        content: abstraction,
+      },
+      {
+        id: 'oops-inheritance',
+        title: '🧬 Inheritance',
+        content: inheritance,
+      },
+      {
+        id: 'oops-polymorphism',
+        title: '🔄 Polymorphism',
+        content: polymorphism,
+      },
+    ],
+  },
+
   {
     id: 'js-oops-es6-classes',
     title: '🏛️ ES6 Classes',
     content: '',
     items: [
-      { id: 'class-declaration', title: 'Class Declaration', content: classDeclaration },
-      { id: 'constructor-method', title: 'Constructor Method', content: constructorMethod },
-      { id: 'getters-and-setters', title: 'Getters and Setters', content: gettersAndSetters },
-      { id: 'instance-method', title: 'Instance Method', content: instanceMethod },
-      { id: 'static-method', title: 'Static Method', content: staticMethod },
+      {
+        id: 'class-declaration',
+        title: '📘 Class Declaration',
+        content: classDeclaration,
+      },
+      {
+        id: 'constructor-method',
+        title: '🏗️ Constructor Method',
+        content: constructorMethod,
+      },
+      {
+        id: 'instance-method',
+        title: '⚙️ Instance Methods',
+        content: instanceMethod,
+      },
+      {
+        id: 'getters-and-setters',
+        title: '🎛️ Getters & Setters',
+        content: gettersAndSetters,
+      },
+      {
+        id: 'static-method',
+        title: '📌 Static Methods',
+        content: staticMethod,
+      },
     ],
   },
+
   {
     id: 'js-oops-inheritance-mechanisms',
-    title: '🧬 Inheritance Mechanisms',
+    title: '🌳 Inheritance & Prototypes',
     content: '',
     items: [
-      { id: 'class-inheritance', title: 'Class Inheritance', content: classInheritance },
-      { id: 'prototypal-inheritance', title: 'Prototypal Inheritance', content: prototypalInheritance },
-      { id: 'prototype-chain', title: 'Prototype Chain', content: prototypeChain },
-      { id: 'super-keyword', title: 'super Keyword', content: superKeyword },
+      {
+        id: 'prototype-chain',
+        title: '🔗 Prototype Chain',
+        content: prototypeChain,
+      },
+      {
+        id: 'prototypal-inheritance',
+        title: '🧬 Prototypal Inheritance',
+        content: prototypalInheritance,
+      },
+      {
+        id: 'class-inheritance',
+        title: '👨‍👩‍👧‍👦 Class Inheritance',
+        content: classInheritance,
+      },
+      {
+        id: 'super-keyword',
+        title: '⬆️ super Keyword',
+        content: superKeyword,
+      },
     ],
   },
+
   {
     id: 'js-oops-this-binding-and-context',
-    title: '🧭 This Binding & Context',
+    title: '🧭 this Binding & Context',
     content: '',
     items: [
-      { id: 'arrow-functions', title: 'Arrow Functions', content: arrowFunctions },
-      { id: 'context-loss', title: 'Context Loss', content: contextLoss },
-      { id: 'explicit-binding', title: 'Explicit Binding', content: explicitBinding },
-      { id: 'method-binding', title: 'Method Binding', content: methodBinding },
+      {
+        id: 'arrow-functions',
+        title: '🏹 Arrow Functions',
+        content: arrowFunctions,
+      },
+      {
+        id: 'method-binding',
+        title: '🔗 Method Binding',
+        content: methodBinding,
+      },
+      {
+        id: 'explicit-binding',
+        title: '🎯 Explicit Binding (call, apply, bind)',
+        content: explicitBinding,
+      },
+      {
+        id: 'context-loss',
+        title: '⚠️ Context Loss',
+        content: contextLoss,
+      },
     ],
   },
-  {
-    id: 'js-oops-object-creation-patterns',
-    title: '🧱 Object Creation Patterns',
-    content: '',
-    items: [
-      { id: 'object-literals', title: 'Object Literals', content: objectLiterals },
-      { id: 'object-create', title: 'Object.create()', content: objectCreate },
-      { id: 'constructor-functions', title: 'Constructor Functions', content: constructorFunctions },
-      { id: 'factory-functions', title: 'Factory Functions', content: factoryFunctions },
-    ],
-  },
+
   {
     id: 'js-oops-mixins-and-composition',
-    title: '🧩 Mixins & Composition',
+    title: '🧩 Composition & Reusability',
     content: '',
     items: [
-      { id: 'mixins', title: 'Mixins', content: mixins },
+      {
+        id: 'delegation',
+        title: '🤝 Delegation',
+        content: delegation,
+      },
+      {
+        id: 'mixins',
+        title: '🧩 Mixins',
+        content: mixins,
+      },
       {
         id: 'composition-over-inheritance',
-        title: 'Composition over Inheritance',
+        title: '🏆 Composition over Inheritance',
         content: compositionOverInheritance,
       },
-      { id: 'delegation', title: 'Delegation', content: delegation },
     ],
   },
+
   {
     id: 'js-oops-design-patterns',
     title: '🎨 Design Patterns',
     content: '',
     items: [
-      { id: 'factory-pattern', title: 'Factory Pattern', content: factoryPattern },
-      { id: 'module-pattern', title: 'Module Pattern', content: modulePattern },
-      { id: 'observer-pattern', title: 'Observer Pattern', content: observerPattern },
-      { id: 'singleton-pattern', title: 'Singleton Pattern', content: singletonPattern },
+      {
+        id: 'module-pattern',
+        title: '📦 Module Pattern',
+        content: modulePattern,
+      },
+      {
+        id: 'singleton-pattern',
+        title: '1️⃣ Singleton Pattern',
+        content: singletonPattern,
+      },
+      {
+        id: 'factory-pattern',
+        title: '🏭 Factory Pattern',
+        content: factoryPattern,
+      },
+      {
+        id: 'observer-pattern',
+        title: '📡 Observer Pattern',
+        content: observerPattern,
+      },
     ],
   },
+
   {
     id: 'js-oops-advanced',
-    title: '🚀 Advanced OOP',
+    title: '🚀 Advanced OOP Concepts',
     content: '',
     items: [
-      { id: 'abstract-classes', title: 'Abstract Classes', content: abstractClasses },
-      { id: 'method-overriding', title: 'Method Overriding', content: methodOverriding },
-      { id: 'private-fields', title: 'Private Fields', content: privateFields },
-      { id: 'private-methods', title: 'Private Methods', content: privateMethods },
+      {
+        id: 'method-overriding',
+        title: '🔄 Method Overriding',
+        content: methodOverriding,
+      },
+      {
+        id: 'private-fields',
+        title: '🔐 Private Fields',
+        content: privateFields,
+      },
+      {
+        id: 'private-methods',
+        title: '🛡️ Private Methods',
+        content: privateMethods,
+      },
+      {
+        id: 'abstract-classes',
+        title: '📚 Abstract Classes',
+        content: abstractClasses,
+      },
     ],
   },
 ];

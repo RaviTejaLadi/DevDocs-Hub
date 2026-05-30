@@ -1,14 +1,18 @@
 # 🖼️ HTML Iframes & Embeds
 
-HTML **iframes** and **embeds** allow you to display content from another source inside your web page. They are commonly used for videos, maps, documents, social media posts, and external websites.
+HTML **iframes** and **embeds** allow you to display content from another source
+inside your web page. They are commonly used for videos, maps, documents, social
+media posts, and external websites.
 
-Think of an iframe as a **window inside a webpage**. Instead of opening another site in a new tab, the content appears directly within your page.
+Think of an iframe as a **window inside a webpage**. Instead of opening another
+site in a new tab, the content appears directly within your page.
 
 ---
 
 # 📌 What is an Iframe?
 
-The `<iframe>` (Inline Frame) element embeds another HTML document within the current webpage.
+The `<iframe>` (Inline Frame) element embeds another HTML document within the
+current webpage.
 
 ## Basic Syntax
 
@@ -21,11 +25,7 @@ The `<iframe>` (Inline Frame) element embeds another HTML document within the cu
 
 ```html
 <!-- Embed a webpage -->
-<iframe
-    src="https://example.com"
-    width="600"
-    height="400">
-</iframe>
+<iframe src="https://example.com" width="600" height="400"> </iframe>
 ```
 
 This creates a frame that displays the specified webpage.
@@ -37,10 +37,11 @@ This creates a frame that displays the specified webpage.
 ```html
 <!-- Common iframe attributes -->
 <iframe
-    src="https://example.com"
-    width="800"
-    height="500"
-    title="Example Website">
+  src="https://example.com"
+  width="800"
+  height="500"
+  title="Example Website"
+>
 </iframe>
 ```
 
@@ -64,11 +65,12 @@ One of the most common iframe use cases is embedding videos.
 ```html
 <!-- Embed a YouTube video -->
 <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/VIDEO_ID"
-    title="YouTube Video"
-    allowfullscreen>
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube Video"
+  allowfullscreen
+>
 </iframe>
 ```
 
@@ -83,11 +85,12 @@ Google Maps provides iframe embed code for locations.
 ```html
 <!-- Embed Google Maps -->
 <iframe
-    src="https://www.google.com/maps/embed?... "
-    width="600"
-    height="450"
-    style="border:0;"
-    loading="lazy">
+  src="https://www.google.com/maps/embed?... "
+  width="600"
+  height="450"
+  style="border:0;"
+  loading="lazy"
+>
 </iframe>
 ```
 
@@ -101,11 +104,7 @@ PDF documents can be displayed directly using an iframe.
 
 ```html
 <!-- Display a PDF file -->
-<iframe
-    src="files/document.pdf"
-    width="100%"
-    height="600">
-</iframe>
+<iframe src="files/document.pdf" width="100%" height="600"> </iframe>
 ```
 
 ### Project Structure
@@ -126,11 +125,7 @@ You can embed another page from your own website.
 
 ```html
 <!-- Embed local page -->
-<iframe
-    src="about.html"
-    width="600"
-    height="400">
-</iframe>
+<iframe src="about.html" width="600" height="400"> </iframe>
 ```
 
 ### Folder Structure
@@ -153,26 +148,23 @@ Fixed widths may not work well on mobile devices.
 ```html
 <!-- Responsive iframe -->
 <div class="iframe-container">
-    <iframe
-        src="https://example.com"
-        title="Example Website">
-    </iframe>
+  <iframe src="https://example.com" title="Example Website"> </iframe>
 </div>
 ```
 
 ```css
 /* Responsive iframe styling */
 .iframe-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
 }
 
 .iframe-container iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 ```
 
@@ -188,10 +180,7 @@ Embedding external content can introduce security risks.
 
 ```html
 <!-- Restrict iframe permissions -->
-<iframe
-    src="https://example.com"
-    sandbox>
-</iframe>
+<iframe src="https://example.com" sandbox> </iframe>
 ```
 
 The `sandbox` attribute limits what the embedded page can do.
@@ -202,10 +191,7 @@ The `sandbox` attribute limits what the embedded page can do.
 
 ```html
 <!-- Allow scripts and forms -->
-<iframe
-    src="https://example.com"
-    sandbox="allow-scripts allow-forms">
-</iframe>
+<iframe src="https://example.com" sandbox="allow-scripts allow-forms"> </iframe>
 ```
 
 ---
@@ -218,17 +204,14 @@ Use lazy loading to load content only when needed.
 
 ```html
 <!-- Lazy loaded iframe -->
-<iframe
-    src="https://example.com"
-    loading="lazy">
-</iframe>
+<iframe src="https://example.com" loading="lazy"> </iframe>
 ```
 
 Benefits:
 
-* Faster page load
-* Reduced bandwidth usage
-* Better user experience
+- Faster page load
+- Reduced bandwidth usage
+- Better user experience
 
 ---
 
@@ -240,10 +223,7 @@ The `<embed>` element is another way to include external resources.
 
 ```html
 <!-- Basic embed -->
-<embed
-    src="file.pdf"
-    width="600"
-    height="400">
+<embed src="file.pdf" width="600" height="400" />
 ```
 
 ---
@@ -252,11 +232,7 @@ The `<embed>` element is another way to include external resources.
 
 ```html
 <!-- PDF using embed -->
-<embed
-    src="document.pdf"
-    type="application/pdf"
-    width="100%"
-    height="600">
+<embed src="document.pdf" type="application/pdf" width="100%" height="600" />
 ```
 
 ---
@@ -265,10 +241,7 @@ The `<embed>` element is another way to include external resources.
 
 ```html
 <!-- Audio file -->
-<embed
-    src="music.mp3"
-    width="300"
-    height="50">
+<embed src="music.mp3" width="300" height="50" />
 ```
 
 ---
@@ -277,11 +250,11 @@ The `<embed>` element is another way to include external resources.
 
 | Feature             | iframe | embed       |
 | ------------------- | ------ | ----------- |
-| Embeds webpages     | ✅ Yes  | ❌ No        |
-| Embeds PDFs         | ✅ Yes  | ✅ Yes       |
-| Supports HTML pages | ✅ Yes  | ❌ No        |
-| Interactive content | ✅ Yes  | Limited     |
-| Most commonly used  | ✅ Yes  | Less common |
+| Embeds webpages     | ✅ Yes | ❌ No       |
+| Embeds PDFs         | ✅ Yes | ✅ Yes      |
+| Supports HTML pages | ✅ Yes | ❌ No       |
+| Interactive content | ✅ Yes | Limited     |
+| Most commonly used  | ✅ Yes | Less common |
 
 ---
 
@@ -289,17 +262,17 @@ The `<embed>` element is another way to include external resources.
 
 ### Iframe
 
-* 🎥 YouTube videos
-* 🗺️ Google Maps
-* 📄 External webpages
-* 📊 Dashboards
-* 📝 Forms
+- 🎥 YouTube videos
+- 🗺️ Google Maps
+- 📄 External webpages
+- 📊 Dashboards
+- 📝 Forms
 
 ### Embed
 
-* 📄 PDFs
-* 🎵 Audio files
-* 📁 Media content
+- 📄 PDFs
+- 🎵 Audio files
+- 📁 Media content
 
 ---
 
@@ -316,10 +289,7 @@ The `<embed>` element is another way to include external resources.
 ✅ Correct
 
 ```html
-<iframe
-    src="https://example.com"
-    title="Example Website">
-</iframe>
+<iframe src="https://example.com" title="Example Website"> </iframe>
 ```
 
 The `title` improves accessibility.
@@ -331,19 +301,13 @@ The `title` improves accessibility.
 ❌ Wrong
 
 ```html
-<iframe
-    width="1200"
-    height="600">
-</iframe>
+<iframe width="1200" height="600"> </iframe>
 ```
 
 ✅ Better
 
 ```html
-<iframe
-    width="100%"
-    height="600">
-</iframe>
+<iframe width="100%" height="600"> </iframe>
 ```
 
 ---
@@ -408,4 +372,7 @@ Examples:
 • Media Content
 ```
 
-💡 **Tip:** Use **`<iframe>`** when embedding websites, videos, maps, or interactive content. Use **`<embed>`** mainly for displaying files such as PDFs and media resources. In modern web development, `<iframe>` is the preferred and most widely used solution.
+💡 **Tip:** Use **`<iframe>`** when embedding websites, videos, maps, or
+interactive content. Use **`<embed>`** mainly for displaying files such as PDFs
+and media resources. In modern web development, `<iframe>` is the preferred and
+most widely used solution.

@@ -12,6 +12,9 @@ export const docsSidePanelNavSurfaceClass =
 /** Scroll region: flex child must shrink; bottom padding clears last row above sheet/home affordances. */
 export const docsSidePanelScrollAreaClass = cn('min-h-0 min-w-0 flex-1 *:data-[slot=scroll-area-viewport]:pb-4');
 
+/** Native wheel steps in the topic tree — do not inherit global smooth scroll on the viewport. */
+export const docsSidePanelScrollViewportClass = 'docs-sidebar-scroll';
+
 /** Right topic-browser sheet: inset from viewport with rounded panel at `md+`. */
 export const docsTopicBrowserSheetContentClass = cn(
   'flex min-h-0 flex-col gap-0 overflow-hidden border border-border/40 p-0 shadow-xl',

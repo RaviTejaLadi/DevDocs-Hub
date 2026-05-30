@@ -48,7 +48,13 @@ export function DocsFeedSyncProvider({ children }: { children: ReactNode }) {
   }, [location.pathname]);
 
   const setFeedOverlay = useCallback((next: DocsFeedOverlay | null) => {
-    setFeedOverlayState(next);
+    setFeedOverlayState((prev) => {
+      if (next === null) return prev === null ? prev : null;
+      if (prev && prev.topicId === next.topicId && prev.slug === next.slug && prev.pathRevision === next.pathRevision) {
+        return prev;
+      }
+      return next;
+    });
   }, []);
 
   const value = useMemo(

@@ -1,6 +1,7 @@
 # 📮 Postman & API Testing
 
-Postman is a popular API development and testing tool. It helps developers send requests, inspect responses, automate testing, and collaborate on APIs.
+Postman is a popular API development and testing tool. It helps developers send
+requests, inspect responses, automate testing, and collaborate on APIs.
 
 ## 🚀 What is Postman?
 
@@ -76,12 +77,7 @@ Steps:
 
 Response:
 
-[
-  {
-    "id": 1,
-    "name": "Leanne Graham"
-  }
-]
+[ { "id": 1, "name": "Leanne Graham" } ]
 
 ---
 
@@ -97,11 +93,7 @@ Content-Type: application/json
 
 ### Body
 
-{
-  "title": "Hello",
-  "body": "Testing API",
-  "userId": 1
-}
+{ "title": "Hello", "body": "Testing API", "userId": 1 }
 
 ---
 
@@ -185,12 +177,7 @@ Collections help organize requests.
 
 Example:
 
-User API
-├── GET Users
-├── GET User
-├── POST User
-├── PUT User
-└── DELETE User
+User API ├── GET Users ├── GET User ├── POST User ├── PUT User └── DELETE User
 
 Benefits:
 
@@ -206,9 +193,7 @@ Open Tests tab.
 
 Example:
 
-pm.test("Status code is 200", () => {
-  pm.response.to.have.status(200);
-});
+pm.test("Status code is 200", () => { pm.response.to.have.status(200); });
 
 ---
 
@@ -216,10 +201,8 @@ pm.test("Status code is 200", () => {
 
 Example:
 
-pm.test("Response contains users", () => {
-  const data = pm.response.json();
-  pm.expect(data.length).to.be.above(0);
-});
+pm.test("Response contains users", () => { const data = pm.response.json();
+pm.expect(data.length).to.be.above(0); });
 
 ---
 
@@ -228,8 +211,7 @@ pm.test("Response contains users", () => {
 Example:
 
 pm.test("Response time under 500ms", () => {
-  pm.expect(pm.response.responseTime).to.be.below(500);
-});
+pm.expect(pm.response.responseTime).to.be.below(500); });
 
 ---
 
@@ -239,10 +221,7 @@ Run code before request.
 
 Example:
 
-pm.environment.set(
-  "timestamp",
-  Date.now()
-);
+pm.environment.set( "timestamp", Date.now() );
 
 Useful for:
 
@@ -312,18 +291,18 @@ Check:
 
 ## 🚨 Common Status Codes
 
-| Code | Meaning |
-|--------|----------|
-| 200 | Success |
-| 201 | Created |
-| 204 | No Content |
-| 400 | Bad Request |
-| 401 | Unauthorized |
-| 403 | Forbidden |
-| 404 | Not Found |
-| 409 | Conflict |
-| 422 | Validation Error |
-| 500 | Internal Server Error |
+| Code | Meaning               |
+| ---- | --------------------- |
+| 200  | Success               |
+| 201  | Created               |
+| 204  | No Content            |
+| 400  | Bad Request           |
+| 401  | Unauthorized          |
+| 403  | Forbidden             |
+| 404  | Not Found             |
+| 409  | Conflict              |
+| 422  | Validation Error      |
+| 500  | Internal Server Error |
 
 ---
 
@@ -379,4 +358,5 @@ Simulate APIs before backend development.
 - Document APIs clearly
 - Use Collection Runner regularly
 
-Postman is an essential tool for frontend and backend developers because it makes API development faster, easier, and more reliable.
+Postman is an essential tool for frontend and backend developers because it
+makes API development faster, easier, and more reliable.

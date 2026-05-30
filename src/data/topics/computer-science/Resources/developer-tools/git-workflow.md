@@ -1,6 +1,7 @@
 # 🔧 Git Workflow
 
-Git is the most widely used version control system. It helps developers track changes, collaborate with teams, and safely manage code history.
+Git is the most widely used version control system. It helps developers track
+changes, collaborate with teams, and safely manage code history.
 
 ## 🚀 Why Use Git?
 
@@ -30,16 +31,11 @@ git status
 
 ## 📂 Git File Lifecycle
 
-Working Directory
-↓
-Staging Area
-↓
-Repository
+Working Directory ↓ Staging Area ↓ Repository
 
 Commands:
 
-git add
-git commit
+git add git commit
 
 ---
 
@@ -89,8 +85,7 @@ git log --oneline
 
 Example:
 
-a12b3cd Fix login bug
-f45g6hi Add dashboard page
+a12b3cd Fix login bug f45g6hi Add dashboard page
 
 ---
 
@@ -156,8 +151,7 @@ git switch -c feature/auth
 
 Equivalent to:
 
-git branch feature/auth
-git switch feature/auth
+git branch feature/auth git switch feature/auth
 
 ---
 
@@ -177,11 +171,9 @@ git merge feature/auth
 
 Example conflict:
 
-<<<<<<< HEAD
-const theme = "dark";
-=======
-const theme = "light";
->>>>>>> feature-branch
+<<<<<<< HEAD const theme = "dark"; ======= const theme = "light";
+
+> > > > > > > feature-branch
 
 Choose desired code:
 
@@ -189,8 +181,7 @@ const theme = "dark";
 
 Then:
 
-git add .
-git commit
+git add . git commit
 
 ---
 
@@ -281,11 +272,7 @@ Create:
 
 Example:
 
-node_modules
-.env
-dist
-build
-coverage
+node_modules .env dist build coverage
 
 Prevents unnecessary files from being tracked.
 
@@ -437,4 +424,5 @@ Safer for teams.
 - Use pull requests
 - Keep history clean
 
-A good Git workflow reduces bugs, improves collaboration, and makes project history easier to understand.
+A good Git workflow reduces bugs, improves collaboration, and makes project
+history easier to understand.

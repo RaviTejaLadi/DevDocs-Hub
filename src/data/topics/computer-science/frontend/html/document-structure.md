@@ -1,6 +1,8 @@
 # 📄 HTML Document Structure
 
-Every HTML page follows a standard document structure. Think of it like the blueprint of a house 🏠. The structure tells the browser how to organize and display the content on a web page.
+Every HTML page follows a standard document structure. Think of it like the
+blueprint of a house 🏠. The structure tells the browser how to organize and
+display the content on a web page.
 
 ### Basic HTML Document Structure
 
@@ -8,15 +10,15 @@ Every HTML page follows a standard document structure. Think of it like the blue
 <!-- Basic HTML document structure -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My First Web Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Welcome to HTML</h1>
     <p>This is my first web page.</p>
-</body>
+  </body>
 </html>
 ```
 
@@ -30,30 +32,30 @@ Every HTML page follows a standard document structure. Think of it like the blue
 <!DOCTYPE html>
 ```
 
-* Declares that the document is an HTML5 document.
-* Must be the first line of every HTML page.
-* Helps browsers render the page correctly.
+- Declares that the document is an HTML5 document.
+- Must be the first line of every HTML page.
+- Helps browsers render the page correctly.
 
 ---
 
 ### 2. `<html>` Element
 
 ```html
-<html lang="en">
+<html lang="en"></html>
 ```
 
-* The root element of an HTML document.
-* All other elements are placed inside it.
-* The `lang` attribute specifies the language of the page.
+- The root element of an HTML document.
+- All other elements are placed inside it.
+- The `lang` attribute specifies the language of the page.
 
 Example:
 
 ```html
-<html lang="en">
+<html lang="en"></html>
 ```
 
 ```html
-<html lang="fr">
+<html lang="fr"></html>
 ```
 
 ---
@@ -62,49 +64,50 @@ Example:
 
 ```html
 <head>
-    ...
+  ...
 </head>
 ```
 
 The `<head>` contains metadata about the webpage.
 
-This information is not displayed directly on the page but is used by browsers and search engines.
+This information is not displayed directly on the page but is used by browsers
+and search engines.
 
 ---
 
 ### 4. Character Encoding
 
 ```html
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 ```
 
-* Defines the character encoding.
-* UTF-8 supports most languages and symbols.
+- Defines the character encoding.
+- UTF-8 supports most languages and symbols.
 
 Example:
 
 ```html
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 ```
 
 Supports:
 
-* English
-* తెలుగు
-* हिंदी
-* العربية
-* Emojis 😊
+- English
+- తెలుగు
+- हिंदी
+- العربية
+- Emojis 😊
 
 ---
 
 ### 5. Viewport Meta Tag
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
-* Makes websites responsive.
-* Ensures proper display on mobile devices.
+- Makes websites responsive.
+- Ensures proper display on mobile devices.
 
 Without it, pages may appear zoomed out on smartphones.
 
@@ -116,9 +119,9 @@ Without it, pages may appear zoomed out on smartphones.
 <title>My First Web Page</title>
 ```
 
-* Sets the page title.
-* Appears in the browser tab.
-* Important for SEO.
+- Sets the page title.
+- Appears in the browser tab.
+- Important for SEO.
 
 Example:
 
@@ -138,21 +141,21 @@ HTML Tutorial for Beginners
 
 ```html
 <body>
-    ...
+  ...
 </body>
 ```
 
-* Contains all visible content.
-* Everything users see goes inside the body.
+- Contains all visible content.
+- Everything users see goes inside the body.
 
 Examples:
 
 ```html
 <body>
-    <h1>Heading</h1>
-    <p>Paragraph</p>
-    <img src="image.jpg" alt="Image">
-    <button>Click Me</button>
+  <h1>Heading</h1>
+  <p>Paragraph</p>
+  <img src="image.jpg" alt="Image" />
+  <button>Click Me</button>
 </body>
 ```
 
@@ -188,26 +191,24 @@ HTML Document
 <!-- Portfolio webpage structure -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>John Doe Portfolio</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <h1>John Doe</h1>
+      <h1>John Doe</h1>
     </header>
 
     <main>
-        <p>Frontend Developer</p>
+      <p>Frontend Developer</p>
     </main>
 
     <footer>
-        <p>© 2026 John Doe</p>
+      <p>© 2026 John Doe</p>
     </footer>
-
-</body>
+  </body>
 </html>
 ```
 
@@ -221,9 +222,9 @@ HTML Document
 
 ```html
 <html>
-<body>
+  <body>
     <h1>Hello</h1>
-</body>
+  </body>
 </html>
 ```
 
@@ -232,9 +233,9 @@ HTML Document
 ```html
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
     <h1>Hello</h1>
-</body>
+  </body>
 </html>
 ```
 
@@ -245,15 +246,14 @@ HTML Document
 ❌ Wrong
 
 ```html
-<head>
-</head>
+<head> </head>
 ```
 
 ✅ Correct
 
 ```html
 <head>
-    <title>My Website</title>
+  <title>My Website</title>
 </head>
 ```
 
@@ -266,15 +266,14 @@ HTML Document
 ```html
 <h1>Hello World</h1>
 
-<body>
-</body>
+<body></body>
 ```
 
 ✅ Correct
 
 ```html
 <body>
-    <h1>Hello World</h1>
+  <h1>Hello World</h1>
 </body>
 ```
 
@@ -301,4 +300,6 @@ HTML
  └── BODY (content shown to users)
 ```
 
-💡 **Tip:** Every HTML page you create should start with this structure. It provides a solid foundation for adding headings, images, links, forms, CSS, and JavaScript later.
+💡 **Tip:** Every HTML page you create should start with this structure. It
+provides a solid foundation for adding headings, images, links, forms, CSS, and
+JavaScript later.

@@ -10,6 +10,7 @@ import {
   docsFloatingActionButtonClass,
   docsFloatingActionButtonTopStackedClass,
   docsSidePanelScrollAreaClass,
+  docsSidePanelScrollViewportClass,
   docsTopicBrowserSheetContentClass,
 } from '@/constants/docsSidePanel';
 import { cn } from '@/lib/utils';
@@ -94,7 +95,10 @@ export function DocsTopicBrowserSheet({
           </div>
         </SheetHeader>
 
-        <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'min-h-0 overflow-hidden')}>
+        <ScrollArea
+          className={cn(docsSidePanelScrollAreaClass, 'min-h-0 overflow-hidden')}
+          viewportClassName={docsSidePanelScrollViewportClass}
+        >
           <div className="space-y-7 px-4 py-4 pb-6">
             {sections.map(({ stream, categories }) => (
               <section key={stream.id} className="min-w-0">

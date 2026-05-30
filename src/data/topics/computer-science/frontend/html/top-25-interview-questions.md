@@ -1,6 +1,7 @@
 # 🚀 Top 25 HTML Interview Questions and Answers
 
-These are some of the most frequently asked HTML interview questions for freshers and experienced frontend developers.
+These are some of the most frequently asked HTML interview questions for
+freshers and experienced frontend developers.
 
 ---
 
@@ -8,7 +9,8 @@ These are some of the most frequently asked HTML interview questions for fresher
 
 **Answer:**
 
-HTML (HyperText Markup Language) is the standard markup language used to create and structure web pages.
+HTML (HyperText Markup Language) is the standard markup language used to create
+and structure web pages.
 
 Example:
 
@@ -34,9 +36,12 @@ HTML5 introduced tags like:
 
 ```html
 <header>
-<nav>
-<main>
-<footer>
+  <nav>
+    <main>
+      <footer></footer>
+    </main>
+  </nav>
+</header>
 ```
 
 ---
@@ -51,17 +56,21 @@ Examples:
 
 ```html
 <header>
-<nav>
-<article>
-<section>
-<footer>
+  <nav>
+    <article>
+      <section>
+        <footer></footer>
+      </section>
+    </article>
+  </nav>
+</header>
 ```
 
 Benefits:
 
-* Better SEO
-* Improved accessibility
-* Cleaner code
+- Better SEO
+- Improved accessibility
+- Cleaner code
 
 ---
 
@@ -144,12 +153,12 @@ Void elements do not have closing tags.
 Examples:
 
 ```html
-<br>
-<hr>
-<img>
-<input>
-<meta>
-<link>
+<br />
+<hr />
+<img />
+<input />
+<meta />
+<link />
 ```
 
 ---
@@ -162,9 +171,11 @@ Examples:
 
 ```html
 <div>
-<p>
-<h1>
-<section>
+  <p></p>
+  <h1>
+    <section></section>
+  </h1>
+</div>
 ```
 
 Take full width and start on a new line.
@@ -173,8 +184,8 @@ Take full width and start on a new line.
 
 ```html
 <span>
-<a>
-<strong>
+  <a> <strong></strong></a
+></span>
 ```
 
 Only take required width.
@@ -191,8 +202,8 @@ Example:
 
 ```html
 <form>
-    <input type="text">
-    <button>Submit</button>
+  <input type="text" />
+  <button>Submit</button>
 </form>
 ```
 
@@ -211,11 +222,11 @@ Example:
 Example:
 
 ```html
-<form method="GET">
+<form method="GET"></form>
 ```
 
 ```html
-<form method="POST">
+<form method="POST"></form>
 ```
 
 ---
@@ -228,12 +239,18 @@ Common semantic tags:
 
 ```html
 <header>
-<nav>
-<main>
-<section>
-<article>
-<aside>
-<footer>
+  <nav>
+    <main>
+      <section>
+        <article>
+          <aside>
+            <footer></footer>
+          </aside>
+        </article>
+      </section>
+    </main>
+  </nav>
+</header>
 ```
 
 They improve readability and SEO.
@@ -247,14 +264,14 @@ They improve readability and SEO.
 Provides alternative text for images.
 
 ```html
-<img src="logo.png" alt="Company Logo">
+<img src="logo.png" alt="Company Logo" />
 ```
 
 Benefits:
 
-* Accessibility
-* SEO
-* Displays if image fails to load
+- Accessibility
+- SEO
+- Displays if image fails to load
 
 ---
 
@@ -263,12 +280,11 @@ Benefits:
 **Answer:**
 
 ```html
-<strong>Important</strong>
-<b>Bold Text</b>
+<strong>Important</strong> <b>Bold Text</b>
 ```
 
-* `<strong>` adds semantic importance.
-* `<b>` only makes text bold.
+- `<strong>` adds semantic importance.
+- `<b>` only makes text bold.
 
 ---
 
@@ -277,12 +293,11 @@ Benefits:
 **Answer:**
 
 ```html
-<em>Important</em>
-<i>Italic Text</i>
+<em>Important</em> <i>Italic Text</i>
 ```
 
-* `<em>` adds emphasis.
-* `<i>` only changes appearance.
+- `<em>` adds emphasis.
+- `<i>` only changes appearance.
 
 ---
 
@@ -293,16 +308,14 @@ Benefits:
 An iframe embeds another webpage inside the current page.
 
 ```html
-<iframe
-    src="https://example.com">
-</iframe>
+<iframe src="https://example.com"> </iframe>
 ```
 
 Common uses:
 
-* YouTube videos
-* Maps
-* External applications
+- YouTube videos
+- Maps
+- External applications
 
 ---
 
@@ -313,15 +326,13 @@ Common uses:
 Custom attributes that store extra data.
 
 ```html
-<button data-id="101">
-    Buy Now
-</button>
+<button data-id="101">Buy Now</button>
 ```
 
 JavaScript access:
 
 ```javascript
-const btn = document.querySelector("button");
+const btn = document.querySelector('button');
 
 console.log(btn.dataset.id);
 ```
@@ -350,17 +361,15 @@ Provides metadata about the webpage.
 Example:
 
 ```html
-<meta charset="UTF-8">
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
 Used for:
 
-* Character encoding
-* SEO
-* Responsive design
+- Character encoding
+- SEO
+- Responsive design
 
 ---
 
@@ -373,10 +382,7 @@ Used to display reserved characters.
 Examples:
 
 ```html
-&lt;
-&gt;
-&amp;
-&nbsp;
+&lt; &gt; &amp; &nbsp;
 ```
 
 Output:
@@ -397,16 +403,13 @@ Output:
 Stores data in the browser permanently until removed.
 
 ```javascript
-localStorage.setItem(
-  "theme",
-  "dark"
-);
+localStorage.setItem('theme', 'dark');
 ```
 
 Retrieve:
 
 ```javascript
-localStorage.getItem("theme");
+localStorage.getItem('theme');
 ```
 
 ---
@@ -418,10 +421,7 @@ localStorage.getItem("theme");
 Stores data only for the current browser session.
 
 ```javascript
-sessionStorage.setItem(
-  "user",
-  "Ravi"
-);
+sessionStorage.setItem('user', 'Ravi');
 ```
 
 Data is cleared when the tab closes.
@@ -435,9 +435,7 @@ Data is cleared when the tab closes.
 Makes websites responsive.
 
 ```html
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
 Without it, mobile pages may appear zoomed out.
@@ -452,7 +450,7 @@ Without it, mobile pages may appear zoomed out.
 
 ```html
 <audio controls>
-    <source src="song.mp3">
+  <source src="song.mp3" />
 </audio>
 ```
 
@@ -460,7 +458,7 @@ Without it, mobile pages may appear zoomed out.
 
 ```html
 <video controls width="400">
-    <source src="movie.mp4">
+  <source src="movie.mp4" />
 </video>
 ```
 
@@ -483,13 +481,13 @@ No plugins are required.
 
 ```javascript
 // Local Storage
-localStorage.setItem("theme", "dark");
+localStorage.setItem('theme', 'dark');
 
 // Session Storage
-sessionStorage.setItem("user", "Ravi");
+sessionStorage.setItem('user', 'Ravi');
 
 // Cookie
-document.cookie = "theme=dark";
+document.cookie = 'theme=dark';
 ```
 
 ---
@@ -498,11 +496,13 @@ document.cookie = "theme=dark";
 
 ### What is SEO-friendly HTML?
 
-Using semantic tags, proper headings, alt attributes, and structured content to help search engines understand pages.
+Using semantic tags, proper headings, alt attributes, and structured content to
+help search engines understand pages.
 
 ### Why is accessibility important?
 
-Accessibility ensures websites can be used by everyone, including users with disabilities.
+Accessibility ensures websites can be used by everyone, including users with
+disabilities.
 
 ### What is the difference between HTML, CSS, and JavaScript?
 
@@ -514,7 +514,6 @@ Accessibility ensures websites can be used by everyone, including users with dis
 
 Think of a website as a house 🏠:
 
-* **HTML** → Structure (walls, doors, rooms)
-* **CSS** → Design (paint, furniture, decoration)
-* **JavaScript** → Behavior (lights, switches, automation)
-
+- **HTML** → Structure (walls, doors, rooms)
+- **CSS** → Design (paint, furniture, decoration)
+- **JavaScript** → Behavior (lights, switches, automation)

@@ -1,8 +1,12 @@
 # 🧠 HTML `<head>` Element
 
-The HTML `<head>` element contains information about the webpage that is not displayed directly to users. It provides metadata, links to external resources, page titles, and settings that help browsers and search engines understand the page.
+The HTML `<head>` element contains information about the webpage that is not
+displayed directly to users. It provides metadata, links to external resources,
+page titles, and settings that help browsers and search engines understand the
+page.
 
-Think of the `<head>` as the control room 🎛️ of a website. Visitors don't see it, but it controls how the page behaves and appears in the browser.
+Think of the `<head>` as the control room 🎛️ of a website. Visitors don't see
+it, but it controls how the page behaves and appears in the browser.
 
 ---
 
@@ -11,11 +15,12 @@ Think of the `<head>` as the control room 🎛️ of a website. Visitors don't s
 ```html
 <!-- Basic head element -->
 <head>
-    <title>My Website</title>
+  <title>My Website</title>
 </head>
 ```
 
-The `<head>` element is placed between the opening `<html>` tag and the `<body>` tag.
+The `<head>` element is placed between the opening `<html>` tag and the `<body>`
+tag.
 
 ---
 
@@ -25,14 +30,14 @@ The `<head>` element is placed between the opening `<html>` tag and the `<body>`
 <!-- HTML document with head element -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Welcome to My Website</h1>
-</body>
+  </body>
 </html>
 ```
 
@@ -42,12 +47,12 @@ The `<head>` element is placed between the opening `<html>` tag and the `<body>`
 
 The `<head>` section commonly contains:
 
-* Page title
-* Meta tags
-* CSS files
-* JavaScript files
-* Favicons
-* SEO information
+- Page title
+- Meta tags
+- CSS files
+- JavaScript files
+- Favicons
+- SEO information
 
 ---
 
@@ -62,9 +67,9 @@ The `<title>` tag defines the title of the webpage.
 
 ### Where is it displayed?
 
-* Browser tab
-* Search engine results
-* Bookmarks
+- Browser tab
+- Search engine results
+- Bookmarks
 
 Example:
 
@@ -88,7 +93,7 @@ Meta tags provide information about the webpage.
 
 ```html
 <!-- Supports most languages and symbols -->
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 ```
 
 This allows the page to display:
@@ -106,7 +111,7 @@ English
 
 ```html
 <!-- Makes website mobile-friendly -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
 This ensures the page adapts properly to different screen sizes.
@@ -117,7 +122,10 @@ This ensures the page adapts properly to different screen sizes.
 
 ```html
 <!-- Description for search engines -->
-<meta name="description" content="Learn HTML from beginner to advanced level.">
+<meta
+  name="description"
+  content="Learn HTML from beginner to advanced level."
+/>
 ```
 
 Search engines may display this description in search results.
@@ -128,7 +136,7 @@ Search engines may display this description in search results.
 
 ```html
 <!-- SEO keywords -->
-<meta name="keywords" content="HTML, CSS, JavaScript, Web Development">
+<meta name="keywords" content="HTML, CSS, JavaScript, Web Development" />
 ```
 
 ---
@@ -137,7 +145,7 @@ Search engines may display this description in search results.
 
 ```html
 <!-- Website author -->
-<meta name="author" content="John Doe">
+<meta name="author" content="John Doe" />
 ```
 
 ---
@@ -148,7 +156,7 @@ External CSS files are linked inside the `<head>` element.
 
 ```html
 <!-- Connect external stylesheet -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css" />
 ```
 
 Folder Structure:
@@ -168,7 +176,7 @@ A favicon is the small icon shown in browser tabs.
 
 ```html
 <!-- Website favicon -->
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="favicon.ico" />
 ```
 
 Example:
@@ -188,7 +196,8 @@ JavaScript can be added inside the `<head>` section.
 <script src="script.js"></script>
 ```
 
-Although JavaScript is often placed before the closing `</body>` tag for better performance.
+Although JavaScript is often placed before the closing `</body>` tag for better
+performance.
 
 ---
 
@@ -197,25 +206,21 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 ```html
 <!-- Complete head element example -->
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description"
-          content="Learn HTML step by step">
+  <meta name="description" content="Learn HTML step by step" />
 
-    <meta name="keywords"
-          content="HTML, CSS, Web Development">
+  <meta name="keywords" content="HTML, CSS, Web Development" />
 
-    <meta name="author"
-          content="John Doe">
+  <meta name="author" content="John Doe" />
 
-    <title>HTML Tutorial</title>
+  <title>HTML Tutorial</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 
-    <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico" />
 </head>
 ```
 
@@ -243,15 +248,14 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 ❌ Wrong
 
 ```html
-<head>
-</head>
+<head> </head>
 ```
 
 ✅ Correct
 
 ```html
 <head>
-    <title>My Website</title>
+  <title>My Website</title>
 </head>
 ```
 
@@ -263,7 +267,7 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 
 ```html
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 </head>
 ```
 
@@ -271,9 +275,8 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 
 ```html
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 ```
 
@@ -285,7 +288,7 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 
 ```html
 <head>
-    <h1>Welcome</h1>
+  <h1>Welcome</h1>
 </head>
 ```
 
@@ -293,7 +296,7 @@ Although JavaScript is often placed before the closing `</body>` tag for better 
 
 ```html
 <body>
-    <h1>Welcome</h1>
+  <h1>Welcome</h1>
 </body>
 ```
 
@@ -329,4 +332,8 @@ Visible content should always be placed inside the `<body>` element.
 └── JavaScript References
 ```
 
-The `<head>` element contains all the important information about a webpage that browsers, search engines, and other services use to understand and properly display your site. While users don't directly see the contents of the `<head>`, it plays a crucial role in SEO, responsiveness, performance, and overall website functionality. 🌐
+The `<head>` element contains all the important information about a webpage that
+browsers, search engines, and other services use to understand and properly
+display your site. While users don't directly see the contents of the `<head>`,
+it plays a crucial role in SEO, responsiveness, performance, and overall website
+functionality. 🌐

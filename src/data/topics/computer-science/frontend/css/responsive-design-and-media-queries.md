@@ -1,14 +1,17 @@
 # 📱 Responsive Design & Media Queries
 
-Modern websites must look great on **phones, tablets, laptops, desktops, TVs, and even foldable devices**.
+Modern websites must look great on **phones, tablets, laptops, desktops, TVs,
+and even foldable devices**.
 
-Responsive Design is the practice of creating websites that automatically adapt to different screen sizes and devices.
+Responsive Design is the practice of creating websites that automatically adapt
+to different screen sizes and devices.
 
 ---
 
 # 🎯 What is Responsive Design?
 
-Responsive Design allows a single website to adjust its layout, typography, images, and spacing based on the screen size.
+Responsive Design allows a single website to adjust its layout, typography,
+images, and spacing based on the screen size.
 
 Instead of creating separate websites:
 
@@ -61,10 +64,7 @@ The first step of responsive design.
 
 ```html
 <!-- Responsive viewport -->
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
-/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
 ---
@@ -315,8 +315,7 @@ The most common modern pattern.
 .products {
   display: grid;
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   gap: 20px;
 }
@@ -438,8 +437,7 @@ clamp(
 Example:
 
 ```css
-font-size:
-clamp(1rem, 3vw, 2rem);
+font-size: clamp(1rem, 3vw, 2rem);
 ```
 
 ---
@@ -637,54 +635,47 @@ Always test on mobile.
 ```css
 /* Mobile First */
 @media (min-width: 768px) {
-
 }
 
 /* Desktop First */
 @media (max-width: 768px) {
-
 }
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
-
 }
 
 /* Landscape */
 @media (orientation: landscape) {
-
 }
 
 /* Responsive Grid */
-grid-template-columns:
-repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
 /* Responsive Text */
-font-size:
-clamp(1rem, 3vw, 2rem);
+font-size: clamp(1rem, 3vw, 2rem);
 ```
 
 ---
 
 # ✅ Best Practices
 
-* Use Mobile First development.
-* Use CSS Grid and Flexbox.
-* Avoid fixed widths.
-* Use responsive images.
-* Use `clamp()` for typography.
-* Prefer modern units (`rem`, `vw`, `vh`).
-* Support dark mode when possible.
-* Test on real devices.
+- Use Mobile First development.
+- Use CSS Grid and Flexbox.
+- Avoid fixed widths.
+- Use responsive images.
+- Use `clamp()` for typography.
+- Prefer modern units (`rem`, `vw`, `vh`).
+- Support dark mode when possible.
+- Test on real devices.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Responsive Design ensures websites work on all devices.
-* Media Queries apply styles based on screen size.
-* Mobile First is the preferred approach.
-* Grid and Flexbox make responsive layouts easier.
-* `clamp()`, `vw`, `vh`, and Container Queries are powerful modern tools.
-* A responsive website improves user experience and SEO.
-
+- Responsive Design ensures websites work on all devices.
+- Media Queries apply styles based on screen size.
+- Mobile First is the preferred approach.
+- Grid and Flexbox make responsive layouts easier.
+- `clamp()`, `vw`, `vh`, and Container Queries are powerful modern tools.
+- A responsive website improves user experience and SEO.

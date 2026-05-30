@@ -1,8 +1,11 @@
 # ⬛ CSS Grid
 
-CSS Grid is a powerful **two-dimensional layout system** that allows you to create layouts using **rows and columns simultaneously**.
+CSS Grid is a powerful **two-dimensional layout system** that allows you to
+create layouts using **rows and columns simultaneously**.
 
-Unlike Flexbox, which works in one direction (row or column), Grid can control both directions at the same time, making it perfect for dashboards, galleries, page layouts, and complex responsive designs.
+Unlike Flexbox, which works in one direction (row or column), Grid can control
+both directions at the same time, making it perfect for dashboards, galleries,
+page layouts, and complex responsive designs.
 
 ---
 
@@ -10,10 +13,10 @@ Unlike Flexbox, which works in one direction (row or column), Grid can control b
 
 Before Grid, developers used:
 
-* Floats
-* Inline-blocks
-* Positioning
-* Flexbox hacks
+- Floats
+- Inline-blocks
+- Positioning
+- Flexbox hacks
 
 Grid provides a cleaner solution.
 
@@ -57,7 +60,7 @@ To create a grid, set `display: grid` on a container.
 ```mermaid
 flowchart TB
     Container["Grid Container"]
-    
+
     Item1["Grid Item 1"]
     Item2["Grid Item 2"]
     Item3["Grid Item 3"]
@@ -181,15 +184,13 @@ Equivalent to:
 Instead of:
 
 ```css
-grid-template-columns:
-  1fr 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr;
 ```
 
 Use:
 
 ```css
-grid-template-columns:
-  repeat(4, 1fr);
+grid-template-columns: repeat(4, 1fr);
 ```
 
 Cleaner and easier to maintain.
@@ -204,8 +205,7 @@ One of Grid's most useful features.
 .products {
   display: grid;
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   gap: 20px;
 }
@@ -232,8 +232,7 @@ flowchart TB
 ## auto-fit
 
 ```css
-grid-template-columns:
-repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 ```
 
 Empty columns collapse.
@@ -245,8 +244,7 @@ Best for most layouts.
 ## auto-fill
 
 ```css
-grid-template-columns:
-repeat(auto-fill, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 ```
 
 Empty tracks remain.
@@ -319,9 +317,9 @@ Creates readable layouts.
   display: grid;
 
   grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
+    'header header'
+    'sidebar main'
+    'footer footer';
 }
 ```
 
@@ -474,8 +472,7 @@ Shorthand.
 .products {
   display: grid;
 
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   gap: 20px;
 }
@@ -505,11 +502,9 @@ flowchart LR
 .dashboard {
   display: grid;
 
-  grid-template-columns:
-    250px 1fr;
+  grid-template-columns: 250px 1fr;
 
-  grid-template-rows:
-    80px 1fr;
+  grid-template-rows: 80px 1fr;
 }
 ```
 
@@ -540,8 +535,7 @@ Grid automatically places items.
 .container {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 ```
 
@@ -575,9 +569,9 @@ flowchart LR
 
 | Feature            | Flexbox | Grid      |
 | ------------------ | ------- | --------- |
-| Rows               | ❌       | ✅         |
-| Columns            | ❌       | ✅         |
-| Alignment          | ✅       | ✅         |
+| Rows               | ❌      | ✅        |
+| Columns            | ❌      | ✅        |
+| Alignment          | ✅      | ✅        |
 | Responsive Layouts | Good    | Excellent |
 | Complex Layouts    | Limited | Excellent |
 
@@ -624,15 +618,13 @@ Use Grid for:
 ❌
 
 ```css
-grid-template-columns:
-300px 300px 300px;
+grid-template-columns: 300px 300px 300px;
 ```
 
 ✅
 
 ```css
-grid-template-columns:
-repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 ```
 
 ---
@@ -675,11 +667,9 @@ For simple layouts, Flexbox may be easier.
 ```css
 display: grid;
 
-grid-template-columns:
-repeat(3, 1fr);
+grid-template-columns: repeat(3, 1fr);
 
-grid-template-rows:
-100px 1fr;
+grid-template-rows: 100px 1fr;
 
 gap: 20px;
 
@@ -692,29 +682,29 @@ place-items: center;
 place-content: center;
 
 grid-template-areas:
-  "header header"
-  "sidebar main";
+  'header header'
+  'sidebar main';
 ```
 
 ---
 
 # ✅ Best Practices
 
-* Use Grid for two-dimensional layouts.
-* Prefer `fr` units over fixed widths.
-* Use `repeat()` whenever possible.
-* Use `auto-fit` + `minmax()` for responsive layouts.
-* Combine Grid and Flexbox together.
-* Use Grid Template Areas for large layouts.
-* Keep layouts mobile-friendly.
+- Use Grid for two-dimensional layouts.
+- Prefer `fr` units over fixed widths.
+- Use `repeat()` whenever possible.
+- Use `auto-fit` + `minmax()` for responsive layouts.
+- Combine Grid and Flexbox together.
+- Use Grid Template Areas for large layouts.
+- Keep layouts mobile-friendly.
 
 ---
 
 # 🚀 Key Takeaways
 
-* CSS Grid is a two-dimensional layout system.
-* It controls rows and columns simultaneously.
-* `fr` units divide available space.
-* `repeat()`, `auto-fit()`, and `minmax()` simplify responsive design.
-* Grid Template Areas make layouts readable.
-* CSS Grid is the preferred solution for modern page layouts.
+- CSS Grid is a two-dimensional layout system.
+- It controls rows and columns simultaneously.
+- `fr` units divide available space.
+- `repeat()`, `auto-fit()`, and `minmax()` simplify responsive design.
+- Grid Template Areas make layouts readable.
+- CSS Grid is the preferred solution for modern page layouts.

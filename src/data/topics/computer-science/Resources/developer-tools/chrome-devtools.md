@@ -1,15 +1,16 @@
 # 🔍 Chrome DevTools
 
-Chrome DevTools helps developers inspect, debug, and optimize web applications directly from the browser.
+Chrome DevTools helps developers inspect, debug, and optimize web applications
+directly from the browser.
 
 ## 🚀 Opening DevTools
 
 ### Keyboard Shortcuts
 
-| Action | Windows/Linux | Mac |
-|----------|----------|----------|
-| Open DevTools | F12 | Cmd + Option + I |
-| Inspect Element | Ctrl + Shift + C | Cmd + Shift + C |
+| Action          | Windows/Linux    | Mac              |
+| --------------- | ---------------- | ---------------- |
+| Open DevTools   | F12              | Cmd + Option + I |
+| Inspect Element | Ctrl + Shift + C | Cmd + Shift + C  |
 
 ---
 
@@ -115,12 +116,12 @@ Execution pauses at breakpoint.
 
 ### Controls
 
-| Action | Shortcut |
-|----------|----------|
-| Resume | F8 |
-| Step Over | F10 |
-| Step Into | F11 |
-| Step Out | Shift + F11 |
+| Action    | Shortcut    |
+| --------- | ----------- |
+| Resume    | F8          |
+| Step Over | F10         |
+| Step Into | F11         |
+| Step Out  | Shift + F11 |
 
 ---
 
@@ -317,4 +318,5 @@ This workflow solves most frontend bugs quickly.
 - Filter network requests by Fetch/XHR
 - Save performance recordings for analysis
 
-Mastering DevTools can dramatically reduce debugging time and improve application performance.
+Mastering DevTools can dramatically reduce debugging time and improve
+application performance.

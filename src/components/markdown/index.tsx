@@ -641,8 +641,9 @@ const MarkdownRenderInner = ({
                 className={cn(
                   'relative flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
                   fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
-                  'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem]',
-                  'shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
+                  feedScrollMode
+                    ? 'rounded-2xl bg-card/95 shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:bg-card/90 dark:ring-white/6'
+                    : 'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem] shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
                 role="region"
                 aria-label={slideMode ? t('markdown.slideCarouselLabel') : undefined}

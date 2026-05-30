@@ -1,8 +1,10 @@
 # 📜 Overflow & Scroll
 
-When content becomes larger than its container, CSS needs a way to handle the extra content. This is where the **overflow** property comes in.
+When content becomes larger than its container, CSS needs a way to handle the
+extra content. This is where the **overflow** property comes in.
 
-Overflow controls whether content is clipped, hidden, scrolled, or displayed outside its container.
+Overflow controls whether content is clipped, hidden, scrolled, or displayed
+outside its container.
 
 ---
 
@@ -12,7 +14,8 @@ By default, content can extend outside an element's boundaries.
 
 ```html
 <div class="box">
-  This is a very long text that will overflow the container because it is larger than the available space.
+  This is a very long text that will overflow the container because it is larger
+  than the available space.
 </div>
 ```
 
@@ -137,9 +140,7 @@ Control horizontal and vertical scrolling separately.
 
 ```html
 <div class="container">
-  <div class="wide-content">
-    Very wide content...
-  </div>
+  <div class="wide-content">Very wide content...</div>
 </div>
 ```
 
@@ -176,9 +177,7 @@ Long text often needs truncation.
 ```
 
 ```html
-<p class="text">
-  This is a very long title that will not fit.
-</p>
+<p class="text">This is a very long title that will not fit.</p>
 ```
 
 Result:
@@ -248,9 +247,7 @@ html {
 ```html
 <a href="#section">Go to Section</a>
 
-<section id="section">
-  Content Here
-</section>
+<section id="section">Content Here</section>
 ```
 
 The page scrolls smoothly.
@@ -270,9 +267,9 @@ The element sticks to the viewport while scrolling.
 
 Common uses:
 
-* Navigation bars
-* Sidebars
-* Table headers
+- Navigation bars
+- Sidebars
+- Table headers
 
 ---
 
@@ -294,9 +291,9 @@ Creates app-like scrolling experiences.
 
 Perfect for:
 
-* Landing pages
-* Image galleries
-* Story-style layouts
+- Landing pages
+- Image galleries
+- Story-style layouts
 
 ---
 
@@ -338,9 +335,7 @@ Can create confusing scroll behavior.
 
 ```html
 <div class="card">
-  <p>
-    Long product description...
-  </p>
+  <p>Long product description...</p>
 </div>
 ```
 
@@ -391,20 +386,19 @@ scroll-snap-type: y mandatory;
 
 # ✅ Best Practices
 
-* Use `overflow: auto` in most cases.
-* Use `text-overflow: ellipsis` for long titles.
-* Avoid unnecessary nested scroll containers.
-* Prefer smooth scrolling for better UX.
-* Use scroll snapping sparingly.
-* Test scroll behavior on mobile devices.
+- Use `overflow: auto` in most cases.
+- Use `text-overflow: ellipsis` for long titles.
+- Avoid unnecessary nested scroll containers.
+- Prefer smooth scrolling for better UX.
+- Use scroll snapping sparingly.
+- Test scroll behavior on mobile devices.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Overflow controls what happens when content exceeds container size.
-* `auto` is usually the best overflow value.
-* Text can be truncated using `ellipsis`.
-* Smooth scrolling and scroll snapping improve user experience.
-* Proper overflow handling prevents broken layouts.
-
+- Overflow controls what happens when content exceeds container size.
+- `auto` is usually the best overflow value.
+- Text can be truncated using `ellipsis`.
+- Smooth scrolling and scroll snapping improve user experience.
+- Proper overflow handling prevents broken layouts.

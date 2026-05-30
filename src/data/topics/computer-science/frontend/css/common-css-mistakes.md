@@ -1,6 +1,8 @@
 # ⚠️ Common CSS Mistakes
 
-Even experienced developers make CSS mistakes. Most styling bugs come from a few common issues such as specificity conflicts, layout misunderstandings, or poor responsive design practices.
+Even experienced developers make CSS mistakes. Most styling bugs come from a few
+common issues such as specificity conflicts, layout misunderstandings, or poor
+responsive design practices.
 
 Learning these mistakes early can save hours of debugging.
 
@@ -104,9 +106,9 @@ flowchart LR
 
 Problems:
 
-* Hard to read
-* Hard to maintain
-* High specificity
+- Hard to read
+- Hard to maintain
+- High specificity
 
 ---
 
@@ -168,9 +170,9 @@ Use classes for styling.
 
 Use IDs for:
 
-* JavaScript hooks
-* Anchors
-* Unique identifiers
+- JavaScript hooks
+- Anchors
+- Unique identifiers
 
 ---
 
@@ -227,10 +229,7 @@ flowchart LR
 Without:
 
 ```html
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1"
-/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
 
 Mobile browsers may zoom out.
@@ -792,9 +791,9 @@ Some features require verification.
 
 Examples:
 
-* `:has()`
-* Container Queries
-* View Transitions API
+- `:has()`
+- Container Queries
+- View Transitions API
 
 Check support before production use.
 
@@ -862,24 +861,24 @@ Component-Based CSS
 
 # ✅ Best Practices
 
-* Use classes instead of IDs.
-* Keep selectors simple.
-* Avoid `!important`.
-* Use Flexbox and Grid.
-* Make layouts responsive.
-* Use CSS Variables.
-* Organize styles properly.
-* Test across devices and browsers.
-* Optimize animations using transforms.
-* Keep accessibility in mind.
+- Use classes instead of IDs.
+- Keep selectors simple.
+- Avoid `!important`.
+- Use Flexbox and Grid.
+- Make layouts responsive.
+- Use CSS Variables.
+- Organize styles properly.
+- Test across devices and browsers.
+- Optimize animations using transforms.
+- Keep accessibility in mind.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Most CSS bugs come from a small set of common mistakes.
-* Avoid specificity wars and deep selectors.
-* Build responsive layouts from the start.
-* Use modern CSS features like Flexbox, Grid, Variables, and Gap.
-* Organize CSS into reusable, maintainable structures.
-* Performance and accessibility should be considered from day one.
+- Most CSS bugs come from a small set of common mistakes.
+- Avoid specificity wars and deep selectors.
+- Build responsive layouts from the start.
+- Use modern CSS features like Flexbox, Grid, Variables, and Gap.
+- Organize CSS into reusable, maintainable structures.
+- Performance and accessibility should be considered from day one.

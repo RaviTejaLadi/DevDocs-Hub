@@ -19,7 +19,7 @@ function ScrollArea({ className, children, viewportClassName, viewportRef, ...pr
         ref={viewportRef}
         data-slot="scroll-area-viewport"
         className={cn(
-          'focus-visible:ring-ring/50 size-full max-w-full min-w-0 rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1',
+          'focus-visible:ring-ring/50 size-full max-w-full min-w-0 rounded-[inherit] outline-none focus-visible:ring-[3px] focus-visible:outline-1',
           viewportClassName
         )}
       >

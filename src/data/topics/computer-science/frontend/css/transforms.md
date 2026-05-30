@@ -1,8 +1,10 @@
 # 🔄 2D & 3D Transforms
 
-CSS Transforms allow you to **move, rotate, scale, skew, and manipulate elements** without affecting the document layout.
+CSS Transforms allow you to **move, rotate, scale, skew, and manipulate
+elements** without affecting the document layout.
 
-Transforms are one of the most powerful features in modern CSS and are commonly used for:
+Transforms are one of the most powerful features in modern CSS and are commonly
+used for:
 
 ✅ Hover Effects
 
@@ -22,9 +24,9 @@ Transforms change an element's appearance and position visually.
 
 Unlike margins or positioning:
 
-* Layout remains unchanged
-* Nearby elements don't move
-* GPU acceleration improves performance
+- Layout remains unchanged
+- Nearby elements don't move
+- GPU acceleration improves performance
 
 ---
 
@@ -313,10 +315,7 @@ Multiple transforms can be combined.
 
 ```css
 .card {
-  transform:
-    translateY(-10px)
-    scale(1.05)
-    rotate(2deg);
+  transform: translateY(-10px) scale(1.05) rotate(2deg);
 }
 ```
 
@@ -344,17 +343,15 @@ flowchart LR
 }
 
 .card:hover {
-  transform:
-    translateY(-10px)
-    scale(1.03);
+  transform: translateY(-10px) scale(1.03);
 }
 ```
 
 Popular in:
 
-* E-commerce sites
-* Dashboards
-* Portfolio websites
+- E-commerce sites
+- Dashboards
+- Portfolio websites
 
 ---
 
@@ -557,13 +554,9 @@ Popular interview question and real-world pattern.
 <!-- Flip Card -->
 <div class="card">
   <div class="card-inner">
-    <div class="front">
-      Front
-    </div>
+    <div class="front">Front</div>
 
-    <div class="back">
-      Back
-    </div>
+    <div class="back">Back</div>
   </div>
 </div>
 ```
@@ -641,7 +634,7 @@ Prevents mirrored content.
 
 ```css
 img {
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 img:hover {
@@ -675,9 +668,7 @@ img:hover {
 
 ```css
 .card:hover {
-  transform:
-    perspective(1000px)
-    rotateY(10deg);
+  transform: perspective(1000px) rotateY(10deg);
 }
 ```
 
@@ -753,7 +744,7 @@ Instant jump.
 
 ```css
 .card {
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 ```
 
@@ -792,9 +783,7 @@ transform: scale(1.2);
 
 transform: skew(20deg);
 
-transform:
-  translateY(-10px)
-  scale(1.05);
+transform: translateY(-10px) scale(1.05);
 
 perspective: 1000px;
 
@@ -809,22 +798,21 @@ backface-visibility: hidden;
 
 # ✅ Best Practices
 
-* Use transforms for movement and scaling.
-* Always combine transforms with transitions.
-* Use `transform` instead of changing layout properties.
-* Keep animations subtle.
-* Use perspective for realistic 3D effects.
-* Test 3D transforms on mobile devices.
-* Avoid excessive rotation and motion.
+- Use transforms for movement and scaling.
+- Always combine transforms with transitions.
+- Use `transform` instead of changing layout properties.
+- Keep animations subtle.
+- Use perspective for realistic 3D effects.
+- Test 3D transforms on mobile devices.
+- Avoid excessive rotation and motion.
 
 ---
 
 # 🚀 Key Takeaways
 
-* CSS Transforms visually modify elements without affecting layout.
-* `translate()`, `rotate()`, `scale()`, and `skew()` are core 2D transforms.
-* `rotateX()`, `rotateY()`, and `perspective()` enable 3D effects.
-* Transforms are GPU accelerated and highly performant.
-* Transform-based animations are preferred over layout-changing properties.
-* 3D flip cards are a common real-world use case.
-
+- CSS Transforms visually modify elements without affecting layout.
+- `translate()`, `rotate()`, `scale()`, and `skew()` are core 2D transforms.
+- `rotateX()`, `rotateY()`, and `perspective()` enable 3D effects.
+- Transforms are GPU accelerated and highly performant.
+- Transform-based animations are preferred over layout-changing properties.
+- 3D flip cards are a common real-world use case.

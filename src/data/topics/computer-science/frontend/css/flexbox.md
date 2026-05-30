@@ -1,8 +1,10 @@
 # 🔲 Flexbox
 
-**Flexbox (Flexible Box Layout)** is a one-dimensional layout system that makes it easy to align, distribute, and space items inside a container.
+**Flexbox (Flexible Box Layout)** is a one-dimensional layout system that makes
+it easy to align, distribute, and space items inside a container.
 
-Before Flexbox, creating layouts often required floats, positioning hacks, or complex CSS. Flexbox simplifies all of that.
+Before Flexbox, creating layouts often required floats, positioning hacks, or
+complex CSS. Flexbox simplifies all of that.
 
 ---
 
@@ -66,8 +68,8 @@ flowchart TB
 
 By default:
 
-* Main Axis → Horizontal
-* Cross Axis → Vertical
+- Main Axis → Horizontal
+- Cross Axis → Vertical
 
 ---
 
@@ -492,7 +494,7 @@ Logo                    Menu
 
 ```html
 <div class="card">
-  <img src="product.jpg" alt="Product">
+  <img src="product.jpg" alt="Product" />
   <h3>Product Name</h3>
   <button>Buy Now</button>
 </div>
@@ -526,9 +528,9 @@ Logo                    Menu
 
 Each item:
 
-* Grows
-* Shrinks
-* Starts at 300px
+- Grows
+- Shrinks
+- Starts at 300px
 
 ---
 
@@ -611,20 +613,19 @@ align-items     → Cross Axis
 
 # ✅ Best Practices
 
-* Use Flexbox for one-dimensional layouts.
-* Use `gap` instead of margins for spacing.
-* Prefer `flex: 1` for equal-width items.
-* Use `wrap` for responsive layouts.
-* Combine Flexbox with media queries for mobile support.
+- Use Flexbox for one-dimensional layouts.
+- Use `gap` instead of margins for spacing.
+- Prefer `flex: 1` for equal-width items.
+- Use `wrap` for responsive layouts.
+- Combine Flexbox with media queries for mobile support.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Flexbox is designed for one-dimensional layouts.
-* `justify-content` controls the main axis.
-* `align-items` controls the cross axis.
-* `gap` creates clean spacing.
-* `flex-grow`, `flex-shrink`, and `flex-basis` control sizing.
-* Flexbox makes alignment and responsiveness much easier.
-
+- Flexbox is designed for one-dimensional layouts.
+- `justify-content` controls the main axis.
+- `align-items` controls the cross axis.
+- `gap` creates clean spacing.
+- `flex-grow`, `flex-shrink`, and `flex-basis` control sizing.
+- Flexbox makes alignment and responsiveness much easier.

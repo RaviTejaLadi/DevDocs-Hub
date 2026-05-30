@@ -1,6 +1,7 @@
 # 🎭 CSS Filters & Blend Modes
 
-CSS Filters and Blend Modes allow you to create powerful visual effects directly in CSS without using image editing software.
+CSS Filters and Blend Modes allow you to create powerful visual effects directly
+in CSS without using image editing software.
 
 You can:
 
@@ -338,13 +339,7 @@ Creates shadows following the element shape.
 
 ```css
 img {
-  filter:
-    drop-shadow(
-      5px
-      5px
-      10px
-      rgba(0,0,0,.3)
-    );
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
 ```
 
@@ -375,10 +370,7 @@ Filters can be combined.
 
 ```css
 img {
-  filter:
-    brightness(120%)
-    contrast(110%)
-    saturate(150%);
+  filter: brightness(120%) contrast(110%) saturate(150%);
 }
 ```
 
@@ -411,13 +403,11 @@ flowchart LR
 
 ```css
 .card img {
-  transition: filter .3s;
+  transition: filter 0.3s;
 }
 
 .card:hover img {
-  filter:
-    brightness(110%)
-    saturate(120%);
+  filter: brightness(110%) saturate(120%);
 }
 ```
 
@@ -585,15 +575,10 @@ Blends background layers.
 
 ```css
 .hero {
-  background-image:
-    linear-gradient(
-      rgba(0,0,0,.5),
-      rgba(0,0,0,.5)
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(hero.jpg);
 
-  background-blend-mode:
-    multiply;
+  background-blend-mode: multiply;
 }
 ```
 
@@ -631,17 +616,12 @@ flowchart TB
 .hero {
   height: 500px;
 
-  background:
-    linear-gradient(
-      rgba(0,0,0,.5),
-      rgba(0,0,0,.5)
-    ),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(hero.jpg);
 
   background-size: cover;
 
-  background-blend-mode:
-    multiply;
+  background-blend-mode: multiply;
 }
 ```
 
@@ -657,12 +637,9 @@ Modern UI trend.
 .card {
   backdrop-filter: blur(15px);
 
-  background:
-    rgba(255,255,255,.15);
+  background: rgba(255, 255, 255, 0.15);
 
-  border:
-    1px solid
-    rgba(255,255,255,.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 ```
 
@@ -688,10 +665,7 @@ flowchart LR
 
 ```css
 .logo {
-  filter:
-    drop-shadow(
-      0 0 10px cyan
-    );
+  filter: drop-shadow(0 0 10px cyan);
 }
 ```
 
@@ -703,9 +677,7 @@ flowchart LR
 .gallery img {
   filter: grayscale(100%);
 
-  transition:
-    filter .3s,
-    transform .3s;
+  transition: filter 0.3s, transform 0.3s;
 }
 
 .gallery img:hover {
@@ -782,12 +754,7 @@ May hurt performance.
 ❌
 
 ```css
-filter:
-  brightness(120%)
-  contrast(130%)
-  saturate(180%)
-  hue-rotate(120deg)
-  blur(5px);
+filter: brightness(120%) contrast(130%) saturate(180%) hue-rotate(120deg) blur(5px);
 ```
 
 Can look unnatural.
@@ -823,10 +790,7 @@ filter: invert(100%);
 
 filter: opacity(50%);
 
-filter:
-  drop-shadow(
-    5px 5px 10px rgba(0,0,0,.3)
-  );
+filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 
 mix-blend-mode: multiply;
 
@@ -839,22 +803,24 @@ backdrop-filter: blur(15px);
 
 # ✅ Best Practices
 
-* Use filters sparingly.
-* Keep blur values reasonable.
-* Combine filters thoughtfully.
-* Use `drop-shadow()` for transparent images.
-* Use blend modes for creative visual effects.
-* Test performance on mobile devices.
-* Avoid stacking too many effects.
+- Use filters sparingly.
+- Keep blur values reasonable.
+- Combine filters thoughtfully.
+- Use `drop-shadow()` for transparent images.
+- Use blend modes for creative visual effects.
+- Test performance on mobile devices.
+- Avoid stacking too many effects.
 
 ---
 
 # 🚀 Key Takeaways
 
-* CSS Filters modify the visual appearance of elements.
-* Common filters include `blur()`, `grayscale()`, `brightness()`, and `drop-shadow()`.
-* Blend Modes control how layers interact.
-* `mix-blend-mode` affects elements, while `background-blend-mode` affects background layers.
-* `backdrop-filter` enables modern glassmorphism effects.
-* Filters and blend modes can create stunning visuals without external image editing tools.
-
+- CSS Filters modify the visual appearance of elements.
+- Common filters include `blur()`, `grayscale()`, `brightness()`, and
+  `drop-shadow()`.
+- Blend Modes control how layers interact.
+- `mix-blend-mode` affects elements, while `background-blend-mode` affects
+  background layers.
+- `backdrop-filter` enables modern glassmorphism effects.
+- Filters and blend modes can create stunning visuals without external image
+  editing tools.

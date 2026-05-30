@@ -1,17 +1,20 @@
 # 🎨 HTML Canvas & SVG
 
-HTML provides two powerful ways to create graphics on web pages: **Canvas** and **SVG**. Both can be used to draw shapes, charts, animations, games, and interactive visualizations, but they work differently.
+HTML provides two powerful ways to create graphics on web pages: **Canvas** and
+**SVG**. Both can be used to draw shapes, charts, animations, games, and
+interactive visualizations, but they work differently.
 
 Think of it like drawing on paper:
 
-* 🖌️ **Canvas** = Painting pixels on a blank canvas.
-* ✏️ **SVG** = Drawing individual shapes that remain editable.
+- 🖌️ **Canvas** = Painting pixels on a blank canvas.
+- ✏️ **SVG** = Drawing individual shapes that remain editable.
 
 ---
 
 # 🖼️ What is HTML Canvas?
 
-The `<canvas>` element provides a drawable area where JavaScript can create graphics dynamically.
+The `<canvas>` element provides a drawable area where JavaScript can create
+graphics dynamically.
 
 Canvas is pixel-based, meaning everything is drawn as pixels.
 
@@ -33,11 +36,11 @@ By itself, the canvas is empty. JavaScript is required to draw on it.
 <canvas id="myCanvas" width="300" height="150"></canvas>
 
 <script>
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
 
-ctx.fillStyle = "blue";
-ctx.fillRect(20, 20, 150, 80);
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(20, 20, 150, 80);
 </script>
 ```
 
@@ -59,13 +62,13 @@ ctx.fillRect(20, 20, 150, 80);
 <canvas id="myCanvas" width="300" height="150"></canvas>
 
 <script>
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
 
-ctx.beginPath();
-ctx.moveTo(20, 20);
-ctx.lineTo(250, 100);
-ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(20, 20);
+  ctx.lineTo(250, 100);
+  ctx.stroke();
 </script>
 ```
 
@@ -78,12 +81,12 @@ ctx.stroke();
 <canvas id="myCanvas" width="300" height="200"></canvas>
 
 <script>
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
 
-ctx.beginPath();
-ctx.arc(150, 100, 50, 0, 2 * Math.PI);
-ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(150, 100, 50, 0, 2 * Math.PI);
+  ctx.stroke();
 </script>
 ```
 
@@ -96,11 +99,11 @@ ctx.stroke();
 <canvas id="myCanvas" width="300" height="150"></canvas>
 
 <script>
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
 
-ctx.font = "30px Arial";
-ctx.fillText("Hello Canvas", 20, 80);
+  ctx.font = '30px Arial';
+  ctx.fillText('Hello Canvas', 20, 80);
 </script>
 ```
 
@@ -127,7 +130,8 @@ SVG stands for **Scalable Vector Graphics**.
 
 Unlike Canvas, SVG uses XML-based elements to create graphics.
 
-Each shape remains a separate element that can be styled, animated, and manipulated.
+Each shape remains a separate element that can be styled, animated, and
+manipulated.
 
 ---
 
@@ -136,13 +140,7 @@ Each shape remains a separate element that can be styled, animated, and manipula
 ```html
 <!-- Simple SVG -->
 <svg width="300" height="150">
-    <rect
-        x="20"
-        y="20"
-        width="150"
-        height="80"
-        fill="blue">
-    </rect>
+  <rect x="20" y="20" width="150" height="80" fill="blue"></rect>
 </svg>
 ```
 
@@ -153,12 +151,7 @@ Each shape remains a separate element that can be styled, animated, and manipula
 ```html
 <!-- SVG circle -->
 <svg width="300" height="200">
-    <circle
-        cx="150"
-        cy="100"
-        r="50"
-        fill="orange">
-    </circle>
+  <circle cx="150" cy="100" r="50" fill="orange"></circle>
 </svg>
 ```
 
@@ -177,14 +170,14 @@ Each shape remains a separate element that can be styled, animated, and manipula
 ```html
 <!-- SVG line -->
 <svg width="300" height="150">
-    <line
-        x1="20"
-        y1="20"
-        x2="250"
-        y2="100"
-        stroke="black"
-        stroke-width="3">
-    </line>
+  <line
+    x1="20"
+    y1="20"
+    x2="250"
+    y2="100"
+    stroke="black"
+    stroke-width="3"
+  ></line>
 </svg>
 ```
 
@@ -195,12 +188,7 @@ Each shape remains a separate element that can be styled, animated, and manipula
 ```html
 <!-- SVG text -->
 <svg width="300" height="150">
-    <text
-        x="20"
-        y="80"
-        font-size="30">
-        Hello SVG
-    </text>
+  <text x="20" y="80" font-size="30">Hello SVG</text>
 </svg>
 ```
 
@@ -211,22 +199,9 @@ Each shape remains a separate element that can be styled, animated, and manipula
 ```html
 <!-- Multiple SVG shapes -->
 <svg width="400" height="200">
+  <rect x="20" y="20" width="100" height="100" fill="red"></rect>
 
-    <rect
-        x="20"
-        y="20"
-        width="100"
-        height="100"
-        fill="red">
-    </rect>
-
-    <circle
-        cx="220"
-        cy="70"
-        r="50"
-        fill="blue">
-    </circle>
-
+  <circle cx="220" cy="70" r="50" fill="blue"></circle>
 </svg>
 ```
 
@@ -301,23 +276,23 @@ Company Logo
 <canvas id="canvas" width="400" height="200"></canvas>
 
 <script>
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
 
-let x = 0;
+  let x = 0;
 
-function animate() {
+  function animate() {
     ctx.clearRect(0, 0, 400, 200);
 
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = 'blue';
     ctx.fillRect(x, 50, 50, 50);
 
     x += 2;
 
     requestAnimationFrame(animate);
-}
+  }
 
-animate();
+  animate();
 </script>
 ```
 
@@ -328,29 +303,23 @@ animate();
 ```html
 <!-- Animated SVG circle -->
 <svg width="300" height="150">
-    <circle
-        class="ball"
-        cx="50"
-        cy="75"
-        r="25"
-        fill="blue">
-    </circle>
+  <circle class="ball" cx="50" cy="75" r="25" fill="blue"></circle>
 </svg>
 
 <style>
-.ball {
+  .ball {
     animation: move 3s infinite alternate;
-}
+  }
 
-@keyframes move {
+  @keyframes move {
     from {
-        transform: translateX(0);
+      transform: translateX(0);
     }
 
     to {
-        transform: translateX(200px);
+      transform: translateX(200px);
     }
-}
+  }
 </style>
 ```
 
@@ -411,4 +380,6 @@ SVG
 Draw Shapes
 ```
 
-💡 **Tip:** Use **SVG** for logos, icons, and UI graphics because it stays sharp at any size. Use **Canvas** for games, real-time visualizations, and graphics that require frequent updates or thousands of moving objects.
+💡 **Tip:** Use **SVG** for logos, icons, and UI graphics because it stays sharp
+at any size. Use **Canvas** for games, real-time visualizations, and graphics
+that require frequent updates or thousands of moving objects.

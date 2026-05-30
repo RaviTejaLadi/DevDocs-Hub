@@ -1,6 +1,9 @@
 # 💡 CSS Variables & Modern Features
 
-Modern CSS has evolved significantly. Features like **CSS Variables**, **Container Queries**, **Logical Properties**, **Nesting**, and **Modern Color Functions** help developers write cleaner, more maintainable, and scalable stylesheets.
+Modern CSS has evolved significantly. Features like **CSS Variables**,
+**Container Queries**, **Logical Properties**, **Nesting**, and **Modern Color
+Functions** help developers write cleaner, more maintainable, and scalable
+stylesheets.
 
 ---
 
@@ -134,11 +137,7 @@ Only available inside `.card`.
 Useful when a variable doesn't exist.
 
 ```css
-color:
-var(
-  --text-color,
-  black
-);
+color: var(--text-color, black);
 ```
 
 If `--text-color` is missing:
@@ -254,12 +253,7 @@ flowchart LR
 Responsive sizing made easy.
 
 ```css
-font-size:
-clamp(
-  1rem,
-  3vw,
-  2rem
-);
+font-size: clamp(1rem, 3vw, 2rem);
 ```
 
 ---
@@ -353,11 +347,14 @@ Modern CSS now supports nesting.
 ## Before
 
 ```css
-.card {}
+.card {
+}
 
-.card .title {}
+.card .title {
+}
 
-.card .button {}
+.card .button {
+}
 ```
 
 ---
@@ -366,7 +363,6 @@ Modern CSS now supports nesting.
 
 ```css
 .card {
-
   .title {
     font-size: 20px;
   }
@@ -418,10 +414,10 @@ margin-inline-start: 20px;
 
 Automatically adapts for:
 
-* English
-* Arabic
-* Hebrew
-* Japanese
+- English
+- Arabic
+- Hebrew
+- Japanese
 
 ---
 
@@ -460,12 +456,7 @@ color: rgb(255 0 0 / 50%);
 # hsl()
 
 ```css
-color:
-hsl(
-  220deg
-  90%
-  56%
-);
+color: hsl(220deg 90% 56%);
 ```
 
 ---
@@ -491,12 +482,7 @@ flowchart LR
 Mix colors directly in CSS.
 
 ```css
-background:
-color-mix(
-  in srgb,
-  blue 70%,
-  white 30%
-);
+background: color-mix(in srgb, blue 70%, white 30%);
 ```
 
 ---
@@ -703,15 +689,9 @@ flowchart LR
 .card {
   padding: var(--card-padding);
 
-  border-radius:
-    var(--card-radius);
+  border-radius: var(--card-radius);
 
-  width:
-    clamp(
-      250px,
-      50vw,
-      400px
-    );
+  width: clamp(250px, 50vw, 400px);
 
   aspect-ratio: 4 / 3;
 }
@@ -719,9 +699,9 @@ flowchart LR
 
 Combines:
 
-* Variables
-* Clamp
-* Aspect Ratio
+- Variables
+- Clamp
+- Aspect Ratio
 
 ---
 
@@ -749,7 +729,8 @@ Not every value needs a variable.
 .card {
   .header {
     .title {
-      .icon {}
+      .icon {
+      }
     }
   }
 }
@@ -763,9 +744,9 @@ Hard to maintain.
 
 Always verify support for:
 
-* Container Queries
-* :has()
-* New Color Functions
+- Container Queries
+- :has()
+- New Color Functions
 
 ---
 
@@ -778,49 +759,49 @@ Always verify support for:
 
 color: var(--primary);
 
-width:
-calc(100% - 200px);
+width: calc(100% - 200px);
 
-font-size:
-clamp(1rem, 3vw, 2rem);
+font-size: clamp(1rem, 3vw, 2rem);
 
 aspect-ratio: 16 / 9;
 
-:is(h1,h2,h3) {}
+:is(h1, h2, h3) {
+}
 
-:where(.card) {}
+:where(.card) {
+}
 
-.card:has(img) {}
+.card:has(img) {
+}
 
-container-type:
-inline-size;
+container-type: inline-size;
 
-backdrop-filter:
-blur(10px);
+backdrop-filter: blur(10px);
 
-accent-color:
-#2563eb;
+accent-color: #2563eb;
 ```
 
 ---
 
 # ✅ Best Practices
 
-* Store design tokens in CSS variables.
-* Use `clamp()` for responsive typography.
-* Prefer logical properties for internationalization.
-* Use Container Queries for reusable components.
-* Use nesting sparingly.
-* Leverage modern selectors like `:is()` and `:has()`.
-* Test browser support for newer features.
+- Store design tokens in CSS variables.
+- Use `clamp()` for responsive typography.
+- Prefer logical properties for internationalization.
+- Use Container Queries for reusable components.
+- Use nesting sparingly.
+- Leverage modern selectors like `:is()` and `:has()`.
+- Test browser support for newer features.
 
 ---
 
 # 🚀 Key Takeaways
 
-* CSS Variables make styles reusable and maintainable.
-* `calc()` and `clamp()` simplify responsive sizing.
-* Container Queries allow components to respond to parent sizes.
-* Modern selectors like `:is()`, `:where()`, and `:has()` reduce CSS complexity.
-* Features like `aspect-ratio`, `accent-color`, and `backdrop-filter` make modern UI development easier.
-* Modern CSS reduces the need for JavaScript and CSS preprocessors in many cases.
+- CSS Variables make styles reusable and maintainable.
+- `calc()` and `clamp()` simplify responsive sizing.
+- Container Queries allow components to respond to parent sizes.
+- Modern selectors like `:is()`, `:where()`, and `:has()` reduce CSS complexity.
+- Features like `aspect-ratio`, `accent-color`, and `backdrop-filter` make
+  modern UI development easier.
+- Modern CSS reduces the need for JavaScript and CSS preprocessors in many
+  cases.

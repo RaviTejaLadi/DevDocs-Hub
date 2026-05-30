@@ -119,7 +119,7 @@ const App = () => {
             {showSidebar && (
               <aside
                 className={cn(
-                  'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border bg-background/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-background/80 transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
+                  'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border border-border/40 bg-background shadow-sm transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
                   docsSidebarCollapsed
                     ? 'w-0 min-w-0 max-w-0 shrink-0 border-transparent p-0 opacity-0 pointer-events-none'
                     : cn(docsSidePanelWidthClass, 'h-full border-border/40 opacity-100')

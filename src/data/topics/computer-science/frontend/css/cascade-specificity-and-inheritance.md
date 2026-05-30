@@ -1,14 +1,18 @@
 # 🌊 Cascade, Specificity & Inheritance
 
-CSS is called **Cascading Style Sheets** because multiple styles can apply to the same element. The browser uses a set of rules called the **cascade** to decide which style wins.
+CSS is called **Cascading Style Sheets** because multiple styles can apply to
+the same element. The browser uses a set of rules called the **cascade** to
+decide which style wins.
 
-Understanding **Cascade**, **Specificity**, and **Inheritance** helps you avoid styling conflicts and write maintainable CSS.
+Understanding **Cascade**, **Specificity**, and **Inheritance** helps you avoid
+styling conflicts and write maintainable CSS.
 
 ---
 
 # 🌊 What is the Cascade?
 
-The cascade determines which CSS rule is applied when multiple rules target the same element.
+The cascade determines which CSS rule is applied when multiple rules target the
+same element.
 
 The browser considers:
 
@@ -290,8 +294,8 @@ color: initial;
 
 Behaves like:
 
-* inherit (for inherited properties)
-* initial (for non-inherited properties)
+- inherit (for inherited properties)
+- initial (for non-inherited properties)
 
 ```css
 color: unset;
@@ -345,19 +349,19 @@ div p               = 2
 
 # ✅ Best Practices
 
-* Prefer classes over IDs.
-* Avoid deep nested selectors.
-* Avoid excessive `!important`.
-* Keep specificity low.
-* Use inheritance when possible.
-* Follow a consistent CSS architecture.
+- Prefer classes over IDs.
+- Avoid deep nested selectors.
+- Avoid excessive `!important`.
+- Keep specificity low.
+- Use inheritance when possible.
+- Follow a consistent CSS architecture.
 
 ---
 
 # 🚀 Key Takeaways
 
-* The cascade decides which style wins.
-* Specificity determines selector priority.
-* Source order matters when specificity is equal.
-* Inheritance allows child elements to receive certain styles automatically.
-* Lower specificity leads to more maintainable CSS.
+- The cascade decides which style wins.
+- Specificity determines selector priority.
+- Source order matters when specificity is equal.
+- Inheritance allows child elements to receive certain styles automatically.
+- Lower specificity leads to more maintainable CSS.

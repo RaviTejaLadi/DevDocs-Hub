@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { RefObject } from 'react';
 import { TOPICS } from '@/data/topics';
@@ -33,11 +33,14 @@ export function useDocsFeedInViewObserver({
 }: InViewObserverParams) {
   const navigate = useNavigate();
   const { setFeedOverlay, pathRevisionRef } = useDocsFeedSync();
+  const lastInViewKeyRef = useRef('');
 
   /** URL + sidebar sync: update overlay immediately; path `replace` at most once per frame. */
   useEffect(() => {
     const root = viewportRef?.current;
     if (!root || feedRows.length === 0) return;
+
+    lastInViewKeyRef.current = '';
 
     let obs: IntersectionObserver | null = null;
     let cancelled = false;
@@ -122,8 +125,12 @@ export function useDocsFeedInViewObserver({
             }
           }
 
+          const nextKey = `${topicId}/${itemId}`;
+          if (nextKey === lastInViewKeyRef.current) return;
+          lastInViewKeyRef.current = nextKey;
+
           setFeedOverlay({ topicId, slug: itemId, pathRevision: pathRevisionRef.current });
-          setInViewFeedKey(`${topicId}/${itemId}`);
+          setInViewFeedKey(nextKey);
           scheduleNav(topicId, itemId);
         },
         {

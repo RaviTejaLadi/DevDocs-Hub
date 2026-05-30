@@ -1,8 +1,10 @@
 # 🎀 CSS Preprocessors (SASS)
 
-As CSS projects grow, writing plain CSS can become repetitive and difficult to maintain.
+As CSS projects grow, writing plain CSS can become repetitive and difficult to
+maintain.
 
-**SASS (Syntactically Awesome Style Sheets)** is a CSS preprocessor that adds powerful features like:
+**SASS (Syntactically Awesome Style Sheets)** is a CSS preprocessor that adds
+powerful features like:
 
 ✅ Variables
 
@@ -165,11 +167,14 @@ One of the most popular SASS features.
 ## Without Nesting
 
 ```css
-.card {}
+.card {
+}
 
-.card .title {}
+.card .title {
+}
 
-.card .button {}
+.card .button {
+}
 ```
 
 ---
@@ -178,7 +183,6 @@ One of the most popular SASS features.
 
 ```scss
 .card {
-
   .title {
     font-size: 20px;
   }
@@ -229,7 +233,8 @@ Recommended:
 
 ```scss
 .card {
-  .title {}
+  .title {
+  }
 }
 ```
 
@@ -251,7 +256,6 @@ Represents the current selector.
 
 ```scss
 .button {
-
   &:hover {
     background: red;
   }
@@ -272,7 +276,6 @@ Compiles to:
 
 ```scss
 .card {
-
   &--featured {
     border: 2px solid gold;
   }
@@ -331,9 +334,9 @@ Files beginning with `_` are partials.
 # Importing Partials
 
 ```scss
-@use "variables";
-@use "buttons";
-@use "cards";
+@use 'variables';
+@use 'buttons';
+@use 'cards';
 ```
 
 ---
@@ -417,7 +420,6 @@ flowchart LR
 
 ```scss
 @mixin button($bg) {
-
   background: $bg;
 
   padding: 10px 20px;
@@ -498,7 +500,6 @@ Share styles between selectors.
 
 ```scss
 .button-base {
-
   padding: 10px;
 
   border-radius: 8px;
@@ -523,7 +524,7 @@ Store structured data.
 $colors: (
   primary: #2563eb,
   success: #22c55e,
-  danger: #ef4444
+  danger: #ef4444,
 );
 ```
 
@@ -531,11 +532,7 @@ Usage:
 
 ```scss
 .button {
-  color:
-    map-get(
-      $colors,
-      primary
-    );
+  color: map-get($colors, primary);
 }
 ```
 
@@ -551,7 +548,6 @@ Generate repetitive CSS.
 
 ```scss
 @for $i from 1 through 5 {
-
   .m-#{$i} {
     margin: #{$i}rem;
   }
@@ -591,14 +587,10 @@ SASS supports logic.
 
 ```scss
 @mixin theme($mode) {
-
   @if $mode == dark {
-
     background: black;
     color: white;
-
   } @else {
-
     background: white;
     color: black;
   }
@@ -613,7 +605,6 @@ Very common pattern.
 
 ```scss
 @mixin tablet {
-
   @media (min-width: 768px) {
     @content;
   }
@@ -624,7 +615,6 @@ Usage:
 
 ```scss
 .card {
-
   width: 100%;
 
   @include tablet {
@@ -656,7 +646,7 @@ flowchart LR
 Older:
 
 ```scss
-@import "variables";
+@import 'variables';
 ```
 
 Deprecated.
@@ -666,7 +656,7 @@ Deprecated.
 Recommended:
 
 ```scss
-@use "variables";
+@use 'variables';
 ```
 
 Access:
@@ -712,12 +702,12 @@ Many SASS features now exist in CSS.
 
 | Feature   | SASS | Modern CSS |
 | --------- | ---- | ---------- |
-| Variables | ✅    | ✅          |
-| Nesting   | ✅    | ✅          |
-| Functions | ✅    | Partial    |
-| Loops     | ✅    | ❌          |
-| Mixins    | ✅    | ❌          |
-| Modules   | ✅    | Partial    |
+| Variables | ✅   | ✅         |
+| Nesting   | ✅   | ✅         |
+| Functions | ✅   | Partial    |
+| Loops     | ✅   | ❌         |
+| Mixins    | ✅   | ❌         |
+| Modules   | ✅   | Partial    |
 
 ---
 
@@ -757,7 +747,8 @@ Modern CSS alone may be enough for:
 .card {
   .header {
     .title {
-      .icon {}
+      .icon {
+      }
     }
   }
 }
@@ -776,13 +767,13 @@ Not everything needs a mixin.
 ❌
 
 ```scss
-@import "variables";
+@import 'variables';
 ```
 
 Use:
 
 ```scss
-@use "variables";
+@use 'variables';
 ```
 
 ---
@@ -793,44 +784,51 @@ Use:
 $primary: blue;
 
 .card {
-  .title {}
+  .title {
+  }
 }
 
-&:hover {}
+&:hover {
+}
 
-@mixin center {}
+@mixin center {
+}
 
 @include center;
 
-@function rem() {}
+@function rem() {
+}
 
 @extend .button;
 
-@for $i from 1 through 5 {}
+@for $i from 1 through 5 {
+}
 
-@if condition {}
+@if condition {
+}
 
-@use "variables";
+@use 'variables';
 ```
 
 ---
 
 # ✅ Best Practices
 
-* Prefer SCSS syntax over SASS syntax.
-* Use `@use` instead of `@import`.
-* Keep nesting shallow.
-* Organize files into modules.
-* Use variables for design tokens.
-* Use mixins for reusable patterns.
-* Avoid overengineering small projects.
+- Prefer SCSS syntax over SASS syntax.
+- Use `@use` instead of `@import`.
+- Keep nesting shallow.
+- Organize files into modules.
+- Use variables for design tokens.
+- Use mixins for reusable patterns.
+- Avoid overengineering small projects.
 
 ---
 
 # 🚀 Key Takeaways
 
-* SASS extends CSS with powerful developer-friendly features.
-* Variables, nesting, mixins, and functions reduce repetition.
-* Partials and modules improve organization.
-* Loops and conditionals enable dynamic CSS generation.
-* Modern CSS has reduced the need for SASS in some areas, but SASS remains valuable for large-scale applications and design systems.
+- SASS extends CSS with powerful developer-friendly features.
+- Variables, nesting, mixins, and functions reduce repetition.
+- Partials and modules improve organization.
+- Loops and conditionals enable dynamic CSS generation.
+- Modern CSS has reduced the need for SASS in some areas, but SASS remains
+  valuable for large-scale applications and design systems.

@@ -42,12 +42,18 @@
     box-sizing: border-box;
   }
 
-  /** Docs feed: native wheel steps must feel immediate; keep smooth only for explicit JS scroll APIs. */
+  /**
+   * Docs sidebar + feed: native wheel steps must feel immediate; keep smooth only for
+   * programmatic scroll APIs on non-docs surfaces (e.g. scroll-to-top button).
+   */
+  [data-slot='scroll-area-viewport'].docs-sidebar-scroll,
   [data-slot='scroll-area-viewport'].docs-feed-scroll {
     scroll-behavior: auto;
     /* Avoid browser scroll anchoring fighting programmatic layout when chained topics mount. */
     overflow-anchor: none;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
   }
 
   /* Doc feed cards: content-visibility:auto caused jank when cards entered viewport during scroll. */
@@ -61,6 +67,10 @@
     }
 
     [data-slot='scroll-area-viewport'].docs-feed-scroll {
+      scroll-behavior: auto;
+    }
+
+    [data-slot='scroll-area-viewport'].docs-sidebar-scroll {
       scroll-behavior: auto;
     }
   }

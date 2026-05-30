@@ -19,6 +19,7 @@ import {
   docsSidePanelHeaderSurfaceClass,
   docsSidePanelNavSurfaceClass,
   docsSidePanelScrollAreaClass,
+  docsSidePanelScrollViewportClass,
 } from '@/constants/docsSidePanel';
 
 /** Parent topic ids needed to reveal `targetId` in the tree (not including target). */
@@ -87,14 +88,27 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
     });
   }, [topic, activeSlug, searchQuery]);
 
+  /** Debounced + visibility-checked — feed scroll updates highlight often; avoid layout thrash. */
   useEffect(() => {
-    if (!activeRouteKey) return;
-    const ms = 320;
+    if (!activeRouteKey || searchQuery) return;
+
     const id = window.setTimeout(() => {
-      document
-        .querySelector(`[data-sidebar-route="${CSS.escape(activeRouteKey)}"]`)
-        ?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
-    }, ms);
+      const el = document.querySelector<HTMLElement>(`[data-sidebar-route="${CSS.escape(activeRouteKey)}"]`);
+      if (!el) return;
+
+      const sidebarViewport = el.closest('[data-slot="scroll-area-viewport"]');
+      if (sidebarViewport) {
+        const elRect = el.getBoundingClientRect();
+        const vpRect = sidebarViewport.getBoundingClientRect();
+        const fullyVisible = elRect.top >= vpRect.top - 2 && elRect.bottom <= vpRect.bottom + 2;
+        if (fullyVisible) return;
+      }
+
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+      });
+    }, 120);
+
     return () => window.clearTimeout(id);
   }, [activeRouteKey, searchQuery, expandedIds]);
 
@@ -136,7 +150,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
             data-sidebar-route={routeKey}
             className={cn(
               'group/nav flex min-w-0 w-full max-w-full justify-start rounded-xl overflow-hidden box-border touch-manipulation',
-              'border-l-2 transition-all duration-200',
+              'border-l-2 transition-[color,background-color,box-shadow,border-color] duration-150',
               depth === 0 ? 'min-h-11 py-2 px-2.5' : 'min-h-9 py-1.5 px-2',
               !isActive || !isDoc ? 'border-l-transparent' : topicBadgeAccentBorder[badgeKind],
               isActive && isDoc
@@ -370,9 +384,12 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-2 sm:px-3">
-        <ScrollArea className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}>
+        <ScrollArea
+          className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}
+          viewportClassName={docsSidePanelScrollViewportClass}
+        >
           <div className={docsSidePanelNavSurfaceClass}>
-            <nav className="motion-stagger space-y-0.5 group/nav" aria-label="Topic sections">
+            <nav className="space-y-0.5 group/nav" aria-label="Topic sections">
               {displayContent}
             </nav>
           </div>

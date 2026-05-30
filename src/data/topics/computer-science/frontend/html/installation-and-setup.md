@@ -1,14 +1,16 @@
 # 🌐 HTML Installation and Setup
 
-HTML (HyperText Markup Language) is the foundation of every web page. The good news is that HTML does not require any special installation. All you need is a text editor and a web browser.
+HTML (HyperText Markup Language) is the foundation of every web page. The good
+news is that HTML does not require any special installation. All you need is a
+text editor and a web browser.
 
 ## 🎯 What You Need
 
 Before writing HTML code, make sure you have:
 
-* A text editor
-* A web browser
-* Basic knowledge of files and folders
+- A text editor
+- A web browser
+- Basic knowledge of files and folders
 
 ### Recommended Tools
 
@@ -59,9 +61,9 @@ Most computers already have a browser installed.
 
 Popular choices:
 
-* [Google Chrome](https://www.google.com/chrome/?utm_source=chatgpt.com)
-* [Mozilla Firefox](https://www.mozilla.org/firefox/?utm_source=chatgpt.com)
-* Microsoft Edge
+- [Google Chrome](https://www.google.com/chrome/?utm_source=chatgpt.com)
+- [Mozilla Firefox](https://www.mozilla.org/firefox/?utm_source=chatgpt.com)
+- Microsoft Edge
 
 ---
 
@@ -81,13 +83,13 @@ html-project/
 <!-- My first HTML page -->
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>My First Web Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Hello World!</h1>
     <p>Welcome to HTML.</p>
-</body>
+  </body>
 </html>
 ```
 
@@ -176,7 +178,7 @@ my-website/
 
 ```html
 <!-- Link external CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css" />
 ```
 
 ### Connect JavaScript
@@ -196,16 +198,17 @@ Create this file:
 <!-- Test HTML setup -->
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>HTML Setup Test</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>🎉 HTML Setup Successful!</h1>
-</body>
+  </body>
 </html>
 ```
 
-If you can open it in a browser and see the heading, your HTML environment is ready.
+If you can open it in a browser and see the heading, your HTML environment is
+ready.
 
 ## 🚀 Next Steps
 
@@ -220,4 +223,6 @@ After setting up HTML, learn:
 7. CSS Styling
 8. JavaScript Basics
 
-HTML is the starting point of web development. Once your setup is ready, you can begin building web pages immediately without installing any special runtime or compiler.
+HTML is the starting point of web development. Once your setup is ready, you can
+begin building web pages immediately without installing any special runtime or
+compiler.

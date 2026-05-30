@@ -1,6 +1,8 @@
 # 🐳 Docker CLI
 
-Docker allows developers to package applications and their dependencies into containers. Containers make applications portable, consistent, and easy to deploy.
+Docker allows developers to package applications and their dependencies into
+containers. Containers make applications portable, consistent, and easy to
+deploy.
 
 ## 🚀 What is Docker?
 
@@ -201,11 +203,7 @@ docker run -p 3000:3000 app
 
 Request flow:
 
-Browser
- ↓
-localhost:3000
- ↓
-Container:3000
+Browser ↓ localhost:3000 ↓ Container:3000
 
 ---
 
@@ -219,7 +217,7 @@ FROM node:22
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package\*.json ./
 
 RUN npm install
 
@@ -303,11 +301,7 @@ docker run -p 3000:3000 react-app
 
 Common setup:
 
-Frontend Container
-        ↓
-Backend Container
-        ↓
-Database Container
+Frontend Container ↓ Backend Container ↓ Database Container
 
 Connected via Docker network.
 
@@ -318,10 +312,10 @@ Connected via Docker network.
 Run PostgreSQL:
 
 docker run -d \
-  --name postgres-db \
-  -e POSTGRES_PASSWORD=secret \
-  -p 5432:5432 \
-  postgres
+ --name postgres-db \
+ -e POSTGRES_PASSWORD=secret \
+ -p 5432:5432 \
+ postgres
 
 Connect application using:
 
@@ -412,4 +406,6 @@ Verify:
 - Use volumes for persistent data
 - Use networks for service communication
 
-Docker is one of the most valuable tools for modern development because it ensures your application behaves consistently across development, testing, and production environments.
+Docker is one of the most valuable tools for modern development because it
+ensures your application behaves consistently across development, testing, and
+production environments.

@@ -1,13 +1,18 @@
 # 🔍 HTML Microdata & Schema
 
-**Microdata** is a way to add structured information to HTML content so that search engines can better understand your webpage. **Schema.org** provides a standard vocabulary for describing things like articles, products, events, organizations, people, and more.
+**Microdata** is a way to add structured information to HTML content so that
+search engines can better understand your webpage. **Schema.org** provides a
+standard vocabulary for describing things like articles, products, events,
+organizations, people, and more.
 
 Think of it this way:
 
-* 👨 User sees: "iPhone 17 Pro - ₹1,29,900"
-* 🤖 Search engine sees: "This is a product named iPhone 17 Pro with a specific price."
+- 👨 User sees: "iPhone 17 Pro - ₹1,29,900"
+- 🤖 Search engine sees: "This is a product named iPhone 17 Pro with a specific
+  price."
 
-This additional context helps search engines display **rich results** such as ratings, prices, FAQs, recipes, and event information.
+This additional context helps search engines display **rich results** such as
+ratings, prices, FAQs, recipes, and event information.
 
 ---
 
@@ -36,7 +41,8 @@ Now the search engine knows this content represents a product and its price.
 
 # 🏗️ What is Schema.org?
 
-[Schema.org](https://schema.org?utm_source=chatgpt.com) is a collaborative project that provides standardized structured data types.
+[Schema.org](https://schema.org?utm_source=chatgpt.com) is a collaborative
+project that provides standardized structured data types.
 
 Common schema types include:
 
@@ -76,15 +82,9 @@ Microdata uses special HTML attributes to add structured data.
 ```html
 <!-- Person microdata -->
 <div itemscope itemtype="https://schema.org/Person">
+  <h2 itemprop="name">John Doe</h2>
 
-    <h2 itemprop="name">
-        John Doe
-    </h2>
-
-    <p itemprop="jobTitle">
-        Frontend Developer
-    </p>
-
+  <p itemprop="jobTitle">Frontend Developer</p>
 </div>
 ```
 
@@ -106,19 +106,11 @@ One of the most common uses of microdata is product information.
 ```html
 <!-- Product microdata -->
 <div itemscope itemtype="https://schema.org/Product">
+  <h2 itemprop="name">Laptop Pro X</h2>
 
-    <h2 itemprop="name">
-        Laptop Pro X
-    </h2>
+  <p itemprop="description">High-performance laptop for developers.</p>
 
-    <p itemprop="description">
-        High-performance laptop for developers.
-    </p>
-
-    <span itemprop="price">
-        85000
-    </span>
-
+  <span itemprop="price"> 85000 </span>
 </div>
 ```
 
@@ -137,15 +129,9 @@ Description: High-performance laptop
 ```html
 <!-- Product review -->
 <div itemscope itemtype="https://schema.org/Review">
+  <span itemprop="author"> Ravi </span>
 
-    <span itemprop="author">
-        Ravi
-    </span>
-
-    <p itemprop="reviewBody">
-        Excellent product.
-    </p>
-
+  <p itemprop="reviewBody">Excellent product.</p>
 </div>
 ```
 
@@ -156,24 +142,18 @@ Description: High-performance laptop
 ```html
 <!-- Organization schema -->
 <div itemscope itemtype="https://schema.org/Organization">
+  <h2 itemprop="name">Tech Solutions</h2>
 
-    <h2 itemprop="name">
-        Tech Solutions
-    </h2>
-
-    <p itemprop="address">
-        Hyderabad, India
-    </p>
-
+  <p itemprop="address">Hyderabad, India</p>
 </div>
 ```
 
 Useful for:
 
-* Companies
-* Startups
-* Educational institutions
-* Non-profit organizations
+- Companies
+- Startups
+- Educational institutions
+- Non-profit organizations
 
 ---
 
@@ -183,18 +163,10 @@ For blogs and news websites.
 
 ```html
 <!-- Blog article schema -->
-<article
-    itemscope
-    itemtype="https://schema.org/Article">
+<article itemscope itemtype="https://schema.org/Article">
+  <h1 itemprop="headline">Learn HTML Microdata</h1>
 
-    <h1 itemprop="headline">
-        Learn HTML Microdata
-    </h1>
-
-    <p itemprop="author">
-        John Doe
-    </p>
-
+  <p itemprop="author">John Doe</p>
 </article>
 ```
 
@@ -204,27 +176,19 @@ For blogs and news websites.
 
 ```html
 <!-- Event schema -->
-<div
-    itemscope
-    itemtype="https://schema.org/Event">
+<div itemscope itemtype="https://schema.org/Event">
+  <h2 itemprop="name">Web Development Workshop</h2>
 
-    <h2 itemprop="name">
-        Web Development Workshop
-    </h2>
-
-    <p itemprop="startDate">
-        2026-07-15
-    </p>
-
+  <p itemprop="startDate">2026-07-15</p>
 </div>
 ```
 
 Useful for:
 
-* Conferences
-* Workshops
-* Meetups
-* Webinars
+- Conferences
+- Workshops
+- Meetups
+- Webinars
 
 ---
 
@@ -232,27 +196,19 @@ Useful for:
 
 ```html
 <!-- Recipe schema -->
-<div
-    itemscope
-    itemtype="https://schema.org/Recipe">
+<div itemscope itemtype="https://schema.org/Recipe">
+  <h2 itemprop="name">Margherita Pizza</h2>
 
-    <h2 itemprop="name">
-        Margherita Pizza
-    </h2>
-
-    <p itemprop="cookTime">
-        PT30M
-    </p>
-
+  <p itemprop="cookTime">PT30M</p>
 </div>
 ```
 
 Search engines may display:
 
-* Cooking time
-* Ingredients
-* Ratings
-* Nutrition information
+- Cooking time
+- Ingredients
+- Ratings
+- Nutrition information
 
 ---
 
@@ -262,25 +218,12 @@ Microdata items can contain other items.
 
 ```html
 <!-- Person with address -->
-<div
-    itemscope
-    itemtype="https://schema.org/Person">
+<div itemscope itemtype="https://schema.org/Person">
+  <span itemprop="name"> John Doe </span>
 
-    <span itemprop="name">
-        John Doe
-    </span>
-
-    <div
-        itemprop="address"
-        itemscope
-        itemtype="https://schema.org/PostalAddress">
-
-        <span itemprop="addressLocality">
-            Hyderabad
-        </span>
-
-    </div>
-
+  <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    <span itemprop="addressLocality"> Hyderabad </span>
+  </div>
 </div>
 ```
 
@@ -337,13 +280,13 @@ A: HTML is the standard markup language...
 
 There are multiple ways to add structured data.
 
-| Feature                | Microdata    | JSON-LD     |
-| ---------------------- | ------------ | ----------- |
-| Added directly in HTML | ✅ Yes        | ❌ No        |
-| Easy to read           | Moderate     | High        |
+| Feature                | Microdata    | JSON-LD      |
+| ---------------------- | ------------ | ------------ |
+| Added directly in HTML | ✅ Yes       | ❌ No        |
+| Easy to read           | Moderate     | High         |
 | Recommended by Google  | ⚠️ Supported | ✅ Preferred |
-| HTML clutter           | More         | Less        |
-| Maintenance            | Harder       | Easier      |
+| HTML clutter           | More         | Less         |
+| Maintenance            | Harder       | Easier       |
 
 ---
 
@@ -354,20 +297,20 @@ Today, most websites use JSON-LD instead of Microdata.
 ```html
 <!-- JSON-LD structured data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "John Doe",
-  "jobTitle": "Frontend Developer"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Doe",
+    "jobTitle": "Frontend Developer"
+  }
 </script>
 ```
 
 Advantages:
 
-* Cleaner HTML
-* Easier maintenance
-* Google's preferred format
+- Cleaner HTML
+- Easier maintenance
+- Google's preferred format
 
 ---
 
@@ -378,15 +321,13 @@ Advantages:
 ❌ Wrong
 
 ```html
-<div itemtype="https://schema.org/Person">
+<div itemtype="https://schema.org/Person"></div>
 ```
 
 ✅ Correct
 
 ```html
-<div
-    itemscope
-    itemtype="https://schema.org/Person">
+<div itemscope itemtype="https://schema.org/Person"></div>
 ```
 
 ---
@@ -412,7 +353,7 @@ itemtype="https://schema.org/Person"
 ❌ Wrong
 
 ```html
-<span itemprop="username">
+<span itemprop="username"></span>
 ```
 
 If the schema doesn't define `username`, search engines may ignore it.
@@ -468,14 +409,8 @@ Rich Search Results
 ### Microdata Example
 
 ```html
-<div
-    itemscope
-    itemtype="https://schema.org/Product">
-
-    <h2 itemprop="name">
-        Laptop Pro X
-    </h2>
-
+<div itemscope itemtype="https://schema.org/Product">
+  <h2 itemprop="name">Laptop Pro X</h2>
 </div>
 ```
 
@@ -487,4 +422,7 @@ itemtype  → Define type
 itemprop  → Define property
 ```
 
-💡 **Tip:** While HTML Microdata is still supported, modern websites typically use **JSON-LD** because it keeps HTML clean and is the preferred structured data format for major search engines. Understanding Microdata is still valuable because you'll encounter it in existing websites and legacy projects.
+💡 **Tip:** While HTML Microdata is still supported, modern websites typically
+use **JSON-LD** because it keeps HTML clean and is the preferred structured data
+format for major search engines. Understanding Microdata is still valuable
+because you'll encounter it in existing websites and legacy projects.

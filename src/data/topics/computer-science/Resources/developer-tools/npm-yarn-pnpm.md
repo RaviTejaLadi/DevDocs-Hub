@@ -1,6 +1,7 @@
 # 📦 npm, Yarn & pnpm
 
-npm, Yarn, and pnpm are JavaScript package managers used to install, update, and manage project dependencies.
+npm, Yarn, and pnpm are JavaScript package managers used to install, update, and
+manage project dependencies.
 
 They help developers:
 
@@ -15,9 +16,7 @@ They help developers:
 
 Instead of manually downloading libraries:
 
-lodash
-axios
-react
+lodash axios react
 
 You can install them with a single command.
 
@@ -160,14 +159,8 @@ Central project configuration file.
 
 Example:
 
-{
-  "name": "my-app",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  }
-}
+{ "name": "my-app", "version": "1.0.0", "scripts": { "dev": "vite", "build":
+"vite build" } }
 
 Contains:
 
@@ -208,12 +201,7 @@ Always commit lock files.
 
 package.json:
 
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  }
-}
+{ "scripts": { "dev": "vite", "build": "vite build" } }
 
 ### npm
 
@@ -253,8 +241,7 @@ Required in production.
 
 Example:
 
-react
-axios
+react axios
 
 ### Dev Dependencies
 
@@ -262,9 +249,7 @@ Needed during development.
 
 Example:
 
-eslint
-typescript
-prettier
+eslint typescript prettier
 
 ---
 
@@ -288,20 +273,15 @@ pnpm create vite
 
 Traditional approach:
 
-Project A
-└── node_modules
+Project A └── node_modules
 
-Project B
-└── node_modules
+Project B └── node_modules
 
 Same package downloaded multiple times.
 
 pnpm:
 
-Global Store
-├── react
-├── axios
-└── vite
+Global Store ├── react ├── axios └── vite
 
 Projects use links to the store.
 
@@ -323,13 +303,9 @@ pnpm is widely used for:
 
 Example structure:
 
-apps/
-├── web
-├── admin
+apps/ ├── web ├── admin
 
-packages/
-├── ui
-├── utils
+packages/ ├── ui ├── utils
 
 pnpm handles shared dependencies efficiently.
 
@@ -385,8 +361,7 @@ pnpm install
 
 Check:
 
-node -v
-npm -v
+node -v npm -v
 
 Use a version manager like:
 
@@ -411,9 +386,7 @@ pnpm add react react-dom
 
 Development tools:
 
-pnpm add -D typescript
-pnpm add -D eslint
-pnpm add -D prettier
+pnpm add -D typescript pnpm add -D eslint pnpm add -D prettier
 
 ---
 
@@ -421,27 +394,19 @@ pnpm add -D prettier
 
 Install Package
 
-npm install axios
-yarn add axios
-pnpm add axios
+npm install axios yarn add axios pnpm add axios
 
 Remove Package
 
-npm uninstall axios
-yarn remove axios
-pnpm remove axios
+npm uninstall axios yarn remove axios pnpm remove axios
 
 Run Script
 
-npm run dev
-yarn dev
-pnpm dev
+npm run dev yarn dev pnpm dev
 
 Install Dependencies
 
-npm install
-yarn
-pnpm install
+npm install yarn pnpm install
 
 ---
 
@@ -471,4 +436,6 @@ Good for:
 - Large codebases
 - Faster installations
 
-For modern React and Next.js projects, pnpm is often the preferred choice because of its performance, efficient storage usage, and excellent workspace support.
+For modern React and Next.js projects, pnpm is often the preferred choice
+because of its performance, efficient storage usage, and excellent workspace
+support.

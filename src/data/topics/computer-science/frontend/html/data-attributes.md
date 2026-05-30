@@ -1,8 +1,11 @@
 # 🏷️ HTML Data Attributes
 
-HTML **Data Attributes** allow you to store custom data directly inside HTML elements. They are useful when you need to attach extra information to elements without affecting their appearance or behavior.
+HTML **Data Attributes** allow you to store custom data directly inside HTML
+elements. They are useful when you need to attach extra information to elements
+without affecting their appearance or behavior.
 
-Think of data attributes as **hidden labels** attached to HTML elements. Users don't see them, but JavaScript can easily read and use them.
+Think of data attributes as **hidden labels** attached to HTML elements. Users
+don't see them, but JavaScript can easily read and use them.
 
 ---
 
@@ -25,8 +28,8 @@ data-name="value"
 
 In this example:
 
-* `data-id` is a custom data attribute.
-* `101` is the stored value.
+- `data-id` is a custom data attribute.
+- `101` is the stored value.
 
 ---
 
@@ -34,11 +37,7 @@ In this example:
 
 ```html
 <!-- Product card with custom data -->
-<div
-    data-product-id="101"
-    data-category="electronics">
-    Smartphone
-</div>
+<div data-product-id="101" data-category="electronics">Smartphone</div>
 ```
 
 The browser ignores these attributes visually, but JavaScript can access them.
@@ -49,19 +48,16 @@ The browser ignores these attributes visually, but JavaScript can access them.
 
 Data attributes are commonly used to:
 
-* Store IDs
-* Store categories
-* Store configuration values
-* Pass information to JavaScript
-* Build interactive UI components
+- Store IDs
+- Store categories
+- Store configuration values
+- Pass information to JavaScript
+- Build interactive UI components
 
 Example:
 
 ```html
-<button
-    data-theme="dark">
-    Change Theme
-</button>
+<button data-theme="dark">Change Theme</button>
 ```
 
 JavaScript can read the theme value and update the page accordingly.
@@ -74,16 +70,12 @@ JavaScript can read the theme value and update the page accordingly.
 
 ```html
 <!-- Element with data attribute -->
-<button
-    id="btn"
-    data-user="John">
-    Show User
-</button>
+<button id="btn" data-user="John">Show User</button>
 ```
 
 ```javascript
 // Read data attribute
-const button = document.getElementById("btn");
+const button = document.getElementById('btn');
 
 console.log(button.dataset.user);
 ```
@@ -100,17 +92,12 @@ John
 
 ```html
 <!-- Multiple custom attributes -->
-<div
-    id="product"
-    data-id="101"
-    data-name="Laptop"
-    data-price="50000">
-</div>
+<div id="product" data-id="101" data-name="Laptop" data-price="50000"></div>
 ```
 
 ```javascript
 // Access all values
-const product = document.getElementById("product");
+const product = document.getElementById('product');
 
 console.log(product.dataset.id);
 console.log(product.dataset.name);
@@ -133,18 +120,14 @@ JavaScript can modify data attributes dynamically.
 
 ```html
 <!-- Update data value -->
-<button
-    id="btn"
-    data-status="inactive">
-    Activate
-</button>
+<button id="btn" data-status="inactive">Activate</button>
 ```
 
 ```javascript
 // Change attribute value
-const button = document.getElementById("btn");
+const button = document.getElementById('btn');
 
-button.dataset.status = "active";
+button.dataset.status = 'active';
 
 console.log(button.dataset.status);
 ```
@@ -161,15 +144,13 @@ active
 
 ```javascript
 // Remove data attribute
-button.removeAttribute("data-status");
+button.removeAttribute('data-status');
 ```
 
 After removal:
 
 ```html
-<button id="btn">
-    Activate
-</button>
+<button id="btn">Activate</button>
 ```
 
 ---
@@ -179,19 +160,14 @@ After removal:
 Another way to read data attributes:
 
 ```html
-<div
-    id="box"
-    data-color="blue">
-</div>
+<div id="box" data-color="blue"></div>
 ```
 
 ```javascript
 // Read attribute
-const box = document.getElementById("box");
+const box = document.getElementById('box');
 
-console.log(
-    box.getAttribute("data-color")
-);
+console.log(box.getAttribute('data-color'));
 ```
 
 ### Output
@@ -207,19 +183,15 @@ blue
 Data attributes often use hyphens.
 
 ```html
-<div
-    data-user-name="John Doe">
-</div>
+<div data-user-name="John Doe"></div>
 ```
 
 JavaScript converts hyphens to camelCase.
 
 ```javascript
-const element = document.querySelector("div");
+const element = document.querySelector('div');
 
-console.log(
-    element.dataset.userName
-);
+console.log(element.dataset.userName);
 ```
 
 ### Output
@@ -236,16 +208,14 @@ Data attributes can also be used in CSS selectors.
 
 ```html
 <!-- Theme button -->
-<button data-theme="dark">
-    Dark Theme
-</button>
+<button data-theme="dark">Dark Theme</button>
 ```
 
 ```css
 /* Style based on data attribute */
-button[data-theme="dark"] {
-    background: black;
-    color: white;
+button[data-theme='dark'] {
+  background: black;
+  color: white;
 }
 ```
 
@@ -255,26 +225,17 @@ button[data-theme="dark"] {
 
 ```html
 <!-- Product cards -->
-<div class="product"
-     data-price="50000">
-    Laptop
-</div>
+<div class="product" data-price="50000">Laptop</div>
 
-<div class="product"
-     data-price="30000">
-    Tablet
-</div>
+<div class="product" data-price="30000">Tablet</div>
 ```
 
 ```javascript
 // Display product prices
-const products =
-    document.querySelectorAll(".product");
+const products = document.querySelectorAll('.product');
 
-products.forEach(product => {
-    console.log(
-        product.dataset.price
-    );
+products.forEach((product) => {
+  console.log(product.dataset.price);
 });
 ```
 
@@ -291,27 +252,21 @@ products.forEach(product => {
 
 ```html
 <!-- Theme switcher -->
-<button
-    id="themeBtn"
-    data-theme="light">
-    Toggle Theme
-</button>
+<button id="themeBtn" data-theme="light">Toggle Theme</button>
 ```
 
 ```javascript
 // Toggle theme value
-const btn =
-    document.getElementById("themeBtn");
+const btn = document.getElementById('themeBtn');
 
-btn.addEventListener("click", () => {
+btn.addEventListener('click', () => {
+  if (btn.dataset.theme === 'light') {
+    btn.dataset.theme = 'dark';
+  } else {
+    btn.dataset.theme = 'light';
+  }
 
-    if (btn.dataset.theme === "light") {
-        btn.dataset.theme = "dark";
-    } else {
-        btn.dataset.theme = "light";
-    }
-
-    console.log(btn.dataset.theme);
+  console.log(btn.dataset.theme);
 });
 ```
 
@@ -321,10 +276,10 @@ btn.addEventListener("click", () => {
 
 | Feature           | Data Attribute | Standard Attribute  |
 | ----------------- | -------------- | ------------------- |
-| Custom values     | ✅ Yes          | ❌ No                |
-| HTML valid        | ✅ Yes          | ✅ Yes               |
-| JavaScript access | ✅ Easy         | ✅ Easy              |
-| Stores app data   | ✅ Yes          | ❌ Not intended      |
+| Custom values     | ✅ Yes         | ❌ No               |
+| HTML valid        | ✅ Yes         | ✅ Yes              |
+| JavaScript access | ✅ Easy        | ✅ Easy             |
+| Stores app data   | ✅ Yes         | ❌ Not intended     |
 | Browser behavior  | No effect      | May affect behavior |
 
 ---
@@ -368,9 +323,7 @@ btn.addEventListener("click", () => {
 ❌ Not Recommended
 
 ```html
-<div
-    data-description="Very large text...">
-</div>
+<div data-description="Very large text..."></div>
 ```
 
 Large datasets should be stored in JavaScript, APIs, or databases instead.
@@ -382,9 +335,7 @@ Large datasets should be stored in JavaScript, APIs, or databases instead.
 ✅ Use meaningful names
 
 ```html
-data-product-id
-data-user-role
-data-theme
+data-product-id data-user-role data-theme
 ```
 
 ✅ Use `dataset` for JavaScript access
@@ -394,8 +345,7 @@ data-theme
 ✅ Use kebab-case naming
 
 ```html
-data-user-name
-data-order-id
+data-user-name data-order-id
 ```
 
 ✅ Store UI-related data only
@@ -407,34 +357,25 @@ data-order-id
 ### E-commerce
 
 ```html
-<button
-    data-product-id="501">
-    Add to Cart
-</button>
+<button data-product-id="501">Add to Cart</button>
 ```
 
 ### User Roles
 
 ```html
-<div
-    data-role="admin">
-</div>
+<div data-role="admin"></div>
 ```
 
 ### Theme Switching
 
 ```html
-<body
-    data-theme="dark">
-</body>
+<body data-theme="dark"></body>
 ```
 
 ### Filtering Products
 
 ```html
-<div
-    data-category="electronics">
-</div>
+<div data-category="electronics"></div>
 ```
 
 ---
@@ -460,15 +401,13 @@ data-name="value"
 ### JavaScript Access
 
 ```javascript
-element.dataset.name
+element.dataset.name;
 ```
 
 ### Example
 
 ```html
-<button data-id="101">
-    Buy Now
-</button>
+<button data-id="101">Buy Now</button>
 ```
 
 ```javascript
@@ -481,4 +420,7 @@ console.log(button.dataset.id);
 101
 ```
 
-💡 **Tip:** Data attributes are a clean and standards-compliant way to store custom information in HTML. They are heavily used in modern web applications for UI interactions, filtering, dynamic content, and communication between HTML and JavaScript.
+💡 **Tip:** Data attributes are a clean and standards-compliant way to store
+custom information in HTML. They are heavily used in modern web applications for
+UI interactions, filtering, dynamic content, and communication between HTML and
+JavaScript.

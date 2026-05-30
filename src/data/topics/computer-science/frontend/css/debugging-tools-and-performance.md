@@ -1,8 +1,10 @@
 # 🐛 Debugging Tools & Performance
 
-Writing CSS is only half the job. The other half is **debugging issues** and **optimizing performance**.
+Writing CSS is only half the job. The other half is **debugging issues** and
+**optimizing performance**.
 
-Modern browsers provide powerful developer tools that help you inspect elements, analyze layouts, identify rendering issues, and improve website performance.
+Modern browsers provide powerful developer tools that help you inspect elements,
+analyze layouts, identify rendering issues, and improve website performance.
 
 ---
 
@@ -121,9 +123,7 @@ flowchart TB
 # Example
 
 ```html
-<div class="card">
-  Product
-</div>
+<div class="card">Product</div>
 ```
 
 Inspecting reveals:
@@ -246,10 +246,10 @@ Example:
 
 DevTools shows:
 
-* Main Axis
-* Cross Axis
-* Alignment
-* Flex Item Sizes
+- Main Axis
+- Cross Axis
+- Alignment
+- Flex Item Sizes
 
 ---
 
@@ -277,10 +277,10 @@ flowchart LR
 
 DevTools can highlight:
 
-* Grid lines
-* Grid areas
-* Row sizes
-* Column sizes
+- Grid lines
+- Grid areas
+- Row sizes
+- Column sizes
 
 ---
 
@@ -305,9 +305,9 @@ flowchart TB
 
 Simulate:
 
-* Mobile
-* Tablet
-* Desktop
+- Mobile
+- Tablet
+- Desktop
 
 ---
 
@@ -331,10 +331,10 @@ flowchart LR
 
 Analyzes:
 
-* CSS files
-* Images
-* Fonts
-* Requests
+- CSS files
+- Images
+- Fonts
+- Requests
 
 ---
 
@@ -493,13 +493,15 @@ flowchart LR
 Prefer:
 
 ```css
-.card {}
+.card {
+}
 ```
 
 Instead of:
 
 ```css
-#page .container ul li a {}
+#page .container ul li a {
+}
 ```
 
 ---
@@ -591,7 +593,10 @@ Before:
 After:
 
 ```css
-.card{padding:20px;background:#fff}
+.card {
+  padding: 20px;
+  background: #fff;
+}
 ```
 
 Smaller file size.
@@ -642,10 +647,7 @@ Responsive Image
 Use:
 
 ```html
-<img
-  src="image.webp"
-  alt="Product"
-/>
+<img src="image.webp" alt="Product" />
 ```
 
 ---
@@ -662,9 +664,9 @@ Example:
 
 ```css
 @font-face {
-  font-family: "Inter";
+  font-family: 'Inter';
 
-  src: url("inter.woff2");
+  src: url('inter.woff2');
 
   font-display: swap;
 }
@@ -802,22 +804,22 @@ Coverage Report
 
 # ✅ Best Practices
 
-* Use DevTools daily.
-* Debug with the Styles panel first.
-* Keep selectors simple.
-* Optimize CSS bundle size.
-* Use Lighthouse regularly.
-* Prefer `transform` and `opacity` animations.
-* Test responsive layouts on multiple screen sizes.
-* Remove unused CSS before production.
+- Use DevTools daily.
+- Debug with the Styles panel first.
+- Keep selectors simple.
+- Optimize CSS bundle size.
+- Use Lighthouse regularly.
+- Prefer `transform` and `opacity` animations.
+- Test responsive layouts on multiple screen sizes.
+- Remove unused CSS before production.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Browser DevTools are essential for CSS debugging.
-* Inspect Element helps identify styling issues quickly.
-* Lighthouse provides performance and accessibility audits.
-* Simple selectors and optimized CSS improve rendering speed.
-* Animating `transform` and `opacity` provides the best performance.
-* Regular debugging and profiling lead to faster, more maintainable websites.
+- Browser DevTools are essential for CSS debugging.
+- Inspect Element helps identify styling issues quickly.
+- Lighthouse provides performance and accessibility audits.
+- Simple selectors and optimized CSS improve rendering speed.
+- Animating `transform` and `opacity` provides the best performance.
+- Regular debugging and profiling lead to faster, more maintainable websites.

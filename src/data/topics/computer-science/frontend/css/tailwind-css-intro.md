@@ -1,8 +1,10 @@
 # 🌬️ Tailwind CSS Introduction
 
-**Tailwind CSS** is a utility-first CSS framework that lets you build modern user interfaces directly in your HTML using small, reusable utility classes.
+**Tailwind CSS** is a utility-first CSS framework that lets you build modern
+user interfaces directly in your HTML using small, reusable utility classes.
 
-Instead of writing custom CSS for every component, you compose designs using predefined classes.
+Instead of writing custom CSS for every component, you compose designs using
+predefined classes.
 
 ---
 
@@ -11,9 +13,7 @@ Instead of writing custom CSS for every component, you compose designs using pre
 Traditional CSS:
 
 ```html
-<div class="card">
-  Product Card
-</div>
+<div class="card">Product Card</div>
 ```
 
 ```css
@@ -21,7 +21,7 @@ Traditional CSS:
   padding: 1rem;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 ```
 
@@ -30,9 +30,7 @@ Traditional CSS:
 Tailwind CSS:
 
 ```html
-<div class="p-4 bg-white rounded-xl shadow">
-  Product Card
-</div>
+<div class="p-4 bg-white rounded-xl shadow">Product Card</div>
 ```
 
 No separate CSS file required.
@@ -77,8 +75,8 @@ Configure Vite:
 
 ```javascript
 // vite.config.js
-import { defineConfig } from "vite";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [tailwindcss()],
@@ -91,7 +89,7 @@ Import Tailwind:
 
 ```css
 /* src/index.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 ```
 
 ---
@@ -145,17 +143,11 @@ flowchart TB
 Tailwind ships with a rich color palette.
 
 ```html
-<div class="bg-blue-500">
-  Blue
-</div>
+<div class="bg-blue-500">Blue</div>
 
-<div class="bg-red-500">
-  Red
-</div>
+<div class="bg-red-500">Red</div>
 
-<div class="bg-green-500">
-  Green
-</div>
+<div class="bg-green-500">Green</div>
 ```
 
 ---
@@ -177,9 +169,7 @@ flowchart LR
 Example:
 
 ```html
-bg-blue-100
-bg-blue-500
-bg-blue-900
+bg-blue-100 bg-blue-500 bg-blue-900
 ```
 
 ---
@@ -189,13 +179,9 @@ bg-blue-900
 Spacing utilities use a scale.
 
 ```html
-<div class="p-4">
-  Padding
-</div>
+<div class="p-4">Padding</div>
 
-<div class="m-4">
-  Margin
-</div>
+<div class="m-4">Margin</div>
 ```
 
 ---
@@ -217,25 +203,19 @@ Spacing utilities use a scale.
 Font size:
 
 ```html
-<h1 class="text-4xl">
-  Heading
-</h1>
+<h1 class="text-4xl">Heading</h1>
 ```
 
 Font weight:
 
 ```html
-<p class="font-bold">
-  Bold Text
-</p>
+<p class="font-bold">Bold Text</p>
 ```
 
 Text alignment:
 
 ```html
-<p class="text-center">
-  Centered Text
-</p>
+<p class="text-center">Centered Text</p>
 ```
 
 ---
@@ -263,13 +243,9 @@ flowchart TB
 # 📦 Width & Height
 
 ```html
-<div class="w-full">
-  Full Width
-</div>
+<div class="w-full">Full Width</div>
 
-<div class="h-screen">
-  Full Height
-</div>
+<div class="h-screen">Full Height</div>
 ```
 
 ---
@@ -277,12 +253,7 @@ flowchart TB
 ## Common Utilities
 
 ```html
-w-full
-w-1/2
-w-1/3
-
-h-screen
-h-full
+w-full w-1/2 w-1/3 h-screen h-full
 ```
 
 ---
@@ -491,13 +462,9 @@ flowchart TB
     bg-white
   "
 >
-  <h2 class="text-xl font-bold">
-    Product
-  </h2>
+  <h2 class="text-xl font-bold">Product</h2>
 
-  <p class="text-gray-600">
-    Product description.
-  </p>
+  <p class="text-gray-600">Product description.</p>
 
   <button
     class="
@@ -549,9 +516,7 @@ Tailwind can be extended.
 Usage:
 
 ```html
-<div class="bg-brand">
-  Brand Color
-</div>
+<div class="bg-brand">Brand Color</div>
 ```
 
 ---
@@ -576,25 +541,19 @@ Usage:
 Spinner:
 
 ```html
-<div class="animate-spin">
-  🔄
-</div>
+<div class="animate-spin">🔄</div>
 ```
 
 Pulse:
 
 ```html
-<div class="animate-pulse">
-  Loading...
-</div>
+<div class="animate-pulse">Loading...</div>
 ```
 
 Bounce:
 
 ```html
-<div class="animate-bounce">
-  ⬇️
-</div>
+<div class="animate-bounce">⬇️</div>
 ```
 
 ---
@@ -655,8 +614,9 @@ Benefits:
 ❌
 
 ```html
-<div class="p-4 m-4 bg-blue-500 text-white rounded shadow border flex items-center justify-between">
-</div>
+<div
+  class="p-4 m-4 bg-blue-500 text-white rounded shadow border flex items-center justify-between"
+></div>
 ```
 
 Extract reusable components when needed.
@@ -682,46 +642,29 @@ Use the right tool for the job.
 # 🧠 Quick Cheat Sheet
 
 ```html
-flex
-grid
-
-p-4
-m-4
-
-bg-blue-500
-text-white
-
-rounded-lg
-
-shadow-lg
-
-hover:bg-blue-700
-
-md:w-1/2
-
-dark:bg-gray-900
-
-animate-spin
+flex grid p-4 m-4 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700
+md:w-1/2 dark:bg-gray-900 animate-spin
 ```
 
 ---
 
 # ✅ Best Practices
 
-* Use utility classes consistently.
-* Create reusable components.
-* Follow mobile-first design.
-* Use responsive prefixes (`md:`, `lg:`).
-* Use dark mode utilities.
-* Avoid excessively long class lists.
-* Combine Tailwind with component-based frameworks like React.
+- Use utility classes consistently.
+- Create reusable components.
+- Follow mobile-first design.
+- Use responsive prefixes (`md:`, `lg:`).
+- Use dark mode utilities.
+- Avoid excessively long class lists.
+- Combine Tailwind with component-based frameworks like React.
 
 ---
 
 # 🚀 Key Takeaways
 
-* Tailwind CSS is a utility-first CSS framework.
-* It enables rapid UI development without writing much custom CSS.
-* Responsive design, dark mode, and animations are built-in.
-* Utility classes can be combined to build complex components.
-* Tailwind works exceptionally well with React, Next.js, Vue, and modern frontend frameworks.
+- Tailwind CSS is a utility-first CSS framework.
+- It enables rapid UI development without writing much custom CSS.
+- Responsive design, dark mode, and animations are built-in.
+- Utility classes can be combined to build complex components.
+- Tailwind works exceptionally well with React, Next.js, Vue, and modern
+  frontend frameworks.

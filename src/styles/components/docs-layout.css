@@ -3,3 +3,12 @@ html[data-docs-topic-browser='open'] .docs-desktop-sidebar-toggle {
   visibility: hidden;
   pointer-events: none;
 }
+
+/** Feed card inner markdown pane — keep nested scroll off the main compositor path. */
+.doc-feed-section .md-render-slide {
+  scroll-behavior: auto;
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
