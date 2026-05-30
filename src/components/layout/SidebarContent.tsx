@@ -247,7 +247,9 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   if (!topic)
     return (
       <div className="flex flex-1 flex-col items-center justify-center p-6 text-center space-y-3">
-        <span className="text-4xl" aria-hidden>📚</span>
+        <span className="text-4xl" aria-hidden>
+          📚
+        </span>
         <BookOpen className="w-10 h-10 mx-auto text-muted-foreground/70" />
         <p className="text-sm text-muted-foreground">{t('sidebar.selectTopic')}</p>
       </div>
@@ -263,7 +265,9 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
         if (filtered.length === 0) {
           return (
             <div className="text-center py-10 space-y-2">
-              <span className="text-3xl block" aria-hidden>🔎</span>
+              <span className="text-3xl block" aria-hidden>
+                🔎
+              </span>
               <p className="text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
             </div>
           );

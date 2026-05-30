@@ -65,7 +65,10 @@ export default function FeaturesSection() {
               ring
             )}
           >
-            <div className={cn('pointer-events-none absolute inset-0 bg-linear-to-br opacity-80', accent)} aria-hidden />
+            <div
+              className={cn('pointer-events-none absolute inset-0 bg-linear-to-br opacity-80', accent)}
+              aria-hidden
+            />
             <div
               className="pointer-events-none absolute -right-2 -top-2 text-5xl opacity-[0.08] transition-opacity group-hover:opacity-[0.14]"
               aria-hidden

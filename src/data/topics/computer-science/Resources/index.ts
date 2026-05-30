@@ -1,6 +1,6 @@
 import { cheatSheetsGroups } from './cheat-sheets';
 import { learningResourcesTopics } from './learning-resources';
-import { interviewPrepTopics } from './interview-prep';
+// import { interviewPrepTopics } from './interview-prep';
 import { developerToolsTopics } from './developer-tools';
 import { practicePlatformsTopics } from './practice-platforms';
 import { booksAndCoursesTopics } from './books-and-courses';
@@ -24,17 +24,17 @@ export const resourcesData = [
       },
     ],
   },
-  {
-    id: 'interview-prep-resources',
-    title: 'Interview Preparation',
-    children: [
-      {
-        id: 'interview-guides',
-        title: 'Interview Guides',
-        documents: interviewPrepTopics,
-      },
-    ],
-  },
+  // {
+  //   id: 'interview-prep-resources',
+  //   title: 'Interview Preparation',
+  //   children: [
+  //     {
+  //       id: 'interview-guides',
+  //       title: 'Interview Guides',
+  //       documents: interviewPrepTopics,
+  //     },
+  //   ],
+  // },
   {
     id: 'developer-tools-resources',
     title: 'Developer Tools',

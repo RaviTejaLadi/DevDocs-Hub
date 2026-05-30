@@ -153,7 +153,11 @@ export function TopicListPage() {
         {categories.map((category) => {
           const topics = filteredTopicsByCategory[category];
           if (!topics.length) return null;
-          const catVisual = CATEGORY_VISUALS[category] ?? { emoji: '📚', accent: 'from-primary/10 to-transparent', ring: 'border-primary/20' };
+          const catVisual = CATEGORY_VISUALS[category] ?? {
+            emoji: '📚',
+            accent: 'from-primary/10 to-transparent',
+            ring: 'border-primary/20',
+          };
 
           return (
             <section

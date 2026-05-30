@@ -2,14 +2,7 @@ import type { Stream, Topic, TopicItem } from '@/data/topics';
 import { ChevronDown, FileText, Library, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
@@ -72,7 +65,11 @@ export function DocsTopicBrowserSheet({
         <Library className="h-4 w-4" />
       </Button>
 
-      <SheetContent side="right" overlayClassName="z-[68] backdrop-blur-[2px]" className={docsTopicBrowserSheetContentClass}>
+      <SheetContent
+        side="right"
+        overlayClassName="z-[68] backdrop-blur-[2px]"
+        className={docsTopicBrowserSheetContentClass}
+      >
         <SheetHeader className="shrink-0 gap-0 border-b border-border/30 px-4 py-3.5 text-left">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 space-y-0.5">

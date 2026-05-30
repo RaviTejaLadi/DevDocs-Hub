@@ -35,7 +35,10 @@ export function LandingTopicSection({
         visual.ring
       )}
     >
-      <div className={cn('pointer-events-none absolute inset-0 bg-linear-to-br opacity-80', visual.accent)} aria-hidden />
+      <div
+        className={cn('pointer-events-none absolute inset-0 bg-linear-to-br opacity-80', visual.accent)}
+        aria-hidden
+      />
 
       <div className="relative">
         <button
@@ -55,7 +58,10 @@ export function LandingTopicSection({
             </h2>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            <Badge variant="secondary" className="h-7 px-2.5 border border-border/35 bg-secondary/65 hidden sm:inline-flex">
+            <Badge
+              variant="secondary"
+              className="h-7 px-2.5 border border-border/35 bg-secondary/65 hidden sm:inline-flex"
+            >
               <Layers className="h-3.5 w-3.5 mr-1 opacity-70" />
               {topics.length}
             </Badge>

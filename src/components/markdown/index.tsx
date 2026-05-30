@@ -710,7 +710,9 @@ const MarkdownRenderInner = ({
                       <ChevronLeft className="size-5" aria-hidden />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="top">{feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}</TooltipContent>
+                  <TooltipContent side="top">
+                    {feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}
+                  </TooltipContent>
                 </Tooltip>
 
                 {slideMode ? (
@@ -762,7 +764,9 @@ const MarkdownRenderInner = ({
                       <ChevronRight className="size-5" aria-hidden />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="top">{feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}</TooltipContent>
+                  <TooltipContent side="top">
+                    {feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}
+                  </TooltipContent>
                 </Tooltip>
               </div>
             </section>

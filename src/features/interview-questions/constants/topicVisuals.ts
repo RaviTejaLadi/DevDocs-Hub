@@ -18,10 +18,7 @@ export const CATEGORY_VISUALS: Record<string, { emoji: string; accent: string; r
   },
 };
 
-export const TOPIC_VISUALS: Record<
-  TopicId,
-  { emoji: string; iconBg: string; iconColor: string; cardHover: string }
-> = {
+export const TOPIC_VISUALS: Record<TopicId, { emoji: string; iconBg: string; iconColor: string; cardHover: string }> = {
   html: {
     emoji: '📄',
     iconBg: 'bg-orange-500/12',

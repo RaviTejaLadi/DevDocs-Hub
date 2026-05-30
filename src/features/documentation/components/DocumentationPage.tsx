@@ -56,7 +56,9 @@ const DocumentationPage = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <Card className="max-w-md border-dashed border-border/50 bg-card/50 w-full">
           <CardContent className="pt-8 pb-8 text-center space-y-4">
-            <span className="text-5xl block" aria-hidden>📚</span>
+            <span className="text-5xl block" aria-hidden>
+              📚
+            </span>
             <h2 className="text-2xl font-bold text-foreground">{t('docs.pageNotFound')}</h2>
             <p className="text-muted-foreground">{t('docs.notFoundDescription')}</p>
             <Button onClick={() => navigate('/')} className="w-full rounded-xl">

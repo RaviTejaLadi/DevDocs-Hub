@@ -69,7 +69,10 @@ export function LandingTopicsPanel({
             'shadow-[0_12px_32px_-24px_hsl(var(--foreground)/0.55)]'
           )}
         >
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/8 via-transparent to-transparent" aria-hidden />
+          <div
+            className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/8 via-transparent to-transparent"
+            aria-hidden
+          />
           <div className="relative flex items-start gap-3.5">
             <span
               className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-background/80 text-xl shadow-sm"

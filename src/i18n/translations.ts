@@ -44,7 +44,8 @@ const en: TranslationMap = {
   'landing.heroDescription':
     'Browse organized topics by stream — from computer science and software to engineering, sciences, and beyond. Clear explanations for quick revision before exams, interviews, or whenever you need a refresher.',
   'landing.heroBadge': 'Your revision companion',
-  'landing.heroTip': 'Pick a stream, open a topic, and revise in bite-sized notes — perfect before exams or interviews.',
+  'landing.heroTip':
+    'Pick a stream, open a topic, and revise in bite-sized notes — perfect before exams or interviews.',
   'landing.streamsLabel': 'Streams',
   'landing.topicsLabel': 'Topics',
   'landing.lessonsLabel': 'Lessons',

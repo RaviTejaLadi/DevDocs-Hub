@@ -40,7 +40,10 @@ export function DocsFeedScrollTopicIndicator({ inViewFeedKey, feedRows, visible 
         <span className="text-sm leading-none shrink-0" aria-hidden>
           📖
         </span>
-        <span className="size-2 shrink-0 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.5)]" aria-hidden />
+        <span
+          className="size-2 shrink-0 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
+          aria-hidden
+        />
         <span className="min-w-0 truncate text-xs font-semibold text-foreground">
           <TranslatedText text={activeTopic.title} />
         </span>

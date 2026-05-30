@@ -125,7 +125,12 @@ export const STREAM_ICONS: Record<string, JSX.Element> = {
         strokeWidth="1.25"
         strokeLinejoin="round"
       />
-      <path d="M9.5 10.5c.8-1.2 2.2-1.2 3 0M13.5 10.5c.8-1.2 2.2-1.2 3 0" stroke="#BE185D" strokeWidth="1.1" strokeLinecap="round" />
+      <path
+        d="M9.5 10.5c.8-1.2 2.2-1.2 3 0M13.5 10.5c.8-1.2 2.2-1.2 3 0"
+        stroke="#BE185D"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+      />
       <circle cx="9.5" cy="10" r="0.9" fill="#EC4899" />
       <circle cx="14.5" cy="10" r="0.9" fill="#EC4899" />
     </svg>
@@ -146,7 +151,13 @@ export const STREAM_ICONS: Record<string, JSX.Element> = {
         strokeWidth="1.35"
         strokeLinejoin="round"
       />
-      <path d="M9.5 12.5l2 2 4.5-4.5" stroke="#047857" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M9.5 12.5l2 2 4.5-4.5"
+        stroke="#047857"
+        strokeWidth="1.65"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   ),
   'aptitude-placement': (
