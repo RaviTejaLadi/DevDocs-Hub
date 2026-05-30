@@ -2,7 +2,7 @@ import { cheatSheetsGroups } from './cheat-sheets';
 import { learningResourcesTopics } from './learning-resources';
 // import { interviewPrepTopics } from './interview-prep';
 import { developerToolsTopics } from './developer-tools';
-import { practicePlatformsTopics } from './practice-platforms';
+// import { practicePlatformsTopics } from './practice-platforms';
 import { booksAndCoursesTopics } from './books-and-courses';
 import { documentationReferencesTopics } from './documentation-references';
 import { communityAndNetworkingTopics } from './community-and-networking';
@@ -46,17 +46,17 @@ export const resourcesData = [
       },
     ],
   },
-  {
-    id: 'practice-platforms-resources',
-    title: 'Practice Platforms',
-    children: [
-      {
-        id: 'coding-practice',
-        title: 'Coding Practice',
-        documents: practicePlatformsTopics,
-      },
-    ],
-  },
+  // {
+  //   id: 'practice-platforms-resources',
+  //   title: 'Practice Platforms',
+  //   children: [
+  //     {
+  //       id: 'coding-practice',
+  //       title: 'Coding Practice',
+  //       documents: practicePlatformsTopics,
+  //     },
+  //   ],
+  // },
   {
     id: 'books-and-courses-resources',
     title: 'Books & Courses',

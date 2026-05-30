@@ -1,1 +1,563 @@
-# Linux Command Line
+# 🐧 Linux Command Line
+
+The Linux command line is one of the most powerful tools for developers. It allows you to manage files, run applications, automate tasks, and work efficiently without a graphical interface.
+
+Think of the terminal as a direct communication channel with your operating system.
+
+---
+
+## 🚀 Opening the Terminal
+
+Common terminal applications:
+
+- Terminal
+- GNOME Terminal
+- Konsole
+- iTerm2 (macOS)
+- Windows Terminal (WSL)
+
+Check current user:
+
+whoami
+
+Check current directory:
+
+pwd
+
+---
+
+## 📂 File & Directory Commands
+
+### List Files
+
+ls
+
+Detailed view:
+
+ls -la
+
+---
+
+### Change Directory
+
+cd folder-name
+
+Go back one level:
+
+cd ..
+
+Go to home directory:
+
+cd ~
+
+---
+
+### Create Directory
+
+mkdir projects
+
+Create nested directories:
+
+mkdir -p apps/frontend
+
+---
+
+### Create File
+
+touch app.js
+
+Multiple files:
+
+touch index.html style.css script.js
+
+---
+
+### Remove Files
+
+rm file.txt
+
+Remove directory:
+
+rm -r folder-name
+
+Force remove:
+
+rm -rf folder-name
+
+⚠️ Use carefully.
+
+---
+
+## 📖 View File Contents
+
+Display file:
+
+cat file.txt
+
+View large files:
+
+less file.txt
+
+View first lines:
+
+head file.txt
+
+View last lines:
+
+tail file.txt
+
+Follow logs:
+
+tail -f app.log
+
+---
+
+## ✏️ Edit Files
+
+Nano editor:
+
+nano file.txt
+
+Vim editor:
+
+vim file.txt
+
+Save in Nano:
+
+Ctrl + O
+
+Exit:
+
+Ctrl + X
+
+---
+
+## 🔍 Search Commands
+
+Search files:
+
+find . -name "*.js"
+
+Search text inside files:
+
+grep "login" app.js
+
+Recursive search:
+
+grep -r "axios" .
+
+---
+
+## 📋 Copy, Move & Rename
+
+Copy file:
+
+cp file.txt backup.txt
+
+Copy folder:
+
+cp -r src backup
+
+Move file:
+
+mv old.txt new.txt
+
+Rename file:
+
+mv app.js main.js
+
+---
+
+## 📦 File Permissions
+
+View permissions:
+
+ls -l
+
+Change permissions:
+
+chmod 755 script.sh
+
+Make executable:
+
+chmod +x script.sh
+
+Run script:
+
+./script.sh
+
+---
+
+## 👤 User Commands
+
+Current user:
+
+whoami
+
+User information:
+
+id
+
+Switch user:
+
+su username
+
+Run command as administrator:
+
+sudo command
+
+Example:
+
+sudo apt update
+
+---
+
+## 📊 System Information
+
+Operating system:
+
+uname -a
+
+CPU information:
+
+lscpu
+
+Memory usage:
+
+free -h
+
+Disk usage:
+
+df -h
+
+---
+
+## ⚙️ Process Management
+
+View running processes:
+
+ps aux
+
+Interactive process viewer:
+
+top
+
+Or:
+
+htop
+
+Kill process:
+
+kill PID
+
+Force kill:
+
+kill -9 PID
+
+---
+
+## 🌐 Networking Commands
+
+Check IP:
+
+ip addr
+
+Ping server:
+
+ping google.com
+
+View open ports:
+
+netstat -tulpn
+
+Or:
+
+ss -tulpn
+
+Test API:
+
+curl https://api.github.com
+
+---
+
+## 📦 Package Management
+
+### Ubuntu / Debian
+
+Update packages:
+
+sudo apt update
+
+Upgrade packages:
+
+sudo apt upgrade
+
+Install package:
+
+sudo apt install git
+
+Remove package:
+
+sudo apt remove git
+
+---
+
+## 🔥 Archive Commands
+
+Create zip:
+
+zip -r project.zip project
+
+Extract zip:
+
+unzip project.zip
+
+Create tar archive:
+
+tar -cvf backup.tar folder
+
+Extract tar:
+
+tar -xvf backup.tar
+
+---
+
+## ⚛️ Node.js Development
+
+Check Node version:
+
+node -v
+
+Check npm:
+
+npm -v
+
+Run application:
+
+node app.js
+
+Install packages:
+
+npm install
+
+---
+
+## 🐳 Docker Commands
+
+List containers:
+
+docker ps
+
+List images:
+
+docker images
+
+Start container:
+
+docker start container_id
+
+Stop container:
+
+docker stop container_id
+
+---
+
+## 🔧 Git Commands
+
+Clone repository:
+
+git clone repository-url
+
+Check status:
+
+git status
+
+Commit changes:
+
+git commit -m "Initial commit"
+
+Push changes:
+
+git push
+
+---
+
+## 📄 Redirect Output
+
+Write output to file:
+
+ls > files.txt
+
+Append output:
+
+echo "hello" >> notes.txt
+
+Read from file:
+
+cat < notes.txt
+
+---
+
+## ⛓️ Pipe Commands
+
+Combine commands:
+
+cat users.txt | grep admin
+
+Example:
+
+ps aux | grep node
+
+Think of pipes as connecting multiple commands together.
+
+---
+
+## 🔄 Useful Shortcuts
+
+Previous command:
+
+↑
+
+Clear terminal:
+
+clear
+
+Or:
+
+Ctrl + L
+
+Stop running command:
+
+Ctrl + C
+
+Search command history:
+
+Ctrl + R
+
+---
+
+## 📜 Command History
+
+View history:
+
+history
+
+Run command again:
+
+!100
+
+Where 100 is command number.
+
+---
+
+## 🚨 Common Troubleshooting
+
+### Permission Denied
+
+Fix:
+
+chmod +x filename
+
+Or use:
+
+sudo
+
+---
+
+### Command Not Found
+
+Check installation:
+
+which node
+
+Verify PATH variable:
+
+echo $PATH
+
+---
+
+### Port Already in Use
+
+Find process:
+
+lsof -i :3000
+
+Kill process:
+
+kill -9 PID
+
+---
+
+## ⚡ Productivity Tips
+
+Create aliases:
+
+alias gs="git status"
+
+alias gp="git push"
+
+Add to:
+
+~/.bashrc
+
+or
+
+~/.zshrc
+
+Reload configuration:
+
+source ~/.bashrc
+
+---
+
+## 🏗️ Typical React Developer Workflow
+
+Navigate project:
+
+cd my-app
+
+Install dependencies:
+
+pnpm install
+
+Start development server:
+
+pnpm dev
+
+Run tests:
+
+pnpm test
+
+Build production app:
+
+pnpm build
+
+Commit changes:
+
+git add .
+git commit -m "Add authentication"
+git push
+
+---
+
+## ⭐ Must-Know Commands
+
+pwd
+ls -la
+cd
+mkdir
+touch
+rm
+cat
+grep
+find
+chmod
+ps
+kill
+curl
+git
+npm
+pnpm
+docker
+
+Mastering these commands will significantly improve your productivity as a developer and make working with servers, containers, and development environments much easier.
