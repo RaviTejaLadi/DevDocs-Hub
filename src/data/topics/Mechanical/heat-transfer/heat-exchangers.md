@@ -1,8 +1,11 @@
 # ♨️ Heat Exchangers
 
-A heat exchanger is a device used to transfer heat from one fluid to another without allowing the fluids to mix.
+A heat exchanger is a device used to transfer heat from one fluid to another
+without allowing the fluids to mix.
 
-Heat exchangers are among the most important equipment in thermal engineering and are widely used in power plants, refrigeration systems, automobiles, chemical industries, and HVAC systems.
+Heat exchangers are among the most important equipment in thermal engineering
+and are widely used in power plants, refrigeration systems, automobiles,
+chemical industries, and HVAC systems.
 
 ### 🌍 Everyday Examples
 
@@ -246,7 +249,8 @@ Higher LMTD means better heat transfer potential.
 
 ## ⚡ Effectiveness of Heat Exchanger
 
-Effectiveness indicates how well a heat exchanger performs compared to the maximum possible heat transfer.
+Effectiveness indicates how well a heat exchanger performs compared to the
+maximum possible heat transfer.
 
 ```
 Effectiveness = Actual Heat Transfer / Maximum Possible Heat Transfer
@@ -315,12 +319,12 @@ This prevents engine overheating.
 
 ## 📊 Comparison of Flow Arrangements
 
-| Feature | Parallel Flow | Counter Flow | Cross Flow |
-|----------|--------------|--------------|------------|
-| Flow Direction | Same | Opposite | Perpendicular |
-| Efficiency | Low | High | Medium |
-| Temperature Control | Moderate | Excellent | Good |
-| Industrial Usage | Less | Most Common | Common |
+| Feature             | Parallel Flow | Counter Flow | Cross Flow    |
+| ------------------- | ------------- | ------------ | ------------- |
+| Flow Direction      | Same          | Opposite     | Perpendicular |
+| Efficiency          | Low           | High         | Medium        |
+| Temperature Control | Moderate      | Excellent    | Good          |
+| Industrial Usage    | Less          | Most Common  | Common        |
 
 ## 📌 Key Points
 

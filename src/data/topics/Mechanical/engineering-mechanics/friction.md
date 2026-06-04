@@ -1,11 +1,13 @@
-
 # 🤝 Friction
 
-Friction is the force that opposes the relative motion or tendency of motion between two surfaces in contact.
+Friction is the force that opposes the relative motion or tendency of motion
+between two surfaces in contact.
 
-Without friction, walking, driving, writing, and even holding objects would be impossible.
+Without friction, walking, driving, writing, and even holding objects would be
+impossible.
 
-Although friction often causes energy loss, it is essential for many engineering applications.
+Although friction often causes energy loss, it is essential for many engineering
+applications.
 
 ---
 
@@ -280,7 +282,8 @@ tan θ = μ
 
 # 📌 Angle of Repose
 
-The angle of repose is the maximum angle of inclination at which a body remains at rest.
+The angle of repose is the maximum angle of inclination at which a body remains
+at rest.
 
 Beyond this angle, the body starts sliding.
 
@@ -429,14 +432,14 @@ Examples:
 
 # 🚗 Applications of Friction
 
-| Application | Role of Friction |
-|------------|----------------|
-| Brakes | Stop vehicles |
-| Clutches | Transmit power |
-| Tires | Provide grip |
-| Belt Drives | Transfer motion |
-| Bearings | Controlled friction |
-| Screws & Bolts | Prevent loosening |
+| Application    | Role of Friction    |
+| -------------- | ------------------- |
+| Brakes         | Stop vehicles       |
+| Clutches       | Transmit power      |
+| Tires          | Provide grip        |
+| Belt Drives    | Transfer motion     |
+| Bearings       | Controlled friction |
+| Screws & Bolts | Prevent loosening   |
 
 ---
 
@@ -480,4 +483,6 @@ flowchart TD
 
 ✅ Engineers both utilize and reduce friction depending on the application.
 
-Friction is one of the most important forces in Engineering Mechanics because it directly affects the performance, safety, and efficiency of nearly every mechanical system.
+Friction is one of the most important forces in Engineering Mechanics because it
+directly affects the performance, safety, and efficiency of nearly every
+mechanical system.

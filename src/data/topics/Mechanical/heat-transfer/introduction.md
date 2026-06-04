@@ -1,8 +1,10 @@
 # 📖 Introduction to Heat Transfer
 
-Heat Transfer is the science of studying how thermal energy moves from one place to another due to a temperature difference.
+Heat Transfer is the science of studying how thermal energy moves from one place
+to another due to a temperature difference.
 
-Whenever two objects have different temperatures, heat naturally flows from the hotter object to the colder object until thermal equilibrium is reached.
+Whenever two objects have different temperatures, heat naturally flows from the
+hotter object to the colder object until thermal equilibrium is reached.
 
 ### 🌍 Why Heat Transfer Matters
 
@@ -16,7 +18,8 @@ Heat transfer is used in almost every engineering system:
 - Electronic cooling systems
 - Solar heaters
 
-Understanding heat transfer helps engineers design efficient systems and reduce energy losses.
+Understanding heat transfer helps engineers design efficient systems and reduce
+energy losses.
 
 ## 🔥 What is Heat?
 

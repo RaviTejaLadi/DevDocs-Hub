@@ -1,10 +1,13 @@
 # ⚖️ Statics
 
-Statics is the branch of Engineering Mechanics that deals with bodies at rest or moving with constant velocity under the action of forces.
+Statics is the branch of Engineering Mechanics that deals with bodies at rest or
+moving with constant velocity under the action of forces.
 
-A body is said to be in equilibrium when all the forces and moments acting on it balance each other.
+A body is said to be in equilibrium when all the forces and moments acting on it
+balance each other.
 
-Statics helps engineers determine whether structures such as buildings, bridges, towers, cranes, and machine components will remain stable under applied loads.
+Statics helps engineers determine whether structures such as buildings, bridges,
+towers, cranes, and machine components will remain stable under applied loads.
 
 ---
 
@@ -157,7 +160,8 @@ Example:
 
 # 📌 Free Body Diagram (FBD)
 
-A Free Body Diagram is a simplified sketch showing all external forces acting on a body.
+A Free Body Diagram is a simplified sketch showing all external forces acting on
+a body.
 
 It is one of the most important tools in statics.
 
@@ -322,8 +326,8 @@ N·m
 
 For equilibrium:
 
-Total Clockwise Moments
-=
+# Total Clockwise Moments
+
 Total Counterclockwise Moments
 
 This principle is widely used in beam and structural analysis.

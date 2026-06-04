@@ -1,8 +1,10 @@
 # 🌬️ Convection
 
-Convection is the transfer of heat between a surface and a moving fluid (liquid or gas).
+Convection is the transfer of heat between a surface and a moving fluid (liquid
+or gas).
 
-Unlike conduction, convection involves the actual movement of fluid particles. As the fluid moves, it carries thermal energy from one place to another.
+Unlike conduction, convection involves the actual movement of fluid particles.
+As the fluid moves, it carries thermal energy from one place to another.
 
 ### ☕ Everyday Examples
 
@@ -18,12 +20,8 @@ Convection occurs in two steps:
 1. Heat is transferred from the surface to the fluid by conduction.
 2. The moving fluid carries the heat away.
 
-\`\`\`mermaid
-flowchart LR
-    A[Hot Surface 🔥] --> B[Fluid Near Surface]
-    B --> C[Fluid Motion]
-    C --> D[Heat Carried Away]
-\`\`\`
+\`\`\`mermaid flowchart LR A[Hot Surface 🔥] --> B[Fluid Near Surface] B -->
+C[Fluid Motion] C --> D[Heat Carried Away] \`\`\`
 
 ### Example: Boiling Water
 
@@ -35,15 +33,12 @@ When water at the bottom of a pot is heated:
 - Cooler water moves downward.
 - A circulation pattern is formed.
 
-\`\`\`mermaid
-flowchart TB
-    A[Cool Water ↓]
-    B[Heated Water 🔥]
-    C[Hot Water ↑]
+\`\`\`mermaid flowchart TB A[Cool Water ↓] B[Heated Water 🔥] C[Hot Water ↑]
 
     A --> B
     B --> C
     C --> A
+
 \`\`\`
 
 This continuous circulation transfers heat throughout the fluid.
@@ -52,7 +47,8 @@ This continuous circulation transfers heat throughout the fluid.
 
 ### 1️⃣ Natural Convection
 
-Fluid motion occurs naturally due to density differences caused by temperature changes.
+Fluid motion occurs naturally due to density differences caused by temperature
+changes.
 
 Examples:
 
@@ -60,15 +56,13 @@ Examples:
 - Smoke rising from a fire.
 - Cooling of a hot cup of coffee.
 
-\`\`\`mermaid
-flowchart TB
-    A[Hot Surface 🔥]
-    B[Warm Air Rises ↑]
-    C[Cool Air Moves Down ↓]
+\`\`\`mermaid flowchart TB A[Hot Surface 🔥] B[Warm Air Rises ↑] C[Cool Air
+Moves Down ↓]
 
     A --> B
     B --> C
     C --> A
+
 \`\`\`
 
 ### Characteristics
@@ -97,12 +91,8 @@ Examples:
 - Computer cooling fan
 - Industrial heat exchangers
 
-\`\`\`mermaid
-flowchart LR
-    Fan[Fan/Pump ⚙️] --> Air[Moving Fluid]
-    Air --> Surface[Hot Surface 🔥]
-    Surface --> Cooling[Heat Removed]
-\`\`\`
+\`\`\`mermaid flowchart LR Fan[Fan/Pump ⚙️] --> Air[Moving Fluid] Air -->
+Surface[Hot Surface 🔥] Surface --> Cooling[Heat Removed] \`\`\`
 
 ### Characteristics
 
@@ -128,34 +118,34 @@ Where:
 
 ## 🔍 Meaning of Heat Transfer Coefficient (h)
 
-The convection coefficient indicates how effectively heat is transferred between a surface and a fluid.
+The convection coefficient indicates how effectively heat is transferred between
+a surface and a fluid.
 
 Higher h means better heat transfer.
 
 ### Typical Values
 
-| Situation | h (W/m²·K) |
-|------------|-----------|
-| Natural air convection | 5 - 25 |
-| Forced air convection | 25 - 250 |
-| Water flow | 100 - 10,000 |
-| Boiling | 2,500 - 100,000 |
+| Situation              | h (W/m²·K)      |
+| ---------------------- | --------------- |
+| Natural air convection | 5 - 25          |
+| Forced air convection  | 25 - 250        |
+| Water flow             | 100 - 10,000    |
+| Boiling                | 2,500 - 100,000 |
 
 ## 🌡️ Thermal Boundary Layer
 
-When fluid flows over a surface, the fluid layer touching the surface moves very slowly.
+When fluid flows over a surface, the fluid layer touching the surface moves very
+slowly.
 
 A temperature gradient develops near the surface.
 
 This region is called the thermal boundary layer.
 
-\`\`\`mermaid
-flowchart LR
-    A[Hot Plate 🔥]
-    B[Thermal Boundary Layer]
-    C[Free Stream Fluid]
+\`\`\`mermaid flowchart LR A[Hot Plate 🔥] B[Thermal Boundary Layer] C[Free
+Stream Fluid]
 
     A --> B --> C
+
 \`\`\`
 
 A thinner boundary layer generally results in higher heat transfer.
@@ -206,13 +196,13 @@ Heat is removed from stored food and rejected to surrounding air.
 
 ## Comparison: Natural vs Forced Convection
 
-| Feature | Natural Convection | Forced Convection |
-|----------|-------------------|-------------------|
-| Fluid Motion | Due to density difference | Due to fan or pump |
-| Heat Transfer Rate | Lower | Higher |
-| Equipment Needed | No | Yes |
-| Cost | Lower | Higher |
-| Applications | Room heating | Radiators, AC systems |
+| Feature            | Natural Convection        | Forced Convection     |
+| ------------------ | ------------------------- | --------------------- |
+| Fluid Motion       | Due to density difference | Due to fan or pump    |
+| Heat Transfer Rate | Lower                     | Higher                |
+| Equipment Needed   | No                        | Yes                   |
+| Cost               | Lower                     | Higher                |
+| Applications       | Room heating              | Radiators, AC systems |
 
 ## 📌 Key Points
 

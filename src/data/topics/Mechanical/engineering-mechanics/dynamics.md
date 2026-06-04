@@ -1,10 +1,13 @@
 # 🏃 Dynamics
 
-Dynamics is the branch of Engineering Mechanics that studies bodies in motion and the forces causing that motion.
+Dynamics is the branch of Engineering Mechanics that studies bodies in motion
+and the forces causing that motion.
 
-Unlike Statics, where bodies remain at rest or move with constant velocity, Dynamics deals with objects that accelerate due to applied forces.
+Unlike Statics, where bodies remain at rest or move with constant velocity,
+Dynamics deals with objects that accelerate due to applied forces.
 
-Dynamics helps engineers understand how vehicles move, machines operate, rockets launch, and robots perform tasks.
+Dynamics helps engineers understand how vehicles move, machines operate, rockets
+launch, and robots perform tasks.
 
 ---
 
@@ -24,20 +27,21 @@ Examples:
 
 🤖 Industrial robots moving parts
 
-Dynamics helps engineers predict and control these motions safely and efficiently.
+Dynamics helps engineers predict and control these motions safely and
+efficiently.
 
 ---
 
 # 🌍 Real-Life Applications
 
-| Application | Use of Dynamics |
-|------------|----------------|
-| Automobiles | Acceleration and braking |
-| Aircraft | Flight motion |
-| Robotics | Movement control |
-| Machinery | Rotating components |
-| Spacecraft | Orbital motion |
-| Sports Engineering | Ball trajectories |
+| Application        | Use of Dynamics          |
+| ------------------ | ------------------------ |
+| Automobiles        | Acceleration and braking |
+| Aircraft           | Flight motion            |
+| Robotics           | Movement control         |
+| Machinery          | Rotating components      |
+| Spacecraft         | Orbital motion           |
+| Sports Engineering | Ball trajectories        |
 
 ---
 
@@ -114,7 +118,8 @@ meter (m)
 
 ## Displacement
 
-Displacement is the shortest straight-line distance between initial and final positions.
+Displacement is the shortest straight-line distance between initial and final
+positions.
 
 Characteristics:
 
@@ -254,7 +259,8 @@ Dynamics is primarily based on Newton's Laws.
 
 # 1️⃣ First Law of Motion
 
-A body remains at rest or in uniform motion unless acted upon by an external force.
+A body remains at rest or in uniform motion unless acted upon by an external
+force.
 
 This law is also called the Law of Inertia.
 
@@ -268,7 +274,8 @@ Examples:
 
 # 2️⃣ Second Law of Motion
 
-The acceleration of a body is directly proportional to the net force acting on it.
+The acceleration of a body is directly proportional to the net force acting on
+it.
 
 ```text
 F = ma
@@ -373,7 +380,8 @@ Velocity changes create acceleration.
 
 # 🔄 Circular Motion
 
-When an object moves along a circular path, it experiences centripetal acceleration.
+When an object moves along a circular path, it experiences centripetal
+acceleration.
 
 Examples:
 
@@ -422,9 +430,7 @@ Joule (J)
 
 Energy possessed by a moving body.
 
-
 ::contentReference[oaicite:1]{index=1}
-
 
 Where:
 
@@ -527,4 +533,5 @@ flowchart TD
 
 ✅ Motion equations help solve engineering problems.
 
-✅ Dynamics is essential for understanding machines, vehicles, robots, and aerospace systems.
+✅ Dynamics is essential for understanding machines, vehicles, robots, and
+aerospace systems.

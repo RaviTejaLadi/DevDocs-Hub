@@ -1,10 +1,14 @@
 # 🏗️ Trusses & Frames
 
-Trusses and Frames are structural systems used to support loads and transfer forces safely to supports.
+Trusses and Frames are structural systems used to support loads and transfer
+forces safely to supports.
 
-They are widely used in buildings, bridges, towers, cranes, roofs, and industrial structures because they provide high strength while using less material.
+They are widely used in buildings, bridges, towers, cranes, roofs, and
+industrial structures because they provide high strength while using less
+material.
 
-Understanding trusses and frames is essential for structural analysis and design.
+Understanding trusses and frames is essential for structural analysis and
+design.
 
 ---
 
@@ -42,7 +46,8 @@ Engineers use trusses and frames because they:
 
 # 🧩 What is a Truss?
 
-A truss is a structure made up of straight members connected at their ends by pin joints.
+A truss is a structure made up of straight members connected at their ends by
+pin joints.
 
 Loads are assumed to act only at the joints.
 
@@ -290,11 +295,11 @@ Where:
 
 Conditions:
 
-| Condition | Meaning |
-|------------|---------|
-| m = 2j - 3 | Perfect Truss |
+| Condition  | Meaning         |
+| ---------- | --------------- |
+| m = 2j - 3 | Perfect Truss   |
 | m > 2j - 3 | Redundant Truss |
-| m < 2j - 3 | Unstable Truss |
+| m < 2j - 3 | Unstable Truss  |
 
 ---
 
@@ -409,12 +414,12 @@ Unlike trusses, loads can act anywhere on frame members.
 
 # Truss vs Frame
 
-| Feature | Truss | Frame |
-|-----------|--------|--------|
-| Load Location | Joints only | Anywhere |
-| Member Forces | Axial only | Axial + Bending |
-| Joint Type | Pin joint | Rigid or pin |
-| Analysis | Simpler | More complex |
+| Feature       | Truss       | Frame           |
+| ------------- | ----------- | --------------- |
+| Load Location | Joints only | Anywhere        |
+| Member Forces | Axial only  | Axial + Bending |
+| Joint Type    | Pin joint   | Rigid or pin    |
+| Analysis      | Simpler     | More complex    |
 
 ---
 
@@ -545,8 +550,10 @@ Examples:
 
 ✅ Frames can carry bending, shear, tension, and compression.
 
-✅ Method of Joints and Method of Sections are the most common truss analysis techniques.
+✅ Method of Joints and Method of Sections are the most common truss analysis
+techniques.
 
 ✅ Trusses and frames form the backbone of modern structural engineering.
 
-From bridges and towers to buildings and cranes, trusses and frames make it possible to create strong, stable, and efficient structures.
+From bridges and towers to buildings and cranes, trusses and frames make it
+possible to create strong, stable, and efficient structures.

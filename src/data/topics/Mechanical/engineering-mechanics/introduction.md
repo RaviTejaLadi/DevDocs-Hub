@@ -1,8 +1,10 @@
 # 📖 Introduction to Engineering Mechanics
 
-Engineering Mechanics is the branch of science that studies the behavior of physical bodies when subjected to forces or displacements.
+Engineering Mechanics is the branch of science that studies the behavior of
+physical bodies when subjected to forces or displacements.
 
-It forms the foundation of many engineering fields such as Civil Engineering, Mechanical Engineering, Aerospace Engineering, and Structural Engineering.
+It forms the foundation of many engineering fields such as Civil Engineering,
+Mechanical Engineering, Aerospace Engineering, and Structural Engineering.
 
 Simply put, Engineering Mechanics helps engineers understand:
 
@@ -33,14 +35,14 @@ Engineering Mechanics helps engineers predict and control these forces.
 
 # 🌍 Real-Life Applications
 
-| Application | Use of Mechanics |
-|------------|------------------|
-| Buildings | Structural stability |
-| Bridges | Load analysis |
-| Vehicles | Motion and braking |
-| Aircraft | Flight dynamics |
-| Robots | Movement and force control |
-| Machines | Design of components |
+| Application | Use of Mechanics           |
+| ----------- | -------------------------- |
+| Buildings   | Structural stability       |
+| Bridges     | Load analysis              |
+| Vehicles    | Motion and braking         |
+| Aircraft    | Flight dynamics            |
+| Robots      | Movement and force control |
+| Machines    | Design of components       |
 
 ---
 
@@ -221,14 +223,14 @@ N·m
 
 # 🎯 Basic Units Used in Mechanics
 
-| Quantity | Unit |
-|-----------|------|
-| Length | meter (m) |
-| Mass | kilogram (kg) |
-| Time | second (s) |
-| Force | newton (N) |
-| Work | joule (J) |
-| Power | watt (W) |
+| Quantity | Unit          |
+| -------- | ------------- |
+| Length   | meter (m)     |
+| Mass     | kilogram (kg) |
+| Time     | second (s)    |
+| Force    | newton (N)    |
+| Work     | joule (J)     |
+| Power    | watt (W)      |
 
 ---
 
@@ -256,7 +258,8 @@ For simplicity, engineers often assume:
 - Friction may be neglected initially.
 - Materials behave ideally.
 
-These assumptions make analysis easier while providing accurate engineering results.
+These assumptions make analysis easier while providing accurate engineering
+results.
 
 ---
 
@@ -272,4 +275,5 @@ These assumptions make analysis easier while providing accurate engineering resu
 
 ✅ Engineering structures and machines are designed using mechanics principles.
 
-Engineering Mechanics acts as the language through which engineers understand and control the physical world.
+Engineering Mechanics acts as the language through which engineers understand
+and control the physical world.

@@ -1,10 +1,12 @@
 # ☀️ Radiation
 
-Radiation is the transfer of heat energy through electromagnetic waves without requiring any material medium.
+Radiation is the transfer of heat energy through electromagnetic waves without
+requiring any material medium.
 
 Unlike conduction and convection, radiation can occur in a vacuum.
 
-This is how heat from the Sun reaches the Earth across millions of kilometers of empty space.
+This is how heat from the Sun reaches the Earth across millions of kilometers of
+empty space.
 
 ### 🌍 Everyday Examples
 
@@ -16,33 +18,24 @@ This is how heat from the Sun reaches the Earth across millions of kilometers of
 
 ## 🎯 How Radiation Works
 
-All objects with a temperature above absolute zero (-273.15°C) emit thermal radiation.
+All objects with a temperature above absolute zero (-273.15°C) emit thermal
+radiation.
 
 The hotter the object, the more radiation it emits.
 
-\`\`\`mermaid
-flowchart LR
-    A[Hot Object 🔥]
-    --> B[Electromagnetic Waves]
-    --> C[Cold Object ❄️]
-\`\`\`
+\`\`\`mermaid flowchart LR A[Hot Object 🔥] --> B[Electromagnetic Waves] -->
+C[Cold Object ❄️] \`\`\`
 
-Energy travels through space as electromagnetic waves and is absorbed by another surface.
+Energy travels through space as electromagnetic waves and is absorbed by another
+surface.
 
 ## 🌈 Electromagnetic Spectrum
 
-Thermal radiation is primarily emitted in the infrared region of the electromagnetic spectrum.
+Thermal radiation is primarily emitted in the infrared region of the
+electromagnetic spectrum.
 
-\`\`\`mermaid
-flowchart LR
-    A[Gamma Rays]
-    --> B[X-Rays]
-    --> C[Ultraviolet]
-    --> D[Visible Light]
-    --> E[Infrared]
-    --> F[Microwaves]
-    --> G[Radio Waves]
-\`\`\`
+\`\`\`mermaid flowchart LR A[Gamma Rays] --> B[X-Rays] --> C[Ultraviolet] -->
+D[Visible Light] --> E[Infrared] --> F[Microwaves] --> G[Radio Waves] \`\`\`
 
 Most heat transfer by radiation occurs through infrared waves.
 
@@ -117,15 +110,14 @@ Radiation depends on the fourth power of temperature.
 
 This means:
 
-- Small temperature increases can cause large increases in radiation heat transfer.
+- Small temperature increases can cause large increases in radiation heat
+  transfer.
 
 ## 🌡️ Radiation Between Two Surfaces
 
 For practical engineering systems:
 
-\`\`\`
-Q = εσA(T₁⁴ - T₂⁴)
-\`\`\`
+\`\`\` Q = εσA(T₁⁴ - T₂⁴) \`\`\`
 
 Where:
 
@@ -143,14 +135,14 @@ Its value ranges from 0 to 1.
 
 ### Typical Values
 
-| Surface | Emissivity |
-|----------|------------|
-| Black Paint | 0.95 |
-| Brick | 0.90 |
-| Concrete | 0.88 |
-| Human Skin | 0.97 |
-| Polished Aluminum | 0.04 |
-| Polished Silver | 0.02 |
+| Surface           | Emissivity |
+| ----------------- | ---------- |
+| Black Paint       | 0.95       |
+| Brick             | 0.90       |
+| Concrete          | 0.88       |
+| Human Skin        | 0.97       |
+| Polished Aluminum | 0.04       |
+| Polished Silver   | 0.02       |
 
 ### Observation
 
@@ -182,15 +174,11 @@ Fraction transmitted through a material.
 
 Relationship:
 
-\`\`\`
-α + ρ + τ = 1
-\`\`\`
+\`\`\` α + ρ + τ = 1 \`\`\`
 
 For opaque surfaces:
 
-\`\`\`
-α + ρ = 1
-\`\`\`
+\`\`\` α + ρ = 1 \`\`\`
 
 ## 🏭 Engineering Applications
 
@@ -220,33 +208,32 @@ Reflective coatings reduce radiation heat loss.
 
 ## 🌡️ Comparison with Other Modes
 
-| Feature | Conduction | Convection | Radiation |
-|----------|------------|------------|------------|
-| Requires Medium | Yes | Yes | No |
-| Requires Contact | Yes | No | No |
-| Works in Vacuum | No | No | Yes |
-| Heat Carrier | Molecules | Fluid Motion | Electromagnetic Waves |
+| Feature          | Conduction | Convection   | Radiation             |
+| ---------------- | ---------- | ------------ | --------------------- |
+| Requires Medium  | Yes        | Yes          | No                    |
+| Requires Contact | Yes        | No           | No                    |
+| Works in Vacuum  | No         | No           | Yes                   |
+| Heat Carrier     | Molecules  | Fluid Motion | Electromagnetic Waves |
 
 ## 🔄 Combined Heat Transfer Example
 
 Consider a hot cup of coffee:
 
 ### Conduction
+
 Heat moves through the cup wall.
 
 ### Convection
+
 Heat transfers from cup surface to surrounding air.
 
 ### Radiation
+
 Cup emits infrared radiation to surroundings.
 
-\`\`\`mermaid
-flowchart TB
-    Coffee[Hot Coffee ☕]
-    --> Conduction[Conduction Through Cup]
-    --> Convection[Convection To Air]
-    --> Radiation[Radiation To Surroundings]
-\`\`\`
+\`\`\`mermaid flowchart TB Coffee[Hot Coffee ☕] --> Conduction[Conduction
+Through Cup] --> Convection[Convection To Air] --> Radiation[Radiation To
+Surroundings] \`\`\`
 
 In real systems, all three modes often occur simultaneously.
 
