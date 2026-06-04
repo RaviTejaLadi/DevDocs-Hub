@@ -1,12 +1,16 @@
 # 1️⃣ First Law of Thermodynamics
 
-The First Law of Thermodynamics is based on the **Law of Conservation of Energy**. It states that energy cannot be created or destroyed; it can only be transferred or converted from one form to another.
+The First Law of Thermodynamics is based on the **Law of Conservation of
+Energy**. It states that energy cannot be created or destroyed; it can only be
+transferred or converted from one form to another.
 
-This law explains the relationship between **heat**, **work**, and **internal energy** of a system.
+This law explains the relationship between **heat**, **work**, and **internal
+energy** of a system.
 
 ## 🎯 Statement
 
-**The change in internal energy of a system is equal to the heat added to the system minus the work done by the system.**
+**The change in internal energy of a system is equal to the heat added to the
+system minus the work done by the system.**
 
 ## ⚡ Energy Conservation Concept
 
@@ -240,4 +244,7 @@ Work depends on the path followed during a process.
 
 ## 📚 Quick Summary
 
-The First Law of Thermodynamics states that energy is conserved. Any heat supplied to a system is either stored as internal energy or converted into work. This principle forms the basis for analyzing engines, turbines, compressors, refrigerators, and nearly every thermodynamic system.
+The First Law of Thermodynamics states that energy is conserved. Any heat
+supplied to a system is either stored as internal energy or converted into work.
+This principle forms the basis for analyzing engines, turbines, compressors,
+refrigerators, and nearly every thermodynamic system.

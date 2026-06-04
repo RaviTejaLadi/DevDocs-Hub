@@ -1,12 +1,16 @@
 # 3️⃣ Third Law of Thermodynamics
 
-The Third Law of Thermodynamics describes the behavior of substances at extremely low temperatures. It establishes an important relationship between **temperature** and **entropy**.
+The Third Law of Thermodynamics describes the behavior of substances at
+extremely low temperatures. It establishes an important relationship between
+**temperature** and **entropy**.
 
-This law states that as the temperature of a perfectly crystalline substance approaches **absolute zero**, its entropy approaches zero.
+This law states that as the temperature of a perfectly crystalline substance
+approaches **absolute zero**, its entropy approaches zero.
 
 ## 🎯 Statement of the Third Law
 
-**The entropy of a perfect crystal becomes zero at absolute zero temperature (0 K).**
+**The entropy of a perfect crystal becomes zero at absolute zero temperature (0
+K).**
 
 Mathematically:
 
@@ -138,7 +142,8 @@ This remaining entropy is called **Residual Entropy**.
 
 ### Example
 
-Certain crystals can have more than one stable molecular orientation even at very low temperatures.
+Certain crystals can have more than one stable molecular orientation even at
+very low temperatures.
 
 ## 🧪 Importance of the Third Law
 
@@ -209,12 +214,12 @@ Important for cryogenic fuels such as liquid hydrogen and liquid oxygen.
 
 ## 📌 Comparison of Thermodynamic Laws
 
-| Law | Main Idea |
-|------|-----------|
+| Law        | Main Idea                                   |
+| ---------- | ------------------------------------------- |
 | Zeroth Law | Defines temperature and thermal equilibrium |
-| First Law | Energy is conserved |
-| Second Law | Entropy increases and limits efficiency |
-| Third Law | Entropy approaches zero at absolute zero |
+| First Law  | Energy is conserved                         |
+| Second Law | Entropy increases and limits efficiency     |
+| Third Law  | Entropy approaches zero at absolute zero    |
 
 ## ⚠️ Common Misconceptions
 
@@ -250,4 +255,7 @@ It can be approached closely but cannot be achieved exactly.
 
 ## 📚 Quick Summary
 
-The Third Law of Thermodynamics states that the entropy of a perfect crystal approaches zero as temperature approaches absolute zero (0 K). It explains the behavior of matter at extremely low temperatures and forms the foundation of cryogenics, superconductivity, and low-temperature thermodynamic analysis.
+The Third Law of Thermodynamics states that the entropy of a perfect crystal
+approaches zero as temperature approaches absolute zero (0 K). It explains the
+behavior of matter at extremely low temperatures and forms the foundation of
+cryogenics, superconductivity, and low-temperature thermodynamic analysis.

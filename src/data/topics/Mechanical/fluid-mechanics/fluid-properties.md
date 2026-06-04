@@ -1,14 +1,18 @@
 # 💧 Properties of Fluids
 
-Understanding fluid properties is the foundation of fluid mechanics. These properties help engineers predict how fluids behave under different conditions such as pressure, temperature, and flow velocity.
+Understanding fluid properties is the foundation of fluid mechanics. These
+properties help engineers predict how fluids behave under different conditions
+such as pressure, temperature, and flow velocity.
 
-Think of fluid properties as the "characteristics" that define how a fluid responds when forces act on it.
+Think of fluid properties as the "characteristics" that define how a fluid
+responds when forces act on it.
 
 ---
 
 # 📌 What Are Fluid Properties?
 
-Fluid properties are measurable characteristics that describe the physical behavior of fluids.
+Fluid properties are measurable characteristics that describe the physical
+behavior of fluids.
 
 Some of the most important properties are:
 
@@ -33,15 +37,13 @@ Density is the mass of fluid contained in a unit volume.
 
 ### Formula
 
-[
-\rho = \frac{m}{V}
-]
+[ \rho = \frac{m}{V} ]
 
 Where:
 
-* ρ = Density (kg/m³)
-* m = Mass (kg)
-* V = Volume (m³)
+- ρ = Density (kg/m³)
+- m = Mass (kg)
+- V = Volume (m³)
 
 ### SI Unit
 
@@ -59,13 +61,9 @@ kg/m³
 
 If 2 m³ of water has a mass of 2000 kg:
 
-[
-\rho = \frac{2000}{2}
-]
+[ \rho = \frac{2000}{2} ]
 
-[
-\rho = 1000 \ kg/m^3
-]
+[ \rho = 1000 \ kg/m^3 ]
 
 ---
 
@@ -75,25 +73,19 @@ Specific weight is the weight of fluid per unit volume.
 
 ### Formula
 
-[
-\gamma = \rho g
-]
+[ \gamma = \rho g ]
 
 Where:
 
-* γ = Specific Weight (N/m³)
-* ρ = Density (kg/m³)
-* g = Acceleration due to gravity (9.81 m/s²)
+- γ = Specific Weight (N/m³)
+- ρ = Density (kg/m³)
+- g = Acceleration due to gravity (9.81 m/s²)
 
 ### For Water
 
-[
-\gamma = 1000 \times 9.81
-]
+[ \gamma = 1000 \times 9.81 ]
 
-[
-\gamma = 9810 \ N/m^3
-]
+[ \gamma = 9810 \ N/m^3 ]
 
 ---
 
@@ -103,14 +95,12 @@ Specific gravity is the ratio of fluid density to the density of water.
 
 ### Formula
 
-[
-SG = \frac{\rho_{fluid}}{\rho_{water}}
-]
+[ SG = \frac{\rho_{fluid}}{\rho_{water}} ]
 
 ### Characteristics
 
-* No units
-* Pure ratio
+- No units
+- Pure ratio
 
 ### Examples
 
@@ -124,13 +114,9 @@ SG = \frac{\rho_{fluid}}{\rho_{water}}
 
 For oil having density 800 kg/m³:
 
-[
-SG = \frac{800}{1000}
-]
+[ SG = \frac{800}{1000} ]
 
-[
-SG = 0.8
-]
+[ SG = 0.8 ]
 
 ---
 
@@ -142,9 +128,9 @@ It is similar to friction in solids.
 
 ### Simple Example
 
-* Honey → High viscosity
-* Water → Low viscosity
-* Air → Very low viscosity
+- Honey → High viscosity
+- Water → Low viscosity
+- Air → Very low viscosity
 
 ```mermaid
 graph LR
@@ -159,15 +145,13 @@ graph LR
 
 According to Newton's law of viscosity:
 
-[
-\tau = \mu \frac{du}{dy}
-]
+[ \tau = \mu \frac{du}{dy} ]
 
 Where:
 
-* τ = Shear stress
-* μ = Dynamic viscosity
-* du/dy = Velocity gradient
+- τ = Shear stress
+- μ = Dynamic viscosity
+- du/dy = Velocity gradient
 
 ### SI Unit
 
@@ -181,13 +165,11 @@ Kinematic viscosity is the ratio of dynamic viscosity to density.
 
 ### Formula
 
-[
-\nu = \frac{\mu}{\rho}
-]
+[ \nu = \frac{\mu}{\rho} ]
 
 Where:
 
-* ν = Kinematic viscosity
+- ν = Kinematic viscosity
 
 ### SI Unit
 
@@ -201,15 +183,15 @@ Compressibility is the ability of a fluid to change its volume under pressure.
 
 ### Compressible Fluids
 
-* Air
-* Steam
-* Natural Gas
+- Air
+- Steam
+- Natural Gas
 
 ### Incompressible Fluids
 
-* Water
-* Oil
-* Mercury
+- Water
+- Oil
+- Mercury
 
 ```mermaid
 graph TD
@@ -225,15 +207,16 @@ graph TD
 
 # 6️⃣ Surface Tension (σ)
 
-Surface tension is the property by which the surface of a liquid behaves like a stretched elastic membrane.
+Surface tension is the property by which the surface of a liquid behaves like a
+stretched elastic membrane.
 
 It occurs due to cohesive forces between liquid molecules.
 
 ### Examples
 
-* Water droplets become spherical.
-* Insects walk on water.
-* Soap bubbles form.
+- Water droplets become spherical.
+- Insects walk on water.
+- Soap bubbles form.
 
 ```mermaid
 graph TD
@@ -246,7 +229,8 @@ graph TD
 
 # 7️⃣ Capillarity
 
-Capillarity is the rise or fall of liquid in a narrow tube due to surface tension.
+Capillarity is the rise or fall of liquid in a narrow tube due to surface
+tension.
 
 ### Capillary Rise
 
@@ -254,7 +238,7 @@ Occurs when adhesive force > cohesive force.
 
 Example:
 
-* Water in a thin glass tube
+- Water in a thin glass tube
 
 ### Capillary Fall
 
@@ -262,7 +246,7 @@ Occurs when cohesive force > adhesive force.
 
 Example:
 
-* Mercury in a glass tube
+- Mercury in a glass tube
 
 ```mermaid
 graph LR
@@ -275,14 +259,15 @@ graph LR
 
 # 8️⃣ Vapor Pressure
 
-Vapor pressure is the pressure exerted by the vapor molecules above a liquid surface.
+Vapor pressure is the pressure exerted by the vapor molecules above a liquid
+surface.
 
 When vapor pressure becomes equal to surrounding pressure, boiling occurs.
 
 ### Examples
 
-* Water boils at 100°C under atmospheric pressure.
-* Water boils at lower temperatures at high altitudes.
+- Water boils at 100°C under atmospheric pressure.
+- Water boils at lower temperatures at high altitudes.
 
 ---
 
@@ -294,7 +279,7 @@ Force of attraction between molecules of the same substance.
 
 Example:
 
-* Water-to-water attraction.
+- Water-to-water attraction.
 
 ### Adhesion
 
@@ -302,7 +287,7 @@ Force of attraction between molecules of different substances.
 
 Example:
 
-* Water-to-glass attraction.
+- Water-to-glass attraction.
 
 ```mermaid
 graph TD
@@ -328,14 +313,14 @@ graph TD
 
 Ideal Fluid:
 
-* Does not exist in nature.
+- Does not exist in nature.
 
 Real Fluid:
 
-* Water
-* Air
-* Oil
-* Gasoline
+- Water
+- Air
+- Oil
+- Gasoline
 
 ---
 
@@ -379,11 +364,12 @@ Blood viscosity influences circulation.
 
 # 🎯 Key Takeaways
 
-* Density measures mass per unit volume.
-* Specific weight is weight per unit volume.
-* Specific gravity compares density with water.
-* Viscosity represents resistance to flow.
-* Surface tension causes liquid surfaces to behave like stretched membranes.
-* Capillarity causes liquid rise or fall in narrow tubes.
-* Compressibility is significant in gases and negligible in most liquids.
-* These properties are essential for analyzing fluid behavior in engineering systems.
+- Density measures mass per unit volume.
+- Specific weight is weight per unit volume.
+- Specific gravity compares density with water.
+- Viscosity represents resistance to flow.
+- Surface tension causes liquid surfaces to behave like stretched membranes.
+- Capillarity causes liquid rise or fall in narrow tubes.
+- Compressibility is significant in gases and negligible in most liquids.
+- These properties are essential for analyzing fluid behavior in engineering
+  systems.

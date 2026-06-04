@@ -1,11 +1,13 @@
 # 🚗 Otto & Diesel Cycles
 
-The Otto Cycle and Diesel Cycle are two of the most important thermodynamic cycles used in internal combustion engines.
+The Otto Cycle and Diesel Cycle are two of the most important thermodynamic
+cycles used in internal combustion engines.
 
 - The **Otto Cycle** represents the ideal cycle of petrol (gasoline) engines.
 - The **Diesel Cycle** represents the ideal cycle of diesel engines.
 
-Both cycles convert the chemical energy of fuel into mechanical work, but they differ in how combustion occurs.
+Both cycles convert the chemical energy of fuel into mechanical work, but they
+differ in how combustion occurs.
 
 ---
 
@@ -169,7 +171,8 @@ Higher compression ratio → Higher efficiency
 
 # 🚚 Diesel Cycle
 
-The Diesel Cycle is the ideal thermodynamic cycle for compression-ignition (CI) engines.
+The Diesel Cycle is the ideal thermodynamic cycle for compression-ignition (CI)
+engines.
 
 Examples:
 
@@ -323,16 +326,16 @@ Where:
 
 # 🔍 Otto Cycle vs Diesel Cycle
 
-| Feature | Otto Cycle | Diesel Cycle |
-|----------|------------|-------------|
-| Engine Type | Petrol Engine | Diesel Engine |
-| Ignition Method | Spark Plug | Compression Ignition |
-| Heat Addition | Constant Volume | Constant Pressure |
-| Fuel-Air Mixing | Before Compression | Fuel Injected Later |
-| Compression Ratio | Lower | Higher |
-| Efficiency | Lower | Higher |
-| Weight | Lighter | Heavier |
-| Fuel Economy | Lower | Better |
+| Feature           | Otto Cycle         | Diesel Cycle         |
+| ----------------- | ------------------ | -------------------- |
+| Engine Type       | Petrol Engine      | Diesel Engine        |
+| Ignition Method   | Spark Plug         | Compression Ignition |
+| Heat Addition     | Constant Volume    | Constant Pressure    |
+| Fuel-Air Mixing   | Before Compression | Fuel Injected Later  |
+| Compression Ratio | Lower              | Higher               |
+| Efficiency        | Lower              | Higher               |
+| Weight            | Lighter            | Heavier              |
+| Fuel Economy      | Lower              | Better               |
 
 ---
 
@@ -399,4 +402,8 @@ flowchart LR
 
 # 📚 Quick Summary
 
-The Otto Cycle and Diesel Cycle are ideal thermodynamic models for petrol and diesel engines. The Otto Cycle uses spark ignition and constant-volume heat addition, while the Diesel Cycle uses compression ignition and constant-pressure heat addition. These cycles form the foundation of modern transportation and power-generation engines.
+The Otto Cycle and Diesel Cycle are ideal thermodynamic models for petrol and
+diesel engines. The Otto Cycle uses spark ignition and constant-volume heat
+addition, while the Diesel Cycle uses compression ignition and constant-pressure
+heat addition. These cycles form the foundation of modern transportation and
+power-generation engines.

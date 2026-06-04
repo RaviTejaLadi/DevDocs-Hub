@@ -1,10 +1,13 @@
 # 📈 Entropy
 
-Entropy is one of the most important concepts in thermodynamics. It helps explain why some processes occur naturally while others do not.
+Entropy is one of the most important concepts in thermodynamics. It helps
+explain why some processes occur naturally while others do not.
 
-In simple terms, entropy is a measure of the **randomness**, **disorder**, or **energy unavailability** within a system.
+In simple terms, entropy is a measure of the **randomness**, **disorder**, or
+**energy unavailability** within a system.
 
-Entropy was introduced by the German physicist Rudolf Clausius and is represented by the symbol:
+Entropy was introduced by the German physicist Rudolf Clausius and is
+represented by the symbol:
 
 ```
 S
@@ -196,11 +199,11 @@ flowchart LR
 
 ### Order Comparison
 
-| State | Molecular Order | Entropy |
-|---------|----------------|----------|
-| Solid | Highest | Lowest |
-| Liquid | Moderate | Medium |
-| Gas | Lowest | Highest |
+| State  | Molecular Order | Entropy |
+| ------ | --------------- | ------- |
+| Solid  | Highest         | Lowest  |
+| Liquid | Moderate        | Medium  |
+| Gas    | Lowest          | Highest |
 
 ## 🔄 Entropy and Reversible Processes
 
@@ -296,12 +299,12 @@ Used to improve energy utilization and reduce waste.
 
 ## 📌 Entropy vs Energy
 
-| Property | Energy | Entropy |
-|-----------|---------|----------|
-| Symbol | E or U | S |
-| Conserved | Yes | No |
-| Measures | Ability to do work | Degree of disorder |
-| Unit | Joule (J) | J/K |
+| Property  | Energy             | Entropy            |
+| --------- | ------------------ | ------------------ |
+| Symbol    | E or U             | S                  |
+| Conserved | Yes                | No                 |
+| Measures  | Ability to do work | Degree of disorder |
+| Unit      | Joule (J)          | J/K                |
 
 ## 💡 Key Points
 
@@ -319,4 +322,8 @@ Used to improve energy utilization and reduce waste.
 
 ## 📚 Quick Summary
 
-Entropy is a thermodynamic property that measures the degree of disorder or randomness in a system. It helps determine the direction of natural processes and explains why energy becomes less available for useful work over time. Understanding entropy is essential for analyzing engines, power plants, refrigeration systems, and all real-world thermodynamic processes.
+Entropy is a thermodynamic property that measures the degree of disorder or
+randomness in a system. It helps determine the direction of natural processes
+and explains why energy becomes less available for useful work over time.
+Understanding entropy is essential for analyzing engines, power plants,
+refrigeration systems, and all real-world thermodynamic processes.

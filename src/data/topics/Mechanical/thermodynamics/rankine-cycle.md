@@ -1,12 +1,15 @@
 # 🏭 Rankine Cycle
 
-The Rankine Cycle is the fundamental operating cycle of most steam power plants. It converts heat energy into mechanical work and then into electrical energy.
+The Rankine Cycle is the fundamental operating cycle of most steam power plants.
+It converts heat energy into mechanical work and then into electrical energy.
 
-Unlike the Carnot Cycle, the Rankine Cycle is practical and widely used in thermal power stations, nuclear power plants, and industrial steam systems.
+Unlike the Carnot Cycle, the Rankine Cycle is practical and widely used in
+thermal power stations, nuclear power plants, and industrial steam systems.
 
 ## 🎯 What is the Rankine Cycle?
 
-The Rankine Cycle is a thermodynamic cycle in which water is used as the working fluid.
+The Rankine Cycle is a thermodynamic cycle in which water is used as the working
+fluid.
 
 The cycle consists of four main processes:
 
@@ -15,7 +18,8 @@ The cycle consists of four main processes:
 3. Expansion in Turbine
 4. Heat Rejection in Condenser
 
-After completing these processes, the water returns to its initial state and the cycle repeats.
+After completing these processes, the water returns to its initial state and the
+cycle repeats.
 
 ```mermaid
 flowchart LR
@@ -153,12 +157,12 @@ flowchart LR
 
 ### Process Summary
 
-| Process | Description |
-|----------|-------------|
-| 1 → 2 | Pumping |
-| 2 → 3 | Heat Addition |
-| 3 → 4 | Expansion |
-| 4 → 1 | Heat Rejection |
+| Process | Description    |
+| ------- | -------------- |
+| 1 → 2   | Pumping        |
+| 2 → 3   | Heat Addition  |
+| 3 → 4   | Expansion      |
+| 4 → 1   | Heat Rejection |
 
 ---
 
@@ -389,13 +393,13 @@ Converts waste heat into useful work.
 
 # 📊 Rankine Cycle vs Carnot Cycle
 
-| Feature | Rankine Cycle | Carnot Cycle |
-|----------|--------------|--------------|
-| Practical | ✅ Yes | ❌ No |
-| Efficiency | Lower | Higher |
-| Used in Power Plants | ✅ Yes | ❌ No |
-| Reversible | Approximate | Fully Reversible |
-| Engineering Use | Very High | Mainly Theoretical |
+| Feature              | Rankine Cycle | Carnot Cycle       |
+| -------------------- | ------------- | ------------------ |
+| Practical            | ✅ Yes        | ❌ No              |
+| Efficiency           | Lower         | Higher             |
+| Used in Power Plants | ✅ Yes        | ❌ No              |
+| Reversible           | Approximate   | Fully Reversible   |
+| Engineering Use      | Very High     | Mainly Theoretical |
 
 ---
 
@@ -417,4 +421,8 @@ Converts waste heat into useful work.
 
 # 📚 Quick Summary
 
-The Rankine Cycle is the practical thermodynamic cycle used in steam power plants. It consists of four main processes: pumping, heat addition, expansion, and condensation. By converting heat into mechanical work through a steam turbine, the Rankine Cycle forms the backbone of modern electricity generation systems.
+The Rankine Cycle is the practical thermodynamic cycle used in steam power
+plants. It consists of four main processes: pumping, heat addition, expansion,
+and condensation. By converting heat into mechanical work through a steam
+turbine, the Rankine Cycle forms the backbone of modern electricity generation
+systems.

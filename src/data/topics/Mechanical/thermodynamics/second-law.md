@@ -1,8 +1,11 @@
 # 2️⃣ Second Law of Thermodynamics
 
-The First Law tells us that energy is conserved, but it does not tell us the **direction** in which a process occurs.
+The First Law tells us that energy is conserved, but it does not tell us the
+**direction** in which a process occurs.
 
-The Second Law of Thermodynamics explains why some processes occur naturally while others do not. It introduces the concept of **entropy** and places limits on the conversion of heat into work.
+The Second Law of Thermodynamics explains why some processes occur naturally
+while others do not. It introduces the concept of **entropy** and places limits
+on the conversion of heat into work.
 
 ## 🎯 Statement of the Second Law
 
@@ -10,13 +13,15 @@ The Second Law can be expressed in two common forms:
 
 ### Kelvin-Planck Statement
 
-**It is impossible for a heat engine operating in a cycle to convert all the heat supplied into useful work.**
+**It is impossible for a heat engine operating in a cycle to convert all the
+heat supplied into useful work.**
 
 Some heat must always be rejected to a low-temperature reservoir.
 
 ### Clausius Statement
 
-**Heat cannot flow naturally from a colder body to a hotter body without external work being supplied.**
+**Heat cannot flow naturally from a colder body to a hotter body without
+external work being supplied.**
 
 ## 🌍 Natural Direction of Processes
 
@@ -175,7 +180,8 @@ This relation helps quantify disorder in thermodynamic systems.
 
 ### Reversible Process
 
-An ideal process that can be reversed without leaving any effect on the surroundings.
+An ideal process that can be reversed without leaving any effect on the
+surroundings.
 
 Characteristics:
 
@@ -277,4 +283,8 @@ No engine can convert all heat into work.
 
 ## 📚 Quick Summary
 
-The Second Law of Thermodynamics explains the natural direction of energy transfer and introduces entropy. It states that heat flows naturally from hot to cold, no heat engine can be 100% efficient, and the entropy of an isolated system tends to increase. This law is fundamental in understanding engines, refrigerators, power plants, and all real-world energy systems.
+The Second Law of Thermodynamics explains the natural direction of energy
+transfer and introduces entropy. It states that heat flows naturally from hot to
+cold, no heat engine can be 100% efficient, and the entropy of an isolated
+system tends to increase. This law is fundamental in understanding engines,
+refrigerators, power plants, and all real-world energy systems.

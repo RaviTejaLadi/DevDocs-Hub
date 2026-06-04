@@ -1,8 +1,10 @@
 # ♻️ Thermodynamic Cycles
 
-A thermodynamic cycle is a series of thermodynamic processes that return a system to its initial state.
+A thermodynamic cycle is a series of thermodynamic processes that return a
+system to its initial state.
 
-During a cycle, the working fluid undergoes changes in pressure, temperature, and volume while exchanging heat and work with the surroundings.
+During a cycle, the working fluid undergoes changes in pressure, temperature,
+and volume while exchanging heat and work with the surroundings.
 
 Thermodynamic cycles form the foundation of:
 
@@ -14,7 +16,8 @@ Thermodynamic cycles form the foundation of:
 
 ## 🎯 What is a Thermodynamic Cycle?
 
-A thermodynamic cycle begins at an initial state and passes through several processes before returning to the same state.
+A thermodynamic cycle begins at an initial state and passes through several
+processes before returning to the same state.
 
 Since the system returns to its original condition:
 
@@ -100,7 +103,8 @@ flowchart TD
 
 A refrigeration cycle works in the opposite direction of a heat engine.
 
-It uses work input to transfer heat from a low-temperature region to a high-temperature region.
+It uses work input to transfer heat from a low-temperature region to a
+high-temperature region.
 
 ```mermaid
 flowchart TD
@@ -222,7 +226,8 @@ flowchart LR
 
 ## 🔥 Carnot Cycle
 
-The Carnot Cycle is an ideal cycle with the highest possible efficiency between two temperatures.
+The Carnot Cycle is an ideal cycle with the highest possible efficiency between
+two temperatures.
 
 Characteristics:
 
@@ -346,8 +351,12 @@ Used in turbines, compressors, and process plants.
 
 ✅ Real cycles are irreversible.
 
-✅ Thermodynamic cycles are the basis of engines, power plants, and cooling systems.
+✅ Thermodynamic cycles are the basis of engines, power plants, and cooling
+systems.
 
 ## 📚 Quick Summary
 
-A thermodynamic cycle is a sequence of thermodynamic processes that returns a system to its original state. These cycles form the basis of heat engines, power plants, refrigerators, air conditioners, and gas turbines. The most important cycles include Carnot, Rankine, Otto, Diesel, and Brayton cycles.
+A thermodynamic cycle is a sequence of thermodynamic processes that returns a
+system to its original state. These cycles form the basis of heat engines, power
+plants, refrigerators, air conditioners, and gas turbines. The most important
+cycles include Carnot, Rankine, Otto, Diesel, and Brayton cycles.

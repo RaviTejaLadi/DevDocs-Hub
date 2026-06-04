@@ -1,8 +1,10 @@
 # 📖 Introduction to Thermodynamics
 
-Thermodynamics is the branch of physics that studies **energy**, **heat**, **work**, and how they interact with matter.
+Thermodynamics is the branch of physics that studies **energy**, **heat**,
+**work**, and how they interact with matter.
 
-Whenever energy changes from one form to another, thermodynamics helps us understand what happens.
+Whenever energy changes from one form to another, thermodynamics helps us
+understand what happens.
 
 ### 🌍 Real-Life Examples
 
@@ -33,6 +35,7 @@ These quantities determine how a system behaves when energy is transferred.
 A system is the part of the universe selected for study.
 
 Example:
+
 - Water inside a bottle
 - Gas inside a cylinder
 - Steam inside a turbine
@@ -41,8 +44,8 @@ Example:
 
 Everything outside the system is called surroundings.
 
-Example:
-If water in a bottle is the system, then the bottle, air, table, and room are surroundings.
+Example: If water in a bottle is the system, then the bottle, air, table, and
+room are surroundings.
 
 ## 3. Boundary
 
@@ -57,6 +60,7 @@ The real or imaginary surface separating system and surroundings.
 Both mass and energy can cross the boundary.
 
 Examples:
+
 - Steam turbine
 - Pump
 - Compressor
@@ -82,6 +86,7 @@ flowchart LR
 Energy can cross the boundary but mass cannot.
 
 Example:
+
 - Gas inside a sealed piston-cylinder arrangement
 
 ### Diagram
@@ -104,6 +109,7 @@ flowchart LR
 Neither mass nor energy can cross the boundary.
 
 Example:
+
 - Ideal thermos flask
 
 ### Diagram
@@ -168,8 +174,7 @@ If the system size doubles, these properties also double.
 
 Heat is energy transferred due to temperature difference.
 
-Example:
-A hot cup of tea transfers heat to the surrounding air.
+Example: A hot cup of tea transfers heat to the surrounding air.
 
 ---
 
@@ -177,8 +182,7 @@ A hot cup of tea transfers heat to the surrounding air.
 
 Work is energy transferred when a force causes displacement.
 
-Example:
-Gas expanding inside a cylinder pushes the piston upward.
+Example: Gas expanding inside a cylinder pushes the piston upward.
 
 ### Diagram
 
@@ -202,8 +206,7 @@ Thermodynamics deals with different forms of energy.
 
 Energy due to motion.
 
-Example:
-Moving vehicle
+Example: Moving vehicle
 
 ---
 
@@ -211,8 +214,7 @@ Moving vehicle
 
 Energy due to position.
 
-Example:
-Water stored in a dam
+Example: Water stored in a dam
 
 ---
 
@@ -221,6 +223,7 @@ Water stored in a dam
 Microscopic energy stored inside molecules.
 
 It includes:
+
 - Molecular motion
 - Molecular vibration
 - Molecular rotation
@@ -284,12 +287,13 @@ Thermodynamics is widely used in:
 
 ✅ Thermodynamic properties describe the state of a system.
 
-✅ Equilibrium exists when thermal, mechanical, and chemical conditions are satisfied.
+✅ Equilibrium exists when thermal, mechanical, and chemical conditions are
+satisfied.
 
 ---
 
 # 🎓 Quick Summary
 
-Thermodynamics explains how energy moves and transforms. It helps engineers design engines, refrigerators, turbines, power plants, and many other systems that make modern life possible.
-
-
+Thermodynamics explains how energy moves and transforms. It helps engineers
+design engines, refrigerators, turbines, power plants, and many other systems
+that make modern life possible.

@@ -1,17 +1,20 @@
 # ✈️ Drag & Lift
 
-When a fluid flows around an object, forces are generated due to pressure differences and viscous effects. Two of the most important aerodynamic forces are **Drag** and **Lift**.
+When a fluid flows around an object, forces are generated due to pressure
+differences and viscous effects. Two of the most important aerodynamic forces
+are **Drag** and **Lift**.
 
 These forces play a crucial role in the design of:
 
-* Aircraft
-* Cars
-* Ships
-* Wind turbines
-* Racing vehicles
-* Drones
+- Aircraft
+- Cars
+- Ships
+- Wind turbines
+- Racing vehicles
+- Drones
 
-Understanding drag and lift helps engineers improve efficiency, stability, and performance.
+Understanding drag and lift helps engineers improve efficiency, stability, and
+performance.
 
 ---
 
@@ -19,8 +22,8 @@ Understanding drag and lift helps engineers improve efficiency, stability, and p
 
 When fluid flows around a body:
 
-* A force parallel to the flow direction is called **Drag**.
-* A force perpendicular to the flow direction is called **Lift**.
+- A force parallel to the flow direction is called **Drag**.
+- A force perpendicular to the flow direction is called **Lift**.
 
 ```mermaid id="v7e2kp"
 graph TD
@@ -38,15 +41,15 @@ Consider air flowing around an aircraft wing.
 ```mermaid
 flowchart LR
     A[Air Flow] --> B[Wing]
-    
+
     B --> C[Lift Upward]
     B --> D[Drag Backward]
 ```
 
 The wing experiences:
 
-* Lift acting upward
-* Drag acting opposite to motion
+- Lift acting upward
+- Drag acting opposite to motion
 
 ---
 
@@ -68,24 +71,17 @@ flowchart LR
 
 ## Drag Force Equation
 
-[
-F_D
-===
+[ F_D ===
 
-\frac{1}{2}
-\rho
-V^2
-C_D
-A
-]
+\frac{1}{2} \rho V^2 C_D A ]
 
 Where:
 
-* (F_D) = Drag Force (N)
-* (\rho) = Fluid density (kg/m³)
-* (V) = Relative velocity (m/s)
-* (C_D) = Drag coefficient
-* (A) = Reference area (m²)
+- (F_D) = Drag Force (N)
+- (\rho) = Fluid density (kg/m³)
+- (V) = Relative velocity (m/s)
+- (C_D) = Drag coefficient
+- (A) = Reference area (m²)
 
 ---
 
@@ -109,9 +105,7 @@ Drag increases rapidly with velocity.
 
 Since:
 
-[
-F_D \propto V^2
-]
+[ F_D \propto V^2 ]
 
 Doubling speed increases drag four times.
 
@@ -161,9 +155,9 @@ Occurs because of pressure differences between the front and rear of an object.
 
 Examples:
 
-* Buildings
-* Trucks
-* Cylinders
+- Buildings
+- Trucks
+- Cylinders
 
 ---
 
@@ -173,9 +167,9 @@ Caused by viscous shear forces acting on the surface.
 
 Examples:
 
-* Aircraft skin
-* Ship hulls
-* Pipeline walls
+- Aircraft skin
+- Ship hulls
+- Pipeline walls
 
 ---
 
@@ -195,9 +189,9 @@ Designed to reduce flow separation and drag.
 
 Examples:
 
-* Aircraft
-* Fish
-* Sports cars
+- Aircraft
+- Fish
+- Sports cars
 
 ```mermaid
 graph LR
@@ -214,9 +208,9 @@ Flow separates early, creating large wake regions.
 
 Examples:
 
-* Buildings
-* Cubes
-* Trucks
+- Buildings
+- Cubes
+- Trucks
 
 ```mermaid
 graph LR
@@ -234,29 +228,22 @@ Lift is the force acting perpendicular to the direction of fluid flow.
 
 It is responsible for:
 
-* Aircraft flight
-* Helicopter operation
-* Wind turbine blade performance
+- Aircraft flight
+- Helicopter operation
+- Wind turbine blade performance
 
 ---
 
 ## Lift Force Equation
 
-[
-F_L
-===
+[ F_L ===
 
-\frac{1}{2}
-\rho
-V^2
-C_L
-A
-]
+\frac{1}{2} \rho V^2 C_L A ]
 
 Where:
 
-* (F_L) = Lift force (N)
-* (C_L) = Lift coefficient
+- (F_L) = Lift force (N)
+- (C_L) = Lift coefficient
 
 ---
 
@@ -284,8 +271,8 @@ graph TD
 
 According to Bernoulli's Principle:
 
-* Faster airflow → Lower pressure
-* Slower airflow → Higher pressure
+- Faster airflow → Lower pressure
+- Slower airflow → Higher pressure
 
 This pressure difference creates lift.
 
@@ -304,9 +291,9 @@ flowchart LR
 
 Features:
 
-* Curved upper surface
-* Relatively flatter lower surface
-* Designed to maximize lift
+- Curved upper surface
+- Relatively flatter lower surface
+- Designed to maximize lift
 
 ---
 
@@ -314,8 +301,8 @@ Features:
 
 Angle of attack is the angle between:
 
-* Airflow direction
-* Wing chord line
+- Airflow direction
+- Wing chord line
 
 ```mermaid
 graph TD
@@ -330,9 +317,9 @@ graph TD
 
 Increasing angle of attack:
 
-* Increases lift initially
-* Increases drag
-* May eventually cause stall
+- Increases lift initially
+- Increases drag
+- May eventually cause stall
 
 ---
 
@@ -349,9 +336,9 @@ graph LR
 
 Consequences:
 
-* Sudden reduction in lift
-* Increased drag
-* Aircraft instability
+- Sudden reduction in lift
+- Increased drag
+- Aircraft instability
 
 ---
 
@@ -368,8 +355,8 @@ Both forces act simultaneously.
 
 Designers try to:
 
-* Increase lift
-* Reduce drag
+- Increase lift
+- Reduce drag
 
 ---
 
@@ -377,12 +364,9 @@ Designers try to:
 
 One of the most important aerodynamic performance parameters is:
 
-[
-\frac{L}{D}
-===========
+[ \frac{L}{D} ===========
 
-\frac{Lift}{Drag}
-]
+\frac{Lift}{Drag} ]
 
 Higher values indicate more efficient designs.
 
@@ -416,9 +400,9 @@ Boundary layer behavior strongly affects drag and lift.
 
 The Reynolds Number influences:
 
-* Flow separation
-* Turbulence
-* Drag coefficient
+- Flow separation
+- Turbulence
+- Drag coefficient
 
 ```mermaid
 graph TD
@@ -494,9 +478,9 @@ graph TD
 
 Used in:
 
-* Formula 1 cars
-* Racing motorcycles
-* Sports cars
+- Formula 1 cars
+- Racing motorcycles
+- Sports cars
 
 ---
 
@@ -549,10 +533,10 @@ graph TD
 
 Engineers aim to:
 
-* Minimize drag
-* Maximize lift
-* Improve performance
-* Reduce energy consumption
+- Minimize drag
+- Maximize lift
+- Improve performance
+- Reduce energy consumption
 
 ---
 
@@ -568,11 +552,12 @@ Engineers aim to:
 
 # 🎯 Key Takeaways
 
-* Drag is the force opposing fluid motion.
-* Lift is the force perpendicular to fluid flow.
-* Drag depends on velocity, shape, area, and surface roughness.
-* Lift is generated primarily through pressure differences.
-* Bernoulli's principle helps explain lift generation.
-* Airfoils are designed to maximize lift and minimize drag.
-* Engineers use drag and lift analysis in aircraft, vehicles, ships, wind turbines, and sports equipment.
-* Aerodynamic optimization improves efficiency, speed, and stability.
+- Drag is the force opposing fluid motion.
+- Lift is the force perpendicular to fluid flow.
+- Drag depends on velocity, shape, area, and surface roughness.
+- Lift is generated primarily through pressure differences.
+- Bernoulli's principle helps explain lift generation.
+- Airfoils are designed to maximize lift and minimize drag.
+- Engineers use drag and lift analysis in aircraft, vehicles, ships, wind
+  turbines, and sports equipment.
+- Aerodynamic optimization improves efficiency, speed, and stability.

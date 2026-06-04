@@ -1,12 +1,15 @@
 # 🔗 Continuity Equation
 
-The Continuity Equation is one of the fundamental laws of fluid mechanics. It is based on the **Law of Conservation of Mass**, which states:
+The Continuity Equation is one of the fundamental laws of fluid mechanics. It is
+based on the **Law of Conservation of Mass**, which states:
 
 > Mass can neither be created nor destroyed.
 
-In fluid flow, this means the mass entering a system must equal the mass leaving the system, provided there is no accumulation within the system.
+In fluid flow, this means the mass entering a system must equal the mass leaving
+the system, provided there is no accumulation within the system.
 
-The continuity equation helps engineers analyze flow through pipes, nozzles, diffusers, pumps, turbines, and hydraulic systems.
+The continuity equation helps engineers analyze flow through pipes, nozzles,
+diffusers, pumps, turbines, and hydraulic systems.
 
 ---
 
@@ -22,28 +25,25 @@ graph LR
 
 For steady flow:
 
-[
-\text{Mass Inflow} = \text{Mass Outflow}
-]
+[ \text{Mass Inflow} = \text{Mass Outflow} ]
 
 ---
 
 # 🌊 Mass Flow Rate
 
-Mass flow rate is the mass of fluid passing through a cross-section per unit time.
+Mass flow rate is the mass of fluid passing through a cross-section per unit
+time.
 
 ### Formula
 
-[
-\dot{m} = \rho A V
-]
+[ \dot{m} = \rho A V ]
 
 Where:
 
-* (\dot{m}) = Mass flow rate (kg/s)
-* (\rho) = Fluid density (kg/m³)
-* (A) = Cross-sectional area (m²)
-* (V) = Fluid velocity (m/s)
+- (\dot{m}) = Mass flow rate (kg/s)
+- (\rho) = Fluid density (kg/m³)
+- (A) = Cross-sectional area (m²)
+- (V) = Fluid velocity (m/s)
 
 ---
 
@@ -60,7 +60,8 @@ graph LR
     C --> D
 ```
 
-Larger density, area, or velocity means more fluid passes through the pipe every second.
+Larger density, area, or velocity means more fluid passes through the pipe every
+second.
 
 ---
 
@@ -68,15 +69,13 @@ Larger density, area, or velocity means more fluid passes through the pipe every
 
 For any two sections of a flow:
 
-[
-\rho_1 A_1 V_1 = \rho_2 A_2 V_2
-]
+[ \rho_1 A_1 V_1 = \rho_2 A_2 V_2 ]
 
 Where:
 
-* (\rho_1,\rho_2) = Densities
-* (A_1,A_2) = Areas
-* (V_1,V_2) = Velocities
+- (\rho_1,\rho_2) = Densities
+- (A_1,A_2) = Areas
+- (V_1,V_2) = Velocities
 
 This equation applies to both liquids and gases.
 
@@ -88,15 +87,11 @@ For liquids such as water, density remains nearly constant.
 
 Therefore:
 
-[
-\rho_1 = \rho_2
-]
+[ \rho_1 = \rho_2 ]
 
 The continuity equation becomes:
 
-[
-A_1V_1=A_2V_2
-]
+[ A_1V_1=A_2V_2 ]
 
 This is the most commonly used form.
 
@@ -106,15 +101,11 @@ This is the most commonly used form.
 
 If pipe area decreases:
 
-[
-A \downarrow
-]
+[ A \downarrow ]
 
 Then velocity must increase:
 
-[
-V \uparrow
-]
+[ V \uparrow ]
 
 to maintain the same flow rate.
 
@@ -135,21 +126,15 @@ graph LR
 
 Since:
 
-[
-A_1V_1=A_2V_2
-]
+[ A_1V_1=A_2V_2 ]
 
 and
 
-[
-A_2 < A_1
-]
+[ A_2 < A_1 ]
 
 therefore:
 
-[
-V_2 > V_1
-]
+[ V_2 > V_1 ]
 
 Velocity increases in the narrow section.
 
@@ -168,9 +153,7 @@ graph LR
 
 As area increases:
 
-[
-V \downarrow
-]
+[ V \downarrow ]
 
 Velocity decreases.
 
@@ -182,35 +165,27 @@ Volume flow rate represents the volume of fluid flowing per unit time.
 
 ### Formula
 
-[
-Q = AV
-]
+[ Q = AV ]
 
 Where:
 
-* (Q) = Discharge (m³/s)
-* (A) = Area (m²)
-* (V) = Velocity (m/s)
+- (Q) = Discharge (m³/s)
+- (A) = Area (m²)
+- (V) = Velocity (m/s)
 
 ---
 
 ## Relationship Between Mass Flow and Discharge
 
-[
-\dot{m} = \rho Q
-]
+[ \dot{m} = \rho Q ]
 
 Since:
 
-[
-Q = AV
-]
+[ Q = AV ]
 
 Therefore:
 
-[
-\dot{m} = \rho AV
-]
+[ \dot{m} = \rho AV ]
 
 ---
 
@@ -220,24 +195,18 @@ Water flows through a pipe.
 
 Given:
 
-* Area = 0.2 m²
-* Velocity = 4 m/s
+- Area = 0.2 m²
+- Velocity = 4 m/s
 
 Find discharge.
 
 ### Solution
 
-[
-Q = AV
-]
+[ Q = AV ]
 
-[
-Q = 0.2 \times 4
-]
+[ Q = 0.2 \times 4 ]
 
-[
-Q = 0.8 \ m^3/s
-]
+[ Q = 0.8 \ m^3/s ]
 
 ---
 
@@ -245,9 +214,9 @@ Q = 0.8 \ m^3/s
 
 Given:
 
-* (A_1 = 0.4\ m^2)
-* (V_1 = 3\ m/s)
-* (A_2 = 0.1\ m^2)
+- (A_1 = 0.4\ m^2)
+- (V_1 = 3\ m/s)
+- (A_2 = 0.1\ m^2)
 
 Find (V_2).
 
@@ -255,21 +224,13 @@ Find (V_2).
 
 Using continuity equation:
 
-[
-A_1V_1=A_2V_2
-]
+[ A_1V_1=A_2V_2 ]
 
-[
-0.4 \times 3 = 0.1V_2
-]
+[ 0.4 \times 3 = 0.1V_2 ]
 
-[
-1.2 = 0.1V_2
-]
+[ 1.2 = 0.1V_2 ]
 
-[
-V_2=12 \ m/s
-]
+[ V_2=12 \ m/s ]
 
 The velocity increases because the pipe area decreases.
 
@@ -279,21 +240,18 @@ The velocity increases because the pipe area decreases.
 
 For advanced fluid mechanics:
 
-[
-\frac{\partial \rho}{\partial t}
-+
-\nabla \cdot (\rho \vec{V})
-===========================
+[ \frac{\partial \rho}{\partial t}
 
-0
-]
+- # \nabla \cdot (\rho \vec{V})
+
+0 ]
 
 This form is used in:
 
-* Computational Fluid Dynamics (CFD)
-* Aerodynamics
-* Weather simulations
-* Fluid flow analysis software
+- Computational Fluid Dynamics (CFD)
+- Aerodynamics
+- Weather simulations
+- Fluid flow analysis software
 
 ---
 
@@ -314,9 +272,7 @@ graph TD
 
 Flow properties do not change with time.
 
-[
-\frac{\partial}{\partial t}=0
-]
+[ \frac{\partial}{\partial t}=0 ]
 
 ---
 
@@ -326,7 +282,7 @@ Flow properties change with time.
 
 Example:
 
-* Opening a water valve.
+- Opening a water valve.
 
 ---
 
@@ -336,8 +292,8 @@ Density changes significantly.
 
 Examples:
 
-* Airflow in jet engines
-* High-speed gas flow
+- Airflow in jet engines
+- High-speed gas flow
 
 ---
 
@@ -347,8 +303,8 @@ Density remains nearly constant.
 
 Examples:
 
-* Water flow
-* Oil flow
+- Water flow
+- Oil flow
 
 ---
 
@@ -396,8 +352,8 @@ Flow rate measurement depends on continuity and Bernoulli's principles.
 
 When the nozzle is partially closed:
 
-* Area decreases
-* Velocity increases
+- Area decreases
+- Velocity increases
 
 This is explained by the continuity equation.
 
@@ -459,15 +415,15 @@ Together they solve most basic fluid flow problems.
 
 # 🎯 Key Takeaways
 
-* The Continuity Equation is based on conservation of mass.
-* Mass entering a system equals mass leaving the system.
-* For incompressible flow:
+- The Continuity Equation is based on conservation of mass.
+- Mass entering a system equals mass leaving the system.
+- For incompressible flow:
 
-[
-A_1V_1=A_2V_2
-]
+[ A_1V_1=A_2V_2 ]
 
-* Velocity increases when flow area decreases.
-* The continuity equation is used in pipelines, nozzles, hydraulic systems, and aerodynamics.
-* It works together with Bernoulli's Equation to analyze fluid flow.
-* It is one of the most important equations in fluid mechanics and engineering design.
+- Velocity increases when flow area decreases.
+- The continuity equation is used in pipelines, nozzles, hydraulic systems, and
+  aerodynamics.
+- It works together with Bernoulli's Equation to analyze fluid flow.
+- It is one of the most important equations in fluid mechanics and engineering
+  design.

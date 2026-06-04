@@ -1,14 +1,18 @@
 # ⚖️ Fluid Statics
 
-Fluid Statics is the branch of fluid mechanics that deals with fluids at rest. Since the fluid is not moving, there are no shear stresses caused by motion. The only significant force acting inside the fluid is pressure.
+Fluid Statics is the branch of fluid mechanics that deals with fluids at rest.
+Since the fluid is not moving, there are no shear stresses caused by motion. The
+only significant force acting inside the fluid is pressure.
 
-Fluid statics helps engineers design dams, water tanks, hydraulic systems, submarines, and ships.
+Fluid statics helps engineers design dams, water tanks, hydraulic systems,
+submarines, and ships.
 
 ---
 
 # 📌 What is Fluid Statics?
 
-Fluid statics studies fluids that are completely at rest or moving as a rigid body without relative motion between fluid layers.
+Fluid statics studies fluids that are completely at rest or moving as a rigid
+body without relative motion between fluid layers.
 
 ### Examples
 
@@ -26,10 +30,10 @@ Fluid statics studies fluids that are completely at rest or moving as a rigid bo
 
 When a fluid is at rest:
 
-* Shear stress is zero
-* Pressure acts perpendicular to surfaces
-* Pressure increases with depth
-* Pressure at the same horizontal level is equal
+- Shear stress is zero
+- Pressure acts perpendicular to surfaces
+- Pressure increases with depth
+- Pressure at the same horizontal level is equal
 
 ```mermaid
 graph TD
@@ -48,23 +52,19 @@ Pressure is the normal force acting per unit area.
 
 ### Formula
 
-[
-P = \frac{F}{A}
-]
+[ P = \frac{F}{A} ]
 
 Where:
 
-* P = Pressure (Pa)
-* F = Force (N)
-* A = Area (m²)
+- P = Pressure (Pa)
+- F = Force (N)
+- A = Area (m²)
 
 ### SI Unit
 
 Pascal (Pa)
 
-[
-1 , Pa = 1 , N/m^2
-]
+[ 1 , Pa = 1 , N/m^2 ]
 
 ---
 
@@ -72,33 +72,28 @@ Pascal (Pa)
 
 A force of 500 N acts on an area of 0.5 m².
 
-[
-P = \frac{500}{0.5}
-]
+[ P = \frac{500}{0.5} ]
 
-[
-P = 1000 , Pa
-]
+[ P = 1000 , Pa ]
 
 ---
 
 # 2️⃣ Hydrostatic Pressure
 
-Hydrostatic pressure is the pressure exerted by a fluid at rest due to its weight.
+Hydrostatic pressure is the pressure exerted by a fluid at rest due to its
+weight.
 
 Pressure increases as depth increases.
 
 ### Formula
 
-[
-P = \rho g h
-]
+[ P = \rho g h ]
 
 Where:
 
-* ρ = Density (kg/m³)
-* g = Gravitational acceleration (9.81 m/s²)
-* h = Depth below fluid surface (m)
+- ρ = Density (kg/m³)
+- g = Gravitational acceleration (9.81 m/s²)
+- h = Depth below fluid surface (m)
 
 ---
 
@@ -126,21 +121,15 @@ Find pressure at a depth of 5 m in water.
 
 Given:
 
-* ρ = 1000 kg/m³
-* g = 9.81 m/s²
-* h = 5 m
+- ρ = 1000 kg/m³
+- g = 9.81 m/s²
+- h = 5 m
 
-[
-P = 1000 \times 9.81 \times 5
-]
+[ P = 1000 \times 9.81 \times 5 ]
 
-[
-P = 49050 , Pa
-]
+[ P = 49050 , Pa ]
 
-[
-P = 49.05 , kPa
-]
+[ P = 49.05 , kPa ]
 
 ---
 
@@ -166,9 +155,7 @@ Pressure exerted by the Earth's atmosphere.
 
 At sea level:
 
-[
-P_{atm}=101.325,kPa
-]
+[ P_{atm}=101.325,kPa ]
 
 ---
 
@@ -178,9 +165,7 @@ Pressure measured relative to atmospheric pressure.
 
 ### Formula
 
-[
-P_g=P_{abs}-P_{atm}
-]
+[ P_g=P_{abs}-P_{atm} ]
 
 ---
 
@@ -190,9 +175,7 @@ Pressure measured relative to a perfect vacuum.
 
 ### Formula
 
-[
-P_{abs}=P_{atm}+P_g
-]
+[ P_{abs}=P_{atm}+P_g ]
 
 ---
 
@@ -200,7 +183,8 @@ P_{abs}=P_{atm}+P_g
 
 Pascal's Law states:
 
-> Pressure applied at any point in a confined fluid is transmitted equally in all directions.
+> Pressure applied at any point in a confined fluid is transmitted equally in
+> all directions.
 
 ---
 
@@ -221,25 +205,23 @@ graph LR
 
 ## Mathematical Form
 
-[
-\frac{F_1}{A_1}=\frac{F_2}{A_2}
-]
+[ \frac{F_1}{A_1}=\frac{F_2}{A_2} ]
 
 Where:
 
-* F₁ = Input force
-* F₂ = Output force
-* A₁ = Small piston area
-* A₂ = Large piston area
+- F₁ = Input force
+- F₂ = Output force
+- A₁ = Small piston area
+- A₂ = Large piston area
 
 ---
 
 ## Applications
 
-* Hydraulic jack
-* Hydraulic press
-* Hydraulic lift
-* Automobile braking system
+- Hydraulic jack
+- Hydraulic press
+- Hydraulic lift
+- Automobile braking system
 
 ---
 
@@ -262,8 +244,8 @@ A device that measures pressure using liquid columns.
 
 ### Types
 
-* Simple manometer
-* Differential manometer
+- Simple manometer
+- Differential manometer
 
 ---
 
@@ -273,21 +255,20 @@ Widely used industrial pressure measuring device.
 
 Applications:
 
-* Boilers
-* Compressors
-* Pipelines
+- Boilers
+- Compressors
+- Pipelines
 
 ---
 
 # 6️⃣ Hydrostatic Law
 
-Hydrostatic law states that the rate of increase of pressure with depth equals the specific weight of the fluid.
+Hydrostatic law states that the rate of increase of pressure with depth equals
+the specific weight of the fluid.
 
 ### Mathematical Form
 
-[
-\frac{dP}{dh}=\rho g
-]
+[ \frac{dP}{dh}=\rho g ]
 
 This explains why pressure increases linearly with depth.
 
@@ -310,14 +291,12 @@ graph TD
 
 ## Total Hydrostatic Force
 
-[
-F=\rho g h_c A
-]
+[ F=\rho g h_c A ]
 
 Where:
 
-* hₙ = Depth of centroid
-* A = Area
+- hₙ = Depth of centroid
+- A = Area
 
 ---
 
@@ -327,8 +306,8 @@ The center of pressure is the point where the resultant hydrostatic force acts.
 
 Important facts:
 
-* Always lies below the centroid for vertical surfaces.
-* Used in dam and gate design.
+- Always lies below the centroid for vertical surfaces.
+- Used in dam and gate design.
 
 ---
 
@@ -349,20 +328,19 @@ graph TD
 
 Archimedes stated:
 
-> A body immersed in a fluid experiences an upward force equal to the weight of the displaced fluid.
+> A body immersed in a fluid experiences an upward force equal to the weight of
+> the displaced fluid.
 
 ---
 
 ## Buoyant Force Formula
 
-[
-F_B=\rho g V
-]
+[ F_B=\rho g V ]
 
 Where:
 
-* ρ = Fluid density
-* V = Displaced fluid volume
+- ρ = Fluid density
+- V = Displaced fluid volume
 
 ---
 
@@ -370,25 +348,19 @@ Where:
 
 ### Floating Condition
 
-[
-F_B=W
-]
+[ F_B=W ]
 
 Buoyant force equals weight.
 
 ### Sinking Condition
 
-[
-F_B<W
-]
+[ F_B<W ]
 
 Weight exceeds buoyant force.
 
 ### Rising Condition
 
-[
-F_B>W
-]
+[ F_B>W ]
 
 Buoyant force exceeds weight.
 
@@ -404,7 +376,8 @@ graph TD
 
 # 🔟 Stability of Floating Bodies
 
-A floating body should return to its original position after a small disturbance.
+A floating body should return to its original position after a small
+disturbance.
 
 ### Stable Equilibrium
 
@@ -487,10 +460,11 @@ A small force lifts a heavy vehicle using Pascal's Law.
 
 # 🎯 Key Takeaways
 
-* Fluid statics deals with fluids at rest.
-* Pressure acts normal to surfaces.
-* Hydrostatic pressure increases with depth.
-* Pascal's Law forms the basis of hydraulic machines.
-* Archimedes' Principle explains buoyancy.
-* Floating bodies depend on the balance between weight and buoyant force.
-* Fluid statics is essential for designing dams, ships, hydraulic systems, and submerged structures.
+- Fluid statics deals with fluids at rest.
+- Pressure acts normal to surfaces.
+- Hydrostatic pressure increases with depth.
+- Pascal's Law forms the basis of hydraulic machines.
+- Archimedes' Principle explains buoyancy.
+- Floating bodies depend on the balance between weight and buoyant force.
+- Fluid statics is essential for designing dams, ships, hydraulic systems, and
+  submerged structures.

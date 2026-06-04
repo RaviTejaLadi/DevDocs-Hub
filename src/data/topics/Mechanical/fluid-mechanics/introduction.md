@@ -1,8 +1,12 @@
 # 📖 Introduction to Fluid Mechanics
 
-Fluid Mechanics is the branch of engineering and physics that studies the behavior of fluids (liquids and gases) at rest and in motion. It helps engineers understand how water flows through pipes, how airplanes fly, how ships float, and how pumps and turbines work.
+Fluid Mechanics is the branch of engineering and physics that studies the
+behavior of fluids (liquids and gases) at rest and in motion. It helps engineers
+understand how water flows through pipes, how airplanes fly, how ships float,
+and how pumps and turbines work.
 
-A fluid is any substance that continuously deforms when subjected to a shear force, no matter how small the force is.
+A fluid is any substance that continuously deforms when subjected to a shear
+force, no matter how small the force is.
 
 ---
 
@@ -12,19 +16,20 @@ Fluid mechanics is important because fluids are everywhere around us.
 
 ### Common Applications
 
-* Water supply systems
-* Hydraulic machines
-* Aircraft design
-* Automobile aerodynamics
-* Blood flow in the human body
-* Power generation plants
-* Oil and gas transportation
+- Water supply systems
+- Hydraulic machines
+- Aircraft design
+- Automobile aerodynamics
+- Blood flow in the human body
+- Power generation plants
+- Oil and gas transportation
 
 ---
 
 ## 💧 What is a Fluid?
 
-A fluid is a substance that cannot resist shear stress and continuously changes its shape when a force is applied.
+A fluid is a substance that cannot resist shear stress and continuously changes
+its shape when a force is applied.
 
 ### Examples
 
@@ -61,9 +66,9 @@ Study of fluids at rest.
 
 Examples:
 
-* Water stored in a tank
-* Pressure at the bottom of a dam
-* Floating objects
+- Water stored in a tank
+- Pressure at the bottom of a dam
+- Floating objects
 
 ### 2. Fluid Dynamics
 
@@ -71,9 +76,9 @@ Study of fluids in motion.
 
 Examples:
 
-* Water flowing through pipes
-* Air flowing around an airplane wing
-* Flow through pumps and turbines
+- Water flowing through pipes
+- Air flowing around an airplane wing
+- Flow through pumps and turbines
 
 ---
 
@@ -97,7 +102,7 @@ Flow properties remain constant with time.
 
 Example:
 
-* Water flowing at a constant rate in a pipe.
+- Water flowing at a constant rate in a pipe.
 
 ### Unsteady Flow
 
@@ -105,7 +110,7 @@ Flow properties change with time.
 
 Example:
 
-* Water flow during opening or closing of a valve.
+- Water flow during opening or closing of a valve.
 
 ### Laminar Flow
 
@@ -119,9 +124,11 @@ Fluid particles move randomly and chaotically.
 
 ## 📏 Continuum Hypothesis
 
-In fluid mechanics, fluids are treated as continuous matter rather than individual molecules.
+In fluid mechanics, fluids are treated as continuous matter rather than
+individual molecules.
 
-This assumption simplifies analysis and is valid for most engineering applications.
+This assumption simplifies analysis and is valid for most engineering
+applications.
 
 ---
 
@@ -135,8 +142,8 @@ Act on the surface of a fluid element.
 
 Examples:
 
-* Pressure force
-* Shear force
+- Pressure force
+- Shear force
 
 ### Body Forces
 
@@ -144,8 +151,8 @@ Act throughout the fluid volume.
 
 Examples:
 
-* Gravity
-* Magnetic force
+- Gravity
+- Magnetic force
 
 ```mermaid
 graph LR
@@ -163,12 +170,12 @@ graph LR
 
 Fluid mechanics helps engineers:
 
-* Design efficient pipelines
-* Improve aircraft performance
-* Develop hydraulic systems
-* Predict weather patterns
-* Design turbines and pumps
-* Analyze blood circulation systems
+- Design efficient pipelines
+- Improve aircraft performance
+- Develop hydraulic systems
+- Predict weather patterns
+- Design turbines and pumps
+- Analyze blood circulation systems
 
 ---
 
@@ -194,9 +201,11 @@ Energy from moving air is converted into electrical energy.
 
 ## 📌 Key Points
 
-* Fluid mechanics studies liquids and gases.
-* Fluids continuously deform under shear force.
-* It consists of fluid statics and fluid dynamics.
-* Fluid flow can be steady, unsteady, laminar, or turbulent.
-* Fluid mechanics has applications in aerospace, mechanical, civil, and biomedical engineering.
-* Understanding fluid behavior is essential for designing modern engineering systems.
+- Fluid mechanics studies liquids and gases.
+- Fluids continuously deform under shear force.
+- It consists of fluid statics and fluid dynamics.
+- Fluid flow can be steady, unsteady, laminar, or turbulent.
+- Fluid mechanics has applications in aerospace, mechanical, civil, and
+  biomedical engineering.
+- Understanding fluid behavior is essential for designing modern engineering
+  systems.

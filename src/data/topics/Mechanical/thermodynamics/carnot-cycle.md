@@ -1,14 +1,18 @@
 # ⚙️ Carnot Cycle
 
-The Carnot Cycle is an ideal thermodynamic cycle proposed by the French engineer and physicist **Sadi Carnot** in 1824.
+The Carnot Cycle is an ideal thermodynamic cycle proposed by the French engineer
+and physicist **Sadi Carnot** in 1824.
 
-It represents the **most efficient heat engine possible** operating between two temperature reservoirs.
+It represents the **most efficient heat engine possible** operating between two
+temperature reservoirs.
 
-Although no real engine can achieve Carnot efficiency, it serves as the benchmark against which all heat engines are compared.
+Although no real engine can achieve Carnot efficiency, it serves as the
+benchmark against which all heat engines are compared.
 
 ## 🎯 Definition
 
-The Carnot Cycle is a completely reversible cycle consisting of four reversible processes:
+The Carnot Cycle is a completely reversible cycle consisting of four reversible
+processes:
 
 1. Isothermal Expansion
 2. Adiabatic Expansion
@@ -223,7 +227,8 @@ The area enclosed on the T-S diagram represents net work output.
 
 # ⚡ Carnot Efficiency
 
-The efficiency of a Carnot engine depends only on the temperatures of the two reservoirs.
+The efficiency of a Carnot engine depends only on the temperatures of the two
+reservoirs.
 
 ```
 η = 1 - (TL / TH)
@@ -339,13 +344,13 @@ Used extensively in thermodynamics courses.
 
 # 📊 Carnot Cycle vs Real Heat Engine
 
-| Feature | Carnot Cycle | Real Engine |
-|----------|-------------|-------------|
-| Reversible | Yes | No |
-| Friction | None | Present |
-| Efficiency | Maximum Possible | Lower |
-| Practical | No | Yes |
-| Heat Losses | None | Present |
+| Feature     | Carnot Cycle     | Real Engine |
+| ----------- | ---------------- | ----------- |
+| Reversible  | Yes              | No          |
+| Friction    | None             | Present     |
+| Efficiency  | Maximum Possible | Lower       |
+| Practical   | No               | Yes         |
+| Heat Losses | None             | Present     |
 
 ---
 
@@ -367,4 +372,7 @@ Used extensively in thermodynamics courses.
 
 # 📚 Quick Summary
 
-The Carnot Cycle is an ideal reversible thermodynamic cycle that provides the maximum possible efficiency for a heat engine operating between two temperatures. It consists of two isothermal and two adiabatic processes and serves as the benchmark for all real heat engines and power plants.
+The Carnot Cycle is an ideal reversible thermodynamic cycle that provides the
+maximum possible efficiency for a heat engine operating between two
+temperatures. It consists of two isothermal and two adiabatic processes and
+serves as the benchmark for all real heat engines and power plants.

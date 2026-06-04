@@ -1,8 +1,11 @@
 # 🔥 Enthalpy
 
-Enthalpy is a thermodynamic property that represents the **total heat content** of a system. It is especially useful when analyzing processes that occur at constant pressure, such as boilers, turbines, condensers, and heat exchangers.
+Enthalpy is a thermodynamic property that represents the **total heat content**
+of a system. It is especially useful when analyzing processes that occur at
+constant pressure, such as boilers, turbines, condensers, and heat exchangers.
 
-Enthalpy combines a system's internal energy and the energy required to make room for it by displacing its surroundings.
+Enthalpy combines a system's internal energy and the energy required to make
+room for it by displacing its surroundings.
 
 The symbol for enthalpy is:
 
@@ -42,7 +45,8 @@ Examples:
 - Pumps
 - Heat exchangers
 
-For flowing fluids, internal energy alone is not sufficient. We must also account for the energy required to push the fluid into or out of the system.
+For flowing fluids, internal energy alone is not sufficient. We must also
+account for the energy required to push the fluid into or out of the system.
 
 This combined energy is called enthalpy.
 
@@ -107,11 +111,13 @@ Joule (J)
 kJ/kg
 ```
 
-Specific enthalpy is widely used in thermodynamic tables and engineering calculations.
+Specific enthalpy is widely used in thermodynamic tables and engineering
+calculations.
 
 ## 🔥 Enthalpy Change
 
-Most practical applications involve enthalpy change rather than absolute enthalpy.
+Most practical applications involve enthalpy change rather than absolute
+enthalpy.
 
 ```
 ΔH = H₂ - H₁
@@ -289,13 +295,13 @@ flowchart LR
 
 ## 📊 Enthalpy vs Internal Energy
 
-| Property | Internal Energy | Enthalpy |
-|-----------|----------------|-----------|
-| Symbol | U | H |
-| Includes Molecular Energy | ✅ | ✅ |
-| Includes Flow Energy | ❌ | ✅ |
-| Formula | U | U + PV |
-| Used in Flow Systems | Limited | Widely Used |
+| Property                  | Internal Energy | Enthalpy    |
+| ------------------------- | --------------- | ----------- |
+| Symbol                    | U               | H           |
+| Includes Molecular Energy | ✅              | ✅          |
+| Includes Flow Energy      | ❌              | ✅          |
+| Formula                   | U               | U + PV      |
+| Used in Flow Systems      | Limited         | Widely Used |
 
 ## 🏭 Engineering Applications
 
@@ -333,8 +339,13 @@ H = U + PV
 
 ✅ At constant pressure, heat transfer equals enthalpy change.
 
-✅ Enthalpy is widely used in boilers, turbines, compressors, and refrigeration systems.
+✅ Enthalpy is widely used in boilers, turbines, compressors, and refrigeration
+systems.
 
 ## 📚 Quick Summary
 
-Enthalpy is a thermodynamic property that combines internal energy and flow energy. It represents the total energy content of a system and is especially useful for analyzing flowing fluids and constant-pressure processes. Engineers use enthalpy extensively in power plants, refrigeration systems, turbines, boilers, and heat exchangers.
+Enthalpy is a thermodynamic property that combines internal energy and flow
+energy. It represents the total energy content of a system and is especially
+useful for analyzing flowing fluids and constant-pressure processes. Engineers
+use enthalpy extensively in power plants, refrigeration systems, turbines,
+boilers, and heat exchangers.

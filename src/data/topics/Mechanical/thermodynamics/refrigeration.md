@@ -1,8 +1,10 @@
 # ❄️ Refrigeration
 
-Refrigeration is the process of removing heat from a low-temperature region and transferring it to a high-temperature region.
+Refrigeration is the process of removing heat from a low-temperature region and
+transferring it to a high-temperature region.
 
-In nature, heat flows from a hot body to a cold body. Refrigeration does the opposite, so it requires external work.
+In nature, heat flows from a hot body to a cold body. Refrigeration does the
+opposite, so it requires external work.
 
 Examples of refrigeration systems include:
 
@@ -16,9 +18,11 @@ Examples of refrigeration systems include:
 
 # 🎯 What is Refrigeration?
 
-Refrigeration is the artificial cooling of a space or substance below the surrounding temperature.
+Refrigeration is the artificial cooling of a space or substance below the
+surrounding temperature.
 
-The primary objective is to maintain a low temperature by continuously removing heat.
+The primary objective is to maintain a low temperature by continuously removing
+heat.
 
 ### Example
 
@@ -50,11 +54,13 @@ Refrigeration helps:
 
 # ⚙️ Working Principle of Refrigeration
 
-A refrigeration system transfers heat from a cold region to a hot region by consuming work.
+A refrigeration system transfers heat from a cold region to a hot region by
+consuming work.
 
 According to the Second Law of Thermodynamics:
 
-**Heat cannot naturally flow from a colder body to a hotter body without external work.**
+**Heat cannot naturally flow from a colder body to a hotter body without
+external work.**
 
 ```mermaid
 flowchart TD
@@ -248,13 +254,13 @@ A good refrigerant should have:
 
 ### Common Refrigerants
 
-| Refrigerant | Common Name |
-|-------------|-------------|
-| R-134a | Automotive Refrigerant |
-| R-410A | Air Conditioning Refrigerant |
-| R-32 | Modern AC Refrigerant |
-| Ammonia (NH₃) | Industrial Refrigeration |
-| CO₂ | Environment-Friendly Refrigerant |
+| Refrigerant   | Common Name                      |
+| ------------- | -------------------------------- |
+| R-134a        | Automotive Refrigerant           |
+| R-410A        | Air Conditioning Refrigerant     |
+| R-32          | Modern AC Refrigerant            |
+| Ammonia (NH₃) | Industrial Refrigeration         |
+| CO₂           | Environment-Friendly Refrigerant |
 
 ---
 
@@ -312,10 +318,10 @@ Both operate on the same principle.
 
 The difference is the desired effect.
 
-| Device | Desired Output |
-|----------|---------------|
+| Device       | Desired Output |
+| ------------ | -------------- |
 | Refrigerator | Cooling Effect |
-| Heat Pump | Heating Effect |
+| Heat Pump    | Heating Effect |
 
 ```mermaid
 flowchart LR
@@ -388,12 +394,12 @@ flowchart TD
 
 # 📊 Heat Engine vs Refrigeration System
 
-| Feature | Heat Engine | Refrigeration System |
-|----------|------------|---------------------|
-| Main Objective | Produce Work | Produce Cooling |
-| Work | Output | Input |
-| Heat Flow | Hot → Cold | Cold → Hot |
-| Performance Measure | Efficiency | COP |
+| Feature             | Heat Engine  | Refrigeration System |
+| ------------------- | ------------ | -------------------- |
+| Main Objective      | Produce Work | Produce Cooling      |
+| Work                | Output       | Input                |
+| Heat Flow           | Hot → Cold   | Cold → Hot           |
+| Performance Measure | Efficiency   | COP                  |
 
 ---
 
@@ -411,10 +417,15 @@ flowchart TD
 
 ✅ Performance is measured using COP.
 
-✅ Refrigeration is widely used in homes, industries, medicine, and air conditioning.
+✅ Refrigeration is widely used in homes, industries, medicine, and air
+conditioning.
 
 ---
 
 # 📚 Quick Summary
 
-Refrigeration is the process of transferring heat from a cold region to a hot region using external work. Most refrigeration systems operate on the Vapor Compression Cycle, which consists of a compressor, condenser, expansion valve, and evaporator. Refrigeration is essential for food preservation, air conditioning, industrial cooling, and medical storage.
+Refrigeration is the process of transferring heat from a cold region to a hot
+region using external work. Most refrigeration systems operate on the Vapor
+Compression Cycle, which consists of a compressor, condenser, expansion valve,
+and evaporator. Refrigeration is essential for food preservation, air
+conditioning, industrial cooling, and medical storage.

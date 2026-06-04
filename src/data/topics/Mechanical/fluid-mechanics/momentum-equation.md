@@ -1,10 +1,14 @@
 # ➡️ Momentum Equation
 
-The Momentum Equation is one of the most important equations in fluid mechanics. It is based on **Newton's Second Law of Motion**, which states:
+The Momentum Equation is one of the most important equations in fluid mechanics.
+It is based on **Newton's Second Law of Motion**, which states:
 
-> The net force acting on a body is equal to the rate of change of momentum of that body.
+> The net force acting on a body is equal to the rate of change of momentum of
+> that body.
 
-In fluid flow, the momentum equation helps determine the forces exerted by moving fluids on pipes, bends, nozzles, turbine blades, and hydraulic structures.
+In fluid flow, the momentum equation helps determine the forces exerted by
+moving fluids on pipes, bends, nozzles, turbine blades, and hydraulic
+structures.
 
 ---
 
@@ -14,20 +18,16 @@ Momentum is the quantity of motion possessed by a moving body.
 
 ### Formula
 
-[
-\text{Momentum} = mv
-]
+[ \text{Momentum} = mv ]
 
 Where:
 
-* (m) = Mass (kg)
-* (v) = Velocity (m/s)
+- (m) = Mass (kg)
+- (v) = Velocity (m/s)
 
 ### SI Unit
 
-[
-kg \cdot m/s
-]
+[ kg \cdot m/s ]
 
 ---
 
@@ -35,15 +35,14 @@ kg \cdot m/s
 
 A fluid particle of mass 10 kg moving at 5 m/s has momentum:
 
-[
-10 \times 5 = 50 \ kg \cdot m/s
-]
+[ 10 \times 5 = 50 \ kg \cdot m/s ]
 
 ---
 
 # 🌊 Momentum in Fluid Flow
 
-Since fluids flow continuously, we use **momentum flow rate** instead of momentum of a single particle.
+Since fluids flow continuously, we use **momentum flow rate** instead of
+momentum of a single particle.
 
 ```mermaid id="4d4sht"
 graph LR
@@ -54,23 +53,17 @@ graph LR
 
 Mass flow rate:
 
-[
-\dot m = \rho AV
-]
+[ \dot m = \rho AV ]
 
 Therefore,
 
-[
-\text{Momentum Flow Rate}
-=========================
+[ \text{Momentum Flow Rate} =========================
 
-\dot m V
-]
+\dot m V ]
 
 # [
 
-\rho AV^2
-]
+\rho AV^2 ]
 
 ---
 
@@ -78,27 +71,21 @@ Therefore,
 
 For fluid flow:
 
-[
-\text{Force}
-============
+[ \text{Force} ============
 
-\text{Rate of Change of Momentum}
-]
+\text{Rate of Change of Momentum} ]
 
 This becomes:
 
-[
-F
-=
+[ F =
 
-\dot m(V_2 - V_1)
-]
+\dot m(V_2 - V_1) ]
 
 Where:
 
-* (F) = Force acting on fluid
-* (V_1) = Inlet velocity
-* (V_2) = Outlet velocity
+- (F) = Force acting on fluid
+- (V_1) = Inlet velocity
+- (V_2) = Outlet velocity
 
 ---
 
@@ -106,27 +93,19 @@ Where:
 
 For one-dimensional steady flow:
 
-[
-F
-=
+[ F =
 
-\dot m(V_2 - V_1)
-]
+\dot m(V_2 - V_1) ]
 
 Substituting:
 
-[
-\dot m = \rho AV
-]
+[ \dot m = \rho AV ]
 
 gives:
 
-[
-F
-=
+[ F =
 
-\rho AV(V_2 - V_1)
-]
+\rho AV(V_2 - V_1) ]
 
 ---
 
@@ -141,8 +120,8 @@ graph LR
 
 ### Key Idea
 
-* Larger velocity change → Larger force
-* Larger mass flow rate → Larger force
+- Larger velocity change → Larger force
+- Larger mass flow rate → Larger force
 
 ---
 
@@ -159,12 +138,11 @@ graph LR
 
 Net external force equals:
 
-[
-\text{Momentum Out}
--------------------
+[ \text{Momentum Out}
 
-\text{Momentum In}
-]
+---
+
+\text{Momentum In} ]
 
 ---
 
@@ -172,12 +150,9 @@ Net external force equals:
 
 For steady flow:
 
-[
-\sum F
-======
+[ \sum F ======
 
-\dot m(V_{out}-V_{in})
-]
+\dot m(V*{out}-V*{in}) ]
 
 This is the most widely used form.
 
@@ -187,36 +162,25 @@ This is the most widely used form.
 
 Water enters a nozzle at:
 
-[
-V_1 = 3 \ m/s
-]
+[ V_1 = 3 \ m/s ]
 
 and exits at:
 
-[
-V_2 = 12 \ m/s
-]
+[ V_2 = 12 \ m/s ]
 
 Mass flow rate:
 
-[
-\dot m = 20 \ kg/s
-]
+[ \dot m = 20 \ kg/s ]
 
 Find the force.
 
 ### Solution
 
-[
-F
-=
+[ F =
 
-20(12-3)
-]
+20(12-3) ]
 
-[
-F=180N
-]
+[ F=180N ]
 
 The nozzle experiences a reaction force of 180 N.
 
@@ -234,27 +198,20 @@ graph LR
 
 Given:
 
-* Mass flow rate = 25 kg/s
-* Jet velocity = 15 m/s
+- Mass flow rate = 25 kg/s
+- Jet velocity = 15 m/s
 
 After striking the plate:
 
-[
-V_2 = 0
-]
+[ V_2 = 0 ]
 
 Using momentum equation:
 
-[
-F
-=
+[ F =
 
-25(15-0)
-]
+25(15-0) ]
 
-[
-F = 375N
-]
+[ F = 375N ]
 
 The plate experiences a force of 375 N.
 
@@ -279,9 +236,7 @@ graph TD
 
 Pressure acting on inlet and outlet sections.
 
-[
-F_P = PA
-]
+[ F_P = PA ]
 
 ---
 
@@ -289,9 +244,7 @@ F_P = PA
 
 Weight of the fluid.
 
-[
-W=mg
-]
+[ W=mg ]
 
 ---
 
@@ -311,19 +264,15 @@ Force due to viscosity.
 
 For horizontal flow:
 
-[
-\sum F_x
-========
+[ \sum F_x ========
 
-\dot m
-(V_{2x}-V_{1x})
-]
+\dot m (V*{2x}-V*{1x}) ]
 
 Used in:
 
-* Nozzles
-* Pipe bends
-* Jets
+- Nozzles
+- Pipe bends
+- Jets
 
 ---
 
@@ -331,19 +280,15 @@ Used in:
 
 For vertical flow:
 
-[
-\sum F_y
-========
+[ \sum F_y ========
 
-\dot m
-(V_{2y}-V_{1y})
-]
+\dot m (V*{2y}-V*{1y}) ]
 
 Used in:
 
-* Pipe elbows
-* Hydraulic structures
-* Curved vanes
+- Pipe elbows
+- Hydraulic structures
+- Curved vanes
 
 ---
 
@@ -383,8 +328,8 @@ The engine accelerates gases backward.
 
 By conservation of momentum:
 
-* Exhaust moves backward
-* Aircraft moves forward
+- Exhaust moves backward
+- Aircraft moves forward
 
 ---
 
@@ -483,21 +428,15 @@ graph TD
 
 Mathematically:
 
-[
-\sum F
-======
+[ \sum F ======
 
-\frac{d(mV)}{dt}
-]
+\frac{d(mV)}{dt} ]
 
 For steady flow:
 
-[
-\sum F
-======
+[ \sum F ======
 
-\dot m(V_2-V_1)
-]
+\dot m(V_2-V_1) ]
 
 ---
 
@@ -507,13 +446,9 @@ Real fluid velocity is not uniform across a pipe section.
 
 Therefore, a correction factor may be introduced.
 
-[
-\beta
-=====
+[ \beta =====
 
-\frac{\text{Actual Momentum}}
-{\text{Momentum Using Average Velocity}}
-]
+\frac{\text{Actual Momentum}} {\text{Momentum Using Average Velocity}} ]
 
 Typical values:
 
@@ -567,10 +502,12 @@ Together they form the foundation of fluid mechanics.
 
 # 🎯 Key Takeaways
 
-* The Momentum Equation is derived from Newton's Second Law.
-* Force equals the rate of change of momentum.
-* Momentum in fluids depends on mass flow rate and velocity.
-* Velocity changes create forces on pipes, nozzles, and structures.
-* The equation is widely used in jet propulsion, turbines, pipe bends, and hydraulic systems.
-* Momentum analysis is essential for calculating reaction forces and thrust.
-* Along with continuity and Bernoulli equations, it forms the core of fluid flow analysis.
+- The Momentum Equation is derived from Newton's Second Law.
+- Force equals the rate of change of momentum.
+- Momentum in fluids depends on mass flow rate and velocity.
+- Velocity changes create forces on pipes, nozzles, and structures.
+- The equation is widely used in jet propulsion, turbines, pipe bends, and
+  hydraulic systems.
+- Momentum analysis is essential for calculating reaction forces and thrust.
+- Along with continuity and Bernoulli equations, it forms the core of fluid flow
+  analysis.

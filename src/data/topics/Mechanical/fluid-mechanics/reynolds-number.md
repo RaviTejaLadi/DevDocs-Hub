@@ -1,8 +1,11 @@
 # 🔢 Reynolds Number
 
-The Reynolds Number is one of the most important dimensionless numbers in fluid mechanics. It helps predict whether a fluid flow will be **laminar**, **turbulent**, or in a **transition state**.
+The Reynolds Number is one of the most important dimensionless numbers in fluid
+mechanics. It helps predict whether a fluid flow will be **laminar**,
+**turbulent**, or in a **transition state**.
 
-It was introduced by the British engineer and physicist Osborne Reynolds through his famous flow experiments.
+It was introduced by the British engineer and physicist Osborne Reynolds through
+his famous flow experiments.
 
 In simple terms:
 
@@ -16,9 +19,9 @@ Different types of fluid flow behave differently.
 
 For example:
 
-* Honey flows smoothly.
-* River water may flow turbulently.
-* Airflow around aircraft can become turbulent.
+- Honey flows smoothly.
+- River water may flow turbulently.
+- Airflow around aircraft can become turbulent.
 
 The Reynolds Number helps engineers predict these behaviors.
 
@@ -36,25 +39,17 @@ graph TD
 
 Reynolds Number is the ratio of:
 
-[
-\text{Inertial Forces}
-]
+[ \text{Inertial Forces} ]
 
 to
 
-[
-\text{Viscous Forces}
-]
+[ \text{Viscous Forces} ]
 
 Mathematically:
 
-[
-Re
-==
+[ Re ==
 
-\frac{\text{Inertial Force}}
-{\text{Viscous Force}}
-]
+\frac{\text{Inertial Force}} {\text{Viscous Force}} ]
 
 ---
 
@@ -62,20 +57,17 @@ Re
 
 For flow inside a circular pipe:
 
-[
-Re
-==
+[ Re ==
 
-\frac{\rho VD}{\mu}
-]
+\frac{\rho VD}{\mu} ]
 
 Where:
 
-* (Re) = Reynolds Number
-* (\rho) = Fluid density (kg/m³)
-* (V) = Flow velocity (m/s)
-* (D) = Pipe diameter (m)
-* (\mu) = Dynamic viscosity (Pa·s)
+- (Re) = Reynolds Number
+- (\rho) = Fluid density (kg/m³)
+- (V) = Flow velocity (m/s)
+- (D) = Pipe diameter (m)
+- (\mu) = Dynamic viscosity (Pa·s)
 
 ---
 
@@ -83,16 +75,13 @@ Where:
 
 Using kinematic viscosity:
 
-[
-Re
-==
+[ Re ==
 
-\frac{VD}{\nu}
-]
+\frac{VD}{\nu} ]
 
 Where:
 
-* (\nu) = Kinematic viscosity (m²/s)
+- (\nu) = Kinematic viscosity (m²/s)
 
 Both formulas produce the same value.
 
@@ -119,13 +108,13 @@ graph LR
 
 Reynolds Number increases when:
 
-* Velocity increases
-* Pipe diameter increases
-* Density increases
+- Velocity increases
+- Pipe diameter increases
+- Density increases
 
 Reynolds Number decreases when:
 
-* Viscosity increases
+- Viscosity increases
 
 ---
 
@@ -150,9 +139,9 @@ The dye moved in smooth, straight lines.
 
 Characteristics:
 
-* Fluid layers move smoothly.
-* Very little mixing.
-* Low energy loss.
+- Fluid layers move smoothly.
+- Very little mixing.
+- Low energy loss.
 
 ```mermaid id="kz3g3r"
 graph TD
@@ -169,8 +158,8 @@ The dye became unstable.
 
 Characteristics:
 
-* Intermediate condition.
-* Flow may switch between laminar and turbulent.
+- Intermediate condition.
+- Flow may switch between laminar and turbulent.
 
 ---
 
@@ -180,9 +169,9 @@ The dye mixed completely with water.
 
 Characteristics:
 
-* Random motion.
-* High mixing.
-* Higher energy losses.
+- Random motion.
+- High mixing.
+- Higher energy losses.
 
 ```mermaid id="q73o7s"
 graph TD
@@ -232,8 +221,8 @@ High inertial forces promote turbulence.
 
 Examples:
 
-* Fast-moving river
-* Air around a jet aircraft
+- Fast-moving river
+- Air around a jet aircraft
 
 ---
 
@@ -245,9 +234,9 @@ High viscosity promotes smooth flow.
 
 Examples:
 
-* Honey
-* Glycerin
-* Lubricating oil
+- Honey
+- Glycerin
+- Lubricating oil
 
 ```mermaid id="v2k9jf"
 graph LR
@@ -266,37 +255,30 @@ Water flows through a pipe.
 
 Given:
 
-* Density = 1000 kg/m³
-* Velocity = 2 m/s
-* Diameter = 0.05 m
-* Dynamic viscosity = 0.001 Pa·s
+- Density = 1000 kg/m³
+- Velocity = 2 m/s
+- Diameter = 0.05 m
+- Dynamic viscosity = 0.001 Pa·s
 
 Find Reynolds Number.
 
 ### Solution
 
-[
-Re
-==
+[ Re ==
 
-\frac{\rho VD}{\mu}
-]
+\frac{\rho VD}{\mu} ]
 
 # [
 
-\frac{1000\times2\times0.05}{0.001}
-]
+\frac{1000\times2\times0.05}{0.001} ]
 
 # [
 
-100000
-]
+100000 ]
 
 Since:
 
-[
-Re > 4000
-]
+[ Re > 4000 ]
 
 Flow is turbulent.
 
@@ -308,29 +290,22 @@ Oil flows through a small tube.
 
 Given:
 
-* Density = 900 kg/m³
-* Velocity = 0.1 m/s
-* Diameter = 0.01 m
-* Viscosity = 0.2 Pa·s
+- Density = 900 kg/m³
+- Velocity = 0.1 m/s
+- Diameter = 0.01 m
+- Viscosity = 0.2 Pa·s
 
 ### Solution
 
-[
-Re
-==
+[ Re ==
 
-\frac{900\times0.1\times0.01}{0.2}
-]
+\frac{900\times0.1\times0.01}{0.2} ]
 
-[
-Re=4.5
-]
+[ Re=4.5 ]
 
 Since:
 
-[
-Re < 2000
-]
+[ Re < 2000 ]
 
 Flow is laminar.
 
@@ -360,7 +335,8 @@ graph LR
     --> C[Drag Force]
 ```
 
-Different Reynolds Numbers produce different boundary layer behavior and drag characteristics.
+Different Reynolds Numbers produce different boundary layer behavior and drag
+characteristics.
 
 ---
 
@@ -376,7 +352,8 @@ graph TD
     --> D[Turbulent]
 ```
 
-The Reynolds Number determines when the boundary layer transitions from laminar to turbulent.
+The Reynolds Number determines when the boundary layer transitions from laminar
+to turbulent.
 
 ---
 
@@ -424,11 +401,11 @@ Helps determine convection coefficients.
 
 Near the wick:
 
-* Laminar flow
+- Laminar flow
 
 Farther away:
 
-* Turbulent flow
+- Turbulent flow
 
 ---
 
@@ -448,7 +425,8 @@ Engineers calculate Reynolds Number to predict airflow characteristics.
 
 ### Blood Flow
 
-Reynolds Number helps determine whether blood flow remains smooth or becomes disturbed.
+Reynolds Number helps determine whether blood flow remains smooth or becomes
+disturbed.
 
 ---
 
@@ -472,10 +450,10 @@ Reynolds Number alone cannot fully describe every flow.
 
 Other dimensionless numbers may also be needed:
 
-* Mach Number
-* Froude Number
-* Weber Number
-* Prandtl Number
+- Mach Number
+- Froude Number
+- Weber Number
+- Prandtl Number
 
 ---
 
@@ -500,10 +478,11 @@ Other dimensionless numbers may also be needed:
 
 # 🎯 Key Takeaways
 
-* Reynolds Number compares inertial forces with viscous forces.
-* It predicts whether flow is laminar or turbulent.
-* Low Reynolds Number indicates smooth flow.
-* High Reynolds Number indicates turbulent flow.
-* Reynolds Number depends on velocity, density, diameter, and viscosity.
-* It is one of the most important dimensionless numbers in fluid mechanics.
-* Engineers use it extensively in pipelines, aircraft, automobiles, turbines, and heat transfer systems.
+- Reynolds Number compares inertial forces with viscous forces.
+- It predicts whether flow is laminar or turbulent.
+- Low Reynolds Number indicates smooth flow.
+- High Reynolds Number indicates turbulent flow.
+- Reynolds Number depends on velocity, density, diameter, and viscosity.
+- It is one of the most important dimensionless numbers in fluid mechanics.
+- Engineers use it extensively in pipelines, aircraft, automobiles, turbines,
+  and heat transfer systems.

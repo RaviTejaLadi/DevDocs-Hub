@@ -1,15 +1,18 @@
-
 # 0️⃣ Zeroth Law of Thermodynamics
 
-The Zeroth Law of Thermodynamics is one of the most fundamental laws in thermodynamics. It introduces the concept of **temperature** and explains how we can determine whether two objects are at the same temperature.
+The Zeroth Law of Thermodynamics is one of the most fundamental laws in
+thermodynamics. It introduces the concept of **temperature** and explains how we
+can determine whether two objects are at the same temperature.
 
-Although it was discovered after the First and Second Laws, it was considered more fundamental and was therefore named the **Zeroth Law**.
+Although it was discovered after the First and Second Laws, it was considered
+more fundamental and was therefore named the **Zeroth Law**.
 
 ---
 
 # 🎯 Statement of Zeroth Law
 
-**If two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.**
+**If two systems are each in thermal equilibrium with a third system, then they
+are in thermal equilibrium with each other.**
 
 In simple words:
 
@@ -62,17 +65,16 @@ Imagine:
 - A thermometer
 - A glass of warm water
 
-Step 1:
-Place the thermometer in the coffee.
+Step 1: Place the thermometer in the coffee.
 
 Eventually, the thermometer reaches thermal equilibrium with the coffee.
 
-Step 2:
-Place the same thermometer in the warm water.
+Step 2: Place the same thermometer in the warm water.
 
 The thermometer shows the same reading.
 
-Since both the coffee and water are in thermal equilibrium with the thermometer, the Zeroth Law tells us that:
+Since both the coffee and water are in thermal equilibrium with the thermometer,
+the Zeroth Law tells us that:
 
 **The coffee and water are at the same temperature.**
 
@@ -206,13 +208,15 @@ Used in:
 
 ## 🚗 Automobile Systems
 
-Engine temperature sensors rely on thermal equilibrium to measure engine temperature accurately.
+Engine temperature sensors rely on thermal equilibrium to measure engine
+temperature accurately.
 
 ---
 
 ## ❄️ Refrigeration and Air Conditioning
 
-Temperature sensors continuously compare temperatures and regulate cooling systems.
+Temperature sensors continuously compare temperatures and regulate cooling
+systems.
 
 ---
 
@@ -253,12 +257,12 @@ This conclusion is valid because of the Zeroth Law.
 
 # ⚖️ Thermal Equilibrium vs Heat Transfer
 
-| Condition | Heat Transfer |
-|------------|--------------|
-| Temperatures Different | Yes |
-| Temperatures Equal | No |
-| Thermal Equilibrium | No Net Heat Flow |
-| Zeroth Law Satisfied | Yes |
+| Condition              | Heat Transfer    |
+| ---------------------- | ---------------- |
+| Temperatures Different | Yes              |
+| Temperatures Equal     | No               |
+| Thermal Equilibrium    | No Net Heat Flow |
+| Zeroth Law Satisfied   | Yes              |
 
 ---
 
@@ -272,11 +276,14 @@ This conclusion is valid because of the Zeroth Law.
 
 ✅ No heat transfer occurs during thermal equilibrium.
 
-✅ If two systems have the same temperature as a third system, they must have the same temperature as each other.
+✅ If two systems have the same temperature as a third system, they must have
+the same temperature as each other.
 
 ---
 
 # 📝 Quick Summary
 
-The Zeroth Law of Thermodynamics states that if two systems are separately in thermal equilibrium with a third system, they are also in thermal equilibrium with each other. This law forms the foundation of temperature measurement and explains how thermometers accurately determine temperature.
-
+The Zeroth Law of Thermodynamics states that if two systems are separately in
+thermal equilibrium with a third system, they are also in thermal equilibrium
+with each other. This law forms the foundation of temperature measurement and
+explains how thermometers accurately determine temperature.

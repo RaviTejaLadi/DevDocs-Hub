@@ -1,16 +1,21 @@
 # 🌀 Viscous Flow
 
-In real life, every fluid has some amount of viscosity. Because of viscosity, fluid particles experience internal friction while flowing. This type of flow is known as **Viscous Flow**.
+In real life, every fluid has some amount of viscosity. Because of viscosity,
+fluid particles experience internal friction while flowing. This type of flow is
+known as **Viscous Flow**.
 
-Viscous flow plays a major role in pipelines, lubrication systems, blood circulation, hydraulic machines, and aerodynamic applications.
+Viscous flow plays a major role in pipelines, lubrication systems, blood
+circulation, hydraulic machines, and aerodynamic applications.
 
-> Without viscosity, fluids would flow without any resistance, which never happens in real-world conditions.
+> Without viscosity, fluids would flow without any resistance, which never
+> happens in real-world conditions.
 
 ---
 
 # 📌 What is Viscosity?
 
-Viscosity is the property of a fluid that resists relative motion between adjacent fluid layers.
+Viscosity is the property of a fluid that resists relative motion between
+adjacent fluid layers.
 
 It can be thought of as:
 
@@ -44,14 +49,15 @@ graph LR
 
 # 🌊 What is Viscous Flow?
 
-Viscous flow is a fluid flow in which viscous forces significantly influence the motion of the fluid.
+Viscous flow is a fluid flow in which viscous forces significantly influence the
+motion of the fluid.
 
 In viscous flow:
 
-* Internal friction exists
-* Energy is lost due to resistance
-* Velocity varies across the flow section
-* Shear stress develops between fluid layers
+- Internal friction exists
+- Energy is lost due to resistance
+- Velocity varies across the flow section
+- Shear stress develops between fluid layers
 
 ---
 
@@ -91,15 +97,13 @@ According to Newton:
 
 ### Mathematical Form
 
-[
-\tau = \mu \frac{du}{dy}
-]
+[ \tau = \mu \frac{du}{dy} ]
 
 Where:
 
-* (\tau) = Shear stress (Pa)
-* (\mu) = Dynamic viscosity (Pa·s)
-* (du/dy) = Velocity gradient
+- (\tau) = Shear stress (Pa)
+- (\mu) = Dynamic viscosity (Pa·s)
+- (du/dy) = Velocity gradient
 
 ---
 
@@ -116,8 +120,8 @@ graph LR
 
 ### Observations
 
-* Larger viscosity → Larger shear stress
-* Larger velocity difference → Larger shear stress
+- Larger viscosity → Larger shear stress
+- Larger velocity difference → Larger shear stress
 
 ---
 
@@ -127,21 +131,15 @@ Dynamic viscosity measures a fluid's resistance to flow.
 
 ### Symbol
 
-[
-\mu
-]
+[ \mu ]
 
 ### SI Unit
 
-[
-Pa \cdot s
-]
+[ Pa \cdot s ]
 
 or
 
-[
-N \cdot s/m^2
-]
+[ N \cdot s/m^2 ]
 
 ---
 
@@ -151,21 +149,17 @@ Kinematic viscosity is the ratio of dynamic viscosity to density.
 
 ### Formula
 
-[
-\nu = \frac{\mu}{\rho}
-]
+[ \nu = \frac{\mu}{\rho} ]
 
 Where:
 
-* (\nu) = Kinematic viscosity
-* (\mu) = Dynamic viscosity
-* (\rho) = Density
+- (\nu) = Kinematic viscosity
+- (\mu) = Dynamic viscosity
+- (\rho) = Density
 
 ### SI Unit
 
-[
-m^2/s
-]
+[ m^2/s ]
 
 ---
 
@@ -188,10 +182,10 @@ Viscosity remains constant.
 
 ### Examples
 
-* Water
-* Air
-* Alcohol
-* Gasoline
+- Water
+- Air
+- Alcohol
+- Gasoline
 
 ```mermaid id="z6sdjr"
 graph TD
@@ -211,10 +205,10 @@ Viscosity changes with shear rate.
 
 ### Examples
 
-* Toothpaste
-* Paint
-* Blood
-* Ketchup
+- Toothpaste
+- Paint
+- Blood
+- Ketchup
 
 ```mermaid id="q7jdrn"
 graph TD
@@ -236,9 +230,7 @@ It states:
 
 For a stationary wall:
 
-[
-V = 0
-]
+[ V = 0 ]
 
 at the wall surface.
 
@@ -259,9 +251,9 @@ graph TD
 
 ### Characteristics
 
-* Zero velocity at wall
-* Maximum velocity at center
-* Smooth velocity variation
+- Zero velocity at wall
+- Maximum velocity at center
+- Smooth velocity variation
 
 ---
 
@@ -269,9 +261,9 @@ graph TD
 
 In laminar flow:
 
-* Fluid moves in smooth layers
-* Mixing is minimal
-* Viscosity dominates
+- Fluid moves in smooth layers
+- Mixing is minimal
+- Viscosity dominates
 
 ```mermaid id="j1w3rh"
 graph LR
@@ -282,9 +274,7 @@ graph LR
 
 Typical condition:
 
-[
-Re < 2000
-]
+[ Re < 2000 ]
 
 ---
 
@@ -292,9 +282,9 @@ Re < 2000
 
 In turbulent flow:
 
-* Random fluctuations occur
-* Mixing is significant
-* Energy losses increase
+- Random fluctuations occur
+- Mixing is significant
+- Energy losses increase
 
 ```mermaid id="h2u7yb"
 graph TD
@@ -306,9 +296,7 @@ graph TD
 
 Typical condition:
 
-[
-Re > 4000
-]
+[ Re > 4000 ]
 
 ---
 
@@ -316,21 +304,17 @@ Re > 4000
 
 For laminar flow through a circular pipe:
 
-[
-Q
-=
+[ Q =
 
-\frac{\pi r^4 \Delta P}
-{8\mu L}
-]
+\frac{\pi r^4 \Delta P} {8\mu L} ]
 
 Where:
 
-* (Q) = Flow rate
-* (r) = Pipe radius
-* (\Delta P) = Pressure difference
-* (L) = Pipe length
-* (\mu) = Dynamic viscosity
+- (Q) = Flow rate
+- (r) = Pipe radius
+- (\Delta P) = Pressure difference
+- (L) = Pipe length
+- (\mu) = Dynamic viscosity
 
 ---
 
@@ -338,9 +322,7 @@ Where:
 
 The flow rate depends on:
 
-[
-r^4
-]
+[ r^4 ]
 
 This means a small increase in pipe radius greatly increases flow rate.
 
@@ -352,9 +334,9 @@ Viscosity causes friction between fluid layers and pipe walls.
 
 This leads to:
 
-* Pressure drop
-* Energy loss
-* Reduced efficiency
+- Pressure drop
+- Energy loss
+- Reduced efficiency
 
 ```mermaid id="b8mqnr"
 graph LR
@@ -368,7 +350,8 @@ graph LR
 
 # Boundary Layer Concept
 
-When fluid flows over a surface, viscosity creates a thin region called the boundary layer.
+When fluid flows over a surface, viscosity creates a thin region called the
+boundary layer.
 
 ```mermaid id="n7hvqj"
 graph LR
@@ -379,12 +362,12 @@ graph LR
 
 Inside the boundary layer:
 
-* Velocity changes rapidly
-* Viscous effects dominate
+- Velocity changes rapidly
+- Viscous effects dominate
 
 Outside the boundary layer:
 
-* Viscous effects are small
+- Viscous effects are small
 
 ---
 
@@ -491,10 +474,11 @@ Blood viscosity influences resistance in arteries and veins.
 
 # 🎯 Key Takeaways
 
-* Viscous flow occurs because real fluids possess viscosity.
-* Viscosity acts as internal friction within a fluid.
-* Newton's law of viscosity relates shear stress to velocity gradient.
-* Viscous effects create pressure losses and energy dissipation.
-* The no-slip condition causes velocity to be zero at solid boundaries.
-* Boundary layers form because of viscous effects near surfaces.
-* Viscous flow analysis is essential in pipelines, lubrication systems, aerodynamics, and hydraulic engineering.
+- Viscous flow occurs because real fluids possess viscosity.
+- Viscosity acts as internal friction within a fluid.
+- Newton's law of viscosity relates shear stress to velocity gradient.
+- Viscous effects create pressure losses and energy dissipation.
+- The no-slip condition causes velocity to be zero at solid boundaries.
+- Boundary layers form because of viscous effects near surfaces.
+- Viscous flow analysis is essential in pipelines, lubrication systems,
+  aerodynamics, and hydraulic engineering.

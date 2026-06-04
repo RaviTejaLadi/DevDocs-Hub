@@ -1,6 +1,7 @@
 # 🔧 Heat Engines
 
-A heat engine is a device that converts **thermal energy (heat)** into **mechanical work**.
+A heat engine is a device that converts **thermal energy (heat)** into
+**mechanical work**.
 
 Heat engines play a crucial role in modern society and are used in:
 
@@ -10,15 +11,18 @@ Heat engines play a crucial role in modern society and are used in:
 - 🚢 Ships
 - ⚡ Electricity Generation Systems
 
-Every heat engine operates according to the laws of thermodynamics and works in a cyclic manner.
+Every heat engine operates according to the laws of thermodynamics and works in
+a cyclic manner.
 
 ---
 
 # 🎯 What is a Heat Engine?
 
-A heat engine absorbs heat from a high-temperature source, converts part of that heat into useful work, and rejects the remaining heat to a low-temperature sink.
+A heat engine absorbs heat from a high-temperature source, converts part of that
+heat into useful work, and rejects the remaining heat to a low-temperature sink.
 
-Since complete conversion of heat into work is impossible, some heat must always be rejected according to the Second Law of Thermodynamics.
+Since complete conversion of heat into work is impossible, some heat must always
+be rejected according to the Second Law of Thermodynamics.
 
 ```mermaid
 flowchart TD
@@ -152,7 +156,8 @@ Where:
 - W = Useful work output
 - Qout = Heat rejected
 
-This equation shows that all supplied heat is either converted into work or rejected.
+This equation shows that all supplied heat is either converted into work or
+rejected.
 
 ```mermaid
 flowchart TD
@@ -166,7 +171,8 @@ flowchart TD
 
 # 📊 Thermal Efficiency
 
-Thermal efficiency measures how effectively a heat engine converts heat into work.
+Thermal efficiency measures how effectively a heat engine converts heat into
+work.
 
 ```
 η = W / Qin
@@ -350,13 +356,13 @@ Applications:
 
 Different heat engines operate on different cycles.
 
-| Engine | Cycle |
-|----------|--------|
-| Petrol Engine | Otto Cycle |
-| Diesel Engine | Diesel Cycle |
+| Engine        | Cycle         |
+| ------------- | ------------- |
+| Petrol Engine | Otto Cycle    |
+| Diesel Engine | Diesel Cycle  |
 | Steam Turbine | Rankine Cycle |
-| Gas Turbine | Brayton Cycle |
-| Ideal Engine | Carnot Cycle |
+| Gas Turbine   | Brayton Cycle |
+| Ideal Engine  | Carnot Cycle  |
 
 ---
 
@@ -413,12 +419,12 @@ flowchart TD
 
 # 📊 Heat Engine vs Refrigerator
 
-| Feature | Heat Engine | Refrigerator |
-|-----------|------------|--------------|
-| Purpose | Produce Work | Transfer Heat |
-| Work | Output | Input |
-| Heat Flow | Hot → Cold | Cold → Hot |
-| Main Goal | Generate Power | Cooling |
+| Feature   | Heat Engine    | Refrigerator  |
+| --------- | -------------- | ------------- |
+| Purpose   | Produce Work   | Transfer Heat |
+| Work      | Output         | Input         |
+| Heat Flow | Hot → Cold     | Cold → Hot    |
+| Main Goal | Generate Power | Cooling       |
 
 ---
 
@@ -434,10 +440,15 @@ flowchart TD
 
 ✅ Heat engines operate in thermodynamic cycles.
 
-✅ Otto, Diesel, Rankine, Brayton, and Carnot cycles are important heat engine cycles.
+✅ Otto, Diesel, Rankine, Brayton, and Carnot cycles are important heat engine
+cycles.
 
 ---
 
 # 📚 Quick Summary
 
-A heat engine is a device that converts thermal energy into useful mechanical work. It absorbs heat from a high-temperature source, converts part of it into work, and rejects the remaining heat to a low-temperature sink. Heat engines are the foundation of automobiles, turbines, power plants, aircraft engines, and many industrial systems.
+A heat engine is a device that converts thermal energy into useful mechanical
+work. It absorbs heat from a high-temperature source, converts part of it into
+work, and rejects the remaining heat to a low-temperature sink. Heat engines are
+the foundation of automobiles, turbines, power plants, aircraft engines, and
+many industrial systems.

@@ -1,12 +1,15 @@
 # 📐 Bernoulli's Equation
 
-Bernoulli's Equation is one of the most important principles in fluid mechanics. It explains how pressure, velocity, and elevation are related in a moving fluid.
+Bernoulli's Equation is one of the most important principles in fluid mechanics.
+It explains how pressure, velocity, and elevation are related in a moving fluid.
 
 A simple idea behind Bernoulli's principle is:
 
-> When the velocity of a fluid increases, its pressure decreases, and vice versa.
+> When the velocity of a fluid increases, its pressure decreases, and vice
+> versa.
 
-This principle is widely used in aircraft wings, Venturi meters, nozzles, pipelines, carburetors, and hydraulic systems.
+This principle is widely used in aircraft wings, Venturi meters, nozzles,
+pipelines, carburetors, and hydraulic systems.
 
 ---
 
@@ -16,8 +19,9 @@ Bernoulli's Equation is based on the **Law of Conservation of Energy**.
 
 For an ideal fluid flowing steadily through a pipe:
 
-* Total energy remains constant.
-* Energy changes form between pressure energy, kinetic energy, and potential energy.
+- Total energy remains constant.
+- Energy changes form between pressure energy, kinetic energy, and potential
+  energy.
 
 ```mermaid
 graph LR
@@ -52,9 +56,7 @@ A moving fluid possesses three forms of energy.
 
 Energy due to fluid pressure.
 
-[
-\frac{P}{\rho g}
-]
+[ \frac{P}{\rho g} ]
 
 ---
 
@@ -62,9 +64,7 @@ Energy due to fluid pressure.
 
 Energy due to fluid velocity.
 
-[
-\frac{V^2}{2g}
-]
+[ \frac{V^2}{2g} ]
 
 ---
 
@@ -72,9 +72,7 @@ Energy due to fluid velocity.
 
 Energy due to elevation.
 
-[
-z
-]
+[ z ]
 
 ---
 
@@ -82,28 +80,23 @@ z
 
 For two points in a flowing fluid:
 
-[
-\frac{P_1}{\rho g}
-+
-\frac{V_1^2}{2g}
-+
-z_1
-===
+[ \frac{P_1}{\rho g}
+
+- \frac{V_1^2}{2g}
+- # z_1
 
 \frac{P_2}{\rho g}
-+
-\frac{V_2^2}{2g}
-+
-z_2
-]
+
+- \frac{V_2^2}{2g}
+- z_2 ]
 
 Where:
 
-* P = Pressure
-* ρ = Density
-* g = Acceleration due to gravity
-* V = Velocity
-* z = Elevation
+- P = Pressure
+- ρ = Density
+- g = Acceleration due to gravity
+- V = Velocity
+- z = Elevation
 
 The equation states that:
 
@@ -126,9 +119,7 @@ graph LR
 
 Total Head:
 
-[
-H = \frac{P}{\rho g}+\frac{V^2}{2g}+z
-]
+[ H = \frac{P}{\rho g}+\frac{V^2}{2g}+z ]
 
 ---
 
@@ -136,13 +127,13 @@ H = \frac{P}{\rho g}+\frac{V^2}{2g}+z
 
 When fluid enters a narrow section:
 
-* Velocity increases
-* Pressure decreases
+- Velocity increases
+- Pressure decreases
 
 When fluid enters a wider section:
 
-* Velocity decreases
-* Pressure increases
+- Velocity decreases
+- Pressure increases
 
 ```mermaid
 graph LR
@@ -163,18 +154,16 @@ Consider water flowing through a pipe that narrows.
 
 At the narrow section:
 
-* Flow speed increases
-* Kinetic energy increases
+- Flow speed increases
+- Kinetic energy increases
 
 Since total energy remains constant:
 
-* Pressure energy decreases
+- Pressure energy decreases
 
 Therefore:
 
-[
-V \uparrow \Rightarrow P \downarrow
-]
+[ V \uparrow \Rightarrow P \downarrow ]
 
 This is the essence of Bernoulli's principle.
 
@@ -186,8 +175,8 @@ Air moves faster over the curved upper surface of the wing.
 
 According to Bernoulli's principle:
 
-* Faster air → Lower pressure
-* Slower air → Higher pressure
+- Faster air → Lower pressure
+- Slower air → Higher pressure
 
 Pressure difference creates lift.
 
@@ -211,8 +200,8 @@ The Venturi Effect is a direct application of Bernoulli's principle.
 
 When fluid passes through a narrow section:
 
-* Velocity increases
-* Pressure decreases
+- Velocity increases
+- Pressure decreases
 
 ```mermaid
 graph LR
@@ -226,10 +215,10 @@ graph LR
 
 Applications:
 
-* Venturi meter
-* Carburetor
-* Atomizers
-* Spray guns
+- Venturi meter
+- Carburetor
+- Atomizers
+- Spray guns
 
 ---
 
@@ -239,17 +228,15 @@ Consider water flowing from a hole in a tank.
 
 At the water surface:
 
-* Velocity is nearly zero
+- Velocity is nearly zero
 
 At the outlet:
 
-* Velocity is maximum
+- Velocity is maximum
 
 Applying Bernoulli's equation:
 
-[
-V=\sqrt{2gh}
-]
+[ V=\sqrt{2gh} ]
 
 This is known as **Torricelli's Theorem**.
 
@@ -257,7 +244,8 @@ This is known as **Torricelli's Theorem**.
 
 # Torricelli's Theorem
 
-The velocity of fluid leaving a tank equals the velocity gained by a body freely falling through the same height.
+The velocity of fluid leaving a tank equals the velocity gained by a body freely
+falling through the same height.
 
 ```mermaid
 graph TD
@@ -272,9 +260,7 @@ graph TD
 
 Hydraulic Grade Line represents:
 
-[
-\frac{P}{\rho g}+z
-]
+[ \frac{P}{\rho g}+z ]
 
 It shows the sum of pressure head and elevation head.
 
@@ -284,13 +270,10 @@ It shows the sum of pressure head and elevation head.
 
 Energy Grade Line represents:
 
-[
-\frac{P}{\rho g}
-+
-\frac{V^2}{2g}
-+
-z
-]
+[ \frac{P}{\rho g}
+
+- \frac{V^2}{2g}
+- z ]
 
 The EGL is always above the HGL by the velocity head.
 
@@ -310,26 +293,20 @@ Real fluids experience friction losses.
 
 Therefore:
 
-[
-\frac{P_1}{\rho g}
-+
-\frac{V_1^2}{2g}
-+
-z_1
-===
+[ \frac{P_1}{\rho g}
+
+- \frac{V_1^2}{2g}
+- # z_1
 
 \frac{P_2}{\rho g}
-+
-\frac{V_2^2}{2g}
-+
-z_2
-+
-h_f
-]
+
+- \frac{V_2^2}{2g}
+- z_2
+- h_f ]
 
 Where:
 
-* (h_f) = Head loss due to friction
+- (h_f) = Head loss due to friction
 
 ---
 
@@ -409,10 +386,10 @@ Reducing nozzle area increases water speed.
 
 Bernoulli's equation assumes:
 
-* No viscosity
-* No turbulence
-* No energy losses
-* Incompressible fluid
+- No viscosity
+- No turbulence
+- No energy losses
+- Incompressible fluid
 
 For real systems, correction factors and head losses must be included.
 
@@ -431,10 +408,11 @@ For real systems, correction factors and head losses must be included.
 
 # 🎯 Key Takeaways
 
-* Bernoulli's Equation is derived from the conservation of energy.
-* Total energy of an ideal fluid remains constant along a streamline.
-* An increase in fluid velocity causes a decrease in pressure.
-* Bernoulli's principle explains lift generation on aircraft wings.
-* The Venturi effect and Torricelli's theorem are important applications.
-* Real fluids require the modified Bernoulli equation with head loss terms.
-* Bernoulli's Equation is extensively used in fluid engineering and hydraulic design.
+- Bernoulli's Equation is derived from the conservation of energy.
+- Total energy of an ideal fluid remains constant along a streamline.
+- An increase in fluid velocity causes a decrease in pressure.
+- Bernoulli's principle explains lift generation on aircraft wings.
+- The Venturi effect and Torricelli's theorem are important applications.
+- Real fluids require the modified Bernoulli equation with head loss terms.
+- Bernoulli's Equation is extensively used in fluid engineering and hydraulic
+  design.

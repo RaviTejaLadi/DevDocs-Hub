@@ -1,15 +1,16 @@
 # 🔧 Turbomachinery
 
-Turbomachinery is a branch of fluid mechanics that deals with machines that transfer energy between a fluid and a rotating element called a **rotor**.
+Turbomachinery is a branch of fluid mechanics that deals with machines that
+transfer energy between a fluid and a rotating element called a **rotor**.
 
 These machines are used in:
 
-* Power plants
-* Aircraft engines
-* Hydroelectric stations
-* Water supply systems
-* Oil and gas industries
-* HVAC systems
+- Power plants
+- Aircraft engines
+- Hydroelectric stations
+- Water supply systems
+- Oil and gas industries
+- HVAC systems
 
 Almost every modern power generation system depends on turbomachinery.
 
@@ -17,7 +18,8 @@ Almost every modern power generation system depends on turbomachinery.
 
 # 📌 What is Turbomachinery?
 
-Turbomachinery refers to machines in which energy transfer occurs between a continuously flowing fluid and a rotating shaft.
+Turbomachinery refers to machines in which energy transfer occurs between a
+continuously flowing fluid and a rotating shaft.
 
 The energy transfer may occur in two ways:
 
@@ -39,9 +41,9 @@ Turbomachines operate based on the **change in momentum of the fluid**.
 
 When fluid velocity changes:
 
-* Force is produced.
-* Torque is generated.
-* Energy transfer occurs.
+- Force is produced.
+- Torque is generated.
+- Energy transfer occurs.
 
 ```mermaid id="v8kh6t"
 graph LR
@@ -73,10 +75,10 @@ These machines extract energy from a fluid and convert it into mechanical power.
 
 Examples:
 
-* Hydraulic turbines
-* Steam turbines
-* Gas turbines
-* Wind turbines
+- Hydraulic turbines
+- Steam turbines
+- Gas turbines
+- Wind turbines
 
 ```mermaid id="q4mz9j"
 graph TD
@@ -93,10 +95,10 @@ These machines receive mechanical power and transfer it to a fluid.
 
 Examples:
 
-* Pumps
-* Compressors
-* Fans
-* Blowers
+- Pumps
+- Compressors
+- Fans
+- Blowers
 
 ```mermaid id="y2hf9p"
 graph TD
@@ -126,9 +128,9 @@ The rotating component that exchanges energy with the fluid.
 
 Examples:
 
-* Turbine runner
-* Pump impeller
-* Compressor rotor
+- Turbine runner
+- Pump impeller
+- Compressor rotor
 
 ---
 
@@ -138,9 +140,9 @@ The stationary component that guides fluid flow.
 
 Functions:
 
-* Directs fluid
-* Improves efficiency
-* Controls velocity
+- Directs fluid
+- Improves efficiency
+- Controls velocity
 
 ---
 
@@ -160,9 +162,9 @@ Protects internal components and guides fluid flow.
 
 Energy transfer occurs due to changes in:
 
-* Velocity
-* Pressure
-* Momentum
+- Velocity
+- Pressure
+- Momentum
 
 ```mermaid id="m4sp8y"
 graph TD
@@ -180,20 +182,17 @@ The fundamental equation governing turbomachinery is Euler's Equation.
 
 It relates energy transfer to changes in angular momentum.
 
-[
-W
-=
+[ W =
 
-## U_2V_{w2}
+## U*2V*{w2}
 
-U_1V_{w1}
-]
+U*1V*{w1} ]
 
 Where:
 
-* (W) = Work done per unit mass
-* (U) = Blade velocity
-* (V_w) = Whirl velocity component
+- (W) = Work done per unit mass
+- (U) = Blade velocity
+- (V_w) = Whirl velocity component
 
 ---
 
@@ -201,9 +200,9 @@ Where:
 
 It helps determine:
 
-* Turbine power output
-* Pump power requirement
-* Compressor performance
+- Turbine power output
+- Pump power requirement
+- Compressor performance
 
 ```mermaid id="l8rn6m"
 graph LR
@@ -231,9 +230,9 @@ graph LR
 
 ## Applications
 
-* Hydroelectric power plants
-* Dams
-* Irrigation projects
+- Hydroelectric power plants
+- Dams
+- Irrigation projects
 
 ---
 
@@ -250,11 +249,12 @@ graph TD
 
 # Impulse Turbine
 
-The entire pressure energy is converted into kinetic energy before striking the turbine blades.
+The entire pressure energy is converted into kinetic energy before striking the
+turbine blades.
 
 ### Example
 
-* Pelton Wheel
+- Pelton Wheel
 
 ```mermaid id="p7m4ve"
 graph LR
@@ -271,8 +271,8 @@ Energy transfer occurs through both pressure and velocity changes.
 
 ### Examples
 
-* Francis Turbine
-* Kaplan Turbine
+- Francis Turbine
+- Kaplan Turbine
 
 ```mermaid id="f3tz8u"
 graph LR
@@ -289,9 +289,9 @@ Pumps transfer mechanical energy to fluids.
 
 Their main purpose is to increase:
 
-* Pressure
-* Flow rate
-* Elevation
+- Pressure
+- Flow rate
+- Elevation
 
 ```mermaid id="h5zn3d"
 graph TD
@@ -319,9 +319,9 @@ Most commonly used pump.
 
 Working principle:
 
-* Fluid enters the impeller.
-* Rotating blades increase fluid velocity.
-* Velocity converts into pressure.
+- Fluid enters the impeller.
+- Rotating blades increase fluid velocity.
+- Velocity converts into pressure.
 
 ```mermaid id="g8pd2k"
 graph LR
@@ -339,10 +339,10 @@ Compressors increase the pressure of gases.
 
 Applications:
 
-* Refrigeration
-* Air conditioning
-* Aircraft engines
-* Gas pipelines
+- Refrigeration
+- Air conditioning
+- Aircraft engines
+- Gas pipelines
 
 ```mermaid id="n4yr6v"
 graph TD
@@ -363,8 +363,8 @@ Produces a small pressure rise.
 
 Examples:
 
-* Ceiling fan
-* Cooling fan
+- Ceiling fan
+- Cooling fan
 
 ---
 
@@ -374,8 +374,8 @@ Produces a larger pressure rise than a fan.
 
 Examples:
 
-* Industrial ventilation systems
-* Furnaces
+- Industrial ventilation systems
+- Furnaces
 
 ---
 
@@ -397,9 +397,9 @@ graph TD
 
 These triangles are used to:
 
-* Calculate work done
-* Design blades
-* Predict performance
+- Calculate work done
+- Design blades
+- Predict performance
 
 ---
 
@@ -407,19 +407,15 @@ These triangles are used to:
 
 Specific speed helps select the appropriate turbomachine.
 
-[
-N_s
-===
+[ N_s ===
 
-\frac{N\sqrt{P}}
-{H^{5/4}}
-]
+\frac{N\sqrt{P}} {H^{5/4}} ]
 
 Where:
 
-* (N) = Rotational speed
-* (P) = Power
-* (H) = Head
+- (N) = Rotational speed
+- (P) = Power
+- (H) = Head
 
 ---
 
@@ -453,10 +449,10 @@ graph LR
 
 ## Prevention
 
-* Proper pump design
-* Increase inlet pressure
-* Reduce operating speed
-* Maintain adequate NPSH
+- Proper pump design
+- Increase inlet pressure
+- Reduce operating speed
+- Maintain adequate NPSH
 
 ---
 
@@ -473,10 +469,10 @@ graph TD
 
 Examples:
 
-* Hydroelectric plants
-* Thermal plants
-* Nuclear plants
-* Wind farms
+- Hydroelectric plants
+- Thermal plants
+- Nuclear plants
+- Wind farms
 
 ---
 
@@ -578,11 +574,14 @@ Converts wind energy into electrical energy.
 
 # 🎯 Key Takeaways
 
-* Turbomachinery deals with energy transfer between fluids and rotating machines.
-* Turbines extract energy from fluids, while pumps and compressors add energy to fluids.
-* Euler's Turbomachine Equation is the fundamental governing equation.
-* Hydraulic turbines generate power from water.
-* Centrifugal pumps are the most widely used pumps in industry.
-* Compressors increase gas pressure for various engineering applications.
-* Cavitation is a major operational issue that must be prevented.
-* Turbomachinery is essential in power generation, aerospace, water supply, and industrial systems.
+- Turbomachinery deals with energy transfer between fluids and rotating
+  machines.
+- Turbines extract energy from fluids, while pumps and compressors add energy to
+  fluids.
+- Euler's Turbomachine Equation is the fundamental governing equation.
+- Hydraulic turbines generate power from water.
+- Centrifugal pumps are the most widely used pumps in industry.
+- Compressors increase gas pressure for various engineering applications.
+- Cavitation is a major operational issue that must be prevented.
+- Turbomachinery is essential in power generation, aerospace, water supply, and
+  industrial systems.
