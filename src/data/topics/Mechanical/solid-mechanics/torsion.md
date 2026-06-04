@@ -1,8 +1,10 @@
 # 🔄 Torsion
 
-Torsion is the twisting of a structural member due to an applied torque or twisting moment.
+Torsion is the twisting of a structural member due to an applied torque or
+twisting moment.
 
-Many machine components transmit power through rotational motion. When torque is applied, the member twists and internal shear stresses are developed.
+Many machine components transmit power through rotational motion. When torque is
+applied, the member twists and internal shear stresses are developed.
 
 Common examples include:
 
@@ -66,7 +68,8 @@ A[Hinge] --- B[Door]
 C[Force Applied] --> B
 ```
 
-The farther the force is applied from the hinge, the easier the door opens because the torque increases.
+The farther the force is applied from the hinge, the easier the door opens
+because the torque increases.
 
 ---
 
@@ -184,7 +187,8 @@ Where:
 
 # 📏 Polar Moment of Inertia
 
-The resistance offered by a section against twisting is measured by its polar moment of inertia.
+The resistance offered by a section against twisting is measured by its polar
+moment of inertia.
 
 ---
 
@@ -327,12 +331,12 @@ Power ≈ 62.8 kW
 
 # 🏗️ Solid vs Hollow Shafts
 
-| Solid Shaft | Hollow Shaft |
-|-------------|-------------|
-| More material | Less material |
-| Heavier | Lighter |
+| Solid Shaft                    | Hollow Shaft                    |
+| ------------------------------ | ------------------------------- |
+| More material                  | Less material                   |
+| Heavier                        | Lighter                         |
 | Lower strength-to-weight ratio | Higher strength-to-weight ratio |
-| Lower efficiency | Better efficiency |
+| Lower efficiency               | Better efficiency               |
 
 ---
 
@@ -459,4 +463,5 @@ Key points:
 - Hollow shafts provide better strength-to-weight ratio.
 - The torsion equation forms the basis of shaft design.
 
-Torsion analysis is essential in machine design, automotive engineering, aerospace systems, and power transmission equipment.
+Torsion analysis is essential in machine design, automotive engineering,
+aerospace systems, and power transmission equipment.

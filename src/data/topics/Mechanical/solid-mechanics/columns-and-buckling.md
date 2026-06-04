@@ -1,8 +1,10 @@
 # 📐 Columns & Buckling
 
-A column is a structural member primarily subjected to compressive loads along its longitudinal axis.
+A column is a structural member primarily subjected to compressive loads along
+its longitudinal axis.
 
-Columns are among the most important load-carrying elements in civil, mechanical, and structural engineering.
+Columns are among the most important load-carrying elements in civil,
+mechanical, and structural engineering.
 
 Examples include:
 
@@ -28,7 +30,8 @@ Engineers analyze columns to:
 
 # 🏗️ What is a Column?
 
-A column is a compression member whose length is considerably greater than its cross-sectional dimensions.
+A column is a compression member whose length is considerably greater than its
+cross-sectional dimensions.
 
 ```mermaid
 graph TD
@@ -73,7 +76,8 @@ Compression members are generally classified as:
 
 # ⚡ What is Buckling?
 
-Buckling is the sudden lateral deflection of a compression member when the compressive load reaches a critical value.
+Buckling is the sudden lateral deflection of a compression member when the
+compressive load reaches a critical value.
 
 Instead of crushing directly, the member bends sideways and becomes unstable.
 
@@ -128,7 +132,8 @@ Many structural failures occur due to buckling rather than crushing.
 
 The buckling behavior depends heavily on end conditions.
 
-The equivalent length used in buckling calculations is called the effective length.
+The equivalent length used in buckling calculations is called the effective
+length.
 
 Represented by:
 
@@ -288,7 +293,8 @@ Where:
 
 # 🔍 Meaning of Critical Load
 
-Critical load is the maximum compressive load a column can carry without buckling.
+Critical load is the maximum compressive load a column can carry without
+buckling.
 
 If:
 
@@ -372,12 +378,12 @@ This shows why long columns are vulnerable to buckling.
 
 # 📊 Crushing vs Buckling Failure
 
-| Crushing Failure | Buckling Failure |
-|-----------------|------------------|
-| Common in short columns | Common in long columns |
+| Crushing Failure        | Buckling Failure         |
+| ----------------------- | ------------------------ |
+| Common in short columns | Common in long columns   |
 | Material failure occurs | Stability failure occurs |
-| Direct compression | Lateral bending |
-| Gradual failure | Sudden failure |
+| Direct compression      | Lateral bending          |
+| Gradual failure         | Sudden failure           |
 
 ---
 
@@ -460,4 +466,5 @@ Key concepts:
 - Radius of Gyration
 - Euler Critical Load
 
-Buckling is a stability problem and must always be considered while designing columns to ensure safe and reliable structures.
+Buckling is a stability problem and must always be considered while designing
+columns to ensure safe and reliable structures.

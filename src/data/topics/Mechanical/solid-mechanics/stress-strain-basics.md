@@ -2,9 +2,12 @@
 
 Stress and Strain are the two most important concepts in Solid Mechanics.
 
-Whenever a force acts on a body, internal resisting forces develop inside the material. These internal forces create stress, while the resulting deformation produces strain.
+Whenever a force acts on a body, internal resisting forces develop inside the
+material. These internal forces create stress, while the resulting deformation
+produces strain.
 
-Understanding stress and strain helps engineers design safe structures and machine components.
+Understanding stress and strain helps engineers design safe structures and
+machine components.
 
 ---
 
@@ -29,7 +32,8 @@ Examples:
 
 # ⚡ What is Stress?
 
-Stress is the internal resisting force per unit area developed inside a material when an external load is applied.
+Stress is the internal resisting force per unit area developed inside a material
+when an external load is applied.
 
 Mathematically,
 
@@ -351,11 +355,11 @@ Higher E means:
 Examples:
 
 | Material | Young's Modulus |
-|-----------|----------------|
-| Rubber | Very Low |
-| Aluminum | Moderate |
-| Steel | High |
-| Diamond | Extremely High |
+| -------- | --------------- |
+| Rubber   | Very Low        |
+| Aluminum | Moderate        |
+| Steel    | High            |
+| Diamond  | Extremely High  |
 
 ---
 
@@ -436,19 +440,21 @@ Applications include:
 
 # 📝 Key Differences Between Stress and Strain
 
-| Stress | Strain |
-|----------|---------|
+| Stress                                 | Strain                         |
+| -------------------------------------- | ------------------------------ |
 | Internal resisting force per unit area | Deformation per unit dimension |
-| Has units | No units |
-| Measured in MPa | Dimensionless |
-| Caused by load | Result of load |
+| Has units                              | No units                       |
+| Measured in MPa                        | Dimensionless                  |
+| Caused by load                         | Result of load                 |
 
 ---
 
 # 🎓 Summary
 
-Stress is the internal resistance developed inside a material due to external loading.
+Stress is the internal resistance developed inside a material due to external
+loading.
 
 Strain is the resulting deformation produced in the material.
 
-The relationship between stress and strain is governed by Hooke's Law, which forms the foundation of strength of materials and structural design.
+The relationship between stress and strain is governed by Hooke's Law, which
+forms the foundation of strength of materials and structural design.

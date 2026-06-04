@@ -1,8 +1,11 @@
 # 📖 Introduction to Solid Mechanics
 
-Solid Mechanics is the branch of engineering that studies how solid materials behave when subjected to forces, loads, temperature changes, and other external effects.
+Solid Mechanics is the branch of engineering that studies how solid materials
+behave when subjected to forces, loads, temperature changes, and other external
+effects.
 
-It helps engineers design structures and machine components that are safe, strong, and durable.
+It helps engineers design structures and machine components that are safe,
+strong, and durable.
 
 Examples include:
 
@@ -38,7 +41,8 @@ Examples:
 - Bending a ruler
 - Twisting a screwdriver
 
-The relationship between applied force and resulting deformation is the foundation of solid mechanics.
+The relationship between applied force and resulting deformation is the
+foundation of solid mechanics.
 
 ---
 
@@ -181,12 +185,12 @@ Causes rotation and shear stress.
 
 Common materials studied in solid mechanics:
 
-| Material | Properties |
-|-----------|------------|
-| Steel | Strong and ductile |
-| Aluminum | Lightweight |
-| Concrete | Strong in compression |
-| Timber | Natural material |
+| Material  | Properties                |
+| --------- | ------------------------- |
+| Steel     | Strong and ductile        |
+| Aluminum  | Lightweight               |
+| Concrete  | Strong in compression     |
+| Timber    | Natural material          |
 | Cast Iron | Good compressive strength |
 
 ---
@@ -271,10 +275,12 @@ Engineers use solid mechanics to determine:
 Solid Mechanics studies the behavior of solid materials under external forces.
 
 The subject helps engineers analyze:
+
 - Stress
 - Strain
 - Deformation
 - Strength
 - Stability
 
-It forms the foundation for structural engineering, machine design, aerospace engineering, civil engineering, and manufacturing industries.
+It forms the foundation for structural engineering, machine design, aerospace
+engineering, civil engineering, and manufacturing industries.

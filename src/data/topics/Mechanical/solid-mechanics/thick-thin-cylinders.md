@@ -11,7 +11,8 @@ Examples include:
 - Hydraulic cylinders
 - Air receivers
 
-When internal pressure acts on a cylinder, stresses are developed in its walls. The analysis of these stresses is an important part of Solid Mechanics.
+When internal pressure acts on a cylinder, stresses are developed in its walls.
+The analysis of these stresses is an important part of Solid Mechanics.
 
 ---
 
@@ -147,7 +148,8 @@ Where:
 
 # 📊 Longitudinal Stress
 
-Longitudinal stress tends to separate the cylinder into two parts across a transverse section.
+Longitudinal stress tends to separate the cylinder into two parts across a
+transverse section.
 
 ```mermaid
 graph TD
@@ -425,13 +427,13 @@ A --> B
 
 # 📊 Thin vs Thick Cylinders
 
-| Thin Cylinder | Thick Cylinder |
-|---------------|---------------|
-| t ≤ d/20 | t > d/20 |
-| Uniform stress assumption | Non-uniform stress |
-| Radial stress neglected | Radial stress considered |
-| Simple analysis | Complex analysis |
-| Hoop stress dominant | Multiple stresses important |
+| Thin Cylinder             | Thick Cylinder              |
+| ------------------------- | --------------------------- |
+| t ≤ d/20                  | t > d/20                    |
+| Uniform stress assumption | Non-uniform stress          |
+| Radial stress neglected   | Radial stress considered    |
+| Simple analysis           | Complex analysis            |
+| Hoop stress dominant      | Multiple stresses important |
 
 ---
 
@@ -490,4 +492,5 @@ For thick cylinders:
 - Radial stress becomes important.
 - Lame's theory is used for analysis.
 
-Understanding thick and thin cylinders is essential for designing safe pressure vessels, tanks, boilers, pipelines, and hydraulic systems.
+Understanding thick and thin cylinders is essential for designing safe pressure
+vessels, tanks, boilers, pipelines, and hydraulic systems.

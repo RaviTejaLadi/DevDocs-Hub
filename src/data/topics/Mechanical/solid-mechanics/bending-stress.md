@@ -1,6 +1,7 @@
 # ↘️ Bending Stress
 
-Bending stress is the stress developed in a beam when it is subjected to bending moments caused by external loads.
+Bending stress is the stress developed in a beam when it is subjected to bending
+moments caused by external loads.
 
 When a beam carries loads, it bends. During bending:
 
@@ -8,7 +9,8 @@ When a beam carries loads, it bends. During bending:
 - The lower fibers may stretch.
 - Some fibers experience no stress at all.
 
-Understanding bending stress is essential for designing beams used in buildings, bridges, machines, and vehicles.
+Understanding bending stress is essential for designing beams used in buildings,
+bridges, machines, and vehicles.
 
 ---
 
@@ -106,7 +108,8 @@ Fibers on the neutral axis neither elongate nor shorten.
 
 # 🔍 Neutral Surface
 
-The surface passing through all neutral axis points along the beam is called the neutral surface.
+The surface passing through all neutral axis points along the beam is called the
+neutral surface.
 
 It separates:
 
@@ -481,11 +484,13 @@ Design Formula:
 
 # 🎓 Summary
 
-Bending stress develops when a beam is subjected to external loads that cause bending.
+Bending stress develops when a beam is subjected to external loads that cause
+bending.
 
 - Top fibers experience compression.
 - Bottom fibers experience tension.
 - Neutral axis experiences zero stress.
 - Maximum stress occurs at outer fibers.
 
-The bending equation and section modulus are fundamental tools used in beam design and structural analysis.
+The bending equation and section modulus are fundamental tools used in beam
+design and structural analysis.
