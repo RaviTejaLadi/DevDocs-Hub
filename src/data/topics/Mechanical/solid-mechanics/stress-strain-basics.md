@@ -1,1 +1,454 @@
-# Stress & Strain Basics
+# 📊 Stress & Strain Basics
+
+Stress and Strain are the two most important concepts in Solid Mechanics.
+
+Whenever a force acts on a body, internal resisting forces develop inside the material. These internal forces create stress, while the resulting deformation produces strain.
+
+Understanding stress and strain helps engineers design safe structures and machine components.
+
+---
+
+# 🎯 Why Study Stress and Strain?
+
+Engineers use stress and strain to:
+
+- Design strong structures
+- Prevent material failure
+- Calculate deformation
+- Select suitable materials
+- Ensure safety and reliability
+
+Examples:
+
+- Bridge cables under tension
+- Building columns under compression
+- Shafts under torsion
+- Bolts under shear
+
+---
+
+# ⚡ What is Stress?
+
+Stress is the internal resisting force per unit area developed inside a material when an external load is applied.
+
+Mathematically,
+
+```
+Stress = Force / Area
+```
+
+Unit:
+
+```
+Pascal (Pa) = N/m²
+```
+
+In engineering practice:
+
+```
+MPa = N/mm²
+```
+
+---
+
+# 🧮 Stress Formula
+
+```
+σ = P/A
+```
+
+Where:
+
+- σ = Stress
+- P = Applied Load
+- A = Cross-sectional Area
+
+---
+
+# 📌 Example
+
+A steel rod of area 500 mm² carries a load of 50,000 N.
+
+```
+σ = P/A
+```
+
+```
+σ = 50000 / 500
+```
+
+```
+σ = 100 N/mm²
+```
+
+Therefore,
+
+```
+Stress = 100 MPa
+```
+
+---
+
+# 📚 Types of Stress
+
+## 1️⃣ Tensile Stress
+
+Produced when a member is pulled.
+
+```mermaid
+graph LR
+A ← Pulling Force
+B[Rod]
+C Pulling Force →
+```
+
+The rod elongates.
+
+Formula:
+
+```
+σt = P/A
+```
+
+Examples:
+
+- Bridge cables
+- Crane ropes
+- Suspension wires
+
+---
+
+## 2️⃣ Compressive Stress
+
+Produced when a member is pushed.
+
+```mermaid
+graph LR
+A -->|Compression| B[Column]
+C[Compression] --> B
+```
+
+The member shortens.
+
+Formula:
+
+```
+σc = P/A
+```
+
+Examples:
+
+- Building columns
+- Concrete pillars
+- Machine supports
+
+---
+
+## 3️⃣ Shear Stress
+
+Occurs when forces act parallel to a surface.
+
+```mermaid
+graph TD
+A[Upper Force →]
+B[Material]
+C[← Lower Force]
+```
+
+Formula:
+
+```
+τ = P/A
+```
+
+Where:
+
+- τ = Shear Stress
+
+Examples:
+
+- Rivets
+- Bolts
+- Pins
+- Punching operations
+
+---
+
+# 🔍 What is Strain?
+
+Strain is the deformation produced per unit original dimension.
+
+It indicates how much a material deforms under load.
+
+Formula:
+
+```
+Strain = Change in Dimension / Original Dimension
+```
+
+Since both quantities have the same unit:
+
+```
+Strain has no unit
+```
+
+It is dimensionless.
+
+---
+
+# 📏 Longitudinal Strain
+
+Produced due to tensile or compressive loading.
+
+Formula:
+
+```
+ε = ΔL/L
+```
+
+Where:
+
+- ε = Strain
+- ΔL = Change in length
+- L = Original length
+
+---
+
+# 📌 Example
+
+A rod of length 1000 mm elongates by 2 mm.
+
+```
+ε = ΔL/L
+```
+
+```
+ε = 2/1000
+```
+
+```
+ε = 0.002
+```
+
+Therefore,
+
+```
+Strain = 0.002
+```
+
+---
+
+# 📚 Types of Strain
+
+## Tensile Strain
+
+Produced by elongation.
+
+```mermaid
+graph LR
+A ← Pull
+B[Rod]
+C Pull →
+```
+
+Length increases.
+
+---
+
+## Compressive Strain
+
+Produced by shortening.
+
+```mermaid
+graph LR
+A -->|Compression| B[Member]
+C -->|Compression| B
+```
+
+Length decreases.
+
+---
+
+## Shear Strain
+
+Produced by distortion of shape.
+
+```mermaid
+graph TD
+A[Original Shape]
+A --> B[Distorted Shape]
+```
+
+Represented by:
+
+```
+γ
+```
+
+Measured in radians.
+
+---
+
+# 🔗 Relationship Between Stress and Strain
+
+Within the elastic limit of a material:
+
+```
+Stress ∝ Strain
+```
+
+This relationship is known as Hooke's Law.
+
+---
+
+# ⚖️ Hooke's Law
+
+Hooke's Law states:
+
+> Within the elastic limit, stress is directly proportional to strain.
+
+Mathematically,
+
+```
+σ ∝ ε
+```
+
+or
+
+```
+σ = Eε
+```
+
+Where:
+
+- σ = Stress
+- ε = Strain
+- E = Young's Modulus
+
+---
+
+# 🏗️ Young's Modulus
+
+Young's Modulus measures material stiffness.
+
+Formula:
+
+```
+E = σ/ε
+```
+
+Unit:
+
+```
+Pa or N/m²
+```
+
+Higher E means:
+
+- Less deformation
+- Greater stiffness
+
+Examples:
+
+| Material | Young's Modulus |
+|-----------|----------------|
+| Rubber | Very Low |
+| Aluminum | Moderate |
+| Steel | High |
+| Diamond | Extremely High |
+
+---
+
+# 📈 Stress-Strain Curve
+
+The stress-strain curve describes material behavior under loading.
+
+```mermaid
+graph LR
+A[O Origin]
+B[Elastic Region]
+C[Yield Point]
+D[Plastic Region]
+E[Ultimate Stress]
+F[Fracture]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+```
+
+---
+
+# Important Points on the Curve
+
+## Elastic Region
+
+- Material returns to original shape
+- Hooke's Law is valid
+
+---
+
+## Yield Point
+
+- Permanent deformation begins
+
+---
+
+## Plastic Region
+
+- Material deforms permanently
+
+---
+
+## Ultimate Stress
+
+- Maximum stress reached
+
+---
+
+## Fracture Point
+
+- Material breaks
+
+---
+
+# Engineering Significance
+
+Stress and strain calculations help engineers determine:
+
+- Safe load carrying capacity
+- Material selection
+- Structural strength
+- Component dimensions
+- Safety factors
+
+Applications include:
+
+- Buildings
+- Bridges
+- Pressure vessels
+- Aircraft structures
+- Machine elements
+
+---
+
+# 📝 Key Differences Between Stress and Strain
+
+| Stress | Strain |
+|----------|---------|
+| Internal resisting force per unit area | Deformation per unit dimension |
+| Has units | No units |
+| Measured in MPa | Dimensionless |
+| Caused by load | Result of load |
+
+---
+
+# 🎓 Summary
+
+Stress is the internal resistance developed inside a material due to external loading.
+
+Strain is the resulting deformation produced in the material.
+
+The relationship between stress and strain is governed by Hooke's Law, which forms the foundation of strength of materials and structural design.
