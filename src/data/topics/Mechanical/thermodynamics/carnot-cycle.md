@@ -1,1 +1,370 @@
-# Carnot Cycle
+# ⚙️ Carnot Cycle
+
+The Carnot Cycle is an ideal thermodynamic cycle proposed by the French engineer and physicist **Sadi Carnot** in 1824.
+
+It represents the **most efficient heat engine possible** operating between two temperature reservoirs.
+
+Although no real engine can achieve Carnot efficiency, it serves as the benchmark against which all heat engines are compared.
+
+## 🎯 Definition
+
+The Carnot Cycle is a completely reversible cycle consisting of four reversible processes:
+
+1. Isothermal Expansion
+2. Adiabatic Expansion
+3. Isothermal Compression
+4. Adiabatic Compression
+
+```mermaid
+flowchart LR
+    A[1]
+    B[2]
+    C[3]
+    D[4]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+The system returns to its initial state after completing the cycle.
+
+---
+
+# 🌡️ Working Principle
+
+The Carnot engine operates between:
+
+- A high-temperature reservoir (\`T_H\`)
+- A low-temperature reservoir (\`T_L\`)
+
+The engine:
+
+- Absorbs heat from the hot reservoir
+- Converts part of the heat into work
+- Rejects the remaining heat to the cold reservoir
+
+```mermaid
+flowchart TD
+    H[Hot Reservoir TH]
+    E[Carnot Engine]
+    C[Cold Reservoir TL]
+    W[Work Output]
+
+    H -->|Heat Input QH| E
+    E -->|Work W| W
+    E -->|Heat Rejected QL| C
+```
+
+---
+
+# 🔄 Four Processes of the Carnot Cycle
+
+## 1️⃣ Isothermal Expansion (1 → 2)
+
+During this process:
+
+- Temperature remains constant at \`T_H\`
+- Heat is absorbed from the hot reservoir
+- Gas expands
+- Work is done by the system
+
+Characteristics:
+
+- Temperature constant
+- Volume increases
+- Pressure decreases
+
+```mermaid
+flowchart LR
+    Q[Heat Input]
+    G[Gas Expands]
+    W[Work Output]
+
+    Q --> G --> W
+```
+
+---
+
+## 2️⃣ Adiabatic Expansion (2 → 3)
+
+During this process:
+
+- No heat transfer occurs
+- Gas continues expanding
+- Temperature decreases
+- Pressure decreases
+
+Characteristics:
+
+- Q = 0
+- Volume increases
+- Temperature falls from TH to TL
+
+```mermaid
+flowchart LR
+    G[Gas Expansion]
+    T[Temperature Decreases]
+    W[Work Produced]
+
+    G --> T
+    G --> W
+```
+
+---
+
+## 3️⃣ Isothermal Compression (3 → 4)
+
+During this process:
+
+- Temperature remains constant at \`T_L\`
+- Heat is rejected to the cold reservoir
+- Gas is compressed
+
+Characteristics:
+
+- Temperature constant
+- Volume decreases
+- Pressure increases
+
+```mermaid
+flowchart LR
+    G[Gas Compression]
+    Q[Heat Rejected]
+
+    G --> Q
+```
+
+---
+
+## 4️⃣ Adiabatic Compression (4 → 1)
+
+During this process:
+
+- No heat transfer occurs
+- Gas is compressed
+- Temperature increases from TL to TH
+
+Characteristics:
+
+- Q = 0
+- Volume decreases
+- Pressure increases
+
+```mermaid
+flowchart LR
+    W[Work Input]
+    G[Gas Compression]
+    T[Temperature Increases]
+
+    W --> G --> T
+```
+
+---
+
+# 📊 Complete Cycle Overview
+
+```mermaid
+flowchart TD
+    A[1 Isothermal Expansion]
+    B[2 Adiabatic Expansion]
+    C[3 Isothermal Compression]
+    D[4 Adiabatic Compression]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+# 📈 P-V Diagram
+
+The Carnot cycle is often represented on a Pressure-Volume diagram.
+
+```mermaid
+flowchart LR
+    A[1]
+    B[2]
+    C[3]
+    D[4]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+The enclosed area represents the net work produced during one cycle.
+
+---
+
+# 🌡️ T-S Diagram
+
+The Temperature-Entropy diagram clearly illustrates heat transfer.
+
+```mermaid
+flowchart LR
+    A[TH]
+    B[Heat Addition]
+    C[TL]
+    D[Heat Rejection]
+
+    A --> B
+    B --> C
+    C --> D
+```
+
+The area enclosed on the T-S diagram represents net work output.
+
+---
+
+# ⚡ Carnot Efficiency
+
+The efficiency of a Carnot engine depends only on the temperatures of the two reservoirs.
+
+```
+η = 1 - (TL / TH)
+```
+
+Where:
+
+- η = Thermal Efficiency
+- TH = Hot Reservoir Temperature (K)
+- TL = Cold Reservoir Temperature (K)
+
+### Important Notes
+
+- Temperatures must be in Kelvin.
+- Efficiency increases when TH increases.
+- Efficiency increases when TL decreases.
+
+---
+
+# 🧮 Example
+
+Suppose:
+
+- TH = 600 K
+- TL = 300 K
+
+Using:
+
+```
+η = 1 - (TL / TH)
+```
+
+```
+η = 1 - (300 / 600)
+```
+
+```
+η = 0.5
+```
+
+```
+η = 50%
+```
+
+### Result
+
+The maximum possible efficiency is 50%.
+
+No real engine operating between these temperatures can exceed this efficiency.
+
+---
+
+# 🎯 Why Is Carnot Cycle Important?
+
+The Carnot Cycle establishes the theoretical upper limit of efficiency.
+
+It helps engineers:
+
+- Evaluate engine performance
+- Compare heat engines
+- Analyze thermodynamic systems
+- Design efficient power plants
+
+---
+
+# ❌ Limitations of the Carnot Cycle
+
+Although highly efficient, it is not practical.
+
+Reasons:
+
+### Extremely Slow Operation
+
+Reversible processes require infinite time.
+
+### Perfect Insulation Required
+
+Adiabatic processes require ideal insulation.
+
+### No Friction Allowed
+
+Real systems always experience friction.
+
+### Not Suitable for High Power Output
+
+Power generation would be extremely low.
+
+---
+
+# 🏭 Applications
+
+The Carnot Cycle is mainly used as a theoretical model.
+
+Applications include:
+
+### 📚 Thermodynamic Analysis
+
+Used to study engine efficiency limits.
+
+### 🏭 Power Plant Design
+
+Provides a benchmark for evaluating actual performance.
+
+### ❄️ Refrigeration Theory
+
+Forms the basis of the Carnot refrigeration cycle.
+
+### 🎓 Engineering Education
+
+Used extensively in thermodynamics courses.
+
+---
+
+# 📊 Carnot Cycle vs Real Heat Engine
+
+| Feature | Carnot Cycle | Real Engine |
+|----------|-------------|-------------|
+| Reversible | Yes | No |
+| Friction | None | Present |
+| Efficiency | Maximum Possible | Lower |
+| Practical | No | Yes |
+| Heat Losses | None | Present |
+
+---
+
+# 💡 Key Points
+
+✅ Carnot Cycle is the most efficient theoretical heat engine.
+
+✅ It consists of four reversible processes.
+
+✅ Two processes are isothermal.
+
+✅ Two processes are adiabatic.
+
+✅ Efficiency depends only on reservoir temperatures.
+
+✅ No real engine can exceed Carnot efficiency.
+
+---
+
+# 📚 Quick Summary
+
+The Carnot Cycle is an ideal reversible thermodynamic cycle that provides the maximum possible efficiency for a heat engine operating between two temperatures. It consists of two isothermal and two adiabatic processes and serves as the benchmark for all real heat engines and power plants.

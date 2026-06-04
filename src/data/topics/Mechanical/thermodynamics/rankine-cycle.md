@@ -1,1 +1,420 @@
-# Rankine Cycle
+# 🏭 Rankine Cycle
+
+The Rankine Cycle is the fundamental operating cycle of most steam power plants. It converts heat energy into mechanical work and then into electrical energy.
+
+Unlike the Carnot Cycle, the Rankine Cycle is practical and widely used in thermal power stations, nuclear power plants, and industrial steam systems.
+
+## 🎯 What is the Rankine Cycle?
+
+The Rankine Cycle is a thermodynamic cycle in which water is used as the working fluid.
+
+The cycle consists of four main processes:
+
+1. Pumping
+2. Heat Addition in Boiler
+3. Expansion in Turbine
+4. Heat Rejection in Condenser
+
+After completing these processes, the water returns to its initial state and the cycle repeats.
+
+```mermaid
+flowchart LR
+    A[Pump]
+    B[Boiler]
+    C[Turbine]
+    D[Condenser]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+# ⚙️ Main Components of the Rankine Cycle
+
+## 1️⃣ Pump
+
+The pump increases the pressure of the liquid water before it enters the boiler.
+
+### Functions
+
+- Raises water pressure
+- Requires small work input
+- Delivers high-pressure water to the boiler
+
+```mermaid
+flowchart LR
+    W[Low Pressure Water]
+    P[Pump]
+    H[High Pressure Water]
+
+    W --> P --> H
+```
+
+---
+
+## 2️⃣ Boiler
+
+The boiler adds heat to the high-pressure water.
+
+Inside the boiler:
+
+- Water is heated
+- Water converts into steam
+- Steam may be superheated
+
+### Functions
+
+- Supplies thermal energy
+- Produces high-temperature steam
+
+```mermaid
+flowchart LR
+    W[High Pressure Water]
+    B[Boiler]
+    S[High Pressure Steam]
+
+    W --> B --> S
+```
+
+---
+
+## 3️⃣ Turbine
+
+The high-pressure steam expands through the turbine.
+
+During expansion:
+
+- Pressure decreases
+- Temperature decreases
+- Enthalpy decreases
+- Useful work is produced
+
+### Functions
+
+- Converts steam energy into mechanical work
+
+```mermaid
+flowchart LR
+    S[High Energy Steam]
+    T[Steam Turbine]
+    W[Mechanical Work]
+
+    S --> T
+    T --> W
+```
+
+---
+
+## 4️⃣ Condenser
+
+Steam leaving the turbine enters the condenser.
+
+In the condenser:
+
+- Heat is removed
+- Steam condenses into water
+- Water is collected for reuse
+
+### Functions
+
+- Removes waste heat
+- Completes the cycle
+
+```mermaid
+flowchart LR
+    S[Low Pressure Steam]
+    C[Condenser]
+    W[Liquid Water]
+
+    S --> C --> W
+```
+
+---
+
+# 🔄 Complete Rankine Cycle
+
+The complete flow of the cycle is:
+
+```mermaid
+flowchart LR
+    A[Pump]
+    B[Boiler]
+    C[Turbine]
+    D[Condenser]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+### Process Summary
+
+| Process | Description |
+|----------|-------------|
+| 1 → 2 | Pumping |
+| 2 → 3 | Heat Addition |
+| 3 → 4 | Expansion |
+| 4 → 1 | Heat Rejection |
+
+---
+
+# 📈 Processes in the Rankine Cycle
+
+## Process 1 → 2: Isentropic Compression
+
+Occurs in the pump.
+
+Characteristics:
+
+- Pressure increases
+- Work input required
+- Entropy remains nearly constant
+
+```mermaid
+flowchart LR
+    W[Water]
+    P[Pressure Increases]
+    H[High Pressure Water]
+
+    W --> P --> H
+```
+
+---
+
+## Process 2 → 3: Constant Pressure Heat Addition
+
+Occurs in the boiler.
+
+Characteristics:
+
+- Heat supplied
+- Water becomes steam
+- Enthalpy increases
+
+```mermaid
+flowchart LR
+    Q[Heat Input]
+    B[Boiler]
+    S[Steam Generated]
+
+    Q --> B --> S
+```
+
+---
+
+## Process 3 → 4: Isentropic Expansion
+
+Occurs in the turbine.
+
+Characteristics:
+
+- Steam expands
+- Work produced
+- Pressure decreases
+
+```mermaid
+flowchart LR
+    S[High Pressure Steam]
+    T[Turbine]
+    W[Work Output]
+
+    S --> T --> W
+```
+
+---
+
+## Process 4 → 1: Constant Pressure Heat Rejection
+
+Occurs in the condenser.
+
+Characteristics:
+
+- Heat removed
+- Steam converts to liquid
+- Enthalpy decreases
+
+```mermaid
+flowchart LR
+    S[Steam]
+    C[Condenser]
+    W[Water]
+
+    S --> C --> W
+```
+
+---
+
+# 📊 T-S Diagram of Rankine Cycle
+
+The Temperature-Entropy diagram is commonly used to analyze Rankine cycles.
+
+```mermaid
+flowchart TD
+    A[1 Saturated Liquid]
+    B[2 Compressed Liquid]
+    C[3 Superheated Steam]
+    D[4 Wet Steam]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+# ⚡ Thermal Efficiency of Rankine Cycle
+
+Thermal efficiency is defined as:
+
+```
+η = Wnet / Qin
+```
+
+Where:
+
+- η = Thermal Efficiency
+- Wnet = Net Work Output
+- Qin = Heat Supplied in Boiler
+
+Higher efficiency means:
+
+- More electricity generation
+- Less fuel consumption
+
+---
+
+# 🧮 Work and Heat Transfer
+
+### Turbine Work
+
+```
+Wt = h3 - h4
+```
+
+### Pump Work
+
+```
+Wp = h2 - h1
+```
+
+### Heat Supplied
+
+```
+Qin = h3 - h2
+```
+
+### Heat Rejected
+
+```
+Qout = h4 - h1
+```
+
+Where:
+
+- h = Specific Enthalpy
+
+---
+
+# 🚀 Methods to Improve Efficiency
+
+## Superheating
+
+Steam is heated above saturation temperature.
+
+Benefits:
+
+- Higher turbine work
+- Better efficiency
+
+## Reheating
+
+Steam is reheated between turbine stages.
+
+Benefits:
+
+- Increased efficiency
+- Reduced turbine blade erosion
+
+## Regeneration
+
+Feedwater is preheated using extracted steam.
+
+Benefits:
+
+- Reduced fuel consumption
+- Improved cycle efficiency
+
+```mermaid
+flowchart TD
+    A[Rankine Cycle]
+    B[Superheating]
+    C[Reheating]
+    D[Regeneration]
+
+    A --> B
+    A --> C
+    A --> D
+```
+
+---
+
+# 🏭 Applications of Rankine Cycle
+
+## ⚡ Thermal Power Plants
+
+Coal-fired power stations.
+
+## ☢️ Nuclear Power Plants
+
+Steam generated from nuclear reactors drives turbines.
+
+## 🌋 Geothermal Power Plants
+
+Steam from geothermal sources produces electricity.
+
+## 🏭 Industrial Steam Plants
+
+Used for power and process heating.
+
+## ♻️ Waste Heat Recovery Systems
+
+Converts waste heat into useful work.
+
+---
+
+# 📊 Rankine Cycle vs Carnot Cycle
+
+| Feature | Rankine Cycle | Carnot Cycle |
+|----------|--------------|--------------|
+| Practical | ✅ Yes | ❌ No |
+| Efficiency | Lower | Higher |
+| Used in Power Plants | ✅ Yes | ❌ No |
+| Reversible | Approximate | Fully Reversible |
+| Engineering Use | Very High | Mainly Theoretical |
+
+---
+
+# 💡 Key Points
+
+✅ Rankine Cycle is the basic cycle of steam power plants.
+
+✅ Water is used as the working fluid.
+
+✅ The cycle consists of pump, boiler, turbine, and condenser.
+
+✅ Heat is converted into mechanical work and then electricity.
+
+✅ Efficiency can be improved using superheating, reheating, and regeneration.
+
+✅ It is one of the most important cycles in power generation.
+
+---
+
+# 📚 Quick Summary
+
+The Rankine Cycle is the practical thermodynamic cycle used in steam power plants. It consists of four main processes: pumping, heat addition, expansion, and condensation. By converting heat into mechanical work through a steam turbine, the Rankine Cycle forms the backbone of modern electricity generation systems.
