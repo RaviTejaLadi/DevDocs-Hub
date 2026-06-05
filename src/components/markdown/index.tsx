@@ -584,7 +584,7 @@ const MarkdownRenderInner = ({
   }, [slideMode, handleNextSlide, hasNextDocument, onReachDocumentEnd]);
 
   useEffect(() => {
-    if (!cardScrollMode || !keyboardActive) return;
+    if (!slideMode || !keyboardActive) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.key === 'ArrowLeft') {
@@ -598,7 +598,7 @@ const MarkdownRenderInner = ({
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [cardScrollMode, keyboardActive, handleCardNavPrev, handleCardNavNext]);
+  }, [slideMode, keyboardActive, handleCardNavPrev, handleCardNavNext]);
 
   const singleDocComponents = useMemo(
     () =>
@@ -652,7 +652,9 @@ const MarkdownRenderInner = ({
                   ref={slideBodyRef}
                   className={cn(
                     'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
-                    'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
+                    feedScrollMode
+                      ? 'px-5 pt-4 pb-5 sm:px-8 sm:pt-5 sm:pb-6'
+                      : 'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
                     fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
@@ -693,28 +695,28 @@ const MarkdownRenderInner = ({
                   </div>
                 ) : null}
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className={cn(
-                        CARD_FLOAT_NAV_BTN_CLASS,
-                        'bottom-3 left-3 sm:bottom-4 sm:left-4',
-                        keyboardActive && 'border-primary/30 shadow-lg'
-                      )}
-                      onClick={handleCardNavPrev}
-                      disabled={slideMode ? activeSlide === 0 && !hasPrevDocument : !hasPrevDocument}
-                      aria-label={feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}
-                    >
-                      <ChevronLeft className="size-5" aria-hidden />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="top">
-                    {feedScrollMode ? t('docs.previous') : t('markdown.prevSlide')}
-                  </TooltipContent>
-                </Tooltip>
+                {slideMode ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className={cn(
+                          CARD_FLOAT_NAV_BTN_CLASS,
+                          'bottom-3 left-3 sm:bottom-4 sm:left-4',
+                          keyboardActive && 'border-primary/30 shadow-lg'
+                        )}
+                        onClick={handleCardNavPrev}
+                        disabled={activeSlide === 0 && !hasPrevDocument}
+                        aria-label={t('markdown.prevSlide')}
+                      >
+                        <ChevronLeft className="size-5" aria-hidden />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">{t('markdown.prevSlide')}</TooltipContent>
+                  </Tooltip>
+                ) : null}
 
                 {slideMode ? (
                   <div
@@ -747,28 +749,28 @@ const MarkdownRenderInner = ({
                   </div>
                 ) : null}
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className={cn(
-                        CARD_FLOAT_NAV_BTN_CLASS,
-                        'bottom-3 right-3 sm:bottom-4 sm:right-4',
-                        keyboardActive && 'border-primary/30 shadow-lg'
-                      )}
-                      onClick={handleCardNavNext}
-                      disabled={slideMode ? activeSlide >= slides.length - 1 && !hasNextDocument : !hasNextDocument}
-                      aria-label={feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}
-                    >
-                      <ChevronRight className="size-5" aria-hidden />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="top">
-                    {feedScrollMode ? t('docs.next') : t('markdown.nextSlide')}
-                  </TooltipContent>
-                </Tooltip>
+                {slideMode ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className={cn(
+                          CARD_FLOAT_NAV_BTN_CLASS,
+                          'bottom-3 right-3 sm:bottom-4 sm:right-4',
+                          keyboardActive && 'border-primary/30 shadow-lg'
+                        )}
+                        onClick={handleCardNavNext}
+                        disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
+                        aria-label={t('markdown.nextSlide')}
+                      >
+                        <ChevronRight className="size-5" aria-hidden />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">{t('markdown.nextSlide')}</TooltipContent>
+                  </Tooltip>
+                ) : null}
               </div>
             </section>
           ) : (
