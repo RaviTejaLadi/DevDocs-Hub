@@ -67,11 +67,7 @@ function renderTocSubRows(
     const row = (
       <SidebarMenuSubItem key={heading.id}>
         <SidebarMenuSubButton asChild isActive={isActive} size="sm">
-          <button
-            type="button"
-            style={{ paddingLeft: `${8 + depth * 10}px` }}
-            onClick={() => onActivate(heading)}
-          >
+          <button type="button" style={{ paddingLeft: `${8 + depth * 10}px` }} onClick={() => onActivate(heading)}>
             <span className="truncate">{heading.text}</span>
           </button>
         </SidebarMenuSubButton>
@@ -678,11 +674,7 @@ const MarkdownRenderInner = ({
     [copiedKey, handleCopy, isDarkTheme, scrollToId, t]
   );
 
-  const articleSurface = cn(
-    'md-render',
-    docsArticleSurfaceClass,
-    'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11'
-  );
+  const articleSurface = cn('md-render', docsArticleSurfaceClass, 'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11');
 
   const tocTree = useMemo(() => buildTocTree(headings), [headings]);
 
@@ -716,8 +708,8 @@ const MarkdownRenderInner = ({
         hideToc
           ? 'grid-cols-1'
           : tocCollapsed
-            ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto]'
-            : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
+          ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto]'
+          : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
         cardScrollMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
       )}
     >

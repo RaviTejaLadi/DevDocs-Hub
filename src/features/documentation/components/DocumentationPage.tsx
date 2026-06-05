@@ -8,7 +8,11 @@ import MarkdownRender from '@/components/markdown';
 import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
-import { docsFloatingActionButtonClass, docsPageNavLinkClass, docsScrollToTopButtonClass } from '@/constants/docsSidePanel';
+import {
+  docsFloatingActionButtonClass,
+  docsPageNavLinkClass,
+  docsScrollToTopButtonClass,
+} from '@/constants/docsSidePanel';
 import { cn } from '@/lib/utils';
 import { useDocumentationPage } from '../hooks';
 
@@ -83,10 +87,7 @@ const DocumentationPage = () => {
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
 
       {(prevArticle || nextArticle) && (
-        <nav
-          className="grid gap-3 border-t border-border/60 pt-8 sm:grid-cols-2"
-          aria-label={t('docs.pageNavigation')}
-        >
+        <nav className="grid gap-3 border-t border-border/60 pt-8 sm:grid-cols-2" aria-label={t('docs.pageNavigation')}>
           {prevArticle ? (
             <Link
               to={`/docs/${categoryId}/${prevArticle.id}`}
@@ -153,11 +154,7 @@ const DocumentationPage = () => {
           variant="secondary"
           size="icon"
           onClick={scrollToTop}
-          className={cn(
-            docsFloatingActionButtonClass,
-            docsScrollToTopButtonClass,
-            'z-40 size-11 md:right-8'
-          )}
+          className={cn(docsFloatingActionButtonClass, docsScrollToTopButtonClass, 'z-40 size-11 md:right-8')}
           aria-label={t('docs.scrollToTop')}
         >
           <ChevronUp className="size-5" />

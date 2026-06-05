@@ -22,10 +22,7 @@ function buildExpandedCategories(sections: DocsTopicBrowserSection[], streamId: 
   return expanded;
 }
 
-export function useDocsTopicBrowser(
-  activeTopicId: string | undefined,
-  sections: DocsTopicBrowserSection[]
-) {
+export function useDocsTopicBrowser(activeTopicId: string | undefined, sections: DocsTopicBrowserSection[]) {
   const [topicBrowserOpen, setTopicBrowserOpen] = useState(false);
   const [activeStreamId, setActiveStreamId] = useState('');
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});

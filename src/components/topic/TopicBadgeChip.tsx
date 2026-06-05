@@ -2,11 +2,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Crown, Flame, Rocket, Star, Sprout, TrendingUp, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import {
-  TOPIC_BADGE_LABELS,
-  topicBadgeToneClasses,
-  type TopicBadgeKind,
-} from '@/data/topics/topicBadges';
+import { TOPIC_BADGE_LABELS, topicBadgeToneClasses, type TopicBadgeKind } from '@/data/topics/topicBadges';
 
 const BADGE_ICONS: Record<TopicBadgeKind, LucideIcon> = {
   beginner: Sprout,
@@ -74,7 +70,6 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
             className
           )}
         >
-
           <Icon className="size-4 shrink-0 opacity-85" aria-hidden />
         </button>
       </TooltipTrigger>

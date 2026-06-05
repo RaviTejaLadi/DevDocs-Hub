@@ -108,7 +108,8 @@ const SidebarContent = ({
       const el = document.querySelector<HTMLElement>(`[data-sidebar-route="${CSS.escape(activeRouteKey)}"]`);
       if (!el) return;
 
-      const sidebarViewport = el.closest('[data-slot="scroll-area-viewport"]') ?? el.closest('[data-slot="sidebar-content"]');
+      const sidebarViewport =
+        el.closest('[data-slot="scroll-area-viewport"]') ?? el.closest('[data-slot="sidebar-content"]');
       if (sidebarViewport) {
         const elRect = el.getBoundingClientRect();
         const vpRect = sidebarViewport.getBoundingClientRect();
@@ -287,7 +288,10 @@ const SidebarContent = ({
 
     if (!hasChildren) {
       return (
-        <SidebarGroup key={item.id} className="w-full min-w-0 border-b border-border/20 p-0 pb-2 last:border-b-0 last:pb-0">
+        <SidebarGroup
+          key={item.id}
+          className="w-full min-w-0 border-b border-border/20 p-0 pb-2 last:border-b-0 last:pb-0"
+        >
           <SidebarMenu className="w-full min-w-0 gap-0.5">
             <SidebarMenuItem className="w-full min-w-0">
               <SidebarMenuButton
@@ -317,7 +321,10 @@ const SidebarContent = ({
     }
 
     return (
-      <SidebarGroup key={item.id} className="w-full min-w-0 border-b border-border/20 p-0 pb-2 last:border-b-0 last:pb-0">
+      <SidebarGroup
+        key={item.id}
+        className="w-full min-w-0 border-b border-border/20 p-0 pb-2 last:border-b-0 last:pb-0"
+      >
         <div
           className={cn(
             'flex w-full min-w-0 items-center gap-1 rounded-lg px-0.5',
@@ -389,56 +396,56 @@ const SidebarContent = ({
     );
   }
 
-  const displayContent = !searchQuery ? (
-    topic.items.map((item, index) => renderSection(item, index))
-  ) : (() => {
-    const filtered = flattenItems(topic.items).filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const displayContent = !searchQuery
+    ? topic.items.map((item, index) => renderSection(item, index))
+    : (() => {
+        const filtered = flattenItems(topic.items).filter((item) =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
-    if (filtered.length === 0) {
-      return (
-        <div className="py-8 text-center">
-          <span className="block text-2xl" aria-hidden>
-            🔎
-          </span>
-          <p className="mt-2 text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className={docsSidebarTreeBranchClass}>
-        <SidebarMenu className="w-full min-w-0 gap-0.5">
-        {filtered.map((item) => {
-          const routeKey = `${topic.id}/${item.id}`;
-          const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
+        if (filtered.length === 0) {
           return (
-            <SidebarMenuItem key={item.id} className="w-full min-w-0">
-              <SidebarMenuButton
-                asChild
-                size="default"
-                isActive={isActive && isDocumentItem(item)}
-                className="h-8 w-full min-w-0 px-1.5 text-sm"
-              >
-                <button
-                  type="button"
-                  data-sidebar-route={routeKey}
-                  className="w-full min-w-0 text-left"
-                  onClick={() => handleNavigate(topic.id, item.id)}
-                >
-                  <span className="block w-full truncate">
-                    <TranslatedText text={item.title} />
-                  </span>
-                </button>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
+            <div className="py-8 text-center">
+              <span className="block text-2xl" aria-hidden>
+                🔎
+              </span>
+              <p className="mt-2 text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
+            </div>
           );
-        })}
-        </SidebarMenu>
-      </div>
-    );
-  })();
+        }
+
+        return (
+          <div className={docsSidebarTreeBranchClass}>
+            <SidebarMenu className="w-full min-w-0 gap-0.5">
+              {filtered.map((item) => {
+                const routeKey = `${topic.id}/${item.id}`;
+                const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
+                return (
+                  <SidebarMenuItem key={item.id} className="w-full min-w-0">
+                    <SidebarMenuButton
+                      asChild
+                      size="default"
+                      isActive={isActive && isDocumentItem(item)}
+                      className="h-8 w-full min-w-0 px-1.5 text-sm"
+                    >
+                      <button
+                        type="button"
+                        data-sidebar-route={routeKey}
+                        className="w-full min-w-0 text-left"
+                        onClick={() => handleNavigate(topic.id, item.id)}
+                      >
+                        <span className="block w-full truncate">
+                          <TranslatedText text={item.title} />
+                        </span>
+                      </button>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </div>
+        );
+      })();
 
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-sidebar text-sidebar-foreground">
@@ -470,9 +477,7 @@ const SidebarContent = ({
       </SidebarHeader>
 
       <UiSidebarContent className="px-3 py-3">
-        <div className={cn(docsSidePanelNavSurfaceClass, 'flex w-full min-w-0 flex-col gap-1')}>
-          {displayContent}
-        </div>
+        <div className={cn(docsSidePanelNavSurfaceClass, 'flex w-full min-w-0 flex-col gap-1')}>{displayContent}</div>
       </UiSidebarContent>
     </div>
   );

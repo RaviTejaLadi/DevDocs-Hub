@@ -98,9 +98,7 @@ export function DocsTopicBrowserSheet({
         for (const topic of cat.topics) {
           const jumpItem = flattenTopicItems(topic.items)[0];
           if (!jumpItem) continue;
-          const haystack = [topic.title, categoryLabel, stream.title, topic.description ?? '']
-            .join(' ')
-            .toLowerCase();
+          const haystack = [topic.title, categoryLabel, stream.title, topic.description ?? ''].join(' ').toLowerCase();
           if (!haystack.includes(normalizedQuery)) continue;
           hits.push({
             topic,
@@ -242,10 +240,7 @@ export function DocsTopicBrowserSheet({
             <p className="mb-2 px-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
               {t('docs.learningStream')}
             </p>
-            <nav
-              aria-label={t('docs.learningStream')}
-              className="grid grid-cols-2 gap-1.5 sm:grid-cols-2"
-            >
+            <nav aria-label={t('docs.learningStream')} className="grid grid-cols-2 gap-1.5 sm:grid-cols-2">
               {sections.map(({ stream }) => {
                 const isActive = stream.id === activeStreamId;
                 return (

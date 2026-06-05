@@ -5,9 +5,7 @@ import { docsHeroIconSurfaceClass, docsHeroSurfaceClass } from '@/constants/docs
 import { cn } from '@/lib/utils';
 
 export function DocumentationTopicHero({ topic }: { topic: Topic }) {
-  const iconEl = topic.icon ?? (
-    <FileText className="size-5 text-primary" strokeWidth={1.75} aria-hidden />
-  );
+  const iconEl = topic.icon ?? <FileText className="size-5 text-primary" strokeWidth={1.75} aria-hidden />;
 
   return (
     <div className={cn('not-prose flex items-start gap-3 px-4 py-3 sm:px-5 sm:py-4', docsHeroSurfaceClass)}>
