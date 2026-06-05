@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo, type ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ChevronLeft, ChevronRight, ListTree } from 'lucide-react';
@@ -12,6 +12,17 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { docsArticleSurfaceClass, docsPanelShadowClass } from '@/constants/docsSidePanel';
+import {
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from '@/components/ui/sidebar';
 import { buildMarkdownComponents } from './buildMarkdownComponents';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
@@ -42,14 +53,31 @@ function buildTocTree(headings: Heading[]): TocTreeNode[] {
   return root;
 }
 
-function tocItemDepthClass(depth: number, active: boolean) {
-  return cn(
-    'md-toc-item',
-    depth === 0 && 'md-toc-item--depth-0',
-    depth === 1 && 'md-toc-item--depth-1',
-    depth >= 2 && 'md-toc-item--depth-2',
-    active && 'active'
-  );
+/** Flatten nested TOC nodes into sub-menu rows with depth padding. */
+function renderTocSubRows(
+  nodes: TocTreeNode[],
+  depth: number,
+  activeId: string,
+  onActivate: (heading: Heading) => void
+): ReactElement[] {
+  return nodes.flatMap(({ heading, children }) => {
+    const isActive = activeId === heading.id;
+    const row = (
+      <SidebarMenuSubItem key={heading.id}>
+        <SidebarMenuSubButton asChild isActive={isActive} size="sm">
+          <button
+            type="button"
+            style={{ paddingLeft: `${8 + depth * 10}px` }}
+            onClick={() => onActivate(heading)}
+          >
+            <span className="truncate">{heading.text}</span>
+          </button>
+        </SidebarMenuSubButton>
+      </SidebarMenuSubItem>
+    );
+    if (children.length === 0) return [row];
+    return [row, ...renderTocSubRows(children, depth + 1, activeId, onActivate)];
+  });
 }
 
 /** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
@@ -633,61 +661,27 @@ const MarkdownRenderInner = ({
 
   const tocTree = useMemo(() => buildTocTree(headings), [headings]);
 
-  const renderTocButton = useCallback(
-    (heading: Heading, depth: number) => {
-      const isActive = activeId === heading.id;
-      const className = tocItemDepthClass(depth, isActive);
-      const label = heading.text;
-      const shouldShowHeadingTooltip = label.length > 42;
-
-      if (!shouldShowHeadingTooltip) {
+  const tocNav = (
+    <SidebarMenu>
+      {tocTree.map(({ heading, children }) => {
+        const isActive = activeId === heading.id;
         return (
-          <button
-            type="button"
-            onClick={() => activateHeadingFromToc(heading)}
-            className={className}
-          >
-            <span className="block truncate">{label}</span>
-          </button>
+          <SidebarMenuItem key={heading.id}>
+            <SidebarMenuButton asChild isActive={isActive}>
+              <button type="button" onClick={() => activateHeadingFromToc(heading)}>
+                <span className="truncate">{heading.text}</span>
+              </button>
+            </SidebarMenuButton>
+            {children.length > 0 ? (
+              <SidebarMenuSub className="border-border/35">
+                {renderTocSubRows(children, 1, activeId, activateHeadingFromToc)}
+              </SidebarMenuSub>
+            ) : null}
+          </SidebarMenuItem>
         );
-      }
-
-      return (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button type="button" onClick={() => activateHeadingFromToc(heading)} className={className}>
-              <span className="block truncate">{label}</span>
-            </button>
-          </TooltipTrigger>
-          <TooltipContent side="left" className="max-w-80 wrap-break-word">
-            {label}
-          </TooltipContent>
-        </Tooltip>
-      );
-    },
-    [activeId, activateHeadingFromToc]
+      })}
+    </SidebarMenu>
   );
-
-  const renderTocNodes = useCallback(
-    (nodes: TocTreeNode[], depth = 0) => (
-      <ul
-        className={cn(
-          'm-0 list-none p-0',
-          depth === 0 ? 'space-y-0.5' : 'ml-2 mt-0.5 space-y-0.5 border-l border-border/35 pl-2'
-        )}
-      >
-        {nodes.map(({ heading, children }) => (
-          <li key={heading.id} className="min-w-0">
-            {renderTocButton(heading, depth)}
-            {children.length > 0 ? renderTocNodes(children, depth + 1) : null}
-          </li>
-        ))}
-      </ul>
-    ),
-    [renderTocButton]
-  );
-
-  const tocNav = <nav aria-label={t('markdown.onThisPage')}>{renderTocNodes(tocTree)}</nav>;
 
   return (
     <div
@@ -898,11 +892,9 @@ const MarkdownRenderInner = ({
                 <TooltipContent side="left">{t('docs.showOutline')}</TooltipContent>
               </Tooltip>
             ) : (
-              <>
-                <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    {t('markdown.onThisPage')}
-                  </span>
+              <SidebarGroup className="flex min-h-0 flex-1 flex-col py-0">
+                <SidebarGroupLabel className="mb-2 flex h-auto items-center justify-between gap-2 px-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  <span>{t('markdown.onThisPage')}</span>
                   <div className="flex shrink-0 items-center gap-1.5">
                     <div
                       ref={progressRingRef}
@@ -927,18 +919,18 @@ const MarkdownRenderInner = ({
                       <TooltipContent side="left">{t('docs.hideOutline')}</TooltipContent>
                     </Tooltip>
                   </div>
-                </div>
-                <div className="-mx-1 mb-3 h-px shrink-0 bg-border/40" />
-
-                <ScrollArea
-                  className={cn(
-                    'pr-1.5',
-                    cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
-                  )}
-                >
-                  {tocNav}
-                </ScrollArea>
-              </>
+                </SidebarGroupLabel>
+                <SidebarGroupContent className="min-h-0 flex-1">
+                  <ScrollArea
+                    className={cn(
+                      'pr-1',
+                      cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
+                    )}
+                  >
+                    <nav aria-label={t('markdown.onThisPage')}>{tocNav}</nav>
+                  </ScrollArea>
+                </SidebarGroupContent>
+              </SidebarGroup>
             )}
           </div>
         </aside>
