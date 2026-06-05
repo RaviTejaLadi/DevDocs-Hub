@@ -1,1 +1,662 @@
-# Fasteners
+# 🔩 Fasteners
+
+Fasteners are machine elements used to join two or more components together.
+They play a critical role in machine design by providing reliable connections
+that can either be permanent or temporary.
+
+Almost every machine, structure, automobile, and industrial system uses
+fasteners.
+
+Examples:
+
+- Bolts
+- Nuts
+- Screws
+- Studs
+- Rivets
+- Pins
+
+---
+
+# 🎯 Functions of Fasteners
+
+Fasteners are used to:
+
+✅ Join machine components
+
+✅ Transmit loads
+
+✅ Maintain alignment
+
+✅ Allow assembly and disassembly
+
+✅ Simplify maintenance and repair
+
+---
+
+# Why Fasteners are Important
+
+Without fasteners:
+
+- Components would separate during operation.
+- Maintenance would become difficult.
+- Assembly would be impossible.
+
+---
+
+# Types of Joints
+
+```mermaid
+flowchart TD
+A[Machine Joints]
+A --> B[Temporary Joints]
+A --> C[Permanent Joints]
+```
+
+---
+
+# Temporary Joints
+
+Can be dismantled without damaging components.
+
+Examples:
+
+- Bolts
+- Nuts
+- Screws
+- Studs
+
+---
+
+# Permanent Joints
+
+Cannot be dismantled without destroying the joint.
+
+Examples:
+
+- Rivets
+- Welds
+
+---
+
+# Classification of Fasteners
+
+```mermaid
+flowchart TD
+A[Fasteners]
+A --> B[Bolts]
+A --> C[Nuts]
+A --> D[Screws]
+A --> E[Studs]
+A --> F[Washers]
+A --> G[Pins]
+A --> H[Rivets]
+```
+
+---
+
+# 🔩 Bolts
+
+A bolt is a threaded fastener used with a nut to join components.
+
+```mermaid
+flowchart LR
+A[Bolt]
+--> B[Connected Parts]
+--> C[Nut]
+```
+
+---
+
+## Characteristics
+
+- External threads
+- Requires a nut
+- Easy assembly and removal
+
+---
+
+## Applications
+
+- Structural connections
+- Machine frames
+- Automobile assemblies
+
+---
+
+# Common Types of Bolts
+
+## Hexagonal Bolt
+
+Most widely used bolt.
+
+```
+ ______
+| HEX |
+|_____|
+   ||
+   ||
+```
+
+---
+
+## Square Head Bolt
+
+Used in heavy-duty machinery.
+
+---
+
+## T-Bolt
+
+Used in machine tool tables and slots.
+
+---
+
+## Eye Bolt
+
+Contains a loop for lifting applications.
+
+---
+
+# 🔘 Nuts
+
+A nut is internally threaded and used with a bolt.
+
+Function:
+
+- Holds components together.
+
+```mermaid
+flowchart LR
+A[Bolt]
+--> B[Nut]
+--> C[Clamping Force]
+```
+
+---
+
+# Types of Nuts
+
+## Hex Nut
+
+Most commonly used.
+
+---
+
+## Castle Nut
+
+Contains slots for locking.
+
+Used with split pins.
+
+---
+
+## Cap Nut
+
+Protects exposed bolt threads.
+
+---
+
+## Wing Nut
+
+Can be tightened manually.
+
+---
+
+# 🔧 Screws
+
+A screw is a threaded fastener that usually does not require a nut.
+
+It engages directly with the material.
+
+---
+
+# Types of Screws
+
+```mermaid
+flowchart TD
+A[Screws]
+A --> B[Machine Screws]
+A --> C[Set Screws]
+A --> D[Self-Tapping Screws]
+A --> E[Wood Screws]
+```
+
+---
+
+## Machine Screw
+
+Used in machinery and equipment.
+
+---
+
+## Set Screw
+
+Prevents relative motion between components.
+
+Commonly used in:
+
+- Pulleys
+- Gears
+- Couplings
+
+---
+
+## Self-Tapping Screw
+
+Creates its own thread during installation.
+
+---
+
+# 🧱 Studs
+
+A stud is a threaded rod with threads on both ends.
+
+```mermaid
+flowchart LR
+A[Nut]
+--> B[Stud]
+--> C[Nut]
+```
+
+---
+
+# Applications
+
+- Engine cylinders
+- Pressure vessels
+- Heavy machinery
+
+---
+
+# ⚪ Washers
+
+Washers are placed under bolt heads or nuts.
+
+Functions:
+
+✅ Distribute load
+
+✅ Prevent surface damage
+
+✅ Reduce loosening
+
+---
+
+# Types of Washers
+
+## Plain Washer
+
+Most common washer.
+
+---
+
+## Spring Washer
+
+Prevents loosening caused by vibration.
+
+---
+
+## Lock Washer
+
+Provides additional locking action.
+
+---
+
+# 📍 Pins
+
+Pins are used for positioning and locking components.
+
+---
+
+# Types of Pins
+
+## Dowel Pin
+
+Used for accurate positioning.
+
+---
+
+## Taper Pin
+
+Provides tight fitting.
+
+---
+
+## Split Pin
+
+Used with castle nuts.
+
+```mermaid
+flowchart LR
+A[Castle Nut]
+--> B[Split Pin]
+--> C[Locking]
+```
+
+---
+
+# 🔗 Rivets
+
+A rivet is a permanent fastening element.
+
+After installation, it cannot be removed without destruction.
+
+```mermaid
+flowchart LR
+A[Plate]
+--> B[Rivet]
+--> C[Plate]
+```
+
+---
+
+# Applications
+
+- Aircraft structures
+- Bridges
+- Boilers
+
+---
+
+# 📏 Bolt Terminology
+
+```mermaid
+flowchart TD
+A[Bolt]
+A --> B[Head]
+A --> C[Shank]
+A --> D[Threads]
+A --> E[Length]
+```
+
+---
+
+# Head
+
+Used for tightening.
+
+---
+
+# Shank
+
+Unthreaded portion.
+
+---
+
+# Threads
+
+Provide gripping action.
+
+---
+
+# Important Thread Terms
+
+## Major Diameter
+
+Largest thread diameter.
+
+---
+
+## Minor Diameter
+
+Smallest thread diameter.
+
+---
+
+## Pitch
+
+Distance between adjacent threads.
+
+---
+
+## Lead
+
+Distance advanced in one complete revolution.
+
+---
+
+# Types of Threads
+
+```mermaid
+flowchart TD
+A[Threads]
+A --> B[Metric Thread]
+A --> C[Square Thread]
+A --> D[Acme Thread]
+A --> E[Buttress Thread]
+```
+
+---
+
+# Metric Thread
+
+Most widely used standard thread.
+
+---
+
+# Square Thread
+
+High efficiency.
+
+Used in:
+
+- Screw jacks
+- Presses
+
+---
+
+# Acme Thread
+
+Stronger and easier to manufacture.
+
+---
+
+# Buttress Thread
+
+Suitable for heavy loads in one direction.
+
+---
+
+# Stresses in Fasteners
+
+Fasteners are subjected to various stresses.
+
+```mermaid
+flowchart TD
+A[Fastener Stresses]
+A --> B[Tensile Stress]
+A --> C[Shear Stress]
+A --> D[Crushing Stress]
+A --> E[Bending Stress]
+```
+
+---
+
+# Tensile Stress
+
+Occurs due to axial loading.
+
+Common in bolts.
+
+---
+
+# Shear Stress
+
+Occurs when components attempt to slide.
+
+Common in rivets and pins.
+
+---
+
+# Crushing Stress
+
+Occurs between mating surfaces.
+
+---
+
+# Bending Stress
+
+Occurs under eccentric loading.
+
+---
+
+# Failure of Fasteners
+
+```mermaid
+flowchart TD
+A[Fastener Failure]
+A --> B[Tensile Failure]
+A --> C[Shear Failure]
+A --> D[Thread Stripping]
+A --> E[Fatigue Failure]
+A --> F[Corrosion]
+```
+
+---
+
+# Tensile Failure
+
+Bolt breaks due to excessive tension.
+
+---
+
+# Shear Failure
+
+Occurs due to transverse loading.
+
+---
+
+# Thread Stripping
+
+Threads become damaged under overload.
+
+---
+
+# Fatigue Failure
+
+Caused by repeated loading cycles.
+
+---
+
+# Corrosion Failure
+
+Occurs in harsh environments.
+
+---
+
+# Methods to Prevent Loosening
+
+Vibration can loosen fasteners.
+
+Common locking methods:
+
+```mermaid
+flowchart TD
+A[Locking Methods]
+A --> B[Lock Nut]
+A --> C[Spring Washer]
+A --> D[Split Pin]
+A --> E[Lock Wire]
+```
+
+---
+
+# Design Considerations
+
+When selecting a fastener:
+
+- Load capacity
+- Material strength
+- Corrosion resistance
+- Temperature
+- Ease of maintenance
+- Cost
+
+---
+
+# Materials Used for Fasteners
+
+| Material        | Application                |
+| --------------- | -------------------------- |
+| Mild Steel      | General purpose            |
+| Carbon Steel    | Machine assemblies         |
+| Alloy Steel     | High-strength applications |
+| Stainless Steel | Corrosion resistance       |
+| Brass           | Electrical fittings        |
+
+---
+
+# 🏭 Applications of Fasteners
+
+## Automotive Industry
+
+- Engine assembly
+- Suspension systems
+
+---
+
+## Aerospace Industry
+
+- Aircraft structures
+
+---
+
+## Industrial Machinery
+
+- Machine frames
+- Gearboxes
+
+---
+
+## Construction
+
+- Steel structures
+- Bridges
+
+---
+
+## Household Products
+
+- Furniture
+- Appliances
+
+---
+
+# 📈 Advantages of Fasteners
+
+✅ Easy assembly
+
+✅ Easy maintenance
+
+✅ Low manufacturing cost
+
+✅ Standardized components
+
+✅ Replaceable parts
+
+---
+
+# ⚠️ Limitations
+
+❌ Can loosen due to vibration
+
+❌ Subject to corrosion
+
+❌ Stress concentration around holes
+
+❌ Fatigue failure possible
+
+---
+
+# 📝 Key Points
+
+- Fasteners are used to join machine components.
+- Fasteners can be temporary or permanent.
+- Bolts, nuts, screws, studs, and washers are common fasteners.
+- Rivets create permanent joints.
+- Fasteners experience tensile, shear, and crushing stresses.
+- Proper locking methods prevent loosening.
+- Material selection significantly affects fastener performance.
+- Fasteners are essential in mechanical, automotive, aerospace, and construction
+  industries.

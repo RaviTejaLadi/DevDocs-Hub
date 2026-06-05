@@ -1,1 +1,638 @@
-# Bearings
+# 🔘 Bearings
+
+Bearings are machine elements that support rotating or moving parts and reduce
+friction between surfaces in contact.
+
+Almost every machine containing rotating components uses bearings. They help
+shafts rotate smoothly, carry loads, reduce wear, and improve machine
+efficiency.
+
+Examples include automobiles, electric motors, pumps, fans, turbines, and
+industrial machinery.
+
+---
+
+# 🎯 Functions of Bearings
+
+Bearings perform several important functions:
+
+✅ Support rotating shafts
+
+✅ Reduce friction
+
+✅ Carry radial and axial loads
+
+✅ Improve efficiency
+
+✅ Reduce wear
+
+✅ Increase machine life
+
+---
+
+# 🏗️ Why Bearings are Needed
+
+Without bearings:
+
+- Friction increases
+- Heat generation increases
+- Power losses increase
+- Component wear increases
+- Machine life decreases
+
+---
+
+# Simple Example
+
+Imagine rotating a steel shaft directly inside a hole.
+
+```mermaid
+flowchart LR
+A[Shaft] --> B[High Friction]
+B --> C[Wear]
+```
+
+Now add a bearing:
+
+```mermaid
+flowchart LR
+A[Shaft]
+--> B[Bearing]
+--> C[Smooth Rotation]
+```
+
+Result:
+
+- Lower friction
+- Longer life
+- Better performance
+
+---
+
+# ⚙️ Classification of Bearings
+
+```mermaid
+flowchart TD
+A[Bearings]
+A --> B[Sliding Contact Bearings]
+A --> C[Rolling Contact Bearings]
+
+C --> D[Ball Bearings]
+C --> E[Roller Bearings]
+```
+
+---
+
+# 1️⃣ Sliding Contact Bearings
+
+Also called:
+
+- Plain Bearings
+- Journal Bearings
+
+In these bearings:
+
+- Shaft slides over bearing surface.
+- Lubrication reduces friction.
+
+```mermaid
+graph LR
+A[Shaft]
+--- B[Bearing Surface]
+```
+
+---
+
+## Advantages
+
+✅ Simple construction
+
+✅ Quiet operation
+
+✅ Suitable for heavy loads
+
+---
+
+## Disadvantages
+
+❌ Higher friction
+
+❌ Continuous lubrication required
+
+---
+
+## Applications
+
+- Turbines
+- Large generators
+- Marine shafts
+
+---
+
+# 2️⃣ Rolling Contact Bearings
+
+Rolling elements are placed between moving surfaces.
+
+Examples:
+
+- Ball Bearings
+- Roller Bearings
+
+Friction is greatly reduced.
+
+```mermaid
+flowchart LR
+A[Inner Race]
+--> B[Rolling Elements]
+--> C[Outer Race]
+```
+
+---
+
+# Components of a Rolling Bearing
+
+```mermaid
+flowchart TD
+A[Bearing]
+A --> B[Inner Race]
+A --> C[Outer Race]
+A --> D[Rolling Elements]
+A --> E[Cage]
+```
+
+---
+
+## Inner Race
+
+Mounted on the shaft.
+
+Rotates with the shaft.
+
+---
+
+## Outer Race
+
+Mounted inside housing.
+
+Usually stationary.
+
+---
+
+## Rolling Elements
+
+May be:
+
+- Balls
+- Cylinders
+- Tapered rollers
+- Needles
+
+---
+
+## Cage
+
+Keeps rolling elements equally spaced.
+
+---
+
+# ⚪ Ball Bearings
+
+The most common bearing type.
+
+Rolling elements are spherical balls.
+
+```mermaid
+graph LR
+A[Outer Race]
+--> B[Ball]
+--> C[Inner Race]
+```
+
+---
+
+# Characteristics
+
+- Low friction
+- High speed capability
+- Moderate load capacity
+
+---
+
+# Applications
+
+- Electric motors
+- Fans
+- Household appliances
+- Pumps
+
+---
+
+# Types of Ball Bearings
+
+```mermaid
+flowchart TD
+A[Ball Bearings]
+A --> B[Deep Groove]
+A --> C[Angular Contact]
+A --> D[Self Aligning]
+A --> E[Thrust Ball Bearing]
+```
+
+---
+
+## Deep Groove Ball Bearing
+
+Most widely used.
+
+Supports:
+
+- Radial loads
+- Moderate axial loads
+
+---
+
+## Angular Contact Bearing
+
+Designed for:
+
+- Combined radial and axial loads
+
+Used in:
+
+- Machine tool spindles
+- Pumps
+
+---
+
+## Self-Aligning Bearing
+
+Automatically adjusts shaft misalignment.
+
+Useful when alignment is difficult.
+
+---
+
+## Thrust Ball Bearing
+
+Designed mainly for axial loads.
+
+```mermaid
+graph TD
+A[Axial Load]
+--> B[Thrust Bearing]
+```
+
+---
+
+# 🔵 Roller Bearings
+
+Use rollers instead of balls.
+
+Because contact area is larger:
+
+- Higher load capacity
+
+```mermaid
+graph LR
+A[Outer Race]
+--> B[Roller]
+--> C[Inner Race]
+```
+
+---
+
+# Types of Roller Bearings
+
+```mermaid
+flowchart TD
+A[Roller Bearings]
+A --> B[Cylindrical Roller]
+A --> C[Taper Roller]
+A --> D[Spherical Roller]
+A --> E[Needle Roller]
+```
+
+---
+
+# Cylindrical Roller Bearing
+
+Characteristics:
+
+- High radial load capacity
+- Suitable for heavy-duty applications
+
+Applications:
+
+- Gearboxes
+- Rolling mills
+
+---
+
+# Taper Roller Bearing
+
+Supports:
+
+- Radial loads
+- Axial loads
+
+Commonly used in:
+
+- Automobile wheel hubs
+
+---
+
+# Spherical Roller Bearing
+
+Can accommodate shaft misalignment.
+
+Suitable for:
+
+- Heavy industrial equipment
+
+---
+
+# Needle Roller Bearing
+
+Uses very thin rollers.
+
+Advantages:
+
+- Compact size
+- High load capacity
+
+Applications:
+
+- Transmissions
+- Automotive systems
+
+---
+
+# 📏 Loads Acting on Bearings
+
+```mermaid
+flowchart TD
+A[Bearing Loads]
+A --> B[Radial Load]
+A --> C[Axial Load]
+A --> D[Combined Load]
+```
+
+---
+
+# Radial Load
+
+Acts perpendicular to shaft axis.
+
+Example:
+
+```mermaid
+graph TD
+A[Load] --- B[Shaft]
+```
+
+Common in:
+
+- Motors
+- Pulleys
+
+---
+
+# Axial Load (Thrust Load)
+
+Acts along shaft axis.
+
+```mermaid
+flowchart LR
+A[Load]
+--> B[Shaft Axis]
+```
+
+Common in:
+
+- Propeller shafts
+- Screw jacks
+
+---
+
+# Combined Load
+
+Contains both radial and axial components.
+
+Examples:
+
+- Gearboxes
+- Automotive wheel hubs
+
+---
+
+# 🛢️ Bearing Lubrication
+
+Lubrication reduces:
+
+- Friction
+- Heat generation
+- Wear
+
+---
+
+# Types of Lubrication
+
+## Grease Lubrication
+
+Advantages:
+
+- Simple
+- Low maintenance
+
+Used in:
+
+- Motors
+- Fans
+
+---
+
+## Oil Lubrication
+
+Advantages:
+
+- Better cooling
+- Suitable for high speed
+
+Used in:
+
+- Turbines
+- Gearboxes
+
+---
+
+# ⚠️ Bearing Failures
+
+```mermaid
+flowchart TD
+A[Bearing Failure]
+A --> B[Wear]
+A --> C[Fatigue]
+A --> D[Corrosion]
+A --> E[Overheating]
+A --> F[Misalignment]
+```
+
+---
+
+# 1️⃣ Wear
+
+Caused by:
+
+- Dirt
+- Lack of lubrication
+
+---
+
+# 2️⃣ Fatigue Failure
+
+Repeated stress causes cracks.
+
+Results in:
+
+- Pitting
+- Surface damage
+
+---
+
+# 3️⃣ Corrosion
+
+Occurs due to:
+
+- Moisture
+- Chemical exposure
+
+---
+
+# 4️⃣ Overheating
+
+Caused by:
+
+- Excessive friction
+- Poor lubrication
+
+---
+
+# 5️⃣ Misalignment
+
+Improper shaft alignment causes:
+
+- Vibration
+- Premature failure
+
+---
+
+# 📊 Bearing Life
+
+Bearing life is usually expressed in:
+
+### Number of Revolutions
+
+or
+
+### Operating Hours
+
+Manufacturers often specify:
+
+### L10 Life
+
+Meaning:
+
+90% of bearings are expected to survive up to the stated life.
+
+---
+
+# Factors Affecting Bearing Life
+
+- Load
+- Speed
+- Lubrication
+- Alignment
+- Temperature
+- Contamination
+
+---
+
+# 🏭 Applications of Bearings
+
+## Automotive
+
+- Wheels
+- Gearboxes
+- Engines
+
+---
+
+## Industrial Machines
+
+- Pumps
+- Compressors
+- Conveyors
+
+---
+
+## Electrical Equipment
+
+- Motors
+- Generators
+- Fans
+
+---
+
+## Aerospace
+
+- Turbines
+- Landing gear systems
+
+---
+
+## Household Appliances
+
+- Washing machines
+- Air conditioners
+- Mixers
+
+---
+
+# 📈 Advantages of Bearings
+
+✅ Reduced friction
+
+✅ Smooth operation
+
+✅ Increased efficiency
+
+✅ Reduced wear
+
+✅ Longer machine life
+
+✅ Lower power consumption
+
+---
+
+# ⚠️ Limitations
+
+❌ Require lubrication
+
+❌ Sensitive to contamination
+
+❌ Proper alignment is necessary
+
+❌ Limited life under excessive loads
+
+---
+
+# 📝 Key Points
+
+- Bearings support rotating components and reduce friction.
+- Bearings are classified into sliding and rolling contact bearings.
+- Ball bearings are suitable for high-speed applications.
+- Roller bearings are suitable for heavier loads.
+- Bearings carry radial, axial, or combined loads.
+- Lubrication is essential for reliable operation.
+- Common failures include wear, fatigue, corrosion, and overheating.
+- Proper bearing selection significantly improves machine performance and life.

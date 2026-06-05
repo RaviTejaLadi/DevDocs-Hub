@@ -245,6 +245,18 @@ const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
 
 const getThemeMode = (): MermaidThemeMode => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
+const isMermaidErrorSvg = (svg: string) =>
+  /aria-roledescription=["']error["']/.test(svg) || /class=["']error-icon["']/.test(svg);
+
+const extractMermaidErrorMessage = (svg: string) => {
+  const textMatch = svg.match(/<text[^>]*>([^<]+)<\/text>/);
+  return textMatch?.[1]?.trim() || 'Unable to render diagram. Please check syntax.';
+};
+
+const cleanupMermaidRenderHost = (renderId: string) => {
+  document.getElementById(`d${renderId}`)?.remove();
+};
+
 const getSvgSize = (svgEl: SVGSVGElement) => {
   const viewBox = svgEl
     .getAttribute('viewBox')
@@ -351,6 +363,7 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
     if (!ref.current) return;
 
     let isCancelled = false;
+    let renderId: string | null = null;
     const el = ref.current;
     const isDark = themeMode === 'dark';
     const cacheKey = `${themeMode}:${chart}`;
@@ -366,21 +379,36 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
 
       const cachedSvg = renderedDiagramCache.get(cacheKey);
       if (cachedSvg) {
-        el.innerHTML = cachedSvg;
-        const svgEl = el.querySelector('svg');
-        if (svgEl) polishSvg(svgEl, isDark);
-        return;
+        if (isMermaidErrorSvg(cachedSvg)) {
+          renderedDiagramCache.delete(cacheKey);
+        } else {
+          el.innerHTML = cachedSvg;
+          const svgEl = el.querySelector('svg');
+          if (svgEl) polishSvg(svgEl, isDark);
+          return;
+        }
       }
 
       const id = 'mermaid-' + Math.random().toString(36).slice(2);
+      renderId = id;
       try {
         const { svg } = await api.render(id, chart);
+        cleanupMermaidRenderHost(id);
         if (!ref.current || isCancelled) return;
+
+        if (isMermaidErrorSvg(svg)) {
+          ref.current.innerHTML = '';
+          if (errorBoxRef.current) errorBoxRef.current.hidden = false;
+          if (errorRef.current) errorRef.current.textContent = extractMermaidErrorMessage(svg);
+          return;
+        }
+
         cacheRenderedDiagram(cacheKey, svg);
         ref.current.innerHTML = svg;
         const svgEl = ref.current.querySelector('svg');
         if (svgEl) polishSvg(svgEl, isDark);
       } catch (renderError: unknown) {
+        cleanupMermaidRenderHost(id);
         if (isCancelled) return;
         if (ref.current) ref.current.innerHTML = '';
         if (errorBoxRef.current) errorBoxRef.current.hidden = false;
@@ -393,6 +421,7 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
 
     return () => {
       isCancelled = true;
+      if (renderId) cleanupMermaidRenderHost(renderId);
     };
   }, [chart, themeMode]);
 

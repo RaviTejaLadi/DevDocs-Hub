@@ -1,1 +1,640 @@
-# Welded & Riveted Joints
+# 🔗 Welded & Riveted Joints
+
+Welded and riveted joints are permanent fastening methods used to connect two or
+more machine components. They are extensively used in machine structures,
+pressure vessels, bridges, ships, aircraft, and industrial equipment.
+
+These joints are designed to safely transfer loads while maintaining structural
+integrity.
+
+---
+
+# 🎯 Why Permanent Joints are Needed
+
+In many engineering applications:
+
+- High strength is required
+- Frequent disassembly is not needed
+- Leak-proof connections are desired
+
+Permanent joints provide:
+
+✅ High strength
+
+✅ Reliability
+
+✅ Rigidity
+
+✅ Long service life
+
+---
+
+# Classification of Permanent Joints
+
+```mermaid
+flowchart TD
+A[Permanent Joints]
+A --> B[Welded Joints]
+A --> C[Riveted Joints]
+```
+
+---
+
+# 🧱 Riveted Joints
+
+A riveted joint is a permanent joint created using rivets.
+
+A rivet is a cylindrical metal pin having a head on one side. After insertion
+into holes, the other end is deformed to form a second head.
+
+```mermaid
+flowchart LR
+A[Plate]
+--> B[Rivet]
+--> C[Plate]
+```
+
+---
+
+# Components of a Rivet
+
+```mermaid
+flowchart TD
+A[Rivet]
+A --> B[Head]
+A --> C[Shank]
+A --> D[Tail]
+```
+
+---
+
+# Working of a Riveted Joint
+
+1. Holes are drilled in plates.
+2. Rivet is inserted.
+3. Tail end is hammered or pressed.
+4. Permanent joint is formed.
+
+```mermaid
+flowchart LR
+A[Insert Rivet]
+--> B[Deform Tail]
+--> C[Create Second Head]
+--> D[Permanent Joint]
+```
+
+---
+
+# Types of Riveted Joints
+
+```mermaid
+flowchart TD
+A[Riveted Joints]
+A --> B[Lap Joint]
+A --> C[Butt Joint]
+```
+
+---
+
+# 1️⃣ Lap Joint
+
+Plates overlap each other.
+
+```mermaid
+graph LR
+A[Plate 1]
+--- B[Rivet]
+--- C[Plate 2 Overlap]
+```
+
+---
+
+## Advantages
+
+✅ Simple construction
+
+✅ Easy manufacturing
+
+---
+
+## Applications
+
+- Structural connections
+- Light fabrication work
+
+---
+
+# 2️⃣ Butt Joint
+
+Plates are placed edge-to-edge.
+
+A cover plate is used.
+
+```mermaid
+graph LR
+A[Plate]
+--- B[Cover Plate]
+--- C[Plate]
+```
+
+---
+
+## Advantages
+
+✅ Better alignment
+
+✅ Stronger construction
+
+---
+
+# Classification Based on Rivet Arrangement
+
+```mermaid
+flowchart TD
+A[Rivet Arrangement]
+A --> B[Single Riveted]
+A --> C[Double Riveted]
+A --> D[Triple Riveted]
+```
+
+---
+
+# Single Riveted Joint
+
+One row of rivets.
+
+---
+
+# Double Riveted Joint
+
+Two rows of rivets.
+
+Provides higher strength.
+
+---
+
+# Triple Riveted Joint
+
+Three rows of rivets.
+
+Used in heavy-duty applications.
+
+---
+
+# Rivet Terminology
+
+```mermaid
+flowchart TD
+A[Rivet Terms]
+A --> B[Pitch]
+A --> C[Margin]
+A --> D[Gauge Distance]
+A --> E[Diameter]
+```
+
+---
+
+# Pitch
+
+Distance between centers of adjacent rivets.
+
+---
+
+# Margin
+
+Distance from rivet center to plate edge.
+
+---
+
+# Gauge Distance
+
+Distance between rivet rows.
+
+---
+
+# Diameter
+
+Diameter of rivet shank.
+
+---
+
+# Stresses in Riveted Joints
+
+```mermaid
+flowchart TD
+A[Rivet Stresses]
+A --> B[Shear Stress]
+A --> C[Crushing Stress]
+A --> D[Tensile Stress]
+```
+
+---
+
+# Shear Failure
+
+Rivet may shear under transverse loads.
+
+```mermaid
+graph LR
+A[Plate]
+--> B[Rivet Shear]
+--> C[Plate]
+```
+
+---
+
+# Crushing Failure
+
+Occurs due to excessive bearing pressure between rivet and plate.
+
+---
+
+# Tearing Failure
+
+Plate tears between rivet holes.
+
+---
+
+# Advantages of Riveted Joints
+
+✅ Reliable
+
+✅ Strong
+
+✅ Good fatigue resistance
+
+✅ Suitable for dynamic loading
+
+---
+
+# Limitations of Riveted Joints
+
+❌ Additional weight
+
+❌ Requires hole drilling
+
+❌ Stress concentration around holes
+
+❌ Labour intensive
+
+---
+
+# Applications of Riveted Joints
+
+- Aircraft structures
+- Bridges
+- Boilers
+- Pressure vessels
+- Shipbuilding
+
+---
+
+# ⚡ Welded Joints
+
+Welding is a process of joining materials by fusion with or without filler
+material.
+
+A welded joint is formed when metal parts are heated and fused together.
+
+```mermaid
+flowchart LR
+A[Metal Part]
+--> B[Heat/Fusion]
+--> C[Metal Part]
+--> D[Welded Joint]
+```
+
+---
+
+# Advantages of Welding
+
+✅ High joint efficiency
+
+✅ Lightweight structure
+
+✅ Leak-proof connection
+
+✅ Attractive appearance
+
+✅ No holes required
+
+---
+
+# Why Welding is Popular
+
+Compared with riveted joints:
+
+- Less material required
+- Lower weight
+- Higher strength
+- Better appearance
+
+---
+
+# Types of Welded Joints
+
+```mermaid
+flowchart TD
+A[Welded Joints]
+A --> B[Butt Joint]
+A --> C[Lap Joint]
+A --> D[T Joint]
+A --> E[Corner Joint]
+A --> F[Edge Joint]
+```
+
+---
+
+# 1️⃣ Butt Weld Joint
+
+Two plates are joined edge-to-edge.
+
+```mermaid
+graph LR
+A[Plate]
+--- B[Weld]
+--- C[Plate]
+```
+
+Applications:
+
+- Pressure vessels
+- Pipelines
+
+---
+
+# 2️⃣ Lap Weld Joint
+
+One plate overlaps another.
+
+```mermaid
+graph LR
+A[Plate]
+--- B[Overlap]
+--- C[Plate]
+```
+
+---
+
+# 3️⃣ T-Joint
+
+Two members form a T shape.
+
+```mermaid
+graph TD
+A[Plate] --- B[T Joint]
+B --- C[Plate]
+```
+
+---
+
+# 4️⃣ Corner Joint
+
+Used at right-angle corners.
+
+Common in frames and boxes.
+
+---
+
+# 5️⃣ Edge Joint
+
+Edges of plates are welded together.
+
+Used for light-duty applications.
+
+---
+
+# Types of Welds
+
+```mermaid
+flowchart TD
+A[Weld Types]
+A --> B[Fillet Weld]
+A --> C[Groove Weld]
+A --> D[Plug Weld]
+A --> E[Slot Weld]
+```
+
+---
+
+# Fillet Weld
+
+Most common weld type.
+
+Used in:
+
+- Lap joints
+- T-joints
+
+```mermaid
+graph TD
+A[Plate] --- B[Fillet Weld]
+B --- C[Plate]
+```
+
+---
+
+# Groove Weld
+
+Used in butt joints.
+
+Provides high strength.
+
+---
+
+# Plug Weld
+
+Weld deposited in circular holes.
+
+---
+
+# Slot Weld
+
+Weld deposited in elongated slots.
+
+---
+
+# Stresses in Welded Joints
+
+```mermaid
+flowchart TD
+A[Weld Stresses]
+A --> B[Tensile Stress]
+A --> C[Shear Stress]
+A --> D[Bending Stress]
+A --> E[Torsional Stress]
+```
+
+---
+
+# Tensile Stress
+
+Occurs due to pulling loads.
+
+---
+
+# Shear Stress
+
+Most common stress in fillet welds.
+
+---
+
+# Bending Stress
+
+Occurs due to eccentric loading.
+
+---
+
+# Torsional Stress
+
+Occurs when torque acts on welded structures.
+
+---
+
+# Weld Defects
+
+Improper welding may cause defects.
+
+```mermaid
+flowchart TD
+A[Weld Defects]
+A --> B[Cracks]
+A --> C[Porosity]
+A --> D[Undercut]
+A --> E[Slag Inclusion]
+A --> F[Incomplete Fusion]
+```
+
+---
+
+# Cracks
+
+Most dangerous weld defect.
+
+May lead to sudden failure.
+
+---
+
+# Porosity
+
+Gas pockets trapped inside weld metal.
+
+---
+
+# Undercut
+
+Groove formed near weld edge.
+
+Reduces strength.
+
+---
+
+# Slag Inclusion
+
+Non-metallic particles trapped inside weld.
+
+---
+
+# Incomplete Fusion
+
+Poor bonding between weld and base metal.
+
+---
+
+# Comparison: Welded vs Riveted Joints
+
+| Feature              | Welded Joint | Riveted Joint |
+| -------------------- | ------------ | ------------- |
+| Weight               | Lower        | Higher        |
+| Strength             | Higher       | Lower         |
+| Leak Proof           | Yes          | No            |
+| Appearance           | Better       | Moderate      |
+| Manufacturing Cost   | Lower        | Higher        |
+| Maintenance          | Low          | Moderate      |
+| Stress Concentration | Low          | High          |
+
+---
+
+# Design Considerations
+
+Engineers consider:
+
+- Applied load
+- Material properties
+- Joint efficiency
+- Safety factor
+- Fatigue loading
+- Manufacturing method
+
+---
+
+# Joint Efficiency
+
+Joint efficiency indicates how strong the joint is compared to the original
+plate.
+
+```
+Joint Efficiency = Strength of Joint / Strength of Solid Plate × 100%
+```
+
+Higher efficiency means a stronger joint.
+
+---
+
+# 🏭 Applications
+
+## Welded Joints
+
+- Pipelines
+- Pressure vessels
+- Structural frames
+- Automobiles
+- Industrial machinery
+
+---
+
+## Riveted Joints
+
+- Aircraft structures
+- Bridges
+- Boilers
+- Ship construction
+
+---
+
+# 📈 Advantages of Permanent Joints
+
+✅ High strength
+
+✅ Long service life
+
+✅ Reliable operation
+
+✅ Suitable for heavy loads
+
+---
+
+# ⚠️ Limitations
+
+❌ Difficult to dismantle
+
+❌ Repairs may be costly
+
+❌ Inspection may be required
+
+❌ Manufacturing defects can reduce strength
+
+---
+
+# 📝 Key Points
+
+- Welded and riveted joints are permanent joints.
+- Riveted joints use rivets to connect components.
+- Welded joints use fusion of materials.
+- Common riveted joints are lap and butt joints.
+- Common welded joints are butt, lap, T, corner, and edge joints.
+- Welded joints are generally lighter and stronger than riveted joints.
+- Riveted joints offer excellent fatigue resistance.
+- Joint design must consider stresses, efficiency, and safety.
+- Welded and riveted joints are widely used in structural and machine design
+  applications.
