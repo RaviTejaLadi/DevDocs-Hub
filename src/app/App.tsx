@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { PanelLeftOpen } from 'lucide-react';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
@@ -11,8 +11,10 @@ import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { useAppLayoutStore } from '@/stores';
 import NavBar from '@/components/layout/NavBar';
 import {
-  docsFloatingActionButtonClass,
-  docsFloatingActionButtonTopClass,
+  docsControlShadowClass,
+  docsMainContentPaddingClass,
+  docsShellLayoutClass,
+  docsSidePanelAsideClass,
   docsSidePanelWidthClass,
 } from '@/constants/docsSidePanel';
 import {
@@ -23,32 +25,8 @@ import {
   RouteFallback,
 } from '@/app/routes';
 
-const DocsDesktopSidebarToggle = ({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) => {
-  const { t } = useI18n();
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          type="button"
-          variant="secondary"
-          size="icon"
-          onClick={onToggle}
-          aria-label={collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}
-          className={cn(
-            docsFloatingActionButtonClass,
-            docsFloatingActionButtonTopClass,
-            'docs-desktop-sidebar-toggle hidden md:inline-flex'
-          )}
-        >
-          {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="left">{collapsed ? t('docs.showSidebar') : t('docs.hideSidebar')}</TooltipContent>
-    </Tooltip>
-  );
-};
-
 const App = () => {
+  const { t } = useI18n();
   const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
   const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
   const docsSidebarCollapsed = useAppLayoutStore((s) => s.docsSidebarCollapsed);
@@ -90,19 +68,38 @@ const App = () => {
         <div
           className={cn(
             'box-border flex min-h-0 h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-nowrap overflow-x-hidden overscroll-none',
-            showSidebar ? 'gap-3 px-3 py-3 sm:px-4 sm:py-4' : 'gap-0 px-3 py-4 sm:px-4'
+            showSidebar ? docsShellLayoutClass : 'gap-0 px-3 py-4 sm:px-4'
           )}
         >
-          {showSidebar && (
-            <DocsDesktopSidebarToggle collapsed={docsSidebarCollapsed} onToggle={toggleDocsSidebarCollapsed} />
+          {showSidebar && docsSidebarCollapsed && (
+            <div className="hidden shrink-0 md:flex md:items-start">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={toggleDocsSidebarCollapsed}
+                    aria-label={t('docs.showSidebar')}
+                    className={cn(
+                      'size-9 rounded-lg border-border/40 bg-card/80 hover:bg-accent/50',
+                      docsControlShadowClass
+                    )}
+                  >
+                    <PanelLeftOpen className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right">{t('docs.showSidebar')}</TooltipContent>
+              </Tooltip>
+            </div>
           )}
           {showSidebar && (
             <aside
               className={cn(
-                'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border border-border/40 bg-background shadow-sm transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
+                'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
                 docsSidebarCollapsed
                   ? 'w-0 min-w-0 max-w-0 shrink-0 border-transparent p-0 opacity-0 pointer-events-none'
-                  : cn(docsSidePanelWidthClass, 'h-full border-border/40 opacity-100')
+                  : cn(docsSidePanelWidthClass, docsSidePanelAsideClass, 'h-full opacity-100')
               )}
               aria-hidden={docsSidebarCollapsed}
             >
@@ -120,10 +117,10 @@ const App = () => {
             >
               <div
                 className={cn(
-                  'mx-auto w-full min-w-0 text-foreground pb-[max(1.5rem,env(safe-area-inset-bottom))]',
+                  'mx-auto w-full min-w-0 text-foreground',
                   showSidebar
-                    ? 'max-w-none py-4 sm:py-5 ps-[max(0.25rem,env(safe-area-inset-left))] pe-[max(0.5rem,env(safe-area-inset-right))] sm:ps-2 sm:pe-3'
-                    : 'max-w-7xl py-6 sm:py-8 lg:py-10 ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 sm:pb-8 lg:pb-10'
+                    ? docsMainContentPaddingClass
+                    : 'max-w-7xl py-6 sm:py-8 lg:py-10 ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10'
                 )}
               >
                 <Suspense fallback={<RouteFallback />}>

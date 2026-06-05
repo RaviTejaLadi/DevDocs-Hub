@@ -5,7 +5,7 @@ import type { Topic, TopicItem } from '@/data/topics';
 import { resolveTopicBadge, findTopicBadgeContext } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
-import { BookOpen, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { BookOpen, PanelLeftClose, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { useAppLayoutStore } from '@/stores';
 import {
   docsSidePanelHeaderSurfaceClass,
   docsSidePanelNavSurfaceClass,
@@ -52,8 +53,15 @@ const flattenItems = (items: TopicItem[]): TopicItem[] => {
   }, []);
 };
 
-const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
+const SidebarContent = ({
+  closeSheet,
+  showCollapseControl,
+}: {
+  closeSheet?: () => void;
+  showCollapseControl?: boolean;
+}) => {
   const { t } = useI18n();
+  const toggleDocsSidebarCollapsed = useAppLayoutStore((s) => s.toggleDocsSidebarCollapsed);
   const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
@@ -138,7 +146,13 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
       const lessonCount = hasChildren ? countDocumentItems(item) : 0;
 
       return (
-        <div key={item.id} className="w-full max-w-full overflow-hidden">
+        <div
+          key={item.id}
+          className={cn(
+            'w-full max-w-full overflow-hidden',
+            depth === 0 && 'pb-2.5 border-b border-border/20 last:border-b-0 last:pb-0'
+          )}
+        >
           <div className="flex w-full items-center overflow-hidden">
             <Button
               variant="ghost"
@@ -152,7 +166,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
                   ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)] ring-1 ring-primary/10'
                   : isActive && !isDoc
                   ? 'bg-muted/55 text-foreground'
-                  : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/40 hover:text-foreground hover:shadow-sm'
+                  : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/40 hover:text-foreground'
               )}
               style={{ paddingLeft: `${depth * 10 + 8}px` }}
               onClick={() => topic && handleNavigate(topic.id, item.id)}
@@ -233,7 +247,7 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
           </div>
 
           {hasChildren && isExpanded && (
-            <div className={cn('ml-4 border-l border-border/30 pl-1', depth === 0 && 'mb-1 ml-5')}>
+            <div className={cn('ml-4 flex flex-col gap-1 border-l border-border/30 pl-2', depth === 0 && 'ml-5 mt-1')}>
               {renderTree(item.items!, depth + 1, item.title)}
             </div>
           )}
@@ -324,39 +338,56 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
   return (
     <div className="flex min-h-0 min-w-0 max-w-full flex-1 touch-manipulation flex-col overflow-x-hidden bg-inherit">
-      <div
-        className={cn(docsSidePanelHeaderSurfaceClass, 'px-3 pb-2.5 pt-3 text-fade-up min-w-0 sm:px-4')}
-      >
-        <div className="relative min-w-0">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder={t('sidebar.searchSection')}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-9 w-full rounded-lg border-border/35 bg-background/85 pl-8 pr-8 text-sm focus-visible:ring-primary/30"
-          />
-          {searchQuery && (
-            <Button
-              variant="ghost"
-              size="sm"
-              className="absolute right-0.5 top-1/2 size-7 shrink-0 -translate-y-1/2 p-0 rounded-md"
-              onClick={() => setSearchQuery('')}
-              aria-label={t('sidebar.clearSearch')}
-            >
-              <X className="size-3" />
-            </Button>
-          )}
+      <div className={cn(docsSidePanelHeaderSurfaceClass, 'px-4 pb-3 pt-4 text-fade-up min-w-0')}>
+        <div className="flex items-center gap-2.5">
+          <div className="relative min-w-0 flex-1">
+            <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder={t('sidebar.searchSection')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-9 w-full rounded-lg border-border/35 bg-background/85 pl-8 pr-8 text-sm focus-visible:ring-primary/30"
+            />
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="sm"
+                className="absolute right-0.5 top-1/2 size-7 shrink-0 -translate-y-1/2 p-0 rounded-md"
+                onClick={() => setSearchQuery('')}
+                aria-label={t('sidebar.clearSearch')}
+              >
+                <X className="size-3" />
+              </Button>
+            )}
+          </div>
+          {showCollapseControl ? (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleDocsSidebarCollapsed}
+                  aria-label={t('docs.hideSidebar')}
+                  className="size-9 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                >
+                  <PanelLeftClose className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right">{t('docs.hideSidebar')}</TooltipContent>
+            </Tooltip>
+          ) : null}
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col px-2.5 pb-2 pt-1.5 sm:px-3">
+      <div className="flex min-h-0 flex-1 flex-col px-3 pb-3 pt-3 sm:px-4">
         <ScrollArea
           className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}
           viewportClassName={docsSidePanelScrollViewportClass}
         >
           <div className={docsSidePanelNavSurfaceClass}>
-            <nav className="space-y-0.5 group/nav" aria-label="Topic sections">
+            <nav className="flex flex-col gap-1.5 group/nav" aria-label="Topic sections">
               {displayContent}
             </nav>
           </div>

@@ -1,6 +1,8 @@
 import { FileText } from 'lucide-react';
 import type { Topic } from '@/data/topics';
 import { TranslatedText } from '@/i18n/TranslatedText';
+import { docsHeroIconSurfaceClass, docsHeroSurfaceClass } from '@/constants/docsSidePanel';
+import { cn } from '@/lib/utils';
 
 export function DocumentationTopicHero({ topic }: { topic: Topic }) {
   const iconEl = topic.icon ?? (
@@ -8,9 +10,12 @@ export function DocumentationTopicHero({ topic }: { topic: Topic }) {
   );
 
   return (
-    <div className="not-prose flex items-start gap-3 rounded-xl border border-border/40 bg-card/50 px-4 py-3 sm:px-5 sm:py-4">
+    <div className={cn('not-prose flex items-start gap-3 px-4 py-3 sm:px-5 sm:py-4', docsHeroSurfaceClass)}>
       <div
-        className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-muted/20 text-primary [&_svg]:size-5"
+        className={cn(
+          'flex size-10 shrink-0 items-center justify-center text-primary [&_svg]:size-5',
+          docsHeroIconSurfaceClass
+        )}
         aria-hidden
       >
         {iconEl}

@@ -4,13 +4,14 @@ import { ChevronDown, Library, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
 import {
   docsFloatingActionButtonClass,
-  docsFloatingActionButtonTopStackedClass,
+  docsFloatingActionButtonBottomClass,
   docsSidePanelScrollAreaClass,
   docsSidePanelScrollViewportClass,
   docsTopicBrowserSheetContentClass,
@@ -169,28 +170,26 @@ export function DocsTopicBrowserSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <Button
-        type="button"
-        variant="secondary"
-        aria-haspopup="dialog"
-        aria-expanded={open}
-        aria-label={t('docs.topicBrowserTrigger')}
-        className={cn(
-          docsFloatingActionButtonClass,
-          docsFloatingActionButtonTopStackedClass,
-          'h-10 gap-2 border-primary/30 bg-primary/10 px-3.5 text-primary shadow-lg',
-          'hover:bg-primary/15 hover:shadow-xl active:scale-[0.97]',
-          'sm:w-auto sm:min-w-10',
-          open && 'hidden'
-        )}
-        onClick={() => onOpenChange(true)}
-      >
-        <Library className="size-4 shrink-0" />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <SheetTrigger asChild>
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              aria-label={t('docs.topicBrowserTrigger')}
+              className={cn(docsFloatingActionButtonClass, docsFloatingActionButtonBottomClass, open && 'hidden')}
+            >
+              <Library className="size-4" />
+            </Button>
+          </SheetTrigger>
+        </TooltipTrigger>
+        <TooltipContent side="left">{t('docs.topicBrowserTrigger')}</TooltipContent>
+      </Tooltip>
 
       <SheetContent
         side="right"
-        overlayClassName="z-[68] backdrop-blur-sm bg-background/40"
+        overlayClassName="backdrop-blur-sm bg-background/40"
         className={docsTopicBrowserSheetContentClass}
       >
         <SheetHeader className="shrink-0 gap-3 border-b border-border/30 bg-muted/15 px-4 py-3.5 text-left">

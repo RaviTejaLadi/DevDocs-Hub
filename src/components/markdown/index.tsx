@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ListTree } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import { useTheme } from '../../hooks/useTheme';
@@ -11,6 +11,7 @@ import { useTranslatedText } from '@/i18n/useTranslatedText';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
+import { docsArticleSurfaceClass, docsPanelShadowClass } from '@/constants/docsSidePanel';
 import { buildMarkdownComponents } from './buildMarkdownComponents';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
@@ -272,6 +273,7 @@ const MarkdownRenderInner = ({
   const viewportScrollRootRef = useScrollViewport();
   const slides = useMemo(() => splitMarkdownIntoSlides(translatedContent), [translatedContent]);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [tocCollapsed, setTocCollapsed] = useState(false);
   const endBumpLockRef = useRef(false);
   const startBumpLockRef = useRef(false);
   const slideDocNavRef = useRef({
@@ -297,6 +299,7 @@ const MarkdownRenderInner = ({
   useEffect(() => {
     /* eslint-disable-next-line react-hooks/set-state-in-effect -- reset deck when the bound document / topic changes */
     setActiveSlide(0);
+    setTocCollapsed(false);
   }, [translatedContent, slideMode, headingIdScope]);
 
   useEffect(() => {
@@ -587,17 +590,60 @@ const MarkdownRenderInner = ({
   );
 
   const articleSurface = cn(
-    'md-render overflow-hidden rounded-2xl border border-border/35 bg-card/55 backdrop-blur-sm',
-    'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11',
-    'shadow-[0_22px_52px_-30px_hsl(var(--foreground)/0.32)]'
+    'md-render',
+    docsArticleSurfaceClass,
+    'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11'
+  );
+
+  const tocNav = (
+    <nav className="space-y-0.5">
+      {headings.map((heading) => {
+        const indent =
+          heading.level === 1 ? 'pl-3' : heading.level === 2 ? 'pl-3' : heading.level === 3 ? 'pl-7' : 'pl-10';
+        const shouldShowHeadingTooltip = heading.text.length > 42;
+        if (!shouldShowHeadingTooltip) {
+          return (
+            <button
+              key={heading.id}
+              type="button"
+              onClick={() => activateHeadingFromToc(heading)}
+              className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+            >
+              <span className="block truncate">{heading.text}</span>
+            </button>
+          );
+        }
+
+        return (
+          <Tooltip key={heading.id}>
+            <TooltipTrigger asChild>
+              <button
+                type="button"
+                onClick={() => activateHeadingFromToc(heading)}
+                className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+              >
+                <span className="block truncate">{heading.text}</span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="left" className="max-w-80 wrap-break-word">
+              {heading.text}
+            </TooltipContent>
+          </Tooltip>
+        );
+      })}
+    </nav>
   );
 
   return (
     <div
       className={cn(
-        'relative grid gap-2 lg:gap-2',
+        'relative grid gap-4 lg:gap-4',
         fillViewportCard && 'h-full min-h-0',
-        hideToc ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
+        hideToc
+          ? 'grid-cols-1'
+          : tocCollapsed
+            ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto]'
+            : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
         cardScrollMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
       )}
     >
@@ -614,7 +660,8 @@ const MarkdownRenderInner = ({
                 className={cn(
                   'relative flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
                   fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
-                  'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem] shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
+                  'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6',
+                  docsPanelShadowClass
                 )}
                 role="region"
                 aria-label={slideMode ? t('markdown.slideCarouselLabel') : undefined}
@@ -758,7 +805,8 @@ const MarkdownRenderInner = ({
       {!hideToc && headings.length > 0 && (
         <aside
           className={cn(
-            'hidden min-h-0 shrink-0 lg:flex lg:w-72 lg:flex-col',
+            'hidden min-h-0 shrink-0 lg:flex lg:flex-col',
+            tocCollapsed ? 'lg:w-11' : 'lg:w-72',
             cardScrollMode && 'lg:self-stretch',
             fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-24',
             cardScrollMode
@@ -771,72 +819,72 @@ const MarkdownRenderInner = ({
         >
           <div
             className={cn(
-              'rounded-xl  bg-card/50 backdrop-blur-sm p-4 shadow-[0_14px_36px_-24px_hsl(var(--foreground)/0.28)]',
-              cardScrollMode && 'flex h-full min-h-0 flex-col overflow-hidden'
+              docsArticleSurfaceClass,
+              'flex min-h-0 flex-col',
+              tocCollapsed ? 'items-center p-2' : 'p-4',
+              cardScrollMode && 'h-full overflow-hidden'
             )}
           >
-            <div className="flex items-center justify-between mb-3.5 shrink-0">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                {t('markdown.onThisPage')}
-              </span>
-              <div
-                ref={progressRingRef}
-                className="md-progress-ring"
-                data-label="0%"
-                style={{ ['--progress' as any]: 0 }}
-              />
-            </div>
-            <div className="-mx-1 mb-3 h-px shrink-0 bg-border/40" />
-
-            <ScrollArea
-              className={cn(
-                'pr-1.5',
-                cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
-              )}
-            >
-              <nav className="space-y-0.5">
-                {headings.map((heading) => {
-                  const indent =
-                    heading.level === 1
-                      ? 'pl-3'
-                      : heading.level === 2
-                      ? 'pl-3'
-                      : heading.level === 3
-                      ? 'pl-7'
-                      : 'pl-10';
-                  const shouldShowHeadingTooltip = heading.text.length > 42;
-                  if (!shouldShowHeadingTooltip) {
-                    return (
-                      <button
-                        key={heading.id}
-                        type="button"
-                        onClick={() => activateHeadingFromToc(heading)}
-                        className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
-                      >
-                        <span className="block truncate">{heading.text}</span>
-                      </button>
-                    );
-                  }
-
-                  return (
-                    <Tooltip key={heading.id}>
+            {tocCollapsed ? (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="size-9 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                    onClick={() => setTocCollapsed(false)}
+                    aria-label={t('docs.showOutline')}
+                    aria-expanded={false}
+                  >
+                    <ListTree className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="left">{t('docs.showOutline')}</TooltipContent>
+              </Tooltip>
+            ) : (
+              <>
+                <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    {t('markdown.onThisPage')}
+                  </span>
+                  <div className="flex shrink-0 items-center gap-1.5">
+                    <div
+                      ref={progressRingRef}
+                      className="md-progress-ring"
+                      data-label="0%"
+                      style={{ ['--progress' as any]: 0 }}
+                    />
+                    <Tooltip>
                       <TooltipTrigger asChild>
-                        <button
+                        <Button
                           type="button"
-                          onClick={() => activateHeadingFromToc(heading)}
-                          className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
+                          variant="ghost"
+                          size="icon"
+                          className="size-8 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                          onClick={() => setTocCollapsed(true)}
+                          aria-label={t('docs.hideOutline')}
+                          aria-expanded={true}
                         >
-                          <span className="block truncate">{heading.text}</span>
-                        </button>
+                          <ChevronRight className="size-4" />
+                        </Button>
                       </TooltipTrigger>
-                      <TooltipContent side="left" className="max-w-80 wrap-break-word">
-                        {heading.text}
-                      </TooltipContent>
+                      <TooltipContent side="left">{t('docs.hideOutline')}</TooltipContent>
                     </Tooltip>
-                  );
-                })}
-              </nav>
-            </ScrollArea>
+                  </div>
+                </div>
+                <div className="-mx-1 mb-3 h-px shrink-0 bg-border/40" />
+
+                <ScrollArea
+                  className={cn(
+                    'pr-1.5',
+                    cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
+                  )}
+                >
+                  {tocNav}
+                </ScrollArea>
+              </>
+            )}
           </div>
         </aside>
       )}

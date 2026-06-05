@@ -8,6 +8,7 @@ import MarkdownRender from '@/components/markdown';
 import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
+import { docsFloatingActionButtonClass, docsPageNavLinkClass, docsScrollToTopButtonClass } from '@/constants/docsSidePanel';
 import { cn } from '@/lib/utils';
 import { useDocumentationPage } from '../hooks';
 
@@ -76,7 +77,7 @@ const DocumentationPage = () => {
   }
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-10 sm:pb-12">
+    <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-8 sm:space-y-8 sm:pb-10">
       <DocumentationTopicHero topic={topic} />
 
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
@@ -90,10 +91,7 @@ const DocumentationPage = () => {
             <Link
               to={`/docs/${categoryId}/${prevArticle.id}`}
               state={DOCS_NAV_RESET_SCROLL}
-              className={cn(
-                'group flex min-h-16 flex-col justify-center rounded-xl border border-border/60 px-4 py-3 transition-colors',
-                'hover:border-border hover:bg-muted/40'
-              )}
+              className={cn('group flex min-h-16 flex-col justify-center px-4 py-3', docsPageNavLinkClass)}
             >
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                 {t('docs.previous')}
@@ -111,8 +109,8 @@ const DocumentationPage = () => {
               to={`/docs/${categoryId}/${nextArticle.id}`}
               state={DOCS_NAV_RESET_SCROLL}
               className={cn(
-                'group flex min-h-16 flex-col items-end justify-center rounded-xl border border-border/60 px-4 py-3 text-right transition-colors sm:col-start-2',
-                'hover:border-border hover:bg-muted/40'
+                'group flex min-h-16 flex-col items-end justify-center px-4 py-3 text-right sm:col-start-2',
+                docsPageNavLinkClass
               )}
             >
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
@@ -155,7 +153,11 @@ const DocumentationPage = () => {
           variant="secondary"
           size="icon"
           onClick={scrollToTop}
-          className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 size-11 rounded-full border border-border/50 bg-card/90 shadow-lg backdrop-blur-sm hover:bg-card hover:shadow-xl md:right-8"
+          className={cn(
+            docsFloatingActionButtonClass,
+            docsScrollToTopButtonClass,
+            'z-40 size-11 md:right-8'
+          )}
           aria-label={t('docs.scrollToTop')}
         >
           <ChevronUp className="size-5" />
