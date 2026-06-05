@@ -16,6 +16,42 @@ import { buildMarkdownComponents } from './buildMarkdownComponents';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
 
+type TocTreeNode = { heading: Heading; children: TocTreeNode[] };
+
+/** Nest flat headings into a tree by level (h2 under h1, h3 under h2, etc.). */
+function buildTocTree(headings: Heading[]): TocTreeNode[] {
+  const root: TocTreeNode[] = [];
+  const stack: { level: number; node: TocTreeNode }[] = [];
+
+  for (const heading of headings) {
+    const node: TocTreeNode = { heading, children: [] };
+
+    while (stack.length > 0 && stack[stack.length - 1]!.level >= heading.level) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      root.push(node);
+    } else {
+      stack[stack.length - 1]!.node.children.push(node);
+    }
+
+    stack.push({ level: heading.level, node });
+  }
+
+  return root;
+}
+
+function tocItemDepthClass(depth: number, active: boolean) {
+  return cn(
+    'md-toc-item',
+    depth === 0 && 'md-toc-item--depth-0',
+    depth === 1 && 'md-toc-item--depth-1',
+    depth >= 2 && 'md-toc-item--depth-2',
+    active && 'active'
+  );
+}
+
 /** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
 const DOC_READING_PANE_MAX_CLASS = 'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100dvh-9.5rem)]';
 
@@ -595,44 +631,63 @@ const MarkdownRenderInner = ({
     'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11'
   );
 
-  const tocNav = (
-    <nav className="space-y-0.5">
-      {headings.map((heading) => {
-        const indent =
-          heading.level === 1 ? 'pl-3' : heading.level === 2 ? 'pl-3' : heading.level === 3 ? 'pl-7' : 'pl-10';
-        const shouldShowHeadingTooltip = heading.text.length > 42;
-        if (!shouldShowHeadingTooltip) {
-          return (
-            <button
-              key={heading.id}
-              type="button"
-              onClick={() => activateHeadingFromToc(heading)}
-              className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
-            >
-              <span className="block truncate">{heading.text}</span>
-            </button>
-          );
-        }
+  const tocTree = useMemo(() => buildTocTree(headings), [headings]);
 
+  const renderTocButton = useCallback(
+    (heading: Heading, depth: number) => {
+      const isActive = activeId === heading.id;
+      const className = tocItemDepthClass(depth, isActive);
+      const label = heading.text;
+      const shouldShowHeadingTooltip = label.length > 42;
+
+      if (!shouldShowHeadingTooltip) {
         return (
-          <Tooltip key={heading.id}>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                onClick={() => activateHeadingFromToc(heading)}
-                className={cn('md-toc-item', indent, activeId === heading.id && 'active')}
-              >
-                <span className="block truncate">{heading.text}</span>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="left" className="max-w-80 wrap-break-word">
-              {heading.text}
-            </TooltipContent>
-          </Tooltip>
+          <button
+            type="button"
+            onClick={() => activateHeadingFromToc(heading)}
+            className={className}
+          >
+            <span className="block truncate">{label}</span>
+          </button>
         );
-      })}
-    </nav>
+      }
+
+      return (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button type="button" onClick={() => activateHeadingFromToc(heading)} className={className}>
+              <span className="block truncate">{label}</span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="left" className="max-w-80 wrap-break-word">
+            {label}
+          </TooltipContent>
+        </Tooltip>
+      );
+    },
+    [activeId, activateHeadingFromToc]
   );
+
+  const renderTocNodes = useCallback(
+    (nodes: TocTreeNode[], depth = 0) => (
+      <ul
+        className={cn(
+          'm-0 list-none p-0',
+          depth === 0 ? 'space-y-0.5' : 'ml-2 mt-0.5 space-y-0.5 border-l border-border/35 pl-2'
+        )}
+      >
+        {nodes.map(({ heading, children }) => (
+          <li key={heading.id} className="min-w-0">
+            {renderTocButton(heading, depth)}
+            {children.length > 0 ? renderTocNodes(children, depth + 1) : null}
+          </li>
+        ))}
+      </ul>
+    ),
+    [renderTocButton]
+  );
+
+  const tocNav = <nav aria-label={t('markdown.onThisPage')}>{renderTocNodes(tocTree)}</nav>;
 
   return (
     <div
