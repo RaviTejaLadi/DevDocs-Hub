@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { TranslatedText } from '@/i18n/TranslatedText';
 import MarkdownRender from '@/components/markdown';
 import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
+import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { cn } from '@/lib/utils';
 import { useDocumentationPage } from '../hooks';
@@ -38,15 +39,21 @@ const DocumentationPage = () => {
 
   if (!topic || !content) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Card className="w-full max-w-md border-dashed border-border/50 bg-card/50">
-          <CardContent className="space-y-4 pt-8 pb-8 text-center">
+      <div className="mx-auto max-w-4xl">
+        <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
+          <Link to="/" className="inline-flex items-center gap-2">
+            <ChevronLeft className="h-4 w-4" />
+            {t('sidebar.backToOverview')}
+          </Link>
+        </Button>
+        <Card className="border-dashed border-border/50 bg-card/50">
+          <CardContent className="space-y-4 py-12 text-center">
             <span className="block text-5xl" aria-hidden>
               📚
             </span>
             <h2 className="text-2xl font-bold text-foreground">{t('docs.pageNotFound')}</h2>
             <p className="text-muted-foreground">{t('docs.notFoundDescription')}</p>
-            <Button onClick={() => navigate('/')} className="w-full rounded-xl">
+            <Button onClick={() => navigate('/')} className="w-full rounded-xl sm:w-auto">
               <Home className="mr-2 h-4 w-4" />
               {t('docs.backHome')}
             </Button>
@@ -58,79 +65,76 @@ const DocumentationPage = () => {
 
   if (!content.content) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <p>{t('docs.loading')}</p>
+      <div className="mx-auto max-w-6xl space-y-6">
+        <DocumentationTopicHero topic={topic} />
+        <div className="space-y-3" aria-busy="true">
+          <div className="h-8 w-2/3 max-w-md animate-pulse rounded-lg bg-muted/35" />
+          <div className="h-64 animate-pulse rounded-2xl border border-border/35 bg-muted/20" />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
-      <article className="mx-auto w-full min-w-0">
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <span className="font-medium text-foreground">
-                <TranslatedText text={topic.title} />
+    <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-10 sm:pb-12">
+      <DocumentationTopicHero topic={topic} />
+
+      <header className="space-y-1 px-0.5">
+        <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          {t('docs.nowReading')}
+        </p>
+        <h2 className="text-balance text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
+          <TranslatedText text={content.title} />
+        </h2>
+      </header>
+
+      <MarkdownRender content={content.content} headingIdScope={categoryId} />
+
+      {(prevArticle || nextArticle) && (
+        <nav
+          className="grid gap-3 border-t border-border/60 pt-8 sm:grid-cols-2"
+          aria-label={t('docs.pageNavigation')}
+        >
+          {prevArticle ? (
+            <Link
+              to={`/docs/${categoryId}/${prevArticle.id}`}
+              state={DOCS_NAV_RESET_SCROLL}
+              className={cn(
+                'group flex min-h-16 flex-col justify-center rounded-xl border border-border/60 px-4 py-3 transition-colors',
+                'hover:border-border hover:bg-muted/40'
+              )}
+            >
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                {t('docs.previous')}
               </span>
-            </li>
-            <li aria-hidden className="text-border">
-              /
-            </li>
-            <li className="text-muted-foreground">
-              <TranslatedText text={content.title} />
-            </li>
-          </ol>
+              <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
+                <ChevronLeft className="size-4 shrink-0" aria-hidden />
+                <TranslatedText text={prevArticle.title} />
+              </span>
+            </Link>
+          ) : (
+            <div />
+          )}
+          {nextArticle ? (
+            <Link
+              to={`/docs/${categoryId}/${nextArticle.id}`}
+              state={DOCS_NAV_RESET_SCROLL}
+              className={cn(
+                'group flex min-h-16 flex-col items-end justify-center rounded-xl border border-border/60 px-4 py-3 text-right transition-colors sm:col-start-2',
+                'hover:border-border hover:bg-muted/40'
+              )}
+            >
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                {t('docs.next')}
+              </span>
+              <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
+                <TranslatedText text={nextArticle.title} />
+                <ChevronRight className="size-4 shrink-0" aria-hidden />
+              </span>
+            </Link>
+          ) : null}
         </nav>
-
-        <MarkdownRender content={content.content} headingIdScope={categoryId} />
-
-        {(prevArticle || nextArticle) && (
-          <nav
-            className="mt-12 grid gap-3 border-t border-border pt-8 sm:grid-cols-2"
-            aria-label={t('docs.pageNavigation')}
-          >
-            {prevArticle ? (
-              <Link
-                to={`/docs/${categoryId}/${prevArticle.id}`}
-                state={DOCS_NAV_RESET_SCROLL}
-                className={cn(
-                  'group flex min-h-16 flex-col justify-center rounded-lg border border-border/60 px-4 py-3 transition-colors',
-                  'hover:border-border hover:bg-muted/40'
-                )}
-              >
-                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  {t('docs.previous')}
-                </span>
-                <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
-                  <ChevronLeft className="size-4 shrink-0" aria-hidden />
-                  <TranslatedText text={prevArticle.title} />
-                </span>
-              </Link>
-            ) : (
-              <div />
-            )}
-            {nextArticle ? (
-              <Link
-                to={`/docs/${categoryId}/${nextArticle.id}`}
-                state={DOCS_NAV_RESET_SCROLL}
-                className={cn(
-                  'group flex min-h-16 flex-col items-end justify-center rounded-lg border border-border/60 px-4 py-3 text-right transition-colors sm:col-start-2',
-                  'hover:border-border hover:bg-muted/40'
-                )}
-              >
-                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  {t('docs.next')}
-                </span>
-                <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
-                  <TranslatedText text={nextArticle.title} />
-                  <ChevronRight className="size-4 shrink-0" aria-hidden />
-                </span>
-              </Link>
-            ) : null}
-          </nav>
-        )}
-      </article>
+      )}
 
       <DocsTopicBrowserSheet
         open={topicBrowserOpen}

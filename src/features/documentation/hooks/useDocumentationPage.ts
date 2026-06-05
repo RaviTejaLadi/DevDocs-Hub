@@ -8,7 +8,7 @@ import { flattenTopicItems } from '../utils';
 
 export function useDocumentationPage() {
   const { categoryId, slug } = useDocsRouteParams();
-  const { topic, content, activeStream } = useDocsPageContent(categoryId, slug);
+  const { topic, content } = useDocsPageContent(categoryId, slug);
   const docsTopicBrowserSections = useDocsTopicBrowserSections();
   const topicBrowser = useDocsTopicBrowser(categoryId, docsTopicBrowserSections);
   const viewportRef = useScrollViewport();
@@ -44,7 +44,6 @@ export function useDocumentationPage() {
     slug,
     topic,
     content,
-    activeStream,
     docsTopicBrowserSections,
     topicBrowser,
     prevArticle,

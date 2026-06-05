@@ -203,23 +203,6 @@ function scopePrefixFromTopicId(topicIdOrScope?: string): string {
   return s ? `${s}-` : '';
 }
 
-function parseHeadingsFromMarkdown(markdown: string, scopePrefix = ''): Heading[] {
-  const out: Heading[] = [];
-  const used = new Map<string, number>();
-  for (const line of markdown.split('\n')) {
-    const m = /^(\#{1,4})\s+(.+)$/.exec(line.trim());
-    if (!m) continue;
-    const level = m[1].length;
-    const text = m[2].trim();
-    let base = slugifyHeading(text) || 'heading';
-    const n = (used.get(base) ?? 0) + 1;
-    used.set(base, n);
-    if (n > 1) base = `${base}-${n}`;
-    out.push({ id: `${scopePrefix}${base}`, text, level });
-  }
-  return out;
-}
-
 function parseHeadingsFromSlides(slides: string[], scopePrefix = ''): Heading[] {
   const out: Heading[] = [];
   slides.forEach((slide, slideIndex) => {
@@ -252,11 +235,6 @@ type MarkdownRenderProps = {
   keyboardActive?: boolean;
   /** When true, slide + TOC stretch to fill a fixed-height feed card (parents must be flex + min-h-0). */
   fillViewportCard?: boolean;
-  /**
-   * Feed card: full document scrolls in one pane; footer prev/next jumps between feed posts
-   * (not in-document slides). Use instead of `slideMode` in the docs feed.
-   */
-  feedScrollMode?: boolean;
   hasNextDocument?: boolean;
   onReachDocumentEnd?: () => void;
   hasPrevDocument?: boolean;
@@ -266,7 +244,6 @@ type MarkdownRenderProps = {
 const MarkdownRenderInner = ({
   content,
   slideMode = false,
-  feedScrollMode = false,
   headingIdScope = '',
   hideToc = false,
   fillViewportCard = false,
@@ -277,7 +254,7 @@ const MarkdownRenderInner = ({
   hasPrevDocument = false,
   onReachDocumentStart,
 }: MarkdownRenderProps) => {
-  const cardScrollMode = slideMode || feedScrollMode;
+  const cardScrollMode = slideMode;
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
@@ -320,13 +297,9 @@ const MarkdownRenderInner = ({
   useEffect(() => {
     /* eslint-disable-next-line react-hooks/set-state-in-effect -- reset deck when the bound document / topic changes */
     setActiveSlide(0);
-  }, [translatedContent, slideMode, feedScrollMode, headingIdScope]);
+  }, [translatedContent, slideMode, headingIdScope]);
 
   useEffect(() => {
-    if (feedScrollMode) {
-      setHeadings(parseHeadingsFromMarkdown(translatedContent, headingPrefix));
-      return;
-    }
     if (slideMode) {
       setHeadings(parseHeadingsFromSlides(slides, headingPrefix));
       return;
@@ -341,7 +314,7 @@ const MarkdownRenderInner = ({
         level: Number(el.tagName.substring(1)),
       }));
     setHeadings(collected);
-  }, [slideMode, feedScrollMode, slides, translatedContent, headingPrefix]);
+  }, [slideMode, slides, translatedContent, headingPrefix]);
 
   // Scroll spy + reading-progress (TOC + ring) — card scroll body vs main viewport
   useEffect(() => {
@@ -641,9 +614,7 @@ const MarkdownRenderInner = ({
                 className={cn(
                   'relative flex w-full min-w-0 shrink-0 flex-col overflow-hidden',
                   fillViewportCard ? 'h-full max-h-full min-h-0 flex-1' : DOC_READING_PANE_MAX_CLASS,
-                  feedScrollMode
-                    ? 'rounded-2xl bg-card/95 shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:bg-card/90 dark:ring-white/6'
-                    : 'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem] shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
+                  'rounded-2xl bg-linear-to-b from-card/88 to-card/72 backdrop-blur-md sm:rounded-[1.4rem] shadow-[0_24px_60px_-34px_hsl(var(--foreground)/0.38)] ring-1 ring-black/4 dark:from-card/60 dark:to-card/45 dark:ring-white/6'
                 )}
                 role="region"
                 aria-label={slideMode ? t('markdown.slideCarouselLabel') : undefined}
@@ -652,9 +623,7 @@ const MarkdownRenderInner = ({
                   ref={slideBodyRef}
                   className={cn(
                     'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
-                    feedScrollMode
-                      ? 'px-5 pt-4 pb-5 sm:px-8 sm:pt-5 sm:pb-6'
-                      : 'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
+                    'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
                     fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >

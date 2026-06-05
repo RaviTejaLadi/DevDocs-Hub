@@ -336,9 +336,10 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
           <Link
             to="/"
             onClick={closeSheet}
-            className="group inline-flex shrink-0 items-center gap-0.5 rounded-md px-1 py-0.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex shrink-0 items-center gap-1 rounded-md px-1 py-0.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             <ChevronLeft className="size-3.5 shrink-0 transition-transform group-hover:-translate-x-0.5" />
+            <span className="hidden sm:inline">{t('sidebar.backToOverview')}</span>
           </Link>
 
           <span className="h-3.5 w-px shrink-0 bg-border/50" aria-hidden />

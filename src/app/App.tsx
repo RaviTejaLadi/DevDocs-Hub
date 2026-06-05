@@ -8,7 +8,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
-import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
 import { useAppLayoutStore } from '@/stores';
 import NavBar from '@/components/layout/NavBar';
 import {
@@ -67,65 +66,75 @@ const App = () => {
   const closeSidebar = () => setMobileSidebarOpen(false);
 
   return (
-    <DocsFeedSyncProvider>
-      <ScrollViewportProvider value={contentViewportRef}>
-        <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-background max-w-[100vw]">
-          <NavBar />
+    <ScrollViewportProvider value={contentViewportRef}>
+      <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-background max-w-[100vw]">
+        <NavBar />
 
-          <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
-            <SheetContent
-              side="left"
+        <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
+          <SheetContent
+            side="left"
+            className={cn(
+              'gap-0 p-0 border-r border-border/40 flex flex-col min-h-0',
+              /** Full usable height on mobile — single scroll surface lives inside SidebarContent */
+              'h-dvh max-h-dvh w-[min(92vw,20rem)] max-w-sm',
+              /** Clear device notches / home indicator; avoid clipping the fixed close affordance area */
+              'pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] ps-[env(safe-area-inset-left)]'
+            )}
+          >
+            <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+              <DocsSidebarMobileRoutes location={location} closeSidebar={closeSidebar} />
+            </div>
+          </SheetContent>
+        </Sheet>
+
+        <div
+          className={cn(
+            'box-border flex min-h-0 h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-nowrap overflow-x-hidden overscroll-none',
+            showSidebar ? 'gap-3 px-3 py-3 sm:px-4 sm:py-4' : 'gap-0 px-3 py-4 sm:px-4'
+          )}
+        >
+          {showSidebar && (
+            <DocsDesktopSidebarToggle collapsed={docsSidebarCollapsed} onToggle={toggleDocsSidebarCollapsed} />
+          )}
+          {showSidebar && (
+            <aside
               className={cn(
-                'gap-0 p-0 border-r border-border/40 flex flex-col min-h-0',
-                /** Full usable height on mobile — single scroll surface lives inside SidebarContent */
-                'h-dvh max-h-dvh w-[min(92vw,20rem)] max-w-sm',
-                /** Clear device notches / home indicator; avoid clipping the fixed close affordance area */
-                'pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] ps-[env(safe-area-inset-left)]'
+                'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border border-border/40 bg-background shadow-sm transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
+                docsSidebarCollapsed
+                  ? 'w-0 min-w-0 max-w-0 shrink-0 border-transparent p-0 opacity-0 pointer-events-none'
+                  : cn(docsSidePanelWidthClass, 'h-full border-border/40 opacity-100')
               )}
+              aria-hidden={docsSidebarCollapsed}
             >
               <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                <DocsSidebarMobileRoutes location={location} closeSidebar={closeSidebar} />
+                <DocsSidebarDesktopRoutes location={location} />
               </div>
-            </SheetContent>
-          </Sheet>
+            </aside>
+          )}
 
-          <div className="box-border flex min-h-0 h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-nowrap gap-3 overflow-x-hidden overscroll-none px-3 py-4 sm:px-4">
-            {showSidebar && (
-              <DocsDesktopSidebarToggle collapsed={docsSidebarCollapsed} onToggle={toggleDocsSidebarCollapsed} />
-            )}
-            {showSidebar && (
-              <aside
+          <main className="min-h-0 flex-1 min-w-0 overflow-hidden">
+            <ScrollArea
+              className="h-full min-h-0"
+              viewportRef={contentViewportRef}
+              viewportClassName={showSidebar ? 'scroll-pt-2 scroll-pb-4' : undefined}
+            >
+              <div
                 className={cn(
-                  'hidden md:flex md:flex-col min-h-0 max-h-none overflow-hidden rounded-xl border border-border/40 bg-background shadow-sm transition-[width,min-width,max-width,opacity,padding,border-color] duration-200 ease-in-out',
-                  docsSidebarCollapsed
-                    ? 'w-0 min-w-0 max-w-0 shrink-0 border-transparent p-0 opacity-0 pointer-events-none'
-                    : cn(docsSidePanelWidthClass, 'h-full border-border/40 opacity-100')
+                  'mx-auto w-full min-w-0 text-foreground pb-[max(1.5rem,env(safe-area-inset-bottom))]',
+                  showSidebar
+                    ? 'max-w-none py-4 sm:py-5 ps-[max(0.25rem,env(safe-area-inset-left))] pe-[max(0.5rem,env(safe-area-inset-right))] sm:ps-2 sm:pe-3'
+                    : 'max-w-7xl py-6 sm:py-8 lg:py-10 ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 sm:pb-8 lg:pb-10'
                 )}
-                aria-hidden={docsSidebarCollapsed}
               >
-                <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-                  <DocsSidebarDesktopRoutes location={location} />
-                </div>
-              </aside>
-            )}
-
-            <main className="min-h-0 flex-1 min-w-0 overflow-hidden">
-              <ScrollArea
-                className="h-full min-h-0"
-                viewportRef={contentViewportRef}
-                viewportClassName={showSidebar ? 'scroll-pt-2 scroll-pb-4' : undefined}
-              >
-                <div className="mx-auto w-full min-w-0 max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
-                  <Suspense fallback={<RouteFallback />}>
-                    <MainAppRoutes location={location} />
-                  </Suspense>
-                </div>
-              </ScrollArea>
-            </main>
-          </div>
+                <Suspense fallback={<RouteFallback />}>
+                  <MainAppRoutes location={location} />
+                </Suspense>
+              </div>
+            </ScrollArea>
+          </main>
         </div>
-      </ScrollViewportProvider>
-    </DocsFeedSyncProvider>
+      </div>
+    </ScrollViewportProvider>
   );
 };
 export default App;
