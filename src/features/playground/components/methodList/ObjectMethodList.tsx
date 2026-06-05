@@ -107,7 +107,7 @@ export function ObjectMethodList({
               className={cn(
                 'w-full text-left rounded-lg px-3 py-2.5 text-sm transition-all duration-150',
                 selectedId === method.id
-                  ? 'bg-cyan-500/15 text-foreground font-medium border border-cyan-500/30 shadow-sm'
+                  ? 'bg-cyan-500/15 text-foreground font-medium border border-cyan-500/30 shadow-none'
                   : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground border border-transparent'
               )}
             >

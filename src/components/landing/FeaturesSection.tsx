@@ -60,8 +60,8 @@ export default function FeaturesSection() {
             key={id}
             className={cn(
               'group relative overflow-hidden rounded-2xl border bg-card/70 p-6 text-left h-full',
-              'shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.55)] transition-all duration-300',
-              'hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_hsl(var(--foreground)/0.5)]',
+              'shadow-none transition-all duration-300',
+              'hover:-translate-y-1 hover:shadow-none',
               ring
             )}
           >
@@ -76,7 +76,7 @@ export default function FeaturesSection() {
               {emoji}
             </div>
             <div className="relative space-y-3">
-              <div className={cn('inline-flex p-2.5 rounded-xl border border-border/30 shadow-sm', iconClass)}>
+              <div className={cn('inline-flex p-2.5 rounded-xl border border-border/30 shadow-none', iconClass)}>
                 <Icon className="w-5 h-5" />
               </div>
               <h3 className="font-semibold text-foreground transition-colors duration-200 group-hover:text-primary flex items-center gap-2">

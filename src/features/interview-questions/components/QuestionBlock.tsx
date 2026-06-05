@@ -33,12 +33,12 @@ export function QuestionBlock({
   return (
     <AccordionItem
       value={item.id}
-      className="group border border-border/40 border-b! rounded-2xl bg-card/85 backdrop-blur-sm overflow-hidden shadow-[0_10px_24px_-20px_hsl(var(--foreground)/0.8)] hover:shadow-[0_20px_40px_-24px_hsl(var(--foreground)/0.55)] hover:border-primary/35 transition-all duration-300"
+      className="group border border-border/40 border-b! rounded-2xl bg-card/85 backdrop-blur-sm overflow-hidden shadow-none hover:shadow-none hover:border-primary/35 transition-all duration-300"
     >
       <AccordionTrigger className="px-4 sm:px-5 py-4 hover:no-underline hover:bg-muted/25 data-[state=open]:bg-muted/40 transition-colors duration-200 [&>svg]:text-primary [&>svg]:transition-transform [&>svg]:duration-200">
         <div className="flex flex-wrap items-center justify-between gap-3 w-full text-left pr-2">
           <div className="flex items-start gap-3 min-w-0 flex-1">
-            <span className="shrink-0 flex size-8 items-center justify-center rounded-lg border border-primary/25 bg-linear-to-br from-primary/15 to-primary/5 text-primary font-bold text-xs shadow-sm">
+            <span className="shrink-0 flex size-8 items-center justify-center rounded-lg border border-primary/25 bg-linear-to-br from-primary/15 to-primary/5 text-primary font-bold text-xs shadow-none">
               Q{index}
             </span>
             <span className="font-medium text-foreground leading-relaxed pt-0.5">{translatedQuestion}</span>

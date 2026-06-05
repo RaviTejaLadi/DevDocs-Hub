@@ -220,7 +220,7 @@ export function DocsTopicBrowserSheet({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('nav.searchTopics')}
-              className="h-10 rounded-xl border-border/40 bg-background pl-9 pr-9 text-sm shadow-sm focus-visible:ring-primary/30"
+              className="h-10 rounded-xl border-border/40 bg-background pl-9 pr-9 text-sm shadow-none focus-visible:ring-primary/30"
             />
             {query ? (
               <Button
@@ -259,7 +259,7 @@ export function DocsTopicBrowserSheet({
                       'flex min-h-11 w-full min-w-0 items-start gap-1.5 rounded-full border px-2.5 py-2 text-left transition-all duration-200 touch-manipulation',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
                       isActive
-                        ? 'border-primary/50 bg-primary/12 text-primary shadow-[0_6px_16px_-12px_hsl(var(--primary)/0.65)] ring-1 ring-primary/15'
+                        ? 'border-primary/50 bg-primary/12 text-primary shadow-none ring-1 ring-primary/15'
                         : 'border-border/45 bg-background/90 text-foreground hover:border-border/70 hover:bg-card'
                     )}
                   >

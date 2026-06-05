@@ -11,22 +11,21 @@ export const docsMainContentPaddingClass =
   'mx-auto w-full min-w-0 max-w-none pb-[max(1.5rem,env(safe-area-inset-bottom))]';
 
 /** Elevation: sidebar panel, hero strip, article cards. */
-export const docsPanelShadowClass = 'shadow-[0_14px_40px_-28px_hsl(var(--foreground)/0.28)]';
+export const docsPanelShadowClass = 'shadow-none';
 
 /** Elevation: topic browser sheet and other overlays. */
-export const docsRaisedShadowClass = 'shadow-[0_22px_52px_-32px_hsl(var(--foreground)/0.32)]';
+export const docsRaisedShadowClass = 'shadow-none';
 
 /** Inset: nested nav wells inside the sidebar. */
-export const docsInsetShadowClass =
-  'shadow-[inset_0_1px_0_hsl(var(--foreground)/0.05)] dark:shadow-[inset_0_1px_0_hsl(var(--foreground)/0.08)]';
+export const docsInsetShadowClass = '';
 
 /** FAB / floating controls. */
-export const docsFabShadowClass = 'shadow-[0_8px_24px_-16px_hsl(var(--foreground)/0.24)]';
+export const docsFabShadowClass = 'shadow-none';
 
-export const docsFabShadowHoverClass = 'hover:shadow-[0_12px_32px_-18px_hsl(var(--foreground)/0.3)]';
+export const docsFabShadowHoverClass = 'hover:shadow-none';
 
 /** Small toolbar controls (sidebar collapse, reopen). */
-export const docsControlShadowClass = 'shadow-[0_4px_14px_-10px_hsl(var(--foreground)/0.2)]';
+export const docsControlShadowClass = 'shadow-none';
 
 /** Article + on-this-page TOC shared card surface. */
 export const docsArticleSurfaceClass = cn(
@@ -62,7 +61,7 @@ export const docsHeroSurfaceClass = cn(
 
 export const docsHeroIconSurfaceClass = cn(
   'rounded-lg border border-border/40 bg-muted/20',
-  'shadow-[0_4px_12px_-8px_hsl(var(--foreground)/0.18)]'
+  'shadow-none'
 );
 
 /** Scroll region: flex child must shrink; bottom padding clears last row above sheet/home affordances. */
@@ -103,6 +102,5 @@ export const docsScrollToTopButtonClass =
 /** Prev/next lesson navigation cards. */
 export const docsPageNavLinkClass = cn(
   'rounded-xl border border-border/60 transition-[color,background-color,box-shadow] duration-200',
-  'hover:border-border hover:bg-muted/40',
-  'hover:shadow-[0_8px_24px_-18px_hsl(var(--foreground)/0.22)]'
+  'hover:border-border hover:bg-muted/40'
 );

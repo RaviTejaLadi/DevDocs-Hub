@@ -88,9 +88,9 @@ const DOC_SLIDE_BODY_MAX_CLASS = 'max-h-[calc(100dvh-9rem-2.5rem)] sm:max-h-[cal
 
 const CARD_FLOAT_NAV_BTN_CLASS = cn(
   'absolute z-20 inline-flex size-10 shrink-0 items-center justify-center rounded-full',
-  'border border-border/50 bg-card/90 text-foreground shadow-md backdrop-blur-sm',
+  'border border-border/50 bg-card/90 text-foreground shadow-none backdrop-blur-sm',
   'transition-[transform,opacity,box-shadow] duration-200',
-  'hover:bg-card hover:shadow-lg active:scale-[0.96]',
+  'hover:bg-card hover:shadow-none active:scale-[0.96]',
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
   'disabled:pointer-events-none disabled:opacity-30'
 );
@@ -753,7 +753,7 @@ const MarkdownRenderInner = ({
                     <div
                       className={cn(
                         'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
-                        keyboardActive && 'shadow-[0_0_8px_hsl(var(--primary)/0.35)]'
+                        keyboardActive && 'shadow-none'
                       )}
                       style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
                     />
@@ -770,7 +770,7 @@ const MarkdownRenderInner = ({
                         className={cn(
                           CARD_FLOAT_NAV_BTN_CLASS,
                           'bottom-3 left-3 sm:bottom-4 sm:left-4',
-                          keyboardActive && 'border-primary/30 shadow-lg'
+                          keyboardActive && 'border-primary/30 shadow-none'
                         )}
                         onClick={handleCardNavPrev}
                         disabled={activeSlide === 0 && !hasPrevDocument}
@@ -804,7 +804,7 @@ const MarkdownRenderInner = ({
                             className={cn(
                               'h-1 rounded-full transition-all duration-300',
                               slideIdx === activeSlide
-                                ? 'w-4 bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.45)]'
+                                ? 'w-4 bg-primary shadow-none'
                                 : 'w-1 bg-border/55 dark:bg-border/65'
                             )}
                           />
@@ -824,7 +824,7 @@ const MarkdownRenderInner = ({
                         className={cn(
                           CARD_FLOAT_NAV_BTN_CLASS,
                           'bottom-3 right-3 sm:bottom-4 sm:right-4',
-                          keyboardActive && 'border-primary/30 shadow-lg'
+                          keyboardActive && 'border-primary/30 shadow-none'
                         )}
                         onClick={handleCardNavNext}
                         disabled={activeSlide >= slides.length - 1 && !hasNextDocument}

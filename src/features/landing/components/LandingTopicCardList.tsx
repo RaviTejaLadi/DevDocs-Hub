@@ -21,7 +21,7 @@ export function LandingTopicCardList({ topic, color }: LandingTopicCardListProps
       <div className="relative flex shrink-0 items-center gap-3">
         <div
           className={cn(
-            'shrink-0 rounded-xl border border-border/30 p-2.5 shadow-sm transition-transform duration-300 group-hover:scale-105',
+            'shrink-0 rounded-xl border border-border/30 p-2.5 shadow-none transition-transform duration-300 group-hover:scale-105',
             color.iconBg,
             color.iconColor
           )}

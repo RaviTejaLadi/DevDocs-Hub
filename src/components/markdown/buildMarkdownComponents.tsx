@@ -250,7 +250,7 @@ export function buildMarkdownComponents({
     strong: ({ children }: any) => <strong>{children}</strong>,
     em: ({ children }: any) => <em>{children}</em>,
     kbd: ({ children }: any) => (
-      <kbd className="inline-flex items-center justify-center min-w-6 px-1.5 h-5 rounded border border-border/60 bg-muted/60 text-[0.75rem] font-mono text-foreground/80 shadow-[0_1px_0_0_color-mix(in_oklab,var(--foreground)_15%,transparent)]">
+      <kbd className="inline-flex items-center justify-center min-w-6 px-1.5 h-5 rounded border border-border/60 bg-muted/60 text-[0.75rem] font-mono text-foreground/80 shadow-none">
         {children}
       </kbd>
     ),
@@ -292,7 +292,7 @@ export function buildMarkdownComponents({
             <span
               className={cn(
                 'ml-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase',
-                isDarkTheme ? 'text-white/55' : 'text-slate-600'
+                isDarkTheme ? 'text-foreground/60' : 'text-muted-foreground'
               )}
             >
               {language}
@@ -305,8 +305,8 @@ export function buildMarkdownComponents({
                 className={cn(
                   'h-6 gap-1.5 px-2 text-[0.7rem] font-medium rounded',
                   isDarkTheme
-                    ? 'text-white/65 hover:text-white hover:bg-white/5'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                    ? 'text-foreground/70 hover:text-foreground hover:bg-accent/60'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-accent/80'
                 )}
               >
                 {copiedKey === codeKey ? (

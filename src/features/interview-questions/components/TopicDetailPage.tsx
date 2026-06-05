@@ -76,7 +76,7 @@ export function TopicDetailPage() {
 
       <Card
         className={cn(
-          'relative overflow-hidden border-border/45 shadow-[0_20px_50px_-28px_hsl(var(--foreground)/0.45)]',
+          'relative overflow-hidden border-border/45 shadow-none',
           'bg-linear-to-br from-card via-card to-primary/8'
         )}
       >
@@ -89,14 +89,14 @@ export function TopicDetailPage() {
               <div className="relative shrink-0">
                 <div
                   className={cn(
-                    'flex size-14 items-center justify-center rounded-2xl border border-border/35 shadow-[0_10px_28px_-14px_hsl(var(--primary)/0.35)]',
+                    'flex size-14 items-center justify-center rounded-2xl border border-border/35 shadow-none',
                     visual.iconBg
                   )}
                 >
                   <Icon className={cn('h-7 w-7', visual.iconColor)} />
                 </div>
                 <span
-                  className="absolute -bottom-1.5 -right-1.5 flex size-7 items-center justify-center rounded-full border border-border/40 bg-background text-sm shadow-sm"
+                  className="absolute -bottom-1.5 -right-1.5 flex size-7 items-center justify-center rounded-full border border-border/40 bg-background text-sm shadow-none"
                   aria-hidden
                 >
                   {visual.emoji}
@@ -135,7 +135,7 @@ export function TopicDetailPage() {
         </CardHeader>
       </Card>
 
-      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
+      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-none">
         <CardContent className="pt-6 space-y-5">
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
@@ -150,7 +150,7 @@ export function TopicDetailPage() {
               className={cn(
                 'px-3.5 py-2 rounded-xl text-sm font-medium border transition-all duration-200 shrink-0',
                 levelFilter === 'all'
-                  ? 'bg-primary text-primary-foreground border-primary shadow-md scale-[1.02]'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-none scale-[1.02]'
                   : 'bg-muted/35 text-muted-foreground border-border/30 hover:bg-muted/65 hover:text-foreground'
               )}
             >
@@ -165,7 +165,7 @@ export function TopicDetailPage() {
                   'px-3 py-1.5 rounded-xl text-sm font-semibold border transition-all shrink-0',
                   levelPillClass[lvl],
                   levelFilter === lvl
-                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-md scale-[1.02]'
+                    ? 'ring-2 ring-offset-2 ring-offset-background ring-foreground/20 shadow-none scale-[1.02]'
                     : 'opacity-85 hover:opacity-100 hover:scale-[1.01]'
                 )}
               >

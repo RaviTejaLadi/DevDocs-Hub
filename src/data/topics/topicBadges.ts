@@ -31,19 +31,19 @@ export const TOPIC_BADGE_SHORT_LABELS: Record<TopicBadgeKind, string> = {
 
 export const topicBadgeToneClasses: Record<TopicBadgeKind, string> = {
   beginner:
-    'border-emerald-500/35 bg-emerald-500/10 text-emerald-700 shadow-[0_0_12px_-4px_hsl(152_76%_40%/0.35)] dark:border-emerald-400/28 dark:bg-emerald-500/12 dark:text-emerald-200',
+    'border-emerald-500/35 bg-emerald-500/10 text-emerald-700 shadow-none dark:border-emerald-400/28 dark:bg-emerald-500/12 dark:text-emerald-200',
   intermediate:
-    'border-sky-500/35 bg-sky-500/10 text-sky-700 shadow-[0_0_12px_-4px_hsl(199_89%_48%/0.3)] dark:border-sky-400/28 dark:bg-sky-500/12 dark:text-sky-200',
+    'border-sky-500/35 bg-sky-500/10 text-sky-700 shadow-none dark:border-sky-400/28 dark:bg-sky-500/12 dark:text-sky-200',
   advanced:
-    'border-violet-500/35 bg-violet-500/10 text-violet-700 shadow-[0_0_12px_-4px_hsl(258_90%_60%/0.32)] dark:border-violet-400/28 dark:bg-violet-500/12 dark:text-violet-200',
+    'border-violet-500/35 bg-violet-500/10 text-violet-700 shadow-none dark:border-violet-400/28 dark:bg-violet-500/12 dark:text-violet-200',
   expert:
-    'border-rose-500/35 bg-rose-500/10 text-rose-700 shadow-[0_0_12px_-4px_hsl(350_89%_60%/0.32)] dark:border-rose-400/28 dark:bg-rose-500/12 dark:text-rose-200',
+    'border-rose-500/35 bg-rose-500/10 text-rose-700 shadow-none dark:border-rose-400/28 dark:bg-rose-500/12 dark:text-rose-200',
   popular:
-    'border-amber-500/40 bg-amber-500/12 text-amber-800 shadow-[0_0_12px_-4px_hsl(38_92%_50%/0.35)] dark:border-amber-400/28 dark:bg-amber-500/12 dark:text-amber-200',
+    'border-amber-500/40 bg-amber-500/12 text-amber-800 shadow-none dark:border-amber-400/28 dark:bg-amber-500/12 dark:text-amber-200',
   'must-know':
-    'border-orange-500/40 bg-orange-500/12 text-orange-800 shadow-[0_0_12px_-4px_hsl(25_95%_53%/0.35)] dark:border-orange-400/28 dark:bg-orange-500/12 dark:text-orange-200',
+    'border-orange-500/40 bg-orange-500/12 text-orange-800 shadow-none dark:border-orange-400/28 dark:bg-orange-500/12 dark:text-orange-200',
   recommended:
-    'border-cyan-500/35 bg-cyan-500/10 text-cyan-700 shadow-[0_0_12px_-4px_hsl(189_94%_43%/0.3)] dark:border-cyan-400/28 dark:bg-cyan-500/12 dark:text-cyan-200',
+    'border-cyan-500/35 bg-cyan-500/10 text-cyan-700 shadow-none dark:border-cyan-400/28 dark:bg-cyan-500/12 dark:text-cyan-200',
 };
 
 /** Active sidebar row left accent */

@@ -66,7 +66,7 @@ export function LandingTopicsPanel({
         <div
           className={cn(
             'relative overflow-hidden rounded-2xl border border-border/40 bg-card/55 backdrop-blur-sm p-4 sm:p-5',
-            'shadow-[0_12px_32px_-24px_hsl(var(--foreground)/0.55)]'
+            'shadow-none'
           )}
         >
           <div
@@ -75,7 +75,7 @@ export function LandingTopicsPanel({
           />
           <div className="relative flex items-start gap-3.5">
             <span
-              className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-background/80 text-xl shadow-sm"
+              className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-background/80 text-xl shadow-none"
               aria-hidden
             >
               {streamEmoji}

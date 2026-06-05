@@ -70,7 +70,7 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
             'inline-flex shrink-0 items-center gap-0.5 rounded-full border px-1 py-0.5 touch-manipulation',
             'text-[10px] font-semibold leading-none backdrop-blur-[2px] transition-[opacity,box-shadow,transform] duration-200',
             topicBadgeToneClasses[kind],
-            active ? 'opacity-100 shadow-sm' : 'opacity-80 group-hover/nav:opacity-100',
+            active ? 'opacity-100 shadow-none' : 'opacity-80 group-hover/nav:opacity-100',
             className
           )}
         >

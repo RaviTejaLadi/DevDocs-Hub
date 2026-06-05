@@ -263,7 +263,7 @@ const NavBar = () => {
                           type="button"
                           key={`${res.categoryId}-${res.id}`}
                           onClick={() => handleSelectResult(res.categoryId, res.id)}
-                          className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-sm"
+                          className="group flex min-h-24 items-start gap-3 rounded-md border border-border/30 bg-card/50 px-3 py-3 text-left text-sm transition-all hover:bg-accent/60 hover:border-primary/30 hover:shadow-none"
                         >
                           <div className="h-8 w-8 rounded-md bg-primary/10 text-primary grid place-items-center shrink-0">
                             {res.icon ?? <FileText className="h-4 w-4" />}

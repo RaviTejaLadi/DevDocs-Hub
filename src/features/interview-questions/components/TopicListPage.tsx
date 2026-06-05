@@ -12,7 +12,7 @@ import { useTopicListFilter } from '../hooks';
 
 function StatCard({ emoji, label, value }: { emoji: string; label: string; value: number }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/40 bg-card/70 px-4 py-3 backdrop-blur-sm shadow-[0_10px_28px_-22px_hsl(var(--foreground)/0.55)]">
+    <div className="relative overflow-hidden rounded-xl border border-border/40 bg-card/70 px-4 py-3 backdrop-blur-sm shadow-none">
       <div className="pointer-events-none absolute -right-3 -top-3 text-4xl opacity-[0.12] select-none" aria-hidden>
         {emoji}
       </div>
@@ -48,7 +48,7 @@ export function TopicListPage() {
       <section
         className={cn(
           'group relative isolate overflow-hidden rounded-2xl border border-border/45',
-          'bg-card/40 shadow-[0_1px_0_0_hsl(var(--foreground)/0.06)_inset,0_20px_50px_-28px_hsl(var(--foreground)/0.35)]',
+          'bg-card/40 shadow-none',
           'backdrop-blur-xl dark:border-border/35 dark:bg-card/25'
         )}
       >
@@ -65,7 +65,7 @@ export function TopicListPage() {
         <div className="relative p-6 sm:p-8 space-y-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-sm"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-none"
           >
             <ChevronLeft className="h-4 w-4" />
             {t('interview.backToOverview')}
@@ -79,7 +79,7 @@ export function TopicListPage() {
               </div>
               <div className="flex items-start gap-3.5">
                 <span
-                  className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-2xl shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.45)]"
+                  className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-2xl shadow-none"
                   aria-hidden
                 >
                   💼
@@ -111,7 +111,7 @@ export function TopicListPage() {
         </div>
       </section>
 
-      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
+      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-none">
         <CardContent className="pt-6 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
@@ -164,7 +164,7 @@ export function TopicListPage() {
               key={category}
               className={cn(
                 'relative overflow-hidden rounded-2xl border bg-card/55 backdrop-blur-sm p-5 sm:p-6',
-                'shadow-[0_14px_32px_-26px_hsl(var(--foreground)/0.6)]',
+                'shadow-none',
                 catVisual.ring
               )}
             >
@@ -176,7 +176,7 @@ export function TopicListPage() {
                 <div className="flex items-center justify-between gap-3 mb-5">
                   <div className="flex items-center gap-2.5">
                     <span
-                      className="flex size-9 items-center justify-center rounded-lg border border-border/40 bg-background/70 text-lg shadow-sm"
+                      className="flex size-9 items-center justify-center rounded-lg border border-border/40 bg-background/70 text-lg shadow-none"
                       aria-hidden
                     >
                       {catVisual.emoji}
@@ -201,8 +201,8 @@ export function TopicListPage() {
                         to={`/interview-questions/${topic.id}`}
                         className={cn(
                           'group relative overflow-hidden rounded-xl border border-border/35 bg-card/90 backdrop-blur-sm p-4 transition-all duration-300 block',
-                          'shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
-                          'hover:bg-card hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_hsl(var(--foreground)/0.55)]',
+                          'shadow-none',
+                          'hover:bg-card hover:-translate-y-1 hover:shadow-none',
                           visual.cardHover
                         )}
                       >
@@ -218,13 +218,13 @@ export function TopicListPage() {
                           <div className="flex items-center gap-3 min-w-0">
                             <div
                               className={cn(
-                                'relative flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/30 shadow-sm transition-transform duration-300 group-hover:scale-105',
+                                'relative flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/30 shadow-none transition-transform duration-300 group-hover:scale-105',
                                 visual.iconBg
                               )}
                             >
                               <Icon className={cn('h-5 w-5', visual.iconColor)} />
                               <span
-                                className="absolute -bottom-1 -right-1 flex size-5 items-center justify-center rounded-full border border-border/40 bg-background text-[10px] shadow-sm"
+                                className="absolute -bottom-1 -right-1 flex size-5 items-center justify-center rounded-full border border-border/40 bg-background text-[10px] shadow-none"
                                 aria-hidden
                               >
                                 {visual.emoji}

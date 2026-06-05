@@ -37,8 +37,8 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
       onKeyDown={firstItemId ? onKeyDown : undefined}
       className={cn(
         'group relative min-w-0 max-w-full cursor-pointer overflow-hidden rounded-xl border border-border/35 bg-card/90 text-card-foreground touch-manipulation',
-        'shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
-        'transition-all duration-300 hover:border-primary/35 hover:bg-card hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-22px_hsl(var(--foreground)/0.55)]',
+        'shadow-none',
+        'transition-all duration-300 hover:border-primary/35 hover:bg-card hover:-translate-y-0.5 hover:shadow-none',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         isGrid ? 'flex h-[8.5rem] flex-col p-4' : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
       )}

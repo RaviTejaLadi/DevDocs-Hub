@@ -292,7 +292,7 @@ export function ObjectPlaygroundPage() {
           </Card>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 items-start">
-            <Card className="border-cyan-500/20 shadow-[0_12px_40px_-28px_hsl(190_95%_39%/0.35)]">
+            <Card className="border-cyan-500/20 shadow-none">
               <CardHeader className="pb-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>

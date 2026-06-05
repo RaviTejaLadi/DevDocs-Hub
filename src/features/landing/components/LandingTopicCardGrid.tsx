@@ -20,7 +20,7 @@ export function LandingTopicCardGrid({ topic, color }: LandingTopicCardGridProps
       <div className="relative flex min-h-0 flex-1 items-start gap-3 overflow-hidden">
         <div
           className={cn(
-            'shrink-0 rounded-xl border border-border/30 p-2 shadow-sm transition-transform duration-300 group-hover:scale-105',
+            'shrink-0 rounded-xl border border-border/30 p-2 shadow-none transition-transform duration-300 group-hover:scale-105',
             color.iconBg,
             color.iconColor
           )}

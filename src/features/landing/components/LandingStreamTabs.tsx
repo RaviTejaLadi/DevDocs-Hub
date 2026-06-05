@@ -65,7 +65,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
     <div
       className={cn(
         'mb-8 flex min-w-0 items-stretch gap-1',
-        'max-sm:rounded-2xl max-sm:border max-sm:border-border/45 max-sm:bg-card/45 max-sm:p-1 max-sm:shadow-sm',
+        'max-sm:rounded-2xl max-sm:border max-sm:border-border/45 max-sm:bg-card/45 max-sm:p-1 max-sm:shadow-none',
         'max-sm:ring-1 max-sm:ring-border/25'
       )}
     >
@@ -80,7 +80,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
           'hidden shrink-0 self-center',
           /** Chevrons only on narrow viewports where tabs don’t wrap */
           'max-sm:inline-flex',
-          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-sm backdrop-blur-sm touch-manipulation',
+          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-none backdrop-blur-sm touch-manipulation',
           'disabled:pointer-events-none disabled:opacity-25'
         )}
       >
@@ -125,9 +125,9 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   className={cn(
                     'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all duration-200',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    'max-sm:shadow-sm',
+                    'max-sm:shadow-none',
                     isActive
-                      ? 'border-primary/55 bg-primary/12 text-primary shadow-md ring-1 ring-primary/15 scale-[1.02]'
+                      ? 'border-primary/55 bg-primary/12 text-primary shadow-none ring-1 ring-primary/15 scale-[1.02]'
                       : 'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground hover:border-border/60'
                   )}
                 >
@@ -163,7 +163,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
         className={cn(
           'hidden shrink-0 self-center',
           'max-sm:inline-flex',
-          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-sm backdrop-blur-sm touch-manipulation',
+          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-none backdrop-blur-sm touch-manipulation',
           'disabled:pointer-events-none disabled:opacity-25'
         )}
       >

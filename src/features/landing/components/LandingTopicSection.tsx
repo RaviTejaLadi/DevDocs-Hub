@@ -31,7 +31,7 @@ export function LandingTopicSection({
     <section
       className={cn(
         'relative overflow-hidden rounded-2xl border bg-card/55 backdrop-blur-sm p-4 sm:p-5',
-        'shadow-[0_12px_28px_-24px_hsl(var(--foreground)/0.6)]',
+        'shadow-none',
         visual.ring
       )}
     >
@@ -48,7 +48,7 @@ export function LandingTopicSection({
         >
           <div className="flex min-w-0 flex-1 items-center gap-2.5">
             <span
-              className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-background/70 text-lg shadow-sm"
+              className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-background/70 text-lg shadow-none"
               aria-hidden
             >
               {visual.emoji}

@@ -125,6 +125,15 @@
     min-height: 100vh;
     height: 100%;
     overflow: hidden;
+    background-image:
+      radial-gradient(circle at 10% -10%, color-mix(in oklch, var(--primary) 9%, transparent) 0%, transparent 36%),
+      radial-gradient(circle at 100% 0%, color-mix(in oklch, var(--accent) 14%, transparent) 0%, transparent 34%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 26%, transparent);
+    color: var(--foreground);
   }
 
   .theme-switching,

@@ -24,7 +24,7 @@ export function PlaygroundListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
-      <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-violet-500/10 p-6 sm:p-8 shadow-[0_18px_45px_-32px_hsl(var(--foreground)/0.5)]">
+      <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-violet-500/10 p-6 sm:p-8 shadow-none">
         <div className="pointer-events-none absolute -left-16 -bottom-16 h-52 w-52 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-4">
@@ -61,7 +61,7 @@ export function PlaygroundListPage() {
         </div>
       </section>
 
-      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-[0_14px_35px_-25px_hsl(var(--foreground)/0.65)]">
+      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-none">
         <CardContent className="pt-6 space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
@@ -100,9 +100,9 @@ export function PlaygroundListPage() {
             <div
               className={cn(
                 'group relative rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-5 transition-all duration-200 h-full',
-                'shadow-[0_8px_20px_-18px_hsl(var(--foreground)/0.7)]',
+                'shadow-none',
                 playground.available
-                  ? 'hover:border-violet-500/40 hover:bg-card hover:shadow-[0_14px_28px_-20px_hsl(var(--foreground)/0.6)] hover:-translate-y-0.5'
+                  ? 'hover:border-violet-500/40 hover:bg-card hover:shadow-none hover:-translate-y-0.5'
                   : 'opacity-75 cursor-not-allowed'
               )}
             >
