@@ -6,7 +6,6 @@ import { resolveTopicBadge, findTopicBadgeContext } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -331,68 +330,61 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   return (
     <div className="flex min-h-0 min-w-0 max-w-full flex-1 touch-manipulation flex-col overflow-x-hidden bg-inherit">
       <div
-        className={cn(
-          docsSidePanelHeaderSurfaceClass,
-          'text-fade-up min-w-0',
-          closeSheet ? 'px-3 pb-4 pt-5 sm:px-4' : 'px-4 pb-4 pt-5'
-        )}
+        className={cn(docsSidePanelHeaderSurfaceClass, 'space-y-2 px-3 pb-2.5 pt-3 text-fade-up min-w-0 sm:px-4')}
       >
-        {!closeSheet ? (
-          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
-            <div className="absolute -right-10 -top-14 size-30 rounded-full bg-primary/10 blur-3xl dark:bg-primary/14" />
-            <div className="absolute -bottom-16 -left-8 size-26 rounded-full bg-primary/8 blur-3xl dark:bg-primary/12" />
-          </div>
-        ) : null}
-        <Link
-          to="/"
-          onClick={closeSheet}
-          className="group mb-3 flex max-w-full min-w-0 items-center gap-2 rounded-lg border border-border/35 bg-background/60 px-2.5 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-sm sm:mb-4"
-        >
-          <ChevronLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
-          <span>{t('sidebar.backToOverview')}</span>
-        </Link>
-
-        <div className="flex min-w-0 items-start gap-3 mb-3 sm:mb-4">
-          <div
-            className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border/40  text-primary shadow-sm [&_svg]:size-[1.15rem]"
-            aria-hidden
+        <div className="flex min-w-0 items-center gap-2">
+          <Link
+            to="/"
+            onClick={closeSheet}
+            className="group inline-flex shrink-0 items-center gap-0.5 rounded-md px-1 py-0.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
-            {topic.icon ?? <BookOpen className="size-[1.15rem]" strokeWidth={1.75} />}
-          </div>
-          <div className="min-w-0 flex-1 space-y-1">
-            <p className="truncate text-sm font-semibold leading-snug text-foreground">
-              <TranslatedText text={topic.title} />
-            </p>
-            <Badge variant="outline" className="h-5 px-1.5 text-[10px] border-border/40 bg-muted/30">
-              📖 {t('sidebar.lessonsInTopic', { count: totalLessons })}
-            </Badge>
+            <ChevronLeft className="size-3.5 shrink-0 transition-transform group-hover:-translate-x-0.5" />
+          </Link>
+
+          <span className="h-3.5 w-px shrink-0 bg-border/50" aria-hidden />
+
+          <div className="flex min-w-0 flex-1 items-center gap-2">
+            <div
+              className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-muted/20 text-primary [&_svg]:size-4"
+              aria-hidden
+            >
+              {topic.icon ?? <BookOpen className="size-4" strokeWidth={1.75} />}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[13px] font-semibold leading-tight text-foreground">
+                <TranslatedText text={topic.title} />
+              </p>
+              <p className="truncate text-[10px] leading-tight text-muted-foreground">
+                📖 {t('sidebar.lessonsInTopic', { count: totalLessons })}
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="relative min-w-0 flex-1">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="relative min-w-0">
+          <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
             type="text"
             placeholder={t('sidebar.searchSection')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-10 w-full rounded-xl border-border/35 bg-background/85 pl-9 pr-8 focus-visible:ring-primary/30"
+            className="h-9 w-full rounded-lg border-border/35 bg-background/85 pl-8 pr-8 text-sm focus-visible:ring-primary/30"
           />
           {searchQuery && (
             <Button
               variant="ghost"
               size="sm"
-              className="absolute right-1 top-1/2 h-7 w-7 shrink-0 -translate-y-1/2 p-0 rounded-lg"
+              className="absolute right-0.5 top-1/2 size-7 shrink-0 -translate-y-1/2 p-0 rounded-md"
               onClick={() => setSearchQuery('')}
               aria-label={t('sidebar.clearSearch')}
             >
-              <X className="h-3 w-3" />
+              <X className="size-3" />
             </Button>
           )}
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-2 sm:px-3">
+      <div className="flex min-h-0 flex-1 flex-col px-2.5 pb-2 pt-1.5 sm:px-3">
         <ScrollArea
           className={cn(docsSidePanelScrollAreaClass, 'overflow-hidden')}
           viewportClassName={docsSidePanelScrollViewportClass}
