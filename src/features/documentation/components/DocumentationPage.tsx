@@ -79,15 +79,6 @@ const DocumentationPage = () => {
     <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-10 sm:pb-12">
       <DocumentationTopicHero topic={topic} />
 
-      <header className="space-y-1 px-0.5">
-        <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-          {t('docs.nowReading')}
-        </p>
-        <h2 className="text-balance text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
-          <TranslatedText text={content.title} />
-        </h2>
-      </header>
-
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
 
       {(prevArticle || nextArticle) && (
