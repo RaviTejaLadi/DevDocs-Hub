@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import type { RefObject } from 'react';
 import type { TopicItem } from '@/data/topics';
-import { resolveTopicBadge } from '@/data/topics';
+import { findTopicBadgeContext, resolveTopicBadge } from '@/data/topics';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
 import { ListTree } from 'lucide-react';
 import MarkdownRender from '@/components/markdown';
@@ -16,6 +16,8 @@ import { useDocsFeedSectionMount } from '../hooks';
 
 type DocsFeedTopicSectionProps = {
   item: TopicItem;
+  /** Topic tree used to resolve badge context consistently with the sidebar. */
+  topicItems: TopicItem[];
   idx: number;
   total: number;
   /** Stable within a topic feed — include topic id when the same slug can exist across topics. */
@@ -35,6 +37,7 @@ type DocsFeedTopicSectionProps = {
 
 function DocsFeedTopicSectionInner({
   item,
+  topicItems,
   idx,
   total,
   sectionDomId,
@@ -53,10 +56,7 @@ function DocsFeedTopicSectionInner({
   const onReachEnd = useCallback(() => feedNav.goToNextFrom(idx), [feedNav, idx]);
   const onReachStart = useCallback(() => feedNav.goToPrevFrom(idx), [feedNav, idx]);
   const progressPct = ((idx + 1) / total) * 100;
-  const badgeKind = resolveTopicBadge(item.title, item.badge, {
-    siblingIndex: idx,
-    siblingCount: total,
-  });
+  const badgeKind = resolveTopicBadge(item.title, item.badge, findTopicBadgeContext(topicItems, item.id));
 
   return (
     <section

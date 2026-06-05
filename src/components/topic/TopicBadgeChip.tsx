@@ -4,8 +4,6 @@ import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   TOPIC_BADGE_LABELS,
-  TOPIC_BADGE_SHORT_LABELS,
-  topicBadgeDotClass,
   topicBadgeToneClasses,
   type TopicBadgeKind,
 } from '@/data/topics/topicBadges';
@@ -38,7 +36,6 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
   const Icon = BADGE_ICONS[kind];
   const emoji = BADGE_EMOJI[kind];
   const label = TOPIC_BADGE_LABELS[kind];
-  const shortLabel = TOPIC_BADGE_SHORT_LABELS[kind];
 
   if (variant === 'header') {
     return (
@@ -61,27 +58,25 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
     );
   }
 
-  const chip = (
-    <span
-      className={cn(
-        'inline-flex shrink-0 items-center gap-1 rounded-full border px-1.5 py-px text-[10px] font-semibold leading-none tracking-wide backdrop-blur-[2px] transition-[opacity,box-shadow,transform] duration-200',
-        topicBadgeToneClasses[kind],
-        active ? 'opacity-100 shadow-sm scale-100' : 'opacity-80 group-hover/nav:opacity-100',
-        className
-      )}
-    >
-      <span className={cn('size-1.5 shrink-0 rounded-full', topicBadgeDotClass[kind])} aria-hidden />
-      <Icon className="size-2.5 shrink-0 opacity-85" aria-hidden />
-      <span className="max-w-18 truncate">{shortLabel}</span>
-    </span>
-  );
-
   return (
-    <Tooltip delayDuration={400}>
+    <Tooltip delayDuration={300}>
       <TooltipTrigger asChild>
-        <span className="inline-flex shrink-0" tabIndex={-1}>
-          {chip}
-        </span>
+        <button
+          type="button"
+          aria-label={label}
+          onClick={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()}
+          className={cn(
+            'inline-flex shrink-0 items-center gap-0.5 rounded-full border px-1 py-0.5 touch-manipulation',
+            'text-[10px] font-semibold leading-none backdrop-blur-[2px] transition-[opacity,box-shadow,transform] duration-200',
+            topicBadgeToneClasses[kind],
+            active ? 'opacity-100 shadow-sm' : 'opacity-80 group-hover/nav:opacity-100',
+            className
+          )}
+        >
+
+          <Icon className="size-4 shrink-0 opacity-85" aria-hidden />
+        </button>
       </TooltipTrigger>
       <TooltipContent side="right" className="text-xs font-medium">
         {emoji ? `${emoji} ` : ''}

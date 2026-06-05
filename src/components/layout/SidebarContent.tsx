@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, useMemo, type JSX } from 'react';
 import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
 import type { Topic, TopicItem } from '@/data/topics';
-import { resolveTopicBadge } from '@/data/topics';
+import { resolveTopicBadge, findTopicBadgeContext } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
 import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
@@ -145,94 +145,98 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
 
       return (
         <div key={item.id} className="w-full max-w-full overflow-hidden">
-          <Button
-            variant="ghost"
-            data-sidebar-route={routeKey}
-            className={cn(
-              'group/nav flex min-w-0 w-full max-w-full justify-start rounded-xl overflow-hidden box-border touch-manipulation',
-              'border-l-2 transition-[color,background-color,box-shadow,border-color] duration-150',
-              depth === 0 ? 'min-h-11 py-2 px-2.5' : 'min-h-9 py-1.5 px-2',
-              !isActive || !isDoc ? 'border-l-transparent' : topicBadgeAccentBorder[badgeKind],
-              isActive && isDoc
-                ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)] ring-1 ring-primary/10'
-                : isActive && !isDoc
-                ? 'bg-muted/55 text-foreground'
-                : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/40 hover:text-foreground hover:shadow-sm'
-            )}
-            style={{ paddingLeft: `${depth * 10 + 8}px` }}
-            onClick={() => topic && handleNavigate(topic.id, item.id)}
-          >
-            <div className="flex w-full min-w-0 items-center gap-2">
-              {depth === 0 && (
-                <span
-                  className={cn(
-                    'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums',
-                    isActive
-                      ? 'border-primary/35 bg-primary/15 text-primary shadow-[0_0_0_1px_hsl(var(--primary)/0.12)]'
-                      : 'border-border/50 bg-background/80 text-muted-foreground dark:bg-card/80'
-                  )}
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+          <div className="flex w-full items-center overflow-hidden">
+            <Button
+              variant="ghost"
+              data-sidebar-route={routeKey}
+              className={cn(
+                'group/nav flex min-w-0 flex-1 justify-start rounded-xl overflow-hidden box-border touch-manipulation',
+                'border-l-2 transition-[color,background-color,box-shadow,border-color] duration-150',
+                depth === 0 ? 'min-h-11 py-2 px-2.5' : 'min-h-9 py-1.5 px-2',
+                !isActive || !isDoc ? 'border-l-transparent' : topicBadgeAccentBorder[badgeKind],
+                isActive && isDoc
+                  ? 'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground shadow-[inset_0_1px_0_hsl(var(--foreground)/0.04)] ring-1 ring-primary/10'
+                  : isActive && !isDoc
+                  ? 'bg-muted/55 text-foreground'
+                  : 'text-muted-foreground hover:border-l-border/40 hover:bg-muted/40 hover:text-foreground hover:shadow-sm'
               )}
-
-              <div className="flex min-w-0 flex-1 items-center gap-1 overflow-hidden">
-                {shouldShowTitleTooltip ? (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <span
-                        className={cn(
-                          'min-w-0 flex-1 truncate text-left',
-                          depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
-                        )}
-                      >
-                        <TranslatedText text={item.title} />
-                      </span>
-                    </TooltipTrigger>
-                    <TooltipContent side="right" align="start" className="max-w-64 wrap-break-word">
-                      <TranslatedText text={item.title} />
-                    </TooltipContent>
-                  </Tooltip>
-                ) : (
+              style={{ paddingLeft: `${depth * 10 + 8}px` }}
+              onClick={() => topic && handleNavigate(topic.id, item.id)}
+            >
+              <div className="flex w-full min-w-0 items-center gap-2">
+                {depth === 0 && (
                   <span
                     className={cn(
-                      'min-w-0 flex-1 truncate text-left',
-                      depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
+                      'inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums',
+                      isActive
+                        ? 'border-primary/35 bg-primary/15 text-primary shadow-[0_0_0_1px_hsl(var(--primary)/0.12)]'
+                        : 'border-border/50 bg-background/80 text-muted-foreground dark:bg-card/80'
                     )}
                   >
-                    <TranslatedText text={item.title} />
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                 )}
 
-                {hasChildren && lessonCount > 0 && (
-                  <span className="shrink-0 rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium tabular-nums text-muted-foreground">
-                    {lessonCount}
-                  </span>
-                )}
-
-                {isDoc && <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} />}
-              </div>
-
-              {hasChildren && (
-                <button
-                  type="button"
-                  onClick={(e) => toggleExpand(e, item.id)}
-                  className={cn(
-                    'inline-flex size-8 shrink-0 items-center justify-center rounded-md touch-manipulation transition-colors',
-                    'hover:bg-foreground/8 dark:hover:bg-foreground/10',
-                    isExpanded && 'bg-foreground/6 dark:bg-foreground/8'
-                  )}
-                  aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
-                >
-                  {isExpanded ? (
-                    <ChevronDown className="size-3.5 text-foreground/70" />
+                <div className="flex min-w-0 flex-1 items-center gap-1 overflow-hidden">
+                  {shouldShowTitleTooltip ? (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span
+                          className={cn(
+                            'min-w-0 flex-1 truncate text-left',
+                            depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
+                          )}
+                        >
+                          <TranslatedText text={item.title} />
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent side="right" align="start" className="max-w-64 wrap-break-word">
+                        <TranslatedText text={item.title} />
+                      </TooltipContent>
+                    </Tooltip>
                   ) : (
-                    <ChevronRight className="size-3.5 text-muted-foreground" />
+                    <span
+                      className={cn(
+                        'min-w-0 flex-1 truncate text-left',
+                        depth === 0 && !isDoc ? 'text-sm font-medium text-foreground' : 'text-[13px]'
+                      )}
+                    >
+                      <TranslatedText text={item.title} />
+                    </span>
                   )}
-                </button>
-              )}
-            </div>
-          </Button>
+
+                  {hasChildren && lessonCount > 0 && (
+                    <span className="shrink-0 rounded-md bg-muted/50 px-1.5 py-px text-[10px] font-medium tabular-nums text-muted-foreground">
+                      {lessonCount}
+                    </span>
+                  )}
+                </div>
+
+                {hasChildren && (
+                  <button
+                    type="button"
+                    onClick={(e) => toggleExpand(e, item.id)}
+                    className={cn(
+                      'inline-flex size-8 shrink-0 items-center justify-center rounded-md touch-manipulation transition-colors',
+                      'hover:bg-foreground/8 dark:hover:bg-foreground/10',
+                      isExpanded && 'bg-foreground/6 dark:bg-foreground/8'
+                    )}
+                    aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
+                  >
+                    {isExpanded ? (
+                      <ChevronDown className="size-3.5 text-foreground/70" />
+                    ) : (
+                      <ChevronRight className="size-3.5 text-muted-foreground" />
+                    )}
+                  </button>
+                )}
+              </div>
+            </Button>
+
+            {isDoc && (
+              <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} className="mr-2 shrink-0" />
+            )}
+          </div>
 
           {hasChildren && isExpanded && (
             <div className={cn('ml-4 border-l border-border/30 pl-1', depth === 0 && 'mb-1 ml-5')}>
@@ -290,31 +294,36 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
         return filtered.map((item) => {
           const routeKey = `${topic.id}/${item.id}`;
           const isActive = Boolean(activeRouteKey && routeKey === activeRouteKey);
-          const badgeKind = resolveTopicBadge(item.title, item.badge);
+          const badgeKind = resolveTopicBadge(
+            item.title,
+            item.badge,
+            findTopicBadgeContext(topic.items, item.id)
+          );
           return (
-            <Button
-              key={item.id}
-              variant="ghost"
-              data-sidebar-route={routeKey}
-              className={cn(
-                'group/nav flex w-full justify-start min-h-10 rounded-lg border-l-2 py-2 px-2.5 font-normal overflow-hidden box-border touch-manipulation transition-colors',
-                isActive && isDocumentItem(item)
-                  ? cn(
-                      'border-l-2',
-                      topicBadgeAccentBorder[badgeKind],
-                      'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground'
-                    )
-                  : 'border-l-transparent hover:bg-muted/35'
-              )}
-              onClick={() => handleNavigate(topic.id, item.id)}
-            >
-              <div className="flex min-w-0 w-full items-center gap-1 overflow-hidden text-left">
-                <span className="min-w-0 flex-1 truncate text-[13px]">
+            <div key={item.id} className="flex w-full items-center overflow-hidden">
+              <Button
+                variant="ghost"
+                data-sidebar-route={routeKey}
+                className={cn(
+                  'group/nav flex min-w-0 flex-1 justify-start min-h-10 rounded-lg border-l-2 py-2 px-2.5 font-normal overflow-hidden box-border touch-manipulation transition-colors',
+                  isActive && isDocumentItem(item)
+                    ? cn(
+                        'border-l-2',
+                        topicBadgeAccentBorder[badgeKind],
+                        'bg-linear-to-r from-primary/12 via-accent/90 to-accent/70 text-accent-foreground'
+                      )
+                    : 'border-l-transparent hover:bg-muted/35'
+                )}
+                onClick={() => handleNavigate(topic.id, item.id)}
+              >
+                <span className="min-w-0 flex-1 truncate text-left text-[13px]">
                   <TranslatedText text={item.title} />
                 </span>
-                {isDocumentItem(item) && <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} />}
-              </div>
-            </Button>
+              </Button>
+              {isDocumentItem(item) && (
+                <TopicBadgeChip kind={badgeKind} variant="sidebar" active={isActive} className="mr-2 shrink-0" />
+              )}
+            </div>
           );
         });
       })();

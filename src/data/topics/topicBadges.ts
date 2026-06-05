@@ -75,6 +75,12 @@ export type TopicBadgeContext = {
   depth?: number;
 };
 
+export type TopicItemLike = {
+  id: string;
+  title: string;
+  items?: TopicItemLike[];
+};
+
 const stripEmoji = (text: string) => text.replace(/[\p{Extended_Pictographic}\uFE0F]/gu, '').trim();
 
 const normalize = (text: string) => stripEmoji(text).toLowerCase();
@@ -121,6 +127,31 @@ const positionKind = (index: number, count: number): TopicBadgeKind => {
   if (ratio >= 0.55) return 'intermediate';
   return 'intermediate';
 };
+
+/** Locates sibling context for an item — matches sidebar tree badge resolution. */
+export function findTopicBadgeContext(
+  items: TopicItemLike[],
+  itemId: string,
+  depth = 0,
+  parentTitle?: string
+): TopicBadgeContext | undefined {
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+    if (item.id === itemId) {
+      return {
+        parentTitle,
+        siblingIndex: index,
+        siblingCount: items.length,
+        depth,
+      };
+    }
+    if (item.items?.length) {
+      const found = findTopicBadgeContext(item.items, itemId, depth + 1, item.title);
+      if (found) return found;
+    }
+  }
+  return undefined;
+}
 
 /**
  * Resolves a display badge for a topic row.

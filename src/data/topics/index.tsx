@@ -54,7 +54,7 @@ import { devopsTopics } from './computer-science/devops';
 import type { TopicBadgeKind } from './topicBadges';
 
 export type { TopicBadgeKind } from './topicBadges';
-export { resolveTopicBadge, TOPIC_BADGE_LABELS, topicBadgeToneClasses } from './topicBadges';
+export { resolveTopicBadge, findTopicBadgeContext, TOPIC_BADGE_LABELS, topicBadgeToneClasses } from './topicBadges';
 
 export interface TopicItem {
   id: string;

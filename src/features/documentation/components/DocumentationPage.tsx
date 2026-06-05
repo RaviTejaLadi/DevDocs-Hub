@@ -113,6 +113,7 @@ const DocumentationPage = () => {
                   <DocsFeedTopicSection
                     key={`${row.topic.id}-${row.item.id}`}
                     item={row.item}
+                    topicItems={block.topic.items}
                     idx={globalIdx}
                     total={feedRows.length}
                     sectionDomId={docFeedSectionDomId(row.topic.id, row.item.id)}
