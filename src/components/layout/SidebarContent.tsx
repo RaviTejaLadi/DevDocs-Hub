@@ -1,11 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useCallback, useEffect, useMemo, type JSX } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useCallback, useEffect, type JSX } from 'react';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
 import type { Topic, TopicItem } from '@/data/topics';
 import { resolveTopicBadge, findTopicBadgeContext } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
 import { TopicBadgeChip } from '@/components/topic/TopicBadgeChip';
-import { BookOpen, ChevronLeft, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { BookOpen, Search, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -64,11 +64,6 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   const topic = topicsIndex?.find((t) => t.id === currentTopicId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-
-  const totalLessons = useMemo(() => {
-    if (!topic) return 0;
-    return topic.items.reduce((sum, item) => sum + countDocumentItems(item), 0);
-  }, [topic]);
 
   /** Matches `/docs/:topicId/:itemId` — avoids highlighting wrong row when item ids repeat across topics. */
   const activeRouteKey = currentTopicId && activeSlug ? `${currentTopicId}/${activeSlug}` : '';
@@ -330,38 +325,8 @@ const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   return (
     <div className="flex min-h-0 min-w-0 max-w-full flex-1 touch-manipulation flex-col overflow-x-hidden bg-inherit">
       <div
-        className={cn(docsSidePanelHeaderSurfaceClass, 'space-y-2 px-3 pb-2.5 pt-3 text-fade-up min-w-0 sm:px-4')}
+        className={cn(docsSidePanelHeaderSurfaceClass, 'px-3 pb-2.5 pt-3 text-fade-up min-w-0 sm:px-4')}
       >
-        <div className="flex min-w-0 items-center gap-2">
-          <Link
-            to="/"
-            onClick={closeSheet}
-            className="group inline-flex shrink-0 items-center gap-1 rounded-md px-1 py-0.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ChevronLeft className="size-3.5 shrink-0 transition-transform group-hover:-translate-x-0.5" />
-            <span className="hidden sm:inline">{t('sidebar.backToOverview')}</span>
-          </Link>
-
-          <span className="h-3.5 w-px shrink-0 bg-border/50" aria-hidden />
-
-          <div className="flex min-w-0 flex-1 items-center gap-2">
-            <div
-              className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-border/40 bg-muted/20 text-primary [&_svg]:size-4"
-              aria-hidden
-            >
-              {topic.icon ?? <BookOpen className="size-4" strokeWidth={1.75} />}
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-[13px] font-semibold leading-tight text-foreground">
-                <TranslatedText text={topic.title} />
-              </p>
-              <p className="truncate text-[10px] leading-tight text-muted-foreground">
-                📖 {t('sidebar.lessonsInTopic', { count: totalLessons })}
-              </p>
-            </div>
-          </div>
-        </div>
-
         <div className="relative min-w-0">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
           <Input
