@@ -1,118 +1,43 @@
-import { useLocation } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
+import { useScrollViewport } from '@/context/scrollViewportContext';
 import { useDocsPageContent } from './useDocsPageContent';
-import { useDocsFeedRange } from './useDocsFeedRange';
-import { useDocsFeedDerived } from './useDocsFeedDerived';
 import { useDocsTopicBrowser } from './useDocsTopicBrowser';
-import { useDocsFeedScrollTop } from './useDocsFeedScrollTop';
-import { useDocsFeedRouteSync } from './useDocsFeedRouteSync';
-import { useDocsFeedScrollRestore } from './useDocsFeedScrollRestore';
-import { useDocsFeedInViewObserver } from './useDocsFeedInViewObserver';
-import { useDocsFeedPrefetch } from './useDocsFeedPrefetch';
-import { useDocsFeedNavigation } from './useDocsFeedNavigation';
+import { useDocsTopicBrowserSections } from './useDocsTopicBrowserSections';
+import { flattenTopicItems } from '../utils';
 
 export function useDocumentationPage() {
   const { categoryId, slug } = useDocsRouteParams();
-  const location = useLocation();
-
   const { topic, content, activeStream } = useDocsPageContent(categoryId, slug);
-
-  const feedRangeState = useDocsFeedRange(categoryId, location);
-  const {
-    feedRange,
-    setFeedRange,
-    feedRangeRef,
-    prependSnapRef,
-    prependPreserveOnlyRef,
-    pendingScrollWasPrependRef,
-    pendingScrollToDomIdRef,
-    feedRowsCountBeforeMutationRef,
-    inViewSyncSuppressedUntilRef,
-    skipSlugScrollIntoViewRef,
-    routeTopicIdRef,
-    slugRef,
-    prependSentinelRef,
-    appendSentinelRef,
-    viewportRef: scrollViewportRef,
-  } = feedRangeState;
-
-  const viewportRef = scrollViewportRef ?? undefined;
-
-  const derived = useDocsFeedDerived(feedRange);
-  const {
-    catalogBounds,
-    feedRows,
-    docsTopicBrowserSections,
-    chainHasMoreBelow,
-    chainHasMoreAbove,
-    feedOrdinalByDomId,
-  } = derived;
-
+  const docsTopicBrowserSections = useDocsTopicBrowserSections();
   const topicBrowser = useDocsTopicBrowser(categoryId, docsTopicBrowserSections);
-  const { showScrollTop, scrollFeedToTop } = useDocsFeedScrollTop(viewportRef, categoryId, feedRows.length);
+  const viewportRef = useScrollViewport();
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const { inViewFeedKey, setInViewFeedKey } = useDocsFeedRouteSync(
-    categoryId,
-    slug,
-    feedRows,
-    viewportRef,
-    skipSlugScrollIntoViewRef,
-    slugRef
+  const articleItems = useMemo(() => (topic ? flattenTopicItems(topic.items) : []), [topic]);
+  const articleIndex = useMemo(
+    () => (slug ? articleItems.findIndex((item) => item.id === slug) : -1),
+    [articleItems, slug]
   );
+  const prevArticle = articleIndex > 0 ? articleItems[articleIndex - 1] : null;
+  const nextArticle =
+    articleIndex >= 0 && articleIndex < articleItems.length - 1 ? articleItems[articleIndex + 1] : null;
 
-  useDocsFeedScrollRestore(
-    feedRows,
-    viewportRef,
-    prependSnapRef,
-    prependPreserveOnlyRef,
-    pendingScrollWasPrependRef,
-    pendingScrollToDomIdRef,
-    feedRowsCountBeforeMutationRef,
-    skipSlugScrollIntoViewRef
-  );
+  useEffect(() => {
+    const el = viewportRef?.current;
+    if (!el) return;
 
-  useDocsFeedInViewObserver({
-    feedRows,
-    feedOrdinalByDomId,
-    viewportRef,
-    feedRangeRef,
-    routeTopicIdRef,
-    slugRef,
-    inViewSyncSuppressedUntilRef,
-    skipSlugScrollIntoViewRef,
-    setInViewFeedKey,
-  });
+    const onScroll = () => setShowScrollTop(el.scrollTop > 480);
+    onScroll();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [viewportRef, categoryId, slug]);
 
-  useDocsFeedPrefetch({
-    viewportRef,
-    chainHasMoreAbove,
-    chainHasMoreBelow,
-    feedRows,
-    feedRange,
-    catalogBounds,
-    setFeedRange,
-    prependSentinelRef,
-    appendSentinelRef,
-    prependSnapRef,
-    prependPreserveOnlyRef,
-    feedRowsCountBeforeMutationRef,
-  });
-
-  const { feedNav, navigateToFeedItem } = useDocsFeedNavigation({
-    feedRange,
-    setFeedRange,
-    feedRows,
-    catalogBounds,
-    viewportRef,
-    prependSnapRef,
-    prependPreserveOnlyRef,
-    pendingScrollWasPrependRef,
-    pendingScrollToDomIdRef,
-    feedRowsCountBeforeMutationRef,
-    inViewSyncSuppressedUntilRef,
-    skipSlugScrollIntoViewRef,
-    setInViewFeedKey,
-  });
+  const scrollToTop = useCallback(() => {
+    const el = viewportRef?.current;
+    if (el) el.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [viewportRef]);
 
   return {
     categoryId,
@@ -120,18 +45,11 @@ export function useDocumentationPage() {
     topic,
     content,
     activeStream,
-    feedRows,
-    feedNav,
-    navigateToFeedItem,
-    inViewFeedKey,
-    chainHasMoreBelow,
-    chainHasMoreAbove,
-    prependSentinelRef,
-    appendSentinelRef,
-    viewportRef: scrollViewportRef,
     docsTopicBrowserSections,
     topicBrowser,
+    prevArticle,
+    nextArticle,
     showScrollTop,
-    scrollFeedToTop,
+    scrollToTop,
   };
 }

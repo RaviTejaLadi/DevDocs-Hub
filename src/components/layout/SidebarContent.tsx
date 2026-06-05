@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, useMemo, type JSX } from 'react';
-import { useSidebarDocsRouteKeys } from '@/context/docsFeedSyncContext';
+import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
 import type { Topic, TopicItem } from '@/data/topics';
 import { resolveTopicBadge, findTopicBadgeContext } from '@/data/topics';
 import { topicBadgeAccentBorder } from '@/data/topics/topicBadges';
@@ -54,7 +54,7 @@ const flattenItems = (items: TopicItem[]): TopicItem[] => {
 
 const SidebarContent = ({ closeSheet }: { closeSheet?: () => void }) => {
   const { t } = useI18n();
-  const { topicId: currentTopicId, slug: activeSlug } = useSidebarDocsRouteKeys();
+  const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
   useEffect(() => {

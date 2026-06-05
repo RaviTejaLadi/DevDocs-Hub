@@ -10,7 +10,6 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { DocsFeedSyncProvider } from '@/context/docsFeedSyncContext';
 import { useAppLayoutStore } from '@/stores';
-import { isDocsPreserveScrollState } from '@/lib/docsLocationState';
 import NavBar from '@/components/layout/NavBar';
 import {
   docsFloatingActionButtonClass,
@@ -59,33 +58,11 @@ const App = () => {
   const showSidebar = isDocsRoute(location.pathname);
   const contentViewportRef = useRef<HTMLDivElement>(null);
 
-  const docsCategoryScrollRef = useRef<string | null>(null);
-
   useEffect(() => {
     const el = contentViewportRef.current;
-    const m = location.pathname.match(/^\/docs\/([^/]+)\//);
-    const docsCat = m?.[1];
-
-    if (docsCat !== undefined && docsCat === docsCategoryScrollRef.current) {
-      /** Same docs category — slug swaps (replaceState) must not snap the feed back to scroll top. */
-      return;
-    }
-
-    /**
-     * Only in-feed / observer-driven navigation sets `location.state.docsScroll === 'preserve'`.
-     * Sidebar / landing / search use `reset` (or default). Adjacent catalog indices (e.g. html→css)
-     * are *not* implicitly “chain” — without this, sidebar jumps kept the old scroll position.
-     */
-    if (isDocsPreserveScrollState(location.state)) {
-      docsCategoryScrollRef.current = docsCat ?? null;
-      return;
-    }
-
-    docsCategoryScrollRef.current = docsCat ?? null;
-
     if (el) el.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [location.pathname, location.search, location.state]);
+  }, [location.pathname, location.search]);
 
   const closeSidebar = () => setMobileSidebarOpen(false);
 
@@ -136,7 +113,7 @@ const App = () => {
               <ScrollArea
                 className="h-full min-h-0"
                 viewportRef={contentViewportRef}
-                viewportClassName={showSidebar ? 'docs-feed-scroll scroll-pt-2 scroll-pb-4' : undefined}
+                viewportClassName={showSidebar ? 'scroll-pt-2 scroll-pb-4' : undefined}
               >
                 <div className="mx-auto w-full min-w-0 max-w-7xl py-6 sm:py-8 lg:py-10 text-foreground ps-[max(0.75rem,env(safe-area-inset-left))] pe-[max(0.75rem,env(safe-area-inset-right))] sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:pb-8 lg:pb-10">
                   <Suspense fallback={<RouteFallback />}>

@@ -154,6 +154,7 @@ const en: TranslationMap = {
   'docs.scrollToTop': 'Scroll to top',
   'docs.previous': 'Previous',
   'docs.next': 'Next',
+  'docs.pageNavigation': 'Page navigation',
   'docs.showOutline': 'Show on-this-page outline',
   'docs.hideOutline': 'Hide on-this-page outline',
   'docs.searchFeedPlaceholder': 'Search in this topic…',
