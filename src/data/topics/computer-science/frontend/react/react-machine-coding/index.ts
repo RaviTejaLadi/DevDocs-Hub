@@ -1,8 +1,8 @@
-import reactMachineCodingIntro from './intro.md?raw';
-import reactMachineCodingEasyLevel from './level-easy.md?raw';
-import reactMachineCodingMediumLevel from './level-medium.md?raw';
-import reactMachineCodingHardLevel from './level-hard.md?raw';
-import reactMachineCodingExpertLevel from './level-expert.md?raw';
+import reactMachineCodingIntro from './intro.mdx?raw';
+import reactMachineCodingEasyLevel from './level-easy.mdx?raw';
+import reactMachineCodingMediumLevel from './level-medium.mdx?raw';
+import reactMachineCodingHardLevel from './level-hard.mdx?raw';
+import reactMachineCodingExpertLevel from './level-expert.mdx?raw';
 
 export const reactCodingConcepts = [
   {

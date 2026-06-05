@@ -1,11 +1,11 @@
 import type { TopicItem } from '@/data/topics';
-import frontendRoadmap from './frontend-roadmap.md?raw';
-import backendRoadmap from './backend-roadmap.md?raw';
-import fullstackRoadmap from './fullstack-roadmap.md?raw';
-import dsaStudyPlan from './dsa-study-plan.md?raw';
-import devopsRoadmap from './devops-roadmap.md?raw';
-import cloudRoadmap from './cloud-roadmap.md?raw';
-import systemDesignStudyPlan from './system-design-study-plan.md?raw';
+import frontendRoadmap from './frontend-roadmap.mdx?raw';
+import backendRoadmap from './backend-roadmap.mdx?raw';
+import fullstackRoadmap from './fullstack-roadmap.mdx?raw';
+import dsaStudyPlan from './dsa-study-plan.mdx?raw';
+import devopsRoadmap from './devops-roadmap.mdx?raw';
+import cloudRoadmap from './cloud-roadmap.mdx?raw';
+import systemDesignStudyPlan from './system-design-study-plan.mdx?raw';
 
 export const learningResourcesTopics: TopicItem[] = [
   { id: 'resources-frontend-roadmap', title: '🎨 Frontend Roadmap', content: frontendRoadmap },

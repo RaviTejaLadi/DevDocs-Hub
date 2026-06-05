@@ -1,11 +1,11 @@
 import type { TopicItem } from '@/data/topics';
-import cnn from './cnn.md?raw';
-import introduction from './introduction.md?raw';
-import neural_networks from './neural-networks.md?raw';
-import pytorch from './pytorch.md?raw';
-import rnns from './rnns.md?raw';
-import tensorflow from './tensorflow.md?raw';
-import transformers from './transformers.md?raw';
+import cnn from './cnn.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import neural_networks from './neural-networks.mdx?raw';
+import pytorch from './pytorch.mdx?raw';
+import rnns from './rnns.mdx?raw';
+import tensorflow from './tensorflow.mdx?raw';
+import transformers from './transformers.mdx?raw';
 
 export const deepLearningTopics: TopicItem[] = [
   { id: 'deep-learning-cnn', title: 'Cnn', content: cnn },

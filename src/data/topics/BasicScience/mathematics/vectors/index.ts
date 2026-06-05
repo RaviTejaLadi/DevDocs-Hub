@@ -1,15 +1,15 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import vectorBasics from './vector-basics.md?raw';
-import vectorAdditionSubtraction from './vector-addition-subtraction.md?raw';
-import scalarVectorQuantities from './scalar-vector-quantities.md?raw';
-import dotProduct from './dot-product.md?raw';
-import crossProduct from './cross-product.md?raw';
-import unitVectors from './unit-vectors.md?raw';
-import vectorEquations from './vector-equations.md?raw';
-import positionVectors from './position-vectors.md?raw';
-import applicationsVectors from './applications-vectors.md?raw';
+import introduction from './introduction.mdx?raw';
+import vectorBasics from './vector-basics.mdx?raw';
+import vectorAdditionSubtraction from './vector-addition-subtraction.mdx?raw';
+import scalarVectorQuantities from './scalar-vector-quantities.mdx?raw';
+import dotProduct from './dot-product.mdx?raw';
+import crossProduct from './cross-product.mdx?raw';
+import unitVectors from './unit-vectors.mdx?raw';
+import vectorEquations from './vector-equations.mdx?raw';
+import positionVectors from './position-vectors.mdx?raw';
+import applicationsVectors from './applications-vectors.mdx?raw';
 
 export const vectorsTopics: TopicItem[] = [
   { id: 'vectors-introduction', title: '📖 Introduction', content: introduction },

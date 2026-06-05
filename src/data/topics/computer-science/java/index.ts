@@ -1,12 +1,12 @@
 import type { TopicItem } from '@/data/topics';
-import collections from './collections.md?raw';
-import exception_handling from './exception-handling.md?raw';
-import installation from './installation.md?raw';
-import introduction from './introduction.md?raw';
-import multithreading from './multithreading.md?raw';
-import oops from './oops.md?raw';
-import spring_boot_intro from './spring-boot-intro.md?raw';
-import syntax_basics from './syntax-basics.md?raw';
+import collections from './collections.mdx?raw';
+import exception_handling from './exception-handling.mdx?raw';
+import installation from './installation.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import multithreading from './multithreading.mdx?raw';
+import oops from './oops.mdx?raw';
+import spring_boot_intro from './spring-boot-intro.mdx?raw';
+import syntax_basics from './syntax-basics.mdx?raw';
 
 export const javaTopics: TopicItem[] = [
   { id: 'java-collections', title: 'Collections', content: collections },

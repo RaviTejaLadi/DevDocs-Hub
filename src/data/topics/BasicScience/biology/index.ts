@@ -1,15 +1,15 @@
 import type { TopicItem } from '@/data/topics';
-import biologyIntroduction from './introduction.md?raw';
-import cellBiology from './cell-biology.md?raw';
-import genetics from './genetics.md?raw';
-import molecularBiology from './molecular-biology.md?raw';
-import microbiology from './microbiology.md?raw';
-import humanPhysiology from './human-physiology.md?raw';
-import plantBiology from './plant-biology.md?raw';
-import ecology from './ecology.md?raw';
-import evolution from './evolution.md?raw';
-import immunologyBasics from './immunology-basics.md?raw';
-import biotechnologyBasics from './biotechnology-basics.md?raw';
+import biologyIntroduction from './introduction.mdx?raw';
+import cellBiology from './cell-biology.mdx?raw';
+import genetics from './genetics.mdx?raw';
+import molecularBiology from './molecular-biology.mdx?raw';
+import microbiology from './microbiology.mdx?raw';
+import humanPhysiology from './human-physiology.mdx?raw';
+import plantBiology from './plant-biology.mdx?raw';
+import ecology from './ecology.mdx?raw';
+import evolution from './evolution.mdx?raw';
+import immunologyBasics from './immunology-basics.mdx?raw';
+import biotechnologyBasics from './biotechnology-basics.mdx?raw';
 
 export const biologyTopics: TopicItem[] = [
   {

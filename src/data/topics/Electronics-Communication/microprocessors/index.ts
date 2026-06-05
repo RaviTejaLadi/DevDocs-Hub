@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import _8085_architecture from './8085-architecture.md?raw';
-import assembly_language from './assembly-language.md?raw';
-import embedded_basics from './embedded-basics.md?raw';
-import interrupts from './interrupts.md?raw';
-import introduction from './introduction.md?raw';
+import _8085_architecture from './8085-architecture.mdx?raw';
+import assembly_language from './assembly-language.mdx?raw';
+import embedded_basics from './embedded-basics.mdx?raw';
+import interrupts from './interrupts.mdx?raw';
+import introduction from './introduction.mdx?raw';
 
 export const microprocessorsTopics: TopicItem[] = [
   { id: 'microprocessors-8085-architecture', title: '8085 Architecture', content: _8085_architecture },

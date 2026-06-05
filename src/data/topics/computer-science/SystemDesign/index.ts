@@ -1,97 +1,97 @@
 import type { TopicItem } from '@/data/topics';
 
 // Fundamentals (distributed / backend system design)
-import distributedSystemDesignIntro from './fundamentals/distributed-system-design-intro.md?raw';
-import systemDesignInterviewGuide from './fundamentals/system-design-interview-guide.md?raw';
-import requirementsAndCapacityEstimation from './fundamentals/requirements-and-capacity-estimation.md?raw';
-import scalabilityConcepts from './fundamentals/scalability-concepts.md?raw';
-import reliabilityAndAvailability from './fundamentals/reliability-and-availability.md?raw';
-import latencyAndThroughput from './fundamentals/latency-and-throughput.md?raw';
-import capTheorem from './fundamentals/cap-theorem.md?raw';
-import consistencyModels from './fundamentals/consistency-models.md?raw';
+import distributedSystemDesignIntro from './fundamentals/distributed-system-design-intro.mdx?raw';
+import systemDesignInterviewGuide from './fundamentals/system-design-interview-guide.mdx?raw';
+import requirementsAndCapacityEstimation from './fundamentals/requirements-and-capacity-estimation.mdx?raw';
+import scalabilityConcepts from './fundamentals/scalability-concepts.mdx?raw';
+import reliabilityAndAvailability from './fundamentals/reliability-and-availability.mdx?raw';
+import latencyAndThroughput from './fundamentals/latency-and-throughput.mdx?raw';
+import capTheorem from './fundamentals/cap-theorem.mdx?raw';
+import consistencyModels from './fundamentals/consistency-models.mdx?raw';
 
 // Building blocks
-import loadBalancing from './building-blocks/load-balancing.md?raw';
-import cachingStrategies from './building-blocks/caching-strategies.md?raw';
-import databaseScaling from './building-blocks/database-scaling.md?raw';
-import replicationAndSharding from './building-blocks/replication-and-sharding.md?raw';
-import messageQueues from './building-blocks/message-queues.md?raw';
-import apiDesignRestGraphql from './building-blocks/api-design-rest-graphql.md?raw';
-import cdnAndEdgeComputing from './building-blocks/cdn-and-edge-computing.md?raw';
-import rateLimitingBuildingBlock from './building-blocks/rate-limiting.md?raw';
-import idempotency from './building-blocks/idempotency.md?raw';
-import databasesSqlVsNosql from './building-blocks/databases-sql-vs-nosql.md?raw';
-import redisAndMemcached from './building-blocks/redis-and-memcached.md?raw';
-import elasticsearchAndSearch from './building-blocks/elasticsearch-and-search.md?raw';
-import kafkaRabbitmqSqs from './building-blocks/kafka-rabbitmq-sqs.md?raw';
-import objectStorageS3 from './building-blocks/object-storage-s3.md?raw';
-import dnsAndServiceDiscovery from './building-blocks/dns-and-service-discovery.md?raw';
-import proxyAndReverseProxy from './building-blocks/proxy-and-reverse-proxy.md?raw';
+import loadBalancing from './building-blocks/load-balancing.mdx?raw';
+import cachingStrategies from './building-blocks/caching-strategies.mdx?raw';
+import databaseScaling from './building-blocks/database-scaling.mdx?raw';
+import replicationAndSharding from './building-blocks/replication-and-sharding.mdx?raw';
+import messageQueues from './building-blocks/message-queues.mdx?raw';
+import apiDesignRestGraphql from './building-blocks/api-design-rest-graphql.mdx?raw';
+import cdnAndEdgeComputing from './building-blocks/cdn-and-edge-computing.mdx?raw';
+import rateLimitingBuildingBlock from './building-blocks/rate-limiting.mdx?raw';
+import idempotency from './building-blocks/idempotency.mdx?raw';
+import databasesSqlVsNosql from './building-blocks/databases-sql-vs-nosql.mdx?raw';
+import redisAndMemcached from './building-blocks/redis-and-memcached.mdx?raw';
+import elasticsearchAndSearch from './building-blocks/elasticsearch-and-search.mdx?raw';
+import kafkaRabbitmqSqs from './building-blocks/kafka-rabbitmq-sqs.mdx?raw';
+import objectStorageS3 from './building-blocks/object-storage-s3.mdx?raw';
+import dnsAndServiceDiscovery from './building-blocks/dns-and-service-discovery.mdx?raw';
+import proxyAndReverseProxy from './building-blocks/proxy-and-reverse-proxy.mdx?raw';
 
 // Architecture patterns
-import monolithVsMicroservices from './architecture-patterns/monolith-vs-microservices.md?raw';
-import eventDrivenArchitecture from './architecture-patterns/event-driven-architecture.md?raw';
-import serverlessArchitecture from './architecture-patterns/serverless-architecture.md?raw';
-import clientServerArchitecture from './architecture-patterns/client-server-architecture.md?raw';
-import sagaPattern from './architecture-patterns/saga-pattern.md?raw';
-import circuitBreaker from './architecture-patterns/circuit-breaker.md?raw';
-import bulkheadPattern from './architecture-patterns/bulkhead-pattern.md?raw';
-import leaderElection from './architecture-patterns/leader-election.md?raw';
-import publishSubscribe from './architecture-patterns/publish-subscribe.md?raw';
-import cqrs from './architecture-patterns/cqrs.md?raw';
-import eventSourcing from './architecture-patterns/event-sourcing.md?raw';
+import monolithVsMicroservices from './architecture-patterns/monolith-vs-microservices.mdx?raw';
+import eventDrivenArchitecture from './architecture-patterns/event-driven-architecture.mdx?raw';
+import serverlessArchitecture from './architecture-patterns/serverless-architecture.mdx?raw';
+import clientServerArchitecture from './architecture-patterns/client-server-architecture.mdx?raw';
+import sagaPattern from './architecture-patterns/saga-pattern.mdx?raw';
+import circuitBreaker from './architecture-patterns/circuit-breaker.mdx?raw';
+import bulkheadPattern from './architecture-patterns/bulkhead-pattern.mdx?raw';
+import leaderElection from './architecture-patterns/leader-election.mdx?raw';
+import publishSubscribe from './architecture-patterns/publish-subscribe.mdx?raw';
+import cqrs from './architecture-patterns/cqrs.mdx?raw';
+import eventSourcing from './architecture-patterns/event-sourcing.mdx?raw';
 
 // Classic problems
-import urlShortener from './classic-problems/url-shortener.md?raw';
-import pasteBin from './classic-problems/paste-bin.md?raw';
-import twitterNewsFeed from './classic-problems/twitter-news-feed.md?raw';
-import instagramPhotoSharing from './classic-problems/instagram-photo-sharing.md?raw';
-import whatsappChatSystem from './classic-problems/whatsapp-chat-system.md?raw';
-import youtubeNetflixStreaming from './classic-problems/youtube-netflix-streaming.md?raw';
-import uberRideSharing from './classic-problems/uber-ride-sharing.md?raw';
-import rateLimiterDesign from './classic-problems/rate-limiter-design.md?raw';
-import notificationSystem from './classic-problems/notification-system.md?raw';
-import webCrawler from './classic-problems/web-crawler.md?raw';
-import distributedCacheDesign from './classic-problems/distributed-cache-design.md?raw';
-import ecommerceCheckout from './classic-problems/e-commerce-checkout.md?raw';
-import ticketBookingSystem from './classic-problems/ticket-booking-system.md?raw';
+import urlShortener from './classic-problems/url-shortener.mdx?raw';
+import pasteBin from './classic-problems/paste-bin.mdx?raw';
+import twitterNewsFeed from './classic-problems/twitter-news-feed.mdx?raw';
+import instagramPhotoSharing from './classic-problems/instagram-photo-sharing.mdx?raw';
+import whatsappChatSystem from './classic-problems/whatsapp-chat-system.mdx?raw';
+import youtubeNetflixStreaming from './classic-problems/youtube-netflix-streaming.mdx?raw';
+import uberRideSharing from './classic-problems/uber-ride-sharing.mdx?raw';
+import rateLimiterDesign from './classic-problems/rate-limiter-design.mdx?raw';
+import notificationSystem from './classic-problems/notification-system.mdx?raw';
+import webCrawler from './classic-problems/web-crawler.mdx?raw';
+import distributedCacheDesign from './classic-problems/distributed-cache-design.mdx?raw';
+import ecommerceCheckout from './classic-problems/e-commerce-checkout.mdx?raw';
+import ticketBookingSystem from './classic-problems/ticket-booking-system.mdx?raw';
 
 // Frontend system design (existing content)
-import frontendSystemDesignIntro from './frontend-system-design/intro.md?raw';
-import frontendHld from './frontend-system-design/hld.md?raw';
-import frontendLld from './frontend-system-design/lld.md?raw';
+import frontendSystemDesignIntro from './frontend-system-design/intro.mdx?raw';
+import frontendHld from './frontend-system-design/hld.mdx?raw';
+import frontendLld from './frontend-system-design/lld.mdx?raw';
 
 // Networking (moved out of Q&A — interview-style networking guide)
-import networking from './networking/networking.md?raw';
+import networking from './networking/networking.mdx?raw';
 
 // Security (moved out of Q&A)
-import webSecurity from './security/web-security.md?raw';
-import owasp from './security/owasp.md?raw';
+import webSecurity from './security/web-security.mdx?raw';
+import owasp from './security/owasp.mdx?raw';
 
 // Observability (moved out of Q&A — frontend logging/monitoring Q&A)
-import loggingAndMonitoring from './observability/logging-and-monitoring.md?raw';
+import loggingAndMonitoring from './observability/logging-and-monitoring.mdx?raw';
 
 // SOLID principles (software design — separate from distributed systems)
-import solidIntro from './solid-principles/intro.md?raw';
-import srp from './solid-principles/srp.md?raw';
-import ocp from './solid-principles/ocp.md?raw';
-import lsp from './solid-principles/lsp.md?raw';
-import isp from './solid-principles/isp.md?raw';
-import dip from './solid-principles/dip.md?raw';
+import solidIntro from './solid-principles/intro.mdx?raw';
+import srp from './solid-principles/srp.mdx?raw';
+import ocp from './solid-principles/ocp.mdx?raw';
+import lsp from './solid-principles/lsp.mdx?raw';
+import isp from './solid-principles/isp.mdx?raw';
+import dip from './solid-principles/dip.mdx?raw';
 
 // OOP design patterns (separate from HLD/LLD architecture docs)
-import singletonPattern from './design-patterns/singleton-pattern.md?raw';
-import factoryPattern from './design-patterns/factory-pattern.md?raw';
-import observerPattern from './design-patterns/observer-pattern.md?raw';
-import strategyPattern from './design-patterns/strategy-pattern.md?raw';
-import adapterPattern from './design-patterns/adapter-pattern.md?raw';
-import decoratorPattern from './design-patterns/decorator-pattern.md?raw';
-import mvcPattern from './design-patterns/mvc-pattern.md?raw';
+import singletonPattern from './design-patterns/singleton-pattern.mdx?raw';
+import factoryPattern from './design-patterns/factory-pattern.mdx?raw';
+import observerPattern from './design-patterns/observer-pattern.mdx?raw';
+import strategyPattern from './design-patterns/strategy-pattern.mdx?raw';
+import adapterPattern from './design-patterns/adapter-pattern.mdx?raw';
+import decoratorPattern from './design-patterns/decorator-pattern.mdx?raw';
+import mvcPattern from './design-patterns/mvc-pattern.mdx?raw';
 
 // Interview prep
-import top25SystemDesignQuestions from './interview-prep/top-25-system-design-questions.md?raw';
-import howToApproachSystemDesignInterviews from './interview-prep/how-to-approach-system-design-interviews.md?raw';
-import tradeoffsCheatsheet from './interview-prep/trade-offs-cheatsheet.md?raw';
+import top25SystemDesignQuestions from './interview-prep/top-25-system-design-questions.mdx?raw';
+import howToApproachSystemDesignInterviews from './interview-prep/how-to-approach-system-design-interviews.mdx?raw';
+import tradeoffsCheatsheet from './interview-prep/trade-offs-cheatsheet.mdx?raw';
 
 export const systemDesignData: TopicItem[] = [
   {

@@ -1,52 +1,52 @@
-import jsOOPSIntro from './intro.md?raw';
+import jsOOPSIntro from './intro.mdx?raw';
 
 // OOPS Core Concepts
-import abstraction from './oops/abstraction.md?raw';
-import encapsulation from './oops/encapsulation.md?raw';
-import inheritance from './oops/inheritance.md?raw';
-import polymorphism from './oops/polymorphism.md?raw';
+import abstraction from './oops/abstraction.mdx?raw';
+import encapsulation from './oops/encapsulation.mdx?raw';
+import inheritance from './oops/inheritance.mdx?raw';
+import polymorphism from './oops/polymorphism.mdx?raw';
 
 // ES6 Classes
-import classDeclaration from './ES6Classes/class-declaration.md?raw';
-import constructorMethod from './ES6Classes/constructor-method.md?raw';
-import gettersAndSetters from './ES6Classes/getters-and-setters.md?raw';
-import instanceMethod from './ES6Classes/instance-method.md?raw';
-import staticMethod from './ES6Classes/static-method.md?raw';
+import classDeclaration from './ES6Classes/class-declaration.mdx?raw';
+import constructorMethod from './ES6Classes/constructor-method.mdx?raw';
+import gettersAndSetters from './ES6Classes/getters-and-setters.mdx?raw';
+import instanceMethod from './ES6Classes/instance-method.mdx?raw';
+import staticMethod from './ES6Classes/static-method.mdx?raw';
 
 // Inheritance Mechanisms
-import classInheritance from './InheritanceMechanisms/class-inheritance.md?raw';
-import prototypalInheritance from './InheritanceMechanisms/prototypal-inheritance.md?raw';
-import prototypeChain from './InheritanceMechanisms/prototype-chain.md?raw';
-import superKeyword from './InheritanceMechanisms/super-keyword.md?raw';
+import classInheritance from './InheritanceMechanisms/class-inheritance.mdx?raw';
+import prototypalInheritance from './InheritanceMechanisms/prototypal-inheritance.mdx?raw';
+import prototypeChain from './InheritanceMechanisms/prototype-chain.mdx?raw';
+import superKeyword from './InheritanceMechanisms/super-keyword.mdx?raw';
 
 // This Binding and Context
-import arrowFunctions from './ThisBindingAndContext/arrow-functions.md?raw';
-import contextLoss from './ThisBindingAndContext/context-loss.md?raw';
-import explicitBinding from './ThisBindingAndContext/explicit-binding.md?raw';
-import methodBinding from './ThisBindingAndContext/method-binding.md?raw';
+import arrowFunctions from './ThisBindingAndContext/arrow-functions.mdx?raw';
+import contextLoss from './ThisBindingAndContext/context-loss.mdx?raw';
+import explicitBinding from './ThisBindingAndContext/explicit-binding.mdx?raw';
+import methodBinding from './ThisBindingAndContext/method-binding.mdx?raw';
 
 // Object Creation Patterns
-import objectLiterals from './object-creation-patterns/object-literals.md?raw';
-import objectCreate from './object-creation-patterns/object.create.md?raw';
-import constructorFunctions from './object-creation-patterns/constructor-functions.md?raw';
-import factoryFunctions from './object-creation-patterns/factory-functions.md?raw';
+import objectLiterals from './object-creation-patterns/object-literals.mdx?raw';
+import objectCreate from './object-creation-patterns/object.create.mdx?raw';
+import constructorFunctions from './object-creation-patterns/constructor-functions.mdx?raw';
+import factoryFunctions from './object-creation-patterns/factory-functions.mdx?raw';
 
 // Mixins and Composition
-import mixins from './MixinsAndComposition/mixins.md?raw';
-import compositionOverInheritance from './MixinsAndComposition/composition-over-inheritance.md?raw';
-import delegation from './MixinsAndComposition/delegation.md?raw';
+import mixins from './MixinsAndComposition/mixins.mdx?raw';
+import compositionOverInheritance from './MixinsAndComposition/composition-over-inheritance.mdx?raw';
+import delegation from './MixinsAndComposition/delegation.mdx?raw';
 
 // Design Patterns
-import factoryPattern from './DesignPatterns/factory-pattern.md?raw';
-import modulePattern from './DesignPatterns/module-pattern.md?raw';
-import observerPattern from './DesignPatterns/observer-pattern.md?raw';
-import singletonPattern from './DesignPatterns/singleton-pattern.md?raw';
+import factoryPattern from './DesignPatterns/factory-pattern.mdx?raw';
+import modulePattern from './DesignPatterns/module-pattern.mdx?raw';
+import observerPattern from './DesignPatterns/observer-pattern.mdx?raw';
+import singletonPattern from './DesignPatterns/singleton-pattern.mdx?raw';
 
 // Advanced OOP
-import abstractClasses from './AdvancedOOP/abstract-classes.md?raw';
-import methodOverriding from './AdvancedOOP/method-overriding.md?raw';
-import privateFields from './AdvancedOOP/private-fields.md?raw';
-import privateMethods from './AdvancedOOP/private-methods.md?raw';
+import abstractClasses from './AdvancedOOP/abstract-classes.mdx?raw';
+import methodOverriding from './AdvancedOOP/method-overriding.mdx?raw';
+import privateFields from './AdvancedOOP/private-fields.mdx?raw';
+import privateMethods from './AdvancedOOP/private-methods.mdx?raw';
 
 export const jsOOPSConcepts = [
   {

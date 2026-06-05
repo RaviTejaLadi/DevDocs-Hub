@@ -1,16 +1,16 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import dataCollection from './data-collection.md?raw';
-import dataRepresentation from './data-representation.md?raw';
-import meanMedianMode from './mean-median-mode.md?raw';
-import measuresDispersion from './measures-dispersion.md?raw';
-import frequencyDistribution from './frequency-distribution.md?raw';
-import histogramsGraphs from './histograms-graphs.md?raw';
-import probabilityDistributionBasics from './probability-distribution-basics.md?raw';
-import correlation from './correlation.md?raw';
-import regression from './regression.md?raw';
-import statisticalAnalysis from './statistical-analysis.md?raw';
+import introduction from './introduction.mdx?raw';
+import dataCollection from './data-collection.mdx?raw';
+import dataRepresentation from './data-representation.mdx?raw';
+import meanMedianMode from './mean-median-mode.mdx?raw';
+import measuresDispersion from './measures-dispersion.mdx?raw';
+import frequencyDistribution from './frequency-distribution.mdx?raw';
+import histogramsGraphs from './histograms-graphs.mdx?raw';
+import probabilityDistributionBasics from './probability-distribution-basics.mdx?raw';
+import correlation from './correlation.mdx?raw';
+import regression from './regression.mdx?raw';
+import statisticalAnalysis from './statistical-analysis.mdx?raw';
 
 export const statisticsTopics: TopicItem[] = [
   { id: 'statistics-introduction', title: '📖 Introduction', content: introduction },

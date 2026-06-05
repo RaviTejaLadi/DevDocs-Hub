@@ -1,14 +1,14 @@
 import type { TopicItem } from '@/data/topics';
-import manufacturingIntroduction from './introduction.md?raw';
-import casting from './casting.md?raw';
-import machining from './machining.md?raw';
-import formingProcesses from './forming-processes.md?raw';
-import welding from './welding.md?raw';
-import additiveManufacturing from './additive-manufacturing.md?raw';
-import cncMachining from './cnc-machining.md?raw';
-import sheetMetal from './sheet-metal.md?raw';
-import qualityControl from './quality-control.md?raw';
-import metrology from './metrology.md?raw';
+import manufacturingIntroduction from './introduction.mdx?raw';
+import casting from './casting.mdx?raw';
+import machining from './machining.mdx?raw';
+import formingProcesses from './forming-processes.mdx?raw';
+import welding from './welding.mdx?raw';
+import additiveManufacturing from './additive-manufacturing.mdx?raw';
+import cncMachining from './cnc-machining.mdx?raw';
+import sheetMetal from './sheet-metal.mdx?raw';
+import qualityControl from './quality-control.mdx?raw';
+import metrology from './metrology.mdx?raw';
 
 export const manufacturingTopics: TopicItem[] = [
   {

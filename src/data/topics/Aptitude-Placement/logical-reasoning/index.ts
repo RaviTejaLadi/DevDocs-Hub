@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import blood_relations from './blood-relations.md?raw';
-import coding_decoding from './coding-decoding.md?raw';
-import direction_sense from './direction-sense.md?raw';
-import introduction from './introduction.md?raw';
-import puzzles from './puzzles.md?raw';
-import syllogisms from './syllogisms.md?raw';
+import blood_relations from './blood-relations.mdx?raw';
+import coding_decoding from './coding-decoding.mdx?raw';
+import direction_sense from './direction-sense.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import puzzles from './puzzles.mdx?raw';
+import syllogisms from './syllogisms.mdx?raw';
 
 export const logicalReasoningTopics: TopicItem[] = [
   { id: 'logical-reasoning-blood-relations', title: 'Blood Relations', content: blood_relations },

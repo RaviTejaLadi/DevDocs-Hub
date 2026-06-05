@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import feature_engineering from './feature-engineering.md?raw';
-import introduction from './introduction.md?raw';
-import model_evaluation from './model-evaluation.md?raw';
-import scikit_learn from './scikit-learn.md?raw';
-import supervised_learning from './supervised-learning.md?raw';
-import unsupervised_learning from './unsupervised-learning.md?raw';
+import feature_engineering from './feature-engineering.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import model_evaluation from './model-evaluation.mdx?raw';
+import scikit_learn from './scikit-learn.mdx?raw';
+import supervised_learning from './supervised-learning.mdx?raw';
+import unsupervised_learning from './unsupervised-learning.mdx?raw';
 
 export const machineLearningTopics: TopicItem[] = [
   { id: 'machine-learning-feature-engineering', title: 'Feature Engineering', content: feature_engineering },

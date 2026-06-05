@@ -1,11 +1,11 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import number_system from './number-system.md?raw';
-import percentages from './percentages.md?raw';
-import profit_loss from './profit-loss.md?raw';
-import ratios_proportions from './ratios-proportions.md?raw';
-import time_speed_distance from './time-speed-distance.md?raw';
-import time_work from './time-work.md?raw';
+import introduction from './introduction.mdx?raw';
+import number_system from './number-system.mdx?raw';
+import percentages from './percentages.mdx?raw';
+import profit_loss from './profit-loss.mdx?raw';
+import ratios_proportions from './ratios-proportions.mdx?raw';
+import time_speed_distance from './time-speed-distance.mdx?raw';
+import time_work from './time-work.mdx?raw';
 
 export const quantitativeAptitudeTopics: TopicItem[] = [
   { id: 'quantitative-aptitude-introduction', title: '📖 Introduction', content: introduction },

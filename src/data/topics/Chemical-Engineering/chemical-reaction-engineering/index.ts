@@ -1,8 +1,8 @@
 import type { TopicItem } from '@/data/topics';
-import catalysis from './catalysis.md?raw';
-import chemical_reactors from './chemical-reactors.md?raw';
-import introduction from './introduction.md?raw';
-import reaction_kinetics from './reaction-kinetics.md?raw';
+import catalysis from './catalysis.mdx?raw';
+import chemical_reactors from './chemical-reactors.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import reaction_kinetics from './reaction-kinetics.mdx?raw';
 
 export const chemicalReactionEngineeringTopics: TopicItem[] = [
   { id: 'chemical-reaction-engineering-catalysis', title: 'Catalysis', content: catalysis },

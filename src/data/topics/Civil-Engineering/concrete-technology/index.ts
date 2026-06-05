@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import concrete_ingredients from './concrete-ingredients.md?raw';
-import introduction from './introduction.md?raw';
-import mix_design from './mix-design.md?raw';
-import prestressed_concrete from './prestressed-concrete.md?raw';
-import reinforced_concrete from './reinforced-concrete.md?raw';
+import concrete_ingredients from './concrete-ingredients.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import mix_design from './mix-design.mdx?raw';
+import prestressed_concrete from './prestressed-concrete.mdx?raw';
+import reinforced_concrete from './reinforced-concrete.mdx?raw';
 
 export const concreteTechnologyTopics: TopicItem[] = [
   { id: 'concrete-technology-concrete-ingredients', title: 'Concrete Ingredients', content: concrete_ingredients },

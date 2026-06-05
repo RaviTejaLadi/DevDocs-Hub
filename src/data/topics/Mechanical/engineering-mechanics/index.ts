@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import statics from './statics.md?raw';
-import dynamics from './dynamics.md?raw';
-import friction from './friction.md?raw';
-import trussesAndFrames from './trusses-and-frames.md?raw';
+import introduction from './introduction.mdx?raw';
+import statics from './statics.mdx?raw';
+import dynamics from './dynamics.mdx?raw';
+import friction from './friction.mdx?raw';
+import trussesAndFrames from './trusses-and-frames.mdx?raw';
 
 export const engineeringMechanicsTopics: TopicItem[] = [
   {

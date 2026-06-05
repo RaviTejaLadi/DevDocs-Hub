@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import ac_circuits from './ac-circuits.md?raw';
-import introduction from './introduction.md?raw';
-import kirchhoff_laws from './kirchhoff-laws.md?raw';
-import network_theorems from './network-theorems.md?raw';
-import ohms_law from './ohms-law.md?raw';
-import transient_analysis from './transient-analysis.md?raw';
+import ac_circuits from './ac-circuits.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import kirchhoff_laws from './kirchhoff-laws.mdx?raw';
+import network_theorems from './network-theorems.mdx?raw';
+import ohms_law from './ohms-law.mdx?raw';
+import transient_analysis from './transient-analysis.mdx?raw';
 
 export const circuitTheoryTopics: TopicItem[] = [
   { id: 'circuit-theory-ac-circuits', title: 'Ac Circuits', content: ac_circuits },

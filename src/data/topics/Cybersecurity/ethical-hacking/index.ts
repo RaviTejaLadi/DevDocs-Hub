@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import penetration_testing from './penetration-testing.md?raw';
-import reconnaissance from './reconnaissance.md?raw';
-import vulnerability_assessment from './vulnerability-assessment.md?raw';
-import web_app_pentesting from './web-app-pentesting.md?raw';
+import introduction from './introduction.mdx?raw';
+import penetration_testing from './penetration-testing.mdx?raw';
+import reconnaissance from './reconnaissance.mdx?raw';
+import vulnerability_assessment from './vulnerability-assessment.mdx?raw';
+import web_app_pentesting from './web-app-pentesting.mdx?raw';
 
 export const ethicalHackingTopics: TopicItem[] = [
   { id: 'ethical-hacking-introduction', title: '📖 Introduction', content: introduction },

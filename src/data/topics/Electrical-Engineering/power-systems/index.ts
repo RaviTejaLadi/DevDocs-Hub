@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import distribution from './distribution.md?raw';
-import fault_analysis from './fault-analysis.md?raw';
-import generation from './generation.md?raw';
-import introduction from './introduction.md?raw';
-import protection from './protection.md?raw';
-import transmission from './transmission.md?raw';
+import distribution from './distribution.mdx?raw';
+import fault_analysis from './fault-analysis.mdx?raw';
+import generation from './generation.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import protection from './protection.mdx?raw';
+import transmission from './transmission.mdx?raw';
 
 export const powerSystemsTopics: TopicItem[] = [
   { id: 'power-systems-distribution', title: 'Distribution', content: distribution },

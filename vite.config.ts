@@ -1,11 +1,28 @@
 import path from 'path';
+import mdx from '@mdx-js/rollup';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import remarkGfm from 'remark-gfm';
+
+/** Keep `?raw` MDX imports as plain strings — @mdx-js/rollup otherwise compiles them. */
+function mdxPluginSkipRaw(): Plugin {
+  const plugin = mdx({ remarkPlugins: [remarkGfm], providerImportSource: '@mdx-js/react' });
+  const transform = plugin.transform?.bind(plugin);
+
+  return {
+    ...plugin,
+    enforce: 'pre',
+    async transform(code, id) {
+      if (id.includes('?raw')) return null;
+      return transform?.(code, id);
+    },
+  };
+}
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [mdxPluginSkipRaw(), react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -1,14 +1,14 @@
 import type { TopicItem } from '@/data/topics';
-import control_flow from './control-flow.md?raw';
-import data_types from './data-types.md?raw';
-import file_handling from './file-handling.md?raw';
-import functions from './functions.md?raw';
-import installation from './installation.md?raw';
-import introduction from './introduction.md?raw';
-import modules from './modules.md?raw';
-import oops from './oops.md?raw';
-import popular_libraries from './popular-libraries.md?raw';
-import virtual_environments from './virtual-environments.md?raw';
+import control_flow from './control-flow.mdx?raw';
+import data_types from './data-types.mdx?raw';
+import file_handling from './file-handling.mdx?raw';
+import functions from './functions.mdx?raw';
+import installation from './installation.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import modules from './modules.mdx?raw';
+import oops from './oops.mdx?raw';
+import popular_libraries from './popular-libraries.mdx?raw';
+import virtual_environments from './virtual-environments.mdx?raw';
 
 export const pythonTopics: TopicItem[] = [
   { id: 'python-control-flow', title: 'Control Flow', content: control_flow },

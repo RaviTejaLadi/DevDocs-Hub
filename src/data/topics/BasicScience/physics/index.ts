@@ -1,18 +1,18 @@
 import type { TopicItem } from '@/data/topics';
-import physicsIntroduction from './introduction.md?raw';
-import unitsAndMeasurements from './units-and-measurements.md?raw';
-import kinematics from './kinematics.md?raw';
-import newtonLaws from './newton-laws.md?raw';
-import workEnergy from './work-energy.md?raw';
-import rotationalMotion from './rotational-motion.md?raw';
-import gravitation from './gravitation.md?raw';
-import propertiesOfMatter from './properties-of-matter.md?raw';
-import heatAndTemperature from './heat-and-temperature.md?raw';
-import wavesAndSound from './waves-and-sound.md?raw';
-import optics from './optics.md?raw';
-import electromagnetism from './electromagnetism.md?raw';
-import modernPhysics from './modern-physics.md?raw';
-import semiconductors from './semiconductors.md?raw';
+import physicsIntroduction from './introduction.mdx?raw';
+import unitsAndMeasurements from './units-and-measurements.mdx?raw';
+import kinematics from './kinematics.mdx?raw';
+import newtonLaws from './newton-laws.mdx?raw';
+import workEnergy from './work-energy.mdx?raw';
+import rotationalMotion from './rotational-motion.mdx?raw';
+import gravitation from './gravitation.mdx?raw';
+import propertiesOfMatter from './properties-of-matter.mdx?raw';
+import heatAndTemperature from './heat-and-temperature.mdx?raw';
+import wavesAndSound from './waves-and-sound.mdx?raw';
+import optics from './optics.mdx?raw';
+import electromagnetism from './electromagnetism.mdx?raw';
+import modernPhysics from './modern-physics.mdx?raw';
+import semiconductors from './semiconductors.mdx?raw';
 
 export const physicsTopics: TopicItem[] = [
   {

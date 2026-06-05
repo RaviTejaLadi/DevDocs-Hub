@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import choppers from './choppers.md?raw';
-import drives from './drives.md?raw';
-import introduction from './introduction.md?raw';
-import inverters from './inverters.md?raw';
-import rectifiers from './rectifiers.md?raw';
+import choppers from './choppers.mdx?raw';
+import drives from './drives.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import inverters from './inverters.mdx?raw';
+import rectifiers from './rectifiers.mdx?raw';
 
 export const powerElectronicsTopics: TopicItem[] = [
   { id: 'power-electronics-choppers', title: 'Choppers', content: choppers },

@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import devopsIntroduction from './introduction.md?raw';
-import devopsLinuxForDevops from './linux-for-devops.md?raw';
-import devopsInfrastructureAsCode from './infrastructure-as-code.md?raw';
-import devopsKubernetes from './kubernetes.md?raw';
-import devopsCiCd from './ci-cd.md?raw';
-import devopsMonitoring from './monitoring.md?raw';
+import devopsIntroduction from './introduction.mdx?raw';
+import devopsLinuxForDevops from './linux-for-devops.mdx?raw';
+import devopsInfrastructureAsCode from './infrastructure-as-code.mdx?raw';
+import devopsKubernetes from './kubernetes.mdx?raw';
+import devopsCiCd from './ci-cd.mdx?raw';
+import devopsMonitoring from './monitoring.mdx?raw';
 
 export const devopsTopics: TopicItem[] = [
   {

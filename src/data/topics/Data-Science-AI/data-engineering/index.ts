@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import apache_spark from './apache-spark.md?raw';
-import data_warehousing from './data-warehousing.md?raw';
-import etl_pipelines from './etl-pipelines.md?raw';
-import introduction from './introduction.md?raw';
-import sql_for_analytics from './sql-for-analytics.md?raw';
+import apache_spark from './apache-spark.mdx?raw';
+import data_warehousing from './data-warehousing.mdx?raw';
+import etl_pipelines from './etl-pipelines.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import sql_for_analytics from './sql-for-analytics.mdx?raw';
 
 export const dataEngineeringTopics: TopicItem[] = [
   { id: 'data-engineering-apache-spark', title: 'Apache Spark', content: apache_spark },

@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import fourier_series from './fourier-series.md?raw';
-import introduction from './introduction.md?raw';
-import laplace_transform from './laplace-transform.md?raw';
-import sampling from './sampling.md?raw';
-import z_transform from './z-transform.md?raw';
+import fourier_series from './fourier-series.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import laplace_transform from './laplace-transform.mdx?raw';
+import sampling from './sampling.mdx?raw';
+import z_transform from './z-transform.mdx?raw';
 
 export const signalsSystemsTopics: TopicItem[] = [
   { id: 'signals-systems-fourier-series', title: 'Fourier Series', content: fourier_series },

@@ -1,15 +1,15 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import typesOfMatrices from './types-of-matrices.md?raw';
-import matrixOperations from './matrix-operations.md?raw';
-import determinants from './determinants.md?raw';
-import inverseOfMatrix from './inverse-of-matrix.md?raw';
-import adjointCofactors from './adjoint-cofactors.md?raw';
-import solvingLinearEquations from './solving-linear-equations.md?raw';
-import eigenvaluesEigenvectors from './eigenvalues-eigenvectors.md?raw';
-import transformationsMatrices from './transformations-matrices.md?raw';
-import applicationsAiGraphics from './applications-ai-graphics.md?raw';
+import introduction from './introduction.mdx?raw';
+import typesOfMatrices from './types-of-matrices.mdx?raw';
+import matrixOperations from './matrix-operations.mdx?raw';
+import determinants from './determinants.mdx?raw';
+import inverseOfMatrix from './inverse-of-matrix.mdx?raw';
+import adjointCofactors from './adjoint-cofactors.mdx?raw';
+import solvingLinearEquations from './solving-linear-equations.mdx?raw';
+import eigenvaluesEigenvectors from './eigenvalues-eigenvectors.mdx?raw';
+import transformationsMatrices from './transformations-matrices.mdx?raw';
+import applicationsAiGraphics from './applications-ai-graphics.mdx?raw';
 
 export const matricesTopics: TopicItem[] = [
   { id: 'matrices-introduction', title: '📖 Introduction', content: introduction },

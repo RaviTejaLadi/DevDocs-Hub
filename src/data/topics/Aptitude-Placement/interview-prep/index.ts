@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import group_discussion from './group-discussion.md?raw';
-import hr_interview from './hr-interview.md?raw';
-import introduction from './introduction.md?raw';
-import resume_tips from './resume-tips.md?raw';
-import technical_interview from './technical-interview.md?raw';
+import group_discussion from './group-discussion.mdx?raw';
+import hr_interview from './hr-interview.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import resume_tips from './resume-tips.mdx?raw';
+import technical_interview from './technical-interview.mdx?raw';
 
 export const interviewPrepTopics: TopicItem[] = [
   { id: 'interview-prep-group-discussion', title: 'Group Discussion', content: group_discussion },

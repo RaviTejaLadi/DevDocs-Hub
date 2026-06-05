@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import beams from './beams.md?raw';
-import columns from './columns.md?raw';
-import introduction from './introduction.md?raw';
-import load_analysis from './load-analysis.md?raw';
-import slabs from './slabs.md?raw';
-import trusses from './trusses.md?raw';
+import beams from './beams.mdx?raw';
+import columns from './columns.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import load_analysis from './load-analysis.mdx?raw';
+import slabs from './slabs.mdx?raw';
+import trusses from './trusses.mdx?raw';
 
 export const structuralEngineeringTopics: TopicItem[] = [
   { id: 'structural-engineering-beams', title: 'Beams', content: beams },

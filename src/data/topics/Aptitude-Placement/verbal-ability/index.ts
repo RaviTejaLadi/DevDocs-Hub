@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import grammar from './grammar.md?raw';
-import introduction from './introduction.md?raw';
-import para_jumbles from './para-jumbles.md?raw';
-import reading_comprehension from './reading-comprehension.md?raw';
-import vocabulary from './vocabulary.md?raw';
+import grammar from './grammar.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import para_jumbles from './para-jumbles.mdx?raw';
+import reading_comprehension from './reading-comprehension.mdx?raw';
+import vocabulary from './vocabulary.mdx?raw';
 
 export const verbalAbilityTopics: TopicItem[] = [
   { id: 'verbal-ability-grammar', title: 'Grammar', content: grammar },

@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import mdnWebDocs from './mdn-web-docs.md?raw';
-import officialFrameworkDocs from './official-framework-docs.md?raw';
-import apiReferenceGuides from './api-reference-guides.md?raw';
-import openapiSwagger from './openapi-swagger.md?raw';
-import canIUse from './can-i-use.md?raw';
+import mdnWebDocs from './mdn-web-docs.mdx?raw';
+import officialFrameworkDocs from './official-framework-docs.mdx?raw';
+import apiReferenceGuides from './api-reference-guides.mdx?raw';
+import openapiSwagger from './openapi-swagger.mdx?raw';
+import canIUse from './can-i-use.mdx?raw';
 
 export const documentationReferencesTopics: TopicItem[] = [
   { id: 'resources-mdn-web-docs', title: '📘 MDN Web Docs', content: mdnWebDocs },

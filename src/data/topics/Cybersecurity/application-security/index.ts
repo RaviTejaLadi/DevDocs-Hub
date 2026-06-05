@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import api_security from './api-security.md?raw';
-import authentication_security from './authentication-security.md?raw';
-import introduction from './introduction.md?raw';
-import owasp_top_10 from './owasp-top-10.md?raw';
-import secure_coding from './secure-coding.md?raw';
+import api_security from './api-security.mdx?raw';
+import authentication_security from './authentication-security.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import owasp_top_10 from './owasp-top-10.mdx?raw';
+import secure_coding from './secure-coding.mdx?raw';
 
 export const applicationSecurityTopics: TopicItem[] = [
   { id: 'application-security-api-security', title: 'Api Security', content: api_security },

@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import distillation from './distillation.md?raw';
-import drying from './drying.md?raw';
-import heat_transfer from './heat-transfer.md?raw';
-import introduction from './introduction.md?raw';
-import mass_transfer from './mass-transfer.md?raw';
+import distillation from './distillation.mdx?raw';
+import drying from './drying.mdx?raw';
+import heat_transfer from './heat-transfer.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import mass_transfer from './mass-transfer.mdx?raw';
 
 export const unitOperationsTopics: TopicItem[] = [
   { id: 'unit-operations-distillation', title: 'Distillation', content: distillation },

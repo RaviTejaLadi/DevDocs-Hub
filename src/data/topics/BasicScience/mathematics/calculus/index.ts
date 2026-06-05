@@ -1,16 +1,16 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import limits from './limits.md?raw';
-import continuity from './continuity.md?raw';
-import differentiation from './differentiation.md?raw';
-import derivativesApplications from './derivatives-applications.md?raw';
-import tangentsNormals from './tangents-normals.md?raw';
-import maximaMinima from './maxima-minima.md?raw';
-import integration from './integration.md?raw';
-import definiteIndefiniteIntegrals from './definite-indefinite-integrals.md?raw';
-import differentialEquations from './differential-equations.md?raw';
-import areaUnderCurves from './area-under-curves.md?raw';
+import introduction from './introduction.mdx?raw';
+import limits from './limits.mdx?raw';
+import continuity from './continuity.mdx?raw';
+import differentiation from './differentiation.mdx?raw';
+import derivativesApplications from './derivatives-applications.mdx?raw';
+import tangentsNormals from './tangents-normals.mdx?raw';
+import maximaMinima from './maxima-minima.mdx?raw';
+import integration from './integration.mdx?raw';
+import definiteIndefiniteIntegrals from './definite-indefinite-integrals.mdx?raw';
+import differentialEquations from './differential-equations.mdx?raw';
+import areaUnderCurves from './area-under-curves.mdx?raw';
 
 export const calculusTopics: TopicItem[] = [
   { id: 'calculus-introduction', title: '📖 Introduction', content: introduction },

@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import firewalls from './firewalls.md?raw';
-import ids_ips from './ids-ips.md?raw';
-import introduction from './introduction.md?raw';
-import vpn from './vpn.md?raw';
-import wireless_security from './wireless-security.md?raw';
+import firewalls from './firewalls.mdx?raw';
+import ids_ips from './ids-ips.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import vpn from './vpn.mdx?raw';
+import wireless_security from './wireless-security.mdx?raw';
 
 export const networkSecurityTopics: TopicItem[] = [
   { id: 'network-security-firewalls', title: 'Firewalls', content: firewalls },

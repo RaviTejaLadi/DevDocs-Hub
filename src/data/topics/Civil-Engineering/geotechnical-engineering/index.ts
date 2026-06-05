@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import bearing_capacity from './bearing-capacity.md?raw';
-import earth_pressure from './earth-pressure.md?raw';
-import foundation_types from './foundation-types.md?raw';
-import introduction from './introduction.md?raw';
-import soil_classification from './soil-classification.md?raw';
+import bearing_capacity from './bearing-capacity.mdx?raw';
+import earth_pressure from './earth-pressure.mdx?raw';
+import foundation_types from './foundation-types.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import soil_classification from './soil-classification.mdx?raw';
 
 export const geotechnicalEngineeringTopics: TopicItem[] = [
   { id: 'geotechnical-engineering-bearing-capacity', title: 'Bearing Capacity', content: bearing_capacity },

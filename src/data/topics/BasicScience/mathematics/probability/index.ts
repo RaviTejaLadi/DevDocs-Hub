@@ -1,15 +1,15 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import basicProbability from './basic-probability.md?raw';
-import conditionalProbability from './conditional-probability.md?raw';
-import independentDependentEvents from './independent-dependent-events.md?raw';
-import randomVariables from './random-variables.md?raw';
-import probabilityDistributions from './probability-distributions.md?raw';
-import bayesTheorem from './bayes-theorem.md?raw';
-import expectedValue from './expected-value.md?raw';
-import combinationsProbability from './combinations-probability.md?raw';
-import realLifeApplications from './real-life-applications.md?raw';
+import introduction from './introduction.mdx?raw';
+import basicProbability from './basic-probability.mdx?raw';
+import conditionalProbability from './conditional-probability.mdx?raw';
+import independentDependentEvents from './independent-dependent-events.mdx?raw';
+import randomVariables from './random-variables.mdx?raw';
+import probabilityDistributions from './probability-distributions.mdx?raw';
+import bayesTheorem from './bayes-theorem.mdx?raw';
+import expectedValue from './expected-value.mdx?raw';
+import combinationsProbability from './combinations-probability.mdx?raw';
+import realLifeApplications from './real-life-applications.mdx?raw';
 
 export const probabilityTopics: TopicItem[] = [
   { id: 'probability-introduction', title: '📖 Introduction', content: introduction },

@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import boolean_algebra from './boolean-algebra.md?raw';
-import combinational_circuits from './combinational-circuits.md?raw';
-import flip_flops from './flip-flops.md?raw';
-import introduction from './introduction.md?raw';
-import logic_gates from './logic-gates.md?raw';
-import sequential_circuits from './sequential-circuits.md?raw';
+import boolean_algebra from './boolean-algebra.mdx?raw';
+import combinational_circuits from './combinational-circuits.mdx?raw';
+import flip_flops from './flip-flops.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import logic_gates from './logic-gates.mdx?raw';
+import sequential_circuits from './sequential-circuits.mdx?raw';
 
 export const digitalElectronicsTopics: TopicItem[] = [
   { id: 'digital-electronics-boolean-algebra', title: 'Boolean Algebra', content: boolean_algebra },

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import type { Topic, TopicItem } from '@/data/topics';
+import { docContentSearchText } from '@/types/docContent';
 import { ModeToggle } from '@/components/theme/ModeToggle';
 import type { SearchResult } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -110,7 +111,7 @@ const NavBar = () => {
     const title = normalize(item.title);
     const category = normalize(categoryTitle);
     // Limit content span for relevance and performance.
-    const content = normalize((item.content ?? '').slice(0, 3000));
+    const content = normalize(docContentSearchText(item.content));
 
     const titleHasAnyToken = tokens.some((t) => title.includes(t));
     const allTokensPresent = tokens.every((t) => title.includes(t) || category.includes(t) || content.includes(t));

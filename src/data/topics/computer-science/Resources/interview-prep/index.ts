@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import codingInterviewGuide from './coding-interview-guide.md?raw';
-import systemDesignInterview from './system-design-interview.md?raw';
-import behavioralInterview from './behavioral-interview.md?raw';
-import resumeAndPortfolio from './resume-and-portfolio.md?raw';
-import salaryNegotiation from './salary-negotiation.md?raw';
-import companyPrepFaang from './company-prep-faang.md?raw';
+import codingInterviewGuide from './coding-interview-guide.mdx?raw';
+import systemDesignInterview from './system-design-interview.mdx?raw';
+import behavioralInterview from './behavioral-interview.mdx?raw';
+import resumeAndPortfolio from './resume-and-portfolio.mdx?raw';
+import salaryNegotiation from './salary-negotiation.mdx?raw';
+import companyPrepFaang from './company-prep-faang.mdx?raw';
 
 export const interviewPrepTopics: TopicItem[] = [
   { id: 'resources-coding-interview-guide', title: '💻 Coding Interview Guide', content: codingInterviewGuide },

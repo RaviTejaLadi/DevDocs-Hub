@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import githubBestPractices from './github-best-practices.md?raw';
-import stackOverflowTips from './stack-overflow-tips.md?raw';
-import developerCommunities from './developer-communities.md?raw';
-import openSourceContribution from './open-source-contribution.md?raw';
-import techBlogsNewsletters from './tech-blogs-newsletters.md?raw';
+import githubBestPractices from './github-best-practices.mdx?raw';
+import stackOverflowTips from './stack-overflow-tips.mdx?raw';
+import developerCommunities from './developer-communities.mdx?raw';
+import openSourceContribution from './open-source-contribution.mdx?raw';
+import techBlogsNewsletters from './tech-blogs-newsletters.mdx?raw';
 
 export const communityAndNetworkingTopics: TopicItem[] = [
   { id: 'resources-github-best-practices', title: '🐙 GitHub Best Practices', content: githubBestPractices },

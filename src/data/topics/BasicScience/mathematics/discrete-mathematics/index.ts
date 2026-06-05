@@ -1,12 +1,12 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import setsAndRelations from './sets-and-relations.md?raw';
-import mathematicalLogic from './mathematical-logic.md?raw';
-import combinatorics from './combinatorics.md?raw';
-import graphTheory from './graph-theory.md?raw';
-import numberTheory from './number-theory.md?raw';
-import booleanAlgebra from './boolean-algebra.md?raw';
-import recurrenceRelations from './recurrence-relations.md?raw';
+import introduction from './introduction.mdx?raw';
+import setsAndRelations from './sets-and-relations.mdx?raw';
+import mathematicalLogic from './mathematical-logic.mdx?raw';
+import combinatorics from './combinatorics.mdx?raw';
+import graphTheory from './graph-theory.mdx?raw';
+import numberTheory from './number-theory.mdx?raw';
+import booleanAlgebra from './boolean-algebra.mdx?raw';
+import recurrenceRelations from './recurrence-relations.mdx?raw';
 
 export const discreteMathematicsTopics: TopicItem[] = [
   { id: 'discrete-introduction', title: '📖 Introduction', content: introduction },

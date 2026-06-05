@@ -1,10 +1,10 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import stressStrainBasics from './stress-strain-basics.md?raw';
-import bendingStress from './bending-stress.md?raw';
-import torsion from './torsion.md?raw';
-import columnsAndBuckling from './columns-and-buckling.md?raw';
-import thickThinCylinders from './thick-thin-cylinders.md?raw';
+import introduction from './introduction.mdx?raw';
+import stressStrainBasics from './stress-strain-basics.mdx?raw';
+import bendingStress from './bending-stress.mdx?raw';
+import torsion from './torsion.mdx?raw';
+import columnsAndBuckling from './columns-and-buckling.mdx?raw';
+import thickThinCylinders from './thick-thin-cylinders.mdx?raw';
 
 export const solidMechanicsTopics: TopicItem[] = [
   { id: 'solid-mechanics-introduction', title: '📖 Introduction to Solid Mechanics', content: introduction },

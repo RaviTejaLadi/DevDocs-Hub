@@ -1,4 +1,4 @@
-import introduction from './introduction.md?raw';
+import introduction from './introduction.mdx?raw';
 import { algebraTopics } from './algebra';
 import { geometryTopics } from './geometry';
 import { trigonometryTopics } from './trigonometry';

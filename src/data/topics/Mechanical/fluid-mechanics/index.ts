@@ -1,14 +1,14 @@
 import type { TopicItem } from '@/data/topics';
-import fluidIntroduction from './introduction.md?raw';
-import fluidProperties from './fluid-properties.md?raw';
-import fluidStatics from './fluid-statics.md?raw';
-import bernoulliEquation from './bernoulli-equation.md?raw';
-import continuityEquation from './continuity-equation.md?raw';
-import momentumEquation from './momentum-equation.md?raw';
-import reynoldsNumber from './reynolds-number.md?raw';
-import dragAndLift from './drag-and-lift.md?raw';
-import viscousFlow from './viscous-flow.md?raw';
-import turbomachinery from './turbomachinery.md?raw';
+import fluidIntroduction from './introduction.mdx?raw';
+import fluidProperties from './fluid-properties.mdx?raw';
+import fluidStatics from './fluid-statics.mdx?raw';
+import bernoulliEquation from './bernoulli-equation.mdx?raw';
+import continuityEquation from './continuity-equation.mdx?raw';
+import momentumEquation from './momentum-equation.mdx?raw';
+import reynoldsNumber from './reynolds-number.mdx?raw';
+import dragAndLift from './drag-and-lift.mdx?raw';
+import viscousFlow from './viscous-flow.mdx?raw';
+import turbomachinery from './turbomachinery.mdx?raw';
 
 export const fluidMechanicsTopics: TopicItem[] = [
   {

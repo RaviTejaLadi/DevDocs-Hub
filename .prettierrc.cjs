@@ -33,7 +33,7 @@
       },
     },
     {
-      files: '*.md',
+      files: '*.{md,mdx}',
       options: {
         proseWrap: 'always',
         printWidth: 80,

@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import block_diagrams from './block-diagrams.md?raw';
-import introduction from './introduction.md?raw';
-import pid_controllers from './pid-controllers.md?raw';
-import stability from './stability.md?raw';
-import transfer_functions from './transfer-functions.md?raw';
+import block_diagrams from './block-diagrams.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import pid_controllers from './pid-controllers.mdx?raw';
+import stability from './stability.mdx?raw';
+import transfer_functions from './transfer-functions.mdx?raw';
 
 export const controlSystemsTopics: TopicItem[] = [
   { id: 'control-systems-block-diagrams', title: 'Block Diagrams', content: block_diagrams },

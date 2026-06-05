@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import cia_triad from './cia-triad.md?raw';
-import introduction from './introduction.md?raw';
-import risk_management from './risk-management.md?raw';
-import security_policies from './security-policies.md?raw';
-import threat_landscape from './threat-landscape.md?raw';
+import cia_triad from './cia-triad.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import risk_management from './risk-management.mdx?raw';
+import security_policies from './security-policies.mdx?raw';
+import threat_landscape from './threat-landscape.mdx?raw';
 
 export const fundamentalsTopics: TopicItem[] = [
   { id: 'fundamentals-cia-triad', title: 'Cia Triad', content: cia_triad },

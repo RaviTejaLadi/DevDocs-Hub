@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import dc_machines from './dc-machines.md?raw';
-import induction_machines from './induction-machines.md?raw';
-import introduction from './introduction.md?raw';
-import synchronous_machines from './synchronous-machines.md?raw';
-import transformers from './transformers.md?raw';
+import dc_machines from './dc-machines.mdx?raw';
+import induction_machines from './induction-machines.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import synchronous_machines from './synchronous-machines.mdx?raw';
+import transformers from './transformers.mdx?raw';
 
 export const electricalMachinesTopics: TopicItem[] = [
   { id: 'electrical-machines-dc-machines', title: 'Dc Machines', content: dc_machines },

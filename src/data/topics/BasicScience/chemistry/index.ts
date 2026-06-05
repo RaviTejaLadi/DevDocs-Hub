@@ -1,19 +1,19 @@
 import type { TopicItem } from '@/data/topics';
-import chemistryIntroduction from './introduction.md?raw';
-import atomicStructure from './atomic-structure.md?raw';
-import periodicTable from './periodic-table.md?raw';
-import chemicalBonding from './chemical-bonding.md?raw';
-import stoichiometry from './stoichiometry.md?raw';
-import chemicalReactions from './chemical-reactions.md?raw';
-import acidsAndBases from './acids-and-bases.md?raw';
-import electrochemistry from './electrochemistry.md?raw';
-import organicChemistryIntro from './organic-chemistry-intro.md?raw';
-import thermochemistry from './thermochemistry.md?raw';
-import chemicalEquilibrium from './chemical-equilibrium.md?raw';
-import gases from './gases.md?raw';
-import solutions from './solutions.md?raw';
-import redoxReactions from './redox-reactions.md?raw';
-import nuclearChemistry from './nuclear-chemistry.md?raw';
+import chemistryIntroduction from './introduction.mdx?raw';
+import atomicStructure from './atomic-structure.mdx?raw';
+import periodicTable from './periodic-table.mdx?raw';
+import chemicalBonding from './chemical-bonding.mdx?raw';
+import stoichiometry from './stoichiometry.mdx?raw';
+import chemicalReactions from './chemical-reactions.mdx?raw';
+import acidsAndBases from './acids-and-bases.mdx?raw';
+import electrochemistry from './electrochemistry.mdx?raw';
+import organicChemistryIntro from './organic-chemistry-intro.mdx?raw';
+import thermochemistry from './thermochemistry.mdx?raw';
+import chemicalEquilibrium from './chemical-equilibrium.mdx?raw';
+import gases from './gases.mdx?raw';
+import solutions from './solutions.mdx?raw';
+import redoxReactions from './redox-reactions.mdx?raw';
+import nuclearChemistry from './nuclear-chemistry.mdx?raw';
 
 export const chemistryTopics: TopicItem[] = [
   {

@@ -1,11 +1,11 @@
 import type { TopicItem } from '@/data/topics';
-import vscodeTips from './vscode-tips.md?raw';
-import chromeDevtools from './chrome-devtools.md?raw';
-import postmanApiTesting from './postman-api-testing.md?raw';
-import dockerCli from './docker-cli.md?raw';
-import gitWorkflow from './git-workflow.md?raw';
-import npmYarnPnpm from './npm-yarn-pnpm.md?raw';
-import linuxCommandLine from './linux-command-line.md?raw';
+import vscodeTips from './vscode-tips.mdx?raw';
+import chromeDevtools from './chrome-devtools.mdx?raw';
+import postmanApiTesting from './postman-api-testing.mdx?raw';
+import dockerCli from './docker-cli.mdx?raw';
+import gitWorkflow from './git-workflow.mdx?raw';
+import npmYarnPnpm from './npm-yarn-pnpm.mdx?raw';
+import linuxCommandLine from './linux-command-line.mdx?raw';
 
 export const developerToolsTopics: TopicItem[] = [
   { id: 'resources-vscode-tips', title: '📝 VS Code Tips', content: vscodeTips },

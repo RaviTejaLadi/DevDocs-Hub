@@ -1,8 +1,8 @@
 import type { TopicItem } from '@/data/topics';
-import highway_engineering from './highway-engineering.md?raw';
-import introduction from './introduction.md?raw';
-import railway_engineering from './railway-engineering.md?raw';
-import traffic_engineering from './traffic-engineering.md?raw';
+import highway_engineering from './highway-engineering.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import railway_engineering from './railway-engineering.mdx?raw';
+import traffic_engineering from './traffic-engineering.mdx?raw';
 
 export const transportationTopics: TopicItem[] = [
   { id: 'transportation-highway-engineering', title: 'Highway Engineering', content: highway_engineering },

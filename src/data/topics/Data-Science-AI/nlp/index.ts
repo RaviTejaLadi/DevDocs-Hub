@@ -1,8 +1,8 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import language_models from './language-models.md?raw';
-import text_preprocessing from './text-preprocessing.md?raw';
-import word_embeddings from './word-embeddings.md?raw';
+import introduction from './introduction.mdx?raw';
+import language_models from './language-models.mdx?raw';
+import text_preprocessing from './text-preprocessing.mdx?raw';
+import word_embeddings from './word-embeddings.mdx?raw';
 
 export const nlpTopics: TopicItem[] = [
   { id: 'nlp-introduction', title: '📖 Introduction', content: introduction },

@@ -1,15 +1,15 @@
 import type { TopicItem } from '@/data/topics';
-import designIntroduction from './introduction.md?raw';
-import designProcess from './design-process.md?raw';
-import stressStrain from './stress-strain.md?raw';
-import fatigueAnalysis from './fatigue-analysis.md?raw';
-import failureTheories from './failure-theories.md?raw';
-import gears from './gears.md?raw';
-import bearings from './bearings.md?raw';
-import shaftsAndKeys from './shafts-and-keys.md?raw';
-import fasteners from './fasteners.md?raw';
-import springs from './springs.md?raw';
-import weldedRivetedJoints from './welded-riveted-joints.md?raw';
+import designIntroduction from './introduction.mdx?raw';
+import designProcess from './design-process.mdx?raw';
+import stressStrain from './stress-strain.mdx?raw';
+import fatigueAnalysis from './fatigue-analysis.mdx?raw';
+import failureTheories from './failure-theories.mdx?raw';
+import gears from './gears.mdx?raw';
+import bearings from './bearings.mdx?raw';
+import shaftsAndKeys from './shafts-and-keys.mdx?raw';
+import fasteners from './fasteners.mdx?raw';
+import springs from './springs.mdx?raw';
+import weldedRivetedJoints from './welded-riveted-joints.mdx?raw';
 
 export const machineDesignTopics: TopicItem[] = [
   {

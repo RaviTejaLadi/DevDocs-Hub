@@ -1,17 +1,17 @@
 import type { TopicItem } from '@/data/topics';
-import thermoIntroduction from './introduction.md?raw';
-import zerothLaw from './zeroth-law.md?raw';
-import firstLaw from './first-law.md?raw';
-import secondLaw from './second-law.md?raw';
-import thirdLaw from './third-law.md?raw';
-import entropy from './entropy.md?raw';
-import enthalpy from './enthalpy.md?raw';
-import thermoCycles from './thermo-cycles.md?raw';
-import carnotCycle from './carnot-cycle.md?raw';
-import rankineCycle from './rankine-cycle.md?raw';
-import ottoDieselCycles from './otto-diesel-cycles.md?raw';
-import heatEngines from './heat-engines.md?raw';
-import refrigeration from './refrigeration.md?raw';
+import thermoIntroduction from './introduction.mdx?raw';
+import zerothLaw from './zeroth-law.mdx?raw';
+import firstLaw from './first-law.mdx?raw';
+import secondLaw from './second-law.mdx?raw';
+import thirdLaw from './third-law.mdx?raw';
+import entropy from './entropy.mdx?raw';
+import enthalpy from './enthalpy.mdx?raw';
+import thermoCycles from './thermo-cycles.mdx?raw';
+import carnotCycle from './carnot-cycle.mdx?raw';
+import rankineCycle from './rankine-cycle.mdx?raw';
+import ottoDieselCycles from './otto-diesel-cycles.mdx?raw';
+import heatEngines from './heat-engines.mdx?raw';
+import refrigeration from './refrigeration.mdx?raw';
 
 export const thermodynamicsTopics: TopicItem[] = [
   {

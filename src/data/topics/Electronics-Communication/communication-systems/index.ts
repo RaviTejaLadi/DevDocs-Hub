@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import amplitude_modulation from './amplitude-modulation.md?raw';
-import digital_communication from './digital-communication.md?raw';
-import frequency_modulation from './frequency-modulation.md?raw';
-import introduction from './introduction.md?raw';
-import noise from './noise.md?raw';
+import amplitude_modulation from './amplitude-modulation.mdx?raw';
+import digital_communication from './digital-communication.mdx?raw';
+import frequency_modulation from './frequency-modulation.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import noise from './noise.mdx?raw';
 
 export const communicationSystemsTopics: TopicItem[] = [
   { id: 'communication-systems-amplitude-modulation', title: 'Amplitude Modulation', content: amplitude_modulation },

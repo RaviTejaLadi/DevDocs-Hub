@@ -24,6 +24,8 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
 import { buildMarkdownComponents } from './buildMarkdownComponents';
+import type { DocContent } from '@/types/docContent';
+import { isDocContentString } from '@/types/docContent';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
 
@@ -287,8 +289,27 @@ function parseHeadingsFromSlides(slides: string[], scopePrefix = ''): Heading[] 
   return out;
 }
 
+type DocBodyRendererProps = {
+  content: DocContent;
+  markdownBody: string;
+  components: ReturnType<typeof buildMarkdownComponents>;
+};
+
+function DocBodyRenderer({ content, markdownBody, components }: DocBodyRendererProps) {
+  if (!isDocContentString(content)) {
+    const MdxDoc = content;
+    return <MdxDoc components={components} />;
+  }
+
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      {markdownBody}
+    </ReactMarkdown>
+  );
+}
+
 type MarkdownRenderProps = {
-  content: string;
+  content: DocContent;
   slideMode?: boolean;
   /** Unique topic id (slug) prefix so DOM heading ids stay unique in multi-topic feeds. */
   headingIdScope?: string;
@@ -330,12 +351,16 @@ const MarkdownRenderInner = ({
   const { theme } = useTheme();
   const { t } = useI18n();
   const isDarkTheme = theme === 'dark';
-  const translatedContent = useTranslatedText(content);
+  const isStringContent = isDocContentString(content);
+  const translatedContent = useTranslatedText(isStringContent ? content : '');
   const headingPrefix = scopePrefixFromTopicId(headingIdScope);
   const slideIdPrefix = useMemo(() => `${headingPrefix}s`, [headingPrefix]);
   const [pendingScrollHeadingId, setPendingScrollHeadingId] = useState<string | null>(null);
   const viewportScrollRootRef = useScrollViewport();
-  const slides = useMemo(() => splitMarkdownIntoSlides(translatedContent), [translatedContent]);
+  const slides = useMemo(
+    () => (isStringContent ? splitMarkdownIntoSlides(translatedContent) : ['']),
+    [isStringContent, translatedContent]
+  );
   const [activeSlide, setActiveSlide] = useState(0);
   const [tocCollapsed, setTocCollapsed] = useState(false);
   const endBumpLockRef = useRef(false);
@@ -724,8 +749,9 @@ const MarkdownRenderInner = ({
                   )}
                 >
                   <div className="relative z-10 mx-auto w-full max-w-200">
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm]}
+                    <DocBodyRenderer
+                      content={content}
+                      markdownBody={slideMode ? slides[activeSlide] ?? '' : translatedContent}
                       components={buildMarkdownComponents({
                         idPrefix: slideMode ? `${slideIdPrefix}${activeSlide}-` : headingPrefix,
                         isDarkTheme,
@@ -735,9 +761,7 @@ const MarkdownRenderInner = ({
                         scrollToId,
                         compactSlide: true,
                       })}
-                    >
-                      {slideMode ? slides[activeSlide] ?? '' : translatedContent}
-                    </ReactMarkdown>
+                    />
                   </div>
                 </div>
 
@@ -841,9 +865,7 @@ const MarkdownRenderInner = ({
           ) : (
             <article className={cn('flex-1 min-w-0 mx-auto w-full', articleSurface)}>
               <div className="relative z-1">
-                <ReactMarkdown remarkPlugins={[remarkGfm]} components={singleDocComponents}>
-                  {translatedContent}
-                </ReactMarkdown>
+                <DocBodyRenderer content={content} markdownBody={translatedContent} components={singleDocComponents} />
               </div>
             </article>
           )}

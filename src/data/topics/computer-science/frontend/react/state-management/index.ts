@@ -1,7 +1,7 @@
-import stateManagementIntro from './intro.md?raw';
-import reduxToolkit from './Redux Toolkit.md?raw';
-import zustand from './Zustand.md?raw';
-import useReducerSetup from './useReducer and useContext in TypeScript.md?raw';
+import stateManagementIntro from './intro.mdx?raw';
+import reduxToolkit from './Redux Toolkit.mdx?raw';
+import zustand from './Zustand.mdx?raw';
+import useReducerSetup from './useReducer and useContext in TypeScript.mdx?raw';
 
 export const stateManagementConcepts = [
   {

@@ -1,17 +1,17 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import cartesianCoordinateSystem from './cartesian-coordinate-system.md?raw';
-import distanceFormula from './distance-formula.md?raw';
-import sectionFormula from './section-formula.md?raw';
-import midpointFormula from './midpoint-formula.md?raw';
-import slopeOfLine from './slope-of-line.md?raw';
-import equationStraightLine from './equation-straight-line.md?raw';
-import parallelPerpendicularLines from './parallel-perpendicular-lines.md?raw';
-import circleEquations from './circle-equations.md?raw';
-import parabola from './parabola.md?raw';
-import ellipse from './ellipse.md?raw';
-import hyperbola from './hyperbola.md?raw';
+import introduction from './introduction.mdx?raw';
+import cartesianCoordinateSystem from './cartesian-coordinate-system.mdx?raw';
+import distanceFormula from './distance-formula.mdx?raw';
+import sectionFormula from './section-formula.mdx?raw';
+import midpointFormula from './midpoint-formula.mdx?raw';
+import slopeOfLine from './slope-of-line.mdx?raw';
+import equationStraightLine from './equation-straight-line.mdx?raw';
+import parallelPerpendicularLines from './parallel-perpendicular-lines.mdx?raw';
+import circleEquations from './circle-equations.mdx?raw';
+import parabola from './parabola.mdx?raw';
+import ellipse from './ellipse.mdx?raw';
+import hyperbola from './hyperbola.mdx?raw';
 
 export const coordinateGeometryTopics: TopicItem[] = [
   { id: 'coordinate-geometry-introduction', title: '📖 Introduction', content: introduction },

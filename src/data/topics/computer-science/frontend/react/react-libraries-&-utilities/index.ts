@@ -1,11 +1,11 @@
-import reactOpenSourcePackages from './react open source packages.md?raw';
-import reactHookFormDocs from './react-hook-form.md?raw';
-import reactQuery from './react-query.md?raw';
-import reactQueryHooks from './react-query-hooks-syntax.md?raw';
-import reactTable from './react-table.md?raw';
-import reactTableHooks from './react-table-hooks-syntax.md?raw';
-import reactRouterDom from './react-router-dom.md?raw';
-import reactWindow from './react-window.md?raw';
+import reactOpenSourcePackages from './react open source packages.mdx?raw';
+import reactHookFormDocs from './react-hook-form.mdx?raw';
+import reactQuery from './react-query.mdx?raw';
+import reactQueryHooks from './react-query-hooks-syntax.mdx?raw';
+import reactTable from './react-table.mdx?raw';
+import reactTableHooks from './react-table-hooks-syntax.mdx?raw';
+import reactRouterDom from './react-router-dom.mdx?raw';
+import reactWindow from './react-window.mdx?raw';
 
 export const reactUtilsConcepts = [
   {

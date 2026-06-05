@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import introduction from './introduction.md?raw';
-import conduction from './conduction.md?raw';
-import convection from './convection.md?raw';
-import radiation from './radiation.md?raw';
-import heatExchangers from './heat-exchangers.md?raw';
+import introduction from './introduction.mdx?raw';
+import conduction from './conduction.mdx?raw';
+import convection from './convection.mdx?raw';
+import radiation from './radiation.mdx?raw';
+import heatExchangers from './heat-exchangers.mdx?raw';
 
 export const heatTransferTopics: TopicItem[] = [
   { id: 'heat-transfer-introduction', title: '📖 Introduction to Heat Transfer', content: introduction },

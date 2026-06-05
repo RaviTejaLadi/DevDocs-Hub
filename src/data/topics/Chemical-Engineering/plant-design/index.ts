@@ -1,8 +1,8 @@
 import type { TopicItem } from '@/data/topics';
-import economics from './economics.md?raw';
-import introduction from './introduction.md?raw';
-import piping_design from './piping-design.md?raw';
-import safety_engineering from './safety-engineering.md?raw';
+import economics from './economics.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import piping_design from './piping-design.mdx?raw';
+import safety_engineering from './safety-engineering.mdx?raw';
 
 export const plantDesignTopics: TopicItem[] = [
   { id: 'plant-design-economics', title: 'Economics', content: economics },

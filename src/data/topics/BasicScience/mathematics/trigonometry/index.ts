@@ -1,13 +1,13 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import trigonometricRatios from './trigonometric-ratios.md?raw';
-import trigonometricIdentities from './trigonometric-identities.md?raw';
-import heightsDistances from './heights-distances.md?raw';
-import trigonometricEquations from './trigonometric-equations.md?raw';
-import inverseTrigonometricFunctions from './inverse-trigonometric-functions.md?raw';
-import graphsTrigonometricFunctions from './graphs-trigonometric-functions.md?raw';
-import applicationsTrigonometry from './applications-trigonometry.md?raw';
+import introduction from './introduction.mdx?raw';
+import trigonometricRatios from './trigonometric-ratios.mdx?raw';
+import trigonometricIdentities from './trigonometric-identities.mdx?raw';
+import heightsDistances from './heights-distances.mdx?raw';
+import trigonometricEquations from './trigonometric-equations.mdx?raw';
+import inverseTrigonometricFunctions from './inverse-trigonometric-functions.mdx?raw';
+import graphsTrigonometricFunctions from './graphs-trigonometric-functions.mdx?raw';
+import applicationsTrigonometry from './applications-trigonometry.mdx?raw';
 
 export const trigonometryTopics: TopicItem[] = [
   { id: 'trigonometry-introduction', title: '📖 Introduction', content: introduction },

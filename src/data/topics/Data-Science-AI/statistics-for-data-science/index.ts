@@ -1,9 +1,9 @@
 import type { TopicItem } from '@/data/topics';
-import descriptive_statistics from './descriptive-statistics.md?raw';
-import hypothesis_testing from './hypothesis-testing.md?raw';
-import introduction from './introduction.md?raw';
-import probability_basics from './probability-basics.md?raw';
-import regression_analysis from './regression-analysis.md?raw';
+import descriptive_statistics from './descriptive-statistics.mdx?raw';
+import hypothesis_testing from './hypothesis-testing.mdx?raw';
+import introduction from './introduction.mdx?raw';
+import probability_basics from './probability-basics.mdx?raw';
+import regression_analysis from './regression-analysis.mdx?raw';
 
 export const statisticsForDataScienceTopics: TopicItem[] = [
   {

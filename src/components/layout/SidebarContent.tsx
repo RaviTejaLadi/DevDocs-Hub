@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useCallback, useEffect, useRef, type JSX } from 'react';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
 import type { Topic, TopicItem } from '@/data/topics';
+import { hasDocContent } from '@/types/docContent';
 import { BookOpen, ChevronRight, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -41,7 +42,7 @@ const findAncestorIds = (items: TopicItem[], targetId: string, chain: string[] =
   return null;
 };
 
-const isDocumentItem = (item: TopicItem) => Boolean(item.content?.trim());
+const isDocumentItem = (item: TopicItem) => hasDocContent(item.content);
 
 const countDocumentItems = (item: TopicItem): number => {
   if (isDocumentItem(item)) return 1;

@@ -1,20 +1,20 @@
 import type { TopicItem } from '@/data/topics';
 
-import introduction from './introduction.md?raw';
-import variablesAndConstants from './variables-and-constants.md?raw';
-import algebraicExpressions from './algebraic-expressions.md?raw';
-import linearEquations from './linear-equations.md?raw';
-import quadraticEquations from './quadratic-equations.md?raw';
-import polynomials from './polynomials.md?raw';
-import factorization from './factorization.md?raw';
-import inequalities from './inequalities.md?raw';
-import functions from './functions.md?raw';
-import sequencesAndSeries from './sequences-and-series.md?raw';
-import logarithms from './logarithms.md?raw';
-import exponentsAndPowers from './exponents-and-powers.md?raw';
-import complexNumbers from './complex-numbers.md?raw';
-import permutationsAndCombinations from './permutations-and-combinations.md?raw';
-import binomialTheorem from './binomial-theorem.md?raw';
+import introduction from './introduction.mdx?raw';
+import variablesAndConstants from './variables-and-constants.mdx?raw';
+import algebraicExpressions from './algebraic-expressions.mdx?raw';
+import linearEquations from './linear-equations.mdx?raw';
+import quadraticEquations from './quadratic-equations.mdx?raw';
+import polynomials from './polynomials.mdx?raw';
+import factorization from './factorization.mdx?raw';
+import inequalities from './inequalities.mdx?raw';
+import functions from './functions.mdx?raw';
+import sequencesAndSeries from './sequences-and-series.mdx?raw';
+import logarithms from './logarithms.mdx?raw';
+import exponentsAndPowers from './exponents-and-powers.mdx?raw';
+import complexNumbers from './complex-numbers.mdx?raw';
+import permutationsAndCombinations from './permutations-and-combinations.mdx?raw';
+import binomialTheorem from './binomial-theorem.mdx?raw';
 
 export const algebraTopics: TopicItem[] = [
   { id: 'algebra-introduction', title: '📖 Introduction', content: introduction },
