@@ -45,8 +45,11 @@ const DocumentationPage = () => {
 
   const {
     topicBrowserOpen,
-    topicBrowserOpenCats,
-    setTopicBrowserOpenCats,
+    activeStreamId,
+    selectActiveStream,
+    openCategories,
+    setOpenCategories,
+    setAllCategoriesInStream,
     onTopicBrowserOpenChange,
     setTopicBrowserOpen,
   } = topicBrowser;
@@ -138,13 +141,17 @@ const DocumentationPage = () => {
         onOpenChange={onTopicBrowserOpenChange}
         sections={docsTopicBrowserSections}
         activeTopicId={categoryId}
-        openCategories={topicBrowserOpenCats}
-        onToggleCategory={(ck) =>
-          setTopicBrowserOpenCats((prev) => ({
+        activeStreamId={activeStreamId}
+        onActiveStreamChange={selectActiveStream}
+        openCategories={openCategories}
+        onToggleCategory={(key) =>
+          setOpenCategories((prev) => ({
             ...prev,
-            [ck]: !(prev[ck] ?? false),
+            [key]: !(prev[key] ?? false),
           }))
         }
+        onExpandAllCategories={(streamId) => setAllCategoriesInStream(streamId, true)}
+        onCollapseAllCategories={(streamId) => setAllCategoriesInStream(streamId, false)}
         onSelectTopic={(item, topicId) => {
           setTopicBrowserOpen(false);
           navigateToFeedItem(item, topicId, {

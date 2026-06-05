@@ -1,14 +1,34 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { Stream, Topic } from '@/data/topics';
+import type { DocsTopicBrowserSection } from '../components/DocsTopicBrowserSheet';
 
-type TopicBrowserSection = {
-  stream: Stream;
-  categories: { key: string; label: string; topics: Topic[] }[];
-};
+function resolveStreamForTopic(sections: DocsTopicBrowserSection[], topicId: string | undefined) {
+  if (!topicId) return sections[0]?.stream.id ?? '';
+  for (const { stream, categories } of sections) {
+    for (const cat of categories) {
+      if (cat.topics.some((t) => t.id === topicId)) return stream.id;
+    }
+  }
+  return sections[0]?.stream.id ?? '';
+}
 
-export function useDocsTopicBrowser(categoryId: string | undefined, docsTopicBrowserSections: TopicBrowserSection[]) {
+function buildExpandedCategories(sections: DocsTopicBrowserSection[], streamId: string) {
+  const expanded: Record<string, boolean> = {};
+  const section = sections.find((s) => s.stream.id === streamId);
+  if (!section) return expanded;
+
+  for (const cat of section.categories) {
+    expanded[`${streamId}::${cat.key}`] = true;
+  }
+  return expanded;
+}
+
+export function useDocsTopicBrowser(
+  activeTopicId: string | undefined,
+  sections: DocsTopicBrowserSection[]
+) {
   const [topicBrowserOpen, setTopicBrowserOpen] = useState(false);
-  const [topicBrowserOpenCats, setTopicBrowserOpenCats] = useState<Record<string, boolean>>({});
+  const [activeStreamId, setActiveStreamId] = useState('');
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const root = document.documentElement;
@@ -17,31 +37,50 @@ export function useDocsTopicBrowser(categoryId: string | undefined, docsTopicBro
     return () => root.removeAttribute('data-docs-topic-browser');
   }, [topicBrowserOpen]);
 
-  const buildTopicBrowserExpandedMap = useCallback((): Record<string, boolean> => {
-    const initial: Record<string, boolean> = {};
-    for (const { stream, categories } of docsTopicBrowserSections) {
-      for (const cat of categories) {
-        const ck = `${stream.id}::${cat.key}`;
-        initial[ck] = Boolean(categoryId && cat.topics.some((t) => t.id === categoryId));
-      }
-    }
-    return initial;
-  }, [categoryId, docsTopicBrowserSections]);
+  const resetBrowserState = useCallback(() => {
+    const streamId = resolveStreamForTopic(sections, activeTopicId);
+    setActiveStreamId(streamId);
+    setOpenCategories(buildExpandedCategories(sections, streamId));
+  }, [activeTopicId, sections]);
 
   const onTopicBrowserOpenChange = useCallback(
     (open: boolean) => {
-      if (open) {
-        setTopicBrowserOpenCats(buildTopicBrowserExpandedMap());
-      }
+      if (open) resetBrowserState();
       setTopicBrowserOpen(open);
     },
-    [buildTopicBrowserExpandedMap]
+    [resetBrowserState]
+  );
+
+  const setAllCategoriesInStream = useCallback(
+    (streamId: string, open: boolean) => {
+      const section = sections.find((s) => s.stream.id === streamId);
+      if (!section) return;
+      setOpenCategories((prev) => {
+        const next = { ...prev };
+        for (const cat of section.categories) {
+          next[`${streamId}::${cat.key}`] = open;
+        }
+        return next;
+      });
+    },
+    [sections]
+  );
+
+  const selectActiveStream = useCallback(
+    (streamId: string) => {
+      setActiveStreamId(streamId);
+      setOpenCategories(buildExpandedCategories(sections, streamId));
+    },
+    [sections]
   );
 
   return {
     topicBrowserOpen,
-    topicBrowserOpenCats,
-    setTopicBrowserOpenCats,
+    activeStreamId,
+    selectActiveStream,
+    openCategories,
+    setOpenCategories,
+    setAllCategoriesInStream,
     onTopicBrowserOpenChange,
     setTopicBrowserOpen,
   };

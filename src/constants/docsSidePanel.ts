@@ -19,8 +19,7 @@ export const docsSidePanelScrollViewportClass = 'docs-sidebar-scroll';
 export const docsTopicBrowserSheetContentClass = cn(
   'flex min-h-0 flex-col gap-0 overflow-hidden border border-border/40 p-0 shadow-xl',
   'top-2 right-2 bottom-2 left-auto m-0 h-[calc(100%-1rem)] max-h-[calc(100%-1rem)] md:rounded-xl',
-  'z-70 bg-background supports-backdrop-filter:bg-background/95',
-  docsSidePanelWidthClass
+  'z-70 w-[min(100vw-1rem,24rem)] max-w-full shrink-0 bg-background supports-backdrop-filter:bg-background/95'
 );
 
 /** Shared chrome for fixed circular docs controls (primary sidebar toggle, topic browser trigger). */
