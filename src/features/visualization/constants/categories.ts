@@ -19,7 +19,7 @@ export const VISUALIZATION_CATEGORIES: VisualizationCategoryMeta[] = [
     id: 'data-structures',
     label: 'Data structures',
     description:
-      'How JavaScript walks and transforms arrays using different iteration patterns.',
+      'Arrays, stacks, queues, linked lists, and maps — see how data is stored, traversed, and transformed.',
     order: 2,
   },
   {
