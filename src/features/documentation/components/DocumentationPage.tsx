@@ -2,8 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ChevronUp, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import MarkdownRender from '@/components/markdown';
 import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
@@ -17,8 +15,7 @@ import { cn } from '@/lib/utils';
 import { useDocumentationPage } from '../hooks';
 
 const DocumentationPage = () => {
-  const { t } = useI18n();
-  const navigate = useNavigate();
+    const navigate = useNavigate();
   const {
     categoryId,
     topic,
@@ -48,7 +45,7 @@ const DocumentationPage = () => {
         <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to="/" className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
-            {t('sidebar.backToOverview')}
+            {'Back to overview'}
           </Link>
         </Button>
         <Card className="border-dashed border-border/50 bg-card/50">
@@ -56,11 +53,11 @@ const DocumentationPage = () => {
             <span className="block text-5xl" aria-hidden>
               📚
             </span>
-            <h2 className="text-2xl font-bold text-foreground">{t('docs.pageNotFound')}</h2>
-            <p className="text-muted-foreground">{t('docs.notFoundDescription')}</p>
+            <h2 className="text-2xl font-bold text-foreground">{'Page Not Found'}</h2>
+            <p className="text-muted-foreground">{'This topic doesn\'t exist or couldn\'t be found.'}</p>
             <Button onClick={() => navigate('/')} className="w-full rounded-xl sm:w-auto">
               <Home className="mr-2 h-4 w-4" />
-              {t('docs.backHome')}
+              {'Back to Home'}
             </Button>
           </CardContent>
         </Card>
@@ -87,7 +84,7 @@ const DocumentationPage = () => {
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
 
       {(prevArticle || nextArticle) && (
-        <nav className="grid gap-3 border-t border-border/60 pt-8 sm:grid-cols-2" aria-label={t('docs.pageNavigation')}>
+        <nav className="grid gap-3 border-t border-border/60 pt-8 sm:grid-cols-2" aria-label={'Page navigation'}>
           {prevArticle ? (
             <Link
               to={`/docs/${categoryId}/${prevArticle.id}`}
@@ -95,11 +92,11 @@ const DocumentationPage = () => {
               className={cn('group flex min-h-16 flex-col justify-center px-4 py-3', docsPageNavLinkClass)}
             >
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                {t('docs.previous')}
+                {'Previous'}
               </span>
               <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
                 <ChevronLeft className="size-4 shrink-0" aria-hidden />
-                <TranslatedText text={prevArticle.title} />
+                {prevArticle.title}
               </span>
             </Link>
           ) : (
@@ -115,10 +112,10 @@ const DocumentationPage = () => {
               )}
             >
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                {t('docs.next')}
+                {'Next'}
               </span>
               <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
-                <TranslatedText text={nextArticle.title} />
+                {nextArticle.title}
                 <ChevronRight className="size-4 shrink-0" aria-hidden />
               </span>
             </Link>
@@ -155,7 +152,7 @@ const DocumentationPage = () => {
           size="icon"
           onClick={scrollToTop}
           className={cn(docsFloatingActionButtonClass, docsScrollToTopButtonClass, 'z-40 size-11 md:right-8')}
-          aria-label={t('docs.scrollToTop')}
+          aria-label={'Scroll to top'}
         >
           <ChevronUp className="size-5" />
         </Button>

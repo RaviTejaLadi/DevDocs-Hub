@@ -1,8 +1,6 @@
 import type { Stream, Topic } from '@/data/topics';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { getStreamEmoji } from '../constants';
 import type { ViewMode } from '../types';
 import { LandingStreamTabs } from './LandingStreamTabs';
@@ -37,8 +35,7 @@ export function LandingTopicsPanel({
   filteredTopicsCount,
   hasSearch,
 }: LandingTopicsPanelProps) {
-  const { t } = useI18n();
-  const matchPercent = totalTopicsInStream ? Math.round((filteredTopicsCount / totalTopicsInStream) * 100) : 0;
+    const matchPercent = totalTopicsInStream ? Math.round((filteredTopicsCount / totalTopicsInStream) * 100) : 0;
   const streamEmoji = activeStream ? getStreamEmoji(activeStream.id) : '📖';
 
   return (
@@ -46,11 +43,11 @@ export function LandingTopicsPanel({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
           <span aria-hidden>🎓</span>
-          {t('landing.browseStreams')}
+          {'Browse streams'}
         </div>
         {(hasSearch || filteredTopicsCount !== totalTopicsInStream) && (
           <Badge variant="outline" className="h-6 px-2.5 text-xs font-medium border-border/45 bg-muted/30">
-            {t('landing.showingTopics', { shown: filteredTopicsCount, total: totalTopicsInStream })}
+            {`Showing ${filteredTopicsCount} of ${totalTopicsInStream} topics`}
           </Badge>
         )}
       </div>
@@ -82,11 +79,11 @@ export function LandingTopicsPanel({
             </span>
             <div className="min-w-0 space-y-1">
               <h2 className="text-base sm:text-lg font-semibold text-foreground">
-                <TranslatedText text={activeStream.title} />
+                {activeStream.title}
               </h2>
               {activeStream.description && (
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  <TranslatedText text={activeStream.description} />
+                  {activeStream.description}
                 </p>
               )}
             </div>
@@ -98,7 +95,7 @@ export function LandingTopicsPanel({
         <div className="rounded-xl border border-border/35 bg-muted/20 px-4 py-3 space-y-2">
           <div className="flex items-center justify-between gap-2 text-sm">
             <p className="text-muted-foreground font-medium">
-              📊 {t('landing.showingTopics', { shown: filteredTopicsCount, total: totalTopicsInStream })}
+              📊 {`Showing ${filteredTopicsCount} of ${totalTopicsInStream} topics`}
             </p>
             <p className="text-xs text-muted-foreground/80 tabular-nums">{matchPercent}% matched</p>
           </div>
@@ -120,7 +117,7 @@ export function LandingTopicsPanel({
           <span className="text-4xl block" aria-hidden>
             🔎
           </span>
-          <p className="text-sm text-muted-foreground">{t('landing.noTopicsInStream')}</p>
+          <p className="text-sm text-muted-foreground">{'No topics found in this stream yet.'}</p>
         </div>
       )}
 

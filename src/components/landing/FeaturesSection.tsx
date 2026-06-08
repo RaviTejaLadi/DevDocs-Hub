@@ -1,6 +1,5 @@
 import { Zap, Code, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 
 const FEATURES = [
   {
@@ -30,19 +29,18 @@ const FEATURES = [
 ] as const;
 
 export default function FeaturesSection() {
-  const { t } = useI18n();
-  const featureLabels = {
+    const featureLabels = {
     'fast-learning': {
-      title: t('features.quickRevision.title'),
-      description: t('features.quickRevision.description'),
+      title: 'Quick revision',
+      description: 'Short, readable explanations so you can brush up fast — before exams, interviews, labs, or deeper study.',
     },
     'code-examples': {
-      title: t('features.codeExamples.title'),
-      description: t('features.codeExamples.description'),
+      title: 'Code & examples',
+      description: 'Where a topic includes code or formulas, you get concrete examples you can copy, adapt, or compare against your notes.',
     },
     comprehensive: {
-      title: t('features.multiStreamCoverage.title'),
-      description: t('features.multiStreamCoverage.description'),
+      title: 'Many streams, one place',
+      description: 'Switch between streams — development, engineering, basic sciences, and more — and grow the library over time without juggling dozens of bookmarks.',
     },
   } as const;
 
@@ -52,7 +50,7 @@ export default function FeaturesSection() {
         <span className="text-2xl" aria-hidden>
           ✨
         </span>
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gradient-sheen">{t('features.whyUse')}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gradient-sheen">{'Why use ReviseStack'}</h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
         {FEATURES.map(({ id, icon: Icon, emoji, accent, ring, iconClass }) => (

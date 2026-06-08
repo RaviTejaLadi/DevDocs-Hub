@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Github, FileText } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
-import { useI18n } from '@/i18n/I18nProvider';
 
 const Footer = () => {
-  const { t } = useI18n();
-  const FOOTER_LINKS = [
-    { to: '/', label: t('footer.overview') },
-    { to: '/terms', label: t('footer.terms') },
+    const FOOTER_LINKS = [
+    { to: '/', label: 'Overview' },
+    { to: '/terms', label: 'Terms' },
   ];
 
   return (
@@ -34,17 +32,17 @@ const Footer = () => {
               aria-label="GitHub"
             >
               <Github className="h-4 w-4" />
-              <span className="hidden sm:inline">{t('nav.github')}</span>
+              <span className="hidden sm:inline">{'GitHub'}</span>
             </a>
             <Link to="/terms" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
               <FileText className="h-4 w-4" />
-              <span className="hidden sm:inline">{t('footer.terms')}</span>
+              <span className="hidden sm:inline">{'Terms'}</span>
             </Link>
           </div>
         </div>
 
         <p className="mt-6 pt-6 border-t border-border/40 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-          © {new Date().getFullYear()} ReviseStack. {t('footer.tagline')}
+          © {new Date().getFullYear()} ReviseStack. {'Study topics across multiple streams — simplified notes for quick revision whenever you need them.'}
         </p>
       </div>
     </footer>

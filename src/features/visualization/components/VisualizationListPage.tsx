@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { visualizationPath } from '@/app/routes/paths';
 import { useVisualizationListFilter } from '../hooks';
 import type { VisualizationDefinition } from '../types';
@@ -67,8 +66,7 @@ function VisualizationCard({
 }
 
 export function VisualizationListPage() {
-  const { t } = useI18n();
-  const {
+    const {
     visualizations,
     groupedByCategory,
     searchQuery,
@@ -96,7 +94,7 @@ export function VisualizationListPage() {
               className="inline-flex items-center gap-2 rounded-md border border-border/35 bg-card/45 px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
-              {t('visualization.backToOverview')}
+              {'Back to overview'}
             </Link>
             <div className="flex items-start gap-3">
               <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 p-2.5">
@@ -104,21 +102,21 @@ export function VisualizationListPage() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl">
-                  {t('visualization.pageTitle')}
+                  {'Visualization'}
                 </h1>
-                <p className="mt-1 max-w-2xl text-muted-foreground">{t('visualization.pageDescription')}</p>
+                <p className="mt-1 max-w-2xl text-muted-foreground">{'Watch programming concepts come alive — step through loops, state changes, and output one frame at a time.'}</p>
               </div>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
             <Badge variant="secondary" className="h-7 border border-border/35 bg-secondary/65 px-3">
-              {t('visualization.available', { count: availableCount })}
+              {`${availableCount} available`}
             </Badge>
             <Badge variant="outline" className="h-7 border-border/35 px-3">
-              {t('visualization.comingSoon', { count: comingSoonCount })}
+              {`${comingSoonCount} coming soon`}
             </Badge>
             <Badge variant="secondary" className="h-7 border border-border/35 bg-secondary/65 px-3">
-              {t('visualization.total', { count: totalCount })}
+              {`${totalCount} total`}
             </Badge>
           </div>
         </div>
@@ -129,10 +127,10 @@ export function VisualizationListPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Search className="h-4 w-4 text-emerald-500" />
-              {t('visualization.searchVisualizations')}
+              {'Search visualizations'}
             </div>
             <p className="text-xs text-muted-foreground">
-              {t('visualization.showing', { shown: visualizations.length, total: totalCount })}
+              {`Showing ${visualizations.length} of ${totalCount}`}
             </p>
           </div>
 
@@ -144,7 +142,7 @@ export function VisualizationListPage() {
               className={cn('rounded-lg', categoryFilter === 'all' && 'bg-emerald-600 hover:bg-emerald-600/90')}
               onClick={() => setCategoryFilter('all')}
             >
-              {t('visualization.allCategories')}
+              {'All categories'}
             </Button>
             {categories.map((category) => (
               <Button
@@ -158,7 +156,7 @@ export function VisualizationListPage() {
                 )}
                 onClick={() => setCategoryFilter(category.id)}
               >
-                {t(category.labelKey)}
+                {category.label}
               </Button>
             ))}
           </div>
@@ -168,7 +166,7 @@ export function VisualizationListPage() {
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder={t('visualization.searchPlaceholder')}
+                placeholder={'Search by concept or topic...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="h-10 border-border/35 bg-background/85 pl-9 focus-visible:ring-emerald-500/30"
@@ -177,7 +175,7 @@ export function VisualizationListPage() {
             {hasSearch && (
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground" onClick={clearSearch}>
                 <X className="mr-1 h-4 w-4" />
-                {t('visualization.clearSearch')}
+                {'Clear search'}
               </Button>
             )}
           </div>
@@ -189,15 +187,15 @@ export function VisualizationListPage() {
           {groupedByCategory.map(({ category, items }) => (
             <section key={category.id} className="space-y-4">
               <div className="space-y-1">
-                <h2 className="text-lg font-semibold text-foreground">{t(category.labelKey)}</h2>
-                <p className="max-w-3xl text-sm text-muted-foreground">{t(category.descriptionKey)}</p>
+                <h2 className="text-lg font-semibold text-foreground">{category.label}</h2>
+                <p className="max-w-3xl text-sm text-muted-foreground">{category.description}</p>
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {items.map((visualization) => (
                   <VisualizationCard
                     key={visualization.id}
                     visualization={visualization}
-                    soonLabel={t('visualization.soon')}
+                    soonLabel={'Soon'}
                   />
                 ))}
               </div>
@@ -210,7 +208,7 @@ export function VisualizationListPage() {
             <VisualizationCard
               key={visualization.id}
               visualization={visualization}
-              soonLabel={t('visualization.soon')}
+              soonLabel={'Soon'}
             />
           ))}
         </div>
@@ -220,10 +218,10 @@ export function VisualizationListPage() {
         <Card className="border-dashed border-border/50 bg-card/50">
           <CardContent className="py-10 text-center">
             <Sparkles className="mx-auto mb-3 h-8 w-8 text-muted-foreground/60" />
-            <p className="text-muted-foreground">{t('visualization.noMatch')}</p>
+            <p className="text-muted-foreground">{'No visualizations match your search.'}</p>
             {hasSearch && (
               <Button variant="outline" size="sm" className="mt-4" onClick={clearSearch}>
-                {t('visualization.clearSearch')}
+                {'Clear search'}
               </Button>
             )}
           </CardContent>

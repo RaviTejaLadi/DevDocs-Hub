@@ -1,16 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useI18n } from '@/i18n/I18nProvider';
 import { termsSections } from '../constants/termsSections';
 
 const TermsOfServicePage = () => {
-  const { t } = useI18n();
-
+  
   return (
     <div className="container mx-auto p-3 sm:p-4 md:p-8 bg-inherit min-h-screen">
       <Card className="max-w-4xl mx-auto bg-inherit border-none shadow-none">
         <CardHeader>
-          <CardTitle className="text-2xl sm:text-3xl font-bold text-gradient-sheen">{t('terms.title')}</CardTitle>
-          <p className="text-sm text-muted-foreground">{t('terms.lastUpdated')}: January 3, 2026</p>
+          <CardTitle className="text-2xl sm:text-3xl font-bold text-gradient-sheen">{'Terms of Service'}</CardTitle>
+          <p className="text-sm text-muted-foreground">{'Last Updated'}: January 3, 2026</p>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">

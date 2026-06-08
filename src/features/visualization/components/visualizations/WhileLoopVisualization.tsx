@@ -1,7 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { useWhileLoopVisualization } from '../../hooks';
 import { VisualizationCodePanel } from '../shared/VisualizationCodePanel';
 import { VisualizationConsole } from '../shared/VisualizationConsole';
@@ -17,31 +16,30 @@ const CODE_LINES = [
   '}',
 ] as const;
 
-const HOW_IT_WORKS_KEYS = [
-  'visualization.whileLoop.how1',
-  'visualization.whileLoop.how2',
-  'visualization.whileLoop.how3',
-  'visualization.whileLoop.how4',
+const HOW_IT_WORKS = [
+  'The condition is evaluated before each iteration — the body may run zero times.',
+  'If the condition is true, the body executes.',
+  'You must update the variables used in the condition, or the loop never ends.',
+  'When the condition becomes false, execution continues after the loop block.',
 ] as const;
 
 export function WhileLoopVisualization() {
-  const { t } = useI18n();
   const { maxCount, step, stepIndex, stepCount, isFirst, isLast, isPlaying, reset, stepForward, stepBack, togglePlay } =
     useWhileLoopVisualization();
 
   return (
     <VisualizationPageShell
       category="loops"
-      titleKey="visualization.whileLoopTitle"
-      descriptionKey="visualization.whileLoopDescription"
+      title="How a while loop works"
+      description="Unlike for, while only has a condition — watch how the check happens before every body execution."
       stepIndex={stepIndex}
       stepCount={stepCount}
     >
       <VisualizationExplanation
-        overviewKey="visualization.whileLoop.overview"
-        howItWorksKeys={HOW_IT_WORKS_KEYS}
-        whenToUseKey="visualization.whileLoop.whenToUse"
-        takeawayKey="visualization.whileLoop.takeaway"
+        overview="A while loop repeats as long as its condition stays true. There is no built-in counter in the syntax — you manage state inside the body, which makes while loops flexible but easier to get wrong."
+        howItWorks={HOW_IT_WORKS}
+        whenToUse="Use while when you do not know how many iterations you need — reading input, polling, or processing until a flag changes."
+        takeaway='while = "keep going while this is true." Always ensure something in the body moves the condition toward false.'
       />
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -49,7 +47,7 @@ export function WhileLoopVisualization() {
 
         <Card className="border-border/40 shadow-none">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">{t('visualization.state')}</CardTitle>
+            <CardTitle className="text-base">Live state</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
@@ -60,9 +58,7 @@ export function WhileLoopVisualization() {
                 </p>
               </div>
               <div className="rounded-xl border border-border/35 bg-card/70 p-3">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                  {t('visualization.condition')}
-                </p>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Condition</p>
                 <p className="mt-1 font-mono text-sm text-foreground/85">{step.condition ?? '—'}</p>
                 {step.conditionMet != null && (
                   <Badge
@@ -74,16 +70,14 @@ export function WhileLoopVisualization() {
                         : 'border-rose-500/35 text-rose-600 dark:text-rose-400'
                     )}
                   >
-                    {step.conditionMet ? t('visualization.true') : t('visualization.false')}
+                    {step.conditionMet ? 'true' : 'false'}
                   </Badge>
                 )}
               </div>
             </div>
 
             <div className="rounded-xl border border-border/35 bg-muted/20 p-4">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                {t('visualization.loopProgress')}
-              </p>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Loop progress</p>
               <div className="flex gap-2">
                 {Array.from({ length: maxCount }, (_, index) => {
                   const completed = (step.count ?? 0) > index || (step.phase === 'done' && index < maxCount);

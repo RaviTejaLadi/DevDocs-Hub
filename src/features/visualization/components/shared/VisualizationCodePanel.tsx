@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 
 type VisualizationCodePanelProps = {
   lines: readonly string[];
@@ -8,12 +7,11 @@ type VisualizationCodePanelProps = {
 };
 
 export function VisualizationCodePanel({ lines, activeLine }: VisualizationCodePanelProps) {
-  const { t } = useI18n();
-
+  
   return (
     <Card className="border-border/40 shadow-none">
       <CardHeader className="pb-3">
-        <CardTitle className="text-base">{t('visualization.code')}</CardTitle>
+        <CardTitle className="text-base">{'Code'}</CardTitle>
       </CardHeader>
       <CardContent>
         <pre className="overflow-x-auto rounded-xl border border-border/40 bg-muted/25 p-4 font-mono text-[0.82rem] leading-7 sm:text-sm">

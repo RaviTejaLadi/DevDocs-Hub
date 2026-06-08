@@ -6,7 +6,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { ScrollViewportProvider } from '@/context/scrollViewportContext';
 import { useAppLayoutStore } from '@/stores';
 import NavBar from '@/components/layout/NavBar';
@@ -27,8 +26,7 @@ import {
 } from '@/app/routes';
 
 const App = () => {
-  const { t } = useI18n();
-  const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
+    const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
   const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
   const docsSidebarCollapsed = useAppLayoutStore((s) => s.docsSidebarCollapsed);
   const setDocsSidebarCollapsed = useAppLayoutStore((s) => s.setDocsSidebarCollapsed);
@@ -61,7 +59,7 @@ const App = () => {
                 variant="outline"
                 size="icon"
                 onClick={toggleDocsSidebarCollapsed}
-                aria-label={t('docs.showSidebar')}
+                aria-label={'Show sidebar'}
                 className={cn(
                   'size-9 rounded-lg border-border/40 bg-card/80 hover:bg-accent/50',
                   docsControlShadowClass
@@ -70,7 +68,7 @@ const App = () => {
                 <PanelLeftOpen className="size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="right">{t('docs.showSidebar')}</TooltipContent>
+            <TooltipContent side="right">{'Show sidebar'}</TooltipContent>
           </Tooltip>
         </div>
       )}

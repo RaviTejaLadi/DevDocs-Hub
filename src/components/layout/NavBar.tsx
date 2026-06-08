@@ -7,8 +7,6 @@ import {
   FileText,
   HelpCircle,
   CornerDownLeft,
-  Languages,
-  ChevronDown,
   Code2,
   MoreHorizontal,
 } from 'lucide-react';
@@ -21,9 +19,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { useI18n } from '@/i18n/I18nProvider';
-import { LANGUAGE_OPTIONS, type SupportedLanguage } from '@/i18n/translations';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useAppLayoutStore } from '@/stores';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -31,10 +26,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
@@ -44,8 +35,7 @@ const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
-  const { t, language, setLanguage } = useI18n();
-  const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
+    const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -194,7 +184,7 @@ const NavBar = () => {
               size="icon"
               className="md:hidden shrink-0"
               onClick={() => setMobileSidebarOpen(true)}
-              aria-label={t('nav.openSidebar')}
+              aria-label={'Open sidebar'}
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -205,10 +195,10 @@ const NavBar = () => {
                 type="button"
                 variant="outline"
                 className="relative h-9 min-w-0 flex-1 sm:max-w-md md:max-w-xl justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
-                aria-label={t('nav.searchTopics')}
+                aria-label={'Search topics...'}
               >
                 <Search className="h-4 w-4 shrink-0" />
-                <span className="min-w-0 truncate pr-11 text-left">{t('nav.searchTopics')}</span>
+                <span className="min-w-0 truncate pr-11 text-left">{'Search topics...'}</span>
                 <kbd className="pointer-events-none absolute right-2 top-1/2 hidden h-5 -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 sm:flex">
                   <span className="text-xs">⌘</span>K
                 </kbd>
@@ -220,14 +210,14 @@ const NavBar = () => {
               className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
             >
               <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
-                <DialogTitle className="sr-only">{t('nav.searchTitle')}</DialogTitle>
+                <DialogTitle className="sr-only">{'Search topics'}</DialogTitle>
                 <div className="flex items-center gap-2 rounded-md border border-border/40 bg-background/80 px-2.5 sm:px-3">
                   <div className="h-8 w-8 rounded-md border border-border/40 bg-background grid place-items-center shrink-0">
                     <Search className="h-4 w-4 text-muted-foreground" />
                   </div>
                   <Input
                     autoFocus
-                    placeholder={t('nav.searchType')}
+                    placeholder={'Type to search...'}
                     className="border-0 focus-visible:ring-0 shadow-none px-0 py-0 h-11 text-[15px] sm:text-base bg-transparent! dark:bg-transparent! placeholder:text-muted-foreground"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -243,20 +233,20 @@ const NavBar = () => {
               <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
                 {results.length === 0 && query && (
                   <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">{t('nav.noResults')}</p>
-                    <p>{t('nav.tryDifferentKeyword')}</p>
+                    <p className="text-foreground/90 font-medium">{'No matching topics found'}</p>
+                    <p>{'Try a different keyword — for example React, thermodynamics, organic chemistry, or machine design...'}</p>
                   </div>
                 )}
                 {results.length === 0 && !query && (
                   <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
-                    <p className="text-foreground/90 font-medium">{t('nav.searchAcrossDocs')}</p>
-                    <p>{t('nav.startTyping')}</p>
+                    <p className="text-foreground/90 font-medium">{'Search across all docs'}</p>
+                    <p>{'Start typing to find topics instantly.'}</p>
                   </div>
                 )}
                 {results.length > 0 && (
                   <div className="space-y-2">
                     <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
-                      {t('nav.results')}
+                      {'Results'}
                     </p>
                     <div className="motion-stagger grid grid-cols-1 min-[480px]:grid-cols-2 gap-2">
                       {results.map((res) => (
@@ -271,12 +261,12 @@ const NavBar = () => {
                           </div>
                           <span className="min-w-0 flex-1">
                             <span className="font-medium text-foreground line-clamp-2 leading-5">
-                              <TranslatedText text={res.title} />
+                              {res.title}
                             </span>
                             <span className="text-xs text-muted-foreground block mt-1.5 truncate">
-                              {t('nav.in')}{' '}
+                              {'in'}{' '}
                               <span className="text-primary">
-                                <TranslatedText text={res.category} />
+                                {res.category}
                               </span>
                             </span>
                           </span>
@@ -290,45 +280,14 @@ const NavBar = () => {
 
               <div className="px-3 sm:px-4 py-2.5 border-t border-border/40 bg-muted/25 flex items-center justify-between">
                 <span className="text-[10px] text-muted-foreground hidden sm:inline">
-                  {t('nav.useShortcut', { shortcut: '⌘K / Ctrl K' })}
+                  {`Use ${'⌘K / Ctrl K'} anytime to reopen`}
                 </span>
-                <span className="text-[10px] text-muted-foreground ml-auto">{t('nav.toClose', { key: 'Esc' })}</span>
+                <span className="text-[10px] text-muted-foreground ml-auto">{`${'Esc'} to close`}</span>
               </div>
             </DialogContent>
           </Dialog>
         </div>
         <div className="flex shrink-0 min-w-0 items-center gap-1.5 sm:gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                id="language-select"
-                variant="outline"
-                className="hidden sm:inline-flex h-8 gap-1.5 px-2.5 border-border/40 bg-background text-xs text-foreground"
-                aria-label={t('language.label')}
-              >
-                <Languages className="h-3.5 w-3.5 text-muted-foreground" />
-                <span className="max-w-16 truncate">
-                  {LANGUAGE_OPTIONS.find((opt) => opt.code === language)?.label}
-                </span>
-                <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-44">
-              <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuRadioGroup
-                value={language}
-                onValueChange={(value) => setLanguage(value as SupportedLanguage)}
-              >
-                {LANGUAGE_OPTIONS.map((option) => (
-                  <DropdownMenuRadioItem key={option.code} value={option.code}>
-                    {option.label}
-                  </DropdownMenuRadioItem>
-                ))}
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -336,12 +295,12 @@ const NavBar = () => {
                 size="icon"
                 className="hidden md:inline-flex px-3"
                 onClick={() => navigate('/code-editor')}
-                aria-label={t('nav.codeEditor')}
+                aria-label={'Live code editor'}
               >
                 <Code2 className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.codeEditor')}</TooltipContent>
+            <TooltipContent side="bottom">{'Live code editor'}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -350,12 +309,12 @@ const NavBar = () => {
                 size="icon"
                 className="hidden md:inline-flex px-3"
                 onClick={() => navigate('/interview-questions')}
-                aria-label={t('nav.interviewQuestions')}
+                aria-label={'Interview questions'}
               >
                 <HelpCircle className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.interviewQuestions')}</TooltipContent>
+            <TooltipContent side="bottom">{'Interview questions'}</TooltipContent>
           </Tooltip>
           {/* <Tooltip>
             <TooltipTrigger asChild>
@@ -364,12 +323,12 @@ const NavBar = () => {
                 size="icon"
                 className="hidden md:inline-flex px-3"
                 onClick={() => navigate('/playground')}
-                aria-label={t('nav.playground')}
+                aria-label={'Playground'}
               >
                 <FlaskConical className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.playground')}</TooltipContent>
+            <TooltipContent side="bottom">{'Playground'}</TooltipContent>
           </Tooltip> */}
           <Tooltip>
             <TooltipTrigger asChild>
@@ -378,20 +337,20 @@ const NavBar = () => {
                 size="icon"
                 className="hidden md:inline-flex px-3"
                 onClick={() => navigate('/terms')}
-                aria-label={t('nav.terms')}
+                aria-label={'Terms'}
               >
                 <FileText className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.terms')}</TooltipContent>
+            <TooltipContent side="bottom">{'Terms'}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={t('nav.github')}>
+              <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={'GitHub'}>
                 <Github className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">{t('nav.github')}</TooltipContent>
+            <TooltipContent side="bottom">{'GitHub'}</TooltipContent>
           </Tooltip>
 
           <DropdownMenu>
@@ -401,26 +360,12 @@ const NavBar = () => {
                 variant="outline"
                 size="icon"
                 className="md:hidden shrink-0 border-border/40"
-                aria-label={t('nav.moreMenu')}
+                aria-label={'More navigation'}
               >
                 <MoreHorizontal className="h-5 w-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
-              <div className="sm:hidden">
-                <DropdownMenuLabel className="text-xs text-muted-foreground">{t('language.label')}</DropdownMenuLabel>
-                <DropdownMenuRadioGroup
-                  value={language}
-                  onValueChange={(value) => setLanguage(value as SupportedLanguage)}
-                >
-                  {LANGUAGE_OPTIONS.map((option) => (
-                    <DropdownMenuRadioItem key={option.code} value={option.code}>
-                      {option.label}
-                    </DropdownMenuRadioItem>
-                  ))}
-                </DropdownMenuRadioGroup>
-                <DropdownMenuSeparator />
-              </div>
               <DropdownMenuItem
                 onClick={() => {
                   navigate('/code-editor');
@@ -428,7 +373,7 @@ const NavBar = () => {
                 className="gap-2"
               >
                 <Code2 className="h-4 w-4 shrink-0" />
-                {t('nav.codeEditor')}
+                {'Live code editor'}
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
@@ -437,7 +382,7 @@ const NavBar = () => {
                 className="gap-2"
               >
                 <HelpCircle className="h-4 w-4 shrink-0" />
-                {t('nav.interviewQuestions')}
+                {'Interview questions'}
               </DropdownMenuItem>
               {/* <DropdownMenuItem
                 onClick={() => {
@@ -446,7 +391,7 @@ const NavBar = () => {
                 className="gap-2"
               >
                 <FlaskConical className="h-4 w-4 shrink-0" />
-                {t('nav.playground')}
+                {'Playground'}
               </DropdownMenuItem> */}
               <DropdownMenuItem
                 onClick={() => {
@@ -455,7 +400,7 @@ const NavBar = () => {
                 className="gap-2"
               >
                 <FileText className="h-4 w-4 shrink-0" />
-                {t('nav.terms')}
+                {'Terms'}
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="gap-2">
                 <a
@@ -465,7 +410,7 @@ const NavBar = () => {
                   className="flex items-center gap-2 cursor-pointer"
                 >
                   <Github className="h-4 w-4 shrink-0" />
-                  {t('nav.github')}
+                  {'GitHub'}
                 </a>
               </DropdownMenuItem>
             </DropdownMenuContent>

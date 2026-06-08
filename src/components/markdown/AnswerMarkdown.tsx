@@ -8,18 +8,14 @@ import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/hooks/useTheme';
-import { useTranslatedText } from '@/i18n/useTranslatedText';
-import { useI18n } from '@/i18n/I18nProvider';
 
 type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElement> & ExtraProps;
 
 export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const { theme } = useTheme();
-  const { t } = useI18n();
-  const isDarkTheme = theme === 'dark';
-  const translatedContent = useTranslatedText(content);
-
+    const isDarkTheme = theme === 'dark';
+  
   const handleCopy = (key: string, text: string) => {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
@@ -133,11 +129,11 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
                     >
                       {copiedKey === codeKey ? (
                         <>
-                          <Check className="h-3 w-3" /> {t('common.copied')}
+                          <Check className="h-3 w-3" /> {'Copied'}
                         </>
                       ) : (
                         <>
-                          <Copy className="h-3 w-3" /> {t('common.copy')}
+                          <Copy className="h-3 w-3" /> {'Copy'}
                         </>
                       )}
                     </Button>
@@ -163,7 +159,7 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
           pre: ({ children }) => <>{children}</>,
         }}
       >
-        {translatedContent}
+        {content}
       </ReactMarkdown>
     </div>
   );

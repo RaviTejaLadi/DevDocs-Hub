@@ -5,8 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { CATEGORY_VISUALS, TOPIC_VISUALS } from '../constants';
 import { useTopicListFilter } from '../hooks';
 
@@ -28,8 +26,7 @@ function StatCard({ emoji, label, value }: { emoji: string; label: string; value
 }
 
 export function TopicListPage() {
-  const { t } = useI18n();
-  const {
+    const {
     categories,
     topicSearchQuery,
     setTopicSearchQuery,
@@ -68,7 +65,7 @@ export function TopicListPage() {
             className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-none"
           >
             <ChevronLeft className="h-4 w-4" />
-            {t('interview.backToOverview')}
+            {'Back to overview'}
           </Link>
 
           <div className="flex flex-wrap items-start justify-between gap-6">
@@ -86,19 +83,19 @@ export function TopicListPage() {
                 </span>
                 <div>
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gradient-sheen">
-                    {t('interview.pageTitle')}
+                    {'Interview Questions'}
                   </h1>
                   <p className="text-muted-foreground mt-2 text-sm sm:text-base leading-relaxed">
-                    {t('interview.pageDescription')}
+                    {'Curated topic-wise questions with concise answers — practice faster, revise smarter, and walk into interviews with confidence.'}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full sm:w-auto sm:min-w-[280px]">
-              <StatCard emoji="📝" label={t('interview.questionsLabel')} value={totalQuestions} />
-              <StatCard emoji="🎯" label={t('interview.topicsLabel')} value={totalTopics} />
-              <StatCard emoji="📂" label={t('interview.categoriesLabel')} value={totalCategories} />
+              <StatCard emoji="📝" label={'Questions'} value={totalQuestions} />
+              <StatCard emoji="🎯" label={'Topics'} value={totalTopics} />
+              <StatCard emoji="📂" label={'Categories'} value={totalCategories} />
             </div>
           </div>
 
@@ -106,7 +103,7 @@ export function TopicListPage() {
             <span className="text-base leading-none mt-0.5" aria-hidden>
               💡
             </span>
-            {t('interview.practiceTip')}
+            {'Pick a topic, expand a question, and practice explaining the answer out loud.'}
           </p>
         </div>
       </section>
@@ -116,10 +113,10 @@ export function TopicListPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
               <span aria-hidden>🔍</span>
-              {t('interview.filters')}
+              {'Filters'}
             </div>
             <Badge variant="outline" className="h-6 px-2.5 text-xs font-medium border-border/45 bg-muted/30">
-              {t('interview.showingTopics', { shown: filteredTopicsCount, total: totalTopics })}
+              {`Showing ${filteredTopicsCount} of ${totalTopics} topics`}
             </Badge>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -127,7 +124,7 @@ export function TopicListPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
                 type="search"
-                placeholder={t('interview.searchTopics')}
+                placeholder={'Search topics...'}
                 value={topicSearchQuery}
                 onChange={(e) => setTopicSearchQuery(e.target.value)}
                 className="pl-9 h-11 border-border/35 bg-background/85 focus-visible:ring-primary/30 rounded-xl"
@@ -142,7 +139,7 @@ export function TopicListPage() {
                 onClick={clearTopicSearch}
               >
                 <X className="h-4 w-4 mr-1" />
-                {t('interview.clearFilters')}
+                {'Clear filters'}
               </Button>
             )}
           </div>
@@ -182,12 +179,12 @@ export function TopicListPage() {
                       {catVisual.emoji}
                     </span>
                     <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                      <TranslatedText text={category} />
+                      {category}
                     </h2>
                   </div>
                   <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
                     <Layers className="h-3.5 w-3.5 mr-1 opacity-70" />
-                    {t('interview.topicCount', { count: topics.length })}
+                    {`${topics.length} topics`}
                   </Badge>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -232,11 +229,11 @@ export function TopicListPage() {
                             </div>
                             <div className="min-w-0">
                               <p className="font-semibold text-foreground truncate transition-colors group-hover:text-primary">
-                                <TranslatedText text={topic.label} />
+                                {topic.label}
                               </p>
                               <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
                                 <span aria-hidden>❓</span>
-                                {t('interview.topicQuestionsCount', { count })}
+                                {`${count} interview questions`}
                               </p>
                             </div>
                           </div>
@@ -256,10 +253,10 @@ export function TopicListPage() {
               <span className="text-4xl block" aria-hidden>
                 🔎
               </span>
-              <p className="text-muted-foreground">{t('interview.noQuestionsMatch')}</p>
+              <p className="text-muted-foreground">{'No questions match your current filters.'}</p>
               {hasTopicSearch && (
                 <Button variant="outline" size="sm" className="mt-2 rounded-xl" onClick={() => setTopicSearchQuery('')}>
-                  {t('interview.resetFilters')}
+                  {'Reset filters'}
                 </Button>
               )}
             </CardContent>

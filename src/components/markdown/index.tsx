@@ -7,8 +7,6 @@ import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import { useTheme } from '../../hooks/useTheme';
 import { cn } from '@/lib/utils';
-import { useTranslatedText } from '@/i18n/useTranslatedText';
-import { useI18n } from '@/i18n/I18nProvider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { docsArticleSurfaceClass, docsPanelShadowClass } from '@/constants/docsSidePanel';
@@ -345,17 +343,15 @@ const MarkdownRenderInner = ({
   const scrollContainerRef = useRef<HTMLElement | null>(null);
   const progressRingRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
-  const { t } = useI18n();
-  const isDarkTheme = theme === 'dark';
+    const isDarkTheme = theme === 'dark';
   const isStringContent = isDocContentString(content);
-  const translatedContent = useTranslatedText(isStringContent ? content : '');
-  const headingPrefix = scopePrefixFromTopicId(headingIdScope);
+    const headingPrefix = scopePrefixFromTopicId(headingIdScope);
   const slideIdPrefix = useMemo(() => `${headingPrefix}s`, [headingPrefix]);
   const [pendingScrollHeadingId, setPendingScrollHeadingId] = useState<string | null>(null);
   const viewportScrollRootRef = useScrollViewport();
   const slides = useMemo(
-    () => (isStringContent ? splitMarkdownIntoSlides(translatedContent) : ['']),
-    [isStringContent, translatedContent]
+    () => (isStringContent ? splitMarkdownIntoSlides(content) : ['']),
+    [isStringContent, content]
   );
   const [activeSlide, setActiveSlide] = useState(0);
   const [tocCollapsed, setTocCollapsed] = useState(false);
@@ -385,7 +381,7 @@ const MarkdownRenderInner = ({
     /* eslint-disable-next-line react-hooks/set-state-in-effect -- reset deck when the bound document / topic changes */
     setActiveSlide(0);
     setTocCollapsed(false);
-  }, [translatedContent, slideMode, headingIdScope]);
+  }, [content, slideMode, headingIdScope]);
 
   useEffect(() => {
     if (slideMode) {
@@ -402,7 +398,7 @@ const MarkdownRenderInner = ({
         level: Number(el.tagName.substring(1)),
       }));
     setHeadings(collected);
-  }, [slideMode, slides, translatedContent, headingPrefix]);
+  }, [slideMode, slides, content, headingPrefix]);
 
   // Scroll spy + reading-progress (TOC + ring) — card scroll body vs main viewport
   useEffect(() => {
@@ -513,12 +509,12 @@ const MarkdownRenderInner = ({
       tgt.removeEventListener('scroll', updateProgress);
       if (frameId) window.cancelAnimationFrame(frameId);
     };
-  }, [cardScrollMode, slideMode, activeSlide, headings, slides.length, translatedContent, viewportScrollRootRef]);
+  }, [cardScrollMode, slideMode, activeSlide, headings, slides.length, content, viewportScrollRootRef]);
 
   /** Reset card scroll body when the document or slide changes (topic jump must land at intro, not mid-card). */
   useLayoutEffect(() => {
     slideBodyRef.current?.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [headingIdScope, translatedContent, slideMode ? activeSlide : -1]);
+  }, [headingIdScope, content, slideMode ? activeSlide : -1]);
 
   useEffect(() => {
     if (!pendingScrollHeadingId) return;
@@ -586,7 +582,7 @@ const MarkdownRenderInner = ({
 
     viewport.addEventListener('wheel', onWheel, { passive: true, capture: true });
     return () => viewport.removeEventListener('wheel', onWheel, true);
-  }, [cardScrollMode, slideMode, scrollIntentActive, translatedContent, viewportScrollRootRef]);
+  }, [cardScrollMode, slideMode, scrollIntentActive, content, viewportScrollRootRef]);
 
   const handleCopy = useCallback((key: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -667,11 +663,10 @@ const MarkdownRenderInner = ({
         idPrefix: '',
         isDarkTheme,
         copiedKey,
-        t,
         handleCopy,
         scrollToId,
       }),
-    [copiedKey, handleCopy, isDarkTheme, scrollToId, t]
+    [copiedKey, handleCopy, isDarkTheme, scrollToId]
   );
 
   const articleSurface = cn('md-render', docsArticleSurfaceClass, 'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11');
@@ -730,7 +725,7 @@ const MarkdownRenderInner = ({
                   docsPanelShadowClass
                 )}
                 role="region"
-                aria-label={slideMode ? t('markdown.slideCarouselLabel') : undefined}
+                aria-label={slideMode ? 'Document slides' : undefined}
               >
                 <div
                   ref={slideBodyRef}
@@ -743,12 +738,11 @@ const MarkdownRenderInner = ({
                   <div className="relative z-10 mx-auto w-full max-w-200">
                     <DocBodyRenderer
                       content={content}
-                      markdownBody={slideMode ? slides[activeSlide] ?? '' : translatedContent}
+                      markdownBody={slideMode ? slides[activeSlide] ?? '' : isStringContent ? content : ''}
                       components={buildMarkdownComponents({
                         idPrefix: slideMode ? `${slideIdPrefix}${activeSlide}-` : headingPrefix,
                         isDarkTheme,
                         copiedKey,
-                        t,
                         handleCopy,
                         scrollToId,
                         compactSlide: true,
@@ -764,7 +758,7 @@ const MarkdownRenderInner = ({
                     aria-valuenow={activeSlide + 1}
                     aria-valuemin={1}
                     aria-valuemax={slides.length}
-                    aria-label={`${t('markdown.slideLabel')} ${activeSlide + 1} of ${slides.length}`}
+                    aria-label={`${'Slide'} ${activeSlide + 1} of ${slides.length}`}
                   >
                     <div
                       className={cn(
@@ -790,12 +784,12 @@ const MarkdownRenderInner = ({
                         )}
                         onClick={handleCardNavPrev}
                         disabled={activeSlide === 0 && !hasPrevDocument}
-                        aria-label={t('markdown.prevSlide')}
+                        aria-label={'Previous'}
                       >
                         <ChevronLeft className="size-5" aria-hidden />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent side="top">{t('markdown.prevSlide')}</TooltipContent>
+                    <TooltipContent side="top">{'Previous'}</TooltipContent>
                   </Tooltip>
                 ) : null}
 
@@ -810,7 +804,7 @@ const MarkdownRenderInner = ({
                         keyboardActive ? 'text-primary/85' : 'text-muted-foreground/85'
                       )}
                     >
-                      {t('markdown.slideLabel')}
+                      {'Slide'}
                     </span>
                     {slides.length > 1 && slides.length <= 12 ? (
                       <div className="flex max-w-full items-center justify-center gap-1">
@@ -844,12 +838,12 @@ const MarkdownRenderInner = ({
                         )}
                         onClick={handleCardNavNext}
                         disabled={activeSlide >= slides.length - 1 && !hasNextDocument}
-                        aria-label={t('markdown.nextSlide')}
+                        aria-label={'Next'}
                       >
                         <ChevronRight className="size-5" aria-hidden />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent side="top">{t('markdown.nextSlide')}</TooltipContent>
+                    <TooltipContent side="top">{'Next'}</TooltipContent>
                   </Tooltip>
                 ) : null}
               </div>
@@ -857,7 +851,7 @@ const MarkdownRenderInner = ({
           ) : (
             <article className={cn('flex-1 min-w-0 mx-auto w-full', articleSurface)}>
               <div className="relative z-1">
-                <DocBodyRenderer content={content} markdownBody={translatedContent} components={singleDocComponents} />
+                <DocBodyRenderer content={content} markdownBody={isStringContent ? content : ''} components={singleDocComponents} />
               </div>
             </article>
           )}
@@ -897,18 +891,18 @@ const MarkdownRenderInner = ({
                     size="icon"
                     className="size-9 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                     onClick={() => setTocCollapsed(false)}
-                    aria-label={t('docs.showOutline')}
+                    aria-label={'Show on-this-page outline'}
                     aria-expanded={false}
                   >
                     <ListTree className="size-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="left">{t('docs.showOutline')}</TooltipContent>
+                <TooltipContent side="left">{'Show on-this-page outline'}</TooltipContent>
               </Tooltip>
             ) : (
               <SidebarGroup className="flex min-h-0 flex-1 flex-col py-0">
                 <SidebarGroupLabel className="mb-2 flex h-auto items-center justify-between gap-2 px-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  <span>{t('markdown.onThisPage')}</span>
+                  <span>{'On this page'}</span>
                   <div className="flex shrink-0 items-center gap-1.5">
                     <div
                       ref={progressRingRef}
@@ -924,13 +918,13 @@ const MarkdownRenderInner = ({
                           size="icon"
                           className="size-8 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                           onClick={() => setTocCollapsed(true)}
-                          aria-label={t('docs.hideOutline')}
+                          aria-label={'Hide on-this-page outline'}
                           aria-expanded={true}
                         >
                           <ChevronRight className="size-4" />
                         </Button>
                       </TooltipTrigger>
-                      <TooltipContent side="left">{t('docs.hideOutline')}</TooltipContent>
+                      <TooltipContent side="left">{'Hide on-this-page outline'}</TooltipContent>
                     </Tooltip>
                   </div>
                 </SidebarGroupLabel>
@@ -941,7 +935,7 @@ const MarkdownRenderInner = ({
                       cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
                     )}
                   >
-                    <nav aria-label={t('markdown.onThisPage')}>{tocNav}</nav>
+                    <nav aria-label={'On this page'}>{tocNav}</nav>
                   </ScrollArea>
                 </SidebarGroupContent>
               </SidebarGroup>

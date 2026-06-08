@@ -6,8 +6,6 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
 import {
   docsFloatingActionButtonClass,
@@ -65,8 +63,7 @@ export function DocsTopicBrowserSheet({
   onCollapseAllCategories,
   onSelectTopic,
 }: DocsTopicBrowserSheetProps) {
-  const { t } = useI18n();
-  const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('');
   const activeRowRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -132,7 +129,7 @@ export function DocsTopicBrowserSheet({
           ref={options?.setActiveRef ? activeRowRef : undefined}
           type="button"
           aria-current={isCurrent ? 'page' : undefined}
-          aria-label={`${t('docs.topicBrowserJumpTo')} ${topic.title}`}
+          aria-label={`${'Jump to topic'} ${topic.title}`}
           className={cn(
             'group/topic flex w-full min-h-8 items-center gap-2 rounded-md border-l-2 px-2 py-1.5 text-left transition-colors duration-150',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring',
@@ -144,7 +141,7 @@ export function DocsTopicBrowserSheet({
         >
           <span className="min-w-0 flex-1 text-left">
             <span className="block truncate text-[13px] leading-snug">
-              <TranslatedText text={topic.title} />
+              {topic.title}
             </span>
             {options?.meta ? (
               <span className="block truncate text-[10px] font-normal leading-tight text-muted-foreground">
@@ -163,7 +160,7 @@ export function DocsTopicBrowserSheet({
         </button>
       );
     },
-    [activeTopicId, onSelectTopic, t]
+    [activeTopicId, onSelectTopic]
   );
 
   return (
@@ -175,14 +172,14 @@ export function DocsTopicBrowserSheet({
               type="button"
               variant="secondary"
               size="icon"
-              aria-label={t('docs.topicBrowserTrigger')}
+              aria-label={'Open topic browser'}
               className={cn(docsFloatingActionButtonClass, docsFloatingActionButtonBottomClass, open && 'hidden')}
             >
               <Library className="size-4" />
             </Button>
           </SheetTrigger>
         </TooltipTrigger>
-        <TooltipContent side="left">{t('docs.topicBrowserTrigger')}</TooltipContent>
+        <TooltipContent side="left">{'Open topic browser'}</TooltipContent>
       </Tooltip>
 
       <SheetContent
@@ -194,9 +191,9 @@ export function DocsTopicBrowserSheet({
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 space-y-1">
               <SheetTitle className="text-base font-semibold leading-tight tracking-tight">
-                {t('docs.topicBrowserTitle')}
+                {'Browse topics'}
               </SheetTitle>
-              <p className="text-xs text-muted-foreground">{t('docs.topicBrowserSubtitle')}</p>
+              <p className="text-xs text-muted-foreground">{'All streams, categories, and topics in one place.'}</p>
             </div>
             <SheetClose asChild>
               <Button
@@ -217,7 +214,7 @@ export function DocsTopicBrowserSheet({
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={t('nav.searchTopics')}
+              placeholder={'Search topics...'}
               className="h-10 rounded-xl border-border/40 bg-background pl-9 pr-9 text-sm shadow-none focus-visible:ring-primary/30"
             />
             {query ? (
@@ -226,7 +223,7 @@ export function DocsTopicBrowserSheet({
                 variant="ghost"
                 size="icon"
                 className="absolute right-1 top-1/2 size-8 -translate-y-1/2 rounded-lg"
-                aria-label={t('sidebar.clearSearch')}
+                aria-label={'Clear search'}
                 onClick={() => setQuery('')}
               >
                 <X className="size-3.5" />
@@ -238,9 +235,9 @@ export function DocsTopicBrowserSheet({
         {sections.length > 1 && !isSearching ? (
           <div className="shrink-0 border-b border-border/25 bg-muted/10 px-3 py-3">
             <p className="mb-2 px-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-              {t('docs.learningStream')}
+              {'Learning stream'}
             </p>
-            <nav aria-label={t('docs.learningStream')} className="grid grid-cols-2 gap-1.5 sm:grid-cols-2">
+            <nav aria-label={'Learning stream'} className="grid grid-cols-2 gap-1.5 sm:grid-cols-2">
               {sections.map(({ stream }) => {
                 const isActive = stream.id === activeStreamId;
                 return (
@@ -262,7 +259,7 @@ export function DocsTopicBrowserSheet({
                       {getStreamEmoji(stream.id)}
                     </span>
                     <span className="min-w-0 flex-1 text-[11px] font-semibold leading-snug wrap-break-word hyphens-auto">
-                      <TranslatedText text={stream.title} />
+                      {stream.title}
                     </span>
                     <span
                       className={cn(
@@ -282,7 +279,7 @@ export function DocsTopicBrowserSheet({
         {!isSearching && activeSection ? (
           <div className="flex shrink-0 items-center justify-between gap-2 border-b border-border/20 px-4 py-2">
             <p className="truncate text-xs font-medium text-muted-foreground">
-              {t('docs.topicsInStream', { count: activeSection.stream.topics.length })}
+              {`${activeSection.stream.topics.length} topics`}
             </p>
             <div className="flex shrink-0 items-center gap-1">
               <Button
@@ -292,7 +289,7 @@ export function DocsTopicBrowserSheet({
                 className="h-7 rounded-lg px-2 text-[11px] text-muted-foreground hover:text-foreground"
                 onClick={() => onExpandAllCategories(activeSection.stream.id)}
               >
-                {t('docs.topicBrowserExpandAll')}
+                {'Expand all'}
               </Button>
               <Button
                 type="button"
@@ -301,7 +298,7 @@ export function DocsTopicBrowserSheet({
                 className="h-7 rounded-lg px-2 text-[11px] text-muted-foreground hover:text-foreground"
                 onClick={() => onCollapseAllCategories(activeSection.stream.id)}
               >
-                {t('docs.topicBrowserCollapseAll')}
+                {'Collapse all'}
               </Button>
             </div>
           </div>
@@ -315,11 +312,11 @@ export function DocsTopicBrowserSheet({
             {isSearching ? (
               <>
                 <p className="px-1.5 pb-0.5 text-[11px] font-medium text-muted-foreground">
-                  {t('docs.topicBrowserSearchResults', { count: searchHits.length })}
+                  {`${searchHits.length} results`}
                 </p>
                 {searchHits.length === 0 ? (
                   <div className="rounded-lg border border-dashed border-border/45 bg-muted/10 px-3 py-8 text-center">
-                    <p className="text-[13px] text-muted-foreground">{t('sidebar.noTopicFound')}</p>
+                    <p className="text-[13px] text-muted-foreground">{'No topic found'}</p>
                   </div>
                 ) : (
                   <div className="rounded-lg border border-border/25 bg-muted/15 p-1">

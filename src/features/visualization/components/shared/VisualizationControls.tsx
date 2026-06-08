@@ -1,6 +1,5 @@
 import { ChevronRight, Pause, Play, RotateCcw, SkipBack, SkipForward } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useI18n } from '@/i18n/I18nProvider';
 
 type VisualizationControlsProps = {
   isFirst: boolean;
@@ -21,11 +20,10 @@ export function VisualizationControls({
   onTogglePlay,
   onStepForward,
 }: VisualizationControlsProps) {
-  const { t } = useI18n();
-
+  
   return (
     <div className="flex flex-wrap items-center justify-center gap-2 rounded-xl border border-border/35 bg-card/60 p-3">
-      <Button type="button" variant="outline" size="icon" onClick={onReset} aria-label={t('visualization.reset')}>
+      <Button type="button" variant="outline" size="icon" onClick={onReset} aria-label={'Reset'}>
         <RotateCcw className="h-4 w-4" />
       </Button>
       <Button
@@ -34,7 +32,7 @@ export function VisualizationControls({
         size="icon"
         onClick={onStepBack}
         disabled={isFirst}
-        aria-label={t('visualization.previousStep')}
+        aria-label={'Previous step'}
       >
         <SkipBack className="h-4 w-4" />
       </Button>
@@ -43,7 +41,7 @@ export function VisualizationControls({
         size="icon"
         className="size-11 rounded-full bg-emerald-600 text-white hover:bg-emerald-600/90"
         onClick={onTogglePlay}
-        aria-label={isPlaying ? t('visualization.pause') : t('visualization.play')}
+        aria-label={isPlaying ? 'Pause' : 'Play'}
       >
         {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
       </Button>
@@ -53,7 +51,7 @@ export function VisualizationControls({
         size="icon"
         onClick={onStepForward}
         disabled={isLast}
-        aria-label={t('visualization.nextStep')}
+        aria-label={'Next step'}
       >
         <SkipForward className="h-4 w-4" />
       </Button>
@@ -64,7 +62,7 @@ export function VisualizationControls({
         className="text-muted-foreground"
         onClick={() => (isLast ? onReset() : onStepForward())}
       >
-        {isLast ? t('visualization.runAgain') : t('visualization.nextStep')}
+        {isLast ? 'Run again' : 'Next step'}
         <ChevronRight className="ml-1 h-4 w-4" />
       </Button>
     </div>

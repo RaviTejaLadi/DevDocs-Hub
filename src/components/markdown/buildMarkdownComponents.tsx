@@ -29,7 +29,6 @@ export type BuildMarkdownComponentsOpts = {
   idPrefix: string;
   isDarkTheme: boolean;
   copiedKey: string | null;
-  t: (key: string) => string;
   handleCopy: (key: string, text: string) => void;
   scrollToId: (id: string) => void;
   /** Slide viewport: comfortable type + spacing (still slightly denser than full article) */
@@ -40,7 +39,6 @@ export function buildMarkdownComponents({
   idPrefix,
   isDarkTheme,
   copiedKey,
-  t,
   handleCopy,
   scrollToId,
   compactSlide = false,
@@ -311,11 +309,11 @@ export function buildMarkdownComponents({
               >
                 {copiedKey === codeKey ? (
                   <>
-                    <Check className="h-3 w-3" /> {t('common.copied')}
+                          <Check className="h-3 w-3" /> Copied
                   </>
                 ) : (
                   <>
-                    <Copy className="h-3 w-3" /> {t('common.copy')}
+                          <Copy className="h-3 w-3" /> Copy
                   </>
                 )}
               </Button>

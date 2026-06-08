@@ -2,7 +2,6 @@ import { Search, Grid3x3, List, HelpCircle, Eye } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { useI18n } from '@/i18n/I18nProvider';
 import type { ViewMode } from '../types';
 
 type LandingHeroProps = {
@@ -22,8 +21,7 @@ export function LandingHero({
   onInterviewClick,
   onVisualizationClick,
 }: LandingHeroProps) {
-  const { t } = useI18n();
-
+  
   return (
     <header className="min-w-0 space-y-3 pt-2 sm:pt-3 pb-4 sm:pb-5">
       <section className="rounded-xl border border-border/45 bg-card/45 text-center shadow-none">
@@ -39,7 +37,7 @@ export function LandingHero({
           </h1>
 
           <p className="text-muted-foreground text-sm max-w-xl mx-auto leading-relaxed wrap-break-word">
-            {t('landing.heroDescription')}
+            {'Browse organized topics by stream — from computer science and software to engineering, sciences, and beyond. Clear explanations for quick revision before exams, interviews, or whenever you need a refresher.'}
           </p>
 
           <div className="relative mx-auto w-full max-w-2xl min-w-0">
@@ -47,7 +45,7 @@ export function LandingHero({
             <Input
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder={t('landing.searchTopics')}
+              placeholder={'Search topics...'}
               className="h-10 rounded-lg border-border/35 bg-background/90 pl-9 pr-20"
             />
             <div className="absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center gap-1 rounded-md border border-border/35 bg-muted/35 p-0.5">
@@ -81,7 +79,7 @@ export function LandingHero({
           onClick={onInterviewClick}
         >
           <HelpCircle className="h-4 w-4 shrink-0 text-primary" />
-          {t('landing.interviewQuestionsByLevel')}
+          {'Interview Questions (by level)'}
         </Button>
         <Button
           variant="outline"
@@ -89,7 +87,7 @@ export function LandingHero({
           onClick={onVisualizationClick}
         >
           <Eye className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-          {t('landing.visualization')}
+          {'Visualization'}
         </Button>
       </div>
     </header>

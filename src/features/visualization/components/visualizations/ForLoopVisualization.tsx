@@ -1,7 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { useForLoopVisualization } from '../../hooks';
 import { VisualizationCodePanel } from '../shared/VisualizationCodePanel';
 import { VisualizationConsole } from '../shared/VisualizationConsole';
@@ -16,31 +15,30 @@ const CODE_LINES = [
   '}',
 ] as const;
 
-const HOW_IT_WORKS_KEYS = [
-  'visualization.forLoop.how1',
-  'visualization.forLoop.how2',
-  'visualization.forLoop.how3',
-  'visualization.forLoop.how4',
+const HOW_IT_WORKS = [
+  'The init clause (let i = 0) runs once before the loop starts.',
+  'The condition (i < length) is checked before every iteration — if false, the loop stops.',
+  'The body runs when the condition is true — here it reads fruits[i] by index.',
+  'The increment (i++) runs after the body, then control jumps back to the condition.',
 ] as const;
 
 export function ForLoopVisualization() {
-  const { t } = useI18n();
   const { items, step, stepIndex, stepCount, isFirst, isLast, isPlaying, reset, stepForward, stepBack, togglePlay } =
     useForLoopVisualization();
 
   return (
     <VisualizationPageShell
       category="loops"
-      titleKey="visualization.forLoopTitle"
-      descriptionKey="visualization.forLoopDescription"
+      title="How a for loop works"
+      description="Step through initialization, condition checks, body execution, and increment — the full lifecycle of a counted loop."
       stepIndex={stepIndex}
       stepCount={stepCount}
     >
       <VisualizationExplanation
-        overviewKey="visualization.forLoop.overview"
-        howItWorksKeys={HOW_IT_WORKS_KEYS}
-        whenToUseKey="visualization.forLoop.whenToUse"
-        takeawayKey="visualization.forLoop.takeaway"
+        overview="A for loop is the classic counted loop. You declare a counter, set a stop condition, and update the counter after each pass. It is ideal when you need an index or a fixed number of iterations."
+        howItWorks={HOW_IT_WORKS}
+        whenToUse="Use a for loop when you need the index, want a specific number of iterations, or must loop backwards / skip items with continue."
+        takeaway="Think: init → check → body → increment → check again. The condition gate is what prevents infinite loops."
       />
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -48,7 +46,7 @@ export function ForLoopVisualization() {
 
         <Card className="border-border/40 shadow-none">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">{t('visualization.state')}</CardTitle>
+            <CardTitle className="text-base">Live state</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
@@ -59,9 +57,7 @@ export function ForLoopVisualization() {
                 </p>
               </div>
               <div className="rounded-xl border border-border/35 bg-card/70 p-3">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                  {t('visualization.condition')}
-                </p>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Condition</p>
                 <p className="mt-1 font-mono text-sm text-foreground/85">{step.condition ?? '—'}</p>
                 {step.conditionMet != null && (
                   <Badge
@@ -73,7 +69,7 @@ export function ForLoopVisualization() {
                         : 'border-rose-500/35 text-rose-600 dark:text-rose-400'
                     )}
                   >
-                    {step.conditionMet ? t('visualization.true') : t('visualization.false')}
+                    {step.conditionMet ? 'true' : 'false'}
                   </Badge>
                 )}
               </div>

@@ -5,13 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { playgroundPath } from '@/app/routes/paths';
 import { usePlaygroundListFilter } from '../hooks';
 
 export function PlaygroundListPage() {
-  const { t } = useI18n();
-  const {
+    const {
     playgrounds,
     searchQuery,
     setSearchQuery,
@@ -33,7 +31,7 @@ export function PlaygroundListPage() {
               className="inline-flex items-center gap-2 rounded-md border border-border/35 bg-card/45 px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
-              {t('playground.backToOverview')}
+              {'Back to overview'}
             </Link>
             <div className="flex items-start gap-3">
               <div className="p-2.5 rounded-xl border border-violet-500/25 bg-violet-500/10">
@@ -41,21 +39,21 @@ export function PlaygroundListPage() {
               </div>
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">
-                  {t('playground.pageTitle')}
+                  {'Playground'}
                 </h1>
-                <p className="text-muted-foreground mt-1 max-w-2xl">{t('playground.pageDescription')}</p>
+                <p className="text-muted-foreground mt-1 max-w-2xl">{'Hands-on sandboxes to learn APIs by doing — run code, see results, and build intuition faster than reading alone.'}</p>
               </div>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
             <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-              {t('playground.available', { count: availableCount })}
+              {`${availableCount} available`}
             </Badge>
             <Badge variant="outline" className="h-7 px-3 border-border/35">
-              {t('playground.comingSoon', { count: comingSoonCount })}
+              {`${comingSoonCount} coming soon`}
             </Badge>
             <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
-              {t('playground.total', { count: totalCount })}
+              {`${totalCount} total`}
             </Badge>
           </div>
         </div>
@@ -66,10 +64,10 @@ export function PlaygroundListPage() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Search className="h-4 w-4 text-violet-500" />
-              {t('playground.searchPlaygrounds')}
+              {'Search playgrounds'}
             </div>
             <p className="text-xs text-muted-foreground">
-              {t('playground.showing', { shown: playgrounds.length, total: totalCount })}
+              {`Showing ${playgrounds.length} of ${totalCount}`}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -77,7 +75,7 @@ export function PlaygroundListPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
                 type="search"
-                placeholder={t('playground.searchPlaceholder')}
+                placeholder={'Search by name or topic...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-violet-500/30"
@@ -86,7 +84,7 @@ export function PlaygroundListPage() {
             {hasSearch && (
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground" onClick={clearSearch}>
                 <X className="h-4 w-4 mr-1" />
-                {t('playground.clearSearch')}
+                {'Clear search'}
               </Button>
             )}
           </div>
@@ -111,7 +109,7 @@ export function PlaygroundListPage() {
                   variant="outline"
                   className="absolute top-3 right-3 text-[10px] uppercase tracking-wide border-amber-500/30 text-amber-600 dark:text-amber-400"
                 >
-                  {t('playground.soon')}
+                  {'Soon'}
                 </Badge>
               )}
               <div className="flex items-start gap-3">
@@ -127,7 +125,7 @@ export function PlaygroundListPage() {
                     </Badge>
                     {playground.methodCount != null && (
                       <Badge variant="outline" className="text-xs">
-                        {t('playground.methods', { count: playground.methodCount })}
+                        {`${playground.methodCount} methods`}
                       </Badge>
                     )}
                   </div>
@@ -159,10 +157,10 @@ export function PlaygroundListPage() {
         <Card className="border-dashed border-border/50 bg-card/50">
           <CardContent className="py-10 text-center">
             <Sparkles className="h-8 w-8 mx-auto text-muted-foreground/60 mb-3" />
-            <p className="text-muted-foreground">{t('playground.noMatch')}</p>
+            <p className="text-muted-foreground">{'No playgrounds match your search.'}</p>
             {hasSearch && (
               <Button variant="outline" size="sm" className="mt-4" onClick={clearSearch}>
-                {t('playground.clearSearch')}
+                {'Clear search'}
               </Button>
             )}
           </CardContent>

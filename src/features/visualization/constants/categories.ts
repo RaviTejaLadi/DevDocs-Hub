@@ -2,28 +2,30 @@ import type { VisualizationCategory } from '../types';
 
 export type VisualizationCategoryMeta = {
   id: VisualizationCategory;
-  labelKey: string;
-  descriptionKey: string;
+  label: string;
+  description: string;
   order: number;
 };
 
 export const VISUALIZATION_CATEGORIES: VisualizationCategoryMeta[] = [
   {
     id: 'loops',
-    labelKey: 'visualization.category.loops',
-    descriptionKey: 'visualization.category.loopsDescription',
+    label: 'Loops',
+    description:
+      'Control-flow loops that repeat code — see how conditions, counters, and loop bodies interact.',
     order: 1,
   },
   {
     id: 'data-structures',
-    labelKey: 'visualization.category.dataStructures',
-    descriptionKey: 'visualization.category.dataStructuresDescription',
+    label: 'Data structures',
+    description:
+      'How JavaScript walks and transforms arrays using different iteration patterns.',
     order: 2,
   },
   {
     id: 'javascript',
-    labelKey: 'visualization.category.javascript',
-    descriptionKey: 'visualization.category.javascriptDescription',
+    label: 'JavaScript',
+    description: 'Core language mechanics explained with live step-by-step visuals.',
     order: 3,
   },
 ];

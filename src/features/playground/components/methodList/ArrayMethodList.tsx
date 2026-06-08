@@ -4,7 +4,6 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { ARRAY_METHOD_CATEGORIES } from '../../constants';
 import type { ArrayMethodCategory, ArrayMethodDefinition } from '../../types';
 
@@ -35,8 +34,7 @@ export function ArrayMethodList({
   className,
   onSelectAndClose,
 }: ArrayMethodListProps) {
-  const { t } = useI18n();
-
+  
   const handleSelect = (id: string) => {
     onSelect(id);
     onSelectAndClose?.();
@@ -55,7 +53,7 @@ export function ArrayMethodList({
             className="w-max min-w-full justify-start h-auto flex-wrap gap-0.5 p-0 bg-transparent"
           >
             <TabsTrigger value="all" className="text-xs px-2.5 py-1.5">
-              {t('playground.allCategories')}
+              {'All'}
               <Badge variant="secondary" className="ml-1 h-4 px-1 text-[10px]">
                 {categoryCounts.all}
               </Badge>
@@ -77,7 +75,7 @@ export function ArrayMethodList({
         <Input
           value={methodSearch}
           onChange={(e) => onMethodSearchChange(e.target.value)}
-          placeholder={t('playground.searchMethods')}
+          placeholder={'Search methods...'}
           className="pl-8 h-9 text-sm border-border/35"
         />
       </div>
@@ -113,7 +111,7 @@ export function ArrayMethodList({
             </button>
           ))}
           {methods.length === 0 && (
-            <p className="text-sm text-muted-foreground text-center py-8">{t('playground.noMethodsMatch')}</p>
+            <p className="text-sm text-muted-foreground text-center py-8">{'No methods match your filters.'}</p>
           )}
         </div>
       </ScrollArea>

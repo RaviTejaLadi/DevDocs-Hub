@@ -21,8 +21,6 @@ import {
   SidebarMenuSubItem,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import {
   docsSidePanelNavSurfaceClass,
@@ -66,8 +64,7 @@ const SidebarContent = ({
   closeSheet?: () => void;
   showCollapseControl?: boolean;
 }) => {
-  const { t } = useI18n();
-  const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
+    const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
   useEffect(() => {
@@ -142,7 +139,7 @@ const SidebarContent = ({
   const renderExpandAction = (itemId: string, isExpanded: boolean) => (
     <SidebarMenuAction
       onClick={(e) => toggleExpand(e, itemId)}
-      aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
+      aria-label={isExpanded ? 'Collapse' : 'Expand'}
     >
       <ChevronRight className={cn('size-3.5 transition-transform duration-200', isExpanded && 'rotate-90')} />
     </SidebarMenuAction>
@@ -153,7 +150,7 @@ const SidebarContent = ({
       type="button"
       onClick={(e) => toggleExpand(e, itemId)}
       className="absolute right-0.5 top-1/2 flex size-6 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground"
-      aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
+      aria-label={isExpanded ? 'Collapse' : 'Expand'}
     >
       <ChevronRight className={cn('size-3.5 transition-transform duration-200', isExpanded && 'rotate-90')} />
     </button>
@@ -183,7 +180,7 @@ const SidebarContent = ({
                 onClick={() => topic && handleNavigate(topic.id, item.id)}
               >
                 <span className="block w-full truncate">
-                  <TranslatedText text={item.title} />
+                  {item.title}
                 </span>
               </button>
             </SidebarMenuSubButton>
@@ -206,7 +203,7 @@ const SidebarContent = ({
               onClick={() => topic && handleNavigate(topic.id, item.id)}
             >
               <span className="block w-full truncate">
-                <TranslatedText text={item.title} />
+                {item.title}
               </span>
             </button>
           </SidebarMenuSubButton>
@@ -242,7 +239,7 @@ const SidebarContent = ({
                 onClick={() => topic && handleNavigate(topic.id, item.id)}
               >
                 <span className="block w-full truncate">
-                  <TranslatedText text={item.title} />
+                  {item.title}
                 </span>
               </button>
             </SidebarMenuButton>
@@ -265,7 +262,7 @@ const SidebarContent = ({
               onClick={() => topic && handleNavigate(topic.id, item.id)}
             >
               <span className="block w-full truncate">
-                <TranslatedText text={item.title} />
+                {item.title}
               </span>
             </button>
           </SidebarMenuButton>
@@ -310,7 +307,7 @@ const SidebarContent = ({
                     {sectionIndexLabel(index)}
                   </span>
                   <span className="min-w-0 flex-1 truncate">
-                    <TranslatedText text={item.title} />
+                    {item.title}
                   </span>
                 </button>
               </SidebarMenuButton>
@@ -344,7 +341,7 @@ const SidebarContent = ({
               {sectionIndexLabel(index)}
             </span>
             <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-snug">
-              <TranslatedText text={item.title} />
+              {item.title}
             </span>
           </button>
           {lessonCount > 0 ? (
@@ -354,7 +351,7 @@ const SidebarContent = ({
             type="button"
             onClick={(e) => toggleExpand(e, item.id)}
             className="flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground"
-            aria-label={isExpanded ? t('sidebar.collapse') : t('sidebar.expand')}
+            aria-label={isExpanded ? 'Collapse' : 'Expand'}
           >
             <ChevronRight className={cn('size-3.5 transition-transform duration-200', isExpanded && 'rotate-90')} />
           </button>
@@ -391,7 +388,7 @@ const SidebarContent = ({
           📚
         </span>
         <BookOpen className="mx-auto mt-2 size-8 text-muted-foreground/70" />
-        <p className="mt-2 text-sm text-muted-foreground">{t('sidebar.selectTopic')}</p>
+        <p className="mt-2 text-sm text-muted-foreground">{'Select a topic'}</p>
       </UiSidebarContent>
     );
   }
@@ -409,7 +406,7 @@ const SidebarContent = ({
               <span className="block text-2xl" aria-hidden>
                 🔎
               </span>
-              <p className="mt-2 text-sm text-muted-foreground">{t('sidebar.noTopicFound')}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{'No topic found'}</p>
             </div>
           );
         }
@@ -435,7 +432,7 @@ const SidebarContent = ({
                         onClick={() => handleNavigate(topic.id, item.id)}
                       >
                         <span className="block w-full truncate">
-                          <TranslatedText text={item.title} />
+                          {item.title}
                         </span>
                       </button>
                     </SidebarMenuButton>
@@ -455,7 +452,7 @@ const SidebarContent = ({
             <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
             <SidebarInput
               type="text"
-              placeholder={t('sidebar.searchSection')}
+              placeholder={'Search in this section...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="h-8 bg-background pl-8 pr-8 text-sm"
@@ -466,7 +463,7 @@ const SidebarContent = ({
                 size="sm"
                 className="absolute right-0 top-1/2 size-6 -translate-y-1/2 p-0"
                 onClick={() => setSearchQuery('')}
-                aria-label={t('sidebar.clearSearch')}
+                aria-label={'Clear search'}
               >
                 <X className="size-3" />
               </Button>

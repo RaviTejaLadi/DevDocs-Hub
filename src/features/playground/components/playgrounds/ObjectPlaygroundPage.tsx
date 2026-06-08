@@ -25,7 +25,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
 import { playgroundPath } from '@/app/routes/paths';
 import { useObjectPlayground } from '../../hooks';
 import { OBJECT_METHOD_CATEGORIES } from '../../constants/objectMethods';
@@ -39,16 +38,15 @@ function formatValue(value: unknown): string {
   }
 }
 
-const CATEGORY_TOOLTIP_KEYS = {
-  static: 'playground.categoryStatic',
-  inspection: 'playground.categoryInspection',
-  transformation: 'playground.categoryTransformation',
-  mutation: 'playground.categoryMutation',
-};
+const CATEGORY_TOOLTIPS = {
+  static: 'Static methods are called on Object, not instances.',
+  inspection: 'Inspection methods read or enumerate object data.',
+  transformation: 'Transformation methods convert or reshape objects.',
+  mutation: 'Mutation methods change object properties or behavior.',
+} as const;
 
 export function ObjectPlaygroundPage() {
-  const { t } = useI18n();
-
+  
   const [mobileMethodsOpen, setMobileMethodsOpen] = useState(false);
 
   const {
@@ -114,7 +112,7 @@ export function ObjectPlaygroundPage() {
               className="inline-flex items-center gap-2 rounded-md border border-border/35 bg-card/45 px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
-              {t('playground.backToPlaygrounds')}
+              {'Back to playgrounds'}
             </Link>
 
             <div className="flex items-start gap-3">
@@ -123,25 +121,20 @@ export function ObjectPlaygroundPage() {
               </div>
 
               <div className="min-w-0">
-                <h1 className="text-xl sm:text-2xl font-bold tracking-tight">{t('playground.objectsTitle')}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold tracking-tight">{'JavaScript Object Methods'}</h1>
 
-                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">{t('playground.objectsDescription')}</p>
+                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">{'Pick a method, read the signature, then run it on your own object input — see return values and object state instantly.'}</p>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 shrink-0">
             <Badge variant="secondary" className="h-7 px-3 border border-border/35">
-              {t('playground.methods', {
-                count: totalMethods,
-              })}
+              {`${totalMethods} methods`}
             </Badge>
 
             <Badge variant="outline" className="h-7 px-3 font-mono text-xs">
-              {t('playground.methodPosition', {
-                current: globalIndex + 1,
-                total: totalMethods,
-              })}
+              {`${globalIndex + 1} of ${totalMethods}`}
             </Badge>
           </div>
         </div>
@@ -150,9 +143,9 @@ export function ObjectPlaygroundPage() {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,300px)_1fr] gap-4 lg:gap-6">
         <Card className="hidden lg:flex flex-col border-border/40 bg-card/60 min-h-[520px]">
           <CardHeader className="pb-2 shrink-0">
-            <CardTitle className="text-sm font-medium">{t('playground.methodsList')}</CardTitle>
+            <CardTitle className="text-sm font-medium">{'Methods'}</CardTitle>
 
-            <CardDescription className="text-xs">{t('playground.searchMethods')}</CardDescription>
+            <CardDescription className="text-xs">{'Search methods...'}</CardDescription>
           </CardHeader>
 
           <CardContent className="flex-1 flex flex-col min-h-0 pt-0">
@@ -178,7 +171,7 @@ export function ObjectPlaygroundPage() {
                       </Button>
                     </TooltipTrigger>
 
-                    <TooltipContent>{t('playground.prevMethod')}</TooltipContent>
+                    <TooltipContent>{'Previous method'}</TooltipContent>
                   </Tooltip>
 
                   <Tooltip>
@@ -194,7 +187,7 @@ export function ObjectPlaygroundPage() {
                       </Button>
                     </TooltipTrigger>
 
-                    <TooltipContent>{t('playground.nextMethod')}</TooltipContent>
+                    <TooltipContent>{'Next method'}</TooltipContent>
                   </Tooltip>
 
                   <Separator orientation="vertical" className="mx-1 h-6 hidden sm:block" />
@@ -211,15 +204,15 @@ export function ObjectPlaygroundPage() {
                     <SheetTrigger asChild>
                       <Button variant="outline" size="sm" className="lg:hidden gap-2 flex-1 sm:flex-none">
                         <Menu className="h-4 w-4" />
-                        {t('playground.changeMethod')}
+                        {'Change method'}
                       </Button>
                     </SheetTrigger>
 
                     <SheetContent side="left" className="w-[min(100vw-2rem,340px)] flex flex-col p-0">
                       <SheetHeader className="px-4 pt-4 pb-2 text-left">
-                        <SheetTitle>{t('playground.browseMethods')}</SheetTitle>
+                        <SheetTitle>{'Browse methods'}</SheetTitle>
 
-                        <SheetDescription>{t('playground.searchMethods')}</SheetDescription>
+                        <SheetDescription>{'Search methods...'}</SheetDescription>
                       </SheetHeader>
 
                       <div className="flex-1 px-4 pb-4 min-h-0">
@@ -232,7 +225,7 @@ export function ObjectPlaygroundPage() {
                     variant={selectedMethod.mutates ? 'destructive' : 'secondary'}
                     className="hidden sm:inline-flex"
                   >
-                    {selectedMethod.mutates ? t('playground.mutates') : t('playground.nonMutating')}
+                    {selectedMethod.mutates ? 'Mutates array' : 'Non-mutating'}
                   </Badge>
                 </div>
               </div>
@@ -243,7 +236,7 @@ export function ObjectPlaygroundPage() {
             <CardHeader className="pb-3">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="space-y-1 min-w-0 flex-1">
-                  <CardTitle className="text-base">{t('playground.reference')}</CardTitle>
+                  <CardTitle className="text-base">{'Reference'}</CardTitle>
 
                   <CardDescription className="text-sm leading-relaxed">{selectedMethod.description}</CardDescription>
                 </div>
@@ -256,7 +249,7 @@ export function ObjectPlaygroundPage() {
                   </TooltipTrigger>
 
                   <TooltipContent className="max-w-xs">
-                    {t(CATEGORY_TOOLTIP_KEYS[selectedMethod.category])}
+                    {CATEGORY_TOOLTIPS[selectedMethod.category]}
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -265,13 +258,13 @@ export function ObjectPlaygroundPage() {
             <CardContent className="pt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="rounded-lg border border-border/35 bg-muted/25 p-3 space-y-1">
-                  <Label className="text-xs text-muted-foreground">{t('playground.returns')}</Label>
+                  <Label className="text-xs text-muted-foreground">{'Returns'}</Label>
 
                   <code className="text-sm font-mono text-foreground block">{selectedMethod.returns}</code>
                 </div>
 
                 <div className="relative group rounded-lg border border-dashed border-border/40 bg-muted/20 p-3">
-                  <Label className="text-xs text-muted-foreground mb-2 block">{t('playground.example')}</Label>
+                  <Label className="text-xs text-muted-foreground mb-2 block">{'Example'}</Label>
 
                   <pre className="text-xs sm:text-sm font-mono text-foreground overflow-x-auto pr-14">
                     {selectedMethod.example}
@@ -298,17 +291,17 @@ export function ObjectPlaygroundPage() {
                   <div>
                     <CardTitle className="text-base flex items-center gap-2">
                       <Play className="h-4 w-4 text-cyan-500" />
-                      {t('playground.tryIt')}
+                      {'Try it live'}
                     </CardTitle>
 
-                    <CardDescription className="mt-1">{t('playground.tryItHint')}</CardDescription>
+                    <CardDescription className="mt-1">{'Edit the array (JSON) and optional arguments, then run.'}</CardDescription>
                   </div>
 
                   <div className="flex items-center gap-2 rounded-lg border border-border/35 bg-muted/30 px-3 py-2">
                     <Switch id="auto-run" checked={autoRun} onCheckedChange={setAutoRun} />
 
                     <Label htmlFor="auto-run" className="text-xs font-normal cursor-pointer">
-                      {t('playground.autoRun')}
+                      {'Auto-run'}
                     </Label>
                   </div>
                 </div>
@@ -316,7 +309,7 @@ export function ObjectPlaygroundPage() {
 
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="object-input">{t('playground.objectInput')}</Label>
+                  <Label htmlFor="object-input">{'Input object (JSON)'}</Label>
 
                   <Textarea
                     id="object-input"
@@ -350,16 +343,16 @@ export function ObjectPlaygroundPage() {
                 <div className="flex flex-wrap items-center gap-2">
                   <Button type="button" onClick={run} className="gap-2">
                     <Play className="h-4 w-4" />
-                    {t('playground.run')}
+                    {'Run'}
                   </Button>
 
                   <Button type="button" variant="outline" onClick={resetInputs} className="gap-2">
                     <RotateCcw className="h-4 w-4" />
-                    {t('playground.reset')}
+                    {'Reset'}
                   </Button>
 
                   <span className="text-xs text-muted-foreground ml-auto hidden sm:inline">
-                    {t('playground.runShortcut')}
+                    {'Ctrl+Enter to run'}
                   </span>
                 </div>
               </CardContent>
@@ -374,7 +367,7 @@ export function ObjectPlaygroundPage() {
               <CardHeader className="pb-2">
                 <CardTitle className="text-base flex items-center gap-2">
                   <Terminal className="h-4 w-4 text-muted-foreground" />
-                  {t('playground.output')}
+                  {'Output'}
 
                   {runResult && (
                     <span className={cn('h-2 w-2 rounded-full', runResult.ok ? 'bg-emerald-500' : 'bg-destructive')} />
@@ -387,13 +380,13 @@ export function ObjectPlaygroundPage() {
                   <div className="flex flex-col items-center justify-center py-10 text-center text-muted-foreground border border-dashed border-border/40 rounded-lg bg-muted/15">
                     <Terminal className="h-9 w-9 mb-2 opacity-35" />
 
-                    <p className="text-sm max-w-xs">{t('playground.noOutputYet')}</p>
+                    <p className="text-sm max-w-xs">{'Run the code to see return values and array state here.'}</p>
                   </div>
                 ) : runResult.ok ? (
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between gap-2">
-                        <Label className="text-xs text-muted-foreground">{t('playground.result')}</Label>
+                        <Label className="text-xs text-muted-foreground">{'Return value'}</Label>
 
                         <Button
                           type="button"
@@ -404,7 +397,7 @@ export function ObjectPlaygroundPage() {
                         >
                           {copiedKey === 'result' ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
 
-                          {copiedKey === 'result' ? t('common.copied') : t('playground.copyResult')}
+                          {copiedKey === 'result' ? 'Copied' : 'Copy result'}
                         </Button>
                       </div>
 
@@ -419,7 +412,7 @@ export function ObjectPlaygroundPage() {
 
                     <div className="space-y-2">
                       <Label className="text-xs text-muted-foreground">
-                        {selectedMethod.mutates ? t('playground.objectAfter') : t('playground.objectUnchanged')}
+                        {selectedMethod.mutates ? 'Object after (mutated copy)' : 'Original object (unchanged)'}
                       </Label>
 
                       <ScrollArea className="max-h-[140px] rounded-lg border border-border/35 bg-muted/30">
@@ -434,7 +427,7 @@ export function ObjectPlaygroundPage() {
                     <AlertCircle className="h-5 w-5 shrink-0" />
 
                     <div>
-                      <p className="font-medium">{t('playground.runError')}</p>
+                      <p className="font-medium">{'Could not run'}</p>
 
                       <p className="text-xs mt-1 font-mono opacity-90">{runResult.error}</p>
                     </div>

@@ -1,7 +1,5 @@
 import type { TopicItem } from '@/data/topics';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { badgeToneClasses } from '../constants';
 import type { ViewMode } from '../types';
 
@@ -11,8 +9,7 @@ type LandingTopicBadgesProps = {
 };
 
 export function LandingTopicBadges({ items, viewMode }: LandingTopicBadgesProps) {
-  const { t } = useI18n();
-  const badgeLimit = viewMode === 'grid' ? 3 : 6;
+    const badgeLimit = viewMode === 'grid' ? 3 : 6;
   const badgeItems = items.slice(0, badgeLimit);
   const extraBadgeCount = Math.max(items.length - badgeLimit, 0);
   const isGrid = viewMode === 'grid';
@@ -37,7 +34,7 @@ export function LandingTopicBadges({ items, viewMode }: LandingTopicBadgesProps)
           )}
         >
           <span className="truncate">
-            <TranslatedText text={item.title} />
+            {item.title}
           </span>
         </span>
       ))}
@@ -48,7 +45,7 @@ export function LandingTopicBadges({ items, viewMode }: LandingTopicBadgesProps)
             isGrid ? 'shrink-0 px-1.5 py-0.5 text-[11px] leading-none' : 'px-2 py-0.5 text-xs'
           )}
         >
-          {t('landing.more', { count: extraBadgeCount })}
+          {`+${extraBadgeCount} more`}
         </span>
       )}
     </div>

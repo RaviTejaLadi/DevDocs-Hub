@@ -8,15 +8,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
-import { useTranslatedText } from '@/i18n/useTranslatedText';
 import { LEVEL_EMOJI, TOPIC_VISUALS, levelPillClass } from '../constants';
 import { QuestionBlock } from './QuestionBlock';
 import { useTopicDetailFilters } from '../hooks';
 
 export function TopicDetailPage() {
-  const { t } = useI18n();
-  const {
+    const {
     topic,
     allQuestions,
     filteredQuestions,
@@ -33,15 +30,14 @@ export function TopicDetailPage() {
     codingCount,
     theoryCount,
   } = useTopicDetailFilters();
-  const translatedTopicLabel = useTranslatedText(topic?.label ?? '');
-
+  
   if (!topic) {
     return (
       <div className="max-w-4xl mx-auto">
         <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to="/interview-questions" className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
-            {t('interview.backToInterviewQuestions')}
+            {'Back to Interview Questions'}
           </Link>
         </Button>
         <Card className="border-dashed">
@@ -49,7 +45,7 @@ export function TopicDetailPage() {
             <span className="text-4xl block" aria-hidden>
               😕
             </span>
-            <p className="text-muted-foreground">{t('interview.topicNotFound')}</p>
+            <p className="text-muted-foreground">{'Topic not found.'}</p>
           </CardContent>
         </Card>
       </div>
@@ -70,7 +66,7 @@ export function TopicDetailPage() {
       >
         <Link to="/interview-questions" className="inline-flex items-center gap-2">
           <ChevronLeft className="h-4 w-4" />
-          {t('interview.backToInterviewQuestions')}
+          {'Back to Interview Questions'}
         </Link>
       </Button>
 
@@ -108,10 +104,10 @@ export function TopicDetailPage() {
                   Topic practice
                 </div>
                 <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen leading-tight">
-                  {t('interview.topQuestions', { count: allQuestions.length, topic: translatedTopicLabel })}
+                  {`Top ${allQuestions.length} ${topic?.label ?? ''} Interview Questions`}
                 </CardTitle>
                 <CardDescription className="text-sm sm:text-base leading-relaxed">
-                  {t('interview.filterDescription')}
+                  {'Filter by level, question type, and search keyword to practice exactly what you need.'}
                 </CardDescription>
               </div>
             </div>
@@ -121,14 +117,14 @@ export function TopicDetailPage() {
                 className="h-8 px-3.5 border border-sky-500/25 bg-sky-500/10 text-sky-700 dark:text-sky-300"
               >
                 <Code2 className="h-3.5 w-3.5 mr-1.5" />
-                💻 {codingCount} {t('interview.coding')}
+                💻 {codingCount} {'Coding'}
               </Badge>
               <Badge
                 variant="secondary"
                 className="h-8 px-3.5 border border-indigo-500/25 bg-indigo-500/10 text-indigo-700 dark:text-indigo-300"
               >
                 <BookOpen className="h-3.5 w-3.5 mr-1.5" />
-                📖 {theoryCount} {t('interview.theory')}
+                📖 {theoryCount} {'Theory'}
               </Badge>
             </div>
           </div>
@@ -140,7 +136,7 @@ export function TopicDetailPage() {
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <SlidersHorizontal className="h-4 w-4 text-primary" />
             <span aria-hidden>🎛️</span>
-            {t('interview.filters')}
+            {'Filters'}
           </div>
 
           <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:pb-0 [scrollbar-width:thin]">
@@ -154,7 +150,7 @@ export function TopicDetailPage() {
                   : 'bg-muted/35 text-muted-foreground border-border/30 hover:bg-muted/65 hover:text-foreground'
               )}
             >
-              ✨ {t('interview.allLevels')}
+              ✨ {'All Levels'}
             </button>
             {LEVEL_ORDER.map((lvl) => (
               <button
@@ -178,20 +174,20 @@ export function TopicDetailPage() {
             <div className="flex items-center gap-2.5 rounded-xl border border-border/35 bg-muted/20 px-3 py-2">
               <Switch id="only-code" checked={onlyCodeChallenges} onCheckedChange={setOnlyCodeWithExclusion} />
               <label htmlFor="only-code" className="text-sm text-muted-foreground cursor-pointer select-none">
-                💻 {t('interview.onlyCoding')}
+                💻 {'Only Coding'}
               </label>
             </div>
             <div className="flex items-center gap-2.5 rounded-xl border border-border/35 bg-muted/20 px-3 py-2">
               <Switch id="only-theory" checked={onlyTheory} onCheckedChange={setOnlyTheoryWithExclusion} />
               <label htmlFor="only-theory" className="text-sm text-muted-foreground cursor-pointer select-none">
-                📖 {t('interview.onlyTheory')}
+                📖 {'Only Theory'}
               </label>
             </div>
             <div className="relative basis-full sm:basis-auto flex-1 min-w-0 sm:min-w-[220px] max-w-full sm:max-w-md sm:ml-auto">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
                 type="search"
-                placeholder={t('interview.searchQuestions')}
+                placeholder={'Search questions...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9 h-11 border-border/35 bg-background/85 focus-visible:ring-primary/30 rounded-xl"
@@ -206,7 +202,7 @@ export function TopicDetailPage() {
                 onClick={clearAllFilters}
               >
                 <X className="h-4 w-4 mr-1" />
-                {t('interview.clearFilters')}
+                {'Clear filters'}
               </Button>
             )}
           </div>
@@ -216,7 +212,7 @@ export function TopicDetailPage() {
       <div className="rounded-xl border border-border/35 bg-muted/20 px-4 py-3 space-y-2">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
           <p className="text-muted-foreground font-medium">
-            📊 {t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}
+            📊 {`Showing ${filteredQuestions.length} of ${allQuestions.length} questions`}
           </p>
           <p className="text-xs text-muted-foreground/80 tabular-nums">{matchPercent}% matched</p>
         </div>
@@ -228,7 +224,7 @@ export function TopicDetailPage() {
             aria-valuenow={filteredQuestions.length}
             aria-valuemin={0}
             aria-valuemax={allQuestions.length}
-            aria-label={t('interview.showing', { shown: filteredQuestions.length, total: allQuestions.length })}
+            aria-label={`Showing ${filteredQuestions.length} of ${allQuestions.length} questions`}
           />
         </div>
       </div>
@@ -240,10 +236,10 @@ export function TopicDetailPage() {
               <span className="text-4xl block" aria-hidden>
                 🎯
               </span>
-              <p className="text-muted-foreground">{t('interview.noQuestionsMatch')}</p>
+              <p className="text-muted-foreground">{'No questions match your current filters.'}</p>
               {hasAnyFilters && (
                 <Button variant="outline" size="sm" className="mt-2 rounded-xl" onClick={clearAllFilters}>
-                  {t('interview.resetFilters')}
+                  {'Reset filters'}
                 </Button>
               )}
             </CardContent>

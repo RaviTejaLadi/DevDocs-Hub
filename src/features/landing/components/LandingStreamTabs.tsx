@@ -5,8 +5,6 @@ import { STREAM_ICONS } from '@/assets/StreamIcons';
 import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useI18n } from '@/i18n/I18nProvider';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { getStreamEmoji } from '../constants';
 
 type LandingStreamTabsProps = {
@@ -17,8 +15,7 @@ type LandingStreamTabsProps = {
 };
 
 export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSelectStream }: LandingStreamTabsProps) {
-  const { t } = useI18n();
-  const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -74,7 +71,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
         variant="outline"
         size="icon"
         disabled={!canScrollLeft}
-        aria-label={t('landing.streamTabsScrollLeft')}
+        aria-label={'Scroll streams left'}
         onClick={() => scrollByDir(-1)}
         className={cn(
           'hidden shrink-0 self-center',
@@ -102,7 +99,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
         ) : null}
 
         <nav
-          aria-label={t('landing.streamTabs')}
+          aria-label={'Streams'}
           ref={scrollRef}
           onScroll={updateScrollAffordances}
           className={cn(
@@ -136,7 +133,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   </span>
                   {STREAM_ICONS[stream.id] ? <ColoredIcon size={20}>{STREAM_ICONS[stream.id]}</ColoredIcon> : null}
                   <span className="font-medium">
-                    <TranslatedText text={stream.title} />
+                    {stream.title}
                   </span>
                   <span
                     className={cn(
@@ -158,7 +155,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
         variant="outline"
         size="icon"
         disabled={!canScrollRight}
-        aria-label={t('landing.streamTabsScrollRight')}
+        aria-label={'Scroll streams right'}
         onClick={() => scrollByDir(1)}
         className={cn(
           'hidden shrink-0 self-center',

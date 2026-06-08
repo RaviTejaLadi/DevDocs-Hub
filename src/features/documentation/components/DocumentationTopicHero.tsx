@@ -1,6 +1,5 @@
 import { FileText } from 'lucide-react';
 import type { Topic } from '@/data/topics';
-import { TranslatedText } from '@/i18n/TranslatedText';
 import { docsHeroIconSurfaceClass, docsHeroSurfaceClass } from '@/constants/docsSidePanel';
 import { cn } from '@/lib/utils';
 
@@ -20,11 +19,11 @@ export function DocumentationTopicHero({ topic }: { topic: Topic }) {
       </div>
       <div className="min-w-0 space-y-1">
         <h1 className="text-lg font-semibold leading-tight text-foreground sm:text-xl">
-          <TranslatedText text={topic.title} />
+          {topic.title}
         </h1>
         {topic.description ? (
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <TranslatedText text={topic.description} />
+            {topic.description}
           </p>
         ) : null}
       </div>
