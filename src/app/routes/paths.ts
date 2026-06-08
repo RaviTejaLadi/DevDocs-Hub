@@ -4,6 +4,7 @@ export const ROUTE_PATHS = {
   docs: '/docs/:categoryId/:slug',
   terms: '/terms',
   interviewQuestions: '/interview-questions/:topicId?',
+  visualizations: '/visualizations/:visualizationId?',
   playground: '/playground/:playgroundId?',
   codeEditor: '/code-editor',
 } as const;
@@ -15,6 +16,9 @@ export const docsPath = (categoryId: string, slug: string) =>
 
 export const interviewQuestionsPath = (topicId?: string) =>
   topicId ? `/interview-questions/${encodeURIComponent(topicId)}` : '/interview-questions';
+
+export const visualizationPath = (visualizationId?: string) =>
+  visualizationId ? `/visualizations/${encodeURIComponent(visualizationId)}` : '/visualizations';
 
 export const playgroundPath = (playgroundId?: string) =>
   playgroundId ? `/playground/${encodeURIComponent(playgroundId)}` : '/playground';

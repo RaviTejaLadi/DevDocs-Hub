@@ -53,7 +53,112 @@ const en: TranslationMap = {
   'landing.browseStreams': 'Browse streams',
   'landing.searchTopics': 'Search topics...',
   'landing.interviewQuestionsByLevel': 'Interview Questions (by level)',
+  'landing.visualization': 'Visualization',
   'landing.playground': 'Playground',
+  'visualization.backToOverview': 'Back to overview',
+  'visualization.backToVisualizations': 'Back to visualizations',
+  'visualization.pageTitle': 'Visualization',
+  'visualization.pageDescription':
+    'Watch programming concepts come alive — step through loops, state changes, and output one frame at a time.',
+  'visualization.available': '{{count}} available',
+  'visualization.comingSoon': '{{count}} coming soon',
+  'visualization.total': '{{count}} total',
+  'visualization.searchVisualizations': 'Search visualizations',
+  'visualization.searchPlaceholder': 'Search by concept or topic...',
+  'visualization.showing': 'Showing {{shown}} of {{total}}',
+  'visualization.clearSearch': 'Clear search',
+  'visualization.soon': 'Soon',
+  'visualization.noMatch': 'No visualizations match your search.',
+  'visualization.allCategories': 'All categories',
+  'visualization.category.loops': 'Loops',
+  'visualization.category.loopsDescription':
+    'Control-flow loops that repeat code — see how conditions, counters, and loop bodies interact.',
+  'visualization.category.dataStructures': 'Data structures',
+  'visualization.category.dataStructuresDescription':
+    'How JavaScript walks and transforms arrays using different iteration patterns.',
+  'visualization.category.javascript': 'JavaScript',
+  'visualization.category.javascriptDescription': 'Core language mechanics explained with live step-by-step visuals.',
+  'visualization.explanation': 'Concept explanation',
+  'visualization.howItWorks': 'How it works',
+  'visualization.whenToUse': 'When to use it',
+  'visualization.keyTakeaway': 'Key takeaway',
+  'visualization.loopProgress': 'Loop progress',
+  'visualization.currentValue': 'Current value',
+  'visualization.mapBuilding': 'Building new array…',
+  'visualization.forEachReturnsUndefined': 'forEach always returns undefined',
+  'visualization.forLoopTitle': 'How a for loop works',
+  'visualization.forLoopDescription':
+    'Step through initialization, condition checks, body execution, and increment — the full lifecycle of a counted loop.',
+  'visualization.forLoop.overview':
+    'A for loop is the classic counted loop. You declare a counter, set a stop condition, and update the counter after each pass. It is ideal when you need an index or a fixed number of iterations.',
+  'visualization.forLoop.how1': 'The init clause (let i = 0) runs once before the loop starts.',
+  'visualization.forLoop.how2': 'The condition (i < length) is checked before every iteration — if false, the loop stops.',
+  'visualization.forLoop.how3': 'The body runs when the condition is true — here it reads fruits[i] by index.',
+  'visualization.forLoop.how4': 'The increment (i++) runs after the body, then control jumps back to the condition.',
+  'visualization.forLoop.whenToUse':
+    'Use a for loop when you need the index, want a specific number of iterations, or must loop backwards / skip items with continue.',
+  'visualization.forLoop.takeaway':
+    'Think: init → check → body → increment → check again. The condition gate is what prevents infinite loops.',
+  'visualization.whileLoopTitle': 'How a while loop works',
+  'visualization.whileLoopDescription':
+    'Unlike for, while only has a condition — watch how the check happens before every body execution.',
+  'visualization.whileLoop.overview':
+    'A while loop repeats as long as its condition stays true. There is no built-in counter in the syntax — you manage state inside the body, which makes while loops flexible but easier to get wrong.',
+  'visualization.whileLoop.how1': 'The condition is evaluated before each iteration — the body may run zero times.',
+  'visualization.whileLoop.how2': 'If the condition is true, the body executes.',
+  'visualization.whileLoop.how3': 'You must update the variables used in the condition, or the loop never ends.',
+  'visualization.whileLoop.how4': 'When the condition becomes false, execution continues after the loop block.',
+  'visualization.whileLoop.whenToUse':
+    'Use while when you do not know how many iterations you need — reading input, polling, or processing until a flag changes.',
+  'visualization.whileLoop.takeaway':
+    'while = "keep going while this is true." Always ensure something in the body moves the condition toward false.',
+  'visualization.arrayIterationTitle': 'Array iteration patterns',
+  'visualization.arrayIterationDescription':
+    'Same array, three approaches — switch between for…of, forEach, and map to compare behavior and return values.',
+  'visualization.arrayIteration.modeForOf': 'for…of',
+  'visualization.arrayIteration.modeForEach': 'forEach',
+  'visualization.arrayIteration.modeMap': 'map',
+  'visualization.arrayIteration.forOf.overview':
+    'for…of walks array values directly. You get clean readable syntax without managing an index, and it works with any iterable.',
+  'visualization.arrayIteration.forOf.how1': 'Each iteration binds the next value to score — no manual index variable.',
+  'visualization.arrayIteration.forOf.how2': 'The body can read or log the value; the original array stays unchanged.',
+  'visualization.arrayIteration.forOf.how3': 'You can break or continue out of the loop with standard control flow.',
+  'visualization.arrayIteration.forOf.whenToUse':
+    'Choose for…of when you only need values (not indices) and want the simplest readable loop.',
+  'visualization.arrayIteration.forOf.takeaway':
+    'for…of is for consuming values. It does not return a new array.',
+  'visualization.arrayIteration.forEach.overview':
+    'forEach is an array method that calls your function once per element. It expresses intent clearly but returns undefined and cannot be broken with break.',
+  'visualization.arrayIteration.forEach.how1': 'forEach passes each element to your callback as the first argument.',
+  'visualization.arrayIteration.forEach.how2': 'The callback runs in order from index 0 to the end.',
+  'visualization.arrayIteration.forEach.how3': 'The method itself returns undefined — use it for side effects like logging.',
+  'visualization.arrayIteration.forEach.whenToUse':
+    'Use forEach for side effects (logging, DOM updates) when you do not need to stop early or chain a new array.',
+  'visualization.arrayIteration.forEach.takeaway':
+    'forEach = "do something for each item." It is not for building transformed arrays.',
+  'visualization.arrayIteration.map.overview':
+    'map transforms every element and collects the results into a new array. The original array is never modified.',
+  'visualization.arrayIteration.map.how1': 'map calls your callback for each element in order.',
+  'visualization.arrayIteration.map.how2': 'Whatever you return from the callback is pushed into a new array.',
+  'visualization.arrayIteration.map.how3': 'After all elements are processed, the new array is returned.',
+  'visualization.arrayIteration.map.whenToUse':
+    'Use map when you need a new array derived from the old one — doubling numbers, extracting fields, formatting data.',
+  'visualization.arrayIteration.map.takeaway':
+    'map = transform + collect. Same length in, same length out (unless you filter inside, which is usually a separate step).',
+  'visualization.code': 'Code',
+  'visualization.state': 'Live state',
+  'visualization.condition': 'Condition',
+  'visualization.true': 'true',
+  'visualization.false': 'false',
+  'visualization.console': 'Console output',
+  'visualization.consoleEmpty': 'No output yet — step into the loop body to log values.',
+  'visualization.play': 'Play',
+  'visualization.pause': 'Pause',
+  'visualization.reset': 'Reset',
+  'visualization.previousStep': 'Previous step',
+  'visualization.nextStep': 'Next step',
+  'visualization.runAgain': 'Run again',
+  'visualization.stepOf': 'Step {{current}} of {{total}}',
   'nav.playground': 'Playground',
   'playground.backToOverview': 'Back to overview',
   'playground.backToPlaygrounds': 'Back to playgrounds',

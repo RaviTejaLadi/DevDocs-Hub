@@ -38,6 +38,7 @@ const LandingPage = () => {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
         onInterviewClick={() => navigate('/interview-questions')}
+        onVisualizationClick={() => navigate('/visualizations')}
       />
 
       {streams === null ? (

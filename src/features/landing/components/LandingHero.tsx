@@ -1,4 +1,4 @@
-import { Search, Grid3x3, List, HelpCircle } from 'lucide-react';
+import { Search, Grid3x3, List, HelpCircle, Eye } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ type LandingHeroProps = {
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
   onInterviewClick: () => void;
+  onVisualizationClick: () => void;
 };
 
 export function LandingHero({
@@ -19,6 +20,7 @@ export function LandingHero({
   viewMode,
   onViewModeChange,
   onInterviewClick,
+  onVisualizationClick,
 }: LandingHeroProps) {
   const { t } = useI18n();
 
@@ -72,7 +74,7 @@ export function LandingHero({
         </div>
       </section>
 
-      <div className="flex justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
         <Button
           variant="outline"
           className="h-9 gap-2 rounded-lg border-primary/25 bg-primary/5 px-4 text-sm hover:bg-primary/10 hover:border-primary/40 shadow-none"
@@ -80,6 +82,14 @@ export function LandingHero({
         >
           <HelpCircle className="h-4 w-4 shrink-0 text-primary" />
           {t('landing.interviewQuestionsByLevel')}
+        </Button>
+        <Button
+          variant="outline"
+          className="h-9 gap-2 rounded-lg border-emerald-500/25 bg-emerald-500/5 px-4 text-sm hover:border-emerald-500/40 hover:bg-emerald-500/10 shadow-none"
+          onClick={onVisualizationClick}
+        >
+          <Eye className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+          {t('landing.visualization')}
         </Button>
       </div>
     </header>

@@ -18,6 +18,7 @@ export const mainRoutes: readonly MainRouteDefinition[] = [
   { id: 'docs', path: ROUTE_PATHS.docs, Component: Pages.DocumentationPage },
   { id: 'terms', path: ROUTE_PATHS.terms, Component: Pages.TermsOfServicePage },
   { id: 'interview-questions', path: ROUTE_PATHS.interviewQuestions, Component: Pages.InterviewQuestionsPage },
+  { id: 'visualizations', path: ROUTE_PATHS.visualizations, Component: Pages.VisualizationPage },
   { id: 'playground', path: ROUTE_PATHS.playground, Component: Pages.PlaygroundPage },
   { id: 'code-editor', path: ROUTE_PATHS.codeEditor, Component: Pages.CodeEditorPage },
   { id: 'not-found', path: '*', Component: Pages.NotFoundPage },
