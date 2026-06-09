@@ -1,8 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Stream } from '@/data/topics';
-import { STREAM_ICONS } from '@/assets/StreamIcons';
-import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getStreamEmoji } from '../constants';
@@ -131,7 +129,6 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   <span className="text-base leading-none" aria-hidden>
                     {emoji}
                   </span>
-                  {STREAM_ICONS[stream.id] ? <ColoredIcon size={20}>{STREAM_ICONS[stream.id]}</ColoredIcon> : null}
                   <span className="font-medium">
                     {stream.title}
                   </span>
