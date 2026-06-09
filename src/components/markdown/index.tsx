@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo, type ReactElement } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ChevronLeft, ChevronRight, ListTree } from 'lucide-react';
@@ -10,70 +10,66 @@ import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useScrollViewport } from '@/context/scrollViewportContext';
 import { docsArticleSurfaceClass, docsPanelShadowClass } from '@/constants/docsSidePanel';
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-} from '@/components/ui/sidebar';
 import { buildMarkdownComponents } from './buildMarkdownComponents';
 import type { DocContent } from '@/types/docContent';
 import { isDocContentString } from '@/types/docContent';
 
 type Heading = { id: string; text: string; level: number; slideIndex?: number };
 
-type TocTreeNode = { heading: Heading; children: TocTreeNode[] };
-
-/** Nest flat headings into a tree by level (h2 under h1, h3 under h2, etc.). */
-function buildTocTree(headings: Heading[]): TocTreeNode[] {
-  const root: TocTreeNode[] = [];
-  const stack: { level: number; node: TocTreeNode }[] = [];
-
-  for (const heading of headings) {
-    const node: TocTreeNode = { heading, children: [] };
-
-    while (stack.length > 0 && stack[stack.length - 1]!.level >= heading.level) {
-      stack.pop();
-    }
-
-    if (stack.length === 0) {
-      root.push(node);
-    } else {
-      stack[stack.length - 1]!.node.children.push(node);
-    }
-
-    stack.push({ level: heading.level, node });
+/** Keep the TOC to main sections — not every h3/h4 on the page. */
+function selectTocHeadings(headings: Heading[], slideMode: boolean, slides: string[], scopePrefix: string): Heading[] {
+  if (slideMode) {
+    return slides.map((slide, slideIndex) => {
+      const inSlide = headings.filter((h) => h.slideIndex === slideIndex);
+      const anchor = inSlide.find((h) => h.level <= 2) ?? inSlide[0];
+      return {
+        id: anchor?.id ?? `${scopePrefix}s${slideIndex}-slide`,
+        text: extractSlideTitle(slide),
+        level: 1,
+        slideIndex,
+      };
+    });
   }
 
-  return root;
+  if (headings.length === 0) return [];
+
+  const h1s = headings.filter((h) => h.level === 1);
+  const h2s = headings.filter((h) => h.level === 2);
+
+  if (h1s.length > 1) {
+    const firstH1Index = headings.findIndex((h) => h.level === 1);
+    const nextH1Index = headings.findIndex((h, i) => i > firstH1Index && h.level === 1);
+    const introHasSubsections =
+      nextH1Index > firstH1Index + 1 &&
+      headings.slice(firstH1Index + 1, nextH1Index).some((h) => h.level >= 2);
+    return introHasSubsections ? h1s.slice(1) : h1s;
+  }
+
+  if (h2s.length > 0) return h2s;
+
+  return h1s.length > 0 ? [h1s[0]!] : [];
 }
 
-/** Flatten nested TOC nodes into sub-menu rows with depth padding. */
-function renderTocSubRows(
-  nodes: TocTreeNode[],
-  depth: number,
+function isTocItemActive(
+  tocHeading: Heading,
+  tocHeadings: Heading[],
+  allHeadings: Heading[],
   activeId: string,
-  onActivate: (heading: Heading) => void
-): ReactElement[] {
-  return nodes.flatMap(({ heading, children }) => {
-    const isActive = activeId === heading.id;
-    const row = (
-      <SidebarMenuSubItem key={heading.id}>
-        <SidebarMenuSubButton asChild isActive={isActive} size="sm">
-          <button type="button" style={{ paddingLeft: `${8 + depth * 10}px` }} onClick={() => onActivate(heading)}>
-            <span className="truncate">{heading.text}</span>
-          </button>
-        </SidebarMenuSubButton>
-      </SidebarMenuSubItem>
-    );
-    if (children.length === 0) return [row];
-    return [row, ...renderTocSubRows(children, depth + 1, activeId, onActivate)];
-  });
+  slideMode: boolean,
+  activeSlide: number
+): boolean {
+  if (slideMode) return tocHeading.slideIndex === activeSlide;
+  if (activeId === tocHeading.id) return true;
+
+  const activeIdx = allHeadings.findIndex((h) => h.id === activeId);
+  const sectionIdx = allHeadings.findIndex((h) => h.id === tocHeading.id);
+  if (activeIdx < 0 || sectionIdx < 0) return false;
+
+  const tocIndex = tocHeadings.findIndex((h) => h.id === tocHeading.id);
+  const nextSection = tocHeadings[tocIndex + 1];
+  const nextIdx = nextSection ? allHeadings.findIndex((h) => h.id === nextSection.id) : allHeadings.length;
+
+  return activeIdx >= sectionIdx && (nextIdx < 0 || activeIdx < nextIdx);
 }
 
 /** Caps slide card + xl TOC height; card uses max-height so short slides do not leave a tall empty pane. */
@@ -668,28 +664,28 @@ const MarkdownRenderInner = ({
 
   const articleSurface = cn('md-render', docsArticleSurfaceClass, 'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11');
 
-  const tocTree = useMemo(() => buildTocTree(headings), [headings]);
+  const tocHeadings = useMemo(
+    () => selectTocHeadings(headings, slideMode, slides, headingPrefix),
+    [headings, slideMode, slides, headingPrefix]
+  );
 
   const tocNav = (
-    <SidebarMenu>
-      {tocTree.map(({ heading, children }) => {
-        const isActive = activeId === heading.id;
+    <ul className="flex flex-col gap-0.5 py-0.5">
+      {tocHeadings.map((heading) => {
+        const isActive = isTocItemActive(heading, tocHeadings, headings, activeId, slideMode, activeSlide);
         return (
-          <SidebarMenuItem key={heading.id}>
-            <SidebarMenuButton asChild isActive={isActive}>
-              <button type="button" onClick={() => activateHeadingFromToc(heading)}>
-                <span className="truncate">{heading.text}</span>
-              </button>
-            </SidebarMenuButton>
-            {children.length > 0 ? (
-              <SidebarMenuSub className="border-border/35">
-                {renderTocSubRows(children, 1, activeId, activateHeadingFromToc)}
-              </SidebarMenuSub>
-            ) : null}
-          </SidebarMenuItem>
+          <li key={heading.id}>
+            <button
+              type="button"
+              className={cn('md-toc-item md-toc-item--depth-0 truncate', isActive && 'active')}
+              onClick={() => activateHeadingFromToc(heading)}
+            >
+              {heading.text}
+            </button>
+          </li>
         );
       })}
-    </SidebarMenu>
+    </ul>
   );
 
   return (
@@ -701,7 +697,7 @@ const MarkdownRenderInner = ({
           ? 'grid-cols-1'
           : tocCollapsed
           ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto]'
-          : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_18rem]',
+          : 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_15rem]',
         cardScrollMode && !hideToc ? 'lg:items-stretch' : !hideToc ? 'lg:items-start' : undefined
       )}
     >
@@ -860,11 +856,11 @@ const MarkdownRenderInner = ({
       </div>
 
       {/* TABLE OF CONTENTS */}
-      {!hideToc && headings.length > 0 && (
+      {!hideToc && tocHeadings.length > 0 && (
         <aside
           className={cn(
             'hidden min-h-0 shrink-0 lg:flex lg:flex-col',
-            tocCollapsed ? 'lg:w-11' : 'lg:w-72',
+            tocCollapsed ? 'lg:w-11' : 'lg:w-60',
             cardScrollMode && 'lg:self-stretch',
             fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-24',
             cardScrollMode
@@ -879,7 +875,7 @@ const MarkdownRenderInner = ({
             className={cn(
               docsArticleSurfaceClass,
               'flex min-h-0 flex-col',
-              tocCollapsed ? 'items-center p-2' : 'p-4',
+              tocCollapsed ? 'items-center p-2' : 'p-3.5',
               cardScrollMode && 'h-full overflow-hidden'
             )}
           >
@@ -901,13 +897,15 @@ const MarkdownRenderInner = ({
                 <TooltipContent side="left">{'Show on-this-page outline'}</TooltipContent>
               </Tooltip>
             ) : (
-              <SidebarGroup className="flex min-h-0 flex-1 flex-col py-0">
-                <SidebarGroupLabel className="mb-2 flex h-auto items-center justify-between gap-2 px-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  <span>{'On this page'}</span>
-                  <div className="flex shrink-0 items-center gap-1.5">
+              <div className="flex min-h-0 flex-1 flex-col">
+                <div className="mb-3 flex shrink-0 items-center justify-between gap-2 border-b border-border/40 pb-2.5">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    {'On this page'}
+                  </span>
+                  <div className="flex shrink-0 items-center gap-1">
                     <div
                       ref={progressRingRef}
-                      className="md-progress-ring"
+                      className="md-progress-ring scale-90"
                       data-label="0%"
                       style={{ ['--progress' as any]: 0 }}
                     />
@@ -917,29 +915,29 @@ const MarkdownRenderInner = ({
                           type="button"
                           variant="ghost"
                           size="icon"
-                          className="size-8 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                          className="size-7 shrink-0 rounded-md text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                           onClick={() => setTocCollapsed(true)}
                           aria-label={'Hide on-this-page outline'}
                           aria-expanded={true}
                         >
-                          <ChevronRight className="size-4" />
+                          <ChevronRight className="size-3.5" />
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent side="left">{'Hide on-this-page outline'}</TooltipContent>
                     </Tooltip>
                   </div>
-                </SidebarGroupLabel>
-                <SidebarGroupContent className="min-h-0 flex-1">
-                  <ScrollArea
-                    className={cn(
-                      'pr-1',
-                      cardScrollMode ? 'flex min-h-0 flex-1 flex-col overflow-hidden' : 'h-[calc(100vh-13rem)]'
-                    )}
-                  >
-                    <nav aria-label={'On this page'}>{tocNav}</nav>
-                  </ScrollArea>
-                </SidebarGroupContent>
-              </SidebarGroup>
+                </div>
+                <ScrollArea
+                  className={cn(
+                    'min-h-0 flex-1',
+                    cardScrollMode ? 'overflow-hidden' : 'max-h-[calc(100vh-13rem)]'
+                  )}
+                >
+                  <nav aria-label={'On this page'} className="pr-1">
+                    {tocNav}
+                  </nav>
+                </ScrollArea>
+              </div>
             )}
           </div>
         </aside>
