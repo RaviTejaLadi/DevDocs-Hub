@@ -20,7 +20,7 @@ export function QuestionBlock({
   index: number;
   levelPillClass: Record<ExperienceLevel, string>;
 }) {
-      const questionType = item.questionType ?? 'theory';
+  const questionType = item.questionType ?? 'theory';
   const questionTypeLabel = {
     coding: 'Coding',
     theory: 'Theory',

@@ -26,7 +26,7 @@ import {
 } from '@/app/routes';
 
 const App = () => {
-    const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
+  const mobileSidebarOpen = useAppLayoutStore((s) => s.mobileSidebarOpen);
   const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
   const docsSidebarCollapsed = useAppLayoutStore((s) => s.docsSidebarCollapsed);
   const setDocsSidebarCollapsed = useAppLayoutStore((s) => s.setDocsSidebarCollapsed);

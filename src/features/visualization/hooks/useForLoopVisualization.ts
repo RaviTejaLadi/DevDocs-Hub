@@ -68,7 +68,9 @@ function buildForLoopSteps(items: readonly string[]): ForLoopStep[] {
         logLine: null,
         consoleOutput: output,
         phase: 'increment',
-        caption: `After the body, the increment i++ runs. The counter moves from ${i} to ${i + 1}, then the condition is checked again.`,
+        caption: `After the body, the increment i++ runs. The counter moves from ${i} to ${
+          i + 1
+        }, then the condition is checked again.`,
       });
     }
   }
@@ -83,7 +85,8 @@ function buildForLoopSteps(items: readonly string[]): ForLoopStep[] {
     logLine: null,
     consoleOutput: finalOutput,
     phase: 'done',
-    caption: 'The condition is now false, so the loop stops. Execution continues on the next line after the closing brace.',
+    caption:
+      'The condition is now false, so the loop stops. Execution continues on the next line after the closing brace.',
   });
 
   return steps;

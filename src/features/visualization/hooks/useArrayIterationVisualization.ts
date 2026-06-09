@@ -16,24 +16,14 @@ export type ArrayIterationStep = {
 };
 
 const CODE_BY_MODE: Record<IterationMode, readonly string[]> = {
-  'for-of': [
-    'const scores = [10, 25, 18];',
-    'for (const score of scores) {',
-    '  console.log(score);',
-    '}',
-  ],
-  forEach: [
-    'const scores = [10, 25, 18];',
-    'scores.forEach((score) => {',
-    '  console.log(score);',
-    '});',
-  ],
+  'for-of': ['const scores = [10, 25, 18];', 'for (const score of scores) {', '  console.log(score);', '}'],
+  forEach: ['const scores = [10, 25, 18];', 'scores.forEach((score) => {', '  console.log(score);', '});'],
   map: [
     'const scores = [10, 25, 18];',
     'const doubled = scores.map((score) => {',
     '  return score * 2;',
     '});',
-    "console.log(doubled);",
+    'console.log(doubled);',
   ],
 };
 

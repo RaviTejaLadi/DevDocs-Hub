@@ -343,16 +343,13 @@ const MarkdownRenderInner = ({
   const scrollContainerRef = useRef<HTMLElement | null>(null);
   const progressRingRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
-    const isDarkTheme = theme === 'dark';
+  const isDarkTheme = theme === 'dark';
   const isStringContent = isDocContentString(content);
-    const headingPrefix = scopePrefixFromTopicId(headingIdScope);
+  const headingPrefix = scopePrefixFromTopicId(headingIdScope);
   const slideIdPrefix = useMemo(() => `${headingPrefix}s`, [headingPrefix]);
   const [pendingScrollHeadingId, setPendingScrollHeadingId] = useState<string | null>(null);
   const viewportScrollRootRef = useScrollViewport();
-  const slides = useMemo(
-    () => (isStringContent ? splitMarkdownIntoSlides(content) : ['']),
-    [isStringContent, content]
-  );
+  const slides = useMemo(() => (isStringContent ? splitMarkdownIntoSlides(content) : ['']), [isStringContent, content]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [tocCollapsed, setTocCollapsed] = useState(false);
   const endBumpLockRef = useRef(false);
@@ -851,7 +848,11 @@ const MarkdownRenderInner = ({
           ) : (
             <article className={cn('flex-1 min-w-0 mx-auto w-full', articleSurface)}>
               <div className="relative z-1">
-                <DocBodyRenderer content={content} markdownBody={isStringContent ? content : ''} components={singleDocComponents} />
+                <DocBodyRenderer
+                  content={content}
+                  markdownBody={isStringContent ? content : ''}
+                  components={singleDocComponents}
+                />
               </div>
             </article>
           )}

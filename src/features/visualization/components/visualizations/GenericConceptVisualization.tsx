@@ -44,7 +44,8 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
   const chainItems = parseArrowList(getState(step, 'chain') ?? getState(step, 'head') ?? '');
   const mapEntriesValue = getState(step, 'entries') ?? '';
   const callStackItems = parseBracketList(getState(step, 'stack') ?? '');
-  const currentValue = getState(step, 'score') ?? getState(step, 'key') ?? getState(step, 'pair') ?? getState(step, 'attempts');
+  const currentValue =
+    getState(step, 'score') ?? getState(step, 'key') ?? getState(step, 'pair') ?? getState(step, 'attempts');
   const closureState = getState(step, 'closure state') ?? getState(step, 'captured n');
   const asyncState = getState(step, 'state') ?? getState(step, 'promise');
 
@@ -150,7 +151,10 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
                       .map((entry) => entry.trim())
                       .filter(Boolean)
                       .map((entry) => (
-                        <div key={entry} className="rounded-md border border-border/40 bg-card/70 px-3 py-1.5 font-mono text-sm">
+                        <div
+                          key={entry}
+                          className="rounded-md border border-border/40 bg-card/70 px-3 py-1.5 font-mono text-sm"
+                        >
                           {entry}
                         </div>
                       ))
@@ -244,7 +248,10 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
                 </div>
               )}
 
-              {(topicId === 'do-while' || topicId === 'for-of-loop' || topicId === 'for-in-loop' || topicId === 'nested-loops') &&
+              {(topicId === 'do-while' ||
+                topicId === 'for-of-loop' ||
+                topicId === 'for-in-loop' ||
+                topicId === 'nested-loops') &&
                 currentValue && (
                   <div className="rounded-md border border-emerald-500/35 bg-emerald-500/10 px-3 py-2 font-mono text-sm text-emerald-700 dark:text-emerald-300">
                     Current: {currentValue}

@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 import { useDocumentationPage } from '../hooks';
 
 const DocumentationPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     categoryId,
     topic,
@@ -54,7 +54,7 @@ const DocumentationPage = () => {
               📚
             </span>
             <h2 className="text-2xl font-bold text-foreground">{'Page Not Found'}</h2>
-            <p className="text-muted-foreground">{'This topic doesn\'t exist or couldn\'t be found.'}</p>
+            <p className="text-muted-foreground">{"This topic doesn't exist or couldn't be found."}</p>
             <Button onClick={() => navigate('/')} className="w-full rounded-xl sm:w-auto">
               <Home className="mr-2 h-4 w-4" />
               {'Back to Home'}
@@ -91,9 +91,7 @@ const DocumentationPage = () => {
               state={DOCS_NAV_RESET_SCROLL}
               className={cn('group flex min-h-16 flex-col justify-center px-4 py-3', docsPageNavLinkClass)}
             >
-              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                {'Previous'}
-              </span>
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{'Previous'}</span>
               <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
                 <ChevronLeft className="size-4 shrink-0" aria-hidden />
                 {prevArticle.title}
@@ -111,9 +109,7 @@ const DocumentationPage = () => {
                 docsPageNavLinkClass
               )}
             >
-              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                {'Next'}
-              </span>
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{'Next'}</span>
               <span className="mt-1 flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary">
                 {nextArticle.title}
                 <ChevronRight className="size-4 shrink-0" aria-hidden />

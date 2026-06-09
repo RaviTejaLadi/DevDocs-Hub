@@ -64,7 +64,7 @@ const SidebarContent = ({
   closeSheet?: () => void;
   showCollapseControl?: boolean;
 }) => {
-    const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
+  const { categoryId: currentTopicId, slug: activeSlug } = useDocsRouteParams();
   const [topicsIndex, setTopicsIndex] = useState<Topic[] | null>(null);
 
   useEffect(() => {
@@ -137,10 +137,7 @@ const SidebarContent = ({
   );
 
   const renderExpandAction = (itemId: string, isExpanded: boolean) => (
-    <SidebarMenuAction
-      onClick={(e) => toggleExpand(e, itemId)}
-      aria-label={isExpanded ? 'Collapse' : 'Expand'}
-    >
+    <SidebarMenuAction onClick={(e) => toggleExpand(e, itemId)} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
       <ChevronRight className={cn('size-3.5 transition-transform duration-200', isExpanded && 'rotate-90')} />
     </SidebarMenuAction>
   );
@@ -179,9 +176,7 @@ const SidebarContent = ({
                 className="w-full min-w-0 text-left"
                 onClick={() => topic && handleNavigate(topic.id, item.id)}
               >
-                <span className="block w-full truncate">
-                  {item.title}
-                </span>
+                <span className="block w-full truncate">{item.title}</span>
               </button>
             </SidebarMenuSubButton>
           </SidebarMenuSubItem>
@@ -202,9 +197,7 @@ const SidebarContent = ({
               className="w-full min-w-0 text-left"
               onClick={() => topic && handleNavigate(topic.id, item.id)}
             >
-              <span className="block w-full truncate">
-                {item.title}
-              </span>
+              <span className="block w-full truncate">{item.title}</span>
             </button>
           </SidebarMenuSubButton>
           {renderSubExpandButton(item.id, isExpanded)}
@@ -238,9 +231,7 @@ const SidebarContent = ({
                 className="w-full min-w-0 text-left"
                 onClick={() => topic && handleNavigate(topic.id, item.id)}
               >
-                <span className="block w-full truncate">
-                  {item.title}
-                </span>
+                <span className="block w-full truncate">{item.title}</span>
               </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -261,9 +252,7 @@ const SidebarContent = ({
               className="w-full min-w-0 text-left"
               onClick={() => topic && handleNavigate(topic.id, item.id)}
             >
-              <span className="block w-full truncate">
-                {item.title}
-              </span>
+              <span className="block w-full truncate">{item.title}</span>
             </button>
           </SidebarMenuButton>
           {renderExpandAction(item.id, isExpanded)}
@@ -306,9 +295,7 @@ const SidebarContent = ({
                   <span className="flex size-6 shrink-0 items-center justify-center rounded-md border border-sidebar-border bg-background text-[11px] font-bold tabular-nums">
                     {sectionIndexLabel(index)}
                   </span>
-                  <span className="min-w-0 flex-1 truncate">
-                    {item.title}
-                  </span>
+                  <span className="min-w-0 flex-1 truncate">{item.title}</span>
                 </button>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -340,9 +327,7 @@ const SidebarContent = ({
             <span className="flex size-6 shrink-0 items-center justify-center rounded-md border border-sidebar-border bg-background text-[11px] font-bold tabular-nums">
               {sectionIndexLabel(index)}
             </span>
-            <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-snug">
-              {item.title}
-            </span>
+            <span className="min-w-0 flex-1 truncate text-sm font-semibold leading-snug">{item.title}</span>
           </button>
           {lessonCount > 0 ? (
             <SidebarMenuBadge className="static right-auto bg-background/80 text-xs">{lessonCount}</SidebarMenuBadge>
@@ -431,9 +416,7 @@ const SidebarContent = ({
                         className="w-full min-w-0 text-left"
                         onClick={() => handleNavigate(topic.id, item.id)}
                       >
-                        <span className="block w-full truncate">
-                          {item.title}
-                        </span>
+                        <span className="block w-full truncate">{item.title}</span>
                       </button>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

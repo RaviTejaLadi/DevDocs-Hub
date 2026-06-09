@@ -13,7 +13,7 @@ import { QuestionBlock } from './QuestionBlock';
 import { useTopicDetailFilters } from '../hooks';
 
 export function TopicDetailPage() {
-    const {
+  const {
     topic,
     allQuestions,
     filteredQuestions,
@@ -30,7 +30,7 @@ export function TopicDetailPage() {
     codingCount,
     theoryCount,
   } = useTopicDetailFilters();
-  
+
   if (!topic) {
     return (
       <div className="max-w-4xl mx-auto">

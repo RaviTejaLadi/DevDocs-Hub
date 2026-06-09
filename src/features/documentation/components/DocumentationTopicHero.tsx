@@ -18,13 +18,9 @@ export function DocumentationTopicHero({ topic }: { topic: Topic }) {
         {iconEl}
       </div>
       <div className="min-w-0 space-y-1">
-        <h1 className="text-lg font-semibold leading-tight text-foreground sm:text-xl">
-          {topic.title}
-        </h1>
+        <h1 className="text-lg font-semibold leading-tight text-foreground sm:text-xl">{topic.title}</h1>
         {topic.description ? (
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {topic.description}
-          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
         ) : null}
       </div>
     </div>

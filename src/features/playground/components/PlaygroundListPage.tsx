@@ -9,7 +9,7 @@ import { playgroundPath } from '@/app/routes/paths';
 import { usePlaygroundListFilter } from '../hooks';
 
 export function PlaygroundListPage() {
-    const {
+  const {
     playgrounds,
     searchQuery,
     setSearchQuery,
@@ -38,10 +38,12 @@ export function PlaygroundListPage() {
                 <FlaskConical className="h-6 w-6 text-violet-500" />
               </div>
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">
-                  {'Playground'}
-                </h1>
-                <p className="text-muted-foreground mt-1 max-w-2xl">{'Hands-on sandboxes to learn APIs by doing — run code, see results, and build intuition faster than reading alone.'}</p>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">{'Playground'}</h1>
+                <p className="text-muted-foreground mt-1 max-w-2xl">
+                  {
+                    'Hands-on sandboxes to learn APIs by doing — run code, see results, and build intuition faster than reading alone.'
+                  }
+                </p>
               </div>
             </div>
           </div>
@@ -66,9 +68,7 @@ export function PlaygroundListPage() {
               <Search className="h-4 w-4 text-violet-500" />
               {'Search playgrounds'}
             </div>
-            <p className="text-xs text-muted-foreground">
-              {`Showing ${playgrounds.length} of ${totalCount}`}
-            </p>
+            <p className="text-xs text-muted-foreground">{`Showing ${playgrounds.length} of ${totalCount}`}</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <div className="relative min-w-0 flex-1">

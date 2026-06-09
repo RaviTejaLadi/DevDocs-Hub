@@ -12,7 +12,6 @@ type LandingTopicCardListProps = {
 };
 
 export function LandingTopicCardList({ topic, color }: LandingTopicCardListProps) {
-  
   return (
     <>
       <div className="relative flex shrink-0 items-center gap-3">

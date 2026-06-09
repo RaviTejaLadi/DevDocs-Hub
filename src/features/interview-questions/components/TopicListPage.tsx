@@ -26,7 +26,7 @@ function StatCard({ emoji, label, value }: { emoji: string; label: string; value
 }
 
 export function TopicListPage() {
-    const {
+  const {
     categories,
     topicSearchQuery,
     setTopicSearchQuery,
@@ -86,7 +86,9 @@ export function TopicListPage() {
                     {'Interview Questions'}
                   </h1>
                   <p className="text-muted-foreground mt-2 text-sm sm:text-base leading-relaxed">
-                    {'Curated topic-wise questions with concise answers — practice faster, revise smarter, and walk into interviews with confidence.'}
+                    {
+                      'Curated topic-wise questions with concise answers — practice faster, revise smarter, and walk into interviews with confidence.'
+                    }
                   </p>
                 </div>
               </div>
@@ -178,9 +180,7 @@ export function TopicListPage() {
                     >
                       {catVisual.emoji}
                     </span>
-                    <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                      {category}
-                    </h2>
+                    <h2 className="text-lg sm:text-xl font-semibold text-foreground">{category}</h2>
                   </div>
                   <Badge variant="secondary" className="h-7 px-3 border border-border/35 bg-secondary/65">
                     <Layers className="h-3.5 w-3.5 mr-1 opacity-70" />

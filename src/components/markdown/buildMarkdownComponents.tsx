@@ -309,11 +309,11 @@ export function buildMarkdownComponents({
               >
                 {copiedKey === codeKey ? (
                   <>
-                          <Check className="h-3 w-3" /> Copied
+                    <Check className="h-3 w-3" /> Copied
                   </>
                 ) : (
                   <>
-                          <Copy className="h-3 w-3" /> Copy
+                    <Copy className="h-3 w-3" /> Copy
                   </>
                 )}
               </Button>

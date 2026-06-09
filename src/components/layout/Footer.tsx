@@ -3,7 +3,7 @@ import { Github, FileText } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 
 const Footer = () => {
-    const FOOTER_LINKS = [
+  const FOOTER_LINKS = [
     { to: '/', label: 'Overview' },
     { to: '/terms', label: 'Terms' },
   ];
@@ -42,7 +42,8 @@ const Footer = () => {
         </div>
 
         <p className="mt-6 pt-6 border-t border-border/40 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-          © {new Date().getFullYear()} ReviseStack. {'Study topics across multiple streams — simplified notes for quick revision whenever you need them.'}
+          © {new Date().getFullYear()} ReviseStack.{' '}
+          {'Study topics across multiple streams — simplified notes for quick revision whenever you need them.'}
         </p>
       </div>
     </footer>

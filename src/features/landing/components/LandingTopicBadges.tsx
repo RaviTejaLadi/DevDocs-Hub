@@ -9,7 +9,7 @@ type LandingTopicBadgesProps = {
 };
 
 export function LandingTopicBadges({ items, viewMode }: LandingTopicBadgesProps) {
-    const badgeLimit = viewMode === 'grid' ? 3 : 6;
+  const badgeLimit = viewMode === 'grid' ? 3 : 6;
   const badgeItems = items.slice(0, badgeLimit);
   const extraBadgeCount = Math.max(items.length - badgeLimit, 0);
   const isGrid = viewMode === 'grid';
@@ -33,9 +33,7 @@ export function LandingTopicBadges({ items, viewMode }: LandingTopicBadgesProps)
             badgeToneClasses[badgeIndex % badgeToneClasses.length]
           )}
         >
-          <span className="truncate">
-            {item.title}
-          </span>
+          <span className="truncate">{item.title}</span>
         </span>
       ))}
       {extraBadgeCount > 0 && (

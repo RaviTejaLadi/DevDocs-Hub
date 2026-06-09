@@ -13,7 +13,7 @@ type LandingStreamTabsProps = {
 };
 
 export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSelectStream }: LandingStreamTabsProps) {
-    const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -129,9 +129,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   <span className="text-base leading-none" aria-hidden>
                     {emoji}
                   </span>
-                  <span className="font-medium">
-                    {stream.title}
-                  </span>
+                  <span className="font-medium">{stream.title}</span>
                   <span
                     className={cn(
                       'ml-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums',

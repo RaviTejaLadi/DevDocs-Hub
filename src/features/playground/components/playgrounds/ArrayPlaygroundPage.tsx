@@ -45,7 +45,7 @@ const CATEGORY_TOOLTIPS = {
 } as const;
 
 export function ArrayPlaygroundPage() {
-    const [mobileMethodsOpen, setMobileMethodsOpen] = useState(false);
+  const [mobileMethodsOpen, setMobileMethodsOpen] = useState(false);
 
   const {
     selectedMethod,
@@ -113,7 +113,11 @@ export function ArrayPlaygroundPage() {
               </div>
               <div className="min-w-0">
                 <h1 className="text-xl sm:text-2xl font-bold tracking-tight">{'JavaScript Array Methods'}</h1>
-                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">{'Pick a method, read the signature, then run it on your own input — see return values and array changes instantly.'}</p>
+                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">
+                  {
+                    'Pick a method, read the signature, then run it on your own input — see return values and array changes instantly.'
+                  }
+                </p>
               </div>
             </div>
           </div>
@@ -210,7 +214,9 @@ export function ArrayPlaygroundPage() {
                       </Badge>
                     </TooltipTrigger>
                     <TooltipContent>
-                      {selectedMethod.mutates ? 'This method changes the array in place.' : 'This method does not change the original array.'}
+                      {selectedMethod.mutates
+                        ? 'This method changes the array in place.'
+                        : 'This method does not change the original array.'}
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -231,9 +237,7 @@ export function ArrayPlaygroundPage() {
                       {ARRAY_METHOD_CATEGORIES[selectedMethod.category].label}
                     </Badge>
                   </TooltipTrigger>
-                  <TooltipContent className="max-w-xs">
-                    {CATEGORY_TOOLTIPS[selectedMethod.category]}
-                  </TooltipContent>
+                  <TooltipContent className="max-w-xs">{CATEGORY_TOOLTIPS[selectedMethod.category]}</TooltipContent>
                 </Tooltip>
               </div>
             </CardHeader>
@@ -272,7 +276,9 @@ export function ArrayPlaygroundPage() {
                       <Play className="h-4 w-4 text-violet-500" />
                       {'Try it live'}
                     </CardTitle>
-                    <CardDescription className="mt-1">{'Edit the array (JSON) and optional arguments, then run.'}</CardDescription>
+                    <CardDescription className="mt-1">
+                      {'Edit the array (JSON) and optional arguments, then run.'}
+                    </CardDescription>
                   </div>
                   <div className="flex items-center gap-2 rounded-lg border border-border/35 bg-muted/30 px-3 py-2">
                     <Switch id="auto-run" checked={autoRun} onCheckedChange={setAutoRun} />
@@ -330,9 +336,7 @@ export function ArrayPlaygroundPage() {
                     <RotateCcw className="h-4 w-4" />
                     {'Reset'}
                   </Button>
-                  <span className="text-xs text-muted-foreground ml-auto hidden sm:inline">
-                    {'Ctrl+Enter to run'}
-                  </span>
+                  <span className="text-xs text-muted-foreground ml-auto hidden sm:inline">{'Ctrl+Enter to run'}</span>
                 </div>
               </CardContent>
             </Card>

@@ -35,7 +35,7 @@ export function LandingTopicsPanel({
   filteredTopicsCount,
   hasSearch,
 }: LandingTopicsPanelProps) {
-    const matchPercent = totalTopicsInStream ? Math.round((filteredTopicsCount / totalTopicsInStream) * 100) : 0;
+  const matchPercent = totalTopicsInStream ? Math.round((filteredTopicsCount / totalTopicsInStream) * 100) : 0;
   const streamEmoji = activeStream ? getStreamEmoji(activeStream.id) : '📖';
 
   return (
@@ -78,13 +78,9 @@ export function LandingTopicsPanel({
               {streamEmoji}
             </span>
             <div className="min-w-0 space-y-1">
-              <h2 className="text-base sm:text-lg font-semibold text-foreground">
-                {activeStream.title}
-              </h2>
+              <h2 className="text-base sm:text-lg font-semibold text-foreground">{activeStream.title}</h2>
               {activeStream.description && (
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {activeStream.description}
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{activeStream.description}</p>
               )}
             </div>
           </div>

@@ -7,7 +7,6 @@ type VisualizationCodePanelProps = {
 };
 
 export function VisualizationCodePanel({ lines, activeLine }: VisualizationCodePanelProps) {
-  
   return (
     <Card className="border-border/40 shadow-none">
       <CardHeader className="pb-3">

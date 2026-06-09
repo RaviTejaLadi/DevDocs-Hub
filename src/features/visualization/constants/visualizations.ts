@@ -84,8 +84,7 @@ export const VISUALIZATIONS: VisualizationMeta[] = [
   {
     id: 'stack',
     label: 'Stack (LIFO)',
-    description:
-      'Push and pop from the top — visualize Last-In-First-Out with a call history or plate-stack analogy.',
+    description: 'Push and pop from the top — visualize Last-In-First-Out with a call history or plate-stack analogy.',
     category: 'data-structures',
     icon: Box,
   },
@@ -100,16 +99,14 @@ export const VISUALIZATIONS: VisualizationMeta[] = [
   {
     id: 'linked-list',
     label: 'Linked List',
-    description:
-      'Follow node pointers from head to tail — insert, traverse, and remove without contiguous memory.',
+    description: 'Follow node pointers from head to tail — insert, traverse, and remove without contiguous memory.',
     category: 'data-structures',
     icon: Unlink,
   },
   {
     id: 'hash-map',
     label: 'Hash Map',
-    description:
-      'Map keys to values with O(1) lookups — watch hashing, collisions, and how objects store properties.',
+    description: 'Map keys to values with O(1) lookups — watch hashing, collisions, and how objects store properties.',
     category: 'data-structures',
     icon: Binary,
   },

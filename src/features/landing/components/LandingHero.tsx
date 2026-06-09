@@ -19,9 +19,8 @@ export function LandingHero({
   viewMode,
   onViewModeChange,
   onInterviewClick,
-  // onVisualizationClick,
-}: LandingHeroProps) {
-  
+}: // onVisualizationClick,
+LandingHeroProps) {
   return (
     <header className="min-w-0 space-y-3 pt-2 sm:pt-3 pb-4 sm:pb-5">
       <section className="rounded-xl border border-border/45 bg-card/45 text-center shadow-none">
@@ -37,7 +36,9 @@ export function LandingHero({
           </h1>
 
           <p className="text-muted-foreground text-sm max-w-xl mx-auto leading-relaxed wrap-break-word">
-            {'Browse organized topics by stream — from computer science and software to engineering, sciences, and beyond. Clear explanations for quick revision before exams, interviews, or whenever you need a refresher.'}
+            {
+              'Browse organized topics by stream — from computer science and software to engineering, sciences, and beyond. Clear explanations for quick revision before exams, interviews, or whenever you need a refresher.'
+            }
           </p>
 
           <div className="relative mx-auto w-full max-w-2xl min-w-0">

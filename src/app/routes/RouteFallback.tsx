@@ -1,7 +1,6 @@
 import { Loader2 } from 'lucide-react';
 
 const RouteFallback = () => {
-  
   return (
     <div
       className="flex min-h-[50vh] items-center justify-center gap-2.5 text-sm text-muted-foreground"

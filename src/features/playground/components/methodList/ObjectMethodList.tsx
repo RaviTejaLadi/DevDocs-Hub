@@ -44,7 +44,6 @@ export function ObjectMethodList({
   className,
   onSelectAndClose,
 }: ObjectMethodListProps) {
-  
   const handleSelect = (id: string) => {
     onSelect(id);
 

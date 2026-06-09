@@ -29,18 +29,21 @@ const FEATURES = [
 ] as const;
 
 export default function FeaturesSection() {
-    const featureLabels = {
+  const featureLabels = {
     'fast-learning': {
       title: 'Quick revision',
-      description: 'Short, readable explanations so you can brush up fast — before exams, interviews, labs, or deeper study.',
+      description:
+        'Short, readable explanations so you can brush up fast — before exams, interviews, labs, or deeper study.',
     },
     'code-examples': {
       title: 'Code & examples',
-      description: 'Where a topic includes code or formulas, you get concrete examples you can copy, adapt, or compare against your notes.',
+      description:
+        'Where a topic includes code or formulas, you get concrete examples you can copy, adapt, or compare against your notes.',
     },
     comprehensive: {
       title: 'Many streams, one place',
-      description: 'Switch between streams — development, engineering, basic sciences, and more — and grow the library over time without juggling dozens of bookmarks.',
+      description:
+        'Switch between streams — development, engineering, basic sciences, and more — and grow the library over time without juggling dozens of bookmarks.',
     },
   } as const;
 

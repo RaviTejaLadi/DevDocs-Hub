@@ -63,7 +63,7 @@ export function DocsTopicBrowserSheet({
   onCollapseAllCategories,
   onSelectTopic,
 }: DocsTopicBrowserSheetProps) {
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
   const activeRowRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -140,9 +140,7 @@ export function DocsTopicBrowserSheet({
           onClick={() => onSelectTopic(jumpItem, topic.id)}
         >
           <span className="min-w-0 flex-1 text-left">
-            <span className="block truncate text-[13px] leading-snug">
-              {topic.title}
-            </span>
+            <span className="block truncate text-[13px] leading-snug">{topic.title}</span>
             {options?.meta ? (
               <span className="block truncate text-[10px] font-normal leading-tight text-muted-foreground">
                 {options.meta}

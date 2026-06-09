@@ -66,7 +66,7 @@ function VisualizationCard({
 }
 
 export function VisualizationListPage() {
-    const {
+  const {
     visualizations,
     groupedByCategory,
     searchQuery,
@@ -101,10 +101,12 @@ export function VisualizationListPage() {
                 <Eye className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl">
-                  {'Visualization'}
-                </h1>
-                <p className="mt-1 max-w-2xl text-muted-foreground">{'Watch programming concepts come alive — step through loops, state changes, and output one frame at a time.'}</p>
+                <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl">{'Visualization'}</h1>
+                <p className="mt-1 max-w-2xl text-muted-foreground">
+                  {
+                    'Watch programming concepts come alive — step through loops, state changes, and output one frame at a time.'
+                  }
+                </p>
               </div>
             </div>
           </div>
@@ -129,9 +131,7 @@ export function VisualizationListPage() {
               <Search className="h-4 w-4 text-emerald-500" />
               {'Search visualizations'}
             </div>
-            <p className="text-xs text-muted-foreground">
-              {`Showing ${visualizations.length} of ${totalCount}`}
-            </p>
+            <p className="text-xs text-muted-foreground">{`Showing ${visualizations.length} of ${totalCount}`}</p>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -150,10 +150,7 @@ export function VisualizationListPage() {
                 type="button"
                 size="sm"
                 variant={categoryFilter === category.id ? 'default' : 'outline'}
-                className={cn(
-                  'rounded-lg',
-                  categoryFilter === category.id && 'bg-emerald-600 hover:bg-emerald-600/90'
-                )}
+                className={cn('rounded-lg', categoryFilter === category.id && 'bg-emerald-600 hover:bg-emerald-600/90')}
                 onClick={() => setCategoryFilter(category.id)}
               >
                 {category.label}
@@ -192,11 +189,7 @@ export function VisualizationListPage() {
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {items.map((visualization) => (
-                  <VisualizationCard
-                    key={visualization.id}
-                    visualization={visualization}
-                    soonLabel={'Soon'}
-                  />
+                  <VisualizationCard key={visualization.id} visualization={visualization} soonLabel={'Soon'} />
                 ))}
               </div>
             </section>
@@ -205,11 +198,7 @@ export function VisualizationListPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {visualizations.map((visualization) => (
-            <VisualizationCard
-              key={visualization.id}
-              visualization={visualization}
-              soonLabel={'Soon'}
-            />
+            <VisualizationCard key={visualization.id} visualization={visualization} soonLabel={'Soon'} />
           ))}
         </div>
       )}

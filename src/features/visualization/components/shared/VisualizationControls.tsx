@@ -20,7 +20,6 @@ export function VisualizationControls({
   onTogglePlay,
   onStepForward,
 }: VisualizationControlsProps) {
-  
   return (
     <div className="flex flex-wrap items-center justify-center gap-2 rounded-xl border border-border/35 bg-card/60 p-3">
       <Button type="button" variant="outline" size="icon" onClick={onReset} aria-label={'Reset'}>

@@ -14,8 +14,8 @@ type CodeComponentProps = ClassAttributes<HTMLElement> & HTMLAttributes<HTMLElem
 export function AnswerMarkdown({ content, className }: { content: string; className?: string }) {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const { theme } = useTheme();
-    const isDarkTheme = theme === 'dark';
-  
+  const isDarkTheme = theme === 'dark';
+
   const handleCopy = (key: string, text: string) => {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);

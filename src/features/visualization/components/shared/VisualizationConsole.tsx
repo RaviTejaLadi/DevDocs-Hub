@@ -8,7 +8,6 @@ type VisualizationConsoleProps = {
 };
 
 export function VisualizationConsole({ output, caption, extraLines = [] }: VisualizationConsoleProps) {
-  
   return (
     <Card className="border-border/40 shadow-none">
       <CardHeader className="flex flex-row items-center gap-2 pb-3">

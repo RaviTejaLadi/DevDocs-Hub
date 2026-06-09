@@ -11,7 +11,6 @@ type LandingTopicCardGridProps = {
 };
 
 export function LandingTopicCardGrid({ topic, color }: LandingTopicCardGridProps) {
-  
   return (
     <>
       <div className="relative flex min-h-0 flex-1 items-start gap-3 overflow-hidden">
@@ -33,9 +32,7 @@ export function LandingTopicCardGrid({ topic, color }: LandingTopicCardGridProps
               {`${topic.items.length} topics`}
             </span>
           </div>
-          <p className="mt-1 line-clamp-2 h-8 text-xs leading-4 text-muted-foreground">
-            {topic.description}
-          </p>
+          <p className="mt-1 line-clamp-2 h-8 text-xs leading-4 text-muted-foreground">{topic.description}</p>
         </div>
       </div>
       <LandingTopicBadges items={topic.items} viewMode="grid" />

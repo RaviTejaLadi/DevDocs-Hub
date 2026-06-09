@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { termsSections } from '../constants/termsSections';
 
 const TermsOfServicePage = () => {
-  
   return (
     <div className="container mx-auto p-3 sm:p-4 md:p-8 bg-inherit min-h-screen">
       <Card className="max-w-4xl mx-auto bg-inherit border-none shadow-none">

@@ -51,7 +51,9 @@ function buildWhileLoopSteps(max: number): WhileLoopStep[] {
       logLine: `console.log("Step ${count + 1}")`,
       consoleOutput: output,
       phase: 'body',
-      caption: `Inside the body, we log "Step ${count + 1}". Notice count is still ${count} until the increment line runs.`,
+      caption: `Inside the body, we log "Step ${
+        count + 1
+      }". Notice count is still ${count} until the increment line runs.`,
     });
 
     steps.push({

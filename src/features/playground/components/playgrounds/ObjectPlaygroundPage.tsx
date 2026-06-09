@@ -46,7 +46,6 @@ const CATEGORY_TOOLTIPS = {
 } as const;
 
 export function ObjectPlaygroundPage() {
-  
   const [mobileMethodsOpen, setMobileMethodsOpen] = useState(false);
 
   const {
@@ -123,7 +122,11 @@ export function ObjectPlaygroundPage() {
               <div className="min-w-0">
                 <h1 className="text-xl sm:text-2xl font-bold tracking-tight">{'JavaScript Object Methods'}</h1>
 
-                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">{'Pick a method, read the signature, then run it on your own object input — see return values and object state instantly.'}</p>
+                <p className="text-sm text-muted-foreground mt-0.5 max-w-xl">
+                  {
+                    'Pick a method, read the signature, then run it on your own object input — see return values and object state instantly.'
+                  }
+                </p>
               </div>
             </div>
           </div>
@@ -248,9 +251,7 @@ export function ObjectPlaygroundPage() {
                     </Badge>
                   </TooltipTrigger>
 
-                  <TooltipContent className="max-w-xs">
-                    {CATEGORY_TOOLTIPS[selectedMethod.category]}
-                  </TooltipContent>
+                  <TooltipContent className="max-w-xs">{CATEGORY_TOOLTIPS[selectedMethod.category]}</TooltipContent>
                 </Tooltip>
               </div>
             </CardHeader>
@@ -294,7 +295,9 @@ export function ObjectPlaygroundPage() {
                       {'Try it live'}
                     </CardTitle>
 
-                    <CardDescription className="mt-1">{'Edit the array (JSON) and optional arguments, then run.'}</CardDescription>
+                    <CardDescription className="mt-1">
+                      {'Edit the array (JSON) and optional arguments, then run.'}
+                    </CardDescription>
                   </div>
 
                   <div className="flex items-center gap-2 rounded-lg border border-border/35 bg-muted/30 px-3 py-2">
@@ -351,9 +354,7 @@ export function ObjectPlaygroundPage() {
                     {'Reset'}
                   </Button>
 
-                  <span className="text-xs text-muted-foreground ml-auto hidden sm:inline">
-                    {'Ctrl+Enter to run'}
-                  </span>
+                  <span className="text-xs text-muted-foreground ml-auto hidden sm:inline">{'Ctrl+Enter to run'}</span>
                 </div>
               </CardContent>
             </Card>

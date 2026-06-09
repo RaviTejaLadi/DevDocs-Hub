@@ -11,15 +11,13 @@ export const VISUALIZATION_CATEGORIES: VisualizationCategoryMeta[] = [
   {
     id: 'loops',
     label: 'Loops',
-    description:
-      'Control-flow loops that repeat code — see how conditions, counters, and loop bodies interact.',
+    description: 'Control-flow loops that repeat code — see how conditions, counters, and loop bodies interact.',
     order: 1,
   },
   {
     id: 'data-structures',
     label: 'Data structures',
-    description:
-      'Arrays, stacks, queues, linked lists, and maps — see how data is stored, traversed, and transformed.',
+    description: 'Arrays, stacks, queues, linked lists, and maps — see how data is stored, traversed, and transformed.',
     order: 2,
   },
   {

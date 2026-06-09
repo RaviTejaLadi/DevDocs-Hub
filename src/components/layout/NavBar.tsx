@@ -1,15 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  Menu,
-  Github,
-  Search,
-  FileText,
-  HelpCircle,
-  CornerDownLeft,
-  Code2,
-  MoreHorizontal,
-} from 'lucide-react';
+import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Code2, MoreHorizontal } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import type { Topic, TopicItem } from '@/data/topics';
 import { docContentSearchText } from '@/types/docContent';
@@ -35,7 +26,7 @@ const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isDocsPage = location.pathname.startsWith('/docs');
-    const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
+  const setMobileSidebarOpen = useAppLayoutStore((s) => s.setMobileSidebarOpen);
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -234,7 +225,11 @@ const NavBar = () => {
                 {results.length === 0 && query && (
                   <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
                     <p className="text-foreground/90 font-medium">{'No matching topics found'}</p>
-                    <p>{'Try a different keyword — for example React, thermodynamics, organic chemistry, or machine design...'}</p>
+                    <p>
+                      {
+                        'Try a different keyword — for example React, thermodynamics, organic chemistry, or machine design...'
+                      }
+                    </p>
                   </div>
                 )}
                 {results.length === 0 && !query && (
@@ -260,14 +255,9 @@ const NavBar = () => {
                             {res.icon ?? <FileText className="h-4 w-4" />}
                           </div>
                           <span className="min-w-0 flex-1">
-                            <span className="font-medium text-foreground line-clamp-2 leading-5">
-                              {res.title}
-                            </span>
+                            <span className="font-medium text-foreground line-clamp-2 leading-5">{res.title}</span>
                             <span className="text-xs text-muted-foreground block mt-1.5 truncate">
-                              {'in'}{' '}
-                              <span className="text-primary">
-                                {res.category}
-                              </span>
+                              {'in'} <span className="text-primary">{res.category}</span>
                             </span>
                           </span>
                           <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70 mt-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
