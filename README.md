@@ -38,10 +38,10 @@ easy-to-read documentation.
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework:** React 18
+- **Frontend Framework:** React 19
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS (with `clsx` & `tailwind-merge`)
-- **Routing:** React Router DOM v6
+- **Routing:** React Router DOM v7
 - **Content Rendering:** React Markdown & Syntax Highlighter
 - **Icons:** Lucide React
 
@@ -51,7 +51,7 @@ Follow these steps to set up Revise Stack locally on your machine.
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
 
 ### Installation
@@ -78,7 +78,7 @@ npm run dev
 
 ```
 
-4. Open your browser and navigate to `http://localhost:1234`.
+4. Open your browser and navigate to `http://localhost:5173`.
 
 ## ▲ Deploy To Vercel
 
@@ -108,39 +108,21 @@ vercel --prod
 ## 📝 How to Add Content
 
 Revise Stack is designed to be easily extensible. All content is managed in the
-`TOPICS` data structure (located in `Platform.tsx` or separated into
-`src/data/content.ts`).
+`TOPICS` data structure (located in `src/data/topics/index.tsx`).
 
 To add a new technology (e.g., TypeScript):
 
 1. Open the data file.
-2. Add a new entry to the `TOPICS` array:
-
-```javascript
-{
-  id: "typescript",
-  title: "TypeScript",
-  description: "JavaScript with syntax for types.",
-  icon: <FileCode />,
-  color: "text-blue-600",
-  items: [
-    {
-      id: "basics",
-      title: "The Basics",
-      content: "# TypeScript Basics\n\nTypeScript is a strongly typed superset of JavaScript..."
-    }
-  ]
-}
-
-```
+2. Add a new entry to the `STREAMS` or corresponding topic array.
 
 ## 🗺️ Roadmap
 
 - [x] Core Platform UI (Sidebar, Navbar, Content Viewer)
 - [x] Dark/Light Mode
 - [x] Mobile Responsiveness
-- [ ] **Search Functionality:** Enhanced full-text search across all docs.
-- [ ] **MDX Support:** Allow interactive React components inside documentation.
+- [x] **Search Functionality:** Enhanced client-side search across all docs.
+- [x] **MDX Support:** Support for MDX content rendering.
+- [ ] **Performance Optimization:** Dynamic loading of MDX content.
 - [ ] **Progress Tracking:** Allow users to mark topics as "Completed".
 
 ## 🤝 Contributing
