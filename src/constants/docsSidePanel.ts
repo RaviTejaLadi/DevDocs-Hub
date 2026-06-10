@@ -45,7 +45,7 @@ export const docsSidebarTreeBranchClass = 'ml-2 border-l-2 border-sidebar-border
 export const docsSidebarTreeSubMenuClass = 'mx-0 w-full min-w-0 translate-x-0 gap-0.5 border-l-0 py-0.5 pl-3';
 
 export const docsSidePanelNavSurfaceClass = cn(
-  'rounded-xl bg-muted/20 p-3 dark:bg-muted/10 border border-border/25 dark:border-border/20',
+  'rounded-xl bg-muted/20 dark:bg-muted/10',
   docsInsetShadowClass
 );
 
