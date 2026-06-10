@@ -61,6 +61,7 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
         overview={config.overview}
         howItWorks={config.howItWorks}
         whenToUse={config.whenToUse}
+        realWorldExample={config.realWorldExample}
         takeaway={config.takeaway}
       />
 

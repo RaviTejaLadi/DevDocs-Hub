@@ -38,6 +38,7 @@ export function ForLoopVisualization() {
         overview="A for loop is the classic counted loop. You declare a counter, set a stop condition, and update the counter after each pass. It is ideal when you need an index or a fixed number of iterations."
         howItWorks={HOW_IT_WORKS}
         whenToUse="Use a for loop when you need the index, want a specific number of iterations, or must loop backwards / skip items with continue."
+        realWorldExample="E-commerce cart UI: iterate over cart items by index to render each line item and apply position-based discounts like 'every 3rd item gets 10% off'."
         takeaway="Think: init → check → body → increment → check again. The condition gate is what prevents infinite loops."
       />
 

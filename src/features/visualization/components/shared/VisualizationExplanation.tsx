@@ -1,14 +1,21 @@
-import { BookOpen, Lightbulb, Target } from 'lucide-react';
+import { BookOpen, Briefcase, Lightbulb, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type VisualizationExplanationProps = {
   overview: string;
   howItWorks: readonly string[];
   whenToUse: string;
+  realWorldExample: string;
   takeaway: string;
 };
 
-export function VisualizationExplanation({ overview, howItWorks, whenToUse, takeaway }: VisualizationExplanationProps) {
+export function VisualizationExplanation({
+  overview,
+  howItWorks,
+  whenToUse,
+  realWorldExample,
+  takeaway,
+}: VisualizationExplanationProps) {
   return (
     <Card className="border-border/40 shadow-none">
       <CardHeader className="pb-3">
@@ -38,6 +45,14 @@ export function VisualizationExplanation({ overview, howItWorks, whenToUse, take
         <div className="rounded-xl border border-border/35 bg-muted/20 px-4 py-3">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">When to use it</p>
           <p className="text-sm leading-relaxed text-foreground/85">{whenToUse}</p>
+        </div>
+
+        <div className="rounded-xl border border-sky-500/25 bg-sky-500/10 px-4 py-3">
+          <p className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+            <Briefcase className="h-3.5 w-3.5" />
+            Real-world example
+          </p>
+          <p className="text-sm leading-relaxed text-foreground/90">{realWorldExample}</p>
         </div>
 
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/8 px-4 py-3">

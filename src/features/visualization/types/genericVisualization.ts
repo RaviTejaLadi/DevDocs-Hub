@@ -14,6 +14,7 @@ export type GenericVisualizationConfig = {
   overview: string;
   howItWorks: readonly string[];
   whenToUse: string;
+  realWorldExample: string;
   takeaway: string;
   code: readonly string[];
   steps: readonly GenericVisualizationStep[];

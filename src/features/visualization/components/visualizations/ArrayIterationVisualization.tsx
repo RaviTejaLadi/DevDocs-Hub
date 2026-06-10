@@ -11,7 +11,7 @@ import { VisualizationPageShell } from '../shared/VisualizationPageShell';
 
 const MODE_COPY: Record<
   IterationMode,
-  { label: string; overview: string; how: readonly string[]; when: string; takeaway: string }
+  { label: string; overview: string; how: readonly string[]; when: string; realWorldExample: string; takeaway: string }
 > = {
   'for-of': {
     label: 'for…of',
@@ -23,6 +23,8 @@ const MODE_COPY: Record<
       'You can break or continue out of the loop with standard control flow.',
     ],
     when: 'Choose for…of when you only need values (not indices) and want the simplest readable loop.',
+    realWorldExample:
+      'Order processing: loop through shipment IDs and call a tracking API for each package in sequence.',
     takeaway: 'for…of is for consuming values. It does not return a new array.',
   },
   forEach: {
@@ -35,6 +37,8 @@ const MODE_COPY: Record<
       'The method itself returns undefined — use it for side effects like logging.',
     ],
     when: 'Use forEach for side effects (logging, DOM updates) when you do not need to stop early or chain a new array.',
+    realWorldExample:
+      'Analytics instrumentation: run forEach over visible products and send one "product_impression" event per card.',
     takeaway: 'forEach = "do something for each item." It is not for building transformed arrays.',
   },
   map: {
@@ -47,6 +51,8 @@ const MODE_COPY: Record<
       'After all elements are processed, the new array is returned.',
     ],
     when: 'Use map when you need a new array derived from the old one — doubling numbers, extracting fields, formatting data.',
+    realWorldExample:
+      'UI data shaping: map backend user objects into table rows with fullName, roleLabel, and avatar URL fields.',
     takeaway:
       'map = transform + collect. Same length in, same length out (unless you filter inside, which is usually a separate step).',
   },
@@ -101,6 +107,7 @@ export function ArrayIterationVisualization() {
         overview={modeCopy.overview}
         howItWorks={modeCopy.how}
         whenToUse={modeCopy.when}
+        realWorldExample={modeCopy.realWorldExample}
         takeaway={modeCopy.takeaway}
       />
 

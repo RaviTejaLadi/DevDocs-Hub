@@ -8,6 +8,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'A do...while is post-check looping: one guaranteed run before evaluating the condition.',
     howItWorks: ['Execute body once', 'Evaluate condition after body', 'Repeat only while condition is true'],
     whenToUse: 'Use when at least one iteration must happen, such as retries or user prompts.',
+    realWorldExample:
+      'Login OTP flow: prompt for OTP at least once, then continue prompting while the code is invalid and retry limit is not reached.',
     takeaway: 'do...while always executes at least one time.',
     code: ['let attempts = 0;', 'do {', '  attempts++;', '} while (attempts < 3);'],
     steps: [
@@ -45,6 +47,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'for...of reads each value in order and assigns it to the loop variable.',
     howItWorks: ['Iterator yields next value', 'Loop variable receives that value', 'Body runs until iterable ends'],
     whenToUse: 'Use for readable value-by-value iteration.',
+    realWorldExample:
+      'Batch email sender: iterate over recipient emails and send a personalized message to each address.',
     takeaway: 'for...of is value-first iteration.',
     code: ['const scores = [10, 20, 30];', 'for (const score of scores) {', '  console.log(score);', '}'],
     steps: [
@@ -71,6 +75,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'for...in walks keys, then values can be read with bracket notation.',
     howItWorks: ['Enumerate key names', 'Read value via obj[key]', 'Repeat for each key'],
     whenToUse: 'Use for object key traversal.',
+    realWorldExample:
+      'Settings editor: iterate over a user preferences object keys to render form controls for each configurable option.',
     takeaway: 'for...in iterates keys, not values.',
     code: [
       'const user = { name: "Ravi", role: "admin" };',
@@ -102,6 +108,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Nested loops are common for matrix and pairwise operations.',
     howItWorks: ['Advance outer counter', 'Run inner loop from start to finish', 'Repeat until outer loop ends'],
     whenToUse: 'Use for 2D traversal and pair combinations.',
+    realWorldExample:
+      'Seat map generation: outer loop traverses rows and inner loop traverses columns to build a theater seating grid.',
     takeaway: 'Inner loop cost multiplies total work.',
     code: [
       'for (let row = 0; row < 2; row++) {',
@@ -129,6 +137,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'A stack follows Last-In-First-Out ordering.',
     howItWorks: ['push item', 'push next item', 'pop returns latest item first'],
     whenToUse: 'Use for undo/redo, DFS, parsing.',
+    realWorldExample:
+      'Text editor undo: every user action is pushed onto a stack, and undo pops the most recent action first.',
     takeaway: 'Most recently added item exits first.',
     code: ['const stack = [];', 'stack.push("A");', 'stack.push("B");', 'const top = stack.pop();'],
     steps: [
@@ -155,6 +165,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'A queue processes items in insertion order.',
     howItWorks: ['enqueue first item', 'enqueue second item', 'dequeue oldest item'],
     whenToUse: 'Use for scheduling and buffered processing.',
+    realWorldExample:
+      'Print server: print jobs are queued and processed in the same order they are received.',
     takeaway: 'Oldest item exits first.',
     code: ['const queue = [];', 'queue.push("Task1");', 'queue.push("Task2");', 'const next = queue.shift();'],
     steps: [
@@ -186,6 +198,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Linked lists store data as nodes linked by references.',
     howItWorks: ['Create node', 'Attach next node', 'Traverse by following next'],
     whenToUse: 'Use when insert/delete patterns dominate random access.',
+    realWorldExample:
+      'Music playlist next pointers: each track points to the next song, enabling cheap insertion and deletion in the middle.',
     takeaway: 'Traversal is pointer-following, not index-jumping.',
     code: [
       'const n1 = { value: 10, next: null };',
@@ -222,6 +236,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Hash maps map keys to buckets for near constant-time access.',
     howItWorks: ['Insert key-value', 'Compute key hash', 'Retrieve by same key'],
     whenToUse: 'Use for counting, indexing, and caching.',
+    realWorldExample:
+      'API response cache: store responses by request URL as key so repeated requests can be served instantly.',
     takeaway: 'Keys provide fast direct access to values.',
     code: ['const counts = new Map();', 'counts.set("apple", 2);', 'counts.set("banana", 1);', 'counts.get("apple");'],
     steps: [
@@ -253,6 +269,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'JavaScript coordinates call stack and task queues through the event loop.',
     howItWorks: ['Run sync code', 'Flush microtasks', 'Run next macrotask'],
     whenToUse: 'Use to debug async ordering.',
+    realWorldExample:
+      'Checkout page: process sync validation first, then promise-based tokenization, then timer-based UI updates.',
     takeaway: 'Promise microtasks run before setTimeout callbacks.',
     code: [
       'console.log("A");',
@@ -300,6 +318,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'The call stack tracks active execution contexts.',
     howItWorks: ['Call a()', 'a() calls b()', 'b() returns and stack unwinds'],
     whenToUse: 'Use for tracing execution flow and recursion errors.',
+    realWorldExample:
+      'Backend request handling: controller calls service, which calls repository, then returns in reverse order.',
     takeaway: 'Execution follows stack push/pop order.',
     code: ['function a() { b(); }', 'function b() { return; }', 'a();', '// done'],
     steps: [
@@ -331,6 +351,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Closures preserve lexical scope state across calls.',
     howItWorks: ['Outer creates private variable', 'Inner captures variable', 'Later calls reuse captured state'],
     whenToUse: 'Use for private state and function factories.',
+    realWorldExample:
+      'Rate limiter factory: create a closure that tracks remaining API calls per user without exposing internal counters.',
     takeaway: 'Closure = function + remembered environment.',
     code: [
       'function makeCounter() { let n = 0; return () => ++n; }',
@@ -376,6 +398,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
       'After declaration both are usable',
     ],
     whenToUse: 'Use to avoid early-access bugs.',
+    realWorldExample:
+      'Module initialization: referencing config with let before initialization can crash startup due to TDZ errors.',
     takeaway: 'Hoisted does not mean safely initialized.',
     code: ['console.log(a);', 'var a = 10;', 'console.log(b);', 'let b = 20;'],
     steps: [
@@ -412,6 +436,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Name resolution starts locally and walks parent scopes.',
     howItWorks: ['Check current scope first', 'If missing, check outer scopes', 'Stop at first match'],
     whenToUse: 'Use to reason about shadowing.',
+    realWorldExample:
+      'React callback behavior: an inner event handler resolves variables from component scope before global scope.',
     takeaway: 'Nearest declaration wins.',
     code: [
       'const x = "global";',
@@ -448,6 +474,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'Recursion needs a base case and progress toward it.',
     howItWorks: ['Check base case', 'Call recursively with smaller input', 'Unwind stack with returns'],
     whenToUse: 'Use for trees, divide-and-conquer, and self-similar problems.',
+    realWorldExample:
+      'Folder explorer UI: recursively render nested directories where each folder may contain more folders.',
     takeaway: 'Missing base case causes infinite recursion.',
     code: [
       'function fact(n) { if (n <= 1) return 1; return n * fact(n - 1); }',
@@ -488,6 +516,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
       'Observe change through first variable',
     ],
     whenToUse: 'Use to avoid accidental shared mutations.',
+    realWorldExample:
+      'Redux-style state updates: mutating a referenced object can leak changes across components unless you clone first.',
     takeaway: 'Clone objects when isolation is needed.',
     code: ['const a = { n: 1 };', 'const b = a;', 'b.n = 2;', 'console.log(a.n);'],
     steps: [
@@ -514,6 +544,8 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'async functions return promises while preserving synchronous-style flow.',
     howItWorks: ['Function starts and hits await', 'Execution yields while promise pending', 'Resume after resolution'],
     whenToUse: 'Use for readable sequential async code.',
+    realWorldExample:
+      'Dashboard loading: await user profile, then await permissions, then render sections once both are ready.',
     takeaway: 'await does not block the thread; it schedules continuation.',
     code: [
       'async function load() {',

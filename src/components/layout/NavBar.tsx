@@ -283,7 +283,7 @@ const NavBar = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:inline-flex px-3"
+                className="hidden h-9 w-9 md:inline-flex"
                 onClick={() => navigate('/code-editor')}
                 aria-label={'Live code editor'}
               >
@@ -297,7 +297,7 @@ const NavBar = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:inline-flex px-3"
+                className="hidden h-9 w-9 md:inline-flex"
                 onClick={() => navigate('/interview-questions')}
                 aria-label={'Interview questions'}
               >
@@ -325,7 +325,7 @@ const NavBar = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:inline-flex px-3"
+                className="hidden h-9 w-9 md:inline-flex"
                 onClick={() => navigate('/terms')}
                 aria-label={'Terms'}
               >
@@ -336,7 +336,7 @@ const NavBar = () => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" className="hidden md:inline-flex px-3" aria-label={'GitHub'}>
+              <Button variant="ghost" size="icon" className="hidden h-9 w-9 md:inline-flex" aria-label={'GitHub'}>
                 <Github className="h-4 w-4" />
               </Button>
             </TooltipTrigger>

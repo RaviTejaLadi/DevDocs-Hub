@@ -39,6 +39,7 @@ export function WhileLoopVisualization() {
         overview="A while loop repeats as long as its condition stays true. There is no built-in counter in the syntax — you manage state inside the body, which makes while loops flexible but easier to get wrong."
         howItWorks={HOW_IT_WORKS}
         whenToUse="Use while when you do not know how many iterations you need — reading input, polling, or processing until a flag changes."
+        realWorldExample="Payment status polling: keep checking an order status API every few seconds while status is pending, and stop when it becomes paid or failed."
         takeaway='while = "keep going while this is true." Always ensure something in the body moves the condition toward false.'
       />
 
