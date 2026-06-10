@@ -106,34 +106,26 @@ export function AnswerMarkdown({ content, className }: { content: string; classN
 
             if (isBlock) {
               return (
-                <div className="md-code-card group my-4">
-                  <div className="md-code-head">
-                    <span
-                      className={cn(
-                        'ml-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em]',
-                        isDarkTheme ? 'text-white/55' : 'text-slate-600'
-                      )}
-                    >
-                      {language}
-                    </span>
+                <div className="md-code-card group relative my-4">
+                  <div className="pointer-events-none absolute right-2 top-2 z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
                     <Button
                       variant="ghost"
                       size="sm"
                       className={cn(
-                        'ml-auto h-6 gap-1.5 rounded px-2 text-[0.7rem] font-medium',
+                        'h-6 gap-1.5 rounded border border-border/35 bg-card/75 px-2 text-[0.7rem] font-medium backdrop-blur-sm',
                         isDarkTheme
-                          ? 'text-white/65 hover:bg-white/5 hover:text-white'
+                          ? 'text-white/70 hover:bg-white/10 hover:text-white'
                           : 'text-slate-600 hover:bg-slate-200/60 hover:text-slate-900'
                       )}
                       onClick={() => handleCopy(codeKey, codeString)}
                     >
                       {copiedKey === codeKey ? (
                         <>
-                          <Check className="h-3 w-3" /> {'Copied'}
+                          <Check className="h-3 w-3" />
                         </>
                       ) : (
                         <>
-                          <Copy className="h-3 w-3" /> {'Copy'}
+                          <Copy className="h-3 w-3" />
                         </>
                       )}
                     </Button>

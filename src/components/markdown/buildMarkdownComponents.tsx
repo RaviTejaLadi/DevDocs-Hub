@@ -285,39 +285,29 @@ export function buildMarkdownComponents({
       }
 
       return !inline && match ? (
-        <div className={cn('md-code-card group', c ? 'my-5' : 'my-6')}>
-          <div className="md-code-head">
-            <span
+        <div className={cn('md-code-card group relative', c ? 'my-5' : 'my-6')}>
+          <div className="pointer-events-none absolute right-2 top-2 z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => handleCopy(codeKey, codeString)}
               className={cn(
-                'ml-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase',
-                isDarkTheme ? 'text-foreground/60' : 'text-muted-foreground'
+                'h-6 gap-1.5 rounded border border-border/35 bg-card/75 p-2 text-[0.7rem] font-medium backdrop-blur-sm',
+                isDarkTheme
+                  ? 'text-foreground/75 hover:text-foreground hover:bg-accent/70'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent/85'
               )}
             >
-              {language}
-            </span>
-            <div className="ml-auto flex items-center">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => handleCopy(codeKey, codeString)}
-                className={cn(
-                  'h-6 gap-1.5 px-2 text-[0.7rem] font-medium rounded',
-                  isDarkTheme
-                    ? 'text-foreground/70 hover:text-foreground hover:bg-accent/60'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-accent/80'
-                )}
-              >
-                {copiedKey === codeKey ? (
-                  <>
-                    <Check className="h-3 w-3" /> Copied
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3 w-3" /> Copy
-                  </>
-                )}
-              </Button>
-            </div>
+              {copiedKey === codeKey ? (
+                <>
+                  <Check className="h-3 w-3" />
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3 w-3" />
+                </>
+              )}
+            </Button>
           </div>
           <div className="overflow-x-auto">
             <SyntaxHighlighter
