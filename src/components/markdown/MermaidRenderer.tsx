@@ -168,9 +168,9 @@ const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
           signalTextColor: '#1a1c2e',
           labelBoxBkgColor: '#edf0fa',
           labelBoxBorderColor: '#c0c4de',
-          noteBkgColor: '#fefbe8',
-          noteBorderColor: '#e8e0a0',
-          noteTextColor: '#4a4020',
+          noteBkgColor: '#e8f6fe',
+          noteBorderColor: '#7dd3fc',
+          noteTextColor: '#0c4a6e',
           activationBorderColor: '#9098c8',
           activationBkgColor: '#dde2f8',
 

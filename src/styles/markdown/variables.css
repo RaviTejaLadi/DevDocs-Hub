@@ -1,6 +1,6 @@
 /* ==========================================================================
    Markdown Render — refined editorial theme
-   Palette accents only: Tan #fceed1 · Purple #7d3cff · Yellow #f2d53c · Red #c80e13
+   Palette accents only: Sky #0ea5e9 · Purple #7d3cff · Red #c80e13
    All decoration uses soft alpha tints so the article still belongs to the
    site's neutral card surface rather than becoming a sticker book.
    ========================================================================== */
@@ -10,12 +10,12 @@
   --md-purple-soft:  rgba(125, 60, 255, 0.07);
   --md-purple-tint:  rgba(125, 60, 255, 0.12);
   --md-purple-line:  rgba(125, 60, 255, 0.22);
-  --md-yellow:       #f2d53c;
-  --md-yellow-soft:  rgba(242, 213, 60, 0.22);
-  --md-yellow-line:  rgba(242, 213, 60, 0.45);
+  --md-sky:          #0ea5e9;
+  --md-sky-soft:     rgba(14, 165, 233, 0.18);
+  --md-sky-line:     rgba(14, 165, 233, 0.42);
   --md-red:          #c80e13;
   --md-red-soft:     rgba(200, 14, 19, 0.08);
-  --md-tan-tint:     rgba(252, 238, 209, 0.45);
+  --md-sky-top:      rgba(186, 230, 253, 0.55);
 
   position: relative;
   counter-reset: md-h2;
@@ -27,10 +27,10 @@
   --md-purple-soft:  rgba(182, 147, 255, 0.08);
   --md-purple-tint:  rgba(182, 147, 255, 0.14);
   --md-purple-line:  rgba(182, 147, 255, 0.22);
-  --md-yellow:       #f7df5c;
-  --md-yellow-soft:  rgba(247, 223, 92, 0.10);
-  --md-yellow-line:  rgba(247, 223, 92, 0.22);
+  --md-sky:          #38bdf8;
+  --md-sky-soft:     rgba(56, 189, 248, 0.12);
+  --md-sky-line:     rgba(56, 189, 248, 0.28);
   --md-red:          #ff8085;
   --md-red-soft:     rgba(255, 128, 133, 0.10);
-  --md-tan-tint:     rgba(182, 147, 255, 0.04);
+  --md-sky-top:      rgba(56, 189, 248, 0.1);
 }

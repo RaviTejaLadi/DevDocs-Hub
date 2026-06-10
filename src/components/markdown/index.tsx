@@ -728,7 +728,7 @@ const MarkdownRenderInner = ({
                     fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
-                  <div className="relative z-10 mx-auto w-full max-w-200">
+                  <div className="relative z-10 mx-auto w-full max-w-208">
                     <DocBodyRenderer
                       content={content}
                       markdownBody={slideMode ? slides[activeSlide] ?? '' : isStringContent ? content : ''}
@@ -843,7 +843,7 @@ const MarkdownRenderInner = ({
             </section>
           ) : (
             <article className={cn('flex-1 min-w-0 mx-auto w-full', articleSurface)}>
-              <div className="relative z-1">
+              <div className="relative z-1 mx-auto w-full max-w-208">
                 <DocBodyRenderer
                   content={content}
                   markdownBody={isStringContent ? content : ''}

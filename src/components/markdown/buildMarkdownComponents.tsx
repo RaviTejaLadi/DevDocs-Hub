@@ -2,7 +2,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Check, Copy, ExternalLink, Quote } from 'lucide-react';
+import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, Quote, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
@@ -23,6 +23,75 @@ function headingSlugFromNode(node: React.ReactNode): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
+
+const LANGUAGE_LABELS: Record<string, string> = {
+  js: 'JavaScript',
+  javascript: 'JavaScript',
+  ts: 'TypeScript',
+  typescript: 'TypeScript',
+  tsx: 'TSX',
+  jsx: 'JSX',
+  html: 'HTML',
+  css: 'CSS',
+  scss: 'SCSS',
+  json: 'JSON',
+  bash: 'Bash',
+  sh: 'Shell',
+  shell: 'Shell',
+  python: 'Python',
+  py: 'Python',
+  sql: 'SQL',
+  yaml: 'YAML',
+  yml: 'YAML',
+  md: 'Markdown',
+  markdown: 'Markdown',
+  mermaid: 'Diagram',
+};
+
+function languageLabel(lang: string): string {
+  return LANGUAGE_LABELS[lang.toLowerCase()] ?? lang.charAt(0).toUpperCase() + lang.slice(1);
+}
+
+type GfmAlert = { kind: string; body: React.ReactNode };
+
+function parseGfmAlert(children: React.ReactNode): GfmAlert | null {
+  const nodes = React.Children.toArray(children);
+  if (nodes.length === 0) return null;
+
+  const firstText = extractTextFromNode(nodes[0]).trim();
+  const match = /^\[!([A-Za-z]+)\]\s*(.*)$/s.exec(firstText);
+  if (!match) return null;
+
+  const kind = match[1].toUpperCase();
+  const inlineBody = match[2]?.trim();
+
+  if (nodes.length === 1) {
+    return { kind, body: inlineBody || null };
+  }
+
+  const rest = nodes.slice(1);
+  if (inlineBody) {
+    return {
+      kind,
+      body: (
+        <>
+          <p>{inlineBody}</p>
+          {rest}
+        </>
+      ),
+    };
+  }
+
+  return { kind, body: rest };
+}
+
+const CALLOUT_ICONS: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+  NOTE: Info,
+  TIP: Lightbulb,
+  IMPORTANT: TriangleAlert,
+  WARNING: AlertTriangle,
+  CAUTION: AlertTriangle,
+};
 
 export type BuildMarkdownComponentsOpts = {
   /** Prefix so slide chunks do not produce duplicate heading ids in the DOM. */
@@ -64,8 +133,8 @@ export function buildMarkdownComponents({
           </h1>
           {!c ? (
             <div className="mt-5 flex items-center gap-2">
-              <span className="h-px w-10 bg-(--md-purple)/60 rounded-full"></span>
-              <span className="h-px flex-1 bg-border/60 rounded-full"></span>
+              <span className="h-px w-10 rounded-full bg-(--md-purple)/60" />
+              <span className="h-px flex-1 rounded-full bg-border/60" />
             </div>
           ) : (
             <div className="mt-3 border-b border-border/40" />
@@ -85,7 +154,8 @@ export function buildMarkdownComponents({
                 'border border-(--md-purple-line)',
                 c ? 'min-w-9 h-9 px-2 text-[0.75rem] tracking-normal' : 'min-w-9 h-9 px-2 text-[0.78rem] tracking-tight'
               )}
-            ></div>
+              aria-hidden
+            />
             <h2
               id={id}
               className={cn(
@@ -105,7 +175,7 @@ export function buildMarkdownComponents({
       const id = nid(children);
       return (
         <div className={cn('group relative flex items-center gap-2.5', c ? 'mt-7 mb-3' : 'mt-10 mb-4')}>
-          <span className="inline-block w-1.5 h-1.5 rounded-sm bg-(--md-purple) rotate-45 shrink-0"></span>
+          <span className="inline-block h-1.5 w-1.5 shrink-0 rotate-45 rounded-sm bg-(--md-purple)" />
           <h3
             id={id}
             className={cn(
@@ -124,7 +194,7 @@ export function buildMarkdownComponents({
       const id = nid(children);
       return (
         <div className={cn('group relative flex items-center gap-2', c ? 'mt-5 mb-2.5' : 'mt-8 mb-3')}>
-          <span className="inline-block w-1 h-1 rounded-full bg-(--md-purple)"></span>
+          <span className="inline-block h-1 w-1 rounded-full bg-(--md-purple)" />
           <h4
             id={id}
             className={cn(
@@ -140,9 +210,10 @@ export function buildMarkdownComponents({
     p: ({ children }: any) => (
       <p
         className={cn(
+          'md-p',
           c
-            ? 'mb-4 text-[1.02rem] sm:text-[1.055rem] leading-[1.72] tracking-[0.012em] text-foreground/88 first-of-type:mt-0 first-of-type:mb-4 first-of-type:text-[1.06rem] sm:first-of-type:text-[1.09rem] first-of-type:leading-[1.68] first-of-type:tracking-[0.01em] first-of-type:text-foreground/92'
-            : 'mb-5 text-[1.02rem] leading-[1.78] text-foreground/80 first-of-type:text-[1.12rem] sm:first-of-type:text-[1.16rem] first-of-type:leading-[1.75] first-of-type:mb-7 first-of-type:text-foreground/90'
+            ? 'mb-4 text-[1.02rem] sm:text-[1.055rem] leading-[1.72] tracking-[0.012em] text-foreground/88'
+            : 'mb-5 text-[1.02rem] leading-[1.78] text-foreground/80'
         )}
       >
         {children}
@@ -182,29 +253,59 @@ export function buildMarkdownComponents({
         </li>
       );
     },
-    blockquote: ({ children }: any) => (
-      <div className={c ? 'my-5' : 'my-7'}>
-        <blockquote className="md-quote">
-          <div className={cn('flex items-start', c ? 'gap-3' : 'gap-3')}>
-            <Quote
-              className={cn(
-                'shrink-0 text-(--md-purple) -scale-x-100',
-                c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5'
-              )}
-              strokeWidth={2.2}
-            />
+    blockquote: ({ children }: any) => {
+      const alert = parseGfmAlert(children);
+      if (alert) {
+        const Icon = CALLOUT_ICONS[alert.kind] ?? Info;
+        return (
+          <div
+            className={cn(
+              'md-callout',
+              `md-callout--${alert.kind.toLowerCase()}`,
+              c ? 'my-5' : 'my-7'
+            )}
+            role="note"
+          >
+            <div className="md-callout-head">
+              <Icon className="md-callout-icon" strokeWidth={2.2} />
+              <span className="md-callout-title">{alert.kind}</span>
+            </div>
             <div
               className={cn(
-                'font-medium text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
-                c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'text-[1rem] leading-[1.75]'
+                'md-callout-body text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
+                c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72]' : 'text-[1rem] leading-[1.75]'
               )}
             >
-              {children}
+              {alert.body}
             </div>
           </div>
-        </blockquote>
-      </div>
-    ),
+        );
+      }
+
+      return (
+        <div className={c ? 'my-5' : 'my-7'}>
+          <blockquote className="md-quote">
+            <div className="flex items-start gap-3">
+              <Quote
+                className={cn(
+                  'shrink-0 -scale-x-100 text-(--md-purple)',
+                  c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5'
+                )}
+                strokeWidth={2.2}
+              />
+              <div
+                className={cn(
+                  'font-medium text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
+                  c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'text-[1rem] leading-[1.75]'
+                )}
+              >
+                {children}
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      );
+    },
     table: ({ children }: any) => (
       <div className="md-table-wrap">
         <div className="w-full overflow-x-auto">
@@ -241,24 +342,24 @@ export function buildMarkdownComponents({
           rel={isExternal ? 'noopener noreferrer' : undefined}
         >
           {children}
-          {isExternal && <ExternalLink className="inline-block w-3 h-3 ml-1 -translate-y-px opacity-70" />}
+          {isExternal && <ExternalLink className="ml-1 inline-block h-3 w-3 -translate-y-px opacity-70" />}
         </a>
       );
     },
     strong: ({ children }: any) => <strong>{children}</strong>,
     em: ({ children }: any) => <em>{children}</em>,
     kbd: ({ children }: any) => (
-      <kbd className="inline-flex items-center justify-center min-w-6 px-1.5 h-5 rounded border border-border/60 bg-muted/60 text-[0.75rem] font-mono text-foreground/80 shadow-none">
+      <kbd className="inline-flex h-5 min-w-6 items-center justify-center rounded border border-border/60 bg-muted/60 px-1.5 text-[0.75rem] font-mono text-foreground/80 shadow-none">
         {children}
       </kbd>
     ),
     hr: () => (
       <div className="md-hr">
-        <div className="md-hr-line"></div>
-        <span className="md-hr-dot bg-(--md-red)"></span>
-        <span className="md-hr-dot bg-(--md-yellow)"></span>
-        <span className="md-hr-dot bg-(--md-purple)"></span>
-        <div className="md-hr-line"></div>
+        <div className="md-hr-line" />
+        <span className="md-hr-dot bg-(--md-red)" />
+        <span className="md-hr-dot bg-(--md-sky)" />
+        <span className="md-hr-dot bg-(--md-purple)" />
+        <div className="md-hr-line" />
       </div>
     ),
     img: ({ src, alt }: any) => {
@@ -266,10 +367,10 @@ export function buildMarkdownComponents({
       return (
         <figure className={cn('flex flex-col items-center', c ? 'my-5' : 'my-7')}>
           <div className="md-polaroid">
-            <img src={src} alt={altText} className="rounded-md max-w-full h-auto block" />
+            <img src={src} alt={altText} className="block h-auto max-w-full rounded-md" loading="lazy" />
           </div>
           {caption && (
-            <figcaption className="mt-2.5 text-sm text-muted-foreground italic text-center">{caption}</figcaption>
+            <figcaption className="mt-2.5 text-center text-sm italic text-muted-foreground">{caption}</figcaption>
           )}
         </figure>
       );
@@ -286,7 +387,17 @@ export function buildMarkdownComponents({
 
       return !inline && match ? (
         <div className={cn('md-code-card group relative', c ? 'my-5' : 'my-6')}>
-          <div className="pointer-events-none absolute right-2 top-2 z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+          <div className="md-code-head">
+            <div className="flex items-center gap-1.5" aria-hidden>
+              <span className="md-code-dot bg-[#ff5f57]" />
+              <span className="md-code-dot bg-[#febc2e]" />
+              <span className="md-code-dot bg-[#28c840]" />
+            </div>
+            <span className="ml-auto font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              {languageLabel(language!)}
+            </span>
+          </div>
+          <div className="pointer-events-none absolute right-2 top-[2.35rem] z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
             <Button
               variant="ghost"
               size="sm"
@@ -294,19 +405,12 @@ export function buildMarkdownComponents({
               className={cn(
                 'h-6 gap-1.5 rounded border border-border/35 bg-card/75 p-2 text-[0.7rem] font-medium backdrop-blur-sm',
                 isDarkTheme
-                  ? 'text-foreground/75 hover:text-foreground hover:bg-accent/70'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-accent/85'
+                  ? 'text-foreground/75 hover:bg-accent/70 hover:text-foreground'
+                  : 'text-muted-foreground hover:bg-accent/85 hover:text-foreground'
               )}
+              aria-label="Copy code"
             >
-              {copiedKey === codeKey ? (
-                <>
-                  <Check className="h-3 w-3" />
-                </>
-              ) : (
-                <>
-                  <Copy className="h-3 w-3" />
-                </>
-              )}
+              {copiedKey === codeKey ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
             </Button>
           </div>
           <div className="overflow-x-auto">
