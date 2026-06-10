@@ -1,1 +1,399 @@
-# Vue.js Cheat Sheet
+# Vue.js Cheat Sheet (Vue 3) 🚀
+
+| Topic                  | Syntax                              | Description                        |
+| ---------------------- | ----------------------------------- | ---------------------------------- |
+| Create App             | `createApp(App).mount('#app')`      | Creates and mounts Vue application |
+| Single File Component  | `<template> <script setup> <style>` | Standard Vue component structure   |
+| Template Interpolation | `{{ message }}`                     | Display reactive data              |
+| Attribute Binding      | `:src="imageUrl"`                   | Dynamic attribute binding          |
+| Shorthand Bind         | `:class="activeClass"`              | Same as `v-bind:class`             |
+| Event Binding          | `@click="handleClick"`              | Same as `v-on:click`               |
+| Conditional Render     | `v-if="show"`                       | Render only if condition is true   |
+| Else Condition         | `v-else`                            | Alternative block                  |
+| Else If                | `v-else-if="age > 18"`              | Multiple conditions                |
+| Visibility Toggle      | `v-show="visible"`                  | Hides using CSS display property   |
+| Looping                | `v-for="item in items"`             | Iterate arrays                     |
+| Loop with Index        | `v-for="(item,index) in items"`     | Access index                       |
+| Key Attribute          | `:key="item.id"`                    | Improves DOM updates               |
+| Two-Way Binding        | `v-model="name"`                    | Sync input and state               |
+| Text Binding           | `v-text="message"`                  | Alternative to interpolation       |
+| HTML Binding           | `v-html="htmlContent"`              | Render raw HTML                    |
+
+---
+
+# Reactivity
+
+| API             | Example                     | Description                       |
+| --------------- | --------------------------- | --------------------------------- |
+| ref             | `const count = ref(0)`      | Primitive reactive value          |
+| Access Ref      | `count.value`               | Access/update ref value in JS     |
+| reactive        | `const user = reactive({})` | Reactive object                   |
+| readonly        | `readonly(state)`           | Immutable state                   |
+| shallowRef      | `shallowRef(obj)`           | Tracks only top-level changes     |
+| shallowReactive | `shallowReactive(obj)`      | Shallow object reactivity         |
+| triggerRef      | `triggerRef(myRef)`         | Force update                      |
+| isRef           | `isRef(value)`              | Check if value is ref             |
+| unref           | `unref(count)`              | Get raw value                     |
+| toRef           | `toRef(obj,'name')`         | Create ref from property          |
+| toRefs          | `toRefs(state)`             | Convert object properties to refs |
+
+---
+
+# Computed Properties
+
+| Syntax            | Example                                                     |
+| ----------------- | ----------------------------------------------------------- |
+| Basic Computed    | `const fullName = computed(() => first.value + last.value)` |
+| Writable Computed | `computed({ get(){}, set(){} })`                            |
+
+```js
+const fullName = computed(() => {
+  return `${firstName.value} ${lastName.value}`
+})
+```
+
+---
+
+# Watchers
+
+| API             | Example                   | Use                     |
+| --------------- | ------------------------- | ----------------------- |
+| watch           | `watch(count, callback)`  | Watch specific state    |
+| watchEffect     | `watchEffect(() => {})`   | Auto-track dependencies |
+| Immediate Watch | `{ immediate: true }`     | Run instantly           |
+| Deep Watch      | `{ deep: true }`          | Watch nested objects    |
+| Stop Watch      | `const stop = watch(...)` | Cleanup watcher         |
+
+```js
+watch(count, (newVal, oldVal) => {
+  console.log(newVal)
+})
+```
+
+---
+
+# Lifecycle Hooks
+
+| Hook            | Purpose               |
+| --------------- | --------------------- |
+| onBeforeMount   | Before DOM mount      |
+| onMounted       | After mount           |
+| onBeforeUpdate  | Before re-render      |
+| onUpdated       | After re-render       |
+| onBeforeUnmount | Before destroy        |
+| onUnmounted     | After destroy         |
+| onErrorCaptured | Catch child errors    |
+| onActivated     | KeepAlive activated   |
+| onDeactivated   | KeepAlive deactivated |
+
+```js
+onMounted(() => {
+  fetchData()
+})
+```
+
+---
+
+# Event Handling
+
+| Syntax    | Example                        |
+| --------- | ------------------------------ |
+| Click     | `@click="save"`                |
+| Input     | `@input="handleInput"`         |
+| Submit    | `@submit.prevent="submitForm"` |
+| Keydown   | `@keydown="handle"`            |
+| Enter Key | `@keyup.enter="search"`        |
+| Ctrl Key  | `@keyup.ctrl.enter="save"`     |
+
+### Event Modifiers
+
+| Modifier   | Usage                        |
+| ---------- | ---------------------------- |
+| `.prevent` | Prevent default              |
+| `.stop`    | Stop propagation             |
+| `.once`    | Execute once                 |
+| `.capture` | Capture mode                 |
+| `.self`    | Only target element          |
+| `.passive` | Better scrolling performance |
+
+---
+
+# Class & Style Binding
+
+| Syntax          | Example                            |
+| --------------- | ---------------------------------- |
+| Class String    | `:class="active"`                  |
+| Object          | `:class="{ active:isActive }"`     |
+| Array           | `:class="[active,error]"`          |
+| Style Object    | `:style="{ color:'red' }"`         |
+| Multiple Styles | `:style="[baseStyle, themeStyle]"` |
+
+---
+
+# Forms
+
+| Element         | Example               |
+| --------------- | --------------------- |
+| Text            | `v-model="name"`      |
+| Textarea        | `v-model="message"`   |
+| Checkbox        | `v-model="checked"`   |
+| Radio           | `v-model="gender"`    |
+| Select          | `v-model="country"`   |
+| Multiple Select | `v-model="countries"` |
+
+### Form Modifiers
+
+| Modifier  | Purpose                |
+| --------- | ---------------------- |
+| `.trim`   | Remove spaces          |
+| `.number` | Convert to number      |
+| `.lazy`   | Update on change event |
+
+```html
+<input v-model.trim="username">
+```
+
+---
+
+# Props
+
+| Syntax       | Example                         |
+| ------------ | ------------------------------- |
+| Define Props | `defineProps(['title'])`        |
+| Typed Props  | `defineProps({ title:String })` |
+| Required     | `{ required:true }`             |
+| Default      | `{ default:'' }`                |
+
+```js
+const props = defineProps({
+  title: {
+    type: String,
+    required: true
+  }
+})
+```
+
+---
+
+# Emits
+
+| Syntax       | Example                 |
+| ------------ | ----------------------- |
+| Define Emits | `defineEmits(['save'])` |
+| Emit Event   | `emit('save')`          |
+
+```js
+const emit = defineEmits(['submit'])
+
+emit('submit', data)
+```
+
+---
+
+# Slots
+
+| Type         | Example                  |
+| ------------ | ------------------------ |
+| Default Slot | `<slot />`               |
+| Named Slot   | `<slot name="header" />` |
+| Scoped Slot  | `<slot :user="user" />`  |
+
+```html
+<MyCard>
+  <template #header>
+    Header Content
+  </template>
+</MyCard>
+```
+
+---
+
+# Composition API
+
+| API      | Example                   |
+| -------- | ------------------------- |
+| ref      | `ref(0)`                  |
+| reactive | `reactive({})`            |
+| computed | `computed(() => {})`      |
+| watch    | `watch(source,cb)`        |
+| provide  | `provide('theme','dark')` |
+| inject   | `inject('theme')`         |
+
+---
+
+# Provide & Inject
+
+| API     | Example                 |
+| ------- | ----------------------- |
+| Provide | `provide('user', user)` |
+| Inject  | `inject('user')`        |
+
+```js
+// Parent
+provide('theme', 'dark')
+
+// Child
+const theme = inject('theme')
+```
+
+---
+
+# Template Refs
+
+| Syntax       | Example                  |
+| ------------ | ------------------------ |
+| Template Ref | `ref="inputRef"`         |
+| Access DOM   | `inputRef.value.focus()` |
+
+```html
+<input ref="inputRef">
+```
+
+```js
+const inputRef = ref(null)
+```
+
+---
+
+# Vue Router
+
+| API         | Example                 |
+| ----------- | ----------------------- |
+| Router Link | `<RouterLink to="/">`   |
+| Router View | `<RouterView />`        |
+| Navigate    | `router.push('/about')` |
+| Replace     | `router.replace('/')`   |
+| Back        | `router.back()`         |
+| Params      | `route.params.id`       |
+| Query       | `route.query.page`      |
+
+```js
+const router = useRouter()
+router.push('/dashboard')
+```
+
+---
+
+# Pinia (State Management)
+
+| API          | Example             |
+| ------------ | ------------------- |
+| Create Store | `defineStore()`     |
+| Use Store    | `useUserStore()`    |
+| State        | `state: () => ({})` |
+| Getter       | `getters:{}`        |
+| Action       | `actions:{}`        |
+
+```js
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    user: null
+  }),
+  actions: {
+    setUser(user) {
+      this.user = user
+    }
+  }
+})
+```
+
+---
+
+# Teleport
+
+| Syntax                 | Purpose                       |
+| ---------------------- | ----------------------------- |
+| `<Teleport to="body">` | Render outside component tree |
+
+```html
+<Teleport to="body">
+  <Modal />
+</Teleport>
+```
+
+---
+
+# Suspense
+
+| Syntax       | Purpose                 |
+| ------------ | ----------------------- |
+| `<Suspense>` | Handle async components |
+
+```html
+<Suspense>
+  <AsyncComponent />
+</Suspense>
+```
+
+---
+
+# Async Components
+
+| Syntax    | Example                  |
+| --------- | ------------------------ |
+| Lazy Load | `defineAsyncComponent()` |
+
+```js
+const UserProfile = defineAsyncComponent(() =>
+  import('./UserProfile.vue')
+)
+```
+
+---
+
+# Custom Directives
+
+| Hook      | Description     |
+| --------- | --------------- |
+| mounted   | Element mounted |
+| updated   | Element updated |
+| unmounted | Cleanup         |
+
+```js
+app.directive('focus', {
+  mounted(el) {
+    el.focus()
+  }
+})
+```
+
+---
+
+# Common Built-in Components
+
+| Component           | Use              |
+| ------------------- | ---------------- |
+| `<Transition>`      | Animation        |
+| `<TransitionGroup>` | List animation   |
+| `<KeepAlive>`       | Cache components |
+| `<Teleport>`        | Render elsewhere |
+| `<Suspense>`        | Async loading    |
+
+---
+
+# Most Common Vue Interview Questions
+
+| Question                   | Answer                                             |
+| -------------------------- | -------------------------------------------------- |
+| ref vs reactive            | `ref` for primitives, `reactive` for objects       |
+| v-if vs v-show             | `v-if` removes DOM, `v-show` hides with CSS        |
+| computed vs watch          | computed derives value, watch handles side effects |
+| Props vs Emits             | Parent → Child data, Child → Parent events         |
+| Pinia vs Vuex              | Pinia is lighter and recommended for Vue 3         |
+| Composition vs Options API | Composition API offers better code reuse           |
+
+---
+
+# Vue Project Structure
+
+| Folder            | Purpose                  |
+| ----------------- | ------------------------ |
+| `src/components`  | Reusable UI components   |
+| `src/pages`       | Route pages              |
+| `src/composables` | Custom hooks/composables |
+| `src/stores`      | Pinia stores             |
+| `src/router`      | Routes                   |
+| `src/services`    | API calls                |
+| `src/assets`      | Images/fonts             |
+| `src/utils`       | Helper functions         |
+| `src/layouts`     | Application layouts      |

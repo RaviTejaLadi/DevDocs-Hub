@@ -1,1 +1,682 @@
-# TypeScript Cheat Sheet
+# TypeScript Cheat Sheet 🚀
+
+TypeScript adds static typing on top of JavaScript. It helps catch errors early, improves IDE support, and makes large applications easier to maintain.
+
+---
+
+# Basic Types
+
+| Type      | Example                        | Description             |
+| --------- | ------------------------------ | ----------------------- |
+| string    | `let name: string = "Ravi"`    | Text value              |
+| number    | `let age: number = 25`         | Integer/float           |
+| boolean   | `let active: boolean = true`   | True/false              |
+| null      | `let data: null = null`        | Null value              |
+| undefined | `let value: undefined`         | Undefined value         |
+| bigint    | `let id: bigint = 100n`        | Large numbers           |
+| symbol    | `const key: symbol = Symbol()` | Unique identifier       |
+| any       | `let x: any`                   | Disable type checking   |
+| unknown   | `let x: unknown`               | Safe alternative to any |
+| never     | `function fail(): never`       | Never returns           |
+| void      | `function log(): void`         | No return value         |
+
+```ts
+// Basic types
+let username: string = "John";
+let age: number = 25;
+let isAdmin: boolean = false;
+```
+
+---
+
+# Type Inference
+
+| Syntax                | Result  |
+| --------------------- | ------- |
+| `let name = "John"`   | string  |
+| `let age = 25`        | number  |
+| `const active = true` | boolean |
+
+```ts
+const message = "Hello";
+// TypeScript infers string automatically
+```
+
+---
+
+# Arrays
+
+| Syntax      | Example                |
+| ----------- | ---------------------- |
+| Type[]      | `string[]`             |
+| Array<Type> | `Array<string>`        |
+| Mixed Array | `(string \| number)[]` |
+
+```ts
+const users: string[] = ["John", "Alex"];
+const ids: Array<number> = [1, 2, 3];
+```
+
+---
+
+# Tuples
+
+| Syntax         | Example                 |
+| -------------- | ----------------------- |
+| Fixed Types    | `[string, number]`      |
+| Optional Value | `[string, number?]`     |
+| Rest Element   | `[string, ...number[]]` |
+
+```ts
+const user: [string, number] = ["John", 25];
+```
+
+---
+
+# Objects
+
+```ts
+const user: {
+  name: string;
+  age: number;
+} = {
+  name: "John",
+  age: 25
+};
+```
+
+| Syntax            | Example               |
+| ----------------- | --------------------- |
+| Object Type       | `{name:string}`       |
+| Nested Object     | `{user:{id:number}}`  |
+| Optional Property | `name?: string`       |
+| Readonly          | `readonly id: number` |
+
+---
+
+# Functions
+
+| Syntax         | Example            |
+| -------------- | ------------------ |
+| Return Type    | `(): string`       |
+| Void Function  | `(): void`         |
+| Optional Param | `name?: string`    |
+| Default Param  | `name = "Guest"`   |
+| Rest Param     | `...args:number[]` |
+
+```ts
+// Function with types
+function greet(name: string): string {
+  return `Hello ${name}`;
+}
+```
+
+---
+
+# Function Type
+
+```ts
+let calculate: (a: number, b: number) => number;
+
+calculate = (a, b) => a + b;
+```
+
+---
+
+# Interfaces
+
+| Syntax             | Example              |
+| ------------------ | -------------------- |
+| Interface          | `interface User {}`  |
+| Optional Property  | `name?: string`      |
+| Readonly Property  | `readonly id:number` |
+| Function Signature | `login(): void`      |
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email?: string;
+}
+```
+
+---
+
+# Type Alias
+
+```ts
+type User = {
+  id: number;
+  name: string;
+};
+```
+
+| Type Alias | Example                              |
+| ---------- | ------------------------------------ |
+| Primitive  | `type ID = string`                   |
+| Object     | `type User = {}`                     |
+| Union      | `type Status = "success" \| "error"` |
+
+---
+
+# Interface vs Type
+
+| Interface           | Type          |
+| ------------------- | ------------- |
+| Extendable          | Yes           |
+| Declaration Merging | Yes           |
+| Union Support       | No            |
+| Complex Types       | Limited       |
+| Recommended For     | Object shapes |
+
+---
+
+# Union Types
+
+```ts
+type ID = string | number;
+```
+
+| Example            | Meaning         |
+| ------------------ | --------------- |
+| `string \| number` | Either          |
+| `"yes" \| "no"`    | Literal values  |
+| `User \| null`     | Nullable object |
+
+---
+
+# Intersection Types
+
+```ts
+type User = {
+  name: string;
+};
+
+type Admin = {
+  permissions: string[];
+};
+
+type SuperAdmin = User & Admin;
+```
+
+---
+
+# Literal Types
+
+```ts
+type Theme = "light" | "dark";
+```
+
+```ts
+let theme: Theme = "light";
+```
+
+---
+
+# Enums
+
+```ts
+enum Role {
+  Admin,
+  User,
+  Guest
+}
+```
+
+### String Enum
+
+```ts
+enum Status {
+  Success = "SUCCESS",
+  Error = "ERROR"
+}
+```
+
+---
+
+# Type Assertions
+
+```ts
+const input = document.getElementById("name") as HTMLInputElement;
+
+input.value = "John";
+```
+
+### Alternative
+
+```ts
+const input = <HTMLInputElement>document.getElementById("name");
+```
+
+---
+
+# Type Narrowing
+
+```ts
+function print(id: string | number) {
+  if (typeof id === "string") {
+    console.log(id.toUpperCase());
+  }
+}
+```
+
+### Common Narrowing
+
+| Method       | Example                     |
+| ------------ | --------------------------- |
+| typeof       | `typeof value === "string"` |
+| instanceof   | `value instanceof Date`     |
+| in           | `"name" in obj`             |
+| Custom Guard | `isUser(data)`              |
+
+---
+
+# Type Guards
+
+```ts
+interface User {
+  name: string;
+}
+
+function isUser(data: any): data is User {
+  return data?.name !== undefined;
+}
+```
+
+---
+
+# Generics
+
+Generics create reusable type-safe code.
+
+```ts
+function identity<T>(value: T): T {
+  return value;
+}
+```
+
+```ts
+identity<string>("hello");
+identity<number>(100);
+```
+
+---
+
+# Generic Interfaces
+
+```ts
+interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+}
+```
+
+```ts
+const response: ApiResponse<User> = {
+  success: true,
+  data: {
+    id: 1,
+    name: "John"
+  }
+};
+```
+
+---
+
+# Generic Constraints
+
+```ts
+interface HasId {
+  id: number;
+}
+
+function getId<T extends HasId>(item: T) {
+  return item.id;
+}
+```
+
+---
+
+# keyof
+
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+
+type Keys = keyof User;
+```
+
+Result:
+
+```ts
+"name" | "age"
+```
+
+---
+
+# typeof
+
+```ts
+const user = {
+  name: "John",
+  age: 25
+};
+
+type UserType = typeof user;
+```
+
+---
+
+# Mapped Types
+
+```ts
+type User = {
+  name: string;
+  age: number;
+};
+
+type ReadonlyUser = {
+  readonly [K in keyof User]: User[K];
+};
+```
+
+---
+
+# Utility Types
+
+## Partial
+
+```ts
+type User = {
+  name: string;
+  age: number;
+};
+
+type PartialUser = Partial<User>;
+```
+
+All properties become optional.
+
+---
+
+## Required
+
+```ts
+Required<User>
+```
+
+All properties required.
+
+---
+
+## Readonly
+
+```ts
+Readonly<User>
+```
+
+All properties readonly.
+
+---
+
+## Pick
+
+```ts
+type UserPreview = Pick<User, "name">;
+```
+
+---
+
+## Omit
+
+```ts
+type UserWithoutAge = Omit<User, "age">;
+```
+
+---
+
+## Record
+
+```ts
+type Users = Record<string, number>;
+```
+
+Result:
+
+```ts
+{
+  john: 1;
+  alex: 2;
+}
+```
+
+---
+
+## Exclude
+
+```ts
+type Status = Exclude<
+  "success" | "error" | "loading",
+  "loading"
+>;
+```
+
+---
+
+## Extract
+
+```ts
+type Result = Extract<
+  string | number,
+  string
+>;
+```
+
+---
+
+## NonNullable
+
+```ts
+type Name = NonNullable<
+  string | null | undefined
+>;
+```
+
+---
+
+# Classes
+
+```ts
+class User {
+  constructor(
+    public name: string,
+    private age: number
+  ) {}
+}
+```
+
+---
+
+# Access Modifiers
+
+| Modifier  | Accessible    |
+| --------- | ------------- |
+| public    | Everywhere    |
+| private   | Same class    |
+| protected | Class + Child |
+| readonly  | Read only     |
+
+---
+
+# Abstract Class
+
+```ts
+abstract class Animal {
+  abstract speak(): void;
+}
+```
+
+---
+
+# Async/Await
+
+```ts
+async function getUsers(): Promise<User[]> {
+  const res = await fetch("/api/users");
+  return res.json();
+}
+```
+
+---
+
+# Promise
+
+```ts
+const promise: Promise<string> =
+  Promise.resolve("Hello");
+```
+
+---
+
+# Modules
+
+### Export
+
+```ts
+export const API_URL = "/api";
+```
+
+### Default Export
+
+```ts
+export default App;
+```
+
+### Import
+
+```ts
+import App from "./App";
+```
+
+---
+
+# Declaration Files
+
+| File          | Purpose               |
+| ------------- | --------------------- |
+| `index.d.ts`  | Type definitions      |
+| `global.d.ts` | Global types          |
+| `env.d.ts`    | Environment variables |
+
+---
+
+# Common React Types
+
+| Type        | Example                         |
+| ----------- | ------------------------------- |
+| ReactNode   | `children: ReactNode`           |
+| FC          | `FC<Props>`                     |
+| Dispatch    | `Dispatch<SetStateAction<T>>`   |
+| MouseEvent  | `MouseEvent<HTMLButtonElement>` |
+| ChangeEvent | `ChangeEvent<HTMLInputElement>` |
+| RefObject   | `RefObject<HTMLInputElement>`   |
+
+---
+
+# tsconfig Important Options
+
+| Option        | Purpose              |
+| ------------- | -------------------- |
+| strict        | Enable strict mode   |
+| noImplicitAny | Prevent implicit any |
+| target        | JS version           |
+| module        | Module system        |
+| jsx           | React JSX            |
+| baseUrl       | Absolute imports     |
+| paths         | Alias support        |
+| skipLibCheck  | Faster builds        |
+
+---
+
+# Most Used Advanced Types
+
+```ts
+type Nullable<T> = T | null;
+
+type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+};
+
+type AsyncFunction<T> = () => Promise<T>;
+
+type ValueOf<T> = T[keyof T];
+```
+
+---
+
+# Frequently Used Interview Concepts
+
+| Concept            | Example                 |
+| ------------------ | ----------------------- |
+| Union Types        | `string \| number`      |
+| Intersection Types | `User & Admin`          |
+| Generics           | `function fn<T>()`      |
+| keyof              | Property keys           |
+| typeof             | Extract type from value |
+| Utility Types      | Partial, Pick, Omit     |
+| Type Guards        | `typeof`, `instanceof`  |
+| Mapped Types       | `[K in keyof T]`        |
+| Conditional Types  | `T extends U ? X : Y`   |
+| Infer Keyword      | Extract nested types    |
+
+---
+
+# Conditional Types
+
+```ts
+type IsString<T> =
+  T extends string ? true : false;
+
+type Result = IsString<string>; // true
+```
+
+---
+
+# Infer Keyword
+
+```ts
+type ReturnTypeOf<T> =
+  T extends (...args: any[]) => infer R
+    ? R
+    : never;
+```
+
+---
+
+# Useful TypeScript Patterns for React
+
+```ts
+// API Response
+type ApiResponse<T> = {
+  data: T;
+  success: boolean;
+  message: string;
+};
+
+// Component Props
+type ButtonProps = {
+  children: React.ReactNode;
+  onClick: () => void;
+};
+
+// Generic Hook
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+) {
+  // implementation
+}
+```

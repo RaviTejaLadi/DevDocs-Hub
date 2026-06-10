@@ -1,1 +1,762 @@
-# Next.js Cheat Sheet
+# Next.js Cheat Sheet 🚀
+
+Next.js is a React framework for building full-stack web applications with Server Components, API routes, SSR, SSG, and modern routing.
+
+---
+
+# Project Creation
+
+| Command                      | Description              |
+| ---------------------------- | ------------------------ |
+| `npx create-next-app@latest` | Create project           |
+| `npm run dev`                | Start development server |
+| `npm run build`              | Production build         |
+| `npm run start`              | Run production server    |
+| `npm run lint`               | Run ESLint               |
+
+```bash
+# Create a Next.js project
+npx create-next-app@latest my-app
+```
+
+---
+
+# Project Structure
+
+| Folder          | Purpose             |
+| --------------- | ------------------- |
+| `app/`          | App Router pages    |
+| `components/`   | Reusable components |
+| `lib/`          | Utilities & helpers |
+| `hooks/`        | Custom hooks        |
+| `actions/`      | Server actions      |
+| `services/`     | API calls           |
+| `public/`       | Static assets       |
+| `middleware.ts` | Middleware          |
+| `types/`        | TypeScript types    |
+
+```text
+src/
+├── app/
+├── components/
+├── hooks/
+├── lib/
+├── actions/
+├── services/
+├── types/
+└── public/
+```
+
+---
+
+# App Router Basics
+
+| File            | Purpose          |
+| --------------- | ---------------- |
+| `page.tsx`      | Route page       |
+| `layout.tsx`    | Shared layout    |
+| `loading.tsx`   | Loading UI       |
+| `error.tsx`     | Error boundary   |
+| `not-found.tsx` | 404 page         |
+| `template.tsx`  | Re-render layout |
+| `route.ts`      | API endpoint     |
+
+---
+
+# Routes
+
+## Static Route
+
+```text
+app/about/page.tsx
+```
+
+URL:
+
+```text
+/about
+```
+
+---
+
+## Nested Route
+
+```text
+app/blog/page.tsx
+```
+
+URL:
+
+```text
+/blog
+```
+
+---
+
+## Dynamic Route
+
+```text
+app/blog/[slug]/page.tsx
+```
+
+URL:
+
+```text
+/blog/react
+/blog/nextjs
+```
+
+```tsx
+// Access dynamic params
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+
+  return <h1>{slug}</h1>
+}
+```
+
+---
+
+## Catch All Route
+
+```text
+app/docs/[...slug]/page.tsx
+```
+
+Matches:
+
+```text
+/docs/react
+/docs/react/hooks
+/docs/react/hooks/useState
+```
+
+---
+
+## Optional Catch All
+
+```text
+app/docs/[[...slug]]/page.tsx
+```
+
+Matches:
+
+```text
+/docs
+/docs/react
+/docs/react/hooks
+```
+
+---
+
+# Layouts
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+---
+
+# Client Components
+
+By default all components are Server Components.
+
+```tsx
+// Client Component
+"use client"
+
+import { useState } from "react"
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {count}
+    </button>
+  )
+}
+```
+
+---
+
+# Server Components
+
+```tsx
+// Server Component
+export default async function Users() {
+  const users = await getUsers()
+
+  return (
+    <div>
+      {users.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  )
+}
+```
+
+---
+
+# Data Fetching
+
+## Server Side Fetch
+
+```tsx
+// Fetch data on server
+const res = await fetch(
+  "https://api.example.com/users"
+)
+
+const users = await res.json()
+```
+
+---
+
+## Disable Cache
+
+```tsx
+const data = await fetch(url, {
+  cache: "no-store"
+})
+```
+
+---
+
+## Revalidate
+
+```tsx
+const data = await fetch(url, {
+  next: {
+    revalidate: 60
+  }
+})
+```
+
+---
+
+# Server Actions
+
+```tsx
+// app/actions/user.ts
+"use server"
+
+export async function createUser(
+  formData: FormData
+) {
+  const name = formData.get("name")
+}
+```
+
+Usage:
+
+```tsx
+<form action={createUser}>
+  <input name="name" />
+</form>
+```
+
+---
+
+# Route Handlers (API Routes)
+
+```text
+app/api/users/route.ts
+```
+
+```tsx
+// GET endpoint
+export async function GET() {
+  return Response.json({
+    users: []
+  })
+}
+```
+
+---
+
+## POST Route
+
+```tsx
+export async function POST(req: Request) {
+  const body = await req.json()
+
+  return Response.json(body)
+}
+```
+
+---
+
+# Navigation
+
+| Hook            | Usage                   |
+| --------------- | ----------------------- |
+| useRouter       | Programmatic navigation |
+| usePathname     | Current path            |
+| useSearchParams | Query params            |
+| redirect        | Server redirect         |
+
+---
+
+## Link Component
+
+```tsx
+// Client navigation
+import Link from "next/link"
+
+<Link href="/dashboard">
+  Dashboard
+</Link>
+```
+
+---
+
+## Router Navigation
+
+```tsx
+"use client"
+
+const router = useRouter()
+
+router.push("/dashboard")
+router.replace("/dashboard")
+router.back()
+router.refresh()
+```
+
+---
+
+# Query Parameters
+
+URL:
+
+```text
+/products?page=1
+```
+
+```tsx
+// Access search params
+export default function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    page?: string
+  }>
+}) {
+  // use page
+}
+```
+
+---
+
+# Metadata API
+
+```tsx
+// SEO metadata
+export const metadata = {
+  title: "Home",
+  description: "Website"
+}
+```
+
+---
+
+## Dynamic Metadata
+
+```tsx
+export async function generateMetadata() {
+  return {
+    title: "Blog"
+  }
+}
+```
+
+---
+
+# Images
+
+```tsx
+// Optimized image
+import Image from "next/image"
+
+<Image
+  src="/hero.png"
+  alt="Hero"
+  width={500}
+  height={300}
+/>
+```
+
+---
+
+# Fonts
+
+```tsx
+// Google Font optimization
+import { Inter } from "next/font/google"
+
+const inter = Inter({
+  subsets: ["latin"]
+})
+```
+
+---
+
+# Middleware
+
+```tsx
+// middleware.ts
+import { NextResponse } from "next/server"
+
+export function middleware() {
+  return NextResponse.next()
+}
+```
+
+---
+
+# Redirect
+
+```tsx
+import { redirect } from "next/navigation"
+
+redirect("/login")
+```
+
+---
+
+# Not Found
+
+```tsx
+import { notFound } from "next/navigation"
+
+if (!user) {
+  notFound()
+}
+```
+
+---
+
+# Loading UI
+
+```tsx
+// app/loading.tsx
+export default function Loading() {
+  return <p>Loading...</p>
+}
+```
+
+---
+
+# Error Boundary
+
+```tsx
+"use client"
+
+export default function Error({
+  error,
+}: {
+  error: Error
+}) {
+  return <h1>Error</h1>
+}
+```
+
+---
+
+# Cookies
+
+## Read Cookie
+
+```tsx
+// Server Component
+import { cookies } from "next/headers"
+
+const cookieStore = await cookies()
+const token = cookieStore.get("token")
+```
+
+---
+
+## Set Cookie
+
+```tsx
+cookieStore.set(
+  "theme",
+  "dark"
+)
+```
+
+---
+
+# Headers
+
+```tsx
+import { headers } from "next/headers"
+
+const headerList = await headers()
+
+const userAgent =
+  headerList.get("user-agent")
+```
+
+---
+
+# Environment Variables
+
+```env
+NEXT_PUBLIC_API_URL=https://api.com
+SECRET_KEY=123
+```
+
+Client Access:
+
+```tsx
+process.env.NEXT_PUBLIC_API_URL
+```
+
+Server Access:
+
+```tsx
+process.env.SECRET_KEY
+```
+
+---
+
+# Parallel Routes
+
+```text
+app/
+├── @team
+├── @analytics
+```
+
+```tsx
+export default function Layout({
+  team,
+  analytics,
+}: {
+  team: React.ReactNode
+  analytics: React.ReactNode
+}) {
+  return (
+    <>
+      {team}
+      {analytics}
+    </>
+  )
+}
+```
+
+---
+
+# Intercepting Routes
+
+```text
+(.)login
+(..)login
+(...)login
+```
+
+Used for modals and overlays.
+
+---
+
+# Caching
+
+| Method        | Description |
+| ------------- | ----------- |
+| Default Fetch | Cached      |
+| no-store      | No cache    |
+| revalidate    | ISR         |
+| force-cache   | Force cache |
+
+---
+
+# Authentication Pattern
+
+```tsx
+// Middleware auth check
+export function middleware(req: Request) {
+  const token = req.cookies.get("token")
+
+  if (!token) {
+    return Response.redirect(
+      new URL("/login", req.url)
+    )
+  }
+}
+```
+
+---
+
+# Streaming
+
+```tsx
+import { Suspense } from "react"
+
+<Suspense fallback={<Loading />}>
+  <Users />
+</Suspense>
+```
+
+---
+
+# Common Hooks
+
+| Hook            | Purpose              |
+| --------------- | -------------------- |
+| useRouter       | Navigation           |
+| usePathname     | Current URL          |
+| useSearchParams | Query params         |
+| useParams       | Dynamic route params |
+| useFormStatus   | Form state           |
+| useOptimistic   | Optimistic UI        |
+| useActionState  | Server actions       |
+
+---
+
+# useParams
+
+```tsx
+"use client"
+
+import { useParams } from "next/navigation"
+
+const params = useParams()
+
+console.log(params.id)
+```
+
+---
+
+# useOptimistic
+
+```tsx
+const [optimisticTodos, addTodo] =
+  useOptimistic(todos)
+```
+
+Used for instant UI updates.
+
+---
+
+# useActionState
+
+```tsx
+const [state, action] =
+  useActionState(createUser, null)
+```
+
+Used with server actions.
+
+---
+
+# Common File Conventions
+
+| File          | Usage            |
+| ------------- | ---------------- |
+| page.tsx      | Route            |
+| layout.tsx    | Shared UI        |
+| loading.tsx   | Loading state    |
+| error.tsx     | Error UI         |
+| route.ts      | API route        |
+| middleware.ts | Request handling |
+| not-found.tsx | 404 page         |
+
+---
+
+# Static Generation
+
+```tsx
+export async function generateStaticParams() {
+  return [
+    { slug: "react" },
+    { slug: "nextjs" }
+  ]
+}
+```
+
+---
+
+# Revalidation
+
+```tsx
+import { revalidatePath } from "next/cache"
+
+revalidatePath("/products")
+```
+
+---
+
+# Common Imports
+
+| Package  | Import            |
+| -------- | ----------------- |
+| Link     | `next/link`       |
+| Image    | `next/image`      |
+| Router   | `next/navigation` |
+| Headers  | `next/headers`    |
+| Cookies  | `next/headers`    |
+| Redirect | `next/navigation` |
+
+---
+
+# Next.js Rendering Modes
+
+| Mode      | Description                     |
+| --------- | ------------------------------- |
+| CSR       | Client Side Rendering           |
+| SSR       | Server Side Rendering           |
+| SSG       | Static Generation               |
+| ISR       | Incremental Static Regeneration |
+| Streaming | Progressive Rendering           |
+| RSC       | React Server Components         |
+
+---
+
+# Production Best Practices
+
+| Practice                 | Why                    |
+| ------------------------ | ---------------------- |
+| Prefer Server Components | Smaller JS bundle      |
+| Use Server Actions       | Avoid API boilerplate  |
+| Use Image Component      | Automatic optimization |
+| Use Metadata API         | Better SEO             |
+| Cache Fetch Requests     | Better performance     |
+| Lazy Load Components     | Faster pages           |
+| Keep Secrets on Server   | Security               |
+| Use Suspense             | Better UX              |
+
+---
+
+# Most Asked Next.js Interview Questions
+
+| Question                   | Answer                                        |
+| -------------------------- | --------------------------------------------- |
+| App Router vs Pages Router | App Router is the modern approach             |
+| Server vs Client Component | Server runs on server, Client runs in browser |
+| SSR vs SSG                 | SSR per request, SSG at build time            |
+| ISR                        | Rebuild pages incrementally                   |
+| Server Actions             | Execute server code from forms                |
+| Route Handlers             | API endpoints in App Router                   |
+| Middleware                 | Runs before requests                          |
+| Streaming                  | Send UI progressively                         |
+| Suspense                   | Async UI loading                              |
+| Revalidation               | Refresh cached data                           |

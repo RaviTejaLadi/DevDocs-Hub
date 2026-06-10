@@ -1,1 +1,692 @@
-# Nginx Cheat Sheet
+# Nginx Cheat Sheet 🚀
+
+**Nginx** is a high-performance web server, reverse proxy, load balancer, and API gateway widely used to serve web applications such as React, Next.js, Node.js, and Dockerized applications.
+
+---
+
+# Installation
+
+| OS     | Command                  |
+| ------ | ------------------------ |
+| Ubuntu | `sudo apt install nginx` |
+| CentOS | `sudo yum install nginx` |
+| MacOS  | `brew install nginx`     |
+| Docker | `docker run nginx`       |
+
+---
+
+# Common Commands
+
+| Command                        | Description           |
+| ------------------------------ | --------------------- |
+| `nginx -v`                     | Show version          |
+| `nginx -V`                     | Detailed version info |
+| `nginx -t`                     | Test configuration    |
+| `sudo systemctl start nginx`   | Start Nginx           |
+| `sudo systemctl stop nginx`    | Stop Nginx            |
+| `sudo systemctl restart nginx` | Restart               |
+| `sudo systemctl reload nginx`  | Reload config         |
+| `sudo systemctl status nginx`  | Check status          |
+
+```bash
+# Validate configuration
+sudo nginx -t
+```
+
+---
+
+# Important Directories
+
+| Path                          | Purpose        |
+| ----------------------------- | -------------- |
+| `/etc/nginx/nginx.conf`       | Main config    |
+| `/etc/nginx/conf.d/`          | Custom configs |
+| `/etc/nginx/sites-available/` | Site configs   |
+| `/etc/nginx/sites-enabled/`   | Enabled sites  |
+| `/var/www/html/`              | Website files  |
+| `/var/log/nginx/access.log`   | Access logs    |
+| `/var/log/nginx/error.log`    | Error logs     |
+
+---
+
+# Basic Configuration Structure
+
+```nginx
+events {}
+
+http {
+  server {
+    listen 80;
+
+    location / {
+      return 200 "Hello Nginx";
+    }
+  }
+}
+```
+
+---
+
+# Server Block
+
+Equivalent of Apache Virtual Host.
+
+```nginx
+server {
+    listen 80;
+
+    server_name example.com;
+
+    root /var/www/html;
+
+    index index.html;
+}
+```
+
+---
+
+# Listen Directive
+
+| Example           | Meaning     |
+| ----------------- | ----------- |
+| `listen 80;`      | HTTP        |
+| `listen 443 ssl;` | HTTPS       |
+| `listen 8080;`    | Custom port |
+| `listen [::]:80;` | IPv6        |
+
+---
+
+# Server Names
+
+```nginx
+server_name example.com;
+```
+
+```nginx
+server_name www.example.com;
+```
+
+```nginx
+server_name *.example.com;
+```
+
+```nginx
+server_name _;
+```
+
+Catch-all server.
+
+---
+
+# Root Directory
+
+```nginx
+root /var/www/html;
+```
+
+---
+
+# Default Index File
+
+```nginx
+index index.html index.htm;
+```
+
+---
+
+# Location Blocks
+
+## Exact Match
+
+```nginx
+location = /login {
+}
+```
+
+Only matches:
+
+```text
+/login
+```
+
+---
+
+## Prefix Match
+
+```nginx
+location /api {
+}
+```
+
+Matches:
+
+```text
+/api
+/api/users
+/api/products
+```
+
+---
+
+## Regex Match
+
+```nginx
+location ~ \.php$ {
+}
+```
+
+Matches:
+
+```text
+index.php
+user.php
+```
+
+---
+
+# Static File Hosting
+
+```nginx
+server {
+    listen 80;
+
+    root /var/www/app;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+---
+
+# React SPA Deployment
+
+```nginx
+server {
+    listen 80;
+
+    root /var/www/react-app/build;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+
+Fixes refresh issues.
+
+---
+
+# Next.js Reverse Proxy
+
+```nginx
+server {
+    listen 80;
+
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+```
+
+---
+
+# Node.js Reverse Proxy
+
+```nginx
+server {
+    listen 80;
+
+    server_name api.example.com;
+
+    location / {
+        proxy_pass http://localhost:5000;
+    }
+}
+```
+
+---
+
+# Reverse Proxy Headers
+
+```nginx
+location / {
+    proxy_pass http://localhost:3000;
+
+    proxy_set_header Host $host;
+
+    proxy_set_header X-Real-IP $remote_addr;
+
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+---
+
+# Load Balancing
+
+```nginx
+upstream backend {
+    server 127.0.0.1:3000;
+    server 127.0.0.1:3001;
+    server 127.0.0.1:3002;
+}
+```
+
+```nginx
+server {
+    location / {
+        proxy_pass http://backend;
+    }
+}
+```
+
+---
+
+# Load Balancing Methods
+
+| Method            | Description               |
+| ----------------- | ------------------------- |
+| Round Robin       | Default                   |
+| Least Connections | Least active connections  |
+| IP Hash           | Same client → same server |
+| Hash              | Custom key based          |
+
+---
+
+## Least Connections
+
+```nginx
+upstream backend {
+    least_conn;
+
+    server app1:3000;
+    server app2:3000;
+}
+```
+
+---
+
+# HTTPS Configuration
+
+```nginx
+server {
+    listen 443 ssl;
+
+    ssl_certificate /etc/ssl/cert.pem;
+
+    ssl_certificate_key /etc/ssl/key.pem;
+}
+```
+
+---
+
+# HTTP → HTTPS Redirect
+
+```nginx
+server {
+    listen 80;
+
+    server_name example.com;
+
+    return 301 https://$host$request_uri;
+}
+```
+
+---
+
+# SSL Best Practice
+
+```nginx
+ssl_protocols TLSv1.2 TLSv1.3;
+```
+
+---
+
+# Gzip Compression
+
+```nginx
+gzip on;
+
+gzip_types
+text/plain
+text/css
+application/json
+application/javascript;
+```
+
+---
+
+# Caching Static Assets
+
+```nginx
+location ~* \.(js|css|png|jpg|jpeg|svg)$ {
+    expires 30d;
+
+    add_header Cache-Control "public";
+}
+```
+
+---
+
+# Custom Error Pages
+
+```nginx
+error_page 404 /404.html;
+```
+
+```nginx
+location = /404.html {
+}
+```
+
+---
+
+# Access Logs
+
+```nginx
+access_log /var/log/nginx/access.log;
+```
+
+---
+
+# Error Logs
+
+```nginx
+error_log /var/log/nginx/error.log;
+```
+
+---
+
+# Disable Logs
+
+```nginx
+access_log off;
+```
+
+---
+
+# Basic Authentication
+
+Generate password:
+
+```bash
+htpasswd -c /etc/nginx/.htpasswd admin
+```
+
+Configuration:
+
+```nginx
+location /admin {
+    auth_basic "Restricted";
+
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+```
+
+---
+
+# Rate Limiting
+
+## Create Zone
+
+```nginx
+limit_req_zone
+$binary_remote_addr
+zone=api_limit:10m
+rate=10r/s;
+```
+
+## Apply Limit
+
+```nginx
+location /api {
+    limit_req zone=api_limit;
+}
+```
+
+---
+
+# File Upload Limit
+
+```nginx
+client_max_body_size 100M;
+```
+
+---
+
+# CORS
+
+```nginx
+location /api {
+
+    add_header Access-Control-Allow-Origin *;
+
+    add_header Access-Control-Allow-Methods "GET,POST,PUT,DELETE";
+
+    add_header Access-Control-Allow-Headers "*";
+}
+```
+
+---
+
+# Redirect URL
+
+```nginx
+location /old {
+    return 301 /new;
+}
+```
+
+---
+
+# Rewrite URL
+
+```nginx
+rewrite ^/users/(.*)$ /profile/$1 permanent;
+```
+
+---
+
+# Security Headers
+
+```nginx
+add_header X-Frame-Options SAMEORIGIN;
+
+add_header X-Content-Type-Options nosniff;
+
+add_header X-XSS-Protection "1; mode=block";
+```
+
+---
+
+# Block Access To Files
+
+```nginx
+location ~ /\. {
+    deny all;
+}
+```
+
+Protects:
+
+```text
+.env
+.git
+.htaccess
+```
+
+---
+
+# Docker + Nginx
+
+### Dockerfile
+
+```dockerfile
+FROM nginx:alpine
+
+COPY dist /usr/share/nginx/html
+```
+
+---
+
+# Docker Compose
+
+```yaml
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+```
+
+---
+
+# Common Variables
+
+| Variable       | Meaning     |
+| -------------- | ----------- |
+| `$host`        | Domain      |
+| `$uri`         | Current URI |
+| `$request_uri` | Full URL    |
+| `$remote_addr` | Client IP   |
+| `$server_name` | Server name |
+| `$scheme`      | http/https  |
+
+---
+
+# Useful Debugging
+
+## Test Config
+
+```bash
+nginx -t
+```
+
+---
+
+## Reload Config
+
+```bash
+sudo systemctl reload nginx
+```
+
+---
+
+## View Logs
+
+```bash
+tail -f /var/log/nginx/error.log
+```
+
+```bash
+tail -f /var/log/nginx/access.log
+```
+
+---
+
+# Nginx for Next.js Production
+
+```nginx
+server {
+    listen 80;
+
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+
+        proxy_set_header Host $host;
+
+        proxy_set_header X-Real-IP $remote_addr;
+
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+---
+
+# Nginx for React Build
+
+```nginx
+server {
+    listen 80;
+
+    root /var/www/react-app;
+
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+
+---
+
+# Nginx Request Flow
+
+```mermaid
+graph LR
+A[Client Request] --> B[Nginx]
+B --> C[Location Match]
+C --> D[Static File]
+C --> E[Reverse Proxy]
+E --> F[Node.js]
+E --> G[Next.js]
+E --> H[Spring Boot]
+```
+
+---
+
+# Most Used Commands
+
+| Command                   | Purpose         |
+| ------------------------- | --------------- |
+| `nginx -t`                | Validate config |
+| `nginx -s reload`         | Reload          |
+| `systemctl restart nginx` | Restart         |
+| `tail -f error.log`       | Watch errors    |
+| `tail -f access.log`      | Watch traffic   |
+
+---
+
+# Nginx Interview Questions
+
+| Question        | Answer                               |
+| --------------- | ------------------------------------ |
+| Nginx vs Apache | Event-driven vs process/thread-based |
+| Reverse Proxy   | Forwards requests to backend         |
+| Upstream        | Group of backend servers             |
+| Gzip            | Compresses responses                 |
+| Location Block  | URL matching                         |
+| Proxy Pass      | Forward request                      |
+| Load Balancing  | Distributes traffic                  |
+| SSL Termination | HTTPS handled by Nginx               |
+| try_files       | File existence check                 |
+| Rate Limiting   | Protect APIs                         |
+
+---
+
+# Production Best Practices
+
+| Practice                  | Benefit             |
+| ------------------------- | ------------------- |
+| Enable Gzip               | Faster responses    |
+| Enable HTTPS              | Security            |
+| Use Reverse Proxy         | Better scalability  |
+| Add Security Headers      | Prevent attacks     |
+| Enable Caching            | Improve performance |
+| Use Rate Limiting         | Prevent abuse       |
+| Monitor Logs              | Easier debugging    |
+| Use TLS 1.2+              | Secure connections  |
+| Hide Sensitive Files      | Security            |
+| Test Config Before Reload | Avoid downtime      |
