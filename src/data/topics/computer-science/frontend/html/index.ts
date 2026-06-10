@@ -1,29 +1,3 @@
-import intro from './intro.mdx?raw';
-import htmlInstallationAndSetup from './installation-and-setup.mdx?raw';
-import htmlMustKnowTopics from './html-must-know-topics.mdx?raw';
-import htmlBasics from './html-basics.mdx?raw';
-import documentStructure from './document-structure.mdx?raw';
-import headElement from './head-element.mdx?raw';
-import coreTextAndContentTags from './core-text-and-content-tags.mdx?raw';
-import linksAndNavigation from './links-and-navigation.mdx?raw';
-import imagesAndMedia from './images-and-media.mdx?raw';
-import lists from './lists.mdx?raw';
-import tables from './tables.mdx?raw';
-import forms from './forms.mdx?raw';
-import canvasAndSvg from './canvas-and-svg.mdx?raw';
-import iframesAndEmbeds from './iframes-and-embeds.mdx?raw';
-import semanticHtml from './semantic-html.mdx?raw';
-import metadataAndSeoBasics from './metadata-and-seo-basics.mdx?raw';
-import htmlAttributes from './html-attributes.mdx?raw';
-import dataAttributes from './data-attributes.mdx?raw';
-import microdataSchema from './microdata-schema.mdx?raw';
-import accessibility from './accessibility.mdx?raw';
-import htmlAndCssRelationship from './html-and-css-relationship.mdx?raw';
-import htmlAndJsRelationship from './html-and-js-relationship.mdx?raw';
-import html5Apis from './html5-apis.mdx?raw';
-import bestPractices from './best-practices.mdx?raw';
-import commonHtmlMistakes from './common-html-mistakes.mdx?raw';
-import top25InterviewQuestions from './top-25-interview-questions.mdx?raw';
 import type { TopicItem } from '@/data/topics';
 
 export const htmlTopics: TopicItem[] = [
@@ -32,12 +6,48 @@ export const htmlTopics: TopicItem[] = [
     title: '🚀 Getting Started',
     content: '',
     items: [
-      { id: 'intro', title: '📖 Introduction', content: intro },
-      { id: 'html-installation-and-setup', title: '🛠️ Installation & Setup', content: htmlInstallationAndSetup },
-      { id: 'html-must-know-topics', title: '📌 HTML Topics Every Developer Must Know', content: htmlMustKnowTopics },
-      { id: 'html-basics', title: '🧱 HTML Basics', content: htmlBasics },
-      { id: 'html-document-structure', title: '📄 Document Structure', content: documentStructure },
-      { id: 'html-head-element', title: '🧠 The Head Element', content: headElement },
+      {
+        id: 'intro',
+        title: '📖 Introduction',
+        content: '',
+        contentLoader: () => import('./intro.mdx?raw'),
+        excerpt: 'Introduction to HTML, the standard markup language for documents designed to be displayed in a web browser.',
+      },
+      {
+        id: 'html-installation-and-setup',
+        title: '🛠️ Installation & Setup',
+        content: '',
+        contentLoader: () => import('./installation-and-setup.mdx?raw'),
+        excerpt: 'How to set up your development environment for HTML development.',
+      },
+      {
+        id: 'html-must-know-topics',
+        title: '📌 HTML Topics Every Developer Must Know',
+        content: '',
+        contentLoader: () => import('./html-must-know-topics.mdx?raw'),
+        excerpt: 'A checklist of essential HTML concepts for modern web development.',
+      },
+      {
+        id: 'html-basics',
+        title: '🧱 HTML Basics',
+        content: '',
+        contentLoader: () => import('./html-basics.mdx?raw'),
+        excerpt: 'Learn the basic building blocks of HTML: elements, tags, and attributes.',
+      },
+      {
+        id: 'html-document-structure',
+        title: '📄 Document Structure',
+        content: '',
+        contentLoader: () => import('./document-structure.mdx?raw'),
+        excerpt: 'Understand the standard structure of an HTML5 document.',
+      },
+      {
+        id: 'html-head-element',
+        title: '🧠 The Head Element',
+        content: '',
+        contentLoader: () => import('./head-element.mdx?raw'),
+        excerpt: 'Exploring the <head> section and its metadata, styles, and scripts.',
+      },
     ],
   },
   {
@@ -45,13 +55,38 @@ export const htmlTopics: TopicItem[] = [
     title: '📝 Content & Structure',
     content: '',
     items: [
-      { id: 'core-text-and-content-tags', title: '✏️ Core Text & Content Tags', content: coreTextAndContentTags },
-      { id: 'links-and-navigation', title: '🔗 Links & Navigation', content: linksAndNavigation },
-      { id: 'lists', title: '📋 Lists', content: lists },
-      { id: 'tables', title: '📊 Tables', content: tables },
-      { id: 'images-and-media', title: '🖼️ Images & Media', content: imagesAndMedia },
-      { id: 'html-canvas-and-svg', title: '🎨 Canvas & SVG', content: canvasAndSvg },
-      { id: 'html-iframes-and-embeds', title: '📺 iframes & Embeds', content: iframesAndEmbeds },
+      {
+        id: 'core-text-and-content-tags',
+        title: '✏️ Core Text & Content Tags',
+        content: '',
+        contentLoader: () => import('./core-text-and-content-tags.mdx?raw'),
+      },
+      {
+        id: 'links-and-navigation',
+        title: '🔗 Links & Navigation',
+        content: '',
+        contentLoader: () => import('./links-and-navigation.mdx?raw'),
+      },
+      { id: 'lists', title: '📋 Lists', content: '', contentLoader: () => import('./lists.mdx?raw') },
+      { id: 'tables', title: '📊 Tables', content: '', contentLoader: () => import('./tables.mdx?raw') },
+      {
+        id: 'images-and-media',
+        title: '🖼️ Images & Media',
+        content: '',
+        contentLoader: () => import('./images-and-media.mdx?raw'),
+      },
+      {
+        id: 'html-canvas-and-svg',
+        title: '🎨 Canvas & SVG',
+        content: '',
+        contentLoader: () => import('./canvas-and-svg.mdx?raw'),
+      },
+      {
+        id: 'html-iframes-and-embeds',
+        title: '📺 iframes & Embeds',
+        content: '',
+        contentLoader: () => import('./iframes-and-embeds.mdx?raw'),
+      },
     ],
   },
   {
@@ -59,8 +94,8 @@ export const htmlTopics: TopicItem[] = [
     title: '📥 Forms & Interactive',
     content: '',
     items: [
-      { id: 'forms', title: '📋 Forms', content: forms },
-      { id: 'html5-apis', title: '⚡ HTML5 APIs', content: html5Apis },
+      { id: 'forms', title: '📋 Forms', content: '', contentLoader: () => import('./forms.mdx?raw') },
+      { id: 'html5-apis', title: '⚡ HTML5 APIs', content: '', contentLoader: () => import('./html5-apis.mdx?raw') },
     ],
   },
   {
@@ -68,11 +103,36 @@ export const htmlTopics: TopicItem[] = [
     title: '🏷️ Semantic HTML & SEO',
     content: '',
     items: [
-      { id: 'semantic-html', title: '🧩 Semantic HTML', content: semanticHtml },
-      { id: 'metadata-and-seo-basics', title: '🔍 Metadata & SEO Basics', content: metadataAndSeoBasics },
-      { id: 'html-attributes', title: '🏷️ HTML Attributes', content: htmlAttributes },
-      { id: 'html-data-attributes', title: '📦 Data Attributes', content: dataAttributes },
-      { id: 'html-microdata-schema', title: '📐 Microdata & Schema', content: microdataSchema },
+      {
+        id: 'semantic-html',
+        title: '🧩 Semantic HTML',
+        content: '',
+        contentLoader: () => import('./semantic-html.mdx?raw'),
+      },
+      {
+        id: 'metadata-and-seo-basics',
+        title: '🔍 Metadata & SEO Basics',
+        content: '',
+        contentLoader: () => import('./metadata-and-seo-basics.mdx?raw'),
+      },
+      {
+        id: 'html-attributes',
+        title: '🏷️ HTML Attributes',
+        content: '',
+        contentLoader: () => import('./html-attributes.mdx?raw'),
+      },
+      {
+        id: 'html-data-attributes',
+        title: '📦 Data Attributes',
+        content: '',
+        contentLoader: () => import('./data-attributes.mdx?raw'),
+      },
+      {
+        id: 'html-microdata-schema',
+        title: '📐 Microdata & Schema',
+        content: '',
+        contentLoader: () => import('./microdata-schema.mdx?raw'),
+      },
     ],
   },
   {
@@ -80,11 +140,36 @@ export const htmlTopics: TopicItem[] = [
     title: '🔗 Integration & Quality',
     content: '',
     items: [
-      { id: 'html-and-css-relationship', title: '🎨 HTML & CSS Relationship', content: htmlAndCssRelationship },
-      { id: 'html-and-js-relationship', title: '📜 HTML & JavaScript Relationship', content: htmlAndJsRelationship },
-      { id: 'accessibility', title: '♿ Accessibility', content: accessibility },
-      { id: 'best-practices', title: '✅ Best Practices', content: bestPractices },
-      { id: 'common-html-mistakes', title: '⚠️ Common HTML Mistakes', content: commonHtmlMistakes },
+      {
+        id: 'html-and-css-relationship',
+        title: '🎨 HTML & CSS Relationship',
+        content: '',
+        contentLoader: () => import('./html-and-css-relationship.mdx?raw'),
+      },
+      {
+        id: 'html-and-js-relationship',
+        title: '📜 HTML & JavaScript Relationship',
+        content: '',
+        contentLoader: () => import('./html-and-js-relationship.mdx?raw'),
+      },
+      {
+        id: 'accessibility',
+        title: '♿ Accessibility',
+        content: '',
+        contentLoader: () => import('./accessibility.mdx?raw'),
+      },
+      {
+        id: 'best-practices',
+        title: '✅ Best Practices',
+        content: '',
+        contentLoader: () => import('./best-practices.mdx?raw'),
+      },
+      {
+        id: 'common-html-mistakes',
+        title: '⚠️ Common HTML Mistakes',
+        content: '',
+        contentLoader: () => import('./common-html-mistakes.mdx?raw'),
+      },
     ],
   },
   {
@@ -95,7 +180,8 @@ export const htmlTopics: TopicItem[] = [
       {
         id: 'html-top-25-interview-questions',
         title: '📌 Top 25 Interview Questions',
-        content: top25InterviewQuestions,
+        content: '',
+        contentLoader: () => import('./top-25-interview-questions.mdx?raw'),
       },
     ],
   },

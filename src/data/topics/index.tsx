@@ -26,26 +26,26 @@ import { cssTopics } from './computer-science/frontend/css';
 import { reactTopics } from './computer-science/frontend/react';
 import { jsTopics } from './computer-science/frontend/js';
 import { tsConcepts } from './computer-science/frontend/ts';
-import { nextTopics } from './computer-science/frontend/Next';
+import { nextTopics } from './computer-science/frontend/next';
 import { vueTopics } from './computer-science/frontend/vue';
 
-import { expressTopics } from './computer-science/Backend/express';
-import { nodeTopics } from './computer-science/Backend/node';
+import { expressTopics } from './computer-science/backend/express';
+import { nodeTopics } from './computer-science/backend/node';
 
-import { cloudServicesData } from './computer-science/Cloud';
-import { databaseData } from './computer-science/Database';
-import { dsaData } from './computer-science/DSA';
-import { resourcesData } from './computer-science/Resources';
-import { systemDesignData } from './computer-science/SystemDesign';
-import { mechanicalTopics } from './Mechanical';
-import { basicScienceTopics } from './BasicScience';
-import { electricalEngineeringTopics } from './Electrical-Engineering';
-import { electronicsCommunicationTopics } from './Electronics-Communication';
-import { civilEngineeringTopics } from './Civil-Engineering';
-import { dataScienceAiTopics } from './Data-Science-AI';
-import { cybersecurityTopics } from './Cybersecurity';
-import { aptitudePlacementTopics } from './Aptitude-Placement';
-import { chemicalEngineeringTopics } from './Chemical-Engineering';
+import { cloudServicesData } from './computer-science/cloud';
+import { databaseData } from './computer-science/database';
+import { dsaData } from './computer-science/dsa';
+import { resourcesData } from './computer-science/resources';
+import { systemDesignData } from './computer-science/system-design';
+import { mechanicalTopics } from './mechanical';
+import { basicScienceTopics } from './basic-science';
+import { electricalEngineeringTopics } from './electrical-engineering';
+import { electronicsCommunicationTopics } from './electronics-communication';
+import { civilEngineeringTopics } from './civil-engineering';
+import { dataScienceAiTopics } from './data-science-ai';
+import { cybersecurityTopics } from './cybersecurity';
+import { aptitudePlacementTopics } from './aptitude-placement';
+import { chemicalEngineeringTopics } from './chemical-engineering';
 import { pythonTopics } from './computer-science/python';
 import { javaTopics } from './computer-science/java';
 import { gitTopics } from './computer-science/git';
@@ -61,7 +61,13 @@ export type { DocContent } from '@/types/docContent';
 export interface TopicItem {
   id: string;
   title: string;
+  /** Synchronous content (legacy or for small snippets). */
   content: DocContent;
+  /** Dynamic loader for MDX content to improve performance. */
+  contentLoader?: () => Promise<{ default: string }>;
+  /** Optional metadata for search optimization. */
+  excerpt?: string;
+  keywords?: string[];
   /** Optional override; when omitted, badge is inferred from title and section context. */
   badge?: TopicBadgeKind;
   items?: TopicItem[];

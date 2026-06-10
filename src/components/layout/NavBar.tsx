@@ -91,28 +91,37 @@ const NavBar = () => {
 
     const title = normalize(item.title);
     const category = normalize(categoryTitle);
-    // Limit content span for relevance and performance.
-    const content = normalize(docContentSearchText(item.content));
+    const excerpt = normalize(item.excerpt || '');
+    const keywords = (item.keywords || []).map(normalize);
 
     const titleHasAnyToken = tokens.some((t) => title.includes(t));
-    const allTokensPresent = tokens.every((t) => title.includes(t) || category.includes(t) || content.includes(t));
-    if (!titleHasAnyToken || !allTokensPresent) return 0;
+    const keywordHasAnyToken = tokens.some((t) => keywords.some((k) => k.includes(t)));
+    const excerptHasAnyToken = tokens.some((t) => excerpt.includes(t));
+
+    const allTokensPresent = tokens.every(
+      (t) => title.includes(t) || category.includes(t) || excerpt.includes(t) || keywords.some((k) => k.includes(t))
+    );
+
+    if (!titleHasAnyToken && !keywordHasAnyToken && !excerptHasAnyToken) return 0;
+    if (!allTokensPresent) return 0;
 
     let score = 0;
 
-    if (title === normalizedQuery) score += 140;
-    if (title.startsWith(normalizedQuery)) score += 110;
-    if (title.includes(normalizedQuery)) score += 85;
-    if (category.includes(normalizedQuery)) score += 35;
-    if (content.includes(normalizedQuery) && normalizedQuery.length >= 5) score += 12;
+    if (title === normalizedQuery) score += 150;
+    if (title.startsWith(normalizedQuery)) score += 120;
+    if (title.includes(normalizedQuery)) score += 90;
+    if (category.includes(normalizedQuery)) score += 40;
+    if (excerpt.includes(normalizedQuery)) score += 30;
+    if (keywords.some((k) => k === normalizedQuery)) score += 100;
 
     tokens.forEach((token) => {
-      if (title.includes(token)) score += 35;
-      if (category.includes(token)) score += 12;
-      if (content.includes(token) && token.length >= 4) score += 4;
+      if (title.includes(token)) score += 40;
+      if (category.includes(token)) score += 15;
+      if (excerpt.includes(token) && token.length >= 4) score += 10;
+      if (keywords.some((k) => k.includes(token))) score += 30;
     });
 
-    if (item.title.length <= 28) score += 6;
+    if (item.title.length <= 28) score += 8;
     return score;
   };
 

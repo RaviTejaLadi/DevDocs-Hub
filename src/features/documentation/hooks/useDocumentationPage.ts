@@ -8,7 +8,7 @@ import { flattenTopicItems } from '../utils';
 
 export function useDocumentationPage() {
   const { categoryId, slug } = useDocsRouteParams();
-  const { topic, content } = useDocsPageContent(categoryId, slug);
+  const { topic, content, isLoading } = useDocsPageContent(categoryId, slug);
   const docsTopicBrowserSections = useDocsTopicBrowserSections();
   const topicBrowser = useDocsTopicBrowser(categoryId, docsTopicBrowserSections);
   const viewportRef = useScrollViewport();
@@ -50,5 +50,6 @@ export function useDocumentationPage() {
     nextArticle,
     showScrollTop,
     scrollToTop,
+    isLoading,
   };
 }
