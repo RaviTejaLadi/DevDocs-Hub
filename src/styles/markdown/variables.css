@@ -1,21 +1,43 @@
 /* ==========================================================================
-   Markdown Render — refined editorial theme
-   Palette accents only: Sky #0ea5e9 · Purple #7d3cff · Red #c80e13
-   All decoration uses soft alpha tints so the article still belongs to the
-   site's neutral card surface rather than becoming a sticker book.
+   Markdown — production spacing & box tokens
    ========================================================================== */
 .md-render {
   --md-purple:       #7d3cff;
   --md-purple-deep:  #5a1fd4;
-  --md-purple-soft:  rgba(125, 60, 255, 0.07);
-  --md-purple-tint:  rgba(125, 60, 255, 0.12);
+  --md-purple-soft:  rgba(125, 60, 255, 0.06);
+  --md-purple-tint:  rgba(125, 60, 255, 0.1);
   --md-purple-line:  rgba(125, 60, 255, 0.22);
   --md-sky:          #0ea5e9;
-  --md-sky-soft:     rgba(14, 165, 233, 0.18);
-  --md-sky-line:     rgba(14, 165, 233, 0.42);
+  --md-sky-deep:     #0284c7;
+  --md-sky-soft:     rgba(14, 165, 233, 0.1);
+  --md-sky-line:     rgba(14, 165, 233, 0.28);
   --md-red:          #c80e13;
-  --md-red-soft:     rgba(200, 14, 19, 0.08);
-  --md-sky-top:      rgba(186, 230, 253, 0.55);
+  --md-sky-top:      rgba(186, 230, 253, 0.4);
+
+  /* 4px grid spacing */
+  --md-gap-1: 0.5rem;   /*  8px */
+  --md-gap-2: 0.75rem;  /* 12px */
+  --md-gap-3: 1rem;     /* 16px */
+  --md-gap-4: 1.25rem;  /* 20px */
+  --md-gap-5: 1.5rem;   /* 24px */
+  --md-gap-6: 2rem;     /* 32px */
+  --md-gap-7: 2.5rem;   /* 40px */
+
+  /* Medium box chrome — 1px borders, restrained radius */
+  --md-box-radius:      0.625rem;  /* 10px */
+  --md-box-radius-sm:   0.5rem;    /*  8px */
+  --md-box-radius-lg:   0.75rem;  /* 12px */
+  --md-box-border:      color-mix(in oklab, var(--foreground) 11%, transparent);
+  --md-box-bg:          var(--card);
+
+  /* List hierarchy — root inset + per-level step + marker gutters */
+  --md-list-root-padding: 1.8rem;
+  --md-list-nest-step:    1.5rem;
+  --md-list-marker-ul:    1.125rem;
+  --md-list-marker-ol:    1.625rem;
+  --md-list-gutter-ul:    1.75rem;
+  --md-list-gutter-ol:    2.375rem;
+  --md-list-item-gap:     0.5rem;
 
   position: relative;
   counter-reset: md-h2;
@@ -25,12 +47,14 @@
   --md-purple:       #b693ff;
   --md-purple-deep:  #d2bcff;
   --md-purple-soft:  rgba(182, 147, 255, 0.08);
-  --md-purple-tint:  rgba(182, 147, 255, 0.14);
-  --md-purple-line:  rgba(182, 147, 255, 0.22);
+  --md-purple-tint:  rgba(182, 147, 255, 0.12);
+  --md-purple-line:  rgba(182, 147, 255, 0.24);
   --md-sky:          #38bdf8;
-  --md-sky-soft:     rgba(56, 189, 248, 0.12);
-  --md-sky-line:     rgba(56, 189, 248, 0.28);
+  --md-sky-deep:     #7dd3fc;
+  --md-sky-soft:     rgba(56, 189, 248, 0.1);
+  --md-sky-line:     rgba(56, 189, 248, 0.22);
   --md-red:          #ff8085;
-  --md-red-soft:     rgba(255, 128, 133, 0.10);
-  --md-sky-top:      rgba(56, 189, 248, 0.1);
+  --md-sky-top:      rgba(56, 189, 248, 0.08);
+
+  --md-box-border: color-mix(in oklab, var(--foreground) 14%, transparent);
 }

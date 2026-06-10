@@ -2,7 +2,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, Quote, TriangleAlert } from 'lucide-react';
+import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, Table2, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
@@ -94,13 +94,11 @@ const CALLOUT_ICONS: Record<string, React.ComponentType<{ className?: string; st
 };
 
 export type BuildMarkdownComponentsOpts = {
-  /** Prefix so slide chunks do not produce duplicate heading ids in the DOM. */
   idPrefix: string;
   isDarkTheme: boolean;
   copiedKey: string | null;
   handleCopy: (key: string, text: string) => void;
   scrollToId: (id: string) => void;
-  /** Slide viewport: comfortable type + spacing (still slightly denser than full article) */
   compactSlide?: boolean;
 };
 
@@ -119,50 +117,34 @@ export function buildMarkdownComponents({
     h1: ({ children }: any) => {
       const id = nid(children);
       return (
-        <header className={cn('relative', c ? 'mb-5 mt-0' : 'mb-9 mt-1')}>
+        <header className="md-h1">
           <h1
             id={id}
             className={cn(
               'scroll-mt-28 font-bold text-foreground',
               c
-                ? 'text-[1.65rem] sm:text-[1.875rem] leading-[1.2] tracking-[-0.02em]'
-                : 'text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.15] tracking-tight'
+                ? 'text-[1.6rem] sm:text-[1.8rem] leading-[1.22] tracking-[-0.02em]'
+                : 'text-[1.75rem] sm:text-[2.125rem] lg:text-[2.35rem] leading-[1.18] tracking-tight'
             )}
           >
-            <span className={cn(!c && 'md-h1-title')}>{children}</span>
+            <span className="md-h1-title">{children}</span>
           </h1>
-          {!c ? (
-            <div className="mt-5 flex items-center gap-2">
-              <span className="h-px w-10 rounded-full bg-(--md-purple)/60" />
-              <span className="h-px flex-1 rounded-full bg-border/60" />
-            </div>
-          ) : (
-            <div className="mt-3 border-b border-border/40" />
-          )}
         </header>
       );
     },
     h2: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('md-h2 group relative', c ? 'mt-8 mb-4' : 'mt-14 mb-6')}>
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <div
-              className={cn(
-                'md-h2-num grid place-items-center rounded-lg',
-                'bg-(--md-purple-tint) text-(--md-purple-deep) font-bold tabular-nums',
-                'border border-(--md-purple-line)',
-                c ? 'min-w-9 h-9 px-2 text-[0.75rem] tracking-normal' : 'min-w-9 h-9 px-2 text-[0.78rem] tracking-tight'
-              )}
-              aria-hidden
-            />
+        <div className="md-h2 group">
+          <div className="md-h2-row">
+            <div className="md-h2-num" aria-hidden />
             <h2
               id={id}
               className={cn(
-                'scroll-mt-28 flex-1 font-bold text-foreground',
+                'scroll-mt-28 font-semibold text-foreground',
                 c
-                  ? 'text-xl sm:text-[1.35rem] leading-snug tracking-[-0.015em]'
-                  : 'text-2xl sm:text-[1.7rem] leading-tight tracking-tight'
+                  ? 'text-[1.125rem] sm:text-[1.25rem] leading-snug'
+                  : 'text-[1.25rem] sm:text-[1.4rem] leading-snug tracking-[-0.01em]'
               )}
             >
               {children}
@@ -174,15 +156,13 @@ export function buildMarkdownComponents({
     h3: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('group relative flex items-center gap-2.5', c ? 'mt-7 mb-3' : 'mt-10 mb-4')}>
-          <span className="inline-block h-1.5 w-1.5 shrink-0 rotate-45 rounded-sm bg-(--md-purple)" />
+        <div className="md-h3">
+          <span className="md-h3-mark" aria-hidden />
           <h3
             id={id}
             className={cn(
               'scroll-mt-28 font-semibold text-foreground',
-              c
-                ? 'text-[1.08rem] sm:text-[1.2rem] leading-snug tracking-normal'
-                : 'text-xl sm:text-[1.35rem] tracking-tight'
+              c ? 'text-[1.05rem] sm:text-[1.125rem] leading-snug' : 'text-[1.125rem] sm:text-[1.2rem] leading-snug'
             )}
           >
             {children}
@@ -193,13 +173,13 @@ export function buildMarkdownComponents({
     h4: ({ children }: any) => {
       const id = nid(children);
       return (
-        <div className={cn('group relative flex items-center gap-2', c ? 'mt-5 mb-2.5' : 'mt-8 mb-3')}>
-          <span className="inline-block h-1 w-1 rounded-full bg-(--md-purple)" />
+        <div className="md-h4">
+          <span className="md-h4-mark" aria-hidden />
           <h4
             id={id}
             className={cn(
               'scroll-mt-28 font-semibold text-foreground',
-              c ? 'text-[1.02rem] sm:text-[1.06rem] leading-snug tracking-normal' : 'text-lg tracking-tight'
+              c ? 'text-[1rem] leading-snug' : 'text-[1.0625rem] leading-snug'
             )}
           >
             {children}
@@ -208,49 +188,22 @@ export function buildMarkdownComponents({
       );
     },
     p: ({ children }: any) => (
-      <p
-        className={cn(
-          'md-p',
-          c
-            ? 'mb-4 text-[1.02rem] sm:text-[1.055rem] leading-[1.72] tracking-[0.012em] text-foreground/88'
-            : 'mb-5 text-[1.02rem] leading-[1.78] text-foreground/80'
-        )}
-      >
-        {children}
-      </p>
+      <p className={cn('md-p', c ? 'text-[0.98rem] leading-[1.7]' : 'text-[1rem] leading-[1.72]')}>{children}</p>
     ),
     ul: ({ children }: any) => (
-      <ul
-        className={cn(
-          'md-ul',
-          c ? 'mb-4 space-y-2.5 text-[1.01rem] sm:text-[1.035rem] tracking-[0.01em]' : 'mb-6 space-y-2 text-[1.01rem]'
-        )}
-      >
+      <ul className="md-ul" role="list">
         {children}
       </ul>
     ),
     ol: ({ children }: any) => (
-      <ol
-        className={cn(
-          'md-ol',
-          c ? 'mb-4 space-y-2.5 text-[1.01rem] sm:text-[1.035rem] tracking-[0.01em]' : 'mb-6 space-y-2.5 text-[1.01rem]'
-        )}
-      >
+      <ol className="md-ol" role="list">
         {children}
       </ol>
     ),
     li: ({ children, className }: any) => {
       const isTask = (className || '').includes('task-list-item');
       return (
-        <li
-          className={cn(
-            'text-foreground/85',
-            isTask && 'list-none pl-0',
-            c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'leading-[1.7] text-[1.01rem]'
-          )}
-        >
-          {children}
-        </li>
+        <li className={cn(isTask && 'md-li-task list-none')}>{children}</li>
       );
     },
     blockquote: ({ children }: any) => {
@@ -258,58 +211,31 @@ export function buildMarkdownComponents({
       if (alert) {
         const Icon = CALLOUT_ICONS[alert.kind] ?? Info;
         return (
-          <div
-            className={cn(
-              'md-callout',
-              `md-callout--${alert.kind.toLowerCase()}`,
-              c ? 'my-5' : 'my-7'
-            )}
-            role="note"
-          >
+          <div className={cn('md-callout', `md-callout--${alert.kind.toLowerCase()}`)} role="note">
             <div className="md-callout-head">
-              <Icon className="md-callout-icon" strokeWidth={2.2} />
+              <span className="md-callout-icon-wrap">
+                <Icon className="md-callout-icon" strokeWidth={2.2} />
+              </span>
               <span className="md-callout-title">{alert.kind}</span>
             </div>
-            <div
-              className={cn(
-                'md-callout-body text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
-                c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72]' : 'text-[1rem] leading-[1.75]'
-              )}
-            >
-              {alert.body}
-            </div>
+            <div className="md-callout-body [&_p]:mb-2 [&_p:last-child]:mb-0">{alert.body}</div>
           </div>
         );
       }
 
       return (
-        <div className={c ? 'my-5' : 'my-7'}>
-          <blockquote className="md-quote">
-            <div className="flex items-start gap-3">
-              <Quote
-                className={cn(
-                  'shrink-0 -scale-x-100 text-(--md-purple)',
-                  c ? 'mt-1 h-4 w-4 sm:h-5 sm:w-5' : 'mt-0.5 h-5 w-5'
-                )}
-                strokeWidth={2.2}
-              />
-              <div
-                className={cn(
-                  'font-medium text-foreground/90 [&_p]:mb-2.5 [&_p:last-child]:mb-0',
-                  c ? 'text-[1.01rem] sm:text-[1.03rem] leading-[1.72] tracking-[0.01em]' : 'text-[1rem] leading-[1.75]'
-                )}
-              >
-                {children}
-              </div>
-            </div>
-          </blockquote>
-        </div>
+        <blockquote className="md-definition">
+          <span className="md-definition-label">Definition</span>
+          <div className="md-definition-body [&_p]:mb-2 [&_p:last-child]:mb-0">{children}</div>
+        </blockquote>
       );
     },
     table: ({ children }: any) => (
-      <div className="md-table-wrap">
-        <div className="w-full overflow-x-auto">
-          <table className="md-table">{children}</table>
+      <div className="md-table-card">
+        <div className="md-table-wrap">
+          <div className="w-full overflow-x-auto">
+            <table className="md-table">{children}</table>
+          </div>
         </div>
       </div>
     ),
@@ -342,36 +268,26 @@ export function buildMarkdownComponents({
           rel={isExternal ? 'noopener noreferrer' : undefined}
         >
           {children}
-          {isExternal && <ExternalLink className="ml-1 inline-block h-3 w-3 -translate-y-px opacity-70" />}
+          {isExternal && <ExternalLink className="ml-0.5 inline-block h-3 w-3 -translate-y-px opacity-60" />}
         </a>
       );
     },
     strong: ({ children }: any) => <strong>{children}</strong>,
     em: ({ children }: any) => <em>{children}</em>,
-    kbd: ({ children }: any) => (
-      <kbd className="inline-flex h-5 min-w-6 items-center justify-center rounded border border-border/60 bg-muted/60 px-1.5 text-[0.75rem] font-mono text-foreground/80 shadow-none">
-        {children}
-      </kbd>
-    ),
+    kbd: ({ children }: any) => <kbd className="md-kbd">{children}</kbd>,
     hr: () => (
-      <div className="md-hr">
-        <div className="md-hr-line" />
-        <span className="md-hr-dot bg-(--md-red)" />
+      <div className="md-hr" role="separator">
         <span className="md-hr-dot bg-(--md-sky)" />
         <span className="md-hr-dot bg-(--md-purple)" />
-        <div className="md-hr-line" />
+        <span className="md-hr-dot bg-(--md-red)" />
       </div>
     ),
     img: ({ src, alt }: any) => {
       const [altText, caption] = (alt ?? '').split('|').map((s: string) => s.trim());
       return (
-        <figure className={cn('flex flex-col items-center', c ? 'my-5' : 'my-7')}>
-          <div className="md-polaroid">
-            <img src={src} alt={altText} className="block h-auto max-w-full rounded-md" loading="lazy" />
-          </div>
-          {caption && (
-            <figcaption className="mt-2.5 text-center text-sm italic text-muted-foreground">{caption}</figcaption>
-          )}
+        <figure className="md-figure">
+          <img src={src} alt={altText} className="md-figure-img" loading="lazy" />
+          {caption && <figcaption className="md-figure-caption">{caption}</figcaption>}
         </figure>
       );
     },
@@ -386,44 +302,37 @@ export function buildMarkdownComponents({
       }
 
       return !inline && match ? (
-        <div className={cn('md-code-card group relative', c ? 'my-5' : 'my-6')}>
+        <div className="md-code-card group relative">
           <div className="md-code-head">
             <div className="flex items-center gap-1.5" aria-hidden>
               <span className="md-code-dot bg-[#ff5f57]" />
-              <span className="md-code-dot bg-[#febc2e]" />
+              <span className="md-code-dot bg-[#38bdf8]" />
               <span className="md-code-dot bg-[#28c840]" />
             </div>
-            <span className="ml-auto font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-              {languageLabel(language!)}
-            </span>
+            <span className="md-code-lang">{languageLabel(language!)}</span>
           </div>
-          <div className="pointer-events-none absolute right-2 top-[2.35rem] z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+          <div className="pointer-events-none absolute right-2 top-[2.15rem] z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => handleCopy(codeKey, codeString)}
               className={cn(
-                'h-6 gap-1.5 rounded border border-border/35 bg-card/75 p-2 text-[0.7rem] font-medium backdrop-blur-sm',
+                'h-6 gap-1 rounded-md border border-border/40 bg-card/95 px-2 text-[0.68rem] font-medium',
                 isDarkTheme
-                  ? 'text-foreground/75 hover:bg-accent/70 hover:text-foreground'
-                  : 'text-muted-foreground hover:bg-accent/85 hover:text-foreground'
+                  ? 'text-foreground/70 hover:bg-accent/60 hover:text-foreground'
+                  : 'text-muted-foreground hover:bg-accent/80 hover:text-foreground'
               )}
               aria-label="Copy code"
             >
               {copiedKey === codeKey ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
             </Button>
           </div>
-          <div className="overflow-x-auto">
+          <div className="md-code-body overflow-x-auto">
             <SyntaxHighlighter
               style={isDarkTheme ? atomDark : prism}
               language={language}
               PreTag="div"
-              className={cn(
-                'm-0! bg-transparent! p-5!',
-                c
-                  ? 'text-[0.9rem] sm:text-[0.94rem] leading-[1.72]! tracking-[0.02em]!'
-                  : 'text-[0.9rem] sm:text-[0.92rem] leading-[1.7]!'
-              )}
+              className="m-0! bg-transparent! p-4! text-[0.875rem] leading-[1.65]!"
               showLineNumbers={false}
               customStyle={{ background: 'transparent', margin: 0 }}
               codeTagProps={{ style: { background: 'transparent' } }}
@@ -444,7 +353,7 @@ export function buildMarkdownComponents({
       <input className="md-task-checkbox" type="checkbox" checked={checked} disabled {...props} />
     ),
     del: ({ children }: any) => (
-      <del className="text-muted-foreground/80 line-through decoration-(--md-red)/70 decoration-1">{children}</del>
+      <del className="text-muted-foreground/80 line-through decoration-(--md-red)/60 decoration-1">{children}</del>
     ),
   };
 }

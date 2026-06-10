@@ -426,11 +426,11 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
   }, [chart, themeMode]);
 
   return (
-    <figure className="my-7 overflow-hidden rounded-xl border border-border/60 bg-card/85 shadow-none">
-      <div className="flex items-center justify-between gap-3 border-b border-border/50 bg-muted/35 px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+    <figure className="md-mermaid-card overflow-hidden rounded-[0.625rem] border border-border/45 bg-card">
+      <div className="flex items-center gap-2 border-b border-border/45 bg-muted/30 px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-muted-foreground">
         <span>Diagram</span>
       </div>
-      <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-slate-50/70 p-3 sm:p-5 dark:bg-slate-950/35">
+      <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-slate-50/70 p-3 sm:p-4 dark:bg-slate-950/35">
         <div ref={ref} className="min-w-0 [&_svg_*]:font-sans" />
         <div
           ref={errorBoxRef}

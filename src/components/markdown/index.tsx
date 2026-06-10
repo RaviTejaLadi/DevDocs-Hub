@@ -336,8 +336,6 @@ const MarkdownRenderInner = ({
   const [activeId, setActiveId] = useState<string>('');
   const contentRef = useRef<HTMLDivElement | null>(null);
   const slideBodyRef = useRef<HTMLDivElement | null>(null);
-  const scrollContainerRef = useRef<HTMLElement | null>(null);
-  const progressRingRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
   const isStringContent = isDocContentString(content);
@@ -393,7 +391,7 @@ const MarkdownRenderInner = ({
     setHeadings(collected);
   }, [slideMode, slides, content, headingPrefix]);
 
-  // Scroll spy + reading-progress (TOC + ring) — card scroll body vs main viewport
+  // Scroll spy for TOC active section — card scroll body vs main viewport
   useEffect(() => {
     if (cardScrollMode) {
       if (!slideBodyRef.current) return;
@@ -416,32 +414,9 @@ const MarkdownRenderInner = ({
               { root: body, rootMargin: '-12% 0px -50% 0px', threshold: [0, 0.25, 1] }
             );
       headingEls.forEach((el) => observer?.observe(el));
-      scrollContainerRef.current = body;
-
-      let frameId = 0;
-      const updateProgress = () => {
-        if (frameId) return;
-        frameId = window.requestAnimationFrame(() => {
-          frameId = 0;
-          if (!progressRingRef.current || !slideBodyRef.current) return;
-          const b = slideBodyRef.current;
-          const max = b.scrollHeight - b.clientHeight;
-          const intra = max > 0 ? b.scrollTop / max : 0;
-          const base = slideMode ? (activeSlide / Math.max(slides.length, 1)) * 100 : 0;
-          const pct = slideMode
-            ? Math.min(100, base + intra * (100 / Math.max(slides.length, 1)))
-            : Math.min(100, intra * 100);
-          progressRingRef.current.style.setProperty('--progress', String(pct));
-          progressRingRef.current.dataset.label = `${Math.round(pct)}%`;
-        });
-      };
-      body.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
 
       return () => {
         observer?.disconnect();
-        body.removeEventListener('scroll', updateProgress);
-        if (frameId) window.cancelAnimationFrame(frameId);
       };
     }
 
@@ -466,43 +441,10 @@ const MarkdownRenderInner = ({
     );
     headingEls.forEach((el) => observer.observe(el));
 
-    let scrollEl: HTMLElement | null = scrollRoot;
-    if (!scrollEl && contentRef.current) {
-      scrollEl = contentRef.current.parentElement;
-      while (scrollEl && scrollEl !== document.body) {
-        const overflowY = window.getComputedStyle(scrollEl).overflowY;
-        if (overflowY === 'auto' || overflowY === 'scroll') break;
-        scrollEl = scrollEl.parentElement;
-      }
-    }
-    scrollContainerRef.current = scrollEl ?? null;
-
-    let frameId = 0;
-    const updateProgress = () => {
-      if (frameId) return;
-      frameId = window.requestAnimationFrame(() => {
-        frameId = 0;
-        if (!progressRingRef.current) return;
-
-        const tgt = scrollContainerRef.current ?? document.scrollingElement ?? document.documentElement;
-        const scrollTop = tgt.scrollTop;
-        const max = tgt.scrollHeight - tgt.clientHeight;
-        const progress = max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0;
-
-        progressRingRef.current.style.setProperty('--progress', String(progress));
-        progressRingRef.current.dataset.label = `${Math.round(progress)}%`;
-      });
-    };
-    const tgt = scrollContainerRef.current ?? window;
-    tgt.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
-
     return () => {
       observer.disconnect();
-      tgt.removeEventListener('scroll', updateProgress);
-      if (frameId) window.cancelAnimationFrame(frameId);
     };
-  }, [cardScrollMode, slideMode, activeSlide, headings, slides.length, content, viewportScrollRootRef]);
+  }, [cardScrollMode, slideMode, activeSlide, headings, content, viewportScrollRootRef]);
 
   /** Reset card scroll body when the document or slide changes (topic jump must land at intro, not mid-card). */
   useLayoutEffect(() => {
@@ -662,7 +604,11 @@ const MarkdownRenderInner = ({
     [copiedKey, handleCopy, isDarkTheme, scrollToId]
   );
 
-  const articleSurface = cn('md-render', docsArticleSurfaceClass, 'px-6 py-8 sm:px-9 sm:py-10 lg:px-12 lg:py-11');
+  const articleSurface = cn(
+    'md-render',
+    docsArticleSurfaceClass,
+    'px-5 py-6 sm:px-7 sm:py-8 lg:px-9 lg:py-9'
+  );
 
   const tocHeadings = useMemo(
     () => selectTocHeadings(headings, slideMode, slides, headingPrefix),
@@ -724,7 +670,7 @@ const MarkdownRenderInner = ({
                   ref={slideBodyRef}
                   className={cn(
                     'md-render md-render-slide overflow-x-hidden overflow-y-auto overscroll-y-auto',
-                    'px-5 pt-4 pb-14 sm:px-8 sm:pt-5 sm:pb-16',
+                    'px-4 pt-3 pb-12 sm:px-6 sm:pt-4 sm:pb-14',
                     fillViewportCard ? 'min-h-0 flex-1' : DOC_SLIDE_BODY_MAX_CLASS
                   )}
                 >
@@ -743,25 +689,6 @@ const MarkdownRenderInner = ({
                     />
                   </div>
                 </div>
-
-                {slideMode ? (
-                  <div
-                    className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-0.5 bg-border/30 dark:bg-border/40"
-                    role="progressbar"
-                    aria-valuenow={activeSlide + 1}
-                    aria-valuemin={1}
-                    aria-valuemax={slides.length}
-                    aria-label={`${'Slide'} ${activeSlide + 1} of ${slides.length}`}
-                  >
-                    <div
-                      className={cn(
-                        'h-full bg-linear-to-r from-primary/50 via-primary to-primary/70 transition-[width] duration-300 ease-out',
-                        keyboardActive && 'shadow-none'
-                      )}
-                      style={{ width: `${slides.length > 0 ? ((activeSlide + 1) / slides.length) * 100 : 0}%` }}
-                    />
-                  </div>
-                ) : null}
 
                 {slideMode ? (
                   <Tooltip>
@@ -875,7 +802,7 @@ const MarkdownRenderInner = ({
             className={cn(
               docsArticleSurfaceClass,
               'flex min-h-0 flex-col',
-              tocCollapsed ? 'items-center p-2' : 'p-3.5',
+              tocCollapsed ? 'items-center p-0.5' : 'p-3.5',
               cardScrollMode && 'h-full overflow-hidden'
             )}
           >
@@ -886,15 +813,15 @@ const MarkdownRenderInner = ({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="size-9 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                    className="size-7 shrink-0 rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                     onClick={() => setTocCollapsed(false)}
-                    aria-label={'Show on-this-page outline'}
+                    aria-label={'Show table of content'}
                     aria-expanded={false}
                   >
                     <ListTree className="size-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="left">{'Show on-this-page outline'}</TooltipContent>
+                <TooltipContent side="left">{'Show table of content'}</TooltipContent>
               </Tooltip>
             ) : (
               <div className="flex min-h-0 flex-1 flex-col">
@@ -903,12 +830,6 @@ const MarkdownRenderInner = ({
                     {'On this page'}
                   </span>
                   <div className="flex shrink-0 items-center gap-1">
-                    <div
-                      ref={progressRingRef}
-                      className="md-progress-ring scale-90"
-                      data-label="0%"
-                      style={{ ['--progress' as any]: 0 }}
-                    />
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Button
@@ -923,7 +844,7 @@ const MarkdownRenderInner = ({
                           <ChevronRight className="size-3.5" />
                         </Button>
                       </TooltipTrigger>
-                      <TooltipContent side="left">{'Hide on-this-page outline'}</TooltipContent>
+                      <TooltipContent side="left">{'Hide table of content'}</TooltipContent>
                     </Tooltip>
                   </div>
                 </div>

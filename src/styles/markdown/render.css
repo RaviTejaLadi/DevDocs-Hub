@@ -1,315 +1,275 @@
-/* Subtle sky-blue tint at the top of the article */
+/* ── Base ─────────────────────────────────────────────────────────────────── */
 .md-render::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(180deg, var(--md-sky-top) 0%, transparent 280px);
+  background: linear-gradient(180deg, var(--md-sky-top) 0%, transparent 160px);
   z-index: 0;
 }
 
-/* Comfortable reading rhythm for long-form docs */
 .md-render {
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  color: color-mix(in oklab, var(--foreground) 88%, transparent);
 }
 
-/* Lead paragraph directly under the article title */
-.md-render > header + .md-p,
-.md-render > header + p {
-  font-size: 1.12rem;
-  line-height: 1.75;
-  margin-bottom: 1.75rem;
-  color: color-mix(in oklab, var(--foreground) 90%, transparent);
-}
-
-@media (min-width: 640px) {
-  .md-render > header + .md-p,
-  .md-render > header + p {
-    font-size: 1.16rem;
-    margin-bottom: 1.85rem;
-  }
-}
-
-/* Drop cap — purple letter on soft sky-blue tint */
-.md-render > p:first-of-type::first-letter {
-  float: left;
-  font-weight: 800;
-  font-size: 3.4rem;
-  line-height: 0.95;
-  margin: 0.4rem 0.6rem 0 0;
-  padding: 0.1rem 0.4rem 0.05rem;
-  color: var(--md-purple-deep);
-  background: var(--md-sky-soft);
-  border: 1px solid var(--md-sky-line);
-  border-radius: 0.4rem;
-}
-
-/* Compact answer surface (interview accordions) — no drop cap, no oversized
-   first paragraph; keep it understated. */
 .md-render.interview-answer::before,
 .md-render.md-render-slide::before {
   background: none;
 }
 
-.md-render.interview-answer > p:first-of-type::first-letter {
-  all: unset;
+/* ── Vertical rhythm ─────────────────────────────────────────────────────── */
+.md-render .md-h1        { margin: 0 0 var(--md-gap-3); }
+.md-render .md-h2        { margin: var(--md-gap-6) 0 var(--md-gap-3); }
+.md-render .md-h3        { margin: var(--md-gap-4) 0 var(--md-gap-2); }
+.md-render .md-h4        { margin: var(--md-gap-3) 0 var(--md-gap-2); }
+.md-render .md-p         { margin: 0 0 var(--md-gap-3); }
+.md-render .md-ul,
+.md-render .md-ol        { margin: 0 0 var(--md-gap-4); }
+.md-render .md-hr        { margin: var(--md-gap-5) 0; }
+.md-render .md-figure    { margin: var(--md-gap-4) 0; }
+
+/* Highlighted / important blocks only */
+.md-render .md-definition,
+.md-render .md-callout,
+.md-render .md-code-card,
+.md-render .md-mermaid-card,
+.md-render .md-table-card {
+  margin: var(--md-gap-4) 0;
 }
 
-/* Slide card body — no drop cap; comfortable reading defaults */
-.md-render.md-render-slide > p:first-of-type::first-letter {
-  all: unset;
-}
+.md-render.md-render-slide .md-h2 { margin-top: var(--md-gap-5); }
+.md-render.interview-answer .md-h2 { margin-top: var(--md-gap-4); }
 
-.md-render.md-render-slide {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "kern" 1, "liga" 1;
-}
-
-.md-render.md-render-slide .md-ul > li {
-  padding-left: 1.65rem;
-}
-
-.md-render.md-render-slide .md-ol > li {
-  padding-left: 2.3rem;
-}
-
-.md-render.md-render-slide .md-quote {
-  padding: 1.125rem 1.35rem;
-}
-
-/* <strong> — gentle sky-blue underline highlight */
-.md-render strong {
-  background-image: linear-gradient(
+/* ── Headings — plain typography, no boxes ───────────────────────────────── */
+.md-render .md-h1-title {
+  background: linear-gradient(
     180deg,
     transparent 0%,
-    transparent 72%,
-    var(--md-sky-soft) 72%,
+    transparent 80%,
+    var(--md-sky-soft) 80%,
     var(--md-sky-soft) 95%,
     transparent 95%
   );
   background-repeat: no-repeat;
-  padding: 0 0.1em;
-  font-weight: 700;
-  color: var(--foreground);
+  box-decoration-break: clone;
 }
 
-/* <em> — soft purple italic */
-.md-render em {
-  color: var(--md-purple-deep);
-  font-weight: 500;
-  font-style: italic;
+.md-render .md-h1::after {
+  content: "";
+  display: block;
+  margin-top: var(--md-gap-3);
+  height: 1px;
+  background: linear-gradient(90deg, var(--md-sky-line), var(--md-box-border) 45%, transparent);
 }
 
-/* Link — thin purple underline that grows slightly on hover */
-.md-render .md-link {
-  color: var(--md-purple-deep);
-  font-weight: 500;
-  text-decoration: none;
-  background-image: linear-gradient(var(--md-purple), var(--md-purple));
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 1.5px;
-  transition: background-size 0.25s ease, color 0.2s ease;
-  padding: 0 0.04em;
-}
-.md-render .md-link:hover {
-  background-size: 100% 0.32em;
-  color: var(--foreground);
+.md-render .md-h1 + .md-p {
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  color: color-mix(in oklab, var(--foreground) 90%, transparent);
 }
 
-/* Inline code — soft sky-blue chip */
-.md-render .md-inline-code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.88em;
-  padding: 0.12em 0.4em;
-  margin: 0 0.08em;
-  border-radius: 0.35rem;
-  background: var(--md-sky-soft);
-  color: var(--foreground);
-  border: 1px solid var(--md-sky-line);
-}
-
-/* H1 highlight — narrow sky-blue underline marker */
-.md-render .md-h1-title {
-  display: inline;
-  background-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    transparent 82%,
-    var(--md-sky-soft) 82%,
-    var(--md-sky-soft) 96%,
-    transparent 96%
-  );
-  background-repeat: no-repeat;
-  padding: 0 0.04em;
-}
-
-/* H2 chapter counter */
 .md-render .md-h2 { counter-increment: md-h2; }
-.md-render .md-h2-num::before {
-  content: counter(md-h2, decimal-leading-zero);
+
+.md-render .md-h2-row {
+  display: flex;
+  align-items: center;
+  gap: var(--md-gap-2);
+}
+
+.md-render .md-h2-num {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--md-purple-line);
+  border-radius: var(--md-box-radius-sm);
+  background: color-mix(in oklab, var(--md-purple-tint) 50%, transparent);
+  color: var(--md-purple-deep);
+  font-size: 0.68rem;
+  font-weight: 700;
   font-feature-settings: "tnum" 1;
 }
 
-.md-render .md-h2::after {
-  content: "";
-  display: block;
-  margin-top: 1.1rem;
-  height: 1px;
-  background: linear-gradient(90deg, var(--md-purple-line), transparent 72%);
+.md-render .md-h2-num::before {
+  content: counter(md-h2, decimal-leading-zero);
 }
 
-/* Blockquote — clean purple stripe on soft purple tint */
-.md-render .md-quote {
-  background: var(--md-purple-soft);
-  border: 1px solid var(--md-purple-line);
-  border-left: 3px solid var(--md-purple);
-  border-radius: 0 0.6rem 0.6rem 0;
-  padding: 1rem 1.25rem;
-}
-
-/* GFM-style callouts (e.g. > [!NOTE]) */
-.md-render .md-callout {
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
-  overflow: hidden;
-  background: var(--card);
-}
-
-.md-render .md-callout-head {
+.md-render .md-h3,
+.md-render .md-h4 {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.65rem 1rem;
-  border-bottom: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  gap: 0.5rem;
 }
 
-.md-render .md-callout-icon {
-  width: 1rem;
-  height: 1rem;
+.md-render .md-h3-mark {
   flex-shrink: 0;
-}
-
-.md-render .md-callout-body {
-  padding: 0.95rem 1.1rem 1.05rem;
-}
-
-.md-render .md-callout--note {
-  border-color: color-mix(in oklab, #3b82f6 28%, transparent);
-  background: color-mix(in oklab, #3b82f6 6%, var(--card));
-}
-.md-render .md-callout--note .md-callout-head {
-  color: #2563eb;
-  background: color-mix(in oklab, #3b82f6 10%, transparent);
-  border-bottom-color: color-mix(in oklab, #3b82f6 18%, transparent);
-}
-
-.md-render .md-callout--tip {
-  border-color: color-mix(in oklab, #22c55e 28%, transparent);
-  background: color-mix(in oklab, #22c55e 6%, var(--card));
-}
-.md-render .md-callout--tip .md-callout-head {
-  color: #16a34a;
-  background: color-mix(in oklab, #22c55e 10%, transparent);
-  border-bottom-color: color-mix(in oklab, #22c55e 18%, transparent);
-}
-
-.md-render .md-callout--important {
-  border-color: color-mix(in oklab, var(--md-purple) 30%, transparent);
-  background: color-mix(in oklab, var(--md-purple) 7%, var(--card));
-}
-.md-render .md-callout--important .md-callout-head {
-  color: var(--md-purple-deep);
-  background: var(--md-purple-tint);
-  border-bottom-color: var(--md-purple-line);
-}
-
-.md-render .md-callout--warning,
-.md-render .md-callout--caution {
-  border-color: color-mix(in oklab, #f59e0b 30%, transparent);
-  background: color-mix(in oklab, #f59e0b 7%, var(--card));
-}
-.md-render .md-callout--warning .md-callout-head,
-.md-render .md-callout--caution .md-callout-head {
-  color: #d97706;
-  background: color-mix(in oklab, #f59e0b 12%, transparent);
-  border-bottom-color: color-mix(in oklab, #f59e0b 20%, transparent);
-}
-
-/* Image — simple framed image, no rotation, no fake polaroid */
-.md-render .md-polaroid {
-  background: var(--card);
-  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
-  padding: 0.4rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 14px 32px -22px color-mix(in oklab, var(--foreground) 30%, transparent);
-}
-
-/* Lists — small markers, no shadow ghosts */
-.md-render .md-ul { list-style: none; padding-left: 0.25rem; }
-.md-render .md-ul > li {
-  position: relative;
-  padding-left: 1.5rem;
-}
-.md-render .md-ul > li::before {
-  content: "";
-  position: absolute;
-  left: 0.3rem;
-  top: 0.78em;
-  width: 0.45rem;
-  height: 0.45rem;
-  background: var(--md-purple);
+  width: 0.4rem;
+  height: 0.4rem;
   border-radius: 0.1rem;
+  background: var(--md-sky);
   transform: rotate(45deg);
 }
 
-.md-render .md-ol { list-style: none; padding-left: 0.25rem; counter-reset: md-ol; }
-.md-render .md-ol > li {
-  position: relative;
-  padding-left: 2.1rem;
-  counter-increment: md-ol;
+.md-render .md-h4-mark {
+  flex-shrink: 0;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 999px;
+  background: var(--md-purple);
 }
-.md-render .md-ol > li::before {
-  content: counter(md-ol);
-  position: absolute;
-  left: 0;
-  top: 0.18em;
+
+/* ── Body text ───────────────────────────────────────────────────────────── */
+.md-render .md-p {
+  color: color-mix(in oklab, var(--foreground) 86%, transparent);
+}
+
+.md-render strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.md-render em {
+  color: var(--md-purple-deep);
+  font-style: italic;
+}
+
+.md-render .md-link {
+  color: var(--md-sky-deep);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--md-sky) 40%, transparent);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.md-render .md-link:hover {
+  color: var(--foreground);
+  text-decoration-color: var(--md-sky);
+}
+
+.dark .md-render .md-link {
+  color: var(--md-sky);
+}
+
+.md-render .md-inline-code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.84em;
+  padding: 0.1em 0.38em;
+  margin: 0 0.06em;
+  border-radius: 0.3rem;
+  border: 1px solid var(--md-sky-line);
+  background: color-mix(in oklab, var(--md-sky-soft) 65%, var(--card));
+  color: var(--md-sky-deep);
+}
+
+.dark .md-render .md-inline-code {
+  color: var(--md-sky);
+}
+
+.md-render .md-kbd {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
   padding: 0 0.35rem;
-  background: var(--md-purple-tint);
-  color: var(--md-purple-deep);
-  border: 1px solid var(--md-purple-line);
-  border-radius: 999px;
+  border: 1px solid var(--md-box-border);
+  border-radius: 0.3rem;
+  background: var(--card);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.72rem;
-  font-weight: 700;
-  font-feature-settings: "tnum" 1;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--foreground);
 }
 
-/* Nested lists and multi-paragraph list items */
-.md-render li > .md-ul,
-.md-render li > .md-ol,
-.md-render li > ul,
-.md-render li > ol {
-  margin-top: 0.55rem;
-  margin-bottom: 0.35rem;
+/* ── Lists — left padding hierarchy + marker gutters ─────────────────────── */
+.md-render .md-ul,
+.md-render .md-ol {
+  list-style: none;
+  margin-left: 0;
+  padding-left: var(--md-list-root-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--md-list-item-gap);
+}
+
+.md-render .md-ul li {
+  position: relative;
+  padding-left: var(--md-list-gutter-ul);
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: color-mix(in oklab, var(--foreground) 86%, transparent);
+}
+
+.md-render .md-ul li::before {
+  content: "";
+  position: absolute;
+  left: calc((var(--md-list-marker-ul) - 0.38rem) / 2);
+  top: 0.72em;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 0.1rem;
+  background: var(--md-sky);
+  transform: rotate(45deg);
+}
+
+.md-render .md-ol {
+  counter-reset: md-ol;
+}
+
+.md-render .md-ol li {
+  position: relative;
+  padding-left: var(--md-list-gutter-ol);
+  counter-increment: md-ol;
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: color-mix(in oklab, var(--foreground) 86%, transparent);
+}
+
+.md-render .md-ol li::before {
+  content: counter(md-ol);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--md-list-marker-ol);
+  height: 1.35rem;
+  border: 1px solid var(--md-purple-line);
+  border-radius: 0.35rem;
+  background: color-mix(in oklab, var(--md-purple-tint) 45%, transparent);
+  color: var(--md-purple-deep);
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-feature-settings: "tnum" 1;
+  line-height: 1;
+}
+
+/*
+ * Nested lists replace root padding with a per-level step.
+ * Each deeper list sits inside an already-indented <li>, so steps stack visually.
+ */
+.md-render li .md-ul,
+.md-render li .md-ol,
+.md-render .md-definition-body .md-ul,
+.md-render .md-definition-body .md-ol,
+.md-render .md-callout-body .md-ul,
+.md-render .md-callout-body .md-ol {
+  margin-top: var(--md-gap-1);
+  margin-bottom: var(--md-gap-1);
+  padding-left: var(--md-list-nest-step);
+  border-left: 1px solid color-mix(in oklab, var(--md-box-border) 50%, transparent);
 }
 
 .md-render li > .md-p,
 .md-render li > p {
-  margin-bottom: 0.45rem;
+  margin: 0 0 0.35rem;
 }
 
 .md-render li > .md-p:last-child,
@@ -317,121 +277,323 @@
   margin-bottom: 0;
 }
 
-.md-render li > .md-code-card {
-  margin-top: 0.65rem;
-  margin-bottom: 0.35rem;
+.md-render .md-li-task {
+  padding-left: 0;
 }
 
-/* Task checkbox */
+.md-render .md-ul .md-li-task::before {
+  display: none;
+}
+
+.md-render li > .md-code-card {
+  margin-top: 0.5rem;
+}
+
 .md-render .md-task-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 1rem;
-  height: 1rem;
-  border: 1.5px solid var(--md-purple);
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-right: 0.45rem;
+  border: 1px solid var(--md-purple-line);
   border-radius: 0.25rem;
   vertical-align: -2px;
-  margin-right: 0.5rem;
-  position: relative;
-  background: transparent;
+  background: var(--card);
   cursor: not-allowed;
 }
+
 .md-render .md-task-checkbox:checked {
   background: var(--md-purple);
   border-color: var(--md-purple);
 }
+
 .md-render .md-task-checkbox:checked::after {
   content: "";
   position: absolute;
   inset: 1px 0 0 3px;
-  width: 0.36rem;
-  height: 0.58rem;
+  width: 0.32rem;
+  height: 0.52rem;
   border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-/* Code card — clean dark slate matching the rest of the site */
-.md-render .md-code-card {
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
-  background: #f8fafc;
+/* ── Definition block (blockquote) — BOXED ───────────────────────────────── */
+.md-render .md-definition {
+  padding: var(--md-gap-3);
+  border: 1px solid var(--md-sky-line);
+  border-left: 3px solid var(--md-sky);
+  border-radius: var(--md-box-radius);
+  background: color-mix(in oklab, var(--md-sky-soft) 40%, var(--card));
+}
+
+.md-render .md-definition-label {
+  display: block;
+  margin-bottom: var(--md-gap-1);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--md-sky-deep);
+}
+
+.dark .md-render .md-definition-label {
+  color: var(--md-sky);
+}
+
+.md-render .md-definition-body {
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: color-mix(in oklab, var(--foreground) 88%, transparent);
+}
+
+/* ── Callouts — BOXED ────────────────────────────────────────────────────── */
+.md-render .md-callout {
+  border: 1px solid var(--md-box-border);
+  border-radius: var(--md-box-radius);
   overflow: hidden;
-  box-shadow: 0 10px 28px -22px color-mix(in oklab, var(--foreground) 28%, transparent);
+  background: var(--card);
 }
+
+.md-render .md-callout-head {
+  display: flex;
+  align-items: center;
+  gap: var(--md-gap-2);
+  padding: var(--md-gap-1) var(--md-gap-3);
+  border-bottom: 1px solid var(--md-box-border);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.md-render .md-callout-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+  opacity: 0.9;
+}
+
+.md-render .md-callout-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.md-render .md-callout-body {
+  padding: var(--md-gap-3);
+  font-size: 0.98rem;
+  line-height: 1.68;
+}
+
+.md-render .md-callout--note { border-color: color-mix(in oklab, #3b82f6 28%, transparent); }
+.md-render .md-callout--note .md-callout-head {
+  color: #1d4ed8;
+  background: color-mix(in oklab, #3b82f6 8%, var(--card));
+  border-bottom-color: color-mix(in oklab, #3b82f6 16%, transparent);
+}
+
+.md-render .md-callout--tip { border-color: color-mix(in oklab, #22c55e 28%, transparent); }
+.md-render .md-callout--tip .md-callout-head {
+  color: #15803d;
+  background: color-mix(in oklab, #22c55e 8%, var(--card));
+  border-bottom-color: color-mix(in oklab, #22c55e 16%, transparent);
+}
+
+.md-render .md-callout--important { border-color: color-mix(in oklab, var(--md-purple) 30%, transparent); }
+.md-render .md-callout--important .md-callout-head {
+  color: var(--md-purple-deep);
+  background: var(--md-purple-tint);
+  border-bottom-color: var(--md-purple-line);
+}
+
+.md-render .md-callout--warning,
+.md-render .md-callout--caution { border-color: color-mix(in oklab, #f59e0b 30%, transparent); }
+.md-render .md-callout--warning .md-callout-head,
+.md-render .md-callout--caution .md-callout-head {
+  color: #b45309;
+  background: color-mix(in oklab, #f59e0b 10%, var(--card));
+  border-bottom-color: color-mix(in oklab, #f59e0b 18%, transparent);
+}
+
+/* ── Code — BOXED ────────────────────────────────────────────────────────── */
+.md-render .md-code-card {
+  border: 1px solid var(--md-box-border);
+  border-radius: var(--md-box-radius);
+  overflow: hidden;
+  background: #f4f7fb;
+}
+
 .dark .md-render .md-code-card {
-  background: #0a0e1a;
-  border-color: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 14px 32px -24px rgba(0, 0, 0, 0.65);
+  background: #0a0e14;
 }
+
 .md-render .md-code-head {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  min-height: 2.35rem;
-  padding: 0.45rem 0.85rem;
-  background: color-mix(in oklab, var(--muted) 55%, transparent);
-  border-bottom: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
-}
-.dark .md-render .md-code-head {
-  background: rgba(255, 255, 255, 0.025);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-.md-render .md-code-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  opacity: 0.88;
+  gap: var(--md-gap-1);
+  min-height: 2.125rem;
+  padding: 0.375rem var(--md-gap-3);
+  border-bottom: 1px solid var(--md-box-border);
+  background: color-mix(in oklab, var(--muted) 45%, transparent);
 }
 
-/* Horizontal rule — small muted dots */
+.dark .md-render .md-code-head {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.md-render .md-code-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+}
+
+.md-render .md-code-lang {
+  margin-left: auto;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--md-box-border);
+  border-radius: 0.3rem;
+  background: var(--card);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* ── HR — plain divider ──────────────────────────────────────────────────── */
 .md-render .md-hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin: 2.5rem 0;
-}
-.md-render .md-hr-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--foreground) 18%, transparent), transparent);
-}
-.md-render .md-hr-dot {
-  width: 0.32rem;
-  height: 0.32rem;
-  border-radius: 999px;
-  opacity: 0.5;
+  gap: var(--md-gap-2);
 }
 
-/* Tables — soft purple header, gentle zebra */
-.md-render .md-table-wrap {
-  margin: 2rem 0;
-  border-radius: 0.75rem;
+.md-render .md-hr::before,
+.md-render .md-hr::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--md-box-border);
+}
+
+.md-render .md-hr-dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  flex-shrink: 0;
+  border-radius: 0.1rem;
+}
+
+/* ── Images — plain figure, no outer box ─────────────────────────────────── */
+.md-render .md-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.md-render .md-figure-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--md-box-radius-sm);
+  border: 1px solid var(--md-box-border);
+}
+
+.md-render .md-figure-caption {
+  margin-top: var(--md-gap-2);
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+/* ── Table — BOXED ───────────────────────────────────────────────────────── */
+.md-render .md-table-card {
+  border: 1px solid var(--md-box-border);
+  border-radius: var(--md-box-radius);
   overflow: hidden;
-  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
   background: var(--card);
 }
-.md-render .md-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-.md-render .md-table thead {
-  background: var(--md-purple-tint);
-}
-.md-render .md-table th {
-  text-align: left;
-  padding: 0.7rem 1rem;
-  color: var(--md-purple-deep);
+
+.md-render .md-table-head {
+  display: flex;
+  align-items: center;
+  gap: var(--md-gap-1);
+  padding: var(--md-gap-1) var(--md-gap-3);
+  border-bottom: 1px solid var(--md-box-border);
+  background: color-mix(in oklab, var(--md-purple-tint) 40%, var(--card));
+  font-size: 0.65rem;
   font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--md-purple-line);
+  color: var(--md-purple-deep);
 }
-.md-render .md-table tbody tr { transition: background 0.18s ease; }
-.md-render .md-table tbody tr:nth-child(odd)  { background: color-mix(in oklab, var(--muted) 30%, transparent); }
-.md-render .md-table tbody tr:nth-child(even) { background: transparent; }
-.md-render .md-table tbody tr:hover { background: var(--md-purple-soft); }
+
+.md-render .md-table-wrap {
+  margin: 0;
+  overflow: hidden;
+}
+
+.md-render .md-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.md-render .md-table thead {
+  background: color-mix(in oklab, var(--md-purple-tint) 30%, var(--card));
+}
+
+.md-render .md-table th {
+  padding: 0.625rem var(--md-gap-3);
+  border-bottom: 1px solid var(--md-box-border);
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--md-purple-deep);
+}
+
 .md-render .md-table td {
-  padding: 0.75rem 1rem;
-  border-top: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
-  color: var(--foreground);
+  padding: 0.625rem var(--md-gap-3);
+  border-bottom: 1px solid color-mix(in oklab, var(--md-box-border) 70%, transparent);
+  font-size: 0.94rem;
+}
+
+.md-render .md-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.md-render .md-table tbody tr:hover {
+  background: color-mix(in oklab, var(--md-sky-soft) 40%, var(--card));
+}
+
+/* ── Compact modes ───────────────────────────────────────────────────────── */
+.md-render.md-render-slide {
+  --md-gap-4: 1rem;
+  --md-gap-5: 1.25rem;
+  --md-gap-6: 1.5rem;
+  --md-list-root-padding: 0.75rem;
+  --md-list-nest-step: 1.25rem;
+}
+
+.md-render.interview-answer {
+  --md-gap-4: 0.875rem;
+  --md-gap-5: 1.125rem;
+  --md-gap-6: 1.375rem;
+  --md-list-root-padding: 0.75rem;
+  --md-list-nest-step: 1.25rem;
+}
+
+@media (max-width: 639px) {
+  .md-render {
+    --md-list-root-padding: 0.75rem;
+    --md-list-nest-step: 1.25rem;
+    --md-list-gutter-ul: 1.625rem;
+    --md-list-gutter-ol: 2.125rem;
+    --md-list-marker-ol: 1.5rem;
+  }
 }
