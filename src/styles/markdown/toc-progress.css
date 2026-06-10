@@ -33,15 +33,43 @@
 }
 
 .md-toc-item:hover {
-  background: color-mix(in oklab, var(--muted) 60%, transparent);
+  background: color-mix(in oklab, var(--muted) 35%, transparent);
   color: var(--foreground);
 }
 
 .md-toc-item.active {
-  background: var(--md-purple-soft);
-  color: var(--md-purple-deep);
-  border-left-color: var(--md-purple);
+  background: color-mix(in oklab, var(--md-purple) 22%, var(--card));
+  color: var(--foreground);
+  border-left-color: transparent;
   font-weight: 600;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--md-purple) 28%, transparent);
+  padding-left: 1.35rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--md-purple) 65%, transparent);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 3px;
+}
+
+.md-toc-item--depth-0.active {
+  font-weight: 700;
+}
+
+.md-toc-item.active:hover {
+  background: color-mix(in oklab, var(--md-purple) 18%, var(--card));
+  color: var(--foreground);
+}
+
+.md-toc-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #22c55e, #06b6d4);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--background) 82%, transparent);
 }
 
 /* Reading-progress ring */
