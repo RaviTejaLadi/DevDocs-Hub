@@ -1,4 +1,4 @@
-import type { InterviewQA } from './types';
+import type { InterviewQA } from '../types';
 
 /** Top 50 HTML Q&A from top-50-q-and-a.md — Part 1=entry, Part 2=junior, Part 3=mid, Part 4=senior, Part 5=expert */
 export const htmlQuestions: InterviewQA[] = [
@@ -454,5 +454,98 @@ export const htmlQuestions: InterviewQA[] = [
     question: 'What does `contenteditable` do?',
     answer:
       'An attribute that, when set to `true`, makes the element and its children editable by the user (like a rich text editor).',
+  },
+  {
+    id: 'html-51',
+    topicId: 'html',
+    level: 'mid',
+    questionType: 'theory',
+    question: 'What is the purpose of the `inert` attribute?',
+    answer:
+      'The `inert` attribute is a global boolean attribute that tells the browser to ignore the element and its children. When an element is inert, it cannot be focused, clicked, or searched via find-in-page, and screen readers will ignore it. This is very useful for modals or "off-canvas" navigation to prevent interaction with background content.',
+  },
+  {
+    id: 'html-52',
+    topicId: 'html',
+    level: 'senior',
+    questionType: 'theory',
+    question: 'Explain the difference between Shadow DOM and Light DOM.',
+    answer:
+      '**Light DOM** is the regular DOM tree that you are used to (the elements inside a standard HTML tag). **Shadow DOM** is a scoped, encapsulated DOM subtree attached to an element. It prevents styles and IDs from leaking out or in, allowing for true component encapsulation. The "Shadow Root" acts as a boundary.',
+  },
+  {
+    id: 'html-53',
+    topicId: 'html',
+    level: 'expert',
+    questionType: 'theory',
+    question: 'What is the "Constraint Validation API"?',
+    answer:
+      'A set of methods and properties available on form elements (like `checkValidity()`, `setCustomValidity()`, and the `validity` object) that allow developers to perform custom validation logic and provide better UX for form errors without relying purely on CSS pseudo-classes like `:invalid`.',
+  },
+  {
+    id: 'html-54',
+    topicId: 'html',
+    level: 'senior',
+    questionType: 'theory',
+    question: 'What are Resource Hints? Explain `dns-prefetch`, `preconnect`, and `preload`.',
+    answer: [
+      '- **dns-prefetch:** Resolves a domain name before a user clicks a link.',
+      '- **preconnect:** Performs DNS lookup, TCP handshake, and TLS negotiation in advance.',
+      '- **preload:** Forces the browser to download a high-priority resource (like a font or hero image) immediately for the current page.',
+    ].join('\n\n'),
+  },
+  {
+    id: 'html-55',
+    topicId: 'html',
+    level: 'mid',
+    questionType: 'theory',
+    question: 'What is the `<dialog>` element?',
+    answer:
+      'A native HTML element for creating modal or non-modal dialog boxes. It provides built-in methods like `showModal()` (which handles the backdrop and focus trapping automatically) and `close()`. It is much more accessible than custom `div`-based modals.',
+  },
+  {
+    id: 'html-56',
+    topicId: 'html',
+    level: 'senior',
+    questionType: 'theory',
+    question: 'How do you implement "Microdata" in HTML?',
+    answer:
+      'By using attributes like `itemscope`, `itemtype`, and `itemprop`. Microdata allows you to nest machine-readable data (based on Schema.org) within your HTML, helping search engines understand specifically what your content is (e.g., a Recipe, a Person, or a Product).',
+  },
+  {
+    id: 'html-57',
+    topicId: 'html',
+    level: 'mid',
+    questionType: 'theory',
+    question: 'What does the `fetchpriority` attribute do?',
+    answer:
+      'It provides a hint to the browser about the relative priority of a resource (like an image or script). Values can be `high`, `low`, or `auto`. This is especially useful for ensuring LCP (Largest Contentful Paint) images are prioritized over other assets.',
+  },
+  {
+    id: 'html-58',
+    topicId: 'html',
+    level: 'expert',
+    questionType: 'theory',
+    question: 'What is a "Trusted Types" policy in the context of HTML and security?',
+    answer:
+      'Trusted Types is a browser API that helps prevent DOM-based Cross-Site Scripting (XSS). It forces developers to use "Trusted Type" objects instead of raw strings for dangerous sinks like `innerHTML` or `document.write`, ensuring that data has been sanitized before it is rendered.',
+  },
+  {
+    id: 'html-59',
+    topicId: 'html',
+    level: 'senior',
+    questionType: 'theory',
+    question: 'Explain the `popover` attribute.',
+    answer:
+      'The `popover` attribute is a native way to create popovers (menus, tooltips, etc.) that are displayed in the "top layer." It handles things like "light dismiss" (closing when clicking outside) and automatic z-index management without requiring complex JavaScript.',
+  },
+  {
+    id: 'html-60',
+    topicId: 'html',
+    level: 'mid',
+    questionType: 'theory',
+    question: 'What is the purpose of the `<picture>` element?',
+    answer:
+      'The `<picture>` element provides more flexibility than the `<img>` tag by allowing you to specify multiple `<source>` elements. It is used for "Art Direction" (e.g., showing a cropped image on mobile vs. a wide one on desktop) and serving different image formats (like WebP) based on browser support.',
   },
 ];

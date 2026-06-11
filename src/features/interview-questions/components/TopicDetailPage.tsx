@@ -54,7 +54,6 @@ export function TopicDetailPage() {
 
   const Icon = topic.icon;
   const visual = TOPIC_VISUALS[topic.id];
-  const matchPercent = allQuestions.length ? Math.round((filteredQuestions.length / allQuestions.length) * 100) : 0;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-10 sm:pb-12">
@@ -208,26 +207,6 @@ export function TopicDetailPage() {
           </div>
         </CardContent>
       </Card>
-
-      <div className="rounded-xl border border-border/35 bg-muted/20 px-4 py-3 space-y-2">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm">
-          <p className="text-muted-foreground font-medium">
-            📊 {`Showing ${filteredQuestions.length} of ${allQuestions.length} questions`}
-          </p>
-          <p className="text-xs text-muted-foreground/80 tabular-nums">{matchPercent}% matched</p>
-        </div>
-        <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-linear-to-r from-primary/70 to-primary transition-all duration-500 ease-out"
-            style={{ width: `${matchPercent}%` }}
-            role="progressbar"
-            aria-valuenow={filteredQuestions.length}
-            aria-valuemin={0}
-            aria-valuemax={allQuestions.length}
-            aria-label={`Showing ${filteredQuestions.length} of ${allQuestions.length} questions`}
-          />
-        </div>
-      </div>
 
       <div className="space-y-2">
         {filteredQuestions.length === 0 ? (

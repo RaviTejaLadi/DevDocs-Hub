@@ -4,9 +4,33 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Icons } from '@/assets/Icons';
+import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { cn } from '@/lib/utils';
 import { CATEGORY_VISUALS, TOPIC_VISUALS } from '../constants';
 import { useTopicListFilter } from '../hooks';
+
+const topicIconMap: Record<string, keyof typeof Icons> = {
+  html: 'HTML',
+  css: 'CSS',
+  javascript: 'JS',
+  typescript: 'TS',
+  react: 'REACT',
+  nextjs: 'NEXT',
+  tailwind: 'TAILWIND',
+  node: 'NODE',
+  python: 'PYTHON',
+  go: 'GO',
+  sql: 'SQL',
+  mongodb: 'MONGODB',
+  docker: 'DOCKER',
+  aws: 'AWS',
+  git: 'GIT',
+  testing: 'TESTING',
+  'react-native': 'RN',
+  dsa: 'DSA',
+  'system-design': 'SD',
+};
 
 function StatCard({ emoji, label, value }: { emoji: string; label: string; value: number }) {
   return (
@@ -190,8 +214,16 @@ export function TopicListPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                   {topics.map((topic) => {
                     const count = countForTopic(topic.id);
-                    const Icon = topic.icon;
-                    const visual = TOPIC_VISUALS[topic.id];
+                    const visual = TOPIC_VISUALS[topic.id] ?? {
+                      emoji: '📝',
+                      iconBg: 'bg-primary/10',
+                      iconColor: 'text-primary',
+                      cardHover: 'hover:border-primary/30',
+                    };
+
+                    const brandIconKey = topicIconMap[topic.id];
+                    const BrandIcon = brandIconKey ? Icons[brandIconKey] : null;
+
                     return (
                       <Link
                         key={topic.id}
@@ -205,11 +237,16 @@ export function TopicListPage() {
                       >
                         <div
                           className={cn(
-                            'pointer-events-none absolute -right-4 -top-4 text-5xl opacity-[0.07] transition-transform duration-300 group-hover:scale-110 group-hover:opacity-[0.12]'
+                            'pointer-events-none absolute -right-4 -top-4 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-[0.12]',
+                            brandIconKey ? 'opacity-[0.05]' : 'text-5xl opacity-[0.07]'
                           )}
                           aria-hidden
                         >
-                          {visual.emoji}
+                          {brandIconKey ? (
+                            <div className="size-20 grayscale brightness-0 contrast-200">{BrandIcon}</div>
+                          ) : (
+                            visual.emoji
+                          )}
                         </div>
                         <div className="relative flex items-start justify-between gap-3">
                           <div className="flex items-center gap-3 min-w-0">
@@ -219,13 +256,13 @@ export function TopicListPage() {
                                 visual.iconBg
                               )}
                             >
-                              <Icon className={cn('h-5 w-5', visual.iconColor)} />
-                              <span
-                                className="absolute -bottom-1 -right-1 flex size-5 items-center justify-center rounded-full border border-border/40 bg-background text-[10px] shadow-none"
-                                aria-hidden
-                              >
-                                {visual.emoji}
-                              </span>
+                              {brandIconKey ? (
+                                <ColoredIcon size={24}>{BrandIcon}</ColoredIcon>
+                              ) : (
+                                <span className="text-2xl" aria-hidden>
+                                  {visual.emoji}
+                                </span>
+                              )}
                             </div>
                             <div className="min-w-0">
                               <p className="font-semibold text-foreground truncate transition-colors group-hover:text-primary">

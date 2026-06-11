@@ -35,7 +35,7 @@ export function QuestionBlock({
         <div className="flex flex-wrap items-center justify-between gap-3 w-full text-left pr-2">
           <div className="flex items-start gap-3 min-w-0 flex-1">
             <span className="shrink-0 flex size-8 items-center justify-center rounded-lg border border-primary/25 bg-linear-to-br from-primary/15 to-primary/5 text-primary font-bold text-xs shadow-none">
-              Q{index}
+              {index}
             </span>
             <span className="font-medium text-foreground leading-relaxed pt-0.5">{item.question}</span>
           </div>
@@ -63,10 +63,6 @@ export function QuestionBlock({
       </AccordionTrigger>
       <AccordionContent className="px-4 sm:px-5 pb-5 pt-0">
         <div className="pt-4 border-t border-border/40 mt-0 bg-linear-to-b from-muted/5 to-muted/15 -mx-4 sm:-mx-5 px-4 sm:px-5 rounded-b-2xl">
-          <h3 className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground mb-3 w-fit rounded-md bg-primary/8 border border-primary/15 px-2.5 py-1">
-            <span aria-hidden>💡</span>
-            {'Answer'}
-          </h3>
           <Suspense fallback={<div className="min-h-16 animate-pulse rounded-xl bg-muted/30" aria-hidden />}>
             <AnswerMarkdownLazy content={item.answer} />
           </Suspense>

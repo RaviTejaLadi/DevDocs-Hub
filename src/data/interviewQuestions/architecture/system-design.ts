@@ -1,4 +1,4 @@
-import type { InterviewQA } from './types';
+import type { InterviewQA } from '../types';
 
 export const systemDesignQuestions: InterviewQA[] = [
   {
