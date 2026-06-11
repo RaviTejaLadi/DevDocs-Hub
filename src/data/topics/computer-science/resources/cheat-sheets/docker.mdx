@@ -1,6 +1,7 @@
 # Docker Cheat Sheet 🐳
 
-Docker allows you to package applications and their dependencies into lightweight containers that run consistently across environments.
+Docker allows you to package applications and their dependencies into
+lightweight containers that run consistently across environments.
 
 ---
 
@@ -436,7 +437,7 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
 
   postgres:
     image: postgres:17
@@ -639,7 +640,7 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
 

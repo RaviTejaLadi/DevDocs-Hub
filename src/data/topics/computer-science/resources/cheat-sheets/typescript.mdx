@@ -1,6 +1,7 @@
 # TypeScript Cheat Sheet 🚀
 
-TypeScript adds static typing on top of JavaScript. It helps catch errors early, improves IDE support, and makes large applications easier to maintain.
+TypeScript adds static typing on top of JavaScript. It helps catch errors early,
+improves IDE support, and makes large applications easier to maintain.
 
 ---
 
@@ -22,7 +23,7 @@ TypeScript adds static typing on top of JavaScript. It helps catch errors early,
 
 ```ts
 // Basic types
-let username: string = "John";
+let username: string = 'John';
 let age: number = 25;
 let isAdmin: boolean = false;
 ```
@@ -38,7 +39,7 @@ let isAdmin: boolean = false;
 | `const active = true` | boolean |
 
 ```ts
-const message = "Hello";
+const message = 'Hello';
 // TypeScript infers string automatically
 ```
 
@@ -53,7 +54,7 @@ const message = "Hello";
 | Mixed Array | `(string \| number)[]` |
 
 ```ts
-const users: string[] = ["John", "Alex"];
+const users: string[] = ['John', 'Alex'];
 const ids: Array<number> = [1, 2, 3];
 ```
 
@@ -68,7 +69,7 @@ const ids: Array<number> = [1, 2, 3];
 | Rest Element   | `[string, ...number[]]` |
 
 ```ts
-const user: [string, number] = ["John", 25];
+const user: [string, number] = ['John', 25];
 ```
 
 ---
@@ -80,8 +81,8 @@ const user: {
   name: string;
   age: number;
 } = {
-  name: "John",
-  age: 25
+  name: 'John',
+  age: 25,
 };
 ```
 
@@ -204,11 +205,11 @@ type SuperAdmin = User & Admin;
 # Literal Types
 
 ```ts
-type Theme = "light" | "dark";
+type Theme = 'light' | 'dark';
 ```
 
 ```ts
-let theme: Theme = "light";
+let theme: Theme = 'light';
 ```
 
 ---
@@ -219,7 +220,7 @@ let theme: Theme = "light";
 enum Role {
   Admin,
   User,
-  Guest
+  Guest,
 }
 ```
 
@@ -227,8 +228,8 @@ enum Role {
 
 ```ts
 enum Status {
-  Success = "SUCCESS",
-  Error = "ERROR"
+  Success = 'SUCCESS',
+  Error = 'ERROR',
 }
 ```
 
@@ -237,15 +238,15 @@ enum Status {
 # Type Assertions
 
 ```ts
-const input = document.getElementById("name") as HTMLInputElement;
+const input = document.getElementById('name') as HTMLInputElement;
 
-input.value = "John";
+input.value = 'John';
 ```
 
 ### Alternative
 
 ```ts
-const input = <HTMLInputElement>document.getElementById("name");
+const input = <HTMLInputElement>document.getElementById('name');
 ```
 
 ---
@@ -254,7 +255,7 @@ const input = <HTMLInputElement>document.getElementById("name");
 
 ```ts
 function print(id: string | number) {
-  if (typeof id === "string") {
+  if (typeof id === 'string') {
     console.log(id.toUpperCase());
   }
 }
@@ -296,7 +297,7 @@ function identity<T>(value: T): T {
 ```
 
 ```ts
-identity<string>("hello");
+identity<string>('hello');
 identity<number>(100);
 ```
 
@@ -316,8 +317,8 @@ const response: ApiResponse<User> = {
   success: true,
   data: {
     id: 1,
-    name: "John"
-  }
+    name: 'John',
+  },
 };
 ```
 
@@ -351,7 +352,7 @@ type Keys = keyof User;
 Result:
 
 ```ts
-"name" | "age"
+'name' | 'age';
 ```
 
 ---
@@ -360,8 +361,8 @@ Result:
 
 ```ts
 const user = {
-  name: "John",
-  age: 25
+  name: 'John',
+  age: 25,
 };
 
 type UserType = typeof user;
@@ -404,7 +405,7 @@ All properties become optional.
 ## Required
 
 ```ts
-Required<User>
+Required<User>;
 ```
 
 All properties required.
@@ -414,7 +415,7 @@ All properties required.
 ## Readonly
 
 ```ts
-Readonly<User>
+Readonly<User>;
 ```
 
 All properties readonly.
@@ -424,7 +425,7 @@ All properties readonly.
 ## Pick
 
 ```ts
-type UserPreview = Pick<User, "name">;
+type UserPreview = Pick<User, 'name'>;
 ```
 
 ---
@@ -432,7 +433,7 @@ type UserPreview = Pick<User, "name">;
 ## Omit
 
 ```ts
-type UserWithoutAge = Omit<User, "age">;
+type UserWithoutAge = Omit<User, 'age'>;
 ```
 
 ---
@@ -457,10 +458,7 @@ Result:
 ## Exclude
 
 ```ts
-type Status = Exclude<
-  "success" | "error" | "loading",
-  "loading"
->;
+type Status = Exclude<'success' | 'error' | 'loading', 'loading'>;
 ```
 
 ---
@@ -468,10 +466,7 @@ type Status = Exclude<
 ## Extract
 
 ```ts
-type Result = Extract<
-  string | number,
-  string
->;
+type Result = Extract<string | number, string>;
 ```
 
 ---
@@ -479,9 +474,7 @@ type Result = Extract<
 ## NonNullable
 
 ```ts
-type Name = NonNullable<
-  string | null | undefined
->;
+type Name = NonNullable<string | null | undefined>;
 ```
 
 ---
@@ -490,10 +483,7 @@ type Name = NonNullable<
 
 ```ts
 class User {
-  constructor(
-    public name: string,
-    private age: number
-  ) {}
+  constructor(public name: string, private age: number) {}
 }
 ```
 
@@ -524,7 +514,7 @@ abstract class Animal {
 
 ```ts
 async function getUsers(): Promise<User[]> {
-  const res = await fetch("/api/users");
+  const res = await fetch('/api/users');
   return res.json();
 }
 ```
@@ -534,8 +524,7 @@ async function getUsers(): Promise<User[]> {
 # Promise
 
 ```ts
-const promise: Promise<string> =
-  Promise.resolve("Hello");
+const promise: Promise<string> = Promise.resolve('Hello');
 ```
 
 ---
@@ -545,7 +534,7 @@ const promise: Promise<string> =
 ### Export
 
 ```ts
-export const API_URL = "/api";
+export const API_URL = '/api';
 ```
 
 ### Default Export
@@ -557,7 +546,7 @@ export default App;
 ### Import
 
 ```ts
-import App from "./App";
+import App from './App';
 ```
 
 ---
@@ -637,8 +626,7 @@ type ValueOf<T> = T[keyof T];
 # Conditional Types
 
 ```ts
-type IsString<T> =
-  T extends string ? true : false;
+type IsString<T> = T extends string ? true : false;
 
 type Result = IsString<string>; // true
 ```
@@ -648,10 +636,7 @@ type Result = IsString<string>; // true
 # Infer Keyword
 
 ```ts
-type ReturnTypeOf<T> =
-  T extends (...args: any[]) => infer R
-    ? R
-    : never;
+type ReturnTypeOf<T> = T extends (...args: any[]) => infer R ? R : never;
 ```
 
 ---
@@ -673,10 +658,7 @@ type ButtonProps = {
 };
 
 // Generic Hook
-function useLocalStorage<T>(
-  key: string,
-  initialValue: T
-) {
+function useLocalStorage<T>(key: string, initialValue: T) {
   // implementation
 }
 ```

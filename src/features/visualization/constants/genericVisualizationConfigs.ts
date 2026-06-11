@@ -165,8 +165,7 @@ export const GENERIC_VISUALIZATION_CONFIGS: Record<string, GenericVisualizationC
     overview: 'A queue processes items in insertion order.',
     howItWorks: ['enqueue first item', 'enqueue second item', 'dequeue oldest item'],
     whenToUse: 'Use for scheduling and buffered processing.',
-    realWorldExample:
-      'Print server: print jobs are queued and processed in the same order they are received.',
+    realWorldExample: 'Print server: print jobs are queued and processed in the same order they are received.',
     takeaway: 'Oldest item exits first.',
     code: ['const queue = [];', 'queue.push("Task1");', 'queue.push("Task2");', 'const next = queue.shift();'],
     steps: [

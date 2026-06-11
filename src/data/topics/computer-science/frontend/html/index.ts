@@ -11,7 +11,8 @@ export const htmlTopics: TopicItem[] = [
         title: '📖 Introduction',
         content: '',
         contentLoader: () => import('./intro.mdx?raw'),
-        excerpt: 'Introduction to HTML, the standard markup language for documents designed to be displayed in a web browser.',
+        excerpt:
+          'Introduction to HTML, the standard markup language for documents designed to be displayed in a web browser.',
       },
       {
         id: 'html-installation-and-setup',

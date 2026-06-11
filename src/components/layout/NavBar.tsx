@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Github, Search, FileText, HelpCircle, CornerDownLeft, Code2, MoreHorizontal } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import type { Topic, TopicItem } from '@/data/topics';
-import { docContentSearchText } from '@/types/docContent';
 import { ModeToggle } from '@/components/theme/ModeToggle';
 import type { SearchResult } from '@/types';
 import { Button } from '@/components/ui/button';

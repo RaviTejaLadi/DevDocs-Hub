@@ -14,7 +14,8 @@ export function VisualizationConsole({ output, caption, extraLines = [] }: Visua
   const { theme } = useTheme();
   const isDarkTheme = theme === 'dark';
   const allOutput = [...output, ...extraLines];
-  const consoleText = allOutput.length === 0 ? 'No output yet - step into the loop body to log values.' : allOutput.join('\n');
+  const consoleText =
+    allOutput.length === 0 ? 'No output yet - step into the loop body to log values.' : allOutput.join('\n');
 
   return (
     <Card className="border-border/40 shadow-none">

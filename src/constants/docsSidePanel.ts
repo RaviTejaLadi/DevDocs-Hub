@@ -44,10 +44,7 @@ export const docsSidebarTreeBranchClass = 'ml-2 border-l-2 border-sidebar-border
 /** Nested sub-menu — indent only, shares the branch line. */
 export const docsSidebarTreeSubMenuClass = 'mx-0 w-full min-w-0 translate-x-0 gap-0.5 border-l-0 py-0.5 pl-3';
 
-export const docsSidePanelNavSurfaceClass = cn(
-  'rounded-xl bg-muted/20 dark:bg-muted/10',
-  docsInsetShadowClass
-);
+export const docsSidePanelNavSurfaceClass = cn('rounded-xl bg-muted/20 dark:bg-muted/10', docsInsetShadowClass);
 
 export const docsHeroSurfaceClass = cn(
   'rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm',

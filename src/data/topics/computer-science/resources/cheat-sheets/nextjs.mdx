@@ -1,6 +1,7 @@
 # Next.js Cheat Sheet 🚀
 
-Next.js is a React framework for building full-stack web applications with Server Components, API routes, SSR, SSG, and modern routing.
+Next.js is a React framework for building full-stack web applications with
+Server Components, API routes, SSR, SSG, and modern routing.
 
 ---
 
@@ -111,11 +112,11 @@ URL:
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
+  const { slug } = await params;
 
-  return <h1>{slug}</h1>
+  return <h1>{slug}</h1>;
 }
 ```
 
@@ -160,13 +161,13 @@ Matches:
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html>
       <body>{children}</body>
     </html>
-  )
+  );
 }
 ```
 
@@ -178,18 +179,14 @@ By default all components are Server Components.
 
 ```tsx
 // Client Component
-"use client"
+'use client';
 
-import { useState } from "react"
+import { useState } from 'react';
 
 export default function Counter() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return (
-    <button onClick={() => setCount(count + 1)}>
-      {count}
-    </button>
-  )
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
 }
 ```
 
@@ -200,15 +197,15 @@ export default function Counter() {
 ```tsx
 // Server Component
 export default async function Users() {
-  const users = await getUsers()
+  const users = await getUsers();
 
   return (
     <div>
-      {users.map(user => (
+      {users.map((user) => (
         <p key={user.id}>{user.name}</p>
       ))}
     </div>
-  )
+  );
 }
 ```
 
@@ -220,11 +217,9 @@ export default async function Users() {
 
 ```tsx
 // Fetch data on server
-const res = await fetch(
-  "https://api.example.com/users"
-)
+const res = await fetch('https://api.example.com/users');
 
-const users = await res.json()
+const users = await res.json();
 ```
 
 ---
@@ -233,8 +228,8 @@ const users = await res.json()
 
 ```tsx
 const data = await fetch(url, {
-  cache: "no-store"
-})
+  cache: 'no-store',
+});
 ```
 
 ---
@@ -244,9 +239,9 @@ const data = await fetch(url, {
 ```tsx
 const data = await fetch(url, {
   next: {
-    revalidate: 60
-  }
-})
+    revalidate: 60,
+  },
+});
 ```
 
 ---
@@ -255,12 +250,10 @@ const data = await fetch(url, {
 
 ```tsx
 // app/actions/user.ts
-"use server"
+'use server';
 
-export async function createUser(
-  formData: FormData
-) {
-  const name = formData.get("name")
+export async function createUser(formData: FormData) {
+  const name = formData.get('name');
 }
 ```
 
@@ -284,8 +277,8 @@ app/api/users/route.ts
 // GET endpoint
 export async function GET() {
   return Response.json({
-    users: []
-  })
+    users: [],
+  });
 }
 ```
 
@@ -295,9 +288,9 @@ export async function GET() {
 
 ```tsx
 export async function POST(req: Request) {
-  const body = await req.json()
+  const body = await req.json();
 
-  return Response.json(body)
+  return Response.json(body);
 }
 ```
 
@@ -318,11 +311,9 @@ export async function POST(req: Request) {
 
 ```tsx
 // Client navigation
-import Link from "next/link"
+import Link from 'next/link';
 
-<Link href="/dashboard">
-  Dashboard
-</Link>
+<Link href="/dashboard">Dashboard</Link>;
 ```
 
 ---
@@ -330,14 +321,14 @@ import Link from "next/link"
 ## Router Navigation
 
 ```tsx
-"use client"
+'use client';
 
-const router = useRouter()
+const router = useRouter();
 
-router.push("/dashboard")
-router.replace("/dashboard")
-router.back()
-router.refresh()
+router.push('/dashboard');
+router.replace('/dashboard');
+router.back();
+router.refresh();
 ```
 
 ---
@@ -356,8 +347,8 @@ export default function Page({
   searchParams,
 }: {
   searchParams: Promise<{
-    page?: string
-  }>
+    page?: string;
+  }>;
 }) {
   // use page
 }
@@ -370,9 +361,9 @@ export default function Page({
 ```tsx
 // SEO metadata
 export const metadata = {
-  title: "Home",
-  description: "Website"
-}
+  title: 'Home',
+  description: 'Website',
+};
 ```
 
 ---
@@ -382,8 +373,8 @@ export const metadata = {
 ```tsx
 export async function generateMetadata() {
   return {
-    title: "Blog"
-  }
+    title: 'Blog',
+  };
 }
 ```
 
@@ -393,14 +384,9 @@ export async function generateMetadata() {
 
 ```tsx
 // Optimized image
-import Image from "next/image"
+import Image from 'next/image';
 
-<Image
-  src="/hero.png"
-  alt="Hero"
-  width={500}
-  height={300}
-/>
+<Image src="/hero.png" alt="Hero" width={500} height={300} />;
 ```
 
 ---
@@ -409,11 +395,11 @@ import Image from "next/image"
 
 ```tsx
 // Google Font optimization
-import { Inter } from "next/font/google"
+import { Inter } from 'next/font/google';
 
 const inter = Inter({
-  subsets: ["latin"]
-})
+  subsets: ['latin'],
+});
 ```
 
 ---
@@ -422,10 +408,10 @@ const inter = Inter({
 
 ```tsx
 // middleware.ts
-import { NextResponse } from "next/server"
+import { NextResponse } from 'next/server';
 
 export function middleware() {
-  return NextResponse.next()
+  return NextResponse.next();
 }
 ```
 
@@ -434,9 +420,9 @@ export function middleware() {
 # Redirect
 
 ```tsx
-import { redirect } from "next/navigation"
+import { redirect } from 'next/navigation';
 
-redirect("/login")
+redirect('/login');
 ```
 
 ---
@@ -444,10 +430,10 @@ redirect("/login")
 # Not Found
 
 ```tsx
-import { notFound } from "next/navigation"
+import { notFound } from 'next/navigation';
 
 if (!user) {
-  notFound()
+  notFound();
 }
 ```
 
@@ -458,7 +444,7 @@ if (!user) {
 ```tsx
 // app/loading.tsx
 export default function Loading() {
-  return <p>Loading...</p>
+  return <p>Loading...</p>;
 }
 ```
 
@@ -467,14 +453,10 @@ export default function Loading() {
 # Error Boundary
 
 ```tsx
-"use client"
+'use client';
 
-export default function Error({
-  error,
-}: {
-  error: Error
-}) {
-  return <h1>Error</h1>
+export default function Error({ error }: { error: Error }) {
+  return <h1>Error</h1>;
 }
 ```
 
@@ -486,10 +468,10 @@ export default function Error({
 
 ```tsx
 // Server Component
-import { cookies } from "next/headers"
+import { cookies } from 'next/headers';
 
-const cookieStore = await cookies()
-const token = cookieStore.get("token")
+const cookieStore = await cookies();
+const token = cookieStore.get('token');
 ```
 
 ---
@@ -497,10 +479,7 @@ const token = cookieStore.get("token")
 ## Set Cookie
 
 ```tsx
-cookieStore.set(
-  "theme",
-  "dark"
-)
+cookieStore.set('theme', 'dark');
 ```
 
 ---
@@ -508,12 +487,11 @@ cookieStore.set(
 # Headers
 
 ```tsx
-import { headers } from "next/headers"
+import { headers } from 'next/headers';
 
-const headerList = await headers()
+const headerList = await headers();
 
-const userAgent =
-  headerList.get("user-agent")
+const userAgent = headerList.get('user-agent');
 ```
 
 ---
@@ -528,13 +506,13 @@ SECRET_KEY=123
 Client Access:
 
 ```tsx
-process.env.NEXT_PUBLIC_API_URL
+process.env.NEXT_PUBLIC_API_URL;
 ```
 
 Server Access:
 
 ```tsx
-process.env.SECRET_KEY
+process.env.SECRET_KEY;
 ```
 
 ---
@@ -552,15 +530,15 @@ export default function Layout({
   team,
   analytics,
 }: {
-  team: React.ReactNode
-  analytics: React.ReactNode
+  team: React.ReactNode;
+  analytics: React.ReactNode;
 }) {
   return (
     <>
       {team}
       {analytics}
     </>
-  )
+  );
 }
 ```
 
@@ -594,12 +572,10 @@ Used for modals and overlays.
 ```tsx
 // Middleware auth check
 export function middleware(req: Request) {
-  const token = req.cookies.get("token")
+  const token = req.cookies.get('token');
 
   if (!token) {
-    return Response.redirect(
-      new URL("/login", req.url)
-    )
+    return Response.redirect(new URL('/login', req.url));
   }
 }
 ```
@@ -609,11 +585,11 @@ export function middleware(req: Request) {
 # Streaming
 
 ```tsx
-import { Suspense } from "react"
+import { Suspense } from 'react';
 
 <Suspense fallback={<Loading />}>
   <Users />
-</Suspense>
+</Suspense>;
 ```
 
 ---
@@ -635,13 +611,13 @@ import { Suspense } from "react"
 # useParams
 
 ```tsx
-"use client"
+'use client';
 
-import { useParams } from "next/navigation"
+import { useParams } from 'next/navigation';
 
-const params = useParams()
+const params = useParams();
 
-console.log(params.id)
+console.log(params.id);
 ```
 
 ---
@@ -649,8 +625,7 @@ console.log(params.id)
 # useOptimistic
 
 ```tsx
-const [optimisticTodos, addTodo] =
-  useOptimistic(todos)
+const [optimisticTodos, addTodo] = useOptimistic(todos);
 ```
 
 Used for instant UI updates.
@@ -660,8 +635,7 @@ Used for instant UI updates.
 # useActionState
 
 ```tsx
-const [state, action] =
-  useActionState(createUser, null)
+const [state, action] = useActionState(createUser, null);
 ```
 
 Used with server actions.
@@ -686,10 +660,7 @@ Used with server actions.
 
 ```tsx
 export async function generateStaticParams() {
-  return [
-    { slug: "react" },
-    { slug: "nextjs" }
-  ]
+  return [{ slug: 'react' }, { slug: 'nextjs' }];
 }
 ```
 
@@ -698,9 +669,9 @@ export async function generateStaticParams() {
 # Revalidation
 
 ```tsx
-import { revalidatePath } from "next/cache"
+import { revalidatePath } from 'next/cache';
 
-revalidatePath("/products")
+revalidatePath('/products');
 ```
 
 ---

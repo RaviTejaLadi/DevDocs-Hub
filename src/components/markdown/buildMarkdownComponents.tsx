@@ -2,7 +2,7 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark, prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, Table2, TriangleAlert } from 'lucide-react';
+import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
@@ -202,9 +202,7 @@ export function buildMarkdownComponents({
     ),
     li: ({ children, className }: any) => {
       const isTask = (className || '').includes('task-list-item');
-      return (
-        <li className={cn(isTask && 'md-li-task list-none')}>{children}</li>
-      );
+      return <li className={cn(isTask && 'md-li-task list-none')}>{children}</li>;
     },
     blockquote: ({ children }: any) => {
       const alert = parseGfmAlert(children);

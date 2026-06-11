@@ -77,7 +77,12 @@ export const reactTopics: TopicItem[] = [
         content: '',
         contentLoader: () => import('./react-Lifecycle.mdx?raw'),
       },
-      { id: 'react-forms', title: '📋 Forms in React', content: '', contentLoader: () => import('./forms-in-react.mdx?raw') },
+      {
+        id: 'react-forms',
+        title: '📋 Forms in React',
+        content: '',
+        contentLoader: () => import('./forms-in-react.mdx?raw'),
+      },
     ],
   },
   {
@@ -86,14 +91,24 @@ export const reactTopics: TopicItem[] = [
     content: '',
     items: [
       { id: 'react-hooks', title: '🎣 Hooks in React', content: '', contentLoader: () => import('./hooks.mdx?raw') },
-      { id: 'react-custom-hooks', title: '🪝 Custom Hooks', content: '', contentLoader: () => import('./custom-hooks.mdx?raw') },
+      {
+        id: 'react-custom-hooks',
+        title: '🪝 Custom Hooks',
+        content: '',
+        contentLoader: () => import('./custom-hooks.mdx?raw'),
+      },
       {
         id: 'react-memo-usememo-usecallback',
         title: '⚡ memo, useMemo & useCallback',
         content: '',
         contentLoader: () => import('./react-memo-usememo-usecallback.mdx?raw'),
       },
-      { id: 'react-suspense', title: '⏳ Suspense', content: '', contentLoader: () => import('./react-suspense.mdx?raw') },
+      {
+        id: 'react-suspense',
+        title: '⏳ Suspense',
+        content: '',
+        contentLoader: () => import('./react-suspense.mdx?raw'),
+      },
       { id: 'react-portals', title: '🌀 Portals', content: '', contentLoader: () => import('./react-portals.mdx?raw') },
     ],
   },
@@ -114,14 +129,24 @@ export const reactTopics: TopicItem[] = [
         content: '',
         contentLoader: () => import('./react-ContextApi.mdx?raw'),
       },
-      { id: 'react-redux', title: '📦 Redux State Management', content: '', contentLoader: () => import('./react-Redux.mdx?raw') },
+      {
+        id: 'react-redux',
+        title: '📦 Redux State Management',
+        content: '',
+        contentLoader: () => import('./react-Redux.mdx?raw'),
+      },
       {
         id: 'react-query-tanstack',
         title: '🔄 TanStack Query',
         content: '',
         contentLoader: () => import('./react-query-tanstack.mdx?raw'),
       },
-      { id: 'react-jotai-recoil', title: '⚛️ Jotai & Recoil', content: '', contentLoader: () => import('./jotai-recoil.mdx?raw') },
+      {
+        id: 'react-jotai-recoil',
+        title: '⚛️ Jotai & Recoil',
+        content: '',
+        contentLoader: () => import('./jotai-recoil.mdx?raw'),
+      },
       {
         id: 'react-state-management-guides',
         title: '📚 State Management Guides',
@@ -135,7 +160,12 @@ export const reactTopics: TopicItem[] = [
     title: '🛣️ Routing & Navigation',
     content: '',
     items: [
-      { id: 'react-routing', title: '🛣️ Routing with React Router', content: '', contentLoader: () => import('./react-Routing.mdx?raw') },
+      {
+        id: 'react-routing',
+        title: '🛣️ Routing with React Router',
+        content: '',
+        contentLoader: () => import('./react-Routing.mdx?raw'),
+      },
     ],
   },
   {
@@ -143,8 +173,18 @@ export const reactTopics: TopicItem[] = [
     title: '🔬 Advanced',
     content: '',
     items: [
-      { id: 'react-18-features', title: '✨ React 18 Features', content: '', contentLoader: () => import('./react-18-features.mdx?raw') },
-      { id: 'react-19-features', title: '🆕 React 19 Features', content: '', contentLoader: () => import('./react-19-features.mdx?raw') },
+      {
+        id: 'react-18-features',
+        title: '✨ React 18 Features',
+        content: '',
+        contentLoader: () => import('./react-18-features.mdx?raw'),
+      },
+      {
+        id: 'react-19-features',
+        title: '🆕 React 19 Features',
+        content: '',
+        contentLoader: () => import('./react-19-features.mdx?raw'),
+      },
       {
         id: 'react-performance',
         title: '⚡ Performance Optimization',
@@ -157,10 +197,25 @@ export const reactTopics: TopicItem[] = [
         content: '',
         contentLoader: () => import('./react-ErrorHandling.mdx?raw'),
       },
-      { id: 'react-testing', title: '🧪 Testing in React', content: '', contentLoader: () => import('./react-Testing.mdx?raw') },
-      { id: 'react-server-side-rendering', title: '🖥️ Server Side Rendering', content: '', contentLoader: () => import('./react-SSR.mdx?raw') },
+      {
+        id: 'react-testing',
+        title: '🧪 Testing in React',
+        content: '',
+        contentLoader: () => import('./react-Testing.mdx?raw'),
+      },
+      {
+        id: 'react-server-side-rendering',
+        title: '🖥️ Server Side Rendering',
+        content: '',
+        contentLoader: () => import('./react-SSR.mdx?raw'),
+      },
       { id: 'react-storybook', title: '📚 Storybook', content: '', contentLoader: () => import('./storybook.mdx?raw') },
-      { id: 'react-devtools', title: '🔧 React DevTools', content: '', contentLoader: () => import('./react-devtools.mdx?raw') },
+      {
+        id: 'react-devtools',
+        title: '🔧 React DevTools',
+        content: '',
+        contentLoader: () => import('./react-devtools.mdx?raw'),
+      },
     ],
   },
   {

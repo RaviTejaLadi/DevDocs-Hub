@@ -1,6 +1,16 @@
 import { useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Braces, ChevronLeft, ChevronRight, Database, PanelLeftClose, PanelLeftOpen, Repeat, Search, X } from 'lucide-react';
+import {
+  Braces,
+  ChevronLeft,
+  ChevronRight,
+  Database,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Repeat,
+  Search,
+  X,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SidebarContent, SidebarInput, SidebarMenu, SidebarMenuItem } from '@/components/ui/sidebar';
@@ -21,11 +31,7 @@ type VisualizationPageShellProps = {
   children: ReactNode;
 };
 
-export function VisualizationPageShell({
-  title,
-  description,
-  children,
-}: VisualizationPageShellProps) {
+export function VisualizationPageShell({ title, description, children }: VisualizationPageShellProps) {
   const { visualizationId } = useParams<{ visualizationId?: string }>();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -142,7 +148,9 @@ export function VisualizationPageShell({
                           'flex w-full min-w-0 items-center gap-2 rounded-lg px-2 py-2 text-left hover:bg-sidebar-accent/50',
                           expandedCategories[category.id] && 'bg-sidebar-accent/30'
                         )}
-                        aria-label={expandedCategories[category.id] ? `Collapse ${category.label}` : `Expand ${category.label}`}
+                        aria-label={
+                          expandedCategories[category.id] ? `Collapse ${category.label}` : `Expand ${category.label}`
+                        }
                       >
                         <span className="flex size-6 shrink-0 items-center justify-center rounded-md border border-sidebar-border bg-background text-[11px] font-bold tabular-nums">
                           {sectionIndexLabel(index)}
@@ -216,7 +224,9 @@ export function VisualizationPageShell({
             </div>
             <CardHeader className="space-y-2 pb-4">
               <CardTitle className="text-2xl text-gradient-sheen sm:text-3xl">{title}</CardTitle>
-              <CardDescription className="max-w-3xl text-sm leading-relaxed sm:text-base">{description}</CardDescription>
+              <CardDescription className="max-w-3xl text-sm leading-relaxed sm:text-base">
+                {description}
+              </CardDescription>
             </CardHeader>
           </Card>
 

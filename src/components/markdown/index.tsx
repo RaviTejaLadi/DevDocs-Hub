@@ -40,8 +40,7 @@ function selectTocHeadings(headings: Heading[], slideMode: boolean, slides: stri
     const firstH1Index = headings.findIndex((h) => h.level === 1);
     const nextH1Index = headings.findIndex((h, i) => i > firstH1Index && h.level === 1);
     const introHasSubsections =
-      nextH1Index > firstH1Index + 1 &&
-      headings.slice(firstH1Index + 1, nextH1Index).some((h) => h.level >= 2);
+      nextH1Index > firstH1Index + 1 && headings.slice(firstH1Index + 1, nextH1Index).some((h) => h.level >= 2);
     return introHasSubsections ? h1s.slice(1) : h1s;
   }
 
@@ -604,11 +603,7 @@ const MarkdownRenderInner = ({
     [copiedKey, handleCopy, isDarkTheme, scrollToId]
   );
 
-  const articleSurface = cn(
-    'md-render',
-    docsArticleSurfaceClass,
-    'px-5 py-6 sm:px-7 sm:py-8 lg:px-9 lg:py-9'
-  );
+  const articleSurface = cn('md-render', docsArticleSurfaceClass, 'px-5 py-6 sm:px-7 sm:py-8 lg:px-9 lg:py-9');
 
   const tocHeadings = useMemo(
     () => selectTocHeadings(headings, slideMode, slides, headingPrefix),
@@ -849,10 +844,7 @@ const MarkdownRenderInner = ({
                   </div>
                 </div>
                 <ScrollArea
-                  className={cn(
-                    'min-h-0 flex-1',
-                    cardScrollMode ? 'overflow-hidden' : 'max-h-[calc(100vh-13rem)]'
-                  )}
+                  className={cn('min-h-0 flex-1', cardScrollMode ? 'overflow-hidden' : 'max-h-[calc(100vh-13rem)]')}
                 >
                   <nav aria-label={'On this page'} className="pr-1">
                     {tocNav}

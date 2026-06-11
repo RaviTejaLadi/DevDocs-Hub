@@ -1,6 +1,8 @@
 # Redis Cheat Sheet 🚀
 
-**Redis** (Remote Dictionary Server) is an in-memory key-value database used for caching, session storage, pub/sub messaging, rate limiting, queues, and real-time applications.
+**Redis** (Remote Dictionary Server) is an in-memory key-value database used for
+caching, session storage, pub/sub messaging, rate limiting, queues, and
+real-time applications.
 
 ---
 
@@ -553,7 +555,7 @@ services:
   redis:
     image: redis:8
     ports:
-      - "6379:6379"
+      - '6379:6379'
 ```
 
 ---
@@ -572,7 +574,7 @@ npm install redis
 
 ```javascript id="ukm1my"
 // Connect to Redis
-import { createClient } from "redis";
+import { createClient } from 'redis';
 
 const client = createClient();
 
@@ -585,7 +587,7 @@ await client.connect();
 
 ```javascript id="xbh2xk"
 // Store data
-await client.set("user", "Ravi");
+await client.set('user', 'Ravi');
 ```
 
 ---
@@ -594,7 +596,7 @@ await client.set("user", "Ravi");
 
 ```javascript id="s3sv4h"
 // Read data
-const user = await client.get("user");
+const user = await client.get('user');
 ```
 
 ---
@@ -603,8 +605,8 @@ const user = await client.get("user");
 
 ```javascript id="kn1q80"
 // Cache API response
-app.get("/users", async (req, res) => {
-  const cached = await client.get("users");
+app.get('/users', async (req, res) => {
+  const cached = await client.get('users');
 
   if (cached) {
     return res.json(JSON.parse(cached));
@@ -612,13 +614,9 @@ app.get("/users", async (req, res) => {
 
   const users = await getUsers();
 
-  await client.set(
-    "users",
-    JSON.stringify(users),
-    {
-      EX: 60
-    }
-  );
+  await client.set('users', JSON.stringify(users), {
+    EX: 60,
+  });
 
   res.json(users);
 });

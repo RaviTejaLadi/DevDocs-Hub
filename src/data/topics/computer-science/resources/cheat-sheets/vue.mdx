@@ -48,8 +48,8 @@
 
 ```js
 const fullName = computed(() => {
-  return `${firstName.value} ${lastName.value}`
-})
+  return `${firstName.value} ${lastName.value}`;
+});
 ```
 
 ---
@@ -66,8 +66,8 @@ const fullName = computed(() => {
 
 ```js
 watch(count, (newVal, oldVal) => {
-  console.log(newVal)
-})
+  console.log(newVal);
+});
 ```
 
 ---
@@ -88,8 +88,8 @@ watch(count, (newVal, oldVal) => {
 
 ```js
 onMounted(() => {
-  fetchData()
-})
+  fetchData();
+});
 ```
 
 ---
@@ -150,7 +150,7 @@ onMounted(() => {
 | `.lazy`   | Update on change event |
 
 ```html
-<input v-model.trim="username">
+<input v-model.trim="username" />
 ```
 
 ---
@@ -168,9 +168,9 @@ onMounted(() => {
 const props = defineProps({
   title: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 ```
 
 ---
@@ -183,9 +183,9 @@ const props = defineProps({
 | Emit Event   | `emit('save')`          |
 
 ```js
-const emit = defineEmits(['submit'])
+const emit = defineEmits(['submit']);
 
-emit('submit', data)
+emit('submit', data);
 ```
 
 ---
@@ -200,9 +200,7 @@ emit('submit', data)
 
 ```html
 <MyCard>
-  <template #header>
-    Header Content
-  </template>
+  <template #header> Header Content </template>
 </MyCard>
 ```
 
@@ -230,10 +228,10 @@ emit('submit', data)
 
 ```js
 // Parent
-provide('theme', 'dark')
+provide('theme', 'dark');
 
 // Child
-const theme = inject('theme')
+const theme = inject('theme');
 ```
 
 ---
@@ -246,11 +244,11 @@ const theme = inject('theme')
 | Access DOM   | `inputRef.value.focus()` |
 
 ```html
-<input ref="inputRef">
+<input ref="inputRef" />
 ```
 
 ```js
-const inputRef = ref(null)
+const inputRef = ref(null);
 ```
 
 ---
@@ -268,8 +266,8 @@ const inputRef = ref(null)
 | Query       | `route.query.page`      |
 
 ```js
-const router = useRouter()
-router.push('/dashboard')
+const router = useRouter();
+router.push('/dashboard');
 ```
 
 ---
@@ -287,14 +285,14 @@ router.push('/dashboard')
 ```js
 export const useUserStore = defineStore('user', {
   state: () => ({
-    user: null
+    user: null,
   }),
   actions: {
     setUser(user) {
-      this.user = user
-    }
-  }
-})
+      this.user = user;
+    },
+  },
+});
 ```
 
 ---
@@ -334,9 +332,7 @@ export const useUserStore = defineStore('user', {
 | Lazy Load | `defineAsyncComponent()` |
 
 ```js
-const UserProfile = defineAsyncComponent(() =>
-  import('./UserProfile.vue')
-)
+const UserProfile = defineAsyncComponent(() => import('./UserProfile.vue'));
 ```
 
 ---
@@ -352,9 +348,9 @@ const UserProfile = defineAsyncComponent(() =>
 ```js
 app.directive('focus', {
   mounted(el) {
-    el.focus()
-  }
-})
+    el.focus();
+  },
+});
 ```
 
 ---
