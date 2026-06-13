@@ -1,14 +1,9 @@
 import type { Connection, Edge, Node } from '@xyflow/react';
 
-export type WorkflowStatus = 'success' | 'error' | 'running' | 'idle' | 'warning';
-export type WorkflowNodeType = 'trigger' | 'action' | 'condition' | 'transform' | 'output' | 'ai';
-
 export interface WorkflowNodeData {
   [key: string]: unknown;
   label: string;
   description?: string;
-  status?: WorkflowStatus;
-  type?: WorkflowNodeType;
   duration?: string;
   meta?: Record<string, string | number | boolean>;
 }
@@ -34,4 +29,5 @@ export interface WorkflowCanvasProps {
   className?: string;
   showStats?: boolean;
   showDetailPanel?: boolean;
+  direction?: 'horizontal' | 'vertical';
 }
