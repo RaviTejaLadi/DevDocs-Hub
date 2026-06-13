@@ -6,8 +6,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 40, y: 200 },
     data: {
       label: 'Create HTML Document',
-      description:
-        'Start with a valid HTML5 document using <!DOCTYPE html> and root html element.',
+      description: 'Start with a valid HTML5 document using <!DOCTYPE html> and root html element.',
       meta: {
         purpose: 'document structure',
         output: 'html skeleton',
@@ -20,8 +19,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 350, y: 40 },
     data: {
       label: 'Parse DOCTYPE',
-      description:
-        'Browser reads <!DOCTYPE html> and switches to standards mode rendering.',
+      description: 'Browser reads <!DOCTYPE html> and switches to standards mode rendering.',
       meta: {
         browser: 'parser',
         result: 'standards mode',
@@ -34,8 +32,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 350, y: 360 },
     data: {
       label: 'Read HTML Tree',
-      description:
-        'Browser scans tags and creates nodes representing elements.',
+      description: 'Browser scans tags and creates nodes representing elements.',
       meta: {
         process: 'tokenization',
         output: 'tokens',
@@ -48,8 +45,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 700, y: 40 },
     data: {
       label: 'Build DOM Tree',
-      description:
-        'Tokens are converted into a Document Object Model hierarchy.',
+      description: 'Tokens are converted into a Document Object Model hierarchy.',
       meta: {
         structure: 'DOM',
         type: 'tree',
@@ -62,8 +58,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 700, y: 360 },
     data: {
       label: 'Load External Resources',
-      description:
-        'Browser discovers CSS, JavaScript, images, fonts, and fetches them.',
+      description: 'Browser discovers CSS, JavaScript, images, fonts, and fetches them.',
       meta: {
         resources: 'css/js/images/fonts',
         network: 'http requests',
@@ -76,8 +71,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1050, y: 40 },
     data: {
       label: 'Apply Metadata',
-      description:
-        'Head elements provide title, viewport, SEO, and social metadata.',
+      description: 'Head elements provide title, viewport, SEO, and social metadata.',
       meta: {
         tags: 'title/meta/link',
         area: 'head',
@@ -90,8 +84,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1050, y: 360 },
     data: {
       label: 'Apply CSS Styling',
-      description:
-        'CSS rules are matched against DOM elements to compute styles.',
+      description: 'CSS rules are matched against DOM elements to compute styles.',
       meta: {
         output: 'CSSOM',
         process: 'style calculation',
@@ -104,8 +97,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1400, y: 40 },
     data: {
       label: 'Create Render Tree',
-      description:
-        'Browser combines DOM and CSSOM into a render tree.',
+      description: 'Browser combines DOM and CSSOM into a render tree.',
       meta: {
         input: 'DOM + CSSOM',
         output: 'render tree',
@@ -118,8 +110,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1400, y: 360 },
     data: {
       label: 'Layout Calculation',
-      description:
-        'Browser calculates size and position of every visible element.',
+      description: 'Browser calculates size and position of every visible element.',
       meta: {
         stage: 'layout',
         alias: 'reflow',
@@ -132,8 +123,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1750, y: 40 },
     data: {
       label: 'Paint Elements',
-      description:
-        'Text, backgrounds, borders, and images are painted to layers.',
+      description: 'Text, backgrounds, borders, and images are painted to layers.',
       meta: {
         rendering: 'paint',
         output: 'pixels',
@@ -146,8 +136,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 1750, y: 360 },
     data: {
       label: 'Composite Layers',
-      description:
-        'GPU combines painted layers into the final screen output.',
+      description: 'GPU combines painted layers into the final screen output.',
       meta: {
         stage: 'compositing',
         hardware: 'GPU',
@@ -160,8 +149,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 2100, y: 40 },
     data: {
       label: 'Accessibility Tree',
-      description:
-        'Browser generates accessibility information for screen readers.',
+      description: 'Browser generates accessibility information for screen readers.',
       meta: {
         standards: 'ARIA',
         users: 'assistive technologies',
@@ -174,8 +162,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 2100, y: 360 },
     data: {
       label: 'JavaScript Interaction',
-      description:
-        'Scripts manipulate the DOM and update the page dynamically.',
+      description: 'Scripts manipulate the DOM and update the page dynamically.',
       meta: {
         api: 'DOM API',
         behavior: 'dynamic updates',
@@ -188,8 +175,7 @@ const nodes: WorkflowPresetConfig['nodes'] = [
     position: { x: 2450, y: 200 },
     data: {
       label: 'Rendered Web Page',
-      description:
-        'Final interactive webpage displayed to the user.',
+      description: 'Final interactive webpage displayed to the user.',
       meta: {
         result: 'visible UI',
         state: 'interactive',
@@ -305,8 +291,7 @@ const edges: WorkflowPresetConfig['edges'] = [
 
 export const htmlPreset: WorkflowPresetConfig = {
   title: 'How HTML Works Internally',
-  subtitle:
-    'From HTML document creation to DOM parsing, rendering, accessibility, and user interaction.',
+  subtitle: 'From HTML document creation to DOM parsing, rendering, accessibility, and user interaction.',
   nodes,
   edges,
 };

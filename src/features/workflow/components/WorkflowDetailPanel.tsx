@@ -1,4 +1,3 @@
-import { STATUS_COLOR } from './workflowAppearance';
 import type { WorkflowNode } from '../types/workflow';
 
 type WorkflowDetailPanelProps = {
@@ -8,8 +7,6 @@ type WorkflowDetailPanelProps = {
 
 export default function WorkflowDetailPanel({ node, onClose }: WorkflowDetailPanelProps) {
   const { data } = node;
-  const statusKey = data.status ?? 'idle';
-  const status = STATUS_COLOR[statusKey];
 
   return (
     <div className="p-4 space-y-4 text-sm min-w-0">

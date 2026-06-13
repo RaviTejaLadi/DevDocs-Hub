@@ -12,7 +12,12 @@ export function WorkflowShowcase({ preset = 'ingest', className = '', readOnly =
   const selectedPreset = getWorkflowPreset(preset);
   return (
     <div className={`w-full min-w-0 ${className}`}>
-      <WorkflowCanvas nodes={selectedPreset.nodes} edges={selectedPreset.edges} className="w-full" readOnly={readOnly} />
+      <WorkflowCanvas
+        nodes={selectedPreset.nodes}
+        edges={selectedPreset.edges}
+        className="w-full"
+        readOnly={readOnly}
+      />
     </div>
   );
 }

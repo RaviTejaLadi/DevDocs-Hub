@@ -29,9 +29,7 @@ export default function WorkflowGraphNode({ data, selected }: WorkflowNodeCompon
         className="flex items-center justify-between px-3 py-1.5 rounded-t-md text-[10px] font-semibold tracking-widest uppercase"
         style={{ background: typeMeta.accent + '22', borderBottom: `1px solid ${typeMeta.accent}33` }}
       >
-        <span style={{ color: typeMeta.accent }}>
-        {data.label}
-        </span>
+        <span style={{ color: typeMeta.accent }}>{data.label}</span>
       </div>
 
       <div className="px-3 py-2.5">
@@ -51,7 +49,6 @@ export default function WorkflowGraphNode({ data, selected }: WorkflowNodeCompon
             ))}
           </div>
         )}
-
       </div>
 
       <Handle
