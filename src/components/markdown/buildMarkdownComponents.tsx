@@ -6,6 +6,7 @@ import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, TriangleAler
 import { Button } from '@/components/ui/button';
 import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
+import { WorkflowShowcase } from '@/features/workflow';
 
 function extractTextFromNode(node: React.ReactNode): string {
   if (typeof node === 'string' || typeof node === 'number') return String(node);
@@ -114,6 +115,12 @@ export function buildMarkdownComponents({
   const c = compactSlide;
 
   return {
+    workflowshowcase: ({ preset = 'ingest', className, readOnly = true }: any) => (
+      <WorkflowShowcase preset={preset} className={className} readOnly={readOnly} />
+    ),
+    // WorkflowShowcase: ({ preset = 'ingest', className, readOnly = true }: any) => (
+    //   <WorkflowShowcase preset={preset} className={className} readOnly={readOnly} />
+    // ),
     h1: ({ children }: any) => {
       const id = nid(children);
       return (
