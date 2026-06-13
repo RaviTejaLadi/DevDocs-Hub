@@ -65,7 +65,7 @@ export const docsTopicBrowserSheetContentClass = cn(
   'shrink-0 bg-background supports-backdrop-filter:bg-background/95',
   docsRaisedShadowClass,
   '!top-2 !right-2 !bottom-2 !left-auto !h-auto',
-  'max-h-[calc(100dvh-4.5rem-env(safe-area-inset-top)-0.5rem)] md:rounded-xl',
+  'max-h-[calc(100dvh-1.5rem-env(safe-area-inset-top)-0.5rem)] md:rounded-xl',
   '!w-96 !max-w-[min(92vw,24rem)]'
 );
 
