@@ -79,7 +79,7 @@ const DocumentationPage = () => {
 
   return (
     <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-8 sm:space-y-8 sm:pb-10">
-      <DocumentationTopicHero topic={topic} />
+      {/* <DocumentationTopicHero topic={topic} /> */}
 
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
 

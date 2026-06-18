@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef, type JSX } from 'react';
 import { useDocsRouteParams } from '@/hooks/useDocsRouteParams';
 import type { Topic, TopicItem } from '@/data/topics';
 import { hasDocContent } from '@/types/docContent';
-import { BookOpen, ChevronRight, Search, X } from 'lucide-react';
+import { BookOpen, ChevronRight, FileText, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   SidebarContent as UiSidebarContent,
@@ -427,32 +427,41 @@ const SidebarContent = ({
         );
       })();
 
+  const iconEl = topic.icon ?? <FileText className="size-5 text-primary" strokeWidth={1.75} aria-hidden />;
   return (
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-sidebar text-sidebar-foreground">
       <SidebarHeader className="border-b border-sidebar-border px-3 py-2.5">
-        <div className="flex items-center gap-2">
-          <div className="relative min-w-0 flex-1">
-            <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
-            <SidebarInput
-              type="text"
-              placeholder={'Search in this section...'}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-8 bg-background pl-8 pr-8 text-sm"
-            />
-            {searchQuery ? (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-0 top-1/2 size-6 -translate-y-1/2 p-0"
-                onClick={() => setSearchQuery('')}
-                aria-label={'Clear search'}
-              >
-                <X className="size-3" />
-              </Button>
-            ) : null}
+        <div className="flex flex-col items-start gap-2">
+          <div className="flex items-center ">
+            <span className="flex size-10 shrink-0 items-center justify-center text-primary [&_svg]:size-5">
+              {iconEl}
+            </span>
+            <h1 className="text-md font-semibold leading-tight text-foreground">{topic.title}</h1>
           </div>
-          {showCollapseControl ? <SidebarTrigger className="size-8 shrink-0" /> : null}
+          <div className="flex items-center gap-2">
+            <div className="relative min-w-0 flex-1">
+              <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
+              <SidebarInput
+                type="text"
+                placeholder={'Search in this section...'}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-8 bg-background pl-8 pr-8 text-sm"
+              />
+              {searchQuery ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-1/2 size-6 -translate-y-1/2 p-0"
+                  onClick={() => setSearchQuery('')}
+                  aria-label={'Clear search'}
+                >
+                  <X className="size-3" />
+                </Button>
+              ) : null}
+            </div>
+            {showCollapseControl ? <SidebarTrigger className="size-8 shrink-0" /> : null}
+          </div>
         </div>
       </SidebarHeader>
 

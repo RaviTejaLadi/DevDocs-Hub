@@ -785,7 +785,7 @@ const MarkdownRenderInner = ({
             'hidden min-h-0 shrink-0 lg:flex lg:flex-col',
             tocCollapsed ? 'lg:w-11' : 'lg:w-60',
             cardScrollMode && 'lg:self-stretch',
-            fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-24',
+            fillViewportCard ? 'lg:relative lg:top-auto' : 'sticky top-[2px]',
             cardScrollMode
               ? fillViewportCard
                 ? 'h-full min-h-0 max-h-full'
