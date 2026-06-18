@@ -1,101 +1,83 @@
 # 🔢 Number System
 
-## Introduction
-
-The Number System is the foundation of Quantitative Aptitude. Almost every
-aptitude topic directly or indirectly depends on number properties and
-arithmetic operations.
-
-Understanding the Number System helps in solving problems related to
-divisibility, factors, multiples, remainders, HCF, LCM, and many advanced
-aptitude concepts.
+The **Number System** is one of the most important topics in Quantitative Aptitude. Many advanced topics such as percentages, ratios, HCF-LCM, simplification, and algebra depend on a strong understanding of numbers.
 
 ---
 
-## 🎯 Learning Objectives
+# 📖 What is a Number System?
 
-After completing this chapter, you will be able to:
+A Number System is a way of representing and classifying numbers.
 
-- Understand different types of numbers
-- Find factors and multiples
-- Check divisibility quickly
-- Calculate HCF and LCM
-- Solve remainder problems
-- Work with prime numbers efficiently
+```mermaid
+graph TD
+    A[Numbers]
+    A --> B[Natural Numbers]
+    A --> C[Whole Numbers]
+    A --> D[Integers]
+    A --> E[Rational Numbers]
+    A --> F[Irrational Numbers]
+    E --> G[Real Numbers]
+    F --> G
+```
 
 ---
 
-# What is a Number?
+# 1️⃣ Natural Numbers (N)
 
-A number is a mathematical value used for counting, measuring, and performing
-calculations.
+Natural numbers are counting numbers.
+
+```text
+1, 2, 3, 4, 5, 6...
+```
+
+Properties:
+
+* Smallest natural number = 1
+* No largest natural number
+* Infinite in count
+
+Example:
+
+```text
+10, 25, 100, 999
+```
+
+---
+
+# 2️⃣ Whole Numbers (W)
+
+Whole numbers include zero and all natural numbers.
+
+```text
+0, 1, 2, 3, 4, 5...
+```
+
+Properties:
+
+* Smallest whole number = 0
+* Infinite
+
+---
+
+# 3️⃣ Integers (Z)
+
+Integers include positive numbers, negative numbers, and zero.
+
+```text
+..., -3, -2, -1, 0, 1, 2, 3 ...
+```
 
 Examples:
 
 ```text
-1, 5, 10, 25, 100
+-100
+45
+0
 ```
 
 ---
 
-# Classification of Numbers
-
-## Natural Numbers (N)
-
-Numbers used for counting.
-
-```text
-1, 2, 3, 4, 5, ...
-```
-
-### Properties
-
-- Smallest natural number = 1
-- No largest natural number
-- Infinite in count
-
----
-
-## Whole Numbers (W)
-
-Natural numbers including zero.
-
-```text
-0, 1, 2, 3, 4, 5, ...
-```
-
-### Properties
-
-- Smallest whole number = 0
-- Infinite in count
-
----
-
-## Integers (Z)
-
-Positive numbers, negative numbers, and zero.
-
-```text
-..., -3, -2, -1, 0, 1, 2, 3, ...
-```
-
-### Types
-
-#### Positive Integers
-
-```text
-1, 2, 3, 4, ...
-```
-
-#### Negative Integers
-
-```text
--1, -2, -3, -4, ...
-```
-
----
-
-## Rational Numbers
+# 4️⃣ Rational Numbers
 
 Numbers that can be expressed as:
 
@@ -105,25 +87,32 @@ p/q
 
 Where:
 
-- p = Integer
-- q ≠ 0
+```text
+q ≠ 0
+```
 
 Examples:
 
 ```text
 1/2
 3/4
-5/8
-7
+5
+0.25
 ```
 
-(7 can be written as 7/1)
+Since:
+
+```text
+5 = 5/1
+```
+
+it is also rational.
 
 ---
 
-## Irrational Numbers
+# 5️⃣ Irrational Numbers
 
-Numbers that cannot be expressed as p/q.
+Cannot be expressed as p/q.
 
 Examples:
 
@@ -133,23 +122,28 @@ Examples:
 π
 ```
 
-Their decimal expansion never ends and never repeats.
+Decimal values never terminate and never repeat.
+
+```text
+√2 = 1.414213...
+```
 
 ---
 
-## Real Numbers
+# 6️⃣ Real Numbers
 
 Combination of:
 
-- Rational Numbers
-- Irrational Numbers
+* Rational Numbers
+* Irrational Numbers
 
 Examples:
 
 ```text
--5
+5
+-3
 0
-3.25
+1/4
 √2
 π
 ```
@@ -158,9 +152,9 @@ Examples:
 
 # Even and Odd Numbers
 
-## Even Numbers
+## Even Number
 
-Numbers divisible by 2.
+Divisible by 2.
 
 Examples:
 
@@ -168,19 +162,17 @@ Examples:
 2, 4, 6, 8, 10
 ```
 
-### Formula
+Formula:
 
 ```text
 2n
 ```
 
-where n is an integer.
-
 ---
 
-## Odd Numbers
+## Odd Number
 
-Numbers not divisible by 2.
+Not divisible by 2.
 
 Examples:
 
@@ -188,7 +180,7 @@ Examples:
 1, 3, 5, 7, 9
 ```
 
-### Formula
+Formula:
 
 ```text
 2n + 1
@@ -196,24 +188,97 @@ Examples:
 
 ---
 
+# Important Properties
+
+## Even + Even
+
+```text
+Even
+```
+
+Example:
+
+```text
+8 + 4 = 12
+```
+
+---
+
+## Odd + Odd
+
+```text
+Even
+```
+
+Example:
+
+```text
+7 + 3 = 10
+```
+
+---
+
+## Even + Odd
+
+```text
+Odd
+```
+
+Example:
+
+```text
+6 + 5 = 11
+```
+
+---
+
+## Odd × Odd
+
+```text
+Odd
+```
+
+Example:
+
+```text
+5 × 3 = 15
+```
+
+---
+
+## Even × Any Number
+
+```text
+Even
+```
+
+Example:
+
+```text
+8 × 17 = 136
+```
+
+---
+
 # Prime Numbers
 
-A prime number has exactly two factors:
+A number having exactly two factors:
 
-1. 1
-2. The number itself
+```text
+1 and itself
+```
 
 Examples:
 
 ```text
-2, 3, 5, 7, 11, 13, 17
+2, 3, 5, 7, 11, 13, 17...
 ```
 
-### Important Points
+Special Fact:
 
-- 2 is the only even prime number.
-- 1 is not a prime number.
-- Every prime number greater than 2 is odd.
+```text
+2 is the only even prime number.
+```
 
 ---
 
@@ -227,27 +292,44 @@ Examples:
 4, 6, 8, 9, 10, 12
 ```
 
-### Example
+---
 
-Factors of 12:
+# Co-prime Numbers
+
+Two numbers whose HCF is 1.
+
+Examples:
 
 ```text
-1, 2, 3, 4, 6, 12
+8 and 15
 ```
 
-Since it has more than two factors, it is composite.
+Factors:
+
+```text
+8 = 1,2,4,8
+15 = 1,3,5,15
+```
+
+Common factor:
+
+```text
+1
+```
+
+Hence co-prime.
 
 ---
 
 # Factors and Multiples
 
-## Factors
+## Factor
 
-Numbers that divide another number completely.
+A number that divides another number completely.
 
-### Example
+Example:
 
-Factors of 12:
+Factors of 12
 
 ```text
 1, 2, 3, 4, 6, 12
@@ -255,163 +337,167 @@ Factors of 12:
 
 ---
 
-## Multiples
+## Multiple
 
-Numbers obtained by multiplying a number.
+Obtained by multiplying a number.
 
-### Example
-
-Multiples of 5:
+Multiples of 12
 
 ```text
-5, 10, 15, 20, 25, ...
+12, 24, 36, 48, 60...
 ```
 
 ---
 
 # Divisibility Rules
 
+These rules save time in aptitude exams.
+
 ## Divisible by 2
 
-Last digit must be even.
-
-Examples:
+Last digit must be:
 
 ```text
-246 ✓
-138 ✓
+0, 2, 4, 6, 8
 ```
+
+Example:
+
+```text
+248
+```
+
+Divisible by 2.
 
 ---
 
 ## Divisible by 3
 
-Sum of digits should be divisible by 3.
+Sum of digits divisible by 3.
 
 Example:
 
 ```text
-123
+246
 
-1 + 2 + 3 = 6
-
-6 is divisible by 3
+2+4+6=12
 ```
 
-Therefore:
+12 divisible by 3.
 
-```text
-123 ✓
-```
+Therefore 246 divisible by 3.
 
 ---
 
 ## Divisible by 4
 
-Last two digits should be divisible by 4.
+Last two digits divisible by 4.
 
 Example:
 
 ```text
-1216
+512
 
-16 ÷ 4 = 4
+12 divisible by 4
 ```
 
-Therefore:
-
-```text
-1216 ✓
-```
+Hence divisible by 4.
 
 ---
 
 ## Divisible by 5
 
-Last digit should be:
+Last digit:
 
 ```text
 0 or 5
 ```
 
-Examples:
+Example:
 
 ```text
-125 ✓
-230 ✓
+125
 ```
 
 ---
 
 ## Divisible by 6
 
-Number must be divisible by:
+Divisible by:
 
 ```text
 2 and 3
 ```
 
-Both conditions should be satisfied.
+Example:
+
+```text
+324
+```
+
+Even and digit sum:
+
+```text
+3+2+4=9
+```
+
+Therefore divisible by 6.
 
 ---
 
 ## Divisible by 8
 
-Last three digits should be divisible by 8.
+Last 3 digits divisible by 8.
 
 Example:
 
 ```text
-2048
+7128
 
-048 = 48
-
-48 ÷ 8 = 6
+128 ÷ 8 = 16
 ```
-
-Therefore divisible by 8.
 
 ---
 
 ## Divisible by 9
 
-Sum of digits should be divisible by 9.
+Sum of digits divisible by 9.
 
 Example:
 
 ```text
 729
 
-7 + 2 + 9 = 18
-
-18 ÷ 9 = 2
+7+2+9=18
 ```
 
-Therefore divisible by 9.
+18 divisible by 9.
 
 ---
 
-## Divisible by 10
+## Divisible by 11
 
-Last digit should be:
-
-```text
-0
-```
+Difference between alternate digit sums must be 0 or multiple of 11.
 
 Example:
 
 ```text
-560 ✓
+121
 ```
+
+```text
+(1+1)-2 = 0
+```
+
+Hence divisible by 11.
 
 ---
 
 # HCF (Highest Common Factor)
 
-The greatest number that divides all given numbers.
+Largest factor common to all numbers.
 
-### Example
+Example:
 
 Find HCF of:
 
@@ -422,18 +508,17 @@ Find HCF of:
 Factors:
 
 ```text
-12 = 1,2,3,4,6,12
-
-18 = 1,2,3,6,9,18
-```
-
-Common factors:
-
-```text
-1,2,3,6
+12 → 1,2,3,4,6,12
+18 → 1,2,3,6,9,18
 ```
 
 Highest common factor:
+
+```text
+6
+```
+
+Answer:
 
 ```text
 HCF = 6
@@ -443,11 +528,9 @@ HCF = 6
 
 # LCM (Least Common Multiple)
 
-The smallest number divisible by all given numbers.
+Smallest number divisible by all given numbers.
 
-### Example
-
-Find LCM of:
+Example:
 
 ```text
 12 and 18
@@ -456,18 +539,17 @@ Find LCM of:
 Multiples:
 
 ```text
-12 → 12,24,36,48,...
-
-18 → 18,36,54,...
+12 → 12,24,36,48...
+18 → 18,36,54...
 ```
 
-Common smallest multiple:
+Common smallest:
 
 ```text
 36
 ```
 
-Therefore:
+Answer:
 
 ```text
 LCM = 36
@@ -483,18 +565,15 @@ For two numbers:
 HCF × LCM = Product of Numbers
 ```
 
-### Example
-
-Numbers:
+Example:
 
 ```text
-12 and 18
-```
-
-```text
-6 × 36 = 216
-
 12 × 18 = 216
+
+HCF = 6
+LCM = 36
+
+6 × 36 = 216
 ```
 
 Verified.
@@ -503,26 +582,128 @@ Verified.
 
 # Remainder Concept
 
-When a number does not divide completely, the leftover part is called the
-remainder.
+Formula:
 
-### Example
+```text
+Dividend = Divisor × Quotient + Remainder
+```
+
+Example:
 
 ```text
 17 ÷ 5
 ```
 
 ```text
-5 × 3 = 15
+17 = 5 × 3 + 2
+```
 
-Remainder = 2
+Remainder:
+
+```text
+2
 ```
 
 ---
 
-# Solved Examples
+# Unit Digit Pattern (Cyclicity)
 
-## Example 1
+Useful for powers.
+
+Example:
+
+Find unit digit of:
+
+```text
+7^103
+```
+
+Pattern:
+
+```text
+7¹ = 7
+7² = 49 → 9
+7³ = 343 → 3
+7⁴ = 2401 → 1
+```
+
+Cycle:
+
+```text
+7,9,3,1
+```
+
+Length:
+
+```text
+4
+```
+
+```text
+103 ÷ 4
+```
+
+Remainder:
+
+```text
+3
+```
+
+3rd number in cycle:
+
+```text
+3
+```
+
+Answer:
+
+```text
+Unit Digit = 3
+```
+
+---
+
+# Number of Factors Formula
+
+If:
+
+```text
+N = pᵃ × qᵇ × rᶜ
+```
+
+Number of factors:
+
+```text
+(a+1)(b+1)(c+1)
+```
+
+Example:
+
+```text
+72 = 2³ × 3²
+```
+
+Factors:
+
+```text
+(3+1)(2+1)
+
+= 4 × 3
+
+= 12
+```
+
+Answer:
+
+```text
+12 factors
+```
+
+---
+
+# Placement-Level Questions
+
+### Question 1
 
 Find HCF of:
 
@@ -530,12 +711,14 @@ Find HCF of:
 24 and 36
 ```
 
-Factors:
+Solution:
 
 ```text
-24 = 1,2,3,4,6,8,12,24
+Factors of 24:
+1,2,3,4,6,8,12,24
 
-36 = 1,2,3,4,6,9,12,18,36
+Factors of 36:
+1,2,3,4,6,9,12,18,36
 ```
 
 Highest common factor:
@@ -544,87 +727,104 @@ Highest common factor:
 12
 ```
 
-**Answer:** 12
+✅ Answer: 12
 
 ---
 
-## Example 2
+### Question 2
 
 Find LCM of:
 
 ```text
-8 and 12
+15 and 20
 ```
 
-Multiples:
+Prime factors:
 
 ```text
-8 → 8,16,24,...
+15 = 3 × 5
 
-12 → 12,24,...
+20 = 2² × 5
 ```
 
-**Answer:** 24
-
----
-
-## Example 3
-
-Is 567 divisible by 9?
+LCM:
 
 ```text
-5 + 6 + 7 = 18
+2² × 3 × 5
 
-18 divisible by 9
+= 60
 ```
 
-**Answer:** Yes
+✅ Answer: 60
 
 ---
 
-# Practice Questions
+### Question 3
 
-### Easy
+How many factors does 100 have?
 
-1. Is 432 divisible by 4?
-2. Find HCF of 20 and 30.
-3. Find LCM of 6 and 8.
-4. Is 245 divisible by 5?
-5. Is 729 divisible by 9?
+```text
+100 = 2² × 5²
+```
 
----
+Formula:
 
-### Medium
+```text
+(2+1)(2+1)
 
-1. Find HCF of 48 and 72.
-2. Find LCM of 15 and 20.
-3. Find remainder when 95 is divided by 7.
-4. List all factors of 36.
-5. Find the smallest prime number greater than 20.
+= 3 × 3
 
----
+= 9
+```
 
-# Quick Tips
-
-✅ 2 is the only even prime number.
-
-✅ Every prime number has exactly two factors.
-
-✅ HCF is always less than or equal to the smallest number.
-
-✅ LCM is always greater than or equal to the largest number.
-
-✅ Divisibility rules save time in aptitude exams.
+✅ Answer: 9
 
 ---
 
-# Key Takeaways
+# 🚀 Shortcuts for Exams
 
-- Numbers are classified into natural, whole, integers, rational, irrational,
-  and real numbers.
-- Prime numbers have exactly two factors.
-- Composite numbers have more than two factors.
-- Divisibility rules help solve questions quickly.
-- HCF finds the greatest common divisor.
-- LCM finds the smallest common multiple.
-- Number System forms the base for most aptitude topics.
+### Memorize Squares
+
+```text
+11² = 121
+12² = 144
+13² = 169
+...
+30² = 900
+```
+
+### Memorize Cubes
+
+```text
+1³ = 1
+2³ = 8
+3³ = 27
+...
+20³ = 8000
+```
+
+### Learn Prime Numbers Up To 100
+
+```text
+2,3,5,7,11,13,17,19,23,29,
+31,37,41,43,47,53,59,61,
+67,71,73,79,83,89,97
+```
+
+---
+
+# ✅ Summary
+
+The Number System topic covers:
+
+* Natural, Whole, Integers
+* Rational & Irrational Numbers
+* Prime & Composite Numbers
+* Factors & Multiples
+* Divisibility Rules
+* HCF & LCM
+* Remainders
+* Unit Digit & Cyclicity
+* Number of Factors
+
+These concepts form the foundation for most aptitude questions and frequently appear in placement exams.
