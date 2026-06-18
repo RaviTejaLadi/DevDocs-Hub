@@ -130,14 +130,6 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                     {emoji}
                   </span>
                   <span className="font-medium">{stream.title}</span>
-                  <span
-                    className={cn(
-                      'ml-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums',
-                      isActive ? 'bg-primary/15 text-primary' : 'bg-muted/80 text-muted-foreground'
-                    )}
-                  >
-                    {stream.topics.length}
-                  </span>
                 </button>
               );
             })}
