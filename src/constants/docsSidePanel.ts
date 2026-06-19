@@ -75,22 +75,28 @@ export const docsTopicBrowserSheetContentClass = cn(
   '!w-96 !max-w-[min(92vw,24rem)]'
 );
 
-/** Shared chrome for fixed circular docs controls. */
+/** Fixed bottom-right anchor for docs FABs; scroll-to-top is absolutely stacked above the topic browser. */
+export const docsFloatingActionStackClass = cn(
+  'fixed z-40',
+  'right-[max(1rem,env(safe-area-inset-right))] sm:right-6 md:right-8',
+  'bottom-[max(1.25rem,env(safe-area-inset-bottom))]'
+);
+
+/** Scroll-to-top overlays above the topic browser without shifting its anchor. */
+export const docsScrollToTopButtonClass = cn(
+  'absolute bottom-full left-1/2 mb-3 size-11 -translate-x-1/2',
+  'transition-[opacity,transform] duration-200 ease-out'
+);
+
+/** Shared chrome for circular docs floating controls (position via docsFloatingActionStackClass). */
 export const docsFloatingActionButtonClass = cn(
-  'fixed z-40 inline-flex size-10 shrink-0 items-center justify-center rounded-full',
+  'inline-flex size-10 shrink-0 items-center justify-center rounded-full',
   'border border-border/50 bg-card/85 text-muted-foreground backdrop-blur-md dark:bg-card/90 dark:backdrop-blur-sm',
   docsFabShadowClass,
   'transition-[transform,box-shadow,background-color] duration-200',
   'hover:bg-card hover:text-foreground active:scale-[0.96]',
-  docsFabShadowHoverClass,
-  'right-[max(1rem,env(safe-area-inset-right))] sm:right-6'
+  docsFabShadowHoverClass
 );
-
-/** Bottom-right stack anchor (topic browser trigger). */
-export const docsFloatingActionButtonBottomClass = 'bottom-[max(1.25rem,env(safe-area-inset-bottom))] top-auto';
-
-/** Scroll-to-top sits above the topic browser FAB when both are visible. */
-export const docsScrollToTopButtonClass = 'bottom-[max(4.75rem,calc(env(safe-area-inset-bottom)+3.5rem))] top-auto';
 
 /** Prev/next lesson navigation cards. */
 export const docsPageNavLinkClass = cn(

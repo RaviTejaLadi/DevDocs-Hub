@@ -8,6 +8,7 @@ import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import {
   docsFloatingActionButtonClass,
+  docsFloatingActionStackClass,
   docsPageNavLinkClass,
   docsScrollToTopButtonClass,
 } from '@/constants/docsSidePanel';
@@ -119,40 +120,49 @@ const DocumentationPage = () => {
         </nav>
       )}
 
-      <DocsTopicBrowserSheet
-        open={topicBrowserOpen}
-        onOpenChange={onTopicBrowserOpenChange}
-        sections={docsTopicBrowserSections}
-        activeTopicId={categoryId}
-        activeStreamId={activeStreamId}
-        onActiveStreamChange={selectActiveStream}
-        openCategories={openCategories}
-        onToggleCategory={(key) =>
-          setOpenCategories((prev) => ({
-            ...prev,
-            [key]: !(prev[key] ?? false),
-          }))
-        }
-        onExpandAllCategories={(streamId) => setAllCategoriesInStream(streamId, true)}
-        onCollapseAllCategories={(streamId) => setAllCategoriesInStream(streamId, false)}
-        onSelectTopic={(item, topicId) => {
-          setTopicBrowserOpen(false);
-          navigate(`/docs/${topicId}/${item.id}`, { state: DOCS_NAV_RESET_SCROLL });
-        }}
-      />
-
-      {showScrollTop ? (
+      <div className={docsFloatingActionStackClass}>
         <Button
           type="button"
           variant="secondary"
           size="icon"
           onClick={scrollToTop}
-          className={cn(docsFloatingActionButtonClass, docsScrollToTopButtonClass, 'z-40 size-11 md:right-8')}
           aria-label={'Scroll to top'}
+          aria-hidden={!showScrollTop}
+          tabIndex={showScrollTop ? 0 : -1}
+          className={cn(
+            docsFloatingActionButtonClass,
+            docsScrollToTopButtonClass,
+            showScrollTop
+              ? 'pointer-events-auto scale-100 opacity-100'
+              : 'pointer-events-none scale-95 opacity-0'
+          )}
         >
           <ChevronUp className="size-5" />
         </Button>
-      ) : null}
+
+        <DocsTopicBrowserSheet
+          open={topicBrowserOpen}
+          onOpenChange={onTopicBrowserOpenChange}
+          sections={docsTopicBrowserSections}
+          activeTopicId={categoryId}
+          activeStreamId={activeStreamId}
+          onActiveStreamChange={selectActiveStream}
+          openCategories={openCategories}
+          onToggleCategory={(key) =>
+            setOpenCategories((prev) => ({
+              ...prev,
+              [key]: !(prev[key] ?? false),
+            }))
+          }
+          onExpandAllCategories={(streamId) => setAllCategoriesInStream(streamId, true)}
+          onCollapseAllCategories={(streamId) => setAllCategoriesInStream(streamId, false)}
+          onSelectTopic={(item, topicId) => {
+            setTopicBrowserOpen(false);
+            navigate(`/docs/${topicId}/${item.id}`, { state: DOCS_NAV_RESET_SCROLL });
+          }}
+        />
+
+      </div>
     </div>
   );
 };

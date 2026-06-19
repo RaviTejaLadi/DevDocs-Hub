@@ -9,7 +9,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { getCategoryVisual, getStreamEmoji } from '@/features/landing/constants';
 import {
   docsFloatingActionButtonClass,
-  docsFloatingActionButtonBottomClass,
   docsSidePanelScrollAreaClass,
   docsSidePanelScrollViewportClass,
   docsTopicBrowserSheetContentClass,
@@ -171,7 +170,7 @@ export function DocsTopicBrowserSheet({
               variant="secondary"
               size="icon"
               aria-label={'Open topic browser'}
-              className={cn(docsFloatingActionButtonClass, docsFloatingActionButtonBottomClass, open && 'hidden')}
+              className={cn(docsFloatingActionButtonClass, open && 'hidden')}
             >
               <Library className="size-4" />
             </Button>
