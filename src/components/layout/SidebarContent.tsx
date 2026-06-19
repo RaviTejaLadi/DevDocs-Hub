@@ -465,7 +465,7 @@ const SidebarContent = ({
         </div>
       </SidebarHeader>
 
-      <UiSidebarContent>
+      <UiSidebarContent className='px-3'>
         <div className={cn(docsSidePanelNavSurfaceClass, 'flex w-full min-w-0 flex-col gap-1')}>{displayContent}</div>
       </UiSidebarContent>
     </div>

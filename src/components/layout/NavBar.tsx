@@ -206,7 +206,7 @@ const NavBar = () => {
 
             <DialogContent
               showCloseButton={false}
-              className="p-0 gap-0 w-[min(96vw,72rem)] max-w-none bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
+              className="@container p-0 gap-0 w-[min(96vw,42rem)] sm:!max-w-none lg:w-[min(90vw,56rem)] xl:w-[min(85vw,64rem)] bg-background/98 border-border/50 overflow-hidden rounded-md shadow-2xl"
             >
               <DialogHeader className="px-3 sm:px-4 py-2.5 border-b border-border/40 bg-muted/20">
                 <DialogTitle className="sr-only">{'Search topics'}</DialogTitle>
@@ -229,7 +229,7 @@ const NavBar = () => {
                 </div>
               </DialogHeader>
 
-              <ScrollArea className="max-h-[min(70vh,32rem)] overflow-y-auto p-2 sm:p-3">
+              <ScrollArea className="min-h-[16rem] lg:min-h-[24rem] max-h-[min(70vh,32rem)] lg:max-h-[min(75vh,42rem)] xl:max-h-[min(80vh,48rem)] overflow-y-auto p-2 sm:p-3 lg:p-4">
                 {results.length === 0 && query && (
                   <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
                     <p className="text-foreground/90 font-medium">{'No matching topics found'}</p>
@@ -251,7 +251,7 @@ const NavBar = () => {
                     <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
                       {'Results'}
                     </p>
-                    <div className="motion-stagger grid grid-cols-1 min-[480px]:grid-cols-2 gap-2">
+                    <div className="motion-stagger grid grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4 gap-2 @lg:gap-3">
                       {results.map((res) => (
                         <button
                           type="button"
