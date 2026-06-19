@@ -429,7 +429,7 @@ const SidebarContent = ({
 
   const iconEl = topic.icon ?? <FileText className="size-5 text-primary" strokeWidth={1.75} aria-hidden />;
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden bg-sidebar text-sidebar-foreground">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden text-sidebar-foreground">
       <SidebarHeader className="border-b border-sidebar-border px-3 py-2.5">
         <div className="flex flex-col items-start gap-2">
           <div className="flex items-center ">
@@ -465,7 +465,7 @@ const SidebarContent = ({
         </div>
       </SidebarHeader>
 
-      <UiSidebarContent className="px-3 py-3">
+      <UiSidebarContent>
         <div className={cn(docsSidePanelNavSurfaceClass, 'flex w-full min-w-0 flex-col gap-1')}>{displayContent}</div>
       </UiSidebarContent>
     </div>

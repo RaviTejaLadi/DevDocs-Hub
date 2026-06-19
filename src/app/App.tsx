@@ -111,7 +111,7 @@ const App = () => {
 
   return (
     <ScrollViewportProvider value={contentViewportRef}>
-      <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-background max-w-[100vw]">
+      <div className="relative min-h-dvh h-dvh overflow-hidden overscroll-none bg-transparent dark:bg-background max-w-[100vw]">
         <NavBar />
 
         {showSidebar ? (

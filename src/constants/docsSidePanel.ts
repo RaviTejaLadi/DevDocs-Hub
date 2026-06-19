@@ -11,10 +11,10 @@ export const docsMainContentPaddingClass =
   'mx-auto w-full min-w-0 max-w-none pb-[max(1.5rem,env(safe-area-inset-bottom))]';
 
 /** Elevation: sidebar panel, hero strip, article cards. */
-export const docsPanelShadowClass = 'shadow-none';
+export const docsPanelShadowClass = 'shadow-[var(--panel-shadow)] dark:shadow-none';
 
 /** Elevation: topic browser sheet and other overlays. */
-export const docsRaisedShadowClass = 'shadow-none';
+export const docsRaisedShadowClass = 'shadow-[var(--panel-shadow-raised)] dark:shadow-none';
 
 /** Inset: nested nav wells inside the sidebar. */
 export const docsInsetShadowClass = '';
@@ -29,11 +29,14 @@ export const docsControlShadowClass = 'shadow-none';
 
 /** Article + on-this-page TOC shared card surface. */
 export const docsArticleSurfaceClass = cn(
-  'overflow-hidden rounded-2xl border border-border/35 bg-card/55 backdrop-blur-sm',
+  'overflow-hidden rounded-2xl border border-border/35 bg-card/72 backdrop-blur-md dark:bg-card/55 dark:backdrop-blur-sm',
   docsPanelShadowClass
 );
 
-export const docsSidePanelAsideClass = cn('rounded-xl border border-border/40 bg-background', docsPanelShadowClass);
+export const docsSidePanelAsideClass = cn(
+  'rounded-xl border border-border/40 bg-card/72 backdrop-blur-md dark:bg-background',
+  docsPanelShadowClass
+);
 
 export const docsSidePanelHeaderSurfaceClass =
   'relative shrink-0 overflow-hidden border-b border-border/25 bg-background';
@@ -44,10 +47,13 @@ export const docsSidebarTreeBranchClass = 'ml-2 border-l-2 border-sidebar-border
 /** Nested sub-menu — indent only, shares the branch line. */
 export const docsSidebarTreeSubMenuClass = 'mx-0 w-full min-w-0 translate-x-0 gap-0.5 border-l-0 py-0.5 pl-3';
 
-export const docsSidePanelNavSurfaceClass = cn('rounded-xl bg-muted/20 dark:bg-muted/10', docsInsetShadowClass);
+export const docsSidePanelNavSurfaceClass = cn(
+  'rounded-xl bg-muted/35 dark:bg-muted/10',
+  docsInsetShadowClass
+);
 
 export const docsHeroSurfaceClass = cn(
-  'rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm',
+  'rounded-xl border border-border/40 bg-card/72 backdrop-blur-md dark:bg-card/50 dark:backdrop-blur-sm',
   docsPanelShadowClass
 );
 
@@ -62,7 +68,7 @@ export const docsSidePanelScrollViewportClass = 'docs-sidebar-scroll';
 /** Right topic-browser sheet — wider than the docs sidebar for stream/category browsing. */
 export const docsTopicBrowserSheetContentClass = cn(
   'flex min-h-0 flex-col gap-0 overflow-hidden border border-border/40 p-0',
-  'shrink-0 bg-background supports-backdrop-filter:bg-background/95',
+  'shrink-0 bg-card/72 backdrop-blur-md supports-backdrop-filter:bg-card/62 dark:bg-background dark:supports-backdrop-filter:bg-background/95',
   docsRaisedShadowClass,
   '!top-2 !right-2 !bottom-2 !left-auto !h-auto',
   'max-h-[calc(100dvh-1.5rem-env(safe-area-inset-top)-0.5rem)] md:rounded-xl',
@@ -72,7 +78,7 @@ export const docsTopicBrowserSheetContentClass = cn(
 /** Shared chrome for fixed circular docs controls. */
 export const docsFloatingActionButtonClass = cn(
   'fixed z-40 inline-flex size-10 shrink-0 items-center justify-center rounded-full',
-  'border border-border/50 bg-card/90 text-muted-foreground backdrop-blur-sm',
+  'border border-border/50 bg-card/85 text-muted-foreground backdrop-blur-md dark:bg-card/90 dark:backdrop-blur-sm',
   docsFabShadowClass,
   'transition-[transform,box-shadow,background-color] duration-200',
   'hover:bg-card hover:text-foreground active:scale-[0.96]',

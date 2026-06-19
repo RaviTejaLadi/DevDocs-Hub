@@ -23,7 +23,7 @@ export function LandingHero({
 LandingHeroProps) {
   return (
     <header className="min-w-0 space-y-3 pt-2 sm:pt-3 pb-4 sm:pb-5">
-      <section className="rounded-xl border border-border/45 bg-card/45 text-center shadow-none">
+      <section className="rounded-xl border border-border/45 bg-card/72 backdrop-blur-md text-center shadow-[var(--panel-shadow)] dark:bg-card/45 dark:shadow-none">
         <div className="px-4 py-4 sm:px-5 sm:py-5 space-y-3">
           <h1 className="flex flex-col items-center justify-center min-w-0">
             <Logo

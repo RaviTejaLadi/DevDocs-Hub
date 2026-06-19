@@ -423,7 +423,7 @@
   border: 1px solid var(--md-box-border);
   border-radius: var(--md-box-radius);
   overflow: hidden;
-  background: #f4f7fb;
+  background: #faf6ef;
 }
 
 .dark .md-render .md-code-card {

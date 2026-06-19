@@ -186,8 +186,8 @@ export function TopicListPage() {
             <section
               key={category}
               className={cn(
-                'relative overflow-hidden rounded-2xl border bg-card/55 backdrop-blur-sm p-5 sm:p-6',
-                'shadow-none',
+                'relative overflow-hidden rounded-2xl border bg-card/72 backdrop-blur-md p-5 sm:p-6',
+                'shadow-[var(--panel-shadow)] dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none',
                 catVisual.ring
               )}
             >
