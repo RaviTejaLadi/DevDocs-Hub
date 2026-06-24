@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SidebarContent, SidebarInput, SidebarMenu, SidebarMenuItem } from '@/components/ui/sidebar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { PageSEO } from '@/components/seo';
 import { docsSidePanelNavSurfaceClass, docsSidebarTreeBranchClass } from '@/constants/docsSidePanel';
 import { cn } from '@/lib/utils';
 import { visualizationPath } from '@/app/routes/paths';
@@ -62,6 +63,12 @@ export function VisualizationPageShell({ title, description, children }: Visuali
 
   return (
     <div className="mx-auto max-w-7xl space-y-3 pb-8">
+      <PageSEO
+        title={title}
+        description={description}
+        path={visualizationPath(visualizationId)}
+        keywords={['programming visualization', title]}
+      />
       {isSidebarCollapsed && (
         <div className="flex justify-end">
           <Tooltip>

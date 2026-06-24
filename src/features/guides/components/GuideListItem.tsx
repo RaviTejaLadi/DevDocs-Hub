@@ -44,7 +44,10 @@ export function GuideListItem({ guide, className }: GuideListItemProps) {
           </span>
         )}
 
-        <Badge variant="outline" className={cn('h-5 gap-1 px-2 text-[10px] font-semibold uppercase', TYPE_STYLES[guide.type])}>
+        <Badge
+          variant="outline"
+          className={cn('h-5 gap-1 px-2 text-[10px] font-semibold uppercase', TYPE_STYLES[guide.type])}
+        >
           {GUIDE_TYPE_LABELS[guide.type]}
           <ArrowRight className="h-3 w-3 opacity-70 transition-transform group-hover:translate-x-0.5" aria-hidden />
         </Badge>

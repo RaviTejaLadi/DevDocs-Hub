@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { PageSEO } from '@/components/seo';
 import { cn } from '@/lib/utils';
 import { playgroundPath } from '@/app/routes/paths';
 import { usePlaygroundListFilter } from '../hooks';
@@ -22,6 +23,12 @@ export function PlaygroundListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
+      <PageSEO
+        title="Playgrounds"
+        description="Interactive JavaScript playgrounds for arrays, strings, objects, and collections — explore methods with live examples."
+        path={playgroundPath()}
+        keywords={['javascript playground', 'array methods', 'interactive coding']}
+      />
       <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-violet-500/10 p-6 sm:p-8 shadow-none">
         <div className="pointer-events-none absolute -left-16 -bottom-16 h-52 w-52 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="flex flex-wrap items-start justify-between gap-4">

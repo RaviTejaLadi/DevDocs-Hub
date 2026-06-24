@@ -3,6 +3,8 @@ import { ChevronLeft, Search, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { PageSEO } from '@/components/seo';
+import { guidesPath } from '@/app/routes/paths';
 import { GUIDE_TYPE_OPTIONS } from '@/data/guides';
 import { cn } from '@/lib/utils';
 import { useGuidesFilter } from '../hooks/useGuidesFilter';
@@ -22,6 +24,12 @@ export default function GuidesPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
+      <PageSEO
+        title="Guides"
+        description="In-depth study guides for interview prep, roadmaps, and focused revision — DSA, system design, and more."
+        path={guidesPath()}
+        keywords={['study guides', 'interview prep', 'roadmaps']}
+      />
       <section
         className={cn(
           'group relative isolate overflow-hidden rounded-2xl border border-border/45',

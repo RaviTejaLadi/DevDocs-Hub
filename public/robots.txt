@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://revise-stack.vercel.app/sitemap.xml

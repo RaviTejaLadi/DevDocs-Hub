@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { PageSEO } from '@/components/seo';
 import { cn } from '@/lib/utils';
 import { visualizationPath } from '@/app/routes/paths';
 import { useVisualizationListFilter } from '../hooks';
@@ -85,6 +86,12 @@ export function VisualizationListPage() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 pb-4">
+      <PageSEO
+        title="Visualizations"
+        description="Step-through visualizations for loops, data structures, and JavaScript concepts — learn programming ideas frame by frame."
+        path={visualizationPath()}
+        keywords={['programming visualizations', 'algorithm visualization', 'learn loops']}
+      />
       <section className="relative overflow-hidden rounded-2xl border border-border/40 bg-linear-to-br from-card via-card to-emerald-500/10 p-6 shadow-none sm:p-8">
         <div className="pointer-events-none absolute -right-16 -bottom-16 h-52 w-52 rounded-full bg-emerald-500/10 blur-3xl" />
         <div className="flex flex-wrap items-start justify-between gap-4">

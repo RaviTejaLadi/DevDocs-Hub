@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { PageSEO } from '@/components/seo';
+import { interviewQuestionsPath } from '@/app/routes/paths';
 import { Icons } from '@/assets/Icons';
 import { ColoredIcon } from '@/components/icons/ColoredIcon';
 import { cn } from '@/lib/utils';
@@ -66,6 +68,12 @@ export function TopicListPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-4">
+      <PageSEO
+        title="Interview Questions"
+        description="Curated coding and theory interview questions across web, backend, cloud, mobile, DSA, and system design — filter by topic and experience level."
+        path={interviewQuestionsPath()}
+        keywords={['interview questions', 'coding interview', 'technical interview', 'FAANG prep']}
+      />
       <section
         className={cn(
           'group relative isolate overflow-hidden rounded-2xl border border-border/45',

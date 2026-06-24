@@ -2,7 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import GuidesSection from '@/components/landing/GuidesSection';
+import { PageSEO } from '@/components/seo';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
+import { SITE_DESCRIPTION } from '@/lib/seo/config';
+import { websiteJsonLd } from '@/lib/seo/jsonLd';
 import { useLandingStreams, useLandingTopics } from '../hooks';
 import { LandingHero } from './LandingHero';
 import { LandingTopicsPanel } from './LandingTopicsPanel';
@@ -33,6 +36,7 @@ const LandingPage = () => {
 
   return (
     <div className="pb-16 sm:pb-20 max-w-6xl mx-auto w-full min-w-0 px-0 sm:px-0">
+      <PageSEO title="Home" description={SITE_DESCRIPTION} path="/" jsonLd={websiteJsonLd()} />
       <LandingHero
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}

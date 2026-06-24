@@ -5,8 +5,11 @@ import MarkdownRender from '@/components/markdown';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { PageSEO } from '@/components/seo';
 import { getGuideBySlug, GUIDE_TYPE_LABELS } from '@/data/guides';
-import { guidesPath } from '@/app/routes/paths';
+import { guidesPath, guidePath } from '@/app/routes/paths';
+import { articleJsonLd } from '@/lib/seo/jsonLd';
+import { absoluteUrl } from '@/lib/seo/urls';
 import { cn } from '@/lib/utils';
 
 type GuideDetailPageProps = {
@@ -36,6 +39,7 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
   if (!guide) {
     return (
       <div className="mx-auto max-w-4xl">
+        <PageSEO title="Guide Not Found" description="This guide could not be found." noindex />
         <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to={guidesPath()} className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
@@ -59,8 +63,22 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
     );
   }
 
+  const guideUrl = guidePath(guide.slug);
+
   return (
     <article className="mx-auto w-full min-w-0 max-w-4xl space-y-6 pb-10">
+      <PageSEO
+        title={guide.title}
+        description={guide.description}
+        path={guideUrl}
+        type="article"
+        keywords={[GUIDE_TYPE_LABELS[guide.type], 'interview guide', 'study guide']}
+        jsonLd={articleJsonLd({
+          title: guide.title,
+          description: guide.description,
+          url: absoluteUrl(guideUrl),
+        })}
+      />
       <div className="space-y-4 border-b border-border/40 pb-6">
         <Link
           to={guidesPath()}
@@ -80,12 +98,13 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
                 {'New'}
               </Badge>
             )}
-            <Badge variant="outline" className="h-5 border-border/45 bg-muted/30 px-2 text-[10px] font-semibold uppercase">
+            <Badge
+              variant="outline"
+              className="h-5 border-border/45 bg-muted/30 px-2 text-[10px] font-semibold uppercase"
+            >
               {GUIDE_TYPE_LABELS[guide.type]}
             </Badge>
-            {guide.publishedMonth && (
-              <span className="text-xs text-muted-foreground">{guide.publishedMonth}</span>
-            )}
+            {guide.publishedMonth && <span className="text-xs text-muted-foreground">{guide.publishedMonth}</span>}
           </div>
 
           <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl lg:text-4xl">
@@ -93,9 +112,7 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
           </h1>
 
           {guide.description && (
-            <p className="max-w-2xl text-sm text-muted-foreground leading-relaxed sm:text-base">
-              {guide.description}
-            </p>
+            <p className="max-w-2xl text-sm text-muted-foreground leading-relaxed sm:text-base">{guide.description}</p>
           )}
         </div>
       </div>

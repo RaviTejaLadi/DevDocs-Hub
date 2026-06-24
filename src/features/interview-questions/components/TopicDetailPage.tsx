@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
+import { PageSEO } from '@/components/seo';
+import { interviewQuestionsPath } from '@/app/routes/paths';
 import { cn } from '@/lib/utils';
 import { LEVEL_EMOJI, TOPIC_VISUALS, levelPillClass } from '../constants';
 import { QuestionBlock } from './QuestionBlock';
@@ -34,6 +36,7 @@ export function TopicDetailPage() {
   if (!topic) {
     return (
       <div className="max-w-4xl mx-auto">
+        <PageSEO title="Interview Topic Not Found" description="This interview topic could not be found." noindex />
         <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to="/interview-questions" className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
@@ -57,6 +60,12 @@ export function TopicDetailPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6 pb-10 sm:pb-12">
+      <PageSEO
+        title={`${topic.label} Interview Questions`}
+        description={`Practice ${topic.label} interview questions — coding challenges and theory Q&A filtered by experience level.`}
+        path={interviewQuestionsPath(topic.id)}
+        keywords={[topic.label, 'interview questions', topic.category]}
+      />
       <Button
         variant="outline"
         size="sm"

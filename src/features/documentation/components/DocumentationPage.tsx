@@ -3,9 +3,13 @@ import { ChevronLeft, ChevronRight, ChevronUp, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import MarkdownRender from '@/components/markdown';
+import { PageSEO } from '@/components/seo';
 import { DocsTopicBrowserSheet } from './DocsTopicBrowserSheet';
 import { DocumentationTopicHero } from './DocumentationTopicHero';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
+import { articleJsonLd } from '@/lib/seo/jsonLd';
+import { absoluteUrl } from '@/lib/seo/urls';
+import { docsPath } from '@/app/routes/paths';
 import {
   docsFloatingActionButtonClass,
   docsFloatingActionStackClass,
@@ -43,6 +47,7 @@ const DocumentationPage = () => {
   if (!topic || !content) {
     return (
       <div className="mx-auto max-w-4xl">
+        <PageSEO title="Page Not Found" description="This documentation page could not be found." noindex />
         <Button variant="ghost" size="sm" asChild className="mb-5 rounded-xl">
           <Link to="/" className="inline-flex items-center gap-2">
             <ChevronLeft className="h-4 w-4" />
@@ -69,6 +74,12 @@ const DocumentationPage = () => {
   if (!content.content) {
     return (
       <div className="mx-auto max-w-6xl space-y-6">
+        <PageSEO
+          title={content.title}
+          description={content.excerpt ?? topic.description}
+          path={docsPath(categoryId!, content.id)}
+          keywords={content.keywords}
+        />
         <DocumentationTopicHero topic={topic} />
         <div className="space-y-3" aria-busy="true">
           <div className="h-8 w-2/3 max-w-md animate-pulse rounded-lg bg-muted/35" />
@@ -78,8 +89,23 @@ const DocumentationPage = () => {
     );
   }
 
+  const docPath = docsPath(categoryId!, content.id);
+  const docDescription = content.excerpt ?? `${content.title} — ${topic.description}`;
+
   return (
     <div className="mx-auto w-full min-w-0 max-w-6xl space-y-6 pb-8 sm:space-y-8 sm:pb-10">
+      <PageSEO
+        title={`${content.title} — ${topic.title}`}
+        description={docDescription}
+        path={docPath}
+        type="article"
+        keywords={content.keywords}
+        jsonLd={articleJsonLd({
+          title: content.title,
+          description: docDescription,
+          url: absoluteUrl(docPath),
+        })}
+      />
       {/* <DocumentationTopicHero topic={topic} /> */}
 
       <MarkdownRender content={content.content} headingIdScope={categoryId} />
@@ -132,9 +158,7 @@ const DocumentationPage = () => {
           className={cn(
             docsFloatingActionButtonClass,
             docsScrollToTopButtonClass,
-            showScrollTop
-              ? 'pointer-events-auto scale-100 opacity-100'
-              : 'pointer-events-none scale-95 opacity-0'
+            showScrollTop ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
           )}
         >
           <ChevronUp className="size-5" />
@@ -161,7 +185,6 @@ const DocumentationPage = () => {
             navigate(`/docs/${topicId}/${item.id}`, { state: DOCS_NAV_RESET_SCROLL });
           }}
         />
-
       </div>
     </div>
   );

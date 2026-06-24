@@ -1,9 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { PageSEO } from '@/components/seo';
+import { ROUTE_PATHS } from '@/app/routes/paths';
 import { termsSections } from '../constants/termsSections';
 
 const TermsOfServicePage = () => {
   return (
     <div className="container mx-auto p-3 sm:p-4 md:p-8 bg-inherit min-h-screen">
+      <PageSEO
+        title="Terms of Service"
+        description="Terms of Service for ReviseStack — usage guidelines and legal information."
+        path={ROUTE_PATHS.terms}
+        noindex
+      />
       <Card className="max-w-4xl mx-auto bg-inherit border-none shadow-none">
         <CardHeader>
           <CardTitle className="text-2xl sm:text-3xl font-bold text-gradient-sheen">{'Terms of Service'}</CardTitle>

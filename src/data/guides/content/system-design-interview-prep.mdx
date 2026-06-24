@@ -1,10 +1,13 @@
 # System Design Interview Guide
 
-A structured approach to system design interviews — from clarifying requirements to discussing trade-offs with confidence.
+A structured approach to system design interviews — from clarifying requirements
+to discussing trade-offs with confidence.
 
 ## What interviewers are looking for
 
-System design interviews test how you think about **scalable, reliable systems**, not whether you've memorized every architecture diagram. Interviewers want to see:
+System design interviews test how you think about **scalable, reliable
+systems**, not whether you've memorized every architecture diagram. Interviewers
+want to see:
 
 - Clear requirement gathering
 - Logical high-level design before diving into details
@@ -19,7 +22,8 @@ Ask about:
 
 - **Functional** — What does the system do? Who are the users?
 - **Scale** — Daily active users, read/write ratio, data volume
-- **Constraints** — Latency targets, availability requirements, geographic distribution
+- **Constraints** — Latency targets, availability requirements, geographic
+  distribution
 
 Write down assumptions if the interviewer doesn't specify numbers.
 
@@ -56,13 +60,13 @@ Proactively mention:
 
 ## Must-know building blocks
 
-| Component | Purpose |
-|-----------|---------|
-| Load balancer | Distribute traffic across servers |
-| CDN | Serve static content closer to users |
-| Cache (Redis) | Reduce database load, improve latency |
-| Message queue | Decouple services, handle async work |
-| Database replicas | Scale reads, improve availability |
+| Component         | Purpose                               |
+| ----------------- | ------------------------------------- |
+| Load balancer     | Distribute traffic across servers     |
+| CDN               | Serve static content closer to users  |
+| Cache (Redis)     | Reduce database load, improve latency |
+| Message queue     | Decouple services, handle async work  |
+| Database replicas | Scale reads, improve availability     |
 
 ## Classic problems to practice
 
@@ -90,4 +94,5 @@ Daily requests / 86,400 ≈ average QPS
 Peak QPS ≈ 2–3× average QPS
 ```
 
-Revise these formulas before your interview so estimation feels natural, not forced.
+Revise these formulas before your interview so estimation feels natural, not
+forced.
