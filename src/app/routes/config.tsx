@@ -15,6 +15,8 @@ export type MainRouteDefinition = {
 /** Main content area — lazy pages with a catch-all 404. */
 export const mainRoutes: readonly MainRouteDefinition[] = [
   { id: 'home', path: ROUTE_PATHS.home, Component: Pages.LandingPage },
+  { id: 'guides', path: ROUTE_PATHS.guides, Component: Pages.GuidesPage },
+  { id: 'guide', path: ROUTE_PATHS.guide, Component: Pages.GuideDetailPage },
   { id: 'docs', path: ROUTE_PATHS.docs, Component: Pages.DocumentationPage },
   { id: 'terms', path: ROUTE_PATHS.terms, Component: Pages.TermsOfServicePage },
   { id: 'interview-questions', path: ROUTE_PATHS.interviewQuestions, Component: Pages.InterviewQuestionsPage },

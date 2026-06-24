@@ -1,0 +1,93 @@
+# System Design Interview Guide
+
+A structured approach to system design interviews — from clarifying requirements to discussing trade-offs with confidence.
+
+## What interviewers are looking for
+
+System design interviews test how you think about **scalable, reliable systems**, not whether you've memorized every architecture diagram. Interviewers want to see:
+
+- Clear requirement gathering
+- Logical high-level design before diving into details
+- Awareness of trade-offs (consistency vs. availability, latency vs. cost)
+- Ability to scale components when prompted
+
+## The 45-minute framework
+
+### 1. Clarify requirements (5–7 min)
+
+Ask about:
+
+- **Functional** — What does the system do? Who are the users?
+- **Scale** — Daily active users, read/write ratio, data volume
+- **Constraints** — Latency targets, availability requirements, geographic distribution
+
+Write down assumptions if the interviewer doesn't specify numbers.
+
+### 2. High-level design (10–12 min)
+
+Draw the main components:
+
+- Clients (web, mobile)
+- Load balancer
+- Application servers
+- Databases (primary + replicas)
+- Caching layer
+- Message queue (if async processing is needed)
+- Object storage (if handling files/media)
+
+Walk through a typical user request end-to-end.
+
+### 3. Deep dive (15–20 min)
+
+The interviewer will steer you toward 1–2 areas. Common deep dives:
+
+- **Database schema** — Key tables, indexes, sharding strategy
+- **Caching** — What to cache, eviction policy, cache invalidation
+- **API design** — REST endpoints, idempotency, rate limiting
+- **Scaling** — Horizontal scaling, database partitioning, CDN usage
+
+### 4. Trade-offs & bottlenecks (5–8 min)
+
+Proactively mention:
+
+- Single points of failure and how to mitigate them
+- CAP theorem implications for your design
+- Monitoring, logging, and alerting
+
+## Must-know building blocks
+
+| Component | Purpose |
+|-----------|---------|
+| Load balancer | Distribute traffic across servers |
+| CDN | Serve static content closer to users |
+| Cache (Redis) | Reduce database load, improve latency |
+| Message queue | Decouple services, handle async work |
+| Database replicas | Scale reads, improve availability |
+
+## Classic problems to practice
+
+- URL shortener
+- News feed / timeline
+- Chat messaging system
+- Rate limiter
+- Video streaming platform
+- E-commerce checkout
+
+For each, practice the full framework — don't just memorize diagrams.
+
+## Tips for success
+
+- **Think aloud** — Silence makes interviewers nervous
+- **Start simple** — Monolith first, then discuss when to split
+- **Use back-of-envelope math** — QPS, storage estimates show rigor
+- **Ask for feedback** — "Should I go deeper on the database or the API layer?"
+
+## Quick reference: capacity estimation
+
+```
+Daily active users (DAU) × actions per user per day = daily requests
+Daily requests / 86,400 ≈ average QPS
+Peak QPS ≈ 2–3× average QPS
+```
+
+Revise these formulas before your interview so estimation feels natural, not forced.

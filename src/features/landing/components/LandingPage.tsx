@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
+import GuidesSection from '@/components/landing/GuidesSection';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useLandingStreams, useLandingTopics } from '../hooks';
 import { LandingHero } from './LandingHero';
@@ -61,6 +62,7 @@ const LandingPage = () => {
       )}
 
       <FeaturesSection />
+      <GuidesSection />
       <Footer />
     </div>
   );
