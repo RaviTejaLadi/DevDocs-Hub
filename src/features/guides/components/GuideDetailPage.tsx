@@ -66,7 +66,7 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
   const guideUrl = guidePath(guide.slug);
 
   return (
-    <article className="mx-auto w-full min-w-0 max-w-4xl space-y-6 pb-10">
+    <article className="mx-auto w-full min-w-0 max-w-5xl space-y-6 pb-10">
       <PageSEO
         title={guide.title}
         description={guide.description}

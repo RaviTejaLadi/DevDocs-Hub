@@ -48,7 +48,7 @@ export default function FeaturesSection() {
   } as const;
 
   return (
-    <section className="mt-20 pt-16 border-t border-border/40">
+    <section className="mt-10">
       <div className="text-center mb-8 space-y-2">
         <span className="text-2xl" aria-hidden>
           ✨

@@ -65,8 +65,8 @@ const LandingPage = () => {
         />
       )}
 
-      <FeaturesSection />
       <GuidesSection />
+      <FeaturesSection />
       <Footer />
     </div>
   );

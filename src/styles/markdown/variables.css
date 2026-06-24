@@ -7,12 +7,12 @@
   --md-purple-soft:  rgba(125, 60, 255, 0.06);
   --md-purple-tint:  rgba(125, 60, 255, 0.1);
   --md-purple-line:  rgba(125, 60, 255, 0.22);
-  --md-sky:          #3a72c8;
-  --md-sky-deep:     #155dd4;
-  --md-sky-soft:     rgba(58, 114, 200, 0.1);
-  --md-sky-line:     rgba(58, 114, 200, 0.28);
+  --md-sky:          #0ea5e9;
+  --md-sky-deep:     #0284c7;
+  --md-sky-soft:     rgba(14, 165, 233, 0.1);
+  --md-sky-line:     rgba(14, 165, 233, 0.28);
   --md-red:          #c80e13;
-  --md-sky-top:      rgba(188, 220, 244, 0.55);
+  --md-sky-top:      rgba(186, 230, 253, 0.55);
 
   /* 4px grid spacing */
   --md-gap-1: 0.5rem;   /*  8px */
