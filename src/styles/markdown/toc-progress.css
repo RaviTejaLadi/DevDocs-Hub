@@ -27,10 +27,11 @@
 
 .md-toc-item.active {
   padding-left: 1.35rem;
-  border-color: color-mix(in oklab, var(--md-purple-line) 60%, transparent);
+  /* border-color: color-mix(in oklab, var(--md-purple-line) 60%, transparent); */
   background: color-mix(in oklab, var(--md-purple-tint) 55%, var(--card));
   color: var(--foreground);
   font-weight: 600;
+  text-decoration: underline;
 }
 
 .md-toc-item.active::before {
