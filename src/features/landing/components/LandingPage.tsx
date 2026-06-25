@@ -10,6 +10,8 @@ import { useLandingStreams, useLandingTopics } from '../hooks';
 import { LandingHero } from './LandingHero';
 import { LandingTopicsPanel } from './LandingTopicsPanel';
 import { LandingTopicsSkeleton } from './LandingTopicsSkeleton';
+// import { StandaloneFlowDemo } from '@/features/StandaloneFlowRender';
+// import frontendRoadmap from './js.json';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const LandingPage = () => {
   const handleTopicSelect = (topicId: string, itemId: string) => {
     navigate(`/docs/${topicId}/${itemId}`, { state: DOCS_NAV_RESET_SCROLL });
   };
-
+  // const { nodes, edges } = frontendRoadmap;
   return (
     <div className="pb-16 sm:pb-20 max-w-6xl mx-auto w-full min-w-0 px-0 sm:px-0">
       <PageSEO title="Home" description={SITE_DESCRIPTION} path="/" jsonLd={websiteJsonLd()} />
@@ -45,7 +47,7 @@ const LandingPage = () => {
         onInterviewClick={() => navigate('/interview-questions')}
         onVisualizationClick={() => navigate('/visualizations')}
       />
-
+      {/* <StandaloneFlowDemo nodes={nodes} edges={edges} roadmapId="frontend" /> */}
       {streams === null ? (
         <LandingTopicsSkeleton />
       ) : (
