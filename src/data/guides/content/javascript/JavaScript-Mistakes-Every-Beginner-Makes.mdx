@@ -1,0 +1,170 @@
+
+## 1. **Confusing `==` with `===`**
+```javascript
+// ❌ Type coercion leads to bugs
+if (0 == false) // true (unexpected)
+if ('' == false) // true (unexpected)
+
+// ✅ Always use strict equality
+if (0 === false) // false (correct)
+if ('' === false) // false (correct)
+
+// ✅ Exception: checking for null OR undefined
+if (value == null) // Equivalent to: value === null || value === undefined
+```
+
+## 2. **Mutating Arrays/Objects Directly**
+```javascript
+const state = { users: ['John'] };
+
+// ❌ Mutation - breaks React/Redux
+state.users.push('Jane');
+
+// ✅ Create new array
+const newState = {
+  ...state,
+  users: [...state.users, 'Jane']
+};
+```
+
+## 3. **Forgetting `await` in Async Functions**
+```javascript
+// ❌ Returns a Promise, not the data
+const data = fetch('/api');  // data is a Promise
+
+// ✅ Actually wait for the response
+const response = await fetch('/api');
+const data = await response.json();
+```
+
+## 4. **Creating Memory Leaks with Event Listeners**
+```javascript
+useEffect(() => {
+  const handler = () => console.log('clicked');
+  window.addEventListener('click', handler);
+  
+  // ❌ Forgot cleanup - listener persists!
+}, []);
+
+// ✅ Always clean up
+useEffect(() => {
+  window.addEventListener('click', handler);
+  return () => window.removeEventListener('click', handler);
+}, []);
+```
+
+## 5. **Blocking the Event Loop with Sync Operations**
+```javascript
+// ❌ Blocks everything for 2 seconds
+function processLargeData(data) {
+  for (let i = 0; i < 1000000000; i++) {
+    // heavy sync loop
+  }
+}
+
+// ✅ Use async, Web Workers, or chunk the work
+async function processLargeData(data) {
+  for (let i = 0; i < data.length; i += 1000) {
+    await processChunk(data.slice(i, i + 1000));
+    // Yield to event loop every chunk
+  }
+}
+```
+
+## 6. **Overusing `any` in TypeScript (or Not Using Types at All)**
+```javascript
+// ❌ Typescript's any defeats the purpose
+function process(data: any) {
+  return data.name; // Could crash at runtime
+}
+
+// ✅ Use proper types
+interface User {
+  name: string;
+  age: number;
+}
+function process(data: User) {
+  return data.name; // Type-safe!
+}
+```
+
+## 7. **Misunderstanding `this` in Callbacks**
+```javascript
+class User {
+  name = 'John';
+  
+  // ❌ `this` is undefined when called as callback
+  printName() {
+    console.log(this.name);
+  }
+}
+
+const user = new User();
+setTimeout(user.printName, 1000); // ❌ Error: this is undefined
+
+// ✅ Bind or use arrow function
+setTimeout(() => user.printName(), 1000);
+// OR
+printName = () => console.log(this.name);
+```
+
+## 8. **Using `var` in Loops**
+```javascript
+// ❌ All callbacks log 3 (same variable)
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// logs: 3, 3, 3
+
+// ✅ `let` creates block scope
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// logs: 0, 1, 2
+```
+
+## 9. **Ignoring Error Handling in Promises**
+```javascript
+// ❌ Unhandled rejections crash in Node, silent fails in browser
+fetch('/api').then(response => response.json());
+
+// ✅ Always catch
+fetch('/api')
+  .then(response => response.json())
+  .catch(error => {
+    console.error('API failed:', error);
+    // Handle gracefully
+  });
+
+// ✅ Or use try/catch with async/await
+try {
+  const response = await fetch('/api');
+  const data = await response.json();
+} catch (error) {
+  console.error('API failed:', error);
+}
+```
+
+## 10. **Nested Callbacks (Callback Hell)**
+```javascript
+// ❌ The pyramid of doom
+getUser(id, (user) => {
+  getPosts(user.id, (posts) => {
+    getComments(posts[0].id, (comments) => {
+      console.log(comments);
+    });
+  });
+});
+
+// ✅ Chain Promises
+getUser(id)
+  .then(user => getPosts(user.id))
+  .then(posts => getComments(posts[0].id))
+  .then(comments => console.log(comments));
+
+// ✅ Clean with async/await
+const user = await getUser(id);
+const posts = await getPosts(user.id);
+const comments = await getComments(posts[0].id);
+console.log(comments);
+```

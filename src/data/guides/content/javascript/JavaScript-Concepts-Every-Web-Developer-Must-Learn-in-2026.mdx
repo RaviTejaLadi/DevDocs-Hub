@@ -1,0 +1,45 @@
+## Foundational Pillars (Still Non-Negotiable)
+Everything rests on these core concepts. New features are powerful, but without a firm grasp of the basics, they can become a source of confusion.
+
+*   **Core Syntax & Structures:** You must have deep knowledge of **variables (`let`, `const`, `var`)**, **data types** (including `bigint` and `symbol`), **functions** (declarations, expressions, arrow functions), and **control flow** (loops, conditionals). A solid understanding of **scope** (global, function, and block) is essential to avoid subtle bugs .
+*   **Objects & Prototypes:** JavaScript is fundamentally object-oriented and prototype-based. Understanding the **prototype chain**, prototypal inheritance, and the `this` keyword is critical for grasping how the language works under the hood .
+*   **Asynchronous Programming:** This is the heart of modern web development. You need to be thoroughly comfortable with **Promises**, **async/await**, the **event loop**, and the **concurrency model**. Fetching data from APIs and handling asynchronous tasks is a daily requirement .
+*   **DOM Manipulation:** Understanding how to interact with the webpage is non-negotiable. This includes **selecting elements**, handling **events** (including event delegation), and modifying content .
+
+## Must-Know New Features (ES2025 & ES2026)
+The language is evolving rapidly. These new additions are changing how we write and structure JavaScript.
+
+*   **`using` for Resource Management (ES2026):** This is a game-changer for handling resources like database connections or file handlers. It automatically cleans up resources when they go out of scope, replacing error-prone `try/finally` blocks .
+    ```javascript
+    class DatabaseConnection {
+      [Symbol.dispose]() { 
+        // Cleanup code to close the connection
+        console.log("Connection closed."); 
+      }
+    }
+
+    function processData() {
+      using connection = new DatabaseConnection(); 
+      // Connection is automatically closed when the function exits
+    }
+    ```
+
+*   **Temporal API (ES2026):** Working with dates and times has long been a pain point. The new **Temporal API** provides a modern, robust way to handle dates, times, and time zones without needing large libraries like `moment.js` .
+    ```javascript
+    // Get the current date and time in a specific timezone
+    const nowInNY = Temporal.Now.zonedDateTimeISO("America/New_York");
+    console.log(nowInNY.toLocaleString());
+    ```
+
+*   **`Promise.try()` (ES2025):** This simplifies error handling for functions that might throw an error synchronously or reject asynchronously. It unifies the error handling path into a single `.catch()` block .
+*   **Iterator Helpers (ES2025):** This adds methods like `.map()`, `.filter()`, and `.take()` directly to iterators. This allows for lazy evaluation, meaning operations are performed only as needed, which can greatly improve performance and memory usage when working with large datasets .
+*   **`Error.isError()` (ES2026):** A simple but powerful addition that provides a safe and reliable way to check if a value is an `Error` object, even across different JavaScript realms (like an iframe) .
+
+## Important Ecosystem and Platform Trends
+Being a web developer in 2026 means looking beyond the language itself.
+
+*   **Cross-Browser Interoperability (Baseline):** Features like the **Navigation API** and CSS `display: inline flex` are now considered "Baseline Widely Available," meaning they work in all major browsers. Knowing the "Baseline" status of an API is a key part of modern web development .
+*   **Modern Tooling & Runtimes:**
+    *   **Native TypeScript:** Node.js 22+ now supports TypeScript natively, removing the need for a separate build step in many cases .
+    *   **New Browser APIs:** APIs like **WebTransport** (low-latency communication), the **Reporting API** (for monitoring browser errors), and **Trusted Types** (for enhanced XSS security) are becoming crucial for building high-performance, secure applications .
+*   **State Management & Architecture:** For complex applications, understanding a state management library like Redux or Zustand is now considered a standard requirement .

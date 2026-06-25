@@ -1,0 +1,137 @@
+
+Many developers stick to familiar patterns and miss out on powerful language features that can dramatically improve code quality, performance, and maintainability. Here are the features you're probably ignoring but absolutely shouldn't be:
+
+## `??` (Nullish Coalescing)
+Stop using `||` for default values. It fails for falsy values like `0`, `''`, or `false` that are actually valid inputs.
+
+```javascript
+// ❌ Bad - treats 0 and '' as invalid
+const count = userInput || 10;  // If userInput = 0, count becomes 10
+
+// ✅ Good - only uses default for null/undefined
+const count = userInput ?? 10;  // If userInput = 0, count stays 0
+```
+
+## `?.` (Optional Chaining)
+Stop writing nested `&&` checks or try/catch blocks to access deep properties.
+
+```javascript
+// ❌ The old way
+const city = user && user.address && user.address.city;
+
+// ✅ The modern way
+const city = user?.address?.city;
+```
+
+## `#` Private Fields
+Stop using `_` conventions to indicate private properties. JavaScript now has *real* encapsulation.
+
+```javascript
+class BankAccount {
+  #balance = 0;  // Truly private
+  
+  deposit(amount) {
+    this.#balance += amount;
+  }
+  
+  getBalance() {
+    return this.#balance;
+  }
+}
+
+const account = new BankAccount();
+account.#balance;  // ❌ SyntaxError - private field!
+```
+
+## `static` Initialization Blocks
+Stop using IIFEs or external functions to initialize static data.
+
+```javascript
+class Database {
+  static #config;
+  
+  // Runs once when class is loaded
+  static {
+    this.#config = loadConfig();
+    this.#validateConfig(this.#config);
+  }
+}
+```
+
+## `import.meta`
+Stop hardcoding environment-specific paths. `import.meta` gives you module-scoped metadata.
+
+```javascript
+// Get the current module's URL
+const moduleUrl = import.meta.url;
+
+// Check environment without process.env (works in browsers!)
+if (import.meta.env?.MODE === 'development') {
+  console.log('Running in dev mode');
+}
+```
+
+## `AggregateError`
+Stop collecting errors in arrays manually. Use `AggregateError` to group multiple errors.
+
+```javascript
+try {
+  await Promise.any([
+    fetch('/api1'),
+    fetch('/api2')
+  ]);
+} catch (error) {
+  if (error instanceof AggregateError) {
+    console.error('All promises rejected:', error.errors);
+  }
+}
+```
+
+## `String.prototype.replaceAll()`
+Stop using regex with `g` flag for simple string replacements.
+
+```javascript
+// ❌ Overkill
+const result = text.replace(/foo/g, 'bar');
+
+// ✅ Clean and readable
+const result = text.replaceAll('foo', 'bar');
+```
+
+## `Array.prototype.at()`
+Stop doing `array[array.length - 1]` to get the last element.
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+arr.at(-1);  // 5 (last)
+arr.at(-2);  // 4 (second last)
+arr.at(0);   // 1 (first)
+```
+
+## `Object.hasOwn()`
+Stop using `hasOwnProperty` which can be overridden or fail with objects created via `Object.create(null)`.
+
+```javascript
+// ❌ Risky
+const obj = Object.create(null);
+obj.hasOwnProperty('key');  // ❌ TypeError
+
+// ✅ Safe
+Object.hasOwn(obj, 'key');
+```
+
+## `Promise.withResolvers()`
+Stop manually creating deferred promises. Use this cleaner pattern for resolve/reject outside the executor.
+
+```javascript
+// ❌ The old way
+let resolve, reject;
+const promise = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+// ✅ The new way (ES2024)
+const { promise, resolve, reject } = Promise.withResolvers();
+// Now you can call resolve/reject from anywhere
+```

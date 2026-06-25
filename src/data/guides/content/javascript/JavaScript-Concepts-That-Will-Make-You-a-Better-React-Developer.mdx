@@ -1,0 +1,156 @@
+
+React is just JavaScript with a declarative wrapper. Mastering these concepts will level up your React game dramatically.
+
+## 1. **Closures (The Hook Trap)**
+Every React hook relies on closures. Understanding closures explains why stale closures happen and why dependency arrays exist.
+
+```javascript
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  // ❌ Stale closure - always logs 0
+  useEffect(() => {
+    setTimeout(() => console.log(count), 3000);
+  }, []);  // count is captured as 0
+  
+  // ✅ Fix - always logs current count
+  useEffect(() => {
+    setTimeout(() => console.log(count), 3000);
+  }, [count]);  // Re-runs when count changes
+}
+```
+
+## 2. **Pure Functions and Immutability**
+React's re-rendering depends on detecting changes via shallow comparison. Mutating state breaks everything.
+
+```javascript
+// ❌ Mutation - React won't detect change
+const updateUser = (user) => {
+  user.age = 30;  // Mutates the object
+  return user;
+};
+
+// ✅ Immutability - creates new object
+const updateUser = (user) => ({
+  ...user,
+  age: 30
+});
+```
+
+## 3. **The Event Loop and Microtasks**
+Understanding microtasks explains why `setState` is batched and why `useEffect` runs after the DOM update.
+
+```javascript
+// React batches state updates in event handlers (microtask)
+handleClick = () => {
+  setCount(c => c + 1);
+  setCount(c => c + 1);
+  // Only ONE re-render (count increased by 2)
+};
+
+// But not in async code (macrotask)
+handleClick = async () => {
+  await fetchData();
+  setCount(c => c + 1);
+  setCount(c => c + 1);
+  // TWO re-renders (each setState triggers render)
+};
+```
+
+## 4. **Higher-Order Functions**
+The entire concept of HOCs, render props, and custom hooks comes from treating functions as first-class citizens.
+
+```javascript
+// Custom hook is just a function that returns stateful logic
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return width;
+}
+```
+
+## 5. **Referential Equality**
+Why `useMemo` and `useCallback` exist, and why you sometimes get infinite loops.
+
+```javascript
+// ❌ New function created every render
+const handleClick = () => doSomething(id);
+
+// ✅ Same function reference maintained
+const handleClick = useCallback(() => doSomething(id), [id]);
+
+// Same for objects
+const options = useMemo(() => ({ sort: 'asc' }), []);
+```
+
+## 6. **Composition vs. Inheritance**
+React prefers composition over inheritance. This comes from JavaScript's prototypal model where composition is more flexible.
+
+```javascript
+// ❌ Inheritance (messy with props)
+class Button extends BaseComponent { ... }
+
+// ✅ Composition (cleaner)
+function Button({ children, ...props }) {
+  return <button {...props}>{children}</button>;
+}
+```
+
+## 7. **Array Methods (map, filter, reduce)**
+React rendering is all about transforming data into elements. These methods are your primary tools.
+
+```javascript
+function UserList({ users, filter }) {
+  return users
+    .filter(user => user.age > filter)  // Filter
+    .map(user => (                       // Transform
+      <UserCard key={user.id} {...user} />
+    ));
+}
+```
+
+## 8. **Destructuring and Rest/Spread**
+Clean prop handling, component composition, and state updates rely heavily on these.
+
+```javascript
+// Props destructuring
+function Button({ variant, size, children, ...rest }) {
+  return <button className={`btn-${variant} btn-${size}`} {...rest}>
+    {children}
+  </button>;
+}
+```
+
+## 9. **Promises and Async/Await**
+Data fetching, code splitting, and Suspense are all Promise-based.
+
+```javascript
+const UserProfile = ({ userId }) => {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    // Understands async operations
+    fetchUser(userId).then(setUser);
+  }, [userId]);
+  
+  return user ? <div>{user.name}</div> : <Loading />;
+};
+```
+
+## 10. **The Module System (import/export)**
+Code splitting, lazy loading, and component organization depend on ES modules.
+
+```javascript
+// Lazy loading a component
+const LazyComponent = React.lazy(() => import('./HeavyComponent'));
+
+// Dynamic imports for routes
+const routes = {
+  '/admin': () => import('./AdminDashboard'),
+  '/user': () => import('./UserDashboard'),
+};
+```

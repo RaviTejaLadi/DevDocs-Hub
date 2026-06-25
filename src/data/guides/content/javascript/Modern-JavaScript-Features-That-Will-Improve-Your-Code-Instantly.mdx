@@ -1,0 +1,229 @@
+
+## 1. **Optional Chaining (`?.`)**
+Clean up nested property access.
+
+```javascript
+// Before
+const city = user && user.address && user.address.city;
+
+// After (ES2020)
+const city = user?.address?.city;
+
+// Also works with function calls
+const result = obj.method?.();
+
+// And arrays
+const first = arr?.[0];
+```
+
+## 2. **Nullish Coalescing (`??`)**
+Better default values that respect falsy values.
+
+```javascript
+// Before
+const value = (input !== undefined && input !== null) ? input : 0;
+
+// After (ES2020)
+const value = input ?? 0;
+
+// The difference: || treats false, 0, '' as falsy
+const count = input ?? 10; // If input = 0, stays 0
+const count = input || 10; // If input = 0, becomes 10 (wrong)
+```
+
+## 3. **Logical Assignment Operators (`??=`, `&&=`, `||=`)**
+Combine logical operators with assignment.
+
+```javascript
+// Before
+if (!obj.name) obj.name = 'default';
+
+// After (ES2021)
+obj.name ??= 'default'; // Only assigns if null/undefined
+
+// Also available
+obj.prop &&= update; // Only assigns if prop is truthy
+obj.prop ||= update; // Only assigns if prop is falsy
+
+// Great for initialization
+const state = {};
+state.count ??= 0;
+state.count += 1;
+```
+
+## 4. **Numeric Separators (`_`)**
+Make big numbers readable.
+
+```javascript
+// Before
+const billion = 1000000000;
+
+// After (ES2021)
+const billion = 1_000_000_000;
+const bytes = 0b1100_0101_1001;
+const hex = 0xDEAD_BEEF;
+
+// Much easier to read large numbers
+const price = 99_999.99;
+```
+
+## 5. **`Array.prototype.at()`**
+Cleaner access to array elements from the end.
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+// Before
+const last = arr[arr.length - 1];
+const secondLast = arr[arr.length - 2];
+
+// After (ES2022)
+const last = arr.at(-1);  // 5
+const secondLast = arr.at(-2); // 4
+const first = arr.at(0);  // 1
+
+// Also works with strings
+const str = 'hello';
+str.at(-1); // 'o'
+```
+
+## 6. **`Object.hasOwn()`**
+Safe property checking without `hasOwnProperty` issues.
+
+```javascript
+// Before - risky
+obj.hasOwnProperty('key'); // Fails if overridden or Object.create(null)
+
+// After (ES2022)
+Object.hasOwn(obj, 'key'); // Always safe
+
+// Works for all objects
+const obj = Object.create(null);
+Object.hasOwn(obj, 'key'); // false (no error!)
+```
+
+## 7. **`Promise.withResolvers()`**
+Cleaner promise creation with external resolve/reject.
+
+```javascript
+// Before - ugly
+let resolve, reject;
+const promise = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+// After (ES2024)
+const { promise, resolve, reject } = Promise.withResolvers();
+
+// Perfect for async queues, events, etc.
+class AsyncQueue {
+  constructor() {
+    this._resolve = null;
+    this._promise = null;
+  }
+  
+  wait() {
+    const { promise, resolve } = Promise.withResolvers();
+    this._resolve = resolve;
+    this._promise = promise;
+    return promise;
+  }
+  
+  notify(value) {
+    if (this._resolve) {
+      this._resolve(value);
+      this._resolve = null;
+      this._promise = null;
+    }
+  }
+}
+```
+
+## 8. **Iterator Helpers (ES2025)**
+Lazy operations on iterators, improving performance.
+
+```javascript
+// Before - eager evaluation (creates intermediate arrays)
+const result = numbers
+  .filter(n => n > 10)
+  .map(n => n * 2)
+  .slice(0, 5);
+
+// After - lazy evaluation (only processes what's needed)
+const result = numbers.values()
+  .filter(n => n > 10)
+  .map(n => n * 2)
+  .take(5)
+  .toArray();
+
+// Works with infinite sequences!
+function* infiniteNumbers() {
+  let i = 0;
+  while (true) yield i++;
+}
+
+const firstTen = infiniteNumbers()
+  .filter(n => n % 2 === 0)
+  .take(10)
+  .toArray();
+```
+
+## 9. **`using` for Resource Management (ES2026)**
+Automatic cleanup of resources.
+
+```javascript
+// Before - manual cleanup with try/finally
+let connection = await database.connect();
+try {
+  // Use connection
+} finally {
+  await connection.close();
+}
+
+// After - automatic cleanup
+{
+  using connection = await database.connect();
+  // Use connection
+  // Automatically closed when scope exits
+}
+
+// Custom resources
+class FileHandle {
+  constructor(path) {
+    this.fd = openSync(path);
+  }
+  
+  [Symbol.dispose]() {
+    closeSync(this.fd);
+    console.log('File closed');
+  }
+}
+
+function processFile(path) {
+  using file = new FileHandle(path);
+  // File automatically closed
+}
+```
+
+## 10. **`import.meta`**
+Module-scoped metadata without environment globals.
+
+```javascript
+// Module URL (works in browsers and Node)
+const moduleUrl = import.meta.url;
+
+// Development vs Production (no process.env needed)
+if (import.meta.env?.MODE === 'development') {
+  console.log('Running in dev mode');
+}
+
+// Node: import.meta.dirname and import.meta.filename
+const filePath = import.meta.dirname + '/config.json';
+
+// Dynamic imports with metadata
+if (import.meta.hot) {
+  // Hot module replacement (Vite, Webpack)
+  import.meta.hot.accept();
+}
+```

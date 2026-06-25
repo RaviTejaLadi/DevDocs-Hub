@@ -1,0 +1,253 @@
+
+## 1. `Promise.all()`, `Promise.allSettled()`, `Promise.race()`, `Promise.any()`
+Understanding these for handling multiple promises is essential.
+
+```javascript
+// all - waits for ALL to resolve, rejects on first error
+const results = await Promise.all([
+  fetch('/api/user'),
+  fetch('/api/posts')
+]);
+
+// allSettled - waits for ALL to settle (resolve or reject)
+const results = await Promise.allSettled([
+  fetch('/api/user'),
+  fetch('/api/posts')
+]);
+// Returns array of { status: 'fulfilled', value } or { status: 'rejected', reason }
+
+// race - returns first to settle (resolve or reject)
+const result = await Promise.race([
+  fetch('/api/data'),
+  new Promise((_, reject) => setTimeout(() => reject('Timeout'), 5000))
+]);
+
+// any - returns first to RESOLVE (ignores rejections until all reject)
+const result = await Promise.any([
+  fetch('/api/backup1'),
+  fetch('/api/backup2'),
+  fetch('/api/main')
+]);
+```
+
+## 2. `JSON.stringify()` and `JSON.parse()`
+The workhorses of web development for data exchange and persistence.
+
+```javascript
+// Serialize with replacer function (ignore undefined, handle circular)
+const json = JSON.stringify(obj, (key, value) => {
+  if (value === undefined) return null;
+  if (typeof value === 'bigint') return value.toString();
+  return value;
+});
+
+// Parse with reviver (restore Date objects)
+const obj = JSON.parse(json, (key, value) => {
+  if (typeof value === 'string' && value.match(/^\d{4}-\d{2}-\d{2}/)) {
+    return new Date(value);
+  }
+  return value;
+});
+
+// Deep clone (with limitations)
+const clone = JSON.parse(JSON.stringify(obj));
+```
+
+## 3. `setTimeout()` and `setInterval()`
+Timing functions that every web developer uses daily.
+
+```javascript
+// setTimeout returns an ID for clearing
+const timeoutId = setTimeout(() => {
+  console.log('Runs after 1 second');
+}, 1000);
+clearTimeout(timeoutId); // Cancel it
+
+// setInterval - runs repeatedly
+const intervalId = setInterval(() => {
+  console.log('Runs every 2 seconds');
+}, 2000);
+clearInterval(intervalId); // Stop it
+
+// 2026: Using AbortController for cleanup
+const controller = new AbortController();
+setTimeout(() => console.log('hi'), 1000, { signal: controller.signal });
+// controller.abort(); // Cancels the timeout
+```
+
+## 4. `fetch()`
+The modern way to make HTTP requests.
+
+```javascript
+// Basic GET
+const response = await fetch('/api/data');
+const data = await response.json(); // or .text(), .blob(), .formData()
+
+// POST with body
+const response = await fetch('/api/data', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'John' })
+});
+
+// With AbortController for cancellable requests
+const controller = new AbortController();
+const response = await fetch('/api/data', { signal: controller.signal });
+// controller.abort(); // Cancels the request
+
+// Custom error handling
+if (!response.ok) {
+  throw new Error(`HTTP error! status: ${response.status}`);
+}
+```
+
+## 5. `console.log()` (And Friends)
+Beyond basic logging, understanding the console API is crucial for debugging.
+
+```javascript
+console.log('Basic log');
+console.error('Error message');
+console.warn('Warning');
+console.info('Info');
+
+// Format specifiers
+console.log('User: %s, Age: %d', 'John', 30);
+
+// Group related logs
+console.group('User Details');
+console.log('Name: John');
+console.log('Age: 30');
+console.groupEnd();
+
+// Table for arrays/objects
+console.table(users);
+
+// Timing operations
+console.time('Fetch');
+await fetch('/api');
+console.timeEnd('Fetch');
+
+// Trace call stack
+console.trace('Function called from here');
+```
+
+## 6. `encodeURIComponent()` and `decodeURIComponent()`
+Essential for safe URL handling and query parameters.
+
+```javascript
+// Encode for query params
+const query = { name: 'John Doe', city: 'New York' };
+const params = new URLSearchParams(query).toString();
+// OR manually:
+const encoded = Object.entries(query)
+  .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+  .join('&');
+
+// Building URLs safely
+const url = `https://api.example.com/search?${params}`;
+
+// Decoding
+const decoded = decodeURIComponent(encodedValue);
+```
+
+## 7. `Array.isArray()`
+The ONLY reliable way to check if something is an array.
+
+```javascript
+// ❌ Unreliable
+typeof [] === 'object'; // true
+[] instanceof Array; // true, but fails across frames
+[].constructor === Array; // risky
+
+// ✅ Always use
+Array.isArray([]); // true
+Array.isArray({}); // false
+Array.isArray(new Array()); // true
+Array.isArray(Array.prototype); // true (interesting edge case)
+```
+
+## 8. `Number.isInteger()` and `Number.isNaN()`
+Number methods that actually work correctly.
+
+```javascript
+// Number.isInteger() - reliable integer check
+Number.isInteger(42); // true
+Number.isInteger(42.0); // true
+Number.isInteger(42.5); // false
+Number.isInteger('42'); // false (unlike parseInt)
+
+// Number.isNaN() - reliable NaN check
+Number.isNaN(NaN); // true
+Number.isNaN('abc'); // false (unlike global isNaN)
+isNaN('abc'); // true (converts to number first)
+Number.isNaN(undefined); // false
+isNaN(undefined); // true (converts to NaN)
+
+// Safe number parsing
+const num = Number.parseInt('42px', 10); // 42
+```
+
+## 9. `Object.assign()` and `Object.freeze()`
+Essential for immutability and object manipulation.
+
+```javascript
+// assign - copy properties
+const target = { a: 1 };
+const source = { b: 2, c: 3 };
+Object.assign(target, source);
+// target = { a: 1, b: 2, c: 3 }
+
+// Shallow clone
+const clone = Object.assign({}, original);
+
+// merge multiple objects
+const merged = Object.assign({}, obj1, obj2, obj3);
+
+// freeze - prevent modifications (shallow)
+const frozen = Object.freeze({ name: 'John' });
+frozen.name = 'Jane'; // ❌ Fails in strict mode
+frozen.age = 30; // ❌ Fails
+
+// 2026: deep freeze
+function deepFreeze(obj) {
+  Object.freeze(obj);
+  Object.values(obj).forEach(val => {
+    if (typeof val === 'object' && val !== null) deepFreeze(val);
+  });
+  return obj;
+}
+```
+
+## 10. `new` (The Constructor Function)
+Understanding what `new` actually does is fundamental to JavaScript.
+
+```javascript
+// What `new` does:
+// 1. Creates a new empty object
+// 2. Sets prototype to constructor's prototype
+// 3. Binds 'this' to the new object
+// 4. Returns the object (unless constructor returns an object)
+
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.sayHello = function() {
+  return `Hello, ${this.name}`;
+};
+
+// Manual implementation of `new`
+function myNew(constructor, ...args) {
+  const obj = Object.create(constructor.prototype);
+  const result = constructor.apply(obj, args);
+  return result instanceof Object ? result : obj;
+}
+
+const person = myNew(Person, 'John');
+person.sayHello(); // "Hello, John"
+
+// 2026: Using new.target to ensure called with new
+function Person(name) {
+  if (!new.target) throw new Error('Must use new');
+  this.name = name;
+}
+```
