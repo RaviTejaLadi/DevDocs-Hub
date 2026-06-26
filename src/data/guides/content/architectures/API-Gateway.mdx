@@ -1,0 +1,27 @@
+
+## Responsibilities
+- **Authentication:** Verifies JWT tokens or API keys.
+- **Rate Limiting:** Prevents abuse by limiting requests per user.
+- **Routing:** Maps URLs to specific microservices.
+- **Request Aggregation:** Combines results from multiple services into one response.
+
+## Architecture Diagram
+```mermaid
+graph TD
+    Client[Client App] --> GW[API Gateway]
+    
+    GW --> Auth[Auth Service]
+    GW --> Orders[Order Service]
+    GW --> Inventory[Inventory Service]
+    
+    subgraph Backend Services
+        Auth
+        Orders
+        Inventory
+    end
+    
+    style GW fill:#f96,stroke:#333,stroke-width:4px
+```
+
+## Tools
+- Kong, Amazon API Gateway, Apigee, Spring Cloud Gateway.

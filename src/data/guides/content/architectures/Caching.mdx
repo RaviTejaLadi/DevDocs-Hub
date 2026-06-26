@@ -1,0 +1,35 @@
+
+## Why use it?
+- **Reduces Latency:** Data is served from memory (microseconds) rather than disk/database (milliseconds).
+- **Reduces Database Load:** Fewer reads hit the primary database.
+
+## Caching Strategies
+- **Cache-Aside:** Application checks cache first. If not found (cache miss), it queries the DB and updates the cache.
+- **Read-Through:** The cache itself fetches data from the DB on a miss.
+- **Write-Through:** Writes go to the cache and the DB simultaneously.
+- **Write-Behind:** Writes go to the cache first, and later flushed to the DB.
+
+## Eviction Policies
+- **LRU (Least Recently Used):** Removes the oldest accessed data.
+- **TTL (Time To Live):** Data expires after a set duration.
+
+## Architecture Diagram
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Cache
+    participant Database
+    
+    Client->>Cache: 1. Request Data
+    alt Cache Hit
+        Cache-->>Client: 2. Return Data (Fast)
+    else Cache Miss
+        Cache->>Database: 3. Fetch Data
+        Database-->>Cache: 4. Return Data
+        Cache-->>Client: 5. Return Data
+    end
+```
+
+## Tools
+- **In-Memory:** Redis, Memcached.
+- **CDN:** CloudFront, Cloudflare.

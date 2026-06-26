@@ -1,0 +1,20 @@
+
+## Functions
+- **SSL Termination:** Decrypts incoming HTTPS traffic to reduce load on backend servers.
+- **Compression:** Compresses outgoing data.
+- **Security:** Hides the backend server IPs (DDoS protection).
+- **Caching:** Can cache static responses.
+
+## Architecture Diagram
+```mermaid
+graph LR
+    Client --> Internet
+    Internet --> RP[Reverse Proxy / Gateway]
+    RP --> App1[App Server 1]
+    RP --> App2[App Server 2]
+    
+    style RP fill:#bbf,stroke:#333,stroke-width:2px
+```
+
+## Tools
+- Nginx, Apache, HAProxy.

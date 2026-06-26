@@ -1,0 +1,24 @@
+
+## Why use it?
+- **Lower Latency:** Users download content from the "Edge" location nearest to them.
+- **Offloads Origin Server:** Reduces bandwidth consumption on the main server.
+
+## How it works
+1. User requests a static asset.
+2. DNS resolves to the nearest Edge Server.
+3. If the asset is not cached, the Edge Server requests it from the **Origin Server** (pulling).
+4. Subsequent global requests are served locally.
+
+## Architecture Diagram
+```mermaid
+graph LR
+    User_US[User: USA] --> Edge_US[Edge Server: USA]
+    User_EU[User: Europe] --> Edge_EU[Edge Server: Europe]
+    User_ASIA[User: Asia] --> Edge_ASIA[Edge Server: Asia]
+    
+    Edge_US --> Origin[Origin Server / S3 Bucket]
+    Edge_EU --> Origin
+    Edge_ASIA --> Origin
+    
+    style Origin fill:#f96,stroke:#333,stroke-width:4px
+```

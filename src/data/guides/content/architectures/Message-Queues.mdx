@@ -1,0 +1,22 @@
+
+## Why use it?
+- **Decoupling:** Services don't need to know about each other.
+- **Fault Tolerance:** If a consumer fails, messages persist in the queue.
+- **Load Leveling:** Prevents a service from being overwhelmed by a sudden spike in requests (e.g., Black Friday).
+
+## Patterns
+- **Point-to-Point:** One consumer processes each message.
+- **Publish/Subscribe:** Multiple consumers receive copies of the message (Topics).
+
+## Architecture Diagram
+```mermaid
+graph LR
+    Producer[Web Server] --> Queue[Message Queue / Broker]
+    Queue --> Worker1[Worker 1]
+    Queue --> Worker2[Worker 2]
+    
+    Queue --> DB[(Database)]
+```
+
+## Tools
+- RabbitMQ, Apache Kafka, Amazon SQS.
