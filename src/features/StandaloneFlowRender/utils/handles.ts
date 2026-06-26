@@ -27,11 +27,7 @@ export function getHandleSide(handleId?: string): HandleSide {
   return SIDE_BY_HANDLE[handleId[0]] ?? 'right';
 }
 
-function getSidePoint(
-  node: FlowNode,
-  side: HandleSide,
-  ratio: number,
-): Point {
+function getSidePoint(node: FlowNode, side: HandleSide, ratio: number): Point {
   const { width, height } = getNodeSize(node);
   const x = node.position.x;
   const y = node.position.y;
@@ -50,11 +46,7 @@ function getSidePoint(
   }
 }
 
-export function getHandlePoint(
-  node: FlowNode,
-  handleId?: string,
-  toward?: Point,
-): Point {
+export function getHandlePoint(node: FlowNode, handleId?: string, toward?: Point): Point {
   const side = getHandleSide(handleId);
   let ratio = getRatioFromHandle(handleId);
 
@@ -63,16 +55,10 @@ export function getHandlePoint(
     const { width, height } = getNodeSize(node);
 
     if (side === 'top' || side === 'bottom') {
-      const clampedX = Math.max(
-        node.position.x + 8,
-        Math.min(toward.x, node.position.x + width - 8),
-      );
+      const clampedX = Math.max(node.position.x + 8, Math.min(toward.x, node.position.x + width - 8));
       ratio = (clampedX - node.position.x) / width;
     } else {
-      const clampedY = Math.max(
-        node.position.y + 8,
-        Math.min(toward.y, node.position.y + height - 8),
-      );
+      const clampedY = Math.max(node.position.y + 8, Math.min(toward.y, node.position.y + height - 8));
       ratio = (clampedY - node.position.y) / height;
     }
 
@@ -84,11 +70,7 @@ export function getHandlePoint(
   return getSidePoint(node, side, ratio);
 }
 
-export function getSmartHandlePoint(
-  node: FlowNode,
-  handleId: string | undefined,
-  other: Point,
-): Point {
+export function getSmartHandlePoint(node: FlowNode, handleId: string | undefined, other: Point): Point {
   const side = getHandleSide(handleId);
   const { width, height } = getNodeSize(node);
   const x = node.position.x;
@@ -125,12 +107,8 @@ export function getSmartHandlePoint(
   }
 
   if (Math.abs(dx) > Math.abs(dy)) {
-    return dx > 0
-      ? { x: x + width, y: center.y }
-      : { x, y: center.y };
+    return dx > 0 ? { x: x + width, y: center.y } : { x, y: center.y };
   }
 
-  return dy > 0
-    ? { x: center.x, y: y + height }
-    : { x: center.x, y };
+  return dy > 0 ? { x: center.x, y: y + height } : { x: center.x, y };
 }

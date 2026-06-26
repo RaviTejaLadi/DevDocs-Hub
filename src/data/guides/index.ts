@@ -34,11 +34,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   { label: 'Architectures', guides: architectureGuides },
 ];
 
-export const GUIDES: Guide[] = [
-  ...jsGuides,
-  ...reactGuides,
-  ...architectureGuides,
-];
+export const GUIDES: Guide[] = [...jsGuides, ...reactGuides, ...architectureGuides];
 
 export const GUIDE_TYPE_OPTIONS: Array<{ value: GuideType | 'all'; label: string }> = [
   { value: 'all', label: 'All' },

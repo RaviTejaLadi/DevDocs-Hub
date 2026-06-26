@@ -24,19 +24,11 @@ export function useGuidesFilter() {
     }));
   }, [searchQuery, activeType]);
 
-  const totalGuides = GUIDE_CATEGORIES.reduce(
-    (sum, cat) => sum + cat.guides.length,
-    0
-  );
+  const totalGuides = GUIDE_CATEGORIES.reduce((sum, cat) => sum + cat.guides.length, 0);
 
-  const filteredCount = filteredCategories.reduce(
-    (sum, cat) => sum + cat.guides.length,
-    0
-  );
+  const filteredCount = filteredCategories.reduce((sum, cat) => sum + cat.guides.length, 0);
 
-  const hasAnyGuides = filteredCategories.some(
-    (cat) => cat.guides.length > 0
-  );
+  const hasAnyGuides = filteredCategories.some((cat) => cat.guides.length > 0);
 
   return {
     searchQuery,

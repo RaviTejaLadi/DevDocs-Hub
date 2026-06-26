@@ -48,12 +48,7 @@ function roundedStepPath(points: Point[], radius: number): string {
   return path;
 }
 
-function buildWaypoints(
-  start: Point,
-  end: Point,
-  sourceSide: HandleSide,
-  targetSide: HandleSide,
-): Point[] {
+function buildWaypoints(start: Point, end: Point, sourceSide: HandleSide, targetSide: HandleSide): Point[] {
   const gap = 24;
 
   if (sourceSide === 'bottom' && targetSide === 'top') {
@@ -77,35 +72,19 @@ function buildWaypoints(
   }
 
   if (sourceSide === 'bottom' && targetSide === 'left') {
-    return [
-      start,
-      { x: start.x, y: end.y },
-      end,
-    ];
+    return [start, { x: start.x, y: end.y }, end];
   }
 
   if (sourceSide === 'right' && targetSide === 'top') {
-    return [
-      start,
-      { x: end.x, y: start.y },
-      end,
-    ];
+    return [start, { x: end.x, y: start.y }, end];
   }
 
   if (sourceSide === 'right' && targetSide === 'bottom') {
-    return [
-      start,
-      { x: end.x, y: start.y },
-      end,
-    ];
+    return [start, { x: end.x, y: start.y }, end];
   }
 
   if (sourceSide === 'bottom' && targetSide === 'right') {
-    return [
-      start,
-      { x: start.x, y: end.y },
-      end,
-    ];
+    return [start, { x: start.x, y: end.y }, end];
   }
 
   const midX = start.x + (end.x - start.x) / 2;
@@ -118,12 +97,7 @@ function buildWaypoints(
   return [start, { x: start.x, y: midY }, { x: end.x, y: midY }, end];
 }
 
-export function buildEdgePath(
-  start: Point,
-  end: Point,
-  sourceSide: HandleSide,
-  targetSide: HandleSide,
-): string {
+export function buildEdgePath(start: Point, end: Point, sourceSide: HandleSide, targetSide: HandleSide): string {
   const points = buildWaypoints(start, end, sourceSide, targetSide);
   return roundedStepPath(points, EDGE_CORNER_RADIUS);
 }

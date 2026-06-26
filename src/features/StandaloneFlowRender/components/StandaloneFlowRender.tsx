@@ -13,15 +13,9 @@ export function StandaloneFlowRender(props: StandaloneFlowRenderProps) {
   const [selectedNode, setSelectedNode] = useState<FlowNode | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const viewBox = useMemo(
-    () => calculateViewBox(data.nodes),
-    [data.nodes],
-  );
+  const viewBox = useMemo(() => calculateViewBox(data.nodes), [data.nodes]);
 
-  const sortedNodes = useMemo(
-    () => sortNodesByZIndex(data.nodes),
-    [data.nodes],
-  );
+  const sortedNodes = useMemo(() => sortNodesByZIndex(data.nodes), [data.nodes]);
 
   const handleNodeClick = (node: FlowNode) => {
     setSelectedNode(node);
@@ -46,13 +40,7 @@ export function StandaloneFlowRender(props: StandaloneFlowRenderProps) {
           role="img"
           aria-label="Roadmap flow diagram"
         >
-          <rect
-            x={viewBox.x}
-            y={viewBox.y}
-            width={viewBox.width}
-            height={viewBox.height}
-            fill={THEME.canvas}
-          />
+          <rect x={viewBox.x} y={viewBox.y} width={viewBox.width} height={viewBox.height} fill={THEME.canvas} />
 
           <g className="sfr-layer sfr-layer--edges">
             {data.edges.map((edge) => (
@@ -92,11 +80,5 @@ export type StandaloneFlowDemoProps = FlowGraphData & {
 export function StandaloneFlowDemo(props: StandaloneFlowDemoProps) {
   const { nodes, edges, roadmapId = 'frontend', contentBaseUrl } = props;
 
-  return (
-    <StandaloneFlowRender
-      data={{ nodes, edges }}
-      roadmapId={roadmapId}
-      contentBaseUrl={contentBaseUrl}
-    />
-  );
+  return <StandaloneFlowRender data={{ nodes, edges }} roadmapId={roadmapId} contentBaseUrl={contentBaseUrl} />;
 }

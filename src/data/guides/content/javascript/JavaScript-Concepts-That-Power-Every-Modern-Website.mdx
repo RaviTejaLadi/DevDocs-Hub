@@ -1,6 +1,7 @@
-
 ## 1. **The DOM (Document Object Model)**
-The interface between JavaScript and HTML - every interaction with the page goes through the DOM.
+
+The interface between JavaScript and HTML - every interaction with the page goes
+through the DOM.
 
 ```javascript
 // Querying
@@ -27,7 +28,9 @@ shadow.innerHTML = `
 ```
 
 ## 2. **Event-Driven Architecture**
-Everything in the browser is event-driven - clicks, scrolls, network responses, timers.
+
+Everything in the browser is event-driven - clicks, scrolls, network responses,
+timers.
 
 ```javascript
 // Event listeners
@@ -41,8 +44,8 @@ document.addEventListener('click', (e) => {
 });
 
 // Custom events
-const event = new CustomEvent('userLogin', { 
-  detail: { userId: 123 } 
+const event = new CustomEvent('userLogin', {
+  detail: { userId: 123 },
 });
 document.dispatchEvent(event);
 
@@ -53,7 +56,9 @@ element.addEventListener('click', handler, { signal: controller.signal });
 ```
 
 ## 3. **Asynchronous Programming (Promises/Async)**
-Every modern website depends on async operations - loading data, rendering, user interactions.
+
+Every modern website depends on async operations - loading data, rendering, user
+interactions.
 
 ```javascript
 // The foundation of modern web
@@ -68,10 +73,7 @@ async function loadData() {
 }
 
 // Concurrent loading
-const [user, posts] = await Promise.all([
-  fetchUser(),
-  fetchPosts()
-]);
+const [user, posts] = await Promise.all([fetchUser(), fetchPosts()]);
 
 // Streaming responses (2026)
 const response = await fetch('/api/large-data');
@@ -84,6 +86,7 @@ while (true) {
 ```
 
 ## 4. **Reactive State Management**
+
 Every modern framework (React, Vue, Svelte) is built on reactivity.
 
 ```javascript
@@ -95,7 +98,7 @@ function reactive(obj) {
       // Trigger re-render
       updateDOM();
       return true;
-    }
+    },
   });
 }
 
@@ -111,13 +114,14 @@ count.set(5); // Automatically logs new values
 ```
 
 ## 5. **Component-Based Architecture**
+
 Sites are built from reusable components, not monolithic pages.
 
 ```javascript
 // Web Components (native)
 class UserCard extends HTMLElement {
   static observedAttributes = ['user-id'];
-  
+
   async connectedCallback() {
     const user = await fetchUser(this.getAttribute('user-id'));
     this.innerHTML = `
@@ -134,17 +138,18 @@ customElements.define('user-card', UserCard);
 // React component with hooks
 function UserCard({ userId }) {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     fetchUser(userId).then(setUser);
   }, [userId]);
-  
+
   if (!user) return <Loading />;
   return <div>{user.name}</div>;
 }
 ```
 
 ## 6. **Module System (ES Modules)**
+
 Modern websites are built as collections of modules.
 
 ```javascript
@@ -171,6 +176,7 @@ const HeavyComponent = module.default;
 ```
 
 ## 7. **Performance Optimization (Code Splitting, Lazy Loading)**
+
 Modern sites load only what's needed, when it's needed.
 
 ```javascript
@@ -201,6 +207,7 @@ document.querySelectorAll('img[data-src]').forEach(img => {
 ```
 
 ## 8. **Service Workers & PWA**
+
 Sites work offline, load instantly, and can send push notifications.
 
 ```javascript
@@ -215,15 +222,15 @@ const urlsToCache = ['/', '/styles.css', '/app.js'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
 });
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+    caches
+      .match(event.request)
+      .then((response) => response || fetch(event.request))
   );
 });
 
@@ -233,6 +240,7 @@ await sync.sync.register('sync-data');
 ```
 
 ## 9. **Web APIs (Fetch, Storage, Audio, Canvas)**
+
 Modern sites leverage dozens of browser APIs.
 
 ```javascript
@@ -244,7 +252,7 @@ sessionStorage.setItem('key', 'value');
 const db = await openDB('my-db', 1, {
   upgrade(db) {
     db.createObjectStore('users', { keyPath: 'id' });
-  }
+  },
 });
 
 // Canvas for graphics
@@ -264,12 +272,13 @@ const peerConnection = new RTCPeerConnection(configuration);
 ```
 
 ## 10. **Security Features (CSP, Trusted Types)**
+
 Modern sites implement multiple layers of security.
 
 ```javascript
 // Content Security Policy
 // meta tag or server header
-<meta http-equiv="Content-Security-Policy" 
+<meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' trusted-cdn.com">
 
 // Trusted Types (prevents XSS)
@@ -280,7 +289,7 @@ if (window.trustedTypes) {
       return sanitize(input);
     }
   });
-  
+
   element.innerHTML = policy.createHTML('<div>Safe</div>');
 }
 
@@ -295,21 +304,21 @@ fetch('/api', {
 });
 ```
 
-
 ---
 
 ## Summary: The Complete JavaScript Developer Checklist
 
-| Category | Key Concepts |
-|----------|--------------|
-| **Core** | Event Loop, Closures, Prototypes, `this`, Scope |
-| **Modern** | Optional Chaining, Nullish Coalescing, `using`, Temporal, `import.meta` |
-| **DOM** | Selection, Events, Manipulation, Shadow DOM |
-| **Async** | Promises, async/await, Event Loop, AbortController |
-| **Data** | Immutability, Array Methods, Objects, Maps, Sets |
-| **Framework** | Hooks, State Management, Components, Virtual DOM |
-| **Performance** | Code Splitting, Lazy Loading, Memoization, Workers |
-| **Security** | CSP, Trusted Types, CORS, Secure Cookies |
-| **Tooling** | TypeScript, ESLint, Bundlers, Testing |
+| Category        | Key Concepts                                                            |
+| --------------- | ----------------------------------------------------------------------- |
+| **Core**        | Event Loop, Closures, Prototypes, `this`, Scope                         |
+| **Modern**      | Optional Chaining, Nullish Coalescing, `using`, Temporal, `import.meta` |
+| **DOM**         | Selection, Events, Manipulation, Shadow DOM                             |
+| **Async**       | Promises, async/await, Event Loop, AbortController                      |
+| **Data**        | Immutability, Array Methods, Objects, Maps, Sets                        |
+| **Framework**   | Hooks, State Management, Components, Virtual DOM                        |
+| **Performance** | Code Splitting, Lazy Loading, Memoization, Workers                      |
+| **Security**    | CSP, Trusted Types, CORS, Secure Cookies                                |
+| **Tooling**     | TypeScript, ESLint, Bundlers, Testing                                   |
 
-Master these concepts and you'll not only build modern websites—you'll understand exactly how they work under the hood.
+Master these concepts and you'll not only build modern websites—you'll
+understand exactly how they work under the hood.

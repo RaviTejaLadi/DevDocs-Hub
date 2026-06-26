@@ -3,17 +3,9 @@ import type { FlowNode, Point, ViewBox } from '../types';
 const PADDING = 64;
 
 export function getNodeSize(node: FlowNode): { width: number; height: number } {
-  const width =
-    node.width ??
-    node.measured?.width ??
-    node.style?.width ??
-    (node.type === 'label' ? 120 : 156);
+  const width = node.width ?? node.measured?.width ?? node.style?.width ?? (node.type === 'label' ? 120 : 156);
 
-  const height =
-    node.height ??
-    node.measured?.height ??
-    node.style?.height ??
-    (node.type === 'label' ? 36 : 49);
+  const height = node.height ?? node.measured?.height ?? node.style?.height ?? (node.type === 'label' ? 36 : 49);
 
   return { width: Number(width), height: Number(height) };
 }
@@ -85,9 +77,7 @@ export function wrapText(text: string, maxCharsPerLine: number): string[] {
   return lines.length ? lines : [''];
 }
 
-export function getTextAnchor(
-  textAlign?: string,
-): 'start' | 'middle' | 'end' {
+export function getTextAnchor(textAlign?: string): 'start' | 'middle' | 'end' {
   if (textAlign === 'left' || textAlign === 'start') {
     return 'start';
   }
@@ -99,12 +89,7 @@ export function getTextAnchor(
   return 'middle';
 }
 
-export function getTextX(
-  x: number,
-  width: number,
-  textAlign?: string,
-  padding = 12,
-): number {
+export function getTextX(x: number, width: number, textAlign?: string, padding = 12): number {
   const anchor = getTextAnchor(textAlign);
 
   if (anchor === 'start') {

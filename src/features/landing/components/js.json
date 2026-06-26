@@ -1,435 +1,435 @@
 {
-    "nodes": [
-        {
-            "width": 180,
-            "height": 68,
-            "id": "js-roadmap-title",
-            "type": "title",
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "selected": false,
-            "data": {
-                "label": "JavaScript Mastery",
-                "style": {
-                    "fontSize": 28,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 160,
-            "height": 49,
-            "id": "topic-basics",
-            "type": "topic",
-            "position": {
-                "x": 10,
-                "y": 120
-            },
-            "selected": false,
-            "data": {
-                "label": "1. JavaScript Basics",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-variables",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 120
-            },
-            "selected": false,
-            "data": {
-                "label": "Variables (var, let, const) & Scope",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-datatypes",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 180
-            },
-            "selected": false,
-            "data": {
-                "label": "Data Types & Type Coercion",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 160,
-            "height": 49,
-            "id": "topic-ds",
-            "type": "topic",
-            "position": {
-                "x": 10,
-                "y": 280
-            },
-            "selected": false,
-            "data": {
-                "label": "2. Data Structures",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-arrays",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 280
-            },
-            "selected": false,
-            "data": {
-                "label": "Arrays & Advanced Methods (map, filter, reduce)",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-objects",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 340
-            },
-            "selected": false,
-            "data": {
-                "label": "Objects, Maps, and Sets",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 160,
-            "height": 49,
-            "id": "topic-advanced-js",
-            "type": "topic",
-            "position": {
-                "x": 10,
-                "y": 440
-            },
-            "selected": false,
-            "data": {
-                "label": "3. Advanced Concepts",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-closures",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 440
-            },
-            "selected": false,
-            "data": {
-                "label": "Closures & Lexical Environment",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-prototypes",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 500
-            },
-            "selected": false,
-            "data": {
-                "label": "Prototypes & Prototypal Inheritance",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 160,
-            "height": 49,
-            "id": "topic-async",
-            "type": "topic",
-            "position": {
-                "x": 10,
-                "y": 600
-            },
-            "selected": false,
-            "data": {
-                "label": "4. Asynchronous JS",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-eventloop",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 600
-            },
-            "selected": false,
-            "data": {
-                "label": "Event Loop, Callbacks & Microtasks",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
-        },
-        {
-            "width": 250,
-            "height": 49,
-            "id": "subtopic-promises",
-            "type": "subtopic",
-            "position": {
-                "x": 260,
-                "y": 660
-            },
-            "selected": false,
-            "data": {
-                "label": "Promises & Async / Await",
-                "style": {
-                    "fontSize": 17,
-                    "justifyContent": "flex-start",
-                    "textAlign": "center"
-                }
-            },
-            "zIndex": 999,
-            "focusable": true
+  "nodes": [
+    {
+      "width": 180,
+      "height": 68,
+      "id": "js-roadmap-title",
+      "type": "title",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "selected": false,
+      "data": {
+        "label": "JavaScript Mastery",
+        "style": {
+          "fontSize": 28,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
         }
-    ],
-    "edges": [
-        {
-            "style": {
-                "strokeDasharray": "0",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "js-roadmap-title",
-            "target": "topic-basics",
-            "id": "edge-title-to-basics",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-basics",
-            "target": "subtopic-variables",
-            "id": "edge-basics-to-vars",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-basics",
-            "target": "subtopic-datatypes",
-            "id": "edge-basics-to-types",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-basics",
-            "target": "topic-ds",
-            "id": "edge-basics-to-ds",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-ds",
-            "target": "subtopic-arrays",
-            "id": "edge-ds-to-arrays",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-ds",
-            "target": "subtopic-objects",
-            "id": "edge-ds-to-objects",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-ds",
-            "target": "topic-advanced-js",
-            "id": "edge-ds-to-advanced",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-advanced-js",
-            "target": "subtopic-closures",
-            "id": "edge-advanced-to-closures",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-advanced-js",
-            "target": "subtopic-prototypes",
-            "id": "edge-advanced-to-prototypes",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-advanced-js",
-            "target": "topic-async",
-            "id": "edge-advanced-to-async",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-async",
-            "target": "subtopic-eventloop",
-            "id": "edge-async-to-eventloop",
-            "selected": false,
-            "focusable": true
-        },
-        {
-            "style": {
-                "strokeDasharray": "0.8 8",
-                "strokeLinecap": "round",
-                "strokeWidth": 3.5,
-                "stroke": "#2b78e4"
-            },
-            "source": "topic-async",
-            "target": "subtopic-promises",
-            "id": "edge-async-to-promises",
-            "selected": false,
-            "focusable": true
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 160,
+      "height": 49,
+      "id": "topic-basics",
+      "type": "topic",
+      "position": {
+        "x": 10,
+        "y": 120
+      },
+      "selected": false,
+      "data": {
+        "label": "1. JavaScript Basics",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
         }
-    ]
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-variables",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 120
+      },
+      "selected": false,
+      "data": {
+        "label": "Variables (var, let, const) & Scope",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-datatypes",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 180
+      },
+      "selected": false,
+      "data": {
+        "label": "Data Types & Type Coercion",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 160,
+      "height": 49,
+      "id": "topic-ds",
+      "type": "topic",
+      "position": {
+        "x": 10,
+        "y": 280
+      },
+      "selected": false,
+      "data": {
+        "label": "2. Data Structures",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-arrays",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 280
+      },
+      "selected": false,
+      "data": {
+        "label": "Arrays & Advanced Methods (map, filter, reduce)",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-objects",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 340
+      },
+      "selected": false,
+      "data": {
+        "label": "Objects, Maps, and Sets",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 160,
+      "height": 49,
+      "id": "topic-advanced-js",
+      "type": "topic",
+      "position": {
+        "x": 10,
+        "y": 440
+      },
+      "selected": false,
+      "data": {
+        "label": "3. Advanced Concepts",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-closures",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 440
+      },
+      "selected": false,
+      "data": {
+        "label": "Closures & Lexical Environment",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-prototypes",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 500
+      },
+      "selected": false,
+      "data": {
+        "label": "Prototypes & Prototypal Inheritance",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 160,
+      "height": 49,
+      "id": "topic-async",
+      "type": "topic",
+      "position": {
+        "x": 10,
+        "y": 600
+      },
+      "selected": false,
+      "data": {
+        "label": "4. Asynchronous JS",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-eventloop",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 600
+      },
+      "selected": false,
+      "data": {
+        "label": "Event Loop, Callbacks & Microtasks",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    },
+    {
+      "width": 250,
+      "height": 49,
+      "id": "subtopic-promises",
+      "type": "subtopic",
+      "position": {
+        "x": 260,
+        "y": 660
+      },
+      "selected": false,
+      "data": {
+        "label": "Promises & Async / Await",
+        "style": {
+          "fontSize": 17,
+          "justifyContent": "flex-start",
+          "textAlign": "center"
+        }
+      },
+      "zIndex": 999,
+      "focusable": true
+    }
+  ],
+  "edges": [
+    {
+      "style": {
+        "strokeDasharray": "0",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "js-roadmap-title",
+      "target": "topic-basics",
+      "id": "edge-title-to-basics",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-basics",
+      "target": "subtopic-variables",
+      "id": "edge-basics-to-vars",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-basics",
+      "target": "subtopic-datatypes",
+      "id": "edge-basics-to-types",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-basics",
+      "target": "topic-ds",
+      "id": "edge-basics-to-ds",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-ds",
+      "target": "subtopic-arrays",
+      "id": "edge-ds-to-arrays",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-ds",
+      "target": "subtopic-objects",
+      "id": "edge-ds-to-objects",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-ds",
+      "target": "topic-advanced-js",
+      "id": "edge-ds-to-advanced",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-advanced-js",
+      "target": "subtopic-closures",
+      "id": "edge-advanced-to-closures",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-advanced-js",
+      "target": "subtopic-prototypes",
+      "id": "edge-advanced-to-prototypes",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-advanced-js",
+      "target": "topic-async",
+      "id": "edge-advanced-to-async",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-async",
+      "target": "subtopic-eventloop",
+      "id": "edge-async-to-eventloop",
+      "selected": false,
+      "focusable": true
+    },
+    {
+      "style": {
+        "strokeDasharray": "0.8 8",
+        "strokeLinecap": "round",
+        "strokeWidth": 3.5,
+        "stroke": "#2b78e4"
+      },
+      "source": "topic-async",
+      "target": "subtopic-promises",
+      "id": "edge-async-to-promises",
+      "selected": false,
+      "focusable": true
+    }
+  ]
 }

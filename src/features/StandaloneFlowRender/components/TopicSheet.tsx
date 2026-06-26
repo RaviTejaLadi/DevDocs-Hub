@@ -11,11 +11,7 @@ type TopicSheetProps = {
   onClose: () => void;
 };
 
-function ResourceLinks({
-  links,
-}: {
-  links: { id: string; title: string; url: string; type: string }[];
-}) {
+function ResourceLinks({ links }: { links: { id: string; title: string; url: string; type: string }[] }) {
   if (links.length === 0) {
     return null;
   }
@@ -26,12 +22,7 @@ function ResourceLinks({
       <ul className="sfr-sheet__resource-list">
         {links.map((link) => (
           <li key={link.id}>
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sfr-sheet__resource-link"
-            >
+            <a href={link.url} target="_blank" rel="noopener noreferrer" className="sfr-sheet__resource-link">
               <span className="sfr-sheet__resource-type">{link.type}</span>
               <span>{link.title}</span>
             </a>
@@ -79,12 +70,7 @@ export function TopicSheet(props: TopicSheetProps) {
 
   return (
     <div className="sfr-sheet">
-      <button
-        type="button"
-        className="sfr-sheet__backdrop"
-        aria-label="Close topic panel"
-        onClick={onClose}
-      />
+      <button type="button" className="sfr-sheet__backdrop" aria-label="Close topic panel" onClick={onClose} />
 
       <aside
         className="sfr-sheet__panel"
@@ -97,12 +83,7 @@ export function TopicSheet(props: TopicSheetProps) {
             <p className="sfr-sheet__eyebrow">{node.type}</p>
             <h2 className="sfr-sheet__title">{title || node.data.label}</h2>
           </div>
-          <button
-            type="button"
-            className="sfr-sheet__close"
-            aria-label="Close"
-            onClick={onClose}
-          >
+          <button type="button" className="sfr-sheet__close" aria-label="Close" onClick={onClose}>
             <svg
               width="20"
               height="20"
@@ -120,25 +101,16 @@ export function TopicSheet(props: TopicSheetProps) {
         </div>
 
         <div className="sfr-sheet__body">
-          {isLoading && (
-            <div className="sfr-sheet__loading">Loading topic content...</div>
-          )}
+          {isLoading && <div className="sfr-sheet__loading">Loading topic content...</div>}
 
-          {!isLoading && error && (
-            <div className="sfr-sheet__empty">{error}</div>
-          )}
+          {!isLoading && error && <div className="sfr-sheet__empty">{error}</div>}
 
           {!isLoading && !error && hasContent && (
-            <div
-              className="sfr-sheet__content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
+            <div className="sfr-sheet__content" dangerouslySetInnerHTML={{ __html: html }} />
           )}
 
           {!isLoading && !error && !hasContent && (
-            <div className="sfr-sheet__empty">
-              No detailed content is available for this topic yet.
-            </div>
+            <div className="sfr-sheet__empty">No detailed content is available for this topic yet.</div>
           )}
 
           {!isLoading && !error && <ResourceLinks links={links} />}

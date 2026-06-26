@@ -14,11 +14,7 @@ export async function fetchTopicHtml(url: string): Promise<string> {
   return response.text();
 }
 
-export function buildTopicUrl(
-  roadmapId: string,
-  topicPath: string,
-  baseUrl = '',
-): string {
+export function buildTopicUrl(roadmapId: string, topicPath: string, baseUrl = ''): string {
   const normalizedBase = baseUrl.replace(/\/$/, '');
   return `${normalizedBase}/${roadmapId}/${topicPath}`;
 }

@@ -1,31 +1,38 @@
-
 ## Vertical Scaling (Scale Up)
+
 **Definition:** Adding more power (CPU, RAM, storage) to an existing machine.
+
 - **Pros:** Simple, no application changes required.
-- **Cons:** Physical limits (you can't add infinite RAM); single point of failure; expensive downtime.
+- **Cons:** Physical limits (you can't add infinite RAM); single point of
+  failure; expensive downtime.
 
 ## Horizontal Scaling (Scale Out)
+
 **Definition:** Adding more machines (nodes) to a pool of resources.
-- **Pros:** Fault tolerance; practically unlimited scaling; cost-effective (commodity hardware).
-- **Cons:** Requires application design to be stateless; network overhead; complexity (coordination).
+
+- **Pros:** Fault tolerance; practically unlimited scaling; cost-effective
+  (commodity hardware).
+- **Cons:** Requires application design to be stateless; network overhead;
+  complexity (coordination).
 
 ## Decision Matrix
 
-| Aspect | Vertical | Horizontal |
-| :--- | :--- | :--- |
-| **Upgrade** | Upgrade CPU/RAM | Add new servers |
-| **Downtime** | Usually requires downtime | Zero downtime (rolling updates) |
-| **Cost** | Expensive high-end hardware | Cheaper standard hardware |
-| **Limits** | Single host capacity | Infinite (theoretically) |
-| **Complexity** | Low | High |
+| Aspect         | Vertical                    | Horizontal                      |
+| :------------- | :-------------------------- | :------------------------------ |
+| **Upgrade**    | Upgrade CPU/RAM             | Add new servers                 |
+| **Downtime**   | Usually requires downtime   | Zero downtime (rolling updates) |
+| **Cost**       | Expensive high-end hardware | Cheaper standard hardware       |
+| **Limits**     | Single host capacity        | Infinite (theoretically)        |
+| **Complexity** | Low                         | High                            |
 
 ## Architecture Diagram
+
 ```mermaid
 graph TD
     subgraph Vertical Scaling
         V1[Single Server<br>16GB RAM<br>4 vCPUs] --> V2[Single Server<br>64GB RAM<br>16 vCPUs]
     end
-    
+
     subgraph Horizontal Scaling
         H1[Server 1] --> LB[Load Balancer]
         H2[Server 2] --> LB
@@ -43,35 +50,35 @@ Below is a complete microservices system utilizing all 12 principles.
 graph TD
     User[Client] --> CDN[CDN: Static Assets]
     User --> Gateway[API Gateway / Reverse Proxy]
-    
+
     Gateway --> Auth[Auth Service]
     Gateway --> Cart[Cart Service]
     Gateway --> Orders[Order Service]
-    
+
     subgraph Middleware Layer
         Gateway --> Cache[Redis Cache]
         Gateway --> RateLimit[Rate Limiter]
     end
-    
+
     subgraph Scaling
         Cart --> HZ[Horizontal Scaling]
         Orders --> HZ
     end
-    
+
     subgraph Data Layer
         Orders --> Queue[Message Queue]
         Queue --> Workers[Workers]
         Workers --> Shard1[(Shard 1)]
         Workers --> Shard2[(Shard 2)]
-        
+
         Auth --> Master[(Primary DB)]
         Master --> Replica[(Replica DB)]
     end
-    
+
     subgraph Resilience
         Orders --> CB[Circuit Breaker]
     end
-    
+
     ServiceDiscovery[Service Discovery] -.-> Gateway
     ServiceDiscovery -.-> Cart
 ```
@@ -79,9 +86,12 @@ graph TD
 ---
 
 ## Conclusion
-Mastering these 12 concepts provides the foundation for designing systems that can handle millions of users. The key is understanding **trade-offs**:
+
+Mastering these 12 concepts provides the foundation for designing systems that
+can handle millions of users. The key is understanding **trade-offs**:
+
 - **Caching** gives speed but consumes memory.
 - **Sharding** gives scale but kills joins.
 - **Horizontal Scaling** gives resilience but adds complexity.
 
-*Design is the art of choosing the right compromise for your specific use case.*
+_Design is the art of choosing the right compromise for your specific use case._

@@ -1,4 +1,3 @@
-
 ## **React DevTools**
 
 ```jsx
@@ -36,7 +35,7 @@ const MyComponent = ({ prop }) => {
   useEffect(() => {
     console.log('Prop changed:', prop);
   }, [prop]);
-  
+
   return <div>{prop}</div>;
 };
 
@@ -53,60 +52,60 @@ const MyComponent = ({ prop }) => {
 // Custom debug hook
 function useDebugState(initialState, label = 'state') {
   const [state, setState] = useState(initialState);
-  
+
   useEffect(() => {
     console.log(`[${label}] State changed:`, state);
   }, [state]);
-  
+
   return [state, setState];
 }
 
 // Debug useEffect dependencies
 function useDebugEffect(effect, dependencies, label = 'effect') {
   const prevDeps = useRef(dependencies);
-  
+
   useEffect(() => {
     const changed = dependencies.reduce((changes, dep, index) => {
       if (dep !== prevDeps.current[index]) {
         changes.push({
           index,
           from: prevDeps.current[index],
-          to: dep
+          to: dep,
         });
       }
       return changes;
     }, []);
-    
+
     console.log(`[${label}] Dependencies changed:`, changed);
     prevDeps.current = dependencies;
   });
-  
+
   useEffect(effect, dependencies);
 }
 
 // Trace re-renders
 function useWhyDidYouUpdate(name, props) {
   const previousProps = useRef();
-  
+
   useEffect(() => {
     if (previousProps.current) {
       const allKeys = Object.keys({ ...previousProps.current, ...props });
       const changes = {};
-      
-      allKeys.forEach(key => {
+
+      allKeys.forEach((key) => {
         if (previousProps.current[key] !== props[key]) {
           changes[key] = {
             from: previousProps.current[key],
-            to: props[key]
+            to: props[key],
           };
         }
       });
-      
+
       if (Object.keys(changes).length) {
         console.log(`[${name}] Updated:`, changes);
       }
     }
-    
+
     previousProps.current = props;
   });
 }
@@ -119,13 +118,13 @@ function useWhyDidYouUpdate(name, props) {
 function PerformanceMonitor({ children }) {
   const [renderTime, setRenderTime] = useState(0);
   const startTime = useRef(performance.now());
-  
+
   useEffect(() => {
     const endTime = performance.now();
     setRenderTime(endTime - startTime.current);
     startTime.current = endTime;
   });
-  
+
   return (
     <div>
       <div>Render time: {renderTime.toFixed(2)}ms</div>
@@ -167,11 +166,11 @@ function Component() {
 // 1. API request logging
 function useApiLogger() {
   const originalFetch = window.fetch;
-  
-  window.fetch = async function(...args) {
+
+  window.fetch = async function (...args) {
     const [url, options] = args;
     console.log(`[API] Request: ${url}`, options);
-    
+
     try {
       const response = await originalFetch.apply(this, args);
       const clone = response.clone();
@@ -183,7 +182,7 @@ function useApiLogger() {
       throw error;
     }
   };
-  
+
   return () => {
     window.fetch = originalFetch;
   };
@@ -193,21 +192,21 @@ function useApiLogger() {
 async function fetchWithErrorHandling(url, options = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000);
-  
+
   try {
     const response = await fetch(url, {
       ...options,
-      signal: controller.signal
+      signal: controller.signal,
     });
-    
+
     clearTimeout(timeoutId);
-    
+
     if (!response.ok) {
       const error = await response.json();
       console.error('[API] Error:', error);
       throw new Error(error.message || 'Request failed');
     }
-    
+
     return response.json();
   } catch (error) {
     if (error.name === 'AbortError') {
@@ -224,14 +223,15 @@ function setupMockApi() {
   if (process.env.NODE_ENV === 'development') {
     // Mock fetch responses
     const originalFetch = window.fetch;
-    window.fetch = function(url) {
+    window.fetch = function (url) {
       if (url.includes('/api/users')) {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve([
-            { id: 1, name: 'John' },
-            { id: 2, name: 'Jane' }
-          ])
+          json: () =>
+            Promise.resolve([
+              { id: 1, name: 'John' },
+              { id: 2, name: 'Jane' },
+            ]),
         });
       }
       return originalFetch.apply(this, arguments);
@@ -246,22 +246,22 @@ function setupMockApi() {
 // 1. Infinite loop debugging
 function ProblematicComponent() {
   const [data, setData] = useState([]);
-  
+
   // ❌ BAD - Infinite loop
   useEffect(() => {
     setData(fetchData()); // Missing dependencies
   });
-  
+
   // ✅ GOOD
   useEffect(() => {
     setData(fetchData());
   }, []); // Empty deps for once
-  
+
   // ❌ BAD - Setting state in render
   if (data.length === 0) {
     setData(defaultData); // Infinite loop
   }
-  
+
   // ✅ GOOD - Use useEffect or compute
   const displayData = data.length === 0 ? defaultData : data;
 }
@@ -269,43 +269,43 @@ function ProblematicComponent() {
 // 2. Missing data debugging
 function DataComponent({ userId }) {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     if (!userId) {
       console.warn('No userId provided');
       return;
     }
-    
+
     let isMounted = true;
     fetchUser(userId)
-      .then(data => {
+      .then((data) => {
         if (isMounted) {
           console.log('User fetched:', data);
           setUser(data);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Failed to fetch user:', error);
         if (isMounted) setUser(null);
       });
-    
+
     return () => {
       isMounted = false;
       console.log('Cleanup for userId:', userId);
     };
   }, [userId]);
-  
+
   return <div>{user?.name || 'No user'}</div>;
 }
 
 // 3. Context debugging
 function useDebugContext(context, name) {
   const value = useContext(context);
-  
+
   useEffect(() => {
     console.log(`[${name}] Context value:`, value);
   }, [value]);
-  
+
   return value;
 }
 
@@ -315,21 +315,21 @@ class ErrorBoundary extends React.Component {
     super(props);
     this.state = { hasError: false, error: null, errorInfo: null };
   }
-  
+
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-  
+
   componentDidCatch(error, errorInfo) {
     console.error('React Error Boundary caught:', error, errorInfo);
     this.setState({ error, errorInfo });
-    
+
     // Send to error tracking service
     if (window.errorReporting) {
       window.errorReporting.logError(error, errorInfo);
     }
   }
-  
+
   render() {
     if (this.state.hasError) {
       return (

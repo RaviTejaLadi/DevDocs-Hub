@@ -1,71 +1,140 @@
-
-Here is the definitive list of interview topics you must master, categorized by the depth of knowledge expected.
+Here is the definitive list of interview topics you must master, categorized by
+the depth of knowledge expected.
 
 ## Phase 1: The "Walk-Through" (Core Execution & Scope)
-*If you stumble here, the interview is effectively over. These are the non-negotiables.*
 
-- **Hoisting & Temporal Dead Zone (TDZ):** You must explain exactly *why* `let` and `const` are not hoisted in the same way as `var`. You need to articulate the TDZ and how it prevents reference errors before initialization. Be prepared to draw the execution context stack.
-- **Closures in Loops:** The classic `var` vs. `let` in a `for` loop is still asked, but in 2026, they will ask you to build a complex closure (e.g., a debounce function or a private counter) and explain where the closed-over variables live in memory.
-- **`==` vs. `===` (Abstract vs. Strict Equality):** You must memorize the coercion rules. If you say "always use `===`," you will be pressed on *when* `==` is actually useful (e.g., checking for `null` or `undefined` with `if (x == null)`). Know the `ToPrimitive` and `ToNumber` abstract operations.
-- **`map`, `filter`, `reduce`:** You will be asked to implement `reduce` polyfill from scratch. You must know the performance implications of chaining multiple array methods (it loops multiple times) vs. using a single `reduce` (it loops once).
+_If you stumble here, the interview is effectively over. These are the
+non-negotiables._
+
+- **Hoisting & Temporal Dead Zone (TDZ):** You must explain exactly _why_ `let`
+  and `const` are not hoisted in the same way as `var`. You need to articulate
+  the TDZ and how it prevents reference errors before initialization. Be
+  prepared to draw the execution context stack.
+- **Closures in Loops:** The classic `var` vs. `let` in a `for` loop is still
+  asked, but in 2026, they will ask you to build a complex closure (e.g., a
+  debounce function or a private counter) and explain where the closed-over
+  variables live in memory.
+- **`==` vs. `===` (Abstract vs. Strict Equality):** You must memorize the
+  coercion rules. If you say "always use `===`," you will be pressed on _when_
+  `==` is actually useful (e.g., checking for `null` or `undefined` with
+  `if (x == null)`). Know the `ToPrimitive` and `ToNumber` abstract operations.
+- **`map`, `filter`, `reduce`:** You will be asked to implement `reduce`
+  polyfill from scratch. You must know the performance implications of chaining
+  multiple array methods (it loops multiple times) vs. using a single `reduce`
+  (it loops once).
 
 ## Phase 2: The "Hot Seat" (Asynchronous Puzzlers)
-*Expect to be handed a whiteboard (or a shared code editor) with a sequence of `setTimeout`, `Promise`, and `process.nextTick` (Node.js) or `queueMicrotask` (Browser).*
 
-- **The Event Loop Ordering:** You must be able to predict the output of a script mixing `setTimeout(fn, 0)`, `Promise.resolve().then(fn)`, and `requestAnimationFrame`. 
-- **The Trap:** Know that **Microtasks** (Promises) empty out entirely *before* the Event Loop moves to the next **Macrotask** (setTimeout). 
-- **Async/Await Desugaring:** Interviewers will ask you to rewrite an `async/await` function as a raw Promise chain. This proves you know `await` doesn't block the main thread but instead pauses the function's execution while yielding control back to the event loop.
+_Expect to be handed a whiteboard (or a shared code editor) with a sequence of
+`setTimeout`, `Promise`, and `process.nextTick` (Node.js) or `queueMicrotask`
+(Browser)._
+
+- **The Event Loop Ordering:** You must be able to predict the output of a
+  script mixing `setTimeout(fn, 0)`, `Promise.resolve().then(fn)`, and
+  `requestAnimationFrame`.
+- **The Trap:** Know that **Microtasks** (Promises) empty out entirely _before_
+  the Event Loop moves to the next **Macrotask** (setTimeout).
+- **Async/Await Desugaring:** Interviewers will ask you to rewrite an
+  `async/await` function as a raw Promise chain. This proves you know `await`
+  doesn't block the main thread but instead pauses the function's execution
+  while yielding control back to the event loop.
 
 ## Phase 3: The "Deep Dive" (Objects, Prototypes, and `this`)
-*This is where Senior Engineers distinguish themselves. They will mutate prototypes and ask you to trace `this` across multiple contexts.*
 
-- **The `new` Keyword Internals:** You must step through exactly what happens when `new MyClass()` is called (creates empty object, links prototype, binds `this`, returns object). 
-- **Implicit, Explicit, and Default Binding:** You must solve the "Lost `this`" problem. They will give you a destructured method: `const { log } = console; log('hi');` and ask why this works or breaks. You need to know how `.bind()`, `.call()`, and `.apply()` override the default context.
-- **Prototype Chain Lookups:** Given a multi-level prototype chain (e.g., `A` inherits from `B`, `B` inherits from `C`), and you call `a.someMethod`, explain the lookup order. Be ready to explain `Object.hasOwn()` (the 2022 replacement for `hasOwnProperty`) and why `hasOwnProperty` can be unreliable.
+_This is where Senior Engineers distinguish themselves. They will mutate
+prototypes and ask you to trace `this` across multiple contexts._
+
+- **The `new` Keyword Internals:** You must step through exactly what happens
+  when `new MyClass()` is called (creates empty object, links prototype, binds
+  `this`, returns object).
+- **Implicit, Explicit, and Default Binding:** You must solve the "Lost `this`"
+  problem. They will give you a destructured method:
+  `const { log } = console; log('hi');` and ask why this works or breaks. You
+  need to know how `.bind()`, `.call()`, and `.apply()` override the default
+  context.
+- **Prototype Chain Lookups:** Given a multi-level prototype chain (e.g., `A`
+  inherits from `B`, `B` inherits from `C`), and you call `a.someMethod`,
+  explain the lookup order. Be ready to explain `Object.hasOwn()` (the 2022
+  replacement for `hasOwnProperty`) and why `hasOwnProperty` can be unreliable.
 
 ## Phase 4: The "Modern Frontier" (ES2025/2026 & Performance)
-*In 2026, you aren't just asked about ES6; you are asked about features that landed last month. This tests if you keep your skills updated.*
 
-- **Resource Management (`using`):** Be prepared to explain the `Symbol.dispose` and `Symbol.asyncDispose` patterns. They will ask you to design a class that manages a file handle or database connection using `using` to prevent memory leaks.
-- **Temporal API:** They will give you a date manipulation problem and explicitly forbid you from using `new Date()` (because it's flawed). You must use `Temporal.PlainDate`, `Temporal.ZonedDateTime`, and explain how Temporal fixes timezone/DST issues.
-- **Iterator Helpers:** They will ask you to process a massive, infinite data stream efficiently. Your answer must involve using `.map()`, `.filter()`, and `.take()` on an Iterator directly to achieve lazy evaluation (processing only what is needed, as opposed to an array which loads everything into memory).
+_In 2026, you aren't just asked about ES6; you are asked about features that
+landed last month. This tests if you keep your skills updated._
+
+- **Resource Management (`using`):** Be prepared to explain the `Symbol.dispose`
+  and `Symbol.asyncDispose` patterns. They will ask you to design a class that
+  manages a file handle or database connection using `using` to prevent memory
+  leaks.
+- **Temporal API:** They will give you a date manipulation problem and
+  explicitly forbid you from using `new Date()` (because it's flawed). You must
+  use `Temporal.PlainDate`, `Temporal.ZonedDateTime`, and explain how Temporal
+  fixes timezone/DST issues.
+- **Iterator Helpers:** They will ask you to process a massive, infinite data
+  stream efficiently. Your answer must involve using `.map()`, `.filter()`, and
+  `.take()` on an Iterator directly to achieve lazy evaluation (processing only
+  what is needed, as opposed to an array which loads everything into memory).
 
 ## Phase 5: The "System Design" (Architecture & Optimization)
-*These questions are mixed with general system design but are JavaScript-specific regarding how you manage state and memory.*
 
-- **Memory Leak Diagnosis:** You will be shown a code snippet (usually involving a React `useEffect` or a DOM event listener) and asked to spot the memory leak. You must mention `AbortController` to clean up event listeners and fetch requests, and `WeakRef` for caching.
-- **Micro-Frontend Communication:** How do you share state between different JavaScript bundles loaded via Import Maps? They want to hear about **Custom Events** (pub/sub) or **Shared Singleton Proxies**.
-- **Code-Splitting & Lazy Loading:** You must explain how `dynamic import()` works under the hood (it returns a Promise that resolves to a module object) and how it affects the network waterfall.
+_These questions are mixed with general system design but are
+JavaScript-specific regarding how you manage state and memory._
+
+- **Memory Leak Diagnosis:** You will be shown a code snippet (usually involving
+  a React `useEffect` or a DOM event listener) and asked to spot the memory
+  leak. You must mention `AbortController` to clean up event listeners and fetch
+  requests, and `WeakRef` for caching.
+- **Micro-Frontend Communication:** How do you share state between different
+  JavaScript bundles loaded via Import Maps? They want to hear about **Custom
+  Events** (pub/sub) or **Shared Singleton Proxies**.
+- **Code-Splitting & Lazy Loading:** You must explain how `dynamic import()`
+  works under the hood (it returns a Promise that resolves to a module object)
+  and how it affects the network waterfall.
 
 ---
 
 ## The "Whiteboard" Coding Challenges (Must-Know Algorithms)
 
-While LeetCode is universal, in JavaScript interviews, they specifically test "Functional JavaScript" algorithms:
+While LeetCode is universal, in JavaScript interviews, they specifically test
+"Functional JavaScript" algorithms:
 
-| Challenge | What They Test | Senior-Level Twist |
-| :--- | :--- | :--- |
-| **Flatten Nested Arrays** | Recursion, Array methods | Handle deeply nested arrays without stack overflow (using iteration). |
-| **Deep Clone an Object** | StructuredClone vs. JSON vs. Recursive | Handle circular references using a `WeakMap` cache. |
-| **Debounce & Throttle** | Closures, `setTimeout`, `clearTimeout` | Implement a **leading-edge** debounce vs. **trailing-edge**. |
-| **Promise.all() Polyfill** | Promise resolution, error catching | Implement `Promise.any()` (which ignores rejections until all reject). |
-| **Event Emitter (Pub/Sub)** | `this`, Maps, clean-up | Implement a `once()` method and a method to remove specific listeners. |
+| Challenge                   | What They Test                         | Senior-Level Twist                                                     |
+| :-------------------------- | :------------------------------------- | :--------------------------------------------------------------------- |
+| **Flatten Nested Arrays**   | Recursion, Array methods               | Handle deeply nested arrays without stack overflow (using iteration).  |
+| **Deep Clone an Object**    | StructuredClone vs. JSON vs. Recursive | Handle circular references using a `WeakMap` cache.                    |
+| **Debounce & Throttle**     | Closures, `setTimeout`, `clearTimeout` | Implement a **leading-edge** debounce vs. **trailing-edge**.           |
+| **Promise.all() Polyfill**  | Promise resolution, error catching     | Implement `Promise.any()` (which ignores rejections until all reject). |
+| **Event Emitter (Pub/Sub)** | `this`, Maps, clean-up                 | Implement a `once()` method and a method to remove specific listeners. |
 
 ---
 
 ## The "Gotcha" Behavioral Question for 2026
 
-**Question:** *"You are adding a new feature and discover that your `npm install` is failing because of a dependency conflict between `React 19` and a legacy package. What do you do?"*
+**Question:** _"You are adding a new feature and discover that your
+`npm install` is failing because of a dependency conflict between `React 19` and
+a legacy package. What do you do?"_
 
-- **Junior Answer:** "I try `--force` or `--legacy-peer-deps` to get it working."
-- **Senior Answer:** "I use `npm overrides` or `pnpm patch` to resolve the peer dependency mismatch. If that fails, I propose using `import maps` to dynamically load a shim, or I use Webpack's `resolve.alias` to point the legacy package to a compatible fork. I never blindly override peer dependencies without auditing the bundle size and security implications."
+- **Junior Answer:** "I try `--force` or `--legacy-peer-deps` to get it
+  working."
+- **Senior Answer:** "I use `npm overrides` or `pnpm patch` to resolve the peer
+  dependency mismatch. If that fails, I propose using `import maps` to
+  dynamically load a shim, or I use Webpack's `resolve.alias` to point the
+  legacy package to a compatible fork. I never blindly override peer
+  dependencies without auditing the bundle size and security implications."
 
 ---
 
 ## Final Tip: The "Rhetorical Trap"
-In 2026, the interviewer will likely ask: *"Is JavaScript a compiled or interpreted language?"*
 
-The correct answer is **neither**. It is a **Just-In-Time (JIT) compiled** language. 
-You must mention **Ignition** (the interpreter) and **TurboFan** (the optimizing compiler) in V8. This proves you understand that the browser compiles your code to bytecode at runtime, which is why optimization killers (like `try/catch` inside hot loops or changing object shapes dynamically) can tank performance. 
+In 2026, the interviewer will likely ask: _"Is JavaScript a compiled or
+interpreted language?"_
 
-Master these topics, and you won't just pass the interview—you'll command the conversation.
+The correct answer is **neither**. It is a **Just-In-Time (JIT) compiled**
+language. You must mention **Ignition** (the interpreter) and **TurboFan** (the
+optimizing compiler) in V8. This proves you understand that the browser compiles
+your code to bytecode at runtime, which is why optimization killers (like
+`try/catch` inside hot loops or changing object shapes dynamically) can tank
+performance.
+
+Master these topics, and you won't just pass the interview—you'll command the
+conversation.

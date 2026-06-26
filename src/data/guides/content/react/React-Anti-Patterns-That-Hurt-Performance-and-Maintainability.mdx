@@ -1,4 +1,3 @@
-
 ## **Prop Drilling**
 
 ```jsx
@@ -58,10 +57,21 @@ function App() {
   const [notifications, setNotifications] = useState([]);
   const [settings, setSettings] = useState({});
   // ... many more states
-  
+
   // All in one context - causes unnecessary re-renders
   return (
-    <AppContext.Provider value={{ theme, setTheme, user, setUser, notifications, setNotifications, settings, setSettings }}>
+    <AppContext.Provider
+      value={{
+        theme,
+        setTheme,
+        user,
+        setUser,
+        notifications,
+        setNotifications,
+        settings,
+        setSettings,
+      }}
+    >
       <AppContent />
     </AppContext.Provider>
   );
@@ -76,11 +86,13 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [user, setUser] = useState(null);
   const [notifications, setNotifications] = useState([]);
-  
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <UserContext.Provider value={{ user, setUser }}>
-        <NotificationContext.Provider value={{ notifications, setNotifications }}>
+        <NotificationContext.Provider
+          value={{ notifications, setNotifications }}
+        >
           <AppContent />
         </NotificationContext.Provider>
       </UserContext.Provider>
@@ -109,8 +121,8 @@ function App() {
 function Component({ items }) {
   return (
     <div>
-      {items.map(item => (
-        <Item 
+      {items.map((item) => (
+        <Item
           key={item.id}
           onClick={() => handleClick(item.id)} // New function each render
         />
@@ -121,17 +133,17 @@ function Component({ items }) {
 
 // ✅ GOOD - Memoized callback
 function Component({ items }) {
-  const handleItemClick = useCallback((id) => {
-    handleClick(id);
-  }, [handleClick]);
-  
+  const handleItemClick = useCallback(
+    (id) => {
+      handleClick(id);
+    },
+    [handleClick]
+  );
+
   return (
     <div>
-      {items.map(item => (
-        <Item 
-          key={item.id}
-          onClick={handleItemClick}
-        />
+      {items.map((item) => (
+        <Item key={item.id} onClick={handleItemClick} />
       ))}
     </div>
   );
@@ -163,23 +175,23 @@ const [state, setState] = useState({
         country: 'USA',
         coordinates: {
           lat: 40.7128,
-          lng: -74.0060
-        }
-      }
+          lng: -74.006,
+        },
+      },
     },
     preferences: {
       theme: 'light',
       notifications: {
         email: true,
-        push: false
-      }
-    }
-  }
+        push: false,
+      },
+    },
+  },
 });
 
 // Updating deeply nested state
 const updateCity = (newCity) => {
-  setState(prev => ({
+  setState((prev) => ({
     ...prev,
     user: {
       ...prev.user,
@@ -187,10 +199,10 @@ const updateCity = (newCity) => {
         ...prev.user.profile,
         address: {
           ...prev.user.profile.address,
-          city: newCity
-        }
-      }
-    }
+          city: newCity,
+        },
+      },
+    },
   }));
 };
 
@@ -199,22 +211,28 @@ const [user, setUser] = useState({
   id: 1,
   name: 'John',
   addressId: 1,
-  preferencesId: 1
+  preferencesId: 1,
 });
 
 const [addresses, setAddresses] = useState({
-  1: { street: '123 Main St', city: 'New York', country: 'USA', lat: 40.7128, lng: -74.0060 }
+  1: {
+    street: '123 Main St',
+    city: 'New York',
+    country: 'USA',
+    lat: 40.7128,
+    lng: -74.006,
+  },
 });
 
 const [preferences, setPreferences] = useState({
-  1: { theme: 'light', emailNotifications: true, pushNotifications: false }
+  1: { theme: 'light', emailNotifications: true, pushNotifications: false },
 });
 
 // Updating is much simpler
 const updateCity = (city) => {
-  setAddresses(prev => ({
+  setAddresses((prev) => ({
     ...prev,
-    [user.addressId]: { ...prev[user.addressId], city }
+    [user.addressId]: { ...prev[user.addressId], city },
   }));
 };
 
@@ -224,15 +242,15 @@ function reducer(state, action) {
     case 'UPDATE_USER_PROFILE':
       return {
         ...state,
-        user: { ...state.user, ...action.payload }
+        user: { ...state.user, ...action.payload },
       };
     case 'UPDATE_ADDRESS':
       return {
         ...state,
         addresses: {
           ...state.addresses,
-          [action.id]: { ...state.addresses[action.id], ...action.payload }
-        }
+          [action.id]: { ...state.addresses[action.id], ...action.payload },
+        },
       };
     default:
       return state;
@@ -247,34 +265,34 @@ function reducer(state, action) {
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
   const [userCopy, setUserCopy] = useState(null); // Duplicate
-  
+
   useEffect(() => {
-    fetchUser(userId).then(data => {
+    fetchUser(userId).then((data) => {
       setUser(data);
       setUserCopy(data); // Duplicate
     });
   }, [userId]);
-  
+
   const updateUser = (newData) => {
     setUser(newData);
     setUserCopy(newData); // Must keep in sync
   };
-  
+
   return <div>...</div>;
 }
 
 // ✅ GOOD - Single source of truth
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     fetchUser(userId).then(setUser);
   }, [userId]);
-  
+
   const updateUser = (newData) => {
     setUser(newData);
   };
-  
+
   return <div>...</div>;
 }
 
@@ -282,12 +300,12 @@ function UserProfile({ userId }) {
 function ProductDetails({ product }) {
   const [name, setName] = useState(product.name);
   const [price, setPrice] = useState(product.price);
-  
+
   useEffect(() => {
     setName(product.name);
     setPrice(product.price);
   }, [product]);
-  
+
   // ...
 }
 
@@ -295,16 +313,16 @@ function ProductDetails({ product }) {
 function ProductDetails({ product }) {
   // Option 1: Compute directly
   const { name, price } = product;
-  
+
   // Option 2: Use key to reset state
   const [isEditing, setIsEditing] = useState(false);
   // If product changes, component remounts with new key
-  
+
   return <div>...</div>;
 }
 
 // Usage with key
-<ProductDetails key={product.id} product={product} />
+<ProductDetails key={product.id} product={product} />;
 ```
 
 ## **Unnecessary Effects**
@@ -313,28 +331,28 @@ function ProductDetails({ product }) {
 // ❌ BAD - Effect for derived state
 function Component({ items }) {
   const [filteredItems, setFilteredItems] = useState([]);
-  
+
   useEffect(() => {
-    setFilteredItems(items.filter(item => item.active));
+    setFilteredItems(items.filter((item) => item.active));
   }, [items]);
-  
+
   return <List items={filteredItems} />;
 }
 
 // ✅ GOOD - Derive directly
 function Component({ items }) {
-  const filteredItems = items.filter(item => item.active);
+  const filteredItems = items.filter((item) => item.active);
   return <List items={filteredItems} />;
 }
 
 // ❌ BAD - Effect for computed values
 function Component({ a, b }) {
   const [sum, setSum] = useState(0);
-  
+
   useEffect(() => {
     setSum(a + b);
   }, [a, b]);
-  
+
   return <div>{sum}</div>;
 }
 
@@ -347,18 +365,18 @@ function Component({ a, b }) {
 // ❌ BAD - Effect for event handlers
 function Component() {
   const [count, setCount] = useState(0);
-  
+
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
         setCount(count + 1);
       }
     };
-    
+
     window.addEventListener('keypress', handleKeyPress);
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, [count]); // Effect re-runs on every count change
-  
+
   return <div>{count}</div>;
 }
 
@@ -366,22 +384,22 @@ function Component() {
 function Component() {
   const [count, setCount] = useState(0);
   const countRef = useRef(count);
-  
+
   useEffect(() => {
     countRef.current = count;
   }, [count]);
-  
+
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
         setCount(countRef.current + 1);
       }
     };
-    
+
     window.addEventListener('keypress', handleKeyPress);
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, []); // Only runs once
-  
+
   return <div>{count}</div>;
 }
 ```
@@ -393,12 +411,16 @@ function Component() {
 function List({ items }) {
   return (
     <div>
-      {items.map(item => (
-        <Item 
+      {items.map((item) => (
+        <Item
           key={item.id}
           {...item}
-          onUpdate={() => {/* ... */}} // New function each render
-          onDelete={() => {/* ... */}} // New function each render
+          onUpdate={() => {
+            /* ... */
+          }} // New function each render
+          onDelete={() => {
+            /* ... */
+          }} // New function each render
         />
       ))}
     </div>
@@ -410,15 +432,15 @@ function List({ items }) {
   const handleUpdate = useCallback((id) => {
     // Update logic
   }, []);
-  
+
   const handleDelete = useCallback((id) => {
     // Delete logic
   }, []);
-  
+
   return (
     <div>
-      {items.map(item => (
-        <Item 
+      {items.map((item) => (
+        <Item
           key={item.id}
           {...item}
           onUpdate={handleUpdate}
@@ -441,20 +463,19 @@ const Item = React.memo(({ id, name, onUpdate, onDelete }) => {
 
 // ❌ BAD - Inline styles causing re-renders
 function Component({ color, size }) {
-  return (
-    <div style={{ color, fontSize: size + 'px' }}>
-      Content
-    </div>
-  );
+  return <div style={{ color, fontSize: size + 'px' }}>Content</div>;
 }
 
 // ✅ GOOD - Memoized styles
 function Component({ color, size }) {
-  const style = useMemo(() => ({
-    color,
-    fontSize: size + 'px'
-  }), [color, size]);
-  
+  const style = useMemo(
+    () => ({
+      color,
+      fontSize: size + 'px',
+    }),
+    [color, size]
+  );
+
   return <div style={style}>Content</div>;
 }
 ```
@@ -477,31 +498,31 @@ function Component({ color, size }) {
 const AntiPatternPrevention = {
   // 1. Use unique, stable keys
   key: 'unique-id',
-  
+
   // 2. Immutable state updates
   updateState: (prev) => ({ ...prev, newProp: value }),
-  
+
   // 3. Include all dependencies
   useEffect: () => { /* effect */ }, [dependencies],
-  
+
   // 4. Use multiple contexts, not one giant one
   contexts: ['UserContext', 'ThemeContext', 'SettingsContext'],
-  
+
   // 5. Use Context or state management for deep state
   stateManagement: 'Use Context or Redux',
-  
+
   // 6. Memoize callbacks with useCallback
   callbacks: useCallback(() => {}, [deps]),
-  
+
   // 7. Use React.memo and useMemo
   memoization: 'Memoize components and expensive calculations',
-  
+
   // 8. Normalize state
   normalizedState: 'Flatten nested structures',
-  
+
   // 9. Single source of truth
   singleSource: 'Derive or compute instead of duplicating',
-  
+
   // 10. Compute values directly when possible
   derivedValues: 'Compute, don't useEffect'
 };

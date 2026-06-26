@@ -1,14 +1,17 @@
-
 ## How it works
-- **Client-Side Discovery:** The client queries a registry (e.g., Eureka) to get the service IP.
-- **Server-Side Discovery:** A proxy (like a Load Balancer) queries the registry.
+
+- **Client-Side Discovery:** The client queries a registry (e.g., Eureka) to get
+  the service IP.
+- **Server-Side Discovery:** A proxy (like a Load Balancer) queries the
+  registry.
 
 ## Architecture Diagram
+
 ```mermaid
 graph TD
     ServiceA[Service A] --> Registry[Service Registry]
     ServiceB[Service B] --> Registry
-    
+
     Client --> LB[Load Balancer / Gateway]
     LB -.->|Queries| Registry
     Registry -.->|Returns IP| LB
@@ -17,4 +20,5 @@ graph TD
 ```
 
 ## Tools
+
 - Netflix Eureka, Consul, Zookeeper, Kubernetes DNS.

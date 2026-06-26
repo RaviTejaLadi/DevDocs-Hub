@@ -1,14 +1,13 @@
-
 ## **Compound Components**
 
 ```jsx
 // Parent manages state, children are controlled
 function Tabs({ children, defaultTab }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
-  
+
   return (
     <div className="tabs">
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child) => {
         if (child.type === TabList) {
           return React.cloneElement(child, { activeTab, setActiveTab });
         }
@@ -24,7 +23,7 @@ function Tabs({ children, defaultTab }) {
 function TabList({ children, activeTab, setActiveTab }) {
   return (
     <div className="tab-list">
-      {React.Children.map(children, child => 
+      {React.Children.map(children, (child) =>
         React.cloneElement(child, { activeTab, setActiveTab })
       )}
     </div>
@@ -34,7 +33,7 @@ function TabList({ children, activeTab, setActiveTab }) {
 function Tab({ children, index, activeTab, setActiveTab }) {
   const isActive = index === activeTab;
   return (
-    <button 
+    <button
       className={isActive ? 'active' : ''}
       onClick={() => setActiveTab(index)}
     >
@@ -57,7 +56,7 @@ function TabPanels({ children, activeTab }) {
     <div>Panel 1</div>
     <div>Panel 2</div>
   </TabPanels>
-</Tabs>
+</Tabs>;
 ```
 
 ## **Controlled vs Uncontrolled Components**
@@ -66,7 +65,7 @@ function TabPanels({ children, activeTab }) {
 // Uncontrolled: internal state
 function UncontrolledInput({ defaultValue }) {
   const [value, setValue] = useState(defaultValue || '');
-  return <input value={value} onChange={e => setValue(e.target.value)} />;
+  return <input value={value} onChange={(e) => setValue(e.target.value)} />;
 }
 
 // Controlled: state managed by parent
@@ -79,14 +78,14 @@ function HybridInput({ value: propValue, onChange, defaultValue }) {
   const [internalValue, setInternalValue] = useState(defaultValue || '');
   const isControlled = propValue !== undefined;
   const value = isControlled ? propValue : internalValue;
-  
+
   const handleChange = (e) => {
     if (!isControlled) {
       setInternalValue(e.target.value);
     }
     onChange?.(e);
   };
-  
+
   return <input value={value} onChange={handleChange} />;
 }
 ```
@@ -102,12 +101,12 @@ function DataFetcher({ url, render, loadingComponent }) {
 
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setData(data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
         setLoading(false);
       });
@@ -123,16 +122,18 @@ function DataFetcher({ url, render, loadingComponent }) {
   url="/api/users"
   render={({ data }) => (
     <ul>
-      {data.map(user => <li key={user.id}>{user.name}</li>)}
+      {data.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
     </ul>
   )}
   loadingComponent={<CustomSpinner />}
-/>
+/>;
 
 // With children as function
 function MouseTracker({ children }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     const handleMove = (e) => setPosition({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handleMove);
@@ -184,7 +185,7 @@ function Layout({ header, sidebar, main, footer }) {
   sidebar={<Sidebar />}
   main={<MainContent />}
   footer={<Footer />}
-/>
+/>;
 ```
 
 ## **Headless Components**
@@ -196,7 +197,7 @@ function useToggle(initial = false) {
   const toggle = useCallback(() => setOn(prev => !prev), []);
   const setOn_ = useCallback(() => setOn(true), []);
   const setOff = useCallback(() => setOn(false), []);
-  
+
   return { on, toggle, setOn: setOn_, setOff };
 }
 
@@ -209,7 +210,7 @@ function Toggle({ children, initial = false }) {
 // Usage - completely custom UI
 <Toggle>
   {({ on, toggle }) => (
-    <button 
+    <button
       className={on ? 'active' : ''}
       onClick={toggle}
     >
@@ -232,19 +233,19 @@ function Toggle({ children, initial = false }) {
 // Advanced headless with custom hooks
 function useList(initialItems = []) {
   const [items, setItems] = useState(initialItems);
-  
+
   const add = useCallback((item) => {
     setItems(prev => [...prev, item]);
   }, []);
-  
+
   const remove = useCallback((index) => {
     setItems(prev => prev.filter((_, i) => i !== index));
   }, []);
-  
+
   const update = useCallback((index, item) => {
     setItems(prev => prev.map((el, i) => i === index ? item : el));
   }, []);
-  
+
   return { items, add, remove, update };
 }
 

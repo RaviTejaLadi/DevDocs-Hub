@@ -1,6 +1,7 @@
-
 ## **Understanding Re-renders**
+
 React re-renders when:
+
 - State changes
 - Props change
 - Parent re-renders
@@ -99,14 +100,14 @@ function App() {
 const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
 
 // Webpack magic comments
-const LazyComponent = React.lazy(() => 
+const LazyComponent = React.lazy(() =>
   import(/* webpackChunkName: "my-component" */ './MyComponent')
 );
 
 // Named exports
 const LazyComponent = React.lazy(() =>
-  import('./MyComponent').then(module => ({
-    default: module.MyComponent
+  import('./MyComponent').then((module) => ({
+    default: module.MyComponent,
   }))
 );
 ```

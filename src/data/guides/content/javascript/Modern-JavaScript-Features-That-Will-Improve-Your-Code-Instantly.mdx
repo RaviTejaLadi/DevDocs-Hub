@@ -1,5 +1,5 @@
-
 ## 1. **Optional Chaining (`?.`)**
+
 Clean up nested property access.
 
 ```javascript
@@ -17,11 +17,12 @@ const first = arr?.[0];
 ```
 
 ## 2. **Nullish Coalescing (`??`)**
+
 Better default values that respect falsy values.
 
 ```javascript
 // Before
-const value = (input !== undefined && input !== null) ? input : 0;
+const value = input !== undefined && input !== null ? input : 0;
 
 // After (ES2020)
 const value = input ?? 0;
@@ -32,6 +33,7 @@ const count = input || 10; // If input = 0, becomes 10 (wrong)
 ```
 
 ## 3. **Logical Assignment Operators (`??=`, `&&=`, `||=`)**
+
 Combine logical operators with assignment.
 
 ```javascript
@@ -52,6 +54,7 @@ state.count += 1;
 ```
 
 ## 4. **Numeric Separators (`_`)**
+
 Make big numbers readable.
 
 ```javascript
@@ -61,13 +64,14 @@ const billion = 1000000000;
 // After (ES2021)
 const billion = 1_000_000_000;
 const bytes = 0b1100_0101_1001;
-const hex = 0xDEAD_BEEF;
+const hex = 0xdead_beef;
 
 // Much easier to read large numbers
 const price = 99_999.99;
 ```
 
 ## 5. **`Array.prototype.at()`**
+
 Cleaner access to array elements from the end.
 
 ```javascript
@@ -78,9 +82,9 @@ const last = arr[arr.length - 1];
 const secondLast = arr[arr.length - 2];
 
 // After (ES2022)
-const last = arr.at(-1);  // 5
+const last = arr.at(-1); // 5
 const secondLast = arr.at(-2); // 4
-const first = arr.at(0);  // 1
+const first = arr.at(0); // 1
 
 // Also works with strings
 const str = 'hello';
@@ -88,6 +92,7 @@ str.at(-1); // 'o'
 ```
 
 ## 6. **`Object.hasOwn()`**
+
 Safe property checking without `hasOwnProperty` issues.
 
 ```javascript
@@ -103,6 +108,7 @@ Object.hasOwn(obj, 'key'); // false (no error!)
 ```
 
 ## 7. **`Promise.withResolvers()`**
+
 Cleaner promise creation with external resolve/reject.
 
 ```javascript
@@ -122,14 +128,14 @@ class AsyncQueue {
     this._resolve = null;
     this._promise = null;
   }
-  
+
   wait() {
     const { promise, resolve } = Promise.withResolvers();
     this._resolve = resolve;
     this._promise = promise;
     return promise;
   }
-  
+
   notify(value) {
     if (this._resolve) {
       this._resolve(value);
@@ -141,19 +147,21 @@ class AsyncQueue {
 ```
 
 ## 8. **Iterator Helpers (ES2025)**
+
 Lazy operations on iterators, improving performance.
 
 ```javascript
 // Before - eager evaluation (creates intermediate arrays)
 const result = numbers
-  .filter(n => n > 10)
-  .map(n => n * 2)
+  .filter((n) => n > 10)
+  .map((n) => n * 2)
   .slice(0, 5);
 
 // After - lazy evaluation (only processes what's needed)
-const result = numbers.values()
-  .filter(n => n > 10)
-  .map(n => n * 2)
+const result = numbers
+  .values()
+  .filter((n) => n > 10)
+  .map((n) => n * 2)
   .take(5)
   .toArray();
 
@@ -164,12 +172,13 @@ function* infiniteNumbers() {
 }
 
 const firstTen = infiniteNumbers()
-  .filter(n => n % 2 === 0)
+  .filter((n) => n % 2 === 0)
   .take(10)
   .toArray();
 ```
 
 ## 9. **`using` for Resource Management (ES2026)**
+
 Automatic cleanup of resources.
 
 ```javascript
@@ -193,7 +202,7 @@ class FileHandle {
   constructor(path) {
     this.fd = openSync(path);
   }
-  
+
   [Symbol.dispose]() {
     closeSync(this.fd);
     console.log('File closed');
@@ -207,6 +216,7 @@ function processFile(path) {
 ```
 
 ## 10. **`import.meta`**
+
 Module-scoped metadata without environment globals.
 
 ```javascript

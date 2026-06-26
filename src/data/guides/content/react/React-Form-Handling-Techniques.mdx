@@ -1,4 +1,3 @@
-
 ## **Controlled vs Uncontrolled Inputs**
 
 ```jsx
@@ -7,31 +6,23 @@ function ControlledForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    age: ''
+    age: '',
   });
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+      <input name="name" value={formData.name} onChange={handleChange} />
+      <input name="email" value={formData.email} onChange={handleChange} />
       <input
         name="age"
         type="number"
@@ -47,15 +38,15 @@ function ControlledForm() {
 function UncontrolledForm() {
   const nameRef = useRef();
   const emailRef = useRef();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
       name: nameRef.current.value,
-      email: emailRef.current.value
+      email: emailRef.current.value,
     });
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <input ref={nameRef} defaultValue="John" />
@@ -68,13 +59,15 @@ function UncontrolledForm() {
 // Hybrid approach with useImperativeHandle
 const FormInput = React.forwardRef(({ label, ...props }, ref) => {
   const inputRef = useRef();
-  
+
   useImperativeHandle(ref, () => ({
     focus: () => inputRef.current.focus(),
     value: () => inputRef.current.value,
-    reset: () => { inputRef.current.value = ''; }
+    reset: () => {
+      inputRef.current.value = '';
+    },
   }));
-  
+
   return (
     <div>
       <label>{label}</label>
@@ -85,12 +78,12 @@ const FormInput = React.forwardRef(({ label, ...props }, ref) => {
 
 function ParentComponent() {
   const inputRef = useRef();
-  
+
   const handleClick = () => {
     inputRef.current.focus();
     console.log(inputRef.current.value());
   };
-  
+
   return <FormInput ref={inputRef} label="Name" />;
 }
 ```
@@ -102,7 +95,7 @@ function ParentComponent() {
 function LoginForm() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
-  
+
   const validate = () => {
     const newErrors = {};
     if (!formData.email) newErrors.email = 'Email is required';
@@ -114,7 +107,7 @@ function LoginForm() {
     }
     return newErrors;
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -125,13 +118,15 @@ function LoginForm() {
     // Submit form
     console.log(formData);
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <input
           value={formData.email}
-          onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, email: e.target.value }))
+          }
         />
         {errors.email && <span className="error">{errors.email}</span>}
       </div>
@@ -139,7 +134,9 @@ function LoginForm() {
         <input
           type="password"
           value={formData.password}
-          onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, password: e.target.value }))
+          }
         />
         {errors.password && <span className="error">{errors.password}</span>}
       </div>
@@ -153,31 +150,35 @@ import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().min(6, 'Min 6 characters').required('Password is required'),
-  confirmPassword: yup.string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+  password: yup
+    .string()
+    .min(6, 'Min 6 characters')
+    .required('Password is required'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       // Submit
       console.log('Form valid:', formData);
     } catch (err) {
       const validationErrors = {};
-      err.inner.forEach(error => {
+      err.inner.forEach((error) => {
         validationErrors[error.path] = error.message;
       });
       setErrors(validationErrors);
@@ -185,26 +186,32 @@ function RegistrationForm() {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <Input
         value={formData.email}
-        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, email: e.target.value }))
+        }
         error={errors.email}
         disabled={isSubmitting}
       />
       <Input
         type="password"
         value={formData.password}
-        onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, password: e.target.value }))
+        }
         error={errors.password}
         disabled={isSubmitting}
       />
       <Input
         type="password"
         value={formData.confirmPassword}
-        onChange={(e) => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }))
+        }
         error={errors.confirmPassword}
         disabled={isSubmitting}
       />
@@ -222,40 +229,41 @@ function RegistrationForm() {
 // Dynamic form fields
 function DynamicForm() {
   const [fields, setFields] = useState([
-    { id: 1, name: '', type: 'text', required: false }
+    { id: 1, name: '', type: 'text', required: false },
   ]);
   const [formData, setFormData] = useState({});
-  
+
   const addField = () => {
-    const newId = Math.max(0, ...fields.map(f => f.id)) + 1;
-    setFields([...fields, { id: newId, name: '', type: 'text', required: false }]);
+    const newId = Math.max(0, ...fields.map((f) => f.id)) + 1;
+    setFields([
+      ...fields,
+      { id: newId, name: '', type: 'text', required: false },
+    ]);
   };
-  
+
   const removeField = (id) => {
-    setFields(fields.filter(f => f.id !== id));
+    setFields(fields.filter((f) => f.id !== id));
     // Remove from formData
-    const { [fields.find(f => f.id === id).name]: _, ...rest } = formData;
+    const { [fields.find((f) => f.id === id).name]: _, ...rest } = formData;
     setFormData(rest);
   };
-  
+
   const updateField = (id, key, value) => {
-    setFields(fields.map(f => 
-      f.id === id ? { ...f, [key]: value } : f
-    ));
+    setFields(fields.map((f) => (f.id === id ? { ...f, [key]: value } : f)));
   };
-  
+
   const handleInputChange = (fieldName, value) => {
-    setFormData(prev => ({ ...prev, [fieldName]: value }));
+    setFormData((prev) => ({ ...prev, [fieldName]: value }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
-      {fields.map(field => (
+      {fields.map((field) => (
         <div key={field.id}>
           <input
             placeholder="Field name"
@@ -274,7 +282,9 @@ function DynamicForm() {
           <input
             type="checkbox"
             checked={field.required}
-            onChange={(e) => updateField(field.id, 'required', e.target.checked)}
+            onChange={(e) =>
+              updateField(field.id, 'required', e.target.checked)
+            }
           />
           <input
             type={field.type === 'textarea' ? 'text' : field.type}
@@ -282,10 +292,14 @@ function DynamicForm() {
             value={formData[field.name] || ''}
             onChange={(e) => handleInputChange(field.name, e.target.value)}
           />
-          <button type="button" onClick={() => removeField(field.id)}>Remove</button>
+          <button type="button" onClick={() => removeField(field.id)}>
+            Remove
+          </button>
         </div>
       ))}
-      <button type="button" onClick={addField}>Add Field</button>
+      <button type="button" onClick={addField}>
+        Add Field
+      </button>
       <button type="submit">Submit</button>
     </form>
   );
@@ -295,30 +309,30 @@ function DynamicForm() {
 function NestedForm() {
   const [data, setData] = useState({
     name: '',
-    addresses: [{ street: '', city: '', country: '' }]
+    addresses: [{ street: '', city: '', country: '' }],
   });
-  
+
   const addAddress = () => {
-    setData(prev => ({
+    setData((prev) => ({
       ...prev,
-      addresses: [...prev.addresses, { street: '', city: '', country: '' }]
+      addresses: [...prev.addresses, { street: '', city: '', country: '' }],
     }));
   };
-  
+
   const updateAddress = (index, key, value) => {
-    setData(prev => ({
+    setData((prev) => ({
       ...prev,
-      addresses: prev.addresses.map((addr, i) => 
+      addresses: prev.addresses.map((addr, i) =>
         i === index ? { ...addr, [key]: value } : addr
-      )
+      ),
     }));
   };
-  
+
   return (
     <form>
       <input
         value={data.name}
-        onChange={(e) => setData(prev => ({ ...prev, name: e.target.value }))}
+        onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}
       />
       {data.addresses.map((address, index) => (
         <div key={index}>
@@ -339,7 +353,9 @@ function NestedForm() {
           </select>
         </div>
       ))}
-      <button type="button" onClick={addAddress}>Add Address</button>
+      <button type="button" onClick={addAddress}>
+        Add Address
+      </button>
     </form>
   );
 }
@@ -354,12 +370,12 @@ function FileUpload() {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [preview, setPreview] = useState(null);
-  
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      
+
       // Preview
       if (selectedFile.type.startsWith('image/')) {
         const reader = new FileReader();
@@ -368,14 +384,14 @@ function FileUpload() {
       }
     }
   };
-  
+
   const handleUpload = async () => {
     if (!file) return;
-    
+
     setUploading(true);
     const formData = new FormData();
     formData.append('file', file);
-    
+
     try {
       const response = await fetch('/api/upload', {
         method: 'POST',
@@ -386,9 +402,9 @@ function FileUpload() {
             (progressEvent.loaded * 100) / progressEvent.total
           );
           setProgress(percentCompleted);
-        }
+        },
       });
-      
+
       const data = await response.json();
       console.log('Upload successful:', data);
     } catch (error) {
@@ -398,26 +414,25 @@ function FileUpload() {
       setProgress(0);
     }
   };
-  
+
   return (
     <div>
-      <input
-        type="file"
-        onChange={handleFileChange}
-        accept="image/*,.pdf"
-      />
-      {preview && <img src={preview} alt="Preview" style={{ maxWidth: '200px' }} />}
+      <input type="file" onChange={handleFileChange} accept="image/*,.pdf" />
+      {preview && (
+        <img src={preview} alt="Preview" style={{ maxWidth: '200px' }} />
+      )}
       {file && (
         <div>
-          <p>{file.name} ({Math.round(file.size / 1024)} KB)</p>
-          <button 
-            onClick={handleUpload} 
-            disabled={uploading}
-          >
+          <p>
+            {file.name} ({Math.round(file.size / 1024)} KB)
+          </p>
+          <button onClick={handleUpload} disabled={uploading}>
             {uploading ? 'Uploading...' : 'Upload'}
           </button>
           {uploading && (
-            <progress value={progress} max="100">{progress}%</progress>
+            <progress value={progress} max="100">
+              {progress}%
+            </progress>
           )}
         </div>
       )}
@@ -429,35 +444,35 @@ function FileUpload() {
 function MultiFileUpload() {
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
-  
+
   const handleDragOver = (e) => {
     e.preventDefault();
     setIsDragging(true);
   };
-  
+
   const handleDragLeave = (e) => {
     e.preventDefault();
     setIsDragging(false);
   };
-  
+
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
     const droppedFiles = Array.from(e.dataTransfer.files);
-    setFiles(prev => [...prev, ...droppedFiles]);
+    setFiles((prev) => [...prev, ...droppedFiles]);
   };
-  
+
   const removeFile = (index) => {
     setFiles(files.filter((_, i) => i !== index));
   };
-  
+
   const handleUploadAll = async () => {
     const uploadPromises = files.map(async (file) => {
       const formData = new FormData();
       formData.append('file', file);
       return fetch('/api/upload', { method: 'POST', body: formData });
     });
-    
+
     try {
       const responses = await Promise.all(uploadPromises);
       console.log('All files uploaded:', responses);
@@ -466,7 +481,7 @@ function MultiFileUpload() {
       console.error('Upload failed:', error);
     }
   };
-  
+
   return (
     <div
       className={isDragging ? 'drag-over' : ''}
@@ -476,13 +491,13 @@ function MultiFileUpload() {
       style={{
         border: '2px dashed #ccc',
         padding: '20px',
-        minHeight: '100px'
+        minHeight: '100px',
       }}
     >
       <input
         type="file"
         multiple
-        onChange={(e) => setFiles(prev => [...prev, ...e.target.files])}
+        onChange={(e) => setFiles((prev) => [...prev, ...e.target.files])}
       />
       {files.map((file, index) => (
         <div key={index}>
@@ -491,9 +506,7 @@ function MultiFileUpload() {
         </div>
       ))}
       {files.length > 0 && (
-        <button onClick={handleUploadAll}>
-          Upload {files.length} files
-        </button>
+        <button onClick={handleUploadAll}>Upload {files.length} files</button>
       )}
     </div>
   );
@@ -514,51 +527,61 @@ const schema = yup.object().shape({
   products: yup.array().of(
     yup.object().shape({
       name: yup.string().required('Product name required'),
-      quantity: yup.number().min(1, 'Min 1').required('Quantity required')
+      quantity: yup.number().min(1, 'Min 1').required('Quantity required'),
     })
-  )
+  ),
 });
 
 function ComplexForm() {
-  const { register, control, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm({
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    watch,
+  } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
       name: '',
       email: '',
       password: '',
-      products: [{ name: '', quantity: 1 }]
-    }
+      products: [{ name: '', quantity: 1 }],
+    },
   });
-  
+
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'products'
+    name: 'products',
   });
-  
+
   const watchProducts = watch('products');
-  
+
   const onSubmit = async (data) => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log('Form data:', data);
   };
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <input {...register('name')} placeholder="Name" />
         {errors.name && <p>{errors.name.message}</p>}
       </div>
-      
+
       <div>
         <input {...register('email')} placeholder="Email" />
         {errors.email && <p>{errors.email.message}</p>}
       </div>
-      
+
       <div>
-        <input {...register('password')} type="password" placeholder="Password" />
+        <input
+          {...register('password')}
+          type="password"
+          placeholder="Password"
+        />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
-      
+
       <h3>Products</h3>
       {fields.map((field, index) => (
         <div key={field.id}>
@@ -571,13 +594,15 @@ function ComplexForm() {
             type="number"
             placeholder="Quantity"
           />
-          <button type="button" onClick={() => remove(index)}>Remove</button>
+          <button type="button" onClick={() => remove(index)}>
+            Remove
+          </button>
         </div>
       ))}
       <button type="button" onClick={() => append({ name: '', quantity: 1 })}>
         Add Product
       </button>
-      
+
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Submitting...' : 'Submit'}
       </button>

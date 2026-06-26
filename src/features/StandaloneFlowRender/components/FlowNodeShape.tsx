@@ -26,32 +26,11 @@ function getLegendColor(node: FlowNode): string | null {
     return null;
   }
 
-  return (
-    LEGEND_COLORS[node.data.legend.id] ??
-    node.data.legend.color ??
-    THEME.accentRecommended
-  );
+  return LEGEND_COLORS[node.data.legend.id] ?? node.data.legend.color ?? THEME.accentRecommended;
 }
 
-function LegendMarker({
-  x,
-  y,
-  color,
-}: {
-  x: number;
-  y: number;
-  color: string;
-}) {
-  return (
-    <circle
-      cx={x}
-      cy={y}
-      r={LEGEND_DOT_RADIUS}
-      fill={color}
-      stroke="#ffffff"
-      strokeWidth={1.5}
-    />
-  );
+function LegendMarker({ x, y, color }: { x: number; y: number; color: string }) {
+  return <circle cx={x} cy={y} r={LEGEND_DOT_RADIUS} fill={color} stroke="#ffffff" strokeWidth={1.5} />;
 }
 
 function CardNode({
@@ -69,10 +48,7 @@ function CardNode({
   const accent = getLegendColor(node);
   const isTopic = variant === 'topic';
   const textPadding = 12;
-  const maxChars = Math.max(
-    8,
-    Math.floor((width - textPadding * 2) / (DEFAULT_FONT_SIZE * 0.52)),
-  );
+  const maxChars = Math.max(8, Math.floor((width - textPadding * 2) / (DEFAULT_FONT_SIZE * 0.52)));
   const lines = isTopic ? [label] : wrapText(label, maxChars);
   const lineHeight = isTopic ? TOPIC_FONT_SIZE + 2 : DEFAULT_FONT_SIZE + 3;
   const textBlockHeight = lines.length * lineHeight;
@@ -111,13 +87,7 @@ function CardNode({
           {line}
         </text>
       ))}
-      {accent && (
-        <LegendMarker
-          x={x + width + 10}
-          y={y + height / 2}
-          color={accent}
-        />
-      )}
+      {accent && <LegendMarker x={x + width + 10} y={y + height / 2} color={accent} />}
     </g>
   );
 }
@@ -185,20 +155,8 @@ function LegendNode({ node }: FlowNodeShapeProps) {
       />
       {legends.map((item, index) => (
         <g key={item.id} transform={`translate(${x + 14}, ${y + 20 + index * 28})`}>
-          <circle
-            cx={0}
-            cy={0}
-            r={5}
-            fill={LEGEND_COLORS[item.id] ?? item.color}
-          />
-          <text
-            x={14}
-            y={1}
-            fill={THEME.legendText}
-            fontFamily={FONT_FAMILY}
-            fontSize={13}
-            dominantBaseline="middle"
-          >
+          <circle cx={0} cy={0} r={5} fill={LEGEND_COLORS[item.id] ?? item.color} />
+          <text x={14} y={1} fill={THEME.legendText} fontFamily={FONT_FAMILY} fontSize={13} dominantBaseline="middle">
             {item.label}
           </text>
         </g>
@@ -297,11 +255,7 @@ function ButtonNode({ node, onClick, isSelected }: FlowNodeShapeProps) {
   );
 }
 
-export function FlowNodeShape({
-  node,
-  onClick,
-  isSelected = false,
-}: FlowNodeShapeProps) {
+export function FlowNodeShape({ node, onClick, isSelected = false }: FlowNodeShapeProps) {
   switch (node.type) {
     case 'title':
       return (
@@ -320,27 +274,11 @@ export function FlowNodeShape({
         </text>
       );
     case 'topic':
-      return (
-        <CardNode
-          node={node}
-          variant="topic"
-          onClick={onClick}
-          isSelected={isSelected}
-        />
-      );
+      return <CardNode node={node} variant="topic" onClick={onClick} isSelected={isSelected} />;
     case 'subtopic':
-      return (
-        <CardNode
-          node={node}
-          variant="subtopic"
-          onClick={onClick}
-          isSelected={isSelected}
-        />
-      );
+      return <CardNode node={node} variant="subtopic" onClick={onClick} isSelected={isSelected} />;
     case 'button':
-      return (
-        <ButtonNode node={node} onClick={onClick} isSelected={isSelected} />
-      );
+      return <ButtonNode node={node} onClick={onClick} isSelected={isSelected} />;
     case 'paragraph':
       return <ParagraphNode node={node} />;
     case 'legend':

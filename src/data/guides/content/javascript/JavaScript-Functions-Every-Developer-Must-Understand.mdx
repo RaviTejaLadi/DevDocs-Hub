@@ -1,36 +1,34 @@
-
 ## 1. `Promise.all()`, `Promise.allSettled()`, `Promise.race()`, `Promise.any()`
+
 Understanding these for handling multiple promises is essential.
 
 ```javascript
 // all - waits for ALL to resolve, rejects on first error
-const results = await Promise.all([
-  fetch('/api/user'),
-  fetch('/api/posts')
-]);
+const results = await Promise.all([fetch('/api/user'), fetch('/api/posts')]);
 
 // allSettled - waits for ALL to settle (resolve or reject)
 const results = await Promise.allSettled([
   fetch('/api/user'),
-  fetch('/api/posts')
+  fetch('/api/posts'),
 ]);
 // Returns array of { status: 'fulfilled', value } or { status: 'rejected', reason }
 
 // race - returns first to settle (resolve or reject)
 const result = await Promise.race([
   fetch('/api/data'),
-  new Promise((_, reject) => setTimeout(() => reject('Timeout'), 5000))
+  new Promise((_, reject) => setTimeout(() => reject('Timeout'), 5000)),
 ]);
 
 // any - returns first to RESOLVE (ignores rejections until all reject)
 const result = await Promise.any([
   fetch('/api/backup1'),
   fetch('/api/backup2'),
-  fetch('/api/main')
+  fetch('/api/main'),
 ]);
 ```
 
 ## 2. `JSON.stringify()` and `JSON.parse()`
+
 The workhorses of web development for data exchange and persistence.
 
 ```javascript
@@ -54,6 +52,7 @@ const clone = JSON.parse(JSON.stringify(obj));
 ```
 
 ## 3. `setTimeout()` and `setInterval()`
+
 Timing functions that every web developer uses daily.
 
 ```javascript
@@ -76,6 +75,7 @@ setTimeout(() => console.log('hi'), 1000, { signal: controller.signal });
 ```
 
 ## 4. `fetch()`
+
 The modern way to make HTTP requests.
 
 ```javascript
@@ -87,7 +87,7 @@ const data = await response.json(); // or .text(), .blob(), .formData()
 const response = await fetch('/api/data', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ name: 'John' })
+  body: JSON.stringify({ name: 'John' }),
 });
 
 // With AbortController for cancellable requests
@@ -102,6 +102,7 @@ if (!response.ok) {
 ```
 
 ## 5. `console.log()` (And Friends)
+
 Beyond basic logging, understanding the console API is crucial for debugging.
 
 ```javascript
@@ -132,6 +133,7 @@ console.trace('Function called from here');
 ```
 
 ## 6. `encodeURIComponent()` and `decodeURIComponent()`
+
 Essential for safe URL handling and query parameters.
 
 ```javascript
@@ -151,6 +153,7 @@ const decoded = decodeURIComponent(encodedValue);
 ```
 
 ## 7. `Array.isArray()`
+
 The ONLY reliable way to check if something is an array.
 
 ```javascript
@@ -167,6 +170,7 @@ Array.isArray(Array.prototype); // true (interesting edge case)
 ```
 
 ## 8. `Number.isInteger()` and `Number.isNaN()`
+
 Number methods that actually work correctly.
 
 ```javascript
@@ -188,6 +192,7 @@ const num = Number.parseInt('42px', 10); // 42
 ```
 
 ## 9. `Object.assign()` and `Object.freeze()`
+
 Essential for immutability and object manipulation.
 
 ```javascript
@@ -211,7 +216,7 @@ frozen.age = 30; // ❌ Fails
 // 2026: deep freeze
 function deepFreeze(obj) {
   Object.freeze(obj);
-  Object.values(obj).forEach(val => {
+  Object.values(obj).forEach((val) => {
     if (typeof val === 'object' && val !== null) deepFreeze(val);
   });
   return obj;
@@ -219,6 +224,7 @@ function deepFreeze(obj) {
 ```
 
 ## 10. `new` (The Constructor Function)
+
 Understanding what `new` actually does is fundamental to JavaScript.
 
 ```javascript
@@ -231,7 +237,7 @@ Understanding what `new` actually does is fundamental to JavaScript.
 function Person(name) {
   this.name = name;
 }
-Person.prototype.sayHello = function() {
+Person.prototype.sayHello = function () {
   return `Hello, ${this.name}`;
 };
 

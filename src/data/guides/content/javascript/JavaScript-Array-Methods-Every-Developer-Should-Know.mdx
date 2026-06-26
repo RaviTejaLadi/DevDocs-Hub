@@ -1,29 +1,31 @@
-
 ## 1. `map()` - Transform Every Element
+
 Creates a new array by applying a function to each element.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(n => n * 2);
+const doubled = numbers.map((n) => n * 2);
 // [2, 4, 6, 8, 10]
 
 // React: render a list
-users.map(user => <UserCard key={user.id} {...user} />);
+users.map((user) => <UserCard key={user.id} {...user} />);
 ```
 
 ## 2. `filter()` - Keep What You Need
+
 Creates a new array with elements that pass a test.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5, 6];
-const evens = numbers.filter(n => n % 2 === 0);
+const evens = numbers.filter((n) => n % 2 === 0);
 // [2, 4, 6]
 
 // Get active users
-const activeUsers = users.filter(user => user.isActive);
+const activeUsers = users.filter((user) => user.isActive);
 ```
 
 ## 3. `reduce()` - Accumulate Values
+
 Reduces an array to a single value (sum, object, etc.).
 
 ```javascript
@@ -46,66 +48,74 @@ const count = ['a', 'b', 'a', 'c'].reduce((acc, val) => {
 ```
 
 ## 4. `find()` - Find First Match
+
 Returns the first element that passes a test.
 
 ```javascript
-const users = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }];
-const user = users.find(u => u.id === 2);
+const users = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Jane' },
+];
+const user = users.find((u) => u.id === 2);
 // { id: 2, name: 'Jane' }
 
 // findIndex for the index
-const index = users.findIndex(u => u.id === 2);
+const index = users.findIndex((u) => u.id === 2);
 // 1
 ```
 
 ## 5. `some()` & `every()` - Check Conditions
+
 `some()` checks if ANY element passes, `every()` checks if ALL pass.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
-numbers.some(n => n > 4);  // true (5 is > 4)
-numbers.every(n => n > 0); // true (all > 0)
-numbers.every(n => n > 2); // false (1,2 are not > 2)
+numbers.some((n) => n > 4); // true (5 is > 4)
+numbers.every((n) => n > 0); // true (all > 0)
+numbers.every((n) => n > 2); // false (1,2 are not > 2)
 
 // Check form validation
-const isValid = fields.every(field => field.value.length > 0);
+const isValid = fields.every((field) => field.value.length > 0);
 ```
 
 ## 6. `flat()` & `flatMap()` - Flatten Arrays
+
 `flat()` flattens nested arrays, `flatMap()` maps then flattens.
 
 ```javascript
 const nested = [1, [2, [3, [4]]]];
-nested.flat();           // [1, 2, [3, [4]]]
-nested.flat(2);          // [1, 2, 3, [4]]
-nested.flat(Infinity);   // [1, 2, 3, 4]
+nested.flat(); // [1, 2, [3, [4]]]
+nested.flat(2); // [1, 2, 3, [4]]
+nested.flat(Infinity); // [1, 2, 3, 4]
 
 // Remove empty elements and flatten
 const words = ['hello', '', 'world'];
-words.flatMap(w => w ? [w] : []);
+words.flatMap((w) => (w ? [w] : []));
 // ['hello', 'world']
 ```
 
 ## 7. `slice()` - Extract Subarray
+
 Returns a shallow copy of a portion of an array.
 
 ```javascript
 const arr = [1, 2, 3, 4, 5];
-arr.slice(1, 3);    // [2, 3] (from index 1 to 3, exclusive)
-arr.slice(2);       // [3, 4, 5]
-arr.slice(-2);      // [4, 5] (last two)
-arr.slice();        // [1, 2, 3, 4, 5] (shallow copy)
+arr.slice(1, 3); // [2, 3] (from index 1 to 3, exclusive)
+arr.slice(2); // [3, 4, 5]
+arr.slice(-2); // [4, 5] (last two)
+arr.slice(); // [1, 2, 3, 4, 5] (shallow copy)
 
 // Convert array-like to array
 Array.prototype.slice.call(arguments);
 ```
 
 ## 8. `splice()` - Add/Remove Elements
+
 Changes the array by removing/replacing elements.
 
 ```javascript
 const arr = [1, 2, 3, 4, 5];
-arr.splice(2, 1);    // Remove 1 element at index 2 -> arr = [1, 2, 4, 5]
+arr.splice(2, 1); // Remove 1 element at index 2 -> arr = [1, 2, 4, 5]
 arr.splice(2, 0, 3); // Insert 3 at index 2 -> arr = [1, 2, 3, 4, 5]
 arr.splice(2, 1, 6); // Replace 3 with 6 -> arr = [1, 2, 6, 4, 5]
 
@@ -113,25 +123,27 @@ arr.splice(2, 1, 6); // Replace 3 with 6 -> arr = [1, 2, 6, 4, 5]
 ```
 
 ## 9. `sort()` - Order Elements
+
 Sorts array (with a comparator function).
 
 ```javascript
 // Sorting numbers (with comparator!)
 const numbers = [3, 1, 4, 1, 5];
-numbers.sort();                    // [1, 1, 3, 4, 5] (works for numbers)
-numbers.sort((a, b) => a - b);     // Ascending
-numbers.sort((a, b) => b - a);     // Descending
+numbers.sort(); // [1, 1, 3, 4, 5] (works for numbers)
+numbers.sort((a, b) => a - b); // Ascending
+numbers.sort((a, b) => b - a); // Descending
 
 // Sorting objects
 users.sort((a, b) => a.age - b.age);
 
 // Sorting strings correctly
-['Banana', 'Apple', 'cherry'].sort((a, b) => 
-  a.localeCompare(b)  // Handles case sensitivity
+['Banana', 'Apple', 'cherry'].sort(
+  (a, b) => a.localeCompare(b) // Handles case sensitivity
 );
 ```
 
 ## 10. `forEach()` - Iterate
+
 Executes a function for each element (not chainable).
 
 ```javascript
@@ -143,9 +155,9 @@ items.forEach((item, index) => {
 
 // For side effects only! Use map for transformations
 // ✅ Good for logging, DOM updates, API calls
-users.forEach(user => sendEmail(user));
+users.forEach((user) => sendEmail(user));
 
 // ❌ Don't use for transformations (use map instead)
 const processed = [];
-items.forEach(item => processed.push(item.toUpperCase()));
+items.forEach((item) => processed.push(item.toUpperCase()));
 ```

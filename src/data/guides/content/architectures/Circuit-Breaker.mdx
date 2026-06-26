@@ -1,13 +1,19 @@
-
 ## States
-1. **Closed:** Requests flow normally. If failures exceed a threshold, the circuit trips to **Open**.
-2. **Open:** Requests fail immediately without hitting the service (to save resources). After a timeout, it moves to **Half-Open**.
-3. **Half-Open:** A limited number of requests are allowed. If they succeed, the circuit resets to **Closed**; if they fail, it goes back to **Open**.
+
+1. **Closed:** Requests flow normally. If failures exceed a threshold, the
+   circuit trips to **Open**.
+2. **Open:** Requests fail immediately without hitting the service (to save
+   resources). After a timeout, it moves to **Half-Open**.
+3. **Half-Open:** A limited number of requests are allowed. If they succeed, the
+   circuit resets to **Closed**; if they fail, it goes back to **Open**.
 
 ## Why use it?
-- **Prevents Cascading Failures:** Stops a slow dependency from choking the entire system.
+
+- **Prevents Cascading Failures:** Stops a slow dependency from choking the
+  entire system.
 
 ## Architecture Diagram
+
 ```mermaid
 stateDiagram-v2
     [*] --> Closed
@@ -18,4 +24,5 @@ stateDiagram-v2
 ```
 
 ## Tools
+
 - Resilience4j, Hystrix (Netflix), Sentinel.

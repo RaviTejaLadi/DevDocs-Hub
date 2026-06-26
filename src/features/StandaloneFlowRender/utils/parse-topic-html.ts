@@ -23,9 +23,7 @@ export function parseTopicHtml(html: string): ParsedTopicContent {
   for (const ul of topicDom.querySelectorAll('ul')) {
     const lisWithJustLinks = Array.from(ul.querySelectorAll('li')).filter(
       (li) =>
-        li.children.length === 1 &&
-        li.children[0].tagName === 'A' &&
-        li.children[0].textContent === li.textContent,
+        li.children.length === 1 && li.children[0].tagName === 'A' && li.children[0].textContent === li.textContent
     );
 
     if (lisWithJustLinks.length > 0) {

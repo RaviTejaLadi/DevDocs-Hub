@@ -27,8 +27,7 @@ export const THEME = {
   selectedStroke: '#2563eb',
 } as const;
 
-export const FONT_FAMILY =
-  'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+export const FONT_FAMILY = 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
 
 export const DEFAULT_FONT_SIZE = 14;
 export const TITLE_FONT_SIZE = 24;
@@ -47,5 +46,5 @@ export const EDGE_CORNER_RADIUS = 8;
 export const LEGEND_COLORS: Record<string, string> = {
   'NJhQIvMyMD1Cu-JA1UCmJ': THEME.accentRecommended,
   'DMx7rAjVBWMbzjSde-tvp': THEME.accentAlternative,
-  'R9WLhURhPdVNXP7AUTDvR': THEME.accentOptional,
+  R9WLhURhPdVNXP7AUTDvR: THEME.accentOptional,
 };

@@ -1,22 +1,28 @@
-
 ## Why use it?
+
 - **High Availability:** Failover if the primary goes down.
-- **Read Scalability:** Route read queries to replicas, preserving the primary for writes.
+- **Read Scalability:** Route read queries to replicas, preserving the primary
+  for writes.
 
 ## Types
+
 - **Master-Slave (Primary-Replica):** Writes go to master; reads go to slaves.
-- **Master-Master:** Writes can go to either; complex conflict resolution required.
+- **Master-Master:** Writes can go to either; complex conflict resolution
+  required.
 
 ## Architecture Diagram
+
 ```mermaid
 graph TD
     App[Application] -->|Writes| Master[(Primary DB)]
     Master -->|Replication| Replica1[(Replica 1)]
     Master -->|Replication| Replica2[(Replica 2)]
-    
+
     App -.->|Reads| Replica1
     App -.->|Reads| Replica2
 ```
 
 ## Challenges
-- **Replication Lag:** The delay between a write to the master and the update of the replica.
+
+- **Replication Lag:** The delay between a write to the master and the update of
+  the replica.

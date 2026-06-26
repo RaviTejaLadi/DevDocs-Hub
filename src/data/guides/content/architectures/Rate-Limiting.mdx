@@ -1,25 +1,28 @@
-
 ## Algorithms
-- **Token Bucket:** A bucket fills with tokens at a set rate. Each request consumes a token.
+
+- **Token Bucket:** A bucket fills with tokens at a set rate. Each request
+  consumes a token.
 - **Leaky Bucket:** Requests enter a queue and are processed at a fixed rate.
 - **Sliding Window:** Counts requests based on a rolling timestamp.
 
 ## Use Cases
+
 - Prevent DDoS attacks.
 - Manage costs for paid APIs (Tiered pricing).
 - Ensure fair usage among users.
 
 ## Diagram (Token Bucket)
+
 ```mermaid
 graph LR
     R1[Request 1] --> TB[Token Bucket]
     R2[Request 2] --> TB
     R3[Request 3] --> TB
     R4[Request 4] --> TB
-    
+
     TB -->|Token Available| API[API Server]
     TB -->|No Token| Error[429 Error]
-    
+
     subgraph Bucket
         TB
         Tokens[Tokens: 5/10]

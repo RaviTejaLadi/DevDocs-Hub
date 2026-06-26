@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FlowNode } from '../types';
-import {
-  buildTopicUrl,
-  fetchTopicHtml,
-} from '../utils/fetch-topic-content';
-import {
-  parseTopicHtml,
-  type ParsedTopicContent,
-  type TopicResourceLink,
-} from '../utils/parse-topic-html';
+import { buildTopicUrl, fetchTopicHtml } from '../utils/fetch-topic-content';
+import { parseTopicHtml, type ParsedTopicContent, type TopicResourceLink } from '../utils/parse-topic-html';
 import { buildTopicPath } from '../utils/slugify';
 
 type TopicContentState = {

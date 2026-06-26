@@ -1,36 +1,33 @@
-
 ## **Missing Keys in Lists**
 
 ```jsx
 // ❌ BAD - Using index as key
-{items.map((item, index) => (
-  <li key={index}>{item.name}</li>
-))}
+{
+  items.map((item, index) => <li key={index}>{item.name}</li>);
+}
 
 // ❌ BAD - No key at all
-{items.map(item => (
-  <li>{item.name}</li>
-))}
+{
+  items.map((item) => <li>{item.name}</li>);
+}
 
 // ✅ GOOD - Using unique ID
-{items.map(item => (
-  <li key={item.id}>{item.name}</li>
-))}
+{
+  items.map((item) => <li key={item.id}>{item.name}</li>);
+}
 
 // ✅ GOOD - Stable, unique key for reordering
-{items.map(item => (
-  <li key={item.id}>{item.name}</li>
-))}
+{
+  items.map((item) => <li key={item.id}>{item.name}</li>);
+}
 
 // ❌ BAD - Array index with reordering/shuffling
 // Causes unnecessary re-renders and state issues
 
 // ✅ GOOD - Composite key
-{items.map(item => (
-  <li key={`${item.category}-${item.id}`}>
-    {item.name}
-  </li>
-))}
+{
+  items.map((item) => <li key={`${item.category}-${item.id}`}>{item.name}</li>);
+}
 ```
 
 ## **Mutating State Directly**
@@ -51,23 +48,25 @@ setItems(items); // Same reference, won't re-render
 // ✅ GOOD - New array
 setItems([...items, 4]);
 setItems(items.concat(4));
-setItems(prev => [...prev, 4]);
+setItems((prev) => [...prev, 4]);
 
 // ❌ BAD - Mutating nested state
-const [state, setState] = useState({ user: { name: 'John', address: { city: 'NYC' } } });
+const [state, setState] = useState({
+  user: { name: 'John', address: { city: 'NYC' } },
+});
 state.user.address.city = 'LA';
 setState(state);
 
 // ✅ GOOD - Nested immutable update
-setState(prev => ({
+setState((prev) => ({
   ...prev,
   user: {
     ...prev.user,
     address: {
       ...prev.user.address,
-      city: 'LA'
-    }
-  }
+      city: 'LA',
+    },
+  },
 }));
 ```
 
@@ -78,7 +77,7 @@ setState(prev => ({
 useEffect(() => {
   const interval = setInterval(() => {
     // count is always initial value (0)
-    setCount(count + 1); 
+    setCount(count + 1);
   }, 1000);
   return () => clearInterval(interval);
 }, []); // Empty dependency
@@ -86,7 +85,7 @@ useEffect(() => {
 // ✅ GOOD - Use functional update
 useEffect(() => {
   const interval = setInterval(() => {
-    setCount(prev => prev + 1);
+    setCount((prev) => prev + 1);
   }, 1000);
   return () => clearInterval(interval);
 }, []);
@@ -127,11 +126,11 @@ useEffect(() => {
 // ❌ BAD - Missing dependencies
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     fetchUser(userId).then(setUser);
   }, []); // Missing userId dependency
-  
+
   return <div>{user?.name}</div>;
 }
 
@@ -178,12 +177,14 @@ useEffect(() => {
 ```jsx
 // ❌ BAD - Can compute from props/other state
 function UserCard({ user }) {
-  const [fullName, setFullName] = useState(`${user.firstName} ${user.lastName}`);
-  
+  const [fullName, setFullName] = useState(
+    `${user.firstName} ${user.lastName}`
+  );
+
   useEffect(() => {
     setFullName(`${user.firstName} ${user.lastName}`);
   }, [user.firstName, user.lastName]);
-  
+
   return <div>{fullName}</div>;
 }
 
@@ -196,11 +197,11 @@ function UserCard({ user }) {
 // ❌ BAD - Redundant state
 function ShoppingCart({ items }) {
   const [total, setTotal] = useState(0);
-  
+
   useEffect(() => {
     setTotal(items.reduce((sum, item) => sum + item.price, 0));
   }, [items]);
-  
+
   return <div>Total: ${total}</div>;
 }
 
@@ -213,11 +214,11 @@ function ShoppingCart({ items }) {
 // ❌ BAD - State that only sets once
 function UserProfile({ userId }) {
   const [profile, setProfile] = useState(null);
-  
+
   useEffect(() => {
     fetchProfile(userId).then(setProfile);
   }, [userId]); // Actually okay if userId changes
-  
+
   // But if userId never changes, consider useMemo with Promise
 }
 ```

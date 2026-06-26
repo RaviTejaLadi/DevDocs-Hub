@@ -122,11 +122,9 @@ export default function GuidesPage() {
               (category) =>
                 category.guides.length > 0 && (
                   <div key={category.label} className="space-y-3">
-                    <h2 className="text-lg font-semibold tracking-tight text-foreground/90">
-                      {category.label}
-                    </h2>
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground/90">{category.label}</h2>
                     <div className="space-y-2">
-                      {category.guides.map((guide,index) => (
+                      {category.guides.map((guide, index) => (
                         <GuideListItem key={guide.slug} index={index} guide={guide} />
                       ))}
                     </div>

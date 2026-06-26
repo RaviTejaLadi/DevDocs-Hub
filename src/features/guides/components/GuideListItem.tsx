@@ -13,10 +13,10 @@ const TYPE_STYLES: Record<Guide['type'], string> = {
 type GuideListItemProps = {
   guide: Guide;
   className?: string;
-  index:number
+  index: number;
 };
 
-export function GuideListItem({ guide, className,index }: GuideListItemProps) {
+export function GuideListItem({ guide, className, index }: GuideListItemProps) {
   return (
     <Link
       to={getGuideHref(guide)}

@@ -1,5 +1,5 @@
-
 ## **useState**
+
 Manages local component state with re-renders on updates.
 
 ```jsx
@@ -7,7 +7,7 @@ Manages local component state with re-renders on updates.
 const [count, setCount] = useState(0);
 
 // Functional update (prevents stale closure)
-setCount(prev => prev + 1);
+setCount((prev) => prev + 1);
 
 // Lazy initialization (expensive computation)
 const [state, setState] = useState(() => {
@@ -17,10 +17,11 @@ const [state, setState] = useState(() => {
 
 // Object state (always create new object)
 const [user, setUser] = useState({ name: '', age: 0 });
-setUser(prev => ({ ...prev, age: prev.age + 1 }));
+setUser((prev) => ({ ...prev, age: prev.age + 1 }));
 ```
 
 ## **useEffect**
+
 Handles side effects: API calls, subscriptions, DOM manipulations.
 
 ```jsx
@@ -43,21 +44,24 @@ useEffect(() => {
 // Avoiding race conditions
 useEffect(() => {
   let isMounted = true;
-  fetchUser(id).then(data => {
+  fetchUser(id).then((data) => {
     if (isMounted) setUser(data);
   });
-  return () => { isMounted = false; };
+  return () => {
+    isMounted = false;
+  };
 }, [id]);
 ```
 
 ## **useMemo**
+
 Memoizes expensive computations to prevent recalculation on every render.
 
 ```jsx
 // Expensive calculation
 const expensiveResult = useMemo(() => {
   return items
-    .filter(item => item.active)
+    .filter((item) => item.active)
     .sort((a, b) => a.price - b.price)
     .reduce((acc, cur) => acc + cur.price, 0);
 }, [items]); // Only recalculates when 'items' changes
@@ -67,6 +71,7 @@ const memoizedObject = useMemo(() => ({ user, settings }), [user, settings]);
 ```
 
 ## **useCallback**
+
 Memoizes functions to prevent unnecessary re-renders in child components.
 
 ```jsx
@@ -81,9 +86,12 @@ const handleClick = useCallback(() => {
 }, []); // Dependencies determine when function recreates
 
 // Dependency-based callback
-const handleSearch = useCallback((query) => {
-  fetchResults(query);
-}, [debounceTime, apiKey]); // Recreates when these change
+const handleSearch = useCallback(
+  (query) => {
+    fetchResults(query);
+  },
+  [debounceTime, apiKey]
+); // Recreates when these change
 
 // Event handlers in optimized components
 const MemoizedChild = React.memo(Child);
@@ -91,6 +99,7 @@ return <MemoizedChild onUpdate={useCallback(() => update(id), [id])} />;
 ```
 
 ## **useRef**
+
 Persists values across renders without causing re-renders. DOM access.
 
 ```jsx
@@ -120,6 +129,7 @@ useEffect(() => {
 ```
 
 ## **useReducer**
+
 Complex state logic with predictable updates (like Redux pattern).
 
 ```jsx
@@ -155,6 +165,7 @@ const asyncAction = async () => {
 ```
 
 ## **useContext**
+
 Accesses React context without prop drilling.
 
 ```jsx
@@ -164,7 +175,7 @@ const ThemeContext = React.createContext('light');
 // Provider
 <ThemeContext.Provider value={{ theme: 'dark', toggleTheme }}>
   <App />
-</ThemeContext.Provider>
+</ThemeContext.Provider>;
 
 // Consumer
 const { theme, toggleTheme } = useContext(ThemeContext);
@@ -180,6 +191,7 @@ function useTheme() {
 ```
 
 ## **useId**
+
 Generates unique IDs for accessibility (avoiding hydration mismatches).
 
 ```jsx
@@ -190,14 +202,13 @@ return (
   <>
     <label htmlFor={emailId}>Email</label>
     <input id={emailId} type="email" />
-    <p aria-describedby={`${id}-description`}>
-      Enter your email
-    </p>
+    <p aria-describedby={`${id}-description`}>Enter your email</p>
   </>
 );
 ```
 
 ## **useTransition**
+
 Marks state updates as non-urgent for better UI responsiveness.
 
 ```jsx
@@ -213,7 +224,7 @@ const handleSearch = (query) => {
 // UI feedback
 return (
   <div>
-    <input onChange={e => handleSearch(e.target.value)} />
+    <input onChange={(e) => handleSearch(e.target.value)} />
     {isPending && <Spinner />}
     <Results data={searchResults} />
   </div>
@@ -224,10 +235,12 @@ function SearchComponent() {
   const [isPending, startTransition] = useTransition();
   const [query, setQuery] = useState('');
   const data = useSuspenseQuery(query);
-  
+
   return (
     <>
-      <input onChange={e => startTransition(() => setQuery(e.target.value))} />
+      <input
+        onChange={(e) => startTransition(() => setQuery(e.target.value))}
+      />
       {isPending && <Spinner />}
       <Suspense fallback={<InitialLoading />}>
         <Results data={data} />
@@ -238,6 +251,7 @@ function SearchComponent() {
 ```
 
 ## **useDeferredValue**
+
 Defers updating part of UI to keep interface responsive.
 
 ```jsx
@@ -249,10 +263,10 @@ const isStale = query !== deferredQuery;
 
 return (
   <>
-    <input value={query} onChange={e => setQuery(e.target.value)} />
-    <SearchResults 
-      query={deferredQuery} 
-      style={{ opacity: isStale ? 0.5 : 1 }} 
+    <input value={query} onChange={(e) => setQuery(e.target.value)} />
+    <SearchResults
+      query={deferredQuery}
+      style={{ opacity: isStale ? 0.5 : 1 }}
     />
   </>
 );
