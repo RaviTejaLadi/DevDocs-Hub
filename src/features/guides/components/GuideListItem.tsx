@@ -13,9 +13,10 @@ const TYPE_STYLES: Record<Guide['type'], string> = {
 type GuideListItemProps = {
   guide: Guide;
   className?: string;
+  index:number
 };
 
-export function GuideListItem({ guide, className }: GuideListItemProps) {
+export function GuideListItem({ guide, className,index }: GuideListItemProps) {
   return (
     <Link
       to={getGuideHref(guide)}
@@ -25,8 +26,13 @@ export function GuideListItem({ guide, className }: GuideListItemProps) {
         className
       )}
     >
-      <span className="min-w-0 text-sm font-medium text-foreground transition-colors group-hover:text-primary sm:text-base">
-        {guide.title}
+      <span className="flex items-center gap-3 min-w-0">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/40 text-xs font-semibold tabular-nums text-muted-foreground">
+          {index + 1}
+        </span>
+        <span className="text-sm font-medium text-foreground transition-colors group-hover:text-primary sm:text-base">
+          {guide.title}
+        </span>
       </span>
 
       <span className="flex shrink-0 flex-wrap items-center gap-2 text-xs">

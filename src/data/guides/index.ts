@@ -23,6 +23,17 @@ export const GUIDE_TYPE_LABELS: Record<GuideType, string> = {
 
 export const HOMEPAGE_GUIDES_LIMIT = 6;
 
+export type GuideCategory = {
+  label: string;
+  guides: Guide[];
+};
+
+export const GUIDE_CATEGORIES: GuideCategory[] = [
+  { label: 'JavaScript', guides: jsGuides },
+  { label: 'React', guides: reactGuides },
+  { label: 'Architectures', guides: architectureGuides },
+];
+
 export const GUIDES: Guide[] = [
   ...jsGuides,
   ...reactGuides,

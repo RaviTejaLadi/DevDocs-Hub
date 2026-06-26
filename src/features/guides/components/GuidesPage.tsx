@@ -16,10 +16,11 @@ export default function GuidesPage() {
     setSearchQuery,
     activeType,
     setActiveType,
-    filteredGuides,
+    filteredCategories,
     totalGuides,
     filteredCount,
     hasSearch,
+    hasAnyGuides,
   } = useGuidesFilter();
 
   return (
@@ -115,11 +116,23 @@ export default function GuidesPage() {
           </div>
         </div>
 
-        {filteredGuides.length > 0 ? (
-          <div className="space-y-2">
-            {filteredGuides.map((guide) => (
-              <GuideListItem key={guide.slug} guide={guide} />
-            ))}
+        {hasAnyGuides ? (
+          <div className="space-y-8">
+            {filteredCategories.map(
+              (category) =>
+                category.guides.length > 0 && (
+                  <div key={category.label} className="space-y-3">
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground/90">
+                      {category.label}
+                    </h2>
+                    <div className="space-y-2">
+                      {category.guides.map((guide,index) => (
+                        <GuideListItem key={guide.slug} index={index} guide={guide} />
+                      ))}
+                    </div>
+                  </div>
+                )
+            )}
           </div>
         ) : (
           <div className="rounded-xl border border-dashed border-border/50 bg-muted/20 px-6 py-12 text-center">
