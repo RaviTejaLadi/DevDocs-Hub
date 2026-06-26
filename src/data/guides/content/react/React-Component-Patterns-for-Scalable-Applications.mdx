@@ -1,0 +1,255 @@
+
+## **Compound Components**
+
+```jsx
+// Parent manages state, children are controlled
+function Tabs({ children, defaultTab }) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
+  
+  return (
+    <div className="tabs">
+      {React.Children.map(children, child => {
+        if (child.type === TabList) {
+          return React.cloneElement(child, { activeTab, setActiveTab });
+        }
+        if (child.type === TabPanels) {
+          return React.cloneElement(child, { activeTab });
+        }
+        return child;
+      })}
+    </div>
+  );
+}
+
+function TabList({ children, activeTab, setActiveTab }) {
+  return (
+    <div className="tab-list">
+      {React.Children.map(children, child => 
+        React.cloneElement(child, { activeTab, setActiveTab })
+      )}
+    </div>
+  );
+}
+
+function Tab({ children, index, activeTab, setActiveTab }) {
+  const isActive = index === activeTab;
+  return (
+    <button 
+      className={isActive ? 'active' : ''}
+      onClick={() => setActiveTab(index)}
+    >
+      {children}
+    </button>
+  );
+}
+
+function TabPanels({ children, activeTab }) {
+  return children[activeTab];
+}
+
+// Usage
+<Tabs defaultTab={0}>
+  <TabList>
+    <Tab>Tab 1</Tab>
+    <Tab>Tab 2</Tab>
+  </TabList>
+  <TabPanels>
+    <div>Panel 1</div>
+    <div>Panel 2</div>
+  </TabPanels>
+</Tabs>
+```
+
+## **Controlled vs Uncontrolled Components**
+
+```jsx
+// Uncontrolled: internal state
+function UncontrolledInput({ defaultValue }) {
+  const [value, setValue] = useState(defaultValue || '');
+  return <input value={value} onChange={e => setValue(e.target.value)} />;
+}
+
+// Controlled: state managed by parent
+function ControlledInput({ value, onChange }) {
+  return <input value={value} onChange={onChange} />;
+}
+
+// Hybrid component (controlled or uncontrolled)
+function HybridInput({ value: propValue, onChange, defaultValue }) {
+  const [internalValue, setInternalValue] = useState(defaultValue || '');
+  const isControlled = propValue !== undefined;
+  const value = isControlled ? propValue : internalValue;
+  
+  const handleChange = (e) => {
+    if (!isControlled) {
+      setInternalValue(e.target.value);
+    }
+    onChange?.(e);
+  };
+  
+  return <input value={value} onChange={handleChange} />;
+}
+```
+
+## **Render Props Pattern**
+
+```jsx
+// Render prop for data fetching
+function DataFetcher({ url, render, loadingComponent }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [url]);
+
+  if (loading) return loadingComponent || <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  return render({ data });
+}
+
+// Usage
+<DataFetcher
+  url="/api/users"
+  render={({ data }) => (
+    <ul>
+      {data.map(user => <li key={user.id}>{user.name}</li>)}
+    </ul>
+  )}
+  loadingComponent={<CustomSpinner />}
+/>
+
+// With children as function
+function MouseTracker({ children }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  
+  useEffect(() => {
+    const handleMove = (e) => setPosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', handleMove);
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, []);
+
+  return children(position);
+}
+```
+
+## **Component Composition**
+
+```jsx
+// 1. HOC pattern
+function withAuth(WrappedComponent) {
+  return function WithAuthComponent(props) {
+    const { user, loading } = useAuth();
+    if (loading) return <Loading />;
+    if (!user) return <Login />;
+    return <WrappedComponent {...props} user={user} />;
+  };
+}
+
+// 2. Provider pattern
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// 3. Slot pattern
+function Layout({ header, sidebar, main, footer }) {
+  return (
+    <div className="layout">
+      <header>{header}</header>
+      <aside>{sidebar}</aside>
+      <main>{main}</main>
+      <footer>{footer}</footer>
+    </div>
+  );
+}
+
+// Usage
+<Layout
+  header={<Header />}
+  sidebar={<Sidebar />}
+  main={<MainContent />}
+  footer={<Footer />}
+/>
+```
+
+## **Headless Components**
+
+```jsx
+// Provides logic, no UI
+function useToggle(initial = false) {
+  const [on, setOn] = useState(initial);
+  const toggle = useCallback(() => setOn(prev => !prev), []);
+  const setOn_ = useCallback(() => setOn(true), []);
+  const setOff = useCallback(() => setOn(false), []);
+  
+  return { on, toggle, setOn: setOn_, setOff };
+}
+
+// Headless component
+function Toggle({ children, initial = false }) {
+  const { on, toggle, setOn, setOff } = useToggle(initial);
+  return children({ on, toggle, setOn, setOff });
+}
+
+// Usage - completely custom UI
+<Toggle>
+  {({ on, toggle }) => (
+    <button 
+      className={on ? 'active' : ''}
+      onClick={toggle}
+    >
+      {on ? 'ON' : 'OFF'}
+    </button>
+  )}
+</Toggle>
+
+// Another usage
+<Toggle>
+  {({ on, setOn, setOff }) => (
+    <div>
+      <span>Status: {on ? 'Active' : 'Inactive'}</span>
+      <button onClick={setOn}>Activate</button>
+      <button onClick={setOff}>Deactivate</button>
+    </div>
+  )}
+</Toggle>
+
+// Advanced headless with custom hooks
+function useList(initialItems = []) {
+  const [items, setItems] = useState(initialItems);
+  
+  const add = useCallback((item) => {
+    setItems(prev => [...prev, item]);
+  }, []);
+  
+  const remove = useCallback((index) => {
+    setItems(prev => prev.filter((_, i) => i !== index));
+  }, []);
+  
+  const update = useCallback((index, item) => {
+    setItems(prev => prev.map((el, i) => i === index ? item : el));
+  }, []);
+  
+  return { items, add, remove, update };
+}
+
+function ListHeadless({ children, initialItems = [] }) {
+  const list = useList(initialItems);
+  return children(list);
+}
+```

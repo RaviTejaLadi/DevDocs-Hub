@@ -1,0 +1,144 @@
+
+## **Understanding Re-renders**
+React re-renders when:
+- State changes
+- Props change
+- Parent re-renders
+- Context changes
+
+```jsx
+// Debug re-renders
+const component = () => {
+  console.log('Component rendered');
+  // Or use React DevTools profiler
+};
+
+// Prevent unnecessary re-renders
+const MemoizedComponent = React.memo(Component);
+// Only re-renders when props change (shallow comparison)
+```
+
+## **Memoization Strategies**
+
+```jsx
+// 1. React.memo for components
+const ExpensiveComponent = React.memo(({ data, onUpdate }) => {
+  // Only re-renders when data or onUpdate change
+  return <div>{/* complex render */}</div>;
+});
+
+// 2. useMemo for expensive computations
+const sortedData = useMemo(() => {
+  return [...data].sort((a, b) => a.value - b.value);
+}, [data]);
+
+// 3. useCallback for stable functions
+const handleClick = useCallback(() => {
+  console.log('Click handler');
+}, []);
+
+// 4. Custom comparison
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.user.id === nextProps.user.id;
+};
+React.memo(Component, areEqual);
+```
+
+## **Virtualization (Windowing)**
+
+```jsx
+import { FixedSizeList } from 'react-window';
+
+function VirtualList({ items }) {
+  const Row = ({ index, style }) => (
+    <div style={style}>
+      {items[index]} {/* Only renders visible items */}
+    </div>
+  );
+
+  return (
+    <FixedSizeList
+      height={500}
+      width="100%"
+      itemCount={items.length}
+      itemSize={35}
+    >
+      {Row}
+    </FixedSizeList>
+  );
+}
+
+// Dynamic height
+import { VariableSizeList } from 'react-window';
+import { useMeasure } from 'react-use';
+
+// With Infinite Scroll
+import { FixedSizeList as List } from 'react-window';
+import InfiniteLoader from 'react-window-infinite-loader';
+```
+
+## **Lazy Loading & Code Splitting**
+
+```jsx
+// Route-based splitting
+const Dashboard = React.lazy(() => import('./Dashboard'));
+const Profile = React.lazy(() => import('./Profile'));
+
+function App() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Suspense>
+  );
+}
+
+// Component-based splitting
+const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
+
+// Webpack magic comments
+const LazyComponent = React.lazy(() => 
+  import(/* webpackChunkName: "my-component" */ './MyComponent')
+);
+
+// Named exports
+const LazyComponent = React.lazy(() =>
+  import('./MyComponent').then(module => ({
+    default: module.MyComponent
+  }))
+);
+```
+
+## **Bundle Optimization**
+
+```jsx
+// 1. Dynamic imports
+button.addEventListener('click', async () => {
+  const module = await import('./heavy-module');
+  module.default();
+});
+
+// 2. Prefetching
+<link rel="prefetch" href="/static/other-page.chunk.js" />
+
+// 3. Preloading critical assets
+<link rel="preload" href="/static/critical.css" as="style" />
+
+// 4. Webpack optimization
+// webpack.config.js
+module.exports = {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+        }
+      }
+    }
+  }
+};
+```

@@ -1,0 +1,508 @@
+
+## **Prop Drilling**
+
+```jsx
+// ❌ BAD - Prop drilling through multiple levels
+function App() {
+  const [user, setUser] = useState({ name: 'John' });
+  return <Header user={user} />;
+}
+
+function Header({ user }) {
+  return <Nav user={user} />;
+}
+
+function Nav({ user }) {
+  return <UserProfile user={user} />;
+}
+
+function UserProfile({ user }) {
+  return <div>{user.name}</div>;
+}
+
+// ✅ GOOD - Using Context
+const UserContext = React.createContext();
+
+function App() {
+  const [user, setUser] = useState({ name: 'John' });
+  return (
+    <UserContext.Provider value={user}>
+      <Header />
+    </UserContext.Provider>
+  );
+}
+
+function Header() {
+  return <Nav />;
+}
+
+function Nav() {
+  return <UserProfile />;
+}
+
+function UserProfile() {
+  const user = useContext(UserContext);
+  return <div>{user.name}</div>;
+}
+```
+
+## **Overusing Context**
+
+```jsx
+// ❌ BAD - Context for everything
+const AppContext = React.createContext();
+
+function App() {
+  const [theme, setTheme] = useState('light');
+  const [user, setUser] = useState(null);
+  const [notifications, setNotifications] = useState([]);
+  const [settings, setSettings] = useState({});
+  // ... many more states
+  
+  // All in one context - causes unnecessary re-renders
+  return (
+    <AppContext.Provider value={{ theme, setTheme, user, setUser, notifications, setNotifications, settings, setSettings }}>
+      <AppContent />
+    </AppContext.Provider>
+  );
+}
+
+// ✅ GOOD - Separate contexts
+const ThemeContext = React.createContext();
+const UserContext = React.createContext();
+const NotificationContext = React.createContext();
+
+function App() {
+  const [theme, setTheme] = useState('light');
+  const [user, setUser] = useState(null);
+  const [notifications, setNotifications] = useState([]);
+  
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <UserContext.Provider value={{ user, setUser }}>
+        <NotificationContext.Provider value={{ notifications, setNotifications }}>
+          <AppContent />
+        </NotificationContext.Provider>
+      </UserContext.Provider>
+    </ThemeContext.Provider>
+  );
+}
+
+// ✅ BETTER - Use composition
+function App() {
+  return (
+    <ThemeProvider>
+      <UserProvider>
+        <NotificationProvider>
+          <AppContent />
+        </NotificationProvider>
+      </UserProvider>
+    </ThemeProvider>
+  );
+}
+```
+
+## **Anonymous Functions in the Wrong Places**
+
+```jsx
+// ❌ BAD - New function on every render
+function Component({ items }) {
+  return (
+    <div>
+      {items.map(item => (
+        <Item 
+          key={item.id}
+          onClick={() => handleClick(item.id)} // New function each render
+        />
+      ))}
+    </div>
+  );
+}
+
+// ✅ GOOD - Memoized callback
+function Component({ items }) {
+  const handleItemClick = useCallback((id) => {
+    handleClick(id);
+  }, [handleClick]);
+  
+  return (
+    <div>
+      {items.map(item => (
+        <Item 
+          key={item.id}
+          onClick={handleItemClick}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ❌ BAD - Inline functions in useMemo dependencies
+const computed = useMemo(() => {
+  return expensiveOperation(data);
+}, [data, () => console.log('dependency')]); // Function changes every render
+
+// ✅ GOOD - Stable dependencies
+const dependency = useCallback(() => console.log('dependency'), []);
+const computed = useMemo(() => {
+  return expensiveOperation(data);
+}, [data, dependency]);
+```
+
+## **Deeply Nested State**
+
+```jsx
+// ❌ BAD - Deeply nested state
+const [state, setState] = useState({
+  user: {
+    profile: {
+      name: 'John',
+      address: {
+        street: '123 Main St',
+        city: 'New York',
+        country: 'USA',
+        coordinates: {
+          lat: 40.7128,
+          lng: -74.0060
+        }
+      }
+    },
+    preferences: {
+      theme: 'light',
+      notifications: {
+        email: true,
+        push: false
+      }
+    }
+  }
+});
+
+// Updating deeply nested state
+const updateCity = (newCity) => {
+  setState(prev => ({
+    ...prev,
+    user: {
+      ...prev.user,
+      profile: {
+        ...prev.user.profile,
+        address: {
+          ...prev.user.profile.address,
+          city: newCity
+        }
+      }
+    }
+  }));
+};
+
+// ✅ GOOD - Normalize state
+const [user, setUser] = useState({
+  id: 1,
+  name: 'John',
+  addressId: 1,
+  preferencesId: 1
+});
+
+const [addresses, setAddresses] = useState({
+  1: { street: '123 Main St', city: 'New York', country: 'USA', lat: 40.7128, lng: -74.0060 }
+});
+
+const [preferences, setPreferences] = useState({
+  1: { theme: 'light', emailNotifications: true, pushNotifications: false }
+});
+
+// Updating is much simpler
+const updateCity = (city) => {
+  setAddresses(prev => ({
+    ...prev,
+    [user.addressId]: { ...prev[user.addressId], city }
+  }));
+};
+
+// ✅ BETTER - Use useReducer
+function reducer(state, action) {
+  switch (action.type) {
+    case 'UPDATE_USER_PROFILE':
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload }
+      };
+    case 'UPDATE_ADDRESS':
+      return {
+        ...state,
+        addresses: {
+          ...state.addresses,
+          [action.id]: { ...state.addresses[action.id], ...action.payload }
+        }
+      };
+    default:
+      return state;
+  }
+}
+```
+
+## **Duplicated State**
+
+```jsx
+// ❌ BAD - Duplicated state
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [userCopy, setUserCopy] = useState(null); // Duplicate
+  
+  useEffect(() => {
+    fetchUser(userId).then(data => {
+      setUser(data);
+      setUserCopy(data); // Duplicate
+    });
+  }, [userId]);
+  
+  const updateUser = (newData) => {
+    setUser(newData);
+    setUserCopy(newData); // Must keep in sync
+  };
+  
+  return <div>...</div>;
+}
+
+// ✅ GOOD - Single source of truth
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    fetchUser(userId).then(setUser);
+  }, [userId]);
+  
+  const updateUser = (newData) => {
+    setUser(newData);
+  };
+  
+  return <div>...</div>;
+}
+
+// ❌ BAD - State derived from props
+function ProductDetails({ product }) {
+  const [name, setName] = useState(product.name);
+  const [price, setPrice] = useState(product.price);
+  
+  useEffect(() => {
+    setName(product.name);
+    setPrice(product.price);
+  }, [product]);
+  
+  // ...
+}
+
+// ✅ GOOD - Compute directly or use key
+function ProductDetails({ product }) {
+  // Option 1: Compute directly
+  const { name, price } = product;
+  
+  // Option 2: Use key to reset state
+  const [isEditing, setIsEditing] = useState(false);
+  // If product changes, component remounts with new key
+  
+  return <div>...</div>;
+}
+
+// Usage with key
+<ProductDetails key={product.id} product={product} />
+```
+
+## **Unnecessary Effects**
+
+```jsx
+// ❌ BAD - Effect for derived state
+function Component({ items }) {
+  const [filteredItems, setFilteredItems] = useState([]);
+  
+  useEffect(() => {
+    setFilteredItems(items.filter(item => item.active));
+  }, [items]);
+  
+  return <List items={filteredItems} />;
+}
+
+// ✅ GOOD - Derive directly
+function Component({ items }) {
+  const filteredItems = items.filter(item => item.active);
+  return <List items={filteredItems} />;
+}
+
+// ❌ BAD - Effect for computed values
+function Component({ a, b }) {
+  const [sum, setSum] = useState(0);
+  
+  useEffect(() => {
+    setSum(a + b);
+  }, [a, b]);
+  
+  return <div>{sum}</div>;
+}
+
+// ✅ GOOD - Compute directly
+function Component({ a, b }) {
+  const sum = a + b;
+  return <div>{sum}</div>;
+}
+
+// ❌ BAD - Effect for event handlers
+function Component() {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        setCount(count + 1);
+      }
+    };
+    
+    window.addEventListener('keypress', handleKeyPress);
+    return () => window.removeEventListener('keypress', handleKeyPress);
+  }, [count]); // Effect re-runs on every count change
+  
+  return <div>{count}</div>;
+}
+
+// ✅ GOOD - Event handler with ref
+function Component() {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
+  
+  useEffect(() => {
+    countRef.current = count;
+  }, [count]);
+  
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        setCount(countRef.current + 1);
+      }
+    };
+    
+    window.addEventListener('keypress', handleKeyPress);
+    return () => window.removeEventListener('keypress', handleKeyPress);
+  }, []); // Only runs once
+  
+  return <div>{count}</div>;
+}
+```
+
+## **Inefficient Rendering**
+
+```jsx
+// ❌ BAD - Rendering unnecessary components
+function List({ items }) {
+  return (
+    <div>
+      {items.map(item => (
+        <Item 
+          key={item.id}
+          {...item}
+          onUpdate={() => {/* ... */}} // New function each render
+          onDelete={() => {/* ... */}} // New function each render
+        />
+      ))}
+    </div>
+  );
+}
+
+// ✅ GOOD - Optimized
+function List({ items }) {
+  const handleUpdate = useCallback((id) => {
+    // Update logic
+  }, []);
+  
+  const handleDelete = useCallback((id) => {
+    // Delete logic
+  }, []);
+  
+  return (
+    <div>
+      {items.map(item => (
+        <Item 
+          key={item.id}
+          {...item}
+          onUpdate={handleUpdate}
+          onDelete={handleDelete}
+        />
+      ))}
+    </div>
+  );
+}
+
+const Item = React.memo(({ id, name, onUpdate, onDelete }) => {
+  return (
+    <div>
+      <span>{name}</span>
+      <button onClick={() => onUpdate(id)}>Update</button>
+      <button onClick={() => onDelete(id)}>Delete</button>
+    </div>
+  );
+});
+
+// ❌ BAD - Inline styles causing re-renders
+function Component({ color, size }) {
+  return (
+    <div style={{ color, fontSize: size + 'px' }}>
+      Content
+    </div>
+  );
+}
+
+// ✅ GOOD - Memoized styles
+function Component({ color, size }) {
+  const style = useMemo(() => ({
+    color,
+    fontSize: size + 'px'
+  }), [color, size]);
+  
+  return <div style={style}>Content</div>;
+}
+```
+
+## **Common Anti-Patterns Summary**
+
+```jsx
+// 1. ❌ Using index as key
+// 2. ❌ Mutating state directly
+// 3. ❌ Missing dependency arrays
+// 4. ❌ Overusing context
+// 5. ❌ Prop drilling
+// 6. ❌ Inline functions in render
+// 7. ❌ Unnecessary re-renders
+// 8. ❌ Deeply nested state
+// 9. ❌ Duplicated state
+// 10. ❌ Unnecessary effects
+
+// Prevention checklist:
+const AntiPatternPrevention = {
+  // 1. Use unique, stable keys
+  key: 'unique-id',
+  
+  // 2. Immutable state updates
+  updateState: (prev) => ({ ...prev, newProp: value }),
+  
+  // 3. Include all dependencies
+  useEffect: () => { /* effect */ }, [dependencies],
+  
+  // 4. Use multiple contexts, not one giant one
+  contexts: ['UserContext', 'ThemeContext', 'SettingsContext'],
+  
+  // 5. Use Context or state management for deep state
+  stateManagement: 'Use Context or Redux',
+  
+  // 6. Memoize callbacks with useCallback
+  callbacks: useCallback(() => {}, [deps]),
+  
+  // 7. Use React.memo and useMemo
+  memoization: 'Memoize components and expensive calculations',
+  
+  // 8. Normalize state
+  normalizedState: 'Flatten nested structures',
+  
+  // 9. Single source of truth
+  singleSource: 'Derive or compute instead of duplicating',
+  
+  // 10. Compute values directly when possible
+  derivedValues: 'Compute, don't useEffect'
+};
+```

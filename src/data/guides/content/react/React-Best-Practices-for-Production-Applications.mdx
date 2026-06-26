@@ -1,0 +1,542 @@
+
+## **Folder Structure**
+
+```jsx
+/*
+Recommended structure:
+
+src/
+├── components/
+│   ├── common/
+│   │   ├── Button/
+│   │   │   ├── Button.jsx
+│   │   │   ├── Button.css
+│   │   │   ├── Button.test.jsx
+│   │   │   └── index.js
+│   │   ├── Input/
+│   │   └── Card/
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── Login/
+│   │   │   ├── Register/
+│   │   │   └── authSlice.js
+│   │   └── dashboard/
+│   │       ├── Dashboard.jsx
+│   │       ├── Dashboard.css
+│   │       └── Dashboard.test.jsx
+│   └── layouts/
+│       ├── MainLayout.jsx
+│       └── AuthLayout.jsx
+├── hooks/
+│   ├── useAuth.js
+│   ├── useLocalStorage.js
+│   └── useDebounce.js
+├── context/
+│   ├── AuthContext.js
+│   └── ThemeContext.js
+├── utils/
+│   ├── api.js
+│   ├── formatters.js
+│   └── validators.js
+├── services/
+│   ├── authService.js
+│   └── userService.js
+├── styles/
+│   ├── global.css
+│   └── variables.css
+├── routes/
+│   ├── AppRoutes.js
+│   └── PrivateRoute.js
+├── types/
+│   └── index.ts
+├── assets/
+│   ├── images/
+│   └── fonts/
+└── config/
+    ├── constants.js
+    └── environment.js
+*/
+
+// Example index.js for component exports
+// components/common/Button/index.js
+export { default } from './Button';
+export * from './Button';
+```
+
+## **Error Boundaries**
+
+```jsx
+// Production-ready error boundary
+class ErrorBoundary extends React.Component {
+  state = { hasError: false, error: null, errorInfo: null };
+  
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  
+  componentDidCatch(error, errorInfo) {
+    // Log to error reporting service
+    if (process.env.NODE_ENV === 'production') {
+      // Send to Sentry, LogRocket, etc.
+      window.Sentry?.captureException(error, {
+        extra: { componentStack: errorInfo.componentStack }
+      });
+    }
+    
+    this.setState({ errorInfo });
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="error-fallback">
+          <h1>Something went wrong</h1>
+          <p>We're sorry, but something went wrong. Please try again.</p>
+          {process.env.NODE_ENV === 'development' && (
+            <details>
+              <summary>Error details</summary>
+              <pre>{this.state.error?.toString()}</pre>
+              <pre>{this.state.errorInfo?.componentStack}</pre>
+            </details>
+          )}
+          <button onClick={() => window.location.reload()}>
+            Reload Page
+          </button>
+        </div>
+      );
+    }
+    
+    return this.props.children;
+  }
+}
+
+// Usage in app
+function App() {
+  return (
+    <ErrorBoundary>
+      <AppContent />
+    </ErrorBoundary>
+  );
+}
+
+// Multiple boundaries for different parts
+function Dashboard() {
+  return (
+    <ErrorBoundary fallback={<WidgetError />}>
+      <Widget />
+    </ErrorBoundary>
+  );
+}
+```
+
+## **Environment Variables**
+
+```jsx
+// .env
+REACT_APP_API_URL=https://api.example.com
+REACT_APP_ENV=production
+REACT_APP_SENTRY_DSN=your-sentry-dsn
+
+// config/environment.js
+export const config = {
+  api: {
+    baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3000',
+    timeout: Number(process.env.REACT_APP_API_TIMEOUT) || 30000,
+  },
+  env: process.env.REACT_APP_ENV || 'development',
+  sentry: {
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    environment: process.env.REACT_APP_ENV,
+  },
+  features: {
+    enableNewUI: process.env.REACT_APP_ENABLE_NEW_UI === 'true',
+    enableBetaFeatures: process.env.REACT_APP_ENABLE_BETA === 'true',
+  }
+};
+
+// Usage
+import { config } from 'config/environment';
+
+function ApiService() {
+  const fetchData = async () => {
+    const response = await fetch(`${config.api.baseUrl}/data`, {
+      timeout: config.api.timeout
+    });
+    return response.json();
+  };
+}
+
+// Feature flags
+function FeatureFlaggedComponent() {
+  if (!config.features.enableNewUI) {
+    return <OldUI />;
+  }
+  return <NewUI />;
+}
+```
+
+## **Accessibility (a11y)**
+
+```jsx
+// 1. Semantic HTML
+function AccessibleComponent() {
+  return (
+    <article>
+      <header>
+        <h1>Article Title</h1>
+      </header>
+      <nav aria-label="Main navigation">
+        {/* Navigation */}
+      </nav>
+      <main>
+        <section aria-labelledby="section-title">
+          <h2 id="section-title">Section</h2>
+          <p>Content</p>
+        </section>
+      </main>
+      <footer>
+        <p>&copy; 2024</p>
+      </footer>
+    </article>
+  );
+}
+
+// 2. ARIA attributes
+function AccessibleButton({ label, onClick, disabled }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      aria-disabled={disabled}
+    >
+      {label}
+    </button>
+  );
+}
+
+// 3. Focus management
+function Modal({ isOpen, onClose, children }) {
+  const modalRef = useRef();
+  
+  useEffect(() => {
+    if (isOpen) {
+      // Focus trap
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusableElements.length) {
+        focusableElements[0].focus();
+      }
+      
+      // Prevent scroll
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }
+  }, [isOpen]);
+  
+  if (!isOpen) return null;
+  
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      ref={modalRef}
+    >
+      <h2 id="modal-title">Modal Title</h2>
+      {children}
+      <button onClick={onClose}>Close</button>
+    </div>
+  );
+}
+
+// 4. Keyboard navigation
+function KeyboardNavigation() {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      // Close modal, dropdown, etc.
+    }
+    if (e.key === 'Enter' || e.key === ' ') {
+      // Activate button
+    }
+    if (e.key === 'Tab') {
+      // Handle tab order
+    }
+  };
+  
+  return (
+    <div onKeyDown={handleKeyDown}>
+      {/* Content */}
+    </div>
+  );
+}
+
+// 5. Screen reader announcements
+function ScreenReaderAnnouncer() {
+  const [message, setMessage] = useState('');
+  
+  return (
+    <>
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true"
+        style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden' }}
+      >
+        {message}
+      </div>
+      <button onClick={() => setMessage('Update completed')}>
+        Update
+      </button>
+    </>
+  );
+}
+```
+
+## **Security Best Practices**
+
+```jsx
+// 1. XSS Prevention
+function SafeRender({ userInput }) {
+  // ❌ BAD - Dangerous
+  // return <div dangerouslySetInnerHTML={{ __html: userInput }} />;
+  
+  // ✅ GOOD - Safe
+  return <div>{escapeHtml(userInput)}</div>;
+}
+
+// 2. CSRF Protection
+function ApiClient() {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+  
+  const post = async (url, data) => {
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      body: JSON.stringify(data),
+    });
+  };
+}
+
+// 3. Input validation
+function ValidatedForm() {
+  const validateInput = (input) => {
+    // Remove dangerous characters
+    return input.replace(/[<>]/g, '');
+  };
+  
+  const handleSubmit = (data) => {
+    // Server-side validation is more important!
+    const sanitized = sanitizeData(data);
+    // Submit sanitized data
+  };
+}
+
+// 4. Secure cookies
+// In server configuration
+/*
+Set-Cookie: session=value; 
+  HttpOnly; 
+  Secure; 
+  SameSite=Strict; 
+  Max-Age=3600
+*/
+
+// 5. Content Security Policy
+/*
+<meta http-equiv="Content-Security-Policy" 
+  content="default-src 'self'; 
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https:;
+  connect-src 'self' https://api.example.com;">
+*/
+```
+
+## **Production Readiness**
+
+```jsx
+// 1. Performance monitoring
+function PerformanceMonitor() {
+  useEffect(() => {
+    // Report Web Vitals
+    const reportWebVitals = ({ name, value, id }) => {
+      // Send to analytics
+      window.gtag('event', name, {
+        event_category: 'Web Vitals',
+        value: Math.round(value),
+        event_label: id,
+        non_interaction: true,
+      });
+    };
+    
+    // Setup performance observer
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (entry.entryType === 'largest-contentful-paint') {
+          reportWebVitals({
+            name: 'LCP',
+            value: entry.startTime,
+            id: entry.id,
+          });
+        }
+      }
+    });
+    
+    observer.observe({ entryTypes: ['largest-contentful-paint'] });
+    return () => observer.disconnect();
+  }, []);
+}
+
+// 2. Service Worker
+// service-worker.js
+/*
+const CACHE_NAME = 'app-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/static/css/main.css',
+  '/static/js/main.js'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((response) => response || fetch(event.request))
+  );
+});
+*/
+
+// 3. Error logging
+function ErrorLogger() {
+  useEffect(() => {
+    const handleError = (error) => {
+      // Send to logging service
+      if (window.Sentry) {
+        window.Sentry.captureException(error);
+      }
+      
+      // Log to console in development
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Global error:', error);
+      }
+    };
+    
+    window.addEventListener('error', handleError);
+    return () => window.removeEventListener('error', handleError);
+  }, []);
+}
+
+// 4. Analytics
+function AnalyticsTracker() {
+  useEffect(() => {
+    // Track page views
+    const handleRouteChange = (url) => {
+      window.gtag('config', process.env.REACT_APP_GA_ID, {
+        page_path: url,
+      });
+    };
+    
+    // Setup tracking
+    const unsubscribe = history.listen(handleRouteChange);
+    handleRouteChange(window.location.pathname);
+    
+    return () => unsubscribe();
+  }, []);
+}
+```
+
+## **Performance Best Practices**
+
+```jsx
+// 1. Image optimization
+function OptimizedImage({ src, alt, width, height }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+      srcSet={`${src} 1x, ${src}@2x 2x`}
+    />
+  );
+}
+
+// 2. Lazy load components
+const LazyComponent = React.lazy(() => import('./HeavyComponent'));
+
+// 3. Bundle optimization
+// webpack.config.js
+/*
+optimization: {
+  splitChunks: {
+    chunks: 'all',
+    cacheGroups: {
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        priority: 10,
+      },
+      common: {
+        minChunks: 2,
+        priority: 5,
+        reuseExistingChunk: true,
+      },
+    },
+  },
+}
+*/
+
+// 4. Prefetching
+function PrefetchExample() {
+  const prefetchDashboard = () => {
+    import(/* webpackPrefetch: true */ './Dashboard');
+  };
+  
+  return (
+    <Link 
+      to="/dashboard"
+      onMouseEnter={prefetchDashboard}
+    >
+      Dashboard
+    </Link>
+  );
+}
+
+// 5. Font loading optimization
+function FontLoading() {
+  return (
+    <>
+      <link 
+        rel="preconnect" 
+        href="https://fonts.googleapis.com" 
+      />
+      <link 
+        rel="preconnect" 
+        href="https://fonts.gstatic.com" 
+        crossOrigin="anonymous"
+      />
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Inter&display=swap" 
+        rel="stylesheet" 
+      />
+    </>
+  );
+}
+```

@@ -1,0 +1,350 @@
+
+## **React DevTools**
+
+```jsx
+// 1. Component tree inspection
+// - View component hierarchy
+// - Inspect props and state
+// - Search components
+// - Highlight updates when re-rendering
+
+// 2. Profiler tab
+function ProfileApp() {
+  return (
+    <Profiler id="App" onRender={onRender}>
+      <App />
+    </Profiler>
+  );
+}
+
+function onRender(
+  id, // "App"
+  phase, // "mount" or "update"
+  actualDuration, // Time spent rendering
+  baseDuration, // Estimated time without memoization
+  startTime, // When React began rendering
+  commitTime, // When React committed
+  interactions // Set of interactions
+) {
+  console.log(`[${id}] ${phase}: ${actualDuration}ms`);
+}
+
+// 3. Debugging components
+const MyComponent = ({ prop }) => {
+  console.log('Component rendering with prop:', prop);
+  // Or use useEffect for changes
+  useEffect(() => {
+    console.log('Prop changed:', prop);
+  }, [prop]);
+  
+  return <div>{prop}</div>;
+};
+
+// 4. Components tab features
+// - Inspect hooks
+// - Edit props/state directly
+// - Component highlighting
+// - Suspense debugging
+```
+
+## **Debugging Hooks**
+
+```jsx
+// Custom debug hook
+function useDebugState(initialState, label = 'state') {
+  const [state, setState] = useState(initialState);
+  
+  useEffect(() => {
+    console.log(`[${label}] State changed:`, state);
+  }, [state]);
+  
+  return [state, setState];
+}
+
+// Debug useEffect dependencies
+function useDebugEffect(effect, dependencies, label = 'effect') {
+  const prevDeps = useRef(dependencies);
+  
+  useEffect(() => {
+    const changed = dependencies.reduce((changes, dep, index) => {
+      if (dep !== prevDeps.current[index]) {
+        changes.push({
+          index,
+          from: prevDeps.current[index],
+          to: dep
+        });
+      }
+      return changes;
+    }, []);
+    
+    console.log(`[${label}] Dependencies changed:`, changed);
+    prevDeps.current = dependencies;
+  });
+  
+  useEffect(effect, dependencies);
+}
+
+// Trace re-renders
+function useWhyDidYouUpdate(name, props) {
+  const previousProps = useRef();
+  
+  useEffect(() => {
+    if (previousProps.current) {
+      const allKeys = Object.keys({ ...previousProps.current, ...props });
+      const changes = {};
+      
+      allKeys.forEach(key => {
+        if (previousProps.current[key] !== props[key]) {
+          changes[key] = {
+            from: previousProps.current[key],
+            to: props[key]
+          };
+        }
+      });
+      
+      if (Object.keys(changes).length) {
+        console.log(`[${name}] Updated:`, changes);
+      }
+    }
+    
+    previousProps.current = props;
+  });
+}
+```
+
+## **Performance Profiling**
+
+```jsx
+// 1. Measuring render time
+function PerformanceMonitor({ children }) {
+  const [renderTime, setRenderTime] = useState(0);
+  const startTime = useRef(performance.now());
+  
+  useEffect(() => {
+    const endTime = performance.now();
+    setRenderTime(endTime - startTime.current);
+    startTime.current = endTime;
+  });
+  
+  return (
+    <div>
+      <div>Render time: {renderTime.toFixed(2)}ms</div>
+      {children}
+    </div>
+  );
+}
+
+// 2. Memoization debugging
+const MemoizedComponent = React.memo(
+  ({ data }) => {
+    console.log('Memoized component rendered');
+    return <div>{data}</div>;
+  },
+  (prev, next) => {
+    // Custom comparison
+    console.log('Comparing:', prev, next);
+    return prev.data === next.data;
+  }
+);
+
+// 3. Track excessive re-renders
+function useRenderCount() {
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+  console.log(`Rendered ${renderCount.current} times`);
+  return renderCount.current;
+}
+
+function Component() {
+  const renderCount = useRenderCount();
+  return <div>Renders: {renderCount}</div>;
+}
+```
+
+## **Network Debugging**
+
+```jsx
+// 1. API request logging
+function useApiLogger() {
+  const originalFetch = window.fetch;
+  
+  window.fetch = async function(...args) {
+    const [url, options] = args;
+    console.log(`[API] Request: ${url}`, options);
+    
+    try {
+      const response = await originalFetch.apply(this, args);
+      const clone = response.clone();
+      const data = await clone.json();
+      console.log(`[API] Response: ${url}`, data);
+      return response;
+    } catch (error) {
+      console.error(`[API] Error: ${url}`, error);
+      throw error;
+    }
+  };
+  
+  return () => {
+    window.fetch = originalFetch;
+  };
+}
+
+// 2. API error handling
+async function fetchWithErrorHandling(url, options = {}) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+  
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('[API] Error:', error);
+      throw new Error(error.message || 'Request failed');
+    }
+    
+    return response.json();
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      console.error('[API] Request timeout');
+      throw new Error('Request timed out');
+    }
+    console.error('[API] Network error:', error);
+    throw error;
+  }
+}
+
+// 3. Mock API for testing
+function setupMockApi() {
+  if (process.env.NODE_ENV === 'development') {
+    // Mock fetch responses
+    const originalFetch = window.fetch;
+    window.fetch = function(url) {
+      if (url.includes('/api/users')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve([
+            { id: 1, name: 'John' },
+            { id: 2, name: 'Jane' }
+          ])
+        });
+      }
+      return originalFetch.apply(this, arguments);
+    };
+  }
+}
+```
+
+## **Common Troubleshooting**
+
+```jsx
+// 1. Infinite loop debugging
+function ProblematicComponent() {
+  const [data, setData] = useState([]);
+  
+  // ❌ BAD - Infinite loop
+  useEffect(() => {
+    setData(fetchData()); // Missing dependencies
+  });
+  
+  // ✅ GOOD
+  useEffect(() => {
+    setData(fetchData());
+  }, []); // Empty deps for once
+  
+  // ❌ BAD - Setting state in render
+  if (data.length === 0) {
+    setData(defaultData); // Infinite loop
+  }
+  
+  // ✅ GOOD - Use useEffect or compute
+  const displayData = data.length === 0 ? defaultData : data;
+}
+
+// 2. Missing data debugging
+function DataComponent({ userId }) {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    if (!userId) {
+      console.warn('No userId provided');
+      return;
+    }
+    
+    let isMounted = true;
+    fetchUser(userId)
+      .then(data => {
+        if (isMounted) {
+          console.log('User fetched:', data);
+          setUser(data);
+        }
+      })
+      .catch(error => {
+        console.error('Failed to fetch user:', error);
+        if (isMounted) setUser(null);
+      });
+    
+    return () => {
+      isMounted = false;
+      console.log('Cleanup for userId:', userId);
+    };
+  }, [userId]);
+  
+  return <div>{user?.name || 'No user'}</div>;
+}
+
+// 3. Context debugging
+function useDebugContext(context, name) {
+  const value = useContext(context);
+  
+  useEffect(() => {
+    console.log(`[${name}] Context value:`, value);
+  }, [value]);
+  
+  return value;
+}
+
+// 4. Error boundary
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null, errorInfo: null };
+  }
+  
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  
+  componentDidCatch(error, errorInfo) {
+    console.error('React Error Boundary caught:', error, errorInfo);
+    this.setState({ error, errorInfo });
+    
+    // Send to error tracking service
+    if (window.errorReporting) {
+      window.errorReporting.logError(error, errorInfo);
+    }
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          <h2>Something went wrong</h2>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
+            <summary>Error details</summary>
+            {this.state.error?.toString()}
+            <br />
+            {this.state.errorInfo?.componentStack}
+          </details>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+```

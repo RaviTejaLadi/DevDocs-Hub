@@ -316,13 +316,13 @@ export function buildMarkdownComponents({
             </div>
             <span className="md-code-lang">{languageLabel(language!)}</span>
           </div>
-          <div className="pointer-events-none absolute right-2 top-[2.15rem] z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
+          <div className="pointer-events-none absolute right-3 top-[3.15rem] z-10 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => handleCopy(codeKey, codeString)}
               className={cn(
-                'h-6 gap-1 rounded-md border border-border/40 bg-card/95 px-2 text-[0.68rem] font-medium',
+                'h-8 gap-1 rounded-sm border border-border/40 bg-card/95 p-2 text-[0.68rem] font-medium',
                 isDarkTheme
                   ? 'text-foreground/70 hover:bg-accent/60 hover:text-foreground'
                   : 'text-muted-foreground hover:bg-accent/80 hover:text-foreground'

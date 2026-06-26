@@ -1,0 +1,268 @@
+
+## **useState**
+Manages local component state with re-renders on updates.
+
+```jsx
+// Basic usage
+const [count, setCount] = useState(0);
+
+// Functional update (prevents stale closure)
+setCount(prev => prev + 1);
+
+// Lazy initialization (expensive computation)
+const [state, setState] = useState(() => {
+  const initial = expensiveCalculation();
+  return initial;
+});
+
+// Object state (always create new object)
+const [user, setUser] = useState({ name: '', age: 0 });
+setUser(prev => ({ ...prev, age: prev.age + 1 }));
+```
+
+## **useEffect**
+Handles side effects: API calls, subscriptions, DOM manipulations.
+
+```jsx
+// Runs after every render
+useEffect(() => {
+  document.title = `Count: ${count}`;
+});
+
+// Runs once on mount
+useEffect(() => {
+  fetchData();
+}, []); // Empty dependencies = run once
+
+// Runs when dependencies change
+useEffect(() => {
+  const subscription = subscribe(id);
+  return () => subscription.unsubscribe(); // Cleanup
+}, [id]);
+
+// Avoiding race conditions
+useEffect(() => {
+  let isMounted = true;
+  fetchUser(id).then(data => {
+    if (isMounted) setUser(data);
+  });
+  return () => { isMounted = false; };
+}, [id]);
+```
+
+## **useMemo**
+Memoizes expensive computations to prevent recalculation on every render.
+
+```jsx
+// Expensive calculation
+const expensiveResult = useMemo(() => {
+  return items
+    .filter(item => item.active)
+    .sort((a, b) => a.price - b.price)
+    .reduce((acc, cur) => acc + cur.price, 0);
+}, [items]); // Only recalculates when 'items' changes
+
+// Reference equality for objects
+const memoizedObject = useMemo(() => ({ user, settings }), [user, settings]);
+```
+
+## **useCallback**
+Memoizes functions to prevent unnecessary re-renders in child components.
+
+```jsx
+// Without useCallback: new function on every render
+const handleClick = () => {
+  console.log('Clicked');
+};
+
+// With useCallback: stable function reference
+const handleClick = useCallback(() => {
+  console.log('Clicked');
+}, []); // Dependencies determine when function recreates
+
+// Dependency-based callback
+const handleSearch = useCallback((query) => {
+  fetchResults(query);
+}, [debounceTime, apiKey]); // Recreates when these change
+
+// Event handlers in optimized components
+const MemoizedChild = React.memo(Child);
+return <MemoizedChild onUpdate={useCallback(() => update(id), [id])} />;
+```
+
+## **useRef**
+Persists values across renders without causing re-renders. DOM access.
+
+```jsx
+// DOM reference
+const inputRef = useRef(null);
+const focusInput = () => inputRef.current.focus();
+return <input ref={inputRef} />;
+
+// Mutable value (no re-render)
+const renderCount = useRef(0);
+renderCount.current += 1; // Doesn't trigger re-render
+
+// Previous value tracking
+const prevValue = useRef();
+useEffect(() => {
+  prevValue.current = currentValue;
+}, [currentValue]);
+
+// Instance variable alternative to class fields
+const timerRef = useRef();
+useEffect(() => {
+  timerRef.current = setInterval(() => {
+    // Do something
+  }, 1000);
+  return () => clearInterval(timerRef.current);
+}, []);
+```
+
+## **useReducer**
+Complex state logic with predictable updates (like Redux pattern).
+
+```jsx
+const initialState = { count: 0, loading: false, error: null };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: state.count + 1 };
+    case 'decrement':
+      return { ...state, count: state.count - 1 };
+    case 'reset':
+      return initialState;
+    case 'setLoading':
+      return { ...state, loading: action.payload };
+    default:
+      return state;
+  }
+}
+
+const [state, dispatch] = useReducer(reducer, initialState);
+
+// Async actions with reducer
+const asyncAction = async () => {
+  dispatch({ type: 'setLoading', payload: true });
+  try {
+    const data = await fetchData();
+    dispatch({ type: 'success', payload: data });
+  } catch (error) {
+    dispatch({ type: 'error', payload: error });
+  }
+};
+```
+
+## **useContext**
+Accesses React context without prop drilling.
+
+```jsx
+// Create context
+const ThemeContext = React.createContext('light');
+
+// Provider
+<ThemeContext.Provider value={{ theme: 'dark', toggleTheme }}>
+  <App />
+</ThemeContext.Provider>
+
+// Consumer
+const { theme, toggleTheme } = useContext(ThemeContext);
+
+// Custom hook for context
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return context;
+}
+```
+
+## **useId**
+Generates unique IDs for accessibility (avoiding hydration mismatches).
+
+```jsx
+const id = useId();
+const emailId = `${id}-email`;
+
+return (
+  <>
+    <label htmlFor={emailId}>Email</label>
+    <input id={emailId} type="email" />
+    <p aria-describedby={`${id}-description`}>
+      Enter your email
+    </p>
+  </>
+);
+```
+
+## **useTransition**
+Marks state updates as non-urgent for better UI responsiveness.
+
+```jsx
+const [isPending, startTransition] = useTransition();
+
+// Mark as transition (low priority)
+const handleSearch = (query) => {
+  startTransition(() => {
+    setSearchQuery(query); // This update can be interrupted
+  });
+};
+
+// UI feedback
+return (
+  <div>
+    <input onChange={e => handleSearch(e.target.value)} />
+    {isPending && <Spinner />}
+    <Results data={searchResults} />
+  </div>
+);
+
+// With Suspense
+function SearchComponent() {
+  const [isPending, startTransition] = useTransition();
+  const [query, setQuery] = useState('');
+  const data = useSuspenseQuery(query);
+  
+  return (
+    <>
+      <input onChange={e => startTransition(() => setQuery(e.target.value))} />
+      {isPending && <Spinner />}
+      <Suspense fallback={<InitialLoading />}>
+        <Results data={data} />
+      </Suspense>
+    </>
+  );
+}
+```
+
+## **useDeferredValue**
+Defers updating part of UI to keep interface responsive.
+
+```jsx
+const [query, setQuery] = useState('');
+const deferredQuery = useDeferredValue(query);
+
+// Stale while revalidating
+const isStale = query !== deferredQuery;
+
+return (
+  <>
+    <input value={query} onChange={e => setQuery(e.target.value)} />
+    <SearchResults 
+      query={deferredQuery} 
+      style={{ opacity: isStale ? 0.5 : 1 }} 
+    />
+  </>
+);
+
+// With memoization
+const memoizedResults = useMemo(() => {
+  return expensiveSearch(deferredQuery);
+}, [deferredQuery]);
+
+// Comparison: useTransition vs useDeferredValue
+// useTransition: control over update priority
+// useDeferredValue: automatic deferral for values
+```

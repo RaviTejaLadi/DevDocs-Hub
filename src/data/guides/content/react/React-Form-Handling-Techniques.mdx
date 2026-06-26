@@ -1,0 +1,587 @@
+
+## **Controlled vs Uncontrolled Inputs**
+
+```jsx
+// Controlled Component
+function ControlledForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    age: ''
+  });
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <input
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <input
+        name="age"
+        type="number"
+        value={formData.age}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+// Uncontrolled Component (using refs)
+function UncontrolledForm() {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({
+      name: nameRef.current.value,
+      email: emailRef.current.value
+    });
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input ref={nameRef} defaultValue="John" />
+      <input ref={emailRef} defaultValue="john@example.com" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+// Hybrid approach with useImperativeHandle
+const FormInput = React.forwardRef(({ label, ...props }, ref) => {
+  const inputRef = useRef();
+  
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current.focus(),
+    value: () => inputRef.current.value,
+    reset: () => { inputRef.current.value = ''; }
+  }));
+  
+  return (
+    <div>
+      <label>{label}</label>
+      <input ref={inputRef} {...props} />
+    </div>
+  );
+});
+
+function ParentComponent() {
+  const inputRef = useRef();
+  
+  const handleClick = () => {
+    inputRef.current.focus();
+    console.log(inputRef.current.value());
+  };
+  
+  return <FormInput ref={inputRef} label="Name" />;
+}
+```
+
+## **Form Validation**
+
+```jsx
+// Basic validation
+function LoginForm() {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState({});
+  
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.email) newErrors.email = 'Email is required';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+    if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    return newErrors;
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    // Submit form
+    console.log(formData);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input
+          value={formData.email}
+          onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+      </div>
+      <div>
+        <input
+          type="password"
+          value={formData.password}
+          onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+        />
+        {errors.password && <span className="error">{errors.password}</span>}
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+// Advanced validation with Yup
+import * as yup from 'yup';
+
+const validationSchema = yup.object().shape({
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().min(6, 'Min 6 characters').required('Password is required'),
+  confirmPassword: yup.string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+});
+
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+      // Submit
+      console.log('Form valid:', formData);
+    } catch (err) {
+      const validationErrors = {};
+      err.inner.forEach(error => {
+        validationErrors[error.path] = error.message;
+      });
+      setErrors(validationErrors);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input
+        value={formData.email}
+        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+        error={errors.email}
+        disabled={isSubmitting}
+      />
+      <Input
+        type="password"
+        value={formData.password}
+        onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+        error={errors.password}
+        disabled={isSubmitting}
+      />
+      <Input
+        type="password"
+        value={formData.confirmPassword}
+        onChange={(e) => setFormData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+        error={errors.confirmPassword}
+        disabled={isSubmitting}
+      />
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Register'}
+      </button>
+    </form>
+  );
+}
+```
+
+## **Dynamic Forms**
+
+```jsx
+// Dynamic form fields
+function DynamicForm() {
+  const [fields, setFields] = useState([
+    { id: 1, name: '', type: 'text', required: false }
+  ]);
+  const [formData, setFormData] = useState({});
+  
+  const addField = () => {
+    const newId = Math.max(0, ...fields.map(f => f.id)) + 1;
+    setFields([...fields, { id: newId, name: '', type: 'text', required: false }]);
+  };
+  
+  const removeField = (id) => {
+    setFields(fields.filter(f => f.id !== id));
+    // Remove from formData
+    const { [fields.find(f => f.id === id).name]: _, ...rest } = formData;
+    setFormData(rest);
+  };
+  
+  const updateField = (id, key, value) => {
+    setFields(fields.map(f => 
+      f.id === id ? { ...f, [key]: value } : f
+    ));
+  };
+  
+  const handleInputChange = (fieldName, value) => {
+    setFormData(prev => ({ ...prev, [fieldName]: value }));
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      {fields.map(field => (
+        <div key={field.id}>
+          <input
+            placeholder="Field name"
+            value={field.name}
+            onChange={(e) => updateField(field.id, 'name', e.target.value)}
+          />
+          <select
+            value={field.type}
+            onChange={(e) => updateField(field.id, 'type', e.target.value)}
+          >
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="email">Email</option>
+            <option value="textarea">Textarea</option>
+          </select>
+          <input
+            type="checkbox"
+            checked={field.required}
+            onChange={(e) => updateField(field.id, 'required', e.target.checked)}
+          />
+          <input
+            type={field.type === 'textarea' ? 'text' : field.type}
+            placeholder={field.name || 'Enter value'}
+            value={formData[field.name] || ''}
+            onChange={(e) => handleInputChange(field.name, e.target.value)}
+          />
+          <button type="button" onClick={() => removeField(field.id)}>Remove</button>
+        </div>
+      ))}
+      <button type="button" onClick={addField}>Add Field</button>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+// Nested form fields
+function NestedForm() {
+  const [data, setData] = useState({
+    name: '',
+    addresses: [{ street: '', city: '', country: '' }]
+  });
+  
+  const addAddress = () => {
+    setData(prev => ({
+      ...prev,
+      addresses: [...prev.addresses, { street: '', city: '', country: '' }]
+    }));
+  };
+  
+  const updateAddress = (index, key, value) => {
+    setData(prev => ({
+      ...prev,
+      addresses: prev.addresses.map((addr, i) => 
+        i === index ? { ...addr, [key]: value } : addr
+      )
+    }));
+  };
+  
+  return (
+    <form>
+      <input
+        value={data.name}
+        onChange={(e) => setData(prev => ({ ...prev, name: e.target.value }))}
+      />
+      {data.addresses.map((address, index) => (
+        <div key={index}>
+          <input
+            value={address.street}
+            onChange={(e) => updateAddress(index, 'street', e.target.value)}
+          />
+          <input
+            value={address.city}
+            onChange={(e) => updateAddress(index, 'city', e.target.value)}
+          />
+          <select
+            value={address.country}
+            onChange={(e) => updateAddress(index, 'country', e.target.value)}
+          >
+            <option value="US">US</option>
+            <option value="UK">UK</option>
+          </select>
+        </div>
+      ))}
+      <button type="button" onClick={addAddress}>Add Address</button>
+    </form>
+  );
+}
+```
+
+## **File Uploads**
+
+```jsx
+// Single file upload
+function FileUpload() {
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [preview, setPreview] = useState(null);
+  
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      
+      // Preview
+      if (selectedFile.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => setPreview(e.target.result);
+        reader.readAsDataURL(selectedFile);
+      }
+    }
+  };
+  
+  const handleUpload = async () => {
+    if (!file) return;
+    
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+        // Progress tracking with xhr
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          setProgress(percentCompleted);
+        }
+      });
+      
+      const data = await response.json();
+      console.log('Upload successful:', data);
+    } catch (error) {
+      console.error('Upload failed:', error);
+    } finally {
+      setUploading(false);
+      setProgress(0);
+    }
+  };
+  
+  return (
+    <div>
+      <input
+        type="file"
+        onChange={handleFileChange}
+        accept="image/*,.pdf"
+      />
+      {preview && <img src={preview} alt="Preview" style={{ maxWidth: '200px' }} />}
+      {file && (
+        <div>
+          <p>{file.name} ({Math.round(file.size / 1024)} KB)</p>
+          <button 
+            onClick={handleUpload} 
+            disabled={uploading}
+          >
+            {uploading ? 'Uploading...' : 'Upload'}
+          </button>
+          {uploading && (
+            <progress value={progress} max="100">{progress}%</progress>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Multiple file upload with drag & drop
+function MultiFileUpload() {
+  const [files, setFiles] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
+  
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+  
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+  
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    setFiles(prev => [...prev, ...droppedFiles]);
+  };
+  
+  const removeFile = (index) => {
+    setFiles(files.filter((_, i) => i !== index));
+  };
+  
+  const handleUploadAll = async () => {
+    const uploadPromises = files.map(async (file) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      return fetch('/api/upload', { method: 'POST', body: formData });
+    });
+    
+    try {
+      const responses = await Promise.all(uploadPromises);
+      console.log('All files uploaded:', responses);
+      setFiles([]);
+    } catch (error) {
+      console.error('Upload failed:', error);
+    }
+  };
+  
+  return (
+    <div
+      className={isDragging ? 'drag-over' : ''}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      style={{
+        border: '2px dashed #ccc',
+        padding: '20px',
+        minHeight: '100px'
+      }}
+    >
+      <input
+        type="file"
+        multiple
+        onChange={(e) => setFiles(prev => [...prev, ...e.target.files])}
+      />
+      {files.map((file, index) => (
+        <div key={index}>
+          <span>{file.name}</span>
+          <button onClick={() => removeFile(index)}>Remove</button>
+        </div>
+      ))}
+      {files.length > 0 && (
+        <button onClick={handleUploadAll}>
+          Upload {files.length} files
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+## **Complex Forms with React Hook Form**
+
+```jsx
+import { useForm, useFieldArray, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().min(8, 'Password must be at least 8 characters'),
+  products: yup.array().of(
+    yup.object().shape({
+      name: yup.string().required('Product name required'),
+      quantity: yup.number().min(1, 'Min 1').required('Quantity required')
+    })
+  )
+});
+
+function ComplexForm() {
+  const { register, control, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      products: [{ name: '', quantity: 1 }]
+    }
+  });
+  
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'products'
+  });
+  
+  const watchProducts = watch('products');
+  
+  const onSubmit = async (data) => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Form data:', data);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <input {...register('name')} placeholder="Name" />
+        {errors.name && <p>{errors.name.message}</p>}
+      </div>
+      
+      <div>
+        <input {...register('email')} placeholder="Email" />
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
+      
+      <div>
+        <input {...register('password')} type="password" placeholder="Password" />
+        {errors.password && <p>{errors.password.message}</p>}
+      </div>
+      
+      <h3>Products</h3>
+      {fields.map((field, index) => (
+        <div key={field.id}>
+          <input
+            {...register(`products.${index}.name`)}
+            placeholder="Product name"
+          />
+          <input
+            {...register(`products.${index}.quantity`, { valueAsNumber: true })}
+            type="number"
+            placeholder="Quantity"
+          />
+          <button type="button" onClick={() => remove(index)}>Remove</button>
+        </div>
+      ))}
+      <button type="button" onClick={() => append({ name: '', quantity: 1 })}>
+        Add Product
+      </button>
+      
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Submit'}
+      </button>
+    </form>
+  );
+}
+```

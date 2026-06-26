@@ -1,0 +1,463 @@
+
+## **Fundamental Concepts**
+
+```jsx
+// Q1: Explain Virtual DOM and Reconciliation
+function VirtualDOMExample() {
+  /*
+  Virtual DOM is a lightweight representation of the real DOM.
+  Reconciliation is the process of diffing virtual DOM to find changes.
+  
+  Key concepts:
+  - Elements vs Components
+  - Fiber architecture
+  - Diffing algorithm
+  - Keys for list reconciliation
+  */
+  
+  // Example showing reconciliation
+  function List({ items }) {
+    return (
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+// Q2: Controlled vs Uncontrolled Components
+const ControlledVsUncontrolled = () => {
+  // Controlled: state controlled by React
+  const [value, setValue] = useState('');
+  
+  // Uncontrolled: state controlled by DOM
+  const inputRef = useRef();
+  
+  return (
+    <div>
+      {/* Controlled */}
+      <input 
+        value={value} 
+        onChange={(e) => setValue(e.target.value)} 
+      />
+      {/* Uncontrolled */}
+      <input ref={inputRef} defaultValue="" />
+    </div>
+  );
+};
+
+// Q3: Pure Component vs React.memo
+const PureVsMemo = () => {
+  // PureComponent: shallow prop/state comparison in class components
+  class PureComp extends React.PureComponent {
+    render() {
+      return <div>{this.props.name}</div>;
+    }
+  }
+  
+  // React.memo: functional components
+  const MemoComp = React.memo(({ name }) => {
+    return <div>{name}</div>;
+  });
+  
+  // Custom comparison
+  const CustomMemo = React.memo(Component, (prev, next) => {
+    return prev.id === next.id; // Only re-render if id changes
+  });
+};
+
+// Q4: useCallback vs useMemo
+const UseCallbackVsUseMemo = () => {
+  // useCallback: memoize function
+  const handleClick = useCallback(() => {
+    console.log('Click');
+  }, []); // Returns memoized function
+  
+  // useMemo: memoize value
+  const expensiveValue = useMemo(() => {
+    return heavyCalculation(props);
+  }, [props]); // Returns memoized value
+  
+  return <button onClick={handleClick}>{expensiveValue}</button>;
+};
+```
+
+## **State Management**
+
+```jsx
+// Q5: Explain different state management approaches
+function StateManagementComparison() {
+  /*
+  1. Local State: useState, useReducer
+  2. Context API: Share state across components
+  3. Redux: Global state with predictable updates
+  4. Zustand/Jotai: Modern minimal approach
+  5. React Query: Server state management
+  6. URL state: Routing parameters
+  */
+  
+  // Example: Context with reducer for complex state
+  const AppContext = React.createContext();
+  
+  function AppProvider({ children }) {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    return (
+      <AppContext.Provider value={{ state, dispatch }}>
+        {children}
+      </AppContext.Provider>
+    );
+  }
+  
+  // Custom hook for easy consumption
+  function useAppContext() {
+    const context = useContext(AppContext);
+    if (!context) {
+      throw new Error('useAppContext must be used within AppProvider');
+    }
+    return context;
+  }
+}
+
+// Q6: Lifting state up implementation
+function LiftingStateUpExample() {
+  // Parent manages shared state
+  const [sharedState, setSharedState] = useState('');
+  
+  return (
+    <div>
+      <ChildA state={sharedState} setState={setSharedState} />
+      <ChildB state={sharedState} />
+    </div>
+  );
+}
+
+function ChildA({ state, setState }) {
+  return (
+    <input 
+      value={state} 
+      onChange={(e) => setState(e.target.value)} 
+    />
+  );
+}
+
+function ChildB({ state }) {
+  return <div>Shared: {state}</div>;
+}
+```
+
+## **Hooks Implementation**
+
+```jsx
+// Q7: Implement useState from scratch
+function useStateHook() {
+  let state;
+  let listeners = [];
+  
+  function useState(initial) {
+    if (state === undefined) {
+      state = initial;
+    }
+    
+    const setState = (newValue) => {
+      state = typeof newValue === 'function' ? newValue(state) : newValue;
+      listeners.forEach(listener => listener());
+    };
+    
+    return [state, setState];
+  }
+  
+  // Actual implementation in React
+  const [count, setCount] = useState(0);
+}
+
+// Q8: Implement useEffect from scratch
+function useEffectHook() {
+  let effect;
+  let dependencies;
+  let cleanup;
+  
+  function useEffect(callback, deps) {
+    const hasChanged = dependencies && deps.some((dep, i) => dep !== dependencies[i]);
+    
+    if (!dependencies || hasChanged) {
+      if (cleanup) cleanup();
+      dependencies = deps;
+      cleanup = callback();
+    }
+  }
+  
+  // Actual usage
+  useEffect(() => {
+    console.log('Effect runs');
+    return () => console.log('Cleanup');
+  }, [dependencies]);
+}
+
+// Q9: Custom hook for localStorage
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+  
+  const setValue = (value) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  return [storedValue, setValue];
+}
+
+// Q10: Implement debounce hook
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+  
+  return debouncedValue;
+}
+
+// Usage
+function SearchComponent() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
+  
+  useEffect(() => {
+    if (debouncedSearch) {
+      // API call with debounced value
+      fetchResults(debouncedSearch);
+    }
+  }, [debouncedSearch]);
+  
+  return (
+    <input 
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+  );
+}
+```
+
+## **Performance Optimizations**
+
+```jsx
+// Q11: Preventing unnecessary re-renders
+function PerformanceOptimization() {
+  // 1. React.memo for components
+  const MemoizedChild = React.memo(Child);
+  
+  // 2. useCallback for functions
+  const handleClick = useCallback(() => {
+    // do something
+  }, []);
+  
+  // 3. useMemo for expensive calculations
+  const computedValue = useMemo(() => {
+    return expensiveFunction(data);
+  }, [data]);
+  
+  // 4. useTransition for non-urgent updates
+  const [isPending, startTransition] = useTransition();
+  startTransition(() => {
+    setHeavyState(newValue);
+  });
+  
+  // 5. useDeferredValue for deferred rendering
+  const deferredValue = useDeferredValue(value);
+  
+  return (
+    <MemoizedChild 
+      onClick={handleClick}
+      value={computedValue}
+    />
+  );
+}
+
+// Q12: Code splitting implementation
+function CodeSplittingExample() {
+  // 1. Route-based
+  const Home = React.lazy(() => import('./Home'));
+  const About = React.lazy(() => import('./About'));
+  
+  // 2. Component-based
+  const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
+  
+  // 3. Library splitting
+  const lodash = import('lodash'); // Dynamic import
+  
+  // 4. Prefetching
+  const prefetchHome = () => {
+    import(/* webpackPrefetch: true */ './Home');
+  };
+  
+  return (
+    <Suspense fallback={<Loading />}>
+      <Home />
+    </Suspense>
+  );
+}
+```
+
+## **Advanced Concepts**
+
+```jsx
+// Q13: Render props pattern
+function RenderPropsExample() {
+  function DataFetcher({ url, children }) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(() => {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          setData(data);
+          setLoading(false);
+        });
+    }, [url]);
+    
+    return children({ data, loading });
+  }
+  
+  return (
+    <DataFetcher url="/api/users">
+      {({ data, loading }) => (
+        loading ? <Spinner /> : <UserList users={data} />
+      )}
+    </DataFetcher>
+  );
+}
+
+// Q14: HOC pattern
+function withAuthentication(WrappedComponent) {
+  return function AuthenticatedComponent(props) {
+    const { user, loading } = useAuth();
+    
+    if (loading) return <Loading />;
+    if (!user) return <Navigate to="/login" />;
+    
+    return <WrappedComponent {...props} user={user} />;
+  };
+}
+
+// Usage
+const ProtectedProfile = withAuthentication(Profile);
+
+// Q15: Compound components pattern
+function Accordion({ children }) {
+  const [openIndex, setOpenIndex] = useState(0);
+  
+  return React.Children.map(children, (child, index) => {
+    return React.cloneElement(child, {
+      isOpen: index === openIndex,
+      onToggle: () => setOpenIndex(index === openIndex ? -1 : index)
+    });
+  });
+}
+
+function AccordionItem({ children, isOpen, onToggle }) {
+  return (
+    <div>
+      <button onClick={onToggle}>
+        {isOpen ? '▼' : '▶'} {children.props.title}
+      </button>
+      {isOpen && <div>{children}</div>}
+    </div>
+  );
+}
+```
+
+## **Error Handling Patterns**
+
+```jsx
+// Q16: Error boundary implementation
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  
+  componentDidCatch(error, errorInfo) {
+    console.error('Error:', error);
+    console.error('Component Stack:', errorInfo.componentStack);
+    
+    // Send to error tracking service
+    if (this.props.onError) {
+      this.props.onError(error, errorInfo);
+    }
+  }
+  
+  render() {
+    if (this.state.hasError) {
+      if (this.props.fallback) {
+        return this.props.fallback(this.state.error);
+      }
+      return <DefaultErrorFallback error={this.state.error} />;
+    }
+    return this.props.children;
+  }
+}
+
+function DefaultErrorFallback({ error }) {
+  return (
+    <div role="alert">
+      <h2>Something went wrong</h2>
+      <pre>{error?.message}</pre>
+    </div>
+  );
+}
+
+// Q17: Async error handling
+function AsyncComponent() {
+  const [error, setError] = useState(null);
+  
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/data');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      setError(error.message);
+      console.error('Fetch error:', error);
+    }
+  };
+  
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error}</p>
+        <button onClick={() => { setError(null); fetchData(); }}>
+          Retry
+        </button>
+      </div>
+    );
+  }
+  
+  return <div>{/* Normal render */}</div>;
+}
+```

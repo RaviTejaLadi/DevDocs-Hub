@@ -1,0 +1,286 @@
+
+## **Missing Keys in Lists**
+
+```jsx
+// ❌ BAD - Using index as key
+{items.map((item, index) => (
+  <li key={index}>{item.name}</li>
+))}
+
+// ❌ BAD - No key at all
+{items.map(item => (
+  <li>{item.name}</li>
+))}
+
+// ✅ GOOD - Using unique ID
+{items.map(item => (
+  <li key={item.id}>{item.name}</li>
+))}
+
+// ✅ GOOD - Stable, unique key for reordering
+{items.map(item => (
+  <li key={item.id}>{item.name}</li>
+))}
+
+// ❌ BAD - Array index with reordering/shuffling
+// Causes unnecessary re-renders and state issues
+
+// ✅ GOOD - Composite key
+{items.map(item => (
+  <li key={`${item.category}-${item.id}`}>
+    {item.name}
+  </li>
+))}
+```
+
+## **Mutating State Directly**
+
+```jsx
+// ❌ BAD - Direct mutation
+const [user, setUser] = useState({ name: 'John', age: 30 });
+user.age = 31; // Won't trigger re-render
+
+// ✅ GOOD - Immutable update
+setUser({ ...user, age: 31 });
+
+// ❌ BAD - Mutating array
+const [items, setItems] = useState([1, 2, 3]);
+items.push(4);
+setItems(items); // Same reference, won't re-render
+
+// ✅ GOOD - New array
+setItems([...items, 4]);
+setItems(items.concat(4));
+setItems(prev => [...prev, 4]);
+
+// ❌ BAD - Mutating nested state
+const [state, setState] = useState({ user: { name: 'John', address: { city: 'NYC' } } });
+state.user.address.city = 'LA';
+setState(state);
+
+// ✅ GOOD - Nested immutable update
+setState(prev => ({
+  ...prev,
+  user: {
+    ...prev.user,
+    address: {
+      ...prev.user.address,
+      city: 'LA'
+    }
+  }
+}));
+```
+
+## **Stale Closures in useEffect**
+
+```jsx
+// ❌ BAD - Stale closure
+useEffect(() => {
+  const interval = setInterval(() => {
+    // count is always initial value (0)
+    setCount(count + 1); 
+  }, 1000);
+  return () => clearInterval(interval);
+}, []); // Empty dependency
+
+// ✅ GOOD - Use functional update
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCount(prev => prev + 1);
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
+
+// ❌ BAD - Stale closure in timeout
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setMessage(`Hello ${user}`); // user might be stale
+  }, 1000);
+  return () => clearTimeout(timeout);
+}, []);
+
+// ✅ GOOD - Include user in dependencies
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setMessage(`Hello ${user}`);
+  }, 1000);
+  return () => clearTimeout(timeout);
+}, [user]);
+
+// ✅ GOOD - Use useRef for persistent values
+const latestUser = useRef(user);
+useEffect(() => {
+  latestUser.current = user;
+}, [user]);
+
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setMessage(`Hello ${latestUser.current}`);
+  }, 1000);
+  return () => clearTimeout(timeout);
+}, []);
+```
+
+## **Incorrect useEffect Dependencies**
+
+```jsx
+// ❌ BAD - Missing dependencies
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    fetchUser(userId).then(setUser);
+  }, []); // Missing userId dependency
+  
+  return <div>{user?.name}</div>;
+}
+
+// ✅ GOOD - Include all dependencies
+useEffect(() => {
+  fetchUser(userId).then(setUser);
+}, [userId]);
+
+// ❌ BAD - Object as dependency (changes every render)
+useEffect(() => {
+  // Runs on every render
+  fetchData({ id: userId });
+}, [{ id: userId }]); // New object every time
+
+// ✅ GOOD - Use primitive values
+useEffect(() => {
+  fetchData({ id: userId });
+}, [userId]);
+
+// ❌ BAD - Function as dependency
+const handleFetch = () => fetchData(id);
+useEffect(() => {
+  handleFetch();
+}, [handleFetch]); // Recreates every render
+
+// ✅ GOOD - Use useCallback
+const handleFetch = useCallback(() => {
+  fetchData(id);
+}, [id]);
+
+useEffect(() => {
+  handleFetch();
+}, [handleFetch]);
+
+// ✅ GOOD - Also good: define inside useEffect
+useEffect(() => {
+  const handleFetch = () => fetchData(id);
+  handleFetch();
+}, [id]);
+```
+
+## **Unnecessary State**
+
+```jsx
+// ❌ BAD - Can compute from props/other state
+function UserCard({ user }) {
+  const [fullName, setFullName] = useState(`${user.firstName} ${user.lastName}`);
+  
+  useEffect(() => {
+    setFullName(`${user.firstName} ${user.lastName}`);
+  }, [user.firstName, user.lastName]);
+  
+  return <div>{fullName}</div>;
+}
+
+// ✅ GOOD - Compute directly
+function UserCard({ user }) {
+  const fullName = `${user.firstName} ${user.lastName}`;
+  return <div>{fullName}</div>;
+}
+
+// ❌ BAD - Redundant state
+function ShoppingCart({ items }) {
+  const [total, setTotal] = useState(0);
+  
+  useEffect(() => {
+    setTotal(items.reduce((sum, item) => sum + item.price, 0));
+  }, [items]);
+  
+  return <div>Total: ${total}</div>;
+}
+
+// ✅ GOOD - Derived state
+function ShoppingCart({ items }) {
+  const total = items.reduce((sum, item) => sum + item.price, 0);
+  return <div>Total: ${total}</div>;
+}
+
+// ❌ BAD - State that only sets once
+function UserProfile({ userId }) {
+  const [profile, setProfile] = useState(null);
+  
+  useEffect(() => {
+    fetchProfile(userId).then(setProfile);
+  }, [userId]); // Actually okay if userId changes
+  
+  // But if userId never changes, consider useMemo with Promise
+}
+```
+
+## **Other Common Mistakes**
+
+```jsx
+// ❌ Calling hooks conditionally
+function Component({ shouldUse }) {
+  if (shouldUse) {
+    const [state, setState] = useState(0); // ❌ BAD
+  }
+  // ❌ useMemo after condition
+  // ❌ useEffect in callback
+}
+
+// ✅ Hooks at top level only
+function Component({ shouldUse }) {
+  const [state, setState] = useState(0);
+  useEffect(() => {
+    if (shouldUse) {
+      // Use hook effect
+    }
+  }, [shouldUse]);
+}
+
+// ❌ Using hooks in loops
+for (let i = 0; i < 10; i++) {
+  useEffect(() => {
+    // ❌ BAD
+  }, [i]);
+}
+
+// ✅ Extract to custom hook or use array
+function useMultipleEffects(count) {
+  useEffect(() => {
+    // Single effect handling multiple items
+  }, [count]);
+}
+
+// ❌ Forgetting to clean up effects
+useEffect(() => {
+  const subscription = someEventEmitter.subscribe(handleEvent);
+  // ❌ No cleanup - memory leak
+}, []);
+
+// ✅ Cleanup function
+useEffect(() => {
+  const subscription = someEventEmitter.subscribe(handleEvent);
+  return () => subscription.unsubscribe();
+}, []);
+
+// ❌ Using async directly in useEffect
+useEffect(async () => {
+  const data = await fetchData(); // ❌ BAD (returns promise)
+}, []);
+
+// ✅ Define async inside
+useEffect(() => {
+  const loadData = async () => {
+    const data = await fetchData();
+    setData(data);
+  };
+  loadData();
+}, []);
+```

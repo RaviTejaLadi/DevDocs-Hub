@@ -1,5 +1,6 @@
 import { guidePath } from '@/app/routes/paths';
 import { jsGuides } from './content/javascript';
+import { reactGuides } from './content/react';
 
 export type GuideType = 'textual' | 'question' | 'roadmap';
 
@@ -23,6 +24,7 @@ export const HOMEPAGE_GUIDES_LIMIT = 6;
 
 export const GUIDES: Guide[] = [
   ...jsGuides,
+  ...reactGuides,
   {
     slug: 'dsa-interview-prep',
     title: 'DSA Interview Preparation Guide',
