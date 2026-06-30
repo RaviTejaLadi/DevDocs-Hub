@@ -1,168 +1,419 @@
-# Revise Stack
+<p align="center">
+  <img src="./public\revise-stack.png" alt="Revise Stack Banner" width="100%" />
+</p>
 
-**Revise Stack** is a modern, lightning-fast documentation platform that hosts
-high-quality learning resources across **computer science, engineering,
-sciences, aptitude, and more**. It's a centralized hub for structured revision
-notes, interview Q&A, interactive visualizations, coding playgrounds, and
-in-depth guides — all in a distraction-free environment.
+<p align="center">
+  <strong>Code. Learn. Build.</strong>
+</p>
 
-Built by [Ravi Teja Ladi](https://github.com/RaviTejaLadi). Available at
-[revise-stack.vercel.app](https://revise-stack.vercel.app).
+<p align="center">
+  A modern learning platform for developers, engineering students, and technical learners.<br/>
+  Learn through structured notes, interactive visualizations, interview preparation, live coding, and hands-on playgrounds.
+</p>
 
----
-
-## Features
-
-- **📚 Multi-Stream Documentation** — 10 academic streams covering Computer
-  Science (HTML, CSS, JS, TS, React, Vue, Next.js, Node, Python, Java, DSA,
-  System Design, Cloud, DevOps, Git, Databases), Mechanical, Electrical,
-  Electronics, Civil, Chemical Engineering, Basic Science, Data Science & AI,
-  Cybersecurity, and Aptitude & Placement.
-- **🔍 Global Search** — Cmd+K / Ctrl+K fuzzy search across all documentation
-  with ranked results, keyword matching, and instant navigation.
-- **📖 In-Depth Guides** — Curated MDX guides for JavaScript, React, and
-  Architectures with textual, question, and roadmap formats.
-- **❓ Interview Q&A** — 19 topic modules (HTML, CSS, JS, TS, React, Next.js,
-  Node, Python, Go, SQL, MongoDB, Docker, AWS, Git, Testing, React Native,
-  System Design, DSA) with categorized questions and difficulty levels.
-- **📊 Interactive Visualizations** — 19 runnable JS concept visualizations
-  (event loop, call stack, closures, recursion, data structures, and more).
-- **💻 Live Code Editor** — Sandpack-powered in-browser code editor with file
-  tabs and live preview.
-- **🧪 Playgrounds** — Interactive coding playgrounds (JS Arrays, JS Objects).
-- **🔄 Workflow Canvas** — React Flow-based interactive diagrams with preset
-  roadmaps.
-- **🌗 Dark / Light Mode** — System-preference-aware theme toggle with
-  persistent localStorage.
-- **📱 Fully Responsive** — Mobile-first with slide-out drawer sidebar and
-  collapsible desktop sidebar.
-- **⚡ Blazing Fast** — Vite-powered with lazy-loaded routes, code splitting,
-  and instant page transitions.
-- **🧠 Context-Aware Sidebar** — Auto-adjusts to show only the relevant
-  subtopics for the current stream.
-- **📋 One-Click Copy** — Every code block has a copy-to-clipboard button.
+<p align="center">
+  <a href="https://revise-stack.vercel.app"><strong>🌐 Live Website</strong></a> •
+  <a href="https://github.com/RaviTejaLadi/revise-stack"><strong>GitHub</strong></a>
+</p>
 
 ---
 
-## Tech Stack
+## 📖 About
 
-| Layer          | Technology                                        |
-| -------------- | ------------------------------------------------- |
-| **Framework**  | React 19                                          |
-| **Language**   | TypeScript 5.9                                    |
-| **Build Tool** | Vite 7                                            |
-| **Routing**    | React Router DOM v7                               |
-| **Styling**    | Tailwind CSS v4, shadcn/ui (New York)             |
-| **State**      | Zustand 5                                         |
-| **Content**    | MDX, react-markdown, rehype-highlight, remark-gfm |
-| **Code**       | Sandpack, CodeMirror                              |
-| **Diagrams**   | Mermaid 11, React Flow (xyflow)                   |
-| **Icons**      | Lucide React + custom SVG icons                   |
-| **SEO**        | react-helmet-async, JSON-LD schema                |
-| **Fonts**      | Inter (UI), JetBrains Mono (code)                 |
-| **Deployment** | Vercel                                            |
+**Revise Stack** is a comprehensive learning platform designed to make technical education simple, structured, and interactive.
+
+Instead of reading long documentation, learners can revise concepts using concise notes, understand difficult topics through visualizations, practice with live editors, prepare for interviews, and follow guided learning roadmaps—all from a single platform.
+
+Whether you're preparing for placements, interviews, university exams, or learning new technologies, Revise Stack helps you learn faster.
 
 ---
 
-## Getting Started
+## ✨ Features
 
-### Prerequisites
+### 📚 Learn Across 10+ Streams
 
-- Node.js v18+
-- npm or yarn
+Learn from carefully organized learning resources covering:
 
-### Installation
+- 💻 Computer Science
+- ⚙️ Mechanical Engineering
+- ⚡ Electrical Engineering
+- 🔌 Electronics Engineering
+- 🏗 Civil Engineering
+- 🧪 Chemical Engineering
+- 🔬 Basic Science
+- 🤖 Data Science & AI
+- 🔐 Cybersecurity
+- 🎯 Aptitude & Placement
+
+---
+
+### 🔍 Powerful Global Search
+
+- Instant fuzzy search
+- Keyboard shortcut (`Ctrl + K` / `⌘ + K`)
+- Keyword matching
+- Ranked search results
+- Navigate anywhere in seconds
+
+---
+
+### 📘 Learning Notes
+
+Hundreds of structured learning notes covering:
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Vue
+- Next.js
+- Node.js
+- Python
+- Java
+- SQL
+- MongoDB
+- Git
+- Docker
+- Cloud
+- DevOps
+- System Design
+- Data Structures & Algorithms
+- and much more...
+
+---
+
+### 📖 Learning Guides
+
+Long-form guides with:
+
+- Step-by-step explanations
+- Visual diagrams
+- Code examples
+- Best practices
+- Architecture concepts
+- Roadmaps
+
+---
+
+### 🎯 Interview Preparation
+
+19+ interview modules including:
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Next.js
+- Node.js
+- Python
+- Go
+- SQL
+- MongoDB
+- Docker
+- AWS
+- Git
+- Testing
+- React Native
+- System Design
+- DSA
+
+Each topic includes:
+
+- Beginner Questions
+- Intermediate Questions
+- Advanced Questions
+
+---
+
+### 🧠 Interactive Visualizations
+
+Understand concepts visually with runnable animations.
+
+Examples include:
+
+- Event Loop
+- Call Stack
+- Closures
+- Promise Execution
+- Async/Await
+- Hoisting
+- Memory Management
+- Data Structures
+- Recursion
+- Scope Chain
+- Prototype Chain
+
+and many more.
+
+---
+
+### 💻 Live Code Editor
+
+Experiment directly in the browser.
+
+Features include:
+
+- Sandpack
+- Live Preview
+- Multiple Files
+- Instant Compilation
+- Syntax Highlighting
+
+---
+
+### 🧪 Interactive Playgrounds
+
+Practice concepts using interactive playgrounds.
+
+Current playgrounds include:
+
+- JavaScript Arrays
+- JavaScript Objects
+
+More playgrounds are planned.
+
+---
+
+### 🗺 Workflow Canvas
+
+Interactive learning flows powered by React Flow.
+
+Perfect for understanding:
+
+- Project Architecture
+- System Design
+- Development Roadmaps
+- Learning Paths
+
+---
+
+### 🌙 Modern Experience
+
+- Dark Mode
+- Light Mode
+- Responsive Design
+- Mobile Friendly
+- Fast Navigation
+- Context-Aware Sidebar
+- One-Click Code Copy
+- SEO Optimized
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technology |
+|-----------|------------|
+| Framework | React 19 |
+| Language | TypeScript 5.9 |
+| Build Tool | Vite 7 |
+| Router | React Router DOM v7 |
+| Styling | Tailwind CSS v4 |
+| UI | shadcn/ui |
+| State | Zustand |
+| Markdown | MDX |
+| Markdown Rendering | react-markdown |
+| Syntax Highlighting | rehype-highlight |
+| Markdown Plugins | remark-gfm |
+| Code Editor | Sandpack |
+| Editor | CodeMirror |
+| Diagrams | Mermaid 11 |
+| Flow Builder | React Flow (xyflow) |
+| Icons | Lucide React |
+| SEO | react-helmet-async |
+| Deployment | Vercel |
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+- Node.js 18+
+- npm / pnpm / yarn
+
+---
+
+## Clone Repository
 
 ```bash
-git clone https://github.com/RaviTejaLadi/revise-stack
+git clone https://github.com/RaviTejaLadi/revise-stack.git
+```
+
+```bash
 cd revise-stack
+```
+
+---
+
+## Install Dependencies
+
+```bash
 npm install
+```
+
+---
+
+## Run Development Server
+
+```bash
 npm run dev
 ```
 
-The dev server starts on `http://localhost:1234`.
+Open:
 
-### Build for Production
+```
+http://localhost:5173
+```
+
+---
+
+## Build
 
 ```bash
 npm run build
 ```
 
-This runs TypeScript type-checking, Vite production build, and sitemap
-generation.
-
 ---
 
-## Project Structure
-
-```
-src/
-├── app/                  # App shell, routing, providers
-├── components/           # Shared UI (layout, markdown, theme, SEO, shadcn)
-├── constants/            # Colors, layout constants
-├── data/                 # All content
-│   ├── topics/           # 10 streams of documentation content
-│   ├── guides/           # MDX guide content
-│   ├── interviewQuestions/ # Interview Q&A by topic
-│   └── workflow-presets/ # Workflow canvas presets
-├── features/             # Feature modules (landing, docs, guides, viz, playground, etc.)
-├── hooks/                # Shared React hooks
-├── lib/                  # Utilities (cn(), SEO config, JSON-LD)
-├── stores/               # Zustand stores
-├── styles/               # CSS (theme, markdown, animations)
-└── types/                # TypeScript type definitions
-```
-
----
-
-## Deployment
-
-The project is pre-configured for Vercel with SPA rewrites (`vercel.json`).
+## Preview
 
 ```bash
-npm i -g vercel
-vercel
-vercel --prod
+npm run preview
 ```
 
-Update the `homepage` field in `package.json` after deployment.
+---
+
+# 📂 Project Structure
+
+```text
+src
+│
+├── app
+├── assets
+├── components
+├── constants
+├── data
+│   ├── topics
+│   ├── guides
+│   ├── interviewQuestions
+│   ├── visualizations
+│   └── workflow-presets
+│
+├── features
+├── hooks
+├── lib
+├── stores
+├── styles
+├── types
+└── utils
+```
 
 ---
 
-## Roadmap
+# 🎯 Current Learning Modules
 
-- [x] Core platform UI (sidebar, navbar, content viewer)
-- [x] Dark / light mode with system preference
-- [x] Mobile responsiveness with drawer navigation
-- [x] Global fuzzy search across all docs
-- [x] MDX guide support
-- [x] Interactive visualizations (19 concepts)
-- [x] Interview Q&A (19 topics)
-- [x] Live code editor (Sandpack)
-- [x] Playgrounds
-- [x] Workflow canvas (React Flow)
-- [x] Multi-stream documentation (10 streams)
-- [ ] Progress tracking (bookmark topics as "Completed")
-- [ ] User accounts & sync
+| Module | Status |
+|----------|--------|
+| Learning Notes | ✅ |
+| Learning Guides | ✅ |
+| Interview Questions | ✅ |
+| Interactive Visualizations | ✅ |
+| Live Code Editor | ✅ |
+| Workflow Canvas | ✅ |
+| Playgrounds | ✅ |
+| Global Search | ✅ |
+| Responsive UI | ✅ |
+| Dark Mode | ✅ |
 
 ---
 
-## Contributing
+# 🛣 Roadmap
 
-Contributions are welcome.
+## Learning Experience
 
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+- [x] Structured learning notes
+- [x] Learning guides
+- [x] Interactive visualizations
+- [x] Live coding
+- [x] Workflow canvas
+- [x] Interview preparation
+- [x] Global search
+- [ ] Continue Learning
+- [ ] Progress Tracking
+- [ ] Learning Streaks
+- [ ] Bookmarks
+- [ ] Recently Viewed
+- [ ] User Accounts
+- [ ] Cloud Sync
+
+---
+
+## Future Features
+
+- [ ] Coding Challenges
+- [ ] Quiz System
+- [ ] Flash Cards
+- [ ] Practice Tests
+- [ ] AI Learning Assistant
+- [ ] Personalized Learning Paths
+- [ ] Notes & Highlights
+- [ ] Community Contributions
+- [ ] Course Collections
+- [ ] Offline Support
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome!
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
 3. Commit your changes
-4. Push to the branch (`git push origin feature/amazing-feature`)
+
+```bash
+git commit -m "Add amazing feature"
+```
+
+4. Push your branch
+
+```bash
+git push origin feature/amazing-feature
+```
+
 5. Open a Pull Request
 
 ---
 
-## License
+# 📄 License
 
-Distributed under the MIT License. See `LICENSE` for details.
+Distributed under the **MIT License**.
+
+See the `LICENSE` file for more information.
 
 ---
 
-**Revise Stack** — _Code. Learn. Build._
+# 👨‍💻 Author
+
+**Ravi Teja Ladi**
+
+- GitHub: https://github.com/RaviTejaLadi
+- Website: https://revise-stack.vercel.app
+
+---
+
+<p align="center">
+
+### ⭐ If you found Revise Stack helpful, consider giving the repository a star!
+
+Made with ❤️ for developers and learners.
+
+</p>
