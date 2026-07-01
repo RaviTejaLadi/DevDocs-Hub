@@ -21,7 +21,8 @@ function VisualizationCard({
   const card = (
     <div
       className={cn(
-        'group relative h-full rounded-xl border border-border/35 tahoe-glass p-5 transition-all duration-200',
+        'group relative h-full rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-5 transition-all duration-200',
+        'shadow-none',
         'shadow-none',
         visualization.available
           ? 'hover:-translate-y-0.5 hover:border-emerald-500/40 hover:bg-card'

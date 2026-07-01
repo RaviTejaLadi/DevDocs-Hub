@@ -57,9 +57,9 @@
     touch-action: pan-y;
   }
 
-  /* Doc feed cards: content-visibility:auto caused jank when cards entered viewport during scroll. */
+  /* Doc feed cards — contain breaks backdrop-filter for glass blur */
   .doc-feed-section {
-    contain: layout style;
+    contain: none;
   }
 
   @media (prefers-reduced-motion: reduce) {

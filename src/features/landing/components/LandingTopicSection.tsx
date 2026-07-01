@@ -30,8 +30,8 @@ export function LandingTopicSection({
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-2xl border tahoe-glass p-4 sm:p-5',
-        'dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none',
+        'relative overflow-hidden rounded-2xl border bg-card/72 backdrop-blur-md p-4 sm:p-5',
+        'shadow-[var(--panel-shadow)] dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none',
         visual.ring
       )}
     >

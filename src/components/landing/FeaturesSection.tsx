@@ -60,8 +60,8 @@ export default function FeaturesSection() {
           <div
             key={id}
             className={cn(
-              'group relative overflow-hidden rounded-2xl border tahoe-glass p-6 text-left h-full',
-              'transition-all duration-300',
+              'group relative overflow-hidden rounded-2xl border bg-card/70 backdrop-blur-md p-6 text-left h-full',
+              'shadow-none transition-all duration-300',
               'hover:-translate-y-1 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
               ring
             )}

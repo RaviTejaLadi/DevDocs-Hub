@@ -36,7 +36,7 @@ const topicIconMap: Record<string, keyof typeof Icons> = {
 
 function StatCard({ emoji, label, value }: { emoji: string; label: string; value: number }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/40 tahoe-glass px-4 py-3 shadow-none">
+    <div className="relative overflow-hidden rounded-xl border border-border/40 bg-card/70 backdrop-blur-sm px-4 py-3 shadow-none">
       <div className="pointer-events-none absolute -right-3 -top-3 text-4xl opacity-[0.12] select-none" aria-hidden>
         {emoji}
       </div>
@@ -194,7 +194,7 @@ export function TopicListPage() {
             <section
               key={category}
               className={cn(
-                'relative overflow-hidden rounded-2xl border tahoe-glass p-5 sm:p-6',
+                'relative overflow-hidden rounded-2xl border bg-card/72 backdrop-blur-md p-5 sm:p-6',
                 'shadow-[var(--panel-shadow)] dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none',
                 catVisual.ring
               )}
