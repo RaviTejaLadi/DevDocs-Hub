@@ -29,12 +29,12 @@ export const docsControlShadowClass = 'shadow-none';
 
 /** Article + on-this-page TOC shared card surface. */
 export const docsArticleSurfaceClass = cn(
-  'overflow-hidden rounded-2xl border border-border/35 bg-card/72 backdrop-blur-md dark:bg-card/55 dark:backdrop-blur-sm',
+  'overflow-hidden rounded-2xl border border-border/35 tahoe-glass dark:bg-card/55 dark:backdrop-blur-sm',
   docsPanelShadowClass
 );
 
 export const docsSidePanelAsideClass = cn(
-  'rounded-xl border border-border/40 bg-card/72 backdrop-blur-md dark:bg-background',
+  'rounded-xl border border-border/40 tahoe-glass dark:bg-background',
   docsPanelShadowClass
 );
 
@@ -50,7 +50,7 @@ export const docsSidebarTreeSubMenuClass = 'mx-0 w-full min-w-0 translate-x-0 ga
 export const docsSidePanelNavSurfaceClass = cn('rounded-xl bg-muted/35 dark:bg-muted/10', docsInsetShadowClass);
 
 export const docsHeroSurfaceClass = cn(
-  'rounded-xl border border-border/40 bg-card/72 backdrop-blur-md dark:bg-card/50 dark:backdrop-blur-sm',
+  'rounded-xl border border-border/40 tahoe-glass dark:bg-card/50 dark:backdrop-blur-sm',
   docsPanelShadowClass
 );
 
@@ -65,7 +65,7 @@ export const docsSidePanelScrollViewportClass = 'docs-sidebar-scroll';
 /** Right topic-browser sheet — wider than the docs sidebar for stream/category browsing. */
 export const docsTopicBrowserSheetContentClass = cn(
   'flex min-h-0 flex-col gap-0 overflow-hidden border border-border/40 p-0',
-  'shrink-0 bg-card/72 backdrop-blur-md supports-backdrop-filter:bg-card/62 dark:bg-background dark:supports-backdrop-filter:bg-background/95',
+  'shrink-0 tahoe-glass-raised dark:bg-background dark:supports-backdrop-filter:bg-background/95',
   docsRaisedShadowClass,
   '!top-2 !right-2 !bottom-2 !left-auto !h-auto',
   'max-h-[calc(100dvh-1.5rem-env(safe-area-inset-top)-0.5rem)] md:rounded-xl',
@@ -88,7 +88,7 @@ export const docsScrollToTopButtonClass = cn(
 /** Shared chrome for circular docs floating controls (position via docsFloatingActionStackClass). */
 export const docsFloatingActionButtonClass = cn(
   'inline-flex size-10 shrink-0 items-center justify-center rounded-full',
-  'border border-border/50 bg-card/85 text-muted-foreground backdrop-blur-md dark:bg-card/90 dark:backdrop-blur-sm',
+  'border border-border/50 tahoe-glass text-muted-foreground dark:bg-card/90 dark:backdrop-blur-sm',
   docsFabShadowClass,
   'transition-[transform,box-shadow,background-color] duration-200',
   'hover:bg-card hover:text-foreground active:scale-[0.96]',

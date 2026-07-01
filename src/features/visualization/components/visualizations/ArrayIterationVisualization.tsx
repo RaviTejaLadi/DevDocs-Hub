@@ -158,7 +158,7 @@ export function ArrayIterationVisualization() {
                     step.derivedArray.map((value, index) => (
                       <div
                         key={`doubled-${index}`}
-                        className="rounded-lg border border-sky-500/35 bg-sky-500/10 px-3 py-2 font-mono text-sm text-sky-700 dark:text-sky-300"
+                        className="rounded-lg border border-blue-500/35 bg-blue-500/10 px-3 py-2 font-mono text-sm text-blue-700 dark:text-sky-300"
                       >
                         [{index}] {value}
                       </div>

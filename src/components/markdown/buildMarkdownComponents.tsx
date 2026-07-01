@@ -311,7 +311,7 @@ export function buildMarkdownComponents({
           <div className="md-code-head">
             <div className="flex items-center gap-1.5" aria-hidden>
               <span className="md-code-dot bg-[#ff5f57]" />
-              <span className="md-code-dot bg-[#38bdf8]" />
+              <span className="md-code-dot bg-[#007aff]" />
               <span className="md-code-dot bg-[#28c840]" />
             </div>
             <span className="md-code-lang">{languageLabel(language!)}</span>

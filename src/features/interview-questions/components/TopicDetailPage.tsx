@@ -122,7 +122,7 @@ export function TopicDetailPage() {
             <div className="flex flex-wrap gap-2">
               <Badge
                 variant="secondary"
-                className="h-8 px-3.5 border border-sky-500/25 bg-sky-500/10 text-sky-700 dark:text-sky-300"
+                className="h-8 px-3.5 border border-blue-500/25 bg-blue-500/10 text-blue-700 dark:text-sky-300"
               >
                 <Code2 className="h-3.5 w-3.5 mr-1.5" />
                 💻 {codingCount} {'Coding'}

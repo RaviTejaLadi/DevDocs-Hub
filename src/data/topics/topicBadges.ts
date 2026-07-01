@@ -33,7 +33,7 @@ export const topicBadgeToneClasses: Record<TopicBadgeKind, string> = {
   beginner:
     'border-emerald-500/35 bg-emerald-500/10 text-emerald-700 shadow-none dark:border-emerald-400/28 dark:bg-emerald-500/12 dark:text-emerald-200',
   intermediate:
-    'border-sky-500/35 bg-sky-500/10 text-sky-700 shadow-none dark:border-sky-400/28 dark:bg-sky-500/12 dark:text-sky-200',
+    'border-blue-500/35 bg-blue-500/10 text-blue-700 shadow-none dark:border-sky-400/28 dark:bg-sky-500/12 dark:text-sky-200',
   advanced:
     'border-violet-500/35 bg-violet-500/10 text-violet-700 shadow-none dark:border-violet-400/28 dark:bg-violet-500/12 dark:text-violet-200',
   expert:
@@ -49,7 +49,7 @@ export const topicBadgeToneClasses: Record<TopicBadgeKind, string> = {
 /** Active sidebar row left accent */
 export const topicBadgeAccentBorder: Record<TopicBadgeKind, string> = {
   beginner: 'border-l-emerald-500/70',
-  intermediate: 'border-l-sky-500/70',
+  intermediate: 'border-l-blue-500/70',
   advanced: 'border-l-violet-500/70',
   expert: 'border-l-rose-500/70',
   popular: 'border-l-amber-500/70',
@@ -59,7 +59,7 @@ export const topicBadgeAccentBorder: Record<TopicBadgeKind, string> = {
 
 export const topicBadgeDotClass: Record<TopicBadgeKind, string> = {
   beginner: 'bg-emerald-500',
-  intermediate: 'bg-sky-500',
+  intermediate: 'bg-blue-500',
   advanced: 'bg-violet-500',
   expert: 'bg-rose-500',
   popular: 'bg-amber-500',

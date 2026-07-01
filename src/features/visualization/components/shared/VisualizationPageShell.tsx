@@ -52,7 +52,7 @@ export function VisualizationPageShell({ title, description, children }: Visuali
   };
   const categoryIconColorClass: Record<VisualizationCategory, string> = {
     loops: 'text-emerald-600 dark:text-emerald-400',
-    'data-structures': 'text-sky-600 dark:text-sky-400',
+    'data-structures': 'text-blue-600 dark:text-sky-400',
     javascript: 'text-violet-600 dark:text-violet-400',
   };
   const sectionIndexLabel = (index: number) => String(index + 1).padStart(2, '0');

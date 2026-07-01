@@ -15,8 +15,8 @@ const CATEGORY_KEYWORDS: Array<{ match: RegExp; emoji: string; accent: string; r
   {
     match: /frontend|web|ui|react|css|html/i,
     emoji: '🎨',
-    accent: 'from-sky-500/12 via-sky-500/4 to-transparent',
-    ring: 'border-sky-500/20',
+    accent: 'from-blue-500/12 via-blue-500/4 to-transparent',
+    ring: 'border-blue-500/20',
   },
   {
     match: /backend|server|api|node|database|sql|mongo/i,

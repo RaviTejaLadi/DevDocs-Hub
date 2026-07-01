@@ -14,9 +14,9 @@ const FEATURES = [
     id: 'code-examples',
     icon: Code,
     emoji: '💻',
-    accent: 'from-sky-500/12 via-sky-500/4 to-transparent',
-    ring: 'border-sky-500/25',
-    iconClass: 'text-sky-600 dark:text-sky-400 bg-sky-500/12',
+    accent: 'from-blue-500/12 via-blue-500/4 to-transparent',
+    ring: 'border-blue-500/25',
+    iconClass: 'text-blue-600 dark:text-sky-400 bg-blue-500/12',
   },
   {
     id: 'comprehensive',
@@ -60,9 +60,9 @@ export default function FeaturesSection() {
           <div
             key={id}
             className={cn(
-              'group relative overflow-hidden rounded-2xl border bg-card/70 p-6 text-left h-full',
-              'shadow-none transition-all duration-300',
-              'hover:-translate-y-1 hover:shadow-none',
+              'group relative overflow-hidden rounded-2xl border tahoe-glass p-6 text-left h-full',
+              'transition-all duration-300',
+              'hover:-translate-y-1 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
               ring
             )}
           >

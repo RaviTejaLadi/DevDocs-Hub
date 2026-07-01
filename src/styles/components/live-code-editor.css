@@ -4,10 +4,10 @@
 }
 
 .live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete {
-  border: 1px solid hsl(var(--border));
-  background: hsl(var(--popover));
-  color: hsl(var(--popover-foreground));
-  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.26);
+  border: 1px solid var(--border);
+  background: var(--popover);
+  color: var(--popover-foreground);
+  box-shadow: var(--panel-shadow-raised);
   min-width: 16rem;
   overflow: hidden;
 }
@@ -29,8 +29,8 @@
 }
 
 .live-code-editor .cm-editor .cm-tooltip.cm-tooltip-autocomplete ul li[aria-selected] {
-  background: hsl(var(--accent));
-  color: hsl(var(--accent-foreground)) !important;
+  background: var(--accent);
+  color: var(--accent-foreground) !important;
 }
 
 @media (max-width: 767px) {

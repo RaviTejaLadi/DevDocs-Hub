@@ -104,7 +104,7 @@ export function PlaygroundListPage() {
           const card = (
             <div
               className={cn(
-                'group relative rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm p-5 transition-all duration-200 h-full',
+                'group relative rounded-xl border border-border/35 tahoe-glass p-5 transition-all duration-200 h-full',
                 'shadow-none',
                 playground.available
                   ? 'hover:border-violet-500/40 hover:bg-card hover:shadow-none hover:-translate-y-0.5'

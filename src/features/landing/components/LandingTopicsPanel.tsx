@@ -62,8 +62,8 @@ export function LandingTopicsPanel({
       {activeStream && (
         <div
           className={cn(
-            'relative overflow-hidden rounded-2xl border border-border/40 bg-card/72 backdrop-blur-md p-4 sm:p-5',
-            'shadow-[var(--panel-shadow)] dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none'
+            'relative overflow-hidden rounded-2xl border border-border/40 tahoe-glass p-4 sm:p-5',
+            'dark:bg-card/55 dark:backdrop-blur-sm dark:shadow-none'
           )}
         >
           <div

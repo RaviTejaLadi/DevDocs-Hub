@@ -9,6 +9,6 @@ export const levelPillClass: Record<ExperienceLevel, string> = {
 };
 
 export const questionTypePillClass = {
-  coding: 'text-sky-600 border-sky-500/60 bg-sky-500/10',
+  coding: 'text-blue-600 border-blue-500/60 bg-blue-500/10',
   theory: 'text-indigo-600 border-indigo-500/60 bg-indigo-500/10',
 } as const;

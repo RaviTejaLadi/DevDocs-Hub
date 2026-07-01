@@ -118,7 +118,7 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
                         className={cn(
                           'rounded-md border px-3 py-1.5 font-mono text-sm',
                           index === 0
-                            ? 'border-sky-500/45 bg-sky-500/12 text-sky-700 dark:text-sky-300'
+                            ? 'border-blue-500/45 bg-blue-500/12 text-blue-700 dark:text-sky-300'
                             : 'border-border/40 bg-card/70'
                         )}
                       >
@@ -243,7 +243,7 @@ export function GenericConceptVisualization({ topicId, config }: GenericConceptV
 
               {topicId === 'async-await' && asyncState && (
                 <div className="flex gap-2">
-                  <Badge variant="outline" className="border-sky-500/35 text-sky-700 dark:text-sky-300">
+                  <Badge variant="outline" className="border-blue-500/35 text-blue-700 dark:text-sky-300">
                     async state: {asyncState}
                   </Badge>
                 </div>

@@ -430,7 +430,7 @@ const MermaidRenderer = ({ chart }: { chart: string }) => {
       <div className="flex items-center gap-2 border-b border-border/45 bg-muted/30 px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-muted-foreground">
         <span>Diagram</span>
       </div>
-      <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-sky-50/70 p-3 sm:p-4 dark:bg-slate-950/35">
+      <div className="max-h-[min(72vh,42.5rem)] overflow-auto bg-muted/40 p-3 sm:p-4 dark:bg-slate-950/35">
         <div ref={ref} className="min-w-0 [&_svg_*]:font-sans" />
         <div
           ref={errorBoxRef}

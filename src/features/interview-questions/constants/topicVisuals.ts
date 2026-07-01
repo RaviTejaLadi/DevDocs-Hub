@@ -3,8 +3,8 @@ import type { TopicId } from '@/data/interviewQuestions';
 export const CATEGORY_VISUALS: Record<string, { emoji: string; accent: string; ring: string }> = {
   'Full-Stack & Web': {
     emoji: '🌐',
-    accent: 'from-sky-500/15 via-sky-500/5 to-transparent',
-    ring: 'border-sky-500/25',
+    accent: 'from-blue-500/15 via-blue-500/5 to-transparent',
+    ring: 'border-blue-500/25',
   },
   'Backend & Data': {
     emoji: '🗄️',
@@ -37,9 +37,9 @@ export const TOPIC_VISUALS: Record<TopicId, { emoji: string; iconBg: string; ico
   },
   css: {
     emoji: '🎨',
-    iconBg: 'bg-sky-500/12',
-    iconColor: 'text-sky-600 dark:text-sky-400',
-    cardHover: 'group-hover:border-sky-500/35 group-hover:shadow-sky-500/10',
+    iconBg: 'bg-blue-500/12',
+    iconColor: 'text-blue-600 dark:text-sky-400',
+    cardHover: 'group-hover:border-blue-500/35 group-hover:shadow-blue-500/10',
   },
   javascript: {
     emoji: '⚡',

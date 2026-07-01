@@ -1,5 +1,5 @@
 export const badgeToneClasses = [
-  'border-sky-500/35 bg-sky-500/12 text-sky-800 dark:border-sky-400/25 dark:bg-sky-500/10 dark:text-sky-200',
+  'border-blue-500/35 bg-blue-500/10 text-blue-700 dark:border-sky-400/25 dark:bg-sky-500/10 dark:text-sky-200',
   'border-violet-500/35 bg-violet-500/12 text-violet-800 dark:border-violet-400/25 dark:bg-violet-500/10 dark:text-violet-200',
   'border-emerald-500/35 bg-emerald-500/12 text-emerald-800 dark:border-emerald-400/25 dark:bg-emerald-500/10 dark:text-emerald-200',
   'border-amber-500/40 bg-amber-500/14 text-amber-900 dark:border-amber-400/25 dark:bg-amber-500/10 dark:text-amber-200',

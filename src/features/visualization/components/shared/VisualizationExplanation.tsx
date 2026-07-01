@@ -47,8 +47,8 @@ export function VisualizationExplanation({
           <p className="text-sm leading-relaxed text-foreground/85">{whenToUse}</p>
         </div>
 
-        <div className="rounded-xl border border-sky-500/25 bg-sky-500/10 px-4 py-3">
-          <p className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+        <div className="rounded-xl border border-blue-500/25 bg-blue-500/10 px-4 py-3">
+          <p className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-sky-300">
             <Briefcase className="h-3.5 w-3.5" />
             Real-world example
           </p>

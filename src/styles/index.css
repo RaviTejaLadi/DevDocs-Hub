@@ -2,6 +2,7 @@
 @import "./tailwind.css";
 @import "./theme/tokens.css";
 @import "./theme/light.css";
+@import "./theme/tahoe-light.css";
 @import "./theme/dark.css";
 @import "./base.css";
 @import "./markdown/index.css";

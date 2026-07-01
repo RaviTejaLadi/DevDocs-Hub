@@ -5,7 +5,7 @@ import { getGuideHref, GUIDE_TYPE_LABELS, type Guide } from '@/data/guides';
 import { cn } from '@/lib/utils';
 
 const TYPE_STYLES: Record<Guide['type'], string> = {
-  textual: 'border-sky-500/30 bg-sky-500/8 text-sky-700 dark:text-sky-300',
+  textual: 'border-blue-500/30 bg-blue-500/8 text-blue-700 dark:text-sky-300',
   question: 'border-amber-500/30 bg-amber-500/8 text-amber-700 dark:text-amber-300',
   roadmap: 'border-violet-500/30 bg-violet-500/8 text-violet-700 dark:text-violet-300',
 };
