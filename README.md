@@ -20,11 +20,16 @@
 
 ## 📖 About
 
-**Revise Stack** is a comprehensive learning platform designed to make technical education simple, structured, and interactive.
+**Revise Stack** is a comprehensive learning platform designed to make technical
+education simple, structured, and interactive.
 
-Instead of reading long documentation, learners can revise concepts using concise notes, understand difficult topics through visualizations, practice with live editors, prepare for interviews, and follow guided learning roadmaps—all from a single platform.
+Instead of reading long documentation, learners can revise concepts using
+concise notes, understand difficult topics through visualizations, practice with
+live editors, prepare for interviews, and follow guided learning roadmaps—all
+from a single platform.
 
-Whether you're preparing for placements, interviews, university exams, or learning new technologies, Revise Stack helps you learn faster.
+Whether you're preparing for placements, interviews, university exams, or
+learning new technologies, Revise Stack helps you learn faster.
 
 ---
 
@@ -204,26 +209,26 @@ Perfect for understanding:
 
 # 🛠 Tech Stack
 
-| Category | Technology |
-|-----------|------------|
-| Framework | React 19 |
-| Language | TypeScript 5.9 |
-| Build Tool | Vite 7 |
-| Router | React Router DOM v7 |
-| Styling | Tailwind CSS v4 |
-| UI | shadcn/ui |
-| State | Zustand |
-| Markdown | MDX |
-| Markdown Rendering | react-markdown |
-| Syntax Highlighting | rehype-highlight |
-| Markdown Plugins | remark-gfm |
-| Code Editor | Sandpack |
-| Editor | CodeMirror |
-| Diagrams | Mermaid 11 |
-| Flow Builder | React Flow (xyflow) |
-| Icons | Lucide React |
-| SEO | react-helmet-async |
-| Deployment | Vercel |
+| Category            | Technology          |
+| ------------------- | ------------------- |
+| Framework           | React 19            |
+| Language            | TypeScript 5.9      |
+| Build Tool          | Vite 7              |
+| Router              | React Router DOM v7 |
+| Styling             | Tailwind CSS v4     |
+| UI                  | shadcn/ui           |
+| State               | Zustand             |
+| Markdown            | MDX                 |
+| Markdown Rendering  | react-markdown      |
+| Syntax Highlighting | rehype-highlight    |
+| Markdown Plugins    | remark-gfm          |
+| Code Editor         | Sandpack            |
+| Editor              | CodeMirror          |
+| Diagrams            | Mermaid 11          |
+| Flow Builder        | React Flow (xyflow) |
+| Icons               | Lucide React        |
+| SEO                 | react-helmet-async  |
+| Deployment          | Vercel              |
 
 ---
 
@@ -315,18 +320,18 @@ src
 
 # 🎯 Current Learning Modules
 
-| Module | Status |
-|----------|--------|
-| Learning Notes | ✅ |
-| Learning Guides | ✅ |
-| Interview Questions | ✅ |
-| Interactive Visualizations | ✅ |
-| Live Code Editor | ✅ |
-| Workflow Canvas | ✅ |
-| Playgrounds | ✅ |
-| Global Search | ✅ |
-| Responsive UI | ✅ |
-| Dark Mode | ✅ |
+| Module                     | Status |
+| -------------------------- | ------ |
+| Learning Notes             | ✅     |
+| Learning Guides            | ✅     |
+| Interview Questions        | ✅     |
+| Interactive Visualizations | ✅     |
+| Live Code Editor           | ✅     |
+| Workflow Canvas            | ✅     |
+| Playgrounds                | ✅     |
+| Global Search              | ✅     |
+| Responsive UI              | ✅     |
+| Dark Mode                  | ✅     |
 
 ---
 

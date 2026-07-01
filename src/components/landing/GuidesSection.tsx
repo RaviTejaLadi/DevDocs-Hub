@@ -20,8 +20,8 @@ export default function GuidesSection() {
       </div>
 
       <div className="space-y-2">
-        {HOMEPAGE_GUIDES.map((guide) => (
-          <GuideListItem key={guide.slug} guide={guide} />
+        {HOMEPAGE_GUIDES.map((guide, index) => (
+          <GuideListItem key={guide.slug} guide={guide} index={index} />
         ))}
       </div>
 
