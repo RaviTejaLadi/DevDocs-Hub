@@ -1,1 +1,494 @@
 # Heat & Temperature
+
+## Introduction to Thermal Physics
+
+Thermal physics deals with heat, temperature, and their effects on matter. It
+bridges microscopic atomic behavior with macroscopic observations.
+
+## Temperature and Thermal Equilibrium
+
+### What is Temperature?
+
+Temperature is a measure of the average kinetic energy of particles in a
+substance. It determines the direction of heat flow between objects in thermal
+contact.
+
+### Thermal Equilibrium and Zeroth Law
+
+- **Zeroth Law of Thermodynamics**: If two systems are each in thermal
+  equilibrium with a third system, they are in thermal equilibrium with each
+  other.
+- This law establishes temperature as a fundamental measurable quantity.
+- Thermal equilibrium occurs when no net heat flows between objects.
+
+### Temperature Scales
+
+#### Celsius Scale (°C)
+
+- Based on freezing (0°C) and boiling (100°C) points of water at 1 atm
+- Widely used in everyday applications
+
+#### Fahrenheit Scale (°F)
+
+- 32°F = freezing point, 212°F = boiling point of water
+- Common in United States
+
+#### Kelvin Scale (K)
+
+- Absolute temperature scale
+- 0 K = absolute zero (-273.15°C)
+- No negative temperatures
+- K = °C + 273.15
+
+#### Conversion Formulas
+
+```
+°C = (°F - 32) × 5/9
+°F = °C × 9/5 + 32
+K = °C + 273.15
+```
+
+### Thermometers and Temperature Measurement
+
+#### Types of Thermometers
+
+- **Liquid-in-glass**: Mercury or alcohol expansion
+- **Resistance thermometer**: Electrical resistance changes with temperature
+- **Thermocouple**: Voltage difference between two dissimilar metals
+- **Infrared thermometer**: Measures thermal radiation
+- **Bimetallic strip**: Differential expansion of two metals
+
+## Thermal Expansion
+
+### Linear Expansion
+
+When a solid is heated, its length increases proportionally to the original
+length and temperature change.
+
+```
+ΔL = αL₀ΔT
+```
+
+Where:
+
+- α = coefficient of linear expansion (K⁻¹)
+- L₀ = original length
+- ΔT = change in temperature
+
+### Area Expansion
+
+```
+ΔA = 2αA₀ΔT
+```
+
+### Volume Expansion
+
+```
+ΔV = βV₀ΔT
+```
+
+For most solids: β ≈ 3α
+
+### Coefficients of Thermal Expansion
+
+| Material      | α (×10⁻⁶ K⁻¹)      |
+| ------------- | ------------------ |
+| Aluminum      | 23.1               |
+| Copper        | 16.5               |
+| Steel         | 11.5               |
+| Glass (Pyrex) | 3.2                |
+| Invar (alloy) | 1.0                |
+| Water         | 210 (liquid, 20°C) |
+
+### Applications and Consequences
+
+- **Expansion joints** in bridges and railways
+- **Bimetallic strips** in thermostats
+- **Tightening of bolts** when heated
+- **Thermal stress** in structures
+- **Anomalous expansion of water**: Water expands when cooled below 4°C, causing
+  ice to float
+
+## Heat and Calorimetry
+
+### What is Heat?
+
+Heat is the transfer of thermal energy between systems due to temperature
+difference. It flows from hot to cold objects.
+
+### Units of Heat
+
+- **Joule (J)**: SI unit
+- **Calorie (cal)**: 1 cal = 4.186 J
+- **British Thermal Unit (BTU)**: 1 BTU = 1055 J
+
+### Specific Heat Capacity (c)
+
+The amount of heat required to raise the temperature of 1 kg of a substance by 1
+K.
+
+```
+Q = mcΔT
+```
+
+### Specific Heats of Common Substances
+
+| Substance | Specific Heat (J/kg·K) |
+| --------- | ---------------------- |
+| Water     | 4186                   |
+| Ice       | 2100                   |
+| Aluminum  | 900                    |
+| Copper    | 385                    |
+| Iron      | 450                    |
+| Air       | 1005                   |
+
+### Molar Specific Heat
+
+For gases:
+
+- At constant volume: C_v
+- At constant pressure: C_p
+- C_p - C_v = R (universal gas constant)
+
+### Calorimetry Principle
+
+Heat lost = Heat gained (in a closed system)
+
+```
+m₁c₁ΔT₁ = m₂c₂ΔT₂
+```
+
+### Water Equivalent
+
+Mass of water that would require the same heat as the calorimeter for same
+temperature change.
+
+## Phase Changes and Latent Heat
+
+### Phase Transitions
+
+| Phase Change   | Process        | Latent Heat                       |
+| -------------- | -------------- | --------------------------------- |
+| Solid → Liquid | Melting/Fusion | Latent heat of fusion (L_f)       |
+| Liquid → Solid | Freezing       | L_f                               |
+| Liquid → Gas   | Vaporization   | Latent heat of vaporization (L_v) |
+| Gas → Liquid   | Condensation   | L_v                               |
+| Solid → Gas    | Sublimation    | Latent heat of sublimation        |
+| Gas → Solid    | Deposition     | Latent heat of sublimation        |
+
+### Latent Heat Equations
+
+```
+Q = mL
+```
+
+Where:
+
+- L_f = 334 kJ/kg (for water)
+- L_v = 2260 kJ/kg (for water at 100°C)
+
+### Heating/Cooling Curve
+
+- **Plateaus** occur during phase changes
+- Temperature remains constant during phase transition
+- Energy goes into changing phase, not increasing temperature
+
+### Triple Point and Critical Point
+
+- **Triple point**: Temperature and pressure where solid, liquid, and gas
+  coexist
+- **Critical point**: Temperature above which gas cannot be liquefied by
+  pressure alone
+
+### Boiling and Evaporation
+
+- **Boiling**: Occurs throughout liquid when vapor pressure = atmospheric
+  pressure
+- **Evaporation**: Surface phenomenon, occurs at any temperature
+- Factors affecting evaporation rate: temperature, surface area, humidity, air
+  movement
+
+## Heat Transfer Mechanisms
+
+### Conduction
+
+#### Fourier's Law of Conduction
+
+```
+P = (kAΔT)/L
+```
+
+Where:
+
+- P = heat current (W)
+- k = thermal conductivity (W/m·K)
+- A = cross-sectional area
+- L = length
+- ΔT = temperature difference
+
+#### Thermal Conductivity Values
+
+| Material    | k (W/m·K) |
+| ----------- | --------- |
+| Silver      | 429       |
+| Copper      | 401       |
+| Aluminum    | 237       |
+| Glass       | 0.8       |
+| Water       | 0.6       |
+| Wood        | 0.15      |
+| Air         | 0.025     |
+| Polystyrene | 0.03      |
+
+#### R-Value and Thermal Resistance
+
+```
+R = L/k (for a layer)
+Total R = sum of individual R-values
+```
+
+### Convection
+
+#### Natural Convection
+
+- Caused by buoyancy forces from density differences
+- Warm fluid rises, cool fluid sinks
+- Examples: Heating water in a pot, atmospheric circulation
+
+#### Forced Convection
+
+- Fluid movement caused by external means (fan, pump)
+- More efficient than natural convection
+
+#### Heat Transfer Coefficient
+
+```
+P = hAΔT
+```
+
+Where h = convection heat transfer coefficient
+
+### Radiation
+
+#### Stefan-Boltzmann Law
+
+```
+P = εσAT⁴
+```
+
+Where:
+
+- ε = emissivity (0 to 1)
+- σ = 5.67 × 10⁻⁸ W/m²·K⁴ (Stefan-Boltzmann constant)
+- A = surface area
+- T = absolute temperature
+
+#### Wien's Displacement Law
+
+```
+λ_max = b/T
+```
+
+Where b = 2.898 × 10⁻³ m·K
+
+#### Kirchhoff's Law
+
+- Good absorbers are good emitters
+- Blackbody: ε = 1 (perfect absorber and emitter)
+
+#### Applications
+
+- Solar radiation
+- Greenhouse effect
+- Thermal imaging
+- Cooling of buildings
+
+## Thermodynamics
+
+### First Law of Thermodynamics
+
+```
+ΔU = Q - W
+```
+
+Where:
+
+- ΔU = change in internal energy
+- Q = heat added to system
+- W = work done by system
+
+### Thermodynamic Processes
+
+#### Isothermal Process (T = constant)
+
+```
+ΔU = 0
+Q = W
+W = nRT ln(V_f/V_i)
+```
+
+#### Isobaric Process (P = constant)
+
+```
+W = PΔV
+ΔU = Q - PΔV
+```
+
+#### Isochoric Process (V = constant)
+
+```
+W = 0
+ΔU = Q
+Q = nC_vΔT
+```
+
+#### Adiabatic Process (Q = 0)
+
+```
+ΔU = -W
+PV^γ = constant
+T V^(γ-1) = constant
+```
+
+Where γ = C_p/C_v
+
+### Second Law of Thermodynamics
+
+#### Kelvin-Planck Statement
+
+No cyclic process can convert all heat absorbed from a reservoir into work.
+
+#### Clausius Statement
+
+Heat cannot flow spontaneously from a cold body to a hot body.
+
+#### Entropy
+
+```
+ΔS = Q_rev/T
+```
+
+- Entropy is a measure of disorder
+- For isolated systems: ΔS ≥ 0
+- Heat engines must increase total entropy
+
+### Heat Engines
+
+#### Carnot Engine (Ideal)
+
+```
+efficiency = 1 - T_C/T_H
+```
+
+Where T_H = hot reservoir temperature, T_C = cold reservoir temperature
+
+#### Refrigerators and Heat Pumps
+
+```
+Coefficient of Performance (COP) = Q_C/W = Q_C/(Q_H - Q_C)
+```
+
+### Third Law of Thermodynamics
+
+- As temperature approaches absolute zero, entropy approaches a minimum value
+- Absolute zero cannot be reached in finite steps
+
+## Kinetic Theory of Gases
+
+### Gas Laws
+
+#### Boyle's Law (T constant)
+
+```
+PV = constant
+P₁V₁ = P₂V₂
+```
+
+#### Charles's Law (P constant)
+
+```
+V/T = constant
+V₁/T₁ = V₂/T₂
+```
+
+#### Gay-Lussac's Law (V constant)
+
+```
+P/T = constant
+P₁/T₁ = P₂/T₂
+```
+
+#### Ideal Gas Equation
+
+```
+PV = nRT
+```
+
+Where R = 8.314 J/mol·K
+
+### Molecular Speeds
+
+#### Root Mean Square Speed
+
+```
+v_rms = √(3RT/M)
+```
+
+#### Average Speed
+
+```
+v_avg = √(8RT/πM)
+```
+
+#### Most Probable Speed
+
+```
+v_mp = √(2RT/M)
+```
+
+### Maxwell-Boltzmann Distribution
+
+- Distribution of molecular speeds in a gas
+- Depends on temperature and molecular mass
+
+### Degrees of Freedom
+
+- Monatomic: 3 translational
+- Diatomic: 3 translational + 2 rotational
+- Polyatomic: 3 translational + 3 rotational
+
+### Molar Specific Heats
+
+For ideal gases:
+
+- C_v = (f/2)R
+- C_p = C_v + R
+
+## Applications and Phenomena
+
+### Everyday Applications
+
+- Cooking and food preparation
+- Heating and cooling systems
+- Clothing insulation
+- Engines and power plants
+
+### Natural Phenomena
+
+- Weather and climate
+- Ocean currents
+- Atmospheric circulation
+- Formation of clouds and rain
+
+### Technological Applications
+
+- Refrigeration and air conditioning
+- Solar panels and thermal collectors
+- Thermal insulation in buildings
+- Heat exchangers in industry
+
+### Heat and Health
+
+- Body temperature regulation
+- Hypothermia and hyperthermia
+- Thermal comfort
+- Fever and heat stroke

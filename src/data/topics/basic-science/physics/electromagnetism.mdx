@@ -1,3 +1,616 @@
-# Electromagnetism
+# 🧲 Electromagnetism
 
-Coulomb's law, electric and magnetic fields, Maxwell's equations.
+## Introduction to Electromagnetism
+
+Electromagnetism is the branch of physics that deals with electric and magnetic
+fields and their interactions. It is one of the four fundamental forces of
+nature, unifying electricity, magnetism, and light through Maxwell's equations.
+
+## Electrostatics
+
+### Electric Charge
+
+Electric charge is a fundamental property of matter that causes it to experience
+forces in electric fields.
+
+#### Types of Charge
+
+- **Positive charge**: Proton (+e)
+- **Negative charge**: Electron (-e)
+- **Neutral**: Equal number of protons and electrons
+
+#### Quantization of Charge
+
+```
+Q = ne
+```
+
+Where:
+
+- Q = total charge
+- n = integer (number of elementary charges)
+- e = elementary charge (1.602 × 10⁻¹⁹ C)
+
+#### Conservation of Charge
+
+Charge can neither be created nor destroyed; it can only be transferred.
+
+### Coulomb's Law
+
+#### Statement
+
+The force between two point charges is directly proportional to the product of
+their charges and inversely proportional to the square of the distance between
+them.
+
+#### Equation
+
+```
+F = k(q₁q₂)/r²
+```
+
+Where:
+
+- k = 1/(4πε₀) = 8.99 × 10⁹ N·m²/C²
+- ε₀ = 8.85 × 10⁻¹² C²/(N·m²) (permittivity of free space)
+
+#### Vector Form
+
+```
+F₁₂ = k(q₁q₂)r̂/r²
+```
+
+### Electric Field
+
+#### Definition
+
+The electric field is the force per unit charge experienced by a test charge.
+
+```
+E = F/q₀
+```
+
+#### Electric Field of a Point Charge
+
+```
+E = kQ/r²
+```
+
+#### Electric Field Lines
+
+- Point away from positive charges
+- Point toward negative charges
+- Density indicates field strength
+- Never cross
+
+#### Electric Dipole
+
+- Two equal and opposite charges separated by distance
+- Dipole moment: p = qd
+- Electric field along axis: E = (2kp)/r³
+- Electric field perpendicular: E = kp/r³
+
+### Electric Flux and Gauss's Law
+
+#### Electric Flux
+
+```
+Φ_E = E·A = EA cos θ
+```
+
+#### Gauss's Law
+
+```
+Φ_E = Q_enc/ε₀
+```
+
+#### Applications
+
+- Field of a uniformly charged sphere
+- Field of a charged plane
+- Field of a long charged cylinder
+
+### Electric Potential
+
+#### Definition
+
+Electric potential is the work done per unit charge in bringing a test charge
+from infinity to a point.
+
+```
+V = W/q₀
+```
+
+#### Potential of a Point Charge
+
+```
+V = kQ/r
+```
+
+#### Potential Energy
+
+```
+U = qV
+U = kq₁q₂/r (for two charges)
+```
+
+#### Relation Between E and V
+
+```
+E = -dV/dr
+```
+
+### Capacitance
+
+#### Definition
+
+Capacitance is the ability of a system to store charge per unit potential
+difference.
+
+```
+C = Q/V
+```
+
+#### Parallel Plate Capacitor
+
+```
+C = ε₀A/d
+```
+
+#### Energy Stored in Capacitor
+
+```
+U = ½CV² = Q²/(2C) = ½QV
+```
+
+#### Capacitors in Series
+
+```
+1/C_eq = 1/C₁ + 1/C₂ + 1/C₃ + ...
+```
+
+#### Capacitors in Parallel
+
+```
+C_eq = C₁ + C₂ + C₃ + ...
+```
+
+#### Dielectrics
+
+```
+C = κC₀
+```
+
+Where κ = dielectric constant
+
+---
+
+## Electric Current and Circuits
+
+### Electric Current
+
+#### Definition
+
+Rate of flow of charge.
+
+```
+I = dQ/dt
+```
+
+#### Conventional Current
+
+- Direction of positive charge flow
+- Opposite to electron flow
+
+#### Current Density
+
+```
+J = I/A
+```
+
+### Resistance and Ohm's Law
+
+#### Ohm's Law
+
+```
+V = IR
+```
+
+Where R = resistance (in ohms, Ω)
+
+#### Resistivity
+
+```
+R = ρL/A
+```
+
+Where ρ = resistivity (depends on material and temperature)
+
+#### Temperature Dependence
+
+```
+R = R₀(1 + αΔT)
+```
+
+### Electric Power
+
+#### Formulas
+
+```
+P = VI = I²R = V²/R
+```
+
+#### Energy
+
+```
+E = Pt = VIt
+```
+
+### Resistor Combinations
+
+#### Series
+
+```
+R_eq = R₁ + R₂ + R₃ + ...
+```
+
+#### Parallel
+
+```
+1/R_eq = 1/R₁ + 1/R₂ + 1/R₃ + ...
+```
+
+### Kirchhoff's Laws
+
+#### Junction Rule (KCL)
+
+The sum of currents entering a junction equals the sum of currents leaving.
+
+#### Loop Rule (KVL)
+
+The sum of potential differences around any closed loop is zero.
+
+### RC Circuits
+
+#### Charging
+
+```
+Q(t) = Q₀(1 - e^{-t/RC})
+I(t) = I₀e^{-t/RC}
+```
+
+#### Discharging
+
+```
+Q(t) = Q₀e^{-t/RC}
+I(t) = -I₀e^{-t/RC}
+```
+
+#### Time Constant
+
+```
+τ = RC
+```
+
+---
+
+## Magnetism
+
+### Magnetic Fields
+
+#### Sources
+
+- Moving charges
+- Current-carrying wires
+- Permanent magnets
+
+#### Magnetic Field Lines
+
+- Form closed loops
+- From north to south outside magnet
+- From south to north inside magnet
+
+### Magnetic Force
+
+#### Force on a Moving Charge
+
+```
+F = qv × B
+F = qvB sin θ
+```
+
+- Magnitude: F = qvB sin θ
+- Direction: Right-hand rule
+
+#### Force on a Current-Carrying Wire
+
+```
+F = IL × B
+F = ILB sin θ
+```
+
+### Motion in Magnetic Field
+
+#### Circular Motion
+
+```
+r = mv/(qB)
+T = 2πm/(qB)
+ω = qB/m
+```
+
+#### Cyclotron Frequency
+
+```
+f = qB/(2πm)
+```
+
+### Magnetic Field of Currents
+
+#### Biot-Savart Law
+
+```
+dB = (μ₀/4π)(Idl × r̂)/r²
+```
+
+Where μ₀ = 4π × 10⁻⁷ T·m/A
+
+#### Magnetic Field of a Long Straight Wire
+
+```
+B = μ₀I/(2πr)
+```
+
+#### Force Between Two Parallel Wires
+
+```
+F/L = μ₀I₁I₂/(2πd)
+```
+
+- Attractive: Same direction
+- Repulsive: Opposite direction
+
+#### Magnetic Field of a Solenoid
+
+```
+B = μ₀nI
+```
+
+Where n = number of turns per unit length
+
+#### Magnetic Field of a Toroid
+
+```
+B = μ₀NI/(2πr)
+```
+
+---
+
+## Electromagnetic Induction
+
+### Faraday's Law
+
+#### Statement
+
+The induced emf is equal to the negative rate of change of magnetic flux.
+
+```
+ε = -dΦ_B/dt
+```
+
+#### Magnetic Flux
+
+```
+Φ_B = B·A = BA cos θ
+```
+
+### Lenz's Law
+
+#### Statement
+
+The induced current flows in a direction that opposes the change that produced
+it.
+
+#### Applications
+
+- Electromagnetic braking
+- Induction cooktops
+- Eddy currents
+
+### Motional EMF
+
+```
+ε = Blv (when B, l, v are perpendicular)
+```
+
+### Generators and Motors
+
+#### Generator
+
+- Converts mechanical energy to electrical
+- Emf: ε = NBAω sin(ωt)
+- AC generator produces alternating emf
+
+#### Motor
+
+- Converts electrical energy to mechanical
+- Back emf opposes applied voltage
+
+#### Transformers
+
+**Step-up Transformer:**
+
+```
+V_s/V_p = N_s/N_p > 1
+```
+
+Increases voltage, decreases current
+
+**Step-down Transformer:**
+
+```
+V_s/V_p = N_s/N_p < 1
+```
+
+Decreases voltage, increases current
+
+**Power:**
+
+```
+P_p = P_s (ideal transformer)
+V_pI_p = V_sI_s
+```
+
+### Self and Mutual Inductance
+
+#### Self-Inductance
+
+```
+L = NΦ/I
+ε = -L(dI/dt)
+```
+
+#### Inductors in Series
+
+```
+L_eq = L₁ + L₂ + L₃ + ...
+```
+
+#### Inductors in Parallel
+
+```
+1/L_eq = 1/L₁ + 1/L₂ + 1/L₃ + ...
+```
+
+#### Energy Stored in Inductor
+
+```
+U = ½LI²
+```
+
+#### Mutual Inductance
+
+```
+ε₁ = -M(dI₂/dt)
+ε₂ = -M(dI₁/dt)
+M = N₂Φ₂₁/I₁ = N₁Φ₁₂/I₂
+```
+
+### RL Circuits
+
+#### Current Build-up
+
+```
+I(t) = I₀(1 - e^{-t/τ})
+τ = L/R
+```
+
+#### Current Decay
+
+```
+I(t) = I₀e^{-t/τ}
+```
+
+---
+
+## Maxwell's Equations
+
+### Integral Form
+
+1. **Gauss's Law (Electric)**:
+
+   ```
+   ∮E·dA = Q_enc/ε₀
+   ```
+
+2. **Gauss's Law (Magnetic)**:
+
+   ```
+   ∮B·dA = 0
+   ```
+
+3. **Faraday's Law**:
+
+   ```
+   ∮E·dl = -dΦ_B/dt
+   ```
+
+4. **Ampere-Maxwell Law**:
+   ```
+   ∮B·dl = μ₀I_enc + μ₀ε₀(dΦ_E/dt)
+   ```
+
+### Differential Form
+
+1. **∇·E = ρ/ε₀**
+2. **∇·B = 0**
+3. **∇×E = -∂B/∂t**
+4. **∇×B = μ₀J + μ₀ε₀∂E/∂t**
+
+### Electromagnetic Waves
+
+#### Wave Equation
+
+```
+∇²E = μ₀ε₀∂²E/∂t²
+```
+
+#### Speed of Light
+
+```
+c = 1/√(μ₀ε₀)
+```
+
+#### Properties
+
+- Transverse waves
+- E and B are perpendicular
+- E and B are in phase
+- E = cB
+
+---
+
+## Applications of Electromagnetism
+
+### Electric Power Systems
+
+- Generation
+- Transmission
+- Distribution
+- Three-phase systems
+
+### Motors and Generators
+
+- DC motors
+- AC motors (induction, synchronous)
+- Alternators
+- Hydro, thermal, nuclear power plants
+
+### Electromagnetic Devices
+
+- **Relays**: Electromagnetic switches
+- **Solenoids**: Linear actuators
+- **Loudspeakers**: Convert electrical to sound
+- **Microphones**: Convert sound to electrical
+- **Magnetic storage**: Hard drives, tapes
+
+### Medical Applications
+
+- **MRI**: Magnetic resonance imaging
+- **TMS**: Transcranial magnetic stimulation
+- **Defibrillators**: Heart rhythm restoration
+- **Electrosurgery**: High-frequency cutting
+
+### Communication Systems
+
+- Antennas
+- Waveguides
+- Radio, TV, and satellite
+- Fiber optics
+
+### Scientific Applications
+
+- Particle accelerators
+- Mass spectrometers
+- Electron microscopes
+- NMR spectroscopy

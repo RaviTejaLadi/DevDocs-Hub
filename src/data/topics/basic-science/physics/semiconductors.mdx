@@ -1,1 +1,827 @@
-# Semiconductors
+# 💡 Semiconductors
+
+## Introduction to Semiconductors
+
+Semiconductors are materials with electrical conductivity between conductors and
+insulators. They are the foundation of modern electronics, enabling devices like
+transistors, diodes, and integrated circuits.
+
+## Band Theory of Solids
+
+### Energy Bands
+
+#### Valence Band
+
+- Highest occupied band
+- Electrons in this band are bound to atoms
+- Participates in chemical bonding
+
+#### Conduction Band
+
+- Lowest unoccupied band
+- Electrons here are free to move
+- Responsible for electrical conduction
+
+#### Band Gap (E_g)
+
+```
+E_g = E_C - E_V
+```
+
+Energy difference between conduction and valence bands
+
+### Classification of Materials
+
+#### Conductors
+
+- No band gap
+- Overlapping valence and conduction bands
+- High conductivity
+- Examples: Copper, silver, gold
+
+#### Insulators
+
+- Large band gap (> 3 eV)
+- Very few electrons in conduction band
+- Poor conductivity
+- Examples: Glass, rubber, diamond
+
+#### Semiconductors
+
+- Small band gap (0.1 - 3 eV)
+- Moderate conductivity
+- Examples: Silicon (1.12 eV), Germanium (0.67 eV)
+
+### Intrinsic Semiconductors
+
+#### Pure Semiconductors
+
+- Perfect crystal lattice
+- Equal number of electrons and holes
+- Conductivity depends on temperature
+
+#### Carrier Concentration
+
+```
+n = p = n_i = A T^{3/2} e^{-E_g/(2kT)}
+```
+
+### Extrinsic Semiconductors
+
+#### Doping
+
+- Intentional addition of impurities
+- Controls conductivity type
+- Creates excess electrons or holes
+
+#### n-type Semiconductor
+
+- Donor impurities (e.g., P, As, Sb)
+- Extra electrons added
+- Majority carriers: electrons
+- Minority carriers: holes
+
+#### p-type Semiconductor
+
+- Acceptor impurities (e.g., B, Al, Ga)
+- Electron holes created
+- Majority carriers: holes
+- Minority carriers: electrons
+
+### Carrier Statistics
+
+#### Fermi Level
+
+- Energy at which occupation probability = ½
+- In n-type: Near conduction band
+- In p-type: Near valence band
+
+#### Fermi-Dirac Distribution
+
+```
+f(E) = 1/[1 + e^{(E - E_F)/kT}]
+```
+
+#### Mass Action Law
+
+```
+n·p = n_i²
+```
+
+---
+
+## Semiconductor Devices
+
+### p-n Junction
+
+#### Formation
+
+- Joining p-type and n-type semiconductors
+- Diffusion of carriers across junction
+- Depletion region formed
+- Built-in potential established
+
+#### Space Charge Region
+
+- Positive on n-side
+- Negative on p-side
+- Electric field prevents further diffusion
+
+### Diode Characteristics
+
+#### Forward Bias
+
+- Voltage applied forward (p to n)
+- Current flows exponentially
+- Threshold voltage (~0.7V for Si)
+- V-I characteristic: I = I_s(e^{V/V_T} - 1)
+
+#### Reverse Bias
+
+- Voltage applied reverse (n to p)
+- Small leakage current
+- Breakdown at high reverse voltage
+
+#### Diode Equation
+
+```
+I = I_s(e^{V/ηV_T} - 1)
+```
+
+Where:
+
+- I_s = saturation current
+- η = ideality factor (1-2)
+- V_T = kT/q (thermal voltage, ~26mV at 300K)
+
+### Junction Breakdown
+
+#### Zener Breakdown
+
+- High doping concentration
+- Tunneling of electrons
+- Sharp breakdown voltage
+
+#### Avalanche Breakdown
+
+- Lower doping concentration
+- Impact ionization
+- Less sharp breakdown
+
+#### Applications
+
+- Zener diodes for voltage regulation
+- Avalanche diodes for protection
+
+### Rectifier Circuits
+
+#### Half-Wave Rectifier
+
+- Uses one diode
+- Conducts in one half-cycle
+- Efficiency: 40.6%
+
+#### Full-Wave Rectifier
+
+- Uses multiple diodes
+- Conducts in both half-cycles
+- Efficiency: 81.2%
+
+#### Bridge Rectifier
+
+- Four diodes
+- No center-tapped transformer required
+- Common in power supplies
+
+### Filter Circuits
+
+#### Capacitor Filter
+
+- Smooths rectified output
+- Ripple voltage depends on C and load
+
+#### LC Filter
+
+- Better filtering
+- Used in higher power applications
+
+#### Voltage Regulation
+
+- Zener voltage regulator
+- Series voltage regulator
+- Integrated circuits
+
+---
+
+## Bipolar Junction Transistor (BJT)
+
+### Structure
+
+#### Types
+
+- **NPN**: Emitter (n), Base (p), Collector (n)
+- **PNP**: Emitter (p), Base (n), Collector (p)
+
+#### Regions
+
+- Emitter: Heavily doped
+- Base: Lightly doped, thin
+- Collector: Moderately doped, large
+
+### Operation
+
+#### Current Gain
+
+```
+β = I_C/I_B
+α = I_C/I_E
+β = α/(1-α)
+```
+
+#### Modes of Operation
+
+| Mode       | E-B Junction | C-B Junction | Application |
+| ---------- | ------------ | ------------ | ----------- |
+| Cutoff     | Reverse      | Reverse      | Off         |
+| Active     | Forward      | Reverse      | Amplifier   |
+| Saturation | Forward      | Forward      | Switch      |
+| Inverse    | Reverse      | Forward      | Rarely used |
+
+#### Ebers-Moll Model
+
+```
+I_C = α_F I_F - I_{CBO}(e^{V_{CB}/V_T} - 1)
+I_E = I_F - α_R I_R
+```
+
+### Transistor Characteristics
+
+#### Input Characteristics
+
+- I_B vs V_BE
+- Diode characteristics
+- Depends on V_CE
+
+#### Output Characteristics
+
+- I_C vs V_CE for fixed I_B
+- Three regions: Cutoff, Active, Saturation
+
+### Biasing Circuits
+
+#### Fixed Bias
+
+- Simple but unstable
+- β variation affects operating point
+
+#### Emitter Bias
+
+- Better stability
+- Uses emitter resistor
+
+#### Voltage Divider Bias
+
+- Most stable
+- Widely used in amplifiers
+- Independent of β
+
+### Configurations
+
+#### Common Emitter (CE)
+
+- High current and voltage gain
+- 180° phase shift
+- Most common amplifier
+
+#### Common Base (CB)
+
+- High voltage gain
+- No current gain
+- Good high-frequency response
+
+#### Common Collector (CC)
+
+- Current gain only
+- Voltage gain < 1
+- Used as buffer
+
+---
+
+## Field Effect Transistors (FETs)
+
+### JFET (Junction FET)
+
+#### Structure
+
+- Channel (n or p type)
+- Gate (opposite doping)
+- Drain and source contacts
+
+#### Operation
+
+- Depletion mode only
+- Gate voltage controls channel width
+- Pinch-off voltage (V_p)
+- Drain current: I_D = I_DSS(1 - V_GS/V_p)²
+
+### MOSFET (Metal-Oxide-Semiconductor FET)
+
+#### Types
+
+**Enhancement Mode:**
+
+- Normally off
+- Threshold voltage required
+- Types: n-channel and p-channel
+
+**Depletion Mode:**
+
+- Normally on
+- Can be turned off
+- Less common
+
+#### Operating Regions
+
+1. **Cutoff**: V_GS < V_th, no current
+2. **Linear/Triode**: V_DS < V_GS - V_th
+3. **Saturation**: V_DS > V_GS - V_th
+
+#### Drain Current
+
+**Saturation:**
+
+```
+I_D = (μ_n C_ox/2)(W/L)(V_GS - V_th)²
+```
+
+**Linear:**
+
+```
+I_D = μ_n C_ox(W/L)[(V_GS - V_th)V_DS - V_DS²/2]
+```
+
+---
+
+## Amplifiers
+
+### Classification
+
+#### By Conduction Angle
+
+- **Class A**: 360° (conducts all cycle)
+- **Class B**: 180° (half cycle)
+- **Class AB**: 180-360°
+- **Class C**: < 180°
+
+#### By Frequency Response
+
+- **DC Amplifiers**: Amplify DC signals
+- **RC Coupled**: Audio frequencies
+- **Transformer Coupled**: Power amplification
+- **RF Amplifiers**: High frequencies
+
+### Small Signal Analysis
+
+#### h-Parameters
+
+```
+V_CE = h_ie I_B + h_re V_CE
+I_C = h_fe I_B + h_oe V_CE
+```
+
+#### Power Gain
+
+```
+A_p = A_v × A_i
+```
+
+#### Cascade Amplifiers
+
+- Increased gain
+- Coupling (RC, transformer, direct)
+
+### Power Amplifiers
+
+#### Push-Pull
+
+- Class B operation
+- High efficiency
+- Low distortion
+
+#### Audio Amplifiers
+
+- Stereo systems
+- Op-amps
+- Integrated amplifiers
+
+---
+
+## Operational Amplifiers
+
+### Ideal Op-Amp
+
+#### Characteristics
+
+- Infinite gain
+- Infinite input impedance
+- Zero output impedance
+- Infinite bandwidth
+- Zero offset
+
+### Basic Configurations
+
+#### Inverting Amplifier
+
+```
+V_out = -(R_f/R_in)V_in
+```
+
+#### Non-Inverting Amplifier
+
+```
+V_out = (1 + R_f/R_in)V_in
+```
+
+#### Voltage Follower
+
+```
+V_out = V_in
+```
+
+#### Summing Amplifier
+
+```
+V_out = -R_f(V_1/R_1 + V_2/R_2 + ...)
+```
+
+#### Difference Amplifier
+
+```
+V_out = (R_f/R_1)(V_2 - V_1)
+```
+
+### Applications
+
+#### Comparator
+
+- Compares two voltages
+- Digital output
+- Zero-crossing detector
+
+#### Integrator
+
+```
+V_out = -(1/RC)∫V_in dt
+```
+
+#### Differentiator
+
+```
+V_out = -RC(dV_in/dt)
+```
+
+#### Active Filters
+
+- Low-pass, high-pass, band-pass
+- Better than passive filters
+
+### Oscillators
+
+#### RC Oscillators
+
+- Phase shift oscillator
+- Wien bridge oscillator
+- Audio frequencies
+
+#### LC Oscillators
+
+- Colpitts, Hartley
+- RF applications
+- Higher frequencies
+
+#### Crystal Oscillators
+
+- Very stable
+- Quartz crystal
+- Accurate frequency
+
+---
+
+## Digital Electronics
+
+### Number Systems
+
+#### Binary
+
+- Base 2 (0,1)
+- Used in digital circuits
+
+#### Hexadecimal
+
+- Base 16 (0-9, A-F)
+- Compact representation
+
+#### Octal
+
+- Base 8 (0-7)
+
+### Logic Gates
+
+| Gate | Symbol | Expression | Truth Table        |
+| ---- | ------ | ---------- | ------------------ |
+| AND  | &      | A·B        | 1 only when both 1 |
+| OR   | ≥1     | A+B        | 0 only when both 0 |
+| NOT  |        |            | Inverts input      |
+| NAND | ↑      | A·B        | Inverted AND       |
+| NOR  | ↓      | A+B        | Inverted OR        |
+| XOR  | ⊕      | A⊕B        | 1 if different     |
+| XNOR | ⊙      | A⊙B        | 1 if same          |
+
+### Boolean Algebra
+
+#### Laws
+
+- Identity: A·1 = A, A+0 = A
+- Null: A·0 = 0, A+1 = 1
+- Idempotent: A·A = A, A+A = A
+- Complement: A·A' = 0, A+A' = 1
+- Distributive: A(B+C) = AB+AC
+
+#### De Morgan's Theorem
+
+```
+(A·B)' = A' + B'
+(A+B)' = A'·B'
+```
+
+### Combinational Circuits
+
+#### Encoders/Decoders
+
+- Binary to decimal
+- Priority encoders
+- 7-segment decoders
+
+#### Multiplexers
+
+- Select one of many inputs
+- Data selection
+- N:1 multiplexer
+
+#### Demultiplexers
+
+- Route one input to many outputs
+- 1:N demultiplexer
+
+#### Adders
+
+- Half adder: 2 inputs
+- Full adder: 3 inputs
+- Ripple carry adder
+
+#### Comparators
+
+- Magnitude comparison
+- Equality detection
+
+### Sequential Circuits
+
+#### Flip-Flops
+
+**SR Flip-Flop:**
+
+```
+Q_next = S + R'Q
+```
+
+**D Flip-Flop:**
+
+```
+Q_next = D
+```
+
+**JK Flip-Flop:**
+
+```
+Q_next = JQ' + K'Q
+```
+
+**T Flip-Flop:**
+
+```
+Q_next = T⊕Q
+```
+
+#### Registers
+
+- Shift registers
+- Parallel load registers
+- Universal shift registers
+
+#### Counters
+
+- Ripple counters
+- Synchronous counters
+- Up/Down counters
+- Mod-n counters
+
+### Memory
+
+#### Semiconductor Memory
+
+**RAM:**
+
+- Volatile (data lost)
+- SRAM (fast, expensive)
+- DRAM (slower, cheap)
+
+**ROM:**
+
+- Non-volatile
+- Mask ROM, PROM, EPROM, EEPROM
+
+#### Types
+
+- Random Access
+- Sequential Access
+- Content Addressable
+
+---
+
+## Semiconductor Applications
+
+### Microprocessors
+
+#### Architecture
+
+- ALU (Arithmetic Logic Unit)
+- Control Unit
+- Registers
+- Memory interface
+
+#### Evolution
+
+- 4-bit to 64-bit
+- Increased speed
+- Reduced size
+
+### Integrated Circuits
+
+#### Scale of Integration
+
+| Scale | Number of Gates | Year   |
+| ----- | --------------- | ------ |
+| SSI   | 1-10            | 1960s  |
+| MSI   | 10-100          | 1970s  |
+| LSI   | 100-1000        | 1970s  |
+| VLSI  | 1000+           | 1980s+ |
+| ULSI  | 1,000,000+      | 1990s+ |
+
+#### Manufacturing
+
+- Photolithography
+- Doping
+- Metallization
+- Packaging
+
+### Solar Cells
+
+#### Working Principle
+
+- Photovoltaic effect
+- p-n junction
+- Photons create electron-hole pairs
+- Separation by built-in field
+
+#### Types
+
+- Mono-crystalline silicon
+- Poly-crystalline silicon
+- Thin-film
+- Organic
+
+#### Efficiency
+
+- Theoretical limit: ~33% (Shockley-Queisser)
+- Current record: >47% (multi-junction)
+
+### LEDs
+
+#### Principle
+
+- Light emission due to recombination
+- Direct bandgap materials
+- Color determined by bandgap
+
+#### Types
+
+- Visible (red, green, blue)
+- Infrared
+- UV
+
+#### Applications
+
+- Display lighting
+- Indicators
+- Communication
+
+### Laser Diodes
+
+#### Principle
+
+- Stimulated emission
+- Optical cavity
+- Laser action
+
+#### Types
+
+- Edge-emitting
+- Vertical cavity (VCSEL)
+- Quantum cascade
+
+#### Applications
+
+- Fiber optics
+- Barcode readers
+- Laser pointers
+
+### Semiconductor Sensors
+
+#### Types
+
+- Photodiodes
+- Phototransistors
+- Hall sensors
+- Temperature sensors
+- Chemical sensors
+
+#### Applications
+
+- Automotive
+- Medical
+- Environmental monitoring
+
+---
+
+## Advanced Semiconductor Topics
+
+### Moore's Law
+
+#### Statement
+
+Number of transistors on integrated circuits doubles approximately every two
+years.
+
+#### Implications
+
+- Exponential growth in computing power
+- Decreasing cost per transistor
+- Physical limits approaching
+
+### Nanotechnology
+
+#### Quantum Effects
+
+- Quantum dots
+- Quantum wells
+- Quantum wires
+
+#### Nanomaterials
+
+- Carbon nanotubes
+- Graphene
+- Semiconductor nanowires
+
+### Spintronics
+
+#### Principle
+
+- Using electron spin
+- Giant magnetoresistance
+- Magnetic memory
+
+#### Applications
+
+- MRAM
+- Spin valves
+- Quantum computing
+
+### Future Directions
+
+#### Beyond CMOS
+
+- Single electron transistors
+- Molecular electronics
+- Neuromorphic computing
+
+#### Quantum Computing
+
+- Superconducting qubits
+- Semiconductor qubits
+- Quantum supremacy
+
+#### Emerging Technologies
+
+- 2D materials (graphene, MoS₂)
+- Perovskite solar cells
+- Flexible electronics

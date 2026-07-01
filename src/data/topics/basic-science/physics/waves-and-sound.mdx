@@ -1,1 +1,416 @@
 # Waves & Sound
+
+## Introduction to Waves
+
+Waves are disturbances that propagate through space and time, transferring
+energy without transferring matter. They are fundamental to understanding sound,
+light, and many other physical phenomena.
+
+## Types of Waves
+
+### Based on Propagation Medium
+
+#### Mechanical Waves
+
+- Require a medium for propagation
+- Examples: Sound waves, water waves, seismic waves
+- Cannot travel through vacuum
+
+#### Electromagnetic Waves
+
+- Do not require a medium
+- Can travel through vacuum
+- Examples: Light, radio waves, X-rays
+
+#### Matter Waves
+
+- Associated with particles (quantum mechanical)
+- Wave-particle duality
+
+### Based on Motion of Particles
+
+#### Transverse Waves
+
+- Particle motion perpendicular to wave propagation
+- Examples: Water ripples, electromagnetic waves
+- Wave features: Crests (peaks) and troughs (valleys)
+
+#### Longitudinal Waves
+
+- Particle motion parallel to wave propagation
+- Examples: Sound waves, seismic P-waves
+- Wave features: Compressions and rarefactions
+
+#### Surface Waves
+
+- Combination of transverse and longitudinal
+- Particles move in elliptical paths
+- Examples: Ocean waves
+
+## Wave Characteristics
+
+### Basic Quantities
+
+#### Wavelength (λ)
+
+Distance between two consecutive identical points on a wave (e.g., crest to
+crest).
+
+#### Frequency (f)
+
+Number of complete oscillations per second. Unit: Hertz (Hz).
+
+#### Time Period (T)
+
+Time for one complete oscillation.
+
+```
+T = 1/f
+```
+
+#### Wave Speed (v)
+
+```
+v = fλ = λ/T
+```
+
+#### Amplitude (A)
+
+Maximum displacement from equilibrium position.
+
+#### Phase
+
+Position of a point in the wave cycle.
+
+### Wave Equation
+
+```
+y(x,t) = A sin(kx - ωt)
+```
+
+Where:
+
+- k = 2π/λ (wave number)
+- ω = 2πf (angular frequency)
+- (kx - ωt) = phase
+
+### Angular Quantities
+
+```
+ω = 2πf = 2π/T
+k = 2π/λ
+v = ω/k
+```
+
+## Wave Properties
+
+### Superposition Principle
+
+When two or more waves overlap, the resultant displacement is the algebraic sum
+of individual displacements.
+
+### Interference
+
+#### Constructive Interference
+
+- Waves in phase
+- Amplitude adds: A_total = A₁ + A₂
+- Path difference = nλ
+
+#### Destructive Interference
+
+- Waves out of phase
+- Amplitude subtracts: A_total = |A₁ - A₂|
+- Path difference = (n + ½)λ
+
+### Standing Waves
+
+- Formed by superposition of two identical waves traveling in opposite
+  directions
+- Nodes: Points of zero displacement
+- Antinodes: Points of maximum displacement
+
+### Beats
+
+- Interference of two waves with slightly different frequencies
+- Beat frequency = |f₁ - f₂|
+- Amplitude modulates at beat frequency
+
+### Doppler Effect
+
+Change in observed frequency due to relative motion between source and observer.
+
+#### Doppler Effect Formulas
+
+**Moving Observer:**
+
+```
+f' = f(v ± v_o)/v
+```
+
+**Moving Source:**
+
+```
+f' = f v/(v ∓ v_s)
+```
+
+**Both Moving:**
+
+```
+f' = f (v ± v_o)/(v ∓ v_s)
+```
+
+Where:
+
+- f' = observed frequency
+- f = source frequency
+- v = wave speed in medium
+- v_o = observer velocity
+- v_s = source velocity
+
+### Applications of Doppler Effect
+
+- Radar and speed guns
+- Medical ultrasound
+- Astronomy (redshift/blueshift)
+- Weather radar
+
+## Energy and Power in Waves
+
+### Energy Transport
+
+- Waves transfer energy without transferring matter
+- Energy is proportional to amplitude squared
+
+### Intensity
+
+```
+I = P/A
+```
+
+- For isotropic waves: I ∝ 1/r²
+
+### Decibel Scale (Sound)
+
+```
+β = 10 log(I/I₀)
+```
+
+Where I₀ = 10⁻¹² W/m² (threshold of hearing)
+
+### Sound Intensity Levels
+
+| Sound Source         | Level (dB) |
+| -------------------- | ---------- |
+| Threshold of hearing | 0          |
+| Whisper              | 20-30      |
+| Normal conversation  | 60-70      |
+| City traffic         | 70-80      |
+| Rock concert         | 110-120    |
+| Jet engine           | 140-150    |
+
+## Sound Waves
+
+### Characteristics of Sound
+
+- Longitudinal mechanical waves
+- Frequency range: 20 Hz to 20,000 Hz (human hearing)
+- Speed in air: ≈ 343 m/s (at 20°C)
+
+### Speed of Sound
+
+#### In Gases
+
+```
+v = √(γRT/M)
+```
+
+Where γ = C_p/C_v, R = universal gas constant, T = absolute temperature, M =
+molar mass
+
+#### In Liquids
+
+```
+v = √(B/ρ)
+```
+
+Where B = bulk modulus, ρ = density
+
+#### In Solids
+
+```
+v = √(Y/ρ)
+```
+
+Where Y = Young's modulus, ρ = density
+
+### Factors Affecting Speed of Sound
+
+- **Temperature**: Increases with temperature
+- **Density**: Generally inversely proportional
+- **Pressure**: No effect for ideal gases (at constant temperature)
+- **Humidity**: Increases speed slightly
+
+## Sound Phenomena
+
+### Reflection of Sound
+
+- Echo: Reflected sound reaching the ear
+- Minimum distance for distinct echo: 17 m
+- Reverberation: Multiple reflections
+
+### Refraction of Sound
+
+- Bending of sound waves due to speed variations
+- Temperature gradients cause sound to bend
+- Explanation for "sound shadows"
+
+### Diffraction of Sound
+
+- Sound waves bend around obstacles
+- Wavelength similar to obstacle size
+- Easier to hear around corners
+
+### Resonance
+
+- When driving frequency matches natural frequency
+- Amplitude becomes maximum
+- Applications: Musical instruments, buildings
+
+### Interference of Sound
+
+- Constructive and destructive interference
+- Beats from slightly different frequencies
+- Sound cancellation (noise-canceling headphones)
+
+## Musical Sound
+
+### Characteristics
+
+#### Pitch
+
+- Determined by frequency
+- Higher frequency = higher pitch
+- Perception is logarithmic
+
+#### Loudness
+
+- Determined by amplitude/intensity
+- Perceived logarithmically (decibels)
+
+#### Timbre (Quality)
+
+- Determined by harmonics/overtones
+- Distinguishes instruments playing same note
+- Based on wave shape
+
+### Harmonics and Overtones
+
+#### Standing Waves in Strings
+
+```
+f_n = (n/2L)√(T/μ)
+```
+
+Where n = 1,2,3,... (harmonics)
+
+#### Standing Waves in Pipes
+
+**Open Pipe:**
+
+```
+f_n = nv/2L
+```
+
+All harmonics present
+
+**Closed Pipe:**
+
+```
+f_n = (2n-1)v/4L
+```
+
+Only odd harmonics
+
+### Musical Instruments
+
+- **String instruments**: Violin, guitar, piano
+- **Wind instruments**: Flute, trumpet, clarinet
+- **Percussion instruments**: Drums, xylophone
+
+## Ultrasound
+
+### Definition
+
+Sound waves with frequency > 20,000 Hz (above human hearing)
+
+### Applications
+
+- **Medical imaging**: Diagnostic ultrasound
+- **Therapeutic**: Physiotherapy, lithotripsy
+- **Industrial**: Non-destructive testing
+- **Cleaning**: Ultrasonic cleaners
+- **Sonar**: Underwater navigation
+
+### Principles
+
+- Piezoelectric effect for generation/detection
+- Pulse-echo method for imaging
+- Attenuation limits depth
+
+## Shock Waves and Sonic Boom
+
+### Mach Number
+
+```
+M = v_object/v_sound
+```
+
+- M < 1: Subsonic
+- M = 1: Sonic
+- M > 1: Supersonic
+
+### Shock Waves
+
+- Formed when object exceeds speed of sound
+- Compression wave front
+- Sonic boom at M > 1
+
+## Wave Optics
+
+### Huygens' Principle
+
+Every point on a wavefront acts as a source of secondary wavelets.
+
+### Diffraction
+
+- Bending of waves around obstacles
+- Wavelength determines amount of diffraction
+- Diffraction gratings
+
+### Polarization
+
+- Restriction of wave oscillation to one plane
+- Only transverse waves can be polarized
+- Applications: Sunglasses, photography, LCD screens
+
+## Electromagnetic Waves
+
+### Electromagnetic Spectrum
+
+| Wave Type   | Wavelength Range | Frequency Range            |
+| ----------- | ---------------- | -------------------------- |
+| Radio waves | > 0.1 m          | < 3 × 10⁹ Hz               |
+| Microwaves  | 1 mm - 0.1 m     | 3 × 10⁹ - 3 × 10¹¹ Hz      |
+| Infrared    | 700 nm - 1 mm    | 3 × 10¹¹ - 4.3 × 10¹⁴ Hz   |
+| Visible     | 400 - 700 nm     | 4.3 × 10¹⁴ - 7.5 × 10¹⁴ Hz |
+| Ultraviolet | 10 - 400 nm      | 7.5 × 10¹⁴ - 3 × 10¹⁶ Hz   |
+| X-rays      | 0.01 - 10 nm     | 3 × 10¹⁶ - 3 × 10¹⁹ Hz     |
+| Gamma rays  | < 0.01 nm        | > 3 × 10¹⁹ Hz              |
+
+### Properties of EM Waves
+
+- Transverse waves
+- Travel at speed of light (c = 3 × 10⁸ m/s)
+- Self-propagating (electric and magnetic fields)
+- Can travel through vacuum
