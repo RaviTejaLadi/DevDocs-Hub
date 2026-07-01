@@ -618,10 +618,10 @@ const MarkdownRenderInner = ({
           <li key={heading.id}>
             <button
               type="button"
-              className={cn('md-toc-item md-toc-item--depth-0 truncate', isActive && 'active')}
+              className={cn('md-toc-item md-toc-item--depth-0', isActive && 'active')}
               onClick={() => activateHeadingFromToc(heading)}
             >
-              {heading.text}
+              <span className="min-w-0 truncate">{heading.text}</span>
             </button>
           </li>
         );
@@ -846,7 +846,7 @@ const MarkdownRenderInner = ({
                 <ScrollArea
                   className={cn('min-h-0 flex-1', cardScrollMode ? 'overflow-hidden' : 'max-h-[calc(100vh-13rem)]')}
                 >
-                  <nav aria-label={'On this page'} className="pr-1">
+                  <nav aria-label={'On this page'} className="md-toc pr-1">
                     {tocNav}
                   </nav>
                 </ScrollArea>
