@@ -53,8 +53,16 @@ export default defineConfig({
           if (id.includes('@codemirror') || id.includes('@lezer') || id.includes('codemirror')) return 'codemirror';
           if (id.includes('mermaid')) return 'mermaid';
           if (id.includes('react-syntax-highlighter')) return 'syntax-highlighter';
-          if (id.includes('react-dom')) return 'react-dom';
-          if (id.includes('react-router')) return 'react-router';
+          // Keep react, react-dom, and react-router in one chunk — splitting them causes a
+          // circular dependency where react-dom imports React from react-router (undefined at runtime).
+          if (
+            id.includes('/react-dom/') ||
+            id.includes('/react-router') ||
+            id.includes('/scheduler/') ||
+            /node_modules[/\\]react[/\\]/.test(id)
+          ) {
+            return 'react-vendor';
+          }
         },
       },
     },
