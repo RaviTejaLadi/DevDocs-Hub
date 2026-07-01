@@ -1,1 +1,160 @@
 # Rotational Motion
+
+## Angular Kinematics
+
+### Angular Displacement
+- θ = s/r (in radians)
+- One revolution = 2π radians
+
+### Angular Velocity
+```
+ω = dθ/dt
+```
+
+- Relationship to linear velocity: v = rω
+- Direction: Perpendicular to plane of rotation (right-hand rule)
+
+### Angular Acceleration
+```
+α = dω/dt
+```
+
+- Relationship to linear acceleration: a = rα
+- Tangential acceleration: aₜ = rα
+- Centripetal acceleration: aₐ = rω²
+
+### Equations of Rotational Motion (Constant α)
+
+```
+1. ω = ω₀ + αt
+2. θ = ω₀t + ½αt²
+3. ω² = ω₀² + 2αθ
+4. θ = ½(ω₀ + ω)t
+```
+
+## Moment of Inertia
+
+### Definition
+```
+I = Σmr²
+```
+
+For continuous objects: I = ∫r² dm
+
+### Common Moment of Inertia
+
+| Object | Axis | I = |
+|--------|------|-----|
+| Hoop (thin) | Through center | MR² |
+| Disk | Through center | ½MR² |
+| Solid cylinder | Through center | ½MR² |
+| Solid sphere | Through center | ⅖MR² |
+| Thin rod | Through center | (1/12)ML² |
+| Thin rod | Through end | (1/3)ML² |
+
+### Parallel Axis Theorem
+```
+I = I_cm + Md²
+```
+
+### Perpendicular Axis Theorem
+For planar objects:
+```
+I_z = I_x + I_y
+```
+
+## Torque
+
+### Definition
+```
+τ = r × F = rF sin θ
+```
+
+### Units
+- N⋅m
+- τ = Iα (rotational analog of F = ma)
+
+### Conditions for Equilibrium
+1. Translational equilibrium: ΣF = 0
+2. Rotational equilibrium: Στ = 0
+
+## Rotational Kinetic Energy
+
+### Equation
+```
+K_rot = ½Iω²
+```
+
+### Total Kinetic Energy
+```
+K_total = ½mv² + ½Iω²
+```
+
+### Rolling Motion
+- Pure rolling: v = rω
+- Rolling kinetic energy: K = ½mv² + ½Iω²
+
+## Angular Momentum
+
+### Definition
+```
+L = r × p = r × mv
+```
+
+For rotating object:
+```
+L = Iω
+```
+
+### Conservation of Angular Momentum
+```
+L_initial = L_final (when τ_net = 0)
+```
+
+### Applications
+- Ice skater spin (changing I)
+- Gyroscopic effects
+- Atomic orbits
+- Planetary motion
+
+## Moments and Centers
+
+### Center of Mass
+```
+r_cm = (Σm_i r_i)/(Σm_i)
+```
+
+### Center of Gravity
+- Same as center of mass for uniform gravity field
+
+### Moments of Inertia
+- First moment: Σmr (center of mass)
+- Second moment: Σmr² (moment of inertia)
+- Third moment: Σmr³ (etc.)
+
+## Rotational Work and Power
+
+### Rotational Work
+```
+W = ∫τ⋅dθ
+```
+
+### Rotational Power
+```
+P = τ⋅ω
+```
+
+### Work-Energy Theorem (Rotational)
+```
+W_rot = ΔK_rot = ½Iω² - ½Iω₀²
+```
+
+## Precession and Gyroscopes
+
+### Precession
+- Angular velocity of rotation of axis
+- Precession rate: Ω = mgr/(Iω)
+
+### Gyroscopic Effects
+- Stability of spinning objects
+- Navigation instruments
