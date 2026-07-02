@@ -55,7 +55,7 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className, t
             textClassName
           )}
         >
-          ReviseStack
+          Revise Stack
         </span>
       )}
     </>

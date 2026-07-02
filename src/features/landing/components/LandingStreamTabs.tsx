@@ -60,7 +60,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
     <div
       className={cn(
         'mb-8 flex min-w-0 items-stretch gap-1',
-        'max-sm:rounded-2xl max-sm:border max-sm:border-border/45 max-sm:bg-card/45 max-sm:p-1 max-sm:shadow-none',
+        'max-sm:rounded-2xl max-sm:border max-sm:border-border/45 max-sm:p-1 max-sm:shadow-none',
         'max-sm:ring-1 max-sm:ring-border/25'
       )}
     >
