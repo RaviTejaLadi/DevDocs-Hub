@@ -26,7 +26,9 @@ import redisCheatSheet from './redis.mdx?raw';
 import nginxCheatSheet from './nginx.mdx?raw';
 import bashCheatSheet from './bash.mdx?raw';
 import dsaCheatSheet from './dsa.mdx?raw';
-import systemDesignCheatSheet from './system-design.mdx?raw';
+import frontendSystemDesignCheatSheet from './frontend-system-design.mdx?raw';
+import backendSystemDesignCheatSheet from './backend-system-design.mdx?raw';
+import mernSystemDesignCheatSheet from './mern-system-design.mdx?raw';
 import type { TopicItem } from '@/data/topics';
 
 export const cheatSheetsGroups: { id: string; title: string; documents: TopicItem[] }[] = [
@@ -98,7 +100,17 @@ export const cheatSheetsGroups: { id: string; title: string; documents: TopicIte
     title: 'DSA & System Design',
     documents: [
       { id: 'dsa-cheat-sheet', title: 'DSA 🧠', content: dsaCheatSheet },
-      { id: 'system-design-cheat-sheet', title: 'System Design 🏗️', content: systemDesignCheatSheet },
+      {
+        id: 'frontend-system-design-cheat-sheet',
+        title: 'Frontend System Design 🌐',
+        content: frontendSystemDesignCheatSheet,
+      },
+      {
+        id: 'backend-system-design-cheat-sheet',
+        title: 'Backend System Design 🖥️',
+        content: backendSystemDesignCheatSheet,
+      },
+      { id: 'mern-system-design-cheat-sheet', title: 'MERN System Design 🧩', content: mernSystemDesignCheatSheet },
     ],
   },
 ];
