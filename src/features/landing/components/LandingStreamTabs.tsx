@@ -1,7 +1,5 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import type { Stream } from '@/data/topics';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getStreamEmoji } from '../constants';
 
@@ -12,10 +10,10 @@ export type LandingExtraNavItem = {
 };
 
 const tabBaseClass =
-  'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring max-sm:shadow-none';
+  'inline-flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border px-2.5 py-1.5 text-xs sm:text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring max-sm:shadow-none';
 
 const inactiveTabClass =
-  'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground hover:border-border/60';
+  'border-border/45 text-muted-foreground hover:border-border/70 hover:text-foreground';
 
 type LandingStreamTabsProps = {
   streams: Stream[];
@@ -32,100 +30,30 @@ export function LandingStreamTabs({
   onSelectStream,
   extraNavItems = [],
 }: LandingStreamTabsProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const updateScrollAffordances = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    const max = Math.max(0, scrollWidth - clientWidth);
-    setCanScrollLeft(scrollLeft > 4);
-    setCanScrollRight(scrollLeft < max - 4);
-  }, []);
+  const tabsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    updateScrollAffordances();
-    const el = scrollRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver(() => updateScrollAffordances());
-    ro.observe(el);
-    const id = requestAnimationFrame(() => updateScrollAffordances());
-    return () => {
-      cancelAnimationFrame(id);
-      ro.disconnect();
-    };
-  }, [streams, extraNavItems, updateScrollAffordances]);
-
-  useEffect(() => {
-    const el = scrollRef.current;
+    const el = tabsRef.current;
     if (!el) return;
     const tab = el.querySelector(`[data-stream-tab="${CSS.escape(activeStreamId)}"]`);
     if (tab instanceof HTMLElement) {
       tab.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
     }
-    requestAnimationFrame(() => updateScrollAffordances());
-  }, [activeStreamId, streams, updateScrollAffordances]);
-
-  const scrollByDir = (dir: -1 | 1) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const delta = Math.max(160, Math.floor(el.clientWidth * 0.55)) * dir;
-    el.scrollBy({ left: delta, behavior: 'smooth' });
-  };
+  }, [activeStreamId, streams]);
 
   return (
     <div
       className={cn(
-        'mb-8 flex min-w-0 items-stretch gap-1',
-        'max-sm:rounded-2xl max-sm:border max-sm:border-border/45 max-sm:p-1 max-sm:shadow-none',
-        'max-sm:ring-1 max-sm:ring-border/25'
+        'mb-6 flex min-w-0 items-stretch gap-1 p-1',
+        'shadow-none'
       )}
     >
-      <Button
-        type="button"
-        variant="outline"
-        size="icon"
-        disabled={!canScrollLeft}
-        aria-label={'Scroll streams left'}
-        onClick={() => scrollByDir(-1)}
-        className={cn(
-          'hidden shrink-0 self-center',
-          /** Chevrons only on narrow viewports where tabs don’t wrap */
-          'max-sm:inline-flex',
-          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-none backdrop-blur-sm touch-manipulation',
-          'disabled:pointer-events-none disabled:opacity-25'
-        )}
-      >
-        <ChevronLeft className="h-5 w-5" aria-hidden />
-      </Button>
-
-      <div className="relative min-h-10.5 min-w-0 flex-1">
-        {canScrollLeft ? (
+      <div className="relative min-h-9 min-w-0 flex-1">
+        <nav aria-label={'Streams'} className="flex min-h-9 min-w-0">
           <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-card from-25% to-transparent sm:hidden"
-            aria-hidden
-          />
-        ) : null}
-        {canScrollRight ? (
-          <div
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-card from-25% to-transparent sm:hidden"
-            aria-hidden
-          />
-        ) : null}
-
-        <nav
-          aria-label={'Streams'}
-          ref={scrollRef}
-          onScroll={updateScrollAffordances}
-          className={cn(
-            'flex max-h-14 min-h-11 min-w-0 overflow-x-auto overflow-y-hidden overscroll-x-contain sm:max-h-none sm:overflow-visible',
-            'touch-pan-x [-webkit-overflow-scrolling:touch]',
-            '[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden'
-          )}
-        >
-          <div className="flex w-max items-center gap-2 px-0.5 py-0.5 sm:w-full sm:min-w-0 sm:flex-wrap sm:px-0 sm:py-0">
+            ref={tabsRef}
+            className="grid w-full grid-cols-2 gap-1.5 px-0.5 py-0.5 sm:grid-cols-3 lg:grid-cols-5"
+          >
             {streams.map((stream) => {
               const isActive = stream.id === activeStream?.id;
               const emoji = getStreamEmoji(stream.id);
@@ -136,17 +64,19 @@ export function LandingStreamTabs({
                   data-stream-tab={stream.id}
                   onClick={() => onSelectStream(stream.id)}
                   aria-pressed={isActive}
+                  title={stream.title}
                   className={cn(
                     tabBaseClass,
+                    'w-full min-w-0 justify-start',
                     isActive
-                      ? 'border-primary/55 bg-primary/12 text-primary shadow-none ring-1 ring-primary/15 scale-[1.02]'
+                      ? 'border-primary/45 font-semibold text-primary'
                       : inactiveTabClass
                   )}
                 >
-                  <span className="text-base leading-none" aria-hidden>
+                  <span className="text-sm leading-none shrink-0" aria-hidden>
                     {emoji}
                   </span>
-                  <span className="font-medium">{stream.title}</span>
+                  <span className="font-medium truncate text-left">{stream.title}</span>
                 </button>
               );
             })}
@@ -155,34 +85,22 @@ export function LandingStreamTabs({
                 key={item.label}
                 type="button"
                 onClick={item.onClick}
-                className={cn(tabBaseClass, inactiveTabClass)}
+                title={item.label}
+                className={cn(
+                  tabBaseClass,
+                  inactiveTabClass,
+                  'w-full min-w-0 justify-start border-dashed'
+                )}
               >
-                <span className="text-base leading-none" aria-hidden>
+                <span className="text-sm leading-none shrink-0" aria-hidden>
                   {item.emoji}
                 </span>
-                <span className="font-medium">{item.label}</span>
+                <span className="font-medium truncate text-left">{item.label}</span>
               </button>
             ))}
           </div>
         </nav>
       </div>
-
-      <Button
-        type="button"
-        variant="outline"
-        size="icon"
-        disabled={!canScrollRight}
-        aria-label={'Scroll streams right'}
-        onClick={() => scrollByDir(1)}
-        className={cn(
-          'hidden shrink-0 self-center',
-          'max-sm:inline-flex',
-          'h-10 w-10 rounded-xl border-border/50 bg-background/90 shadow-none backdrop-blur-sm touch-manipulation',
-          'disabled:pointer-events-none disabled:opacity-25'
-        )}
-      >
-        <ChevronRight className="h-5 w-5" aria-hidden />
-      </Button>
     </div>
   );
 }
