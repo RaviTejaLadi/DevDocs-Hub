@@ -26,11 +26,11 @@ const SearchDialog = ({
         <Button
           type="button"
           variant="outline"
-          className="relative h-9 w-40 flex justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-2 sm:pl-3"
+          className="relative h-9 w-9 sm:w-40 flex justify-center sm:justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-0 sm:px-2 sm:pl-3"
           aria-label={'Search...'}
         >
           <Search className="h-4 w-4 shrink-0" />
-          <span className="min-w-0 truncate pr-11 text-left">{'Search...'}</span>
+          <span className="min-w-0 truncate pr-11 text-left max-sm:sr-only">{'Search...'}</span>
           <kbd className="pointer-events-none absolute right-2 top-1/2 hidden h-5 -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 sm:flex">
             <span className="text-xs">⌘</span>K
           </kbd>
