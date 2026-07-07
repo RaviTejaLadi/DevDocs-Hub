@@ -1,103 +1,536 @@
-# Git Cheat Sheet
+# 🎯 **GIT**
+
+## 📊 **GIT ARCHITECTURE (How Git Works)**
+
+```mermaid
+graph LR
+    A[Working Directory<br/>📁 Your files] -->|git add| B[Staging Area<br/>📋 Ready to commit]
+    B -->|git commit| C[Local Repository<br/>💾 Saved locally]
+    C -->|git push| D[Remote Repository<br/>☁️ GitHub/GitLab]
+    D -->|git pull/fetch| C
+    C -->|git checkout| A
+```
+
+---
+
+## 🚀 **1. SETUP & CONFIGURATION** _(One-time setup)_
+
+| Command                                          | What it does             |
+| ------------------------------------------------ | ------------------------ |
+| `git config --global user.name "Your Name"`      | 👤 Set your name         |
+| `git config --global user.email "you@email.com"` | 📧 Set your email        |
+| `git config --global init.defaultBranch main`    | 📌 Default branch name   |
+| `git config --global core.editor "code --wait"`  | ✏️ Set VS Code as editor |
+| `git config --list`                              | 🔍 View all settings     |
+
+---
+
+## 📁 **2. STARTING A REPOSITORY**
+
+```mermaid
+flowchart TD
+    A[Start Here] --> B{New or Existing?}
+    B -->|New Project| C[git init<br/>✨ Creates empty repo]
+    B -->|Existing Project| D[git clone URL<br/>📥 Download remote repo]
+    D --> E[git clone -b branch URL<br/>📥 Download specific branch]
+```
+
+| Command                    | Purpose                                    |
+| -------------------------- | ------------------------------------------ |
+| `git init`                 | 🆕 Create new repository in current folder |
+| `git clone <url>`          | 📥 Download existing repo                  |
+| `git clone <url> <folder>` | 📥 Clone to specific folder                |
+
+---
+
+## 📝 **3. BASIC WORKFLOW** _(Daily Commands)_
 
 ```mermaid
 flowchart LR
-    WD["Working Directory<br/><i>untracked / modified</i>"]
-    ST["Staging Area<br/><i>git add</i>"]
-    LR["Local Repository<br/><i>git commit</i>"]
-    REM["Remote Repository<br/><i>push / pull</i>"]
-
-    WD -->|git add| ST
-    ST -->|git commit| LR
-    LR -->|git push| REM
-    REM -->|git pull / fetch| LR
+    subgraph "Your Computer"
+        WD[📁 Working Directory<br/>Modified files] -->|git add| SA[📋 Staging Area<br/>Files to commit]
+        SA -->|git commit| LR[💾 Local Repo<br/>Saved commits]
+    end
+    LR -->|git push| RR[☁️ Remote Repo<br/>GitHub]
+    RR -->|git pull| WD
 ```
+
+### **Essential Commands:**
+
+| Command                    | What it does             | 🎯 When to use                     |
+| -------------------------- | ------------------------ | ---------------------------------- |
+| `git status`               | Shows what's changed     | 🔍 Check your current state        |
+| `git add <file>`           | Stage a file             | ✅ Ready to commit this file       |
+| `git add .`                | Stage all changes        | ✅ Commit everything               |
+| `git commit -m "message"`  | Save staged changes      | 💾 Save your work                  |
+| `git commit -am "message"` | Add & commit in one step | ⚡ Quick save (tracked files only) |
+| `git push`                 | Upload to remote         | ☁️ Share your changes              |
+| `git pull`                 | Download from remote     | 📥 Get latest changes              |
+| `git log --oneline`        | View commit history      | 📜 See what happened               |
+
+### **Example Workflow:**
+
+```bash
+# 1. Check what's changed
+git status
+
+# 2. Stage your changes
+git add index.html style.css
+
+# 3. Save with a message
+git commit -m "Add homepage and styling"
+
+# 4. Share with team
+git push origin main
+```
+
+---
+
+## 🔄 **4. VIEWING & COMPARING CHANGES**
+
+| Command                     | What it shows         | 🎨 Visual                      |
+| --------------------------- | --------------------- | ------------------------------ |
+| `git diff`                  | Unstaged changes      | ✏️ What you changed            |
+| `git diff --staged`         | Staged changes        | ✏️ What you're about to commit |
+| `git diff main..feature`    | Between branches      | 🔄 Differences in branches     |
+| `git log --oneline --graph` | History with branches | 🌿 Visual branch tree          |
+| `git show <commit>`         | Details of a commit   | 🔍 Full commit info            |
+
+### **Pretty Log Aliases:**
+
+```bash
+# Add these for beautiful history views
+git config --global alias.tree "log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(blue)%an%Creset %C(green)%d%Creset' --all"
+git config --global alias.lg "log --oneline --graph --all --decorate"
+
+# Use them:
+git tree
+git lg
+```
+
+---
+
+## ⏪ **5. UNDOING CHANGES** _(Your Safety Net)_
+
+```mermaid
+flowchart TD
+    A[❌ Made a mistake?] --> B{Where is the change?}
+    B -->|Unstaged| C[git restore file<br/>♻️ Discard changes]
+    B -->|Staged| D[git restore --staged file<br/>↩️ Unstage only]
+    B -->|Committed| E[git reset HEAD~1<br/>⏪ Undo last commit]
+    E --> F{Keep changes?}
+    F -->|Yes| G[--soft: Keep staged<br/>😊 Safe]
+    F -->|Yes| H[--mixed: Keep unstaged<br/>🟡 Default]
+    F -->|No| I[--hard: Delete everything<br/>🔴 DANGER!]
+    B -->|Already Pushed| J[git revert commit-hash<br/>🔄 Create undo commit]
+```
+
+### **Common Undo Scenarios:**
+
+| What you want                     | Command                         | ⚠️ Safety    |
+| --------------------------------- | ------------------------------- | ------------ |
+| Undo last commit, keep changes    | `git reset --soft HEAD~1`       | 🟢 Safe      |
+| Undo last commit, unstage changes | `git reset HEAD~1`              | 🟡 Medium    |
+| Discard all uncommitted changes   | `git restore .`                 | 🔴 Permanent |
+| Unstage a file                    | `git restore --staged file.txt` | 🟢 Safe      |
+| Revert a pushed commit            | `git revert <commit-hash>`      | 🟢 Safe      |
+| Remove untracked files            | `git clean -fd`                 | 🔴 Permanent |
+
+---
+
+## 🌿 **6. BRANCHING** _(Work on features independently)_
 
 ```mermaid
 gitGraph
     commit id: "Initial"
     branch feature
     checkout feature
-    commit id: "Feature work"
+    commit id: "Add feature"
+    commit id: "Fix bugs"
     checkout main
     commit id: "Hotfix"
-    merge feature id: "Merge feature"
+    merge feature
+    commit id: "Deploy"
 ```
 
-| **Category**        | **Command**                              | **Description**                                              |
-| ------------------- | ---------------------------------------- | ------------------------------------------------------------ |
-| **Setup**           | `git config --global user.name "Name"`   | Set your username globally.                                  |
-|                     | `git config --global user.email "email"` | Set your email globally.                                     |
-|                     | `git init`                               | Initialize a new Git repository.                             |
-|                     | `git clone <repo-url>`                   | Clone a remote repository.                                   |
-| **Status**          | `git status`                             | Show the working tree status.                                |
-|                     | `git log`                                | Show commit logs.                                            |
-|                     | `git log --oneline --graph`              | Compact commit history with branch graph.                    |
-| **Branches**        | `git branch`                             | List all local branches.                                     |
-|                     | `git branch <branch-name>`               | Create a new branch.                                         |
-|                     | `git checkout <branch-name>`             | Switch to a branch.                                          |
-|                     | `git checkout -b <branch-name>`          | Create and switch to a new branch.                           |
-|                     | `git merge <branch-name>`                | Merge a branch into the current branch.                      |
-|                     | `git branch -d <branch-name>`            | Delete a local branch.                                       |
-| **Staging**         | `git add <file>`                         | Stage a specific file.                                       |
-|                     | `git add .`                              | Stage all changes (new, modified, deleted).                  |
-|                     | `git reset <file>`                       | Unstage a file.                                              |
-| **Commits**         | `git commit -m "message"`                | Commit staged changes with a message.                        |
-|                     | `git commit --amend`                     | Amend the last commit (modify message or files).             |
-| **Remote**          | `git remote -v`                          | List remote repositories.                                    |
-|                     | `git remote add <name> <url>`            | Add a new remote repository.                                 |
-|                     | `git push <remote> <branch>`             | Push changes to a remote branch.                             |
-|                     | `git pull <remote> <branch>`             | Fetch and merge changes from a remote branch.                |
-|                     | `git fetch <remote>`                     | Fetch changes from remote (without merging).                 |
-| **Undoing Changes** | `git restore <file>`                     | Discard unstaged changes in a file.                          |
-|                     | `git reset --hard HEAD`                  | Discard all uncommitted changes (careful!).                  |
-|                     | `git revert <commit-hash>`               | Revert a specific commit by creating a new commit.           |
-| **Stashing**        | `git stash`                              | Temporarily stash changes.                                   |
-|                     | `git stash pop`                          | Reapply stashed changes and remove from stash.               |
-|                     | `git stash list`                         | List all stashed changes.                                    |
-| **Tags**            | `git tag <tag-name>`                     | Create a lightweight tag.                                    |
-|                     | `git tag -a <tag-name> -m "message"`     | Create an annotated tag.                                     |
-|                     | `git push --tags`                        | Push all tags to remote.                                     |
-| **Advanced**        | `git rebase <branch>`                    | Reapply commits on top of another branch (rewrites history). |
-|                     | `git cherry-pick <commit-hash>`          | Apply a specific commit to the current branch.               |
-|                     | `git diff`                               | Show unstaged changes.                                       |
-|                     | `git diff --staged`                      | Show staged changes.                                         |
-|                     | `git reflog`                             | Show a log of all Git actions (helps recover lost commits).  |
+### **Branch Commands:**
+
+| Command                | Purpose         | Example                          |
+| ---------------------- | --------------- | -------------------------------- |
+| `git branch`           | List branches   | 📋 See all branches              |
+| `git branch <name>`    | Create branch   | 🆕 `git branch feature-auth`     |
+| `git switch <name>`    | Switch branch   | 🔀 `git switch feature-auth`     |
+| `git switch -c <name>` | Create & switch | ✨ `git switch -c new-feature`   |
+| `git branch -d <name>` | Delete branch   | 🗑️ `git branch -d old-branch`    |
+| `git branch -D <name>` | Force delete    | 💀 `git branch -D broken-branch` |
+
+### **Merge vs Rebase:**
+
+| Merge                       | Rebase                           |
+| --------------------------- | -------------------------------- |
+| `git merge feature`         | `git rebase main`                |
+| ✅ Preserves history        | ✅ Clean linear history          |
+| ❌ Creates merge commit     | ❌ Rewrites commit history       |
+| 🟢 Safe for shared branches | 🔴 Dangerous for shared branches |
+
+```bash
+# Update your feature branch with latest main
+# Option 1: Merge (recommended for beginners)
+git checkout feature
+git merge main
+
+# Option 2: Rebase (cleaner history)
+git checkout feature
+git rebase main
+```
 
 ---
 
-### **Common Workflow Examples**
+## ☁️ **7. REMOTE REPOSITORIES** _(Working with GitHub)_
 
-1. **Create & Commit Changes**
+```mermaid
+flowchart TD
+    Local[💻 Your Computer] -->|git push| Remote[☁️ GitHub]
+    Remote -->|git pull| Local
+    Remote -->|git fetch| Local[📥 Download only]
+    Local -->|git clone| Remote[📦 Copy entire repo]
+```
 
-   ```bash
-   git add .
-   git commit -m "Add new feature"
-   git push origin main
-   ```
+### **Remote Commands:**
 
-2. **Undo Last Commit**
+| Command                       | What it does                 |
+| ----------------------------- | ---------------------------- |
+| `git remote -v`               | 📋 List remotes              |
+| `git remote add origin <url>` | 🔗 Link to GitHub            |
+| `git push -u origin main`     | ☁️ First push (set upstream) |
+| `git push`                    | ☁️ Push to default remote    |
+| `git pull`                    | 📥 Fetch + Merge             |
+| `git fetch`                   | 📥 Download (no merge)       |
+| `git remote remove origin`    | 🗑️ Remove remote link        |
 
-   ```bash
-   git reset --soft HEAD~1  # Keeps changes staged
-   git reset --hard HEAD~1  # Discards changes permanently
-   ```
+### **Push Scenarios:**
 
-3. **Sync with Remote**
+```bash
+# First time pushing
+git push -u origin main
 
-   ```bash
-   git fetch origin
-   git merge origin/main
-   ```
+# Regular push
+git push
 
-4. **Fix a Mistake in Last Commit**
-   ```bash
-   git add .
-   git commit --amend -m "New commit message"
-   git push --force origin main  # Use with caution!
-   ```
+# Push to specific branch
+git push origin feature-branch
+
+# Force push (USE WITH CAUTION!)
+git push --force-with-lease  # Safer than --force
+```
 
 ---
 
-This cheat sheet covers most daily Git operations. Let me know if you'd like any
-additions! 🚀
+## 🏷️ **8. TAGGING** _(Mark important points)_
+
+```mermaid
+flowchart LR
+    A[Commits] --> B[v1.0.0<br/>🏷️ Tag]
+    B --> C[Release<br/>📦 Deployment]
+    C --> D[v1.1.0<br/>🏷️ Tag]
+```
+
+| Command                                  | Purpose                       |
+| ---------------------------------------- | ----------------------------- |
+| `git tag`                                | 📋 List all tags              |
+| `git tag v1.0.0`                         | 🏷️ Create lightweight tag     |
+| `git tag -a v1.0.0 -m "Release version"` | 📝 Annotated tag with message |
+| `git push --tags`                        | ☁️ Upload tags to remote      |
+| `git tag -d v1.0.0`                      | 🗑️ Delete local tag           |
+| `git push origin :v1.0.0`                | 🗑️ Delete remote tag          |
+
+---
+
+## 💾 **9. STASHING** _(Temporary save)_
+
+```mermaid
+flowchart LR
+    A[💻 Working on feature] -->|Need to switch branch| B[📦 git stash]
+    B --> C[🧹 Clean working directory]
+    C --> D[🔀 Switch branches]
+    D --> E[📦 git stash pop]
+    E --> F[✨ Continue working]
+```
+
+### **Stash Commands:**
+
+| Command           | What it does                     |
+| ----------------- | -------------------------------- |
+| `git stash`       | 💾 Save current work             |
+| `git stash list`  | 📋 See all stashes               |
+| `git stash pop`   | 📤 Apply and remove latest stash |
+| `git stash apply` | 📤 Apply (keep stash)            |
+| `git stash drop`  | 🗑️ Remove latest stash           |
+| `git stash clear` | 🧹 Remove all stashes            |
+
+---
+
+## 🔧 **10. ADVANCED COMMANDS** _(Power User Tools)_
+
+### **Interactive Rebase** _(Clean up commit history)_
+
+```bash
+# Edit last 3 commits
+git rebase -i HEAD~3
+
+# Options in interactive rebase:
+# pick = use commit
+# reword = change message
+# edit = modify commit
+# squash = combine with previous
+# drop = remove commit
+```
+
+### **Cherry-Pick** _(Copy specific commit)_
+
+```bash
+# Copy commit from another branch
+git cherry-pick <commit-hash>
+
+# Example: Get a bug fix from main
+git checkout feature
+git cherry-pick abc123  # Commit hash from main
+```
+
+### **Bisect** _(Find which commit broke something)_
+
+```bash
+git bisect start
+git bisect bad HEAD      # Current is broken
+git bisect good <hash>   # Known working commit
+# Git will checkout commits for you to test
+git bisect good          # If current is working
+git bisect bad           # If current is broken
+git bisect reset         # End bisect
+```
+
+### **Reflog** _(Recover lost commits)_
+
+```bash
+git reflog               # See all HEAD movements
+git checkout HEAD@{2}    # Go back to previous state
+git branch recovered <commit-hash>  # Create branch from lost commit
+```
+
+---
+
+## 📋 **11. .GITIGNORE** _(What NOT to commit)_
+
+```bash
+# Common patterns to ignore
+
+# Dependencies
+node_modules/
+vendor/
+__pycache__/
+
+# Build outputs
+dist/
+build/
+*.exe
+*.o
+
+# Environment files
+.env
+.env.local
+*.secret
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+```
+
+**Key Rule:** Always commit `.gitignore` **before** adding files it should
+ignore!
+
+---
+
+## 🚨 **12. TROUBLESHOOTING COMMON ISSUES**
+
+| Problem                             | Solution                                                                  |
+| ----------------------------------- | ------------------------------------------------------------------------- |
+| 🔴 "Merge conflict"                 | Fix in file → `git add` → `git commit`                                    |
+| 🔴 "Detached HEAD"                  | `git switch -c new-branch` to save work                                   |
+| 🔴 Accidentally deleted branch      | `git reflog` → `git checkout -b branch <hash>`                            |
+| 🔴 Committed to wrong branch        | `git reset HEAD~1` → `git switch correct-branch` → `git cherry-pick`      |
+| 🔴 Forgot to commit on right branch | `git stash` → `git switch right-branch` → `git stash pop`                 |
+| 🔴 Large file committed             | Use BFG Repo-Cleaner or `git filter-branch`                               |
+| 🔴 Need to undo pushed commit       | `git revert <hash>` (safe) or `git reset --hard` + force push (dangerous) |
+
+---
+
+## 🎯 **13. QUICK REFERENCE - COMMON WORKFLOWS**
+
+### **🔥 New Feature Workflow:**
+
+```bash
+# 1. Get latest main
+git checkout main
+git pull origin main
+
+# 2. Create feature branch
+git switch -c feature/login-page
+
+# 3. Work on changes
+git add .
+git commit -m "Add login form"
+# Repeat as needed...
+
+# 4. Update with main (avoid conflicts)
+git fetch origin
+git rebase main  # or git merge main
+
+# 5. Push to remote
+git push -u origin feature/login-page
+
+# 6. Create Pull Request on GitHub
+```
+
+### **🐛 Bug Fix Workflow:**
+
+```bash
+# 1. Create hotfix from main
+git checkout main
+git pull
+git switch -c hotfix/security-patch
+
+# 2. Fix bug
+git add .
+git commit -m "Fix security vulnerability"
+
+# 3. Deploy immediately
+git push origin hotfix/security-patch
+
+# 4. Merge back
+git checkout main
+git merge hotfix/security-patch
+git push origin main
+```
+
+### **📦 Release Workflow:**
+
+```bash
+# 1. Prepare release branch
+git checkout main
+git pull
+git switch -c release/v2.0.0
+
+# 2. Final tweaks
+git commit -m "Prepare release v2.0.0"
+
+# 3. Tag release
+git tag -a v2.0.0 -m "Release version 2.0.0"
+
+# 4. Push everything
+git push origin release/v2.0.0
+git push origin v2.0.0
+```
+
+---
+
+## 💡 **14. PRODUCTIVITY ALIASES** _(Time Savers)_
+
+```bash
+# Add to ~/.gitconfig or use:
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage "reset HEAD --"
+git config --global alias.last "log -1 HEAD"
+git config --global alias.tree "log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(blue)%an%Creset %C(green)%d%Creset' --all"
+git config --global alias.lg "log --oneline --graph --all --decorate"
+git config --global alias.undo "reset --soft HEAD~1"
+git config --global alias.wip "commit -am 'WIP: $(date +%H:%M)'"
+
+# Use them:
+git st          # status
+git co main     # checkout
+git lg          # pretty log
+```
+
+---
+
+## 🎨 **15. VISUAL SUMMARY**
+
+```mermaid
+graph TD
+    subgraph "Daily Git Cycle"
+        A[💻 Make changes] --> B{git status}
+        B --> C[✅ git add]
+        C --> D[💾 git commit]
+        D --> E{git push}
+        E -->|Yes| F[☁️ Remote]
+        E -->|No| G[📋 Continue locally]
+        F --> H[👥 Team pulls]
+        H --> A
+    end
+```
+
+---
+
+## 📚 **16. BEST PRACTICES** _(Golden Rules)_
+
+| 🥇 Rule                      | Why                             |
+| ---------------------------- | ------------------------------- |
+| **Commit often**             | Small commits = easier to debug |
+| **Write good messages**      | Future you will thank you       |
+| **Pull before you push**     | Avoid merge conflicts           |
+| **Never force push to main** | Protect your team's work        |
+| **Use feature branches**     | Keep main stable                |
+| **Review before commit**     | `git diff` and `git status`     |
+| **Don't commit secrets**     | Use `.gitignore`                |
+| **Tag releases**             | Easy to find versions           |
+
+### **✅ Good Commit Message Format:**
+
+```
+Short summary (50 chars max)
+
+Detailed explanation if needed:
+- What changed
+- Why it changed
+- Any side effects
+
+Fixes #123
+```
+
+---
+
+## 🔗 **17. USEFUL RESOURCES**
+
+| Resource                                                          | What it's for            |
+| ----------------------------------------------------------------- | ------------------------ |
+| [git-scm.com](https://git-scm.com/doc)                            | 📖 Official docs         |
+| [GitHub Learning Lab](https://lab.github.com/)                    | 🎓 Interactive tutorials |
+| [Oh Shit, Git!](https://ohshitgit.com/)                           | 🚨 Common fixes          |
+| [Git Flight Rules](https://github.com/k88hudson/git-flight-rules) | 📋 Practical solutions   |
+| [Learn Git Branching](https://learngitbranching.js.org/)          | 🎮 Visual learning game  |
+
+---
+
+## ✅ **REMEMBER:**
+
+> Git is like a time machine for your code. **Master these commands and you'll
+> never lose work again!** 🚀
+
+**Final Tip:** Practice in a test repo first. Create a folder called
+`git-practice` and experiment freely!
+
+```
+mkdir git-practice
+cd git-practice
+git init
+# Test everything here!
+```
