@@ -1,4 +1,4 @@
-import { Search, Grid3x3, List, HelpCircle } from 'lucide-react';
+import { Search, Grid3x3, List } from 'lucide-react';
 // import { Logo } from '@/components/brand/Logo';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,6 @@ type LandingHeroProps = {
   onSearchChange: (value: string) => void;
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
-  onInterviewClick: () => void;
   onVisualizationClick?: () => void;
 };
 
@@ -18,7 +17,6 @@ export function LandingHero({
   onSearchChange,
   viewMode,
   onViewModeChange,
-  onInterviewClick,
 }: // onVisualizationClick,
 LandingHeroProps) {
   return (
@@ -72,25 +70,6 @@ LandingHeroProps) {
         </div>
       </div>
       {/* </section> */}
-
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-        <Button
-          variant="outline"
-          className="h-9 gap-2 rounded-lg border-primary/25 bg-primary/5 px-4 text-sm hover:bg-primary/10 hover:border-primary/40 shadow-none"
-          onClick={onInterviewClick}
-        >
-          <HelpCircle className="h-4 w-4 shrink-0 text-primary" />
-          {'Interview Questions (by level)'}
-        </Button>
-        {/* <Button
-          variant="outline"
-          className="h-9 gap-2 rounded-lg border-emerald-500/25 bg-emerald-500/5 px-4 text-sm hover:border-emerald-500/40 hover:bg-emerald-500/10 shadow-none"
-          onClick={onVisualizationClick}
-        >
-          <Eye className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-          {'Visualization'}
-        </Button> */}
-      </div>
     </header>
   );
 }

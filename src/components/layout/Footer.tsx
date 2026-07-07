@@ -4,7 +4,8 @@ import { Logo } from '@/components/brand/Logo';
 
 const Footer = () => {
   const FOOTER_LINKS = [
-    { to: '/', label: 'Overview' },
+    { to: '/', label: 'Home' },
+    { to: '/overview', label: 'Overview' },
     { to: '/guides', label: 'Guides' },
     { to: '/terms', label: 'Terms' },
   ];

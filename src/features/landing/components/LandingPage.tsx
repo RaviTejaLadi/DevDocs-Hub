@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import GuidesSection from '@/components/landing/GuidesSection';
 import { PageSEO } from '@/components/seo';
+import { interviewQuestionsPath, ROUTE_PATHS } from '@/app/routes/paths';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { SITE_DESCRIPTION } from '@/lib/seo/config';
 import { websiteJsonLd } from '@/lib/seo/jsonLd';
@@ -44,7 +45,6 @@ const LandingPage = () => {
         onSearchChange={setSearchQuery}
         viewMode={viewMode}
         onViewModeChange={setViewMode}
-        onInterviewClick={() => navigate('/interview-questions')}
         onVisualizationClick={() => navigate('/visualizations')}
       />
       {/* <StandaloneFlowDemo nodes={nodes} edges={edges} roadmapId="frontend" /> */}
@@ -64,6 +64,18 @@ const LandingPage = () => {
           totalTopicsInStream={totalTopicsInStream}
           filteredTopicsCount={filteredTopicsCount}
           hasSearch={hasSearch}
+          extraNavItems={[
+            {
+              emoji: '🎯',
+              label: 'Interview Questions (by level)',
+              onClick: () => navigate(interviewQuestionsPath()),
+            },
+            {
+              emoji: '🎤',
+              label: 'Mock Assessments',
+              onClick: () => navigate(ROUTE_PATHS.mockInterviews),
+            },
+          ]}
         />
       )}
 

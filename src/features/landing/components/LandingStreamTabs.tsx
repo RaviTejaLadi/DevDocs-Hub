@@ -5,14 +5,33 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getStreamEmoji } from '../constants';
 
+export type LandingExtraNavItem = {
+  emoji: string;
+  label: string;
+  onClick: () => void;
+};
+
+const tabBaseClass =
+  'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring max-sm:shadow-none';
+
+const inactiveTabClass =
+  'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground hover:border-border/60';
+
 type LandingStreamTabsProps = {
   streams: Stream[];
   activeStreamId: string;
   activeStream: Stream | undefined;
   onSelectStream: (id: string) => void;
+  extraNavItems?: LandingExtraNavItem[];
 };
 
-export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSelectStream }: LandingStreamTabsProps) {
+export function LandingStreamTabs({
+  streams,
+  activeStreamId,
+  activeStream,
+  onSelectStream,
+  extraNavItems = [],
+}: LandingStreamTabsProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -37,7 +56,7 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
       cancelAnimationFrame(id);
       ro.disconnect();
     };
-  }, [streams, updateScrollAffordances]);
+  }, [streams, extraNavItems, updateScrollAffordances]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -118,12 +137,10 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                   onClick={() => onSelectStream(stream.id)}
                   aria-pressed={isActive}
                   className={cn(
-                    'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm transition-all duration-200',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    'max-sm:shadow-none',
+                    tabBaseClass,
                     isActive
                       ? 'border-primary/55 bg-primary/12 text-primary shadow-none ring-1 ring-primary/15 scale-[1.02]'
-                      : 'border-border/45 bg-background/70 text-muted-foreground hover:bg-accent hover:text-foreground hover:border-border/60'
+                      : inactiveTabClass
                   )}
                 >
                   <span className="text-base leading-none" aria-hidden>
@@ -133,6 +150,19 @@ export function LandingStreamTabs({ streams, activeStreamId, activeStream, onSel
                 </button>
               );
             })}
+            {extraNavItems.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={item.onClick}
+                className={cn(tabBaseClass, inactiveTabClass)}
+              >
+                <span className="text-base leading-none" aria-hidden>
+                  {item.emoji}
+                </span>
+                <span className="font-medium">{item.label}</span>
+              </button>
+            ))}
           </div>
         </nav>
       </div>

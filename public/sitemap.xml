@@ -3486,7 +3486,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/cheat-sheets/system-design-cheat-sheet</loc>
+    <loc>https://revise-stack.vercel.app/docs/cheat-sheets/frontend-system-design-cheat-sheet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/cheat-sheets/backend-system-design-cheat-sheet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/cheat-sheets/mern-system-design-cheat-sheet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

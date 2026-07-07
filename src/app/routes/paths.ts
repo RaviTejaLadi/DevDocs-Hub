@@ -1,11 +1,13 @@
 /** Central route path definitions — single source of truth for URLs. */
 export const ROUTE_PATHS = {
   home: '/',
+  overview: '/overview',
   docs: '/docs/:categoryId/:slug',
   guides: '/guides',
   guide: '/guides/:slug',
   terms: '/terms',
   interviewQuestions: '/interview-questions/:topicId?',
+  mockInterviews: '/mock-interviews',
   visualizations: '/visualizations/:visualizationId?',
   playground: '/playground/:playgroundId?',
   codeEditor: '/code-editor',
@@ -22,6 +24,8 @@ export const guidePath = (slug: string) => `/guides/${encodeURIComponent(slug)}`
 
 export const interviewQuestionsPath = (topicId?: string) =>
   topicId ? `/interview-questions/${encodeURIComponent(topicId)}` : '/interview-questions';
+
+export const mockInterviewsPath = () => '/mock-interviews';
 
 export const visualizationPath = (visualizationId?: string) =>
   visualizationId ? `/visualizations/${encodeURIComponent(visualizationId)}` : '/visualizations';

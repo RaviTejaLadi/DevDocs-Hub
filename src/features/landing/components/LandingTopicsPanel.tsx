@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { getStreamEmoji } from '../constants';
 import type { ViewMode } from '../types';
-import { LandingStreamTabs } from './LandingStreamTabs';
+import { LandingStreamTabs, type LandingExtraNavItem } from './LandingStreamTabs';
 import { LandingTopicSection } from './LandingTopicSection';
 
 type LandingTopicsPanelProps = {
@@ -19,6 +19,7 @@ type LandingTopicsPanelProps = {
   totalTopicsInStream: number;
   filteredTopicsCount: number;
   hasSearch: boolean;
+  extraNavItems?: LandingExtraNavItem[];
 };
 
 export function LandingTopicsPanel({
@@ -34,6 +35,7 @@ export function LandingTopicsPanel({
   totalTopicsInStream,
   filteredTopicsCount,
   hasSearch,
+  extraNavItems,
 }: LandingTopicsPanelProps) {
   const matchPercent = totalTopicsInStream ? Math.round((filteredTopicsCount / totalTopicsInStream) * 100) : 0;
   const streamEmoji = activeStream ? getStreamEmoji(activeStream.id) : '📖';
@@ -57,6 +59,7 @@ export function LandingTopicsPanel({
         activeStreamId={activeStreamId}
         activeStream={activeStream}
         onSelectStream={onSelectStream}
+        extraNavItems={extraNavItems}
       />
 
       {activeStream && (

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, Github, FileText, HelpCircle, Code2, MoreHorizontal } from 'lucide-react';
+import { Menu, Github, FileText, HelpCircle, Code2, LayoutDashboard, MoreHorizontal } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import type { Topic, TopicItem } from '@/data/topics';
 import { ModeToggle } from '@/components/theme/ModeToggle';
@@ -202,6 +202,20 @@ const NavBar = () => {
                 variant="ghost"
                 size="icon"
                 className="hidden h-9 w-9 md:inline-flex"
+                onClick={() => navigate('/overview')}
+                aria-label={'Overview'}
+              >
+                <LayoutDashboard className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">{'Overview'}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden h-9 w-9 md:inline-flex"
                 onClick={() => navigate('/code-editor')}
                 aria-label={'Live code editor'}
               >
@@ -274,6 +288,15 @@ const NavBar = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
+              <DropdownMenuItem
+                onClick={() => {
+                  navigate('/overview');
+                }}
+                className="gap-2"
+              >
+                <LayoutDashboard className="h-4 w-4 shrink-0" />
+                {'Overview'}
+              </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
                   navigate('/code-editor');
