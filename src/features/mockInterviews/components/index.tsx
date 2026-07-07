@@ -273,7 +273,13 @@ export default function QuizApp() {
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-2">
-            <Button onClick={handlePreviousPage} disabled={currentPage === 0} variant="outline" size="sm" className="rounded-lg">
+            <Button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 0}
+              variant="outline"
+              size="sm"
+              className="rounded-lg"
+            >
               <ChevronLeft className="h-4 w-4" aria-hidden />
               {'Previous'}
             </Button>

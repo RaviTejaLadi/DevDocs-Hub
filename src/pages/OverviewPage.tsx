@@ -383,11 +383,7 @@ export default function OverviewPage() {
 
       {/* ── Stats Bento ── */}
       <section className="space-y-6">
-        <SectionHeader
-          icon={Zap}
-          title="By the numbers"
-          subtitle="Live counts across the entire platform"
-        />
+        <SectionHeader icon={Zap} title="By the numbers" subtitle="Live counts across the entire platform" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 motion-stagger">
           {STATS.map(({ label, value, suffix, icon: Icon, emoji, accent, ring, iconClass, gradient, ...rest }) => {

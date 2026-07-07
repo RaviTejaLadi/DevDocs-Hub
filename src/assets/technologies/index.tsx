@@ -4,9 +4,7 @@ import type { SVGProps } from 'react';
 type IconProps = SVGProps<SVGSVGElement>;
 
 function createTechIcon(displayName: string) {
-  const Icon = ({ className, ...props }: IconProps) => (
-    <Code className={className} aria-hidden {...props} />
-  );
+  const Icon = ({ className, ...props }: IconProps) => <Code className={className} aria-hidden {...props} />;
   Icon.displayName = displayName;
   return Icon;
 }

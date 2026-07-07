@@ -40,10 +40,10 @@ const QuizReport = ({ score, percentage, timeTaken, maxStreak, backToHome, retak
     percentage >= 90
       ? { emoji: '🎉', title: 'Exceptional!', body: "You're a true expert in this field!" }
       : percentage >= 75
-        ? { emoji: '🚀', title: 'Great job!', body: 'You have solid knowledge with room to grow.' }
-        : percentage >= 60
-          ? { emoji: '👍', title: 'Good work!', body: "You're on the right track — keep practicing." }
-          : { emoji: '📚', title: 'Keep learning!', body: 'Review the concepts and try again.' };
+      ? { emoji: '🚀', title: 'Great job!', body: 'You have solid knowledge with room to grow.' }
+      : percentage >= 60
+      ? { emoji: '👍', title: 'Good work!', body: "You're on the right track — keep practicing." }
+      : { emoji: '📚', title: 'Keep learning!', body: 'Review the concepts and try again.' };
 
   return (
     <div className="max-w-3xl mx-auto space-y-6 pb-4">

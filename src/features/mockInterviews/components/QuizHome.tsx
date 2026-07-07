@@ -13,7 +13,11 @@ const CATEGORY_VISUALS: Record<string, { emoji: string; accent: string; ring: st
   Frontend: { emoji: '🌐', accent: 'from-blue-500/10 to-transparent', ring: 'border-blue-500/20' },
   Backend: { emoji: '⚙️', accent: 'from-emerald-500/10 to-transparent', ring: 'border-emerald-500/20' },
   DevOps: { emoji: '🚀', accent: 'from-orange-500/10 to-transparent', ring: 'border-orange-500/20' },
-  'Testing & Quality Assurance': { emoji: '🧪', accent: 'from-violet-500/10 to-transparent', ring: 'border-violet-500/20' },
+  'Testing & Quality Assurance': {
+    emoji: '🧪',
+    accent: 'from-violet-500/10 to-transparent',
+    ring: 'border-violet-500/20',
+  },
   'Data & Analytics': { emoji: '📊', accent: 'from-amber-500/10 to-transparent', ring: 'border-amber-500/20' },
   Security: { emoji: '🛡️', accent: 'from-rose-500/10 to-transparent', ring: 'border-rose-500/20' },
   Mobile: { emoji: '📱', accent: 'from-cyan-500/10 to-transparent', ring: 'border-cyan-500/20' },
@@ -152,7 +156,13 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
               />
             </div>
             {searchQuery ? (
-              <Button type="button" variant="ghost" size="sm" className="text-muted-foreground rounded-xl" onClick={clearSearch}>
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground rounded-xl"
+                onClick={clearSearch}
+              >
                 <X className="h-4 w-4 mr-1" />
                 {'Clear'}
               </Button>
@@ -240,7 +250,9 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
                           </div>
                           <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/70 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-primary shrink-0 mt-0.5" />
                         </div>
-                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-2">{quiz.description}</p>
+                        <p className="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                          {quiz.description}
+                        </p>
                         <div className="mt-2.5 flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                           <Play className="h-3 w-3" aria-hidden />
                           {'Start quiz'}
