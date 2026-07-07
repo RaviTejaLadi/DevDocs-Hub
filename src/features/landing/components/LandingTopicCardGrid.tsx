@@ -21,7 +21,7 @@ export function LandingTopicCardGrid({ topic, color }: LandingTopicCardGridProps
             color.iconColor
           )}
         >
-          <ColoredIcon size={20}>{topic.icon}</ColoredIcon>
+          <ColoredIcon size={15}>{topic.icon}</ColoredIcon>
         </div>
         <div className="min-w-0 flex-1 overflow-hidden">
           <div className="flex items-start justify-between gap-2">

@@ -37,10 +37,10 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
       onKeyDown={firstItemId ? onKeyDown : undefined}
       className={cn(
         'group relative min-w-0 max-w-full cursor-pointer overflow-hidden rounded-xl border border-border/35 bg-card/85 backdrop-blur-sm text-card-foreground touch-manipulation',
-        'shadow-[var(--panel-shadow)] dark:shadow-none',
-        'transition-all duration-300 hover:border-primary/35 hover:bg-card hover:-translate-y-0.5 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
+        'shadow-[--panel-shadow] dark:shadow-none',
+        'transition-all duration-300 hover:border-primary/35 hover:bg-card hover:-translate-y-0.5 hover:shadow-[--panel-shadow-raised] dark:hover:shadow-none',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        isGrid ? 'flex h-[8.5rem] flex-col p-4' : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
+        isGrid ? 'flex h-34 flex-col p-4' : 'flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-4'
       )}
     >
       <div
