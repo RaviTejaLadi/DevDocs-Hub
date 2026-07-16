@@ -29,12 +29,12 @@ interface QuizHomeProps {
 
 function StatCard({ emoji, label, value }: { emoji: string; label: string; value: number }) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/40 bg-card/70 backdrop-blur-sm px-4 py-3 shadow-none">
-      <div className="pointer-events-none absolute -right-3 -top-3 text-4xl opacity-[0.12] select-none" aria-hidden>
+    <div className="relative overflow-hidden rounded-lg border border-border/40 bg-card/70 px-3.5 py-2.5 shadow-none">
+      <div className="pointer-events-none absolute -right-2.5 -top-2.5 text-3xl opacity-[0.1] select-none" aria-hidden>
         {emoji}
       </div>
-      <p className="text-2xl font-bold tabular-nums tracking-tight text-foreground">{value}</p>
-      <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+      <p className="text-xl sm:text-2xl font-bold tabular-nums tracking-tight text-foreground">{value}</p>
+      <p className="mt-0.5 text-[11px] sm:text-xs font-medium text-muted-foreground">
         <span className="mr-1" aria-hidden>
           {emoji}
         </span>
@@ -70,7 +70,7 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
   const clearSearch = () => setSearchQuery('');
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 pb-4">
+    <div className="max-w-6xl mx-auto space-y-6 pb-3">
       <section
         className={cn(
           'group relative isolate overflow-hidden rounded-2xl border border-border/45',
@@ -83,7 +83,7 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-20%,hsl(var(--primary)/0.12),transparent_55%)]" />
         </div>
 
-        <div className="relative p-6 sm:p-8 space-y-6">
+        <div className="relative p-4 sm:p-5 lg:p-6 space-y-3.5 sm:space-y-4">
           <Link
             to="/"
             className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground"
@@ -92,86 +92,77 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
             {'Back to overview'}
           </Link>
 
-          <div className="flex flex-wrap items-start justify-between gap-6">
-            <div className="space-y-3 max-w-2xl">
+          <div className="flex flex-wrap items-start justify-between gap-3.5 sm:gap-4">
+            <div className="space-y-2.5 max-w-2xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden />
                 Timed practice
               </div>
-              <div className="flex items-start gap-3.5">
+              <div className="flex items-start gap-2.5 sm:gap-3">
                 <span
-                  className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-2xl shadow-none"
+                  className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-linear-to-br from-primary/15 to-primary/5 text-xl sm:text-2xl shadow-none"
                   aria-hidden
                 >
                   🎤
                 </span>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gradient-sheen">
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-gradient-sheen">
                     {'Mock Assessments'}
                   </h1>
-                  <p className="text-muted-foreground mt-2 text-sm sm:text-base leading-relaxed">
+                  <p className="text-muted-foreground mt-1.5 text-sm sm:text-[15px] leading-relaxed">
                     {'Timed quizzes across frontend, backend, DevOps, and more — test your knowledge under pressure.'}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full sm:w-auto sm:min-w-[200px]">
+            <div className="grid grid-cols-2 gap-2 sm:gap-2.5 w-full sm:w-auto sm:min-w-[180px]">
               <StatCard emoji="📝" label={'Quizzes'} value={totalQuizzes} />
               <StatCard emoji="📂" label={'Categories'} value={totalCategories} />
             </div>
           </div>
 
-          <p className="flex items-start gap-2 rounded-lg border border-border/35 bg-muted/25 px-3.5 py-2.5 text-xs sm:text-sm text-muted-foreground">
-            <span className="text-base leading-none mt-0.5" aria-hidden>
-              💡
-            </span>
-            {'Pick a quiz, answer under the timer, and review your score when you submit.'}
-          </p>
+          <div className="space-y-2.5 border-t border-border/30 pt-3 sm:pt-3.5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground">
+                <span aria-hidden>🔍</span>
+                {'Search quizzes'}
+              </div>
+              {searchQuery ? (
+                <Badge variant="outline" className="h-6 px-2.5 text-xs font-medium border-border/45 bg-muted/30">
+                  {`Found ${totalQuizzes} quiz${totalQuizzes === 1 ? '' : 'zes'}`}
+                </Badge>
+              ) : null}
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative min-w-0 flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                <Input
+                  type="search"
+                  placeholder={'Search quizzes...'}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30 rounded-xl"
+                />
+              </div>
+              {searchQuery ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground rounded-xl"
+                  onClick={clearSearch}
+                >
+                  <X className="h-4 w-4 mr-1" />
+                  {'Clear'}
+                </Button>
+              ) : null}
+            </div>
+          </div>
         </div>
       </section>
 
-      <Card className="border-border/40 bg-card/65 backdrop-blur-sm shadow-none">
-        <CardContent className="pt-6 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <span aria-hidden>🔍</span>
-              {'Search quizzes'}
-            </div>
-            {searchQuery ? (
-              <Badge variant="outline" className="h-6 px-2.5 text-xs font-medium border-border/45 bg-muted/30">
-                {`Found ${totalQuizzes} quiz${totalQuizzes === 1 ? '' : 'zes'}`}
-              </Badge>
-            ) : null}
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="relative min-w-0 flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-              <Input
-                type="search"
-                placeholder={'Search quizzes...'}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 h-10 border-border/35 bg-background/85 focus-visible:ring-primary/30 rounded-xl"
-              />
-            </div>
-            {searchQuery ? (
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground rounded-xl"
-                onClick={clearSearch}
-              >
-                <X className="h-4 w-4 mr-1" />
-                {'Clear'}
-              </Button>
-            ) : null}
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-8">
+      <div className="space-y-6">
         {filteredCategories.length === 0 ? (
           <Card className="border-dashed border-border/50 bg-card/50 shadow-none">
             <CardContent className="py-12 text-center space-y-3">

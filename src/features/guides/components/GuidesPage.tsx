@@ -44,7 +44,7 @@ export default function GuidesPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-20%,hsl(var(--primary)/0.12),transparent_55%)]" />
         </div>
 
-        <div className="relative p-6 sm:p-8 space-y-6">
+        <div className="relative p-4 sm:p-6 lg:p-7 space-y-4 sm:space-y-5">
           <Link
             to="/"
             className="inline-flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-1.5 text-sm text-muted-foreground transition-all hover:border-primary/30 hover:bg-background hover:text-foreground hover:shadow-none"
@@ -52,9 +52,9 @@ export default function GuidesPage() {
             <ChevronLeft className="h-4 w-4" />
             {'Back to overview'}
           </Link>
-          <div className="flex justify-between items-center gap-2">
-            <div className="space-y-3 max-w-2xl">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gradient-sheen">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="space-y-2.5 max-w-2xl">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-gradient-sheen">
                 {'Guides'}
               </h1>
             </div>
