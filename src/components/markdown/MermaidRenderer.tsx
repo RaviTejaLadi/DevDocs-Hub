@@ -35,7 +35,7 @@ const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
     theme: 'base',
     deterministicIds: true,
     maxTextSize: 90000,
-    fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
+    fontFamily: 'cerebri, "Segoe UI", system-ui, sans-serif',
     themeVariables: isDark
       ? {
           background: '#0f1420',
@@ -62,7 +62,7 @@ const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
           //   labelTextColor:       '#c8cae0',
 
           fontSize: '14px',
-          fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
+          fontFamily: 'cerebri, "Segoe UI", system-ui, sans-serif',
 
           actorBorder: '#7a8fd4',
           actorBkg: '#1b2640',
@@ -158,7 +158,7 @@ const initMermaid = (mermaidApi: MermaidAPI, isDark: boolean) => {
           nodeTextColor: '#1a1c2e',
 
           fontSize: '14px',
-          fontFamily: 'IBM Plex Sans, system-ui, -apple-system, sans-serif',
+          fontFamily: 'cerebri, "Segoe UI", system-ui, sans-serif',
 
           actorBorder: '#9098c8',
           actorBkg: '#edf0fa',

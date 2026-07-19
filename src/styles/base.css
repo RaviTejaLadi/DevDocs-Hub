@@ -78,8 +78,8 @@
 
   /* Scrollbars — WebKit (Chrome, Edge, Safari); Firefox uses * { scrollbar-* } above */
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
 
   *::-webkit-scrollbar-track {
@@ -102,46 +102,37 @@
     background: transparent;
   }
 
-  /* Global radius normalization: use one rounded style everywhere */
-  :where(
-    .rounded-none,
-    .rounded-sm,
-    .rounded,
-    .rounded-md,
-    .rounded-lg,
-    .rounded-xl,
-    .rounded-2xl,
-    .rounded-3xl,
-    .rounded-4xl,
-    .rounded-full,
-    [class*="rounded-["]
-  ) {
-    border-radius: var(--radius-md) !important;
-  }
-
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     position: relative;
     min-height: 100vh;
     height: 100%;
     overflow: hidden;
-    background-attachment: fixed;
+    font-family: "cerebri", "Segoe UI", sans-serif;
+    line-height: 1.55;
+    background-image: none;
   }
 
-  :root:not(.dark) body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "cerebriDisplay", "cerebri", "Segoe UI", sans-serif;
+    letter-spacing: -0.015em;
   }
 
-  .dark body {
-    @apply bg-background;
-    font-family: "IBM Plex Sans", sans-serif;
-    background-image:
-      radial-gradient(circle at 10% -10%, color-mix(in oklch, var(--primary) 9%, transparent) 0%, transparent 36%),
-      radial-gradient(circle at 100% 0%, color-mix(in oklch, var(--accent) 14%, transparent) 0%, transparent 34%);
+  a {
+    color: var(--primary);
+  }
+
+  a:hover {
+    color: color-mix(in srgb, var(--primary) 86%, #5216e4);
+  }
+
+  .dark a:hover {
+    color: color-mix(in srgb, var(--primary) 78%, #c6d8ff);
   }
 
   ::selection {

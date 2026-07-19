@@ -1,1 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Book-s.p.09147t1dld6i5.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Regular-s.p.0q3sbm42hnfj2.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Medium-s.p.0zdi0k38rgtbn.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_SemiBold-s.p.051anas6bsg1z.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Bold-s.p.0mdmk_48du17w.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebri";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_ExtraBold-s.p.0qdbufqvp1xf7.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebriDisplay";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Bold-s.p.0mdmk_48du17w.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebriDisplay";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_ExtraBold-s.p.0qdbufqvp1xf7.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cerebriDisplay";
+  src: url("https://books.shecodes.io/_next/static/media/CerebriSans_Heavy-s.p.0j4n0ca07jtfl.woff2?dpl=dpl_HQ3DhdyYRskT8VWNFe6Xdtb8xcRR")
+    format("woff2");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}

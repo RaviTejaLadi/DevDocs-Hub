@@ -2,17 +2,17 @@
    Markdown — production spacing & box tokens
    ========================================================================== */
 .md-render {
-  --md-purple:       #5856d6;
-  --md-purple-deep:  #4240a8;
-  --md-purple-soft:  rgba(88, 86, 214, 0.06);
-  --md-purple-tint:  rgba(88, 86, 214, 0.1);
-  --md-purple-line:  rgba(88, 86, 214, 0.22);
-  --md-sky:          #007aff;
-  --md-sky-deep:     #0056b3;
-  --md-sky-soft:     rgba(0, 122, 255, 0.08);
-  --md-sky-line:     rgba(0, 122, 255, 0.22);
-  --md-red:          #ff3b30;
-  --md-sky-top:      rgba(255, 255, 255, 0.45);
+  --md-purple:       #885df1;
+  --md-purple-deep:  #5216e4;
+  --md-purple-soft:  rgba(136, 93, 241, 0.06);
+  --md-purple-tint:  rgba(136, 93, 241, 0.11);
+  --md-purple-line:  rgba(136, 93, 241, 0.24);
+  --md-sky:          #f65282;
+  --md-sky-deep:     #d8447a;
+  --md-sky-soft:     rgba(246, 82, 130, 0.08);
+  --md-sky-line:     rgba(246, 82, 130, 0.22);
+  --md-red:          #e11d48;
+  --md-sky-top:      rgba(136, 93, 241, 0.06);
 
   /* 4px grid spacing */
   --md-gap-1: 0.5rem;   /*  8px */
@@ -23,7 +23,7 @@
   --md-gap-6: 2rem;     /* 32px */
   --md-gap-7: 2.5rem;   /* 40px */
 
-  /* macOS Tahoe box chrome */
+  /* Card + border tokens */
   --md-box-radius:      0.75rem;
   --md-box-radius-sm:   0.625rem;
   --md-box-radius-lg:   0.875rem;
@@ -44,17 +44,17 @@
 }
 
 .dark .md-render {
-  --md-purple:       #b693ff;
-  --md-purple-deep:  #d2bcff;
-  --md-purple-soft:  rgba(182, 147, 255, 0.08);
-  --md-purple-tint:  rgba(182, 147, 255, 0.12);
-  --md-purple-line:  rgba(182, 147, 255, 0.24);
-  --md-sky:          #38bdf8;
-  --md-sky-deep:     #7dd3fc;
-  --md-sky-soft:     rgba(56, 189, 248, 0.1);
-  --md-sky-line:     rgba(56, 189, 248, 0.22);
-  --md-red:          #ff8085;
-  --md-sky-top:      rgba(56, 189, 248, 0.08);
+  --md-purple:       #9f8cff;
+  --md-purple-deep:  #d7cfff;
+  --md-purple-soft:  rgba(159, 140, 255, 0.1);
+  --md-purple-tint:  rgba(159, 140, 255, 0.14);
+  --md-purple-line:  rgba(159, 140, 255, 0.3);
+  --md-sky:          #78c7ff;
+  --md-sky-deep:     #b8e0ff;
+  --md-sky-soft:     rgba(120, 199, 255, 0.12);
+  --md-sky-line:     rgba(120, 199, 255, 0.24);
+  --md-red:          #fb7185;
+  --md-sky-top:      rgba(159, 140, 255, 0.11);
 
   --md-box-border: color-mix(in oklab, var(--foreground) 14%, transparent);
 }
