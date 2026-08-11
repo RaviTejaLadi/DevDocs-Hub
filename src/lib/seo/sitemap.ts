@@ -9,6 +9,7 @@ import {
   interviewQuestionsPath,
   playgroundPath,
   ROUTE_PATHS,
+  topicsPath,
   visualizationPath,
 } from '@/app/routes/paths';
 import { getPlaygrounds } from '@/features/playground/constants';
@@ -36,6 +37,7 @@ function flattenDocItems(items: TopicItem[]): TopicItem[] {
 export function collectSitemapEntries(): SitemapEntry[] {
   const entries: SitemapEntry[] = [
     { loc: absoluteLoc(ROUTE_PATHS.home), changefreq: 'weekly', priority: 1 },
+    { loc: absoluteLoc(topicsPath()), changefreq: 'weekly', priority: 0.95 },
     { loc: absoluteLoc(guidesPath()), changefreq: 'weekly', priority: 0.9 },
     { loc: absoluteLoc(interviewQuestionsPath()), changefreq: 'weekly', priority: 0.9 },
     { loc: absoluteLoc(visualizationPath()), changefreq: 'weekly', priority: 0.8 },

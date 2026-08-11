@@ -4,8 +4,6 @@ import {
   BookOpen,
   HelpCircle,
   Code2,
-  FlaskConical,
-  Eye,
   Layers,
   ArrowRight,
   BookMarked,
@@ -32,6 +30,7 @@ import Footer from '@/components/layout/Footer';
 import { cn } from '@/lib/utils';
 import { colors } from '@/constants/colors';
 import { getStreamEmoji } from '@/features/landing/constants';
+import { ROUTE_PATHS, topicsPath } from '@/app/routes/paths';
 
 function countItems(items: TopicItem[]): number {
   let count = 0;
@@ -104,28 +103,28 @@ const STATS = [
     iconClass: 'text-rose-600 dark:text-rose-400 bg-rose-500/12',
     gradient: 'from-rose-500 to-pink-600',
   },
-  {
-    label: 'Visualizations',
-    value: Object.keys(VISUALIZATION_PAGE_COMPONENTS).length,
-    suffix: '',
-    icon: Eye,
-    emoji: '🧠',
-    accent: 'from-cyan-500/14 via-cyan-500/5 to-transparent',
-    ring: 'border-cyan-500/25',
-    iconClass: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/12',
-    gradient: 'from-cyan-500 to-sky-600',
-  },
-  {
-    label: 'Playgrounds',
-    value: Object.keys(PLAYGROUND_PAGE_COMPONENTS).length,
-    suffix: '',
-    icon: FlaskConical,
-    emoji: '🧪',
-    accent: 'from-orange-500/14 via-orange-500/5 to-transparent',
-    ring: 'border-orange-500/25',
-    iconClass: 'text-orange-600 dark:text-orange-400 bg-orange-500/12',
-    gradient: 'from-orange-500 to-amber-600',
-  },
+  // {
+  //   label: 'Visualizations',
+  //   value: Object.keys(VISUALIZATION_PAGE_COMPONENTS).length,
+  //   suffix: '',
+  //   icon: Eye,
+  //   emoji: '🧠',
+  //   accent: 'from-cyan-500/14 via-cyan-500/5 to-transparent',
+  //   ring: 'border-cyan-500/25',
+  //   iconClass: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/12',
+  //   gradient: 'from-cyan-500 to-sky-600',
+  // },
+  // {
+  //   label: 'Playgrounds',
+  //   value: Object.keys(PLAYGROUND_PAGE_COMPONENTS).length,
+  //   suffix: '',
+  //   icon: FlaskConical,
+  //   emoji: '🧪',
+  //   accent: 'from-orange-500/14 via-orange-500/5 to-transparent',
+  //   ring: 'border-orange-500/25',
+  //   iconClass: 'text-orange-600 dark:text-orange-400 bg-orange-500/12',
+  //   gradient: 'from-orange-500 to-amber-600',
+  // },
 ] as const;
 
 const FEATURE_CARDS = [
@@ -134,7 +133,7 @@ const FEATURE_CARDS = [
     description: 'Structured revision notes across every stream, organized from beginner to advanced.',
     icon: BookMarked,
     emoji: '📝',
-    href: '/',
+    href: topicsPath(),
     accent: 'from-blue-500/14 via-blue-500/5 to-transparent',
     ring: 'border-blue-500/25',
     iconClass: 'text-blue-600 dark:text-sky-400 bg-blue-500/12',
@@ -162,28 +161,28 @@ const FEATURE_CARDS = [
     iconClass: 'text-rose-600 dark:text-rose-400 bg-rose-500/12',
     span: '',
   },
-  {
-    title: 'Visualizations',
-    description: 'Run interactive animations of event loop, closures, data structures, and more.',
-    icon: Eye,
-    emoji: '🧠',
-    href: '/visualizations',
-    accent: 'from-cyan-500/14 via-cyan-500/5 to-transparent',
-    ring: 'border-cyan-500/25',
-    iconClass: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/12',
-    span: '',
-  },
-  {
-    title: 'Playgrounds',
-    description: 'Hands-on coding sandboxes for arrays, objects, and algorithms.',
-    icon: FlaskConical,
-    emoji: '🧪',
-    href: '/playground',
-    accent: 'from-orange-500/14 via-orange-500/5 to-transparent',
-    ring: 'border-orange-500/25',
-    iconClass: 'text-orange-600 dark:text-orange-400 bg-orange-500/12',
-    span: '',
-  },
+  // {
+  //   title: 'Visualizations',
+  //   description: 'Run interactive animations of event loop, closures, data structures, and more.',
+  //   icon: Eye,
+  //   emoji: '🧠',
+  //   href: '/visualizations',
+  //   accent: 'from-cyan-500/14 via-cyan-500/5 to-transparent',
+  //   ring: 'border-cyan-500/25',
+  //   iconClass: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/12',
+  //   span: '',
+  // },
+  // {
+  //   title: 'Playgrounds',
+  //   description: 'Hands-on coding sandboxes for arrays, objects, and algorithms.',
+  //   icon: FlaskConical,
+  //   emoji: '🧪',
+  //   href: '/playground',
+  //   accent: 'from-orange-500/14 via-orange-500/5 to-transparent',
+  //   ring: 'border-orange-500/25',
+  //   iconClass: 'text-orange-600 dark:text-orange-400 bg-orange-500/12',
+  //   span: '',
+  // },
   {
     title: 'Code Editor',
     description: 'Full-featured live editor with Sandpack — write, run, and share code.',
@@ -198,11 +197,11 @@ const FEATURE_CARDS = [
 ] as const;
 
 const QUICK_LINKS = [
-  { href: '/', label: 'Docs', icon: BookMarked },
+  { href: topicsPath(), label: 'Docs', icon: BookMarked },
   { href: '/guides', label: 'Guides', icon: BookOpen },
   { href: '/interview-questions', label: 'Interview', icon: HelpCircle },
-  { href: '/visualizations', label: 'Visualize', icon: Eye },
-  { href: '/playground', label: 'Playground', icon: FlaskConical },
+  // { href: '/visualizations', label: 'Visualize', icon: Eye },
+  // { href: '/playground', label: 'Playground', icon: FlaskConical },
   { href: '/code-editor', label: 'Code Editor', icon: Code2 },
 ] as const;
 
@@ -286,7 +285,7 @@ export default function OverviewPage() {
       <PageSEO
         title="Overview"
         description="Revise Stack overview — browse all streams, features, and learning resources in one place."
-        path="/overview"
+        path={ROUTE_PATHS.home}
       />
 
       {/* Page ambient background */}
@@ -361,7 +360,7 @@ export default function OverviewPage() {
 
           <div className="text-fade-up text-fade-up-delay-4 flex flex-wrap items-center justify-center gap-3 pt-1">
             <Button asChild size="lg" className="h-11 rounded-xl px-6 shadow-none gap-2">
-              <Link to="/">
+              <Link to={topicsPath()}>
                 <Compass className="h-4 w-4" />
                 {'Browse topics'}
               </Link>
@@ -475,7 +474,7 @@ export default function OverviewPage() {
           subtitle={`${STREAMS.length} streams · ${TOPICS.length} topics · ${totalDocs} documents`}
           action={
             <Link
-              to="/"
+              to={topicsPath()}
               className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-border/35 bg-background/60 backdrop-blur-sm px-3.5 py-2 text-xs font-medium text-primary transition-all hover:border-primary/30 hover:bg-background hover:-translate-y-0.5"
             >
               {'Browse all topics'}
@@ -495,7 +494,7 @@ export default function OverviewPage() {
             return (
               <Link
                 key={stream.id}
-                to="/"
+                to={topicsPath()}
                 className={cn(
                   'group relative overflow-hidden rounded-2xl border bg-card/70 backdrop-blur-md p-5',
                   'shadow-none transition-all duration-300',
@@ -581,7 +580,7 @@ export default function OverviewPage() {
         </div>
 
         <Link
-          to="/"
+          to={topicsPath()}
           className="sm:hidden flex items-center justify-center gap-1.5 rounded-xl border border-border/35 bg-background/60 backdrop-blur-sm px-4 py-2.5 text-sm font-medium text-primary transition-all hover:border-primary/30"
         >
           {'Browse all topics'}

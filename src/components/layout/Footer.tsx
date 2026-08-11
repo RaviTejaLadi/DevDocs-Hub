@@ -5,7 +5,7 @@ import { Logo } from '@/components/brand/Logo';
 const Footer = () => {
   const FOOTER_LINKS = [
     { to: '/', label: 'Home' },
-    { to: '/overview', label: 'Overview' },
+    { to: '/topics', label: 'Topics' },
     { to: '/guides', label: 'Guides' },
     { to: '/terms', label: 'Terms' },
   ];

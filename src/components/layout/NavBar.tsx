@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import SearchDialog from '@/components/layout/SearchDialog';
 import { DOCS_NAV_RESET_SCROLL } from '@/lib/docsLocationState';
 import { useAppLayoutStore } from '@/stores';
+import { ROUTE_PATHS } from '@/app/routes/paths';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   DropdownMenu,
@@ -202,7 +203,7 @@ const NavBar = () => {
                 variant="ghost"
                 size="icon"
                 className="hidden h-9 w-9 md:inline-flex"
-                onClick={() => navigate('/overview')}
+                onClick={() => navigate(ROUTE_PATHS.home)}
                 aria-label={'Overview'}
               >
                 <LayoutDashboard className="h-4 w-4" />
@@ -290,7 +291,7 @@ const NavBar = () => {
             <DropdownMenuContent align="end" className="w-[min(92vw,17rem)] max-h-[min(70vh,22rem)] overflow-y-auto">
               <DropdownMenuItem
                 onClick={() => {
-                  navigate('/overview');
+                  navigate(ROUTE_PATHS.home);
                 }}
                 className="gap-2"
               >

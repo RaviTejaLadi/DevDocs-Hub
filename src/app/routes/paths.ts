@@ -1,6 +1,7 @@
 /** Central route path definitions — single source of truth for URLs. */
 export const ROUTE_PATHS = {
   home: '/',
+  topics: '/topics',
   overview: '/overview',
   docs: '/docs/:categoryId/:slug',
   guides: '/guides',
@@ -17,6 +18,8 @@ export type RoutePath = (typeof ROUTE_PATHS)[keyof typeof ROUTE_PATHS];
 
 export const docsPath = (categoryId: string, slug: string) =>
   `/docs/${encodeURIComponent(categoryId)}/${encodeURIComponent(slug)}`;
+
+export const topicsPath = () => '/topics';
 
 export const guidesPath = () => '/guides';
 

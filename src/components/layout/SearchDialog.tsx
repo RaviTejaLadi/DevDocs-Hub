@@ -49,7 +49,7 @@ const SearchDialog = ({
             </div>
             <Input
               placeholder={'Type to search...'}
-              className="border-0 bg-inherit shadow-none px-0 py-0 h-11 text-[15px] sm:text-base focus-visible:ring-0 placeholder:text-muted-foreground"
+              className="border-none! bg-inherit! shadow-none! px-0 py-0 h-11 text-[15px] sm:text-base focus-visible:ring-0 placeholder:text-muted-foreground"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />

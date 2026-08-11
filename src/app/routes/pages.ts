@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 /** Code-split page modules — add new pages here only. */
 export const LandingPage = lazy(() => import('@/pages/LandingPage'));
+export const RedirectToHome = lazy(() => import('@/app/routes/RedirectToHome'));
 export const GuidesPage = lazy(() => import('@/pages/GuidesPage'));
 export const GuideDetailPage = lazy(() => import('@/pages/GuideDetailPage'));
 export const DocumentationPage = lazy(() => import('@/pages/DocumentationPage'));
