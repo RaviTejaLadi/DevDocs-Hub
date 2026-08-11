@@ -6,7 +6,6 @@ import { AlertTriangle, Check, Copy, ExternalLink, Info, Lightbulb, TriangleAler
 import { Button } from '@/components/ui/button';
 import MermaidChartLazy from './MermaidChartLazy';
 import { cn } from '@/lib/utils';
-import { WorkflowShowcase } from '@/features/workflow';
 
 function extractTextFromNode(node: React.ReactNode): string {
   if (typeof node === 'string' || typeof node === 'number') return String(node);
@@ -115,12 +114,6 @@ export function buildMarkdownComponents({
   const c = compactSlide;
 
   return {
-    workflowshowcase: ({ preset = 'ingest', className, readOnly = true }: any) => (
-      <WorkflowShowcase preset={preset} className={className} readOnly={readOnly} />
-    ),
-    // WorkflowShowcase: ({ preset = 'ingest', className, readOnly = true }: any) => (
-    //   <WorkflowShowcase preset={preset} className={className} readOnly={readOnly} />
-    // ),
     h1: ({ children }: any) => {
       const id = nid(children);
       return (
@@ -197,16 +190,8 @@ export function buildMarkdownComponents({
     p: ({ children }: any) => (
       <p className={cn('md-p', c ? 'text-[0.98rem] leading-[1.7]' : 'text-[1rem] leading-[1.72]')}>{children}</p>
     ),
-    ul: ({ children }: any) => (
-      <ul className="md-ul" role="list">
-        {children}
-      </ul>
-    ),
-    ol: ({ children }: any) => (
-      <ol className="md-ol" role="list">
-        {children}
-      </ol>
-    ),
+    ul: ({ children }: any) => <ul className="md-ul">{children}</ul>,
+    ol: ({ children }: any) => <ol className="md-ol">{children}</ol>,
     li: ({ children, className }: any) => {
       const isTask = (className || '').includes('task-list-item');
       return <li className={cn(isTask && 'md-li-task list-none')}>{children}</li>;

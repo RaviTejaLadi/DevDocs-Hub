@@ -170,7 +170,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(98%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1px))] mx-auto max-w-full border border-border/40 bg-card/72 backdrop-blur-md supports-backdrop-filter:bg-card/62 dark:bg-background/95 dark:supports-backdrop-filter:bg-background/80 box-border shadow-[var(--panel-shadow-raised,none)] dark:shadow-none">
+    <header className="sticky top-[max(0.5rem,env(safe-area-inset-top))] rounded-md z-50 w-[min(98%,calc(100vw-env(safe-area-inset-left)-env(safe-area-inset-right)-1px))] mx-auto max-w-full border border-border/40 bg-card/72 backdrop-blur-md supports-backdrop-filter:bg-card/62 dark:bg-background/95 dark:supports-backdrop-filter:bg-background/80 box-border shadow-[--panel-shadow-raised,none] dark:shadow-none">
       <div className="flex h-14 min-w-0 items-center gap-1.5 max-sm:gap-1 max-w-7xl mx-auto ps-[max(0.5rem,env(safe-area-inset-left))] pe-[max(0.5rem,env(safe-area-inset-right))] sm:gap-2 sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8">
         <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <Logo showText size="sm" className="min-w-0 shrink-0 font-semibold" textClassName="max-[360px]:hidden" />

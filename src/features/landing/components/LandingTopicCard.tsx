@@ -30,8 +30,7 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
   };
 
   return (
-    <article
-      role="button"
+    <button
       tabIndex={0}
       onClick={firstItemId ? activate : undefined}
       onKeyDown={firstItemId ? onKeyDown : undefined}
@@ -52,6 +51,6 @@ export function LandingTopicCard({ topic, colorIndex, viewMode, onSelect }: Land
       ) : (
         <LandingTopicCardList topic={topic} color={color} />
       )}
-    </article>
+    </button>
   );
 }

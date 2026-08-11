@@ -2736,32 +2736,17 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-home</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://revise-stack.vercel.app/docs/dsa/dsa-intro</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-roadmap</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-complexity-analysis</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-how-to-approach-problems</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-problem-solving-patterns-overview</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-interview-preparation-guide</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-simple-algorithm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2771,72 +2756,42 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-strings</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bubble-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-List</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-selection-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-stack</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-insertion-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-queues</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-quick-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-deque</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-counting-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-matrices-2d-arrays</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-radix-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-sets-maps-in-js</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-merge-sort</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-hash-tables</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-trees</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-binary-search-trees</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-heaps</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-priority-queues</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-graphs</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-trie</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linear-search</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2846,72 +2801,112 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-sorting-algorithms</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-lists</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-two-pointers</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-lists-memory</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-sliding-window</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-lists-types</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-recursion</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-lists-operations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-backtracking</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-stacks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-greedy-algorithms</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-queues</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-dynamic-programming</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-hash-tables</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-divide-and-conquer</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-hash-sets</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bit-manipulation</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-hash-maps</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-math-and-number-theory</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-trees</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-kadanes-algorithm</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-binary-trees</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bfs-and-dfs</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-pre-order-traversal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-topological-sort</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-in-order-traversal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-shortest-path-algorithms</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-post-order-traversal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-array-binary-trees</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bst</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-avl-trees</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-graphs</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-graphs-implementation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-graphs-traversal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-cycle-detection</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-shortest-path</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2921,72 +2916,152 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bellman-ford-algorithm</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://revise-stack.vercel.app/docs/dsa/dsa-minimum-spanning-tree</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-union-find</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-prims-algorithm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/top-50-must-know-dsa-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-kruskals-algorithm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/top-35-most-asked-dsa-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-maximum-flow</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-arrays-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-ford-fulkerson-algorithm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-string-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-edmonds-karp-algorithm</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-object-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-time-complexity-intro</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linked-list-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-bubble-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-tree-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-selection-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-graph-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-insertion-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-dynamic-programming-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-quick-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-stack-queue-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-counting-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-binary-search-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-radix-sort-time-complexity</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-two-pointers-sliding-window-questions</loc>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-merge-sort-time-complexity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-linear-search-time-complexity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-binary-search-time-complexity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-euclidean-algorithm</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-huffman-coding</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-tsp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-knapsack</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-memoization</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-tabulation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-dynamic-programming</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-greedy-algorithms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-examples</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-exercises</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-quiz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-syllabus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://revise-stack.vercel.app/docs/dsa/dsa-study-plan</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
