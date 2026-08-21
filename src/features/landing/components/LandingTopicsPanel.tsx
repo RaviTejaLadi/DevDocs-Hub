@@ -98,9 +98,9 @@ export function LandingTopicsPanel({
             </p>
             <p className="text-xs text-muted-foreground/80 tabular-nums">{matchPercent}% matched</p>
           </div>
-          <div className="h-1.5 rounded-full bg-muted/50 overflow-hidden">
+          <div className="h-1.5 rounded-md bg-muted/50 overflow-hidden">
             <div
-              className="h-full rounded-full bg-linear-to-r from-primary/70 to-primary transition-all duration-500 ease-out"
+              className="h-full rounded-md bg-linear-to-r from-primary/70 to-primary transition-all duration-500 ease-out"
               style={{ width: `${matchPercent}%` }}
               role="progressbar"
               aria-valuenow={filteredTopicsCount}

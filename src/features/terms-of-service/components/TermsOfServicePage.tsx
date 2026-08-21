@@ -14,7 +14,7 @@ const TermsOfServicePage = () => {
       />
       <Card className="max-w-4xl mx-auto bg-inherit border-none shadow-none">
         <CardHeader>
-          <CardTitle className="text-2xl sm:text-3xl font-bold text-gradient-sheen">{'Terms of Service'}</CardTitle>
+          <CardTitle className="text-2xl sm:text-3xl font-bold">{'Terms of Service'}</CardTitle>
           <p className="text-sm text-muted-foreground">{'Last Updated'}: January 3, 2026</p>
         </CardHeader>
         <CardContent>

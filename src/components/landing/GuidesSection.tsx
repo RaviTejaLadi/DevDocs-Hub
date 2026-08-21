@@ -12,9 +12,7 @@ export default function GuidesSection() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-3 text-sm font-semibold text-foreground">
             <BookOpen className="h-10 w-10 text-primary" aria-hidden />
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gradient-sheen">
-              {'Guides'}
-            </h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">{'Guides'}</h1>
           </div>
         </div>
       </div>

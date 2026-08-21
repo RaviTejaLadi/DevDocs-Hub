@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import { CornerDownLeft, FileText, Search } from 'lucide-react';
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import type { RankedSearchResult } from './NavBar';
 
 const SearchDialog = ({
@@ -22,20 +23,16 @@ const SearchDialog = ({
 }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button
-          type="button"
-          variant="outline"
-          className="relative h-9 w-9 sm:w-40 flex justify-center sm:justify-start gap-2 text-muted-foreground font-normal border-border/40 bg-muted/30 hover:bg-muted/50 px-0 sm:px-2 sm:pl-3"
-          aria-label={'Search...'}
-        >
-          <Search className="h-4 w-4 shrink-0" />
-          <span className="min-w-0 truncate pr-11 text-left max-sm:sr-only">{'Search...'}</span>
-          <kbd className="pointer-events-none absolute right-2 top-1/2 hidden h-5 -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-70 sm:flex">
-            <span className="text-xs">⌘</span>K
-          </kbd>
-        </Button>
-      </DialogTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DialogTrigger asChild>
+            <Button type="button" variant="ghost" size="icon" className="h-9 w-9" aria-label={'Search'}>
+              <Search className="h-4 w-4" />
+            </Button>
+          </DialogTrigger>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">{'Search ⌘K'}</TooltipContent>
+      </Tooltip>
 
       <DialogContent
         showCloseButton={false}
@@ -63,7 +60,7 @@ const SearchDialog = ({
 
         <ScrollArea className="min-h-64 lg:min-h-96 max-h-[min(70vh,32rem)] lg:max-h-[min(75vh,42rem)] xl:max-h-[min(80vh,48rem)] overflow-y-auto p-2 sm:p-3 lg:p-4">
           {results.length === 0 && query && (
-            <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+            <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
               <p className="text-foreground/90 font-medium">{'No matching topics found'}</p>
               <p>
                 {'Try a different keyword — for example React, thermodynamics, organic chemistry, or machine design...'}
@@ -71,7 +68,7 @@ const SearchDialog = ({
             </div>
           )}
           {results.length === 0 && !query && (
-            <div className="text-fade-up py-10 text-center text-sm text-muted-foreground space-y-1.5">
+            <div className="py-10 text-center text-sm text-muted-foreground space-y-1.5">
               <p className="text-foreground/90 font-medium">{'Search across all docs'}</p>
               <p>{'Start typing to find topics instantly.'}</p>
             </div>
@@ -81,7 +78,7 @@ const SearchDialog = ({
               <p className="px-2 py-1.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.14em]">
                 {'Results'}
               </p>
-              <div className="motion-stagger grid grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4 gap-2 @lg:gap-3">
+              <div className="grid grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4 gap-2 @lg:gap-3">
                 {results.map((res) => (
                   <button
                     type="button"

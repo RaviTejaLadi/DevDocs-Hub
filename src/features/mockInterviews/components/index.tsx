@@ -205,14 +205,14 @@ export default function QuizApp() {
                   {`Page ${currentPage + 1} of ${totalPages} · ${questions.length} questions`}
                 </p>
               </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-destructive/25 bg-destructive/8 px-3 py-1 text-sm font-medium text-destructive">
+              <div className="inline-flex items-center gap-1.5 rounded-md border border-destructive/25 bg-destructive/8 px-3 py-1 text-sm font-medium text-destructive">
                 <Clock className="h-3.5 w-3.5" aria-hidden />
                 {formatTime(timeLeft)}
               </div>
             </div>
-            <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted/50">
+            <div className="mt-4 h-1.5 overflow-hidden rounded-md bg-muted/50">
               <div
-                className="h-full rounded-full bg-primary transition-all duration-300"
+                className="h-full rounded-md bg-primary transition-all duration-300"
                 style={{ width: `${(Object.keys(answers).length / questions.length) * 100}%` }}
               />
             </div>
@@ -253,7 +253,7 @@ export default function QuizApp() {
                       >
                         <span
                           className={cn(
-                            'mr-2.5 flex size-6 shrink-0 items-center justify-center rounded-full border text-xs font-semibold',
+                            'mr-2.5 flex size-6 shrink-0 items-center justify-center rounded-md border text-xs font-semibold',
                             isSelected
                               ? 'border-primary-foreground/30 bg-primary-foreground/15 text-primary-foreground'
                               : 'border-border/50 bg-muted/30 text-muted-foreground'

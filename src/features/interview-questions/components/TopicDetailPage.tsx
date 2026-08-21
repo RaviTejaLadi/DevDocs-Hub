@@ -100,18 +100,18 @@ export function TopicDetailPage() {
                   <Icon className={cn('h-7 w-7', visual.iconColor)} />
                 </div>
                 <span
-                  className="absolute -bottom-1.5 -right-1.5 flex size-7 items-center justify-center rounded-full border border-border/40 bg-background text-sm shadow-none"
+                  className="absolute -bottom-1.5 -right-1.5 flex size-7 items-center justify-center rounded-md border border-border/40 bg-background text-sm shadow-none"
                   aria-hidden
                 >
                   {visual.emoji}
                 </span>
               </div>
               <div className="min-w-0 space-y-2">
-                <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/8 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
+                <div className="inline-flex items-center gap-1.5 rounded-md border border-primary/20 bg-primary/8 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
                   <Sparkles className="h-3 w-3" />
                   Topic practice
                 </div>
-                <CardTitle className="text-2xl sm:text-3xl text-gradient-sheen leading-tight">
+                <CardTitle className="text-2xl sm:text-3xl leading-tight">
                   {`Top ${allQuestions.length} ${topic?.label ?? ''} Interview Questions`}
                 </CardTitle>
                 <CardDescription className="text-sm sm:text-base leading-relaxed">

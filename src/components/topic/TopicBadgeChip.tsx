@@ -22,7 +22,7 @@ const BADGE_EMOJI: Partial<Record<TopicBadgeKind, string>> = {
 
 type TopicBadgeChipProps = {
   kind: TopicBadgeKind;
-  /** Sidebar: compact pill with tooltip. Header: featured pill in doc feed. */
+  /** Sidebar: compact chip with tooltip. Header: featured chip in doc feed. */
   variant?: 'sidebar' | 'header';
   active?: boolean;
   className?: string;
@@ -37,7 +37,7 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
     return (
       <span
         className={cn(
-          'inline-flex w-auto max-w-none shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold leading-none tracking-tight sm:text-xs sm:px-2.5 sm:py-1',
+          'inline-flex w-auto max-w-none shrink-0 items-center gap-1 rounded-md border px-2 py-0.5 text-[11px] font-semibold leading-none tracking-tight sm:text-xs sm:px-2.5 sm:py-1',
           topicBadgeToneClasses[kind],
           active && 'ring-1 ring-primary/20',
           className
@@ -63,7 +63,7 @@ export function TopicBadgeChip({ kind, variant = 'sidebar', active = false, clas
           onClick={(e) => e.stopPropagation()}
           onPointerDown={(e) => e.stopPropagation()}
           className={cn(
-            'inline-flex shrink-0 items-center gap-0.5 rounded-full border px-1 py-0.5 touch-manipulation',
+            'inline-flex shrink-0 items-center gap-0.5 rounded-md border px-1 py-0.5 touch-manipulation',
             'text-[10px] font-semibold leading-none backdrop-blur-[2px] transition-[opacity,box-shadow,transform] duration-200',
             topicBadgeToneClasses[kind],
             active ? 'opacity-100 shadow-none' : 'opacity-80 group-hover/nav:opacity-100',

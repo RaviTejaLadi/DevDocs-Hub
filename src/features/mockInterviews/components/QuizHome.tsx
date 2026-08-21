@@ -94,7 +94,7 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
 
           <div className="flex flex-wrap items-start justify-between gap-3.5 sm:gap-4">
             <div className="space-y-2.5 max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
+              <div className="inline-flex items-center gap-2 rounded-md border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden />
                 Timed practice
               </div>
@@ -106,9 +106,7 @@ const QuizHome = ({ startQuiz }: QuizHomeProps) => {
                   🎤
                 </span>
                 <div>
-                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-gradient-sheen">
-                    {'Mock Assessments'}
-                  </h1>
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight">{'Mock Assessments'}</h1>
                   <p className="text-muted-foreground mt-1.5 text-sm sm:text-[15px] leading-relaxed">
                     {'Timed quizzes across frontend, backend, DevOps, and more — test your knowledge under pressure.'}
                   </p>

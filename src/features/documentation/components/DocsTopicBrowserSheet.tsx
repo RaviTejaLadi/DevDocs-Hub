@@ -245,7 +245,7 @@ export function DocsTopicBrowserSheet({
                     aria-pressed={isActive}
                     onClick={() => onActiveStreamChange(stream.id)}
                     className={cn(
-                      'flex min-h-11 w-full min-w-0 items-start gap-1.5 rounded-full border px-2.5 py-2 text-left transition-all duration-200 touch-manipulation',
+                      'flex min-h-11 w-full min-w-0 items-start gap-1.5 rounded-lg border px-2.5 py-2 text-left transition-all duration-200 touch-manipulation',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
                       isActive
                         ? 'border-primary/50 bg-primary/12 text-primary shadow-none ring-1 ring-primary/15'
@@ -260,7 +260,7 @@ export function DocsTopicBrowserSheet({
                     </span>
                     <span
                       className={cn(
-                        'mt-0.5 shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none tabular-nums',
+                        'mt-0.5 shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-bold leading-none tabular-nums',
                         isActive ? 'bg-primary/20 text-primary' : 'bg-muted/80 text-muted-foreground'
                       )}
                     >

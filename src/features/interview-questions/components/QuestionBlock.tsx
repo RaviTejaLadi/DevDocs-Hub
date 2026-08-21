@@ -42,7 +42,7 @@ export function QuestionBlock({
           <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto justify-start sm:justify-end pl-11 sm:pl-0">
             <span
               className={cn(
-                'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border',
+                'inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border',
                 questionTypePillClass[questionType]
               )}
             >
@@ -51,7 +51,7 @@ export function QuestionBlock({
             </span>
             <span
               className={cn(
-                'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border',
+                'inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border',
                 levelPillClass[item.level]
               )}
             >

@@ -29,7 +29,7 @@ LandingHeroProps) {
               size="md"
               asLink={false}
               className="flex-col justify-center hover:opacity-100 max-w-full min-w-0"
-              textClassName="text-center text-balance wrap-break-word [overflow-wrap:anywhere] max-w-full text-gradient-sheen"
+              textClassName="text-center text-balance wrap-break-word [overflow-wrap:anywhere] max-w-full"
             />
           </h1>
 

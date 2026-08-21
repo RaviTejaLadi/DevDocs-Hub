@@ -109,7 +109,7 @@ export function VisualizationListPage() {
                 <Eye className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl">{'Visualization'}</h1>
+                <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{'Visualization'}</h1>
                 <p className="mt-1 max-w-2xl text-muted-foreground">
                   {
                     'Watch programming concepts come alive — step through loops, state changes, and output one frame at a time.'

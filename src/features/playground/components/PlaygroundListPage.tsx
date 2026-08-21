@@ -45,7 +45,7 @@ export function PlaygroundListPage() {
                 <FlaskConical className="h-6 w-6 text-violet-500" />
               </div>
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen">{'Playground'}</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{'Playground'}</h1>
                 <p className="text-muted-foreground mt-1 max-w-2xl">
                   {
                     'Hands-on sandboxes to learn APIs by doing — run code, see results, and build intuition faster than reading alone.'

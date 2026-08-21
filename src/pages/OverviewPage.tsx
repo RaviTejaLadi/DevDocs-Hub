@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ElementType } from 'react';
+import { type ElementType } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -56,7 +56,6 @@ const STATS = [
     accent: 'from-emerald-500/14 via-emerald-500/5 to-transparent',
     ring: 'border-emerald-500/25',
     iconClass: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/12',
-    gradient: 'from-emerald-500 to-teal-600',
     featured: true,
   },
   {
@@ -68,7 +67,6 @@ const STATS = [
     accent: 'from-violet-500/14 via-violet-500/5 to-transparent',
     ring: 'border-violet-500/25',
     iconClass: 'text-violet-600 dark:text-violet-400 bg-violet-500/12',
-    gradient: 'from-violet-500 to-purple-600',
   },
   {
     label: 'Topics',
@@ -79,7 +77,6 @@ const STATS = [
     accent: 'from-blue-500/14 via-blue-500/5 to-transparent',
     ring: 'border-blue-500/25',
     iconClass: 'text-blue-600 dark:text-sky-400 bg-blue-500/12',
-    gradient: 'from-blue-500 to-indigo-600',
   },
   {
     label: 'Guides',
@@ -90,7 +87,6 @@ const STATS = [
     accent: 'from-amber-500/14 via-amber-500/5 to-transparent',
     ring: 'border-amber-500/25',
     iconClass: 'text-amber-600 dark:text-amber-400 bg-amber-500/12',
-    gradient: 'from-amber-500 to-orange-600',
   },
   {
     label: 'Interview Qs',
@@ -101,7 +97,6 @@ const STATS = [
     accent: 'from-rose-500/14 via-rose-500/5 to-transparent',
     ring: 'border-rose-500/25',
     iconClass: 'text-rose-600 dark:text-rose-400 bg-rose-500/12',
-    gradient: 'from-rose-500 to-pink-600',
   },
   // {
   //   label: 'Visualizations',
@@ -209,47 +204,6 @@ function countTopicItems(topic: Topic): number {
   return countItems(topic.items);
 }
 
-function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
-  const [display, setDisplay] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const counted = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || counted.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !counted.current) {
-          counted.current = true;
-          let start = 0;
-          const duration = 1200;
-          const step = Math.ceil(value / 40);
-          const timer = setInterval(() => {
-            start += step;
-            if (start >= value) {
-              setDisplay(value);
-              clearInterval(timer);
-            } else {
-              setDisplay(start);
-            }
-          }, duration / 40);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [value]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
 function SectionHeader({
   icon: Icon,
   title,
@@ -268,7 +222,7 @@ function SectionHeader({
           <div className="inline-flex size-8 items-center justify-center rounded-xl border border-primary/20 bg-primary/8">
             <Icon className="h-4 w-4 text-primary" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gradient-sheen">{title}</h2>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">{title}</h2>
         </div>
         {subtitle && <p className="text-xs sm:text-sm text-muted-foreground pl-10.5">{subtitle}</p>}
       </div>
@@ -310,20 +264,16 @@ export default function OverviewPage() {
         </div>
 
         <div className="relative px-6 py-10 sm:px-10 sm:py-14 text-center space-y-8">
-          <div className="text-fade-up inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-4 py-1.5 text-xs font-semibold text-primary shadow-none">
+          <div className="inline-flex items-center gap-2 rounded-md border border-primary/25 bg-primary/8 px-4 py-1.5 text-xs font-semibold text-primary shadow-none">
             <Sparkles className="h-3.5 w-3.5" />
-            <span className="bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent">
-              {'Everything in one place'}
-            </span>
+            {'Everything in one place'}
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-fade-up text-fade-up-delay-1 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]">
-              <span className="text-gradient-sheen">{'Platform'}</span>
-              <br />
-              <span className="text-foreground/90">{'Overview'}</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-foreground">
+              {'Platform Overview'}
             </h1>
-            <p className="text-fade-up text-fade-up-delay-2 text-muted-foreground text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-balance">
+            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed text-balance">
               {'Explore '}
               <span className="font-semibold text-foreground">{STREAMS.length} streams</span>
               {', '}
@@ -334,7 +284,7 @@ export default function OverviewPage() {
             </p>
           </div>
 
-          <div className="text-fade-up text-fade-up-delay-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             {[
               { label: 'Guides', value: GUIDES.length, icon: BookOpen },
               { label: 'Interview Qs', value: INTERVIEW_QUESTIONS.length, icon: HelpCircle },
@@ -344,9 +294,9 @@ export default function OverviewPage() {
               <div
                 key={label}
                 className={cn(
-                  'flex items-center gap-2 rounded-xl border border-border/35 bg-background/60 backdrop-blur-sm',
-                  'px-3.5 py-2 shadow-none transition-all duration-300',
-                  'hover:border-primary/30 hover:bg-background/90 hover:-translate-y-0.5'
+                  'flex items-center gap-2 rounded-lg border border-border/35 bg-background/60 backdrop-blur-sm',
+                  'px-3.5 py-2 shadow-none',
+                  'hover:border-primary/30 hover:bg-background/90'
                 )}
               >
                 <div className="flex size-6 items-center justify-center rounded-lg bg-primary/10">
@@ -358,7 +308,7 @@ export default function OverviewPage() {
             ))}
           </div>
 
-          <div className="text-fade-up text-fade-up-delay-4 flex flex-wrap items-center justify-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
             <Button asChild size="lg" className="h-11 rounded-xl px-6 shadow-none gap-2">
               <Link to={topicsPath()}>
                 <Compass className="h-4 w-4" />
@@ -384,8 +334,8 @@ export default function OverviewPage() {
       <section className="space-y-6">
         <SectionHeader icon={Zap} title="By the numbers" subtitle="Live counts across the entire platform" />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 motion-stagger">
-          {STATS.map(({ label, value, suffix, icon: Icon, emoji, accent, ring, iconClass, gradient, ...rest }) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {STATS.map(({ label, value, suffix, icon: Icon, emoji, accent, ring, iconClass, ...rest }) => {
             const featured = 'featured' in rest && rest.featured;
 
             return (
@@ -393,8 +343,8 @@ export default function OverviewPage() {
                 key={label}
                 className={cn(
                   'group relative overflow-hidden rounded-2xl border bg-card/70 backdrop-blur-md p-5 sm:p-6',
-                  'shadow-none transition-all duration-500',
-                  'hover:-translate-y-1 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
+                  'shadow-none transition-colors duration-200',
+                  'hover:border-primary/35 hover:bg-card',
                   ring,
                   featured && 'col-span-2 sm:col-span-2 sm:row-span-2 sm:p-8'
                 )}
@@ -438,12 +388,12 @@ export default function OverviewPage() {
                   <div>
                     <div
                       className={cn(
-                        'font-bold tracking-tight bg-linear-to-br bg-clip-text text-transparent',
-                        gradient,
+                        'font-bold tracking-tight text-foreground tabular-nums',
                         featured ? 'text-5xl sm:text-6xl lg:text-7xl' : 'text-3xl sm:text-4xl'
                       )}
                     >
-                      <AnimatedCounter value={value} suffix={suffix} />
+                      {value}
+                      {suffix}
                     </div>
                     <div
                       className={cn(
@@ -475,7 +425,7 @@ export default function OverviewPage() {
           action={
             <Link
               to={topicsPath()}
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-border/35 bg-background/60 backdrop-blur-sm px-3.5 py-2 text-xs font-medium text-primary transition-all hover:border-primary/30 hover:bg-background hover:-translate-y-0.5"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border/35 bg-background/60 backdrop-blur-sm px-3.5 py-2 text-xs font-medium text-primary transition-colors hover:border-primary/30 hover:bg-background"
             >
               {'Browse all topics'}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -483,7 +433,7 @@ export default function OverviewPage() {
           }
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 motion-stagger">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {STREAMS.map((stream, idx) => {
             const emoji = getStreamEmoji(stream.id);
             const topicCount = stream.topics.length;
@@ -497,8 +447,8 @@ export default function OverviewPage() {
                 to={topicsPath()}
                 className={cn(
                   'group relative overflow-hidden rounded-2xl border bg-card/70 backdrop-blur-md p-5',
-                  'shadow-none transition-all duration-300',
-                  'hover:-translate-y-1 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
+                  'shadow-none transition-colors duration-200',
+                  'hover:border-primary/35 hover:bg-card',
                   color.border,
                   color.hover
                 )}
@@ -517,7 +467,7 @@ export default function OverviewPage() {
                 <div className="absolute top-0 inset-x-0 h-0.5 bg-muted/40">
                   <div
                     className={cn(
-                      'h-full rounded-full bg-linear-to-r transition-all duration-700 group-hover:opacity-100',
+                      'h-full rounded-md bg-linear-to-r transition-all duration-700 group-hover:opacity-100',
                       idx % 2 === 0 ? 'from-violet-500 to-purple-500' : 'from-blue-500 to-indigo-500'
                     )}
                     style={{ width: `${Math.max(topicPercent, 8)}%` }}
@@ -527,8 +477,7 @@ export default function OverviewPage() {
                 <div className="relative flex items-start gap-4">
                   <div
                     className={cn(
-                      'relative flex size-12 shrink-0 items-center justify-center rounded-2xl border shadow-none',
-                      'transition-transform duration-300 group-hover:scale-110',
+                      'relative flex size-12 shrink-0 items-center justify-center rounded-xl border shadow-none',
                       color.iconBg,
                       color.border
                     )}
@@ -548,7 +497,7 @@ export default function OverviewPage() {
                           {stream.description}
                         </p>
                       </div>
-                      <div className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-border/30 bg-background/50 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                      <div className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-border/30 bg-background/50 text-muted-foreground">
                         <ArrowRight className="h-3.5 w-3.5 text-primary" />
                       </div>
                     </div>
@@ -592,15 +541,15 @@ export default function OverviewPage() {
       <section className="space-y-6">
         <SectionHeader icon={Star} title="Features" subtitle="Every learning tool on the platform" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 motion-stagger">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {FEATURE_CARDS.map(({ title, description, icon: Icon, emoji, href, accent, ring, iconClass, span }) => (
             <Link
               key={title}
               to={href}
               className={cn(
                 'group relative overflow-hidden rounded-2xl border bg-card/70 backdrop-blur-md p-5 sm:p-6',
-                'shadow-none transition-all duration-300 h-full',
-                'hover:-translate-y-1 hover:shadow-[var(--panel-shadow-raised)] dark:hover:shadow-none',
+                'shadow-none transition-colors duration-200 h-full',
+                'hover:border-primary/35 hover:bg-card',
                 ring,
                 span
               )}
@@ -622,12 +571,7 @@ export default function OverviewPage() {
 
               <div className="relative flex flex-col h-full space-y-4">
                 <div className="flex items-center justify-between">
-                  <div
-                    className={cn(
-                      'inline-flex p-2.5 rounded-xl border border-border/30 shadow-none transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3',
-                      iconClass
-                    )}
-                  >
+                  <div className={cn('inline-flex p-2.5 rounded-xl border border-border/30 shadow-none', iconClass)}>
                     <Icon className="h-5 w-5" />
                   </div>
                   <span className="text-2xl opacity-50 group-hover:opacity-80 transition-opacity" aria-hidden>
@@ -671,11 +615,11 @@ export default function OverviewPage() {
 
           <div className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-3 max-w-md">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-medium text-primary">
+              <div className="inline-flex items-center gap-2 rounded-md border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-medium text-primary">
                 <TrendingUp className="h-3.5 w-3.5" />
                 {'Ready to dive in?'}
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-gradient-sheen leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground leading-tight">
                 {'Start learning today'}
               </h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
@@ -691,8 +635,8 @@ export default function OverviewPage() {
                   className={cn(
                     'inline-flex items-center gap-1.5 rounded-xl border border-border/35 bg-background/70 backdrop-blur-sm',
                     'px-3.5 py-2 text-xs sm:text-sm font-medium text-foreground/80',
-                    'shadow-none transition-all duration-200',
-                    'hover:-translate-y-0.5 hover:border-primary/35 hover:bg-background hover:text-primary hover:shadow-[var(--panel-shadow)]',
+                    'shadow-none transition-colors duration-200',
+                    'hover:border-primary/35 hover:bg-background hover:text-primary',
                     'dark:hover:shadow-none',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
                   )}

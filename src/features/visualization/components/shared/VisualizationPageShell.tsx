@@ -230,7 +230,7 @@ export function VisualizationPageShell({ title, description, children }: Visuali
               </Tooltip>
             </div>
             <CardHeader className="space-y-2 pb-4">
-              <CardTitle className="text-2xl text-gradient-sheen sm:text-3xl">{title}</CardTitle>
+              <CardTitle className="text-2xl sm:text-3xl">{title}</CardTitle>
               <CardDescription className="max-w-3xl text-sm leading-relaxed sm:text-base">
                 {description}
               </CardDescription>

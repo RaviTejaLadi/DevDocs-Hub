@@ -6,7 +6,6 @@
 @import "./base.css";
 @import "./markdown/index.css";
 @import "./animations/accordion.css";
-@import "./animations/text-motion.css";
 @import "./components/live-code-editor.css";
 @import "./components/docs-layout.css";
 @import "./theme/tahoe-light.css";

@@ -78,7 +78,7 @@ const DOC_READING_PANE_MAX_CLASS = 'max-h-[calc(100dvh-9rem)] sm:max-h-[calc(100
 const DOC_SLIDE_BODY_MAX_CLASS = 'max-h-[calc(100dvh-9rem-2.5rem)] sm:max-h-[calc(100dvh-9.5rem-2.5rem)]';
 
 const CARD_FLOAT_NAV_BTN_CLASS = cn(
-  'absolute z-20 inline-flex size-10 shrink-0 items-center justify-center rounded-full',
+  'absolute z-20 inline-flex size-10 shrink-0 items-center justify-center rounded-lg',
   'border border-border/50 bg-card/90 text-foreground shadow-none backdrop-blur-sm',
   'transition-[transform,opacity,box-shadow] duration-200',
   'hover:bg-card hover:shadow-none active:scale-[0.96]',
@@ -727,7 +727,7 @@ const MarkdownRenderInner = ({
                           <span
                             key={slideIdx}
                             className={cn(
-                              'h-1 rounded-full transition-all duration-300',
+                              'h-1 rounded-md transition-all duration-300',
                               slideIdx === activeSlide
                                 ? 'w-4 bg-primary shadow-none'
                                 : 'w-1 bg-border/55 dark:bg-border/65'

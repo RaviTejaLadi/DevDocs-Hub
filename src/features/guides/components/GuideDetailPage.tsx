@@ -107,9 +107,7 @@ export default function GuideDetailPage({ slug }: GuideDetailPageProps) {
             {guide.publishedMonth && <span className="text-xs text-muted-foreground">{guide.publishedMonth}</span>}
           </div>
 
-          <h1 className="text-2xl font-bold tracking-tight text-gradient-sheen sm:text-3xl lg:text-4xl">
-            {guide.title}
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">{guide.title}</h1>
 
           {guide.description && (
             <p className="max-w-2xl text-sm text-muted-foreground leading-relaxed sm:text-base">{guide.description}</p>

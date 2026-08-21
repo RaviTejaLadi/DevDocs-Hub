@@ -6,8 +6,10 @@ type LogoProps = {
   showText?: boolean;
   /** Size: 'sm' (navbar), 'md' (footer), 'lg' (hero) */
   size?: 'sm' | 'md' | 'lg';
-  /** Use as link to home (default true when not inside a link) */
+  /** Use as link (default true when not inside a link) */
   asLink?: boolean;
+  /** Destination when `asLink` is true. Defaults to home. */
+  to?: string;
   className?: string;
   /** Classes applied to the wordmark span (e.g. hide or truncate on narrow viewports) */
   textClassName?: string;
@@ -23,7 +25,7 @@ const sizeClasses = {
   },
 };
 
-export function Logo({ showText = true, size = 'sm', asLink = true, className, textClassName }: LogoProps) {
+export function Logo({ showText = true, size = 'sm', asLink = true, to = '/', className, textClassName }: LogoProps) {
   const { icon: iconClass, text: textClass } = sizeClasses[size];
 
   const logoSvg = (
@@ -50,7 +52,7 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className, t
         <span
           className={cn(
             'font-semibold text-foreground tracking-tight',
-            size === 'lg' && 'text-gradient-sheen text-fade-up',
+            size === 'lg' && 'text-foreground',
             textClass,
             textClassName
           )}
@@ -69,8 +71,9 @@ export function Logo({ showText = true, size = 'sm', asLink = true, className, t
   );
 
   if (asLink) {
+    const goesHome = to === '/';
     return (
-      <Link to="/" className={wrapperClass} aria-label="ReviseStack – Home">
+      <Link to={to} className={wrapperClass} aria-label={goesHome ? 'ReviseStack – Home' : 'ReviseStack – Docs'}>
         {content}
       </Link>
     );

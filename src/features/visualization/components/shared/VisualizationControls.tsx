@@ -38,7 +38,7 @@ export function VisualizationControls({
       <Button
         type="button"
         size="icon"
-        className="size-11 rounded-full bg-emerald-600 text-white hover:bg-emerald-600/90"
+        className="size-11 rounded-lg bg-emerald-600 text-white hover:bg-emerald-600/90"
         onClick={onTogglePlay}
         aria-label={isPlaying ? 'Pause' : 'Play'}
       >

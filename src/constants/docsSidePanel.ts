@@ -85,9 +85,9 @@ export const docsScrollToTopButtonClass = cn(
   'transition-[opacity,transform] duration-200 ease-out'
 );
 
-/** Shared chrome for circular docs floating controls (position via docsFloatingActionStackClass). */
+/** Shared chrome for docs floating controls (position via docsFloatingActionStackClass). */
 export const docsFloatingActionButtonClass = cn(
-  'inline-flex size-10 shrink-0 items-center justify-center rounded-full',
+  'inline-flex size-10 shrink-0 items-center justify-center rounded-lg',
   'border border-border/50 bg-card/85 backdrop-blur-md text-muted-foreground dark:bg-card/90 dark:backdrop-blur-sm',
   docsFabShadowClass,
   'transition-[transform,box-shadow,background-color] duration-200',
