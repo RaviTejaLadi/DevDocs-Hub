@@ -4,7 +4,6 @@
 
 Create a new directory and initialize npm:
 
-# Basic example showing the core idea.
 ```bash
 mkdir my-react-app
 cd my-react-app
@@ -15,14 +14,12 @@ npm init -y
 
 Install React and React DOM:
 
-# Basic example showing the core idea.
 ```bash
 npm install react react-dom
 ```
 
 Install TypeScript and type definitions:
 
-# Basic example showing the core idea.
 ```bash
 npm install -D typescript @types/react @types/react-dom
 ```
@@ -31,7 +28,6 @@ npm install -D typescript @types/react @types/react-dom
 
 Install Webpack and related loaders:
 
-# Basic example showing the core idea.
 ```bash
 npm install -D webpack webpack-cli webpack-dev-server
 npm install -D html-webpack-plugin
@@ -41,7 +37,6 @@ npm install -D css-loader style-loader
 
 Install Babel for JSX transformation:
 
-# Basic example showing the core idea.
 ```bash
 npm install -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
 npm install -D babel-loader
@@ -51,7 +46,6 @@ npm install -D babel-loader
 
 Create `tsconfig.json` in the root directory:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```json
 {
   "compilerOptions": {
@@ -79,7 +73,6 @@ Create `tsconfig.json` in the root directory:
 
 Create `.babelrc` in the root directory:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```json
 {
   "presets": [
@@ -94,7 +87,6 @@ Create `.babelrc` in the root directory:
 
 Create `webpack.config.js` in the root directory:
 
-// Basic example showing the core idea.
 ```javascript
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -139,7 +131,6 @@ module.exports = {
 
 Create the following directory structure:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```
 src/
 ├── index.html
@@ -152,7 +143,6 @@ src/
 
 Create `src/index.html`:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -171,7 +161,6 @@ Create `src/index.html`:
 
 Create `src/index.tsx`:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -193,7 +182,6 @@ root.render(
 
 Create `src/App.tsx`:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```tsx
 import React, { useState } from 'react';
 
@@ -219,7 +207,6 @@ export default App;
 
 Create `src/App.css`:
 
-/* Basic example showing the core idea. */
 ```css
 .app {
   text-align: center;
@@ -257,7 +244,6 @@ button:hover {
 
 Add the following scripts to your `package.json`:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```json
 {
   "scripts": {
@@ -272,7 +258,6 @@ Add the following scripts to your `package.json`:
 
 Start the development server:
 
-# Basic example showing the core idea.
 ```bash
 npm start
 ```
@@ -284,7 +269,6 @@ Your React TypeScript application should now be running at
 
 To create a production build:
 
-# Basic example showing the core idea.
 ```bash
 npm run build
 ```
@@ -295,7 +279,6 @@ This will create a `build` directory with optimized files.
 
 Install ESLint for code linting:
 
-# Basic example showing the core idea.
 ```bash
 npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 npm install -D eslint-plugin-react eslint-plugin-react-hooks
@@ -303,7 +286,6 @@ npm install -D eslint-plugin-react eslint-plugin-react-hooks
 
 Create `.eslintrc.js`:
 
-// Basic example showing the core idea.
 ```javascript
 module.exports = {
   parser: '@typescript-eslint/parser',
@@ -335,14 +317,12 @@ module.exports = {
 
 Install Prettier for code formatting:
 
-# Basic example showing the core idea.
 ```bash
 npm install -D prettier
 ```
 
 Create `.prettierrc`:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```json
 {
   "semi": true,
@@ -357,7 +337,6 @@ Create `.prettierrc`:
 
 Your project structure should look like this:
 
-// Example demonstrating React TypeScript Setup from Scratch.
 ```
 my-react-app/
 ├── node_modules/

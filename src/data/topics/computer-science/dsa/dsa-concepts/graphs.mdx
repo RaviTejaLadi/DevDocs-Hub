@@ -43,7 +43,6 @@ flowchart LR
 
 ### Code Example
 
-// Basic example showing the core idea.
 ```javascript
 class Graph {
   constructor(isDirected = false) {
@@ -111,7 +110,6 @@ flowchart LR
 - **Weighted**: Road networks (distances between cities), flight routes (costs)
 - **Unweighted**: Social networks (friend connections), web page links
 
-// Basic example showing the core idea.
 ```javascript
 class WeightedGraph {
   constructor() {
@@ -150,7 +148,6 @@ edge between vertex i and j.
 
 ### Syntax/Implementation
 
-// Basic example showing the core idea.
 ```javascript
 // Adjacency List
 const adjacencyList = {
@@ -174,7 +171,6 @@ Think of it like storing contacts in your phone:
 - **Adjacency List**: Each person has a list of their friends
 - **Adjacency Matrix**: A grid showing all possible friendships (marked yes/no)
 
-// Basic example showing the core idea.
 ```javascript
 class AdjacencyListGraph {
   constructor() {
@@ -237,7 +233,6 @@ flowchart TB
   of separation"
 - **DFS**: Maze solving, detecting cycles, topological sorting
 
-// Basic example showing the core idea.
 ```javascript
 class Graph {
   constructor() {
@@ -318,6 +313,7 @@ flowchart LR
 Course prerequisites: You must take Calculus I before Calculus II, and Math
 before Calculus I.
 
+```javascript
 // Kahn's Algorithm (BFS-based)
   topologicalSort() {
     const inDegree = {};
@@ -361,7 +357,6 @@ return result.length === Object.keys(this.adjacencyList).length
       : [];
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
 
 - Trying to use on graphs with cycles
@@ -399,7 +394,6 @@ flowchart LR
     MA ---|4| MC["C"]
     MB ---|2| MD["D"]
   end
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
 
 Connecting cities with minimum cable length, designing efficient network
@@ -501,7 +495,6 @@ if (rootX !== rootY) {
 return mst;
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
 
 - Forgetting that MST only works on connected graphs
@@ -526,7 +519,6 @@ function dijkstra(graph, start) {
   const priorityQueue = new PriorityQueue();
   // Implementation details...
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
 
 - **Dijkstra**: GPS navigation (roads have positive distances)
@@ -659,7 +651,6 @@ class FloydWarshallAlgorithm {
 return dist;
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
 
 - Using Dijkstra with negative weights (gives wrong results)

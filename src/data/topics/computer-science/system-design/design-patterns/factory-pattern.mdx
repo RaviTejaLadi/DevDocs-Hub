@@ -89,7 +89,6 @@ Factories often work with Strategy pattern:
 
 ### 1. Simple Factory 🏪
 
-// Basic example showing the core idea.
 ```javascript
 class ButtonFactory {
   static createButton(type, props) {
@@ -113,7 +112,6 @@ const button = ButtonFactory.createButton('primary', {
 });
 ```
 
-// Basic example showing the core idea.
 ```javascript
 // Abstract Dialog Class
 class Dialog {
@@ -145,7 +143,6 @@ class MacDialog extends Dialog {
 }
 ```
 
-// Basic example showing the core idea.
 ```javascript
 // Abstract Factory Interface
 class UIComponentFactory {
@@ -194,7 +191,6 @@ createModal() {
 
 ### 4. Function-Based Factory 🔧
 
-// Basic example showing the core idea.
 ```javascript
 // Modern JavaScript approach
 const createHttpClient = (type, config) => {
@@ -309,7 +305,6 @@ const apiClient = createHttpClient('axios', {
 
 ### 1. Use Appropriate Factory Type
 
-// Basic example showing the core idea.
 ```javascript
 // Simple cases - use simple factory
 const createLogger = (level) => {
@@ -330,7 +325,6 @@ createButton(props) {
 
 ### 2. Validate Input Parameters ✅
 
-// Basic example showing the core idea.
 ```javascript
 class HttpClientFactory {
   static create(type, config) {
@@ -349,7 +343,6 @@ return this.createClient(type, config);
 
 ### 3. Implement Factory Registration
 
-// Basic example showing the core idea.
 ```javascript
 class ComponentFactory {
   constructor() {
@@ -377,7 +370,6 @@ factory.register('input', (props) => new Input(props));
 
 ### 4. Use Factory for Dependency Injection 💉
 
-// Basic example showing the core idea.
 ```javascript
 class ServiceFactory {
   constructor() {
@@ -405,7 +397,6 @@ serviceFactory.register('cache', () => new CacheService());
 
 ### 5. Make Factories Testable
 
-// Basic example showing the core idea.
 ```javascript
 class UserServiceFactory {
   constructor(dependencies = {}) {
@@ -438,7 +429,6 @@ const userService = factory.createUserService();
 
 ### 3. Inappropriate Usage ❌
 
-// Basic example showing the core idea.
 ```javascript
 // Bad - Factory for simple object creation
 class DateFactory {
@@ -453,7 +443,6 @@ const now = new Date();
 
 ### 4. Ignoring Error Handling 🚫
 
-// Basic example showing the core idea.
 ```javascript
 // Bad - No error handling
 class ComponentFactory {
@@ -475,7 +464,6 @@ class ComponentFactory {
 
 ### 5. Tight Coupling to Implementation 🔗
 
-// Basic example showing the core idea.
 ```javascript
 // Bad - Factory knows too much about implementation
 class DatabaseFactory {
@@ -498,7 +486,6 @@ class DatabaseFactory {
 
 ### React Component Factory ⚛
 
-// Basic example showing the core idea.
 ```javascript
 const createComponent = (type, props) => {
   const components = {
@@ -514,7 +501,6 @@ const Component = components[type];
 
 ### Vue Component Factory 🖼
 
-// Basic example showing the core idea.
 ```javascript
 const ComponentFactory = {
   create(type, props) {
@@ -531,7 +517,6 @@ return components[type] || null;
 
 ### Web Components Factory 🌐
 
-// Basic example showing the core idea.
 ```javascript
 class WebComponentFactory {
   static define(tagName, componentClass) {

@@ -48,7 +48,6 @@ ending in `.sample`.
 To turn a sample hook into a live hook, all you have to do is remove the
 `.sample` extension from the filename and make the file executable.
 
-# Basic example showing the core idea.
 ```bash
 ## Rename the sample pre-commit file to make it active
 mv .git/hooks/pre-commit.sample .git/hooks/pre-commit
@@ -61,9 +60,10 @@ chmod +x .git/hooks/pre-commit
 Inside that file, you can write any shell script you want. Here is a practical
 example of a script that runs a project linter and blocks the commit if the
 linter finds errors:
+```
 
-```bash
 #!/bin/sh
+```
 ## Run the project code linter before completing the commit
 
 echo "🔍 Running code quality checks..."
@@ -85,7 +85,6 @@ In the modern JavaScript ecosystem, developers use a popular package called
 **Husky** to easily manage and share hooks through your standard `package.json`
 file.
 
-// Basic example showing the core idea.
 ```javascript
 // Example Husky configuration inside package.json
 {
@@ -97,6 +96,7 @@ file.
   }
 }
 
+```
 ### Bypassing a Hook
 
 If you are in the middle of a messy experiment and absolutely _must_ commit your
@@ -107,6 +107,7 @@ client-side hooks by adding the `--no-verify` flag to your command:
 // Force a commit through, completely skipping the pre-commit checks
 git commit -m "WIP: Experimental changes" --no-verify
 
+```
 ## Quick Reference
 
 | Area | Revision point |

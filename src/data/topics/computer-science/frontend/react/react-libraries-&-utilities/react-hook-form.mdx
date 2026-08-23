@@ -32,16 +32,16 @@ forms in React using hooks.
 
 ## Installation
 
-# Basic example showing the core idea.
 ```bash
 npm install react-hook-form zod @hookform/resolvers
+```
 ## OR
 yarn add react-hook-form zod @hookform/resolvers
 ```
 
+```
 ### React Hook Form + TypeScript
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -63,7 +63,6 @@ const onSubmit: SubmitHandler<FormValues> = (data) => {
 
 ### React Hook Form + Zod + TypeScript
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -87,7 +86,6 @@ const {
 
 ### 1⃣ Register fields
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <input {...register("name")} />
 <p>{errors.name?.message}</p>
@@ -95,21 +93,18 @@ const {
 
 ### 2⃣ Handle submit
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <form onSubmit={handleSubmit(onSubmit)}>{/* inputs */}</form>
 ```
 
 ### 3⃣ Access validation messages
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <p>{errors.email?.message}</p>
 ```
 
 ## Example: Simple Form Validation
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -145,7 +140,6 @@ return (
 
 ## Example: Nested Objects + Arrays
 
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 const schema = z.object({
   user: z.object({
@@ -168,9 +162,9 @@ const schema = z.object({
 
 <button type="submit">Submit</button>
 </form>
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
 
+```
 ## comprehensive Example
 
 Here's a comprehensive form implementation using React Hook Form and Zod for
@@ -495,7 +489,6 @@ return (
     </div>
   );
 }
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
 
 ## Common Pitfalls
@@ -557,7 +550,6 @@ To use this form, you'll need to install the required dependencies:
 
 ```bash
 npm install react-hook-form @hookform/resolvers zod
-// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
 
 ## Conclusion

@@ -24,18 +24,18 @@ React-Query is a powerful data-fetching library for React applications that:
 
 ### 1. Installation
 
-# Basic example showing the core idea.
 ```bash
 npm install @tanstack/react-query @tanstack/react-query-devtools
+```
 ## or
 yarn add @tanstack/react-query @tanstack/react-query-devtools
 ```
 
+```
 ### 2. Basic Setup
 
 Create a `QueryClientProvider` at the root of your application:
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/App.tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -63,7 +63,6 @@ export default App;
 
 Customize the default behavior:
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -79,7 +78,6 @@ const queryClient = new QueryClient({
 
 ### 4. Basic Query Example
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/Todos.tsx
 import { useQuery } from '@tanstack/react-query';
@@ -126,7 +124,6 @@ export default Todos;
 
 ### 5. Mutations (Creating/Updating Data)
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/AddTodo.tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -190,7 +187,6 @@ export default AddTodo;
 
 ### 6. Paginated Queries
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/PaginatedTodos.tsx
 import { useState } from 'react';
@@ -260,7 +256,6 @@ export default PaginatedTodos;
 
 ### 7. Infinite Queries
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/InfiniteTodos.tsx
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -342,7 +337,6 @@ export default InfiniteTodos;
 1. **Query Keys**: Use structured query keys for better organization and
    invalidation
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
    // Good
    ['todos', { status: 'done', page: 1 }];
@@ -364,7 +358,6 @@ export default InfiniteTodos;
 
 3. **Error Handling**: Create a global error handler
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
    const queryClient = new QueryClient({
      defaultOptions: {
@@ -390,7 +383,6 @@ export default InfiniteTodos;
 
 5. **Prefetching**: Prefetch data for better UX
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
    const queryClient = useQueryClient();
 

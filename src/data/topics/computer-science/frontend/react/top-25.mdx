@@ -11,7 +11,6 @@ or overflow issues.
 
 **Example:**
 
-// Basic example showing the core idea.
 ```javascript
 import ReactDOM from 'react-dom';
 
@@ -29,7 +28,6 @@ const Modal = () => {
 
 In your `index.html` file, you should have:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div id="root"></div>
 <div id="portal-root"></div>
@@ -46,7 +44,6 @@ experience, especially when displaying long data lists.
 
 Here's how you can implement it using the IntersectionObserver API:
 
-// Basic example showing the core idea.
 ```javascript
 import { useEffect, useRef, useState } from 'react';
 
@@ -110,7 +107,6 @@ Here's how you can do that using the useEffect hook.
 
 **Example: Attaching a Scroll Event to the Window**
 
-// Basic example showing the core idea.
 ```javascript
 import { useEffect } from 'react';
 
@@ -173,7 +169,6 @@ has changed.
    or remove elements. With keys, React can identify items accurately and reuse
    existing DOM elements.
 
-// Basic example showing the core idea.
 ```javascript
 // An array of fruit names
 const fruits = ['Apple', 'Banana', 'Mango'];
@@ -323,7 +318,6 @@ when building extensible UI systems.
 | **Returns**  | The result of the function | The function itself                          |
 | **Use Case** | Expensive calculations     | Passing stable callbacks to child components |
 
-// Basic example showing the core idea.
 ```javascript
 // useMemo example
 const sortedList = useMemo(() => {
@@ -344,7 +338,6 @@ const handleClick = useCallback(() => {
 - **Value Persistence:** Store mutable values that don't trigger updates
 - **Previous Value Tracking:** Capture previous state/props
 
-// Basic example showing the core idea.
 ```javascript
 function Timer() {
   const intervalRef = useRef(); // Stores interval ID
@@ -385,7 +378,6 @@ return <div>Count: {count}</div>;
 
 ### Advanced Techniques:
 
-// Basic example showing the core idea.
 ```javascript
 // Preloading components before they're needed
 const Chat = React.lazy(() => import('./Chat'));
@@ -398,7 +390,6 @@ const Chat = React.lazy(() => import('./Chat'));
 
 **A function that takes a component and returns an enhanced component:**
 
-// Basic example showing the core idea.
 ```javascript
 function withLogger(WrappedComponent) {
   return function (props) {
@@ -426,7 +417,6 @@ const EnhancedComponent = withLogger(MyComponent);
 **A technique for sharing code between components using a prop that's a
 function:**
 
-// Basic example showing the core idea.
 ```javascript
 function DataFetcher({ url, children }) {
   const [data, setData] = useState(null);
@@ -464,7 +454,6 @@ leading to messy code. Alternatives include:
 
 1. **Context API** – Best for global values (e.g., theme, user data):
 
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```jsx
    const ThemeContext = React.createContext('light');
 
@@ -496,7 +485,6 @@ const Greeting = React.memo(({ name }) => {
   console.log("Rendered only if 'name' changes!");
   return <p>Hello, {name}</p>;
 });
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 - **Custom Comparison:**
@@ -519,7 +507,6 @@ const Greeting = React.memo(({ name }) => {
 2. **`useLayoutEffect`** – Runs synchronously after DOM mutations (use for
    layout measurements):
 
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```jsx
    useLayoutEffect(() => {
      const height = ref.current.offsetHeight;
@@ -588,7 +575,6 @@ render() {
 <ErrorBoundary>
   <Profile /> {/* Errors here show fallback UI */}
 </ErrorBoundary>;
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 - **Limitations:** Does not catch errors in event handlers or async code.
@@ -631,7 +617,6 @@ class Timer extends React.Component {
     return <div>Timer is running</div>;
   }
 }
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 In functional components, you handle these with `useEffect`:
@@ -644,7 +629,6 @@ useEffect(() => {
 // Cleanup function runs when the component unmounts
   return () => console.log('Cleanup on unmount');
 }, []); // Empty dependency array means this runs only on mount and unmount
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 ## Question 22. What is the difference between Redux, Redux Toolkit, Redux Thunk, and Zustand in ReactJS?
@@ -682,7 +666,6 @@ export const { increment, decrement } = counterSlice.actions;
 
 // Export the reducer to configure the store
 export default counterSlice.reducer;
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 **Zustand example:**
@@ -722,7 +705,6 @@ const PrivateRoute = ({ children }) => {
 // If logged in, render children components; otherwise redirect to login
   return isLoggedIn ? children : <Navigate to="/login" />;
 };
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 Use it like this:
@@ -738,7 +720,6 @@ Use it like this:
     </PrivateRoute>
   }
 />
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 You can extend it for roles:
@@ -758,7 +739,6 @@ const RoleProtectedRoute = ({ children, allowedRoles }) => {
 // If allowed, render the child components
   return children;
 };
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 ## Question 24. Explain React testing. Like Unit-testing, JEST, react-testing-library, etc.
@@ -787,7 +767,6 @@ test('calls onClick when clicked', () => {
 // Assert that the click handler was called exactly once
   expect(onClick).toHaveBeenCalledTimes(1);
 });
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 This tests that clicking the button calls the click handler.
@@ -813,7 +792,6 @@ Next.js is built on React but comes with many features out of the box:
 export default function About() {
   return <h1>About Us</h1>; // Render a heading on the page
 }
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 No router setup needed — the filename becomes the route.

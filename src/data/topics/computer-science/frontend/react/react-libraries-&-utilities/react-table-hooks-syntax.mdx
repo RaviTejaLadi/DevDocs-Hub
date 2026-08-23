@@ -4,7 +4,6 @@
 
 The main hook that creates a table instance.
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const table = useReactTable({
   data: TData[],                // Your array of data
@@ -32,7 +31,6 @@ const table = useReactTable({
 
 #### `getCoreRowModel`
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getCoreRowModel: getCoreRowModel(),
 ```
@@ -43,7 +41,6 @@ getCoreRowModel: getCoreRowModel(),
 
 #### `getSortedRowModel`
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getSortedRowModel: getSortedRowModel(),
 ```
@@ -53,7 +50,6 @@ getSortedRowModel: getSortedRowModel(),
 
 #### `getFilteredRowModel`
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getFilteredRowModel: getFilteredRowModel(),
 ```
@@ -63,7 +59,6 @@ getFilteredRowModel: getFilteredRowModel(),
 
 #### `getPaginationRowModel`
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getPaginationRowModel: getPaginationRowModel(),
 ```
@@ -73,7 +68,6 @@ getPaginationRowModel: getPaginationRowModel(),
 
 #### Sorting State
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -84,7 +78,6 @@ onSortingChange: setSorting,
 
 **Example Usage:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 columnHelper.accessor('age', {
   header: () => 'Age',
@@ -96,7 +89,6 @@ columnHelper.accessor('age', {
 
 #### Filtering State
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -107,7 +99,6 @@ onColumnFiltersChange: setColumnFilters,
 
 **Example Filter Input:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <input
   value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
@@ -117,7 +108,6 @@ onColumnFiltersChange: setColumnFilters,
 
 #### Pagination State
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
   pageIndex: 0,
@@ -131,7 +121,6 @@ onPaginationChange: setPagination,
 
 ### 4. Row Selection Hooks
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [rowSelection, setRowSelection] = useState({});
 
@@ -143,7 +132,6 @@ enableRowSelection: true, // or a function
 
 **Example Column Definition:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 {
   id: 'select',
@@ -164,7 +152,6 @@ enableRowSelection: true, // or a function
 
 ### 5. Column Visibility
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -175,7 +162,6 @@ onColumnVisibilityChange: setColumnVisibility,
 
 **Example Toggle:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <button
   onClick={() => table.toggleAllColumnsVisible(!table.getIsAllColumnsVisible())}
@@ -186,7 +172,6 @@ onColumnVisibilityChange: setColumnVisibility,
 
 ### 6. Expanded Rows
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [expanded, setExpanded] = useState<ExpandedState>({});
 
@@ -198,7 +183,6 @@ getSubRows: row => row.subRows, // if you have nested data
 
 **Example Expandable Column:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 {
   id: 'expander',
@@ -213,7 +197,6 @@ getSubRows: row => row.subRows, // if you have nested data
 
 ### 7. Column Ordering (Drag and Drop)
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnOrder, setColumnOrder] = useState<string[]>();
 
@@ -224,7 +207,6 @@ onColumnOrderChange: setColumnOrder,
 
 ### 8. Global Filtering
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [globalFilter, setGlobalFilter] = useState('');
 
@@ -235,7 +217,6 @@ onGlobalFilterChange: setGlobalFilter,
 
 **Example Search Input:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <input
   value={globalFilter}
@@ -248,7 +229,6 @@ onGlobalFilterChange: setGlobalFilter,
 
 Once you have your table instance, you'll use these frequently:
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 // Table methods
 table.getHeaderGroups();
@@ -271,7 +251,6 @@ row.getIsExpanded();
 
 ### Complete Feature Setup Example
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const table = useReactTable({
   data,

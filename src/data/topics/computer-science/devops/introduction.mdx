@@ -60,7 +60,6 @@ manage permissions, and look at logs is crucial for troubleshooting issues.
 Here are the fundamental commands you will use every single day in a DevOps
 role:
 
-# Basic example showing the core idea.
 ```bash
 ## Check the current directory path
 pwd
@@ -79,8 +78,8 @@ tail -f /var/log/nginx/error.log
 Linux secures files using permissions for the **Owner**, **Group**, and
 **Others**. You will frequently use the `chmod` command to change these
 permissions, especially when making automation scripts executable.
+```
 
-```bash
 ## Grant execution rights to a script file
 chmod +x deploy.sh
 
@@ -116,7 +115,6 @@ them up instantly.
 
 Here is a simple example of how Terraform creates an AWS server using code.
 
-// Example demonstrating Introduction to DevOps.
 ```hcl
 ## Define an AWS EC2 server instance
 resource "aws_instance" "web_server" {
@@ -152,8 +150,8 @@ up more containers? Kubernetes handles all of this automatically.
 
 This configuration file tells Kubernetes to run three identical copies
 (replicas) of an Nginx web server and automatically keep them running.
+```
 
-```yaml
 ## Define a deployment for an Nginx web server
 apiVersion: apps/v1
 kind: Deployment
@@ -174,9 +172,9 @@ spec:
         image: nginx:1.14.2
         ports:
           - containerPort: 80
-// Example demonstrating Introduction to DevOps.
 ```
 
+```
 ## CI/CD Pipelines
 
 CI/CD stands for Continuous Integration and Continuous Deployment. It acts as an
@@ -200,6 +198,7 @@ graph LR
     B --> C[Build Container Image]
     C --> D[Deploy to Production]
 
+```
 ### Popular CI/CD Tools
 
 - **GitHub Actions:** Directly integrated into GitHub repositories.

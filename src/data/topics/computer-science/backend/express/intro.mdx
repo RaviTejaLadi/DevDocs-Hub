@@ -19,7 +19,6 @@ in the Node.js ecosystem.
 
 Here's how to set up a basic Express server:
 
-// Basic example showing the core idea.
 ```javascript
 // 1. Import Express
 const express = require('express');
@@ -44,7 +43,6 @@ app.listen(PORT, () => {
 Middleware functions have access to the request object (`req`), the response
 object (`res`), and the next middleware function in the cycle.
 
-// Basic example showing the core idea.
 ```javascript
 app.use((req, res, next) => {
   console.log('Time:', Date.now());
@@ -57,7 +55,6 @@ app.use((req, res, next) => {
 Express provides methods that correspond to HTTP methods (`get`, `post`, `put`,
 `delete`, etc.)
 
-// Basic example showing the core idea.
 ```javascript
 app.get('/about', (req, res) => {
   res.send('About Page');
@@ -74,7 +71,6 @@ app.post('/users', (req, res) => {
   headers, etc.)
 - `res`: Used to send the HTTP response
 
-// Basic example showing the core idea.
 ```javascript
 app.get('/users/:userId', (req, res) => {
   res.send(`User ID: ${req.params.userId}`);

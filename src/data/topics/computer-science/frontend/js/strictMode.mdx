@@ -13,7 +13,6 @@ language behave more consistently.
 
 ## 🔤 Syntax
 
-// Basic example showing the core idea.
 ```javascript
 'use strict'; // at the top of a script or function
 ```
@@ -22,7 +21,6 @@ You can enable strict mode in:
 
 ### ✅ Entire Script
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 
@@ -31,7 +29,6 @@ let x = 3.14; // valid
 
 ### ✅ Function Scope
 
-// Basic example showing the core idea.
 ```javascript
 function myFunction() {
   'use strict';
@@ -59,7 +56,6 @@ function myFunction() {
 
 ### 🔸 Without Strict Mode
 
-// Basic example showing the core idea.
 ```javascript
 x = 10; // no error, x becomes a global variable
 console.log(x); // 10
@@ -67,7 +63,6 @@ console.log(x); // 10
 
 ### 🔹 With Strict Mode
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 x = 10; // ReferenceError: x is not defined
@@ -75,7 +70,6 @@ x = 10; // ReferenceError: x is not defined
 
 ### 1. ✅ Prevent Accidental Globals
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 x = 3.14; // ❌ ReferenceError
@@ -83,7 +77,6 @@ x = 3.14; // ❌ ReferenceError
 
 ### 2. ✅ Catch Silent Failures
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 const obj = {};
@@ -94,7 +87,6 @@ obj.name = 'Kumar'; // ❌ TypeError: Cannot assign to read only property
 
 ### 3. ✅ Disallow Duplicates
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 function sum(a, a, c) {
@@ -105,7 +97,6 @@ function sum(a, a, c) {
 
 ### 4. ✅ `this` is undefined in functions
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 function showThis() {
@@ -116,7 +107,6 @@ showThis();
 
 ### 5. ✅ Invalid delete usage
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 let x = 5;
@@ -132,7 +122,6 @@ delete x; // ❌ SyntaxError
 
 ## Auto-Strict (ES6 Modules)
 
-// Example demonstrating JavaScript Strict Mode.
 ```js
 // modules are strict by default
 export function test() {

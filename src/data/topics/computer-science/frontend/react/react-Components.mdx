@@ -16,7 +16,6 @@ Legacy approach using ES6 classes (still supported but less common).
 
 #### Functional Component Syntax
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Basic functional component
 function ComponentName() {
@@ -42,7 +41,6 @@ const ComponentName = () => <h1>Hello, World!</h1>;
 
 #### Class Component Syntax
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import React, { Component } from 'react';
 
@@ -71,7 +69,6 @@ class ComponentName extends Component {
 
 #### Simple Functional Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function Welcome() {
   return <h1>Welcome to React!</h1>;
@@ -80,7 +77,6 @@ function Welcome() {
 
 #### Component with State (Using Hooks)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
@@ -98,7 +94,6 @@ return (
 
 #### Component with Multiple Elements
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function UserProfile() {
   return (
@@ -129,7 +124,6 @@ accepting different data inputs.
 
 #### Passing Props (Parent Component)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Passing different types of props
 <ChildComponent
@@ -144,7 +138,6 @@ accepting different data inputs.
 
 ##### Functional Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Method 1: Destructuring in parameters
 function ChildComponent({ name, age, isActive }) {
@@ -171,7 +164,6 @@ function ChildComponent(props) {
 
 ##### Class Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 class ChildComponent extends React.Component {
   render() {
@@ -189,7 +181,6 @@ class ChildComponent extends React.Component {
 
 #### Default Props
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Functional component with default props
 function Greeting({ name = 'Guest', message = 'Welcome!' }) {
@@ -219,7 +210,6 @@ render() {
 
 #### Props Validation (PropTypes)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import PropTypes from 'prop-types';
 
@@ -244,7 +234,6 @@ UserCard.propTypes = {
 
 #### Basic Props Usage
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function App() {
@@ -278,7 +267,6 @@ function PersonCard({ name, occupation, location }) {
 
 #### Passing Functions as Props
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function TodoApp() {
@@ -360,7 +348,6 @@ function TodoItem({ todo, onToggle }) {
 
 #### Passing Complex Objects
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function Dashboard() {
@@ -426,7 +413,6 @@ function StatItem({ label, value }) {
 Components can be composed together to build complex UIs while maintaining
 reusability through props.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function App() {
   const products = [
@@ -499,7 +485,6 @@ function Footer() {
 
 Each component should have one clear purpose.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good: Focused component
 function SearchInput({ onSearch, placeholder }) {
@@ -526,7 +511,6 @@ function SearchInputWithResultsAndPagination() {
 
 Use clear, descriptive names for components.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good
 function UserProfileCard({ user }) {
@@ -549,7 +533,6 @@ function Filter({ onFilter }) {
 
 Break down large components into smaller, manageable pieces.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good: Broken down into smaller components
 function BlogPost({ post }) {
@@ -576,7 +559,6 @@ function PostHeader({ title, author, date }) {
 
 Use destructuring for cleaner code.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good
 function UserCard({ name, email, avatar, isOnline }) {
@@ -607,7 +589,6 @@ function UserCard(props) {
 
 Provide sensible defaults to make components more robust.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function Button({
   text = 'Click me',
@@ -632,6 +613,7 @@ function Button({
 
 Use PropTypes for runtime type checking in development.
 
+```javascript
 function ProductCard({ product, onAddToCart }) {
   return (
     <div>
@@ -650,7 +632,6 @@ ProductCard.propTypes = {
   }).isRequired,
   onAddToCart: PropTypes.func.isRequired,
 };
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 #### 4. Avoid Prop Drilling
@@ -689,7 +670,6 @@ function UserMenu() {
   const user = useContext(UserContext);
   return <div>Welcome, {user.name}!</div>;
 }
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 #### 1. Memoization
@@ -714,7 +694,6 @@ return (
     </div>
   );
 });
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 #### 2. Callback Optimization
@@ -742,7 +721,6 @@ return (
     </div>
   );
 }
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 This comprehensive guide covers the fundamental concepts of React Components and

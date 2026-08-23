@@ -13,7 +13,6 @@ A pseudo-class targets an element in a particular state.
 
 Syntax:
 
-/* Basic example showing the core idea. */
 ```css
 selector:pseudo-class {
   property: value;
@@ -22,7 +21,6 @@ selector:pseudo-class {
 
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 button:hover {
   background-color: blue;
@@ -35,14 +33,12 @@ When the user hovers over the button, the background changes.
 
 Applies styles when the mouse is over an element.
 
-/* Basic example showing the core idea. */
 ```css
 a:hover {
   color: red;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <a href="#">Hover Me</a>
 ```
@@ -51,7 +47,6 @@ a:hover {
 
 Applies while an element is being clicked.
 
-/* Basic example showing the core idea. */
 ```css
 button:active {
   transform: scale(0.95);
@@ -62,7 +57,6 @@ button:active {
 
 Applies when an input receives focus.
 
-/* Basic example showing the core idea. */
 ```css
 input:focus {
   border-color: blue;
@@ -70,7 +64,6 @@ input:focus {
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input type="text" placeholder="Enter Name" />
 ```
@@ -79,14 +72,12 @@ input:focus {
 
 Targets checked checkboxes and radio buttons.
 
-/* Basic example showing the core idea. */
 ```css
 input:checked {
   accent-color: green;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input type="checkbox" checked />
 ```
@@ -95,7 +86,6 @@ input:checked {
 
 Targets disabled form controls.
 
-/* Basic example showing the core idea. */
 ```css
 button:disabled {
   opacity: 0.5;
@@ -107,14 +97,12 @@ button:disabled {
 
 Selects the first child element.
 
-/* Basic example showing the core idea. */
 ```css
 li:first-child {
   font-weight: bold;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <ul>
   <li>First</li>
@@ -126,7 +114,6 @@ li:first-child {
 
 Selects the last child element.
 
-/* Basic example showing the core idea. */
 ```css
 li:last-child {
   color: red;
@@ -137,7 +124,6 @@ li:last-child {
 
 Selects elements based on position.
 
-/* Basic example showing the core idea. */
 ```css
 li:nth-child(2) {
   color: blue;
@@ -146,7 +132,6 @@ li:nth-child(2) {
 
 Even rows:
 
-/* Basic example showing the core idea. */
 ```css
 tr:nth-child(even) {
   background: #f5f5f5;
@@ -155,7 +140,6 @@ tr:nth-child(even) {
 
 Odd rows:
 
-/* Basic example showing the core idea. */
 ```css
 tr:nth-child(odd) {
   background: #eee;
@@ -166,7 +150,6 @@ tr:nth-child(odd) {
 
 Selects everything except matching elements.
 
-/* Basic example showing the core idea. */
 ```css
 p:not(.highlight) {
   color: gray;
@@ -177,7 +160,6 @@ p:not(.highlight) {
 
 Pseudo-elements style a specific part of an element.
 
-/* Basic example showing the core idea. */
 ```css
 selector::pseudo-element {
   property: value;
@@ -190,21 +172,18 @@ Notice the double colon `::`.
 
 Adds content before an element.
 
-/* Basic example showing the core idea. */
 ```css
 .title::before {
   content: '🔥 ';
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <h2 class="title">Trending</h2>
 ```
 
 Output:
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
 ```text
 🔥 Trending
 ```
@@ -213,14 +192,12 @@ Output:
 
 Adds content after an element.
 
-/* Basic example showing the core idea. */
 ```css
 .title::after {
   content: ' 🚀';
 }
 ```
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
 ```text
 Trending 🚀
 ```
@@ -229,7 +206,6 @@ Trending 🚀
 
 Styles the first letter.
 
-/* Basic example showing the core idea. */
 ```css
 p::first-letter {
   font-size: 2rem;
@@ -241,7 +217,6 @@ p::first-letter {
 
 Styles only the first line.
 
-/* Basic example showing the core idea. */
 ```css
 p::first-line {
   color: blue;
@@ -252,7 +227,6 @@ p::first-line {
 
 Styles highlighted text.
 
-/* Basic example showing the core idea. */
 ```css
 ::selection {
   background: yellow;
@@ -264,7 +238,6 @@ Styles highlighted text.
 
 Styles placeholder text.
 
-/* Basic example showing the core idea. */
 ```css
 input::placeholder {
   color: gray;
@@ -273,12 +246,10 @@ input::placeholder {
 
 ## Real-World Card Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">New Product</div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .card::before {
   content: '🆕 ';
@@ -298,7 +269,6 @@ No extra HTML required.
 
 ## Combining Pseudo-classes and Pseudo-elements
 
-/* Basic example showing the core idea. */
 ```css
 button:hover::after {
   content: ' 🚀';
@@ -307,19 +277,16 @@ button:hover::after {
 
 When hovering:
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
 ```text
 Submit 🚀
 ```
 
 ## Useful Form Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input type="email" required />
 ```
 
-/* Basic example showing the core idea. */
 ```css
 input:focus {
   border-color: blue;
@@ -340,7 +307,6 @@ This provides instant validation feedback.
 
 Reduces repetition.
 
-/* Basic example showing the core idea. */
 ```css
 :is(h1, h2, h3) {
   color: navy;
@@ -349,7 +315,6 @@ Reduces repetition.
 
 Instead of:
 
-/* Basic example showing the core idea. */
 ```css
 h1,
 h2,
@@ -362,7 +327,6 @@ h3 {
 
 Like `:is()` but adds zero specificity.
 
-/* Basic example showing the core idea. */
 ```css
 :where(.card .title) {
   margin: 0;
@@ -375,7 +339,6 @@ Useful in large projects.
 
 Parent selector.
 
-/* Basic example showing the core idea. */
 ```css
 .card:has(img) {
   padding: 20px;

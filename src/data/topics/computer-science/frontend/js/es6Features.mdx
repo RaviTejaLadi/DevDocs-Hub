@@ -12,7 +12,6 @@
 
 ### 🔤 Syntax
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 let variableName = value;
 const constantName = value;
@@ -20,7 +19,6 @@ const constantName = value;
 
 ### 🧑‍💻 Usage & Example
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 let name = 'John';
 name = 'Doe'; // allowed
@@ -33,12 +31,10 @@ const age = 30;
 
 Shorter syntax for writing functions. Inherits `this` from parent scope.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const functionName = (param1, param2) => expression;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 // Regular Function
 function add(a, b) {
@@ -55,12 +51,10 @@ console.log(add(2, 3)); // 5
 
 String literals allowing embedded expressions and multi-line strings.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 `string text ${expression}`;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const name = 'Ravi';
 const greeting = `Hello, ${name}!`;
@@ -72,13 +66,11 @@ console.log(greeting); // Hello, Ravi!
 
 Extract values from arrays or objects into variables.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const [a, b] = array;
 const { x, y } = object;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 // Array Destructuring
 const nums = [1, 2];
@@ -93,12 +85,10 @@ const { name, age } = person;
 
 Set default values for function parameters.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 function func(param = defaultValue) { ... }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 function greet(name = 'Guest') {
   console.log(`Hello, ${name}`);
@@ -111,12 +101,10 @@ greet(); // Hello, Guest
 
 Combines multiple arguments into a single array.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 function func(...args) {}
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 function sum(...numbers) {
   return numbers.reduce((a, b) => a + b);
@@ -129,12 +117,10 @@ console.log(sum(1, 2, 3)); // 6
 
 Expands arrays or objects into individual elements.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 [...array], { ...object };
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const arr1 = [1, 2];
 const arr2 = [...arr1, 3]; // [1, 2, 3]
@@ -147,13 +133,11 @@ const obj2 = { ...obj1, b: 2 }; // { a: 1, b: 2 }
 
 Shorthand syntax for object properties and methods.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const name = "Bob";
 const user = { name, greet() { ... } };
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const name = 'Bob';
 const user = {
@@ -168,7 +152,6 @@ const user = {
 
 ES6 introduced class syntax for object-oriented programming.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 class ClassName {
   constructor() {}
@@ -176,7 +159,6 @@ class ClassName {
 }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 class Person {
   constructor(name) {
@@ -196,12 +178,10 @@ p.greet(); // Hello, Ravi
 
 Handle asynchronous operations in a more manageable way.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 new Promise((resolve, reject) => { ... });
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const fetchData = () =>
   new Promise((resolve, reject) => {
@@ -215,7 +195,6 @@ fetchData().then(console.log); // Data loaded
 
 ES6 supports modular JavaScript with `import` and `export`.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 // file.js
 export const name = 'Ravi';
@@ -224,7 +203,6 @@ export const name = 'Ravi';
 import { name } from './file.js';
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 // utils.js
 export function greet(name) {
@@ -240,13 +218,11 @@ console.log(greet('Ravi'));
 
 Iterates over iterable objects (arrays, strings, etc.).
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 for (let value of iterable) {
 }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const arr = [10, 20, 30];
 
@@ -259,12 +235,10 @@ for (let num of arr) {
 
 A unique and immutable primitive value.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const sym = Symbol('description');
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const id = Symbol('id');
 const user = {
@@ -280,13 +254,11 @@ console.log(user[id]); // 123
 - **Map**: Key-value pairs with any type of key.
 - **Set**: Collection of unique values.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const map = new Map();
 const set = new Set();
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const map = new Map();
 map.set('key', 'value');
@@ -300,12 +272,10 @@ set.add(1); // Won't be added again
 
 Copies values from source to target object.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 Object.assign(target, ...sources);
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 const target = { a: 1 };
 const source = { b: 2 };

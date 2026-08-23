@@ -12,7 +12,6 @@ access to them **even after the outer function has returned**.
 
 ## 2. Syntax
 
-// Basic example showing the core idea.
 ```javascript
 function outerFunction() {
   let outerVariable = 'I am from outer scope';
@@ -31,7 +30,6 @@ When `outerFunction()` is called, it returns `innerFunction`, but
 `innerFunction` **still retains access** to `outerVariable` even after
 `outerFunction` has finished executing.
 
-// Basic example showing the core idea.
 ```javascript
 const closureFunc = outerFunction();
 closureFunc(); // Output: I am from outer scope
@@ -46,7 +44,6 @@ closureFunc(); // Output: I am from outer scope
 
 ### ✅ Basic Closure
 
-// Basic example showing the core idea.
 ```javascript
 function greet(name) {
   return function (message) {
@@ -60,7 +57,6 @@ greetJohn('Hello'); // Output: Hello, John
 
 ### 💾 Counter Using Closure (State Preservation)
 
-// Basic example showing the core idea.
 ```javascript
 function createCounter() {
   let count = 0;
@@ -77,7 +73,6 @@ counter(); // 2
 
 ### Data Encapsulation with Closures
 
-// Basic example showing the core idea.
 ```javascript
 function secretHolder(secret) {
   return {
@@ -93,7 +88,6 @@ console.log(holder.getSecret()); // Output: Hidden info
 
 #### ❌ Incorrect (Var has function scope)
 
-// Basic example showing the core idea.
 ```javascript
 for (var i = 0; i < 3; i++) {
   setTimeout(function () {
@@ -104,7 +98,6 @@ for (var i = 0; i < 3; i++) {
 
 #### ✅ Fixed Using Closure
 
-// Basic example showing the core idea.
 ```javascript
 for (var i = 0; i < 3; i++) {
   (function (index) {

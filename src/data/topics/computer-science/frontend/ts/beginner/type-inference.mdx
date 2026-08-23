@@ -6,12 +6,10 @@ TypeScript automatically detects the type.
 
 ## Example
 
-// Example demonstrating Type Inference.
 ```ts
 let username = 'Ravi'; // inferred as string
 ```
 
-// Example demonstrating Type Inference.
 ```ts
 let count = 10; // inferred as number
 ```
@@ -33,7 +31,6 @@ often check if you know where inference fails.
 
 ## Pitfalls
 
-// Example demonstrating Type Inference.
 ```ts
 const items = []; // inferred as any[] (or never[] depending on context)
 items.push('A');
@@ -41,7 +38,6 @@ items.push('A');
 
 Prefer:
 
-// Example demonstrating Type Inference.
 ```ts
 const items: string[] = [];
 ```

@@ -12,7 +12,6 @@ To give Git control over a folder, you must initialize it. This creates a hidden
 folder named `.git` inside your project directory. This hidden folder is your
 **Repository**—the database where Git tracks every change.
 
-# Basic example showing the core idea.
 ```bash
 // Turn your current directory into a Git repository
 git init
@@ -44,6 +43,7 @@ graph LR
     C2 --> C3[Commit 3: Fix Button Bug]
     style C3 fill:#4CAF50,stroke:#333,stroke-width:2px
 
+```
 ## 💾 Saving Your First Commit (`git commit`)
 
 Once you have added files to your staging area, you use the `git commit` command
@@ -59,11 +59,12 @@ git commit -m "feat: add user login form component"
 If you ever want to check your history of saved commits later, you can view the
 chronological timeline by running:
 
-# Basic example showing the core idea.
+```
 ```bash
 // View your repository's commit history
 git log
 
+```
 ## Quick Reference
 
 | Area | Revision point |

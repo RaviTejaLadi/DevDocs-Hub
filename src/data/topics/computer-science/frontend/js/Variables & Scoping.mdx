@@ -13,7 +13,6 @@
 
 #### `var` Declaration
 
-// Basic example showing the core idea.
 ```javascript
 function varExample() {
   console.log(x); // undefined (hoisted)
@@ -33,7 +32,6 @@ function varScope() {
 
 #### `let` Declaration
 
-// Basic example showing the core idea.
 ```javascript
 function letExample() {
   // console.log(x); // ReferenceError: Cannot access 'x' before initialization
@@ -54,7 +52,6 @@ function letScope() {
 
 #### `const` Declaration
 
-// Basic example showing the core idea.
 ```javascript
 function constExample() {
   // console.log(x); // ReferenceError: Cannot access 'x' before initialization
@@ -83,7 +80,6 @@ arr.push(4); // Allowed
 
 #### `var` Hoisting
 
-// Basic example showing the core idea.
 ```javascript
 console.log(x); // undefined (not ReferenceError)
 var x = 5;
@@ -96,7 +92,6 @@ x = 5;
 
 #### `let`/`const` Hoisting with TDZ
 
-// Basic example showing the core idea.
 ```javascript
 console.log(y); // ReferenceError: Cannot access 'y' before initialization
 let y = 10;
@@ -109,7 +104,6 @@ const z = 20;
 
 #### Function Hoisting
 
-// Basic example showing the core idea.
 ```javascript
 // Function declarations are fully hoisted
 console.log(myFunc()); // "Hello!"
@@ -137,7 +131,6 @@ var myFuncExpr = function () {
 
 #### Global Scope
 
-// Basic example showing the core idea.
 ```javascript
 var globalVar = "I'm global";
 let globalLet = "I'm also global";
@@ -156,7 +149,6 @@ console.log(globalConst); // Accessible
 
 #### Function Scope
 
-// Basic example showing the core idea.
 ```javascript
 function functionScope() {
   var functionVar = 'Function scoped';
@@ -178,7 +170,6 @@ functionScope();
 
 #### Block Scope
 
-// Basic example showing the core idea.
 ```javascript
 if (true) {
   var blockVar = 'Not block scoped';
@@ -215,7 +206,6 @@ for (let i = 0; i < 3; i++) {
 
 ### 🔁 Loop Variable Issue with `var`
 
-// Basic example showing the core idea.
 ```javascript
 // Problem with var
 for (var i = 0; i < 3; i++) {
@@ -230,7 +220,6 @@ for (let i = 0; i < 3; i++) {
 
 ### ⏳ Temporal Dead Zone Confusion
 
-// Basic example showing the core idea.
 ```javascript
 function tdz() {
   console.log(typeof x); // ReferenceError (not "undefined")

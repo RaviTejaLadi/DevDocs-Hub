@@ -28,7 +28,6 @@ Node.js, and Dockerized applications.
 | `sudo systemctl reload nginx`  | Reload config         |
 | `sudo systemctl status nginx`  | Check status          |
 
-# Basic example showing the core idea.
 ```bash
 ## Validate configuration
 sudo nginx -t
@@ -48,7 +47,6 @@ sudo nginx -t
 
 ## Basic Configuration Structure
 
-// Example demonstrating Nginx.
 ```nginx
 events {}
 
@@ -67,7 +65,6 @@ location / {
 
 Equivalent of Apache Virtual Host.
 
-// Example demonstrating Nginx.
 ```nginx
 server {
     listen 80;
@@ -91,22 +88,18 @@ index index.html;
 
 ## Server Names
 
-// Example demonstrating Nginx.
 ```nginx
 server_name example.com;
 ```
 
-// Example demonstrating Nginx.
 ```nginx
 server_name www.example.com;
 ```
 
-// Example demonstrating Nginx.
 ```nginx
 server_name *.example.com;
 ```
 
-// Example demonstrating Nginx.
 ```nginx
 server_name _;
 ```
@@ -115,21 +108,18 @@ Catch-all server.
 
 ## Root Directory
 
-// Example demonstrating Nginx.
 ```nginx
 root /var/www/html;
 ```
 
 ## Default Index File
 
-// Example demonstrating Nginx.
 ```nginx
 index index.html index.htm;
 ```
 
 ## Exact Match
 
-// Example demonstrating Nginx.
 ```nginx
 location = /login {
 }
@@ -137,14 +127,12 @@ location = /login {
 
 Only matches:
 
-// Example demonstrating Nginx.
 ```text
 /login
 ```
 
 ## Prefix Match
 
-// Example demonstrating Nginx.
 ```nginx
 location /api {
 }
@@ -152,7 +140,6 @@ location /api {
 
 Matches:
 
-// Example demonstrating Nginx.
 ```text
 /api
 /api/users
@@ -161,13 +148,11 @@ Matches:
 
 ## Regex Match
 
-// Example demonstrating Nginx.
 ```nginx
 location ~ \.php$ {
 }
 ```
 
-// Example demonstrating Nginx.
 ```text
 index.php
 user.php
@@ -181,9 +166,9 @@ location / {
         try_files $uri $uri/ =404;
     }
 }
-// Example demonstrating Nginx.
 ```
 
+```
 ## React SPA Deployment
 
 root /var/www/react-app/build;
@@ -196,15 +181,16 @@ location / {
 
 Fixes refresh issues.
 
+```
 ## Next.js Reverse Proxy
 
 location / {
         proxy_pass http://localhost:3000;
     }
 }
-// Example demonstrating Nginx.
 ```
 
+```
 ## Node.js Reverse Proxy
 
 server_name api.example.com;
@@ -215,9 +201,9 @@ location / {
 }
 ```
 
+```
 ## Reverse Proxy Headers
 
-// Example demonstrating Nginx.
 ```nginx
 location / {
     proxy_pass http://localhost:3000;
@@ -234,7 +220,6 @@ proxy_set_header X-Forwarded-Proto $scheme;
 
 ## Load Balancing
 
-// Example demonstrating Nginx.
 ```nginx
 upstream backend {
     server 127.0.0.1:3000;
@@ -243,7 +228,6 @@ upstream backend {
 }
 ```
 
-// Example demonstrating Nginx.
 ```nginx
 server {
     location / {
@@ -263,7 +247,6 @@ server {
 
 ## Least Connections
 
-// Example demonstrating Nginx.
 ```nginx
 upstream backend {
     least_conn;
@@ -275,7 +258,6 @@ server app1:3000;
 
 ## HTTPS Configuration
 
-// Example demonstrating Nginx.
 ```nginx
 server {
     listen 443 ssl;
@@ -290,14 +272,13 @@ ssl_certificate_key /etc/ssl/key.pem;
 
 return 301 https://$host$request_uri;
 }
-// Example demonstrating Nginx.
 ```
 
+```
 ## SSL Best Practice
 
 ```nginx
 ssl_protocols TLSv1.2 TLSv1.3;
-// Example demonstrating Nginx.
 ```
 
 ## Gzip Compression
@@ -310,7 +291,6 @@ text/plain
 text/css
 application/json
 application/javascript;
-// Example demonstrating Nginx.
 ```
 
 ## Caching Static Assets
@@ -321,41 +301,35 @@ location ~* \.(js|css|png|jpg|jpeg|svg)$ {
 
 add_header Cache-Control "public";
 }
-// Example demonstrating Nginx.
 ```
 
 ## Custom Error Pages
 
 ```nginx
 error_page 404 /404.html;
-// Example demonstrating Nginx.
 ```
 
 ```nginx
 location = /404.html {
 }
-// Example demonstrating Nginx.
 ```
 
 ## Access Logs
 
 ```nginx
 access_log /var/log/nginx/access.log;
-// Example demonstrating Nginx.
 ```
 
 ## Error Logs
 
 ```nginx
 error_log /var/log/nginx/error.log;
-// Example demonstrating Nginx.
 ```
 
 ## Disable Logs
 
 ```nginx
 access_log off;
-// Example demonstrating Nginx.
 ```
 
 ## Basic Authentication
@@ -364,7 +338,6 @@ Generate password:
 
 ```bash
 htpasswd -c /etc/nginx/.htpasswd admin
-// Example demonstrating Nginx.
 ```
 
 Configuration:
@@ -375,7 +348,6 @@ location /admin {
 
 auth_basic_user_file /etc/nginx/.htpasswd;
 }
-// Example demonstrating Nginx.
 ```
 
 ## Create Zone
@@ -385,7 +357,6 @@ limit_req_zone
 $binary_remote_addr
 zone=api_limit:10m
 rate=10r/s;
-// Example demonstrating Nginx.
 ```
 
 ## Apply Limit
@@ -394,14 +365,12 @@ rate=10r/s;
 location /api {
     limit_req zone=api_limit;
 }
-// Example demonstrating Nginx.
 ```
 
 ## File Upload Limit
 
 ```nginx
 client_max_body_size 100M;
-// Example demonstrating Nginx.
 ```
 
 ## CORS
@@ -415,7 +384,6 @@ add_header Access-Control-Allow-Methods "GET,POST,PUT,DELETE";
 
 add_header Access-Control-Allow-Headers "*";
 }
-// Example demonstrating Nginx.
 ```
 
 ## Redirect URL
@@ -424,14 +392,12 @@ add_header Access-Control-Allow-Headers "*";
 location /old {
     return 301 /new;
 }
-// Example demonstrating Nginx.
 ```
 
 ## Rewrite URL
 
 ```nginx
 rewrite ^/users/(.*)$ /profile/$1 permanent;
-// Example demonstrating Nginx.
 ```
 
 ## Security Headers
@@ -442,7 +408,6 @@ add_header X-Frame-Options SAMEORIGIN;
 add_header X-Content-Type-Options nosniff;
 
 add_header X-XSS-Protection "1; mode=block";
-// Example demonstrating Nginx.
 ```
 
 ## Block Access To Files
@@ -451,7 +416,6 @@ add_header X-XSS-Protection "1; mode=block";
 location ~ /\. {
     deny all;
 }
-// Example demonstrating Nginx.
 ```
 
 Protects:
@@ -460,7 +424,6 @@ Protects:
 .env
 .git
 .htaccess
-// Example demonstrating Nginx.
 ```
 
 ### Dockerfile
@@ -469,7 +432,6 @@ Protects:
 FROM nginx:alpine
 
 COPY dist /usr/share/nginx/html
-// Example demonstrating Nginx.
 ```
 
 ## Docker Compose
@@ -480,7 +442,6 @@ services:
     image: nginx
     ports:
       - '80:80'
-// Example demonstrating Nginx.
 ```
 
 ## Common Variables
@@ -498,26 +459,22 @@ services:
 
 ```bash
 nginx -t
-// Example demonstrating Nginx.
 ```
 
 ## Reload Config
 
 ```bash
 sudo systemctl reload nginx
-// Example demonstrating Nginx.
 ```
 
 ## View Logs
 
 ```bash
 tail -f /var/log/nginx/error.log
-// Example demonstrating Nginx.
 ```
 
 ```bash
 tail -f /var/log/nginx/access.log
-// Example demonstrating Nginx.
 ```
 
 ## Nginx for Next.js Production
@@ -530,6 +487,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
 
+```
 ## Nginx for React Build
 
 root /var/www/react-app;

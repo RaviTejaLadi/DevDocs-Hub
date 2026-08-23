@@ -12,7 +12,6 @@ outside its container.
 
 By default, content can extend outside an element's boundaries.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="box">
   This is a very long text that will overflow the container because it is larger
@@ -20,7 +19,6 @@ By default, content can extend outside an element's boundaries.
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   width: 200px;
@@ -35,7 +33,6 @@ The content may spill outside the box.
 
 ## The overflow Property
 
-/* Basic example showing the core idea. */
 ```css
 overflow: value;
 ```
@@ -53,7 +50,6 @@ Common values:
 
 Default behavior.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: visible;
@@ -62,7 +58,6 @@ Default behavior.
 
 Content extends beyond the container.
 
-// Example demonstrating 📜 Overflow & Scroll.
 ```text
 ┌─────────┐
 │ Content │
@@ -75,7 +70,6 @@ More content outside
 
 Hides overflowing content.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: hidden;
@@ -84,7 +78,6 @@ Hides overflowing content.
 
 Only visible content remains.
 
-// Example demonstrating 📜 Overflow & Scroll.
 ```text
 ┌─────────┐
 │ Content │
@@ -98,7 +91,6 @@ Extra content is clipped.
 
 Always displays scrollbars.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: scroll;
@@ -111,7 +103,6 @@ Even if content fits, scrollbars remain visible.
 
 Shows scrollbars only when necessary.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: auto;
@@ -124,7 +115,6 @@ Most commonly used option.
 
 Control horizontal and vertical scrolling separately.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow-x: scroll;
@@ -134,14 +124,12 @@ Control horizontal and vertical scrolling separately.
 
 ## Horizontal Scroll Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="container">
   <div class="wide-content">Very wide content...</div>
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 300px;
@@ -161,7 +149,6 @@ Long text often needs truncation.
 
 ## text-overflow: ellipsis
 
-/* Basic example showing the core idea. */
 ```css
 .text {
   width: 200px;
@@ -171,19 +158,16 @@ Long text often needs truncation.
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p class="text">This is a very long title that will not fit.</p>
 ```
 
-// Example demonstrating 📜 Overflow & Scroll.
 ```text
 This is a very long...
 ```
 
 ## 📄 Multi-line Text Truncation
 
-/* Basic example showing the core idea. */
 ```css
 .description {
   display: -webkit-box;
@@ -202,7 +186,6 @@ Useful for cards and blog previews.
 
 Modern browsers allow scrollbar styling.
 
-/* Basic example showing the core idea. */
 ```css
 ::-webkit-scrollbar {
   width: 10px;
@@ -223,7 +206,6 @@ Customized scrollbar appearance.
 
 Creates smooth scrolling.
 
-/* Basic example showing the core idea. */
 ```css
 html {
   scroll-behavior: smooth;
@@ -232,7 +214,6 @@ html {
 
 ## Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <a href="#section">Go to Section</a>
 
@@ -243,7 +224,6 @@ The page scrolls smoothly.
 
 ## Sticky Elements with Scrolling
 
-/* Basic example showing the core idea. */
 ```css
 .header {
   position: sticky;
@@ -263,7 +243,6 @@ Common uses:
 
 Creates app-like scrolling experiences.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   scroll-snap-type: y mandatory;
@@ -286,7 +265,6 @@ Perfect for:
 
 Useful with sticky headers.
 
-/* Basic example showing the core idea. */
 ```css
 html {
   scroll-padding-top: 80px;
@@ -301,7 +279,6 @@ Avoid nesting too many scrollable containers.
 
 ❌ Bad
 
-/* Basic example showing the core idea. */
 ```css
 .parent {
   overflow: auto;
@@ -316,14 +293,12 @@ Can create confusing scroll behavior.
 
 ## Real-World Card Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">
   <p>Long product description...</p>
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   height: 150px;
@@ -337,7 +312,6 @@ Users can scroll only inside the card.
 
 Enable momentum scrolling on iOS.
 
-/* Basic example showing the core idea. */
 ```css
 .scroll-area {
   -webkit-overflow-scrolling: touch;
@@ -348,7 +322,6 @@ Provides smoother scrolling.
 
 ## Quick Cheat Sheet
 
-/* Basic example showing the core idea. */
 ```css
 overflow: visible;
 overflow: hidden;

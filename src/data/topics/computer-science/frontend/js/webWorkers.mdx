@@ -13,7 +13,6 @@ enhancing performance and responsiveness—especially for CPU-intensive tasks.
 
 ### Main Thread (main.js)
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 const worker = new Worker('worker.js');
 
@@ -26,7 +25,6 @@ worker.onmessage = function (event) {
 
 ### Worker Thread (worker.js)
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 onmessage = function (event) {
   console.log('Message from main thread:', event.data);
@@ -47,7 +45,6 @@ onmessage = function (event) {
 
 ### 📁 File Structure
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 index.html
 main.js
@@ -56,7 +53,6 @@ worker.js
 
 ### 🧱 worker.js
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 // Heavy computation logic
 onmessage = function (e) {
@@ -80,9 +76,9 @@ worker.onmessage = function (e) {
 worker.onerror = function (e) {
   console.error('Worker Error:', e);
 };
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
+```
 ### 📄 index.html
 
 ```html
@@ -95,7 +91,6 @@ worker.onerror = function (e) {
     <script src="main.js"></script>
   </body>
 </html>
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
 ## 🧷 Methods & Properties
@@ -130,7 +125,6 @@ environments**, making them safe for parallel operations.
 
 ```js
 worker.terminate(); // Immediately stops the worker
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
 ## 📚 Real Use Cases
@@ -148,7 +142,6 @@ Main Thread               Web Worker
     │ --- postMessage() --->  │
     │                         │
     │ <-- onmessage() ------  │
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
 ## 🧼 Cleanup & Best Practices
@@ -171,7 +164,6 @@ const blob = new Blob([code], { type: 'application/javascript' });
 const worker = new Worker(URL.createObjectURL(blob));
 
 worker.postMessage(5); // → 10
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
 ## Quick Reference

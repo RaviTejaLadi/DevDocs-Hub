@@ -28,13 +28,13 @@ graph TD
   server.
 - `df -h`: Displays available disk space in a human-readable format.
 
-# Basic example showing the core idea.
 ```bash
 // Check system resource usage and memory stats
 free -m
 
 ---
 
+```
 ### 📜 Infrastructure as Code (IaC)
 
 Infrastructure as Code (IaC) lets you define and manage your cloud resources
@@ -50,6 +50,7 @@ graph LR
     A[Code: main.tf] --> B[IaC Tool: Terraform]
     B --> C[Cloud Provider: AWS/Azure/GCP]
 
+```
 #### Why Use IaC?
 
 - **Speed:** Provision an entire data center in minutes.
@@ -57,7 +58,6 @@ graph LR
   environments.
 - **Version Control:** Track infrastructure changes using Git history.
 
-// Example demonstrating Linux for DevOps.
 ```hcl
 // Define an AWS EC2 instance using Terraform
 resource "aws_instance" "web_server" {
@@ -69,6 +69,7 @@ tags = {
   }
 }
 
+```
 ### Kubernetes
 
 Kubernetes (K8s) is an open-source container orchestration platform. It
@@ -92,6 +93,7 @@ graph TD
     A --> C
     A --> F
 
+```
 #### Core Components
 
 - **Pod:** The smallest deployable unit in Kubernetes, which holds one or more
@@ -142,6 +144,7 @@ graph LR
     B --> C[Run Tests]
     C --> D[Deploy to Production]
 
+```
 #### The Two Main Parts
 
 - **Continuous Integration (CI):** Every time you push code, automated tests run
@@ -160,7 +163,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Application Tests
         run: npm test
-// Example demonstrating Linux for DevOps.
 ```
 
 ### Monitoring & Observability
@@ -189,7 +191,6 @@ function handleUserRequest(req, res) {
   metricsClient.increment('http_requests_total', ['method:GET', 'path:/home']);
   res.send('Welcome to ReviseStack!');
 }
-// Example demonstrating Linux for DevOps.
 ```
 
 ## Quick Reference

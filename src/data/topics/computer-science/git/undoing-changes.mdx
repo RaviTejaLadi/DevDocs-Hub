@@ -11,7 +11,6 @@ exactly how far down the rabbit hole you have gone. 🎛️
 You have been hacking away at a file, completely broken it, and want to throw
 away your recent modifications to start fresh from your last saved milestone.
 
-# Basic example showing the core idea.
 ```bash
 // Discard all uncommitted modifications in a specific file
 git checkout -- app.js
@@ -28,11 +27,11 @@ You ran `git add .`, but realized you accidentally staged a configuration file
 or a massive asset that you are not ready to commit yet. You want to pull it out
 of the staging box but keep your local modifications intact.
 
-# Basic example showing the core idea.
 ```bash
 // Remove a file from the staging area while keeping your code edits
 git reset HEAD secret.config
 
+```
 ## 🕒 Scenario 3: Modifying Your Last Commit
 
 You just committed your code, but instantly realized you made a glaring typo in
@@ -46,6 +45,7 @@ git add forgotten-file.css
 // Merge the staged change directly into your last commit and rewrite the message
 git commit --amend -m "feat: complete login layout and styles"
 
+```
 ## ⏪ Scenario 4: Reverting an Old Commit Safely
 
 You pushed a feature three days ago, and your team just discovered it breaks
@@ -57,7 +57,6 @@ The `git revert` command creates a brand-new commit that does the **exact
 opposite** of the target commit, neatly neutralizing the old bug without
 altering history. 🛡️
 
-# Basic example showing the core idea.
 ```bash
 // Create a new commit that reverses the changes of a past commit
 git revert 7a12d90

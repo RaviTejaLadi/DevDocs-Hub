@@ -27,7 +27,6 @@ lightweight containers that run consistently across environments.
 | `docker info`            | System information |
 | `docker compose version` | Compose version    |
 
-# Basic example showing the core idea.
 ```bash
 ## Verify Docker installation
 docker --version
@@ -35,7 +34,6 @@ docker --version
 
 ## Search Images
 
-# Basic example showing the core idea.
 ```bash
 ## Search image on Docker Hub
 docker search nginx
@@ -43,7 +41,6 @@ docker search nginx
 
 ## Pull Image
 
-# Basic example showing the core idea.
 ```bash
 ## Download image
 docker pull nginx
@@ -51,7 +48,6 @@ docker pull nginx
 
 ## List Images
 
-# Basic example showing the core idea.
 ```bash
 ## Show local images
 docker images
@@ -59,14 +55,12 @@ docker images
 
 ## Remove Image
 
-# Basic example showing the core idea.
 ```bash
 docker rmi nginx
 ```
 
 ## Remove Multiple Images
 
-# Basic example showing the core idea.
 ```bash
 ## Remove all images
 docker rmi $(docker images -q)
@@ -74,14 +68,12 @@ docker rmi $(docker images -q)
 
 ## Run Container
 
-# Basic example showing the core idea.
 ```bash
 docker run nginx
 ```
 
 ## Run in Background
 
-# Basic example showing the core idea.
 ```bash
 ## Detached mode
 docker run -d nginx
@@ -89,7 +81,6 @@ docker run -d nginx
 
 ## Assign Name
 
-# Basic example showing the core idea.
 ```bash
 ## Named container
 docker run --name my-nginx nginx
@@ -97,7 +88,6 @@ docker run --name my-nginx nginx
 
 ## Interactive Mode
 
-# Basic example showing the core idea.
 ```bash
 ## Open shell
 docker run -it ubuntu bash
@@ -115,7 +105,6 @@ docker run -it ubuntu bash
 | `docker kill id`    | Force stop         |
 | `docker rm id`      | Delete container   |
 
-# Basic example showing the core idea.
 ```bash
 ## Show running containers
 docker ps
@@ -123,7 +112,6 @@ docker ps
 
 ## Port Mapping
 
-# Basic example showing the core idea.
 ```bash
 ## HostPort:ContainerPort
 docker run -p 3000:80 nginx
@@ -131,14 +119,13 @@ docker run -p 3000:80 nginx
 
 Access:
 
-// Example demonstrating Docker 🐳.
 ```text
 http://localhost:3000
 ```
 
+```
 ## Environment Variables
 
-# Basic example showing the core idea.
 ```bash
 ## Pass environment variable
 docker run -e NODE_ENV=production node
@@ -146,7 +133,7 @@ docker run -e NODE_ENV=production node
 
 Multiple Variables:
 
-# Basic example showing the core idea.
+```
 ```bash
 docker run \
 -e DB_HOST=localhost \
@@ -156,19 +143,16 @@ my-app
 
 ## Container Logs
 
-# Basic example showing the core idea.
 ```bash
 ## View logs
 docker logs container_id
 ```
 
-# Basic example showing the core idea.
 ```bash
 ## Follow logs
 docker logs -f container_id
 ```
 
-# Basic example showing the core idea.
 ```bash
 ## Last 100 lines
 docker logs --tail 100 container_id
@@ -176,7 +160,6 @@ docker logs --tail 100 container_id
 
 ## Execute Commands
 
-# Basic example showing the core idea.
 ```bash
 ## Run command inside container
 docker exec container_id ls
@@ -184,28 +167,25 @@ docker exec container_id ls
 
 Interactive Shell:
 
-# Basic example showing the core idea.
+```
 ```bash
 docker exec -it container_id bash
 ```
 
 For Alpine Linux:
 
-# Basic example showing the core idea.
 ```bash
 docker exec -it container_id sh
 ```
 
 ## Host → Container
 
-# Basic example showing the core idea.
 ```bash
 docker cp app.js container:/app
 ```
 
 ## Container → Host
 
-# Basic example showing the core idea.
 ```bash
 docker cp container:/app .
 ```
@@ -227,7 +207,6 @@ docker cp container:/app .
 
 ## Basic Dockerfile
 
-// Example demonstrating Docker 🐳.
 ```dockerfile
 ## Node.js application
 FROM node:22-alpine
@@ -247,21 +226,18 @@ CMD ["npm", "start"]
 
 ## Build Image
 
-# Basic example showing the core idea.
 ```bash
 docker build -t my-app .
 ```
 
 Tag Version:
 
-# Basic example showing the core idea.
 ```bash
 docker build -t my-app:v1 .
 ```
 
 ## Run Built Image
 
-# Basic example showing the core idea.
 ```bash
 docker run -p 3000:3000 my-app
 ```
@@ -270,7 +246,6 @@ docker run -p 3000:3000 my-app
 
 Bad:
 
-// Example demonstrating Docker 🐳.
 ```dockerfile
 COPY . .
 RUN npm install
@@ -278,7 +253,6 @@ RUN npm install
 
 Good:
 
-// Example demonstrating Docker 🐳.
 ```dockerfile
 COPY package*.json ./
 RUN npm install
@@ -290,7 +264,6 @@ Improves build speed.
 
 ## .dockerignore
 
-// Example demonstrating Docker 🐳.
 ```text
 node_modules
 .git
@@ -308,28 +281,24 @@ Volumes persist data even after container deletion.
 
 ## Create Volume
 
-# Basic example showing the core idea.
 ```bash
 docker volume create postgres-data
 ```
 
 ## List Volumes
 
-# Basic example showing the core idea.
 ```bash
 docker volume ls
 ```
 
 ## Remove Volume
 
-# Basic example showing the core idea.
 ```bash
 docker volume rm postgres-data
 ```
 
 ## Mount Volume
 
-# Basic example showing the core idea.
 ```bash
 docker run \
 -v postgres-data:/var/lib/postgresql/data \
@@ -338,7 +307,6 @@ postgres
 
 ## Bind Mount
 
-# Basic example showing the core idea.
 ```bash
 docker run \
 -v $(pwd):/app \
@@ -349,28 +317,24 @@ Useful for development.
 
 ## Create Network
 
-# Basic example showing the core idea.
 ```bash
 docker network create app-network
 ```
 
 ## List Networks
 
-# Basic example showing the core idea.
 ```bash
 docker network ls
 ```
 
 ## Remove Network
 
-# Basic example showing the core idea.
 ```bash
 docker network rm app-network
 ```
 
 ## Connect Container To Network
 
-# Basic example showing the core idea.
 ```bash
 docker run \
 --network app-network \
@@ -379,19 +343,16 @@ redis
 
 ## Inspect Resources
 
-# Basic example showing the core idea.
 ```bash
 docker inspect container_id
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker inspect image_name
 ```
 
 ## Memory Limit
 
-# Basic example showing the core idea.
 ```bash
 docker run \
 --memory="512m" \
@@ -400,7 +361,6 @@ nginx
 
 ## CPU Limit
 
-# Basic example showing the core idea.
 ```bash
 docker run \
 --cpus="1.5" \
@@ -444,21 +404,18 @@ postgres:
 
 ## Start Compose
 
-# Basic example showing the core idea.
 ```bash
 docker compose up -d
 ```
 
 ## Stop Compose
 
-# Basic example showing the core idea.
 ```bash
 docker compose down
 ```
 
 ## Rebuild Containers
 
-# Basic example showing the core idea.
 ```bash
 docker compose up --build
 ```
@@ -467,7 +424,6 @@ docker compose up --build
 
 Reduces final image size.
 
-// Example demonstrating Docker 🐳.
 ```dockerfile
 ## Build stage
 FROM node:22-alpine AS builder
@@ -485,7 +441,6 @@ CMD ["npm","start"]
 
 ## Health Check
 
-// Example demonstrating Docker 🐳.
 ```dockerfile
 HEALTHCHECK \
 CMD curl -f http://localhost:3000 || exit 1
@@ -493,61 +448,52 @@ CMD curl -f http://localhost:3000 || exit 1
 
 ## Remove Stopped Containers
 
-# Basic example showing the core idea.
 ```bash
 docker container prune
 ```
 
 ## Remove Unused Images
 
-# Basic example showing the core idea.
 ```bash
 docker image prune
 ```
 
 ## Remove Unused Volumes
 
-# Basic example showing the core idea.
 ```bash
 docker volume prune
 ```
 
 ## Remove Everything Unused
 
-# Basic example showing the core idea.
 ```bash
 docker system prune -a
 ```
 
 ## Login
 
-# Basic example showing the core idea.
 ```bash
 docker login
 ```
 
 ## Tag Image
 
-# Basic example showing the core idea.
 ```bash
 docker tag my-app username/my-app:v1
 ```
 
 ## Push Image
 
-# Basic example showing the core idea.
 ```bash
 docker push username/my-app:v1
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker pull username/my-app:v1
 ```
 
 ## Docker Hub Workflow
 
-# Basic example showing the core idea.
 ```bash
 docker build -t my-app .
 
@@ -558,27 +504,22 @@ docker push username/my-app:v1
 
 ## Useful Debugging Commands
 
-# Basic example showing the core idea.
 ```bash
 docker logs container
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker exec -it container bash
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker inspect container
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker stats
 ```
 
-# Basic example showing the core idea.
 ```bash
 docker top container
 ```

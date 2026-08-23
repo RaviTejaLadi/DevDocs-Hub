@@ -29,7 +29,6 @@ graph LR
 Managing your cloud connections requires a handful of specific commands to link,
 verify, and modify remote URLs:
 
-# Basic example showing the core idea.
 ```bash
 // List all remote connections linked to your project (shows names and URLs)
 git remote -v
@@ -38,11 +37,11 @@ git remote -v
 // Link a fresh local repository to a brand new repository on GitHub
 git remote add origin https://github.com/your-username/my-cool-app.git
 
-# Basic example showing the core idea.
 ```bash
 // Change an existing remote URL (useful if you rename a repository)
 git remote set-url origin https://github.com/your-username/new-repo-name.git
 
+```
 ## 🏎 Getting an Existing Remote Project (`git clone`)
 
 If an application already exists on GitHub and you want to work on it locally,
@@ -58,6 +57,7 @@ git clone https://github.com/example/open-source-project.git
 > runs a local `git init`, downloads the full commit history, and automatically
 > maps your remote link back to that original URL as **`origin`**.
 
+```
 ## Quick Reference
 
 | Area | Revision point |

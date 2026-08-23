@@ -2,7 +2,6 @@
 
 ### 1. Using useState
 
-// Example demonstrating Login Form with Validation.
 ```jsx
 import React, { useState } from 'react';
 
@@ -123,7 +122,6 @@ export default LoginFormUseState;
 
 ### 2. Using useReducer
 
-// Example demonstrating Login Form with Validation.
 ```jsx
 import React, { useReducer } from 'react';
 
@@ -280,7 +278,6 @@ export default LoginFormUseReducer;
 
 ## TypeScript Versions
 
-// Example demonstrating Login Form with Validation.
 ```tsx
 import React, { useState } from 'react';
 
@@ -333,6 +330,7 @@ const handleSubmit = (e: React.FormEvent): void => {
   };
 
 ```tsx
+```typescript
 import React, { useReducer } from 'react';
 
 interface State {
@@ -409,7 +407,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     const { errors, isValid } = validateForm(state.formData);
-
+```
 ## Quick Reference
 
 | Area | Revision point |

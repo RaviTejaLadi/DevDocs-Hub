@@ -6,14 +6,12 @@ Mapped types transform all properties of an existing type.
 
 ## Example
 
-// Example demonstrating Mapped Types.
 ```ts
 type Flags<T> = {
   [K in keyof T]: boolean;
 };
 ```
 
-// Example demonstrating Mapped Types.
 ```ts
 type User = { name: string; age: number };
 type UserFlags = Flags<User>; // { name: boolean; age: boolean }

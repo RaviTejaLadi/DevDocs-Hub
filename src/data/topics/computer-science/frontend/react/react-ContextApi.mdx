@@ -63,14 +63,12 @@ matching Provider above it in the tree.
 
 ### Creating Context
 
-// Basic example showing the core idea.
 ```javascript
 const MyContext = React.createContext(defaultValue);
 ```
 
 ### Provider Component
 
-// Basic example showing the core idea.
 ```javascript
 <MyContext.Provider value={someValue}>
   {/* Child components */}
@@ -79,21 +77,18 @@ const MyContext = React.createContext(defaultValue);
 
 ### Consumer Component
 
-// Basic example showing the core idea.
 ```javascript
 <MyContext.Consumer>
   {value => /* render something based on the context value */}
 </MyContext.Consumer>
 ```
 
-// Basic example showing the core idea.
 ```javascript
 const value = useContext(MyContext);
 ```
 
 ### Step 1: Create Context
 
-// Basic example showing the core idea.
 ```javascript
 import React, { createContext } from 'react';
 
@@ -102,7 +97,6 @@ const MyContext = createContext();
 
 ### Step 2: Provide Context
 
-// Basic example showing the core idea.
 ```javascript
 function App() {
   const contextValue = 'Hello from Context!';
@@ -117,7 +111,6 @@ return (
 
 ### Step 3: Consume Context
 
-// Basic example showing the core idea.
 ```javascript
 import { useContext } from 'react';
 
@@ -132,7 +125,6 @@ return <div>{value}</div>;
 
 #### Creating the Theme Context
 
-// Basic example showing the core idea.
 ```javascript
 import React, { createContext, useContext, useState } from 'react';
 
@@ -172,7 +164,6 @@ return (
 
 #### Using the Theme Context
 
-// Basic example showing the core idea.
 ```javascript
 // App Component
 function App() {
@@ -224,7 +215,6 @@ return (
 
 ### User Authentication Context
 
-// Basic example showing the core idea.
 ```javascript
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
@@ -291,7 +281,6 @@ return <button>Login</button>;
 
 ### Shopping Cart Context
 
-// Basic example showing the core idea.
 ```javascript
 import React, { createContext, useContext, useReducer } from 'react';
 
@@ -428,7 +417,6 @@ return (
 Always create custom hooks for consuming context to provide better error
 handling and cleaner API.
 
-// Basic example showing the core idea.
 ```javascript
 export const useMyContext = () => {
   const context = useContext(MyContext);
@@ -443,7 +431,6 @@ export const useMyContext = () => {
 
 Don't put everything in one massive context. Split by logical concerns.
 
-// Basic example showing the core idea.
 ```javascript
 // Good: Separate contexts
 const AuthContext = createContext();
@@ -458,7 +445,6 @@ const AppContext = createContext(); // Contains auth, theme, cart, etc.
 
 Always provide meaningful default values when creating context.
 
-// Basic example showing the core idea.
 ```javascript
 const ThemeContext = createContext({
   theme: 'light',
@@ -470,7 +456,6 @@ const ThemeContext = createContext({
 
 ### 4. Use TypeScript for Better DX
 
-// Basic example showing the core idea.
 ```typescript
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -484,7 +469,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 Use useMemo to prevent unnecessary re-renders when context values are objects.
 
-// Basic example showing the core idea.
 ```javascript
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -506,7 +490,6 @@ return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 
 Use useReducer for complex state management within context.
 
-// Basic example showing the core idea.
 ```javascript
 const StateContext = createContext();
 
@@ -523,7 +506,6 @@ return (
 
 ### 2. Multiple Providers Pattern
 
-// Basic example showing the core idea.
 ```javascript
 function App() {
   return (
@@ -542,7 +524,6 @@ function App() {
 
 ### 3. Compound Component Pattern
 
-// Basic example showing the core idea.
 ```javascript
 const Tabs = {
   Provider: TabsProvider,
@@ -566,7 +547,6 @@ const Tabs = {
 
 Split frequently changing and rarely changing data into separate contexts.
 
-// Basic example showing the core idea.
 ```javascript
 // Fast changing data
 const UserPreferencesContext = createContext();
@@ -579,7 +559,6 @@ const UserProfileContext = createContext();
 
 Use React.memo and useMemo to prevent unnecessary re-renders.
 
-// Basic example showing the core idea.
 ```javascript
 const ExpensiveChild = React.memo(({ data }) => {
   return <div>{/* Expensive rendering */}</div>;
@@ -590,7 +569,6 @@ const ExpensiveChild = React.memo(({ data }) => {
 
 For large contexts, consider implementing a selector pattern.
 
-// Basic example showing the core idea.
 ```javascript
 const useAppContext = (selector) => {
   const context = useContext(AppContext);
@@ -608,7 +586,6 @@ const userName = useAppContext((state) => state.user.name);
 **Problem**: Getting undefined when consuming context. **Solution**: Ensure the
 component is wrapped in the Provider.
 
-// Basic example showing the core idea.
 ```javascript
 // Wrong
 function App() {
@@ -630,7 +607,6 @@ function App() {
 **Problem**: Context value changes but components don't re-render. **Solution**:
 Ensure you're not creating new objects on every render without memoization.
 
-// Basic example showing the core idea.
 ```javascript
 // Wrong - creates new object on every render
 const value = {
@@ -657,7 +633,6 @@ context or use React.memo to optimize child components.
 
 #### 4. Testing context
 
-// Basic example showing the core idea.
 ```javascript
 // Test utility
 const renderWithContext = (component, contextValue) => {

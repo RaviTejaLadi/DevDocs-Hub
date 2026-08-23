@@ -33,7 +33,6 @@ end of the list.
 
 ### Syntax/Implementation
 
-// Basic example showing the core idea.
 ```javascript
 class Node {
   constructor(data) {
@@ -68,6 +67,7 @@ caboose has no car after it (null).
 
 ### Code Example
 
+```javascript
 class SinglyLinkedList {
   constructor() {
     this.head = null;
@@ -118,7 +118,6 @@ list.append('Apple');
 list.append('Banana');
 list.prepend('Orange');
 console.log(list.display()); // Orange → Apple → Banana
-// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 ### Common Pitfalls
@@ -161,7 +160,6 @@ class DoublyLinkedList {
     this.size = 0;
   }
 }
-// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 ```mermaid
@@ -170,13 +168,13 @@ flowchart LR
   D1 <--> D2["Node 2<br/>Prev | Data | Next"]
   D2 <--> D3["Node 3 (Tail)<br/>Prev | Data | Next"]
   D3 <--> NULLR["null"]
-// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 Think of a **subway line** 🚇 where trains can go in both directions. You can
 travel from Station A to Station B, and also from Station B back to Station A.
 Each station knows about both its neighbors!
 
+```javascript
 class DoublyLinkedList {
   constructor() {
     this.head = null;
@@ -270,25 +268,25 @@ first node instead of pointing to null, creating a circle.
   - Useful for round-robin scheduling
   - Can be singly or doubly circular
 
+```javascript
 class CircularLinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
   }
 }
-// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 ```mermaid
 flowchart LR
   C1["Node 1 (Head)<br/>Data | Next"] --> C2["Node 2<br/>Data | Next"] --> C3["Node 3<br/>Data | Next"]
   C3 --> C1
-// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 Think of **musical chairs** 🪑 or a **carousel** 🎠 - players/horses move in a
 circle, and after the last position, you're back to the first one!
 
+```javascript
 class CircularLinkedList {
   constructor() {
     this.head = null;

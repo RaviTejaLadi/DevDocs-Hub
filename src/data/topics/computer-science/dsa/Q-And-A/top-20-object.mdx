@@ -14,7 +14,6 @@ current) exists in the object.
 
 **Solution:**
 
-// Basic example showing the core idea.
 ```javascript
 function twoSum(nums, target) {
   // Object to store number -> index mapping
@@ -54,7 +53,6 @@ frequencies using objects.
 objects. Two strings are anagrams if they have identical character frequency
 maps.
 
-// Basic example showing the core idea.
 ```javascript
 function isAnagram(s, t) {
   if (s.length !== t.length) return false;
@@ -94,7 +92,6 @@ an object to track frequencies.
 **Concept Explanation:** Use an object to count character frequencies, then
 iterate through the string again to find the first character with frequency 1.
 
-// Basic example showing the core idea.
 ```javascript
 function firstUniqChar(s) {
   // Object to store character frequencies
@@ -131,7 +128,6 @@ objects, arrays, and primitive values.
 **Concept Explanation:** Recursively traverse the object structure, creating new
 objects and arrays while preserving the original structure and values.
 
-// Basic example showing the core idea.
 ```javascript
 function deepClone(obj) {
   // Handle primitive types and null
@@ -185,7 +181,6 @@ object override those in the first.
 **Concept Explanation:** Recursively merge objects by iterating through
 properties and handling nested objects separately from primitive values.
 
-// Basic example showing the core idea.
 ```javascript
 function mergeObjects(obj1, obj2) {
   // Create a new object to avoid mutating originals
@@ -228,7 +223,6 @@ return an object with character-frequency pairs.
 **Concept Explanation:** Iterate through the string and use an object to
 maintain a running count of each character's frequency.
 
-// Basic example showing the core idea.
 ```javascript
 function countCharFrequency(str) {
   // Object to store character frequencies
@@ -275,7 +269,6 @@ object to categorize them.
 **Concept Explanation:** Sort characters in each string to create a key. Strings
 with the same sorted key are anagrams and belong to the same group.
 
-// Basic example showing the core idea.
 ```javascript
 function groupAnagrams(strs) {
   // Object to group anagrams by their sorted key
@@ -315,7 +308,6 @@ are strings or numbers.
 **Concept Explanation:** Iterate through object entries and create a new object
 where original values become keys and original keys become values.
 
-// Basic example showing the core idea.
 ```javascript
 function swapKeyValue(obj) {
   const swapped = {};
@@ -362,7 +354,6 @@ integers using an object for O(1) lookup.
 **Concept Explanation:** Store all present numbers in an object, then iterate
 through the expected range to find which number is missing.
 
-// Basic example showing the core idea.
 ```javascript
 function findMissingNumber(nums, n) {
   // Object to store present numbers
@@ -407,7 +398,6 @@ including nested objects.
 **Concept Explanation:** Recursively traverse the object structure, identifying
 numeric values and adding them to a running total.
 
-// Basic example showing the core idea.
 ```javascript
 function objectPropertySum(obj) {
   let sum = 0;
@@ -467,7 +457,6 @@ put operations, both in O(1) time complexity.
 insertion/deletion) with an object/Map (for O(1) key lookup). The list maintains
 order of usage.
 
-// Basic example showing the core idea.
 ```javascript
 class LRUCache {
   constructor(capacity) {
@@ -560,7 +549,6 @@ without using built-in hash table libraries.
 key-value pairs. Handle collisions using chaining. Implement a simple hash
 function.
 
-// Basic example showing the core idea.
 ```javascript
 class MyHashMap {
   constructor() {
@@ -657,7 +645,6 @@ in the pattern maps to exactly one word.
 **Concept Explanation:** Use two objects: one to map pattern characters to
 words, another to ensure each word maps to only one character (bijection).
 
-// Basic example showing the core idea.
 ```javascript
 function wordPattern(pattern, s) {
   const words = s.split(' ');
@@ -736,7 +723,6 @@ objects for frequency counting.
 **Concept Explanation:** Use an object to count frequencies, then sort by
 frequency or use bucket sort for better performance.
 
-// Basic example showing the core idea.
 ```javascript
 function topKFrequent(nums, k) {
   // Step 1: Count frequencies using object
@@ -799,7 +785,6 @@ following/unfollowing and retrieving recent tweets from followed users.
 **Concept Explanation:** Use objects to store user relationships and tweets.
 Maintain a timeline by merging recent tweets from followed users.
 
-// Basic example showing the core idea.
 ```javascript
 class Twitter {
   constructor() {
@@ -883,7 +868,6 @@ handling circular references and complex data types.
 tracking visited objects to handle circular references. Reconstruct object from
 string representation.
 
-// Basic example showing the core idea.
 ```javascript
 class ObjectSerializer {
   serialize(obj) {
@@ -1020,7 +1004,6 @@ root to leaf where the sum of numeric values equals the target.
 the current path and sum. When reaching a leaf (primitive value), check if the
 sum matches the target.
 
-// Basic example showing the core idea.
 ```javascript
 function findPathsWithSum(obj, targetSum) {
   const result = [];
@@ -1120,7 +1103,6 @@ with dot-notation keys.
 **Concept Explanation:** Recursively traverse the object structure, building
 keys by concatenating parent keys with current keys using dot notation.
 
-// Basic example showing the core idea.
 ```javascript
 function flattenObject(obj, prefix = '', result = {}) {
   for (let key in obj) {
@@ -1240,7 +1222,6 @@ added, removed, and modified properties.
 tracking changes at each level. Handle different types of changes (additions,
 deletions, modifications).
 
-// Basic example showing the core idea.
 ```javascript
 function objectDiff(obj1, obj2) {
   const diff = {
@@ -1419,7 +1400,6 @@ searching by name/number, and retrieving contacts by various criteria.
 name, by number, by prefix). Implement efficient search and retrieval
 operations.
 
-// Basic example showing the core idea.
 ```javascript
 class PhoneDirectory {
   constructor() {

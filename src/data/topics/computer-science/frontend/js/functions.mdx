@@ -7,7 +7,6 @@ It's hoisted, meaning it can be called before its definition in the code.
 
 ### Syntax
 
-// Basic example showing the core idea.
 ```javascript
 function functionName(parameters) {
   // function body
@@ -29,7 +28,6 @@ function functionName(parameters) {
 
 #### Basic Function Declaration
 
-// Basic example showing the core idea.
 ```javascript
 function greet(name) {
   return `Hello, ${name}!`;
@@ -40,7 +38,6 @@ console.log(greet('Alice')); // Output: Hello, Alice!
 
 #### Function with Multiple Parameters
 
-// Basic example showing the core idea.
 ```javascript
 function add(a, b) {
   return a + b;
@@ -51,7 +48,6 @@ console.log(add(5, 3)); // Output: 8
 
 #### Function with Default Parameters
 
-// Basic example showing the core idea.
 ```javascript
 function multiply(a, b = 1) {
   return a * b;
@@ -63,7 +59,6 @@ console.log(multiply(5, 3)); // Output: 15
 
 #### Function with Rest Parameters
 
-// Basic example showing the core idea.
 ```javascript
 function sum(...numbers) {
   return numbers.reduce((total, num) => total + num, 0);
@@ -79,7 +74,6 @@ console.log(sum(1, 2, 3, 4)); // Output: 10
 A function expression defines a function as part of an expression. It's not
 hoisted and can be anonymous or named.
 
-// Basic example showing the core idea.
 ```javascript
 const functionName = function (parameters) {
   // function body
@@ -97,7 +91,6 @@ const functionName = function (parameters) {
 
 #### Basic Function Expression
 
-// Basic example showing the core idea.
 ```javascript
 const greet = function (name) {
   return `Hello, ${name}!`;
@@ -108,7 +101,6 @@ console.log(greet('Bob')); // Output: Hello, Bob!
 
 #### Named Function Expression
 
-// Basic example showing the core idea.
 ```javascript
 const factorial = function fact(n) {
   return n <= 1 ? 1 : n * fact(n - 1);
@@ -119,7 +111,6 @@ console.log(factorial(5)); // Output: 120
 
 #### Conditional Function Creation
 
-// Basic example showing the core idea.
 ```javascript
 let operation;
 
@@ -141,7 +132,6 @@ console.log(operation(3, 4));
 Arrow functions provide a shorter syntax for writing functions and lexically
 bind the `this` value.
 
-// Basic example showing the core idea.
 ```javascript
 // Single parameter, single expression
 param => expression
@@ -168,7 +158,6 @@ param => expression
 
 #### Basic Arrow Function
 
-// Basic example showing the core idea.
 ```javascript
 const greet = (name) => `Hello, ${name}!`;
 console.log(greet('Charlie')); // Output: Hello, Charlie!
@@ -176,7 +165,6 @@ console.log(greet('Charlie')); // Output: Hello, Charlie!
 
 #### Arrow Function with Multiple Parameters
 
-// Basic example showing the core idea.
 ```javascript
 const add = (a, b) => a + b;
 console.log(add(10, 5)); // Output: 15
@@ -184,7 +172,6 @@ console.log(add(10, 5)); // Output: 15
 
 #### Arrow Function with Block Body
 
-// Basic example showing the core idea.
 ```javascript
 const processArray = (arr) => {
   const doubled = arr.map((x) => x * 2);
@@ -197,7 +184,6 @@ console.log(processArray([1, 5, 8, 12])); // Output: [16, 24]
 
 #### Arrow Function in Array Methods
 
-// Basic example showing the core idea.
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
@@ -213,7 +199,6 @@ console.log(evens); // Output: [2, 4]
 Anonymous functions are functions without a name identifier. They're often used
 as arguments to other functions.
 
-// Basic example showing the core idea.
 ```javascript
 function(parameters) {
     // function body
@@ -236,13 +221,13 @@ function(parameters) {
 
 #### Anonymous Function as Callback
 
+```javascript
 // Anonymous function in map
 const doubled = numbers.map(function (num) {
   return num * 2;
 });
 
 console.log(doubled); // Output: [2, 4, 6, 8, 10]
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Anonymous Function in Event Handler
@@ -251,11 +236,11 @@ console.log(doubled); // Output: [2, 4, 6, 8, 10]
 document.getElementById('button').addEventListener('click', function () {
   console.log('Button clicked!');
 });
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Anonymous Arrow Function
 
+```javascript
 const sum = numbers.reduce((acc, curr) => acc + curr, 0);
 console.log(sum); // Output: 15
 ```
@@ -276,7 +261,6 @@ arguments or return functions as results.
 
 #### Function that Takes Another Function
 
-// Basic example showing the core idea.
 ```javascript
 function operateOnArray(arr, operation) {
   return arr.map(operation);
@@ -292,7 +276,6 @@ console.log(squared); // Output: [1, 4, 9, 16, 25]
 
 #### Function that Returns Another Function
 
-// Basic example showing the core idea.
 ```javascript
 function createMultiplier(factor) {
   return function (number) {
@@ -309,7 +292,6 @@ console.log(triple(4)); // Output: 12
 
 #### Function Composition
 
-// Basic example showing the core idea.
 ```javascript
 const compose = (f, g) => (x) => f(g(x));
 
@@ -322,7 +304,6 @@ console.log(addThenMultiply(3)); // Output: 8 (3 + 1 = 4, 4 * 2 = 8)
 
 #### Partial Application
 
-// Basic example showing the core idea.
 ```javascript
 function partial(fn, ...presetArgs) {
   return function (...laterArgs) {
@@ -357,7 +338,6 @@ executed at a specific time or condition.
 
 #### Simple Callback
 
-// Basic example showing the core idea.
 ```javascript
 function processData(data, callback) {
   const processed = data.toUpperCase();
@@ -373,6 +353,7 @@ processData('hello world', displayResult); // Output: Result: HELLO WORLD
 
 #### Callback with Array Methods
 
+```javascript
 // Using callbacks with built-in methods
 numbers.forEach(function (num, index) {
   console.log(`Index ${index}: ${num}`);
@@ -382,7 +363,6 @@ const evenNumbers = numbers.filter(function (num) {
   return num % 2 === 0;
 });
 console.log(evenNumbers); // Output: [2, 4]
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Asynchronous Callback
@@ -398,7 +378,6 @@ function fetchData(callback) {
 fetchData(function (data) {
   console.log('Received data:', data);
 });
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Error-First Callback Pattern
@@ -419,7 +398,6 @@ divide(10, 2, function (error, result) {
     console.log('Result:', result); // Output: Result: 5
   }
 });
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Immediately Invoked Function Expression (IIFE)
@@ -441,7 +419,6 @@ create a private scope and avoid polluting the global namespace.
 (() => {
   // code here
 })();
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 - **Executed immediately**: Runs as soon as it's defined
@@ -470,7 +447,6 @@ create a private scope and avoid polluting the global namespace.
 (function (name, age) {
   console.log(`Name: ${name}, Age: ${age}`);
 })('Alice', 30);
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### IIFE for Initialization
@@ -491,7 +467,6 @@ return {
 
 app.init(); // Output: App initialized
 console.log(app.getPrivate()); // Output: This is private
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### IIFE Module Pattern
@@ -517,7 +492,6 @@ return {
 
 console.log(Calculator.add(2, 3)); // Output: 5
 console.log(Calculator.getHistory()); // Output: ["2 + 3 = 5"]
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Constructor Functions
@@ -536,7 +510,6 @@ function ConstructorName(parameters) {
 
 // Usage
 const instance = new ConstructorName(arguments);
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 - **Used with `new` keyword**: Creates new object instances
@@ -565,7 +538,6 @@ const person2 = new Person('Bob', 25);
 
 console.log(person1.greet()); // Output: Hello, I'm Alice
 console.log(person2.name); // Output: Bob
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Constructor with Prototype Methods
@@ -590,7 +562,6 @@ const car2 = new Car('Honda', 'Civic', 2021);
 
 console.log(car1.getInfo()); // Output: 2022 Toyota Camry
 console.log(car2.start()); // Output: Honda Civic is starting...
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Constructor with Validation
@@ -624,7 +595,6 @@ this.withdraw = function (amount) {
 const account = new BankAccount('12345', 1000);
 console.log(account.deposit(500)); // Output: 1500
 console.log(account.withdraw(200)); // Output: 1300
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Async Functions
@@ -647,7 +617,6 @@ async function functionName() {
 const functionName = async () => {
   // async code
 };
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 - **Returns a Promise**: Always returns a Promise
@@ -678,7 +647,6 @@ async function fetchUserData(userId) {
 fetchUserData(123)
   .then((user) => console.log(user))
   .catch((error) => console.error(error));
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Async Function with Multiple Operations
@@ -710,7 +678,6 @@ return {
     };
   }
 }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Parallel Async Operations
@@ -731,7 +698,6 @@ return { users, posts, comments };
     throw error;
   }
 }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Async Function with Timeout
@@ -755,7 +721,6 @@ const response = await Promise.race([fetchPromise, timeoutPromise]);
     throw error;
   }
 }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Generator Functions
@@ -773,7 +738,6 @@ function* generatorName() {
 // Usage
 const generator = generatorName();
 const result = generator.next(); // { value: value1, done: false }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 - **Can pause and resume**: Using `yield` keyword
@@ -802,7 +766,6 @@ console.log(gen.next()); // { value: 1, done: false }
 console.log(gen.next()); // { value: 2, done: false }
 console.log(gen.next()); // { value: 3, done: false }
 console.log(gen.next()); // { value: "Done", done: true }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Infinite Generator
@@ -820,7 +783,6 @@ const sequence = infiniteSequence();
 console.log(sequence.next().value); // 0
 console.log(sequence.next().value); // 1
 console.log(sequence.next().value); // 2
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Fibonacci Generator
@@ -862,7 +824,6 @@ const gen = parameterizedGenerator();
 console.log(gen.next().value); // "First yield"
 console.log(gen.next('Hello').value); // Logs "Received: Hello", returns "Second yield"
 console.log(gen.next('World').value); // Logs "Received: World", returns "Generator finished"
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Generator for Object Iteration
@@ -917,7 +878,6 @@ function factorial(n) {
 
 console.log(factorial(5)); // Output: 120
 console.log(factorial(0)); // Output: 1
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Fibonacci Sequence
@@ -934,7 +894,6 @@ function fibonacci(n) {
 
 console.log(fibonacci(6)); // Output: 8
 console.log(fibonacci(10)); // Output: 55
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Array Sum
@@ -952,7 +911,6 @@ function arraySum(arr, index = 0) {
 
 const numbers = [1, 2, 3, 4, 5];
 console.log(arraySum(numbers)); // Output: 15
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Tree Traversal (Object)
@@ -986,7 +944,6 @@ const data = {
 };
 
 traverseObject(data);
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Flattening Nested Arrays
@@ -1010,7 +967,6 @@ return result;
 
 const nested = [1, [2, 3], [4, [5, 6]], 7];
 console.log(flattenArray(nested)); // Output: [1, 2, 3, 4, 5, 6, 7]
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Method Functions
@@ -1042,7 +998,6 @@ class MyClass {
     // method body
   }
 }
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 - **Belong to objects**: Part of object or class
@@ -1097,7 +1052,6 @@ getValue() {
 const result = calculator.clear().add(10).multiply(2).subtract(5).getValue();
 
 console.log(result); // Output: 15
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Class Methods
@@ -1156,7 +1110,6 @@ account.withdraw(200);
 
 console.log(account.getBalance()); // Output: 1300
 console.log(account.getTransactionHistory());
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Getter and Setter Methods
@@ -1200,7 +1153,6 @@ console.log(person.introduce()); // Output: Hi, I'm John Doe
 
 person.fullName = 'Jane Smith';
 console.log(person.firstName); // Output: Jane
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 #### Methods with Different `this` Contexts
@@ -1241,7 +1193,6 @@ methodWithCallback: function () {
 obj.regularMethod(); // Output: Regular method: MyObject
 obj.arrowMethod(); // Output: Arrow method: undefined
 obj.methodWithCallback();
-// Example demonstrating Complete Guide to JavaScript Functions.
 ```
 
 ## Quick Reference

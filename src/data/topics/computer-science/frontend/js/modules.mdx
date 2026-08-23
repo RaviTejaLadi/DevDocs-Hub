@@ -16,7 +16,6 @@ You can export code using either **named exports** or a **default export**.
 
 #### Named Export:
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // math.js
 export const add = (a, b) => a + b;
@@ -25,7 +24,6 @@ export const subtract = (a, b) => a - b;
 
 #### Default Export:
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // greet.js
 export default function greet(name) {
@@ -35,7 +33,6 @@ export default function greet(name) {
 
 #### Named Import:
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // main.js
 import { add, subtract } from './math.js';
@@ -45,7 +42,6 @@ console.log(add(2, 3)); // 5
 
 #### Default Import:
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // app.js
 import greet from './greet.js';
@@ -55,7 +51,6 @@ console.log(greet('Ravi')); // Hello, Ravi
 
 #### Import All (Namespace Import):
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // utils.js
 import * as math from './math.js';
@@ -79,7 +74,6 @@ console.log(math.add(4, 5)); // 9
 
 ## 🖼 4. Pictorial Diagram
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```plaintext
 📁 project-root
 │
@@ -96,7 +90,6 @@ console.log(math.add(4, 5)); // 9
 
 Flow:
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```
 math.js ───► exports named ───► main.js ───► uses add, subtract
 greet.js ───► exports default ───► main.js ───► uses greet
@@ -104,7 +97,6 @@ greet.js ───► exports default ───► main.js ───► uses gre
 
 ## 5. Combining Default + Named Exports
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // helpers.js
 export const log = (msg) => console.log(msg);
@@ -113,7 +105,6 @@ export default function greet(name) {
 }
 ```
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // index.js
 import greet, { log } from './helpers.js';
@@ -132,13 +123,11 @@ log(greet('Ravi'));
 
 ## 🛠 7. Example in Browser (HTML + Modules)
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- index.html -->
 <script type="module" src="main.js"></script>
 ```
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 // main.js
 import greet from './greet.js';
@@ -147,7 +136,6 @@ console.log(greet('Ravi'));
 
 ### utils/math.js
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 export const square = (x) => x * x;
 export const cube = (x) => x * x * x;
@@ -155,7 +143,6 @@ export const cube = (x) => x * x * x;
 
 ### app.js
 
-// Example demonstrating JavaScript ES6 Modules (ECMAScript Modules).
 ```js
 import { square, cube } from './utils/math.js';
 

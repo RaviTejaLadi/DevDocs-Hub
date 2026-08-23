@@ -19,7 +19,6 @@ with callbacks.
 
 ## 🧱 Syntax/Structure
 
-// Basic example showing the core idea.
 ```javascript
 functionName.call(thisArg, arg1, arg2, ...)
 functionName.apply(thisArg, [arg1, arg2, ...])
@@ -28,7 +27,6 @@ const newFunc = functionName.bind(thisArg)
 
 ### Basic Example
 
-// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Alice',
@@ -45,7 +43,6 @@ greet.call(person, 'Hello'); // Hello, my name is Alice
 
 Suppose you're using a method in one object with another object’s data:
 
-// Basic example showing the core idea.
 ```javascript
 const user1 = {
   name: 'John',
@@ -62,7 +59,6 @@ user1.sayHello.call(user2); // Hi, I’m Emma
 
 Or fixing `this` in asynchronous code:
 
-// Basic example showing the core idea.
 ```javascript
 const timer = {
   seconds: 0,

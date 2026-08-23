@@ -25,7 +25,6 @@ It has two main types:
 
 ### 🔧 Usage:
 
-// Example demonstrating What is Web Storage API?.
 ```js
 // Store data
 localStorage.setItem('username', 'Ravi');
@@ -51,7 +50,6 @@ localStorage.clear();
 - Data is cleared **when the tab or window is closed**.
 - Not shared across tabs (even of same origin).
 
-// Example demonstrating What is Web Storage API?.
 ```js
 // Store data
 sessionStorage.setItem('tempToken', '123abc');
@@ -86,7 +84,6 @@ sessionStorage.clear();
 - **Synchronous API** – can block main thread.
 - Can't store complex objects directly (you need to stringify).
 
-// Example demonstrating What is Web Storage API?.
 ```js
 const user = { name: 'Ravi', age: 25 };
 localStorage.setItem('user', JSON.stringify(user));
@@ -108,7 +105,6 @@ console.log(retrievedUser.name); // 'Ravi'
 
 - Always use `try...catch` when using local/sessionStorage:
 
-// Example demonstrating What is Web Storage API?.
 ```js
 try {
   localStorage.setItem('key', 'value');
@@ -126,7 +122,6 @@ try {
 
 ### Theme Toggle (Dark/Light Mode using localStorage)
 
-// Example demonstrating What is Web Storage API?.
 ```js
 // Set initial theme
 const savedTheme = localStorage.getItem('theme');

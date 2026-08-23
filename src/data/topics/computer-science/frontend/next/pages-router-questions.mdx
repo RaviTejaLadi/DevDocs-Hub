@@ -4,7 +4,6 @@
 
 **Answer:** Create a directory in the `pages` directory and add an `index` file:
 
-// Basic example showing the core idea.
 ```javascript
 pages / index.jsx; // Routes to: /
 pages / blog / index.jsx; // Routes to: /blog
@@ -14,7 +13,6 @@ pages / blog / index.jsx; // Routes to: /blog
 
 **Answer:** Use square brackets `[]` in the filename to create dynamic routes:
 
-// Basic example showing the core idea.
 ```javascript
 pages / blogs / [id].js; // Routes to: /blogs/1, /blogs/2, etc.
 blogs / [id] / index.js; // Routes to: /blogs/1, /blogs/2, etc.
@@ -64,7 +62,6 @@ error page.
 
 **Answer:** Create a `500.js` file in the pages directory:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export default function Custom500() {
   return <h1>500 - Server-side error occurred</h1>;
@@ -94,7 +91,6 @@ support in Next.js.
 **Answer:** A function used for static site generation to fetch data at build
 time:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getStaticProps() {
   const res = await fetch('https://api.github.com/repos/vercel/next.js');
@@ -112,7 +108,6 @@ export default function Page({ repo }) {
 **Answer:** A function used for server-side rendering to fetch data on each
 request:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getServerSideProps() {
   const res = await fetch('https://api.github.com/repos/vercel/next.js');
@@ -134,7 +129,6 @@ export default function Page({ repo }) {
 **Answer:** A function used with `getStaticProps` to specify dynamic routes for
 pre-rendering:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getStaticPaths() {
   return {
@@ -155,6 +149,7 @@ export async function getStaticProps() {
   return { props: { repo } };
 }
 
+```
 ### 17. 🖥 Client-Side Data Fetching
 
 **Answer:** Fetch data on the client-side using `useEffect` and `fetch`:
@@ -186,7 +181,6 @@ return (
     </ul>
   );
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 ### 18. Client-side vs Server-side Rendering
@@ -234,7 +228,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 **app/variables.module.scss:**
@@ -245,7 +238,6 @@ $primary-color: #64ff00;
 :export {
   primaryColor: $primary-color;
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 **app/page.jsx:**
@@ -256,7 +248,6 @@ import variables from './variables.module.scss';
 export default function Page() {
   return <h1 style={{ color: variables.primaryColor }}>🎨 Hello, Next.js!</h1>;
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 ### 25. 🛠 Creating API Endpoints
@@ -278,6 +269,7 @@ authentication logic.
 
 **Answer:** Use `next/dynamic` to enable dynamic imports and code splitting:
 
+```javascript
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
@@ -309,7 +301,6 @@ return (
 **Answer:** Add meta tags using the Head component from `next/head` or metadata
 export:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export const metadata = {
   title: 'NextJS',
@@ -340,7 +331,6 @@ integrating it with `_app.js`.
 
 **Answer:** Extend the Webpack configuration in `next.config.js`:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```js
 module.exports = {
   webpack: (

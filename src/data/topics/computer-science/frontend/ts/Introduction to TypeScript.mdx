@@ -16,7 +16,6 @@ JavaScript.
 
 ## Quick setup
 
-# Basic example showing the core idea.
 ```bash
 npm install --save-dev typescript
 npx tsc --init
@@ -24,7 +23,6 @@ npx tsc --init
 
 Minimal `tsconfig.json`:
 
-// Example demonstrating Introduction to TypeScript.
 ```json
 {
   "compilerOptions": {
@@ -40,7 +38,6 @@ Minimal `tsconfig.json`:
 
 Compile:
 
-# Basic example showing the core idea.
 ```bash
 npx tsc
 npx tsc --watch
@@ -48,7 +45,6 @@ npx tsc --watch
 
 ### Primitive types
 
-// Basic example showing the core idea.
 ```typescript
 let username: string = 'Ravi';
 let age: number = 25;
@@ -59,7 +55,6 @@ let notSet: undefined = undefined;
 
 ### Type inference and annotations
 
-// Basic example showing the core idea.
 ```typescript
 let count = 10; // inferred as number
 let title: string = 'TypeScript Basics'; // explicit annotation
@@ -67,7 +62,6 @@ let title: string = 'TypeScript Basics'; // explicit annotation
 
 ### Functions
 
-// Basic example showing the core idea.
 ```typescript
 function add(a: number, b: number): number {
   return a + b;
@@ -80,7 +74,6 @@ function greet(name: string, prefix = 'Hello'): string {
 
 ### Arrays, tuples, and objects
 
-// Basic example showing the core idea.
 ```typescript
 const scores: number[] = [90, 85, 88];
 const user: [number, string] = [1, 'Ravi'];
@@ -92,7 +85,6 @@ const profile: { name: string; city?: string } = {
 
 ### Interfaces and type aliases
 
-// Basic example showing the core idea.
 ```typescript
 interface User {
   id: number;
@@ -104,7 +96,6 @@ type Status = 'pending' | 'done';
 
 ### Union and literal types
 
-// Basic example showing the core idea.
 ```typescript
 let id: string | number;
 id = 'emp-101';
@@ -115,7 +106,6 @@ type Theme = 'light' | 'dark';
 
 ### Classes
 
-// Basic example showing the core idea.
 ```typescript
 class Person {
   constructor(public name: string, private age: number) {}
@@ -128,7 +118,6 @@ getAge(): number {
 
 ### Generics
 
-// Basic example showing the core idea.
 ```typescript
 function identity<T>(value: T): T {
   return value;
@@ -140,7 +129,6 @@ const num = identity<number>(42);
 
 ### Modules
 
-// Basic example showing the core idea.
 ```typescript
 // math.ts
 export const add = (a: number, b: number) => a + b;

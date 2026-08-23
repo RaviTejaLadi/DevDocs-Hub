@@ -63,7 +63,6 @@ Singletons can create memory leaks if not properly managed:
 
 ### 1. Classic Singleton 📚
 
-// Basic example showing the core idea.
 ```javascript
 class DatabaseConnection {
   constructor() {
@@ -88,7 +87,6 @@ static getInstance() {
 
 ### 2. Module-Based Singleton
 
-// Basic example showing the core idea.
 ```javascript
 // apiService.js
 class ApiService {
@@ -107,7 +105,6 @@ export default new ApiService(); // Single instance exported
 
 ### 3. Closure-Based Singleton
 
-// Basic example showing the core idea.
 ```javascript
 const ThemeManager = (() => {
   let instance;
@@ -221,7 +218,6 @@ return {
 
 ### 2. Implement Proper Cleanup 🧹
 
-// Basic example showing the core idea.
 ```javascript
 class EventBus {
   constructor() {
@@ -237,7 +233,6 @@ destroy() {
 
 ### 3. Make It Testable 🔬
 
-// Basic example showing the core idea.
 ```javascript
 class ConfigManager {
   constructor() {
@@ -266,7 +261,6 @@ return ConfigManager.instance;
 
 ### 4. Handle Async Operations Carefully
 
-// Basic example showing the core idea.
 ```javascript
 class AsyncSingleton {
   constructor() {
@@ -314,7 +308,6 @@ this.initPromise = this.doInitialization();
 
 ### Dependency Injection 💉
 
-// Basic example showing the core idea.
 ```javascript
 class UserService {
   constructor(apiClient, cache) {
@@ -329,7 +322,6 @@ const userService = new UserService(apiClient, cache);
 
 ### Context API (React) ⚛
 
-// Basic example showing the core idea.
 ```javascript
 const ConfigContext = createContext();
 
@@ -346,7 +338,6 @@ return (
 
 ### Module Pattern
 
-// Basic example showing the core idea.
 ```javascript
 // Instead of singleton class
 export const apiService = {

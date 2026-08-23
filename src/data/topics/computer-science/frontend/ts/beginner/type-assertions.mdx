@@ -6,14 +6,12 @@ Tell TypeScript the specific type manually.
 
 ## Syntax
 
-// Example demonstrating Type Assertions.
 ```ts
 const input = document.querySelector('input') as HTMLInputElement;
 ```
 
 ## Alternative Syntax
 
-// Example demonstrating Type Assertions.
 ```ts
 const input = <HTMLInputElement>document.querySelector('input');
 ```
@@ -29,7 +27,6 @@ untrusted runtime data.
 
 ## Better Alternative (Runtime Check)
 
-// Example demonstrating Type Assertions.
 ```ts
 function isHtmlInput(el: Element | null): el is HTMLInputElement {
   return !!el && el instanceof HTMLInputElement;

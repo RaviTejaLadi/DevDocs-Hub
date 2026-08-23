@@ -6,7 +6,6 @@ Reducing a union type into a specific type.
 
 ## typeof Narrowing
 
-// Example demonstrating Type Narrowing.
 ```ts
 function print(value: string | number) {
   if (typeof value === 'string') {
@@ -17,7 +16,6 @@ function print(value: string | number) {
 
 ## in Operator
 
-// Example demonstrating Type Narrowing.
 ```ts
 type User = { name: string };
 type Admin = { role: string };
@@ -36,7 +34,6 @@ state.
 
 ## Additional Narrowing Techniques
 
-// Example demonstrating Type Narrowing.
 ```ts
 type Shape =
   | { kind: 'circle'; radius: number }

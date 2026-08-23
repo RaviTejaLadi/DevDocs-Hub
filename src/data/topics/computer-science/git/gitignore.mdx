@@ -22,9 +22,9 @@ won't be bundled when you run `git add .`.
 You can use specific rules and wildcards to tell Git exactly what to ignore.
 Here is a breakdown of the most common syntax formatting rules:
 
-// Example demonstrating 🚫 .gitignore.
 ```text
 
+```
 ## Ignore a specific file by its exact name
 secrets.env
 
@@ -44,12 +44,12 @@ videos/*.mp4
 
 ```
 
+```
 ## 🛠 Creating a .gitignore in Action
 
 Let's look at how to set up and verify a standard `.gitignore` file inside a
 brand new web project:
 
-# Basic example showing the core idea.
 ```bash
 // 1. Create your .gitignore file at the root of your project
 touch .gitignore
@@ -70,6 +70,7 @@ git status
 > tracking a file that was accidentally committed, you must manually remove it
 > from Git's index using `git rm --cached <file>`.
 
+```
 ## Quick Reference
 
 | Area | Revision point |

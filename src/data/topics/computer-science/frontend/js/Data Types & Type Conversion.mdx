@@ -13,7 +13,6 @@
 
 ### Primitive Types Examples
 
-// Basic example showing the core idea.
 ```javascript
 // Numbers 🔢
 let integer = 42;
@@ -52,7 +51,6 @@ let bigFromConstructor = BigInt('123456789012345678901234567890');
 
 ### Reference Types Examples
 
-// Basic example showing the core idea.
 ```javascript
 // Objects 🧑‍💻
 let person = {
@@ -86,7 +84,6 @@ let regexConstructor = new RegExp('[a-z]+', 'gi');
 
 ### Value vs Reference Behavior
 
-// Basic example showing the core idea.
 ```javascript
 // Primitives - Copied by value
 let a = 10;
@@ -132,7 +129,6 @@ console.log(arr2); // [1, 2, 3, 4] (same array)
 | `{}`            | `"object"`      | Objects, arrays, null              |
 | `function() {}` | `"function"`    | Functions                          |
 
-// Basic example showing the core idea.
 ```javascript
 // typeof Examples
 console.log(typeof 42); // "number"
@@ -156,7 +152,6 @@ console.log(typeof undeclaredVar); // "undefined" (doesn't throw error)
 
 ### `instanceof` Operator
 
-// Basic example showing the core idea.
 ```javascript
 // instanceof Examples
 let arr = [1, 2, 3];
@@ -191,7 +186,6 @@ console.log(new String('hello') instanceof String); // true
 
 ### `Object.prototype.toString`
 
-// Basic example showing the core idea.
 ```javascript
 // Most accurate type checking
 function getType(value) {
@@ -228,7 +222,6 @@ console.log(Object.prototype.toString.call(NaN)); // "[object Number]"
 
 #### String Coercion
 
-// Basic example showing the core idea.
 ```javascript
 // + operator with strings
 console.log(5 + '3'); // "53" (number to string)
@@ -243,7 +236,6 @@ console.log(`Value: ${42}`); // "Value: 42"
 
 #### Numeric Coercion 🔢
 
-// Basic example showing the core idea.
 ```javascript
 // - operator (always numeric)
 console.log('5' - 3); // 2 (string to number)
@@ -260,7 +252,6 @@ console.log(+'42'); // 42 (unary + converts to number)
 
 #### Boolean Coercion ✅❌
 
-// Basic example showing the core idea.
 ```javascript
 // Falsy values: false, 0, -0, 0n, "", null, undefined, NaN
 console.log(Boolean(false)); // false
@@ -287,7 +278,6 @@ if ([]) console.log('Truthy'); // Executes
 
 #### To String
 
-// Basic example showing the core idea.
 ```javascript
 // String() function
 console.log(String(42)); // "42"
@@ -306,7 +296,6 @@ console.log(`${42}`); // "42"
 
 #### To Number 🔢
 
-// Basic example showing the core idea.
 ```javascript
 // Number() function
 console.log(Number('42')); // 42
@@ -333,7 +322,6 @@ console.log(+'hello'); // NaN
 
 #### To Boolean ✅❌
 
-// Basic example showing the core idea.
 ```javascript
 // Boolean() function
 console.log(Boolean(1)); // true
@@ -359,7 +347,6 @@ console.log(!!''); // false
 | `0 == []`   | `true`              | Array converts to "" then to 0                     |
 | `"0" == []` | `false`             | Array converts to "", "0" != ""                    |
 
-// Basic example showing the core idea.
 ```javascript
 // Surprising comparisons 😲
 console.log([] == []); // false (different references)

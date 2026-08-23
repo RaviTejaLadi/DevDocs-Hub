@@ -40,14 +40,12 @@ showing it to the user.
 
 - **HTML:** Use the `data-` prefix.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <button id="buy-btn" data-price="49.99" data-product-id="123">Buy Now</button>
 ```
 
 - **JavaScript:** Access it via the `dataset` property.
 
-// Basic example showing the core idea.
 ```javascript
 const btn = document.getElementById('buy-btn');
 console.log(btn.dataset.price); // Output: "49.99"
@@ -77,7 +75,6 @@ Where you put the tag depends on the attributes you use.
 - **The Modern Standard (`<head>` + `defer`):** Place your script in the
   `<head>` but add the `defer` attribute.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <head>
   <script src="app.js" defer></script>
@@ -90,7 +87,6 @@ when the DOM is ready (safe).
 - **The Old School Way (End of `<body>`):** Place the script right before the
   closing `</body>` tag.
 
-<!-- Basic example showing the core idea. -->
 ```html
   ...
   <script src="app.js"></script>

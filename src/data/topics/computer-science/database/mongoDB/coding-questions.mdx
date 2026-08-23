@@ -2,7 +2,6 @@
 
 ### 1. How do you create a new database in MongoDB?
 
-// Basic example showing the core idea.
 ```javascript
 use databaseName
 ```
@@ -12,21 +11,18 @@ command switches to the specified database.
 
 ### 2. How do you create a collection in MongoDB?
 
-// Basic example showing the core idea.
 ```javascript
 db.createCollection('collectionName');
 ```
 
 Or simply insert a document into a non-existent collection:
 
-// Basic example showing the core idea.
 ```javascript
 db.collectionName.insertOne({ key: 'value' });
 ```
 
 ### 3. How do you insert a single document into a collection?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.insertOne({
   name: 'John',
@@ -37,7 +33,6 @@ db.collection.insertOne({
 
 ### 4. How do you insert multiple documents at once?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.insertMany([
   { name: 'Alice', age: 25 },
@@ -47,14 +42,12 @@ db.collection.insertMany([
 
 ### 5. How do you find all documents in a collection?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find();
 ```
 
 ### 6. How do you find documents that match specific criteria?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find({ age: { $gt: 30 } });
 ```
@@ -63,14 +56,12 @@ This finds documents where age is greater than 30.
 
 ### 7. How do you find one document that matches criteria?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.findOne({ name: 'John' });
 ```
 
 ### 8. How do you query with multiple conditions?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find({
   age: { $gt: 25 },
@@ -80,7 +71,6 @@ db.collection.find({
 
 ### 9. How do you use OR conditions in queries?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find({
   $or: [{ age: { $lt: 20 } }, { age: { $gt: 30 } }],
@@ -89,70 +79,60 @@ db.collection.find({
 
 ### 10. How do you update a single document?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.updateOne({ name: 'John' }, { $set: { age: 31 } });
 ```
 
 ### 11. How do you update multiple documents?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.updateMany({ city: 'New York' }, { $set: { state: 'NY' } });
 ```
 
 ### 12. How do you increment a field value?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.updateOne({ name: 'John' }, { $inc: { age: 1 } });
 ```
 
 ### 13. How do you add an element to an array?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.updateOne({ name: 'John' }, { $push: { hobbies: 'reading' } });
 ```
 
 ### 14. How do you delete a single document?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.deleteOne({ name: 'John' });
 ```
 
 ### 15. How do you delete multiple documents?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.deleteMany({ status: 'inactive' });
 ```
 
 ### 16. How do you create an index?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.createIndex({ name: 1 }); // 1 for ascending, -1 for descending
 ```
 
 ### 17. How do you create a compound index?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.createIndex({ name: 1, age: -1 });
 ```
 
 ### 18. How do you list all indexes on a collection?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.getIndexes();
 ```
 
 ### 19. How do you use the aggregation framework?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.aggregate([
   { $match: { status: 'A' } },
@@ -162,7 +142,6 @@ db.collection.aggregate([
 
 ### 20. How do you group documents by a field?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.aggregate([
   { $group: { _id: '$department', count: { $sum: 1 } } },
@@ -171,7 +150,6 @@ db.collection.aggregate([
 
 ### 21. How do you sort documents in aggregation?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.aggregate([{ $sort: { age: -1 } }]);
 ```
@@ -180,21 +158,18 @@ db.collection.aggregate([{ $sort: { age: -1 } }]);
 
 First create a text index:
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.createIndex({ description: 'text' });
 ```
 
 Then search:
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find({ $text: { $search: 'coffee' } });
 ```
 
 ### 23. How do you use $lookup (similar to SQL join)?
 
-// Basic example showing the core idea.
 ```javascript
 db.orders.aggregate([
   {
@@ -210,7 +185,6 @@ db.orders.aggregate([
 
 ### 24. How do you use transactions in MongoDB?
 
-// Basic example showing the core idea.
 ```javascript
 const session = db.getMongo().startSession();
 session.startTransaction();
@@ -228,7 +202,6 @@ try {
 
 ### 25. How do you handle replica sets in code?
 
-// Basic example showing the core idea.
 ```javascript
 const MongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb://host1:port1,host2:port2/db?replicaSet=myReplicaSet';
@@ -237,7 +210,6 @@ const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 ### 26. How do you explain a query's execution plan?
 
-// Basic example showing the core idea.
 ```javascript
 db.collection.find({ name: 'John' }).explain('executionStats');
 ```
@@ -274,7 +246,6 @@ Common patterns:
 
 ### 30. How do you create a user with specific permissions?
 
-// Basic example showing the core idea.
 ```javascript
 db.createUser({
   user: 'appUser',

@@ -45,11 +45,11 @@ Here is how to run an interactive debugging session to trap a bug.
 
 First, tell Git you want to start a debugging investigation.
 
-# Basic example showing the core idea.
 ```bash
 // Start the automated binary search wizard
 git bisect start
 
+```
 #### 2. Label Your Markers
 
 You need to give Git two points of reference: where the app is currently broken
@@ -62,12 +62,12 @@ git bisect bad
 // Tell Git that a specific commit hash from last week was safe
 git bisect good a1b2c3d
 
+```
 #### 3. Test and Answer
 
 Git will instantly check out a commit right in the middle of that timeline. Look
 at your code or run your app, and tell Git whether it works or fails.
 
-# Basic example showing the core idea.
 ```bash
 // If the app is broken on this commit, run:
 git bisect bad
@@ -79,6 +79,7 @@ Repeat this simple answering process. Git will keep jumping to the middle of the
 remaining possibilities until it prints out the exact commit hash, author, and
 date of the change that broke your project.
 
+```
 #### 4. Clean Up and Return
 
 Once you have noted the culprit commit and know what to fix, exit the wizard to
@@ -88,17 +89,18 @@ return your workspace back to normal.
 // End the search session and return to your original working branch
 git bisect reset
 
+```
 ### Extra Pro Tip: Automated Bisecting
 
 If you have an automated script or a test command (like `npm run test:auth`)
 that returns a failure code whenever the bug is present, you can automate this
 entire process! Git will test every commit for you without asking questions:
 
-# Basic example showing the core idea.
 ```bash
 // Tell Git to run the test script automatically across the timeline
 git bisect run npm run test:auth
 
+```
 ## Quick Reference
 
 | Area | Revision point |

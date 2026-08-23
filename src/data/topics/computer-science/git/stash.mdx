@@ -36,11 +36,11 @@ Here is how to manage your temporary storage room like a pro.
 To quickly hide your modified, tracked files, run the basic stash command.
 Adding a message makes it much easier to identify later.
 
-# Basic example showing the core idea.
 ```bash
 // Save your current uncommitted changes with a helpful label
 git stash save "Working on login layout"
 
+```
 #### 2. Include New Files
 
 By default, Git Stash ignores brand-new files that you haven't tracked yet. To
@@ -50,12 +50,12 @@ safely tuck away everything, use the `--include-untracked` flag.
 // Stash tracked changes AND brand new untracked files
 git stash -u
 
+```
 #### 3. Peek Inside Your Drawer
 
 If you have stashed multiple things over time, you can view your entire list of
 saved states.
 
-# Basic example showing the core idea.
 ```bash
 // List all of your stashed workspaces
 git stash list
@@ -65,6 +65,7 @@ _Output looks like this:_
 > `stash@{0}: On main: Working on login layout` >
 > `stash@{1}: On feature-ui: Experimental button styles`
 
+```
 #### 4. Bring Your Changes Back
 
 Once your urgent hotfix is done, switch back to your feature branch and restore
@@ -78,11 +79,12 @@ git stash pop
 If you want to apply the changes but keep a backup copy in the stash list just
 in case, use `apply` instead:
 
-# Basic example showing the core idea.
+```
 ```bash
 // Reapply stashed changes but keep them saved in the stash history
 git stash apply stash@{0}
 
+```
 #### 5. Clean Out the Drawer
 
 If you decide you no longer need your stashed changes, you can delete a single
@@ -95,6 +97,7 @@ git stash drop stash@{0}
 // Delete every single item in your stash history
 git stash clear
 
+```
 ### A Friendly Warning
 
 Stashed changes are saved locally on your machine. They are **not** pushed to

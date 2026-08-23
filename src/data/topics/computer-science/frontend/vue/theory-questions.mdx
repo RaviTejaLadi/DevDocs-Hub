@@ -56,7 +56,6 @@ performance.
 
 **Answer:** Use **props**:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <!-- Parent -->
 <Child :message="parentMsg" />
@@ -71,7 +70,6 @@ export default { props: ['message'] }
 
 **Answer:** Use `$emit`:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <!-- Child -->
 <button @click="$emit('notify')">Click</button>
@@ -102,7 +100,6 @@ export default { props: ['message'] }
 **Answer:** Vue 3’s API for organizing code by **feature** (not lifecycle
 hooks). Uses `setup()`:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 import { ref, computed } from 'vue';
 export default {
@@ -133,7 +130,6 @@ Simpler API with:
 
 **Answer:** Use **lifecycle hooks** or **async/await**:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 export default {
   async created() {
@@ -155,7 +151,6 @@ export default {
 
 **Answer:** Slots inject content into child components:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <!-- Child -->
 <slot name="header">Fallback Content</slot>
@@ -168,7 +163,6 @@ export default {
 
 **Answer:** Styles scoped to a component:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```vue
 <style scoped>
 .button {
@@ -189,7 +183,6 @@ export default {
 
 **Answer:** Use navigation guards:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isLoggedIn) next('/login');
@@ -209,7 +202,6 @@ router.beforeEach((to, from, next) => {
 
 **Answer:** Create reusable DOM behavior:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 app.directive('focus', {
   mounted(el) {
@@ -223,7 +215,6 @@ app.directive('focus', {
 
 **Answer:** Add global-level functionality:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 const MyPlugin = {
   install(app) {
@@ -243,7 +234,6 @@ app.use(MyPlugin);
 
 **Answer:** Waits for DOM updates:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 this.message = 'updated';
 this.$nextTick(() => console.log('DOM updated'));
@@ -260,7 +250,6 @@ this.$nextTick(() => console.log('DOM updated'));
 
 **Answer:** Components with **no template**; expose logic via scoped slots:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <RenderlessComponent v-slot="{ data }">
   <div>{{ data }}</div>
@@ -271,7 +260,6 @@ this.$nextTick(() => console.log('DOM updated'));
 
 **Answer:** Pass data to deeply nested children:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```js
 // Parent
 provide('user', 'Alice');
@@ -284,7 +272,6 @@ const user = inject('user');
 
 **Answer:** Vue 3 feature for handling async dependencies:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <Suspense>
   <template #default>
@@ -304,7 +291,6 @@ const user = inject('user');
 
 **Answer:** Render content outside the component:
 
-// Example demonstrating Vue.js Top 30 Theory Questions & Answers.
 ```tsx
 <teleport to="#modal-root">
   <div>Modal Content</div>

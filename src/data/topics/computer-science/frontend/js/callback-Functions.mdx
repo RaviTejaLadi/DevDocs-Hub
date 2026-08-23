@@ -12,7 +12,6 @@ function and is **executed later**, usually after a task is completed.
 
 ## 🔹 2. Syntax
 
-// Basic example showing the core idea.
 ```javascript
 function mainFunction(callback) {
   // Do something
@@ -47,7 +46,6 @@ mainFunction(sayHello);
 
 ### ✅ Example 1: Basic Callback
 
-// Basic example showing the core idea.
 ```javascript
 function greetUser(name, callback) {
   console.log('Hi ' + name);
@@ -63,7 +61,6 @@ greetUser('Ravi', sayBye);
 
 **Output:**
 
-// Example demonstrating JavaScript Callback Functions.
 ```
 Hi Ravi
 Bye!
@@ -71,7 +68,6 @@ Bye!
 
 ### ✅ Example 2: Callback with Anonymous Function
 
-// Basic example showing the core idea.
 ```javascript
 function processUserInput(callback) {
   let name = 'Ravi';
@@ -85,7 +81,6 @@ processUserInput(function (name) {
 
 ### ✅ Example 3: Callback in Asynchronous Code
 
-// Basic example showing the core idea.
 ```javascript
 console.log('Start');
 
@@ -96,7 +91,6 @@ setTimeout(function () {
 console.log('End');
 ```
 
-// Example demonstrating JavaScript Callback Functions.
 ```
 Start
 End
@@ -105,7 +99,6 @@ This runs after 2 seconds
 
 ### ✅ Example 4: Array Method (Functional Style)
 
-// Basic example showing the core idea.
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
@@ -125,7 +118,6 @@ console.log(squared); // [1, 4, 9, 16, 25]
 
 ### ✅ Example: Async Callback
 
-// Basic example showing the core idea.
 ```javascript
 function fetchData(callback) {
   setTimeout(() => {
@@ -144,7 +136,6 @@ fetchData(() => {
 When callbacks are nested within callbacks, the code becomes hard to read and
 maintain.
 
-// Basic example showing the core idea.
 ```javascript
 doTask1(() => {
   doTask2(() => {

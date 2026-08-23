@@ -25,7 +25,6 @@ graph LR
 - **Imperative (How to do it):** You list the exact step-by-step commands to
   build the setup. (Example: Bash scripts).
 
-// Example demonstrating 📜 Infrastructure as Code (IaC).
 ```hcl
 // Define an AWS VPC network resource using Terraform
 resource "aws_vpc" "main_network" {
@@ -39,6 +38,7 @@ tags = {
 
 ---
 
+```
 ### Kubernetes
 
 Once you have your infrastructure set up, you need a way to run and scale your
@@ -64,6 +64,7 @@ graph TD
     A --> C
     A --> E
 
+```
 #### Core Concepts
 
 - **Pods:** The smallest runtime unit in Kubernetes. A pod holds one or more

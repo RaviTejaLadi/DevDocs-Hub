@@ -34,7 +34,6 @@ indices.
 
 ### Using JavaScript Objects
 
-// Basic example showing the core idea.
 ```javascript
 // Creating a hash table using object literal
 const hashTable = {};
@@ -50,7 +49,6 @@ console.log(hashTable.key2); // "value2"
 
 ### Using JavaScript Map
 
-// Basic example showing the core idea.
 ```javascript
 // Creating a hash table using Map
 const hashMap = new Map();
@@ -113,7 +111,6 @@ This is exactly how hash tables work - instant lookup without searching!
 
 ### Simple Hash Table Implementation
 
-// Basic example showing the core idea.
 ```javascript
 class SimpleHashTable {
   constructor(size = 10) {
@@ -181,7 +178,6 @@ console.log(`Welcome ${user.name}!`); // "Welcome Alice!"
 
 **Problem**: Different keys produce the same hash value
 
-// Basic example showing the core idea.
 ```javascript
 // Bad: Simple hash function causing collisions
 hash(key) {
@@ -195,7 +191,6 @@ hash(key) {
 
 **Problem**: Using objects as keys in regular JavaScript objects
 
-// Basic example showing the core idea.
 ```javascript
 const obj = {};
 const key1 = { id: 1 };
@@ -211,7 +206,6 @@ console.log(obj[key2]); // undefined (different object references)
 
 **Problem**: Not cleaning up unused keys
 
-// Basic example showing the core idea.
 ```javascript
 const cache = new Map();
 // Adding many items without cleanup
@@ -227,7 +221,6 @@ for (let i = 0; i < 1000000; i++) {
 
 **Problem**: Expecting keys to maintain insertion order in objects
 
-// Basic example showing the core idea.
 ```javascript
 const obj = { 3: 'three', 1: 'one', 2: 'two' };
 console.log(Object.keys(obj)); // May not be ["3", "1", "2"]
@@ -239,7 +232,6 @@ console.log(Object.keys(obj)); // May not be ["3", "1", "2"]
 
 **Problem**: Thinking all operations are always O(1)
 
-// Basic example showing the core idea.
 ```javascript
 // In worst case (many collisions), this could be O(n)
 const value = hashTable.get('key');

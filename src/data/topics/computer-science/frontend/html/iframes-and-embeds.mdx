@@ -16,7 +16,6 @@ current webpage.
 
 ## Basic Syntax
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Basic iframe -->
 <iframe src="https://example.com"></iframe>
@@ -24,7 +23,6 @@ current webpage.
 
 ### Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Embed a webpage -->
 <iframe src="https://example.com" width="600" height="400"> </iframe>
@@ -34,7 +32,6 @@ This creates a frame that displays the specified webpage.
 
 ## Iframe Structure
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Common iframe attributes -->
 <iframe
@@ -61,7 +58,6 @@ This creates a frame that displays the specified webpage.
 
 One of the most common iframe use cases is embedding videos.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Embed a YouTube video -->
 <iframe
@@ -80,7 +76,6 @@ Replace `VIDEO_ID` with the actual YouTube video ID.
 
 Google Maps provides iframe embed code for locations.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Embed Google Maps -->
 <iframe
@@ -99,7 +94,6 @@ This allows users to view maps without leaving your website.
 
 PDF documents can be displayed directly using an iframe.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Display a PDF file -->
 <iframe src="files/document.pdf" width="100%" height="600"> </iframe>
@@ -107,7 +101,6 @@ PDF documents can be displayed directly using an iframe.
 
 ### Project Structure
 
-// Example demonstrating 🖼 HTML Iframes & Embeds.
 ```text
 project/
 │
@@ -120,7 +113,6 @@ project/
 
 You can embed another page from your own website.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Embed local page -->
 <iframe src="about.html" width="600" height="400"> </iframe>
@@ -128,7 +120,6 @@ You can embed another page from your own website.
 
 ### Folder Structure
 
-// Example demonstrating 🖼 HTML Iframes & Embeds.
 ```text
 project/
 │
@@ -142,7 +133,6 @@ Fixed widths may not work well on mobile devices.
 
 ### Responsive Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Responsive iframe -->
 <div class="iframe-container">
@@ -150,7 +140,6 @@ Fixed widths may not work well on mobile devices.
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 /* Responsive iframe styling */
 .iframe-container {
@@ -175,7 +164,6 @@ Embedding external content can introduce security risks.
 
 ### Using `sandbox`
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Restrict iframe permissions -->
 <iframe src="https://example.com" sandbox> </iframe>
@@ -185,7 +173,6 @@ The `sandbox` attribute limits what the embedded page can do.
 
 ### Allow Specific Permissions
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Allow scripts and forms -->
 <iframe src="https://example.com" sandbox="allow-scripts allow-forms"> </iframe>
@@ -197,7 +184,6 @@ Large iframes can slow page loading.
 
 Use lazy loading to load content only when needed.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Lazy loaded iframe -->
 <iframe src="https://example.com" loading="lazy"> </iframe>
@@ -213,7 +199,6 @@ Benefits:
 
 The `<embed>` element is another way to include external resources.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Basic embed -->
 <embed src="file.pdf" width="600" height="400" />
@@ -221,7 +206,6 @@ The `<embed>` element is another way to include external resources.
 
 ## Embedding a PDF
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- PDF using embed -->
 <embed src="document.pdf" type="application/pdf" width="100%" height="600" />
@@ -229,7 +213,6 @@ The `<embed>` element is another way to include external resources.
 
 ## Embedding Audio
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Audio file -->
 <embed src="music.mp3" width="300" height="50" />
@@ -263,14 +246,12 @@ The `<embed>` element is another way to include external resources.
 
 ❌ Wrong
 
-<!-- Basic example showing the core idea. -->
 ```html
 <iframe src="https://example.com"></iframe>
 ```
 
 ✅ Correct
 
-<!-- Basic example showing the core idea. -->
 ```html
 <iframe src="https://example.com" title="Example Website"> </iframe>
 ```
@@ -279,14 +260,12 @@ The `title` improves accessibility.
 
 ## Fixed Width on Mobile
 
-<!-- Basic example showing the core idea. -->
 ```html
 <iframe width="1200" height="600"> </iframe>
 ```
 
 ✅ Better
 
-<!-- Basic example showing the core idea. -->
 ```html
 <iframe width="100%" height="600"> </iframe>
 ```
@@ -295,14 +274,12 @@ The `title` improves accessibility.
 
 ❌ Not all websites allow embedding.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <iframe src="https://some-website.com"></iframe>
 ```
 
 Many websites block iframes using security headers such as:
 
-// Example demonstrating 🖼 HTML Iframes & Embeds.
 ```text
 X-Frame-Options
 Content-Security-Policy
@@ -326,7 +303,6 @@ In such cases, the content will not load.
 
 ## Quick Summary
 
-// Example demonstrating 🖼 HTML Iframes & Embeds.
 ```text
 Iframe
    ↓
@@ -339,7 +315,6 @@ Examples:
 • Dashboards
 ```
 
-// Example demonstrating 🖼 HTML Iframes & Embeds.
 ```text
 Embed
    ↓

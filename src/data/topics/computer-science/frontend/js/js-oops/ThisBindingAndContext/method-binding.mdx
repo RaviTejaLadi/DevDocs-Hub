@@ -17,7 +17,6 @@ handlers.
 
 ## 🧱 Syntax/Structure
 
-// Basic example showing the core idea.
 ```javascript
 const obj = {
   name: 'Alice',
@@ -31,7 +30,6 @@ obj.greet(); // "this" refers to obj
 
 ### 🔹 Basic Example
 
-// Basic example showing the core idea.
 ```javascript
 const user = {
   name: 'Tom',
@@ -47,7 +45,6 @@ user.sayHi(); // Output: Hi, I'm Tom
 
 ### 🔸 Real-World Use Case
 
-// Basic example showing the core idea.
 ```javascript
 const button = {
   label: 'Submit',
@@ -62,7 +59,6 @@ setTimeout(button.click, 1000); // ❌ this becomes undefined or window
 
 ✅ **Fix it using `.bind()`**:
 
-// Basic example showing the core idea.
 ```javascript
 setTimeout(button.click.bind(button), 1000); // ✅ this refers to button
 ```
@@ -84,7 +80,6 @@ setTimeout(button.click.bind(button), 1000); // ✅ this refers to button
 3. ✅ Use `.bind()`, `.call()`, or `.apply()` to explicitly set `this`.
 4. ✅ Consider using **arrow functions** when you want to "lock in" `this`.
 
-// Basic example showing the core idea.
 ```javascript
 const obj = {
   count: 0,

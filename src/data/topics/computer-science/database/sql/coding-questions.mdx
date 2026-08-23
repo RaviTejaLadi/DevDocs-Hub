@@ -38,7 +38,6 @@ and manipulating relational databases. Its main components are:
 
 ### 5. How do you find the second highest salary from an Employee table?
 
--- Basic example showing the core idea.
 ```sql
 SELECT MAX(salary)
 FROM Employee
@@ -56,7 +55,6 @@ WHERE salary < (SELECT MAX(salary) FROM Employee);
 
 ### 7. How do you find duplicate records in a table?
 
--- Basic example showing the core idea.
 ```sql
 SELECT column_name, COUNT(*)
 FROM table_name
@@ -71,7 +69,6 @@ HAVING COUNT(*) > 1;
 
 ### 9. How do you find the nth highest salary using window functions?
 
--- Basic example showing the core idea.
 ```sql
 SELECT DISTINCT salary
 FROM (
@@ -99,7 +96,6 @@ related to the current row. Examples:
 
 ### 12. How do you calculate a running total in SQL?
 
--- Basic example showing the core idea.
 ```sql
 SELECT date, amount,
        SUM(amount) OVER (ORDER BY date) as running_total
@@ -117,7 +113,6 @@ be referenced within a query. Differences:
 
 ### 14. How do you implement pagination in SQL?
 
--- Basic example showing the core idea.
 ```sql
 -- For SQL Server
 SELECT * FROM table_name
@@ -183,7 +178,6 @@ occur (INSERT, UPDATE, DELETE). Used for:
 
 ### 21. How do you find employees who earn more than their managers?
 
--- Basic example showing the core idea.
 ```sql
 SELECT e.name as employee_name, e.salary as employee_salary,
        m.name as manager_name, m.salary as manager_salary
@@ -194,7 +188,6 @@ WHERE e.salary > m.salary;
 
 ### 22. How do you find the department with the highest average salary?
 
--- Basic example showing the core idea.
 ```sql
 SELECT d.name, AVG(e.salary) as avg_salary
 FROM Department d
@@ -206,7 +199,6 @@ LIMIT 1;
 
 ### 23. How do you calculate the cumulative distribution of salaries?
 
--- Basic example showing the core idea.
 ```sql
 SELECT salary,
        CUME_DIST() OVER (ORDER BY salary) as cumulative_dist
@@ -215,7 +207,6 @@ FROM Employee;
 
 ### 24. How do you find gaps in sequential data (like missing IDs)?
 
--- Basic example showing the core idea.
 ```sql
 WITH seq AS (
     SELECT MIN(id) as min_id, MAX(id) as max_id FROM table
@@ -231,7 +222,6 @@ WHERE t.id IS NULL;
 
 ### 25. How do you swap male and female values in a single update statement?
 
--- Basic example showing the core idea.
 ```sql
 UPDATE Employee
 SET gender = CASE

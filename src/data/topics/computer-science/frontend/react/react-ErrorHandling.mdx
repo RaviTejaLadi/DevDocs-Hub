@@ -58,7 +58,6 @@ Error boundaries are React components that implement either
 
 **Syntax**:
 
-// Basic example showing the core idea.
 ```javascript
 static getDerivedStateFromError(error) {
   // Update state to show fallback UI
@@ -81,7 +80,6 @@ static getDerivedStateFromError(error) {
 
 **Purpose**: Log error information and perform side effects
 
-// Basic example showing the core idea.
 ```javascript
 componentDidCatch(error, errorInfo) {
   // Log error to error reporting service
@@ -96,7 +94,6 @@ componentDidCatch(error, errorInfo) {
 
 ### 5.1 Basic Error Boundary
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 
@@ -129,7 +126,6 @@ return this.props.children;
 
 ### 5.2 Enhanced Error Boundary with Props
 
-// Basic example showing the core idea.
 ```javascript
 class EnhancedErrorBoundary extends React.Component {
   constructor(props) {
@@ -173,6 +169,7 @@ render() {
       );
     }
 
+```
 ### 5.3 Functional Error Boundary with Hooks
 
 ```javascript
@@ -202,7 +199,6 @@ if (hasError) {
 
 return children;
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 6.1 Render Errors
@@ -221,7 +217,6 @@ function ProblematicComponent() {
   );
   // Error: Cannot read property 'map' of null
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 6.2 Lifecycle Method Errors
@@ -238,7 +233,6 @@ render() {
     return <div>This component will error on mount</div>;
   }
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 6.3 Constructor Errors
@@ -256,7 +250,6 @@ render() {
     return <div>Never rendered</div>;
   }
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 7.1 Error Boundary Placement
@@ -280,7 +273,6 @@ function App() {
     </div>
   );
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 7.2 Meaningful Error Messages
@@ -303,7 +295,6 @@ function UserProfileErrorBoundary({ children }) {
     </ErrorBoundary>
   );
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 7.3 Error Reporting
@@ -326,7 +317,6 @@ class ErrorBoundary extends React.Component {
     logErrorToService(error, errorInfo);
   }
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 8.1 Retry Mechanism
@@ -367,9 +357,9 @@ render() {
       );
     }
 
+```
 ### 8.2 Context-Based Error Handling
 
-// Basic example showing the core idea.
 ```javascript
 const ErrorContext = React.createContext();
 
@@ -395,7 +385,6 @@ return (
 
 ### 8.3 Async Error Handling
 
-// Basic example showing the core idea.
 ```javascript
 function AsyncErrorHandler({ children }) {
   const [asyncError, setAsyncError] = useState(null);
@@ -424,6 +413,7 @@ if (asyncError) {
     );
   }
 
+```
 ### 9.1 Testing Setup
 
 ```javascript
@@ -453,7 +443,6 @@ expect(screen.getByText(/something went wrong/i)).toBeInTheDocument();
 spy.mockRestore();
   });
 });
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 9.2 Testing Error Recovery
@@ -481,7 +470,6 @@ it('allows retry after error', () => {
 
 expect(screen.getByText('No error')).toBeInTheDocument();
 });
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 10.1 Error Boundaries Don't Catch All Errors
@@ -501,7 +489,6 @@ useEffect(() => {
 
 return <button onClick={handleClick}>Click me</button>;
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 10.2 Infinite Error Loops
@@ -516,7 +503,6 @@ class BadErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 10.3 Over-wrapping Components
@@ -534,7 +520,6 @@ function App() {
     </ErrorBoundary>
   );
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 11.1 Error Monitoring Integration
@@ -551,7 +536,6 @@ class ProductionErrorBoundary extends React.Component {
     });
   }
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 11.2 Feature Flags for Error Boundaries
@@ -563,7 +547,6 @@ function ConditionalErrorBoundary({ children, feature }) {
   }
   return children;
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ### 11.3 Performance Considerations
@@ -583,7 +566,6 @@ function OptimizedApp() {
     </div>
   );
 }
-// Example demonstrating Complete Guide to React Error Handling.
 ```
 
 ## Summary

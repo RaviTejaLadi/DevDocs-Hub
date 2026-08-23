@@ -4,7 +4,6 @@
 
 Reactivity means:
 
-// Example demonstrating Reactivity Fundamentals.
 ```txt
 When data changes → UI updates automatically
 ```
@@ -15,7 +14,6 @@ Vue tracks data changes and updates only the affected parts of the DOM.
 
 ## Example
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <template>
   <h1>{{ count }}</h1>
@@ -32,7 +30,6 @@ const count = ref(0);
 
 When `count` changes:
 
-// Example demonstrating Reactivity Fundamentals.
 ```txt
 0 → 1 → 2
 ```
@@ -73,30 +70,27 @@ Used for:
 
 ## Syntax
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 const state = ref(value);
 ```
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <script setup>
 import { ref } from 'vue';
 
+```
 ## Accessing ref Values
 
 Inside JavaScript:
 
 ```js
 count.value;
-// Example demonstrating Reactivity Fundamentals.
 ```
 
 Inside template:
 
 ```vue
 {{ count }}
-// Example demonstrating Reactivity Fundamentals.
 ```
 
 Vue automatically unwraps refs in templates.
@@ -104,6 +98,7 @@ Vue automatically unwraps refs in templates.
 <button @click="increment">Add</button>
 </template>
 
+```javascript
 const count = ref(0);
 
 const increment = () => {
@@ -116,14 +111,12 @@ const increment = () => {
 
 `ref()` returns a reactive wrapper object.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 console.log(count);
 ```
 
 Output:
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 {
   value: 0;
@@ -134,14 +127,12 @@ Vue tracks changes through `.value`.
 
 ## Reactive Arrays
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 const users = ref([]);
 ```
 
 ## Update Array
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 users.value.push({
   id: 1,
@@ -151,7 +142,6 @@ users.value.push({
 
 ## Reactive Objects with ref
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 const user = ref({
   name: 'John',
@@ -161,7 +151,6 @@ const user = ref({
 
 Access:
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 user.value.name;
 ```
@@ -170,12 +159,10 @@ user.value.name;
 
 Used for reactive objects.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 const state = reactive({});
 ```
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <script setup>
 import { reactive } from 'vue';
@@ -191,14 +178,12 @@ const user = reactive({
 
 No `.value` needed.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 user.name;
 ```
 
 ## Update Values
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 user.age++;
 ```
@@ -228,14 +213,12 @@ Used for derived/calculated reactive values.
 
 Instead of recalculating every render:
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 {{ firstName + lastName }}
 ```
 
 Use computed.
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <template>
   <h1>{{ fullName }}</h1>
@@ -267,14 +250,12 @@ Runs only when dependencies change.
 
 ## Bad Example
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 {{ users.filter((user) => user.active) }}
 ```
 
 ## Better
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 const activeUsers = computed(() => {
   return users.value.filter((user) => user.active);
@@ -285,12 +266,10 @@ const activeUsers = computed(() => {
 
 Used to observe state changes.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 watch(source, callback);
 ```
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <script setup>
 import { ref, watch } from 'vue';
@@ -314,7 +293,6 @@ watch(search, (newValue, oldValue) => {
 
 ## Watch Multiple Values
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 watch([firstName, lastName], () => {
   console.log('Changed');
@@ -325,7 +303,6 @@ watch([firstName, lastName], () => {
 
 Runs immediately.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 watch(search, fetchUsers, {
   immediate: true,
@@ -336,7 +313,6 @@ watch(search, fetchUsers, {
 
 Used for nested objects.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 watch(user, () => {}, {
   deep: true,
@@ -347,7 +323,6 @@ watch(user, () => {}, {
 
 Automatically tracks dependencies.
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <script setup>
 import { ref, watchEffect } from 'vue';
@@ -370,7 +345,6 @@ watchEffect(() => {
 
 Vue batches DOM updates for performance.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 count.value++;
 count.value++;
@@ -383,7 +357,6 @@ Vue avoids unnecessary renders.
 
 Wait for DOM updates to complete.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 import { nextTick } from 'vue';
 
@@ -400,21 +373,18 @@ await nextTick();
 
 Reactive state automatically updates templates.
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <template>
   <p>{{ count }}</p>
 </template>
 ```
 
-// Example demonstrating Reactivity Fundamentals.
 ```txt
 Template re-renders automatically
 ```
 
 ## 8. Reactive Forms Example
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <template>
   <form>
@@ -438,7 +408,6 @@ const form = reactive({
 
 ## 9. Real World Example
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 <template>
   <section>
@@ -470,14 +439,12 @@ const filteredUsers = computed(() => {
 
 ❌ Wrong
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 count++;
 ```
 
 ✅ Correct
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 count.value++;
 ```
@@ -486,7 +453,6 @@ count.value++;
 
 ❌ Bad
 
-// Example demonstrating Reactivity Fundamentals.
 ```vue
 {{ users.filter((user) => user.active).length }}
 ```
@@ -526,7 +492,6 @@ Large nested objects become hard to maintain.
 
 Reusable reactive logic.
 
-// Example demonstrating Reactivity Fundamentals.
 ```js
 export function useCounter() {
   const count = ref(0);

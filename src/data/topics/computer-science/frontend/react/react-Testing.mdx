@@ -64,7 +64,6 @@ projects.
 
 ### Installation
 
-# Basic example showing the core idea.
 ```bash
 ## For new Create React App projects (Jest + RTL included)
 npx create-react-app my-app
@@ -76,7 +75,6 @@ npm install --save-dev @testing-library/user-event
 
 ### Basic Test File Structure
 
-// Basic example showing the core idea.
 ```javascript
 // ComponentName.test.js
 import { render, screen } from '@testing-library/react';
@@ -91,7 +89,6 @@ describe('ComponentName', () => {
 
 ### Jest Configuration (jest.config.js)
 
-// Basic example showing the core idea.
 ```javascript
 module.exports = {
   testEnvironment: 'jsdom',
@@ -105,7 +102,6 @@ module.exports = {
 
 ### Setup File (setupTests.js)
 
-// Basic example showing the core idea.
 ```javascript
 import '@testing-library/jest-dom';
 
@@ -117,7 +113,6 @@ beforeEach(() => {
 
 ### Basic Test Structure
 
-// Basic example showing the core idea.
 ```javascript
 // Arrange - Set up test data and conditions
 // Act - Execute the functionality being tested
@@ -138,7 +133,6 @@ test('adds 1 + 2 to equal 3', () => {
 
 ### Common Jest Matchers
 
-// Basic example showing the core idea.
 ```javascript
 // Equality
 expect(value).toBe(4); // Strict equality
@@ -171,7 +165,6 @@ expect(() => {
 
 ### Basic Component Rendering
 
-// Basic example showing the core idea.
 ```javascript
 import { render, screen } from '@testing-library/react';
 import Button from './Button';
@@ -185,7 +178,6 @@ test('renders button with text', () => {
 
 ### Testing Props
 
-// Basic example showing the core idea.
 ```javascript
 // Button.js
 const Button = ({ variant, children, disabled }) => (
@@ -210,7 +202,6 @@ test('disables button when disabled prop is true', () => {
 
 ### Testing Conditional Rendering
 
-// Basic example showing the core idea.
 ```javascript
 // Message.js
 const Message = ({ type, children }) => {
@@ -237,7 +228,6 @@ test('renders nothing for invalid type', () => {
 
 ### User Event Setup
 
-// Basic example showing the core idea.
 ```javascript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -250,7 +240,6 @@ test('handles click events', async () => {
 
 ### Click Events
 
-// Basic example showing the core idea.
 ```javascript
 // Counter.js
 const Counter = () => {
@@ -281,7 +270,6 @@ await user.click(button);
 
 ### Form Input Events
 
-// Basic example showing the core idea.
 ```javascript
 // LoginForm.js
 const LoginForm = ({ onSubmit }) => {
@@ -336,7 +324,6 @@ expect(mockSubmit).toHaveBeenCalledWith({
 
 ### Keyboard Events
 
-// Basic example showing the core idea.
 ```javascript
 test('handles keyboard navigation', async () => {
   const user = userEvent.setup();
@@ -353,7 +340,6 @@ expect(mockSearch).toHaveBeenCalledWith('test query');
 
 ### Testing Promises
 
-// Basic example showing the core idea.
 ```javascript
 // DataFetcher.js
 const DataFetcher = () => {
@@ -407,7 +393,6 @@ expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
 
 ### waitFor Usage
 
-// Basic example showing the core idea.
 ```javascript
 import { waitFor } from '@testing-library/react';
 
@@ -430,7 +415,6 @@ await waitFor(() => {
 
 ### Testing setTimeout/setInterval
 
-// Basic example showing the core idea.
 ```javascript
 // Timer.js
 const Timer = () => {
@@ -468,7 +452,6 @@ jest.useRealTimers();
 
 ### Mocking Functions
 
-// Basic example showing the core idea.
 ```javascript
 // Component with callback
 const Button = ({ onClick, children }) => (
@@ -489,7 +472,6 @@ expect(mockClick).toHaveBeenCalledTimes(1);
 
 ### Mocking Modules
 
-// Basic example showing the core idea.
 ```javascript
 // Mock external library
 jest.mock('axios');
@@ -508,7 +490,6 @@ await screen.findByText('John');
 
 ### Mocking Custom Hooks
 
-// Basic example showing the core idea.
 ```javascript
 // Mock custom hook
 jest.mock('./hooks/useAuth');
@@ -530,7 +511,6 @@ expect(screen.getByText('Please log in')).toBeInTheDocument();
 
 ### Mocking React Router
 
-// Basic example showing the core idea.
 ```javascript
 import { MemoryRouter } from 'react-router-dom';
 
@@ -547,7 +527,6 @@ expect(screen.getByText('About Page')).toBeInTheDocument();
 
 ### Testing Component Integration
 
-// Basic example showing the core idea.
 ```javascript
 // TodoApp integration test
 test('adds and removes todos', async () => {
@@ -573,7 +552,6 @@ expect(screen.queryByText('Learn React Testing')).not.toBeInTheDocument();
 
 ### Testing with Context
 
-// Basic example showing the core idea.
 ```javascript
 // Custom render with context
 const renderWithTheme = (component) => {
@@ -590,7 +568,6 @@ const button = screen.getByRole('button');
 
 ### Testing with Redux
 
-// Basic example showing the core idea.
 ```javascript
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -618,7 +595,6 @@ expect(screen.getByText('John Doe')).toBeInTheDocument();
 
 ### 1. Test Behavior, Not Implementation
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - testing implementation details
 test('sets loading state to true', () => {
@@ -640,7 +616,6 @@ expect(screen.getByText('Loading...')).toBeInTheDocument();
 
 ### 2. Use Semantic Queries
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Avoid getByTestId when possible
 screen.getByTestId('submit-button');
@@ -653,7 +628,6 @@ screen.getByText('Welcome back!');
 
 ### 3. Test Edge Cases
 
-// Basic example showing the core idea.
 ```javascript
 test('handles empty list', () => {
   render(<TodoList todos={[]} />);
@@ -669,7 +643,6 @@ test('handles very long todo text', () => {
 
 ### 4. Clean Up After Tests
 
-// Basic example showing the core idea.
 ```javascript
 afterEach(() => {
   jest.clearAllMocks();
@@ -683,7 +656,6 @@ afterAll(() => {
 
 ### Custom Render Function
 
-// Basic example showing the core idea.
 ```javascript
 // test-utils.js
 const AllTheProviders = ({ children }) => {
@@ -705,7 +677,6 @@ export { customRender as render };
 
 ### Page Object Model
 
-// Basic example showing the core idea.
 ```javascript
 // pageObjects/LoginPage.js
 class LoginPage {
@@ -746,7 +717,6 @@ expect(screen.getByText('Welcome!')).toBeInTheDocument();
 
 ### Factory Functions for Test Data
 
-// Basic example showing the core idea.
 ```javascript
 // factories/userFactory.js
 export const createUser = (overrides = {}) => ({
@@ -770,7 +740,6 @@ expect(screen.getByText('Admin Panel')).toBeInTheDocument();
 
 #### 1. "Not wrapped in act()" Warning
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Problem
 test('updates state', () => {
@@ -790,7 +759,6 @@ await user.click(screen.getByText('Increment'));
 
 #### 2. Testing Async Operations
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Problem - not waiting for async operation
 test('loads data', () => {
@@ -807,7 +775,6 @@ test('loads data', async () => {
 
 #### 3. Debugging Test Failures
 
-// Basic example showing the core idea.
 ```javascript
 test('debug example', () => {
   render(<MyComponent />);
@@ -825,7 +792,6 @@ test('debug example', () => {
 
 #### 4. Testing Custom Hooks
 
-// Basic example showing the core idea.
 ```javascript
 import { renderHook, act } from '@testing-library/react';
 
@@ -844,7 +810,6 @@ expect(result.current.count).toBe(1);
 
 ### Performance Testing
 
-// Basic example showing the core idea.
 ```javascript
 // Monitor render performance
 test('renders large list efficiently', () => {
@@ -863,7 +828,6 @@ expect(end - start).toBeLessThan(100); // Should render in under 100ms
 
 ### Accessibility Testing
 
-// Basic example showing the core idea.
 ```javascript
 import { axe, toHaveNoViolations } from 'jest-axe';
 

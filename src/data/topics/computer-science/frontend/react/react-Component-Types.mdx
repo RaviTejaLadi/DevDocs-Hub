@@ -21,7 +21,6 @@ provide access to lifecycle methods and state management through class methods.
 
 ### Functional Component Syntax
 
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React from 'react';
 
@@ -39,7 +38,6 @@ export default Welcome;
 
 ### Class Component Syntax
 
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React, { Component } from 'react';
 
@@ -49,6 +47,7 @@ class Welcome extends Component {
   }
 }
 
+```
 ### Functional Components with Hooks
 
 ```jsx
@@ -93,11 +92,11 @@ return (
     </div>
   );
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Class Components with Lifecycle Methods
 
+```javascript
 class UserProfile extends Component {
   constructor(props) {
     super(props);
@@ -148,7 +147,6 @@ return (
 
 ### Functional Components with useState Hook
 
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
@@ -180,6 +178,7 @@ return (
 
 ### Class Components with this.state
 
+```javascript
 class Counter extends Component {
   constructor(props) {
     super(props);
@@ -225,7 +224,6 @@ return (
     );
   }
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Props Handling
@@ -256,7 +254,6 @@ return (
     </div>
   );
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ```jsx
@@ -298,7 +295,6 @@ return (
     );
   }
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Event Handling
@@ -350,7 +346,6 @@ return (
     </form>
   );
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ```jsx
@@ -406,7 +401,6 @@ return (
     );
   }
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Functional Components Optimization
@@ -443,7 +437,6 @@ return (
     </ul>
   );
 });
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Class Components Optimization
@@ -480,7 +473,6 @@ return (
     );
   }
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Custom Hooks (Functional Components)
@@ -529,7 +521,6 @@ return (
     </ul>
   );
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Higher-Order Components (Class Components)
@@ -562,7 +553,6 @@ return <WrappedComponent {...this.props} />;
 
 // Using the HOC
 const UserProfileWithLoading = withLoading(UserProfile);
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Converting Class to Functional Component
@@ -590,7 +580,6 @@ render() {
     return <div>Seconds: {this.state.seconds}</div>;
   }
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 **After (Functional Component):**
@@ -609,7 +598,6 @@ return () => clearInterval(interval);
 
 return <div>Seconds: {seconds}</div>;
 }
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Functional Components Best Practices
@@ -655,7 +643,6 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
 };
-// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Conclusion

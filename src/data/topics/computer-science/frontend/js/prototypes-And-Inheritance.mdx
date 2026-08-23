@@ -14,14 +14,12 @@ object. If it doesn't find it, it looks up the prototype chain.
 
 ### ✅ Old Way (pre-ES6)
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 object.__proto__; // Access prototype (not recommended)
 ```
 
 ### ✅ ES6 Way (recommended)
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 Object.getPrototypeOf(object); // Get prototype
 Object.setPrototypeOf(object, prototype); // Set prototype
@@ -29,7 +27,6 @@ Object.setPrototypeOf(object, prototype); // Set prototype
 
 ### ✅ Syntax
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function Person(name) {
   this.name = name;
@@ -50,7 +47,6 @@ console.log(john.greet()); // Hello, my name is John
 
 ### ✅ Visualization
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```
 john --> Person.prototype --> Object.prototype --> null
 ```
@@ -63,7 +59,6 @@ When `john.greet()` is called:
 
 ## 5. 🔹 Inheritance via Prototypes
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function Animal(name) {
   this.name = name;
@@ -98,7 +93,6 @@ console.log(dog.bark()); // Rex barks.
 
 ## 6. 🔹 Inheritance using ES6 Classes
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 class Animal {
   constructor(name) {
@@ -133,7 +127,6 @@ console.log(rex.bark()); // Rex barks.
 | `prototype` | A property of functions that is used when creating new objects using `new` |
 | `__proto__` | A reference to the actual prototype object, used in the prototype chain    |
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function A() {}
 const obj = new A();
@@ -143,7 +136,6 @@ console.log(obj.__proto__ === A.prototype); // true
 
 ### ✅ Using `instanceof`
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 console.log(dog instanceof Dog); // true
 console.log(dog instanceof Animal); // true
@@ -151,14 +143,12 @@ console.log(dog instanceof Animal); // true
 
 ### ✅ Using `isPrototypeOf`
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 console.log(Animal.prototype.isPrototypeOf(dog)); // true
 ```
 
 ### ❌ Dangerous Example
 
-// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 Object.prototype.hacked = true;
 

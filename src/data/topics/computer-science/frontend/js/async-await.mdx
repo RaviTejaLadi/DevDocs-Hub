@@ -8,7 +8,6 @@ read and write.
 
 **Before async/await, we had messy code:**
 
-// Basic example showing the core idea.
 ```javascript
 // Callback Hell 😵
 getUserData(userId, (user) => {
@@ -29,7 +28,6 @@ getUserData(userId)
 
 **With async/await 😍:**
 
-// Basic example showing the core idea.
 ```javascript
 async function loadUserProfile(userId) {
   try {
@@ -47,7 +45,6 @@ async function loadUserProfile(userId) {
 
 **The `async` keyword transforms a function to return a Promise automatically.**
 
-// Basic example showing the core idea.
 ```javascript
 // Regular function
 function regularFunction() {
@@ -69,7 +66,6 @@ asyncFunction().then((result) => console.log(result)); // "Hello"
 - If you return a value, it's wrapped in `Promise.resolve()`
 - If you throw an error, it becomes `Promise.reject()`
 
-// Basic example showing the core idea.
 ```javascript
 async function examples() {
   return 42; // Returns Promise.resolve(42)
@@ -81,7 +77,6 @@ async function examples() {
 
 **The `await` keyword pauses execution until a Promise resolves.**
 
-// Basic example showing the core idea.
 ```javascript
 async function fetchUserData() {
   console.log('Starting fetch...');
@@ -107,7 +102,6 @@ return userData;
 
 **Async/await makes error handling intuitive with try/catch:**
 
-// Basic example showing the core idea.
 ```javascript
 async function robustDataFetch() {
   try {
@@ -145,7 +139,6 @@ async function useData() {
 
 **Sequential (one after another):**
 
-// Basic example showing the core idea.
 ```javascript
 async function sequential() {
   console.time('sequential');
@@ -161,7 +154,6 @@ console.timeEnd('sequential'); // ~3 seconds total
 
 **Parallel (all at once):**
 
-// Basic example showing the core idea.
 ```javascript
 async function parallel() {
   console.time('parallel');
@@ -194,7 +186,6 @@ return { user, posts, comments };
 
 ### 2. Conditional Async Operations
 
-// Basic example showing the core idea.
 ```javascript
 async function smartDataLoader(userId, options = {}) {
   const user = await fetchUser(userId);
@@ -221,7 +212,6 @@ const publicProfile = await smartDataLoader('123', {
 
 ### 3. Retry Pattern
 
-// Basic example showing the core idea.
 ```javascript
 async function fetchWithRetry(url, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
@@ -262,7 +252,6 @@ try {
 
 **Processing items one by one (sequential):**
 
-// Basic example showing the core idea.
 ```javascript
 async function processUsersSequentially(userIds) {
   const results = [];
@@ -279,7 +268,6 @@ return results;
 
 **Processing all items at once (parallel):**
 
-// Basic example showing the core idea.
 ```javascript
 async function processUsersParallel(userIds) {
   const promises = userIds.map(async (userId) => {
@@ -293,7 +281,6 @@ return await Promise.all(promises);
 
 **Processing with concurrency limit:**
 
-// Basic example showing the core idea.
 ```javascript
 async function processUsersBatched(userIds, batchSize = 3) {
   const results = [];
@@ -310,6 +297,7 @@ const batchResults = await Promise.all(batchPromises);
 console.log(`Processed batch ${Math.floor(i / batchSize) + 1}`);
   }
 
+```
 ### 1. API Data Fetching with Loading States
 
 ```javascript
@@ -387,7 +375,6 @@ async function displayProfile(userId) {
     showError('Could not load user profile. Please try again.');
   }
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 2. File Upload with Progress
@@ -441,7 +428,6 @@ statusDiv.textContent = 'Upload successful!';
     console.error('Upload error:', error);
   }
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 3. Database Operations with Transactions
@@ -534,7 +520,6 @@ async hashPassword(password) {
     return await bcrypt.hash(password, 10);
   }
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 1. Forgetting to await
@@ -553,7 +538,6 @@ async function goodExample() {
   console.log(data); // Logs: actual data
   return data;
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 2. Not handling errors properly
@@ -575,7 +559,6 @@ async function goodErrorHandling() {
     return null; // Or throw, depending on your needs
   }
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 3. Using async/await when you don't need to
@@ -590,7 +573,6 @@ async function unnecessaryAsync() {
 function simpler() {
   return Promise.resolve('hello');
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ### 4. Sequential when you meant parallel
@@ -613,7 +595,6 @@ async function fast() {
   ]);
   return [a, b, c];
 }
-// Example demonstrating JavaScript Async/Await - Complete Guide.
 ```
 
 ## Memory Tricks

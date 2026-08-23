@@ -93,9 +93,9 @@ Check Point), understanding underlying command-line configurations like
 Here is an example of a strict, stateful firewall script using `iptables` for a
 web server:
 
-# Basic example showing the core idea.
 ```bash
 #!/bin/bash
+```
 ## Flush existing rules
 iptables -F
 iptables -X
@@ -133,6 +133,7 @@ iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables-dropped: 
 > explicit ALLOW rule for your SSH connection before applying DROP policies, or
 > you will lock yourself out of the server!
 
+```
 ## 🌟 Firewall Best Practices
 
 To maintain a secure and manageable firewall infrastructure, adhere to these

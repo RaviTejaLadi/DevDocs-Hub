@@ -4,7 +4,6 @@
 
 Vue templates allow you to connect:
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```txt
 JavaScript Data → HTML UI
 ```
@@ -15,7 +14,6 @@ Vue automatically updates the UI whenever data changes.
 
 ## Basic Example
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <h1>{{ title }}</h1>
@@ -43,14 +41,12 @@ Used to display data.
 
 ## Syntax
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 {{ variable }}
 ```
 
 ## Example
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <h1>{{ message }}</h1>
@@ -65,7 +61,6 @@ const message = 'Welcome to Vue';
 
 Vue supports JavaScript expressions.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <p>{{ count + 1 }}</p>
@@ -78,12 +73,10 @@ Vue supports JavaScript expressions.
 
 Used to bind dynamic values to HTML attributes.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 :attribute="value"
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <img :src="imageUrl" :alt="title" />
@@ -97,7 +90,6 @@ const title = 'Vue Logo';
 
 ## Dynamic Classes
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <button :class="{ active: isActive }">Save</button>
@@ -110,7 +102,6 @@ const isActive = true;
 
 ## Dynamic Styles
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <p :style="{ color: textColor }">Vue Styling</p>
@@ -125,12 +116,10 @@ const textColor = 'red';
 
 Used to listen to user actions.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 @click="function"
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <button @click="increment">Increment</button>
@@ -145,7 +134,6 @@ const increment = () => {
 
 ## Inline Events
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <button @click="count++">
   Add
@@ -160,7 +148,6 @@ const increment = () => {
 | `.stop`    | Stop event bubbling |
 | `.once`    | Trigger once        |
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <form @submit.prevent="submitForm">
 </form>
@@ -170,7 +157,6 @@ const increment = () => {
 
 Render UI conditionally.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <p v-if="isLoggedIn">Welcome Back</p>
@@ -190,7 +176,6 @@ const isLoggedIn = true;
 | Adds/removes DOM       | Uses display:none          |
 | Better for rare toggle | Better for frequent toggle |
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <p v-show="visible">
   Hello Vue
@@ -201,7 +186,6 @@ const isLoggedIn = true;
 
 Used to render arrays.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <li v-for="user in users" :key="user.id">
@@ -223,21 +207,18 @@ Vue uses `key` to track elements efficiently.
 
 ✅ Good
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 :key="user.id"
 ```
 
 ❌ Bad
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 :key="index"
 ```
 
 ## Access Index
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <li v-for="(user, index) in users" :key="user.id">
   {{ index }} - {{ user.name }}
@@ -248,7 +229,6 @@ Vue uses `key` to track elements efficiently.
 
 Sync input value with state.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <input v-model="name" />
@@ -265,35 +245,30 @@ const name = ref('');
 
 ## Works Like
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <input :value="name" @input="name = $event.target.value" />
 ```
 
 ## Text Input
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <input v-model="username" />
 ```
 
 ## Textarea
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <textarea v-model="message"></textarea>
 ```
 
 ## Checkbox
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <input type="checkbox" v-model="isChecked" />
 ```
 
 ## Select
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <select v-model="selected">
   <option value="vue">Vue</option>
@@ -304,7 +279,6 @@ const name = ref('');
 
 Used for derived/calculated values.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <h1>{{ fullName }}</h1>
@@ -334,7 +308,6 @@ const fullName = computed(() => {
 
 Access DOM elements directly.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <input ref="inputRef" />
@@ -357,7 +330,6 @@ Used for reusable layouts/components.
 
 ## Parent Component
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <Card>
   <h1>Hello</h1>
@@ -366,7 +338,6 @@ Used for reusable layouts/components.
 
 ## Child Component
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <div class="card">
@@ -388,12 +359,10 @@ Used for reusable layouts/components.
 
 ## Use Computed for Complex Logic
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 {{ users.filter((user) => user.active).length }}
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```js
 const activeUsers = computed(() => {
   return users.filter((user) => user.active);
@@ -418,7 +387,6 @@ Break UI into smaller reusable components.
 
 ## Real World Example
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <section>

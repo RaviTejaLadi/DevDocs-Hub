@@ -4,7 +4,6 @@
 
 **HTML - Escaping User Input:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- ❌ Bad - Direct insertion -->
 <div id="output"></div>
@@ -21,7 +20,6 @@
 
 **React - Safe Rendering:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ❌ Bad - dangerouslySetInnerHTML without sanitization
 function UserComment({ comment }) {
@@ -46,7 +44,6 @@ function RichComment({ htmlContent }) {
 
 **JavaScript - Secure Cookie Handling:**
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Setting secure cookies
 document.cookie =
@@ -82,7 +79,6 @@ return <form onSubmit={handleLogin}>{/* Login form */} 🔐</form>;
 
 **React - CSRF Token Implementation:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ CSRF protection in forms
 function SecureForm() {
@@ -121,7 +117,6 @@ return (
 
 **HTML - CSP Headers:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 <html>
@@ -152,7 +147,6 @@ return (
 
 **React - File Upload Component:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure file upload
 function SecureFileUpload() {
@@ -227,7 +221,6 @@ return (
 
 **JavaScript - Client-side Rate Limiting:**
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Debounced API calls
 class RateLimiter {
@@ -278,7 +271,6 @@ return <button onClick={makeApiCall}>Fetch Data 🔄</button>;
 
 **React - Secure Data Storage:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure storage utilities
 class SecureStorage {
@@ -350,7 +342,6 @@ return (
 
 **React - Secure Error Boundaries:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure error boundary
 class SecureErrorBoundary extends React.Component {
@@ -407,7 +398,6 @@ function App() {
 
 **React - Custom Security Hook:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Custom hook for input sanitization
 function useSanitizedInput(initialValue = '') {

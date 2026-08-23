@@ -15,7 +15,6 @@ performed on it (like reading, writing, deleting properties).
 
 ## 2. Proxy Syntax
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const proxy = new Proxy(target, handler);
 ```
@@ -25,7 +24,6 @@ const proxy = new Proxy(target, handler);
 
 ### ✅ Example: Intercepting `get`
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const user = {
   name: 'Ravi',
@@ -56,7 +54,6 @@ console.log(proxy.age); // Not Found
 
 ## 5. Proxy Example with `set` and `deleteProperty`
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const user = {};
 
@@ -91,7 +88,6 @@ object internals**, mirroring the default behavior of `Proxy` traps.
 
 ## 7. Reflect Syntax
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 Reflect.method(target, ...args);
 ```
@@ -117,7 +113,6 @@ Using `Reflect` inside proxy traps ensures **default behavior is preserved**.
 
 ### ✅ Example:
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const user = { name: 'Ravi' };
 
@@ -138,7 +133,6 @@ console.log(proxy.name); // Getting name → Amit
 
 ## 10. Example: Logging All Operations
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const data = { count: 0 };
 
@@ -164,7 +158,6 @@ delete loggerProxy.count; // Deleted: count
 
 ## 11. Example: Access Control with Proxy
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const privateData = {
   secret: '1234',

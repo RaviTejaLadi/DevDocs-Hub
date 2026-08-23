@@ -24,7 +24,6 @@ use tables and rows, MongoDB uses a flexible, document-based data model.
 
 ## Example Document Structure
 
-// Example demonstrating Introduction to MongoDB.
 ```json
 {
   "_id": ObjectId("5f8d8a7f8c8f8b9a8d7c6b5a"),
@@ -41,7 +40,6 @@ use tables and rows, MongoDB uses a flexible, document-based data model.
 
 ### Create/Insert
 
-// Basic example showing the core idea.
 ```javascript
 db.users.insertOne({
   name: 'Alice',
@@ -52,7 +50,6 @@ db.users.insertOne({
 
 ### Read/Query
 
-// Basic example showing the core idea.
 ```javascript
 // Find all documents
 db.users.find();
@@ -63,14 +60,12 @@ db.users.find({ age: { $gt: 25 } });
 
 ### Update
 
-// Basic example showing the core idea.
 ```javascript
 db.users.updateOne({ name: 'Alice' }, { $set: { age: 26 } });
 ```
 
 ### Delete
 
-// Basic example showing the core idea.
 ```javascript
 db.users.deleteOne({ name: 'Alice' });
 ```

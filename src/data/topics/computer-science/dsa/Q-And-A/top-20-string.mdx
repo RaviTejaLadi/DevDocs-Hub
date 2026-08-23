@@ -17,7 +17,6 @@ characters from both ends moving towards the center.
 
 ### Solution
 
-// Basic example showing the core idea.
 ```javascript
 // Method 1: Two Pointer Approach (In-place)
 function reverseString(s) {
@@ -63,7 +62,6 @@ characters and ignoring cases.
 A palindrome reads the same forward and backward. We use two pointers from both
 ends, comparing characters while skipping non-alphanumeric ones.
 
-// Basic example showing the core idea.
 ```javascript
 function isPalindrome(s) {
   // Convert to lowercase and remove non-alphanumeric characters
@@ -128,7 +126,6 @@ index. If it doesn't exist, return -1.
 We use a hash map to count character frequencies, then iterate through the
 string to find the first character with frequency 1.
 
-// Basic example showing the core idea.
 ```javascript
 function firstUniqChar(s) {
   // Create frequency map
@@ -185,7 +182,6 @@ otherwise.
 Two strings are anagrams if they contain the same characters with the same
 frequency. We can solve this using sorting or character counting.
 
-// Basic example showing the core idea.
 ```javascript
 // Method 1: Using Sorting
 function isAnagram(s, t) {
@@ -260,7 +256,6 @@ We use the sliding window technique with a hash set to track characters in the
 current window. When we encounter a duplicate, we shrink the window from the
 left.
 
-// Basic example showing the core idea.
 ```javascript
 function lengthOfLongestSubstring(s) {
   const seen = new Set();
@@ -322,7 +317,6 @@ answer in any order.
 We group strings that are anagrams by using their sorted version as a key. All
 anagrams will have the same sorted string.
 
-// Basic example showing the core idea.
 ```javascript
 function groupAnagrams(strs) {
   const anagramGroups = new Map();
@@ -383,7 +377,6 @@ determine if the input string is valid.
 We use a stack to keep track of opening brackets. For each closing bracket, we
 check if it matches the most recent opening bracket.
 
-// Basic example showing the core idea.
 ```javascript
 function isValid(s) {
   const stack = [];
@@ -452,7 +445,6 @@ integer.
 We need to handle whitespace, signs, overflow, and invalid characters. The
 algorithm processes characters one by one while maintaining the integer value.
 
-// Basic example showing the core idea.
 ```javascript
 function myAtoi(s) {
   const INT_MAX = 2 ** 31 - 1;
@@ -528,7 +520,6 @@ Given a string s, return the longest palindromic substring in s.
 We can expand around centers to find palindromes. For each position, we check
 for both odd-length (single center) and even-length (two centers) palindromes.
 
-// Basic example showing the core idea.
 ```javascript
 function longestPalindrome(s) {
   if (!s || s.length < 1) return '';
@@ -615,7 +606,6 @@ haystack, or -1 if needle is not part of haystack.
 We can use brute force or more efficient algorithms like KMP. The brute force
 approach checks each position in the haystack to see if the needle matches.
 
-// Basic example showing the core idea.
 ```javascript
 // Brute Force Approach
 function strStr(haystack, needle) {
@@ -709,7 +699,6 @@ count-and-say sequence.
 We build each term by "reading" the previous term: counting consecutive
 identical digits and saying the count followed by the digit.
 
-// Basic example showing the core idea.
 ```javascript
 function countAndSay(n) {
   if (n === 1) return '1';
@@ -793,7 +782,6 @@ We can split the string by spaces, filter out empty strings, reverse the array,
 and join back. Alternatively, we can use two-pointer technique for in-place
 reversal.
 
-// Basic example showing the core idea.
 ```javascript
 // Method 1: Using built-in methods
 function reverseWords(s) {
@@ -875,7 +863,6 @@ multiple characters with the same highest frequency, return any one of them.
 We count the frequency of each character using a hash map, then find the
 character with maximum frequency.
 
-// Basic example showing the core idea.
 ```javascript
 function mostFrequentChar(s) {
   const freqMap = new Map();
@@ -951,7 +938,6 @@ strings. If there is no common prefix, return an empty string.
 We can compare characters at the same position across all strings. The moment we
 find a mismatch, we return the prefix found so far.
 
-// Basic example showing the core idea.
 ```javascript
 function longestCommonPrefix(strs) {
   if (!strs || strs.length === 0) return '';
@@ -1041,7 +1027,6 @@ one character from it.
 We use two pointers. When characters don't match, we try deleting either the
 left or right character and check if the remaining string is a palindrome.
 
-// Basic example showing the core idea.
 ```javascript
 function validPalindrome(s) {
   let left = 0;
@@ -1112,7 +1097,6 @@ We use sliding window technique with two pointers and frequency maps. Expand the
 window until all characters of t are included, then shrink from left while
 maintaining validity.
 
-// Basic example showing the core idea.
 ```javascript
 function minWindow(s, t) {
   if (s.length < t.length) return '';
@@ -1241,7 +1225,6 @@ combinations that the number could represent.
 We use backtracking to generate all combinations. For each digit, we try all
 possible letters and recursively build combinations.
 
-// Basic example showing the core idea.
 ```javascript
 function letterCombinations(digits) {
   if (!digits || digits.length === 0) return [];
@@ -1345,7 +1328,6 @@ repeated exactly k times.
 We use a stack to handle nested brackets. When we encounter '[', we push current
 state to stack. When we encounter ']', we pop and repeat the string.
 
-// Basic example showing the core idea.
 ```javascript
 function decodeString(s) {
   const stack = [];
@@ -1450,7 +1432,6 @@ some number of shifts on s.
 If goal is a rotation of s, then goal will be a substring of s+s. This works
 because concatenating s with itself contains all possible rotations of s.
 
-// Basic example showing the core idea.
 ```javascript
 function rotateString(s, goal) {
   // If lengths are different, goal cannot be rotation of s
@@ -1555,7 +1536,6 @@ isomorphic if the characters in s can be replaced to get t.
 Two strings are isomorphic if there's a one-to-one character mapping between
 them. We use two hash maps to ensure bidirectional mapping consistency.
 
-// Basic example showing the core idea.
 ```javascript
 function isIsomorphic(s, t) {
   if (s.length !== t.length) return false;

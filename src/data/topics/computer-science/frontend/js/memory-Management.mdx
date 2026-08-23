@@ -24,7 +24,6 @@ mostly automatic.
 
 ### ✅ Syntax: Variable/Value Declarations
 
-// Example demonstrating JavaScript Memory Management.
 ```js
 // Primitives
 let num = 10; // Allocates memory for a number
@@ -78,7 +77,6 @@ released**.
 
 ### ❌ Example:
 
-// Example demonstrating JavaScript Memory Management.
 ```js
 let leaks = [];
 function addLeak() {
@@ -104,7 +102,6 @@ Collections that **do not prevent GC** if the key becomes unreachable.
 
 ### Syntax:
 
-// Example demonstrating JavaScript Memory Management.
 ```js
 const cache = new WeakMap();
 
@@ -119,7 +116,6 @@ const cache = new WeakMap();
 
 ### Example:
 
-// Example demonstrating JavaScript Memory Management.
 ```js
 function outer() {
   let bigData = new Array(1000000).fill('data');
@@ -140,7 +136,6 @@ You **cannot** manually free memory in JS like in C++ (`free()`), but:
 - You can **dereference** by setting variables to `null` or `undefined`.
 - You can **unregister event listeners**, remove timers, etc.
 
-// Example demonstrating JavaScript Memory Management.
 ```js
 element.removeEventListener('click', handler);
 timerId = null;
@@ -149,7 +144,6 @@ largeArray = null;
 
 ## 10. Visual Summary
 
-// Example demonstrating JavaScript Memory Management.
 ```plaintext
 ┌────────────────────┐
 │   JS Memory Model  │

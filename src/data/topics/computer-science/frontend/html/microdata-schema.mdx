@@ -22,7 +22,6 @@ Structured data organizes information in a format that machines can understand.
 
 Without structured data:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p>iPhone 17 Pro - ₹1,29,900</p>
 ```
@@ -31,7 +30,6 @@ A search engine only sees text.
 
 With structured data:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p itemprop="name">iPhone 17 Pro</p>
 <p itemprop="price">129900</p>
@@ -73,7 +71,6 @@ Microdata uses special HTML attributes to add structured data.
 
 ## Person Schema
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Person microdata -->
 <div itemscope itemtype="https://schema.org/Person">
@@ -96,7 +93,6 @@ Microdata uses special HTML attributes to add structured data.
 
 One of the most common uses of microdata is product information.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Product microdata -->
 <div itemscope itemtype="https://schema.org/Product">
@@ -110,7 +106,6 @@ One of the most common uses of microdata is product information.
 
 Search engines can recognize:
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Product Name: Laptop Pro X
 Price: 85000
@@ -119,7 +114,6 @@ Description: High-performance laptop
 
 ## ⭐ Review Schema Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Product review -->
 <div itemscope itemtype="https://schema.org/Review">
@@ -131,7 +125,6 @@ Description: High-performance laptop
 
 ## 🏢 Organization Schema
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Organization schema -->
 <div itemscope itemtype="https://schema.org/Organization">
@@ -152,7 +145,6 @@ Useful for:
 
 For blogs and news websites.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Blog article schema -->
 <article itemscope itemtype="https://schema.org/Article">
@@ -164,7 +156,6 @@ For blogs and news websites.
 
 ## 📅 Event Schema
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Event schema -->
 <div itemscope itemtype="https://schema.org/Event">
@@ -181,7 +172,6 @@ For blogs and news websites.
 
 ## 🍕 Recipe Schema
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Recipe schema -->
 <div itemscope itemtype="https://schema.org/Recipe">
@@ -202,7 +192,6 @@ Search engines may display:
 
 Microdata items can contain other items.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Person with address -->
 <div itemscope itemtype="https://schema.org/Person">
@@ -216,7 +205,6 @@ Microdata items can contain other items.
 
 Structure:
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Person
 │
@@ -234,7 +222,6 @@ Examples:
 
 ### Product Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 ★★★★★ 4.8
 Laptop Pro X
@@ -244,7 +231,6 @@ In Stock
 
 ### FAQ Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Q: What is HTML?
 A: HTML is the standard markup language...
@@ -252,7 +238,6 @@ A: HTML is the standard markup language...
 
 ### Recipe Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 🍕 Margherita Pizza
 ⏱️ 30 Minutes
@@ -275,7 +260,6 @@ There are multiple ways to add structured data.
 
 Today, most websites use JSON-LD instead of Microdata.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- JSON-LD structured data -->
 <script type="application/ld+json">
@@ -298,33 +282,28 @@ Advantages:
 
 ❌ Wrong
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemtype="https://schema.org/Person"></div>
 ```
 
 ✅ Correct
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemscope itemtype="https://schema.org/Person"></div>
 ```
 
 ## Invalid Schema Type
 
-<!-- Basic example showing the core idea. -->
 ```html
 itemtype="Person"
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 itemtype="https://schema.org/Person"
 ```
 
 ## Using Incorrect Properties
 
-<!-- Basic example showing the core idea. -->
 ```html
 <span itemprop="username"></span>
 ```
@@ -361,7 +340,6 @@ Always use valid Schema.org properties.
 
 ## Quick Summary
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Schema.org
       ↓
@@ -376,14 +354,12 @@ Rich Search Results
 
 ### Microdata Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemscope itemtype="https://schema.org/Product">
   <h2 itemprop="name">Laptop Pro X</h2>
 </div>
 ```
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 itemscope → Create item
 itemtype  → Define type

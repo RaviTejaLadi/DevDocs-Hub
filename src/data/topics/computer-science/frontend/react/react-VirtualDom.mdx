@@ -96,7 +96,6 @@ or reuse work.
 
 #### 1. Render Phase
 
-// Example demonstrating React Virtual DOM Complete Guide.
 ```
 Old Virtual DOM Tree    New Virtual DOM Tree
        |                        |
@@ -135,7 +134,6 @@ React compares trees level by level, not node by node across different levels.
 
 #### 2. Element Type Heuristic
 
-// Basic example showing the core idea.
 ```javascript
 // Different types - complete rebuild
 <div>         →    <span>
@@ -150,7 +148,6 @@ React compares trees level by level, not node by node across different levels.
 
 #### 3. Keys for List Items
 
-// Basic example showing the core idea.
 ```javascript
 // Without keys - inefficient
 <ul>
@@ -171,7 +168,6 @@ React compares trees level by level, not node by node across different levels.
 
 ### Basic Virtual DOM Element Structure:
 
-// Basic example showing the core idea.
 ```javascript
 // Virtual DOM representation
 const virtualElement = {
@@ -198,7 +194,6 @@ const virtualElement = {
 
 ### JSX Compilation:
 
-// Basic example showing the core idea.
 ```javascript
 // JSX
 const element = (
@@ -219,7 +214,6 @@ const element = React.createElement(
 
 ### Component Virtual DOM:
 
-// Basic example showing the core idea.
 ```javascript
 // Component
 function Welcome({ name }) {
@@ -237,7 +231,6 @@ const componentElement = {
 
 ### Example 1: Simple State Update
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useState } from 'react';
 
@@ -267,6 +260,7 @@ return (
 
 ### Example 2: List Rendering with Keys
 
+```javascript
 function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React' },
@@ -291,11 +285,11 @@ return (
     </div>
   );
 }
-// Example demonstrating React Virtual DOM Complete Guide.
 ```
 
 ### Example 3: Conditional Rendering
 
+```javascript
 function ConditionalComponent() {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -318,7 +312,6 @@ return (
 
 ### 1. Batching Updates
 
-// Basic example showing the core idea.
 ```javascript
 // Multiple state updates in the same event handler
 function handleClick() {
@@ -348,7 +341,6 @@ function handleClick() {
 
 ### 1. Use Keys Properly
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Good - stable, unique keys
 {
@@ -368,7 +360,6 @@ function handleClick() {
 
 ### 2. Avoid Inline Object Creation
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - creates new object on every render
 <Component style={{ color: 'red' }} />;
@@ -380,7 +371,6 @@ const styles = { color: 'red' };
 
 ### 3. Optimize Component Structure
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Good - stable component structure
 function UserProfile({ user }) {
@@ -448,7 +438,6 @@ React Fiber enables:
 
 ### 2. Concurrent Features
 
-// Basic example showing the core idea.
 ```javascript
 // Concurrent rendering
 import { startTransition } from 'react';
@@ -466,7 +455,6 @@ function handleClick() {
 
 ### 3. Suspense and Error Boundaries
 
-// Basic example showing the core idea.
 ```javascript
 function App() {
   return (

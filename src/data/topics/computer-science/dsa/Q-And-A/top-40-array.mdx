@@ -9,7 +9,6 @@
 
 **Concept**: Hash Map for O(1) lookups to find complement values.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -47,7 +46,6 @@ price of a given stock on the ith day. Find the maximum profit you can achieve.
 **Concept**: Track minimum price seen so far and calculate max profit at each
 step.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} prices
@@ -83,7 +81,6 @@ appears at least twice in the array.
 
 **Concept**: Use Set to track seen elements for O(1) lookup time.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -114,7 +111,6 @@ with the largest sum, and return its sum.
 **Concept**: Kadane's Algorithm - keep track of current sum and reset when it
 becomes negative.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -146,7 +142,6 @@ sorted order.
 
 **Concept**: Two pointers from the end to avoid overwriting elements.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums1
@@ -192,7 +187,6 @@ integer, plus one to the integer.
 
 **Concept**: Handle carry propagation from right to left.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} digits
@@ -228,7 +222,6 @@ relative order of non-zero elements.
 **Concept**: Two pointers - one for placing non-zero elements, another for
 iterating.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -264,7 +257,6 @@ the new length.
 
 **Concept**: Two pointers to overwrite duplicates while maintaining order.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -298,7 +290,6 @@ for one, find that single element.
 
 **Concept**: XOR operation - x ^ x = 0, x ^ 0 = x.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -326,7 +317,6 @@ duplicates.
 
 **Concept**: Use frequency map to count occurrences in first array.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums1
@@ -354,6 +344,7 @@ function intersect(nums1, nums2) {
 
 ---
 
+```
 ### 11. 3Sum
 
 **Company**: _Facebook, Amazon_ 🏢
@@ -402,6 +393,7 @@ left++;
     }
   }
 
+```
 ### 12. Container With Most Water
 
 **Problem Statement**: Find two lines that together with x-axis forms a
@@ -410,7 +402,6 @@ container that holds the most water.
 **Concept**: Two pointers from ends, move pointer with smaller height to
 potentially find larger area.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} height
@@ -448,7 +439,6 @@ elements except itself, without using division.
 
 **Concept**: Two passes - left products and right products.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -472,6 +462,7 @@ function productExceptSelf(nums) {
     rightProduct *= nums[i];
   }
 
+```
 ### 14. Find All Duplicates in an Array
 
 **Company**: _Amazon, Google_ 🏢
@@ -506,7 +497,6 @@ for (let num of nums) {
 
 return duplicates;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 15. Rotate Array
@@ -547,7 +537,6 @@ function rotate(nums, k) {
 // Step 3: Reverse remaining elements
   reverse(k, nums.length - 1);
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 16. Search in Rotated Sorted Array
@@ -597,7 +586,6 @@ if (nums[mid] === target) {
 
 return -1; // Target not found
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 17. Sort Colors
@@ -637,7 +625,6 @@ while (mid <= high) {
     }
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 18. Subarray Sum Equals K
@@ -678,7 +665,6 @@ for (let num of nums) {
 
 return count;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 19. Find Peak Element
@@ -716,7 +702,6 @@ while (left < right) {
 
 return left; // left === right at this point
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 20. Spiral Matrix
@@ -771,6 +756,7 @@ if (left <= right) {
     }
   }
 
+```
 ### 21. Trapping Rain Water
 
 **Problem Statement**: Calculate how much water can be trapped after raining
@@ -779,7 +765,6 @@ given elevation heights.
 **Concept**: Two pointers approach - water level is determined by minimum of max
 heights on both sides.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} height
@@ -830,7 +815,6 @@ array.
 **Concept**: Use array itself as hash table by placing each number at its
 corresponding index.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -869,7 +853,6 @@ function firstMissingPositive(nums) {
 
 **Concept**: Sort intervals by start time, then merge overlapping ones.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[][]} intervals
@@ -911,7 +894,6 @@ histogram.
 **Concept**: Use stack to keep track of increasing heights and calculate area
 when decreasing height is found.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} heights
@@ -951,7 +933,6 @@ return maxArea;
 **Concept**: Greedy approach - keep track of furthest reachable position and
 jump when necessary.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -992,7 +973,6 @@ least one candy and children with higher rating get more candies than neighbors.
 **Concept**: Two passes - left to right for increasing ratings, right to left
 for decreasing ratings.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} ratings
@@ -1031,7 +1011,6 @@ sorted form.
 **Concept**: Bucket sort approach - divide range into buckets and find gaps
 between buckets.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1090,7 +1069,6 @@ return maxGap;
 
 **Concept**: Use deque to maintain potential maximums in decreasing order.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1122,6 +1100,7 @@ deque.push(i); // Add current index
     }
   }
 
+```
 ### 29. Median of Two Sorted Arrays
 
 **Problem Statement**: Find median of two sorted arrays in O(log(m+n)) time.
@@ -1181,7 +1160,6 @@ const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];
 
 throw new Error('Input arrays are not sorted');
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 30. Minimum Window Substring
@@ -1257,7 +1235,6 @@ right++;
 
 return minLen === Infinity ? '' : s.substring(minLeft, minLeft + minLen);
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 31. Count of Smaller Numbers After Self
@@ -1323,7 +1300,6 @@ while (i <= mid && j <= end) {
 mergeSort(0, nums.length - 1);
   return result;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 32. Reverse Pairs
@@ -1381,7 +1357,6 @@ for (let i = start; i <= end; i++) {
 mergeSort(0, nums.length - 1);
   return count;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 33. Russian Doll Envelopes
@@ -1430,7 +1405,6 @@ while (left < right) {
 
 return tails.length;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 34. Maximum Rectangle
@@ -1487,7 +1461,6 @@ while (
 return maxArea;
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 35. Burst Balloons
@@ -1537,7 +1510,6 @@ function maxCoins(nums) {
 
 return dp[0][n - 1];
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 36. Create Maximum Number
@@ -1636,7 +1608,6 @@ return result;
     return false;
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 37. Shortest Subarray with Sum at Least K
@@ -1685,7 +1656,6 @@ deque.push(i);
 
 return minLength === Infinity ? -1 : minLength;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 38. Number of Subarrays with Bounded Maximum
@@ -1724,6 +1694,7 @@ for (let i = 0; i < nums.length; i++) {
 count += validSubarrays;
   }
 
+```
 ### 39. Split Array Largest Sum
 
 **Problem Statement**: Split array into m non-empty continuous subarrays to
@@ -1732,7 +1703,6 @@ minimize the largest sum.
 **Concept**: Binary search on answer - check if we can split array with max sum
 ≤ target.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1781,7 +1751,6 @@ return true;
 
 **Concept**: Modified merge sort with prefix sums to count valid ranges.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums

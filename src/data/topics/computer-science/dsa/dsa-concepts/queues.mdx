@@ -17,7 +17,6 @@ the front (dequeue), just like people standing in a line.
 
 ### 💻 Syntax/Implementation
 
-// Basic example showing the core idea.
 ```javascript
 class Queue {
   constructor() {
@@ -67,6 +66,7 @@ at the end of the line.
 
 ### 🔧 Code Example
 
+```javascript
 // Add element to the rear of queue
   enqueue(element) {
     this.items.push(element);
@@ -108,7 +108,6 @@ queue.enqueue('Customer 3');
 console.log(queue.front()); // "Customer 1"
 console.log(queue.dequeue()); // "Customer 1"
 console.log(queue.size()); // 2
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 ### ⚠ Common Pitfalls
@@ -155,7 +154,6 @@ enqueue(element) {
     /* Check if empty */
   }
 }
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 ```mermaid
@@ -166,13 +164,13 @@ flowchart TB
   subgraph After["After enqueue D with circular indexing"]
     A0["0:D"] --> A1["1:B (front)"] --> A2["2:C (rear)"]
   end
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 Think of a **round-robin CPU scheduling** where processes are given time slices
 in a circular manner, or a **circular buffer** in streaming applications where
 old data is overwritten by new data.
 
+```javascript
 // Add element to circular queue
   enqueue(element) {
     if (this.isFull()) {
@@ -254,7 +252,6 @@ priorities are equal, FIFO order is maintained.
 - **Space Complexity:** O(n)
 - **Key Properties:** Priority-based ordering, can have duplicate priorities
 
-// Basic example showing the core idea.
 ```javascript
 class PriorityQueue {
   constructor() {
@@ -288,6 +285,7 @@ Think of a **hospital emergency room** where patients are treated based on the
 severity of their condition, not arrival time. Critical patients get immediate
 attention regardless of when they arrived.
 
+```javascript
 // Add element with priority
   enqueue(element, priority) {
     const queueElement = { element, priority };
@@ -352,7 +350,6 @@ console.log(priorityQueue.display());
 
 console.log(priorityQueue.dequeue()); // "Critical bug fix"
 console.log(priorityQueue.dequeue()); // "Another critical"
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 - Not maintaining FIFO order for elements with same priority
@@ -398,7 +395,6 @@ addFront(element) {
     /* Get rear element */
   }
 }
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 ```mermaid
@@ -414,13 +410,13 @@ flowchart TB
   Deque --> OP2
   Deque --> OP3
   Deque --> OP4
-// Example demonstrating Complete Guide to Queues in JavaScript.
 ```
 
 Think of a **web browser history** where you can go back (remove from rear) or
 forward (remove from front), or a **music playlist** where you can add songs to
 the beginning or end and remove from either side.
 
+```javascript
 // Add element to front
   addFront(element) {
     this.items.unshift(element);

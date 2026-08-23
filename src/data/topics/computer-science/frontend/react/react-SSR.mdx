@@ -75,7 +75,6 @@ The time when the browser renders the first piece of content.
 
 #### `renderToString()`
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToString } from 'react-dom/server';
 
@@ -86,7 +85,6 @@ Renders a React component to its initial HTML string.
 
 #### `renderToStaticMarkup()`
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -98,7 +96,6 @@ uses internally.
 
 #### `renderToPipeableStream()` (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToPipeableStream } from 'react-dom/server';
 
@@ -114,7 +111,6 @@ Renders to a stream for better performance with large applications.
 
 #### `hydrate()` (Legacy)
 
-// Basic example showing the core idea.
 ```javascript
 import { hydrate } from 'react-dom';
 
@@ -123,7 +119,6 @@ hydrate(<App />, document.getElementById('root'));
 
 #### `hydrateRoot()` (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { hydrateRoot } from 'react-dom/client';
 
@@ -132,7 +127,6 @@ hydrateRoot(document.getElementById('root'), <App />);
 
 ### 1. Project Structure
 
-// Example demonstrating React Server-Side Rendering (SSR) Complete Guide.
 ```tsx
 project/
 ├── src/
@@ -147,7 +141,6 @@ project/
 
 ### 2. Shared Component (src/components/App.js)
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 
@@ -168,7 +161,6 @@ export default App;
 
 ### 3. Server Implementation (src/server.js)
 
-// Basic example showing the core idea.
 ```javascript
 import express from 'express';
 import React from 'react';
@@ -210,7 +202,6 @@ app.listen(3000, () => {
 
 ### 4. Client Implementation (src/client.js)
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
@@ -225,7 +216,6 @@ hydrateRoot(document.getElementById('root'), <App initialData={initialData} />);
 
 #### 1. Data Fetching on Server
 
-// Basic example showing the core idea.
 ```javascript
 // In your server route
 app.get('/users/:id', async (req, res) => {
@@ -255,7 +245,6 @@ res.send(fullHtml);
 
 #### 2. Component-Level Data Requirements
 
-// Basic example showing the core idea.
 ```javascript
 // Higher-order component pattern
 const withServerData = (WrappedComponent, dataFetcher) => {
@@ -281,7 +270,6 @@ export default withServerData(UserProfile, async (params) => {
 
 ### Streaming SSR (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToPipeableStream } from 'react-dom/server';
 import { Suspense } from 'react';
@@ -318,7 +306,6 @@ app.get('*', (req, res) => {
 
 The most popular React SSR framework with built-in optimizations.
 
-// Basic example showing the core idea.
 ```javascript
 // pages/index.js
 export default function Home({ posts }) {
@@ -357,7 +344,6 @@ Using tools like Webpack, Babel, and Express for custom SSR setups.
 
 #### 1. Page-Level Caching
 
-// Basic example showing the core idea.
 ```javascript
 const cache = new Map();
 
@@ -376,7 +362,6 @@ const html = renderProductPage(req.params.id);
 
 #### 2. Component-Level Caching
 
-// Basic example showing the core idea.
 ```javascript
 import LRU from 'lru-cache';
 
@@ -397,7 +382,6 @@ const rendered = <ExpensiveComponent data={data} />;
 
 ### Code Splitting for SSR
 
-// Basic example showing the core idea.
 ```javascript
 import { lazy, Suspense } from 'react';
 
@@ -415,7 +399,6 @@ const App = () => (
 
 ### 1. Environment Detection
 
-// Basic example showing the core idea.
 ```javascript
 const isServer = typeof window === 'undefined';
 
@@ -433,7 +416,6 @@ return <div>Content</div>;
 
 ### 2. Handling Different Data on Server vs Client
 
-// Basic example showing the core idea.
 ```javascript
 const MyComponent = () => {
   const [data, setData] = React.useState(
@@ -454,7 +436,6 @@ return <div>{data.content}</div>;
 
 ### 3. CSS-in-JS Considerations
 
-// Basic example showing the core idea.
 ```javascript
 import styled, { ServerStyleSheet } from 'styled-components';
 
@@ -466,7 +447,6 @@ const styleTags = sheet.getStyleTags();
 
 ### 4. Error Boundaries for SSR
 
-// Basic example showing the core idea.
 ```javascript
 class SSRErrorBoundary extends React.Component {
   constructor(props) {
@@ -498,7 +478,6 @@ return this.props.children;
 
 **Problem**: Server and client render different content.
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Different content on server vs client
 const BadComponent = () => {
@@ -520,7 +499,6 @@ return <div>Current time: {time || 'Loading...'}</div>;
 
 ### 2. Browser-Only APIs
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Using browser APIs directly
 const BadComponent = () => {
@@ -542,7 +520,6 @@ return <div>Width: {width}</div>;
 
 ### 3. Memory Leaks
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Not cleaning up server-side resources
 app.get('*', (req, res) => {
@@ -566,7 +543,6 @@ app.get('*', (req, res) => {
 
 ### Example 1: Basic E-commerce Product Page
 
-// Basic example showing the core idea.
 ```javascript
 // ProductPage.js
 const ProductPage = ({ product, reviews }) => {
@@ -627,7 +603,6 @@ res.send(createHtmlTemplate(html, { product, reviews }));
 
 ### Example 2: Blog with Dynamic Content
 
-// Basic example showing the core idea.
 ```javascript
 // BlogPost.js
 const BlogPost = ({ post, relatedPosts }) => {
@@ -687,7 +662,6 @@ return (
 
 ### Example 3: Dashboard with Real-time Data
 
-// Basic example showing the core idea.
 ```javascript
 // Dashboard.js
 const Dashboard = ({ initialMetrics, userRole }) => {

@@ -39,7 +39,6 @@ real-time applications.
 | `redis-cli info`    | Server info     |
 | `redis-cli monitor` | Watch commands  |
 
-// Example demonstrating Redis.
 ```bash id="vjjtdm"
 ## Check Redis connection
 redis-cli ping
@@ -47,61 +46,53 @@ redis-cli ping
 
 Output:
 
-// Example demonstrating Redis.
 ```text id="1huj0s"
 PONG
 ```
 
+```
 ## Set Value
 
-// Example demonstrating Redis.
 ```redis id="3s4syr"
 SET username "Ravi"
 ```
 
 ## Get Value
 
-// Example demonstrating Redis.
 ```redis id="3zj4g2"
 GET username
 ```
 
 ## Update Value
 
-// Example demonstrating Redis.
 ```redis id="d4xkvt"
 SET username "John"
 ```
 
 ## Delete Key
 
-// Example demonstrating Redis.
 ```redis id="y5e2iq"
 DEL username
 ```
 
 ## Check Key Exists
 
-// Example demonstrating Redis.
 ```redis id="d5r1x6"
 EXISTS username
 ```
 
 ## Multiple Values
 
-// Example demonstrating Redis.
 ```redis id="jpdx3m"
 MSET name "Ravi" age 25 city "BBSR"
 ```
 
-// Example demonstrating Redis.
 ```redis id="fbj1x0"
 MGET name age city
 ```
 
 ## Set Expiry
 
-// Example demonstrating Redis.
 ```redis id="72g69n"
 SET token "abc123" EX 60
 ```
@@ -110,49 +101,42 @@ Expires in 60 seconds.
 
 ## Add Expiry
 
-// Example demonstrating Redis.
 ```redis id="3c9kqg"
 EXPIRE token 120
 ```
 
 ## Check Remaining Time
 
-// Example demonstrating Redis.
 ```redis id="g3h3bn"
 TTL token
 ```
 
 ## Remove Expiry
 
-// Example demonstrating Redis.
 ```redis id="3gqjyl"
 PERSIST token
 ```
 
 ## Increment
 
-// Example demonstrating Redis.
 ```redis id="m95fzd"
 INCR visitors
 ```
 
 ## Increment By
 
-// Example demonstrating Redis.
 ```redis id="jxxs9o"
 INCRBY visitors 10
 ```
 
 ## Decrement
 
-// Example demonstrating Redis.
 ```redis id="34m2qf"
 DECR visitors
 ```
 
 ## Decrement By
 
-// Example demonstrating Redis.
 ```redis id="4mpz4w"
 DECRBY visitors 5
 ```
@@ -163,35 +147,30 @@ Lists work like queues.
 
 ## Push Left
 
-// Example demonstrating Redis.
 ```redis id="d7lcg8"
 LPUSH tasks "task1"
 ```
 
 ## Push Right
 
-// Example demonstrating Redis.
 ```redis id="4k6x44"
 RPUSH tasks "task2"
 ```
 
 ## Get All
 
-// Example demonstrating Redis.
 ```redis id="hk5v76"
 LRANGE tasks 0 -1
 ```
 
 ## Pop Left
 
-// Example demonstrating Redis.
 ```redis id="r6jkwg"
 LPOP tasks
 ```
 
 ## Pop Right
 
-// Example demonstrating Redis.
 ```redis id="qjlwmn"
 RPOP tasks
 ```
@@ -202,33 +181,28 @@ Unique values only.
 
 ## Add Value
 
-// Example demonstrating Redis.
 ```redis id="y26ef6"
 SADD skills "React"
 ```
 
-// Example demonstrating Redis.
 ```redis id="fqt4wg"
 SADD skills "React" "Node" "Redis"
 ```
 
 ## Get Values
 
-// Example demonstrating Redis.
 ```redis id="yowh3t"
 SMEMBERS skills
 ```
 
 ## Check Member
 
-// Example demonstrating Redis.
 ```redis id="5nk7g0"
 SISMEMBER skills "React"
 ```
 
 ## Remove Member
 
-// Example demonstrating Redis.
 ```redis id="7w3y3l"
 SREM skills "Node"
 ```
@@ -239,28 +213,24 @@ Store objects.
 
 ## Create Hash
 
-// Example demonstrating Redis.
 ```redis id="5qimaf"
 HSET user:1 name Ravi age 25
 ```
 
 ## Get Field
 
-// Example demonstrating Redis.
 ```redis id="yhz6kc"
 HGET user:1 name
 ```
 
 ## Get All Fields
 
-// Example demonstrating Redis.
 ```redis id="yodm3u"
 HGETALL user:1
 ```
 
 ## Delete Field
 
-// Example demonstrating Redis.
 ```redis id="wxzdjm"
 HDEL user:1 age
 ```
@@ -271,56 +241,48 @@ Used for leaderboards.
 
 ## Add Member
 
-// Example demonstrating Redis.
 ```redis id="3rzjef"
 ZADD leaderboard 100 Ravi
 ```
 
 ## Add Multiple
 
-// Example demonstrating Redis.
 ```redis id="ubcmr8"
 ZADD leaderboard 150 Alex 200 John
 ```
 
 ## Get Ranking
 
-// Example demonstrating Redis.
 ```redis id="o4nww4"
 ZRANK leaderboard Ravi
 ```
 
 ## Top Scores
 
-// Example demonstrating Redis.
 ```redis id="gqoh9y"
 ZREVRANGE leaderboard 0 9 WITHSCORES
 ```
 
 ## List Keys
 
-// Example demonstrating Redis.
 ```redis id="em8a6j"
 KEYS *
 ```
 
 ## Find Pattern
 
-// Example demonstrating Redis.
 ```redis id="gq8w5z"
 KEYS user:*
 ```
 
 ## Rename Key
 
-// Example demonstrating Redis.
 ```redis id="ibwjlwm"
 RENAME oldKey newKey
 ```
 
 ## Database Size
 
-// Example demonstrating Redis.
 ```redis id="mjlwmq"
 DBSIZE
 ```
@@ -331,35 +293,30 @@ Real-time messaging.
 
 ## Subscribe
 
-// Example demonstrating Redis.
 ```redis id="9mpmqs"
 SUBSCRIBE notifications
 ```
 
 ## Publish
 
-// Example demonstrating Redis.
 ```redis id="xjn3bn"
 PUBLISH notifications "Hello"
 ```
 
 ## Multiple Channels
 
-// Example demonstrating Redis.
 ```redis id="z5qltr"
 SUBSCRIBE chat email sms
 ```
 
 ## Start Transaction
 
-// Example demonstrating Redis.
 ```redis id="tk8m6k"
 MULTI
 ```
 
 ## Commands
 
-// Example demonstrating Redis.
 ```redis id="ekd6lg"
 SET user Ravi
 INCR count
@@ -367,21 +324,18 @@ INCR count
 
 ## Execute
 
-// Example demonstrating Redis.
 ```redis id="p7u2lb"
 EXEC
 ```
 
 ## Cancel
 
-// Example demonstrating Redis.
 ```redis id="aqiv3s"
 DISCARD
 ```
 
 ## RDB Snapshot
 
-// Example demonstrating Redis.
 ```redis id="n2k4fu"
 SAVE
 ```
@@ -390,7 +344,6 @@ Blocks Redis during save.
 
 ## Background Save
 
-// Example demonstrating Redis.
 ```redis id="zuc1p8"
 BGSAVE
 ```
@@ -399,14 +352,12 @@ Recommended.
 
 ## Memory Usage
 
-// Example demonstrating Redis.
 ```redis id="e4m2g8"
 MEMORY USAGE user:1
 ```
 
 ## Memory Stats
 
-// Example demonstrating Redis.
 ```redis id="vqcbvc"
 MEMORY STATS
 ```
@@ -417,35 +368,30 @@ Used for event-driven systems.
 
 ## Add Event
 
-// Example demonstrating Redis.
 ```redis id="rzn48s"
 XADD orders * user Ravi amount 100
 ```
 
 ## Read Events
 
-// Example demonstrating Redis.
 ```redis id="5r7uww"
 XRANGE orders - +
 ```
 
 ## Export Database
 
-// Example demonstrating Redis.
 ```bash id="1kmhnk"
 redis-cli SAVE
 ```
 
 ## Copy Dump
 
-// Example demonstrating Redis.
 ```bash id="sjr40z"
 cp dump.rdb backup.rdb
 ```
 
 ## Run Redis
 
-// Example demonstrating Redis.
 ```bash id="1epvvj"
 docker run -d \
 --name redis \
@@ -455,7 +401,6 @@ redis
 
 ## Redis With Volume
 
-// Example demonstrating Redis.
 ```bash id="i5z4d4"
 docker run -d \
 -v redis-data:/data \
@@ -464,7 +409,6 @@ redis
 
 ## Docker Compose
 
-// Example demonstrating Redis.
 ```yaml id="l10rtw"
 services:
   redis:
@@ -475,14 +419,12 @@ services:
 
 ## Install Package
 
-// Example demonstrating Redis.
 ```bash id="l14jlwm"
 npm install redis
 ```
 
 ## Connect Redis
 
-// Example demonstrating Redis.
 ```javascript id="ukm1my"
 // Connect to Redis
 import { createClient } from 'redis';
@@ -492,13 +434,11 @@ const client = createClient();
 await client.connect();
 ```
 
-// Example demonstrating Redis.
 ```javascript id="xbh2xk"
 // Store data
 await client.set('user', 'Ravi');
 ```
 
-// Example demonstrating Redis.
 ```javascript id="s3sv4h"
 // Read data
 const user = await client.get('user');
@@ -506,7 +446,6 @@ const user = await client.get('user');
 
 ## Express Cache Example
 
-// Example demonstrating Redis.
 ```javascript id="kn1q80"
 // Cache API response
 app.get('/users', async (req, res) => {
@@ -554,7 +493,6 @@ res.json(users);
 
 ## Rate Limiting Example
 
-// Example demonstrating Redis.
 ```redis id="azj5h1"
 INCR api:user:123
 EXPIRE api:user:123 60
@@ -574,14 +512,12 @@ Limit requests per minute.
 
 ## Set Password
 
-// Example demonstrating Redis.
 ```redis id="gznn4o"
 requirepass myStrongPassword
 ```
 
 ## Authenticate
 
-// Example demonstrating Redis.
 ```redis id="53e91l"
 AUTH myStrongPassword
 ```

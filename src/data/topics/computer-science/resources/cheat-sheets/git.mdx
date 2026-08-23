@@ -69,7 +69,6 @@ flowchart LR
 
 ### Example Workflow:
 
-# Basic example showing the core idea.
 ```bash
 ## 1. Check what's changed
 git status
@@ -96,7 +95,6 @@ git push origin main
 
 ### Pretty Log Aliases:
 
-# Basic example showing the core idea.
 ```bash
 ## Add these for beautiful history views
 git config --global alias.tree "log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(blue)%an%Creset %C(green)%d%Creset' --all"
@@ -170,7 +168,6 @@ gitGraph
 | ❌ Creates merge commit     | ❌ Rewrites commit history       |
 | 🟢 Safe for shared branches | 🔴 Dangerous for shared branches |
 
-# Basic example showing the core idea.
 ```bash
 ## Option 1: Merge (recommended for beginners)
 git checkout feature
@@ -206,7 +203,6 @@ flowchart TD
 
 ### Push Scenarios:
 
-# Basic example showing the core idea.
 ```bash
 ## First time pushing
 git push -u origin main
@@ -265,7 +261,6 @@ flowchart LR
 
 ### Interactive Rebase _(Clean up commit history)_
 
-# Basic example showing the core idea.
 ```bash
 ## Edit last 3 commits
 git rebase -i HEAD~3
@@ -275,7 +270,6 @@ git rebase -i HEAD~3
 
 ### Cherry-Pick _(Copy specific commit)_
 
-# Basic example showing the core idea.
 ```bash
 ## Copy commit from another branch
 git cherry-pick <commit-hash>
@@ -287,20 +281,20 @@ git cherry-pick abc123  # Commit hash from main
 
 ### Bisect _(Find which commit broke something)_
 
-# Basic example showing the core idea.
 ```bash
 git bisect start
 git bisect bad HEAD      # Current is broken
 git bisect good <hash>   # Known working commit
+```
 ## Git will checkout commits for you to test
 git bisect good          # If current is working
 git bisect bad           # If current is broken
 git bisect reset         # End bisect
 ```
 
+```
 ### Reflog _(Recover lost commits)_
 
-# Basic example showing the core idea.
 ```bash
 git reflog               # See all HEAD movements
 git checkout HEAD@{2}    # Go back to previous state
@@ -309,9 +303,9 @@ git branch recovered <commit-hash>  # Create branch from lost commit
 
 ## 📋 11. .GITIGNORE _(What NOT to commit)_
 
-# Basic example showing the core idea.
 ```bash
 
+```
 ## Dependencies
 node_modules/
 vendor/
@@ -342,6 +336,7 @@ npm-debug.log*
 **Key Rule:** Always commit `.gitignore` **before** adding files it should
 ignore!
 
+```
 ## 🚨 12. TROUBLESHOOTING COMMON ISSUES
 
 | Problem                             | Solution                                                                  |
@@ -356,7 +351,6 @@ ignore!
 
 ### 🔥 New Feature Workflow:
 
-# Basic example showing the core idea.
 ```bash
 ## 1. Get latest main
 git checkout main
@@ -381,7 +375,6 @@ git push -u origin feature/login-page
 
 ### 🐛 Bug Fix Workflow:
 
-# Basic example showing the core idea.
 ```bash
 ## 1. Create hotfix from main
 git checkout main
@@ -403,7 +396,6 @@ git push origin main
 
 ### Release Workflow:
 
-# Basic example showing the core idea.
 ```bash
 ## 1. Prepare release branch
 git checkout main
@@ -423,7 +415,6 @@ git push origin v2.0.0
 
 ## 14. PRODUCTIVITY ALIASES _(Time Savers)_
 
-# Basic example showing the core idea.
 ```bash
 ## Add to ~/.gitconfig or use:
 git config --global alias.co checkout
@@ -474,7 +465,6 @@ graph TD
 
 ### ✅ Good Commit Message Format:
 
-// Example demonstrating GIT.
 ```
 Short summary (50 chars max)
 
@@ -504,14 +494,15 @@ Fixes #123
 **Final Tip:** Practice in a test repo first. Create a folder called
 `git-practice` and experiment freely!
 
-// Example demonstrating GIT.
 ```
 mkdir git-practice
 cd git-practice
 git init
+```
 ## Test everything here!
 ```
 
+```
 ## Quick Reference
 
 | Area | Revision point |

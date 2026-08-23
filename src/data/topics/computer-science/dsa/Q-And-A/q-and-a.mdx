@@ -18,7 +18,6 @@ its complement exists in the hash map.
 
 ### Solution
 
-// Basic example showing the core idea.
 ```javascript
 function twoSum(nums, target) {
   // Create a hash map to store number and its index
@@ -57,7 +56,6 @@ Given a string `s` containing just the characters '(', ')', '{', '}', '[' and
 Use a stack to keep track of opening brackets. When encountering a closing
 bracket, check if it matches the most recent opening bracket.
 
-// Basic example showing the core idea.
 ```javascript
 function isValid(s) {
   const stack = [];
@@ -84,6 +82,7 @@ for (let char of s) {
   return stack.length === 0;
 }
 
+```
 ## 3. Reverse Linked List
 
 **Company:** Amazon, Microsoft, Apple
@@ -146,6 +145,7 @@ for (let i = 1; i < nums.length; i++) {
 return maxSoFar;
 }
 
+```
 ## 5. Merge Two Sorted Lists 🔗
 
 **Company:** Facebook, Amazon, Google
@@ -157,7 +157,6 @@ Merge two sorted linked lists and return it as a sorted list.
 Use a dummy node to simplify the merging process. Compare nodes from both lists
 and attach the smaller one.
 
-// Basic example showing the core idea.
 ```javascript
 function mergeTwoLists(l1, l2) {
   // Create dummy node to simplify logic
@@ -197,7 +196,6 @@ Given an array of integers `nums` sorted in ascending order, and an integer
 Use binary search to find the target in O(log n) time by repeatedly dividing the
 search space in half.
 
-// Basic example showing the core idea.
 ```javascript
 function search(nums, target) {
   let left = 0;
@@ -232,7 +230,6 @@ Find the maximum profit from buying and selling a stock once.
 
 Track the minimum price seen so far and calculate profit at each day.
 
-// Basic example showing the core idea.
 ```javascript
 function maxProfit(prices) {
   let minPrice = prices[0];
@@ -249,6 +246,7 @@ for (let i = 1; i < prices.length; i++) {
 return maxProfit;
 }
 
+```
 ## 8. Valid Anagram ✨
 
 **Company:** Facebook, Amazon, Google
@@ -279,6 +277,7 @@ const charCount = {};
 return true;
 }
 
+```
 ## 9. Climbing Stairs 🪜
 
 **Company:** Amazon, Google, Microsoft
@@ -291,7 +290,6 @@ steps. How many distinct ways can you climb to the top?
 This is a Fibonacci sequence problem. Ways to reach step n = ways to reach
 (n-1) + ways to reach (n-2).
 
-// Basic example showing the core idea.
 ```javascript
 function climbStairs(n) {
   if (n <= 2) return n;
@@ -308,6 +306,7 @@ for (let i = 3; i <= n; i++) {
 return prev1;
 }
 
+```
 ## 10. Binary Tree Inorder Traversal 🌳
 
 **Company:** Microsoft, Amazon, Google
@@ -389,6 +388,7 @@ for (let num of nums) {
 return false;
 }
 
+```
 ## 12. Product of Array Except Self 🔢
 
 **Company:** Facebook, Amazon, Google
@@ -400,7 +400,6 @@ of all elements except itself.
 
 Calculate left products and right products separately, then combine them.
 
-// Basic example showing the core idea.
 ```javascript
 function productExceptSelf(nums) {
   const n = nums.length;
@@ -434,7 +433,6 @@ Given the root of a binary tree, return its maximum depth.
 Use recursion to find the maximum depth of left and right subtrees, then add 1
 for current node.
 
-// Basic example showing the core idea.
 ```javascript
 function maxDepth(root) {
   if (root === null) return 0;
@@ -467,6 +465,7 @@ if (node.left) queue.push(node.left);
 return depth;
 }
 
+```
 ## 14. Linked List Cycle
 
 **Company:** Amazon, Microsoft, Facebook
@@ -494,6 +493,7 @@ slow = slow.next; // Move one step
     fast = fast.next.next; // Move two steps
   }
 
+```
 ## 15. 3Sum
 
 **Company:** Amazon, Facebook, Google
@@ -504,7 +504,6 @@ Given an integer array `nums`, return all unique triplets that sum to zero.
 
 Sort the array, then use two pointers for each element to find triplets.
 
-// Basic example showing the core idea.
 ```javascript
 function threeSum(nums) {
   const result = [];
@@ -553,6 +552,7 @@ Use modified binary search. One half of the array is always sorted.
 
 if (nums[mid] === target) return mid;
 
+```javascript
 // Left half is sorted
     if (nums[left] <= nums[mid]) {
       if (target >= nums[left] && target < nums[mid]) {
@@ -573,7 +573,7 @@ if (nums[mid] === target) return mid;
 
 return -1;
 }
-
+```
 ## 17. Longest Substring Without Repeating Characters 🔤
 
 **Company:** Amazon, Facebook, Google
@@ -584,7 +584,6 @@ Find the length of the longest substring without repeating characters.
 
 Use sliding window with two pointers and a Set to track characters.
 
-// Basic example showing the core idea.
 ```javascript
 function lengthOfLongestSubstring(s) {
   const seen = new Set();
@@ -619,7 +618,6 @@ Given an array of intervals, merge all overlapping intervals.
 
 Sort intervals by start time, then merge overlapping ones.
 
-// Basic example showing the core idea.
 ```javascript
 function merge(intervals) {
   if (intervals.length <= 1) return intervals;
@@ -655,7 +653,6 @@ Group anagrams together from an array of strings.
 
 Use sorted string as key to group anagrams.
 
-// Basic example showing the core idea.
 ```javascript
 function groupAnagrams(strs) {
   const groups = new Map();
@@ -690,7 +687,6 @@ and ignoring cases.
 Use two pointers from both ends, comparing characters while skipping
 non-alphanumeric ones.
 
-// Basic example showing the core idea.
 ```javascript
 function isPalindrome(s) {
   let left = 0;
@@ -718,6 +714,7 @@ function isAlphanumeric(char) {
   return /^[a-zA-Z0-9]$/.test(char);
 }
 
+```
 ## 21. Serialize and Deserialize Binary Tree 🌳
 
 **Company:** Google, Amazon, Facebook
@@ -767,6 +764,7 @@ return node;
 return buildTree();
 }
 
+```
 ## 22. Kth Largest Element in Array 🔢
 
 **Company:** Amazon, Facebook, Google
@@ -777,7 +775,6 @@ Find the kth largest element in an unsorted array.
 
 Use quickselect algorithm or min-heap for efficient solution.
 
-// Basic example showing the core idea.
 ```javascript
 function findKthLargest(nums, k) {
   // Quick select approach
@@ -823,7 +820,6 @@ Find the k most frequent elements in an array.
 
 Count frequencies, then use bucket sort or heap to find top k elements.
 
-// Basic example showing the core idea.
 ```javascript
 function topKFrequent(nums, k) {
   // Count frequencies
@@ -850,6 +846,7 @@ for (let [num, freq] of freqMap) {
 return result.slice(0, k);
 }
 
+```
 ## 24. Course Schedule 📚
 
 **Company:** Google, Facebook, Amazon
@@ -1215,6 +1212,7 @@ while (left < right) {
 return water;
 }
 
+```
 ## 32. Edit Distance ✏
 
 **Company:** Google, Facebook, Amazon
@@ -1226,7 +1224,6 @@ Find the minimum number of operations to convert word1 to word2.
 Use 2D DP where dp[i][j] represents minimum operations to convert first i
 characters of word1 to first j characters of word2.
 
-// Basic example showing the core idea.
 ```javascript
 function minDistance(word1, word2) {
   const m = word1.length;
@@ -1253,6 +1250,7 @@ for (let i = 1; i <= m; i++) {
     }
   }
 
+```
 ## 33. Median of Two Sorted Arrays 🔢
 
 **Company:** Google, Amazon, Microsoft
@@ -1348,6 +1346,7 @@ for (let i = 1; i <= m; i++) {
     }
   }
 
+```
 ## 35. Longest Palindromic Substring
 
 **Company:** Amazon, Facebook, Google
@@ -1359,7 +1358,6 @@ Find the longest palindromic substring in a given string.
 Expand around centers approach: for each possible center, expand outward while
 characters match.
 
-// Basic example showing the core idea.
 ```javascript
 function longestPalindrome(s) {
   if (s.length === 0) return '';
@@ -1390,6 +1388,7 @@ for (let i = 0; i < s.length; i++) {
 return s.substring(start, start + maxLength);
 }
 
+```
 ### Problem-Solving Approach
 
 1. **Understand the Problem** - Read carefully and ask clarifying questions

@@ -115,13 +115,13 @@ A single round of AES consists of four distinct steps:
 _Code Example: High-level Python (using cryptography library) demonstrating
 AES-256 encryption:_
 
-# Basic example showing the core idea.
 ```python
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.backends import default_backend
 import os
 
+```
 ## 1. Generate a 256-bit (32-byte) random key
 key = os.urandom(32)
 
@@ -143,6 +143,7 @@ ciphertext = encryptor.update(padded_data) + encryptor.finalize()
 print(f"Ciphertext (hex): {ciphertext.hex()}")
 ```
 
+```
 ## 4. Block Cipher Modes of Operation
 
 Because block ciphers like AES only encrypt fixed-size blocks (e.g., 16 bytes at

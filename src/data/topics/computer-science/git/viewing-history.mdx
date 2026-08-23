@@ -15,14 +15,12 @@ get overwhelming.
 
 Here are the most practical flags to clean up your history view:
 
-# Basic example showing the core idea.
 ```bash
 // View a highly compressed, one-line version of your history
 git log --oneline
 
 ```
 
-# Basic example showing the core idea.
 ```bash
 // Limit the history to the last 3 commits
 git log -n 3
@@ -37,6 +35,7 @@ graph TD
     A[fe34b21: Fix checkout bug] --> B[7a12d90: Add stripe payment integration]
     B --> C[1c45e82: Initial commit]
 
+```
 ## Spotting the Differences (`git diff`)
 
 While `git log` tells you _when_ and _why_ a save happened, `git diff` tells you
@@ -48,7 +47,7 @@ with a green plus (`+`) were added.
 // Compare your current working directory with your staging area
 git diff
 
-# Basic example showing the core idea.
+```
 ```bash
 // Compare your staging area with your last saved commit
 git diff --staged
@@ -63,7 +62,6 @@ Imagine your app suddenly stops working, and you cannot remember what you
 changed over the last hour. You can use this rapid terminal checklist to find
 the culprit:
 
-# Basic example showing the core idea.
 ```bash
 // 1. See which files have modifications
 git status
@@ -74,6 +72,7 @@ git diff
 // 3. Review your team's recent commits to ensure nothing conflicts
 git log --oneline -n 5
 
+```
 ## Quick Reference
 
 | Area | Revision point |

@@ -70,6 +70,7 @@ graph LR
     LB --> App2[App Server 2]
     App1 & App2 --> SharedCache[(Shared Redis Cache)]
 
+```
 ### Core Concepts to Deep Dive
 
 1. **The CAP Theorem:** In a distributed system, you can only guarantee two out
@@ -115,6 +116,7 @@ graph TD
     Master -->|Asynchronous Replication| Slave2[(Read Replica 2)]
     Read[Read Requests] --> Slave1 & Slave2
 
+```
 ### 🔌 API Paradigms & Networking
 
 - **Communication Protocols:** When to choose REST (simple CRUD), GraphQL
@@ -153,6 +155,7 @@ stateDiagram-v2
     HalfOpen --> Closed : Success Rate High
     HalfOpen --> Open : Single Failure
 
+```
 ## 🏢 Week 10-12: Architectural Blueprints & Real-World Profiles
 
 Apply all the components you've mastered to construct large-scale, end-to-end
@@ -192,6 +195,7 @@ flowchart TD
     Check -->|No| Push[Push Model: Inject into Followers cached Timelines in Redis]
     Check -->|Yes| Pull[Pull Model: Save to Celeb DB Table only. Stitch on follower read]
 
+```
 ### Profile 3: Design a Geolocation-Based Service (e.g., Uber / Yelp)
 
 - **Core Problems:** Efficiently querying geometric multi-dimensional

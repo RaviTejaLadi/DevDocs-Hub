@@ -44,7 +44,6 @@
 | Basic Computed    | `const fullName = computed(() => first.value + last.value)` |
 | Writable Computed | `computed({ get(){}, set(){} })`                            |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const fullName = computed(() => {
   return `${firstName.value} ${lastName.value}`;
@@ -61,7 +60,6 @@ const fullName = computed(() => {
 | Deep Watch      | `{ deep: true }`          | Watch nested objects    |
 | Stop Watch      | `const stop = watch(...)` | Cleanup watcher         |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 watch(count, (newVal, oldVal) => {
   console.log(newVal);
@@ -82,7 +80,6 @@ watch(count, (newVal, oldVal) => {
 | onActivated     | KeepAlive activated   |
 | onDeactivated   | KeepAlive deactivated |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 onMounted(() => {
   fetchData();
@@ -140,7 +137,6 @@ onMounted(() => {
 | `.number` | Convert to number      |
 | `.lazy`   | Update on change event |
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input v-model.trim="username" />
 ```
@@ -154,7 +150,6 @@ onMounted(() => {
 | Required     | `{ required:true }`             |
 | Default      | `{ default:'' }`                |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const props = defineProps({
   title: {
@@ -171,7 +166,6 @@ const props = defineProps({
 | Define Emits | `defineEmits(['save'])` |
 | Emit Event   | `emit('save')`          |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const emit = defineEmits(['submit']);
 
@@ -186,7 +180,6 @@ emit('submit', data);
 | Named Slot   | `<slot name="header" />` |
 | Scoped Slot  | `<slot :user="user" />`  |
 
-<!-- Basic example showing the core idea. -->
 ```html
 <MyCard>
   <template #header> Header Content </template>
@@ -211,7 +204,6 @@ emit('submit', data);
 | Provide | `provide('user', user)` |
 | Inject  | `inject('user')`        |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 // Parent
 provide('theme', 'dark');
@@ -227,12 +219,10 @@ const theme = inject('theme');
 | Template Ref | `ref="inputRef"`         |
 | Access DOM   | `inputRef.value.focus()` |
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input ref="inputRef" />
 ```
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const inputRef = ref(null);
 ```
@@ -249,7 +239,6 @@ const inputRef = ref(null);
 | Params      | `route.params.id`       |
 | Query       | `route.query.page`      |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const router = useRouter();
 router.push('/dashboard');
@@ -265,7 +254,6 @@ router.push('/dashboard');
 | Getter       | `getters:{}`        |
 | Action       | `actions:{}`        |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -285,7 +273,6 @@ export const useUserStore = defineStore('user', {
 | ---------------------- | ----------------------------- |
 | `<Teleport to="body">` | Render outside component tree |
 
-<!-- Basic example showing the core idea. -->
 ```html
 <Teleport to="body">
   <Modal />
@@ -298,7 +285,6 @@ export const useUserStore = defineStore('user', {
 | ------------ | ----------------------- |
 | `<Suspense>` | Handle async components |
 
-<!-- Basic example showing the core idea. -->
 ```html
 <Suspense>
   <AsyncComponent />
@@ -311,7 +297,6 @@ export const useUserStore = defineStore('user', {
 | --------- | ------------------------ |
 | Lazy Load | `defineAsyncComponent()` |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 const UserProfile = defineAsyncComponent(() => import('./UserProfile.vue'));
 ```
@@ -324,7 +309,6 @@ const UserProfile = defineAsyncComponent(() => import('./UserProfile.vue'));
 | updated   | Element updated |
 | unmounted | Cleanup         |
 
-// Example demonstrating Vue.js (Vue 3).
 ```js
 app.directive('focus', {
   mounted(el) {

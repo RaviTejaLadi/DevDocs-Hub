@@ -6,7 +6,6 @@ Generic constraints restrict generic types to a required shape.
 
 ## Core Example
 
-// Example demonstrating Generic Constraints.
 ```ts
 function printLength<T extends { length: number }>(value: T): number {
   return value.length;
@@ -20,7 +19,6 @@ function printLength<T extends { length: number }>(value: T): number {
 
 ## Practical Pattern
 
-// Example demonstrating Generic Constraints.
 ```ts
 function getById<T extends { id: string }>(
   items: T[],

@@ -20,12 +20,10 @@ The browser considers:
 2. Specificity
 3. Source order
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p class="text">Hello World</p>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 p {
   color: blue;
@@ -38,7 +36,6 @@ p {
 
 Result:
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```text
 Red
 ```
@@ -58,14 +55,12 @@ Specificity is a scoring system used to determine which CSS rule wins.
 
 ## Example 1
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p class="text">Hello</p>
 ```
 
 Score:
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```text
 p      = 1
 .text  = 10
@@ -73,7 +68,6 @@ p      = 1
 
 ## Example 2
 
-/* Basic example showing the core idea. */
 ```css
 #title {
   color: green;
@@ -81,20 +75,18 @@ p      = 1
 
 ```html
 <h1 id="title" class="text">Heading</h1>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```text
 Green
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```text
 #title = 100
 .text  = 10
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
+```
 ## Example 3
 
 ```css
@@ -105,14 +97,12 @@ Green
 #hero .title {
   color: red;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```html
 <div id="hero" class="card">
   <h2 class="title">Welcome</h2>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 Because:
@@ -131,7 +121,6 @@ p {
   color: blue !important;
 }
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```text
 Blue
 ```
@@ -144,11 +133,11 @@ Avoid excessive use of `!important`.
 
 ✅ Use only when absolutely necessary
 
+```
 ## 📚 Source Order
 
 If specificity is equal, the last rule wins.
 
-/* Basic example showing the core idea. */
 ```css
 .text {
   color: blue;
@@ -156,6 +145,7 @@ If specificity is equal, the last rule wins.
 
 The second rule appears later.
 
+```
 ## CSS Inheritance
 
 Some CSS properties automatically pass from parent to child elements.
@@ -166,19 +156,16 @@ Example:
 <div class="container">
   <p>Hello World</p>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```css
 .container {
   color: blue;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```text
 Hello World → Blue
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The paragraph inherits the color.
@@ -219,7 +206,6 @@ You can force inheritance.
 button {
   color: inherit;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The button uses its parent's text color.
@@ -230,7 +216,6 @@ Resets a property to the browser default.
 
 ```css
 color: initial;
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ## Using unset
@@ -242,7 +227,6 @@ Behaves like:
 
 ```css
 color: unset;
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ## Real-World Example
@@ -251,7 +235,6 @@ color: unset;
 <div class="card">
   <h2 class="title">Product</h2>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```css
@@ -262,7 +245,6 @@ color: unset;
 .title {
   color: inherit;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The heading automatically follows the card's text color.
@@ -276,7 +258,6 @@ Inline Style      = 1000
 ID Selector       = 100
 Class Selector    = 10
 Element Selector  = 1
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 Examples:

@@ -41,7 +41,6 @@ One of the most common mistakes.
 
 ## Bad
 
-/* Basic example showing the core idea. */
 ```css
 .button {
   color: blue !important;
@@ -60,7 +59,6 @@ Creates specificity wars.
 
 ## Better
 
-/* Basic example showing the core idea. */
 ```css
 .button {
   color: blue;
@@ -80,16 +78,15 @@ Important2["More !important"]
 Chaos["Maintenance Problems"]
 
 Important1 --> Important2 --> Chaos
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
+```
 ## 🚫 Deeply Nested Selectors
 
 ```css
 .sidebar ul li a span {
   color: red;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Problems:
@@ -102,7 +99,6 @@ Problems:
 .sidebar-link {
   color: red;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ## Selector Complexity
@@ -120,9 +116,9 @@ Deep --> Complex
 Simple --> Maintainable
 ```
 
+```
 ## 🚫 Using IDs for Styling
 
-/* Basic example showing the core idea. */
 ```css
 #header {
   background: black;
@@ -131,7 +127,6 @@ Simple --> Maintainable
 
 IDs create high specificity.
 
-/* Basic example showing the core idea. */
 ```css
 .header {
   background: black;
@@ -148,7 +143,6 @@ Use IDs for:
 
 ## 🚫 Fixed Width Layouts
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 1200px;
@@ -157,7 +151,6 @@ Use IDs for:
 
 Breaks on smaller screens.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 100%;
@@ -179,16 +172,15 @@ Responsive["Responsive Layout"]
 Mobile --> Responsive
     Tablet --> Responsive
     Desktop --> Responsive
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
+```
 ## 🚫 Forgetting the Viewport Meta Tag
 
 Without:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Mobile browsers may zoom out.
@@ -207,14 +199,12 @@ Mobile browsers may zoom out.
 h1 {
   font-size: 48px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ```css
 h1 {
   font-size: 3rem;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ## Why rem?
@@ -236,13 +226,13 @@ Benefits:
 
 ✅ Easier maintenance
 
+```
 ## 🚫 Ignoring Box Sizing
 
 Default behavior can be confusing.
 
 ## Problem
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   width: 300px;
@@ -252,14 +242,12 @@ Default behavior can be confusing.
 
 Actual width:
 
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 340px
 ```
 
 ## Fix
 
-/* Basic example showing the core idea. */
 ```css
 * {
   box-sizing: border-box;
@@ -287,7 +275,6 @@ Margin --> Border
 
 ## 🚫 Not Using CSS Variables
 
-/* Basic example showing the core idea. */
 ```css
 .button {
   background: #2563eb;
@@ -302,7 +289,6 @@ Margin --> Border
 }
 ```
 
-/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -326,16 +312,15 @@ Maintenance["Easy Updates"]
 Variable --> Reuse
     Variable --> Theme
     Variable --> Maintenance
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
+```
 ## 🚫 Mixing Layout and Component Styles
 
 ```css
 .card {
   width: 1200px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 A component shouldn't control page layout.
@@ -348,7 +333,6 @@ A component shouldn't control page layout.
 .card {
   padding: 1rem;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Separate concerns.
@@ -359,7 +343,6 @@ Some developers still use:
 
 ```css
 float: left;
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 for layouts.
@@ -370,7 +353,6 @@ for layouts.
 .container {
   display: flex;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 or
@@ -379,7 +361,6 @@ or
 .container {
   display: grid;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ## Layout Evolution
@@ -393,9 +374,9 @@ Grid["CSS Grid"]
 Floats --> Flexbox --> Grid
 ```
 
+```
 ## 🚫 Overusing Position Absolute
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   position: absolute;
@@ -408,7 +389,6 @@ Creates fragile layouts.
 
 Use:
 
-/* Basic example showing the core idea. */
 ```css
 display: flex;
 display: grid;
@@ -425,7 +405,6 @@ Desktop["Desktop Only"]
 Problem["Broken Mobile UI"]
 
 Desktop --> Problem
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Test:
@@ -436,13 +415,13 @@ Test:
 
 ✅ Desktop
 
+```
 ## 🚫 Using Margin for Layout Gaps
 
 ```css
 .card {
   margin-right: 20px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ```css
@@ -450,7 +429,6 @@ Test:
   display: flex;
   gap: 20px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ## Gap vs Margin
@@ -464,9 +442,9 @@ Margin --> Difficult["Harder Layout"]
 Gap --> Cleaner["Cleaner Layout"]
 ```
 
+```
 ## 🚫 Animating Layout Properties
 
-/* Basic example showing the core idea. */
 ```css
 .card:hover {
   width: 300px;
@@ -475,7 +453,6 @@ Gap --> Cleaner["Cleaner Layout"]
 
 Triggers layout recalculations.
 
-/* Basic example showing the core idea. */
 ```css
 .card:hover {
   transform: scale(1.05);
@@ -495,16 +472,15 @@ GPU["GPU Accelerated"]
 Width --> Layout
 
 Transform --> GPU
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
+```
 ## 🚫 Ignoring Accessibility
 
 ```css
 button:focus {
   outline: none;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Removes keyboard focus indicators.
@@ -513,7 +489,6 @@ Removes keyboard focus indicators.
 button:focus {
   outline: 2px solid blue;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ## Accessibility Flow
@@ -527,9 +502,9 @@ Accessible["Accessible UI"]
 Keyboard --> Focus --> Accessible
 ```
 
+```
 ## 🚫 Overcomplicated CSS
 
-/* Basic example showing the core idea. */
 ```css
 #page .container .sidebar ul li a span {
   color: red;
@@ -542,13 +517,11 @@ Keep CSS simple.
 
 Large projects become difficult to maintain.
 
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 styles.css
 5000+ lines
 ```
 
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 styles/
 
@@ -575,9 +548,9 @@ Base --> Layout
     Layout --> Components
     Components --> Utilities
     Utilities --> Pages
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
+```
 ## 🚫 Copy-Pasting Styles
 
 ```css
@@ -592,14 +565,12 @@ Base --> Layout
 .button3 {
   padding: 10px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 ```css
 .button {
   padding: 10px;
 }
-// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Reuse styles.
@@ -627,11 +598,11 @@ Deploy["Production"]
 Feature --> Test --> Deploy
 ```
 
+```
 ## Quick Cheat Sheet
 
 ❌ Avoid:
 
-/* Basic example showing the core idea. */
 ```css
 !important
 
@@ -650,7 +621,6 @@ Width Animations
 
 ✅ Prefer:
 
-/* Basic example showing the core idea. */
 ```css
 Classes
 
