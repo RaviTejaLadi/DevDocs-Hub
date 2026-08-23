@@ -1,6 +1,6 @@
 # 📘 Instance Methods
 
-## 📖 Definition
+## Definition
 
 **Instance methods** are functions defined inside a class that can be used by
 **instances** (objects) created from that class.
@@ -12,10 +12,9 @@
 Instance methods let each object created from a class have behavior — things it
 can **do** — while keeping code organized and reusable.
 
----
-
 ## 🧱 Syntax / Structure
 
+// Basic example showing the core idea.
 ```javascript
 class ClassName {
   methodName() {
@@ -27,12 +26,9 @@ const obj = new ClassName();
 obj.methodName(); // calling the instance method
 ```
 
----
-
-## 🧪 Examples
-
 ### 🔹 Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 class Dog {
   bark() {
@@ -46,6 +42,7 @@ myDog.bark(); // Output: Woof!
 
 ### 🌍 Real-World Use Case
 
+// Basic example showing the core idea.
 ```javascript
 class BankAccount {
   constructor(owner, balance) {
@@ -53,14 +50,14 @@ class BankAccount {
     this.balance = balance;
   }
 
-  deposit(amount) {
+deposit(amount) {
     this.balance += amount;
     console.log(
       `${this.owner} deposited $${amount}. New balance: $${this.balance}`
     );
   }
 
-  withdraw(amount) {
+withdraw(amount) {
     if (amount > this.balance) {
       console.log('Insufficient funds!');
     } else {
@@ -77,9 +74,7 @@ account.deposit(50); // Alice deposited $50. New balance: $150
 account.withdraw(30); // Alice withdrew $30. Remaining balance: $120
 ```
 
----
-
-## 🚀 When / Where to Use It
+## When / Where to Use It
 
 Use instance methods when:
 
@@ -88,12 +83,39 @@ Use instance methods when:
 - Working with **OOP (Object-Oriented Programming)** patterns.
 - Building **modular, reusable components** in frameworks like React or Node.js.
 
----
-
-## ⚠️ Gotchas / Tips
+## ⚠ Gotchas / Tips
 
 ✅ **Don't forget `this.`** — It refers to the current instance. 🚫 Avoid using
 **arrow functions** for instance methods inside classes — they don’t bind `this`
 correctly in all contexts. 📚 Group related methods inside classes for better
 readability and structure. 🧼 Keep methods small and focused — one method should
 do one thing well.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
+
+## Final Understanding Check
+
+Before considering **📘 Instance Methods** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

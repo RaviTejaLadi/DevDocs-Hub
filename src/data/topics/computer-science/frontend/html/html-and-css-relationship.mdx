@@ -21,6 +21,7 @@ document.
 
 - **Syntax:**
 
+<!-- Basic example showing the core idea. -->
 ```html
 <head>
   <style>
@@ -40,8 +41,7 @@ document.
 CSS is written in a separate `.css` file (e.g., `styles.css`) and linked to the
 HTML.
 
-- **Syntax:**
-
+<!-- Basic example showing the core idea. -->
 ```html
 <head>
   <link rel="stylesheet" href="styles.css" />
@@ -89,3 +89,28 @@ conflicts are resolved based on a hierarchy.
 - `div { color: red; }` (Score: 1)
 - `.my-text { color: green; }` (Score: 10) -> **Winner** (Text will be Green)
 - `#unique-text { color: blue; }` (Score: 100) -> **Winner** (Text will be Blue)
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

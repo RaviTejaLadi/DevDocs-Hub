@@ -8,7 +8,7 @@ complex CSS. Flexbox simplifies all of that.
 
 ---
 
-# 🎯 Why Use Flexbox?
+## Why Use Flexbox?
 
 Flexbox helps you:
 
@@ -22,12 +22,11 @@ Flexbox helps you:
 
 ✅ Reorder elements without changing HTML
 
----
-
-# 🏗️ Flex Container and Flex Items
+## Flex Container and Flex Items
 
 To use Flexbox, set a container's display to `flex`.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="container">
   <div class="item">1</div>
@@ -36,6 +35,7 @@ To use Flexbox, set a container's display to `flex`.
 </div>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Create a flex container */
 .container {
@@ -45,12 +45,11 @@ To use Flexbox, set a container's display to `flex`.
 
 The parent becomes a **flex container**, and its children become **flex items**.
 
----
-
-# 📏 Main Axis and Cross Axis
+## 📏 Main Axis and Cross Axis
 
 Flexbox works using two axes:
 
+<!-- Visual flow for 🔲 Flexbox. -->
 ```mermaid
 flowchart TB
     MA["Main Axis → → →"]
@@ -62,7 +61,7 @@ flowchart TB
     end
     CA["Cross Axis ↓"]
 
-    MA ~~~ container
+MA ~~~ container
     container ~~~ CA
 ```
 
@@ -71,12 +70,11 @@ By default:
 - Main Axis → Horizontal
 - Cross Axis → Vertical
 
----
-
-# ➡️ flex-direction
+## ➡ flex-direction
 
 Controls the direction of flex items.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -84,194 +82,104 @@ Controls the direction of flex items.
 }
 ```
 
----
-
 ## row (Default)
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: row;
 }
 ```
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 1  2  3
 ```
 
----
-
 ## row-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: row-reverse;
 }
 ```
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 3  2  1
 ```
 
----
-
 ## column
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: column;
 }
 ```
 
-```text
-1
-2
-3
-```
-
----
-
 ## column-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: column-reverse;
 }
 ```
 
-```text
-3
-2
-1
-```
-
----
-
-# 📦 justify-content
+## justify-content
 
 Aligns items along the **main axis**.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   justify-content: center;
 }
 ```
 
----
 
-## center
 
-```text
-     1 2 3
-```
 
----
-
-## flex-start
-
-```text
-1 2 3
-```
-
----
-
-## flex-end
-
-```text
-          1 2 3
-```
-
----
-
-## space-between
-
-```text
-1      2      3
-```
-
----
-
-## space-around
-
-```text
- 1    2    3
-```
-
----
 
 ## space-evenly
 
-```text
-  1   2   3
-```
-
 Equal spacing everywhere.
 
----
-
-# 🎯 align-items
+## align-items
 
 Aligns items on the **cross axis**.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   align-items: center;
 }
 ```
 
----
-
-## flex-start
-
-```text
-1
-2
-3
-```
-
 (top aligned)
-
----
-
-## center
-
-```text
-   1
-   2
-   3
-```
 
 (vertical center)
 
----
-
-## flex-end
-
-```text
-       1
-       2
-       3
-```
-
 (bottom aligned)
-
----
 
 ## stretch (Default)
 
 Items stretch to fill the container height.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   align-items: stretch;
 }
 ```
 
----
-
-# 🎯 Perfect Centering
+## Perfect Centering
 
 One of Flexbox's most popular use cases.
 
+/* Basic example showing the core idea. */
 ```css
 /* Center content both horizontally and vertically */
 .container {
@@ -279,20 +187,17 @@ One of Flexbox's most popular use cases.
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
+height: 100vh;
 }
 ```
 
----
-
-# 🔄 flex-wrap
+## flex-wrap
 
 Controls whether items wrap onto new lines.
 
----
-
 ## nowrap (Default)
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: nowrap;
@@ -301,10 +206,9 @@ Controls whether items wrap onto new lines.
 
 Items stay on one line.
 
----
-
 ## wrap
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: wrap;
@@ -313,10 +217,9 @@ Items stay on one line.
 
 Items move to a new line if necessary.
 
----
-
 ## wrap-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: wrap-reverse;
@@ -325,12 +228,11 @@ Items move to a new line if necessary.
 
 Wraps in reverse order.
 
----
-
-# 🧩 gap
+## gap
 
 Adds spacing between flex items.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -340,12 +242,11 @@ Adds spacing between flex items.
 
 Better than using margins.
 
----
-
-# 📈 flex-grow
+## 📈 flex-grow
 
 Controls how items expand.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-grow: 1;
@@ -354,6 +255,7 @@ Controls how items expand.
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 .item1 {
   flex-grow: 1;
@@ -366,16 +268,16 @@ Example:
 
 Result:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 Item 2 is twice as wide as Item 1
 ```
 
----
-
-# 📉 flex-shrink
+## 📉 flex-shrink
 
 Controls how items shrink.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-shrink: 1;
@@ -384,24 +286,22 @@ Controls how items shrink.
 
 Default value is `1`.
 
----
-
-# 📏 flex-basis
+## 📏 flex-basis
 
 Defines the initial size of an item.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-basis: 200px;
 }
 ```
 
----
-
-# 🚀 The flex Shorthand
+## The flex Shorthand
 
 Instead of:
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-grow: 1;
@@ -412,6 +312,7 @@ Instead of:
 
 Use:
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex: 1;
@@ -420,12 +321,11 @@ Use:
 
 Very common in layouts.
 
----
-
-# 🔢 order
+## 🔢 order
 
 Changes visual order without changing HTML.
 
+/* Basic example showing the core idea. */
 ```css
 .item1 {
   order: 3;
@@ -442,18 +342,18 @@ Changes visual order without changing HTML.
 
 Display order:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 Item2
 Item3
 Item1
 ```
 
----
-
-# 🎯 align-self
+## align-self
 
 Overrides alignment for a single item.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   align-self: flex-end;
@@ -462,10 +362,9 @@ Overrides alignment for a single item.
 
 Only that item moves.
 
----
+## Responsive Navigation Example
 
-# 🧩 Responsive Navigation Example
-
+<!-- Basic example showing the core idea. -->
 ```html
 <nav class="navbar">
   <div>Logo</div>
@@ -473,6 +372,7 @@ Only that item moves.
 </nav>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Responsive navbar using Flexbox */
 .navbar {
@@ -482,16 +382,14 @@ Only that item moves.
 }
 ```
 
-Result:
-
+// Example demonstrating 🔲 Flexbox.
 ```text
 Logo                    Menu
 ```
 
----
+## 🛒 Product Card Layout
 
-# 🛒 Product Card Layout
-
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">
   <img src="product.jpg" alt="Product" />
@@ -500,6 +398,7 @@ Logo                    Menu
 </div>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Vertical card layout */
 .card {
@@ -509,10 +408,9 @@ Logo                    Menu
 }
 ```
 
----
+## 📱 Responsive Row Layout
 
-# 📱 Responsive Row Layout
-
+/* Basic example showing the core idea. */
 ```css
 /* Responsive flex layout */
 .container {
@@ -532,10 +430,9 @@ Each item:
 - Shrinks
 - Starts at 300px
 
----
+## Quick Cheat Sheet
 
-# 🧠 Quick Cheat Sheet
-
+/* Basic example showing the core idea. */
 ```css
 display: flex;
 
@@ -556,34 +453,24 @@ order: 1;
 align-self: center;
 ```
 
----
-
-# ⚠️ Common Mistakes
-
 ### Forgetting `display: flex`
-
-```css
-.container {
-  justify-content: center;
-}
-```
 
 Won't work.
 
 You must use:
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
 }
 ```
 
----
-
 ### Using Margins Instead of Gap
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   margin-right: 20px;
@@ -592,26 +479,24 @@ You must use:
 
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   gap: 20px;
 }
 ```
 
----
-
 ### Mixing Up Axes
 
 Remember:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 justify-content → Main Axis
 align-items     → Cross Axis
 ```
 
----
-
-# ✅ Best Practices
+## ✅ Best Practices
 
 - Use Flexbox for one-dimensional layouts.
 - Use `gap` instead of margins for spacing.
@@ -619,9 +504,7 @@ align-items     → Cross Axis
 - Use `wrap` for responsive layouts.
 - Combine Flexbox with media queries for mobile support.
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - Flexbox is designed for one-dimensional layouts.
 - `justify-content` controls the main axis.

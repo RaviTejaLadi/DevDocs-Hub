@@ -1,4 +1,4 @@
-# 🏗️ CSS Architecture & Organization
+# CSS Architecture & Organization
 
 As projects grow, CSS can quickly become difficult to manage.
 
@@ -19,40 +19,40 @@ effectively.
 
 ---
 
-# 🎯 Why CSS Architecture Matters
+## Why CSS Architecture Matters
 
 Small projects:
 
+<!-- Visual flow for CSS Architecture & Organization. -->
 ```mermaid
 flowchart LR
     A["Few Components"]
     B["Simple CSS"]
 
-    A --> B
+A --> B
 ```
 
 Large projects:
 
+<!-- Visual flow for CSS Architecture & Organization. -->
 ```mermaid
 flowchart LR
     A["Hundreds of Components"]
 
-    B["Shared Styles"]
+B["Shared Styles"]
 
-    C["Design System"]
+C["Design System"]
 
-    D["CSS Architecture"]
+D["CSS Architecture"]
 
-    A --> D
+A --> D
     B --> D
     C --> D
 ```
 
 As applications grow, organization becomes essential.
 
----
-
-# 🧠 Goals of Good CSS Architecture
+## Goals of Good CSS Architecture
 
 A good architecture should be:
 
@@ -66,12 +66,11 @@ A good architecture should be:
 
 ✅ Easy to Understand
 
----
-
-# 📂 Recommended CSS Folder Structure
+## 📂 Recommended CSS Folder Structure
 
 For medium and large projects:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 styles/
 │
@@ -99,37 +98,35 @@ styles/
 └── main.css
 ```
 
----
+## Architecture Layers
 
-# Architecture Layers
-
+<!-- Visual flow for CSS Architecture & Organization. -->
 ```mermaid
 flowchart TB
 
-    Base["Base Styles"]
+Base["Base Styles"]
 
-    Layout["Layouts"]
+Layout["Layouts"]
 
-    Components["Components"]
+Components["Components"]
 
-    Utilities["Utilities"]
+Utilities["Utilities"]
 
-    Pages["Pages"]
+Pages["Pages"]
 
-    Base --> Layout
+Base --> Layout
     Layout --> Components
     Components --> Utilities
     Utilities --> Pages
 ```
 
----
-
-# 🎯 Base Styles
+## Base Styles
 
 Base styles define global defaults.
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 /* Base Typography */
 body {
@@ -144,9 +141,7 @@ h3 {
 }
 ```
 
----
-
-# 🎯 Layout Styles
+## Layout Styles
 
 Layout styles define page structure.
 
@@ -157,45 +152,40 @@ Examples:
 - Sidebar
 - Grid Layouts
 
+/* Basic example showing the core idea. */
 ```css
 .layout {
   display: grid;
 
-  grid-template-columns: 250px 1fr;
+grid-template-columns: 250px 1fr;
 }
 ```
 
----
-
-# 🎯 Component Styles
+## Component Styles
 
 Components are reusable UI pieces.
-
-Examples:
 
 - Buttons
 - Cards
 - Modals
 - Alerts
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 1rem;
 
-  border-radius: 12px;
+border-radius: 12px;
 
-  background: white;
+background: white;
 }
 ```
 
----
-
-# 🎯 Utility Styles
+## Utility Styles
 
 Utility classes do one thing.
 
-Example:
-
+/* Basic example showing the core idea. */
 ```css
 .mt-4 {
   margin-top: 1rem;
@@ -206,71 +196,62 @@ Example:
 }
 ```
 
----
+## Utility Concept
 
-# Utility Concept
-
+<!-- Visual flow for CSS Architecture & Organization. -->
 ```mermaid
 flowchart LR
 
-    Utility["Utility Class"]
+Utility["Utility Class"]
 
-    Margin["Spacing"]
+Margin["Spacing"]
 
-    Text["Text Alignment"]
+Text["Text Alignment"]
 
-    Display["Display"]
+Display["Display"]
 
-    Utility --> Margin
+Utility --> Margin
     Utility --> Text
     Utility --> Display
 ```
 
----
-
-# 🎨 BEM Methodology
+## BEM Methodology
 
 One of the most popular CSS architectures.
 
 BEM stands for:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Block
 Element
 Modifier
 ```
 
----
+## BEM Structure
 
-# BEM Structure
+Block["Block"]
 
-```mermaid
-flowchart TB
+Element["Element"]
 
-    Block["Block"]
+Modifier["Modifier"]
 
-    Element["Element"]
-
-    Modifier["Modifier"]
-
-    Block --> Element
+Block --> Element
     Block --> Modifier
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# Block
+## Block
 
 Standalone component.
 
 ```css
 .card {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# Element
+## Element
 
 Part of a block.
 
@@ -280,11 +261,10 @@ Part of a block.
 
 .card__image {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# Modifier
+## Modifier
 
 Variation of a block.
 
@@ -294,16 +274,16 @@ Variation of a block.
 
 .card--large {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# BEM Example
+## BEM Example
 
 ```html
 <div class="card card--featured">
   <h2 class="card__title">Product</h2>
 </div>
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ```css
@@ -316,31 +296,26 @@ Variation of a block.
 .card--featured {
   border: 2px solid gold;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
+## BEM Visualization
 
-# BEM Visualization
+Card["card"]
 
-```mermaid
-flowchart TB
+Title["card__title"]
 
-    Card["card"]
+Featured["card--featured"]
 
-    Title["card__title"]
-
-    Featured["card--featured"]
-
-    Card --> Title
+Card --> Title
     Card --> Featured
 ```
 
----
-
-# 🎯 SMACSS Architecture
+## SMACSS Architecture
 
 SMACSS stands for:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Scalable
 Modular
@@ -351,27 +326,23 @@ CSS
 
 Categories:
 
-```mermaid
-flowchart TB
+SMACSS
 
-    SMACSS
-
-    Base
+Base
     Layout
     Module
     State
     Theme
 
-    SMACSS --> Base
+SMACSS --> Base
     SMACSS --> Layout
     SMACSS --> Module
     SMACSS --> State
     SMACSS --> Theme
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# Example
+## Example
 
 State styles:
 
@@ -383,42 +354,33 @@ State styles:
 .is-hidden {
   display: none;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# 🎯 ITCSS
+## ITCSS
 
 ITCSS stands for:
 
 ```text
 Inverted Triangle CSS
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Organizes styles from generic to specific.
 
----
+## ITCSS Pyramid
 
-# ITCSS Pyramid
+Settings["Settings"]
 
-```mermaid
-flowchart TB
+Tools["Tools"]
 
-    Settings["Settings"]
+Generic["Generic"]
 
-    Tools["Tools"]
+Elements["Elements"]
 
-    Generic["Generic"]
+Objects["Objects"]
 
-    Elements["Elements"]
-
-    Objects["Objects"]
-
-    Components["Components"]
-
-    Utilities["Utilities"]
-
-    Settings --> Tools
+Settings --> Tools
     Tools --> Generic
     Generic --> Elements
     Elements --> Objects
@@ -428,14 +390,13 @@ flowchart TB
 
 Specificity increases as you move down.
 
----
-
-# 🎯 CUBE CSS
+## CUBE CSS
 
 Modern CSS architecture.
 
 CUBE means:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Composition
 Utility
@@ -443,29 +404,23 @@ Block
 Exception
 ```
 
----
+## CUBE Flow
 
-# CUBE Flow
+Composition
 
-```mermaid
-flowchart LR
+Utility
 
-    Composition
+Block
 
-    Utility
+Exception
 
-    Block
-
-    Exception
-
-    Composition --> Utility
+Composition --> Utility
     Utility --> Block
     Block --> Exception
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# 🎯 Design Tokens
+## Design Tokens
 
 Store design values centrally.
 
@@ -473,101 +428,82 @@ Store design values centrally.
 :root {
   --primary-color: #2563eb;
 
-  --spacing-sm: 8px;
+--spacing-sm: 8px;
 
-  --spacing-md: 16px;
+--spacing-md: 16px;
 
-  --radius-md: 12px;
+--radius-md: 12px;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
+## Design Token Flow
 
-# Design Token Flow
+Tokens["Design Tokens"]
 
-```mermaid
-flowchart TB
+Button["Button"]
 
-    Tokens["Design Tokens"]
+Navbar["Navbar"]
 
-    Button["Button"]
-
-    Card["Card"]
-
-    Navbar["Navbar"]
-
-    Tokens --> Button
+Tokens --> Button
     Tokens --> Card
     Tokens --> Navbar
 ```
 
----
+## CSS Variables for Organization
 
-# 🎯 CSS Variables for Organization
-
+/* Basic example showing the core idea. */
 ```css
 :root {
   --color-primary: #2563eb;
 
-  --color-danger: #ef4444;
+--color-danger: #ef4444;
 }
 ```
 
 Usage:
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   background: var(--color-primary);
 }
 ```
 
----
-
-# 🎯 Component-Based CSS
+## Component-Based CSS
 
 Modern frameworks encourage component-scoped styles.
-
-Examples:
 
 - React Components
 - Vue Components
 - Angular Components
 - Web Components
 
----
+## Component Structure
 
-# Component Structure
+Component["Card Component"]
 
-```mermaid
-flowchart TB
+HTML["HTML"]
 
-    Component["Card Component"]
+CSS["CSS"]
 
-    HTML["HTML"]
+JS["JavaScript"]
 
-    CSS["CSS"]
-
-    JS["JavaScript"]
-
-    Component --> HTML
+Component --> HTML
     Component --> CSS
     Component --> JS
+// Example demonstrating CSS Architecture & Organization.
 ```
-
----
-
-# Example
 
 ```text
 Card/
 ├── Card.jsx
 ├── Card.css
 └── Card.test.js
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# 🎯 CSS Modules
+## CSS Modules
 
 Avoid global naming conflicts.
 
@@ -575,6 +511,7 @@ Avoid global naming conflicts.
 .button {
   background: blue;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Import:
@@ -584,33 +521,28 @@ Import:
 import styles from './Button.module.css';
 
 <button className={styles.button}>Save</button>;
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
+## CSS Modules Flow
 
-# CSS Modules Flow
+CSS["Button.module.css"]
 
-```mermaid
-flowchart LR
+Hash["Unique Class"]
 
-    CSS["Button.module.css"]
+Component["React Component"]
 
-    Hash["Unique Class"]
-
-    Component["React Component"]
-
-    CSS --> Hash
+CSS --> Hash
     Hash --> Component
 ```
 
----
-
-# 🎯 Utility-First CSS
+## Utility-First CSS
 
 Popularized by Tailwind CSS.
 
 Instead of:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 1rem;
@@ -620,27 +552,22 @@ Instead of:
 
 Use:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="p-4 rounded-lg">Content</div>
 ```
 
----
+## Utility First Concept
 
-# Utility First Concept
+Utility["Small Utilities"]
 
-```mermaid
-flowchart LR
+UI["Build Components"]
 
-    Utility["Small Utilities"]
-
-    UI["Build Components"]
-
-    Utility --> UI
+Utility --> UI
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
-
-# 🎯 Naming Conventions
+## Naming Conventions
 
 Good:
 
@@ -653,9 +580,8 @@ Good:
 
 .product-card--featured {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
-
----
 
 Bad:
 
@@ -668,13 +594,12 @@ Bad:
 
 .blue-box {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Names should describe purpose, not appearance.
 
----
-
-# 🎯 Avoid Deep Selectors
+## Avoid Deep Selectors
 
 ❌
 
@@ -682,9 +607,8 @@ Names should describe purpose, not appearance.
 .sidebar ul li a span {
   color: red;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
-
----
 
 ✅
 
@@ -692,37 +616,26 @@ Names should describe purpose, not appearance.
 .sidebar-link {
   color: red;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
----
+## Selector Complexity
 
-# Selector Complexity
+Deep["Deep Selectors"]
 
-```mermaid
-flowchart LR
+Hard["Hard To Maintain"]
 
-    Deep["Deep Selectors"]
+Simple["Simple Classes"]
 
-    Hard["Hard To Maintain"]
+Easy["Easy To Maintain"]
 
-    Simple["Simple Classes"]
-
-    Easy["Easy To Maintain"]
-
-    Deep --> Hard
+Deep --> Hard
     Simple --> Easy
 ```
 
----
-
-# ⚠️ Common Mistakes
-
----
-
 ## Excessive Nesting
 
-❌
-
+/* Basic example showing the core idea. */
 ```css
 .card {
   .header {
@@ -734,12 +647,9 @@ flowchart LR
 }
 ```
 
----
-
 ## High Specificity
 
-❌
-
+/* Basic example showing the core idea. */
 ```css
 #page .sidebar ul li a {
 }
@@ -747,12 +657,11 @@ flowchart LR
 
 Prefer classes.
 
----
-
 ## Mixing Layout and Components
 
 Avoid:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 1200px;
@@ -761,10 +670,9 @@ Avoid:
 
 Layout should live separately.
 
----
+## Quick Cheat Sheet
 
-# 🧠 Quick Cheat Sheet
-
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Base Styles
 Layout Styles
@@ -786,9 +694,7 @@ CSS Modules
 Utility-First CSS
 ```
 
----
-
-# ✅ Best Practices
+## ✅ Best Practices
 
 - Organize CSS into logical folders.
 - Use BEM or another naming convention.
@@ -799,9 +705,7 @@ Utility-First CSS
 - Separate layout from components.
 - Use CSS Modules or scoped styles in component-based apps.
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - CSS Architecture helps projects scale without becoming messy.
 - BEM is one of the most widely used naming conventions.

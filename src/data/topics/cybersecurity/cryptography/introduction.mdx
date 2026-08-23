@@ -1,4 +1,4 @@
-# 🔐 Introduction to Cryptography
+# Introduction to Cryptography
 
 Cryptography is the cornerstone of modern digital security. It is the science
 and art of protecting information by transforming it (encrypting it) into a
@@ -8,7 +8,7 @@ guide explores the depth and breadth of cryptography, covering its historical
 roots, core principles, types of cryptographic algorithms, cryptanalysis, and
 the future landscape.
 
-## 1. 🕵️‍♂️ What is Cryptography?
+## 1. 🕵‍♂ What is Cryptography?
 
 At its core, cryptography is about communication in the presence of adversaries.
 It encompasses the principles and methods of transforming an intelligible
@@ -21,6 +21,7 @@ In the digital age, cryptography ensures that private communications remain
 private, that digital identities can be verified, and that the integrity of data
 across public and private networks is maintained.
 
+<!-- Visual flow for Introduction to Cryptography. -->
 ```mermaid
 graph LR
     A[📄 Plaintext] -->|Encrypt with 🔑 Key| B((🔒 Ciphertext))
@@ -30,7 +31,7 @@ graph LR
     style C fill:#e1f5fe,stroke:#01579b
 ```
 
-### 1.1 🕵️‍♀️ Cryptography vs. Steganography
+### 1.1 🕵‍♀ Cryptography vs. Steganography
 
 While cryptography aims to conceal the contents of a message, steganography aims
 to conceal the very existence of the message.
@@ -49,7 +50,7 @@ to conceal the very existence of the message.
 The history of cryptography is a fascinating journey of continuous escalation
 between codemakers and codebreakers.
 
-### 2.1 🏛️ Ancient Cryptography
+### 2.1 🏛 Ancient Cryptography
 
 - **The Scytale (Sparta, ~400 BC):** The Spartans used a transposition cipher
   called a scytale. A strip of parchment was wrapped around a cylinder of
@@ -98,11 +99,12 @@ binary data. The development of the Data Encryption Standard (DES) in the 1970s
 and the revolutionary invention of Public Key Cryptography (RSA) by Diffie,
 Hellman, Rivest, Shamir, and Adleman brought cryptography to the masses.
 
-## 3. 🛡️ Core Principles of Information Security (The CIA Triad)
+## 3. Core Principles of Information Security (The CIA Triad)
 
 Cryptography is a tool used to achieve broader information security goals, most
 commonly modeled as the CIA triad.
 
+<!-- Visual flow for Introduction to Cryptography. -->
 ```mermaid
 graph TD
     CIA((CIA Triad))
@@ -128,7 +130,7 @@ by unauthorized parties. It ensures the data remains accurate and trustworthy.
 - _Mechanism:_ Cryptographic Hash Functions (SHA-256), Message Authentication
   Codes (MACs).
 
-### 3.3 ⏱️ Availability
+### 3.3 ⏱ Availability
 
 Availability ensures that systems, applications, and data are accessible to
 authorized users when needed. While cryptography doesn't directly provide
@@ -168,7 +170,7 @@ Principle**, formulated in the 19th century by Auguste Kerckhoffs:
 > **Kerckhoffs's Principle:** "A cryptographic system should be secure even if
 > everything about the system, except the key, is public knowledge."
 
-### 5.1 📖 Why Open Algorithms are Better
+### 5.1 Why Open Algorithms are Better
 
 Historically, "security through obscurity" (keeping the algorithm secret) was
 common. Modern cryptography rejects this. Algorithms (like AES or RSA) are
@@ -180,7 +182,7 @@ published openly and heavily scrutinized by the global cryptographic community.
 - **The secret is the key:** The entire security of the system rests on the
   secrecy of the key, not the algorithm.
 
-### 5.2 👁️ Shannon's Maxim
+### 5.2 👁 Shannon's Maxim
 
 Claude Shannon, the father of information theory, restated Kerckhoffs's
 principle more bluntly:
@@ -202,7 +204,7 @@ each serving a different purpose.
 | **Asymmetric-Key** | 🗝️ Public & Private key pair    | Slower, computationally intensive. Solves key distribution.          | Key exchange, Digital Signatures.   | RSA, ECC (Curve25519)  |
 | **Hash Functions** | 🚫 No key (typically)           | One-way function, deterministic, collision-resistant.                | Data integrity, password storage.   | SHA-256, SHA-3, BLAKE2 |
 
-## 7. ⚔️ Cryptanalysis and Types of Attacks
+## 7. ⚔ Cryptanalysis and Types of Attacks
 
 Cryptanalysts (and attackers) use various methods to break cryptographic
 systems. Understanding these attacks is crucial for designing secure systems.
@@ -228,8 +230,6 @@ systems. Understanding these attacks is crucial for designing secure systems.
   - _Chosen-Plaintext:_ Attacker chooses arbitrary plaintexts to be encrypted
     and analyzes the resulting ciphertexts.
 
-## 8. 🚨 Real-world Case Studies
-
 ### 8.1 🛜 The WEP Disaster
 
 Wired Equivalent Privacy (WEP) was an early Wi-Fi security protocol. It used the
@@ -242,7 +242,7 @@ Initialization Vectors (IVs).
 - **The Lesson:** Even a strong algorithm can be rendered useless by poor
   protocol design.
 
-### 8.2 🐧 The Debian PRNG Bug (2008)
+### 8.2 The Debian PRNG Bug (2008)
 
 A maintainer for the Debian Linux distribution made a seemingly harmless change
 to the OpenSSL package to suppress a warning from a static analysis tool.
@@ -255,11 +255,11 @@ to the OpenSSL package to suppress a warning from a static analysis tool.
 - **The Lesson:** Cryptography is incredibly fragile. "Fixing" warnings in
   cryptographic code without deep understanding can be catastrophic.
 
-## 9. 🚀 The Future of Cryptography
+## 9. The Future of Cryptography
 
 The field of cryptography is on the precipice of a massive paradigm shift.
 
-### 9.1 ⚛️ Quantum Computing and the Threat to RSA/ECC
+### 9.1 ⚛ Quantum Computing and the Threat to RSA/ECC
 
 Quantum computers leverage principles of quantum mechanics to perform certain
 calculations exponentially faster than classical computers.
@@ -270,7 +270,7 @@ calculations exponentially faster than classical computers.
 - **The Timeline:** Experts believe a Cryptographically Relevant Quantum
   Computer (CRQC) could be built within the next 10-20 years.
 
-### 9.2 🛡️ Post-Quantum Cryptography (PQC)
+### 9.2 Post-Quantum Cryptography (PQC)
 
 In response, the National Institute of Standards and Technology (NIST) has been
 standardizing new, quantum-resistant algorithms.
@@ -281,7 +281,7 @@ standardizing new, quantum-resistant algorithms.
   - **Code-based cryptography**
 - The transition to PQC will be a monumental infrastructure upgrade.
 
-### 9.3 ☁️ Homomorphic Encryption
+### 9.3 ☁ Homomorphic Encryption
 
 Currently, to process encrypted data, you must first decrypt it, exposing it to
 potential theft.
@@ -327,3 +327,12 @@ the cutting-edge post-quantum algorithms of tomorrow, the battle between
 codemakers and codebreakers continues to drive innovation. Understanding these
 core concepts is the first critical step for anyone working in cybersecurity or
 software engineering.
+
+## Quick Reference
+
+| Part | Revision point |
+|---|---|
+| Input | Know the allowed values and constraints. |
+| Core idea | Identify the invariant, recurrence, or search rule. |
+| Complexity | Track time and space costs. |
+| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |

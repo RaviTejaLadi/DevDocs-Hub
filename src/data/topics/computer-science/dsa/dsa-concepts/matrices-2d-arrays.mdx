@@ -1,1 +1,228 @@
 # Matrices & 2D Arrays
+
+**Matrices & 2D Arrays** is easiest to learn by connecting each operation to an input, an action, and a result. Think of an API as a set of tools on a workbench: each method has a clear job, a defined input, and rules about whether it changes the original value.
+
+## What It Provides
+
+Start by identifying the data type or object this topic operates on, then list the operations it supports. Separate methods that return a new value from methods that mutate existing state. That distinction prevents a common revision mistake: assuming every method changes the original data.
+
+## Core Operations
+
+Group the operations by purpose instead of memorising them as an unrelated list. Typical groups are inspection, transformation, searching, insertion or deletion, and conversion. For each method, know its parameters, return value, mutation behaviour, and what happens for empty input.
+
+### Small Example
+
+// Basic example using a small input so the result is easy to verify.
+```javascript
+const values = [10, 20, 30];
+const result = values.map(value => value / 10);
+console.log(result);
+```
+
+## Real-World Use
+
+The same operation becomes more useful when combined with validation and application logic. For example, a data transformation often needs to ignore invalid records, preserve the source data, or produce a predictable fallback.
+
+// Realistic example with an explicit edge-case check.
+```javascript
+const prices = [120, null, 80, 200];
+const validPrices = prices.filter(price => typeof price === 'number');
+const totals = validPrices.map(price => price * 1.18);
+console.log(totals);
+```
+
+## Common Mistakes
+
+- Confusing mutation with returning a new value.
+- Ignoring the callback parameters supplied by an API.
+- Forgetting empty input and null-like values.
+- Choosing a method because its name sounds right without checking its return value.
+
+## Quick Reference
+
+| Area | What to remember |
+|---|---|
+| Input | Know accepted data and edge cases. |
+| Operation | Know exactly what the method does. |
+| Return | Check the resulting type and value. |
+| Mutation | Know whether the original object changes. |
+
+## JavaScript Array Methods by Purpose
+
+For a broad array-method topic, these are the core operations to revise. The important distinction is whether the method returns a new array/value or mutates the original array.
+
+### map()
+
+Creates a new array by transforming every element.
+
+// Practical example of map().
+```javascript
+const doubled = [1, 2, 3].map(n => n * 2);
+```
+
+### filter()
+
+Creates a new array containing elements that pass a test.
+
+// Practical example of filter().
+```javascript
+const adults = [15, 22, 17, 30].filter(age => age >= 18);
+```
+
+### reduce()
+
+Combines the elements into one accumulated result.
+
+// Practical example of reduce().
+```javascript
+const total = [10, 20, 30].reduce((sum, n) => sum + n, 0);
+```
+
+### forEach()
+
+Runs a callback for each element and returns undefined.
+
+// Practical example of forEach().
+```javascript
+["a", "b"].forEach(value => console.log(value));
+```
+
+### find()
+
+Returns the first element that matches a condition.
+
+// Practical example of find().
+```javascript
+const user = [{ id: 1 }, { id: 2 }].find(item => item.id === 2);
+```
+
+### findIndex()
+
+Returns the index of the first matching element, or -1.
+
+// Practical example of findIndex().
+```javascript
+const index = [10, 20, 30].findIndex(n => n === 20);
+```
+
+### some()
+
+Returns true when at least one element passes the test.
+
+// Practical example of some().
+```javascript
+const hasLarge = [10, 25, 5].some(n => n > 20);
+```
+
+### every()
+
+Returns true only when every element passes the test.
+
+// Practical example of every().
+```javascript
+const allPositive = [1, 2, 3].every(n => n > 0);
+```
+
+### includes()
+
+Checks whether an array contains a value.
+
+// Practical example of includes().
+```javascript
+const hasReact = ["React", "Vue"].includes("React");
+```
+
+### indexOf()
+
+Returns the first matching index, or -1.
+
+// Practical example of indexOf().
+```javascript
+const position = ["a", "b", "a"].indexOf("a");
+```
+
+### push() / pop()
+
+Add or remove an element at the end and mutate the array.
+
+// Practical example of push() / pop().
+```javascript
+const values = [1, 2];
+values.push(3);
+const last = values.pop();
+```
+
+### shift() / unshift()
+
+Remove or add an element at the beginning and mutate the array.
+
+// Practical example of shift() / unshift().
+```javascript
+const values = [2, 3];
+values.unshift(1);
+const first = values.shift();
+```
+
+### slice()
+
+Returns a shallow copy of part of an array without mutating it.
+
+// Practical example of slice().
+```javascript
+const middle = [10, 20, 30, 40].slice(1, 3);
+```
+
+### splice()
+
+Adds, removes, or replaces elements and mutates the array.
+
+// Practical example of splice().
+```javascript
+const values = [1, 2, 4];
+values.splice(2, 0, 3);
+```
+
+### concat()
+
+Creates a new array by combining arrays or values.
+
+// Practical example of concat().
+```javascript
+const merged = [1, 2].concat([3, 4]);
+```
+
+### flat()
+
+Flattens nested arrays to the requested depth.
+
+// Practical example of flat().
+```javascript
+const flat = [1, [2, [3]]].flat(2);
+```
+
+### flatMap()
+
+Maps each element and flattens one level of the result.
+
+// Practical example of flatMap().
+```javascript
+const pairs = [1, 2].flatMap(n => [n, n * 2]);
+```
+
+### sort()
+
+Sorts the array in place; numeric sorting needs a comparator.
+
+// Practical example of sort().
+```javascript
+const numbers = [10, 2, 5].sort((a, b) => a - b);
+```
+
+### reverse()
+
+Reverses the array in place.
+
+// Practical example of reverse().
+```javascript
+const reversed = [1, 2, 3].reverse();
+```

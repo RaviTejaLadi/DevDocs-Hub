@@ -23,26 +23,25 @@ React-Window solves these problems by:
 - Recycling DOM nodes as you scroll
 - Maintaining smooth performance regardless of dataset size
 
-## Setup and Installation
-
 ### Installation
 
+# Basic example showing the core idea.
 ```bash
 npm install react-window
-# or
+## or
 yarn add react-window
 ```
 
 ### Basic Setup
 
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```jsx
 import { FixedSizeList } from 'react-window';
 ```
 
-## Usage Examples
-
 ### 1. Basic List
 
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```jsx
 import { FixedSizeList } from 'react-window';
 
@@ -56,9 +55,6 @@ const ExampleList = () => (
 ```
 
 ### 2. List with Dynamic Content
-
-```jsx
-import { FixedSizeList } from 'react-window';
 
 const data = Array(1000)
   .fill()
@@ -85,6 +81,7 @@ const ProductList = () => (
     {Row}
   </FixedSizeList>
 );
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ### 3. Grid Layout
@@ -110,6 +107,7 @@ const ExampleGrid = () => (
     {Cell}
   </FixedSizeGrid>
 );
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ### 4. Variable Sized List
@@ -137,6 +135,7 @@ const VariableList = () => (
     {Row}
   </VariableSizeList>
 );
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ## Key Advantages of React-Window
@@ -155,8 +154,6 @@ const VariableList = () => (
 3. **Data Tables**: Large datasets with many columns and rows
 4. **Document Editors**: Line-by-line rendering of large documents
 5. **Calendar Views**: Month/week/day views with many events
-
-## Alternatives to React-Window
 
 ### 1. react-virtualized (by the same author)
 
@@ -199,15 +196,13 @@ Here's a real-time comparison of rendering 10,000 items:
 - Memory usage: Low
 - Scrolling: Smooth
 
-## Advanced Techniques
-
 ### 1. Lazy Loading Images
 
 ```jsx
 const Row = ({ index, style }) => {
   const [loaded, setLoaded] = useState(false);
 
-  return (
+return (
     <div style={style}>
       {!loaded && <div className="placeholder" />}
       <img
@@ -218,6 +213,7 @@ const Row = ({ index, style }) => {
     </div>
   );
 };
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ### 2. Infinite Loading
@@ -230,7 +226,7 @@ const Example = () => {
       .map((_, i) => i)
   );
 
-  const loadMore = () => {
+const loadMore = () => {
     setItems((prev) => [
       ...prev,
       ...Array(50)
@@ -239,7 +235,7 @@ const Example = () => {
     ]);
   };
 
-  return (
+return (
     <FixedSizeList
       height={500}
       width={300}
@@ -261,6 +257,7 @@ const Example = () => {
     </FixedSizeList>
   );
 };
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ### 3. Sticky Headers
@@ -270,7 +267,7 @@ const StickyList = () => {
   const outerRef = useRef();
   const innerRef = useRef();
 
-  return (
+return (
     <FixedSizeList
       outerRef={outerRef}
       innerRef={innerRef}
@@ -292,6 +289,7 @@ const StickyList = () => {
     </FixedSizeList>
   );
 };
+// Example demonstrating React-Window: A Comprehensive Guide.
 ```
 
 ## Common Pitfalls and Solutions
@@ -313,3 +311,12 @@ bundle size.
 For most applications with large scrollable content, implementing React-Window
 will lead to immediate and noticeable performance improvements, creating a much
 better user experience.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -5,16 +5,18 @@
 The `for` loop is the most commonly used loop when you know the number of
 iterations beforehand.
 
-### 📝 Syntax
+### Syntax
 
+// Basic example showing the core idea.
 ```javascript
 for (initialization; condition; increment / decrement) {
   // code to be executed
 }
 ```
 
-### 🔄 Flow Diagram
+### Flow Diagram
 
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A[Start] --> B[Initialize i = 0]
@@ -25,15 +27,16 @@ flowchart TD
     C -- No --> F[End]
 ```
 
-### 💡 Example
+### Example
 
+// Basic example showing the core idea.
 ```javascript
 for (let i = 0; i < 5; i++) {
   console.log(`Iteration: ${i}`);
 }
 ```
 
-### 📊 Execution Table
+### Execution Table
 
 | Step | i Value | Condition (i < 5) | Action              | Output         |
 | ---- | ------- | ----------------- | ------------------- | -------------- |
@@ -46,12 +49,11 @@ for (let i = 0; i < 5; i++) {
 
 ---
 
-## 2. While Loop 🔄
+## 2. While Loop
 
 The `while` loop executes code as long as a specified condition is true.
 
-### 📝 Syntax
-
+// Basic example showing the core idea.
 ```javascript
 while (condition) {
   // code to be executed
@@ -59,8 +61,7 @@ while (condition) {
 }
 ```
 
-### 🔄 Flow Diagram
-
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A{Condition} -- True --> B[Execute Loop Body]
@@ -68,8 +69,7 @@ flowchart TD
     A -- False --> C[Next Statement]
 ```
 
-### 💡 Example
-
+// Basic example showing the core idea.
 ```javascript
 let count = 0;
 while (count < 3) {
@@ -78,8 +78,6 @@ while (count < 3) {
 }
 ```
 
-### 📊 Execution Table
-
 | Step | count Value | Condition (count < 3) | Action              | Output     |
 | ---- | ----------- | --------------------- | ------------------- | ---------- |
 | 1    | 0           | ✅ true               | Execute & increment | "Count: 0" |
@@ -87,15 +85,12 @@ while (count < 3) {
 | 3    | 2           | ✅ true               | Execute & increment | "Count: 2" |
 | 4    | 3           | ❌ false              | Exit loop           | -          |
 
----
-
 ## 3. Do-While Loop 🔂
 
 The `do-while` loop executes code at least once, then continues while a
 condition is true.
 
-### 📝 Syntax
-
+// Basic example showing the core idea.
 ```javascript
 do {
   // code to be executed
@@ -103,8 +98,7 @@ do {
 } while (condition);
 ```
 
-### 🔄 Flow Diagram
-
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A[Start] --> B[Execute Loop Body]
@@ -113,8 +107,7 @@ flowchart TD
     C -- False --> D[Next Statement]
 ```
 
-### 💡 Example
-
+// Basic example showing the core idea.
 ```javascript
 let num = 0;
 do {
@@ -123,30 +116,24 @@ do {
 } while (num < 2);
 ```
 
-### 📊 Execution Table
-
 | Step | num Value | Action          | Output      | Condition (num < 2) |
 | ---- | --------- | --------------- | ----------- | ------------------- |
 | 1    | 0         | Execute first   | "Number: 0" | ✅ true (continue)  |
 | 2    | 1         | Execute         | "Number: 1" | ✅ true (continue)  |
 | 3    | 2         | Check condition | -           | ❌ false (exit)     |
 
----
-
-## 4. For...In Loop 🗝️
+## 4. For...In Loop 🗝
 
 The `for...in` loop iterates over enumerable properties of an object.
 
-### 📝 Syntax
-
+// Basic example showing the core idea.
 ```javascript
 for (variable in object) {
   // code to be executed
 }
 ```
 
-### 💡 Example
-
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Alice',
@@ -159,8 +146,7 @@ for (let key in person) {
 }
 ```
 
-### 🔄 Flow Diagram
-
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A[Start] --> B[Get next property]
@@ -170,7 +156,7 @@ flowchart TD
     C -- No --> E[Next Statement]
 ```
 
-### 📊 Iteration Table
+### Iteration Table
 
 | Iteration | Key    | Value      | Output           |
 | --------- | ------ | ---------- | ---------------- |
@@ -178,22 +164,18 @@ flowchart TD
 | 2         | "age"  | 30         | "age: 30"        |
 | 3         | "city" | "New York" | "city: New York" |
 
----
-
 ## 5. For...Of Loop 🍏
 
 The `for...of` loop iterates over iterable objects (arrays, strings, etc.).
 
-### 📝 Syntax
-
+// Basic example showing the core idea.
 ```javascript
 for (variable of iterable) {
   // code to be executed
 }
 ```
 
-### 💡 Example
-
+// Basic example showing the core idea.
 ```javascript
 const fruits = ['apple', 'banana', 'orange'];
 
@@ -202,8 +184,7 @@ for (let fruit of fruits) {
 }
 ```
 
-### 🔄 Flow Diagram
-
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A[Start] --> B[Get next element]
@@ -213,18 +194,15 @@ flowchart TD
     C -- No --> E[Next Statement]
 ```
 
-### 📊 Iteration Table
-
 | Iteration | Index | Value    | Output   |
 | --------- | ----- | -------- | -------- |
 | 1         | 0     | "apple"  | "apple"  |
 | 2         | 1     | "banana" | "banana" |
 | 3         | 2     | "orange" | "orange" |
 
----
-
 ## 🧭 Flowchart: Choosing the Right Loop
 
+<!-- Visual flow for 🔁 Looping Statements: Complete Guide. -->
 ```mermaid
 flowchart TD
     A[Start] --> B{Object properties?}
@@ -238,8 +216,6 @@ flowchart TD
     H -- No --> J[Use while]
 ```
 
----
-
 ## 🆚 Loop Comparison Table
 
 | Loop Type  | Best Used For                       | Pre-condition Check    | Minimum Executions |
@@ -250,10 +226,9 @@ flowchart TD
 | `for...in` | Object property iteration           | N/A                    | 0                  |
 | `for...of` | Array/iterable iteration            | N/A                    | 0                  |
 
----
+## Performance Comparison
 
-## ⚡ Performance Comparison
-
+// Example demonstrating 🔁 Looping Statements: Complete Guide.
 ```text
 Speed (fastest to slowest):
 1. for loop
@@ -263,12 +238,9 @@ Speed (fastest to slowest):
 5. for...in loop
 ```
 
----
-
-## ⏹️ Loop Control Statements
-
 ### 🛑 Break Statement
 
+// Basic example showing the core idea.
 ```javascript
 for (let i = 0; i < 10; i++) {
   if (i === 5) break;
@@ -276,8 +248,9 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-### ⏭️ Continue Statement
+### ⏭ Continue Statement
 
+// Basic example showing the core idea.
 ```javascript
 for (let i = 0; i < 5; i++) {
   if (i === 2) continue;
@@ -285,10 +258,9 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
----
-
 ## 🔗 Nested Loops Example
 
+// Basic example showing the core idea.
 ```javascript
 for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 3; j++) {
@@ -296,8 +268,6 @@ for (let i = 1; i <= 3; i++) {
   }
 }
 ```
-
----
 
 ## 👍 Best Practices
 
@@ -313,3 +283,12 @@ for (let i = 1; i <= 3; i++) {
 - Forget to update counters in `while` loops (infinite loops)
 - Modify arrays during `for...in` iteration
 - Use `for...in` with arrays (use `for...of` instead)
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

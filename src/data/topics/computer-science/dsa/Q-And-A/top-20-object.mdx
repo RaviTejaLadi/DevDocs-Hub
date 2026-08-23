@@ -1,8 +1,6 @@
-# 🚀 Top 20 JavaScript Objects DSA Interview Questions
+# Top 20 JavaScript Objects DSA Interview Questions
 
-## 🟢 Easy Questions
-
-### 1. Two Sum using Objects 📊
+### 1. Two Sum using Objects
 
 **Company:** Google, Amazon
 
@@ -16,24 +14,25 @@ current) exists in the object.
 
 **Solution:**
 
+// Basic example showing the core idea.
 ```javascript
 function twoSum(nums, target) {
   // Object to store number -> index mapping
   const numMap = {};
 
-  for (let i = 0; i < nums.length; i++) {
+for (let i = 0; i < nums.length; i++) {
     const complement = target - nums[i];
 
-    // Check if complement exists in our object
+// Check if complement exists in our object
     if (numMap.hasOwnProperty(complement)) {
       return [numMap[complement], i];
     }
 
-    // Store current number and its index
+// Store current number and its index
     numMap[nums[i]] = i;
   }
 
-  return []; // No solution found
+return []; // No solution found
 }
 
 // Example usage
@@ -55,27 +54,26 @@ frequencies using objects.
 objects. Two strings are anagrams if they have identical character frequency
 maps.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function isAnagram(s, t) {
   if (s.length !== t.length) return false;
 
-  // Object to count character frequencies
+// Object to count character frequencies
   const charCount = {};
 
-  // Count characters in first string
+// Count characters in first string
   for (let char of s) {
     charCount[char] = (charCount[char] || 0) + 1;
   }
 
-  // Subtract character counts from second string
+// Subtract character counts from second string
   for (let char of t) {
     if (!charCount[char]) return false;
     charCount[char]--;
   }
 
-  // Check if all counts are zero
+// Check if all counts are zero
   return Object.values(charCount).every((count) => count === 0);
 }
 
@@ -86,9 +84,7 @@ console.log(isAnagram('listen', 'silent')); // true
 **Time Complexity:** O(n) | **Space Complexity:** O(1) - limited to 26
 characters
 
----
-
-### 3. First Unique Character 🎯
+### 3. First Unique Character
 
 **Company:** Amazon, Apple
 
@@ -98,26 +94,25 @@ an object to track frequencies.
 **Concept Explanation:** Use an object to count character frequencies, then
 iterate through the string again to find the first character with frequency 1.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function firstUniqChar(s) {
   // Object to store character frequencies
   const charFreq = {};
 
-  // Count frequency of each character
+// Count frequency of each character
   for (let char of s) {
     charFreq[char] = (charFreq[char] || 0) + 1;
   }
 
-  // Find first character with frequency 1
+// Find first character with frequency 1
   for (let i = 0; i < s.length; i++) {
     if (charFreq[s[i]] === 1) {
       return i;
     }
   }
 
-  return -1; // No unique character found
+return -1; // No unique character found
 }
 
 // Example usage
@@ -126,9 +121,7 @@ console.log(firstUniqChar('leetcode')); // 0 (character 'l')
 
 **Time Complexity:** O(n) | **Space Complexity:** O(1) - limited character set
 
----
-
-### 4. Object Deep Clone 🔄
+### 4. Object Deep Clone
 
 **Company:** Netflix, Uber
 
@@ -138,8 +131,7 @@ objects, arrays, and primitive values.
 **Concept Explanation:** Recursively traverse the object structure, creating new
 objects and arrays while preserving the original structure and values.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function deepClone(obj) {
   // Handle primitive types and null
@@ -147,17 +139,17 @@ function deepClone(obj) {
     return obj;
   }
 
-  // Handle Date objects
+// Handle Date objects
   if (obj instanceof Date) {
     return new Date(obj.getTime());
   }
 
-  // Handle Arrays
+// Handle Arrays
   if (Array.isArray(obj)) {
     return obj.map((item) => deepClone(item));
   }
 
-  // Handle Objects
+// Handle Objects
   const clonedObj = {};
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -165,7 +157,7 @@ function deepClone(obj) {
     }
   }
 
-  return clonedObj;
+return clonedObj;
 }
 
 // Example usage
@@ -183,8 +175,6 @@ console.log(cloned); // Complete deep copy
 **Time Complexity:** O(n) where n is total number of properties | **Space
 Complexity:** O(n)
 
----
-
 ### 5. Merge Two Objects 🤝
 
 **Company:** Airbnb, Spotify
@@ -195,14 +185,13 @@ object override those in the first.
 **Concept Explanation:** Recursively merge objects by iterating through
 properties and handling nested objects separately from primitive values.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function mergeObjects(obj1, obj2) {
   // Create a new object to avoid mutating originals
   const result = { ...obj1 };
 
-  for (let key in obj2) {
+for (let key in obj2) {
     if (obj2.hasOwnProperty(key)) {
       // If both values are objects, merge recursively
       if (isObject(result[key]) && isObject(obj2[key])) {
@@ -214,7 +203,7 @@ function mergeObjects(obj1, obj2) {
     }
   }
 
-  return result;
+return result;
 }
 
 // Helper function to check if value is an object
@@ -229,11 +218,7 @@ console.log(mergeObjects(obj1, obj2));
 // { a: 1, b: { x: 10, y: 30, z: 40 }, c: 3 }
 ```
 
-**Time Complexity:** O(n) | **Space Complexity:** O(n)
-
----
-
-### 6. Count Character Frequency 📊
+### 6. Count Character Frequency
 
 **Company:** Google, LinkedIn
 
@@ -243,14 +228,13 @@ return an object with character-frequency pairs.
 **Concept Explanation:** Iterate through the string and use an object to
 maintain a running count of each character's frequency.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function countCharFrequency(str) {
   // Object to store character frequencies
   const frequency = {};
 
-  // Iterate through each character
+// Iterate through each character
   for (let char of str.toLowerCase()) {
     // Skip spaces if needed
     if (char !== ' ') {
@@ -258,7 +242,7 @@ function countCharFrequency(str) {
     }
   }
 
-  return frequency;
+return frequency;
 }
 
 // Alternative implementation with reduce
@@ -281,9 +265,7 @@ console.log(countCharFrequency('Hello World'));
 **Time Complexity:** O(n) | **Space Complexity:** O(k) where k is unique
 characters
 
----
-
-### 7. Group Anagrams using Objects 📝
+### 7. Group Anagrams using Objects
 
 **Company:** Amazon, Facebook
 
@@ -293,25 +275,24 @@ object to categorize them.
 **Concept Explanation:** Sort characters in each string to create a key. Strings
 with the same sorted key are anagrams and belong to the same group.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function groupAnagrams(strs) {
   // Object to group anagrams by their sorted key
   const anagramGroups = {};
 
-  for (let str of strs) {
+for (let str of strs) {
     // Create key by sorting characters
     const sortedKey = str.split('').sort().join('');
 
-    // Group strings with same key
+// Group strings with same key
     if (!anagramGroups[sortedKey]) {
       anagramGroups[sortedKey] = [];
     }
     anagramGroups[sortedKey].push(str);
   }
 
-  // Return all groups as array
+// Return all groups as array
   return Object.values(anagramGroups);
 }
 
@@ -324,9 +305,7 @@ console.log(groupAnagrams(words));
 **Time Complexity:** O(n \* m log m) where n is array length, m is average
 string length | **Space Complexity:** O(n)
 
----
-
-### 8. Object Key-Value Swap 🔄
+### 8. Object Key-Value Swap
 
 **Company:** Microsoft, Adobe
 
@@ -336,24 +315,23 @@ are strings or numbers.
 **Concept Explanation:** Iterate through object entries and create a new object
 where original values become keys and original keys become values.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function swapKeyValue(obj) {
   const swapped = {};
 
-  for (let key in obj) {
+for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
       const value = obj[key];
 
-      // Ensure value can be a valid key (string or number)
+// Ensure value can be a valid key (string or number)
       if (typeof value === 'string' || typeof value === 'number') {
         swapped[value] = key;
       }
     }
   }
 
-  return swapped;
+return swapped;
 }
 
 // Alternative using Object.entries
@@ -374,11 +352,7 @@ console.log(swapKeyValue(original));
 // { 1: 'a', 2: 'b', hello: 'c' } (d excluded as boolean)
 ```
 
-**Time Complexity:** O(n) | **Space Complexity:** O(n)
-
----
-
-### 9. Find Missing Number using Object 🔍
+### 9. Find Missing Number using Object
 
 **Company:** Apple, Tesla
 
@@ -388,26 +362,25 @@ integers using an object for O(1) lookup.
 **Concept Explanation:** Store all present numbers in an object, then iterate
 through the expected range to find which number is missing.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function findMissingNumber(nums, n) {
   // Object to store present numbers
   const present = {};
 
-  // Mark all present numbers
+// Mark all present numbers
   for (let num of nums) {
     present[num] = true;
   }
 
-  // Find missing number in range [0, n]
+// Find missing number in range [0, n]
   for (let i = 0; i <= n; i++) {
     if (!present[i]) {
       return i;
     }
   }
 
-  return -1; // No missing number
+return -1; // No missing number
 }
 
 // Mathematical approach (more efficient)
@@ -424,8 +397,6 @@ console.log(findMissingNumber([0, 1, 3, 4, 5], 5)); // 2
 **Time Complexity:** O(n) | **Space Complexity:** O(n) for object approach, O(1)
 for math approach
 
----
-
 ### 10. Object Property Sum 🧮
 
 **Company:** Salesforce, Twitter
@@ -436,17 +407,12 @@ including nested objects.
 **Concept Explanation:** Recursively traverse the object structure, identifying
 numeric values and adding them to a running total.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function objectPropertySum(obj) {
   let sum = 0;
 
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const value = obj[key];
-
-      if (typeof value === 'number') {
+if (typeof value === 'number') {
         // Add numeric values
         sum += value;
       } else if (typeof value === 'object' && value !== null) {
@@ -456,7 +422,7 @@ function objectPropertySum(obj) {
     }
   }
 
-  return sum;
+return sum;
 }
 
 // Alternative using Object.values recursively
@@ -490,10 +456,6 @@ console.log(objectPropertySum(data)); // 41 (10 + 20 + 5 + 1 + 2 + 3)
 **Time Complexity:** O(n) where n is total properties | **Space Complexity:**
 O(d) where d is nesting depth
 
----
-
-## 🟡 Medium Questions
-
 ### 11. LRU Cache Implementation 💾
 
 **Company:** Google, Facebook
@@ -505,22 +467,21 @@ put operations, both in O(1) time complexity.
 insertion/deletion) with an object/Map (for O(1) key lookup). The list maintains
 order of usage.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 class LRUCache {
   constructor(capacity) {
     this.capacity = capacity;
     this.cache = new Map(); // For O(1) key lookup
 
-    // Dummy head and tail nodes for easier manipulation
+// Dummy head and tail nodes for easier manipulation
     this.head = { key: 0, val: 0, prev: null, next: null };
     this.tail = { key: 0, val: 0, prev: null, next: null };
     this.head.next = this.tail;
     this.tail.prev = this.head;
   }
 
-  get(key) {
+get(key) {
     if (this.cache.has(key)) {
       const node = this.cache.get(key);
       // Move to front (most recently used)
@@ -530,7 +491,7 @@ class LRUCache {
     return -1;
   }
 
-  put(key, value) {
+put(key, value) {
     if (this.cache.has(key)) {
       // Update existing key
       const node = this.cache.get(key);
@@ -540,18 +501,18 @@ class LRUCache {
       // Add new key
       const newNode = { key, val: value, prev: null, next: null };
 
-      if (this.cache.size >= this.capacity) {
+if (this.cache.size >= this.capacity) {
         // Remove least recently used (tail)
         const tail = this.removeTail();
         this.cache.delete(tail.key);
       }
 
-      this.addToHead(newNode);
+this.addToHead(newNode);
       this.cache.set(key, newNode);
     }
   }
 
-  // Helper methods for doubly-linked list operations
+// Helper methods for doubly-linked list operations
   addToHead(node) {
     node.prev = this.head;
     node.next = this.head.next;
@@ -559,17 +520,17 @@ class LRUCache {
     this.head.next = node;
   }
 
-  removeNode(node) {
+removeNode(node) {
     node.prev.next = node.next;
     node.next.prev = node.prev;
   }
 
-  moveToHead(node) {
+moveToHead(node) {
     this.removeNode(node);
     this.addToHead(node);
   }
 
-  removeTail() {
+removeTail() {
     const lastNode = this.tail.prev;
     this.removeNode(lastNode);
     return lastNode;
@@ -588,9 +549,7 @@ console.log(lru.get(2)); // -1 (not found)
 **Time Complexity:** O(1) for both get and put | **Space Complexity:**
 O(capacity)
 
----
-
-### 12. Design HashMap 🗺️
+### 12. Design HashMap
 
 **Company:** Amazon, Microsoft
 
@@ -601,30 +560,29 @@ without using built-in hash table libraries.
 key-value pairs. Handle collisions using chaining. Implement a simple hash
 function.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 class MyHashMap {
   constructor() {
     this.size = 1000; // Initial bucket size
     this.buckets = new Array(this.size);
 
-    // Initialize each bucket as empty array
+// Initialize each bucket as empty array
     for (let i = 0; i < this.size; i++) {
       this.buckets[i] = [];
     }
   }
 
-  // Simple hash function
+// Simple hash function
   hash(key) {
     return key % this.size;
   }
 
-  put(key, value) {
+put(key, value) {
     const index = this.hash(key);
     const bucket = this.buckets[index];
 
-    // Check if key already exists
+// Check if key already exists
     for (let pair of bucket) {
       if (pair.key === key) {
         pair.value = value; // Update existing
@@ -632,29 +590,29 @@ class MyHashMap {
       }
     }
 
-    // Add new key-value pair
+// Add new key-value pair
     bucket.push({ key, value });
   }
 
-  get(key) {
+get(key) {
     const index = this.hash(key);
     const bucket = this.buckets[index];
 
-    // Search for key in bucket
+// Search for key in bucket
     for (let pair of bucket) {
       if (pair.key === key) {
         return pair.value;
       }
     }
 
-    return -1; // Key not found
+return -1; // Key not found
   }
 
-  remove(key) {
+remove(key) {
     const index = this.hash(key);
     const bucket = this.buckets[index];
 
-    // Find and remove key-value pair
+// Find and remove key-value pair
     for (let i = 0; i < bucket.length; i++) {
       if (bucket[i].key === key) {
         bucket.splice(i, 1);
@@ -663,7 +621,7 @@ class MyHashMap {
     }
   }
 
-  // Optional: Display all key-value pairs
+// Optional: Display all key-value pairs
   display() {
     const result = {};
     for (let bucket of this.buckets) {
@@ -689,9 +647,7 @@ console.log(map.get(2)); // -1
 
 **Time Complexity:** O(1) average, O(n) worst case | **Space Complexity:** O(n)
 
----
-
-### 13. Word Pattern Matching 🎨
+### 13. Word Pattern Matching
 
 **Company:** LinkedIn, Uber
 
@@ -701,26 +657,25 @@ in the pattern maps to exactly one word.
 **Concept Explanation:** Use two objects: one to map pattern characters to
 words, another to ensure each word maps to only one character (bijection).
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function wordPattern(pattern, s) {
   const words = s.split(' ');
 
-  // Pattern and words must have same length
+// Pattern and words must have same length
   if (pattern.length !== words.length) {
     return false;
   }
 
-  // Two-way mapping to ensure bijection
+// Two-way mapping to ensure bijection
   const charToWord = {};
   const wordToChar = {};
 
-  for (let i = 0; i < pattern.length; i++) {
+for (let i = 0; i < pattern.length; i++) {
     const char = pattern[i];
     const word = words[i];
 
-    // Check char -> word mapping
+// Check char -> word mapping
     if (charToWord[char]) {
       if (charToWord[char] !== word) {
         return false;
@@ -729,7 +684,7 @@ function wordPattern(pattern, s) {
       charToWord[char] = word;
     }
 
-    // Check word -> char mapping (bijection)
+// Check word -> char mapping (bijection)
     if (wordToChar[word]) {
       if (wordToChar[word] !== char) {
         return false;
@@ -739,7 +694,7 @@ function wordPattern(pattern, s) {
     }
   }
 
-  return true;
+return true;
 }
 
 // Alternative implementation using Map
@@ -747,23 +702,20 @@ function wordPatternMap(pattern, s) {
   const words = s.split(' ');
   if (pattern.length !== words.length) return false;
 
-  const map1 = new Map();
+const map1 = new Map();
   const map2 = new Map();
 
-  for (let i = 0; i < pattern.length; i++) {
+for (let i = 0; i < pattern.length; i++) {
     const c = pattern[i];
     const w = words[i];
 
-    if (!map1.has(c)) map1.set(c, w);
+if (!map1.has(c)) map1.set(c, w);
     if (!map2.has(w)) map2.set(w, c);
 
-    if (map1.get(c) !== w || map2.get(w) !== c) {
+if (map1.get(c) !== w || map2.get(w) !== c) {
       return false;
     }
   }
-
-  return true;
-}
 
 // Example usage
 console.log(wordPattern('abba', 'dog cat cat dog')); // true
@@ -774,9 +726,7 @@ console.log(wordPattern('aaaa', 'dog cat cat dog')); // false
 **Time Complexity:** O(n) where n is pattern length | **Space Complexity:** O(m)
 where m is unique characters/words
 
----
-
-### 14. Top K Frequent Elements 📊
+### 14. Top K Frequent Elements
 
 **Company:** Facebook, Netflix
 
@@ -786,8 +736,7 @@ objects for frequency counting.
 **Concept Explanation:** Use an object to count frequencies, then sort by
 frequency or use bucket sort for better performance.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function topKFrequent(nums, k) {
   // Step 1: Count frequencies using object
@@ -796,11 +745,11 @@ function topKFrequent(nums, k) {
     freqMap[num] = (freqMap[num] || 0) + 1;
   }
 
-  // Step 2: Convert to array and sort by frequency
+// Step 2: Convert to array and sort by frequency
   const freqArray = Object.entries(freqMap);
   freqArray.sort((a, b) => b[1] - a[1]);
 
-  // Step 3: Return top k elements
+// Step 3: Return top k elements
   return freqArray.slice(0, k).map(([num, freq]) => parseInt(num));
 }
 
@@ -812,24 +761,24 @@ function topKFrequentBucket(nums, k) {
     freqMap[num] = (freqMap[num] || 0) + 1;
   }
 
-  // Create buckets for each possible frequency
+// Create buckets for each possible frequency
   const buckets = new Array(nums.length + 1);
   for (let i = 0; i < buckets.length; i++) {
     buckets[i] = [];
   }
 
-  // Place numbers in buckets based on frequency
+// Place numbers in buckets based on frequency
   for (let [num, freq] of Object.entries(freqMap)) {
     buckets[freq].push(parseInt(num));
   }
 
-  // Collect results from highest frequency buckets
+// Collect results from highest frequency buckets
   const result = [];
   for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
     result.push(...buckets[i]);
   }
 
-  return result.slice(0, k);
+return result.slice(0, k);
 }
 
 // Example usage
@@ -839,8 +788,6 @@ console.log(topKFrequent([1], 1)); // [1]
 
 **Time Complexity:** O(n log n) for sort approach, O(n) for bucket sort |
 **Space Complexity:** O(n)
-
----
 
 ### 15. Design Twitter Feed 🐦
 
@@ -852,8 +799,7 @@ following/unfollowing and retrieving recent tweets from followed users.
 **Concept Explanation:** Use objects to store user relationships and tweets.
 Maintain a timeline by merging recent tweets from followed users.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 class Twitter {
   constructor() {
@@ -862,29 +808,29 @@ class Twitter {
     this.timestamp = 0;
   }
 
-  postTweet(userId, tweetId) {
+postTweet(userId, tweetId) {
     // Initialize user's tweets if first time
     if (!this.tweets[userId]) {
       this.tweets[userId] = [];
     }
 
-    // Add tweet with timestamp
+// Add tweet with timestamp
     this.tweets[userId].push({
       tweetId: tweetId,
       timestamp: this.timestamp++,
     });
   }
 
-  getNewsFeed(userId) {
+getNewsFeed(userId) {
     // Get all relevant tweets (user's own + followed users')
     const relevantTweets = [];
 
-    // Add user's own tweets
+// Add user's own tweets
     if (this.tweets[userId]) {
       relevantTweets.push(...this.tweets[userId]);
     }
 
-    // Add followed users' tweets
+// Add followed users' tweets
     if (this.following[userId]) {
       for (let followeeId of this.following[userId]) {
         if (this.tweets[followeeId]) {
@@ -893,21 +839,21 @@ class Twitter {
       }
     }
 
-    // Sort by timestamp (most recent first) and take top 10
+// Sort by timestamp (most recent first) and take top 10
     relevantTweets.sort((a, b) => b.timestamp - a.timestamp);
     return relevantTweets.slice(0, 10).map((tweet) => tweet.tweetId);
   }
 
-  follow(followerId, followeeId) {
+follow(followerId, followeeId) {
     if (followerId === followeeId) return; // Can't follow yourself
 
-    if (!this.following[followerId]) {
+if (!this.following[followerId]) {
       this.following[followerId] = new Set();
     }
     this.following[followerId].add(followeeId);
   }
 
-  unfollow(followerId, followeeId) {
+unfollow(followerId, followeeId) {
     if (this.following[followerId]) {
       this.following[followerId].delete(followeeId);
     }
@@ -928,11 +874,7 @@ console.log(twitter.getNewsFeed(1)); // [5]
 **Time Complexity:** O(n log n) for getNewsFeed, O(1) for other operations |
 **Space Complexity:** O(n)
 
----
-
-### 16. Serialize/Deserialize Object 📦
-
-**Company:** Google, Amazon
+### 16. Serialize/Deserialize Object
 
 **Problem Statement:** Serialize an object to a string and deserialize it back,
 handling circular references and complex data types.
@@ -941,8 +883,7 @@ handling circular references and complex data types.
 tracking visited objects to handle circular references. Reconstruct object from
 string representation.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 class ObjectSerializer {
   serialize(obj) {
@@ -950,23 +891,23 @@ class ObjectSerializer {
     const refs = new Map();
     let refId = 0;
 
-    const serializeHelper = (obj) => {
+const serializeHelper = (obj) => {
       // Handle primitives and null
       if (obj === null || typeof obj !== 'object') {
         return { type: 'primitive', value: obj };
       }
 
-      // Handle circular references
+// Handle circular references
       if (visited.has(obj)) {
         const id = visited.get(obj);
         return { type: 'reference', refId: id };
       }
 
-      // Mark as visited
+// Mark as visited
       const currentId = refId++;
       visited.set(obj, currentId);
 
-      // Handle arrays
+// Handle arrays
       if (Array.isArray(obj)) {
         const serialized = {
           type: 'array',
@@ -977,7 +918,7 @@ class ObjectSerializer {
         return serialized;
       }
 
-      // Handle Date objects
+// Handle Date objects
       if (obj instanceof Date) {
         const serialized = {
           type: 'date',
@@ -988,49 +929,49 @@ class ObjectSerializer {
         return serialized;
       }
 
-      // Handle regular objects
+// Handle regular objects
       const serialized = {
         type: 'object',
         refId: currentId,
         value: {},
       };
 
-      refs.set(currentId, serialized);
+refs.set(currentId, serialized);
 
-      for (let key in obj) {
+for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
           serialized.value[key] = serializeHelper(obj[key]);
         }
       }
 
-      return serialized;
+return serialized;
     };
 
-    const result = serializeHelper(obj);
+const result = serializeHelper(obj);
     return JSON.stringify({ root: result, refs: Array.from(refs.entries()) });
   }
 
-  deserialize(str) {
+deserialize(str) {
     const { root, refs } = JSON.parse(str);
     const refMap = new Map(refs);
     const objects = new Map();
 
-    const deserializeHelper = (node) => {
+const deserializeHelper = (node) => {
       if (node.type === 'primitive') {
         return node.value;
       }
 
-      if (node.type === 'reference') {
+if (node.type === 'reference') {
         return objects.get(node.refId);
       }
 
-      if (objects.has(node.refId)) {
+if (objects.has(node.refId)) {
         return objects.get(node.refId);
       }
 
-      let obj;
+let obj;
 
-      if (node.type === 'array') {
+if (node.type === 'array') {
         obj = [];
         objects.set(node.refId, obj);
         obj.push(...node.value.map((item) => deserializeHelper(item)));
@@ -1045,10 +986,10 @@ class ObjectSerializer {
         }
       }
 
-      return obj;
+return obj;
     };
 
-    return deserializeHelper(root);
+return deserializeHelper(root);
   }
 }
 
@@ -1068,9 +1009,7 @@ console.log(deserialized.self === deserialized); // true
 **Time Complexity:** O(n) where n is total properties | **Space Complexity:**
 O(n)
 
----
-
-### 17. Object Path Sum 🎯
+### 17. Object Path Sum
 
 **Company:** Airbnb, Stripe
 
@@ -1081,19 +1020,18 @@ root to leaf where the sum of numeric values equals the target.
 the current path and sum. When reaching a leaf (primitive value), check if the
 sum matches the target.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function findPathsWithSum(obj, targetSum) {
   const result = [];
 
-  function dfs(current, currentSum, path) {
+function dfs(current, currentSum, path) {
     // If current value is a number, add it to sum
     if (typeof current === 'number') {
       currentSum += current;
     }
 
-    // If it's a primitive value (leaf node), check sum
+// If it's a primitive value (leaf node), check sum
     if (typeof current !== 'object' || current === null) {
       if (currentSum === targetSum) {
         result.push([...path]);
@@ -1101,7 +1039,7 @@ function findPathsWithSum(obj, targetSum) {
       return;
     }
 
-    // If it's an object, recurse through properties
+// If it's an object, recurse through properties
     for (let key in current) {
       if (current.hasOwnProperty(key)) {
         path.push(key);
@@ -1111,7 +1049,7 @@ function findPathsWithSum(obj, targetSum) {
     }
   }
 
-  dfs(obj, 0, []);
+dfs(obj, 0, []);
   return result;
 }
 
@@ -1119,17 +1057,17 @@ function findPathsWithSum(obj, targetSum) {
 function findAllPathsWithSum(obj, targetSum) {
   const result = [];
 
-  function dfs(current, currentSum, path, pathValues) {
+function dfs(current, currentSum, path, pathValues) {
     let newSum = currentSum;
     let newPathValues = [...pathValues];
 
-    // Add current value if it's a number
+// Add current value if it's a number
     if (typeof current === 'number') {
       newSum += current;
       newPathValues.push(current);
     }
 
-    // Check if current sum equals target
+// Check if current sum equals target
     if (newSum === targetSum && newPathValues.length > 0) {
       result.push({
         path: [...path],
@@ -1138,7 +1076,7 @@ function findAllPathsWithSum(obj, targetSum) {
       });
     }
 
-    // If current is an object, continue traversal
+// If current is an object, continue traversal
     if (typeof current === 'object' && current !== null) {
       for (let key in current) {
         if (current.hasOwnProperty(key)) {
@@ -1150,7 +1088,7 @@ function findAllPathsWithSum(obj, targetSum) {
     }
   }
 
-  dfs(obj, 0, [], []);
+dfs(obj, 0, [], []);
   return result;
 }
 
@@ -1174,11 +1112,7 @@ console.log(findAllPathsWithSum(data, 10)); // All paths with sum 10
 **Time Complexity:** O(n) where n is total nodes | **Space Complexity:** O(d)
 where d is maximum depth
 
----
-
-### 18. Flatten Nested Object 🏗️
-
-**Company:** Microsoft, Adobe
+### 18. Flatten Nested Object
 
 **Problem Statement:** Flatten a deeply nested object into a single level object
 with dot-notation keys.
@@ -1186,8 +1120,7 @@ with dot-notation keys.
 **Concept Explanation:** Recursively traverse the object structure, building
 keys by concatenating parent keys with current keys using dot notation.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function flattenObject(obj, prefix = '', result = {}) {
   for (let key in obj) {
@@ -1195,7 +1128,7 @@ function flattenObject(obj, prefix = '', result = {}) {
       const newKey = prefix ? `${prefix}.${key}` : key;
       const value = obj[key];
 
-      // If value is an object and not null, recurse
+// If value is an object and not null, recurse
       if (
         typeof value === 'object' &&
         value !== null &&
@@ -1210,18 +1143,15 @@ function flattenObject(obj, prefix = '', result = {}) {
     }
   }
 
-  return result;
-}
-
 // Alternative implementation with array handling
 function flattenObjectWithArrays(obj, prefix = '') {
   const result = {};
 
-  Object.keys(obj).forEach((key) => {
+Object.keys(obj).forEach((key) => {
     const newKey = prefix ? `${prefix}.${key}` : key;
     const value = obj[key];
 
-    if (Array.isArray(value)) {
+if (Array.isArray(value)) {
       // Handle arrays by indexing
       value.forEach((item, index) => {
         const arrayKey = `${newKey}[${index}]`;
@@ -1244,18 +1174,15 @@ function flattenObjectWithArrays(obj, prefix = '') {
     }
   });
 
-  return result;
-}
-
 // Reverse operation: unflatten
 function unflattenObject(flatObj) {
   const result = {};
 
-  for (let key in flatObj) {
+for (let key in flatObj) {
     const keys = key.split('.');
     let current = result;
 
-    // Navigate/create nested structure
+// Navigate/create nested structure
     for (let i = 0; i < keys.length - 1; i++) {
       if (!(keys[i] in current)) {
         current[keys[i]] = {};
@@ -1263,12 +1190,9 @@ function unflattenObject(flatObj) {
       current = current[keys[i]];
     }
 
-    // Set the final value
+// Set the final value
     current[keys[keys.length - 1]] = flatObj[key];
   }
-
-  return result;
-}
 
 // Example usage
 const nested = {
@@ -1305,12 +1229,7 @@ const unflattened = unflattenObject(flattened);
 console.log(unflattened); // Reconstructed original structure
 ```
 
-**Time Complexity:** O(n) where n is total properties | **Space Complexity:**
-O(n)
-
----
-
-### 19. Object Diff Algorithm 🔍
+### 19. Object Diff Algorithm
 
 **Company:** GitHub, Atlassian
 
@@ -1321,8 +1240,7 @@ added, removed, and modified properties.
 tracking changes at each level. Handle different types of changes (additions,
 deletions, modifications).
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 function objectDiff(obj1, obj2) {
   const diff = {
@@ -1332,7 +1250,7 @@ function objectDiff(obj1, obj2) {
     unchanged: {},
   };
 
-  // Helper function to get all unique keys from both objects
+// Helper function to get all unique keys from both objects
   function getAllKeys(o1, o2) {
     const keys = new Set();
     Object.keys(o1).forEach((key) => keys.add(key));
@@ -1340,39 +1258,39 @@ function objectDiff(obj1, obj2) {
     return Array.from(keys);
   }
 
-  // Helper function to check if two values are deeply equal
+// Helper function to check if two values are deeply equal
   function deepEqual(val1, val2) {
     if (val1 === val2) return true;
 
-    if (val1 === null || val2 === null) return false;
+if (val1 === null || val2 === null) return false;
     if (typeof val1 !== typeof val2) return false;
 
-    if (typeof val1 === 'object') {
+if (typeof val1 === 'object') {
       if (Array.isArray(val1) !== Array.isArray(val2)) return false;
 
-      const keys1 = Object.keys(val1);
+const keys1 = Object.keys(val1);
       const keys2 = Object.keys(val2);
 
-      if (keys1.length !== keys2.length) return false;
+if (keys1.length !== keys2.length) return false;
 
-      return keys1.every(
+return keys1.every(
         (key) => keys2.includes(key) && deepEqual(val1[key], val2[key])
       );
     }
 
-    return false;
+return false;
   }
 
-  // Main comparison logic
+// Main comparison logic
   function compareObjects(o1, o2, path = '') {
     const keys = getAllKeys(o1, o2);
 
-    keys.forEach((key) => {
+keys.forEach((key) => {
       const currentPath = path ? `${path}.${key}` : key;
       const val1 = o1[key];
       const val2 = o2[key];
 
-      if (!(key in o1)) {
+if (!(key in o1)) {
         // Key added in o2
         setNestedProperty(diff.added, currentPath, val2);
       } else if (!(key in o2)) {
@@ -1401,22 +1319,22 @@ function objectDiff(obj1, obj2) {
     });
   }
 
-  // Helper to set nested properties in result object
+// Helper to set nested properties in result object
   function setNestedProperty(obj, path, value) {
     const keys = path.split('.');
     let current = obj;
 
-    for (let i = 0; i < keys.length - 1; i++) {
+for (let i = 0; i < keys.length - 1; i++) {
       if (!(keys[i] in current)) {
         current[keys[i]] = {};
       }
       current = current[keys[i]];
     }
 
-    current[keys[keys.length - 1]] = value;
+current[keys[keys.length - 1]] = value;
   }
 
-  compareObjects(obj1, obj2);
+compareObjects(obj1, obj2);
   return diff;
 }
 
@@ -1424,15 +1342,15 @@ function objectDiff(obj1, obj2) {
 function simpleObjectDiff(obj1, obj2) {
   const changes = [];
 
-  function compare(o1, o2, path = '') {
+function compare(o1, o2, path = '') {
     const allKeys = new Set([...Object.keys(o1), ...Object.keys(o2)]);
 
-    for (let key of allKeys) {
+for (let key of allKeys) {
       const currentPath = path ? `${path}.${key}` : key;
       const val1 = o1[key];
       const val2 = o2[key];
 
-      if (!(key in o1)) {
+if (!(key in o1)) {
         changes.push({ type: 'added', path: currentPath, value: val2 });
       } else if (!(key in o2)) {
         changes.push({ type: 'removed', path: currentPath, value: val1 });
@@ -1456,7 +1374,7 @@ function simpleObjectDiff(obj1, obj2) {
     }
   }
 
-  compare(obj1, obj2);
+compare(obj1, obj2);
   return changes;
 }
 
@@ -1490,8 +1408,6 @@ console.log(simpleObjectDiff(obj1, obj2));
 **Time Complexity:** O(n) where n is total properties in both objects | **Space
 Complexity:** O(n)
 
----
-
 ### 20. Design Phone Directory 📱
 
 **Company:** Apple, Snapchat
@@ -1503,28 +1419,27 @@ searching by name/number, and retrieving contacts by various criteria.
 name, by number, by prefix). Implement efficient search and retrieval
 operations.
 
-**Solution:**
-
+// Basic example showing the core idea.
 ```javascript
 class PhoneDirectory {
   constructor() {
     // Main storage: contactId -> contact object
     this.contacts = {};
 
-    // Index by name (lowercase for case-insensitive search)
+// Index by name (lowercase for case-insensitive search)
     this.nameIndex = {};
 
-    // Index by phone number
+// Index by phone number
     this.phoneIndex = {};
 
-    // Index by name prefix for autocomplete
+// Index by name prefix for autocomplete
     this.prefixIndex = {};
 
-    // Auto-incrementing contact ID
+// Auto-incrementing contact ID
     this.nextId = 1;
   }
 
-  addContact(name, phoneNumber, email = '') {
+addContact(name, phoneNumber, email = '') {
     const contactId = this.nextId++;
     const contact = {
       id: contactId,
@@ -1534,26 +1449,26 @@ class PhoneDirectory {
       createdAt: new Date(),
     };
 
-    // Store in main contacts
+// Store in main contacts
     this.contacts[contactId] = contact;
 
-    // Index by name (case-insensitive)
+// Index by name (case-insensitive)
     const lowerName = name.toLowerCase().trim();
     if (!this.nameIndex[lowerName]) {
       this.nameIndex[lowerName] = [];
     }
     this.nameIndex[lowerName].push(contactId);
 
-    // Index by phone number
+// Index by phone number
     this.phoneIndex[contact.phoneNumber] = contactId;
 
-    // Index by name prefixes for autocomplete
+// Index by name prefixes for autocomplete
     this.addToPrefixIndex(lowerName, contactId);
 
-    return contactId;
+return contactId;
   }
 
-  addToPrefixIndex(name, contactId) {
+addToPrefixIndex(name, contactId) {
     // Add all prefixes of the name
     for (let i = 1; i <= name.length; i++) {
       const prefix = name.substring(0, i);
@@ -1564,37 +1479,37 @@ class PhoneDirectory {
     }
   }
 
-  searchByName(name) {
+searchByName(name) {
     const lowerName = name.toLowerCase().trim();
     const contactIds = this.nameIndex[lowerName] || [];
     return contactIds.map((id) => this.contacts[id]);
   }
 
-  searchByPhone(phoneNumber) {
+searchByPhone(phoneNumber) {
     const cleanPhone = phoneNumber.replace(/\D/g, '');
     const contactId = this.phoneIndex[cleanPhone];
     return contactId ? this.contacts[contactId] : null;
   }
 
-  searchByPrefix(prefix) {
+searchByPrefix(prefix) {
     const lowerPrefix = prefix.toLowerCase().trim();
     const contactIds = this.prefixIndex[lowerPrefix];
 
-    if (!contactIds) return [];
+if (!contactIds) return [];
 
-    return Array.from(contactIds)
+return Array.from(contactIds)
       .map((id) => this.contacts[id])
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  removeContact(contactId) {
+removeContact(contactId) {
     const contact = this.contacts[contactId];
     if (!contact) return false;
 
-    // Remove from main storage
+// Remove from main storage
     delete this.contacts[contactId];
 
-    // Remove from name index
+// Remove from name index
     const lowerName = contact.name.toLowerCase();
     if (this.nameIndex[lowerName]) {
       const index = this.nameIndex[lowerName].indexOf(contactId);
@@ -1606,16 +1521,13 @@ class PhoneDirectory {
       }
     }
 
-    // Remove from phone index
+// Remove from phone index
     delete this.phoneIndex[contact.phoneNumber];
 
-    // Remove from prefix index
+// Remove from prefix index
     this.removeFromPrefixIndex(lowerName, contactId);
 
-    return true;
-  }
-
-  removeFromPrefixIndex(name, contactId) {
+removeFromPrefixIndex(name, contactId) {
     for (let i = 1; i <= name.length; i++) {
       const prefix = name.substring(0, i);
       if (this.prefixIndex[prefix]) {
@@ -1627,15 +1539,15 @@ class PhoneDirectory {
     }
   }
 
-  updateContact(contactId, updates) {
+updateContact(contactId, updates) {
     const contact = this.contacts[contactId];
     if (!contact) return false;
 
-    // Store old values for index updates
+// Store old values for index updates
     const oldName = contact.name.toLowerCase();
     const oldPhone = contact.phoneNumber;
 
-    // Update contact
+// Update contact
     if (updates.name) {
       contact.name = updates.name.trim();
     }
@@ -1646,13 +1558,13 @@ class PhoneDirectory {
       contact.email = updates.email.trim();
     }
 
-    // Update indexes if name or phone changed
+// Update indexes if name or phone changed
     if (updates.name) {
       // Remove old name indexes
       this.removeFromNameIndex(oldName, contactId);
       this.removeFromPrefixIndex(oldName, contactId);
 
-      // Add new name indexes
+// Add new name indexes
       const newLowerName = contact.name.toLowerCase();
       if (!this.nameIndex[newLowerName]) {
         this.nameIndex[newLowerName] = [];
@@ -1661,16 +1573,13 @@ class PhoneDirectory {
       this.addToPrefixIndex(newLowerName, contactId);
     }
 
-    if (updates.phoneNumber) {
+if (updates.phoneNumber) {
       // Update phone index
       delete this.phoneIndex[oldPhone];
       this.phoneIndex[contact.phoneNumber] = contactId;
     }
 
-    return true;
-  }
-
-  removeFromNameIndex(name, contactId) {
+removeFromNameIndex(name, contactId) {
     if (this.nameIndex[name]) {
       const index = this.nameIndex[name].indexOf(contactId);
       if (index > -1) {
@@ -1682,28 +1591,28 @@ class PhoneDirectory {
     }
   }
 
-  getAllContacts() {
+getAllContacts() {
     return Object.values(this.contacts).sort((a, b) =>
       a.name.localeCompare(b.name)
     );
   }
 
-  getContactCount() {
+getContactCount() {
     return Object.keys(this.contacts).length;
   }
 
-  // Fuzzy search - finds contacts with names containing the search term
+// Fuzzy search - finds contacts with names containing the search term
   fuzzySearch(term) {
     const lowerTerm = term.toLowerCase().trim();
     const results = [];
 
-    for (let contact of Object.values(this.contacts)) {
+for (let contact of Object.values(this.contacts)) {
       if (contact.name.toLowerCase().includes(lowerTerm)) {
         results.push(contact);
       }
     }
 
-    return results.sort((a, b) => a.name.localeCompare(b.name));
+return results.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
 
@@ -1738,9 +1647,7 @@ console.log(`Total contacts: ${directory.getContactCount()}`);
 **Space Complexity:** O(n \* m) where n is number of contacts, m is average name
 length
 
----
-
-## 🎯 Summary
+## Summary
 
 This comprehensive guide covers the **top 20 JavaScript Objects DSA interview
 questions** that are frequently asked at major tech companies. Each problem

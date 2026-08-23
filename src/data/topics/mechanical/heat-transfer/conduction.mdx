@@ -13,7 +13,7 @@ neighboring molecules.
 - The handle of a frying pan gets hot during cooking.
 - Walking barefoot on a hot floor transfers heat to your feet.
 
-## 🎯 How Conduction Works
+## How Conduction Works
 
 When one end of a material is heated:
 
@@ -22,6 +22,7 @@ When one end of a material is heated:
 3. Energy is transferred to neighboring molecules.
 4. Heat gradually moves through the material.
 
+<!-- Visual flow for 🔥 Conduction. -->
 ```mermaid
 flowchart LR
     A[Hot End 🔥] --> B[Molecule]
@@ -59,17 +60,16 @@ These materials resist heat flow.
 - Glass wool
 - Thermocol
 
-Applications:
-
 - Building insulation
 - Refrigerator walls
 - Electrical insulation
 
-## 🌡️ Temperature Gradient
+## 🌡 Temperature Gradient
 
 Heat always flows from a higher temperature region to a lower temperature
 region.
 
+<!-- Visual flow for 🔥 Conduction. -->
 ```mermaid
 graph LR
     T1[100°C] --> T2[80°C]
@@ -102,11 +102,10 @@ temperature.
 
 For steady one-dimensional conduction:
 
+// Example demonstrating 🔥 Conduction.
 ```
 Q = kA(T₁ - T₂)/L
 ```
-
-Where:
 
 - T₁ = Hot side temperature
 - T₂ = Cold side temperature
@@ -118,7 +117,7 @@ Where:
 - Larger area → More heat transfer
 - Greater thickness → Less heat transfer
 
-## ⚡ Thermal Conductivity (k)
+## Thermal Conductivity (k)
 
 Thermal conductivity measures a material's ability to conduct heat.
 
@@ -134,7 +133,7 @@ Higher k means better heat conduction.
 | Wood     | 0.12                                 |
 | Air      | 0.026                                |
 
-## 🔄 Thermal Resistance Concept
+## Thermal Resistance Concept
 
 Heat flow can be compared to electric current flow.
 
@@ -146,19 +145,19 @@ Heat flow can be compared to electric current flow.
 
 Thermal resistance:
 
+// Example demonstrating 🔥 Conduction.
 ```
 R = L / kA
 ```
 
 Heat transfer becomes:
 
+// Example demonstrating 🔥 Conduction.
 ```
 Q = ΔT / R
 ```
 
 This makes thermal calculations much easier.
-
-## 🏭 Engineering Applications
 
 ### Heat Exchangers
 
@@ -192,7 +191,7 @@ Heat from combustion gases conducts through tube walls.
 
 ✅ Better temperature control
 
-## 📌 Key Points
+## Key Points
 
 ✅ Conduction occurs without bulk movement of material
 
@@ -205,3 +204,24 @@ Heat from combustion gases conducts through tube walls.
 ✅ Fourier's Law is the fundamental equation of heat conduction
 
 ✅ Thermal conductivity determines how effectively a material transfers heat
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Assumptions and Units
+
+For engineering topics, write down known quantities, unknowns, units, and governing assumptions before calculating. Check the final unit and physical direction of the result. A mathematically correct expression can still be physically invalid if an assumption has been violated.
+
+## Limiting Conditions
+
+Pay attention to boundary conditions, material properties, environmental changes, sign conventions, and measurement error. If a formula relies on an approximation, state when that approximation is reasonable. Revision becomes much easier when each equation is attached to the condition that justifies it.
+
+## Worked Check
+
+After solving a numerical example, estimate the order of magnitude and compare it with a realistic range. A quick sanity check often catches unit conversion errors, misplaced decimal points, and incorrect signs.

@@ -31,6 +31,7 @@
 | `Array`     | Ordered list             | `[1, 2, 3]`               |
 | `Symbol`    | Unique identifier        | `Symbol('id')`            |
 
+<!-- Visual flow for JavaScript. -->
 ```mermaid
 mindmap
   root((JavaScript Types))
@@ -46,8 +47,6 @@ mindmap
       Array
       Function
 ```
-
-## Operators
 
 ### Arithmetic
 
@@ -117,6 +116,7 @@ mindmap
 
 ## Objects
 
+<!-- Visual flow for JavaScript. -->
 ```mermaid
 flowchart BT
     obj["object instance"]
@@ -247,6 +247,7 @@ flowchart BT
 | `async`          | Async function    | `async function foo() { ... }`          |
 | `await`          | Wait for promise  | `await promise`                         |
 
+<!-- Visual flow for JavaScript. -->
 ```mermaid
 sequenceDiagram
     participant C as Call Stack
@@ -254,7 +255,7 @@ sequenceDiagram
     participant Q as Task Queue
     participant M as Microtask Queue
 
-    C->>W: setTimeout / fetch
+C->>W: setTimeout / fetch
     W-->>M: Promise.then / await
     M-->>C: microtasks first
     W-->>Q: timer / I/O callback
@@ -303,3 +304,12 @@ sequenceDiagram
 | `void`       | Evaluate to undefined | `void 0`                 |
 | `debugger`   | Breakpoint            | `debugger;`              |
 | `eval()`     | Evaluate string       | `eval('2 + 2')`          |
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

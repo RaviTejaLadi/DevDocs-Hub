@@ -1,7 +1,8 @@
-# 🌐 **HTTP**
+# HTTP
 
-## 📊 **HTTP ARCHITECTURE (How the Web Works)**
+## HTTP ARCHITECTURE (How the Web Works)
 
+<!-- Visual flow for HTTP. -->
 ```mermaid
 sequenceDiagram
     participant Browser as 🌐 Client (Browser)
@@ -9,7 +10,7 @@ sequenceDiagram
     participant Server as 🖥️ Web Server
     participant DB as 💾 Database
 
-    Browser->>DNS: 1. What's google.com?
+Browser->>DNS: 1. What's google.com?
     DNS-->>Browser: 2. IP: 142.250.xxx.xxx
     Browser->>Server: 3. GET /index.html HTTP/1.1
     Server->>DB: 4. Query data
@@ -20,14 +21,12 @@ sequenceDiagram
 
 ---
 
-## 🔤 **1. HTTP BASICS**
-
-### **What is HTTP?**
+### What is HTTP?
 
 > **H**yper**T**ext **T**ransfer **P**rotocol - The language browsers and
 > servers use to talk to each other 📨
 
-### **HTTP/HTTPS Comparison:**
+### HTTP/HTTPS Comparison:
 
 | Feature       | HTTP          | HTTPS              |
 | ------------- | ------------- | ------------------ |
@@ -38,12 +37,9 @@ sequenceDiagram
 | 📡 Speed      | ⚡ Faster     | 🐢 Slightly slower |
 | 💰 Cost       | Free          | SSL cert needed    |
 
----
+### Request Structure:
 
-## 📋 **2. HTTP REQUEST & RESPONSE STRUCTURE**
-
-### **Request Structure:**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 graph LR
     A[Request Line<br/>Method + Path + Version] --> B[Headers<br/>Metadata]
@@ -51,8 +47,9 @@ graph LR
     C --> D[Body<br/>Optional Data]
 ```
 
-#### **Example Request:**
+#### Example Request:
 
+// Example demonstrating HTTP.
 ```http
 POST /api/users HTTP/1.1
 Host: example.com
@@ -64,8 +61,9 @@ Authorization: Bearer token123
 {"name":"John","email":"john@email.com"}
 ```
 
-### **Response Structure:**
+### Response Structure:
 
+<!-- Visual flow for HTTP. -->
 ```mermaid
 graph LR
     A[Status Line<br/>Version + Status Code + Text] --> B[Headers<br/>Metadata]
@@ -73,8 +71,9 @@ graph LR
     C --> D[Body<br/>Content]
 ```
 
-#### **Example Response:**
+#### Example Response:
 
+// Example demonstrating HTTP.
 ```http
 HTTP/1.1 201 Created
 Date: Mon, 01 Jan 2024 12:00:00 GMT
@@ -85,10 +84,9 @@ Content-Length: 45
 {"id":123,"name":"John","created":"2024-01-01"}
 ```
 
----
+## 3. HTTP METHODS (Action Verbs)
 
-## 🎯 **3. HTTP METHODS (Action Verbs)**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     subgraph "CRUD Operations"
@@ -100,7 +98,7 @@ flowchart TD
     end
 ```
 
-### **Method Details:**
+### Method Details:
 
 | Method      | Purpose             | Safe? | Idempotent? | Has Body? | Example             |
 | ----------- | ------------------- | ----- | ----------- | --------- | ------------------- |
@@ -117,10 +115,9 @@ flowchart TD
 > **Safe**: Doesn't modify data<br> > **Idempotent**: Same request gives same
 > result every time
 
----
+## 4. HTTP STATUS CODES (What the Server Says)
 
-## 📊 **4. HTTP STATUS CODES (What the Server Says)**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     A[HTTP Status Codes] --> B[1xx - Information]
@@ -129,28 +126,26 @@ flowchart TD
     A --> E[4xx - Client Error ❌]
     A --> F[5xx - Server Error 💥]
 
-    C --> C1[200 OK]
+C --> C1[200 OK]
     C --> C2[201 Created]
     C --> C3[204 No Content]
 
-    D --> D1[301 Moved Permanently]
+D --> D1[301 Moved Permanently]
     D --> D2[302 Found]
     D --> D3[304 Not Modified]
 
-    E --> E1[400 Bad Request]
+E --> E1[400 Bad Request]
     E --> E2[401 Unauthorized]
     E --> E3[403 Forbidden]
     E --> E4[404 Not Found]
     E --> E5[429 Too Many Requests]
 
-    F --> F1[500 Internal Server Error]
+F --> F1[500 Internal Server Error]
     F --> F2[502 Bad Gateway]
     F --> F3[503 Service Unavailable]
 ```
 
-### **Detailed Status Codes:**
-
-#### **✅ 2xx - Success**
+#### ✅ 2xx - Success
 
 | Code | Name       | When to use                           |
 | ---- | ---------- | ------------------------------------- |
@@ -159,7 +154,7 @@ flowchart TD
 | 202  | Accepted   | Request accepted, processing async ⏳ |
 | 204  | No Content | Success but no content to return 📭   |
 
-#### **🔄 3xx - Redirection**
+#### 3xx - Redirection
 
 | Code | Name              | When to use                   |
 | ---- | ----------------- | ----------------------------- |
@@ -167,7 +162,7 @@ flowchart TD
 | 302  | Found             | Temporary redirect 🚩         |
 | 304  | Not Modified      | Use cached version 💾         |
 
-#### **❌ 4xx - Client Errors (Your fault)**
+#### ❌ 4xx - Client Errors (Your fault)
 
 | Code | Name                 | When to use                    |
 | ---- | -------------------- | ------------------------------ |
@@ -180,7 +175,7 @@ flowchart TD
 | 422  | Unprocessable Entity | Validation failed 📋           |
 | 429  | Too Many Requests    | Rate limited ⏰                |
 
-#### **💥 5xx - Server Errors (Server's fault)**
+#### 💥 5xx - Server Errors (Server's fault)
 
 | Code | Name                | When to use               |
 | ---- | ------------------- | ------------------------- |
@@ -190,10 +185,9 @@ flowchart TD
 | 503  | Service Unavailable | Server down/overloaded 🛑 |
 | 504  | Gateway Timeout     | Upstream timeout ⏰       |
 
----
+## 📨 5. HTTP HEADERS (Metadata)
 
-## 📨 **5. HTTP HEADERS (Metadata)**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     subgraph "Request Headers"
@@ -202,18 +196,18 @@ flowchart TD
         A --> A3[Accept: application/json]
         A --> A4[Accept-Language: en-US]
 
-        B[Auth Headers] --> B1[Authorization: Bearer token]
+B[Auth Headers] --> B1[Authorization: Bearer token]
         B --> B2[Cookie: session=abc123]
 
-        C[Content Headers] --> C1[Content-Type: application/json]
+C[Content Headers] --> C1[Content-Type: application/json]
         C --> C2[Content-Length: 1024]
 
-        D[CORS Headers] --> D1[Origin: http://example.com]
+D[CORS Headers] --> D1[Origin: http://example.com]
         D --> D2[Access-Control-Request-Method: POST]
     end
 ```
 
-### **Common Headers Quick Reference:**
+### Common Headers Quick Reference:
 
 | Header                        | Purpose                  | Example                      |
 | ----------------------------- | ------------------------ | ---------------------------- |
@@ -237,10 +231,9 @@ flowchart TD
 | **CORS**                      |                          |                              |
 | `Access-Control-Allow-Origin` | Who can access           | `*` or `https://example.com` |
 
----
+## 6. CONTENT TYPES (What You're Sending)
 
-## 📝 **6. CONTENT TYPES (What You're Sending)**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart LR
     A[Content Types] --> B[Text]
@@ -248,22 +241,22 @@ flowchart LR
     A --> D[Multipart]
     A --> E[Image/Video]
 
-    B --> B1[text/plain]
+B --> B1[text/plain]
     B --> B2[text/html]
     B --> B3[text/css]
     B --> B4[text/javascript]
 
-    C --> C1[application/json]
+C --> C1[application/json]
     C --> C2[application/xml]
     C --> C3[application/pdf]
     C --> C4[application/form-data]
 
-    E --> E1[image/jpeg]
+E --> E1[image/jpeg]
     E --> E2[image/png]
     E --> E3[video/mp4]
 ```
 
-### **Common MIME Types:**
+### Common MIME Types:
 
 | Type              | MIME Type                           | Extension |
 | ----------------- | ----------------------------------- | --------- |
@@ -279,12 +272,9 @@ flowchart LR
 | 🖼️ PNG            | `image/png`                         | .png      |
 | 🎥 MP4            | `video/mp4`                         | .mp4      |
 
----
+### GET Request - Fetch Data:
 
-## 🔧 **7. PRACTICAL EXAMPLES**
-
-### **📖 GET Request - Fetch Data:**
-
+// Basic example showing the core idea.
 ```javascript
 // JavaScript fetch
 fetch('https://api.example.com/users/123', {
@@ -298,15 +288,17 @@ fetch('https://api.example.com/users/123', {
   .then((data) => console.log(data));
 ```
 
+# Basic example showing the core idea.
 ```bash
-# cURL command
+## cURL command
 curl -X GET https://api.example.com/users/123 \
   -H "Authorization: Bearer token123" \
   -H "Accept: application/json"
 ```
 
-### **✍️ POST Request - Create Data:**
+### ✍ POST Request - Create Data:
 
+// Basic example showing the core idea.
 ```javascript
 // JavaScript fetch
 fetch('https://api.example.com/users', {
@@ -325,16 +317,17 @@ fetch('https://api.example.com/users', {
   .then((data) => console.log(data));
 ```
 
+# Basic example showing the core idea.
 ```bash
-# cURL command
 curl -X POST https://api.example.com/users \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer token123" \
   -d '{"name":"John Doe","email":"john@example.com","age":30}'
 ```
 
-### **🔄 PUT Request - Full Update:**
+### PUT Request - Full Update:
 
+# Basic example showing the core idea.
 ```bash
 curl -X PUT https://api.example.com/users/123 \
   -H "Content-Type: application/json" \
@@ -342,8 +335,9 @@ curl -X PUT https://api.example.com/users/123 \
   -d '{"name":"Jane Doe","email":"jane@example.com","age":31}'
 ```
 
-### **🔧 PATCH Request - Partial Update:**
+### 🔧 PATCH Request - Partial Update:
 
+# Basic example showing the core idea.
 ```bash
 curl -X PATCH https://api.example.com/users/123 \
   -H "Content-Type: application/json" \
@@ -351,15 +345,17 @@ curl -X PATCH https://api.example.com/users/123 \
   -d '{"age": 31}'
 ```
 
-### **🗑️ DELETE Request:**
+### 🗑 DELETE Request:
 
+# Basic example showing the core idea.
 ```bash
 curl -X DELETE https://api.example.com/users/123 \
   -H "Authorization: Bearer token123"
 ```
 
-### **📤 Upload File:**
+### 📤 Upload File:
 
+// Basic example showing the core idea.
 ```javascript
 // JavaScript - Multipart form upload
 const formData = new FormData();
@@ -375,18 +371,18 @@ fetch('https://api.example.com/upload', {
 });
 ```
 
+# Basic example showing the core idea.
 ```bash
-# cURL - File upload
+## cURL - File upload
 curl -X POST https://api.example.com/upload \
   -F "file=@/path/to/image.jpg" \
   -F "name=profile.jpg" \
   -H "Authorization: Bearer token123"
 ```
 
----
+## 8. AUTHENTICATION METHODS
 
-## 🔒 **8. AUTHENTICATION METHODS**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     A[Auth Methods] --> B[Bearer Token<br/>🔑 JWT/OAuth]
@@ -394,14 +390,15 @@ flowchart TD
     A --> D[API Key<br/>🔐 Key in Header]
     A --> E[Session/Cookie<br/>🍪 Browser-based]
 
-    B --> B1["Authorization: Bearer eyJhbGci..."]
+B --> B1["Authorization: Bearer eyJhbGci..."]
     C --> C1["Authorization: Basic dXNlcjpwYXNz"]
     D --> D1["X-API-Key: abc123xyz"]
     E --> E1["Cookie: session=abcdef"]
 ```
 
-### **Implementation Examples:**
+### Implementation Examples:
 
+// Basic example showing the core idea.
 ```javascript
 // 1. Bearer Token (JWT)
 fetch('https://api.example.com/data', {
@@ -433,10 +430,9 @@ fetch('https://api.example.com/data', {
 });
 ```
 
----
+## 9. CORS (Cross-Origin Resource Sharing)
 
-## 🛡️ **9. CORS (Cross-Origin Resource Sharing)**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart LR
     A[Browser] -->|Request to different domain| B[Server]
@@ -446,8 +442,9 @@ flowchart LR
     D -->|Actual request| F[Success]
 ```
 
-### **CORS Headers:**
+### CORS Headers:
 
+// Example demonstrating HTTP.
 ```http
 Access-Control-Allow-Origin: https://example.com
 Access-Control-Allow-Methods: GET, POST, PUT, DELETE
@@ -456,7 +453,7 @@ Access-Control-Allow-Credentials: true
 Access-Control-Max-Age: 3600
 ```
 
-### **CORS Errors & Solutions:**
+### CORS Errors & Solutions:
 
 | Problem                             | Solution                              |
 | ----------------------------------- | ------------------------------------- |
@@ -466,26 +463,25 @@ Access-Control-Max-Age: 3600
 | 🔴 Header not allowed               | Add header to allowed list            |
 | 🔴 Preflight fails                  | Check OPTIONS request handling        |
 
----
+## 10. HTTP/2 vs HTTP/3
 
-## 🚀 **10. HTTP/2 vs HTTP/3**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     A[HTTP Versions] --> B[HTTP/1.1<br/>📨 Text-based, 1999]
     A --> C[HTTP/2<br/>🚀 Binary, 2015]
     A --> D[HTTP/3<br/>⚡ UDP-based, 2022]
 
-    C --> C1[✓ Multiplexing]
+C --> C1[✓ Multiplexing]
     C --> C2[✓ Header Compression]
     C --> C3[✓ Server Push]
 
-    D --> D1[✓ Faster connections]
+D --> D1[✓ Faster connections]
     D --> D2[✓ Better multiplexing]
     D --> D3[✓ Connection migration]
 ```
 
-### **Key Differences:**
+### Key Differences:
 
 | Feature                 | HTTP/1.1 | HTTP/2 | HTTP/3 |
 | ----------------------- | -------- | ------ | ------ |
@@ -497,12 +493,9 @@ flowchart TD
 | 🔄 Connection Migration | ❌       | ❌     | ✅     |
 | ⚡ Speed                | Slow     | Fast   | Faster |
 
----
+### Success (2xx):
 
-## 📦 **11. STATUS CODE CHEAT SHEET** _(Quick Lookup)_
-
-### **Success (2xx):**
-
+// Example demonstrating HTTP.
 ```
 200 - ✅ OK
 201 - ✅ Created
@@ -510,16 +503,18 @@ flowchart TD
 204 - ✅ No Content
 ```
 
-### **Redirection (3xx):**
+### Redirection (3xx):
 
+// Example demonstrating HTTP.
 ```
 301 - 🔄 Moved Permanently
 302 - 🔄 Found (Temporary)
 304 - 🔄 Not Modified
 ```
 
-### **Client Errors (4xx):**
+### Client Errors (4xx):
 
+// Example demonstrating HTTP.
 ```
 400 - ❌ Bad Request
 401 - ❌ Unauthorized
@@ -532,8 +527,9 @@ flowchart TD
 429 - ❌ Too Many Requests
 ```
 
-### **Server Errors (5xx):**
+### Server Errors (5xx):
 
+// Example demonstrating HTTP.
 ```
 500 - 💥 Internal Server Error
 501 - 💥 Not Implemented
@@ -542,12 +538,9 @@ flowchart TD
 504 - 💥 Gateway Timeout
 ```
 
----
+### 📱 Building a REST API:
 
-## 🎯 **12. COMMON SCENARIOS & SOLUTIONS**
-
-### **📱 Building a REST API:**
-
+// Basic example showing the core idea.
 ```javascript
 // Express.js example
 app.get('/api/users', (req, res) => {
@@ -575,8 +568,9 @@ app.delete('/api/users/:id', (req, res) => {
 });
 ```
 
-### **🔄 Handling Errors Gracefully:**
+### Handling Errors Gracefully:
 
+// Basic example showing the core idea.
 ```javascript
 // Error handling pattern
 fetch('https://api.example.com/data')
@@ -601,27 +595,25 @@ fetch('https://api.example.com/data')
   });
 ```
 
-### **⚡ Rate Limiting:**
+### Rate Limiting:
 
+// Example demonstrating HTTP.
 ```http
-# Server response headers
+## Server response headers
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 75
 X-RateLimit-Reset: 1704115200
 
-# Client should wait when 429 received
+## Client should wait when 429 received
 If (status === 429) {
     // Wait for reset time
     setTimeout(retry, resetTime - Date.now());
 }
 ```
 
----
+### Browser DevTools:
 
-## 🛠️ **13. TOOLS & DEBUGGING**
-
-### **🔍 Browser DevTools:**
-
+// Example demonstrating HTTP.
 ```
 1. Open DevTools (F12)
 2. Go to Network tab
@@ -634,7 +626,7 @@ If (status === 429) {
    - Cookies
 ```
 
-### **🧪 Testing Tools:**
+### Testing Tools:
 
 | Tool        | Purpose           | Command/Example            |
 | ----------- | ----------------- | -------------------------- |
@@ -645,41 +637,39 @@ If (status === 429) {
 | Insomnia    | GUI API client    | Alternative to Postman     |
 | REST Client | VS Code extension | Test in VSCode             |
 
-### **📝 cURL Cheat Sheet:**
+### cURL Cheat Sheet:
 
+# Basic example showing the core idea.
 ```bash
-# GET request
+## GET request
 curl https://api.example.com/users
 
-# GET with headers
+## GET with headers
 curl -H "Authorization: Bearer token" https://api.com/users
 
-# POST JSON
+## POST JSON
 curl -X POST https://api.com/users \
   -H "Content-Type: application/json" \
   -d '{"name":"John"}'
 
-# POST form data
+## POST form data
 curl -X POST https://api.com/upload \
   -F "file=@image.jpg" \
   -F "name=profile"
 
-# Include verbose output
+## Include verbose output
 curl -v https://api.com/users
 
-# Follow redirects
+## Follow redirects
 curl -L https://api.com/users
 
-# Save output to file
+## Save output to file
 curl -o output.json https://api.com/users
 ```
 
----
+### Performance Metrics:
 
-## 📊 **14. RESPONSE TIMING**
-
-### **Performance Metrics:**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 graph TD
     A[Request Start] --> B[DNS Lookup<br/>⏱️ 20-120ms]
@@ -691,8 +681,9 @@ graph TD
     G --> H[Response Complete<br/>⏱️ 50-200ms]
 ```
 
-### **Optimization Tips:**
+### Optimization Tips:
 
+// Example demonstrating HTTP.
 ```
 🚀 Use compression (gzip/brotli)
 📦 Minimize payload size
@@ -702,10 +693,9 @@ graph TD
 📊 Monitor performance with timing API
 ```
 
----
+## 15. SECURITY BEST PRACTICES
 
-## 🔐 **15. SECURITY BEST PRACTICES**
-
+<!-- Visual flow for HTTP. -->
 ```mermaid
 flowchart TD
     A[Security Best Practices] --> B[✅ Use HTTPS always]
@@ -717,10 +707,11 @@ flowchart TD
     A --> H[✅ Use security headers]
 ```
 
-### **Security Headers to Add:**
+### Security Headers to Add:
 
+// Example demonstrating HTTP.
 ```http
-# Security Headers
+## Security Headers
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
@@ -730,11 +721,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 Permissions-Policy: geolocation=(), microphone=()
 ```
 
----
-
-## 🎯 **16. QUICK REFERENCE CARD**
-
-### **Common HTTP Patterns:**
+### Common HTTP Patterns:
 
 | Pattern        | Method | URL              | Body | Status |
 | -------------- | ------ | ---------------- | ---- | ------ |
@@ -745,8 +732,9 @@ Permissions-Policy: geolocation=(), microphone=()
 | Update partial | PATCH  | `/api/users/123` | ✅   | 200    |
 | Delete         | DELETE | `/api/users/123` | ❌   | 204    |
 
-### **Response Status Quick Guide:**
+### Response Status Quick Guide:
 
+// Example demonstrating HTTP.
 ```
 2xx: 😊 All good
 3xx: 🔄 Go somewhere else
@@ -754,9 +742,7 @@ Permissions-Policy: geolocation=(), microphone=()
 5xx: 💥 Server's fault
 ```
 
----
-
-## 📚 **17. RESOURCES & LEARNING**
+## 📚 17. RESOURCES & LEARNING
 
 | Resource                                                            | Description              |
 | ------------------------------------------------------------------- | ------------------------ |
@@ -766,9 +752,7 @@ Permissions-Policy: geolocation=(), microphone=()
 | [HTTP Bin](https://httpbin.org/)                                    | 🎮 Test endpoints        |
 | [Can I Use](https://caniuse.com/)                                   | 🔍 Browser support       |
 
----
-
-## 💡 **PRO TIPS**
+## PRO TIPS
 
 1. **Always use HTTPS** in production 🔒
 2. **Be consistent** with API design (RESTful patterns) 📐
@@ -781,9 +765,7 @@ Permissions-Policy: geolocation=(), microphone=()
 9. **Compress responses** 📦
 10. **Log everything** 🖊️
 
----
-
-## ✅ **REMEMBER:**
+## ✅ REMEMBER:
 
 > HTTP is the language of the web. **Master these basics and you'll understand
 > how all web communication works!** 🌐
@@ -791,9 +773,19 @@ Permissions-Policy: geolocation=(), microphone=()
 **Final Challenge:** Try building a small REST API with Express, Flask, or any
 framework to practice these concepts! 🚀
 
+# Basic example showing the core idea.
 ```bash
-# Test your knowledge:
+## Test your knowledge:
 curl -X POST https://httpbin.org/post \
   -H "Content-Type: application/json" \
   -d '{"test": "HTTP is awesome!"}'
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

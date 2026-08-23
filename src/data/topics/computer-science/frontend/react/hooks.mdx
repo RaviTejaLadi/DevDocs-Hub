@@ -8,26 +8,26 @@ easier to reuse.
 
 ---
 
-## Basic Hooks
-
 ### `useState`
 
-**Definition:** Lets you add state to functional components.  
+**Definition:** Lets you add state to functional components.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const [state, setState] = useState(initialValue);
 ```
 
 **Example (Counter):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
 
-  return (
+return (
     <div>
       <p>You clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>Click me</button>
@@ -36,13 +36,12 @@ function Counter() {
 }
 ```
 
----
-
 ### `useEffect`
 
-**Definition:** Runs side effects (like API calls, timers) after render.  
+**Definition:** Runs side effects (like API calls, timers) after render.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useEffect(() => {
   /* effect */
@@ -51,35 +50,36 @@ useEffect(() => {
 
 **Example (Fetch Data):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useState, useEffect } from 'react';
 
 function FetchData() {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
+useEffect(() => {
     fetch('https://api.example.com/data')
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []); // Empty array = runs once
 
-  return <div>{data ? data.message : 'Loading...'}</div>;
+return <div>{data ? data.message : 'Loading...'}</div>;
 }
 ```
 
----
-
 ### `useContext`
 
-**Definition:** Lets you use React Context (global state) without nesting.  
+**Definition:** Lets you use React Context (global state) without nesting.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const value = useContext(MyContext);
 ```
 
 **Example (Theme Toggler):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useContext, createContext, useState } from 'react';
 
@@ -104,21 +104,19 @@ function Toolbar() {
 }
 ```
 
----
-
-## Advanced Hooks
-
 ### `useReducer`
 
-**Definition:** Like `useState` but for complex state logic (like Redux).  
+**Definition:** Like `useState` but for complex state logic (like Redux).
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
 **Example (Todo List):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useReducer } from 'react';
 
@@ -134,7 +132,7 @@ function reducer(state, action) {
 function TodoList() {
   const [todos, dispatch] = useReducer(reducer, []);
 
-  return (
+return (
     <div>
       <button onClick={() => dispatch({ type: 'ADD_TODO', text: 'New Todo' })}>
         Add Todo
@@ -149,13 +147,12 @@ function TodoList() {
 }
 ```
 
----
-
 ### `useCallback`
 
-**Definition:** Memoizes a function to prevent unnecessary re-renders.  
+**Definition:** Memoizes a function to prevent unnecessary re-renders.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const memoizedFn = useCallback(() => {
   /* function */
@@ -164,6 +161,7 @@ const memoizedFn = useCallback(() => {
 
 **Example (Optimized Button):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useCallback, useState } from 'react';
 
@@ -171,23 +169,23 @@ function App() {
   const [count, setCount] = useState(0);
   const increment = useCallback(() => setCount((c) => c + 1), []);
 
-  return <button onClick={increment}>Count: {count}</button>;
+return <button onClick={increment}>Count: {count}</button>;
 }
 ```
 
----
-
 ### `useMemo`
 
-**Definition:** Memoizes a value to avoid expensive calculations.  
+**Definition:** Memoizes a value to avoid expensive calculations.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
 **Example (Expensive Calculation):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useMemo, useState } from 'react';
 
@@ -197,30 +195,30 @@ function ExpensiveComponent({ a, b }) {
     return a * b;
   }, [a, b]);
 
-  return <div>Result: {result}</div>;
+return <div>Result: {result}</div>;
 }
 ```
 
----
-
 ### `useRef`
 
-**Definition:** Keeps a mutable ref object (like `document.getElementById`).  
+**Definition:** Keeps a mutable ref object (like `document.getElementById`).
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const ref = useRef(initialValue);
 ```
 
 **Example (Focus Input):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useRef } from 'react';
 
 function FocusInput() {
   const inputRef = useRef();
 
-  return (
+return (
     <div>
       <input ref={inputRef} />
       <button onClick={() => inputRef.current.focus()}>Focus</button>
@@ -229,19 +227,19 @@ function FocusInput() {
 }
 ```
 
----
-
 ### `useImperativeHandle`
 
-**Definition:** Customizes what a parent component sees in `ref`.  
+**Definition:** Customizes what a parent component sees in `ref`.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useImperativeHandle(ref, () => ({ method: () => {} }), [deps]);
 ```
 
 **Example (Exposing Child Methods):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
@@ -263,13 +261,12 @@ function Parent() {
 }
 ```
 
----
-
 ### `useLayoutEffect`
 
-**Definition:** Like `useEffect` but runs synchronously after DOM updates.  
+**Definition:** Like `useEffect` but runs synchronously after DOM updates.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useLayoutEffect(() => {
   /* effect */
@@ -278,6 +275,7 @@ useLayoutEffect(() => {
 
 **Example (Measure DOM Element):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useLayoutEffect, useRef, useState } from 'react';
 
@@ -285,27 +283,27 @@ function MeasureDiv() {
   const [width, setWidth] = useState(0);
   const divRef = useRef();
 
-  useLayoutEffect(() => {
+useLayoutEffect(() => {
     setWidth(divRef.current.offsetWidth);
   }, []);
 
-  return <div ref={divRef}>Width: {width}px</div>;
+return <div ref={divRef}>Width: {width}px</div>;
 }
 ```
 
----
-
 ### `useDebugValue`
 
-**Definition:** Adds a label to custom hooks in React DevTools.  
+**Definition:** Adds a label to custom hooks in React DevTools.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useDebugValue(value);
 ```
 
 **Example (Debug Custom Hook):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useDebugValue, useState } from 'react';
 
@@ -320,3 +318,16 @@ function App() {
   return <div>Count: {count}</div>;
 }
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.

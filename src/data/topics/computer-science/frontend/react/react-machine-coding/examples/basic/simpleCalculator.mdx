@@ -1,7 +1,8 @@
-# **Simple Calculator**
+# Simple Calculator
 
 ## JavaScript Version
 
+// Example demonstrating Simple Calculator.
 ```jsx
 import React, { useState } from 'react';
 
@@ -10,24 +11,24 @@ const CalculatorJS = () => {
   const [result, setResult] = useState(0);
   const [operation, setOperation] = useState(null);
 
-  const handleNumberClick = (num) => {
+const handleNumberClick = (num) => {
     setInput(input + num);
   };
 
-  const handleOperationClick = (op) => {
+const handleOperationClick = (op) => {
     if (input === '' && result === 0) return;
 
-    if (input !== '') {
+if (input !== '') {
       calculate();
     }
     setOperation(op);
   };
 
-  const calculate = () => {
+const calculate = () => {
     let currentValue = parseFloat(input);
     let newResult = result;
 
-    if (operation === '+') {
+if (operation === '+') {
       newResult += currentValue;
     } else if (operation === '-') {
       newResult -= currentValue;
@@ -39,25 +40,25 @@ const CalculatorJS = () => {
       newResult = currentValue;
     }
 
-    setResult(newResult);
+setResult(newResult);
     setInput('');
     return newResult;
   };
 
-  const handleEquals = () => {
+const handleEquals = () => {
     if (operation && input !== '') {
       calculate();
       setOperation(null);
     }
   };
 
-  const handleClear = () => {
+const handleClear = () => {
     setInput('');
     setResult(0);
     setOperation(null);
   };
 
-  return (
+return (
     <div
       style={{
         maxWidth: '300px',
@@ -87,7 +88,7 @@ const CalculatorJS = () => {
         </div>
       </div>
 
-      <div
+<div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
@@ -99,22 +100,22 @@ const CalculatorJS = () => {
         <button onClick={() => handleNumberClick('9')}>9</button>
         <button onClick={() => handleOperationClick('/')}>/</button>
 
-        <button onClick={() => handleNumberClick('4')}>4</button>
+<button onClick={() => handleNumberClick('4')}>4</button>
         <button onClick={() => handleNumberClick('5')}>5</button>
         <button onClick={() => handleNumberClick('6')}>6</button>
         <button onClick={() => handleOperationClick('*')}>*</button>
 
-        <button onClick={() => handleNumberClick('1')}>1</button>
+<button onClick={() => handleNumberClick('1')}>1</button>
         <button onClick={() => handleNumberClick('2')}>2</button>
         <button onClick={() => handleNumberClick('3')}>3</button>
         <button onClick={() => handleOperationClick('-')}>-</button>
 
-        <button onClick={() => handleNumberClick('0')}>0</button>
+<button onClick={() => handleNumberClick('0')}>0</button>
         <button onClick={() => handleNumberClick('.')}>.</button>
         <button onClick={handleEquals}>=</button>
         <button onClick={() => handleOperationClick('+')}>+</button>
 
-        <button
+<button
           onClick={handleClear}
           style={{
             gridColumn: 'span 4',
@@ -134,6 +135,7 @@ export default CalculatorJS;
 
 ## TypeScript Version
 
+// Example demonstrating Simple Calculator.
 ```tsx
 import React, { useState } from 'react';
 
@@ -144,24 +146,18 @@ const CalculatorTS: React.FC = () => {
   const [result, setResult] = useState<number>(0);
   const [operation, setOperation] = useState<OperationType>(null);
 
-  const handleNumberClick = (num: string): void => {
+const handleNumberClick = (num: string): void => {
     setInput(input + num);
   };
 
-  const handleOperationClick = (op: OperationType): void => {
+const handleOperationClick = (op: OperationType): void => {
     if (input === '' && result === 0) return;
 
-    if (input !== '') {
-      calculate();
-    }
-    setOperation(op);
-  };
-
-  const calculate = (): number => {
+const calculate = (): number => {
     const currentValue = parseFloat(input);
     let newResult = result;
 
-    switch (operation) {
+switch (operation) {
       case '+':
         newResult += currentValue;
         break;
@@ -178,95 +174,43 @@ const CalculatorTS: React.FC = () => {
         newResult = currentValue;
     }
 
-    setResult(newResult);
-    setInput('');
-    return newResult;
-  };
-
-  const handleEquals = (): void => {
+const handleEquals = (): void => {
     if (operation && input !== '') {
       calculate();
       setOperation(null);
     }
   };
 
-  const handleClear = (): void => {
+const handleClear = (): void => {
     setInput('');
     setResult(0);
     setOperation(null);
   };
 
-  return (
-    <div
-      style={{
-        maxWidth: '300px',
-        margin: '50px auto',
-        padding: '20px',
-        border: '1px solid #ccc',
-        borderRadius: '10px',
-        backgroundColor: '#f5f5f5',
-      }}
-    >
-      <div
-        style={{
-          marginBottom: '20px',
-          padding: '10px',
-          backgroundColor: '#fff',
-          border: '1px solid #ddd',
-          borderRadius: '5px',
-          minHeight: '60px',
-          textAlign: 'right',
-        }}
-      >
-        <div style={{ color: '#666', fontSize: '14px' }}>
-          {operation && `${result} ${operation}`} {input}
-        </div>
-        <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
-          {input || result}
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '10px',
-        }}
-      >
-        <button onClick={() => handleNumberClick('7')}>7</button>
-        <button onClick={() => handleNumberClick('8')}>8</button>
-        <button onClick={() => handleNumberClick('9')}>9</button>
-        <button onClick={() => handleOperationClick('/')}>/</button>
-
-        <button onClick={() => handleNumberClick('4')}>4</button>
-        <button onClick={() => handleNumberClick('5')}>5</button>
-        <button onClick={() => handleNumberClick('6')}>6</button>
-        <button onClick={() => handleOperationClick('*')}>*</button>
-
-        <button onClick={() => handleNumberClick('1')}>1</button>
-        <button onClick={() => handleNumberClick('2')}>2</button>
-        <button onClick={() => handleNumberClick('3')}>3</button>
-        <button onClick={() => handleOperationClick('-')}>-</button>
-
-        <button onClick={() => handleNumberClick('0')}>0</button>
-        <button onClick={() => handleNumberClick('.')}>.</button>
-        <button onClick={handleEquals}>=</button>
-        <button onClick={() => handleOperationClick('+')}>+</button>
-
-        <button
-          onClick={handleClear}
-          style={{
-            gridColumn: 'span 4',
-            backgroundColor: '#ff4444',
-            color: 'white',
-          }}
-        >
-          CLEAR
-        </button>
-      </div>
-    </div>
-  );
-};
-
 export default CalculatorTS;
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

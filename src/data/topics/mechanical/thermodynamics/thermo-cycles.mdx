@@ -1,4 +1,4 @@
-# ♻️ Thermodynamic Cycles
+# ♻ Thermodynamic Cycles
 
 A thermodynamic cycle is a series of thermodynamic processes that return a
 system to its initial state.
@@ -14,13 +14,14 @@ Thermodynamic cycles form the foundation of:
 - Air conditioners
 - Gas turbines
 
-## 🎯 What is a Thermodynamic Cycle?
+## What is a Thermodynamic Cycle?
 
 A thermodynamic cycle begins at an initial state and passes through several
 processes before returning to the same state.
 
 Since the system returns to its original condition:
 
+// Example demonstrating ♻ Thermodynamic Cycles.
 ```
 ΔU = 0
 ```
@@ -31,14 +32,16 @@ Where:
 
 According to the First Law:
 
+// Example demonstrating ♻ Thermodynamic Cycles.
 ```
 Q = W
 ```
 
 Net heat transfer equals net work done over an entire cycle.
 
-## 🔄 Basic Cycle Representation
+## Basic Cycle Representation
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart LR
     A[State 1]
@@ -46,7 +49,7 @@ flowchart LR
     C[State 3]
     D[State 4]
 
-    A --> B
+A --> B
     B --> C
     C --> D
     D --> A
@@ -54,7 +57,7 @@ flowchart LR
 
 The system continuously repeats this sequence.
 
-## ⚙️ Why Are Thermodynamic Cycles Important?
+## ⚙ Why Are Thermodynamic Cycles Important?
 
 Most engineering systems operate in cycles.
 
@@ -68,11 +71,11 @@ Fuel burns repeatedly to produce power.
 
 Steam continuously circulates through the system.
 
-### ❄️ Refrigerator
+### ❄ Refrigerator
 
 Refrigerant repeatedly absorbs and rejects heat.
 
-### ✈️ Gas Turbine
+### ✈ Gas Turbine
 
 Air continuously undergoes compression, heating, and expansion.
 
@@ -87,6 +90,7 @@ A heat engine converts thermal energy into useful work.
 3. Remaining heat is rejected to a low-temperature sink.
 4. The cycle repeats.
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart TD
     HS[High Temperature Source]
@@ -94,18 +98,19 @@ flowchart TD
     LS[Low Temperature Sink]
     W[Useful Work]
 
-    HS --> HE
+HS --> HE
     HE --> W
     HE --> LS
 ```
 
-## ❄️ Refrigeration Cycle
+## ❄ Refrigeration Cycle
 
 A refrigeration cycle works in the opposite direction of a heat engine.
 
 It uses work input to transfer heat from a low-temperature region to a
 high-temperature region.
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart TD
     C[Cold Region]
@@ -113,12 +118,12 @@ flowchart TD
     H[Hot Region]
     W[Work Input]
 
-    C --> R
+C --> R
     W --> R
     R --> H
 ```
 
-## 📊 Types of Thermodynamic Cycles
+## Types of Thermodynamic Cycles
 
 Thermodynamic cycles are broadly classified into two categories.
 
@@ -126,19 +131,18 @@ Thermodynamic cycles are broadly classified into two categories.
 
 Power cycles produce work output.
 
-Examples:
-
 - Carnot Cycle
 - Rankine Cycle
 - Otto Cycle
 - Diesel Cycle
 - Brayton Cycle
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart TD
     P[Power Cycles]
 
-    P --> C[Carnot]
+P --> C[Carnot]
     P --> R[Rankine]
     P --> O[Otto]
     P --> D[Diesel]
@@ -149,22 +153,19 @@ flowchart TD
 
 Refrigeration cycles consume work to move heat.
 
-Examples:
-
 - Vapor Compression Cycle
 - Carnot Refrigeration Cycle
 - Absorption Refrigeration Cycle
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart TD
     R[Refrigeration Cycles]
 
-    R --> V[Vapor Compression]
+R --> V[Vapor Compression]
     R --> C[Carnot Refrigeration]
     R --> A[Absorption Cycle]
 ```
-
-## 🌡️ Reversible and Irreversible Cycles
 
 ### Reversible Cycle
 
@@ -191,12 +192,13 @@ Sources of irreversibility:
 - Fluid resistance
 - Turbulence
 
+<!-- Visual flow for ♻ Thermodynamic Cycles. -->
 ```mermaid
 flowchart LR
     R[Reversible Cycle]
     I[Irreversible Cycle]
 
-    R --> E1[Maximum Efficiency]
+R --> E1[Maximum Efficiency]
     I --> E2[Efficiency Losses]
 ```
 
@@ -205,19 +207,6 @@ flowchart LR
 A cycle is often represented on a Pressure-Volume diagram.
 
 The enclosed area represents net work done.
-
-```mermaid
-flowchart LR
-    A[State 1]
-    B[State 2]
-    C[State 3]
-    D[State 4]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> A
-```
 
 ### Important Observation
 
@@ -228,8 +217,6 @@ flowchart LR
 
 The Carnot Cycle is an ideal cycle with the highest possible efficiency between
 two temperatures.
-
-Characteristics:
 
 - Fully reversible
 - No entropy generation
@@ -250,8 +237,6 @@ Main components:
 - Condenser
 - Pump
 
-Applications:
-
 - Thermal power stations
 - Nuclear power plants
 
@@ -266,8 +251,6 @@ Processes include:
 - Expansion
 - Exhaust
 
-Applications:
-
 - Cars
 - Motorcycles
 - Small gasoline engines
@@ -276,37 +259,30 @@ Applications:
 
 The Diesel Cycle represents compression ignition engines.
 
-Applications:
-
 - Trucks
 - Buses
 - Heavy machinery
 - Generators
 
-## ✈️ Brayton Cycle
+## ✈ Brayton Cycle
 
 The Brayton Cycle is used in gas turbines and jet engines.
-
-Main components:
 
 - Compressor
 - Combustion chamber
 - Turbine
 
-Applications:
-
 - Aircraft engines
 - Gas turbine power plants
 
-## ⚡ Efficiency of a Cycle
+## Efficiency of a Cycle
 
 Thermal efficiency measures how effectively heat is converted into work.
 
+// Example demonstrating ♻ Thermodynamic Cycles.
 ```
 η = Wnet / Qin
 ```
-
-Where:
 
 - η = Thermal Efficiency
 - Wnet = Net Work Output
@@ -317,8 +293,6 @@ Higher efficiency means:
 - More useful work
 - Less wasted energy
 
-## 🏭 Applications of Thermodynamic Cycles
-
 ### 🚗 Automobile Industry
 
 Used in petrol and diesel engines.
@@ -327,19 +301,19 @@ Used in petrol and diesel engines.
 
 Used in thermal, nuclear, and gas turbine power plants.
 
-### ✈️ Aerospace Industry
+### ✈ Aerospace Industry
 
 Used in aircraft propulsion systems.
 
-### ❄️ Refrigeration and Air Conditioning
+### ❄ Refrigeration and Air Conditioning
 
 Used to transfer heat efficiently.
 
-### ⚙️ Industrial Systems
+### ⚙ Industrial Systems
 
 Used in turbines, compressors, and process plants.
 
-## 💡 Key Points
+## Key Points
 
 ✅ A thermodynamic cycle returns the system to its initial state.
 
@@ -360,3 +334,12 @@ A thermodynamic cycle is a sequence of thermodynamic processes that returns a
 system to its original state. These cycles form the basis of heat engines, power
 plants, refrigerators, air conditioners, and gas turbines. The most important
 cycles include Carnot, Rankine, Otto, Diesel, and Brayton cycles.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

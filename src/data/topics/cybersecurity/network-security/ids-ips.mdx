@@ -6,7 +6,7 @@ Prevention Systems (IPS) act as the security cameras and armed guards. 🕵️�
 deeply analyze traffic patterns and payloads to detect and thwart active
 attacks, malware, and policy violations that bypass perimeter firewalls.
 
-## ⚖️ Understanding the Difference: IDS vs. IPS
+## ⚖ Understanding the Difference: IDS vs. IPS
 
 The core distinction lies in their response capabilities. Here is a breakdown of
 how they compare:
@@ -19,6 +19,7 @@ how they compare:
 | **Advantage**         | Cannot cause network outages or drop legitimate traffic (no false positive blocking). | Stops threats in real-time before they reach the target.                                      |
 | **Disadvantage**      | Cannot stop an attack in real-time; only reports that an attack has occurred.         | False positives can block legitimate traffic (self-inflicted DoS). Introduces latency.        |
 
+<!-- Visual flow for 🚨 Intrusion Detection and Prevention Systems (IDS/IPS). -->
 ```mermaid
 graph LR
     subgraph IPS Deployment: In-Line
@@ -29,7 +30,7 @@ graph LR
         style IPS fill:#ff9999,stroke:#333,stroke-width:2px
     end
 
-    subgraph IDS Deployment: Out-of-Band
+subgraph IDS Deployment: Out-of-Band
         Internet2((🌐 Internet)) --> FW2[🧱 Firewall]
         FW2 --> Switch2[🔀 Core Switch]
         Switch2 --> PCs2[💻 Endpoints]
@@ -40,7 +41,7 @@ graph LR
 
 ---
 
-## 🏗️ Types of IDS/IPS Architecture
+## Types of IDS/IPS Architecture
 
 IDS/IPS solutions are broadly categorized by where they are deployed and what
 data they analyze.
@@ -73,8 +74,6 @@ Monitors the radio spectrum for wireless network threats.
 - **Focus:** Detects rogue access points, deauthentication attacks, MAC
   spoofing, and misconfigured access points.
 
----
-
 ## 🔬 Detection Methodologies
 
 How do these systems actually know what is malicious? They employ several
@@ -90,8 +89,6 @@ distinct methodologies, often in combination.
 > protocol analysis to decode the packet, signature-matching for known threats,
 > and anomaly detection for unusual behavior.
 
----
-
 ## 🥷 Evasion Techniques and Countermeasures
 
 Attackers constantly develop techniques to bypass IDS/IPS analysis. Security
@@ -104,15 +101,13 @@ engineers must understand these to configure sensors correctly.
 | **Obfuscation/Encoding** | Encoding the payload (e.g., URL encoding `%2e%2e%2f`, Base64, Hex) so the literal signature doesn't match.           | **Protocol Normalization:** The IDS decodes and normalizes payloads (e.g., converting everything to raw ASCII) before matching. |
 | **Encryption**           | Hiding the attack inside an HTTPS or VPN tunnel; the IDS only sees encrypted gibberish.                              | **TLS/SSL Decryption:** Utilizing a proxy or NGFW to decrypt, inspect, and re-encrypt the traffic.                              |
 
----
-
 ## 🏊 Deep Dive: Snort and Suricata
 
 **Snort** 🐽 is one of the oldest and most widely used open-source NIDS/NIPS
 engines. **Suricata** 🐿️ is a modern alternative designed with native
 multi-threading and built-in protocol extraction.
 
-### 📝 Understanding Snort Signatures
+### Understanding Snort Signatures
 
 A Snort rule is divided into two parts: the **rule header** (action, protocol,
 IP addresses, ports) and the **rule options** (alert messages, payload
@@ -120,6 +115,7 @@ inspection criteria).
 
 **Example Snort Rule:**
 
+// Example demonstrating 🚨 Intrusion Detection and Prevention Systems (IDS/IPS).
 ```snort
 alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS $HTTP_PORTS ( \
     msg:"ET EXPLOIT Possible Apache Log4j RCE Attempt"; \
@@ -145,8 +141,6 @@ alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS $HTTP_PORTS ( \
 - `pcre:`: Uses Perl Compatible Regular Expressions for more complex pattern
   matching.
 - `sid:2034647`: The unique Snort ID for this specific signature.
-
----
 
 ## 🦉 Zeek (formerly Bro): The Network Security Monitor
 
@@ -194,3 +188,12 @@ to secure modern networks against sophisticated adversaries. While they require
 significant tuning and operational overhead, their ability to peer into the
 payloads of network traffic makes them an indispensable layer of defense in
 depth. 🛡️
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

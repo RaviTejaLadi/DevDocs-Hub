@@ -1,5 +1,6 @@
 # SQL
 
+<!-- Visual flow for SQL. -->
 ```mermaid
 flowchart LR
     Client["Client / App"]
@@ -41,6 +42,7 @@ flowchart LR
 | `FULL JOIN`  | Returns all rows when there’s a match in either table         | `SELECT e.name, d.name FROM employees e FULL JOIN departments d ON e.dept_id = d.id;`  |
 | `CROSS JOIN` | Returns the Cartesian product of both tables                  | `SELECT e.name, d.name FROM employees e CROSS JOIN departments d;`                     |
 
+<!-- Visual flow for SQL. -->
 ```mermaid
 flowchart TB
     subgraph joins["SQL Join types (conceptual)"]
@@ -77,3 +79,20 @@ flowchart TB
 
 This cheat sheet covers the most essential SQL commands, clauses, joins,
 functions, and constraints. Let me know if you'd like any additions!
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## A Strong Answer Pattern
+
+Start with a precise definition, then explain the mechanism, trade-offs, and one concrete example. If there are alternatives, say what constraint would make each alternative preferable. This shows understanding without turning the answer into a list of disconnected terms.
+
+## Follow-up Questions
+
+Be ready for “what happens when this fails?”, “what is the complexity?”, “what changes at scale?”, and “what are the trade-offs?”. These questions test whether you can apply the concept rather than repeat its definition.

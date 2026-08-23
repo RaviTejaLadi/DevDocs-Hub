@@ -62,6 +62,7 @@ else.
 - **The HTML Attribute:** The key to this is the global attribute
   `draggable="true"`.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div draggable="true">Task Card #1</div>
 ```
@@ -89,3 +90,20 @@ the UI freezes (you can't click buttons).
 
 - **Result:** The user interface remains smooth and clickable even while the
   site is processing massive amounts of data in the background.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.

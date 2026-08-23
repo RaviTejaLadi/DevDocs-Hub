@@ -1,7 +1,8 @@
-# **React Query Hooks Syntax Guide**
+# React Query Hooks Syntax Guide
 
 ## 1. useQuery - Fetch Data
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const {
   data, // The successful response data
@@ -26,13 +27,14 @@ const {
 });
 ```
 
-**Use Case:**  
+**Use Case:**
 Fetching data that you **READ** from the server (GET requests).
 
 ---
 
 ## 2. useMutation - Modify Data
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const {
   mutate, // Function to trigger mutation
@@ -54,19 +56,19 @@ const {
 
 **Usage Example:**
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 mutate({ id: 1, name: 'New Name' });
 // or with async/await:
 const result = await mutateAsync({ id: 1, name: 'New Name' });
 ```
 
-**Use Case:**  
+**Use Case:**
 Creating, updating, or deleting data (POST/PUT/PATCH/DELETE requests).
-
----
 
 ## 3. useQueryClient - Access Query Client
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const queryClient = useQueryClient();
 
@@ -86,13 +88,12 @@ queryClient.prefetchQuery({
 });
 ```
 
-**Use Case:**  
+**Use Case:**
 Managing cache, triggering refetches, or optimistic updates.
-
----
 
 ## 4. useInfiniteQuery - Paginated/Lazy Data
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const {
   data, // Contains pages[] array
@@ -108,8 +109,7 @@ const {
 });
 ```
 
-**Usage Example:**
-
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 // Render items
 {
@@ -127,13 +127,12 @@ const {
 </button>;
 ```
 
-**Use Case:**  
+**Use Case:**
 Infinite scroll, pagination, or chunked data loading.
-
----
 
 ## 5. useIsFetching - Global Loading Indicator
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const isFetching = useIsFetching();
 // Returns number of active fetches
@@ -144,13 +143,12 @@ const isPostsFetching = useIsFetching({
 });
 ```
 
-**Use Case:**  
+**Use Case:**
 Show a global loading spinner when any queries are fetching.
-
----
 
 ## 6. useQueries - Parallel Queries (Dynamic)
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 const results = useQueries({
   queries: [
@@ -161,15 +159,12 @@ const results = useQueries({
 // Returns array of query results
 ```
 
-**Use Case:**  
+**Use Case:**
 When you need to fetch multiple items in parallel with dynamic keys.
 
----
+### 1. Dependent Queries
 
-## Key Patterns
-
-### **1. Dependent Queries**
-
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 // Query runs only after userId is available
 const { data: user } = useQuery({
@@ -179,8 +174,9 @@ const { data: user } = useQuery({
 });
 ```
 
-### **2. Optimistic Updates**
+### 2. Optimistic Updates
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 useMutation({
   mutationFn: updateTodo,
@@ -196,8 +192,9 @@ useMutation({
 });
 ```
 
-### **3. Prefetching**
+### 3. Prefetching
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 // Prefetch data on hover
 <Link
@@ -213,12 +210,11 @@ useMutation({
 </Link>
 ```
 
----
-
 ## TypeScript Tip
 
 Always type your hooks for full safety:
 
+// Example demonstrating React Query Hooks Syntax Guide.
 ```tsx
 // For queries
 useQuery<Post[], Error>({...});
@@ -229,3 +225,20 @@ useMutation<ResponseData, Error, Variables>({...});
 
 These hooks cover 95% of React-Query use cases. The library handles caching,
 retries, deduping, and more automatically!
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.

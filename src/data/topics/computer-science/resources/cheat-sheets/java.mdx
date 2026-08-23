@@ -1,5 +1,6 @@
 # Java
 
+<!-- Visual flow for Java. -->
 ```mermaid
 flowchart TB
     Source[".java source"]
@@ -35,8 +36,6 @@ flowchart TB
 | `boolean` | 1 bit    | `true`/`false`     | `boolean flag = true;`   |
 | `char`    | 2 bytes  | Unicode characters | `char c = 'A';`          |
 
----
-
 ## Control Flow
 
 | **Statement**      | **Syntax**                                        | **Example**                       |
@@ -48,8 +47,6 @@ flowchart TB
 | **Do-While Loop**  | `do { ... } while (cond);`                        | `do { ... } while (x < 5);`       |
 | **Break/Continue** | `break;` / `continue;`                            | `if (x==5) break;`                |
 
----
-
 ## Arrays
 
 | **Operation**      | **Syntax**                       | **Example**               |
@@ -60,8 +57,6 @@ flowchart TB
 | **Access Element** | `arrName[index]`                 | `nums[0] = 10;`           |
 | **Length**         | `arrName.length`                 | `int len = nums.length;`  |
 
----
-
 ## Methods (Functions)
 
 | **Syntax**                              | **Example**                                  |
@@ -69,10 +64,9 @@ flowchart TB
 | `returnType methodName(params) { ... }` | `int add(int a, int b) { return a + b; }`    |
 | `void methodName() { ... }` (no return) | `void greet() { System.out.println("Hi"); }` |
 
----
-
 ## Object-Oriented Programming (OOP)
 
+<!-- Visual flow for Java. -->
 ```mermaid
 classDiagram
     class Parent {
@@ -95,8 +89,6 @@ classDiagram
 | **Method Overriding** | `@Override retType method() { ... }`   | `@Override void display() { ... }`             |
 | **Encapsulation**     | `private` fields + getters/setters     | `private int age; public int getAge() { ... }` |
 
----
-
 ## Exception Handling
 
 | **Keyword** | **Usage**                        | **Example**                               |
@@ -106,8 +98,6 @@ classDiagram
 | `finally`   | `finally { cleanup }`            | `finally { System.out.println("Done"); }` |
 | `throw`     | `throw new Exception("msg");`    | `throw new IOException("Error");`         |
 
----
-
 ## Collections Framework
 
 | **Collection** | **Syntax**                                  | **Example**                                        |
@@ -116,7 +106,30 @@ classDiagram
 | **HashMap**    | `HashMap<Key, Val> map = new HashMap<>();`  | `HashMap<String, Integer> ages = new HashMap<>();` |
 | **HashSet**    | `HashSet<Type> set = new HashSet<>();`      | `HashSet<Integer> nums = new HashSet<>();`         |
 
----
-
 This cheat sheet covers essential Java syntax in a tabular format for quick
 reference. Let me know if you'd like any additions! 🚀
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## A Strong Answer Pattern
+
+Start with a precise definition, then explain the mechanism, trade-offs, and one concrete example. If there are alternatives, say what constraint would make each alternative preferable. This shows understanding without turning the answer into a list of disconnected terms.
+
+## Follow-up Questions
+
+Be ready for “what happens when this fails?”, “what is the complexity?”, “what changes at scale?”, and “what are the trade-offs?”. These questions test whether you can apply the concept rather than repeat its definition.
+
+## Example Before Vocabulary
+
+When a concept is abstract, explain a small scenario first and name the pattern afterward. The example gives the terminology a useful mental model and makes the answer easier to recall under interview pressure.
+
+## Decision Trade-offs
+
+For interviews, avoid treating a technology or pattern as universally correct. State the requirement first, then explain the choice and the cost it introduces. A concise answer can mention one alternative and the condition that would make it preferable. This demonstrates engineering judgment: the goal is not to name the most advanced option, but to show that the decision follows from the constraints.

@@ -1,4 +1,4 @@
-# 🔧 Heat Engines
+# Heat Engines
 
 A heat engine is a device that converts **thermal energy (heat)** into
 **mechanical work**.
@@ -16,7 +16,7 @@ a cyclic manner.
 
 ---
 
-# 🎯 What is a Heat Engine?
+## What is a Heat Engine?
 
 A heat engine absorbs heat from a high-temperature source, converts part of that
 heat into useful work, and rejects the remaining heat to a low-temperature sink.
@@ -24,6 +24,7 @@ heat into useful work, and rejects the remaining heat to a low-temperature sink.
 Since complete conversion of heat into work is impossible, some heat must always
 be rejected according to the Second Law of Thermodynamics.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart TD
     HS[🔥 High Temperature Source]
@@ -31,18 +32,16 @@ flowchart TD
     LS[❄️ Low Temperature Sink]
     W[⚡ Useful Work]
 
-    HS -->|Heat Input Qin| HE
+HS -->|Heat Input Qin| HE
     HE -->|Work Output W| W
     HE -->|Heat Rejected Qout| LS
 ```
 
----
-
-# ⚙️ Basic Working Principle
+## ⚙ Basic Working Principle
 
 A heat engine operates through three main steps:
 
-### 1️⃣ Heat Absorption
+### 1⃣ Heat Absorption
 
 The engine absorbs heat from a high-temperature source.
 
@@ -52,29 +51,23 @@ Examples:
 - Steam from a boiler
 - Nuclear reactor heat
 
-### 2️⃣ Work Production
+### 2⃣ Work Production
 
 Part of the absorbed heat is converted into useful work.
-
-Examples:
 
 - Rotating turbine shaft
 - Moving piston
 - Propelling an aircraft
 
-### 3️⃣ Heat Rejection
+### 3⃣ Heat Rejection
 
 The remaining heat is rejected to a low-temperature sink.
-
-Examples:
 
 - Atmosphere
 - Cooling water
 - Condenser
 
----
-
-# 🌡️ Essential Components
+## 🌡 Essential Components
 
 Every heat engine requires three basic elements.
 
@@ -82,49 +75,43 @@ Every heat engine requires three basic elements.
 
 Provides thermal energy.
 
-Examples:
-
 - Combustion chamber
 - Boiler
 - Nuclear reactor
 
-## ⚙️ Working Substance
+## ⚙ Working Substance
 
 Transfers and converts energy.
-
-Examples:
 
 - Steam
 - Air
 - Combustion gases
 - Refrigerants
 
-## ❄️ Heat Sink
+## ❄ Heat Sink
 
 Receives rejected heat.
-
-Examples:
 
 - Cooling towers
 - Rivers
 - Atmosphere
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart LR
     A[Heat Source]
     B[Working Fluid]
     C[Heat Sink]
 
-    A --> B
+A --> B
     B --> C
 ```
 
----
-
-# 🔄 Heat Engine Cycle
+## Heat Engine Cycle
 
 Most heat engines operate continuously in a cycle.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart LR
     A[Heat Addition]
@@ -132,7 +119,7 @@ flowchart LR
     C[Work Production]
     D[Heat Rejection]
 
-    A --> B
+A --> B
     B --> C
     C --> D
     D --> A
@@ -140,12 +127,11 @@ flowchart LR
 
 The cycle repeats as long as heat is supplied.
 
----
-
-# ⚡ Energy Balance of a Heat Engine
+## Energy Balance of a Heat Engine
 
 According to the First Law of Thermodynamics:
 
+// Example demonstrating Heat Engines.
 ```
 Qin = W + Qout
 ```
@@ -159,41 +145,38 @@ Where:
 This equation shows that all supplied heat is either converted into work or
 rejected.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart TD
     Qin[Heat Input]
 
-    Qin --> W[Useful Work]
+Qin --> W[Useful Work]
     Qin --> Qout[Rejected Heat]
 ```
 
----
-
-# 📊 Thermal Efficiency
+## Thermal Efficiency
 
 Thermal efficiency measures how effectively a heat engine converts heat into
 work.
 
+// Example demonstrating Heat Engines.
 ```
 η = W / Qin
 ```
 
 or
 
+// Example demonstrating Heat Engines.
 ```
 η = (Qin - Qout) / Qin
 ```
-
-Where:
 
 - η = Thermal Efficiency
 - W = Net Work Output
 - Qin = Heat Input
 - Qout = Heat Rejected
 
----
-
-# 🧮 Example
+## 🧮 Example
 
 Suppose:
 
@@ -202,28 +185,34 @@ Suppose:
 
 Work output:
 
+// Example demonstrating Heat Engines.
 ```
 W = Qin - Qout
 ```
 
+// Example demonstrating Heat Engines.
 ```
 W = 1000 - 600
 ```
 
+// Example demonstrating Heat Engines.
 ```
 W = 400 kJ
 ```
 
 Efficiency:
 
+// Example demonstrating Heat Engines.
 ```
 η = 400 / 1000
 ```
 
+// Example demonstrating Heat Engines.
 ```
 η = 0.4
 ```
 
+// Example demonstrating Heat Engines.
 ```
 η = 40%
 ```
@@ -232,44 +221,40 @@ Efficiency:
 
 The heat engine converts 40% of supplied heat into useful work.
 
----
-
-# 🚫 Why Can't Efficiency Reach 100%?
+## 🚫 Why Can't Efficiency Reach 100%?
 
 According to the Second Law of Thermodynamics:
 
 - Some heat must always be rejected.
 - Complete conversion of heat into work is impossible.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart TD
     A[Heat Input]
     B[Useful Work]
     C[Waste Heat]
 
-    A --> B
+A --> B
     A --> C
 ```
 
 Therefore:
 
+// Example demonstrating Heat Engines.
 ```
 η < 100%
 ```
 
 for all real heat engines.
 
----
-
-# 🏭 Types of Heat Engines
+## 🏭 Types of Heat Engines
 
 Heat engines are broadly classified into two categories.
 
 ## 🔥 External Combustion Engines (ECE)
 
 Fuel burns outside the working fluid.
-
-Examples:
 
 - Steam engines
 - Steam turbines
@@ -280,6 +265,7 @@ Fuel heats water in a boiler.
 
 Steam then produces work.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart LR
     Fuel --> Boiler
@@ -287,32 +273,23 @@ flowchart LR
     Steam --> Turbine
 ```
 
----
-
 ## 💥 Internal Combustion Engines (ICE)
 
 Fuel burns inside the engine cylinder.
-
-Examples:
 
 - Petrol engines
 - Diesel engines
 - Gasoline generators
 
-### Working Principle
-
 Fuel-air mixture burns directly inside the cylinder.
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart LR
     Fuel --> Combustion
     Combustion --> Expansion
     Expansion --> Work
 ```
-
----
-
-# 🚗 Examples of Heat Engines
 
 ## Petrol Engine
 
@@ -327,8 +304,6 @@ Applications:
 
 Works on the Diesel Cycle.
 
-Applications:
-
 - Trucks
 - Buses
 - Generators
@@ -337,22 +312,16 @@ Applications:
 
 Works on the Rankine Cycle.
 
-Applications:
-
 - Power plants
 
 ## Gas Turbine
 
 Works on the Brayton Cycle.
 
-Applications:
-
 - Aircraft engines
 - Power generation
 
----
-
-# 🌍 Heat Engine and Thermodynamic Cycles
+## 🌍 Heat Engine and Thermodynamic Cycles
 
 Different heat engines operate on different cycles.
 
@@ -364,9 +333,7 @@ Different heat engines operate on different cycles.
 | Gas Turbine   | Brayton Cycle |
 | Ideal Engine  | Carnot Cycle  |
 
----
-
-# ⚠️ Sources of Efficiency Losses
+## ⚠ Sources of Efficiency Losses
 
 Real heat engines experience losses due to:
 
@@ -377,19 +344,16 @@ Real heat engines experience losses due to:
 - Mechanical wear
 - Exhaust losses
 
+<!-- Visual flow for Heat Engines. -->
 ```mermaid
 flowchart TD
     A[Engine Losses]
 
-    A --> B[Friction]
+A --> B[Friction]
     A --> C[Heat Loss]
     A --> D[Exhaust Loss]
     A --> E[Mechanical Loss]
 ```
-
----
-
-# 🏭 Applications of Heat Engines
 
 ### 🚗 Transportation
 
@@ -398,26 +362,24 @@ flowchart TD
 - Trains
 - Ships
 
-### ✈️ Aerospace
+### ✈ Aerospace
 
 - Jet engines
 - Aircraft turbines
 
-### ⚡ Power Generation
+### Power Generation
 
 - Steam power plants
 - Gas turbine plants
 - Nuclear power stations
 
-### 🏗️ Industrial Equipment
+### Industrial Equipment
 
 - Compressors
 - Heavy machinery
 - Manufacturing systems
 
----
-
-# 📊 Heat Engine vs Refrigerator
+## Heat Engine vs Refrigerator
 
 | Feature   | Heat Engine    | Refrigerator  |
 | --------- | -------------- | ------------- |
@@ -426,9 +388,7 @@ flowchart TD
 | Heat Flow | Hot → Cold     | Cold → Hot    |
 | Main Goal | Generate Power | Cooling       |
 
----
-
-# 💡 Key Points
+## Key Points
 
 ✅ A heat engine converts heat into mechanical work.
 
@@ -443,12 +403,19 @@ flowchart TD
 ✅ Otto, Diesel, Rankine, Brayton, and Carnot cycles are important heat engine
 cycles.
 
----
-
-# 📚 Quick Summary
+## 📚 Quick Summary
 
 A heat engine is a device that converts thermal energy into useful mechanical
 work. It absorbs heat from a high-temperature source, converts part of it into
 work, and rejects the remaining heat to a low-temperature sink. Heat engines are
 the foundation of automobiles, turbines, power plants, aircraft engines, and
 many industrial systems.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

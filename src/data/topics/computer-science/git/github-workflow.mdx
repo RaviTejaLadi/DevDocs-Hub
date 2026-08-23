@@ -13,6 +13,7 @@ Whether you are working at a massive tech company or contributing to an
 open-source project, you will follow this exact lifecycle sequence for almost
 every single feature you build.
 
+<!-- Visual flow for 🐙 GitHub Workflow. -->
 ```mermaid
 graph LR
     A[1. Create Branch] --> B[2. Add Commits]
@@ -23,9 +24,7 @@ graph LR
 
 ```
 
----
-
-## 🛠️ Walking Through the Workflow in Production
+## 🛠 Walking Through the Workflow in Production
 
 Let's break down exactly how this look in action inside your terminal and on the
 GitHub dashboard:
@@ -35,6 +34,7 @@ GitHub dashboard:
 Always keep your `main` branch clean and deployable. Before writing any code,
 create a dedicated branch with a descriptive name.
 
+# Basic example showing the core idea.
 ```bash
 // Switch to main and pull latest changes first
 git checkout main
@@ -42,8 +42,6 @@ git pull origin main
 
 // Create and switch to your feature branch
 git checkout -b feat-user-profile
-
-```
 
 ### 2. Make Changes and Commit Locally 💾
 
@@ -55,19 +53,16 @@ focused commits.
 git add components/Profile.jsx
 git commit -m "feat: add user profile avatar component"
 
-```
-
 ### 3. Push and Open a Pull Request (PR) 🔃
 
 Push your branch up to GitHub to share it with your team. Once uploaded,
 navigate to the GitHub dashboard interface to open a **Pull Request**—a formal
 request to merge your branch into `main`.
 
+# Basic example showing the core idea.
 ```bash
 // Push your branch and link it upstream to GitHub
 git push -u origin feat-user-profile
-
-```
 
 ### 4. Code Review and Discussion 👀
 
@@ -94,6 +89,27 @@ git checkout main
 git pull origin main
 git branch -d feat-user-profile
 
-```
+## Quick Reference
 
----
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

@@ -1,6 +1,6 @@
-# Hash Tables (Hash Maps) in JavaScript 📚
+# Hash Tables (Hash Maps) in JavaScript
 
-## Definition 🎯
+## Definition
 
 A **Hash Table** (also called Hash Map) is a data structure that stores
 key-value pairs and uses a hash function to compute an index where each
@@ -13,8 +13,6 @@ tables that allow you to store and retrieve data using keys instead of numeric
 indices.
 
 ---
-
-## Key Characteristics ⚡
 
 ### Time Complexity 🕐
 
@@ -34,12 +32,9 @@ indices.
 - **No Order Guarantee**: Keys are not stored in insertion order (except in
   JavaScript Map)
 
----
-
-## Syntax/Implementation 💻
-
 ### Using JavaScript Objects
 
+// Basic example showing the core idea.
 ```javascript
 // Creating a hash table using object literal
 const hashTable = {};
@@ -55,6 +50,7 @@ console.log(hashTable.key2); // "value2"
 
 ### Using JavaScript Map
 
+// Basic example showing the core idea.
 ```javascript
 // Creating a hash table using Map
 const hashMap = new Map();
@@ -68,12 +64,9 @@ console.log(hashMap.get('key1')); // "value1"
 console.log(hashMap.get('key2')); // "value2"
 ```
 
----
-
-## Visualization 🎨
-
 ### How Hash Tables Work:
 
+<!-- Visual flow for Hash Tables (Hash Maps) in JavaScript. -->
 ```mermaid
 flowchart LR
   K["Key"] --> H["Hash Function"] --> I["Index"] --> V["Value"]
@@ -86,6 +79,7 @@ flowchart LR
 3. **Index**: Stores value at array position 5
 4. **Storage**: ["", "", "", "", "", "red fruit", ...]
 
+<!-- Visual flow for Hash Tables (Hash Maps) in JavaScript. -->
 ```mermaid
 flowchart TB
   I0["Index 0: empty"]
@@ -96,8 +90,6 @@ flowchart TB
   I5["Index 5: apple"]
   I0 --> I1 --> I2 --> I3 --> I4 --> I5
 ```
-
----
 
 ## Example 🌟
 
@@ -119,12 +111,9 @@ This is exactly how hash tables work - instant lookup without searching!
 - **Database Indexing**: Store record ID → record location
 - **Configuration Settings**: Store setting name → setting value
 
----
-
-## Code Example 🚀
-
 ### Simple Hash Table Implementation
 
+// Basic example showing the core idea.
 ```javascript
 class SimpleHashTable {
   constructor(size = 10) {
@@ -132,7 +121,7 @@ class SimpleHashTable {
     this.table = new Array(size);
   }
 
-  // Simple hash function
+// Simple hash function
   hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
@@ -141,20 +130,20 @@ class SimpleHashTable {
     return hash % this.size;
   }
 
-  // Insert key-value pair
+// Insert key-value pair
   set(key, value) {
     const index = this.hash(key);
     this.table[index] = [key, value];
   }
 
-  // Get value by key
+// Get value by key
   get(key) {
     const index = this.hash(key);
     const item = this.table[index];
     return item ? item[1] : undefined;
   }
 
-  // Remove key-value pair
+// Remove key-value pair
   remove(key) {
     const index = this.hash(key);
     this.table[index] = undefined;
@@ -188,14 +177,11 @@ const user = userDB.get('alice123');
 console.log(`Welcome ${user.name}!`); // "Welcome Alice!"
 ```
 
----
-
-## Common Pitfalls ⚠️
-
-### 1. **Hash Collisions** 💥
+### 1. Hash Collisions 💥
 
 **Problem**: Different keys produce the same hash value
 
+// Basic example showing the core idea.
 ```javascript
 // Bad: Simple hash function causing collisions
 hash(key) {
@@ -205,10 +191,11 @@ hash(key) {
 
 **Solution**: Use better hash functions or handle collisions with chaining
 
-### 2. **Key Type Confusion** 🔄
+### 2. Key Type Confusion
 
 **Problem**: Using objects as keys in regular JavaScript objects
 
+// Basic example showing the core idea.
 ```javascript
 const obj = {};
 const key1 = { id: 1 };
@@ -220,10 +207,11 @@ console.log(obj[key2]); // undefined (different object references)
 
 **Solution**: Use `Map` for object keys or convert objects to strings
 
-### 3. **Memory Leaks** 🕳️
+### 3. Memory Leaks 🕳
 
 **Problem**: Not cleaning up unused keys
 
+// Basic example showing the core idea.
 ```javascript
 const cache = new Map();
 // Adding many items without cleanup
@@ -235,10 +223,11 @@ for (let i = 0; i < 1000000; i++) {
 
 **Solution**: Implement cleanup mechanisms or use `WeakMap` when appropriate
 
-### 4. **Assuming Order** 📋
+### 4. Assuming Order 📋
 
 **Problem**: Expecting keys to maintain insertion order in objects
 
+// Basic example showing the core idea.
 ```javascript
 const obj = { 3: 'three', 1: 'one', 2: 'two' };
 console.log(Object.keys(obj)); // May not be ["3", "1", "2"]
@@ -246,10 +235,11 @@ console.log(Object.keys(obj)); // May not be ["3", "1", "2"]
 
 **Solution**: Use `Map` if you need guaranteed insertion order
 
-### 5. **Performance Assumptions** 🐌
+### 5. Performance Assumptions 🐌
 
 **Problem**: Thinking all operations are always O(1)
 
+// Basic example showing the core idea.
 ```javascript
 // In worst case (many collisions), this could be O(n)
 const value = hashTable.get('key');
@@ -258,7 +248,14 @@ const value = hashTable.get('key');
 **Solution**: Use quality hash functions and monitor performance with large
 datasets
 
----
-
 **Pro Tip** 💡: In JavaScript, use `Map` for most hash table needs as it handles
 edge cases better than plain objects and maintains insertion order!
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

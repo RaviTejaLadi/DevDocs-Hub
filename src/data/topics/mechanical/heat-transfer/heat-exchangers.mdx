@@ -1,4 +1,4 @@
-# ♨️ Heat Exchangers
+# ♨ Heat Exchangers
 
 A heat exchanger is a device used to transfer heat from one fluid to another
 without allowing the fluids to mix.
@@ -15,7 +15,7 @@ chemical industries, and HVAC systems.
 - Water heaters
 - Power plant condensers
 
-## 🎯 Why Heat Exchangers Are Needed
+## Why Heat Exchangers Are Needed
 
 Heat exchangers help:
 
@@ -29,17 +29,18 @@ Heat exchangers help:
 
 ✅ Control process temperatures
 
+<!-- Visual flow for ♨ Heat Exchangers. -->
 ```mermaid
 flowchart LR
     HotFluid[Hot Fluid 🔥]
     --> HeatTransfer[Heat Transfer Surface]
     --> ColdFluid[Cold Fluid ❄️]
 
-    HeatTransfer --> Cooling[Hot Fluid Cools]
+HeatTransfer --> Cooling[Hot Fluid Cools]
     HeatTransfer --> Heating[Cold Fluid Heats]
 ```
 
-## ⚙️ Basic Working Principle
+## ⚙ Basic Working Principle
 
 Heat always flows from the hotter fluid to the colder fluid.
 
@@ -51,6 +52,7 @@ Heat transfer occurs through:
 2. Conduction through wall
 3. Convection from wall to cold fluid
 
+<!-- Visual flow for ♨ Heat Exchangers. -->
 ```mermaid
 flowchart LR
     A[Hot Fluid 🔥]
@@ -60,17 +62,16 @@ flowchart LR
     --> E[Cold Fluid ❄️]
 ```
 
-## 🏗️ Classification of Heat Exchangers
-
-### 1️⃣ Parallel Flow Heat Exchanger
+### 1⃣ Parallel Flow Heat Exchanger
 
 Both fluids move in the same direction.
 
+<!-- Visual flow for ♨ Heat Exchangers. -->
 ```mermaid
 flowchart LR
     HotIn[Hot In 🔥] --> HotOut[Hot Out]
 
-    ColdIn[Cold In ❄️] --> ColdOut[Cold Out]
+ColdIn[Cold In ❄️] --> ColdOut[Cold Out]
 ```
 
 ### Characteristics
@@ -86,18 +87,13 @@ flowchart LR
 
 ---
 
-### 2️⃣ Counter Flow Heat Exchanger
+### 2⃣ Counter Flow Heat Exchanger
 
 Fluids move in opposite directions.
 
-```mermaid
-flowchart LR
-    HotIn[Hot In 🔥] --> HotOut[Hot Out]
-
-    ColdOut[Cold Out] --> ColdIn[Cold In ❄️]
+ColdOut[Cold Out] --> ColdIn[Cold In ❄️]
+// Example demonstrating ♨ Heat Exchangers.
 ```
-
-### Characteristics
 
 ✅ Higher efficiency
 
@@ -105,17 +101,13 @@ flowchart LR
 
 ✅ Greater heat transfer rate
 
-### Applications
-
 - Industrial heat exchangers
 - Power plants
 - Chemical processing units
 
 Counter-flow arrangement is generally preferred in engineering systems.
 
----
-
-### 3️⃣ Cross Flow Heat Exchanger
+### 3⃣ Cross Flow Heat Exchanger
 
 Fluids move perpendicular to each other.
 
@@ -124,17 +116,13 @@ flowchart TB
     HotFluid[Hot Fluid 🔥]
     --> Down
 
-    ColdFluid[Cold Fluid ❄️]
+ColdFluid[Cold Fluid ❄️]
     --> Right
 ```
-
-### Applications
 
 - Automobile radiators
 - Air conditioning coils
 - Cooling towers
-
-## 🔥 Types Based on Construction
 
 ### Double Pipe Heat Exchanger
 
@@ -145,8 +133,9 @@ flowchart LR
     A[Inner Pipe]
     B[Outer Pipe]
 
-    A --> HeatTransfer
+A --> HeatTransfer
     B --> HeatTransfer
+// Example demonstrating ♨ Heat Exchangers.
 ```
 
 #### Advantages
@@ -157,8 +146,6 @@ flowchart LR
 #### Disadvantages
 
 - Limited heat transfer area
-
----
 
 ### Shell and Tube Heat Exchanger
 
@@ -177,16 +164,14 @@ flowchart LR
     --> Tubes[Tube Bundle]
     --> Outlet[Outlet]
 
-    Tubes --> HeatTransfer[Heat Exchange]
+Tubes --> HeatTransfer[Heat Exchange]
+// Example demonstrating ♨ Heat Exchangers.
 ```
 
-#### Applications
 
 - Power plants
 - Oil refineries
 - Chemical industries
-
----
 
 ### Plate Heat Exchanger
 
@@ -198,17 +183,14 @@ flowchart LR
     Plate2[Plate]
     Plate3[Plate]
     Plate4[Plate]
+// Example demonstrating ♨ Heat Exchangers.
 ```
-
-#### Advantages
 
 ✅ High efficiency
 
 ✅ Compact size
 
 ✅ Large heat transfer area
-
-#### Applications
 
 - Food processing
 - Refrigeration
@@ -220,6 +202,7 @@ Heat transfer rate is:
 
 ```
 Q = mCp(Tin - Tout)
+// Example demonstrating ♨ Heat Exchangers.
 ```
 
 Where:
@@ -230,7 +213,7 @@ Where:
 - Tin = Inlet temperature
 - Tout = Outlet temperature
 
-## 🌡️ Log Mean Temperature Difference (LMTD)
+## 🌡 Log Mean Temperature Difference (LMTD)
 
 Temperature difference changes throughout a heat exchanger.
 
@@ -238,30 +221,28 @@ To account for this variation, engineers use LMTD.
 
 ```
 LMTD = (ΔT₁ - ΔT₂) / ln(ΔT₁/ΔT₂)
+// Example demonstrating ♨ Heat Exchangers.
 ```
-
-Where:
 
 - ΔT₁ = Temperature difference at one end
 - ΔT₂ = Temperature difference at the other end
 
 Higher LMTD means better heat transfer potential.
 
-## ⚡ Effectiveness of Heat Exchanger
+## Effectiveness of Heat Exchanger
 
 Effectiveness indicates how well a heat exchanger performs compared to the
 maximum possible heat transfer.
 
 ```
 Effectiveness = Actual Heat Transfer / Maximum Possible Heat Transfer
+// Example demonstrating ♨ Heat Exchangers.
 ```
 
 Value ranges from:
 
 - 0 → No heat transfer
 - 1 → Perfect heat transfer
-
-## 🏭 Industrial Applications
 
 ### Power Plants
 
@@ -307,17 +288,18 @@ flowchart LR
     Engine[Engine 🔥]
     --> Coolant[Hot Coolant]
 
-    Coolant --> Radiator[Radiator]
+Coolant --> Radiator[Radiator]
 
-    Air[Cooling Air 🌬️]
+Air[Cooling Air 🌬️]
     --> Radiator
 
-    Radiator --> Engine
+Radiator --> Engine
+// Example demonstrating ♨ Heat Exchangers.
 ```
 
 This prevents engine overheating.
 
-## 📊 Comparison of Flow Arrangements
+## Comparison of Flow Arrangements
 
 | Feature             | Parallel Flow | Counter Flow | Cross Flow    |
 | ------------------- | ------------- | ------------ | ------------- |
@@ -326,7 +308,7 @@ This prevents engine overheating.
 | Temperature Control | Moderate      | Excellent    | Good          |
 | Industrial Usage    | Less          | Most Common  | Common        |
 
-## 📌 Key Points
+## Key Points
 
 ✅ Heat exchangers transfer heat between fluids without mixing them
 
@@ -341,3 +323,12 @@ This prevents engine overheating.
 ✅ LMTD is used to analyze heat exchanger performance
 
 ✅ Heat exchangers improve energy efficiency and reduce operating costs
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

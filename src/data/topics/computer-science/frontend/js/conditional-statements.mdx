@@ -6,6 +6,7 @@ The `if` statement executes code only when a specified condition is true.
 
 ### Syntax
 
+// Basic example showing the core idea.
 ```javascript
 if (condition) {
   // code to be executed if condition is true
@@ -14,6 +15,7 @@ if (condition) {
 
 ### Flow Diagram
 
+# Basic example showing the core idea.
 ```bash
 START
   ↓
@@ -26,6 +28,7 @@ END
 
 ### Example
 
+// Basic example showing the core idea.
 ```javascript
 let age = 18;
 if (age >= 18) {
@@ -48,8 +51,7 @@ if (age >= 18) {
 The `if-else` statement provides an alternative path when the condition is
 false.
 
-### Syntax
-
+// Basic example showing the core idea.
 ```javascript
 if (condition) {
   // code if condition is true
@@ -58,8 +60,7 @@ if (condition) {
 }
 ```
 
-### Flow Diagram
-
+# Basic example showing the core idea.
 ```bash
 START
   ↓
@@ -70,8 +71,7 @@ START
   END ──────────────┘
 ```
 
-### Example
-
+// Basic example showing the core idea.
 ```javascript
 let temperature = 25;
 if (temperature > 30) {
@@ -81,22 +81,17 @@ if (temperature > 30) {
 }
 ```
 
-### Execution Table
-
 | temperature | Condition (temp > 30) | Branch Executed | Output                   |
 | ----------- | --------------------- | --------------- | ------------------------ |
 | 35          | ✅ true               | if block        | "It's hot outside!"      |
 | 25          | ❌ false              | else block      | "It's pleasant weather." |
 | 30          | ❌ false              | else block      | "It's pleasant weather." |
 
----
-
-## 3. If-Else If-Else Statement 🧩
+## 3. If-Else If-Else Statement
 
 Multiple conditions can be checked using `else if` statements.
 
-### Syntax
-
+// Basic example showing the core idea.
 ```javascript
 if (condition1) {
   // code if condition1 is true
@@ -109,8 +104,7 @@ if (condition1) {
 }
 ```
 
-### Flow Diagram
-
+# Basic example showing the core idea.
 ```bash
 START
   ↓
@@ -121,8 +115,7 @@ START
   END ←─────────────────── END ←─────────────────── END ←───────────────────┘
 ```
 
-### Example
-
+// Basic example showing the core idea.
 ```javascript
 let grade = 85;
 if (grade >= 90) {
@@ -138,8 +131,6 @@ if (grade >= 90) {
 }
 ```
 
-### Execution Table
-
 | grade | Condition 1 (≥90) | Condition 2 (≥80) | Condition 3 (≥70) | Condition 4 (≥60) | Result          | Output     |
 | ----- | ----------------- | ----------------- | ----------------- | ----------------- | --------------- | ---------- |
 | 95    | ✅ true           | -                 | -                 | -                 | Execute block 1 | "Grade: A" |
@@ -148,14 +139,11 @@ if (grade >= 90) {
 | 65    | ❌ false          | ❌ false          | ❌ false          | ✅ true           | Execute block 4 | "Grade: D" |
 | 45    | ❌ false          | ❌ false          | ❌ false          | ❌ false          | Execute else    | "Grade: F" |
 
----
-
-## 4. Switch Statement 🔄
+## 4. Switch Statement
 
 The `switch` statement compares a value against multiple cases.
 
-### Syntax
-
+// Basic example showing the core idea.
 ```javascript
 switch (expression) {
   case value1:
@@ -172,8 +160,7 @@ switch (expression) {
 }
 ```
 
-### Flow Diagram
-
+# Basic example showing the core idea.
 ```bash
 START
   ↓
@@ -188,8 +175,7 @@ START
 [Execute default] ──────────────────────────────→ END
 ```
 
-### Example
-
+// Basic example showing the core idea.
 ```javascript
 let day = 'Monday';
 switch (day) {
@@ -223,20 +209,18 @@ switch (day) {
 | **Readability**     | Clean for discrete values | Better for ranges/complex logic |
 | **Break Required**  | ✅ Yes                    | ❌ No                           |
 
----
-
-## 5. Ternary Operator (Conditional Operator) ⚡
+## 5. Ternary Operator (Conditional Operator)
 
 A shorthand way to write simple if-else statements.
 
-### Syntax
-
+// Basic example showing the core idea.
 ```javascript
 condition ? valueIfTrue : valueIfFalse;
 ```
 
 ### Visual Representation
 
+# Basic example showing the core idea.
 ```bash
 condition
     ↓
@@ -247,8 +231,7 @@ condition
   ❌ FALSE ────→ valueIfFalse
 ```
 
-### Example
-
+// Basic example showing the core idea.
 ```javascript
 let age = 20;
 let status = age >= 18 ? 'Adult' : 'Minor';
@@ -263,8 +246,6 @@ if (age >= 18) {
 }
 ```
 
-### Execution Table
-
 | age | Condition (age >= 18) | Result              | Value Assigned |
 | --- | --------------------- | ------------------- | -------------- |
 | 20  | ✅ true               | Return first value  | "Adult"        |
@@ -273,6 +254,7 @@ if (age >= 18) {
 
 ### Nested Ternary Example
 
+// Basic example showing the core idea.
 ```javascript
 let score = 85;
 let grade =
@@ -287,12 +269,9 @@ let grade =
     : 'F';
 ```
 
----
-
-## 6. Logical Operators in Conditionals 🤝
-
 ### AND Operator (&&) 🟩
 
+// Basic example showing the core idea.
 ```javascript
 let age = 25;
 let hasLicense = true;
@@ -313,6 +292,7 @@ if (age >= 18 && hasLicense) {
 
 ### OR Operator (||) 🟦
 
+// Basic example showing the core idea.
 ```javascript
 let isWeekend = true;
 let isHoliday = false;
@@ -331,8 +311,9 @@ if (isWeekend || isHoliday) {
 | ❌ false    | ✅ true     | ✅ true  |
 | ❌ false    | ❌ false    | ❌ false |
 
-### NOT Operator (!) 🔄
+### NOT Operator (!)
 
+// Basic example showing the core idea.
 ```javascript
 let isRaining = false;
 
@@ -348,8 +329,6 @@ if (!isRaining) {
 | ✅ true   | ❌ false |
 | ❌ false  | ✅ true  |
 
----
-
 ## Conditional Statement Comparison 🏆
 
 | Statement Type | Use Case                 | Syntax Complexity | Performance            | Best For                          |
@@ -359,10 +338,6 @@ if (!isRaining) {
 | **if-else if** | Multiple conditions      | 🟡 Medium         | 🟡 Medium              | Range checking, multiple criteria |
 | **switch**     | Multiple discrete values | 🟡 Medium         | 🚀 Fast for many cases | Menu systems, state machines      |
 | **ternary**    | Simple assignment        | ⚡ Compact        | 🚀 Fast                | Inline conditional assignment     |
-
----
-
-## Truthy and Falsy Values 🎭
 
 ### Falsy Values in JavaScript
 
@@ -379,6 +354,7 @@ if (!isRaining) {
 
 ### Truthy Values (Everything Else)
 
+// Basic example showing the core idea.
 ```javascript
 // All these are truthy:
 if (1) {
@@ -393,12 +369,9 @@ if (function () {}) {
 } // function
 ```
 
----
-
-## Advanced Conditional Patterns 🧠
-
 ### Guard Clauses 🚪
 
+// Basic example showing the core idea.
 ```javascript
 function processUser(user) {
   // Guard clauses - early returns
@@ -407,25 +380,24 @@ function processUser(user) {
     return;
   }
 
-  if (!user.email) {
+if (!user.email) {
     console.log('User email is required');
     return;
   }
 
-  if (user.age < 18) {
+if (user.age < 18) {
     console.log('User must be 18 or older');
     return;
   }
 
-  // Main logic here
+// Main logic here
   console.log('Processing user:', user.name);
 }
 ```
 
-### Short-Circuit Evaluation ⚡
-
 #### AND Short-Circuit (&&)
 
+// Basic example showing the core idea.
 ```javascript
 let user = { name: 'Alice' };
 
@@ -440,6 +412,7 @@ if (user) {
 
 #### OR Short-Circuit (||)
 
+// Basic example showing the core idea.
 ```javascript
 let username = null;
 let displayName = username || 'Guest';
@@ -456,6 +429,7 @@ if (username) {
 
 #### Nullish Coalescing (??)
 
+// Basic example showing the core idea.
 ```javascript
 let count = 0;
 let defaultCount = count ?? 5;
@@ -468,6 +442,7 @@ console.log(defaultScore); // Output: 100
 
 ### Optional Chaining (?.) 🔗
 
+// Basic example showing the core idea.
 ```javascript
 let user = {
   profile: {
@@ -488,10 +463,6 @@ if (user && user.profile && user.profile.address) {
 }
 ```
 
----
-
-## Best Practices 🌟
-
 ### ✅ Do:
 
 - Use `===` instead of `==` for comparisons
@@ -500,6 +471,7 @@ if (user && user.profile && user.profile.address) {
 - Consider using guard clauses for early returns
 - Use ternary operators for simple assignments only
 
+// Basic example showing the core idea.
 ```javascript
 // Good
 if (user.age >= MINIMUM_AGE && user.hasValidId) {
@@ -517,6 +489,7 @@ const message = isLoggedIn ? 'Welcome back!' : 'Please log in';
 - Use ternary operators for complex logic
 - Forget break statements in switch cases
 
+// Basic example showing the core idea.
 ```javascript
 // Bad - unnecessary boolean comparison
 if (isActive === true) {
@@ -544,12 +517,9 @@ if (condition1) {
 }
 ```
 
----
-
-## Performance Tips 🚀
-
 ### Condition Ordering
 
+// Basic example showing the core idea.
 ```javascript
 // Put most likely conditions first
 if (commonCondition) {
@@ -563,6 +533,7 @@ if (commonCondition) {
 
 ### Switch vs If-Else Performance
 
+# Basic example showing the core idea.
 ```bash
 For 2-3 conditions:    if-else ≈ switch
 For 4-10 conditions:   switch > if-else
@@ -571,3 +542,12 @@ For 10+ conditions:    switch >> if-else (much faster)
 
 Understanding these conditional statements will help you write more efficient
 and readable JavaScript code! ✨
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -6,8 +6,6 @@ Kinematics is the branch of mechanics that describes motion without considering
 its causes. It deals with position, velocity, acceleration, and time
 relationships.
 
-## Basic Concepts
-
 ### Position and Displacement
 
 - **Position**: Location of an object relative to a reference point
@@ -27,10 +25,9 @@ relationships.
 - **Average acceleration** = Δv/Δt
 - **Instantaneous acceleration** = dv/dt
 
-## Equations of Motion (Constant Acceleration)
-
 ### 1D Motion Equations
 
+// Example demonstrating Kinematics.
 ```
 1. v = u + at
 2. s = ut + ½at²
@@ -52,8 +49,6 @@ Where:
 - Equations same as above with a = g
 - Sign convention matters (upward positive or downward positive)
 
-## Projectile Motion
-
 ### Key Equations
 
 - Horizontal motion: x = (v₀ cos θ)t
@@ -67,8 +62,6 @@ Where:
 - θ = 90°: Vertical projectile
 - θ = 45°: Maximum range
 - θ = 0°: Horizontal projectile
-
-## Graphical Analysis of Motion
 
 ### Position-Time Graphs
 
@@ -87,8 +80,6 @@ Where:
 - Area under curve = change in velocity
 - Horizontal line = constant acceleration
 
-## Uniform Circular Motion
-
 ### Key Quantities
 
 - Angular displacement: θ
@@ -103,8 +94,6 @@ Where:
 - Frequency (f): Number of revolutions per second
 - ω = 2πf = 2π/T
 
-## Relative Motion
-
 ### Relative Velocity
 
 - Vector subtraction: v_AB = v_A - v_B
@@ -118,8 +107,6 @@ Where:
 - Non-inertial frames
 - Transformation between frames
 
-## Motion in 2D and 3D
-
 ### Vector Kinematics
 
 - Position vector: r(t) = x(t)i + y(t)j + z(t)k
@@ -131,3 +118,32 @@ Where:
 - Tangential acceleration: aₜ = dv/dt
 - Normal acceleration: aₙ = v²/ρ
 - Total acceleration: a = aₜ + aₙ
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Assumptions and Units
+
+For engineering topics, write down known quantities, unknowns, units, and governing assumptions before calculating. Check the final unit and physical direction of the result. A mathematically correct expression can still be physically invalid if an assumption has been violated.
+
+## Limiting Conditions
+
+Pay attention to boundary conditions, material properties, environmental changes, sign conventions, and measurement error. If a formula relies on an approximation, state when that approximation is reasonable. Revision becomes much easier when each equation is attached to the condition that justifies it.
+
+## Worked Check
+
+After solving a numerical example, estimate the order of magnitude and compare it with a realistic range. A quick sanity check often catches unit conversion errors, misplaced decimal points, and incorrect signs.
+
+## Model Limitations
+
+Every engineering model is valid only within stated assumptions. Identify the operating range, approximations, and variables that can change the result. When a quantity is measured rather than exact, consider uncertainty and whether the required precision justifies the calculation. In revision, remember the relationship together with its assumptions; applying a correct equation outside its valid range can produce a physically misleading answer.
+
+## Final Understanding Check
+
+Before considering **Kinematics** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

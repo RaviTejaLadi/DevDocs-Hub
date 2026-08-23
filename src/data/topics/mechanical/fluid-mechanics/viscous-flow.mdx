@@ -12,7 +12,7 @@ circulation, hydraulic machines, and aerodynamic applications.
 
 ---
 
-# 📌 What is Viscosity?
+## What is Viscosity?
 
 Viscosity is the property of a fluid that resists relative motion between
 adjacent fluid layers.
@@ -30,24 +30,23 @@ It can be thought of as:
 | Water      | Low       |
 | Air        | Very Low  |
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="v1m4qk"
 graph LR
     A[High Viscosity]
     --> B[Honey]
 
-    C[Medium Viscosity]
+C[Medium Viscosity]
     --> D[Oil]
 
-    E[Low Viscosity]
+E[Low Viscosity]
     --> F[Water]
 
-    G[Very Low]
+G[Very Low]
     --> H[Air]
 ```
 
----
-
-# 🌊 What is Viscous Flow?
+## 🌊 What is Viscous Flow?
 
 Viscous flow is a fluid flow in which viscous forces significantly influence the
 motion of the fluid.
@@ -59,12 +58,11 @@ In viscous flow:
 - Velocity varies across the flow section
 - Shear stress develops between fluid layers
 
----
-
-# Understanding Fluid Layers
+## Understanding Fluid Layers
 
 Consider fluid flowing between two plates.
 
+<!-- Visual flow for 🌀 Viscous Flow. -->
 ```mermaid
 graph TD
     A[Moving Plate]
@@ -73,7 +71,7 @@ graph TD
     D[Fluid Layer 3]
     E[Stationary Plate]
 
-    A --> B
+A --> B
     B --> C
     C --> D
     D --> E
@@ -87,9 +85,7 @@ Intermediate layers move at different velocities.
 
 This velocity variation creates shear stress.
 
----
-
-# ⚡ Newton's Law of Viscosity
+## Newton's Law of Viscosity
 
 According to Newton:
 
@@ -105,16 +101,15 @@ Where:
 - (\mu) = Dynamic viscosity (Pa·s)
 - (du/dy) = Velocity gradient
 
----
+## Understanding the Equation
 
-# Understanding the Equation
-
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="p7x9sr"
 graph LR
     A[Velocity Gradient]
     --> B[Shear Stress]
 
-    C[Viscosity]
+C[Viscosity]
     --> B
 ```
 
@@ -123,9 +118,7 @@ graph LR
 - Larger viscosity → Larger shear stress
 - Larger velocity difference → Larger shear stress
 
----
-
-# Dynamic Viscosity
+## Dynamic Viscosity
 
 Dynamic viscosity measures a fluid's resistance to flow.
 
@@ -141,9 +134,7 @@ or
 
 [ N \cdot s/m^2 ]
 
----
-
-# Kinematic Viscosity
+## Kinematic Viscosity
 
 Kinematic viscosity is the ratio of dynamic viscosity to density.
 
@@ -151,20 +142,15 @@ Kinematic viscosity is the ratio of dynamic viscosity to density.
 
 [ \nu = \frac{\mu}{\rho} ]
 
-Where:
-
 - (\nu) = Kinematic viscosity
 - (\mu) = Dynamic viscosity
 - (\rho) = Density
 
-### SI Unit
-
 [ m^2/s ]
 
----
+## Types of Fluids Based on Viscosity
 
-# Types of Fluids Based on Viscosity
-
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="w8z7vq"
 graph TD
     A[Fluids]
@@ -172,21 +158,18 @@ graph TD
     --> C[Non-Newtonian]
 ```
 
----
-
-# 1️⃣ Newtonian Fluids
+## 1⃣ Newtonian Fluids
 
 These fluids obey Newton's law of viscosity.
 
 Viscosity remains constant.
-
-### Examples
 
 - Water
 - Air
 - Alcohol
 - Gasoline
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="z6sdjr"
 graph TD
     A[Newtonian Fluids]
@@ -195,21 +178,18 @@ graph TD
     --> D[Alcohol]
 ```
 
----
-
-# 2️⃣ Non-Newtonian Fluids
+## 2⃣ Non-Newtonian Fluids
 
 These fluids do not obey Newton's law of viscosity.
 
 Viscosity changes with shear rate.
-
-### Examples
 
 - Toothpaste
 - Paint
 - Blood
 - Ketchup
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="q7jdrn"
 graph TD
     A[Non-Newtonian Fluids]
@@ -218,9 +198,7 @@ graph TD
     --> D[Ketchup]
 ```
 
----
-
-# No-Slip Condition
+## No-Slip Condition
 
 One of the most important concepts in viscous flow is the **No-Slip Condition**.
 
@@ -234,18 +212,17 @@ For a stationary wall:
 
 at the wall surface.
 
----
-
-# Velocity Profile in a Pipe
+## Velocity Profile in a Pipe
 
 Due to viscosity, fluid velocity is not uniform across the pipe.
 
+<!-- Visual flow for 🌀 Viscous Flow. -->
 ```mermaid
 graph TD
     A[Pipe Wall]
     --> B[Low Velocity]
 
-    C[Pipe Center]
+C[Pipe Center]
     --> D[Maximum Velocity]
 ```
 
@@ -255,9 +232,7 @@ graph TD
 - Maximum velocity at center
 - Smooth velocity variation
 
----
-
-# Laminar Viscous Flow
+## Laminar Viscous Flow
 
 In laminar flow:
 
@@ -265,6 +240,7 @@ In laminar flow:
 - Mixing is minimal
 - Viscosity dominates
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="j1w3rh"
 graph LR
     A[Layer 1]
@@ -276,9 +252,7 @@ Typical condition:
 
 [ Re < 2000 ]
 
----
-
-# Turbulent Viscous Flow
+## Turbulent Viscous Flow
 
 In turbulent flow:
 
@@ -286,6 +260,7 @@ In turbulent flow:
 - Mixing is significant
 - Energy losses increase
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="h2u7yb"
 graph TD
     A[Turbulent Motion]
@@ -294,13 +269,9 @@ graph TD
     --> D[Energy Loss]
 ```
 
-Typical condition:
-
 [ Re > 4000 ]
 
----
-
-# Hagen-Poiseuille Equation
+## Hagen-Poiseuille Equation
 
 For laminar flow through a circular pipe:
 
@@ -308,17 +279,13 @@ For laminar flow through a circular pipe:
 
 \frac{\pi r^4 \Delta P} {8\mu L} ]
 
-Where:
-
 - (Q) = Flow rate
 - (r) = Pipe radius
 - (\Delta P) = Pressure difference
 - (L) = Pipe length
 - (\mu) = Dynamic viscosity
 
----
-
-# Important Observation
+## Important Observation
 
 The flow rate depends on:
 
@@ -326,9 +293,7 @@ The flow rate depends on:
 
 This means a small increase in pipe radius greatly increases flow rate.
 
----
-
-# Energy Loss Due to Viscosity
+## Energy Loss Due to Viscosity
 
 Viscosity causes friction between fluid layers and pipe walls.
 
@@ -338,6 +303,7 @@ This leads to:
 - Energy loss
 - Reduced efficiency
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="b8mqnr"
 graph LR
     A[Viscosity]
@@ -346,13 +312,12 @@ graph LR
     --> D[Energy Loss]
 ```
 
----
-
-# Boundary Layer Concept
+## Boundary Layer Concept
 
 When fluid flows over a surface, viscosity creates a thin region called the
 boundary layer.
 
+// Example demonstrating 🌀 Viscous Flow.
 ```mermaid id="n7hvqj"
 graph LR
     A[Solid Surface]
@@ -369,73 +334,47 @@ Outside the boundary layer:
 
 - Viscous effects are small
 
----
-
-# Applications of Viscous Flow
-
 ## 🚗 Automotive Lubrication
 
 Engine oils reduce friction between moving parts.
-
----
 
 ## 🩸 Blood Flow Analysis
 
 Blood viscosity affects circulation and heart workload.
 
----
-
 ## 🏭 Pipeline Transport
 
 Used to predict pressure losses.
 
----
-
-## ⚙️ Hydraulic Systems
+## ⚙ Hydraulic Systems
 
 Determines pump power requirements.
 
----
-
-## ✈️ Aerodynamics
+## ✈ Aerodynamics
 
 Boundary layer behavior affects drag.
-
----
 
 ## 🛢 Oil Transportation
 
 Viscosity influences pumping requirements.
 
----
-
-# Real-Life Examples
-
 ### Honey Pouring
 
 Honey flows slowly because it has high viscosity.
-
----
 
 ### Water Flow
 
 Water flows easily because it has low viscosity.
 
----
-
 ### Engine Lubrication
 
 Oil forms a thin viscous layer that prevents metal-to-metal contact.
-
----
 
 ### Blood Circulation
 
 Blood viscosity influences resistance in arteries and veins.
 
----
-
-# Comparison: Ideal Flow vs Viscous Flow
+## Comparison: Ideal Flow vs Viscous Flow
 
 | Property      | Ideal Flow | Viscous Flow |
 | ------------- | ---------- | ------------ |
@@ -444,9 +383,7 @@ Blood viscosity influences resistance in arteries and veins.
 | Pressure Loss | None       | Present      |
 | Realistic     | No         | Yes          |
 
----
-
-# Advantages of Understanding Viscous Flow
+## Advantages of Understanding Viscous Flow
 
 ✅ Predicts pressure losses
 
@@ -458,9 +395,7 @@ Blood viscosity influences resistance in arteries and veins.
 
 ✅ Important in aerodynamics and hydraulics
 
----
-
-# 📋 Summary
+## 📋 Summary
 
 | Parameter                  | Formula                           |
 | -------------------------- | --------------------------------- |
@@ -470,9 +405,7 @@ Blood viscosity influences resistance in arteries and veins.
 | Turbulent Flow             | (Re > 4000)                       |
 | Hagen-Poiseuille Flow Rate | (\frac{\pi r^4 \Delta P}{8\mu L}) |
 
----
-
-# 🎯 Key Takeaways
+## Key Takeaways
 
 - Viscous flow occurs because real fluids possess viscosity.
 - Viscosity acts as internal friction within a fluid.

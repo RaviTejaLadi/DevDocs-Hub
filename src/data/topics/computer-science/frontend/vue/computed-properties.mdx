@@ -1,9 +1,10 @@
 # Computed Properties
 
-# What are Computed Properties?
+## What are Computed Properties?
 
 Computed properties are:
 
+// Example demonstrating Computed Properties.
 ```txt
 Derived reactive values
 ```
@@ -12,16 +13,18 @@ They automatically calculate values based on reactive state.
 
 When dependencies change:
 
+// Example demonstrating Computed Properties.
 ```txt
 Computed value updates automatically
 ```
 
 ---
 
-# Why Use Computed?
+## Why Use Computed?
 
 Without computed:
 
+// Example demonstrating Computed Properties.
 ```vue
 {{ firstName + ' ' + lastName }}
 ```
@@ -35,10 +38,9 @@ With computed:
 - Better performance
 - Reusable logic
 
----
+## Basic Example
 
-# Basic Example
-
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <h1>{{ fullName }}</h1>
@@ -56,10 +58,9 @@ const fullName = computed(() => {
 </script>
 ```
 
----
+## How Computed Works
 
-# How Computed Works
-
+<!-- Visual flow for Computed Properties. -->
 ```mermaid
 graph LR
 
@@ -70,19 +71,16 @@ A -->|State Changes| B
 B -->|Recalculate| C
 ```
 
----
+## Syntax
 
-# Syntax
-
+// Example demonstrating Computed Properties.
 ```js
 const value = computed(() => {
   return derivedValue;
 });
 ```
 
----
-
-# Important Concept
+## Important Concept
 
 Computed values are:
 
@@ -92,32 +90,28 @@ Computed values are:
 | Cached               | Runs only when needed  |
 | Read-only by default | Cannot modify directly |
 
----
-
-# Computed is Cached
+## Computed is Cached
 
 This is the biggest advantage.
 
----
+## Example
 
-# Example
-
+// Example demonstrating Computed Properties.
 ```js
 const fullName = computed(() => {
   console.log('Running');
 
-  return `${firstName.value} ${lastName.value}`;
+return `${firstName.value} ${lastName.value}`;
 });
 ```
 
 The function runs only when dependencies change.
 
----
-
-# Dependency Tracking
+## Dependency Tracking
 
 Vue automatically tracks:
 
+// Example demonstrating Computed Properties.
 ```txt
 firstName.value
 lastName.value
@@ -127,16 +121,14 @@ These are dependencies.
 
 When they change:
 
+// Example demonstrating Computed Properties.
 ```txt
 computed recalculates
 ```
 
----
+## Using Method
 
-# Computed vs Methods
-
-# Using Method
-
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <h1>{{ getFullName() }}</h1>
@@ -151,14 +143,14 @@ const getFullName = () => {
 
 Problem:
 
+// Example demonstrating Computed Properties.
 ```txt
 Runs every render
 ```
 
----
+## Using Computed
 
-# Using Computed
-
+// Example demonstrating Computed Properties.
 ```js
 const fullName = computed(() => {
   return `${firstName.value} ${lastName.value}`;
@@ -167,13 +159,12 @@ const fullName = computed(() => {
 
 Benefit:
 
+// Example demonstrating Computed Properties.
 ```txt
 Cached until dependency changes
 ```
 
----
-
-# Difference
+## Difference
 
 | computed                  | method               |
 | ------------------------- | -------------------- |
@@ -181,25 +172,19 @@ Cached until dependency changes
 | Better for derived values | Better for actions   |
 | Performance optimized     | Re-runs every render |
 
----
+## Search Filtering
 
-# Real World Example
-
-# Search Filtering
-
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <input v-model="search" />
 
-  <ul>
+<ul>
     <li v-for="user in filteredUsers" :key="user.id">
       {{ user.name }}
     </li>
   </ul>
 </template>
-
-<script setup>
-import { computed, ref } from 'vue';
 
 const search = ref('');
 
@@ -217,32 +202,23 @@ const filteredUsers = computed(() => {
 </script>
 ```
 
----
+## Why Computed Here?
 
-# Why Computed Here?
-
-Without computed:
-
+// Example demonstrating Computed Properties.
 ```txt
 Filtering runs every render
 ```
 
-With computed:
-
+// Example demonstrating Computed Properties.
 ```txt
 Runs only when search/users change
 ```
 
----
-
-# Multiple Dependencies
+## Multiple Dependencies
 
 Computed can depend on multiple reactive values.
 
----
-
-# Example
-
+// Example demonstrating Computed Properties.
 ```js
 const totalPrice = computed(() => {
   return price.value * quantity.value;
@@ -254,10 +230,9 @@ Dependencies:
 - `price`
 - `quantity`
 
----
+## Computed with reactive()
 
-# Computed with reactive()
-
+// Example demonstrating Computed Properties.
 ```vue
 <script setup>
 import { computed, reactive } from 'vue';
@@ -273,58 +248,48 @@ const fullName = computed(() => {
 </script>
 ```
 
----
-
-# Writable Computed Properties
+## Writable Computed Properties
 
 Normally computed is read-only.
 
 But Vue supports getter/setter.
 
----
-
-# Example
-
+// Example demonstrating Computed Properties.
 ```vue
 <script setup>
 import { computed, ref } from 'vue';
-
-const firstName = ref('John');
-const lastName = ref('Doe');
 
 const fullName = computed({
   get() {
     return `${firstName.value} ${lastName.value}`;
   },
 
-  set(value) {
+set(value) {
     const names = value.split(' ');
 
-    firstName.value = names[0];
+firstName.value = names[0];
     lastName.value = names[1];
   },
 });
 </script>
 ```
 
----
+## Usage
 
-# Usage
-
+// Example demonstrating Computed Properties.
 ```js
 fullName.value = 'Jane Smith';
 ```
 
 Updates:
 
+// Example demonstrating Computed Properties.
 ```txt
 firstName → Jane
 lastName → Smith
 ```
 
----
-
-# Common Use Cases
+## Common Use Cases
 
 | Use Case      | Example         |
 | ------------- | --------------- |
@@ -335,13 +300,7 @@ lastName → Smith
 | Calculations  | Cart totals     |
 | Validation    | Form checks     |
 
----
-
-# Example: Cart Total
-
-```vue
-<script setup>
-import { computed, ref } from 'vue';
+## Example: Cart Total
 
 const cart = ref([
   { price: 100, quantity: 2 },
@@ -354,24 +313,23 @@ const total = computed(() => {
   }, 0);
 });
 </script>
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Example: Form Validation
+## Example: Form Validation
 
 ```js
 const isFormValid = computed(() => {
   return email.value.length > 0 && password.value.length >= 6;
 });
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Example: Dynamic Classes
+## Example: Dynamic Classes
 
 ```vue
 <button :class="{ active: isActive }">
+// Example demonstrating Computed Properties.
 ```
 
 Better:
@@ -383,25 +341,19 @@ const buttonClass = computed(() => {
     disabled: loading.value,
   };
 });
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Then Use
+## Then Use
 
 ```vue
 <button :class="buttonClass">
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Computed Chain
+## Computed Chain
 
 Computed can depend on computed.
-
----
-
-# Example
 
 ```js
 const fullName = computed(() => {
@@ -411,37 +363,30 @@ const fullName = computed(() => {
 const greeting = computed(() => {
   return `Hello ${fullName.value}`;
 });
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Lazy Evaluation
+## Lazy Evaluation
 
 Computed runs only when accessed.
-
----
-
-# Example
 
 ```js
 const expensiveCalculation = computed(() => {
   console.log('Running');
 
-  return heavyOperation();
+return heavyOperation();
 });
+// Example demonstrating Computed Properties.
 ```
 
 If unused:
 
 ```txt
 Function never runs
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Common Mistakes
-
-# Using computed for Side Effects
+## Using computed for Side Effects
 
 ❌ Wrong
 
@@ -449,13 +394,12 @@ Function never runs
 computed(() => {
   fetchUsers();
 });
+// Example demonstrating Computed Properties.
 ```
 
 Use `watch()` instead.
 
----
-
-# Mutating State Inside Computed
+## Mutating State Inside Computed
 
 ❌ Bad
 
@@ -463,18 +407,16 @@ Use `watch()` instead.
 const total = computed(() => {
   count.value++;
 });
+// Example demonstrating Computed Properties.
 ```
 
 Computed should stay pure.
 
----
-
-# Too Much Logic in Templates
-
-❌ Bad
+## Too Much Logic in Templates
 
 ```vue
 {{ users.filter((user) => user.active).length }}
+// Example demonstrating Computed Properties.
 ```
 
 ✅ Better
@@ -483,11 +425,10 @@ Computed should stay pure.
 const activeUsers = computed(() => {
   return users.value.filter((user) => user.active);
 });
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# computed vs watch
+## computed vs watch
 
 | computed          | watch            |
 | ----------------- | ---------------- |
@@ -496,9 +437,7 @@ const activeUsers = computed(() => {
 | Cached            | Not cached       |
 | Used in templates | Used for effects |
 
----
-
-# Use computed When
+## Use computed When
 
 ✅ You need:
 
@@ -507,24 +446,14 @@ const activeUsers = computed(() => {
 - formatted values
 - derived state
 
----
-
-# Use watch When
-
-✅ You need:
+## Use watch When
 
 - API calls
 - localStorage sync
 - async operations
 - side effects
 
----
-
-# Best Practices
-
----
-
-# Keep Computed Pure
+## Keep Computed Pure
 
 Avoid:
 
@@ -532,9 +461,7 @@ Avoid:
 - DOM manipulation
 - mutations
 
----
-
-# Use Computed for Expensive Operations
+## Use Computed for Expensive Operations
 
 Examples:
 
@@ -542,31 +469,24 @@ Examples:
 - sorting
 - aggregations
 
----
-
-# Keep Templates Simple
+## Keep Templates Simple
 
 Move logic to computed.
 
----
-
-# Small Focused Computed
+## Small Focused Computed
 
 Avoid giant computed functions.
 
----
-
-# Good Example
+## Good Example
 
 ```js
 const completedTasks = computed(() => {
   return tasks.value.filter((task) => task.completed);
 });
+// Example demonstrating Computed Properties.
 ```
 
----
-
-# Quick Summary
+## Quick Summary
 
 | Concept  | Meaning                 |
 | -------- | ----------------------- |
@@ -576,12 +496,19 @@ const completedTasks = computed(() => {
 | Getter   | Read value              |
 | Setter   | Optional writable value |
 
----
-
-# Most Important Things to Remember
+## Most Important Things to Remember
 
 1. Computed is cached
 2. Used for derived state
 3. Better than methods for calculations
 4. Avoid side effects inside computed
 5. Keep templates clean using computed
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

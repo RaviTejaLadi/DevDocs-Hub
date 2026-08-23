@@ -11,10 +11,9 @@ one argument at a time.
 > In simple words, currying breaks a function with `n` parameters into `n` unary
 > functions (functions with one parameter).
 
----
-
 ## 🔣 2. Syntax
 
+// Basic example showing the core idea.
 ```javascript
 // Normal Function
 function add(a, b) {
@@ -32,9 +31,7 @@ function curriedAdd(a) {
 const curriedAddArrow = (a) => (b) => a + b;
 ```
 
----
-
-## 🧠 3. Why Use Currying? (Use Cases)
+## 3. Why Use Currying? (Use Cases)
 
 | Use Case                | Description                                                        |
 | ----------------------- | ------------------------------------------------------------------ |
@@ -43,10 +40,9 @@ const curriedAddArrow = (a) => (b) => a + b;
 | ✅ Partial Application  | Fix some arguments and reuse the remaining later                   |
 | ✅ Code Readability     | Cleaner and more declarative code                                  |
 
----
+## 4. Basic Example
 
-## 🧪 4. Basic Example
-
+// Basic example showing the core idea.
 ```javascript
 // Without Currying
 function multiply(a, b) {
@@ -66,18 +62,15 @@ const double = curriedMultiply(2);
 console.log(double(3)); // 6
 ```
 
----
+## ⚙ 5. Advanced Example – Using Arrow Functions
 
-## ⚙️ 5. Advanced Example – Using Arrow Functions
-
+// Basic example showing the core idea.
 ```javascript
 const greet = (greeting) => (name) => `${greeting}, ${name}!`;
 
 const sayHello = greet('Hello');
 console.log(sayHello('Ravi')); // Hello, Ravi!
 ```
-
----
 
 ## 🧰 6. Currying vs Partial Application
 
@@ -87,10 +80,9 @@ console.log(sayHello('Ravi')); // Hello, Ravi!
 | Argument Handling | One argument at a time                 | Multiple arguments at once |
 | Example           | `f(a)(b)(c)`                           | `f(a, b)(c)`               |
 
----
+## 7. Real-world Use Case (DOM Example)
 
-## 🧩 7. Real-world Use Case (DOM Example)
-
+// Basic example showing the core idea.
 ```javascript
 const updateStyle = (property) => (value) => (element) =>
   (element.style[property] = value);
@@ -99,10 +91,9 @@ const setColorRed = updateStyle('color')('red');
 setColorRed(document.querySelector('h1'));
 ```
 
----
+## 🛠 8. Implement Your Own Curry Function
 
-## 🛠️ 8. Implement Your Own Curry Function
-
+// Basic example showing the core idea.
 ```javascript
 function curry(fn) {
   return function curried(...args) {
@@ -126,16 +117,12 @@ console.log(curriedSum(1)(2)(3)); // 6
 console.log(curriedSum(1, 2)(3)); // 6
 ```
 
----
-
-## 📌 9. Points to Remember
+## 9. Points to Remember
 
 - Currying ≠ Partial Application (though they are related)
 - Makes functions pure and reusable
 - Very useful in **React**, **Redux**, and **functional JS libraries** like
   `lodash/fp` or `Ramda`
-
----
 
 ## 🔚 10. Summary
 
@@ -143,19 +130,12 @@ console.log(curriedSum(1, 2)(3)); // 6
 enables better code **composition**, **reusability**, and **readability** ✅
 Implementable in native JavaScript with closures and recursion
 
----
-
 Great. Here's a **visual diagram + comparison of currying vs compose vs pipe**,
 all part of functional programming in JavaScript.
 
----
-
-# 🧠 Currying vs Compose vs Pipe – With Visuals
-
----
-
 ## 🔁 Currying – Visual Diagram
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 // Original function
 f(a, b, c)
@@ -171,16 +151,16 @@ f(a)(b)(c)
 
 - Each function returns the next until all arguments are consumed.
 
----
-
-## 🧩 Compose – Visual Diagram
+## Compose – Visual Diagram
 
 **Definition:** Compose **runs functions right to left**
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 compose(f, g, h)(x) → f(g(h(x)))
 ```
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 const compose =
   (...fns) =>
@@ -197,43 +177,37 @@ console.log(composed(3)); // add(double(3)) → 7
 
 ### Diagram:
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```
 x → h → g → f → result
 ```
-
----
 
 ## 🔃 Pipe – Visual Diagram
 
 **Definition:** Pipe **runs functions left to right**
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 pipe(h, g, f)(x) → f(g(h(x)))
 ```
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 const pipe =
   (...fns) =>
   (x) =>
     fns.reduce((acc, fn) => fn(acc), x);
 
-// Example:
-const add = (x) => x + 1;
-const double = (x) => x * 2;
-
 const piped = pipe(double, add);
 console.log(piped(3)); // add(double(3)) → 7
 ```
 
-### Diagram:
-
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```
 x → double → add → result
 ```
 
----
-
-## 🔍 Currying vs Compose vs Pipe – Comparison Table
+## Currying vs Compose vs Pipe – Comparison Table
 
 | Feature        | Currying                         | Compose                               | Pipe                                  |
 | -------------- | -------------------------------- | ------------------------------------- | ------------------------------------- |
@@ -242,8 +216,6 @@ x → double → add → result
 | Usage Style    | Argument staging / reusability   | Functional composition                | Functional composition                |
 | Direction      | Top-down argument chaining       | Right to left                         | Left to right                         |
 | Common In      | React, Lodash/fp, Ramda          | Redux, RxJS, Functional JS            | RxJS, Streams, Functional JS          |
-
----
 
 ## 🔚 Final Tip
 
@@ -256,3 +228,12 @@ x → double → add → result
 
 - You want to chain function **transformations**
 - You need **clean, declarative** pipelines
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,4 +1,4 @@
-# 🌐 Introduction to Network Security
+# Introduction to Network Security
 
 Network security is an overarching framework of policies, processes, and
 technologies designed to protect the integrity, confidentiality, and
@@ -8,7 +8,7 @@ posture, network security defends against a rapidly evolving landscape of cyber
 threats, ranging from automated malware to sophisticated Advanced Persistent
 Threats (APTs). 🛡️
 
-## ⚖️ Core Principles of Network Security
+## ⚖ Core Principles of Network Security
 
 At the heart of network security lies the **CIA Triad**, a model designed to
 guide policies for information security within an organization.
@@ -25,7 +25,7 @@ a network context, this involves:
 - **Data Masking:** 🎭 Obfuscating sensitive network payloads during testing or
   monitoring.
 
-### 2. 🛡️ Integrity
+### 2. Integrity
 
 Integrity guarantees that data is accurate and unchanged from its original
 state. Network integrity mechanisms include:
@@ -74,8 +74,6 @@ compromise the entire stack.
 > across Layers 3 through 7, utilizing Deep Packet Inspection (DPI) to make
 > holistic security decisions rather than relying on isolated layer data.
 
----
-
 ## 🧅 Defense in Depth
 
 Defense in Depth (DiD) is an information assurance concept in which multiple
@@ -83,6 +81,7 @@ layers of security controls are placed throughout an IT system. Its intent is to
 provide redundancy in the event a security control fails or a vulnerability is
 exploited.
 
+<!-- Visual flow for Introduction to Network Security. -->
 ```mermaid
 graph TD
     Data[💎 Data Security] --> App[💻 Application Security]
@@ -90,14 +89,14 @@ graph TD
     Endpoint --> Network[🕸️ Network Security]
     Network --> Perimeter[🧱 Perimeter Security]
 
-    style Data fill:#ff9999,stroke:#333,stroke-width:2px
+style Data fill:#ff9999,stroke:#333,stroke-width:2px
     style App fill:#ffcc99,stroke:#333,stroke-width:2px
     style Endpoint fill:#ffff99,stroke:#333,stroke-width:2px
     style Network fill:#ccff99,stroke:#333,stroke-width:2px
     style Perimeter fill:#99ccff,stroke:#333,stroke-width:2px
 ```
 
-### 🏛️ Architectural Layers of DiD
+### 🏛 Architectural Layers of DiD
 
 1. **🧱 Perimeter Security:** The first line of defense. Includes edge routers,
    perimeter firewalls, and DDoS mitigation services.
@@ -110,8 +109,6 @@ graph TD
    WAFs, RASP (Runtime Application Self-Protection), and secure SDLC practices.
 5. **💎 Data Security:** At the core, ensuring data is encrypted at rest and in
    transit, governed by strict IAM (Identity and Access Management) policies.
-
----
 
 ## 🚫 Zero Trust Architecture (ZTA)
 
@@ -137,9 +134,7 @@ principle of "Never Trust, Always Verify." 🕵️‍♂️
 > user/device context and a specific application, completely hiding the internal
 > network topology from the endpoint.
 
----
-
-## ⚔️ Common Network Attacks and Mitigations
+## ⚔ Common Network Attacks and Mitigations
 
 Understanding the threat landscape is crucial for designing robust networks.
 Here are some of the most prevalent network-level attacks:
@@ -168,7 +163,7 @@ parties.
   malicious site.
   - **🛡️ Mitigation:** DNSSEC, DNS over HTTPS (DoH).
 
-### 3. 🕷️ Lateral Movement
+### 3. 🕷 Lateral Movement
 
 Once inside, attackers move from a compromised endpoint to higher-value assets
 (e.g., Domain Controllers, databases).
@@ -178,9 +173,7 @@ Once inside, attackers move from a compromised endpoint to higher-value assets
 - **🛡️ Mitigation:** Micro-segmentation, Private VLANs, disabling legacy
   protocols (SMBv1, NTLMv1), and strict internal network monitoring via IPS.
 
----
-
-## 🧩 Network Segmentation Strategy
+## Network Segmentation Strategy
 
 Segmentation is the physical or logical division of a computer network into
 subnets or zones.
@@ -217,3 +210,12 @@ overlapping controls, continuous monitoring, and strict policies. As networks
 migrate to cloud and hybrid environments, traditional perimeters are dissolving,
 making concepts like Zero Trust and Micro-segmentation not just best practices,
 but absolute necessities for modern enterprise survival. 🚀
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,7 +1,5 @@
 # Top 30 Coding Interview Questions and Answers
 
-## Basic SQL Questions
-
 ### 1. What is SQL and what are its main components?
 
 **Answer:** SQL (Structured Query Language) is a standard language for managing
@@ -24,8 +22,6 @@ and manipulating relational databases. Its main components are:
 
 ### 3. What are the different types of joins in SQL?
 
-**Answer:**
-
 - INNER JOIN: Returns rows when there's a match in both tables
 - LEFT JOIN: Returns all rows from the left table and matched rows from the
   right
@@ -35,19 +31,14 @@ and manipulating relational databases. Its main components are:
 - CROSS JOIN: Returns Cartesian product of both tables
 - SELF JOIN: Joins a table to itself
 
-## Intermediate SQL Questions
-
 ### 4. What is the difference between WHERE and HAVING clauses?
-
-**Answer:**
 
 - WHERE filters rows before grouping (aggregation)
 - HAVING filters groups after the GROUP BY clause
 
 ### 5. How do you find the second highest salary from an Employee table?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT MAX(salary)
 FROM Employee
@@ -65,8 +56,7 @@ WHERE salary < (SELECT MAX(salary) FROM Employee);
 
 ### 7. How do you find duplicate records in a table?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT column_name, COUNT(*)
 FROM table_name
@@ -76,15 +66,12 @@ HAVING COUNT(*) > 1;
 
 ### 8. What is the difference between UNION and UNION ALL?
 
-**Answer:**
-
 - UNION combines results and removes duplicates
 - UNION ALL combines results including all duplicates
 
 ### 9. How do you find the nth highest salary using window functions?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT DISTINCT salary
 FROM (
@@ -100,8 +87,6 @@ WHERE rank = n;
 providing faster data retrieval. They work like a book index, allowing the
 database to find data without scanning the entire table.
 
-## Advanced SQL Questions
-
 ### 11. What are window functions and give examples?
 
 **Answer:** Window functions perform calculations across a set of table rows
@@ -114,8 +99,7 @@ related to the current row. Examples:
 
 ### 12. How do you calculate a running total in SQL?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT date, amount,
        SUM(amount) OVER (ORDER BY date) as running_total
@@ -133,8 +117,7 @@ be referenced within a query. Differences:
 
 ### 14. How do you implement pagination in SQL?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 -- For SQL Server
 SELECT * FROM table_name
@@ -157,8 +140,6 @@ reused. Advantages:
 - Better security (can restrict direct table access)
 - Code reusability
 
-## Database Design Questions
-
 ### 16. What is normalization and what are its common forms?
 
 **Answer:** Normalization is the process of organizing data to minimize
@@ -173,23 +154,17 @@ redundancy. Common forms:
 
 ### 17. What are primary keys, foreign keys, and unique keys?
 
-**Answer:**
-
 - Primary Key: Uniquely identifies each row (cannot be NULL)
 - Foreign Key: Enforces referential integrity by linking to a primary key
 - Unique Key: Ensures all values are unique (can have one NULL)
 
 ### 18. What is the difference between a clustered and non-clustered index?
 
-**Answer:**
-
 - Clustered index determines the physical order of data (only one per table)
 - Non-clustered index is a separate structure that points to the data (multiple
   allowed)
 
 ### 19. What is ACID in database transactions?
-
-**Answer:**
 
 - Atomicity: All operations complete successfully or none do
 - Consistency: Database remains in a consistent state
@@ -206,12 +181,9 @@ occur (INSERT, UPDATE, DELETE). Used for:
 - Maintaining derived data
 - Replicating data
 
-## Complex Query Questions
-
 ### 21. How do you find employees who earn more than their managers?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT e.name as employee_name, e.salary as employee_salary,
        m.name as manager_name, m.salary as manager_salary
@@ -222,8 +194,7 @@ WHERE e.salary > m.salary;
 
 ### 22. How do you find the department with the highest average salary?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT d.name, AVG(e.salary) as avg_salary
 FROM Department d
@@ -235,8 +206,7 @@ LIMIT 1;
 
 ### 23. How do you calculate the cumulative distribution of salaries?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 SELECT salary,
        CUME_DIST() OVER (ORDER BY salary) as cumulative_dist
@@ -245,8 +215,7 @@ FROM Employee;
 
 ### 24. How do you find gaps in sequential data (like missing IDs)?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 WITH seq AS (
     SELECT MIN(id) as min_id, MAX(id) as max_id FROM table
@@ -262,8 +231,7 @@ WHERE t.id IS NULL;
 
 ### 25. How do you swap male and female values in a single update statement?
 
-**Answer:**
-
+-- Basic example showing the core idea.
 ```sql
 UPDATE Employee
 SET gender = CASE
@@ -273,11 +241,7 @@ SET gender = CASE
 END;
 ```
 
-## Performance Tuning Questions
-
 ### 26. How would you optimize a slow-running query?
-
-**Answer:**
 
 - Check execution plan to identify bottlenecks
 - Add appropriate indexes
@@ -307,11 +271,7 @@ the database to satisfy the query without accessing the table. Benefits:
 - Reduced I/O
 - Less memory usage
 
-## Scenario-Based Questions
-
 ### 29. How would you design a database for a social media platform?
-
-**Answer:**
 
 - Users table (user_id, name, email, etc.)
 - Posts table (post_id, user_id, content, timestamp)
@@ -323,8 +283,6 @@ the database to satisfy the query without accessing the table. Benefits:
 - Consider partitioning for large tables like posts
 
 ### 30. How would you handle a database with millions of records that's performing poorly?
-
-**Answer:**
 
 - Analyze slow queries and optimize them
 - Implement proper indexing strategy
@@ -339,3 +297,12 @@ the database to satisfy the query without accessing the table. Benefits:
 These questions cover a wide range of SQL concepts that are commonly tested in
 technical interviews, from basic syntax to advanced database design and
 optimization techniques.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,1 +1,62 @@
 # Safety Engineering
+
+**Safety Engineering** is a technical concept you should be able to explain in plain language before relying on memorisation. A useful way to learn it is to connect the definition to a concrete example, then identify the conditions that make the example valid.
+
+## Definition
+
+Start with the exact meaning of the topic and the problem it solves. Separate the definition from related concepts that sound similar. This prevents a common revision error: remembering a broad description but choosing the wrong tool or rule in a practical situation.
+
+## How It Works
+
+Break the topic into the smallest meaningful steps. First identify the inputs or assumptions. Then apply the core rule, observe the intermediate state, and finally verify the expected output. If a step cannot be explained, return to the definition and check the missing assumption instead of memorising the result.
+
+## Example
+
+Choose an example that is small enough to trace line by line and realistic enough to show why the concept exists.
+
+// Small starter example for understanding the main idea.
+```javascript
+const input = [1, 2, 3];
+const output = input.map(value => value * 2);
+console.log(output);
+```
+
+## Practical Application
+
+In real projects, the interesting part is usually not the happy path. Consider validation, error handling, performance, security, or maintainability when those concerns apply to the topic. Explain why the chosen approach fits the constraints instead of presenting it as the only possible solution.
+
+## Common Pitfalls
+
+- Mixing the topic with a related concept that has different guarantees.
+- Ignoring boundary or invalid inputs.
+- Using an example without checking what it returns or changes.
+- Optimising before measuring a real bottleneck.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | Know the exact meaning and scope. |
+| Mechanism | Explain the sequence or rule. |
+| Example | Trace one realistic case. |
+| Pitfalls | Check edge cases and wrong assumptions. |
+
+## Assumptions and Units
+
+For engineering topics, write down known quantities, unknowns, units, and governing assumptions before calculating. Check the final unit and physical direction of the result. A mathematically correct expression can still be physically invalid if an assumption has been violated.
+
+## Limiting Conditions
+
+Pay attention to boundary conditions, material properties, environmental changes, sign conventions, and measurement error. If a formula relies on an approximation, state when that approximation is reasonable. Revision becomes much easier when each equation is attached to the condition that justifies it.
+
+## Worked Check
+
+After solving a numerical example, estimate the order of magnitude and compare it with a realistic range. A quick sanity check often catches unit conversion errors, misplaced decimal points, and incorrect signs.
+
+## Model Limitations
+
+Every engineering model is valid only within stated assumptions. Identify the operating range, approximations, and variables that can change the result. When a quantity is measured rather than exact, consider uncertainty and whether the required precision justifies the calculation. In revision, remember the relationship together with its assumptions; applying a correct equation outside its valid range can produce a physically misleading answer.
+
+## Final Understanding Check
+
+Before considering **Safety Engineering** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

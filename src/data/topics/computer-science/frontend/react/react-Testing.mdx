@@ -7,8 +7,6 @@ applications behave correctly under various conditions. It ensures code
 reliability, prevents regressions, and improves code quality through automated
 verification.
 
-## Core Definitions
-
 ### Test
 
 A test is a piece of code that verifies whether a specific functionality works
@@ -44,8 +42,6 @@ A fake implementation of a function or module used in testing.
 
 A function that records information about how it was called.
 
-## Testing Libraries and Tools
-
 ### Jest
 
 JavaScript testing framework that provides test runners, assertions, and mocking
@@ -66,21 +62,21 @@ output and behavior.
 A fast testing framework that's an alternative to Jest, especially for Vite
 projects.
 
-## Basic Syntax and Setup
-
 ### Installation
 
+# Basic example showing the core idea.
 ```bash
-# For new Create React App projects (Jest + RTL included)
+## For new Create React App projects (Jest + RTL included)
 npx create-react-app my-app
 
-# Manual installation
+## Manual installation
 npm install --save-dev @testing-library/react @testing-library/jest-dom
 npm install --save-dev @testing-library/user-event
 ```
 
 ### Basic Test File Structure
 
+// Basic example showing the core idea.
 ```javascript
 // ComponentName.test.js
 import { render, screen } from '@testing-library/react';
@@ -95,6 +91,7 @@ describe('ComponentName', () => {
 
 ### Jest Configuration (jest.config.js)
 
+// Basic example showing the core idea.
 ```javascript
 module.exports = {
   testEnvironment: 'jsdom',
@@ -108,6 +105,7 @@ module.exports = {
 
 ### Setup File (setupTests.js)
 
+// Basic example showing the core idea.
 ```javascript
 import '@testing-library/jest-dom';
 
@@ -117,10 +115,9 @@ beforeEach(() => {
 });
 ```
 
-## Testing Fundamentals
-
 ### Basic Test Structure
 
+// Basic example showing the core idea.
 ```javascript
 // Arrange - Set up test data and conditions
 // Act - Execute the functionality being tested
@@ -131,16 +128,17 @@ test('adds 1 + 2 to equal 3', () => {
   const a = 1;
   const b = 2;
 
-  // Act
+// Act
   const result = a + b;
 
-  // Assert
+// Assert
   expect(result).toBe(3);
 });
 ```
 
 ### Common Jest Matchers
 
+// Basic example showing the core idea.
 ```javascript
 // Equality
 expect(value).toBe(4); // Strict equality
@@ -171,10 +169,9 @@ expect(() => {
 }).toThrow('Wrong!');
 ```
 
-## Component Testing
-
 ### Basic Component Rendering
 
+// Basic example showing the core idea.
 ```javascript
 import { render, screen } from '@testing-library/react';
 import Button from './Button';
@@ -188,6 +185,7 @@ test('renders button with text', () => {
 
 ### Testing Props
 
+// Basic example showing the core idea.
 ```javascript
 // Button.js
 const Button = ({ variant, children, disabled }) => (
@@ -212,6 +210,7 @@ test('disables button when disabled prop is true', () => {
 
 ### Testing Conditional Rendering
 
+// Basic example showing the core idea.
 ```javascript
 // Message.js
 const Message = ({ type, children }) => {
@@ -236,10 +235,9 @@ test('renders nothing for invalid type', () => {
 });
 ```
 
-## Event Testing
-
 ### User Event Setup
 
+// Basic example showing the core idea.
 ```javascript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -252,12 +250,13 @@ test('handles click events', async () => {
 
 ### Click Events
 
+// Basic example showing the core idea.
 ```javascript
 // Counter.js
 const Counter = () => {
   const [count, setCount] = useState(0);
 
-  return (
+return (
     <div>
       <span data-testid="count">{count}</span>
       <button onClick={() => setCount(count + 1)}>Increment</button>
@@ -270,30 +269,31 @@ test('increments count on button click', async () => {
   const user = userEvent.setup();
   render(<Counter />);
 
-  const button = screen.getByText('Increment');
+const button = screen.getByText('Increment');
   const countDisplay = screen.getByTestId('count');
 
-  expect(countDisplay).toHaveTextContent('0');
+expect(countDisplay).toHaveTextContent('0');
 
-  await user.click(button);
+await user.click(button);
   expect(countDisplay).toHaveTextContent('1');
 });
 ```
 
 ### Form Input Events
 
+// Basic example showing the core idea.
 ```javascript
 // LoginForm.js
 const LoginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ email, password });
   };
 
-  return (
+return (
     <form onSubmit={handleSubmit}>
       <input
         type="email"
@@ -317,17 +317,17 @@ test('submits form with correct data', async () => {
   const user = userEvent.setup();
   const mockSubmit = jest.fn();
 
-  render(<LoginForm onSubmit={mockSubmit} />);
+render(<LoginForm onSubmit={mockSubmit} />);
 
-  const emailInput = screen.getByPlaceholderText('Email');
+const emailInput = screen.getByPlaceholderText('Email');
   const passwordInput = screen.getByPlaceholderText('Password');
   const submitButton = screen.getByText('Login');
 
-  await user.type(emailInput, 'test@example.com');
+await user.type(emailInput, 'test@example.com');
   await user.type(passwordInput, 'password123');
   await user.click(submitButton);
 
-  expect(mockSubmit).toHaveBeenCalledWith({
+expect(mockSubmit).toHaveBeenCalledWith({
     email: 'test@example.com',
     password: 'password123',
   });
@@ -336,31 +336,31 @@ test('submits form with correct data', async () => {
 
 ### Keyboard Events
 
+// Basic example showing the core idea.
 ```javascript
 test('handles keyboard navigation', async () => {
   const user = userEvent.setup();
   render(<SearchInput />);
 
-  const input = screen.getByRole('textbox');
+const input = screen.getByRole('textbox');
 
-  await user.type(input, 'test query');
+await user.type(input, 'test query');
   await user.keyboard('{Enter}');
 
-  expect(mockSearch).toHaveBeenCalledWith('test query');
+expect(mockSearch).toHaveBeenCalledWith('test query');
 });
 ```
 
-## Async Testing
-
 ### Testing Promises
 
+// Basic example showing the core idea.
 ```javascript
 // DataFetcher.js
 const DataFetcher = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
+const fetchData = async () => {
     setLoading(true);
     try {
       const response = await fetch('/api/data');
@@ -371,7 +371,7 @@ const DataFetcher = () => {
     }
   };
 
-  return (
+return (
     <div>
       <button onClick={fetchData}>Fetch Data</button>
       {loading && <span>Loading...</span>}
@@ -384,36 +384,37 @@ const DataFetcher = () => {
 test('fetches and displays data', async () => {
   const user = userEvent.setup();
 
-  // Mock fetch
+// Mock fetch
   global.fetch = jest.fn(() =>
     Promise.resolve({
       json: () => Promise.resolve({ message: 'Hello World' }),
     })
   );
 
-  render(<DataFetcher />);
+render(<DataFetcher />);
 
-  const button = screen.getByText('Fetch Data');
+const button = screen.getByText('Fetch Data');
   await user.click(button);
 
-  expect(screen.getByText('Loading...')).toBeInTheDocument();
+expect(screen.getByText('Loading...')).toBeInTheDocument();
 
-  const data = await screen.findByTestId('data');
+const data = await screen.findByTestId('data');
   expect(data).toHaveTextContent('Hello World');
 
-  expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
+expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
 });
 ```
 
 ### waitFor Usage
 
+// Basic example showing the core idea.
 ```javascript
 import { waitFor } from '@testing-library/react';
 
 test('waits for element to appear', async () => {
   render(<AsyncComponent />);
 
-  await waitFor(() => {
+await waitFor(() => {
     expect(screen.getByText('Loaded')).toBeInTheDocument();
   });
 });
@@ -421,7 +422,7 @@ test('waits for element to appear', async () => {
 test('waits for element to disappear', async () => {
   render(<ComponentWithLoader />);
 
-  await waitFor(() => {
+await waitFor(() => {
     expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
   });
 });
@@ -429,45 +430,45 @@ test('waits for element to disappear', async () => {
 
 ### Testing setTimeout/setInterval
 
+// Basic example showing the core idea.
 ```javascript
 // Timer.js
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
 
-  useEffect(() => {
+useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((s) => s + 1);
     }, 1000);
 
-    return () => clearInterval(interval);
+return () => clearInterval(interval);
   }, []);
 
-  return <div data-testid="timer">{seconds}</div>;
+return <div data-testid="timer">{seconds}</div>;
 };
 
 // Timer.test.js
 test('increments timer every second', () => {
   jest.useFakeTimers();
 
-  render(<Timer />);
+render(<Timer />);
 
-  const timer = screen.getByTestId('timer');
+const timer = screen.getByTestId('timer');
   expect(timer).toHaveTextContent('0');
 
-  jest.advanceTimersByTime(1000);
+jest.advanceTimersByTime(1000);
   expect(timer).toHaveTextContent('1');
 
-  jest.advanceTimersByTime(2000);
+jest.advanceTimersByTime(2000);
   expect(timer).toHaveTextContent('3');
 
-  jest.useRealTimers();
+jest.useRealTimers();
 });
 ```
 
-## Mocking in React Tests
-
 ### Mocking Functions
 
+// Basic example showing the core idea.
 ```javascript
 // Component with callback
 const Button = ({ onClick, children }) => (
@@ -478,16 +479,17 @@ test('calls onClick prop when clicked', async () => {
   const user = userEvent.setup();
   const mockClick = jest.fn();
 
-  render(<Button onClick={mockClick}>Click me</Button>);
+render(<Button onClick={mockClick}>Click me</Button>);
 
-  await user.click(screen.getByText('Click me'));
+await user.click(screen.getByText('Click me'));
 
-  expect(mockClick).toHaveBeenCalledTimes(1);
+expect(mockClick).toHaveBeenCalledTimes(1);
 });
 ```
 
 ### Mocking Modules
 
+// Basic example showing the core idea.
 ```javascript
 // Mock external library
 jest.mock('axios');
@@ -497,15 +499,16 @@ test('fetches data with axios', async () => {
   const data = { users: [{ id: 1, name: 'John' }] };
   mockedAxios.get.mockResolvedValue({ data });
 
-  render(<UserList />);
+render(<UserList />);
 
-  await screen.findByText('John');
+await screen.findByText('John');
   expect(mockedAxios.get).toHaveBeenCalledWith('/api/users');
 });
 ```
 
 ### Mocking Custom Hooks
 
+// Basic example showing the core idea.
 ```javascript
 // Mock custom hook
 jest.mock('./hooks/useAuth');
@@ -519,14 +522,15 @@ test('shows login when not authenticated', () => {
     logout: jest.fn()
   });
 
-  render(<ProtectedRoute />);
+render(<ProtectedRoute />);
 
-  expect(screen.getByText('Please log in')).toBeInTheDocument();
+expect(screen.getByText('Please log in')).toBeInTheDocument();
 });
 ```
 
 ### Mocking React Router
 
+// Basic example showing the core idea.
 ```javascript
 import { MemoryRouter } from 'react-router-dom';
 
@@ -537,39 +541,39 @@ test('renders correct page for route', () => {
     </MemoryRouter>
   );
 
-  expect(screen.getByText('About Page')).toBeInTheDocument();
+expect(screen.getByText('About Page')).toBeInTheDocument();
 });
 ```
 
-## Integration Testing
-
 ### Testing Component Integration
 
+// Basic example showing the core idea.
 ```javascript
 // TodoApp integration test
 test('adds and removes todos', async () => {
   const user = userEvent.setup();
   render(<TodoApp />);
 
-  const input = screen.getByPlaceholderText('Add todo...');
+const input = screen.getByPlaceholderText('Add todo...');
   const addButton = screen.getByText('Add');
 
-  // Add todo
+// Add todo
   await user.type(input, 'Learn React Testing');
   await user.click(addButton);
 
-  expect(screen.getByText('Learn React Testing')).toBeInTheDocument();
+expect(screen.getByText('Learn React Testing')).toBeInTheDocument();
 
-  // Remove todo
+// Remove todo
   const deleteButton = screen.getByRole('button', { name: /delete/i });
   await user.click(deleteButton);
 
-  expect(screen.queryByText('Learn React Testing')).not.toBeInTheDocument();
+expect(screen.queryByText('Learn React Testing')).not.toBeInTheDocument();
 });
 ```
 
 ### Testing with Context
 
+// Basic example showing the core idea.
 ```javascript
 // Custom render with context
 const renderWithTheme = (component) => {
@@ -579,13 +583,14 @@ const renderWithTheme = (component) => {
 test('applies theme styles', () => {
   renderWithTheme(<ThemedButton>Click me</ThemedButton>);
 
-  const button = screen.getByRole('button');
+const button = screen.getByRole('button');
   expect(button).toHaveStyle('background-color: #007bff');
 });
 ```
 
 ### Testing with Redux
 
+// Basic example showing the core idea.
 ```javascript
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -605,16 +610,15 @@ test('displays user name from store', () => {
     user: { name: 'John Doe', id: 1 },
   };
 
-  renderWithRedux(<UserProfile />, { initialState });
+renderWithRedux(<UserProfile />, { initialState });
 
-  expect(screen.getByText('John Doe')).toBeInTheDocument();
+expect(screen.getByText('John Doe')).toBeInTheDocument();
 });
 ```
 
-## Best Practices
-
 ### 1. Test Behavior, Not Implementation
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - testing implementation details
 test('sets loading state to true', () => {
@@ -628,14 +632,15 @@ test('shows loading indicator when fetching data', async () => {
   const user = userEvent.setup();
   render(<DataComponent />);
 
-  await user.click(screen.getByText('Load Data'));
+await user.click(screen.getByText('Load Data'));
 
-  expect(screen.getByText('Loading...')).toBeInTheDocument();
+expect(screen.getByText('Loading...')).toBeInTheDocument();
 });
 ```
 
 ### 2. Use Semantic Queries
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Avoid getByTestId when possible
 screen.getByTestId('submit-button');
@@ -648,6 +653,7 @@ screen.getByText('Welcome back!');
 
 ### 3. Test Edge Cases
 
+// Basic example showing the core idea.
 ```javascript
 test('handles empty list', () => {
   render(<TodoList todos={[]} />);
@@ -663,6 +669,7 @@ test('handles very long todo text', () => {
 
 ### 4. Clean Up After Tests
 
+// Basic example showing the core idea.
 ```javascript
 afterEach(() => {
   jest.clearAllMocks();
@@ -674,10 +681,9 @@ afterAll(() => {
 });
 ```
 
-## Common Patterns
-
 ### Custom Render Function
 
+// Basic example showing the core idea.
 ```javascript
 // test-utils.js
 const AllTheProviders = ({ children }) => {
@@ -699,6 +705,7 @@ export { customRender as render };
 
 ### Page Object Model
 
+// Basic example showing the core idea.
 ```javascript
 // pageObjects/LoginPage.js
 class LoginPage {
@@ -706,19 +713,19 @@ class LoginPage {
     this.screen = screen;
   }
 
-  get emailInput() {
+get emailInput() {
     return this.screen.getByLabelText('Email');
   }
 
-  get passwordInput() {
+get passwordInput() {
     return this.screen.getByLabelText('Password');
   }
 
-  get submitButton() {
+get submitButton() {
     return this.screen.getByRole('button', { name: /login/i });
   }
 
-  async login(email, password) {
+async login(email, password) {
     const user = userEvent.setup();
     await user.type(this.emailInput, email);
     await user.type(this.passwordInput, password);
@@ -731,14 +738,15 @@ test('successful login', async () => {
   render(<LoginForm />);
   const loginPage = new LoginPage(screen);
 
-  await loginPage.login('user@example.com', 'password');
+await loginPage.login('user@example.com', 'password');
 
-  expect(screen.getByText('Welcome!')).toBeInTheDocument();
+expect(screen.getByText('Welcome!')).toBeInTheDocument();
 });
 ```
 
 ### Factory Functions for Test Data
 
+// Basic example showing the core idea.
 ```javascript
 // factories/userFactory.js
 export const createUser = (overrides = {}) => ({
@@ -754,16 +762,15 @@ test('renders admin features for admin user', () => {
   const adminUser = createUser({ role: 'admin' });
   render(<UserProfile user={adminUser} />);
 
-  expect(screen.getByText('Admin Panel')).toBeInTheDocument();
+expect(screen.getByText('Admin Panel')).toBeInTheDocument();
 });
 ```
 
-## Troubleshooting
 
-### Common Issues and Solutions
 
 #### 1. "Not wrapped in act()" Warning
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Problem
 test('updates state', () => {
@@ -776,13 +783,14 @@ test('updates state', async () => {
   const user = userEvent.setup();
   render(<Counter />);
 
-  await user.click(screen.getByText('Increment'));
+await user.click(screen.getByText('Increment'));
   // State updates are wrapped in act() automatically
 });
 ```
 
 #### 2. Testing Async Operations
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Problem - not waiting for async operation
 test('loads data', () => {
@@ -799,41 +807,44 @@ test('loads data', async () => {
 
 #### 3. Debugging Test Failures
 
+// Basic example showing the core idea.
 ```javascript
 test('debug example', () => {
   render(<MyComponent />);
 
-  // See what's rendered
+// See what's rendered
   screen.debug();
 
-  // See specific element
+// See specific element
   screen.debug(screen.getByRole('button'));
 
-  // Check available queries
+// Check available queries
   screen.logTestingPlaygroundURL();
 });
 ```
 
 #### 4. Testing Custom Hooks
 
+// Basic example showing the core idea.
 ```javascript
 import { renderHook, act } from '@testing-library/react';
 
 test('useCounter hook', () => {
   const { result } = renderHook(() => useCounter());
 
-  expect(result.current.count).toBe(0);
+expect(result.current.count).toBe(0);
 
-  act(() => {
+act(() => {
     result.current.increment();
   });
 
-  expect(result.current.count).toBe(1);
+expect(result.current.count).toBe(1);
 });
 ```
 
 ### Performance Testing
 
+// Basic example showing the core idea.
 ```javascript
 // Monitor render performance
 test('renders large list efficiently', () => {
@@ -842,16 +853,17 @@ test('renders large list efficiently', () => {
     name: `Item ${i}`,
   }));
 
-  const start = performance.now();
+const start = performance.now();
   render(<LargeList items={items} />);
   const end = performance.now();
 
-  expect(end - start).toBeLessThan(100); // Should render in under 100ms
+expect(end - start).toBeLessThan(100); // Should render in under 100ms
 });
 ```
 
 ### Accessibility Testing
 
+// Basic example showing the core idea.
 ```javascript
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -867,3 +879,12 @@ test('should not have accessibility violations', async () => {
 This comprehensive guide covers the essential aspects of React testing, from
 basic concepts to advanced patterns. Each section provides practical examples
 that you can adapt to your specific testing needs.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

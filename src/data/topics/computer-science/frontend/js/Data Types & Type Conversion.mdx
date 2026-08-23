@@ -1,6 +1,6 @@
-# JavaScript Data Types & Type Conversion 🟦🔄
+# JavaScript Data Types & Type Conversion 🟦
 
-## Primitive vs. Reference Types 🧩
+## Primitive vs. Reference Types
 
 | Aspect         | Primitive Types 🟢                                                     | Reference Types 🟠                          |
 | -------------- | ---------------------------------------------------------------------- | ------------------------------------------- |
@@ -13,6 +13,7 @@
 
 ### Primitive Types Examples
 
+// Basic example showing the core idea.
 ```javascript
 // Numbers 🔢
 let integer = 42;
@@ -51,6 +52,7 @@ let bigFromConstructor = BigInt('123456789012345678901234567890');
 
 ### Reference Types Examples
 
+// Basic example showing the core idea.
 ```javascript
 // Objects 🧑‍💻
 let person = {
@@ -82,8 +84,9 @@ let regex = /[a-z]+/gi;
 let regexConstructor = new RegExp('[a-z]+', 'gi');
 ```
 
-### Value vs Reference Behavior 🔄
+### Value vs Reference Behavior
 
+// Basic example showing the core idea.
 ```javascript
 // Primitives - Copied by value
 let a = 10;
@@ -107,7 +110,7 @@ console.log(arr1); // [1, 2, 3, 4]
 console.log(arr2); // [1, 2, 3, 4] (same array)
 ```
 
-## Type Checking Methods 🕵️‍♂️
+## Type Checking Methods 🕵‍♂
 
 | Method                      | Purpose                     | Returns | Best For                   |
 | --------------------------- | --------------------------- | ------- | -------------------------- |
@@ -115,7 +118,7 @@ console.log(arr2); // [1, 2, 3, 4] (same array)
 | `instanceof`                | Check prototype chain       | Boolean | Object types, inheritance  |
 | `Object.prototype.toString` | Precise type identification | String  | All types accurately       |
 
-### `typeof` Operator 🏷️
+### `typeof` Operator 🏷
 
 | Value           | `typeof` Result | Notes                              |
 | --------------- | --------------- | ---------------------------------- |
@@ -129,6 +132,7 @@ console.log(arr2); // [1, 2, 3, 4] (same array)
 | `{}`            | `"object"`      | Objects, arrays, null              |
 | `function() {}` | `"function"`    | Functions                          |
 
+// Basic example showing the core idea.
 ```javascript
 // typeof Examples
 console.log(typeof 42); // "number"
@@ -150,8 +154,9 @@ console.log(typeof x); // "undefined"
 console.log(typeof undeclaredVar); // "undefined" (doesn't throw error)
 ```
 
-### `instanceof` Operator 🧬
+### `instanceof` Operator
 
+// Basic example showing the core idea.
 ```javascript
 // instanceof Examples
 let arr = [1, 2, 3];
@@ -184,8 +189,9 @@ console.log(new Number(42) instanceof Number); // true
 console.log(new String('hello') instanceof String); // true
 ```
 
-### `Object.prototype.toString` 🎯
+### `Object.prototype.toString`
 
+// Basic example showing the core idea.
 ```javascript
 // Most accurate type checking
 function getType(value) {
@@ -213,17 +219,16 @@ console.log(Object.prototype.toString.call(null)); // "[object Null]"
 console.log(Object.prototype.toString.call(NaN)); // "[object Number]"
 ```
 
-## Type Conversion (Coercion) 🔄
+## Type Conversion (Coercion)
 
 | Conversion Type       | Definition                                 | When It Occurs                     | Control   |
 | --------------------- | ------------------------------------------ | ---------------------------------- | --------- |
 | **Implicit Coercion** | Automatic type conversion by JavaScript 🤖 | Operations between different types | Automatic |
 | **Explicit Coercion** | Manual type conversion by developer ✋     | Using conversion functions/methods | Manual    |
 
-### Implicit Coercion Examples
+#### String Coercion
 
-#### String Coercion 📝
-
+// Basic example showing the core idea.
 ```javascript
 // + operator with strings
 console.log(5 + '3'); // "53" (number to string)
@@ -238,6 +243,7 @@ console.log(`Value: ${42}`); // "Value: 42"
 
 #### Numeric Coercion 🔢
 
+// Basic example showing the core idea.
 ```javascript
 // - operator (always numeric)
 console.log('5' - 3); // 2 (string to number)
@@ -254,6 +260,7 @@ console.log(+'42'); // 42 (unary + converts to number)
 
 #### Boolean Coercion ✅❌
 
+// Basic example showing the core idea.
 ```javascript
 // Falsy values: false, 0, -0, 0n, "", null, undefined, NaN
 console.log(Boolean(false)); // false
@@ -278,10 +285,9 @@ if ('0') console.log('Truthy'); // Executes
 if ([]) console.log('Truthy'); // Executes
 ```
 
-### Explicit Coercion Examples
+#### To String
 
-#### To String 📝
-
+// Basic example showing the core idea.
 ```javascript
 // String() function
 console.log(String(42)); // "42"
@@ -300,6 +306,7 @@ console.log(`${42}`); // "42"
 
 #### To Number 🔢
 
+// Basic example showing the core idea.
 ```javascript
 // Number() function
 console.log(Number('42')); // 42
@@ -326,6 +333,7 @@ console.log(+'hello'); // NaN
 
 #### To Boolean ✅❌
 
+// Basic example showing the core idea.
 ```javascript
 // Boolean() function
 console.log(Boolean(1)); // true
@@ -340,7 +348,7 @@ console.log(!!'hello'); // true
 console.log(!!''); // false
 ```
 
-## Common Coercion Gotchas ⚠️
+## Common Coercion Gotchas ⚠
 
 | Expression  | Result              | Explanation                                        |
 | ----------- | ------------------- | -------------------------------------------------- |
@@ -351,6 +359,7 @@ console.log(!!''); // false
 | `0 == []`   | `true`              | Array converts to "" then to 0                     |
 | `"0" == []` | `false`             | Array converts to "", "0" != ""                    |
 
+// Basic example showing the core idea.
 ```javascript
 // Surprising comparisons 😲
 console.log([] == []); // false (different references)
@@ -375,3 +384,12 @@ console.log(null === undefined); // false (different types)
 | **Check for `null`/`undefined`**    | Handle edge cases           | `if (value != null)`             |
 | **Use `Object.prototype.toString`** | Most reliable type checking | For complex type detection       |
 | **Understand falsy values**         | Prevent logical errors      | Know what evaluates to false     |
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

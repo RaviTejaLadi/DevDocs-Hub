@@ -11,6 +11,7 @@ theoretical foundations, practical implementation strategies, technical
 deep-dives, and real-world case studies demonstrating what happens when these
 pillars fail.
 
+<!-- Visual flow for 🔺 The CIA Triad: The Cornerstone of Information Security. -->
 ```mermaid
 pie
     title The CIA Triad
@@ -28,7 +29,7 @@ organization to make sure data is kept secret or private. To accomplish this,
 access to information must be controlled to prevent the unauthorized sharing of
 data—whether intentional or accidental.
 
-### 1.1 🧠 Core Concepts of Confidentiality
+### 1.1 Core Concepts of Confidentiality
 
 Confidentiality goes beyond simply hiding data. It requires a robust
 understanding of:
@@ -41,12 +42,12 @@ understanding of:
 - 🔑 **Least Privilege:** Users and systems should operate with the lowest level
   of permissions required.
 
-### 1.2 ⚙️ Technical Implementation of Confidentiality
+### 1.2 ⚙ Technical Implementation of Confidentiality
 
 Achieving confidentiality requires a multi-layered approach combining several
 technologies:
 
-#### 1.2.1 🔐 Encryption (Cryptography)
+#### 1.2.1 Encryption (Cryptography)
 
 Encryption is the primary mechanism for ensuring confidentiality. It transforms
 readable data (plaintext) into an unreadable format (ciphertext) using an
@@ -107,16 +108,14 @@ Used primarily in non-production environments or when processing payments.
 - **The Lesson:** Encryption at rest and strict internal access controls are
   critical fail-safes when perimeter defenses are breached.
 
----
-
-## 2. 🛡️ Integrity: Ensuring Data Accuracy and Trustworthiness
+## 2. Integrity: Ensuring Data Accuracy and Trustworthiness
 
 Integrity involves maintaining the consistency, accuracy, and trustworthiness of
 data over its entire lifecycle. Data must not be changed in transit, and steps
 must be taken to ensure that data cannot be altered by unauthorized people (for
 example, in a breach of confidentiality).
 
-### 2.1 🧠 Core Concepts of Integrity
+### 2.1 Core Concepts of Integrity
 
 Integrity ensures that you can trust the information you rely on to make
 decisions.
@@ -129,8 +128,6 @@ decisions.
 - ✍️ **Non-Repudiation:** Providing proof of the origin and integrity of data,
   ensuring that a party to a transaction cannot deny having received a
   transaction, nor can the other party deny having sent a transaction.
-
-### 2.2 ⚙️ Technical Implementation of Integrity
 
 #### 2.2.1 🧮 Hashing Algorithms
 
@@ -146,7 +143,7 @@ alphanumeric string. The string is the 'hash value' or 'message digest'.
   with by comparing hashes), storing passwords (storing the hash, never the
   plaintext password).
 
-#### 2.2.2 🖋️ Digital Signatures
+#### 2.2.2 🖋 Digital Signatures
 
 Digital signatures combine hashing with asymmetric cryptography to provide both
 integrity and non-repudiation.
@@ -168,7 +165,7 @@ integrity and non-repudiation.
   code or configuration is tracked, attributable to a specific user, and
   reversible.
 
-#### 2.2.4 🔍 File Integrity Monitoring (FIM)
+#### 2.2.4 File Integrity Monitoring (FIM)
 
 FIM tools continuously monitor critical system files, configurations, and
 content for unauthorized changes.
@@ -186,15 +183,13 @@ content for unauthorized changes.
   > **Note:** Code signing is insufficient if the build environment itself is
   > compromised.
 
----
-
 ## 3. 🟢 Availability: Ensuring Reliable Access to Systems and Data
 
 Availability means that information is accessible by authorized users when they
 need it. Even if data is perfectly confidential and its integrity is intact, it
 is useless if it cannot be accessed.
 
-### 3.1 🧠 Core Concepts of Availability
+### 3.1 Core Concepts of Availability
 
 Availability is closely tied to operational resilience and disaster recovery.
 
@@ -205,8 +200,6 @@ Availability is closely tied to operational resilience and disaster recovery.
 - 🛡️ **Fault Tolerance:** The property that enables a system to continue
   operating properly in the event of the failure of one or more of its
   components.
-
-### 3.2 ⚙️ Technical Implementation of Availability
 
 #### 3.2.1 🔁 Redundancy and Failover
 
@@ -220,7 +213,7 @@ Eliminating Single Points of Failure (SPOF) is paramount.
 - **Geographic Redundancy:** Replicating infrastructure across different
   physical locations.
 
-#### 3.2.2 🛡️ Defending Against DDoS Attacks
+#### 3.2.2 Defending Against DDoS Attacks
 
 Distributed Denial of Service (DDoS) attacks are explicit attempts to destroy
 availability by overwhelming a system with traffic.
@@ -228,7 +221,7 @@ availability by overwhelming a system with traffic.
 - **Mitigation Strategies:** Over-provisioning bandwidth, CDNs, DDoS scrubbing
   services (Cloudflare, AWS Shield), Rate limiting.
 
-#### 3.2.3 🔄 Disaster Recovery (DR) and Backups
+#### 3.2.3 Disaster Recovery (DR) and Backups
 
 When primary systems fail entirely, DR processes take over.
 
@@ -239,7 +232,7 @@ When primary systems fail entirely, DR processes take over.
   - _RTO (Recovery Time Objective):_ How quickly must the system be restored?
   - _RPO (Recovery Point Objective):_ How much data loss is acceptable?
 
-#### 3.2.4 🛠️ Patch Management and System Maintenance
+#### 3.2.4 🛠 Patch Management and System Maintenance
 
 Proper lifecycle management ensures systems are stable and secure, minimizing
 planned downtime.
@@ -253,14 +246,13 @@ planned downtime.
 - **The Lesson:** The reliance on single critical infrastructure providers
   creates systemic risk.
 
----
-
-## 4. ⚖️ The Tension Within the Triad
+## 4. ⚖ The Tension Within the Triad
 
 The elements of the CIA Triad are often at odds with one another. Designing a
 security system requires balancing these three pillars based on the specific
 needs of the organization.
 
+<!-- Visual flow for 🔺 The CIA Triad: The Cornerstone of Information Security. -->
 ```mermaid
 graph TD
     A[High Security System] --> B{Trade-offs}
@@ -270,7 +262,7 @@ graph TD
     B -->|Resource Heavy| F(Availability ⬇️)
 ```
 
-### 4.1 🎯 Context is King
+### 4.1 Context is King
 
 The optimal balance shifts depending on the scenario:
 
@@ -280,9 +272,7 @@ The optimal balance shifts depending on the scenario:
     bank must ensure that an account balance cannot be arbitrarily changed.
 3.  🪖 **Military Intelligence:** **Confidentiality** is the overriding concern.
 
----
-
-## 5. 🧩 Expanding the Model: The Parkerian Hexad
+## 5. Expanding the Model: The Parkerian Hexad
 
 While the CIA Triad remains foundational, Donn Parker proposed the Parkerian
 Hexad, adding three attributes:
@@ -293,7 +283,7 @@ Hexad, adding three attributes:
     or the originator.
 3.  **Utility:** The usefulness of the data.
 
-## 6. 📊 Practical Application: A CIA Triad Risk Assessment Matrix
+## 6. Practical Application: A CIA Triad Risk Assessment Matrix
 
 Organizations use the CIA Triad to conduct risk assessments for new systems.
 
@@ -311,3 +301,12 @@ used every day by security professionals to design architectures, evaluate
 risks, and respond to incidents. Mastery of Confidentiality, Integrity, and
 Availability is the fundamental requirement for anyone building or defending
 modern digital systems.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

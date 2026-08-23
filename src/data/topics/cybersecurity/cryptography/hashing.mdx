@@ -1,4 +1,4 @@
-# #️⃣ Cryptographic Hashing
+# #⃣ Cryptographic Hashing
 
 While encryption is about hiding data so it can be revealed later with a key,
 **hashing** is fundamentally different. A cryptographic hash function takes an
@@ -14,12 +14,13 @@ This exhaustive guide covers the mathematical requirements of secure hash
 functions, explores the evolution of algorithms from MD5 to SHA-3, details the
 specific requirements for hashing passwords, and examines real-world attacks.
 
-## 1. 🏗️ Core Properties of a Cryptographic Hash Function
+## 1. Core Properties of a Cryptographic Hash Function
 
 Not all hash functions are cryptographic. For example, a simple checksum used to
 detect accidental data corruption (like CRC32) is a hash function, but it is
 entirely insecure against an intentional attack.
 
+<!-- Visual flow for #⃣ Cryptographic Hashing. -->
 ```mermaid
 graph LR
     A[📄 Input Data of Any Size] -->|Cryptographic Hash Function| B((#️⃣ Fixed-Size Hash Digest))
@@ -30,7 +31,7 @@ graph LR
 To be considered cryptographically secure, a hash function must possess several
 strict mathematical properties:
 
-### 1.1 🎯 Determinism
+### 1.1 Determinism
 
 The same input must _always_, without exception, produce the exact same output.
 If you hash the complete works of Shakespeare twice, the resulting hashes must
@@ -44,7 +45,7 @@ the original input message $M$ such that `hash(M) = H`.
 - _Analogy:_ If you know the exact chemical composition of a baked cake, you
   still cannot un-bake it back into raw eggs, flour, and sugar.
 
-### 1.3 🛡️ Second Pre-image Resistance
+### 1.3 Second Pre-image Resistance
 
 Given a specific input $M_1$, it must be computationally infeasible to find a
 different input $M_2$ such that `hash(M_1) = hash(M_2)`.
@@ -65,7 +66,7 @@ and $M_2$, that hash to the exact same output: `hash(M_1) = hash(M_2)`.
 - _Note:_ Collision resistance is a stronger requirement than second pre-image
   resistance. If a hash function is not collision-resistant, it is broken.
 
-### 1.5 ❄️ The Avalanche Effect
+### 1.5 ❄ The Avalanche Effect
 
 A microscopic change to the input should result in a macroscopic, unpredictable
 change to the output. Changing a single bit in a 10GB file should flip roughly
@@ -114,7 +115,7 @@ algorithms that produce hashes of 224, 256, 384, or 512 bits.
   cryptographic hashing. It is used in TLS certificates, blockchain technology
   (Bitcoin uses double SHA-256), and software integrity checks.
 
-### 2.4 🛡️ SHA-3 (Keccak)
+### 2.4 SHA-3 (Keccak)
 
 In 2012, NIST concluded a multi-year public competition to select a successor to
 SHA-2. The winner was Keccak, which became SHA-3.
@@ -138,7 +139,7 @@ they match, the password is correct.
 designed to be extremely fast. This is great for checking the integrity of a 4GB
 ISO file, but it is **terrible** for passwords.
 
-### 3.1 🏎️ The Problem with Fast Hashes
+### 3.1 🏎 The Problem with Fast Hashes
 
 If you hash a password with SHA-256, an attacker with a modern GPU can guess
 tens of billions of passwords per second. They can perform an offline
@@ -186,7 +187,7 @@ When storing passwords, you must use one of the following algorithms:
 **DO NOT USE:** plain SHA-256, SHA-1, or MD5 for passwords under any
 circumstances.
 
-## 4. 🏷️ Message Authentication Codes (MACs)
+## 4. 🏷 Message Authentication Codes (MACs)
 
 A standard hash (like SHA-256) provides data integrity, but it does _not_
 provide authentication. If you download a file and its hash from a website, an
@@ -211,7 +212,7 @@ HMAC combines a cryptographic hash function with a secret cryptographic key.
 - **Use Cases:** JSON Web Tokens (JWTs) signatures, API authentication, and
   within AEAD ciphers like AES-GCM.
 
-## 5. ⚠️ Practical Implementation and Pitfalls
+## 5. ⚠ Practical Implementation and Pitfalls
 
 1.  **Length Extension Attacks:** Naively creating a MAC by just hashing a key
     and a message `hash(key || message)` using MD5, SHA-1, or SHA-2 is
@@ -237,3 +238,12 @@ irrefutable mathematical proof required in a zero-trust environment.
 Understanding the distinction between fast general-purpose hashes and slow
 password hashes is one of the most critical concepts for any software engineer
 building secure systems.
+
+## Quick Reference
+
+| Part | Revision point |
+|---|---|
+| Input | Know the allowed values and constraints. |
+| Core idea | Identify the invariant, recurrence, or search rule. |
+| Complexity | Track time and space costs. |
+| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |

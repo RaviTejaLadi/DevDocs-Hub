@@ -1,16 +1,14 @@
-# 🛠️ JavaScript Error Handling
+# 🛠 JavaScript Error Handling
 
 ---
 
-## 📌 1. What is Error Handling?
+## 1. What is Error Handling?
 
 **Definition:** Error handling in JavaScript is a **mechanism** to gracefully
 handle runtime errors (e.g., undefined variables, network issues) **without
 crashing** the program.
 
 > It helps in maintaining the **flow of code** even when something goes wrong.
-
----
 
 ## 📚 2. Common Error Types
 
@@ -23,10 +21,9 @@ crashing** the program.
 | `EvalError`      | Problems with `eval()` usage                |
 | `URIError`       | Malformed URI functions (`decodeURI`, etc.) |
 
----
-
 ## 🔧 3. Basic Syntax: `try...catch`
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   // Code that might throw an error
@@ -35,10 +32,9 @@ try {
 }
 ```
 
----
-
 ## 🔁 4. Full Syntax: `try...catch...finally`
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   // Code that might throw an error
@@ -49,8 +45,9 @@ try {
 }
 ```
 
-### 📊 ASCII Flow Diagram
+### ASCII Flow Diagram
 
+# Basic example showing the core idea.
 ```bash
              +-------------+
              | try block   |
@@ -76,10 +73,9 @@ try {
          +-------+
 ```
 
----
-
 ## ✅ 5. Example – Basic Try Catch
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   const result = 10 / 0;
@@ -91,12 +87,14 @@ try {
 
 📝 **Output**:
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Result: Infinity
 ```
 
 Try again with a real error:
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   const data = undefinedVariable; // ReferenceError
@@ -105,16 +103,14 @@ try {
 }
 ```
 
-📝 **Output**:
-
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Caught: undefinedVariable is not defined
 ```
 
----
-
 ## 🧱 6. `finally` Block Example
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   console.log('Trying...');
@@ -126,18 +122,16 @@ try {
 }
 ```
 
-📝 **Output**:
-
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Trying...
 Caught: Something broke!
 Cleanup done!
 ```
 
----
+## 7. Throwing Custom Errors
 
-## 🎯 7. Throwing Custom Errors
-
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 function validateAge(age) {
   if (age < 18) {
@@ -153,9 +147,7 @@ try {
 }
 ```
 
----
-
-## ⚙️ 8. Error Object Properties
+## ⚙ 8. Error Object Properties
 
 | Property  | Description                       |
 | --------- | --------------------------------- |
@@ -163,6 +155,7 @@ try {
 | `message` | Error message                     |
 | `stack`   | Stack trace at error location     |
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   throw new TypeError('Wrong type!');
@@ -173,10 +166,9 @@ try {
 }
 ```
 
----
+## 9. Creating Custom Error Types
 
-## 🧪 9. Creating Custom Error Types
-
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 class ValidationError extends Error {
   constructor(message) {
@@ -193,19 +185,16 @@ try {
 }
 ```
 
----
-
-## 🧠 10. Best Practices
+## 10. Best Practices
 
 ✅ Always handle errors where they might occur ✅ Avoid silent failures
 (`catch {}` with empty body) ✅ Log meaningful error messages ✅ Use custom
 error types when needed ✅ Don’t catch errors you can’t handle ✅ Use `finally`
 for resource cleanup
 
----
+## Bonus: Async Error Handling (with Promises)
 
-## 🧩 Bonus: Async Error Handling (with Promises)
-
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 async function fetchData() {
   try {
@@ -218,8 +207,6 @@ async function fetchData() {
 }
 ```
 
----
-
 ## 📎 Summary
 
 | Concept       | Use Case                        |
@@ -228,3 +215,28 @@ async function fetchData() {
 | `finally`     | Cleanup (runs always)           |
 | `throw`       | Manually trigger an error       |
 | `Error`       | Base object for all error types |
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

@@ -18,13 +18,9 @@ forms in React using hooks.
 
 **Zod** is a TypeScript-first schema validation library.
 
-✅ **Key Features:**
-
 - Type-safe validation
 - Generates inferred TypeScript types from schemas
 - Declarative and expressive
-
----
 
 ## Why Use TypeScript + Zod + React Hook Form?
 
@@ -34,22 +30,18 @@ forms in React using hooks.
 - **Robust validation** (with Zod’s declarative API)
 - **Cleaner code** (no need for separate interface + validation logic)
 
----
-
 ## Installation
 
+# Basic example showing the core idea.
 ```bash
 npm install react-hook-form zod @hookform/resolvers
-# OR
+## OR
 yarn add react-hook-form zod @hookform/resolvers
 ```
 
----
+### React Hook Form + TypeScript
 
-## Basic Syntax
-
-### **React Hook Form + TypeScript**
-
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -69,10 +61,9 @@ const onSubmit: SubmitHandler<FormValues> = (data) => {
 };
 ```
 
----
+### React Hook Form + Zod + TypeScript
 
-### **React Hook Form + Zod + TypeScript**
-
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -94,49 +85,36 @@ const {
 });
 ```
 
----
+### 1⃣ Register fields
 
-## Usage
-
-### **1️⃣ Register fields**
-
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <input {...register("name")} />
 <p>{errors.name?.message}</p>
 ```
 
----
+### 2⃣ Handle submit
 
-### **2️⃣ Handle submit**
-
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <form onSubmit={handleSubmit(onSubmit)}>{/* inputs */}</form>
 ```
 
----
+### 3⃣ Access validation messages
 
-### **3️⃣ Access validation messages**
-
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 <p>{errors.email?.message}</p>
 ```
 
----
-
 ## Example: Simple Form Validation
 
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-const schema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-});
-
-type FormValues = z.infer<typeof schema>;
 
 export const SimpleForm = () => {
   const {
@@ -147,28 +125,27 @@ export const SimpleForm = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormValues) => {
+const onSubmit = (data: FormValues) => {
     alert(JSON.stringify(data, null, 2));
   };
 
-  return (
+return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input placeholder="Name" {...register('name')} />
       <p>{errors.name?.message}</p>
 
-      <input placeholder="Email" {...register('email')} />
+<input placeholder="Email" {...register('email')} />
       <p>{errors.email?.message}</p>
 
-      <button type="submit">Submit</button>
+<button type="submit">Submit</button>
     </form>
   );
 };
 ```
 
----
-
 ## Example: Nested Objects + Arrays
 
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```tsx
 const schema = z.object({
   user: z.object({
@@ -178,33 +155,21 @@ const schema = z.object({
   tags: z.array(z.string()).min(1, 'At least one tag required'),
 });
 
-type FormValues = z.infer<typeof schema>;
-
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm<FormValues>({
-  resolver: zodResolver(schema),
-});
-```
-
 ```tsx
 <form onSubmit={handleSubmit(onSubmit)}>
   <input placeholder="Name" {...register('user.name')} />
   <p>{errors.user?.name?.message}</p>
 
-  <input type="number" {...register('user.age', { valueAsNumber: true })} />
+<input type="number" {...register('user.age', { valueAsNumber: true })} />
   <p>{errors.user?.age?.message}</p>
 
-  <input placeholder="Tag 1" {...register('tags.0')} />
+<input placeholder="Tag 1" {...register('tags.0')} />
   <p>{errors.tags?.[0]?.message}</p>
 
-  <button type="submit">Submit</button>
+<button type="submit">Submit</button>
 </form>
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
-
----
 
 ## comprehensive Example
 
@@ -267,7 +232,7 @@ export function ComprehensiveForm() {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+const onSubmit = async (data: FormValues) => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(data);
@@ -275,14 +240,14 @@ export function ComprehensiveForm() {
     reset();
   };
 
-  // Watch password value to implement confirm password validation
+// Watch password value to implement confirm password validation
   const password = watch('password');
 
-  return (
+return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-6 text-center">Registration Form</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Text Input */}
         <div>
           <label
@@ -303,7 +268,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Email Input */}
+{/* Email Input */}
         <div>
           <label
             htmlFor="email"
@@ -322,7 +287,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Password Input */}
+{/* Password Input */}
         <div>
           <label
             htmlFor="password"
@@ -343,7 +308,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Confirm Password (custom validation) */}
+{/* Confirm Password (custom validation) */}
         <div>
           <label
             htmlFor="confirmPassword"
@@ -367,7 +332,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Number Input */}
+{/* Number Input */}
         <div>
           <label
             htmlFor="age"
@@ -386,7 +351,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Date Input */}
+{/* Date Input */}
         <div>
           <label
             htmlFor="birthday"
@@ -407,7 +372,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Select Dropdown */}
+{/* Select Dropdown */}
         <div>
           <label
             htmlFor="subscription"
@@ -431,7 +396,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Checkbox Group */}
+{/* Checkbox Group */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Notification Preferences
@@ -462,7 +427,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Single Checkbox */}
+{/* Single Checkbox */}
         <div className="flex items-center">
           <input
             id="terms"
@@ -478,7 +443,7 @@ export function ComprehensiveForm() {
           <p className="mt-1 text-sm text-red-600">{errors.terms.message}</p>
         )}
 
-        {/* Textarea */}
+{/* Textarea */}
         <div>
           <label
             htmlFor="bio"
@@ -497,7 +462,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* File Input */}
+{/* File Input */}
         <div>
           <label
             htmlFor="avatar"
@@ -516,7 +481,7 @@ export function ComprehensiveForm() {
           )}
         </div>
 
-        {/* Submit Button */}
+{/* Submit Button */}
         <div>
           <button
             type="submit"
@@ -530,9 +495,8 @@ export function ComprehensiveForm() {
     </div>
   );
 }
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
-
----
 
 ## Common Pitfalls
 
@@ -542,30 +506,28 @@ export function ComprehensiveForm() {
 - **Zod doesn’t run validation on change by default** → you may want
   `mode: 'onChange'`
 
----
-
 ## Key Features and Best Practices:
 
 1. **Type Safety**:
 
-   - Uses TypeScript with inferred types from Zod schema
+- Uses TypeScript with inferred types from Zod schema
    - Strongly typed form values and validation
 
 2. **Validation**:
 
-   - Comprehensive validation with Zod
+- Comprehensive validation with Zod
    - Custom validation for confirm password field
    - Proper error messages for each field
 
 3. **Form Handling**:
 
-   - Proper loading state during submission
+- Proper loading state during submission
    - Form reset after successful submission
    - Value watching for dependent validation
 
 4. **Input Types**:
 
-   - Text inputs (username, email, password)
+- Text inputs (username, email, password)
    - Number input (age)
    - Date input (birthday)
    - Select dropdown (subscription)
@@ -576,13 +538,13 @@ export function ComprehensiveForm() {
 
 5. **Accessibility**:
 
-   - Proper label associations with `htmlFor` and `id`
+- Proper label associations with `htmlFor` and `id`
    - Focus states for interactive elements
    - Clear error messages
 
 6. **UI/UX**:
 
-   - Disabled submit button during submission
+- Disabled submit button during submission
    - Loading state feedback
    - Responsive design
 
@@ -595,9 +557,8 @@ To use this form, you'll need to install the required dependencies:
 
 ```bash
 npm install react-hook-form @hookform/resolvers zod
+// Example demonstrating React Hook Form Implementation with TypeScript and Zod.
 ```
-
----
 
 ## Conclusion
 
@@ -607,3 +568,12 @@ npm install react-hook-form @hookform/resolvers zod
 - Cleaner code
 - Less boilerplate
 - Automatic TypeScript type generation
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

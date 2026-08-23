@@ -1,4 +1,4 @@
-# 🌬️ Tailwind CSS Introduction
+# 🌬 Tailwind CSS Introduction
 
 **Tailwind CSS** is a utility-first CSS framework that lets you build modern
 user interfaces directly in your HTML using small, reusable utility classes.
@@ -8,14 +8,16 @@ predefined classes.
 
 ---
 
-# 🎯 Why Tailwind CSS?
+## Why Tailwind CSS?
 
 Traditional CSS:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">Product Card</div>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 1rem;
@@ -25,54 +27,49 @@ Traditional CSS:
 }
 ```
 
----
-
 Tailwind CSS:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="p-4 bg-white rounded-xl shadow">Product Card</div>
 ```
 
 No separate CSS file required.
 
----
+## How Tailwind Works
 
-# 🧠 How Tailwind Works
-
+<!-- Visual flow for 🌬 Tailwind CSS Introduction. -->
 ```mermaid
 flowchart LR
 
-    Utilities["Utility Classes"]
+Utilities["Utility Classes"]
 
-    Component["Build Component"]
+Component["Build Component"]
 
-    UI["Final UI"]
+UI["Final UI"]
 
-    Utilities --> Component --> UI
+Utilities --> Component --> UI
 ```
-
----
-
-# 🚀 Installing Tailwind CSS
 
 ## Using Vite (Recommended)
 
 Create a project:
 
+# Basic example showing the core idea.
 ```bash
 npm create vite@latest
 ```
 
 Install Tailwind:
 
+# Basic example showing the core idea.
 ```bash
 npm install tailwindcss @tailwindcss/vite
 ```
 
----
-
 Configure Vite:
 
+// Basic example showing the core idea.
 ```javascript
 // vite.config.js
 import { defineConfig } from 'vite';
@@ -83,23 +80,21 @@ export default defineConfig({
 });
 ```
 
----
-
 Import Tailwind:
 
+/* Basic example showing the core idea. */
 ```css
 /* src/index.css */
 @import 'tailwindcss';
 ```
 
----
-
-# 📦 Utility Classes
+## Utility Classes
 
 Tailwind provides small utility classes.
 
 Example:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div
   class="
@@ -113,35 +108,33 @@ Example:
 </div>
 ```
 
----
+## Utility Class Breakdown
 
-# Utility Class Breakdown
-
+<!-- Visual flow for 🌬 Tailwind CSS Introduction. -->
 ```mermaid
 flowchart TB
 
-    Div["Component"]
+Div["Component"]
 
-    Padding["p-4"]
+Padding["p-4"]
 
-    Background["bg-blue-500"]
+Background["bg-blue-500"]
 
-    Text["text-white"]
+Text["text-white"]
 
-    Radius["rounded-lg"]
+Radius["rounded-lg"]
 
-    Div --> Padding
+Div --> Padding
     Div --> Background
     Div --> Text
     Div --> Radius
 ```
 
----
-
-# 🎨 Colors
+## Colors
 
 Tailwind ships with a rich color palette.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="bg-blue-500">Blue</div>
 
@@ -150,31 +143,24 @@ Tailwind ships with a rich color palette.
 <div class="bg-green-500">Green</div>
 ```
 
----
+## Color Scale
 
-# Color Scale
+Light["100"]
 
-```mermaid
-flowchart LR
+Medium["500"]
 
-    Light["100"]
+Dark["900"]
 
-    Medium["500"]
-
-    Dark["900"]
-
-    Light --> Medium --> Dark
+Light --> Medium --> Dark
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
-
-Example:
 
 ```html
 bg-blue-100 bg-blue-500 bg-blue-900
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
-
-# 📏 Spacing
+## 📏 Spacing
 
 Spacing utilities use a scale.
 
@@ -182,9 +168,8 @@ Spacing utilities use a scale.
 <div class="p-4">Padding</div>
 
 <div class="m-4">Margin</div>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
-
----
 
 ## Common Spacing Values
 
@@ -196,72 +181,65 @@ Spacing utilities use a scale.
 | p-6   | 24px  |
 | p-8   | 32px  |
 
----
-
-# 🔤 Typography
+## 🔤 Typography
 
 Font size:
 
 ```html
 <h1 class="text-4xl">Heading</h1>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
 Font weight:
 
 ```html
 <p class="font-bold">Bold Text</p>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
 Text alignment:
 
 ```html
 <p class="text-center">Centered Text</p>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
+## Typography Structure
 
-# Typography Structure
+Typography
 
-```mermaid
-flowchart TB
+Size["Text Size"]
 
-    Typography
+Weight["Font Weight"]
 
-    Size["Text Size"]
+Align["Alignment"]
 
-    Weight["Font Weight"]
-
-    Align["Alignment"]
-
-    Typography --> Size
+Typography --> Size
     Typography --> Weight
     Typography --> Align
 ```
 
----
+## Width & Height
 
-# 📦 Width & Height
-
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="w-full">Full Width</div>
 
 <div class="h-screen">Full Height</div>
 ```
 
----
-
 ## Common Utilities
 
+<!-- Basic example showing the core idea. -->
 ```html
 w-full w-1/2 w-1/3 h-screen h-full
 ```
 
----
-
-# 🎯 Flexbox Utilities
+## Flexbox Utilities
 
 Tailwind makes Flexbox easy.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div
   class="
@@ -274,26 +252,20 @@ Tailwind makes Flexbox easy.
 </div>
 ```
 
----
+## Flexbox Structure
 
-# Flexbox Structure
+Flex["flex"]
 
-```mermaid
-flowchart LR
+Justify["justify-center"]
 
-    Flex["flex"]
+Align["items-center"]
 
-    Justify["justify-center"]
-
-    Align["items-center"]
-
-    Flex --> Justify
+Flex --> Justify
     Flex --> Align
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
-
-# ⬛ Grid Utilities
+## ⬛ Grid Utilities
 
 ```html
 <div
@@ -307,27 +279,21 @@ flowchart LR
   <div>2</div>
   <div>3</div>
 </div>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
+## Grid Layout
 
-# Grid Layout
+A["Col 1"]
 
-```mermaid
-flowchart LR
+B["Col 2"]
 
-    A["Col 1"]
+C["Col 3"]
 
-    B["Col 2"]
-
-    C["Col 3"]
-
-    A --- B --- C
+A --- B --- C
 ```
 
----
-
-# 📱 Responsive Design
+## 📱 Responsive Design
 
 Tailwind uses mobile-first breakpoints.
 
@@ -339,10 +305,9 @@ Tailwind uses mobile-first breakpoints.
 | xl:    | ≥ 1280px    |
 | 2xl:   | ≥ 1536px    |
 
----
-
 ## Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div
   class="
@@ -355,25 +320,19 @@ Tailwind uses mobile-first breakpoints.
 </div>
 ```
 
----
+## Responsive Flow
 
-# Responsive Flow
+Mobile["Mobile"]
 
-```mermaid
-flowchart LR
+Tablet["Tablet"]
 
-    Mobile["Mobile"]
+Desktop["Desktop"]
 
-    Tablet["Tablet"]
-
-    Desktop["Desktop"]
-
-    Mobile --> Tablet --> Desktop
+Mobile --> Tablet --> Desktop
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
-
-# 🌙 Dark Mode
+## 🌙 Dark Mode
 
 Enable dark mode easily.
 
@@ -388,29 +347,24 @@ Enable dark mode easily.
 >
   Content
 </div>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
+## Dark Mode Structure
 
-# Dark Mode Structure
+Theme["Theme"]
 
-```mermaid
-flowchart LR
+Light["Light"]
 
-    Theme["Theme"]
+Dark["Dark"]
 
-    Light["Light"]
-
-    Dark["Dark"]
-
-    Theme --> Light
+Theme --> Light
     Theme --> Dark
 ```
 
----
+## ✨ Hover Effects
 
-# ✨ Hover Effects
-
+<!-- Basic example showing the core idea. -->
 ```html
 <button
   class="
@@ -425,32 +379,26 @@ flowchart LR
 </button>
 ```
 
----
+## State Variants
 
-# State Variants
+Button
 
-```mermaid
-flowchart TB
+Hover["hover:"]
 
-    Button
+Focus["focus:"]
 
-    Hover["hover:"]
+Active["active:"]
 
-    Focus["focus:"]
+Disabled["disabled:"]
 
-    Active["active:"]
-
-    Disabled["disabled:"]
-
-    Button --> Hover
+Button --> Hover
     Button --> Focus
     Button --> Active
     Button --> Disabled
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
-
-# 🎨 Building a Card Component
+## Building a Card Component
 
 ```html
 <div
@@ -464,9 +412,9 @@ flowchart TB
 >
   <h2 class="text-xl font-bold">Product</h2>
 
-  <p class="text-gray-600">Product description.</p>
+<p class="text-gray-600">Product description.</p>
 
-  <button
+<button
     class="
       mt-4
       bg-blue-500
@@ -479,34 +427,27 @@ flowchart TB
     Buy Now
   </button>
 </div>
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
+## Component Composition
 
-# Component Composition
+Card
 
-```mermaid
-flowchart TB
+Header
 
-    Card
+Description
 
-    Header
-
-    Description
-
-    Button
-
-    Card --> Header
+Card --> Header
     Card --> Description
     Card --> Button
 ```
 
----
-
-# 🎯 Customizing Tailwind
+## Customizing Tailwind
 
 Tailwind can be extended.
 
+/* Basic example showing the core idea. */
 ```css
 @theme {
   --color-brand: #2563eb;
@@ -515,13 +456,12 @@ Tailwind can be extended.
 
 Usage:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="bg-brand">Brand Color</div>
 ```
 
----
-
-# 🔥 Common Utility Categories
+## 🔥 Common Utility Categories
 
 | Category   | Examples        |
 | ---------- | --------------- |
@@ -534,60 +474,52 @@ Usage:
 | Transforms | scale-110       |
 | Animation  | animate-spin    |
 
----
-
-# 🎯 Common Tailwind Animations
+## Common Tailwind Animations
 
 Spinner:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="animate-spin">🔄</div>
 ```
 
 Pulse:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="animate-pulse">Loading...</div>
 ```
 
 Bounce:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="animate-bounce">⬇️</div>
 ```
 
----
+## Animation Flow
 
-# Animation Flow
+Spin["animate-spin"]
 
-```mermaid
-flowchart LR
+Pulse["animate-pulse"]
 
-    Spin["animate-spin"]
-
-    Pulse["animate-pulse"]
-
-    Bounce["animate-bounce"]
+Bounce["animate-bounce"]
+// Example demonstrating 🌬 Tailwind CSS Introduction.
 ```
 
----
+## Advantages of Tailwind
 
-# ⚡ Advantages of Tailwind
+Tailwind
 
-```mermaid
-flowchart TB
+Fast["Fast Development"]
 
-    Tailwind
+Reusable["Reusable"]
 
-    Fast["Fast Development"]
+Responsive["Responsive"]
 
-    Reusable["Reusable"]
+Consistent["Consistent Design"]
 
-    Responsive["Responsive"]
-
-    Consistent["Consistent Design"]
-
-    Tailwind --> Fast
+Tailwind --> Fast
     Tailwind --> Reusable
     Tailwind --> Responsive
     Tailwind --> Consistent
@@ -605,14 +537,11 @@ Benefits:
 
 ✅ Smaller CSS bundles
 
----
-
-# ⚠️ Common Mistakes
-
 ### Huge Class Lists
 
 ❌
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div
   class="p-4 m-4 bg-blue-500 text-white rounded shadow border flex items-center justify-between"
@@ -621,15 +550,11 @@ Benefits:
 
 Extract reusable components when needed.
 
----
-
 ### Ignoring Components
 
 Don't put every utility directly into pages.
 
 Create reusable UI components.
-
----
 
 ### Using Tailwind for Everything
 
@@ -637,18 +562,15 @@ Sometimes plain CSS is simpler.
 
 Use the right tool for the job.
 
----
+## Quick Cheat Sheet
 
-# 🧠 Quick Cheat Sheet
-
+<!-- Basic example showing the core idea. -->
 ```html
 flex grid p-4 m-4 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700
 md:w-1/2 dark:bg-gray-900 animate-spin
 ```
 
----
-
-# ✅ Best Practices
+## ✅ Best Practices
 
 - Use utility classes consistently.
 - Create reusable components.
@@ -658,9 +580,7 @@ md:w-1/2 dark:bg-gray-900 animate-spin
 - Avoid excessively long class lists.
 - Combine Tailwind with component-based frameworks like React.
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - Tailwind CSS is a utility-first CSS framework.
 - It enables rapid UI development without writing much custom CSS.

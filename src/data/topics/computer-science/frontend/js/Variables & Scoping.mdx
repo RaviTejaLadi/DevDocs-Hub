@@ -1,6 +1,6 @@
 # 🟨 JavaScript Variables & Scoping
 
-## 📝 Variable Declarations: `var`, `let`, `const`
+## Variable Declarations: `var`, `let`, `const`
 
 | Feature                | `var`                             | `let`                        | `const`                      |
 | ---------------------- | --------------------------------- | ---------------------------- | ---------------------------- |
@@ -11,10 +11,9 @@
 | **Temporal Dead Zone** | ❌ No                             | ✅ Yes                       | ✅ Yes                       |
 | **Introduced**         | ES5                               | ES6 (2015)                   | ES6 (2015)                   |
 
-### 💡 Examples
-
 #### `var` Declaration
 
+// Basic example showing the core idea.
 ```javascript
 function varExample() {
   console.log(x); // undefined (hoisted)
@@ -34,6 +33,7 @@ function varScope() {
 
 #### `let` Declaration
 
+// Basic example showing the core idea.
 ```javascript
 function letExample() {
   // console.log(x); // ReferenceError: Cannot access 'x' before initialization
@@ -54,6 +54,7 @@ function letScope() {
 
 #### `const` Declaration
 
+// Basic example showing the core idea.
 ```javascript
 function constExample() {
   // console.log(x); // ReferenceError: Cannot access 'x' before initialization
@@ -73,17 +74,16 @@ arr.push(4); // Allowed
 // arr = [5, 6, 7]; // TypeError: Assignment to constant variable
 ```
 
-## 🚀 Hoisting & Temporal Dead Zone (TDZ)
+## Hoisting & Temporal Dead Zone (TDZ)
 
 | Concept                | Definition                                                                                   | Applies To                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | **Hoisting**           | ⬆️ JavaScript's behavior of moving declarations to the top of their scope during compilation | All declarations (`var`, `let`, `const`, functions) |
 | **Temporal Dead Zone** | ⏳ Period between entering scope and declaration where variable cannot be accessed           | `let` and `const` only                              |
 
-### 🏗️ Hoisting Examples
-
 #### `var` Hoisting
 
+// Basic example showing the core idea.
 ```javascript
 console.log(x); // undefined (not ReferenceError)
 var x = 5;
@@ -96,6 +96,7 @@ x = 5;
 
 #### `let`/`const` Hoisting with TDZ
 
+// Basic example showing the core idea.
 ```javascript
 console.log(y); // ReferenceError: Cannot access 'y' before initialization
 let y = 10;
@@ -108,6 +109,7 @@ const z = 20;
 
 #### Function Hoisting
 
+// Basic example showing the core idea.
 ```javascript
 // Function declarations are fully hoisted
 console.log(myFunc()); // "Hello!"
@@ -125,7 +127,7 @@ var myFuncExpr = function () {
 };
 ```
 
-## 🗂️ Scoping Types
+## 🗂 Scoping Types
 
 | Scope Type         | Definition                                        | Created By                                  | Accessibility          |
 | ------------------ | ------------------------------------------------- | ------------------------------------------- | ---------------------- |
@@ -133,10 +135,9 @@ var myFuncExpr = function () {
 | **Function Scope** | 🏛️ Variables accessible only within the function  | `var` declarations, function parameters     | Within function only   |
 | **Block Scope**    | 🧱 Variables accessible only within the block     | `let`, `const` declarations                 | Within `{}` block only |
 
-### 🔍 Scope Examples
-
 #### Global Scope
 
+// Basic example showing the core idea.
 ```javascript
 var globalVar = "I'm global";
 let globalLet = "I'm also global";
@@ -155,19 +156,20 @@ console.log(globalConst); // Accessible
 
 #### Function Scope
 
+// Basic example showing the core idea.
 ```javascript
 function functionScope() {
   var functionVar = 'Function scoped';
   let functionLet = 'Also function scoped';
   const functionConst = 'Me too!';
 
-  function innerFunction() {
+function innerFunction() {
     console.log(functionVar); // Accessible
     console.log(functionLet); // Accessible
     console.log(functionConst); // Accessible
   }
 
-  innerFunction();
+innerFunction();
 }
 
 functionScope();
@@ -176,6 +178,7 @@ functionScope();
 
 #### Block Scope
 
+// Basic example showing the core idea.
 ```javascript
 if (true) {
   var blockVar = 'Not block scoped';
@@ -210,10 +213,9 @@ for (let i = 0; i < 3; i++) {
 | **Declare variables at top of scope**  | ⬆️ Makes hoisting behavior explicit  | Declare before use        |
 | **Use meaningful names**               | 🏷️ Improves code readability         | `userAge` vs `x`          |
 
-## ⚠️ Common Pitfalls
-
 ### 🔁 Loop Variable Issue with `var`
 
+// Basic example showing the core idea.
 ```javascript
 // Problem with var
 for (var i = 0; i < 3; i++) {
@@ -228,6 +230,7 @@ for (let i = 0; i < 3; i++) {
 
 ### ⏳ Temporal Dead Zone Confusion
 
+// Basic example showing the core idea.
 ```javascript
 function tdz() {
   console.log(typeof x); // ReferenceError (not "undefined")
@@ -239,3 +242,12 @@ function noTdz() {
   var y = 10;
 }
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

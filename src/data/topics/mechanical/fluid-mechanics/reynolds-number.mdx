@@ -13,7 +13,7 @@ In simple terms:
 
 ---
 
-# 📌 Why is Reynolds Number Important?
+## Why is Reynolds Number Important?
 
 Different types of fluid flow behave differently.
 
@@ -25,6 +25,7 @@ For example:
 
 The Reynolds Number helps engineers predict these behaviors.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="r9a7k2"
 graph TD
     A[Reynolds Number]
@@ -33,9 +34,7 @@ graph TD
     --> D[Turbulent Flow]
 ```
 
----
-
-# 🌊 What is Reynolds Number?
+## 🌊 What is Reynolds Number?
 
 Reynolds Number is the ratio of:
 
@@ -51,13 +50,9 @@ Mathematically:
 
 \frac{\text{Inertial Force}} {\text{Viscous Force}} ]
 
----
-
-# 📐 Reynolds Number Formula
+## 📐 Reynolds Number Formula
 
 For flow inside a circular pipe:
-
-[ Re ==
 
 \frac{\rho VD}{\mu} ]
 
@@ -69,38 +64,31 @@ Where:
 - (D) = Pipe diameter (m)
 - (\mu) = Dynamic viscosity (Pa·s)
 
----
-
-# Alternative Formula
+## Alternative Formula
 
 Using kinematic viscosity:
 
-[ Re ==
-
 \frac{VD}{\nu} ]
-
-Where:
 
 - (\nu) = Kinematic viscosity (m²/s)
 
 Both formulas produce the same value.
 
----
+## Understanding the Formula
 
-# Understanding the Formula
-
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="ytqejn"
 graph LR
     A[Velocity]
     --> D[Reynolds Number]
 
-    B[Diameter]
+B[Diameter]
     --> D
 
-    C[Density]
+C[Density]
     --> D
 
-    E[Viscosity]
+E[Viscosity]
     --> F[Opposes Flow]
 ```
 
@@ -116,12 +104,11 @@ Reynolds Number decreases when:
 
 - Viscosity increases
 
----
-
-# 🧪 Osborne Reynolds Experiment
+## Osborne Reynolds Experiment
 
 Reynolds conducted experiments using a glass pipe and colored dye.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="0j6h7k"
 graph LR
     A[Water Tank]
@@ -131,9 +118,7 @@ graph LR
 
 He observed three flow patterns:
 
----
-
-## 1️⃣ Laminar Flow
+## 1⃣ Laminar Flow
 
 The dye moved in smooth, straight lines.
 
@@ -143,6 +128,7 @@ Characteristics:
 - Very little mixing.
 - Low energy loss.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="kz3g3r"
 graph TD
     A[Laminar Flow]
@@ -150,29 +136,22 @@ graph TD
     --> C[No Mixing]
 ```
 
----
-
-## 2️⃣ Transition Flow
+## 2⃣ Transition Flow
 
 The dye became unstable.
-
-Characteristics:
 
 - Intermediate condition.
 - Flow may switch between laminar and turbulent.
 
----
-
-## 3️⃣ Turbulent Flow
+## 3⃣ Turbulent Flow
 
 The dye mixed completely with water.
-
-Characteristics:
 
 - Random motion.
 - High mixing.
 - Higher energy losses.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="q73o7s"
 graph TD
     A[Turbulent Flow]
@@ -181,9 +160,7 @@ graph TD
     --> D[Mixing]
 ```
 
----
-
-# Flow Classification in Pipes
+## Flow Classification in Pipes
 
 For circular pipes:
 
@@ -193,25 +170,22 @@ For circular pipes:
 | 2000 ≤ Re ≤ 4000 | Transition |
 | Re > 4000        | Turbulent  |
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="p5y7ef"
 graph LR
     A[Re < 2000]
     --> B[Laminar]
 
-    C[2000-4000]
+C[2000-4000]
     --> D[Transition]
 
-    E[Re > 4000]
+E[Re > 4000]
     --> F[Turbulent]
 ```
 
----
-
-# Physical Meaning of Reynolds Number
+## Physical Meaning of Reynolds Number
 
 The Reynolds Number represents the competition between two forces.
-
----
 
 ## Inertial Forces
 
@@ -224,32 +198,27 @@ Examples:
 - Fast-moving river
 - Air around a jet aircraft
 
----
-
 ## Viscous Forces
 
 These forces resist motion.
 
 High viscosity promotes smooth flow.
 
-Examples:
-
 - Honey
 - Glycerin
 - Lubricating oil
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="v2k9jf"
 graph LR
     A[Inertial Forces]
     --> C[Flow Behavior]
 
-    B[Viscous Forces]
+B[Viscous Forces]
     --> C
 ```
 
----
-
-# Example 1
+## Example 1
 
 Water flows through a pipe.
 
@@ -262,17 +231,9 @@ Given:
 
 Find Reynolds Number.
 
-### Solution
-
-[ Re ==
-
-\frac{\rho VD}{\mu} ]
-
-# [
+## [
 
 \frac{1000\times2\times0.05}{0.001} ]
-
-# [
 
 100000 ]
 
@@ -282,36 +243,24 @@ Since:
 
 Flow is turbulent.
 
----
-
-# Example 2
+## Example 2
 
 Oil flows through a small tube.
-
-Given:
 
 - Density = 900 kg/m³
 - Velocity = 0.1 m/s
 - Diameter = 0.01 m
 - Viscosity = 0.2 Pa·s
 
-### Solution
-
-[ Re ==
-
 \frac{900\times0.1\times0.01}{0.2} ]
 
 [ Re=4.5 ]
-
-Since:
 
 [ Re < 2000 ]
 
 Flow is laminar.
 
----
-
-# Reynolds Number for Different Situations
+## Reynolds Number for Different Situations
 
 Different characteristic lengths are used depending on the problem.
 
@@ -322,12 +271,11 @@ Different characteristic lengths are used depending on the problem.
 | Sphere          | Diameter              |
 | Aircraft Wing   | Chord Length          |
 
----
-
-# Reynolds Number and Drag
+## Reynolds Number and Drag
 
 Reynolds Number significantly affects drag force.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="x8xhh0"
 graph LR
     A[Reynolds Number]
@@ -338,12 +286,11 @@ graph LR
 Different Reynolds Numbers produce different boundary layer behavior and drag
 characteristics.
 
----
-
-# Reynolds Number and Boundary Layer
+## Reynolds Number and Boundary Layer
 
 A boundary layer forms near a solid surface.
 
+// Example demonstrating 🔢 Reynolds Number.
 ```mermaid id="z9xtrh"
 graph TD
     A[Fluid Flow]
@@ -355,47 +302,29 @@ graph TD
 The Reynolds Number determines when the boundary layer transitions from laminar
 to turbulent.
 
----
-
-# Applications of Reynolds Number
-
-## ✈️ Aerodynamics
+## ✈ Aerodynamics
 
 Used in aircraft wing design.
-
----
 
 ## 🚗 Automotive Engineering
 
 Predicts airflow around vehicles.
 
----
-
 ## 🏭 Pipeline Design
 
 Determines flow regime and friction losses.
-
----
 
 ## 🚢 Marine Engineering
 
 Analyzes ship resistance.
 
----
-
-## ⚙️ Turbomachinery
+## ⚙ Turbomachinery
 
 Used in pumps and turbines.
-
----
 
 ## 🌡 Heat Transfer
 
 Helps determine convection coefficients.
-
----
-
-# Real-Life Examples
 
 ### Smoke from a Candle
 
@@ -407,30 +336,22 @@ Farther away:
 
 - Turbulent flow
 
----
-
 ### River Flow
 
 Slow-moving streams often exhibit laminar behavior.
 
 Fast rivers become turbulent.
 
----
-
 ### Airplane Wings
 
 Engineers calculate Reynolds Number to predict airflow characteristics.
-
----
 
 ### Blood Flow
 
 Reynolds Number helps determine whether blood flow remains smooth or becomes
 disturbed.
 
----
-
-# Advantages of Reynolds Number
+## Advantages of Reynolds Number
 
 ✅ Predicts flow behavior
 
@@ -442,9 +363,7 @@ disturbed.
 
 ✅ Essential in aerodynamic and hydraulic design
 
----
-
-# Limitations
+## Limitations
 
 Reynolds Number alone cannot fully describe every flow.
 
@@ -455,16 +374,12 @@ Other dimensionless numbers may also be needed:
 - Weber Number
 - Prandtl Number
 
----
-
-# 📋 Summary
+## 📋 Summary
 
 | Parameter        | Formula                  |
 | ---------------- | ------------------------ |
 | Reynolds Number  | (Re=\frac{\rho VD}{\mu}) |
 | Alternative Form | (Re=\frac{VD}{\nu})      |
-
----
 
 ## Pipe Flow Classification
 
@@ -474,9 +389,7 @@ Other dimensionless numbers may also be needed:
 | 2000–4000       | Transition |
 | Re > 4000       | Turbulent  |
 
----
-
-# 🎯 Key Takeaways
+## Key Takeaways
 
 - Reynolds Number compares inertial forces with viscous forces.
 - It predicts whether flow is laminar or turbulent.

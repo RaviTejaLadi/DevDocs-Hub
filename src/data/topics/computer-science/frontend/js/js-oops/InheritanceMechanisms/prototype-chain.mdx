@@ -1,11 +1,11 @@
-# 🧠 Prototype Chain - Explained Simply
+# Prototype Chain - Explained Simply
 
 JavaScript uses something called a **prototype chain** to allow objects to
 inherit features from other objects. Let’s break it down step-by-step.
 
 ---
 
-## 📌 Definition
+## Definition
 
 The **prototype chain** is a mechanism in JavaScript where objects can inherit
 properties and methods from other objects via the `__proto__` link.
@@ -13,18 +13,15 @@ properties and methods from other objects via the `__proto__` link.
 > Every object has a hidden `[[Prototype]]` (accessible via `__proto__`) that
 > points to another object — forming a chain.
 
----
-
 ## ❓ Why is it Important?
 
 It’s how **inheritance** works in JavaScript. Instead of duplicating code, you
 can define shared methods on a prototype and have all similar objects reuse them
 — saving memory and keeping code DRY (Don't Repeat Yourself).
 
----
-
 ## 🧱 Syntax/Structure
 
+// Basic example showing the core idea.
 ```javascript
 function Animal(name) {
   this.name = name;
@@ -42,6 +39,7 @@ console.log(dog.__proto__ === Animal.prototype); // true
 
 You can also use `Object.create()` to set the prototype manually:
 
+// Basic example showing the core idea.
 ```javascript
 const animal = {
   speak() {
@@ -53,12 +51,9 @@ const dog = Object.create(animal);
 dog.speak(); // Inherited from animal
 ```
 
----
+### Basic Example
 
-## 🔍 Examples
-
-### 💡 Basic Example
-
+// Basic example showing the core idea.
 ```javascript
 function Person(name) {
   this.name = name;
@@ -75,10 +70,9 @@ alice.greet(); // Hello, my name is Alice
 ➡️ Here, `alice` gets the `greet()` method from `Person.prototype` via the
 prototype chain.
 
----
-
 ### 🌐 Real-World Use Case
 
+// Basic example showing the core idea.
 ```javascript
 const vehicle = {
   start() {
@@ -98,20 +92,45 @@ car.drive(); // Own method
 ➡️ In a system managing cars, bikes, etc., you can define common methods (like
 `start()`) on a shared prototype to avoid duplication.
 
----
-
-## 🛠️ When/Where to Use It
+## 🛠 When/Where to Use It
 
 - Creating shared methods for constructors (e.g., `Array.prototype`,
   `Date.prototype`)
 - Implementing inheritance between objects
 - Optimizing memory usage by avoiding duplicate method definitions
 
----
-
-## ⚠️ Gotchas/Tips
+## ⚠ Gotchas/Tips
 
 ✅ **Use `Object.create()`** for simple prototypal inheritance. ⚠️ **Avoid
 modifying `__proto__` directly** — it's slower and discouraged. ✅ Use
 `Object.getPrototypeOf(obj)` instead of `obj.__proto__`. ⚠️ Changing prototypes
 after instantiation can lead to unpredictable behavior.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
+
+## Final Understanding Check
+
+Before considering **Prototype Chain - Explained Simply** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

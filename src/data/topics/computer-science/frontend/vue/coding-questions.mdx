@@ -1,9 +1,8 @@
 # Top 30 Vue.js Coding Questions and Answers
 
-## Basics
-
 ### 1. How do you create a new Vue instance?
 
+// Basic example showing the core idea.
 ```javascript
 const app = new Vue({
   el: '#app',
@@ -25,16 +24,16 @@ Vue directives are special attributes with the `v-` prefix. Examples:
 
 ### 3. How do you bind data to an attribute?
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div v-bind:class="className">Content</div>
 <!-- Shorthand -->
 <div :class="className">Content</div>
 ```
 
-## Components
-
 ### 4. How do you create a component?
 
+// Basic example showing the core idea.
 ```javascript
 Vue.component('my-component', {
   props: ['title'],
@@ -46,6 +45,7 @@ Vue.component('my-component', {
 
 Using props:
 
+// Basic example showing the core idea.
 ```javascript
 // Parent
 <child-component :message="parentMessage"></child-component>
@@ -59,6 +59,7 @@ Vue.component('child-component', {
 
 ### 6. How do child components emit events to parents?
 
+// Basic example showing the core idea.
 ```javascript
 // Child
 this.$emit('event-name', payload)
@@ -67,10 +68,9 @@ this.$emit('event-name', payload)
 <child-component @event-name="handleEvent"></child-component>
 ```
 
-## State Management
-
 ### 7. How do you use Vuex for state management?
 
+// Basic example showing the core idea.
 ```javascript
 const store = new Vuex.Store({
   state: {
@@ -96,10 +96,9 @@ const store = new Vuex.Store({
 - Mutations: Synchronous, directly modify state
 - Actions: Can be asynchronous, commit mutations
 
-## Lifecycle Hooks
-
 ### 9. What are Vue lifecycle hooks?
 
+// Basic example showing the core idea.
 ```javascript
 new Vue({
   beforeCreate() {},
@@ -117,16 +116,16 @@ new Vue({
 
 For DOM manipulation or when you need to access the rendered DOM:
 
+// Basic example showing the core idea.
 ```javascript
 mounted() {
   this.$refs.input.focus()
 }
 ```
 
-## Routing
-
 ### 11. How do you set up Vue Router?
 
+// Basic example showing the core idea.
 ```javascript
 const router = new VueRouter({
   routes: [
@@ -142,16 +141,16 @@ const app = new Vue({
 
 ### 12. How do you navigate programmatically?
 
+// Basic example showing the core idea.
 ```javascript
 this.$router.push('/about');
 // or with object
 this.$router.push({ path: 'register', query: { plan: 'private' } });
 ```
 
-## Advanced Concepts
-
 ### 13. What are computed properties?
 
+// Basic example showing the core idea.
 ```javascript
 computed: {
   reversedMessage() {
@@ -167,6 +166,7 @@ computed: {
 
 ### 15. What are watchers?
 
+// Basic example showing the core idea.
 ```javascript
 watch: {
   counter(newVal, oldVal) {
@@ -175,10 +175,9 @@ watch: {
 }
 ```
 
-## Directives
-
 ### 16. How does v-model work?
 
+<!-- Basic example showing the core idea. -->
 ```html
 <input v-model="message" />
 <!-- is syntactic sugar for: -->
@@ -190,8 +189,6 @@ watch: {
 - `v-if`: Adds/removes from DOM
 - `v-show`: Toggles display CSS property
 
-## Performance
-
 ### 18. How do you optimize Vue performance?
 
 - Use v-once for static content
@@ -202,6 +199,7 @@ watch: {
 
 ### 19. What is async component loading?
 
+// Basic example showing the core idea.
 ```javascript
 const AsyncComponent = () => ({
   component: import('./MyComponent.vue'),
@@ -212,10 +210,9 @@ const AsyncComponent = () => ({
 });
 ```
 
-## Composition API (Vue 3)
-
 ### 20. How do you use the Composition API?
 
+// Basic example showing the core idea.
 ```javascript
 import { ref, computed } from 'vue';
 
@@ -224,16 +221,14 @@ export default {
     const count = ref(0);
     const double = computed(() => count.value * 2);
 
-    function increment() {
+function increment() {
       count.value++;
     }
 
-    return { count, double, increment };
+return { count, double, increment };
   },
 };
 ```
-
-## Reactivity
 
 ### 21. Why might reactivity not work and how to fix it?
 
@@ -242,10 +237,9 @@ Common cases:
 1. Adding new properties to an object - use `Vue.set()` or `this.$set()`
 2. Array changes - use array mutation methods or `Vue.set()`
 
-## Slots
-
 ### 22. How do you use slots?
 
+<!-- Basic example showing the core idea. -->
 ```html
 <!-- Child -->
 <div>
@@ -258,6 +252,7 @@ Common cases:
 
 ### 23. What are scoped slots?
 
+<!-- Basic example showing the core idea. -->
 ```html
 <!-- Child -->
 <slot :user="user"></slot>
@@ -266,10 +261,9 @@ Common cases:
 <child-component v-slot="{ user }"> {{ user.name }} </child-component>
 ```
 
-## Mixins
-
 ### 24. What are mixins and how to use them?
 
+// Basic example showing the core idea.
 ```javascript
 const myMixin = {
   created() {
@@ -290,10 +284,9 @@ new Vue({
 });
 ```
 
-## Transitions
-
 ### 25. How do you add transitions?
 
+<!-- Basic example showing the core idea. -->
 ```html
 <transition name="fade">
   <p v-if="show">Hello</p>
@@ -311,10 +304,9 @@ new Vue({
 </style>
 ```
 
-## Custom Directives
-
 ### 26. How do you create a custom directive?
 
+// Basic example showing the core idea.
 ```javascript
 Vue.directive('focus', {
   inserted(el) {
@@ -326,10 +318,9 @@ Vue.directive('focus', {
 <input v-focus>
 ```
 
-## Filters
-
 ### 27. How do you create filters?
 
+// Basic example showing the core idea.
 ```javascript
 Vue.filter('capitalize', function (value) {
   if (!value) return '';
@@ -344,12 +335,11 @@ Vue.filter('capitalize', function (value) {
 }
 ```
 
-## Testing
-
 ### 28. How do you test Vue components?
 
 Using Vue Test Utils:
 
+// Basic example showing the core idea.
 ```javascript
 import { mount } from '@vue/test-utils';
 import MyComponent from './MyComponent.vue';
@@ -364,8 +354,6 @@ test('renders correctly', () => {
 });
 ```
 
-## Vue 3 Features
-
 ### 29. What are some key Vue 3 features?
 
 - Composition API
@@ -375,10 +363,9 @@ test('renders correctly', () => {
 - Better TypeScript support
 - Performance improvements
 
-## Error Handling
-
 ### 30. How do you handle errors in Vue?
 
+// Basic example showing the core idea.
 ```javascript
 Vue.config.errorHandler = function(err, vm, info) {
   console.error(`Error: ${err.toString()}\nInfo: ${info}`)
@@ -393,3 +380,12 @@ errorCaptured(err, vm, info) {
 
 These questions cover fundamental to advanced Vue.js concepts that are commonly
 asked in interviews and practical coding scenarios.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

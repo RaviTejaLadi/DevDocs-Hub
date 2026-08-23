@@ -1,6 +1,6 @@
 # Installation & Setup (Latest 2026)
 
-# Prerequisites
+## Prerequisites
 
 Install:
 
@@ -9,6 +9,7 @@ Install:
 
 Check installation:
 
+# Basic example showing the core idea.
 ```bash
 node -v
 npm -v
@@ -16,10 +17,11 @@ npm -v
 
 ---
 
-# Install Node.js
+## Install Node.js
 
 Download from:
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 https://nodejs.org
 ```
@@ -28,14 +30,7 @@ Install the latest **LTS** version.
 
 Verify:
 
-```bash
-node -v
-npm -v
-```
-
----
-
-# Recommended Stack
+## Recommended Stack
 
 | Tool             | Recommended  |
 | ---------------- | ------------ |
@@ -46,38 +41,32 @@ npm -v
 | Routing          | Vue Router   |
 | Styling          | Tailwind CSS |
 
----
-
-# Create Vue Project
-
 ## Using npm
 
+# Basic example showing the core idea.
 ```bash
 npm create vue@latest
 ```
 
----
-
 ## Using pnpm (Recommended)
 
+# Basic example showing the core idea.
 ```bash
 pnpm create vue
 ```
 
----
-
 ## Using yarn
 
+# Basic example showing the core idea.
 ```bash
 yarn create vue
 ```
 
----
-
-# Setup Options
+## Setup Options
 
 During installation select:
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 ✔ Project name: my-vue-app
 ✔ TypeScript: Yes (Recommended)
@@ -90,54 +79,42 @@ During installation select:
 ✔ Cypress: Optional
 ```
 
----
+## Enter Project
 
-# Enter Project
-
+# Basic example showing the core idea.
 ```bash
 cd my-vue-app
 ```
 
----
-
-# Install Dependencies
-
 ## npm
 
+# Basic example showing the core idea.
 ```bash
 npm install
 ```
 
----
-
 ## pnpm
 
+# Basic example showing the core idea.
 ```bash
 pnpm install
 ```
 
----
+## Start Development Server
 
-# Start Development Server
-
-## npm
-
+# Basic example showing the core idea.
 ```bash
 npm run dev
 ```
 
----
-
-## pnpm
-
+# Basic example showing the core idea.
 ```bash
 pnpm dev
 ```
 
----
+## Output
 
-# Output
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 VITE v6 ready in 300ms
 
@@ -146,14 +123,14 @@ VITE v6 ready in 300ms
 
 Open:
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 http://localhost:5173
 ```
 
----
+## Project Structure
 
-# Project Structure
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 my-vue-app/
 │
@@ -172,20 +149,16 @@ my-vue-app/
 └── index.html
 ```
 
----
-
-# Install Tailwind CSS
-
 ## Install
 
+# Basic example showing the core idea.
 ```bash
 npm install -D tailwindcss @tailwindcss/vite
 ```
 
----
+## Update vite.config.js
 
-# Update vite.config.js
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -196,44 +169,37 @@ export default defineConfig({
 });
 ```
 
----
+## Create CSS File
 
-# Create CSS File
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 src/assets/main.css
 ```
 
 Add:
 
+/* Basic example showing the core idea. */
 ```css
 @import 'tailwindcss';
 ```
 
----
-
-# Import CSS
-
 ## main.js
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 import './assets/main.css';
 ```
 
----
+## Install Vue Router
 
-# Install Vue Router
-
+# Basic example showing the core idea.
 ```bash
 npm install vue-router
 ```
 
----
-
-# Router Setup
-
 ## src/router/index.js
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -250,12 +216,9 @@ export const router = createRouter({
 });
 ```
 
----
+## Register Router
 
-# Register Router
-
-## main.js
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -264,20 +227,16 @@ import { router } from './router';
 createApp(App).use(router).mount('#app');
 ```
 
----
+## Install Pinia
 
-# Install Pinia
-
+# Basic example showing the core idea.
 ```bash
 npm install pinia
 ```
 
----
+## Setup Pinia
 
-# Setup Pinia
-
-## main.js
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -290,57 +249,49 @@ app.use(createPinia());
 app.mount('#app');
 ```
 
----
+## Build for Production
 
-# Build for Production
-
+# Basic example showing the core idea.
 ```bash
 npm run build
 ```
 
 Output:
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 dist/
 ```
 
----
+## Preview Production Build
 
-# Preview Production Build
-
+# Basic example showing the core idea.
 ```bash
 npm run preview
 ```
 
----
-
-# Environment Variables
-
 ## Create
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 .env
 ```
 
----
-
 ## Example
 
+// Example demonstrating Installation & Setup (Latest 2026).
 ```env
 VITE_API_URL=https://api.example.com
 ```
 
----
+## Access Variables
 
-# Access Variables
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```js
 const apiUrl = import.meta.env.VITE_API_URL;
 ```
 
----
-
-# Useful Commands
+## Useful Commands
 
 | Command         | Purpose            |
 | --------------- | ------------------ |
@@ -349,9 +300,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 | npm run preview | Preview production |
 | npm run lint    | Run ESLint         |
 
----
-
-# Recommended VS Code Extensions
+## Recommended VS Code Extensions
 
 | Extension                 | Purpose               |
 | ------------------------- | --------------------- |
@@ -360,17 +309,12 @@ const apiUrl = import.meta.env.VITE_API_URL;
 | Prettier                  | Formatting            |
 | Tailwind CSS IntelliSense | Tailwind autocomplete |
 
----
-
-# Common Errors
-
 ## Port Already Used
 
+# Basic example showing the core idea.
 ```bash
 npm run dev -- --port 3000
 ```
-
----
 
 ## Tailwind Not Working
 
@@ -380,10 +324,9 @@ Check:
 - Plugin added
 - Restart dev server
 
----
+## Final Recommended Setup
 
-# Final Recommended Setup
-
+// Example demonstrating Installation & Setup (Latest 2026).
 ```txt
 Vue 3
 Vite
@@ -393,3 +336,28 @@ Tailwind CSS
 ESLint
 Prettier
 ```
+
+## Quick Reference
+
+| Step | What to verify |
+|---|---|
+| Prerequisites | Runtime, version, permissions, and required tools. |
+| Install | Use the documented package or installer for the platform. |
+| Verify | Run a version/help command or a minimal program. |
+| Troubleshoot | Check PATH, permissions, network, and version mismatches. |
+
+## Environment Compatibility
+
+Check the operating system, runtime version, architecture, shell, permissions, and package-manager version before following an installation command. The same command can behave differently across platforms. Record the exact version that worked so another developer can reproduce the environment.
+
+## Verification in a Real Project
+
+A successful version command proves that a binary is available, but it does not prove that the project can use it. Run a minimal project-level command as well. Confirm that the expected dependency is resolved, configuration is loaded, and the application can start without relying on an accidental global installation.
+
+## Troubleshooting Logic
+
+Change one variable at a time. A command-not-found error usually points to installation or PATH. A version error suggests an incompatible runtime. A permission error points to the account or filesystem. A network error points to registry, proxy, DNS, or firewall configuration. This classification is faster than reinstalling everything.
+
+## Reproducibility Notes
+
+A reliable setup should be repeatable on another machine. Keep installation steps close to the project documentation, pin important dependency versions, and distinguish required configuration from optional personal preferences. When the toolchain changes, update the verification step as well as the installation command. This makes setup failures easier to diagnose because you can compare the environment with a known working state.

@@ -1,4 +1,4 @@
-# 🕵️‍♂️ Reconnaissance & Footprinting
+# 🕵‍♂ Reconnaissance & Footprinting
 
 Reconnaissance, often referred to as "footprinting," is the critical first phase
 of any penetration test or cyberattack. It is the process of gathering as much
@@ -12,6 +12,7 @@ Thorough reconnaissance often determines the success or failure of an
 engagement. The more time spent in recon, the less time is required for
 exploitation.
 
+<!-- Visual flow for 🕵‍♂ Reconnaissance & Footprinting. -->
 ```mermaid
 graph LR
     A[🔍 Reconnaissance] --> B(🥷 Passive OSINT)
@@ -19,7 +20,7 @@ graph LR
     B --> D[No Direct Target Interaction]
     C --> E[Direct Target Interaction]
 
-    style A fill:#f3e5f5,stroke:#8e24aa,color:#000
+style A fill:#f3e5f5,stroke:#8e24aa,color:#000
     style B fill:#e8eaf6,stroke:#3f51b5,color:#000
     style C fill:#ffebee,stroke:#d32f2f,color:#000
 ```
@@ -84,7 +85,7 @@ domains.
   dig axfr @ns1.example.com example.com
   ```
 
-### 🛰️ 1.3 Deep Scanning Search Engines
+### 🛰 1.3 Deep Scanning Search Engines
 
 Standard search engines index web pages. Specialized search engines index
 internet-connected _devices_.
@@ -123,15 +124,13 @@ social engineering and password profiling.
 - **The Wayback Machine (Archive.org):** Viewing older versions of the target's
   website to find unlinked, vulnerable pages.
 
----
-
-## ⚡ 2. Active Reconnaissance
+## 2. Active Reconnaissance
 
 Active reconnaissance involves direct, measurable interaction with the target
 system. This will generate logs and may trigger security alerts. The goal is to
 identify live hosts, open ports, running services, and exact versions.
 
-### 🗺️ 2.1 Network Mapping and Port Scanning (Nmap)
+### 2.1 Network Mapping and Port Scanning (Nmap)
 
 Network Mapper (Nmap) is the industry standard for active reconnaissance. It
 sends crafted packets and analyzes the responses to determine host state and
@@ -147,26 +146,27 @@ port status.
 
 **Essential Nmap Scanning Techniques:**
 
+# Basic example showing the core idea.
 ```bash
-# Ping Sweep (Host Discovery)
+## Ping Sweep (Host Discovery)
 nmap -sn 192.168.1.0/24
 
-# TCP SYN Scan (Stealth Scan - Default)
+## TCP SYN Scan (Stealth Scan - Default)
 nmap -sS -p- 192.168.1.100
 
-# TCP Connect Scan (Full Handshake)
+## TCP Connect Scan (Full Handshake)
 nmap -sT 192.168.1.100
 
-# UDP Scan (Slow but finds DNS/SNMP)
+## UDP Scan (Slow but finds DNS/SNMP)
 nmap -sU -p 53,161,137 192.168.1.100
 
-# Service Version Detection
+## Service Version Detection
 nmap -sV 192.168.1.100
 
-# OS Detection
+## OS Detection
 nmap -O 192.168.1.100
 
-# Nmap Scripting Engine (NSE)
+## Nmap Scripting Engine (NSE)
 nmap --script smb-vuln-ms17-010 192.168.1.100
 ```
 
@@ -195,9 +195,7 @@ Deeper enumeration is required to extract useful data from specific services.
 - **SMTP (Port 25):** Use `VRFY` and `EXPN` commands to verify usernames for
   brute-force attacks.
 
----
-
-## 🗄️ 3. Organizing Reconnaissance Data
+## 🗄 3. Organizing Reconnaissance Data
 
 The reconnaissance phase generates overwhelming data. Managing it is crucial.
 
@@ -208,8 +206,6 @@ The reconnaissance phase generates overwhelming data. Managing it is crucial.
 - **SpiderFoot:** Automated OSINT and attack surface mapping tool.
 - **BloodHound:** Uses graph theory to reveal complex privilege escalation paths
   in Active Directory.
-
----
 
 ## 🛑 4. OPSEC (Operational Security) During Reconnaissance
 
@@ -226,11 +222,18 @@ The reconnaissance phase generates overwhelming data. Managing it is crucial.
 - **Cloud Infrastructure:** Launching scans from ephemeral cloud instances (AWS,
   DigitalOcean) and rotating IPs frequently.
 
----
-
 ## 🏁 Conclusion
 
 Reconnaissance is a meticulous, iterative process. It requires patience and a
 systematic approach. The intelligence gathered here directly forms the threat
 model and the attack plan for the Exploitation phase. A skipped step in
 enumeration often results in missing the simplest path to domain compromise.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

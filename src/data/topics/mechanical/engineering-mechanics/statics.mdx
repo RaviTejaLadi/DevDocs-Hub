@@ -1,4 +1,4 @@
-# ⚖️ Statics
+# ⚖ Statics
 
 Statics is the branch of Engineering Mechanics that deals with bodies at rest or
 moving with constant velocity under the action of forces.
@@ -11,7 +11,7 @@ towers, cranes, and machine components will remain stable under applied loads.
 
 ---
 
-# 🎯 Why Study Statics?
+## Why Study Statics?
 
 Every structure must safely support loads without moving or collapsing.
 
@@ -27,9 +27,7 @@ Statics helps engineers:
 
 ✅ Ensure structural safety
 
----
-
-# 🌍 Real-Life Examples
+## 🌍 Real-Life Examples
 
 🏢 Building columns supporting floors
 
@@ -40,10 +38,6 @@ Statics helps engineers:
 🏗️ Cranes lifting heavy materials
 
 🚪 Doors attached to hinges
-
----
-
-# 🧩 Basic Concepts of Statics
 
 ## Force
 
@@ -66,15 +60,9 @@ Unit:
 
 Newton (N)
 
----
-
-## Types of Forces
-
 ### External Forces
 
 Forces acting from outside the body.
-
-Examples:
 
 - Gravity
 - Wind load
@@ -84,18 +72,15 @@ Examples:
 
 Forces developed within a structure to resist external loads.
 
-Examples:
-
 - Tension
 - Compression
 - Shear
 
----
-
-# 🎯 Equilibrium
+## Equilibrium
 
 A body is in equilibrium when:
 
+// Example demonstrating ⚖ Statics.
 ```text
 Net Force = 0
 Net Moment = 0
@@ -117,10 +102,6 @@ Conditions of equilibrium:
 
 These three equations form the foundation of statics analysis.
 
----
-
-# 🔄 Types of Equilibrium
-
 ## Stable Equilibrium
 
 When disturbed slightly, the body returns to its original position.
@@ -129,6 +110,7 @@ Example:
 
 ⚽ Ball inside a bowl
 
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 graph TD
     A[Stable Position]
@@ -136,29 +118,19 @@ graph TD
     B --> C[Returns Back]
 ```
 
----
-
 ## Unstable Equilibrium
 
 A small disturbance causes the body to move farther away.
 
-Example:
-
 ⚽ Ball on top of a hill
-
----
 
 ## Neutral Equilibrium
 
 The body remains in its new position after disturbance.
 
-Example:
-
 ⚽ Ball on a flat surface
 
----
-
-# 📌 Free Body Diagram (FBD)
+## Free Body Diagram (FBD)
 
 A Free Body Diagram is a simplified sketch showing all external forces acting on
 a body.
@@ -173,33 +145,28 @@ Steps:
 4. Show all applied forces.
 5. Apply equilibrium equations.
 
----
+## Example of Free Body Diagram
 
-# Example of Free Body Diagram
-
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 graph LR
     A[Wall]
     B[Block]
 
-    A --- B
+A --- B
 
-    R[Reaction Force]
+R[Reaction Force]
     W[Weight]
 
-    R --> B
+R --> B
     W --> B
 ```
 
----
-
-# ⚖️ Support Reactions
+## ⚖ Support Reactions
 
 Supports prevent movement and produce reaction forces.
 
 Common supports:
-
----
 
 ## Roller Support
 
@@ -209,71 +176,53 @@ Reaction:
 
 - One force
 
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 graph TD
     A[Beam]
     B[Roller Support]
 
-    A --- B
+A --- B
 ```
-
----
 
 ## Pin Support
 
 Prevents movement in both horizontal and vertical directions.
 
-Reaction:
-
 - Horizontal force
 - Vertical force
-
----
 
 ## Fixed Support
 
 Prevents both translation and rotation.
 
-Reaction:
-
 - Horizontal force
 - Vertical force
 - Moment
-
----
-
-# 🎯 Concurrent and Non-Concurrent Forces
 
 ## Concurrent Forces
 
 All force lines pass through a common point.
 
-Example:
-
 Forces meeting at a joint in a truss.
 
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 graph TD
     O((Point))
 
-    A[Force 1] --> O
+A[Force 1] --> O
     B[Force 2] --> O
     C[Force 3] --> O
 ```
-
----
 
 ## Non-Concurrent Forces
 
 Forces do not meet at a single point.
 
-Example:
-
 Forces acting on a beam.
 
----
-
-# ↔️ Force Resolution
+## ↔ Force Resolution
 
 A force can be split into horizontal and vertical components.
 
@@ -289,13 +238,9 @@ Fy = F sin θ
 
 This makes calculations easier.
 
----
-
-# 🔄 Moment of a Force
+## Moment of a Force
 
 Moment is the turning effect produced by a force.
-
-Examples:
 
 🔧 Using a wrench
 
@@ -316,25 +261,19 @@ Where:
 - F = Force
 - d = Perpendicular distance
 
-Unit:
-
 N·m
 
----
-
-# ⚙️ Principle of Moments
+## ⚙ Principle of Moments
 
 For equilibrium:
 
-# Total Clockwise Moments
+## Total Clockwise Moments
 
 Total Counterclockwise Moments
 
 This principle is widely used in beam and structural analysis.
 
----
-
-# 🏗️ Beam Analysis
+## Beam Analysis
 
 A beam is a structural member that supports loads.
 
@@ -352,22 +291,22 @@ Load spread evenly over a length.
 
 Load intensity changes along the beam.
 
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 graph LR
     A[Support]
     B[Beam]
     C[Support]
 
-    A --- B --- C
+A --- B --- C
 
-    D[Load]
+D[Load]
     D --> B
 ```
 
----
+## 🧮 Procedure for Solving Statics Problems
 
-# 🧮 Procedure for Solving Statics Problems
-
+<!-- Visual flow for ⚖ Statics. -->
 ```mermaid
 flowchart TD
     A[Understand Problem]
@@ -377,12 +316,10 @@ flowchart TD
     E[Calculate Unknowns]
     F[Verify Results]
 
-    A --> B --> C --> D --> E --> F
+A --> B --> C --> D --> E --> F
 ```
 
----
-
-# 🌟 Applications of Statics
+## 🌟 Applications of Statics
 
 🏢 Structural Engineering
 
@@ -398,9 +335,7 @@ flowchart TD
 
 🛠️ Mechanical Components
 
----
-
-# ❌ Common Mistakes
+## ❌ Common Mistakes
 
 - Forgetting support reactions
 - Ignoring force directions
@@ -408,9 +343,7 @@ flowchart TD
 - Missing moments in calculations
 - Drawing incomplete FBDs
 
----
-
-# 📝 Key Takeaways
+## Key Takeaways
 
 ✅ Statics deals with bodies in equilibrium.
 

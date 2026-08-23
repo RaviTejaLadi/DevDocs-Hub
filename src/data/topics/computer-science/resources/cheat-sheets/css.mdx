@@ -1,4 +1,4 @@
-# 🎨 CSS
+# CSS
 
 ## CSS Syntax
 
@@ -9,8 +9,6 @@
 | Value       | Property setting        | `red`, `16px`, `10px`                 |
 | Declaration | Property-value pair     | `color: red;`                         |
 | Rule        | Selector + declarations | `h1 { color: red; font-size: 24px; }` |
-
-## CSS Selectors
 
 ### Basic Selectors
 
@@ -116,6 +114,7 @@
 
 ## Box Model Properties
 
+<!-- Visual flow for CSS. -->
 ```mermaid
 flowchart TB
     subgraph box["CSS Box Model (content-box)"]
@@ -175,8 +174,6 @@ flowchart TB
 | `border-radius`   | Rounded corners | Length, %                           | `border-radius: 10px;` `border-radius: 50%;`  |
 | `border-collapse` | Table borders   | `separate`, `collapse`              | `border-collapse: collapse;`                  |
 
-## Layout Properties
-
 ### Display
 
 | Property  | Value          | Description                  | Example                  |
@@ -220,6 +217,7 @@ flowchart TB
 | `overflow-x` | `visible`, `hidden`, `scroll`, `auto` | Horizontal overflow | `overflow-x: scroll;` |
 | `overflow-y` | `visible`, `hidden`, `scroll`, `auto` | Vertical overflow   | `overflow-y: auto;`   |
 
+<!-- Visual flow for CSS. -->
 ```mermaid
 flowchart LR
     container["flex container<br/>display: flex"]
@@ -230,8 +228,6 @@ flowchart LR
     container --> item2
     container --> item3
 ```
-
-## Flexbox Properties
 
 ### Container Properties
 
@@ -259,6 +255,7 @@ flowchart LR
 
 ## Grid Properties
 
+<!-- Visual flow for CSS. -->
 ```mermaid
 flowchart TB
     subgraph grid["CSS Grid layout"]
@@ -272,8 +269,6 @@ flowchart TB
     M --- F
     S --- F
 ```
-
-### Container Properties
 
 | Property                | Values                                                                               | Description             | Example                                                |
 | ----------------------- | ------------------------------------------------------------------------------------ | ----------------------- | ------------------------------------------------------ |
@@ -290,8 +285,6 @@ flowchart TB
 | `justify-content`       | `start`, `end`, `center`, `stretch`, `space-around`, `space-between`, `space-evenly` | Grid alignment (inline) | `justify-content: center;`                             |
 | `align-content`         | `start`, `end`, `center`, `stretch`, `space-around`, `space-between`, `space-evenly` | Grid alignment (block)  | `align-content: center;`                               |
 
-### Item Properties
-
 | Property            | Values                                           | Description             | Example                 |
 | ------------------- | ------------------------------------------------ | ----------------------- | ----------------------- |
 | `grid-column-start` | Line number/name                                 | Column start            | `grid-column-start: 2;` |
@@ -303,8 +296,6 @@ flowchart TB
 | `grid-area`         | name / row-start / col-start / row-end / col-end | Area placement          | `grid-area: header;`    |
 | `justify-self`      | `start`, `end`, `center`, `stretch`              | Self alignment (inline) | `justify-self: center;` |
 | `align-self`        | `start`, `end`, `center`, `stretch`              | Self alignment (block)  | `align-self: end;`      |
-
-## Animation and Transition Properties
 
 ### Transitions
 
@@ -343,8 +334,6 @@ flowchart TB
 | `transform`        | `rotate(angle)`   | Rotate element     | `transform: rotate(45deg);`          |
 | `transform`        | `skew(x, y)`      | Skew element       | `transform: skew(20deg, 10deg);`     |
 | `transform-origin` | Position          | Transform origin   | `transform-origin: top left;`        |
-
-## Visual Effects
 
 ### Shadows
 
@@ -391,8 +380,6 @@ flowchart TB
 | `caption-side`    | `top`, `bottom`        | Caption position   | `caption-side: bottom;`      |
 | `empty-cells`     | `show`, `hide`         | Empty cell borders | `empty-cells: hide;`         |
 
-## Units of Measurement
-
 ### Length Units
 
 | Unit   | Description                | Example              | Relative to       |
@@ -421,8 +408,6 @@ flowchart TB
 | RGBA         | rgba(red, green, blue, alpha)           | `color: rgba(255, 0, 0, 0.5);`    |
 | HSL          | hsl(hue, saturation, lightness)         | `color: hsl(0, 100%, 50%);`       |
 | HSLA         | hsla(hue, saturation, lightness, alpha) | `color: hsla(0, 100%, 50%, 0.5);` |
-
-## Media Queries
 
 ### Syntax
 
@@ -456,8 +441,6 @@ flowchart TB
 | Desktop       | `@media (min-width: 1024px)`                        | Large screens       |
 | Large Desktop | `@media (min-width: 1200px)`                        | Extra large screens |
 
-## CSS Functions
-
 ### Calculation Functions
 
 | Function  | Description               | Example                              |
@@ -485,3 +468,12 @@ flowchart TB
 | **Conic**        | Gradient rotates around a center point, creating a pie-chart-like effect.         | `conic-gradient(red, yellow, green)` sweeps through colors like a color wheel.           |
 | **Repeating**    | Repeats a gradient pattern until filling the space.                               | `repeating-linear-gradient(45deg, red, red 10px, blue 10px, blue 20px)` creates stripes. |
 | **Custom Stops** | Allows precise control over color transition points.                              | `linear-gradient(red 0%, yellow 50%, green 100%)` places yellow at the midpoint.         |
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

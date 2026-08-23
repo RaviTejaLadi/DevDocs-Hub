@@ -1,4 +1,4 @@
-# 📖 Introduction to DevOps
+# Introduction to DevOps
 
 DevOps bridges the gap between software development and IT operations. It helps
 teams build, test, and release software faster and more reliably. By breaking
@@ -20,6 +20,7 @@ The DevOps workflow is continuous, often represented as an infinity loop. It
 moves seamlessly through planning, coding, building, testing, deploying, and
 monitoring.
 
+<!-- Visual flow for Introduction to DevOps. -->
 ```mermaid
 graph LR
     A(Plan) --> B(Code)
@@ -42,7 +43,7 @@ graph LR
 
 ---
 
-## 🐧 Linux for DevOps
+## Linux for DevOps
 
 Linux is the backbone of modern cloud infrastructure. Most servers, containers,
 and cloud environments run on Linux, making it an essential skill for any DevOps
@@ -59,20 +60,19 @@ manage permissions, and look at logs is crucial for troubleshooting issues.
 Here are the fundamental commands you will use every single day in a DevOps
 role:
 
+# Basic example showing the core idea.
 ```bash
-# Check the current directory path
+## Check the current directory path
 pwd
 
-# List files and folders with detailed information
+## List files and folders with detailed information
 ls -la
 
-# View real-time system resource usage like CPU and RAM
+## View real-time system resource usage like CPU and RAM
 top
 
-# Check live application logs as they update
+## Check live application logs as they update
 tail -f /var/log/nginx/error.log
-
-```
 
 ### Managing File Permissions
 
@@ -81,12 +81,8 @@ Linux secures files using permissions for the **Owner**, **Group**, and
 permissions, especially when making automation scripts executable.
 
 ```bash
-# Grant execution rights to a script file
+## Grant execution rights to a script file
 chmod +x deploy.sh
-
-```
-
----
 
 ## 📜 Infrastructure as Code (IaC)
 
@@ -120,22 +116,19 @@ them up instantly.
 
 Here is a simple example of how Terraform creates an AWS server using code.
 
+// Example demonstrating Introduction to DevOps.
 ```hcl
-# Define an AWS EC2 server instance
+## Define an AWS EC2 server instance
 resource "aws_instance" "web_server" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
 
-  tags = {
+tags = {
     Name = "DevOps-Web-Server"
   }
 }
 
-```
-
----
-
-## ☸️ Kubernetes
+## Kubernetes
 
 Kubernetes (also known as K8s) is an open-source system that automates the
 deployment, scaling, and management of containerized applications. Think of it
@@ -161,7 +154,7 @@ This configuration file tells Kubernetes to run three identical copies
 (replicas) of an Nginx web server and automatically keep them running.
 
 ```yaml
-# Define a deployment for an Nginx web server
+## Define a deployment for an Nginx web server
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -181,11 +174,10 @@ spec:
         image: nginx:1.14.2
         ports:
           - containerPort: 80
+// Example demonstrating Introduction to DevOps.
 ```
 
----
-
-## 🔄 CI/CD Pipelines
+## CI/CD Pipelines
 
 CI/CD stands for Continuous Integration and Continuous Deployment. It acts as an
 automated assembly line for your software, taking code from a developer's laptop
@@ -208,17 +200,13 @@ graph LR
     B --> C[Build Container Image]
     C --> D[Deploy to Production]
 
-```
-
 ### Popular CI/CD Tools
 
 - **GitHub Actions:** Directly integrated into GitHub repositories.
 - **Jenkins:** A highly customizable, self-hosted automation server.
 - **GitLab CI/CD:** A built-in toolchain for GitLab projects.
 
----
-
-## 📊 Monitoring & Observability
+## Monitoring & Observability
 
 Once your software is live, you need to know how it is performing. Monitoring
 and observability give you eyes and ears inside your production systems so you
@@ -242,3 +230,12 @@ data:
   dashboards.
 - **ELK Stack (Elasticsearch, Logstash, Kibana):** Used for searching and
   analyzing application logs.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

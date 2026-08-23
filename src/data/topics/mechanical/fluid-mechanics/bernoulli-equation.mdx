@@ -13,7 +13,7 @@ pipelines, carburetors, and hydraulic systems.
 
 ---
 
-# 🌊 What is Bernoulli's Equation?
+## 🌊 What is Bernoulli's Equation?
 
 Bernoulli's Equation is based on the **Law of Conservation of Energy**.
 
@@ -23,6 +23,7 @@ For an ideal fluid flowing steadily through a pipe:
 - Energy changes form between pressure energy, kinetic energy, and potential
   energy.
 
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph LR
     A[Pressure Energy] --> D[Total Energy]
@@ -30,9 +31,7 @@ graph LR
     C[Potential Energy] --> D
 ```
 
----
-
-# 📌 Assumptions of Bernoulli's Equation
+## Assumptions of Bernoulli's Equation
 
 Bernoulli's equation is valid only when:
 
@@ -46,9 +45,7 @@ Bernoulli's equation is valid only when:
 
 ✅ No energy is added or removed
 
----
-
-# ⚡ Energy Components in a Fluid
+## Energy Components in a Fluid
 
 A moving fluid possesses three forms of energy.
 
@@ -58,25 +55,17 @@ Energy due to fluid pressure.
 
 [ \frac{P}{\rho g} ]
 
----
-
 ### 2. Kinetic Energy
 
 Energy due to fluid velocity.
 
 [ \frac{V^2}{2g} ]
 
----
-
 ### 3. Potential Energy
 
 Energy due to elevation.
 
 [ z ]
-
----
-
-# 📐 Bernoulli's Equation
 
 For two points in a flowing fluid:
 
@@ -102,17 +91,16 @@ The equation states that:
 
 > Total head remains constant along a streamline.
 
----
+## Understanding Bernoulli's Equation Visually
 
-# Understanding Bernoulli's Equation Visually
-
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph LR
     A[Pressure Head]
     B[Velocity Head]
     C[Elevation Head]
 
-    A --> D[Total Head]
+A --> D[Total Head]
     B --> D
     C --> D
 ```
@@ -121,9 +109,7 @@ Total Head:
 
 [ H = \frac{P}{\rho g}+\frac{V^2}{2g}+z ]
 
----
-
-# 🎯 Bernoulli's Principle
+## Bernoulli's Principle
 
 When fluid enters a narrow section:
 
@@ -135,20 +121,19 @@ When fluid enters a wider section:
 - Velocity decreases
 - Pressure increases
 
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph LR
     A[Wide Pipe]
     A --> B[Narrow Pipe]
     B --> C[Wide Pipe]
 
-    A --- D[Low Velocity High Pressure]
+A --- D[Low Velocity High Pressure]
     B --- E[High Velocity Low Pressure]
     C --- F[Low Velocity High Pressure]
 ```
 
----
-
-# Example 1: Pressure-Velocity Relationship
+## Example 1: Pressure-Velocity Relationship
 
 Consider water flowing through a pipe that narrows.
 
@@ -167,9 +152,7 @@ Therefore:
 
 This is the essence of Bernoulli's principle.
 
----
-
-# 🛫 Bernoulli's Principle and Aircraft Wings
+## 🛫 Bernoulli's Principle and Aircraft Wings
 
 Air moves faster over the curved upper surface of the wing.
 
@@ -180,36 +163,33 @@ According to Bernoulli's principle:
 
 Pressure difference creates lift.
 
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph TD
     A[Fast Air Above Wing]
     A --> B[Low Pressure]
 
-    C[Slow Air Below Wing]
+C[Slow Air Below Wing]
     C --> D[High Pressure]
 
-    D --> E[Lift Force]
+D --> E[Lift Force]
     B --> E
 ```
 
----
-
-# 💨 Venturi Effect
+## 💨 Venturi Effect
 
 The Venturi Effect is a direct application of Bernoulli's principle.
 
 When fluid passes through a narrow section:
 
-- Velocity increases
-- Pressure decreases
-
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph LR
     A[Large Area]
     A --> B[Small Area]
     B --> C[Large Area]
 
-    B --- D[High Velocity]
+B --- D[High Velocity]
     B --- E[Low Pressure]
 ```
 
@@ -220,9 +200,7 @@ Applications:
 - Atomizers
 - Spray guns
 
----
-
-# 🚿 Flow from a Tank
+## 🚿 Flow from a Tank
 
 Consider water flowing from a hole in a tank.
 
@@ -240,13 +218,12 @@ Applying Bernoulli's equation:
 
 This is known as **Torricelli's Theorem**.
 
----
-
-# Torricelli's Theorem
+## Torricelli's Theorem
 
 The velocity of fluid leaving a tank equals the velocity gained by a body freely
 falling through the same height.
 
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph TD
     A[Fluid Height h]
@@ -254,9 +231,7 @@ graph TD
     B --> C[V = √2gh]
 ```
 
----
-
-# Hydraulic Grade Line (HGL)
+## Hydraulic Grade Line (HGL)
 
 Hydraulic Grade Line represents:
 
@@ -264,9 +239,7 @@ Hydraulic Grade Line represents:
 
 It shows the sum of pressure head and elevation head.
 
----
-
-# Energy Grade Line (EGL)
+## Energy Grade Line (EGL)
 
 Energy Grade Line represents:
 
@@ -277,78 +250,48 @@ Energy Grade Line represents:
 
 The EGL is always above the HGL by the velocity head.
 
+<!-- Visual flow for 📐 Bernoulli's Equation. -->
 ```mermaid
 graph TD
     A[EGL]
     A --> B[Velocity Head]
 
-    B --> C[HGL]
+B --> C[HGL]
 ```
 
----
-
-# Modified Bernoulli Equation
+## Modified Bernoulli Equation
 
 Real fluids experience friction losses.
-
-Therefore:
-
-[ \frac{P_1}{\rho g}
-
-- \frac{V_1^2}{2g}
-- # z_1
-
-\frac{P_2}{\rho g}
 
 - \frac{V_2^2}{2g}
 - z_2
 - h_f ]
 
-Where:
-
 - (h_f) = Head loss due to friction
 
----
-
-# Engineering Applications
-
-## ✈️ Aircraft Wings
+## ✈ Aircraft Wings
 
 Pressure difference generates lift.
-
----
 
 ## 💧 Venturi Meter
 
 Measures flow rate in pipelines.
 
----
-
 ## 🚿 Spray Bottles
 
 Low pressure draws liquid upward.
-
----
 
 ## ⛽ Carburetors
 
 Mix fuel and air in engines.
 
----
-
 ## 🏭 Pipelines
 
 Used for pressure and velocity calculations.
 
----
-
 ## 🌬 Chimneys
 
 Fast-moving air creates low pressure, improving draft.
-
----
-
-# Real-Life Examples
 
 ### Cricket Ball Swing
 
@@ -366,9 +309,7 @@ Pressure difference above and below the wing generates lift.
 
 Reducing nozzle area increases water speed.
 
----
-
-# 📋 Advantages of Bernoulli's Equation
+## 📋 Advantages of Bernoulli's Equation
 
 ✅ Simple and powerful
 
@@ -380,9 +321,7 @@ Reducing nozzle area increases water speed.
 
 ✅ Applicable to many engineering systems
 
----
-
-# ⚠️ Limitations
+## ⚠ Limitations
 
 Bernoulli's equation assumes:
 
@@ -393,9 +332,7 @@ Bernoulli's equation assumes:
 
 For real systems, correction factors and head losses must be included.
 
----
-
-# Summary
+## Summary
 
 | Energy Type    | Expression       |
 | -------------- | ---------------- |
@@ -404,9 +341,7 @@ For real systems, correction factors and head losses must be included.
 | Elevation Head | z                |
 | Total Head     | P/ρg + V²/2g + z |
 
----
-
-# 🎯 Key Takeaways
+## Key Takeaways
 
 - Bernoulli's Equation is derived from the conservation of energy.
 - Total energy of an ideal fluid remains constant along a streamline.

@@ -1,7 +1,8 @@
-# **Toggle Button**
+# Toggle Button
 
 ## JavaScript Version
 
+// Example demonstrating Toggle Button.
 ```jsx
 import React, { useState } from 'react';
 
@@ -9,7 +10,7 @@ const ToggleButtonJS = () => {
   const [isToggled, setIsToggled] = useState(false);
   const [activeTheme, setActiveTheme] = useState('light');
 
-  const themes = {
+const themes = {
     light: {
       backgroundColor: '#ffffff',
       textColor: '#000000',
@@ -27,20 +28,20 @@ const ToggleButtonJS = () => {
     },
   };
 
-  const toggleState = () => {
+const toggleState = () => {
     setIsToggled(!isToggled);
   };
 
-  const switchTheme = () => {
+const switchTheme = () => {
     const themeKeys = Object.keys(themes);
     const currentIndex = themeKeys.indexOf(activeTheme);
     const nextIndex = (currentIndex + 1) % themeKeys.length;
     setActiveTheme(themeKeys[nextIndex]);
   };
 
-  const currentTheme = themes[activeTheme];
+const currentTheme = themes[activeTheme];
 
-  return (
+return (
     <div
       style={{
         padding: '20px',
@@ -52,7 +53,7 @@ const ToggleButtonJS = () => {
     >
       <h1>Toggle Button (JS Version)</h1>
 
-      <button
+<button
         onClick={toggleState}
         style={{
           padding: '10px 20px',
@@ -69,9 +70,9 @@ const ToggleButtonJS = () => {
         {isToggled ? 'ON' : 'OFF'}
       </button>
 
-      <p>Current toggle state: {isToggled.toString()}</p>
+<p>Current toggle state: {isToggled.toString()}</p>
 
-      <button
+<button
         onClick={switchTheme}
         style={{
           padding: '10px 20px',
@@ -96,6 +97,7 @@ export default ToggleButtonJS;
 
 ## TypeScript Version
 
+// Example demonstrating Toggle Button.
 ```tsx
 import React, { useState } from 'react';
 
@@ -113,7 +115,7 @@ const ToggleButtonTS: React.FC = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [activeTheme, setActiveTheme] = useState<string>('light');
 
-  const themes: Themes = {
+const themes: Themes = {
     light: {
       backgroundColor: '#ffffff',
       textColor: '#000000',
@@ -131,20 +133,18 @@ const ToggleButtonTS: React.FC = () => {
     },
   };
 
-  const toggleState = (): void => {
+const toggleState = (): void => {
     setIsToggled(!isToggled);
   };
 
-  const switchTheme = (): void => {
+const switchTheme = (): void => {
     const themeKeys = Object.keys(themes);
     const currentIndex = themeKeys.indexOf(activeTheme);
     const nextIndex = (currentIndex + 1) % themeKeys.length;
     setActiveTheme(themeKeys[nextIndex]);
   };
 
-  const currentTheme = themes[activeTheme];
-
-  return (
+return (
     <div
       style={{
         padding: '20px',
@@ -156,44 +156,34 @@ const ToggleButtonTS: React.FC = () => {
     >
       <h1>Toggle Button (TS Version)</h1>
 
-      <button
-        onClick={toggleState}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: isToggled ? '#4CAF50' : '#f44336',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '16px',
-          margin: '10px',
-          transition: 'all 0.3s ease',
-        }}
-      >
-        {isToggled ? 'ON' : 'OFF'}
-      </button>
-
-      <p>Current toggle state: {isToggled.toString()}</p>
-
-      <button
-        onClick={switchTheme}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: currentTheme.buttonColor,
-          color: currentTheme.textColor,
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '16px',
-          margin: '10px',
-          transition: 'all 0.3s ease',
-        }}
-      >
-        Switch Theme (Current: {activeTheme})
-      </button>
-    </div>
-  );
-};
-
 export default ToggleButtonTS;
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.
+
+## Final Understanding Check
+
+Before considering **Toggle Button** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

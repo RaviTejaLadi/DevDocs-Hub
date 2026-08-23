@@ -1,5 +1,6 @@
 # Python
 
+<!-- Visual flow for Python. -->
 ```mermaid
 mindmap
   root((Python Types))
@@ -30,8 +31,6 @@ mindmap
 | `coordinates = (10, 20)`   | Tuple            |
 | `unique_nums = {1, 2, 3}`  | Set              |
 
----
-
 ### 2.Operators
 
 | **Operator** | **Description**  |
@@ -45,8 +44,6 @@ mindmap
 | `and or not` | Logical          |
 | `in`         | Membership check |
 
----
-
 ### 3.Strings
 
 | **Method**                | **Description**         |
@@ -58,8 +55,6 @@ mindmap
 | `s.split()`               | Split into list         |
 | `s.replace("old", "new")` | Replace substring       |
 | `f"Hello {name}"`         | f-strings (Python 3.6+) |
-
----
 
 ### 4.Lists
 
@@ -73,8 +68,6 @@ mindmap
 | `lst.reverse()` | Reverse list    |
 | `lst[1:3]`      | Slicing         |
 
----
-
 ### 5.Dictionaries
 
 | **Method**               | **Description**     |
@@ -85,8 +78,6 @@ mindmap
 | `dict.get(key, default)` | Safe key access     |
 | `dict.update(new_dict)`  | Merge dictionaries  |
 
----
-
 ### 6.Tuples
 
 | **Method**      | **Description**       |
@@ -94,8 +85,6 @@ mindmap
 | `t = (1, 2, 3)` | Immutable sequence    |
 | `t.count(x)`    | Count occurrences     |
 | `t.index(x)`    | Find index of element |
-
----
 
 ### 7.Sets
 
@@ -106,10 +95,9 @@ mindmap
 | `s.union(t)`        | Union of sets   |
 | `s.intersection(t)` | Intersection    |
 
----
-
 ### 8.Conditionals
 
+# Basic example showing the core idea.
 ```python
 if x > 0:
     print("Positive")
@@ -118,8 +106,6 @@ elif x == 0:
 else:
     print("Negative")
 ```
-
----
 
 ### 9.Loops
 
@@ -130,16 +116,13 @@ else:
 | `break`    | Exit loop            |
 | `continue` | Skip iteration       |
 
----
-
 ### 10.Functions
 
+# Basic example showing the core idea.
 ```python
 def greet(name="User"):
     return f"Hello, {name}"
 ```
-
----
 
 ### 11.File Handling
 
@@ -150,15 +133,15 @@ def greet(name="User"):
 | `"a"`    | Append          |
 | `"rb"`   | Read binary     |
 
+# Basic example showing the core idea.
 ```python
 with open("file.txt", "r") as f:
     content = f.read()
 ```
 
----
-
 ### 12.Exception Handling
 
+# Basic example showing the core idea.
 ```python
 try:
     x = 10 / 0
@@ -168,23 +151,49 @@ finally:
     print("Done")
 ```
 
----
-
 ### 13.Classes & OOP
 
+# Basic example showing the core idea.
 ```python
 class Person:
     def __init__(self, name):
         self.name = name
 
-    def greet(self):
+def greet(self):
         return f"Hello, {self.name}"
 
 p = Person("Alice")
 print(p.greet())
 ```
 
----
-
 This cheat sheet covers essential Python syntax. Bookmark it for quick
 reference! 🚀
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## A Strong Answer Pattern
+
+Start with a precise definition, then explain the mechanism, trade-offs, and one concrete example. If there are alternatives, say what constraint would make each alternative preferable. This shows understanding without turning the answer into a list of disconnected terms.
+
+## Follow-up Questions
+
+Be ready for “what happens when this fails?”, “what is the complexity?”, “what changes at scale?”, and “what are the trade-offs?”. These questions test whether you can apply the concept rather than repeat its definition.
+
+## Example Before Vocabulary
+
+When a concept is abstract, explain a small scenario first and name the pattern afterward. The example gives the terminology a useful mental model and makes the answer easier to recall under interview pressure.
+
+## Decision Trade-offs
+
+For interviews, avoid treating a technology or pattern as universally correct. State the requirement first, then explain the choice and the cost it introduces. A concise answer can mention one alternative and the condition that would make it preferable. This demonstrates engineering judgment: the goal is not to name the most advanced option, but to show that the decision follows from the constraints.
+
+## Final Understanding Check
+
+Before considering **Python** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

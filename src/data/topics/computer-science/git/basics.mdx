@@ -6,12 +6,13 @@ states we discussed earlier. 🛠️
 
 ---
 
-## 🏗️ The 4 Lifecycle Stages of a File
+## The 4 Lifecycle Stages of a File
 
 Inside your working directory, every single file falls into one of two major
 categories: **Untracked** or **Tracked**. Tracked files are further broken down
 into three distinct stages.
 
+<!-- Visual flow for 🧱 Git Basics. -->
 ```mermaid
 graph LR
     Untracked -- "git add" --> Staged
@@ -29,9 +30,7 @@ graph LR
   added to the staging area yet.
 - **Unmodified:** Files that match your last saved snapshot exactly.
 
----
-
-## 🔄 The Core Local Workflow
+## The Core Local Workflow
 
 Every day as a developer, you will repeat a simple 3-step cycle to save your
 progress locally. Think of it like taking a photo:
@@ -43,9 +42,7 @@ progress locally. Think of it like taking a photo:
 3. **Commit:** You snap the photo, permanently saving that bundle of changes
    into your local history database.
 
----
-
-## 📊 Checking Status
+## Checking Status
 
 Because files change stages constantly as you type, you need a way to check
 where everything stands. Git provides a command that gives you a quick
@@ -54,10 +51,36 @@ bird's-eye view of your repository.
 It tells you exactly which files are modified, which are staged, and which are
 completely untracked so you never feel lost. 🗺️
 
+# Basic example showing the core idea.
 ```bash
 // Check the status of your working directory and staging area
 git status
 
-```
+## Quick Reference
 
----
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
+
+## Final Understanding Check
+
+Before considering **🧱 Git Basics** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

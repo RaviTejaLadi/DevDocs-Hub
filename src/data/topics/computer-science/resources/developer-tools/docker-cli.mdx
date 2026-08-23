@@ -4,7 +4,7 @@ Docker allows developers to package applications and their dependencies into
 containers. Containers make applications portable, consistent, and easy to
 deploy.
 
-## 🚀 What is Docker?
+## What is Docker?
 
 Docker helps you:
 
@@ -16,8 +16,6 @@ Docker helps you:
 Think of a container as a lightweight virtual machine.
 
 ---
-
-## 📦 Core Docker Concepts
 
 ### Image
 
@@ -46,9 +44,7 @@ Persistent storage for containers.
 
 Communication layer between containers.
 
----
-
-## 🔍 Check Docker Installation
+## Check Docker Installation
 
 View Docker version:
 
@@ -57,8 +53,6 @@ docker --version
 View detailed information:
 
 docker info
-
----
 
 ## 📥 Pull an Image
 
@@ -74,9 +68,7 @@ List downloaded images:
 
 docker images
 
----
-
-## ▶️ Run a Container
+## ▶ Run a Container
 
 Run Nginx:
 
@@ -94,8 +86,6 @@ Access:
 
 http://localhost:8080
 
----
-
 ## 📋 View Running Containers
 
 Show running containers:
@@ -106,21 +96,15 @@ Show all containers:
 
 docker ps -a
 
----
-
-## ⏹️ Stop a Container
+## ⏹ Stop a Container
 
 Stop container:
 
 docker stop container_id
 
-Example:
-
 docker stop 8d6abf1
 
----
-
-## 🗑️ Remove Containers
+## 🗑 Remove Containers
 
 Remove a container:
 
@@ -130,19 +114,13 @@ Remove all stopped containers:
 
 docker container prune
 
----
-
-## 🖼️ Remove Images
+## 🖼 Remove Images
 
 Delete image:
 
 docker rmi image_id
 
-Example:
-
 docker rmi nginx
-
----
 
 ## 📜 View Container Logs
 
@@ -156,9 +134,7 @@ docker logs -f container_id
 
 Useful for debugging.
 
----
-
-## 🖥️ Access a Running Container
+## 🖥 Access a Running Container
 
 Open shell:
 
@@ -174,13 +150,9 @@ Useful for:
 - Checking files
 - Running commands
 
----
-
 ## 📂 Mount Volumes
 
 Map local folder into container.
-
-Example:
 
 docker run -v $(pwd):/app node:22
 
@@ -189,15 +161,11 @@ Benefits:
 - Persistent data
 - Live code changes
 
----
-
 ## 🌐 Port Mapping
 
 Syntax:
 
 host_port:container_port
-
-Example:
 
 docker run -p 3000:3000 app
 
@@ -205,9 +173,7 @@ Request flow:
 
 Browser ↓ localhost:3000 ↓ Container:3000
 
----
-
-## 📝 Dockerfile Example
+## Dockerfile Example
 
 Create:
 
@@ -227,9 +193,7 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 
----
-
-## 🏗️ Build an Image
+## Build an Image
 
 Build image:
 
@@ -237,11 +201,7 @@ docker build -t my-app .
 
 List images:
 
-docker images
-
----
-
-## ▶️ Run Custom Image
+## ▶ Run Custom Image
 
 docker run -p 3000:3000 my-app
 
@@ -249,9 +209,7 @@ Application becomes available on:
 
 http://localhost:3000
 
----
-
-## 📦 Docker Volumes
+## Docker Volumes
 
 Create volume:
 
@@ -269,8 +227,6 @@ Use volume:
 
 docker run -v app-data:/data nginx
 
----
-
 ## 🌍 Docker Networks
 
 List networks:
@@ -287,9 +243,7 @@ docker run --network app-network nginx
 
 Useful for microservices.
 
----
-
-## ⚛️ Docker for React Applications
+## ⚛ Docker for React Applications
 
 Build React app:
 
@@ -305,8 +259,6 @@ Frontend Container ↓ Backend Container ↓ Database Container
 
 Connected via Docker network.
 
----
-
 ## 🐘 PostgreSQL Example
 
 Run PostgreSQL:
@@ -320,8 +272,6 @@ docker run -d \
 Connect application using:
 
 localhost:5432
-
----
 
 ## 🔥 Useful Commands
 
@@ -341,13 +291,9 @@ Show image history:
 
 docker history image_name
 
----
-
 ## 🧹 Cleanup Commands
 
 Remove stopped containers:
-
-docker container prune
 
 Remove unused images:
 
@@ -362,10 +308,6 @@ Remove aggressively:
 docker system prune -a
 
 Be careful with this command.
-
----
-
-## 🚨 Common Troubleshooting
 
 ### Port Already Used
 
@@ -383,8 +325,6 @@ Or use another port.
 
 Check logs:
 
-docker logs container_id
-
 ### Cannot Access App
 
 Verify:
@@ -392,8 +332,6 @@ Verify:
 - Container running
 - Correct port mapping
 - Firewall settings
-
----
 
 ## ⭐ Best Practices
 
@@ -409,3 +347,25 @@ Verify:
 Docker is one of the most valuable tools for modern development because it
 ensures your application behaves consistently across development, testing, and
 production environments.
+
+## Example
+
+Start with the smallest useful case before combining the idea with other features.
+
+# Basic example showing the core idea.
+```bash
+echo "example"
+```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Trade-offs
+
+Architecture decisions are rarely about a single “best” technology. Compare options using scale, latency, consistency, availability, operational cost, complexity, and team capability. State which requirement matters most because the priority determines the design.

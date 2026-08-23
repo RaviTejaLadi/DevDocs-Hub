@@ -1,7 +1,8 @@
-# **🚀 Complete Data Structures & Algorithms Roadmap with JavaScript**
+#  Complete Data Structures & Algorithms Roadmap with JavaScript
 
 ## Learning Path Overview
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph LR
     A[Foundation <br/> 2-3 weeks] --> B[Basic DS & A <br/> 4-6 weeks]
@@ -10,13 +11,11 @@ graph LR
     D --> E[System Design <br/> 4-6 weeks]
     E --> F[Practice & <br/> Mock Tests]
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
+style A fill:#f9f,stroke:#333,stroke-width:2px
     style F fill:#00ff00,stroke:#333,stroke-width:4px
 ```
 
 ---
-
-## Phase 1: Foundation (2-3 weeks)
 
 ### 📚 JavaScript Fundamentals
 
@@ -27,12 +26,9 @@ graph LR
 - **JS Engines**: V8, JIT Compilation, Call Stack, and Memory Heap.
 - **Closures & Scopes**: Essential for functional programming patterns in DSA.
 
----
-
-## Phase 2: Basic Data Structures (4-6 weeks)
-
 ### 🔗 Linked Lists
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph LR
     subgraph Singly_Linked_List
@@ -42,6 +38,7 @@ graph LR
 
 ### 📚 Stacks & Queues
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph TD
     subgraph Stack_LIFO
@@ -49,18 +46,15 @@ graph TD
     Data1[1] --- Data2[2] --- Data3[3] --- Top[4]
     end
 
-    subgraph Queue_FIFO
+subgraph Queue_FIFO
     direction LR
     In[Enqueue] --> Q1[1] --> Q2[2] --> Q3[3] --> Out[Dequeue]
     end
 ```
 
----
-
-## Phase 3: Intermediate Data Structures (6-8 weeks)
-
 ### 🌲 Trees
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph TD
     Root((8)) --> L((3))
@@ -72,10 +66,9 @@ graph TD
     LR --> LRR((7))
 ```
 
-### 📊 Heaps
-
 ### 📈 Graphs
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph RL
     subgraph Directed
@@ -85,7 +78,7 @@ graph RL
     C --> D
     end
 
-    subgraph Undirected
+subgraph Undirected
     W((W)) --- X((X))
     W --- Y((Y))
     X --- Z((Z))
@@ -93,11 +86,7 @@ graph RL
     end
 ```
 
----
-
-## Phase 4: Algorithms (8-10 weeks)
-
-### 📊 Sorting Comparison
+### Sorting Comparison
 
 | Algorithm  | Best Case     | Average Case  | Worst Case    | Space       |
 | :--------- | :------------ | :------------ | :------------ | :---------- |
@@ -105,8 +94,9 @@ graph RL
 | **Merge**  | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$      |
 | **Quick**  | $O(n \log n)$ | $O(n \log n)$ | $O(n^2)$      | $O(\log n)$ |
 
-### 🎯 Dynamic Programming (Fibonacci Memoization)
+### Dynamic Programming (Fibonacci Memoization)
 
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 graph TD
     F5(F5) --> F4(F4)
@@ -116,18 +106,11 @@ graph TD
     style F3_2 fill:#f96,stroke:#333
 ```
 
----
 
-## Phase 5: Advanced Topics (8-10 weeks)
 
-### 🌳 Trie (Prefix Tree)
+### Platform-wise Practice Plan
 
----
-
-## Phase 6: Practice & Problem Solving (Ongoing)
-
-### 📊 Platform-wise Practice Plan
-
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 pie title "Problem Distribution Goal"
     "LeetCode Medium" : 50
@@ -135,12 +118,9 @@ pie title "Problem Distribution Goal"
     "LeetCode Hard" : 10
 ```
 
----
+### High-Level Architecture
 
-## Phase 7: System Design Basics (4-6 weeks)
-
-### 🏗️ High-Level Architecture
-
+<!-- Visual flow for  Complete Data Structures & Algorithms Roadmap with JavaScript. -->
 ```mermaid
 sequenceDiagram
     participant Client
@@ -149,7 +129,7 @@ sequenceDiagram
     participant Cache as Redis
     participant DB as SQL Database
 
-    Client->>LB: Request
+Client->>LB: Request
     LB->>App: Forward Request
     App->>Cache: Check Cache
     Cache-->>App: Miss
@@ -159,11 +139,7 @@ sequenceDiagram
     App-->>Client: HTTP 200 OK
 ```
 
----
-
-## JavaScript-Specific DSA Tips
-
-### ⚡ Performance Considerations
+### Performance Considerations
 
 - **Delete vs Map.delete**: Using `delete obj.prop` is significantly slower than
   `Map.prototype.delete()`.
@@ -172,17 +148,32 @@ sequenceDiagram
 - **TypedArrays**: For heavy mathematical algorithms, use `Int32Array` or
   `Float64Array` for better memory management.
 
----
-
 ## Final Tips for Success
 
 > **Crucial Rule**: Don't just "grind" LeetCode. If you can't explain the logic
 > to a 10-year-old, you don't understand the algorithm yet.
 
-### 🎯 Mock Interview Structure
+### Mock Interview Structure
 
 1.  **Clarification**: Ask about input size, constraints, and edge cases (empty
     input, nulls).
 2.  **Strategy**: Verbalize the brute force, then optimize.
 3.  **Big O**: State the complexity **before** you type a single line.
 4.  **Dry Run**: Trace your code with a small example.
+
+## Quick Reference
+
+| Operation | What it does |
+|---|---|
+| Read/inspect | Check the current value or state. |
+| Transform | Produce a new value when the API supports it. |
+| Update | Change state only when the operation is designed to mutate. |
+| Edge case | Handle empty, invalid, or boundary input explicitly. |
+
+## Return Values and Mutation
+
+For every method, check what it returns and whether it mutates the original value. A transformation method commonly returns a new collection, while a mutating method changes the receiver. Knowing this difference prevents subtle bugs when the same data is reused in several parts of an application.
+
+## Edge Cases Worth Testing
+
+Test an empty collection, one element, duplicate values, invalid values, and a larger realistic input. Also check “not found” results and callback behavior for falsey values. Similar method names can have different return types or mutation rules, so verify them instead of relying on memory.

@@ -6,7 +6,7 @@ confidentiality, integrity, and authenticity of data in transit, allowing remote
 users or entire branch offices to securely access internal corporate resources
 as if they were physically connected to the private LAN. 🔒
 
-## 🏛️ VPN Architecture Types
+## 🏛 VPN Architecture Types
 
 VPN deployments generally fall into two distinct architectural categories:
 
@@ -34,6 +34,7 @@ expensive leased lines (like MPLS).
 - **Use Case:** Extending the corporate LAN across multiple geographic
   locations.
 
+<!-- Visual flow for 🚇 Virtual Private Networks (VPN). -->
 ```mermaid
 graph LR
     subgraph Client-to-Site VPN
@@ -41,7 +42,7 @@ graph LR
         Gateway1 --> LAN1[🏢 Corporate LAN]
     end
 
-    subgraph Site-to-Site VPN
+subgraph Site-to-Site VPN
         LAN2[🏢 Branch Office] --> Router1[🧱 Branch Router]
         Router1 -- Encrypted IPsec Tunnel --> Router2[🧱 HQ Router]
         Router2 --> LAN3[🏢 HQ LAN]
@@ -50,7 +51,7 @@ graph LR
 
 ---
 
-## 🛠️ Core VPN Protocols: A Deep Dive
+## 🛠 Core VPN Protocols: A Deep Dive
 
 The security and performance of a VPN depend heavily on the underlying
 cryptographic protocols used to establish the tunnel.
@@ -61,7 +62,7 @@ cryptographic protocols used to establish the tunnel.
 | **SSL/TLS (OpenVPN)** | Layer 4-7 | OpenSSL libraries (AES)        | Extremely flexible, open-source, easily traverses NAT/firewalls.         | Slower than kernel-level protocols, relies on complex codebases.                                    |
 | **WireGuard**         | Layer 3   | ChaCha20, Poly1305, Curve25519 | Blazing fast, tiny codebase (4k lines), highly auditable, modern crypto. | Newer standard, lacks some enterprise features out-of-the-box (like dynamic IP assignment scaling). |
 
-### 🔍 A Closer Look at IPsec (Internet Protocol Security)
+### A Closer Look at IPsec (Internet Protocol Security)
 
 IPsec is not a single protocol, but a massive suite of protocols operating at
 OSI Layer 3 (Network Layer).
@@ -83,8 +84,6 @@ OSI Layer 3 (Network Layer).
 > encrypted and wrapped, used for Site-to-Site) or **Transport Mode** (only the
 > payload is encrypted, used for host-to-host).
 
----
-
 ## 🔀 Split Tunneling vs. Full Tunneling
 
 When configuring a Remote Access VPN, administrators must decide how traffic
@@ -97,9 +96,7 @@ from the client is routed.
 | **Performance**  | Massive bandwidth utilization on the corporate internet connection and VPN gateway. High latency for the end-user.      | Greatly reduces corporate bandwidth consumption and provides a faster browsing experience for the user.                                                            |
 | **Risk**         | Lower risk of malware bypassing corporate filters.                                                                      | ⚠️ **High Risk:** A user downloading malware from the open internet is simultaneously connected to the secure corporate LAN, acting as a bridge for the infection. |
 
----
-
-## ⚠️ VPN Security Risks and Vulnerabilities
+## ⚠ VPN Security Risks and Vulnerabilities
 
 While VPNs provide security, they are high-value targets for attackers.
 
@@ -121,7 +118,7 @@ route into the corporate network.
   access, it interrogates the endpoint to ensure it has the latest OS patches,
   active antivirus, and is a corporate-owned asset (via certificates).
 
-### 3. 🎯 VPN Fingerprinting and Zero-Days
+### 3. VPN Fingerprinting and Zero-Days
 
 Attackers scan the internet to fingerprint VPN gateways (e.g., identifying a
 Pulse Secure or Fortinet firewall based on response headers) and then exploit
@@ -133,9 +130,7 @@ known CVEs.
 > ⚠️ **Warning:** Ransomware gangs heavily target unpatched edge VPN devices.
 > Timely patching is non-negotiable!
 
----
-
-## 🚀 The Shift Toward Zero Trust Network Access (ZTNA)
+## The Shift Toward Zero Trust Network Access (ZTNA)
 
 The traditional VPN model has critical architectural flaws:
 
@@ -161,3 +156,12 @@ WireGuard provide excellent cryptographic security, the architectural paradigm
 is shifting. The transition from broad, network-level VPN access to granular,
 application-level Zero Trust access is the defining trend in modern network
 security. 🌐🛡️
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,4 +1,4 @@
-# 🧠 JavaScript Memory Management
+# JavaScript Memory Management
 
 ## 📘 1. Definition
 
@@ -15,23 +15,16 @@ mostly automatic.
 
 ---
 
-## 📦 2. Memory Lifecycle Phases
 
-### 1. **Allocation**: Reserving memory.
 
-### 2. **Use**: Reading or writing to memory.
-
-### 3. **Release**: Freeing memory when no longer needed.
+### 3. Release: Freeing memory when no longer needed.
 
 > ✅ Most of this is handled automatically by the JS engine (like V8 in Chrome),
 > but poor coding can lead to memory leaks.
 
----
-
-## ⚙️ 3. Memory Allocation
-
 ### ✅ Syntax: Variable/Value Declarations
 
+// Example demonstrating JavaScript Memory Management.
 ```js
 // Primitives
 let num = 10; // Allocates memory for a number
@@ -51,31 +44,23 @@ function greet() {
 
 > JS automatically allocates memory during declaration.
 
----
-
-## 🗑️ 4. Garbage Collection (GC)
-
 ### ✅ Definition:
 
 Garbage Collection is the **automatic** process of finding **unused variables or
 values** and **freeing their memory**.
 
-### ✅ Rule Used: **Reachability**
+### ✅ Rule Used: Reachability
 
 - Values are **reachable** if:
 
-  - They're in the current scope.
+- They're in the current scope.
   - They're referenced by reachable values.
-
-### ✅ Common Algorithm: **Mark and Sweep**
 
 #### Steps:
 
 1. GC roots (like global object) are "marked."
 2. Any reference from GC roots are recursively marked.
 3. Unmarked values are deleted (swept).
-
----
 
 ## 📉 5. Memory Leaks
 
@@ -93,16 +78,13 @@ released**.
 
 ### ❌ Example:
 
+// Example demonstrating JavaScript Memory Management.
 ```js
 let leaks = [];
 function addLeak() {
   leaks.push(document.querySelector('body')); // Memory leak if repeated
 }
 ```
-
----
-
-## 🔍 6. Usage Best Practices
 
 ### ✅ Do:
 
@@ -116,16 +98,13 @@ function addLeak() {
 - Overuse global variables
 - Forget to clean up event listeners
 
----
-
-## 🧠 7. WeakMap / WeakSet (Memory-safe structures)
-
-### ✅ Definition:
+## 7. WeakMap / WeakSet (Memory-safe structures)
 
 Collections that **do not prevent GC** if the key becomes unreachable.
 
-### 🔐 Syntax:
+### Syntax:
 
+// Example demonstrating JavaScript Memory Management.
 ```js
 const cache = new WeakMap();
 
@@ -136,19 +115,16 @@ const cache = new WeakMap();
 })();
 ```
 
----
 
-## 🔄 8. Closures & Memory
 
-### ✅ Closures can cause memory leaks if they capture large or unnecessary data.
+### Example:
 
-### 🧠 Example:
-
+// Example demonstrating JavaScript Memory Management.
 ```js
 function outer() {
   let bigData = new Array(1000000).fill('data');
 
-  return function inner() {
+return function inner() {
     console.log(bigData[0]); // inner holds ref to bigData
   };
 }
@@ -157,8 +133,6 @@ let leaky = outer();
 
 > `bigData` cannot be garbage collected because `inner` still references it.
 
----
-
 ## 🧼 9. Manual Memory Management? Nope.
 
 You **cannot** manually free memory in JS like in C++ (`free()`), but:
@@ -166,16 +140,16 @@ You **cannot** manually free memory in JS like in C++ (`free()`), but:
 - You can **dereference** by setting variables to `null` or `undefined`.
 - You can **unregister event listeners**, remove timers, etc.
 
+// Example demonstrating JavaScript Memory Management.
 ```js
 element.removeEventListener('click', handler);
 timerId = null;
 largeArray = null;
 ```
 
----
+## 10. Visual Summary
 
-## 📊 10. Visual Summary
-
+// Example demonstrating JavaScript Memory Management.
 ```plaintext
 ┌────────────────────┐
 │   JS Memory Model  │
@@ -190,17 +164,11 @@ largeArray = null;
  [Unused memory swept]
 ```
 
----
-
-## 🧪 11. Debugging Tools
-
-### 🔍 Chrome DevTools → Memory Tab
+### Chrome DevTools → Memory Tab
 
 - Use **Heap Snapshot**
 - Use **Allocation Timeline**
 - Look for **Detached Nodes**, **Retained Size**, etc.
-
----
 
 ## ✅ 12. Final Best Practices
 
@@ -213,9 +181,24 @@ largeArray = null;
 | Avoid globals          | Reduce long-lived memory  |
 | Monitor with DevTools  | Debug leaks               |
 
----
-
 ## 🧾 13. References
 
 - [MDN - Memory Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
 - [Google Developers: JS Memory Leaks](https://developers.google.com/web/tools/memory-problems)
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.

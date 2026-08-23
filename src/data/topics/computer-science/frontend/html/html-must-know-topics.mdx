@@ -22,8 +22,6 @@
 - Superscript & subscript (`sup`, `sub`)
 - Preformatted text (`pre`, `code`)
 
----
-
 ## 3. Links & Navigation
 
 - Anchor tag (`a`)
@@ -31,8 +29,6 @@
 - `target`, `rel`, `download`
 - Internal page navigation (hash links)
 - Email & phone links (`mailto`, `tel`)
-
----
 
 ## 4. Images & Media
 
@@ -43,8 +39,6 @@
 - Video (`video`)
 - Media formats & browser support
 
----
-
 ## 5. Lists
 
 - Ordered lists (`ol`)
@@ -52,16 +46,12 @@
 - Description lists (`dl`, `dt`, `dd`)
 - Nested lists
 
----
-
 ## 6. Tables (Still Used a Lot)
 
 - Table structure (`table`, `thead`, `tbody`, `tfoot`)
 - Rows & cells (`tr`, `th`, `td`)
 - `colspan`, `rowspan`
 - Table accessibility basics
-
----
 
 ## 7. Forms (Very Important)
 
@@ -76,8 +66,6 @@
 - Form validation (HTML-only)
 - `name`, `action`, `method`
 
----
-
 ## 8. Semantic HTML (Critical for Jobs)
 
 - `header`
@@ -90,8 +78,6 @@
 - `figure` & `figcaption`
 - Why semantics matter (SEO + accessibility)
 
----
-
 ## 9. Metadata & SEO Basics
 
 - `<title>`
@@ -99,8 +85,6 @@
 - Charset (`utf-8`)
 - Favicon
 - Open Graph basics (preview links)
-
----
 
 ## 10. HTML Attributes You Must Know
 
@@ -113,8 +97,6 @@
 - `contenteditable`
 - `data-*` attributes
 
----
-
 ## 11. Accessibility (Don’t Ignore This)
 
 - `alt` text rules
@@ -123,15 +105,11 @@
 - Keyboard navigation
 - Semantic tags for screen readers
 
----
-
 ## 12. HTML & CSS Relationship
 
 - Inline styles vs internal vs external CSS
 - How classes & ids are used by CSS
 - Cascade basics (HTML side understanding)
-
----
 
 ## 13. HTML & JavaScript Relationship
 
@@ -141,8 +119,6 @@
 - Script loading (`defer`, `async`)
 - Where to place `<script>`
 
----
-
 ## 14. HTML5 APIs (Awareness Level)
 
 - Canvas
@@ -150,8 +126,6 @@
 - Geolocation (basic idea)
 - Drag & Drop
 - Web workers (concept only)
-
----
 
 ## 15. Best Practices (Interview Stuff)
 
@@ -162,8 +136,6 @@
 - Performance basics
 - Cross-browser considerations
 
----
-
 ## 16. Common HTML Mistakes (Know These)
 
 - Missing `alt` attributes
@@ -172,3 +144,38 @@
 - Inline styles everywhere
 - Invalid nesting
 - Ignoring accessibility
+
+## Example
+
+Start with the smallest useful case before combining the idea with other features.
+
+// Basic example showing the core idea.
+```javascript
+const value = "example";
+console.log(value);
+```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

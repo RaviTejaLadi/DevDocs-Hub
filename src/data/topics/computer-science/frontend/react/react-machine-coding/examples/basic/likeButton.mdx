@@ -1,7 +1,8 @@
-# **Like Button**
+# Like Button
 
 ## JavaScript Version
 
+// Example demonstrating Like Button.
 ```jsx
 import React, { useState } from 'react';
 
@@ -10,18 +11,18 @@ const LikeButtonJS = () => {
   const [likeCount, setLikeCount] = useState(42);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleLike = () => {
+const handleLike = () => {
     if (isAnimating) return;
 
-    setIsAnimating(true);
+setIsAnimating(true);
     const newLikeState = !isLiked;
     setIsLiked(newLikeState);
     setLikeCount((prev) => (newLikeState ? prev + 1 : prev - 1));
 
-    setTimeout(() => setIsAnimating(false), 300);
+setTimeout(() => setIsAnimating(false), 300);
   };
 
-  return (
+return (
     <div
       style={{
         display: 'flex',
@@ -77,6 +78,7 @@ export default LikeButtonJS;
 
 ## TypeScript Version
 
+// Example demonstrating Like Button.
 ```tsx
 import React, { useState } from 'react';
 
@@ -85,67 +87,37 @@ const LikeButtonTS: React.FC = () => {
   const [likeCount, setLikeCount] = useState<number>(42);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-  const handleLike = (): void => {
+const handleLike = (): void => {
     if (isAnimating) return;
-
-    setIsAnimating(true);
-    const newLikeState = !isLiked;
-    setIsLiked(newLikeState);
-    setLikeCount((prev) => (newLikeState ? prev + 1 : prev - 1));
-
-    setTimeout(() => setIsAnimating(false), 300);
-  };
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '20px',
-      }}
-    >
-      <button
-        onClick={handleLike}
-        style={{
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          padding: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transform: isAnimating ? 'scale(1.2)' : 'scale(1)',
-          transition: 'transform 0.3s ease, color 0.3s ease',
-        }}
-        aria-label={isLiked ? 'Unlike' : 'Like'}
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill={isLiked ? '#ff3252' : 'none'}
-          stroke={isLiked ? '#ff3252' : '#555'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-      </button>
-      <span
-        style={{
-          fontSize: '16px',
-          color: isLiked ? '#ff3252' : '#555',
-          fontWeight: isLiked ? 'bold' : 'normal',
-          transition: 'color 0.3s ease, font-weight 0.3s ease',
-        }}
-      >
-        {likeCount}
-      </span>
-    </div>
-  );
-};
 
 export default LikeButtonTS;
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.
+
+## Final Understanding Check
+
+Before considering **Like Button** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

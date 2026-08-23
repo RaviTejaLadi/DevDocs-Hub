@@ -1,14 +1,15 @@
-# **🗂️ Tabs Component**
+# 🗂 Tabs Component
 
 ### JavaScript Version
 
+// Example demonstrating 🗂 Tabs Component.
 ```jsx
 import React, { useState } from 'react';
 
 const Tabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  return (
+return (
     <div className="tabs">
       <div className="tabs-header">
         {tabs.map((tab, index) => (
@@ -31,6 +32,7 @@ export default Tabs;
 
 ### TypeScript Version
 
+// Example demonstrating 🗂 Tabs Component.
 ```tsx
 import React, { useState } from 'react';
 
@@ -46,23 +48,43 @@ interface TabsProps {
 const Tabs: React.FC<TabsProps> = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
-  return (
-    <div className="tabs">
-      <div className="tabs-header">
-        {tabs.map((tab, index) => (
-          <button
-            key={tab.label}
-            className={`tab-button ${index === activeTab ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-      <div className="tabs-content">{tabs[activeTab].content}</div>
-    </div>
-  );
-};
+## Quick Reference
 
-export default Tabs;
-```
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.
+
+## Final Understanding Check
+
+Before considering **🗂 Tabs Component** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
+
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

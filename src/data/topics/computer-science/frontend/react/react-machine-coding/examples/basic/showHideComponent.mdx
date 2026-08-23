@@ -1,22 +1,23 @@
-# **Show/Hide Component**
+# Show/Hide Component
 
 ## JavaScript Version
 
+// Example demonstrating Show/Hide Component.
 ```jsx
 import React, { useState } from 'react';
 
 const ToggleVisibilityJS = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
+const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
 
-  return (
+return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <h1>Toggle Visibility (JavaScript)</h1>
 
-      <button
+<button
         onClick={toggleVisibility}
         style={{
           padding: '10px 15px',
@@ -32,7 +33,7 @@ const ToggleVisibilityJS = () => {
         {isVisible ? 'Hide Content' : 'Show Content'}
       </button>
 
-      {isVisible && (
+{isVisible && (
         <div
           style={{
             padding: '20px',
@@ -56,54 +57,58 @@ export default ToggleVisibilityJS;
 
 ## TypeScript Version
 
+// Example demonstrating Show/Hide Component.
 ```tsx
 import React, { useState } from 'react';
 
 const ToggleVisibilityTS: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const toggleVisibility = (): void => {
+const toggleVisibility = (): void => {
     setIsVisible(!isVisible);
   };
 
-  return (
+return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <h1>Toggle Visibility (TypeScript)</h1>
 
-      <button
-        onClick={toggleVisibility}
-        style={{
-          padding: '10px 15px',
-          backgroundColor: '#4CAF50',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '16px',
-          marginBottom: '20px',
-        }}
-      >
-        {isVisible ? 'Hide Content' : 'Show Content'}
-      </button>
-
-      {isVisible && (
-        <div
-          style={{
-            padding: '20px',
-            backgroundColor: '#f8f9fa',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
-          }}
-        >
-          <h2>Hidden Content</h2>
-          <p>This content is now visible because you clicked the button!</p>
-          <p>You can toggle me anytime using the button above.</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
 export default ToggleVisibilityTS;
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.
+
+## Final Understanding Check
+
+Before considering **Show/Hide Component** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
+
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.

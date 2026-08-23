@@ -1,4 +1,4 @@
-# 📖 Introduction to Thermodynamics
+# Introduction to Thermodynamics
 
 Thermodynamics is the branch of physics that studies **energy**, **heat**,
 **work**, and how they interact with matter.
@@ -15,7 +15,7 @@ understand what happens.
 
 ---
 
-# 🤔 What Does Thermodynamics Study?
+## 🤔 What Does Thermodynamics Study?
 
 Thermodynamics mainly deals with:
 
@@ -25,10 +25,6 @@ Thermodynamics mainly deals with:
 4. Temperature (T)
 
 These quantities determine how a system behaves when energy is transferred.
-
----
-
-# 🧩 Basic Terminology
 
 ## 1. System
 
@@ -51,10 +47,6 @@ room are surroundings.
 
 The real or imaginary surface separating system and surroundings.
 
----
-
-# 🎯 Types of Systems
-
 ## Open System
 
 Both mass and energy can cross the boundary.
@@ -67,6 +59,7 @@ Examples:
 
 ### Diagram
 
+<!-- Visual flow for Introduction to Thermodynamics. -->
 ```mermaid
 flowchart LR
     S[Open System]
@@ -74,63 +67,49 @@ flowchart LR
     B[Mass Out]
     C[Energy Transfer]
 
-    A --> S
+A --> S
     S --> B
     C --> S
 ```
-
----
 
 ## Closed System
 
 Energy can cross the boundary but mass cannot.
 
-Example:
-
 - Gas inside a sealed piston-cylinder arrangement
 
-### Diagram
-
+<!-- Visual flow for Introduction to Thermodynamics. -->
 ```mermaid
 flowchart LR
     E[Heat / Work]
     S[Closed System]
 
-    E --> S
+E --> S
     S --> E
 
-    M[Mass Transfer ❌]
+M[Mass Transfer ❌]
 ```
-
----
 
 ## Isolated System
 
 Neither mass nor energy can cross the boundary.
 
-Example:
-
 - Ideal thermos flask
 
-### Diagram
-
+<!-- Visual flow for Introduction to Thermodynamics. -->
 ```mermaid
 flowchart TD
     A[Isolated System]
     B[No Mass Transfer]
     C[No Energy Transfer]
 
-    A --> B
+A --> B
     A --> C
 ```
 
----
-
-# 🌡️ Thermodynamic Properties
+## 🌡 Thermodynamic Properties
 
 Properties are characteristics used to describe a system.
-
-Examples:
 
 - Temperature (T)
 - Pressure (P)
@@ -138,13 +117,9 @@ Examples:
 - Density (ρ)
 - Internal Energy (U)
 
----
-
 ## Intensive Properties
 
 Independent of the amount of substance.
-
-Examples:
 
 - Temperature
 - Pressure
@@ -152,13 +127,9 @@ Examples:
 
 If the system size doubles, these properties remain unchanged.
 
----
-
 ## Extensive Properties
 
 Depend on the amount of substance.
-
-Examples:
 
 - Mass
 - Volume
@@ -166,17 +137,11 @@ Examples:
 
 If the system size doubles, these properties also double.
 
----
-
-# 🔥 Heat and Work
-
 ## Heat
 
 Heat is energy transferred due to temperature difference.
 
 Example: A hot cup of tea transfers heat to the surrounding air.
-
----
 
 ## Work
 
@@ -184,21 +149,18 @@ Work is energy transferred when a force causes displacement.
 
 Example: Gas expanding inside a cylinder pushes the piston upward.
 
-### Diagram
-
+<!-- Visual flow for Introduction to Thermodynamics. -->
 ```mermaid
 flowchart TB
     G[Expanding Gas]
     P[Piston Moves Up]
     W[Work Done]
 
-    G --> P
+G --> P
     P --> W
 ```
 
----
-
-# ⚡ Energy Forms
+## Energy Forms
 
 Thermodynamics deals with different forms of energy.
 
@@ -208,15 +170,11 @@ Energy due to motion.
 
 Example: Moving vehicle
 
----
-
 ## Potential Energy
 
 Energy due to position.
 
 Example: Water stored in a dam
-
----
 
 ## Internal Energy
 
@@ -228,9 +186,7 @@ It includes:
 - Molecular vibration
 - Molecular rotation
 
----
-
-# 🌡️ Thermodynamic Equilibrium
+## 🌡 Thermodynamic Equilibrium
 
 A system is in thermodynamic equilibrium when no changes occur with time.
 
@@ -248,20 +204,17 @@ Pressure remains uniform.
 
 Chemical composition remains unchanged.
 
-### Diagram
-
+<!-- Visual flow for Introduction to Thermodynamics. -->
 ```mermaid
 flowchart TD
     A[Thermodynamic Equilibrium]
 
-    A --> B[Thermal Equilibrium]
+A --> B[Thermal Equilibrium]
     A --> C[Mechanical Equilibrium]
     A --> D[Chemical Equilibrium]
 ```
 
----
-
-# 🏭 Applications of Thermodynamics
+## 🏭 Applications of Thermodynamics
 
 Thermodynamics is widely used in:
 
@@ -273,9 +226,7 @@ Thermodynamics is widely used in:
 - Chemical industries
 - Renewable energy systems
 
----
-
-# 📝 Key Points
+## Key Points
 
 ✅ Thermodynamics studies heat, work, and energy.
 
@@ -290,10 +241,21 @@ Thermodynamics is widely used in:
 ✅ Equilibrium exists when thermal, mechanical, and chemical conditions are
 satisfied.
 
----
-
-# 🎓 Quick Summary
+## 🎓 Quick Summary
 
 Thermodynamics explains how energy moves and transforms. It helps engineers
 design engines, refrigerators, turbines, power plants, and many other systems
 that make modern life possible.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Assumptions and Units
+
+For engineering topics, write down known quantities, unknowns, units, and governing assumptions before calculating. Check the final unit and physical direction of the result. A mathematically correct expression can still be physically invalid if an assumption has been violated.

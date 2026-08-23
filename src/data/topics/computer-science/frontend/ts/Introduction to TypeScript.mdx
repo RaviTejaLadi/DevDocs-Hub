@@ -2,7 +2,7 @@
 
 ## What is TypeScript?
 
-TypeScript is a typed superset of JavaScript developed by Microsoft.  
+TypeScript is a typed superset of JavaScript developed by Microsoft.
 It adds static type checking during development and compiles to plain
 JavaScript.
 
@@ -16,6 +16,7 @@ JavaScript.
 
 ## Quick setup
 
+# Basic example showing the core idea.
 ```bash
 npm install --save-dev typescript
 npx tsc --init
@@ -23,6 +24,7 @@ npx tsc --init
 
 Minimal `tsconfig.json`:
 
+// Example demonstrating Introduction to TypeScript.
 ```json
 {
   "compilerOptions": {
@@ -38,15 +40,15 @@ Minimal `tsconfig.json`:
 
 Compile:
 
+# Basic example showing the core idea.
 ```bash
 npx tsc
 npx tsc --watch
 ```
 
-## Core concepts
-
 ### Primitive types
 
+// Basic example showing the core idea.
 ```typescript
 let username: string = 'Ravi';
 let age: number = 25;
@@ -57,6 +59,7 @@ let notSet: undefined = undefined;
 
 ### Type inference and annotations
 
+// Basic example showing the core idea.
 ```typescript
 let count = 10; // inferred as number
 let title: string = 'TypeScript Basics'; // explicit annotation
@@ -64,6 +67,7 @@ let title: string = 'TypeScript Basics'; // explicit annotation
 
 ### Functions
 
+// Basic example showing the core idea.
 ```typescript
 function add(a: number, b: number): number {
   return a + b;
@@ -76,6 +80,7 @@ function greet(name: string, prefix = 'Hello'): string {
 
 ### Arrays, tuples, and objects
 
+// Basic example showing the core idea.
 ```typescript
 const scores: number[] = [90, 85, 88];
 const user: [number, string] = [1, 'Ravi'];
@@ -87,6 +92,7 @@ const profile: { name: string; city?: string } = {
 
 ### Interfaces and type aliases
 
+// Basic example showing the core idea.
 ```typescript
 interface User {
   id: number;
@@ -98,6 +104,7 @@ type Status = 'pending' | 'done';
 
 ### Union and literal types
 
+// Basic example showing the core idea.
 ```typescript
 let id: string | number;
 id = 'emp-101';
@@ -108,11 +115,12 @@ type Theme = 'light' | 'dark';
 
 ### Classes
 
+// Basic example showing the core idea.
 ```typescript
 class Person {
   constructor(public name: string, private age: number) {}
 
-  getAge(): number {
+getAge(): number {
     return this.age;
   }
 }
@@ -120,6 +128,7 @@ class Person {
 
 ### Generics
 
+// Basic example showing the core idea.
 ```typescript
 function identity<T>(value: T): T {
   return value;
@@ -131,6 +140,7 @@ const num = identity<number>(42);
 
 ### Modules
 
+// Basic example showing the core idea.
 ```typescript
 // math.ts
 export const add = (a: number, b: number) => a + b;
@@ -159,3 +169,28 @@ import { add } from './math';
 - Learn utility types: `Partial`, `Pick`, `Omit`, `Record`
 - Explore framework usage (React, Node.js, Next.js)
 - Study advanced topics after fundamentals are comfortable
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Syntax vs. Behavior
+
+Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
+
+## Practical Edge Cases
+
+Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
+
+## Maintainable Usage
+
+Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
+
+## Practical Decision
+
+Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

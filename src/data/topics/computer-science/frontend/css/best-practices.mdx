@@ -8,7 +8,7 @@ manageable as they grow.
 
 ---
 
-# 🎯 Why Best Practices Matter
+## Why Best Practices Matter
 
 Without best practices:
 
@@ -22,8 +22,6 @@ Without best practices:
 
 ❌ Poor performance
 
----
-
 With best practices:
 
 ✅ Reusable code
@@ -36,40 +34,36 @@ With best practices:
 
 ✅ Faster development
 
----
-
 ## Development Flow
 
+<!-- Visual flow for ✅ CSS Best Practices. -->
 ```mermaid
 flowchart LR
 
-    Bad["Poor CSS"]
+Bad["Poor CSS"]
 
-    Bugs["More Bugs"]
+Bugs["More Bugs"]
 
-    Slow["Slow Development"]
+Slow["Slow Development"]
 
-    Good["Best Practices"]
+Good["Best Practices"]
 
-    Clean["Clean Code"]
+Clean["Clean Code"]
 
-    Fast["Fast Development"]
+Fast["Fast Development"]
 
-    Bad --> Bugs --> Slow
+Bad --> Bugs --> Slow
 
-    Good --> Clean --> Fast
+Good --> Clean --> Fast
 ```
 
----
-
-# 🎨 Use CSS Variables
+## Use CSS Variables
 
 Store reusable values in one place.
 
----
-
 ## Good
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -81,126 +75,101 @@ Store reusable values in one place.
 }
 ```
 
----
-
 ## Benefits
 
+<!-- Visual flow for ✅ CSS Best Practices. -->
 ```mermaid
 flowchart TB
 
-    Variables
+Variables
 
-    Reuse["Reuse"]
+Reuse["Reuse"]
 
-    Theme["Themes"]
+Theme["Themes"]
 
-    Maintenance["Easy Updates"]
+Maintenance["Easy Updates"]
 
-    Variables --> Reuse
+Variables --> Reuse
     Variables --> Theme
     Variables --> Maintenance
 ```
 
----
-
-# 🎯 Prefer Classes Over IDs
+## Prefer Classes Over IDs
 
 Classes are reusable and have lower specificity.
 
----
-
 ## Avoid
 
+/* Basic example showing the core idea. */
 ```css
 #header {
   background: black;
 }
 ```
 
----
-
 ## Prefer
 
+/* Basic example showing the core idea. */
 ```css
 .header {
   background: black;
 }
 ```
 
----
+## Specificity Hierarchy
 
-# Specificity Hierarchy
+Element["Element (1)"]
 
-```mermaid
-flowchart TB
+Class["Class (10)"]
 
-    Element["Element (1)"]
+ID["ID (100)"]
 
-    Class["Class (10)"]
+Inline["Inline (1000)"]
 
-    ID["ID (100)"]
-
-    Inline["Inline (1000)"]
-
-    Element --> Class
+Element --> Class
     Class --> ID
     ID --> Inline
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🎯 Keep Selectors Simple
-
----
-
-## Avoid
+## Keep Selectors Simple
 
 ```css
 .sidebar ul li a span {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
-
-## Prefer
 
 ```css
 .sidebar-link {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Selector Comparison
 
-```mermaid
-flowchart LR
+Deep["Deep Selector"]
 
-    Deep["Deep Selector"]
+Complex["Hard To Maintain"]
 
-    Complex["Hard To Maintain"]
+Simple["Simple Class"]
 
-    Simple["Simple Class"]
+Easy["Easy To Maintain"]
 
-    Easy["Easy To Maintain"]
+Deep --> Complex
 
-    Deep --> Complex
-
-    Simple --> Easy
+Simple --> Easy
 ```
 
----
-
-# 📱 Design Mobile First
+## 📱 Design Mobile First
 
 Start with mobile styles and enhance for larger screens.
 
----
-
 ## Mobile First Example
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 100%;
@@ -213,25 +182,19 @@ Start with mobile styles and enhance for larger screens.
 }
 ```
 
----
-
 ## Responsive Flow
 
-```mermaid
-flowchart LR
+Mobile["📱 Mobile"]
 
-    Mobile["📱 Mobile"]
+Tablet["📲 Tablet"]
 
-    Tablet["📲 Tablet"]
+Desktop["🖥️ Desktop"]
 
-    Desktop["🖥️ Desktop"]
-
-    Mobile --> Tablet --> Desktop
+Mobile --> Tablet --> Desktop
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🎯 Use Flexbox and Grid
+## Use Flexbox and Grid
 
 Modern layouts should use:
 
@@ -239,17 +202,14 @@ Modern layouts should use:
 
 ✅ CSS Grid
 
----
-
 ## Flexbox
 
 ```css
 .container {
   display: flex;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Grid
 
@@ -257,42 +217,30 @@ Modern layouts should use:
 .container {
   display: grid;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Layout Evolution
 
-```mermaid
-flowchart LR
+Float["Floats"]
 
-    Float["Floats"]
+Flex["Flexbox"]
 
-    Flex["Flexbox"]
+Grid["Grid"]
 
-    Grid["Grid"]
-
-    Float --> Flex --> Grid
+Float --> Flex --> Grid
 ```
 
----
+## Use Gap Instead of Margins
 
-# 📦 Use Gap Instead of Margins
-
----
-
-## Avoid
-
+/* Basic example showing the core idea. */
 ```css
 .card {
   margin-right: 20px;
 }
 ```
 
----
-
-## Prefer
-
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -300,25 +248,19 @@ flowchart LR
 }
 ```
 
----
-
 ## Why Gap?
 
-```mermaid
-flowchart LR
+Margin["Margins"]
 
-    Margin["Margins"]
+Gap["Gap"]
 
-    Gap["Gap"]
+Margin --> Problems["Layout Problems"]
 
-    Margin --> Problems["Layout Problems"]
-
-    Gap --> Clean["Cleaner Layout"]
+Gap --> Clean["Cleaner Layout"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🎨 Organize CSS Properly
+## Organize CSS Properly
 
 Use a predictable folder structure.
 
@@ -331,39 +273,34 @@ styles/
 ├── utilities/
 ├── pages/
 └── main.css
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Architecture Flow
 
-```mermaid
-flowchart TB
+Base
 
-    Base
+Layout
 
-    Layout
+Components
 
-    Components
+Utilities
 
-    Utilities
+Pages
 
-    Pages
-
-    Base --> Layout
+Base --> Layout
     Layout --> Components
     Components --> Utilities
     Utilities --> Pages
 ```
 
----
-
-# 🎯 Follow a Naming Convention
+## Follow a Naming Convention
 
 Popular choice:
 
 ### BEM
 
+/* Basic example showing the core idea. */
 ```css
 .card {
 }
@@ -375,111 +312,76 @@ Popular choice:
 }
 ```
 
----
-
 ## BEM Structure
 
-```mermaid
-flowchart TB
+Block["Block"]
 
-    Block["Block"]
+Element["Element"]
 
-    Element["Element"]
+Modifier["Modifier"]
 
-    Modifier["Modifier"]
-
-    Block --> Element
+Block --> Element
     Block --> Modifier
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🚫 Avoid !important
-
----
-
-## Avoid
+## 🚫 Avoid !important
 
 ```css
 .button {
   color: red !important;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
-
-## Prefer
 
 ```css
 .button--danger {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Specificity Wars
 
-```mermaid
-flowchart LR
+Important["!important"]
 
-    Important["!important"]
+More["More !important"]
 
-    More["More !important"]
+Chaos["Maintenance Chaos"]
 
-    Chaos["Maintenance Chaos"]
-
-    Important --> More --> Chaos
+Important --> More --> Chaos
 ```
 
----
+## Use Relative Units
 
-# 🎯 Use Relative Units
-
----
-
-## Avoid
-
+/* Basic example showing the core idea. */
 ```css
 font-size: 32px;
 ```
 
----
-
-## Prefer
-
+/* Basic example showing the core idea. */
 ```css
 font-size: 2rem;
 ```
 
----
+Rem["rem"]
 
-## Benefits
+Accessibility["Accessibility"]
 
-```mermaid
-flowchart LR
+Scaling["Better Scaling"]
 
-    Rem["rem"]
-
-    Accessibility["Accessibility"]
-
-    Scaling["Better Scaling"]
-
-    Rem --> Accessibility
+Rem --> Accessibility
     Rem --> Scaling
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# ⚡ Optimize Animations
+## Optimize Animations
 
 Animate:
 
 ✅ transform
 
 ✅ opacity
-
----
 
 Avoid:
 
@@ -491,33 +393,23 @@ Avoid:
 
 ❌ left
 
----
-
 ## Performance Comparison
 
-```mermaid
-flowchart LR
+Transform["transform"]
 
-    Transform["transform"]
+GPU["GPU Accelerated"]
 
-    GPU["GPU Accelerated"]
+Width["width"]
 
-    Width["width"]
+Layout["Layout Recalculation"]
 
-    Layout["Layout Recalculation"]
-
-    Transform --> GPU
+Transform --> GPU
     Width --> Layout
 ```
 
----
+## Keep Nesting Shallow
 
-# 🎯 Keep Nesting Shallow
-
----
-
-## Avoid
-
+// Example demonstrating ✅ CSS Best Practices.
 ```scss
 .card {
   .header {
@@ -529,10 +421,9 @@ flowchart LR
 }
 ```
 
----
-
 ## Better
 
+// Example demonstrating ✅ CSS Best Practices.
 ```scss
 .card {
   .title {
@@ -540,25 +431,19 @@ flowchart LR
 }
 ```
 
----
-
 ## Nesting Structure
 
-```mermaid
-flowchart TB
+Good["1-3 Levels"]
 
-    Good["1-3 Levels"]
+Bad["Deep Nesting"]
 
-    Bad["Deep Nesting"]
+Good --> Maintainable["Maintainable"]
 
-    Good --> Maintainable["Maintainable"]
-
-    Bad --> Complex["Complex CSS"]
+Bad --> Complex["Complex CSS"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🎨 Build Reusable Components
+## Build Reusable Components
 
 Instead of:
 
@@ -571,6 +456,7 @@ Instead of:
 
 .button-success {
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 Create:
@@ -587,42 +473,30 @@ Create:
 
 .button--success {
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
 
 ## Component Flow
 
-```mermaid
-flowchart LR
+Base["Base Component"]
 
-    Base["Base Component"]
+Variants["Variants"]
 
-    Variants["Variants"]
+Reusable["Reusable UI"]
 
-    Reusable["Reusable UI"]
-
-    Base --> Variants --> Reusable
+Base --> Variants --> Reusable
 ```
-
----
-
-# 🎯 Separate Layout from Components
-
----
 
 ## Bad
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 1200px;
 }
 ```
 
----
-
-## Good
-
+/* Basic example showing the core idea. */
 ```css
 .layout {
   max-width: 1200px;
@@ -633,9 +507,7 @@ flowchart LR
 }
 ```
 
----
-
-# 📱 Test Responsiveness Frequently
+## 📱 Test Responsiveness Frequently
 
 Test on:
 
@@ -645,67 +517,45 @@ Test on:
 
 ✅ Desktop
 
----
-
 ## Testing Workflow
 
-```mermaid
-flowchart LR
+Mobile
 
-    Mobile
+Tablet
 
-    Tablet
+Desktop
 
-    Desktop
-
-    Mobile --> Tablet --> Desktop
-```
-
----
-
-# 🎯 Write Accessible CSS
+## Write Accessible CSS
 
 Always maintain focus indicators.
 
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 button:focus {
   outline: none;
 }
 ```
 
----
-
-## Good
-
+/* Basic example showing the core idea. */
 ```css
 button:focus {
   outline: 2px solid blue;
 }
 ```
 
----
-
 ## Accessibility Flow
 
-```mermaid
-flowchart LR
+Keyboard["Keyboard User"]
 
-    Keyboard["Keyboard User"]
+Focus["Visible Focus"]
 
-    Focus["Visible Focus"]
+Accessibility["Accessible Interface"]
 
-    Accessibility["Accessible Interface"]
-
-    Keyboard --> Focus --> Accessibility
+Keyboard --> Focus --> Accessibility
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
----
-
-# 🧹 Remove Unused CSS
+## 🧹 Remove Unused CSS
 
 Unused CSS increases bundle size.
 
@@ -715,27 +565,20 @@ Use tools:
 - PurgeCSS
 - Tailwind Content Scanner
 
----
-
 ## Optimization Flow
 
-```mermaid
-flowchart LR
+Large["Large CSS"]
 
-    Large["Large CSS"]
+Remove["Remove Unused CSS"]
 
-    Remove["Remove Unused CSS"]
+Minify["Minify"]
 
-    Minify["Minify"]
+Small["Optimized CSS"]
 
-    Small["Optimized CSS"]
-
-    Large --> Remove --> Minify --> Small
+Large --> Remove --> Minify --> Small
 ```
 
----
-
-# 🎯 Use Modern CSS Features
+## Use Modern CSS Features
 
 Prefer modern solutions.
 
@@ -748,27 +591,19 @@ Prefer modern solutions.
 | Fixed Sizes        | Clamp             |
 | Complex JS Layouts | Container Queries |
 
----
-
 ## Modern CSS Evolution
 
-```mermaid
-flowchart LR
+Old["Traditional CSS"]
 
-    Old["Traditional CSS"]
+Modern["Modern CSS"]
 
-    Modern["Modern CSS"]
+Old --> Modern
 
-    Old --> Modern
-
-    Modern --> Grid
+Modern --> Grid
     Modern --> Variables
     Modern --> ContainerQueries["Container Queries"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
-
----
-
-# 🧠 CSS Best Practices Checklist
 
 ### Architecture
 
@@ -778,8 +613,6 @@ flowchart LR
 
 ✅ Keep selectors simple
 
----
-
 ### Responsiveness
 
 ✅ Mobile-first
@@ -787,8 +620,6 @@ flowchart LR
 ✅ Relative units
 
 ✅ Responsive layouts
-
----
 
 ### Performance
 
@@ -798,8 +629,6 @@ flowchart LR
 
 ✅ Optimize images
 
----
-
 ### Maintainability
 
 ✅ CSS Variables
@@ -807,8 +636,6 @@ flowchart LR
 ✅ Reusable components
 
 ✅ Consistent naming
-
----
 
 ### Accessibility
 
@@ -818,9 +645,7 @@ flowchart LR
 
 ✅ Proper contrast
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - Use classes instead of IDs.
 - Keep selectors simple and predictable.
@@ -833,22 +658,15 @@ flowchart LR
 - Write CSS that future developers (including yourself) can easily understand
   and maintain.
 
----
+## 🎉 CSS Learning Path Completed
 
-# 🎉 CSS Learning Path Completed
+Basics["Getting Started"]
 
-```mermaid
-flowchart LR
+Layout["Layout"]
 
-    Basics["Getting Started"]
+Visual["Visual Design"]
 
-    Layout["Layout"]
+Quality["Quality & Best Practices"]
 
-    Visual["Visual Design"]
-
-    Modern["Modern CSS"]
-
-    Quality["Quality & Best Practices"]
-
-    Basics --> Layout --> Visual --> Modern --> Quality
+Basics --> Layout --> Visual --> Modern --> Quality
 ```

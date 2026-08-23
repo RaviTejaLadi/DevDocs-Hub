@@ -1,4 +1,4 @@
-# 🛠️ Git Installation & Setup
+# 🛠 Git Installation & Setup
 
 Before tracking your project history, you need to install Git on your computer
 and introduce yourself to it. Setting up your user identity ensures every change
@@ -15,6 +15,7 @@ below to get it up and running.
 
 Open your terminal and run the following command using Homebrew:
 
+# Basic example showing the core idea.
 ```bash
 // Install Git on macOS using Homebrew
 brew install git
@@ -32,15 +33,12 @@ installation, especially the option to use Git from the command line.
 
 Open your terminal and use your distribution's package manager:
 
+# Basic example showing the core idea.
 ```bash
 // Install Git on Debian/Ubuntu
 sudo apt update && sudo apt install git
 
-```
-
----
-
-## ⚙️ The First-Time Configuration
+## ⚙ The First-Time Configuration
 
 Once installed, you must configure your global username and email address. Git
 attaches this information to every single snapshot you save so team members know
@@ -52,20 +50,15 @@ Open your terminal or command prompt and run these commands:
 // Set your global Git username
 git config --global user.name "Your Name"
 
-```
-
+# Basic example showing the core idea.
 ```bash
 // Set your global Git email address
 git config --global user.email "your.email@example.com"
 
-```
-
 > ⚠️ **Note:** If you plan on using GitHub, make sure this email matches the one
 > linked to your GitHub account!
 
----
-
-## 🔍 Verifying the Installation
+## Verifying the Installation
 
 To verify that Git is installed correctly and your configuration saved, run the
 following verification commands:
@@ -74,13 +67,10 @@ following verification commands:
 // Check the installed Git version
 git --version
 
-```
-
+# Basic example showing the core idea.
 ```bash
 // List all configured Git settings
 git config --list
-
-```
 
 ```mermaid
 graph TD
@@ -89,6 +79,31 @@ graph TD
     C --> D[Verify with git --version]
     D --> E[🎉 Ready to track code!]
 
-```
+## Quick Reference
 
----
+| Step | What to verify |
+|---|---|
+| Prerequisites | Runtime, version, permissions, and required tools. |
+| Install | Use the documented package or installer for the platform. |
+| Verify | Run a version/help command or a minimal program. |
+| Troubleshoot | Check PATH, permissions, network, and version mismatches. |
+
+## Environment Compatibility
+
+Check the operating system, runtime version, architecture, shell, permissions, and package-manager version before following an installation command. The same command can behave differently across platforms. Record the exact version that worked so another developer can reproduce the environment.
+
+## Verification in a Real Project
+
+A successful version command proves that a binary is available, but it does not prove that the project can use it. Run a minimal project-level command as well. Confirm that the expected dependency is resolved, configuration is loaded, and the application can start without relying on an accidental global installation.
+
+## Troubleshooting Logic
+
+Change one variable at a time. A command-not-found error usually points to installation or PATH. A version error suggests an incompatible runtime. A permission error points to the account or filesystem. A network error points to registry, proxy, DNS, or firewall configuration. This classification is faster than reinstalling everything.
+
+## Reproducibility Notes
+
+A reliable setup should be repeatable on another machine. Keep installation steps close to the project documentation, pin important dependency versions, and distinguish required configuration from optional personal preferences. When the toolchain changes, update the verification step as well as the installation command. This makes setup failures easier to diagnose because you can compare the environment with a known working state.
+
+## Final Understanding Check
+
+Before considering **🛠 Git Installation & Setup** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

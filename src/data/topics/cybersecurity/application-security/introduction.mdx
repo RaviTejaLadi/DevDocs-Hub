@@ -1,4 +1,4 @@
-# 🚀 Application Security: An In-Depth Introduction
+# Application Security: An In-Depth Introduction
 
 Application security (AppSec) is the process of developing, adding, and testing
 security features within applications to prevent security vulnerabilities
@@ -10,8 +10,6 @@ only secure security at the network level but also within applications
 themselves. One reason for this is that hackers are going after apps with their
 attacks more today than in the past. 🛡️
 
-## 📈 The Evolution of Application Security
-
 ### 🏰 The Early Days: Perimeter Defense
 
 In the early days of computing and the internet, security was largely focused on
@@ -21,7 +19,7 @@ threats originated from the outside, and if the perimeter was secure, the
 applications and data inside were safe. Applications were mostly internal,
 monolithic, and accessed by a restricted set of users.
 
-### 🕸️ The Shift to the Web
+### 🕸 The Shift to the Web
 
 The advent of the World Wide Web changed everything. Applications became
 internet-facing, accessible to anyone with a browser. This shift meant that the
@@ -40,7 +38,7 @@ explosion in Application Programming Interfaces (APIs). APIs are now the
 connective tissue of the modern digital economy, but they also present a massive
 target. 🎯
 
-### ☁️ Cloud-Native and DevSecOps
+### ☁ Cloud-Native and DevSecOps
 
 Today, applications are often cloud-native, built using containers, orchestrated
 by Kubernetes, and deployed via continuous integration and continuous deployment
@@ -63,7 +61,7 @@ their applications:
 | 💸 **Preventing Financial Loss**      | Breaches cause direct financial losses due to system downtime, incident response costs, legal fees, and loss of revenue. |
 | ⏱️ **Preserving Business Continuity** | App vulnerabilities can be exploited for DoS attacks, disrupting business operations and causing downtime.               |
 
-## 🧠 Core Concepts in Application Security
+## Core Concepts in Application Security
 
 To understand AppSec, one must be familiar with its foundational concepts.
 
@@ -86,7 +84,7 @@ directly to applications:
 - **Authorization (AuthZ):** The process of determining permissions. ("Are you
   allowed to do this?") 🔑
 
-### ⚠️ Vulnerability, Threat, and Risk
+### ⚠ Vulnerability, Threat, and Risk
 
 - 🐛 **Vulnerability:** A weakness in an application's design, implementation,
   or configuration.
@@ -95,12 +93,13 @@ directly to applications:
 - 📉 **Risk:** The potential for loss or damage when a threat exploits a
   vulnerability. `Risk = Likelihood x Impact`.
 
-## 🔄 The AppSec Lifecycle: Integrating Security into the SDLC
+## The AppSec Lifecycle: Integrating Security into the SDLC
 
 Application security is not a single tool or a phase; it's a continuous process
 integrated into the Software Development Life Cycle (SDLC). This integration is
 often referred to as "shifting left".
 
+<!-- Visual flow for Application Security: An In-Depth Introduction. -->
 ```mermaid
 graph LR
     A[Design 🎨] --> B[Develop 💻]
@@ -108,17 +107,17 @@ graph LR
     C --> D[Deploy 🚀]
     D --> E[Operate ⚙️]
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
+style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#bbf,stroke:#333,stroke-width:2px
     style C fill:#bfb,stroke:#333,stroke-width:2px
 
-    A -.-> |Threat Modeling| A
+A -.-> |Threat Modeling| A
     B -.-> |SAST / SCA| B
     C -.-> |DAST / Pen Test| C
     E -.-> |RASP / WAF| E
 ```
 
-### 1. 🎨 Requirements and Design Phase
+### 1. Requirements and Design Phase
 
 - **Threat Modeling:** A structured approach to identifying potential threats
   and vulnerabilities during the design phase.
@@ -135,7 +134,7 @@ graph LR
   dependencies to identify known vulnerabilities (CVEs) in third-party
   components.
 
-### 3. 🧪 Testing Phase
+### 3. Testing Phase
 
 - **Dynamic Application Security Testing (DAST):** DAST tools interact with a
   running application from the outside, just as an attacker would.
@@ -144,7 +143,7 @@ graph LR
 - **Penetration Testing:** A manual security assessment performed by skilled
   ethical hackers to find complex vulnerabilities.
 
-### 4. 🚀 Deployment and Operations Phase
+### 4. Deployment and Operations Phase
 
 - **Runtime Application Self-Protection (RASP):** RASP technology monitors
   application behavior and can detect/block attacks in real-time.
@@ -153,7 +152,7 @@ graph LR
 - **Continuous Monitoring:** Monitoring applications for suspicious activity and
   feeding data into a SIEM.
 
-## 🧗‍♂️ Key Challenges in Modern AppSec
+## 🧗‍♂ Key Challenges in Modern AppSec
 
 Implementing effective application security is fraught with challenges:
 
@@ -179,3 +178,12 @@ as an afterthought. By understanding the core concepts, integrating security
 throughout the SDLC, and leveraging appropriate testing tools and methodologies,
 organizations can build resilient applications that protect sensitive data and
 maintain customer trust in an increasingly hostile digital environment. 🛡️💻
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

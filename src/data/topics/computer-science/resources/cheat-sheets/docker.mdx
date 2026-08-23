@@ -5,7 +5,7 @@ lightweight containers that run consistently across environments.
 
 ---
 
-# Docker Architecture
+## Docker Architecture
 
 | Component        | Purpose                   |
 | ---------------- | ------------------------- |
@@ -19,9 +19,7 @@ lightweight containers that run consistently across environments.
 | Docker Volume    | Persistent storage        |
 | Docker Network   | Container communication   |
 
----
-
-# Installation Check
+## Installation Check
 
 | Command                  | Description        |
 | ------------------------ | ------------------ |
@@ -29,85 +27,83 @@ lightweight containers that run consistently across environments.
 | `docker info`            | System information |
 | `docker compose version` | Compose version    |
 
+# Basic example showing the core idea.
 ```bash
-# Verify Docker installation
+## Verify Docker installation
 docker --version
 ```
 
----
-
-# Images
-
 ## Search Images
 
+# Basic example showing the core idea.
 ```bash
-# Search image on Docker Hub
+## Search image on Docker Hub
 docker search nginx
 ```
 
 ## Pull Image
 
+# Basic example showing the core idea.
 ```bash
-# Download image
+## Download image
 docker pull nginx
 ```
 
 ## List Images
 
+# Basic example showing the core idea.
 ```bash
-# Show local images
+## Show local images
 docker images
 ```
 
 ## Remove Image
 
+# Basic example showing the core idea.
 ```bash
-# Remove image
 docker rmi nginx
 ```
 
 ## Remove Multiple Images
 
+# Basic example showing the core idea.
 ```bash
-# Remove all images
+## Remove all images
 docker rmi $(docker images -q)
 ```
 
----
-
-# Containers
-
 ## Run Container
 
+# Basic example showing the core idea.
 ```bash
-# Run container
 docker run nginx
 ```
 
 ## Run in Background
 
+# Basic example showing the core idea.
 ```bash
-# Detached mode
+## Detached mode
 docker run -d nginx
 ```
 
 ## Assign Name
 
+# Basic example showing the core idea.
 ```bash
-# Named container
+## Named container
 docker run --name my-nginx nginx
 ```
 
 ## Interactive Mode
 
+# Basic example showing the core idea.
 ```bash
-# Open shell
+## Open shell
 docker run -it ubuntu bash
 ```
 
----
-
-# Container Management
+## Container Management
 
 | Command             | Description        |
 | ------------------- | ------------------ |
@@ -119,37 +115,38 @@ docker run -it ubuntu bash
 | `docker kill id`    | Force stop         |
 | `docker rm id`      | Delete container   |
 
+# Basic example showing the core idea.
 ```bash
-# Show running containers
+## Show running containers
 docker ps
 ```
 
----
+## Port Mapping
 
-# Port Mapping
-
+# Basic example showing the core idea.
 ```bash
-# HostPort:ContainerPort
+## HostPort:ContainerPort
 docker run -p 3000:80 nginx
 ```
 
 Access:
 
+// Example demonstrating Docker 🐳.
 ```text
 http://localhost:3000
 ```
 
----
+## Environment Variables
 
-# Environment Variables
-
+# Basic example showing the core idea.
 ```bash
-# Pass environment variable
+## Pass environment variable
 docker run -e NODE_ENV=production node
 ```
 
 Multiple Variables:
 
+# Basic example showing the core idea.
 ```bash
 docker run \
 -e DB_HOST=localhost \
@@ -157,65 +154,63 @@ docker run \
 my-app
 ```
 
----
+## Container Logs
 
-# Container Logs
-
+# Basic example showing the core idea.
 ```bash
-# View logs
+## View logs
 docker logs container_id
 ```
 
+# Basic example showing the core idea.
 ```bash
-# Follow logs
+## Follow logs
 docker logs -f container_id
 ```
 
+# Basic example showing the core idea.
 ```bash
-# Last 100 lines
+## Last 100 lines
 docker logs --tail 100 container_id
 ```
 
----
+## Execute Commands
 
-# Execute Commands
-
+# Basic example showing the core idea.
 ```bash
-# Run command inside container
+## Run command inside container
 docker exec container_id ls
 ```
 
 Interactive Shell:
 
+# Basic example showing the core idea.
 ```bash
 docker exec -it container_id bash
 ```
 
 For Alpine Linux:
 
+# Basic example showing the core idea.
 ```bash
 docker exec -it container_id sh
 ```
 
----
-
-# Copy Files
-
 ## Host → Container
 
+# Basic example showing the core idea.
 ```bash
 docker cp app.js container:/app
 ```
 
 ## Container → Host
 
+# Basic example showing the core idea.
 ```bash
 docker cp container:/app .
 ```
 
----
-
-# Dockerfile Basics
+## Dockerfile Basics
 
 | Instruction | Purpose              |
 | ----------- | -------------------- |
@@ -230,12 +225,11 @@ docker cp container:/app .
 | EXPOSE      | Open port            |
 | ARG         | Build variable       |
 
----
+## Basic Dockerfile
 
-# Basic Dockerfile
-
+// Example demonstrating Docker 🐳.
 ```dockerfile
-# Node.js application
+## Node.js application
 FROM node:22-alpine
 
 WORKDIR /app
@@ -251,35 +245,32 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
----
+## Build Image
 
-# Build Image
-
+# Basic example showing the core idea.
 ```bash
-# Build image
 docker build -t my-app .
 ```
 
 Tag Version:
 
+# Basic example showing the core idea.
 ```bash
 docker build -t my-app:v1 .
 ```
 
----
+## Run Built Image
 
-# Run Built Image
-
+# Basic example showing the core idea.
 ```bash
 docker run -p 3000:3000 my-app
 ```
 
----
-
-# Layer Caching
+## Layer Caching
 
 Bad:
 
+// Example demonstrating Docker 🐳.
 ```dockerfile
 COPY . .
 RUN npm install
@@ -287,6 +278,7 @@ RUN npm install
 
 Good:
 
+// Example demonstrating Docker 🐳.
 ```dockerfile
 COPY package*.json ./
 RUN npm install
@@ -296,10 +288,9 @@ COPY . .
 
 Improves build speed.
 
----
+## .dockerignore
 
-# .dockerignore
-
+// Example demonstrating Docker 🐳.
 ```text
 node_modules
 .git
@@ -311,44 +302,43 @@ coverage
 
 Reduces image size.
 
----
-
-# Volumes
+## Volumes
 
 Volumes persist data even after container deletion.
 
 ## Create Volume
 
+# Basic example showing the core idea.
 ```bash
 docker volume create postgres-data
 ```
 
 ## List Volumes
 
+# Basic example showing the core idea.
 ```bash
 docker volume ls
 ```
 
 ## Remove Volume
 
+# Basic example showing the core idea.
 ```bash
 docker volume rm postgres-data
 ```
 
----
+## Mount Volume
 
-# Mount Volume
-
+# Basic example showing the core idea.
 ```bash
 docker run \
 -v postgres-data:/var/lib/postgresql/data \
 postgres
 ```
 
----
+## Bind Mount
 
-# Bind Mount
-
+# Basic example showing the core idea.
 ```bash
 docker run \
 -v $(pwd):/app \
@@ -357,56 +347,51 @@ node
 
 Useful for development.
 
----
-
-# Networks
-
 ## Create Network
 
+# Basic example showing the core idea.
 ```bash
 docker network create app-network
 ```
 
 ## List Networks
 
+# Basic example showing the core idea.
 ```bash
 docker network ls
 ```
 
 ## Remove Network
 
+# Basic example showing the core idea.
 ```bash
 docker network rm app-network
 ```
 
----
+## Connect Container To Network
 
-# Connect Container To Network
-
+# Basic example showing the core idea.
 ```bash
 docker run \
 --network app-network \
 redis
 ```
 
----
+## Inspect Resources
 
-# Inspect Resources
-
+# Basic example showing the core idea.
 ```bash
 docker inspect container_id
 ```
 
+# Basic example showing the core idea.
 ```bash
 docker inspect image_name
 ```
 
----
-
-# Resource Limits
-
 ## Memory Limit
 
+# Basic example showing the core idea.
 ```bash
 docker run \
 --memory="512m" \
@@ -415,31 +400,29 @@ nginx
 
 ## CPU Limit
 
+# Basic example showing the core idea.
 ```bash
 docker run \
 --cpus="1.5" \
 nginx
 ```
 
----
-
-# Docker Compose
+## Docker Compose
 
 Docker Compose manages multiple containers.
 
----
+## compose.yaml
 
-# compose.yaml
-
+# Example configuration for the topic.
 ```yaml
-# Full stack application
+## Full stack application
 services:
   app:
     build: .
     ports:
       - '3000:3000'
 
-  postgres:
+postgres:
     image: postgres:17
     environment:
       POSTGRES_DB: app
@@ -447,9 +430,7 @@ services:
       POSTGRES_PASSWORD: secret
 ```
 
----
-
-# Compose Commands
+## Compose Commands
 
 | Command                  | Description      |
 | ------------------------ | ---------------- |
@@ -461,126 +442,112 @@ services:
 | `docker compose build`   | Build services   |
 | `docker compose restart` | Restart services |
 
----
+## Start Compose
 
-# Start Compose
-
+# Basic example showing the core idea.
 ```bash
 docker compose up -d
 ```
 
----
+## Stop Compose
 
-# Stop Compose
-
+# Basic example showing the core idea.
 ```bash
 docker compose down
 ```
 
----
+## Rebuild Containers
 
-# Rebuild Containers
-
+# Basic example showing the core idea.
 ```bash
 docker compose up --build
 ```
 
----
-
-# Multi-stage Build
+## Multi-stage Build
 
 Reduces final image size.
 
+// Example demonstrating Docker 🐳.
 ```dockerfile
-# Build stage
+## Build stage
 FROM node:22-alpine AS builder
-
-WORKDIR /app
-
-COPY . .
 
 RUN npm install
 RUN npm run build
 
-# Production stage
+## Production stage
 FROM node:22-alpine
-
-WORKDIR /app
 
 COPY --from=builder /app/.next ./.next
 
 CMD ["npm","start"]
 ```
 
----
+## Health Check
 
-# Health Check
-
+// Example demonstrating Docker 🐳.
 ```dockerfile
 HEALTHCHECK \
 CMD curl -f http://localhost:3000 || exit 1
 ```
 
----
-
-# Common Cleanup Commands
-
 ## Remove Stopped Containers
 
+# Basic example showing the core idea.
 ```bash
 docker container prune
 ```
 
 ## Remove Unused Images
 
+# Basic example showing the core idea.
 ```bash
 docker image prune
 ```
 
 ## Remove Unused Volumes
 
+# Basic example showing the core idea.
 ```bash
 docker volume prune
 ```
 
 ## Remove Everything Unused
 
+# Basic example showing the core idea.
 ```bash
 docker system prune -a
 ```
 
----
-
-# Registry Commands
-
 ## Login
 
+# Basic example showing the core idea.
 ```bash
 docker login
 ```
 
 ## Tag Image
 
+# Basic example showing the core idea.
 ```bash
 docker tag my-app username/my-app:v1
 ```
 
 ## Push Image
 
+# Basic example showing the core idea.
 ```bash
 docker push username/my-app:v1
 ```
 
-## Pull Image
-
+# Basic example showing the core idea.
 ```bash
 docker pull username/my-app:v1
 ```
 
----
+## Docker Hub Workflow
 
-# Docker Hub Workflow
-
+# Basic example showing the core idea.
 ```bash
 docker build -t my-app .
 
@@ -589,37 +556,34 @@ docker tag my-app username/my-app:v1
 docker push username/my-app:v1
 ```
 
----
+## Useful Debugging Commands
 
-# Useful Debugging Commands
-
+# Basic example showing the core idea.
 ```bash
 docker logs container
 ```
 
+# Basic example showing the core idea.
 ```bash
 docker exec -it container bash
 ```
 
+# Basic example showing the core idea.
 ```bash
 docker inspect container
 ```
 
+# Basic example showing the core idea.
 ```bash
 docker stats
 ```
 
+# Basic example showing the core idea.
 ```bash
 docker top container
 ```
 
----
-
-# Docker Stats
-
-```bash
-docker stats
-```
+## Docker Stats
 
 Shows:
 
@@ -631,10 +595,9 @@ Shows:
 | BLOCK I/O | Disk operations |
 | PIDS      | Processes       |
 
----
+## Docker Compose Example (Node + PostgreSQL)
 
-# Docker Compose Example (Node + PostgreSQL)
-
+# Example configuration for the topic.
 ```yaml
 services:
   app:
@@ -644,7 +607,7 @@ services:
     depends_on:
       - db
 
-  db:
+db:
     image: postgres:17
     restart: always
     environment:
@@ -658,9 +621,7 @@ volumes:
   postgres-data:
 ```
 
----
-
-# Common Docker Commands
+## Common Docker Commands
 
 | Command                   | Description        |
 | ------------------------- | ------------------ |
@@ -678,9 +639,7 @@ volumes:
 | `docker compose up -d`    | Start compose      |
 | `docker compose down`     | Stop compose       |
 
----
-
-# Docker Interview Questions
+## Docker Interview Questions
 
 | Question             | Answer                                                    |
 | -------------------- | --------------------------------------------------------- |
@@ -695,9 +654,7 @@ volumes:
 | Layer Caching        | Reuses unchanged build layers                             |
 | Bridge Network       | Default Docker network                                    |
 
----
-
-# Production Best Practices
+## Production Best Practices
 
 | Practice                     | Benefit                 |
 | ---------------------------- | ----------------------- |
@@ -714,6 +671,7 @@ volumes:
 
 ### Container Lifecycle
 
+<!-- Visual flow for Docker 🐳. -->
 ```mermaid
 graph LR
 A[Docker Image] --> B[Container Created]
@@ -721,3 +679,12 @@ B --> C[Running]
 C --> D[Stopped]
 D --> E[Removed]
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

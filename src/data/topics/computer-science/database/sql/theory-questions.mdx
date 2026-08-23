@@ -1,7 +1,5 @@
 # Top 30 Theory Interview Questions and Answers
 
-## Basic SQL Concepts
-
 ### 1. What is SQL?
 
 **Answer:** SQL (Structured Query Language) is a standard programming language
@@ -32,8 +30,6 @@ relationship between data in two tables. It references the primary key of
 another table, enforcing referential integrity by ensuring the value exists in
 the referenced table.
 
-## Database Design
-
 ### 5. What is database normalization?
 
 **Answer:** Normalization is the process of organizing data in a database to
@@ -47,8 +43,6 @@ reduce redundancy and improve data integrity. The main normal forms are:
 - 5NF: Remove join dependencies
 
 ### 6. What are the advantages of normalization?
-
-**Answer:**
 
 - Reduces data redundancy
 - Improves data integrity
@@ -66,11 +60,7 @@ redundancy into a database to improve read performance. It's used when:
 - When complex joins are slowing down queries
 - For analytical processing where speed is essential
 
-## SQL Queries
-
 ### 8. What is the difference between WHERE and HAVING clauses?
-
-**Answer:**
 
 - WHERE filters rows before grouping (GROUP BY)
 - HAVING filters groups after the GROUP BY operation
@@ -78,8 +68,6 @@ redundancy into a database to improve read performance. It's used when:
 - WHERE cannot use aggregate functions, HAVING can
 
 ### 9. What is the difference between DELETE, TRUNCATE, and DROP?
-
-**Answer:**
 
 - **DELETE:** Removes rows one by one, can be rolled back, can have WHERE
   clause, doesn't reset identity counters
@@ -90,18 +78,12 @@ redundancy into a database to improve read performance. It's used when:
 
 ### 10. What is the difference between UNION and UNION ALL?
 
-**Answer:**
-
 - UNION combines results of two queries and removes duplicates
 - UNION ALL combines results but keeps all duplicates
 - UNION performs a sort to remove duplicates (slower)
 - UNION ALL is faster as it doesn't perform duplicate removal
 
-## Joins and Relationships
-
 ### 11. What are the different types of joins in SQL?
-
-**Answer:**
 
 - **INNER JOIN:** Returns rows when there's a match in both tables
 - **LEFT (OUTER) JOIN:** Returns all rows from left table and matched rows from
@@ -120,14 +102,13 @@ with table aliases to distinguish between the two instances of the same table.
 
 Example: Finding employees who work in the same department:
 
+-- Basic example showing the core idea.
 ```sql
 SELECT A.EmployeeName, B.EmployeeName, A.Department
 FROM Employees A, Employees B
 WHERE A.Department = B.Department
 AND A.EmployeeID != B.EmployeeID;
 ```
-
-## Advanced SQL Concepts
 
 ### 13. What are indexes and why are they important?
 
@@ -167,11 +148,7 @@ DELETE). Triggers are used to:
 - Implement complex integrity constraints
 - Automate certain operations
 
-## Performance and Optimization
-
 ### 16. How would you optimize a slow SQL query?
-
-**Answer:**
 
 - Add appropriate indexes
 - Avoid SELECT \*, specify columns needed
@@ -197,8 +174,6 @@ engine performs to execute a SQL query. It shows:
 Execution plans are essential for query optimization as they help identify
 performance bottlenecks.
 
-## Transactions and Concurrency
-
 ### 18. What is a transaction in SQL?
 
 **Answer:** A transaction is a sequence of operations performed as a single
@@ -211,8 +186,6 @@ logical unit of work. It has four key properties (ACID):
 
 ### 19. What are the different transaction isolation levels?
 
-**Answer:**
-
 - **Read Uncommitted:** Lowest isolation, allows dirty reads
 - **Read Committed:** Prevents dirty reads, allows non-repeatable reads
 - **Repeatable Read:** Prevents dirty and non-repeatable reads, allows phantom
@@ -222,19 +195,13 @@ logical unit of work. It has four key properties (ACID):
 
 ### 20. What are dirty read, non-repeatable read, and phantom read?
 
-**Answer:**
-
 - **Dirty Read:** Reading uncommitted data that may be rolled back
 - **Non-repeatable Read:** Getting different values when reading the same row
   multiple times in a transaction
 - **Phantom Read:** Seeing new rows that appeared since the transaction started
   when requerying
 
-## Functions and Operators
-
 ### 21. What is the difference between CHAR and VARCHAR?
-
-**Answer:**
 
 - **CHAR** is fixed-length (pads with spaces if needed), faster for fixed-length
   text
@@ -254,14 +221,10 @@ return a single value:
 
 ### 23. What is the difference between GROUP BY and ORDER BY?
 
-**Answer:**
-
 - GROUP BY groups rows that have the same values into summary rows
 - ORDER BY sorts the result set in ascending or descending order
 - GROUP BY is used with aggregate functions, ORDER BY is not
 - GROUP BY affects which rows are returned, ORDER BY affects their sequence
-
-## Advanced Topics
 
 ### 24. What are window functions?
 
@@ -288,6 +251,7 @@ Benefits include:
 
 Example:
 
+-- Basic example showing the core idea.
 ```sql
 WITH SalesCTE AS (
     SELECT SalesPerson, SUM(Amount) AS TotalSales
@@ -298,8 +262,6 @@ SELECT * FROM SalesCTE WHERE TotalSales > 1000;
 ```
 
 ### 26. What is the difference between a view and a materialized view?
-
-**Answer:**
 
 - **View:** Virtual table based on the result set of a SQL query, doesn't store
   data physically, always shows current data
@@ -315,6 +277,7 @@ it less efficient than non-correlated subqueries.
 
 Example: Find employees whose salary is above the average in their department
 
+-- Basic example showing the core idea.
 ```sql
 SELECT e1.Name, e1.Salary, e1.Department
 FROM Employees e1
@@ -324,8 +287,6 @@ WHERE e1.Salary > (
     WHERE e2.Department = e1.Department
 );
 ```
-
-## Database Management
 
 ### 28. What is database sharding?
 
@@ -368,3 +329,12 @@ tolerance) or AP (availability and partition tolerance).
 - BASE (Basically Available, Soft state, Eventually consistent) vs. ACID
 - Often no joins or complex transactions
 - Better for unstructured or semi-structured data
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

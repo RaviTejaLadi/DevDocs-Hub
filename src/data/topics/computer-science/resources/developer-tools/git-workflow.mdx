@@ -1,9 +1,9 @@
-# 🔧 Git Workflow
+# Git Workflow
 
 Git is the most widely used version control system. It helps developers track
 changes, collaborate with teams, and safely manage code history.
 
-## 🚀 Why Use Git?
+## Why Use Git?
 
 Git helps you:
 
@@ -17,7 +17,7 @@ Think of Git as a time machine for your code.
 
 ---
 
-## 📦 Initialize a Repository
+## Initialize a Repository
 
 Create a new Git repository:
 
@@ -27,8 +27,6 @@ Check repository status:
 
 git status
 
----
-
 ## 📂 Git File Lifecycle
 
 Working Directory ↓ Staging Area ↓ Repository
@@ -36,8 +34,6 @@ Working Directory ↓ Staging Area ↓ Repository
 Commands:
 
 git add git commit
-
----
 
 ## ➕ Add Files
 
@@ -50,10 +46,6 @@ Add all files:
 git add .
 
 Check staged files:
-
-git status
-
----
 
 ## 💾 Create a Commit
 
@@ -71,8 +63,6 @@ git commit -m "Fix login validation bug"
 
 git commit -m "Changes"
 
----
-
 ## 📜 View Commit History
 
 Show history:
@@ -87,8 +77,6 @@ Example:
 
 a12b3cd Fix login bug f45g6hi Add dashboard page
 
----
-
 ## 🌍 Connect Remote Repository
 
 Add remote:
@@ -99,9 +87,7 @@ Verify remote:
 
 git remote -v
 
----
-
-## ⬆️ Push Changes
+## ⬆ Push Changes
 
 Push first time:
 
@@ -111,9 +97,7 @@ Later:
 
 git push
 
----
-
-## ⬇️ Pull Changes
+## ⬇ Pull Changes
 
 Download latest updates:
 
@@ -122,8 +106,6 @@ git pull
 Fetch without merging:
 
 git fetch
-
----
 
 ## 🌿 Branches
 
@@ -143,8 +125,6 @@ Modern approach:
 
 git switch feature/auth
 
----
-
 ## 🌱 Create and Switch Branch
 
 git switch -c feature/auth
@@ -152,8 +132,6 @@ git switch -c feature/auth
 Equivalent to:
 
 git branch feature/auth git switch feature/auth
-
----
 
 ## 🔀 Merge Branches
 
@@ -164,8 +142,6 @@ git switch main
 Merge feature:
 
 git merge feature/auth
-
----
 
 ## 🐛 Resolve Merge Conflicts
 
@@ -183,9 +159,7 @@ Then:
 
 git add . git commit
 
----
-
-## 🔄 Rebase
+## Rebase
 
 Apply commits on top of another branch:
 
@@ -198,19 +172,13 @@ Benefits:
 
 Use carefully on shared branches.
 
----
-
-## 🗑️ Delete Branch
+## 🗑 Delete Branch
 
 Delete merged branch:
 
 git branch -d feature/auth
 
 Force delete:
-
-git branch -D feature/auth
-
----
 
 ## ⏪ Undo Changes
 
@@ -222,15 +190,11 @@ Restore all:
 
 git restore .
 
----
-
-## ↩️ Unstage Files
+## ↩ Unstage Files
 
 Remove from staging:
 
 git restore --staged file.js
-
----
 
 ## 🔙 Undo Last Commit
 
@@ -243,8 +207,6 @@ Remove changes:
 git reset --hard HEAD~1
 
 Use hard reset carefully.
-
----
 
 ## 🔖 Git Tags
 
@@ -262,23 +224,17 @@ git push origin v1.0.0
 
 Useful for releases.
 
----
-
-## 📝 Git Ignore
+## Git Ignore
 
 Create:
 
 .gitignore
 
-Example:
-
 node_modules .env dist build coverage
 
 Prevents unnecessary files from being tracked.
 
----
-
-## 🔍 Useful Inspection Commands
+## Useful Inspection Commands
 
 View differences:
 
@@ -296,9 +252,7 @@ Show specific commit:
 
 git show commit_hash
 
----
-
-## ⚛️ React Project Workflow
+## ⚛ React Project Workflow
 
 Typical workflow:
 
@@ -311,9 +265,7 @@ Typical workflow:
 7. Code review
 8. Merge to main
 
----
-
-## 🚀 Recommended Branch Naming
+## Recommended Branch Naming
 
 Feature:
 
@@ -331,32 +283,18 @@ Documentation:
 
 docs/api-guide
 
----
-
 ## 🔥 Conventional Commits
-
-Feature:
 
 feat: add dark mode
 
-Bug Fix:
-
 fix: resolve login issue
-
-Refactor:
 
 refactor: simplify auth logic
 
-Documentation:
-
 docs: update setup instructions
-
-Benefits:
 
 - Better changelogs
 - Easier release automation
-
----
 
 ## 👥 Pull Request Checklist
 
@@ -368,8 +306,6 @@ Before creating PR:
 - No unused imports
 - Documentation updated
 - Branch rebased with main
-
----
 
 ## 🧹 Cleanup Commands
 
@@ -384,10 +320,6 @@ git branch --merged
 Delete merged branches:
 
 git branch -d branch-name
-
----
-
-## 🚨 Common Mistakes
 
 ### Committed to Wrong Branch
 
@@ -411,8 +343,6 @@ git push --force-with-lease
 
 Safer for teams.
 
----
-
 ## ⭐ Best Practices
 
 - Commit small changes frequently
@@ -426,3 +356,22 @@ Safer for teams.
 
 A good Git workflow reduces bugs, improves collaboration, and makes project
 history easier to understand.
+
+## Example
+
+Start with the smallest useful case before combining the idea with other features.
+
+// Basic example showing the core idea.
+```javascript
+const value = "example";
+console.log(value);
+```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

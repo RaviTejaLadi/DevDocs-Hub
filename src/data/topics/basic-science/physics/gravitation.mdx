@@ -1,7 +1,5 @@
 # Gravitation
 
-## Newton's Law of Gravitation
-
 ### Statement
 
 Every particle of matter in the universe attracts every other particle with a
@@ -10,6 +8,7 @@ proportional to the square of the distance between them.
 
 ### Equation
 
+// Example demonstrating Gravitation.
 ```
 F = G(m₁m₂)/r²
 ```
@@ -21,14 +20,14 @@ Where:
 
 ### Vector Form
 
+// Example demonstrating Gravitation.
 ```
 F₁₂ = -G(m₁m₂)r̂/r²
 ```
 
-## Gravitational Field
-
 ### Definition
 
+// Example demonstrating Gravitation.
 ```
 g = F/m = GM/r²
 ```
@@ -40,28 +39,30 @@ g = F/m = GM/r²
 
 ### Gravitational Potential
 
+// Example demonstrating Gravitation.
 ```
 V = -GM/r
 ```
 
 ### Gravitational Potential Energy
 
+// Example demonstrating Gravitation.
 ```
 U = -GMm/r
 ```
 
 (Zero at infinity)
 
-## Acceleration Due to Gravity
-
 ### Variation with Altitude
 
+// Example demonstrating Gravitation.
 ```
 g' = g(1 - 2h/R) for h << R
 ```
 
 ### Variation with Depth
 
+// Example demonstrating Gravitation.
 ```
 g' = g(1 - d/R)
 ```
@@ -75,11 +76,10 @@ Where d = depth below surface
 
 ### Variation with Rotation
 
+// Example demonstrating Gravitation.
 ```
 g_eff = g - Rω²cos²λ
 ```
-
-## Kepler's Laws
 
 ### First Law (Law of Ellipses)
 
@@ -92,12 +92,14 @@ time intervals.
 
 ### Third Law (Law of Periods)
 
+// Example demonstrating Gravitation.
 ```
 T² ∝ a³
 ```
 
 or
 
+// Example demonstrating Gravitation.
 ```
 T² = (4π²/GM)a³
 ```
@@ -106,16 +108,16 @@ T² = (4π²/GM)a³
 
 - For circular orbits: T² = (4π²/GM)r³
 
-## Orbital Mechanics
-
 ### Orbital Velocity
 
+// Example demonstrating Gravitation.
 ```
 v_orbital = √(GM/r)
 ```
 
 ### Escape Velocity
 
+// Example demonstrating Gravitation.
 ```
 v_escape = √(2GM/r)
 ```
@@ -133,8 +135,6 @@ v_escape = √(2GM/r)
 3. **Parabolic**: e = 1
 4. **Hyperbolic**: e > 1
 
-## Gravitational Waves
-
 ### Prediction
 
 - Predicted by Einstein's theory of general relativity
@@ -150,8 +150,6 @@ v_escape = √(2GM/r)
 - Travel at speed of light
 - Transverse waves
 - Quadrupole radiation
-
-## Applications
 
 ### Satellite Motion
 
@@ -174,3 +172,32 @@ v_escape = √(2GM/r)
 
 - Escaped velocity > c
 - Schwarzschild radius: R_s = 2GM/c²
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Assumptions and Units
+
+For engineering topics, write down known quantities, unknowns, units, and governing assumptions before calculating. Check the final unit and physical direction of the result. A mathematically correct expression can still be physically invalid if an assumption has been violated.
+
+## Limiting Conditions
+
+Pay attention to boundary conditions, material properties, environmental changes, sign conventions, and measurement error. If a formula relies on an approximation, state when that approximation is reasonable. Revision becomes much easier when each equation is attached to the condition that justifies it.
+
+## Worked Check
+
+After solving a numerical example, estimate the order of magnitude and compare it with a realistic range. A quick sanity check often catches unit conversion errors, misplaced decimal points, and incorrect signs.
+
+## Model Limitations
+
+Every engineering model is valid only within stated assumptions. Identify the operating range, approximations, and variables that can change the result. When a quantity is measured rather than exact, consider uncertainty and whether the required precision justifies the calculation. In revision, remember the relationship together with its assumptions; applying a correct equation outside its valid range can produce a physically misleading answer.
+
+## Final Understanding Check
+
+Before considering **Gravitation** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

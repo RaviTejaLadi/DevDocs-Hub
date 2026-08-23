@@ -1,4 +1,4 @@
-# ⚠️ Common CSS Mistakes
+# ⚠ Common CSS Mistakes
 
 Even experienced developers make CSS mistakes. Most styling bugs come from a few
 common issues such as specificity conflicts, layout misunderstandings, or poor
@@ -8,18 +8,19 @@ Learning these mistakes early can save hours of debugging.
 
 ---
 
-# 🎯 Why CSS Mistakes Happen
+## Why CSS Mistakes Happen
 
+<!-- Visual flow for ⚠ Common CSS Mistakes. -->
 ```mermaid
 flowchart LR
 
-    CSS["CSS Code"]
+CSS["CSS Code"]
 
-    Mistakes["Common Mistakes"]
+Mistakes["Common Mistakes"]
 
-    Bugs["UI Bugs"]
+Bugs["UI Bugs"]
 
-    CSS --> Mistakes --> Bugs
+CSS --> Mistakes --> Bugs
 ```
 
 Common causes:
@@ -34,16 +35,13 @@ Common causes:
 
 ❌ Misunderstanding Flexbox/Grid
 
----
-
-# 🚫 Using Too Many !important
+## 🚫 Using Too Many !important
 
 One of the most common mistakes.
 
----
-
 ## Bad
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   color: blue !important;
@@ -60,10 +58,9 @@ One of the most common mistakes.
 
 Creates specificity wars.
 
----
-
 ## Better
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   color: blue;
@@ -74,34 +71,25 @@ Creates specificity wars.
 }
 ```
 
----
-
 ## Problem Flow
 
-```mermaid
-flowchart LR
+Important1["!important"]
 
-    Important1["!important"]
+Important2["More !important"]
 
-    Important2["More !important"]
+Chaos["Maintenance Problems"]
 
-    Chaos["Maintenance Problems"]
-
-    Important1 --> Important2 --> Chaos
+Important1 --> Important2 --> Chaos
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
-
-# 🚫 Deeply Nested Selectors
-
----
-
-## Bad
+## 🚫 Deeply Nested Selectors
 
 ```css
 .sidebar ul li a span {
   color: red;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Problems:
@@ -110,44 +98,31 @@ Problems:
 - Hard to maintain
 - High specificity
 
----
-
-## Better
-
 ```css
 .sidebar-link {
   color: red;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
 
 ## Selector Complexity
 
-```mermaid
-flowchart LR
+Deep["Deep Selector"]
 
-    Deep["Deep Selector"]
+Complex["Complex CSS"]
 
-    Complex["Complex CSS"]
+Simple["Single Class"]
 
-    Simple["Single Class"]
+Maintainable["Easy Maintenance"]
 
-    Maintainable["Easy Maintenance"]
+Deep --> Complex
 
-    Deep --> Complex
-
-    Simple --> Maintainable
+Simple --> Maintainable
 ```
 
----
+## 🚫 Using IDs for Styling
 
-# 🚫 Using IDs for Styling
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 #header {
   background: black;
@@ -156,10 +131,7 @@ flowchart LR
 
 IDs create high specificity.
 
----
-
-## Better
-
+/* Basic example showing the core idea. */
 ```css
 .header {
   background: black;
@@ -174,14 +146,9 @@ Use IDs for:
 - Anchors
 - Unique identifiers
 
----
+## 🚫 Fixed Width Layouts
 
-# 🚫 Fixed Width Layouts
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 .container {
   width: 1200px;
@@ -190,10 +157,7 @@ Use IDs for:
 
 Breaks on smaller screens.
 
----
-
-## Better
-
+/* Basic example showing the core idea. */
 ```css
 .container {
   width: 100%;
@@ -202,39 +166,32 @@ Breaks on smaller screens.
 }
 ```
 
----
-
 ## Responsive Flow
 
-```mermaid
-flowchart LR
+Mobile["Mobile"]
 
-    Mobile["Mobile"]
+Tablet["Tablet"]
 
-    Tablet["Tablet"]
+Desktop["Desktop"]
 
-    Desktop["Desktop"]
+Responsive["Responsive Layout"]
 
-    Responsive["Responsive Layout"]
-
-    Mobile --> Responsive
+Mobile --> Responsive
     Tablet --> Responsive
     Desktop --> Responsive
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
-
-# 🚫 Forgetting the Viewport Meta Tag
+## 🚫 Forgetting the Viewport Meta Tag
 
 Without:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Mobile browsers may zoom out.
-
----
 
 ## Result
 
@@ -244,44 +201,31 @@ Mobile browsers may zoom out.
 
 ❌ Poor user experience
 
----
-
-# 🚫 Using px Everywhere
-
----
-
-## Bad
+## 🚫 Using px Everywhere
 
 ```css
 h1 {
   font-size: 48px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
-
-## Better
 
 ```css
 h1 {
   font-size: 3rem;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
+## Why rem?
 
-# Why rem?
+Root["Root Font Size"]
 
-```mermaid
-flowchart LR
+Rem["rem Unit"]
 
-    Root["Root Font Size"]
+Responsive["Responsive Typography"]
 
-    Rem["rem Unit"]
-
-    Responsive["Responsive Typography"]
-
-    Root --> Rem --> Responsive
+Root --> Rem --> Responsive
 ```
 
 Benefits:
@@ -292,16 +236,13 @@ Benefits:
 
 ✅ Easier maintenance
 
----
-
-# 🚫 Ignoring Box Sizing
+## 🚫 Ignoring Box Sizing
 
 Default behavior can be confusing.
 
----
-
 ## Problem
 
+/* Basic example showing the core idea. */
 ```css
 .box {
   width: 300px;
@@ -311,48 +252,42 @@ Default behavior can be confusing.
 
 Actual width:
 
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 340px
 ```
 
----
-
 ## Fix
 
+/* Basic example showing the core idea. */
 ```css
 * {
   box-sizing: border-box;
 }
 ```
 
----
-
 ## Box Model
 
+<!-- Visual flow for ⚠ Common CSS Mistakes. -->
 ```mermaid
 flowchart TB
 
-    Margin
+Margin
 
-    Border
+Border
 
-    Padding
+Padding
 
-    Content
+Content
 
-    Margin --> Border
+Margin --> Border
     Border --> Padding
     Padding --> Content
 ```
 
----
+## 🚫 Not Using CSS Variables
 
-# 🚫 Not Using CSS Variables
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 .button {
   background: #2563eb;
@@ -367,10 +302,7 @@ flowchart TB
 }
 ```
 
----
-
-## Better
-
+/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -381,45 +313,32 @@ flowchart TB
 }
 ```
 
----
+## Variable Benefits
 
-# Variable Benefits
+Variable["CSS Variable"]
 
-```mermaid
-flowchart LR
+Reuse["Reuse"]
 
-    Variable["CSS Variable"]
+Theme["Themes"]
 
-    Reuse["Reuse"]
+Maintenance["Easy Updates"]
 
-    Theme["Themes"]
-
-    Maintenance["Easy Updates"]
-
-    Variable --> Reuse
+Variable --> Reuse
     Variable --> Theme
     Variable --> Maintenance
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
-
-# 🚫 Mixing Layout and Component Styles
-
----
-
-## Bad
+## 🚫 Mixing Layout and Component Styles
 
 ```css
 .card {
   width: 1200px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 A component shouldn't control page layout.
-
----
-
-## Better
 
 ```css
 .layout {
@@ -429,23 +348,21 @@ A component shouldn't control page layout.
 .card {
   padding: 1rem;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Separate concerns.
 
----
-
-# 🚫 Not Using Flexbox or Grid
+## 🚫 Not Using Flexbox or Grid
 
 Some developers still use:
 
 ```css
 float: left;
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 for layouts.
-
----
 
 ## Modern Approach
 
@@ -453,6 +370,7 @@ for layouts.
 .container {
   display: flex;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 or
@@ -461,32 +379,23 @@ or
 .container {
   display: grid;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
 
 ## Layout Evolution
 
-```mermaid
-flowchart LR
+Floats["Floats"]
 
-    Floats["Floats"]
+Flexbox["Flexbox"]
 
-    Flexbox["Flexbox"]
+Grid["CSS Grid"]
 
-    Grid["CSS Grid"]
-
-    Floats --> Flexbox --> Grid
+Floats --> Flexbox --> Grid
 ```
 
----
+## 🚫 Overusing Position Absolute
 
-# 🚫 Overusing Position Absolute
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 .card {
   position: absolute;
@@ -497,12 +406,9 @@ flowchart LR
 
 Creates fragile layouts.
 
----
-
-## Better
-
 Use:
 
+/* Basic example showing the core idea. */
 ```css
 display: flex;
 display: grid;
@@ -510,29 +416,17 @@ display: grid;
 
 whenever possible.
 
----
-
-# 🚫 Ignoring Mobile Devices
-
----
-
-## Bad
+## 🚫 Ignoring Mobile Devices
 
 Only testing desktop.
 
-```mermaid
-flowchart LR
+Desktop["Desktop Only"]
 
-    Desktop["Desktop Only"]
+Problem["Broken Mobile UI"]
 
-    Problem["Broken Mobile UI"]
-
-    Desktop --> Problem
+Desktop --> Problem
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
-
-## Better
 
 Test:
 
@@ -542,55 +436,37 @@ Test:
 
 ✅ Desktop
 
----
-
-# 🚫 Using Margin for Layout Gaps
-
----
-
-## Bad
+## 🚫 Using Margin for Layout Gaps
 
 ```css
 .card {
   margin-right: 20px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
-
-## Better
 
 ```css
 .container {
   display: flex;
   gap: 20px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
 
 ## Gap vs Margin
 
-```mermaid
-flowchart LR
+Margin["Margins"]
 
-    Margin["Margins"]
+Gap["Gap"]
 
-    Gap["Gap"]
+Margin --> Difficult["Harder Layout"]
 
-    Margin --> Difficult["Harder Layout"]
-
-    Gap --> Cleaner["Cleaner Layout"]
+Gap --> Cleaner["Cleaner Layout"]
 ```
 
----
+## 🚫 Animating Layout Properties
 
-# 🚫 Animating Layout Properties
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 .card:hover {
   width: 300px;
@@ -599,123 +475,80 @@ flowchart LR
 
 Triggers layout recalculations.
 
----
-
-## Better
-
+/* Basic example showing the core idea. */
 ```css
 .card:hover {
   transform: scale(1.05);
 }
 ```
 
----
-
 ## Performance Comparison
 
-```mermaid
-flowchart LR
+Width["Width"]
 
-    Width["Width"]
+Layout["Layout Recalculation"]
 
-    Layout["Layout Recalculation"]
+Transform["Transform"]
 
-    Transform["Transform"]
+GPU["GPU Accelerated"]
 
-    GPU["GPU Accelerated"]
+Width --> Layout
 
-    Width --> Layout
-
-    Transform --> GPU
+Transform --> GPU
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
-
-# 🚫 Ignoring Accessibility
-
----
-
-## Bad
+## 🚫 Ignoring Accessibility
 
 ```css
 button:focus {
   outline: none;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Removes keyboard focus indicators.
-
----
-
-## Better
 
 ```css
 button:focus {
   outline: 2px solid blue;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
 
 ## Accessibility Flow
 
-```mermaid
-flowchart LR
+Keyboard["Keyboard User"]
 
-    Keyboard["Keyboard User"]
+Focus["Visible Focus"]
 
-    Focus["Visible Focus"]
+Accessible["Accessible UI"]
 
-    Accessible["Accessible UI"]
-
-    Keyboard --> Focus --> Accessible
+Keyboard --> Focus --> Accessible
 ```
 
----
+## 🚫 Overcomplicated CSS
 
-# 🚫 Overcomplicated CSS
-
----
-
-## Bad
-
+/* Basic example showing the core idea. */
 ```css
 #page .container .sidebar ul li a span {
   color: red;
 }
 ```
 
----
-
-## Better
-
-```css
-.sidebar-link {
-  color: red;
-}
-```
-
 Keep CSS simple.
 
----
-
-# 🚫 Not Organizing CSS
+## 🚫 Not Organizing CSS
 
 Large projects become difficult to maintain.
 
----
-
-## Bad
-
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 styles.css
 5000+ lines
 ```
 
----
-
-## Better
-
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```text
 styles/
 
@@ -726,36 +559,26 @@ styles/
 └── pages/
 ```
 
----
-
 ## Organization Structure
 
-```mermaid
-flowchart TB
+Base
 
-    Base
+Layout
 
-    Layout
+Components
 
-    Components
+Utilities
 
-    Utilities
+Pages
 
-    Pages
-
-    Base --> Layout
+Base --> Layout
     Layout --> Components
     Components --> Utilities
     Utilities --> Pages
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
----
-
-# 🚫 Copy-Pasting Styles
-
----
-
-## Bad
+## 🚫 Copy-Pasting Styles
 
 ```css
 .button1 {
@@ -769,23 +592,19 @@ flowchart TB
 .button3 {
   padding: 10px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
-
----
-
-## Better
 
 ```css
 .button {
   padding: 10px;
 }
+// Example demonstrating ⚠ Common CSS Mistakes.
 ```
 
 Reuse styles.
 
----
-
-# 🚫 Ignoring Browser Support
+## 🚫 Ignoring Browser Support
 
 Some features require verification.
 
@@ -797,28 +616,22 @@ Examples:
 
 Check support before production use.
 
----
-
 ## Browser Testing Flow
 
-```mermaid
-flowchart LR
+Feature["New Feature"]
 
-    Feature["New Feature"]
+Test["Browser Testing"]
 
-    Test["Browser Testing"]
+Deploy["Production"]
 
-    Deploy["Production"]
-
-    Feature --> Test --> Deploy
+Feature --> Test --> Deploy
 ```
 
----
-
-# 🧠 Quick Cheat Sheet
+## Quick Cheat Sheet
 
 ❌ Avoid:
 
+/* Basic example showing the core idea. */
 ```css
 !important
 
@@ -835,10 +648,9 @@ Absolute Positioning
 Width Animations
 ```
 
----
-
 ✅ Prefer:
 
+/* Basic example showing the core idea. */
 ```css
 Classes
 
@@ -857,9 +669,7 @@ Responsive Units
 Component-Based CSS
 ```
 
----
-
-# ✅ Best Practices
+## ✅ Best Practices
 
 - Use classes instead of IDs.
 - Keep selectors simple.
@@ -872,9 +682,7 @@ Component-Based CSS
 - Optimize animations using transforms.
 - Keep accessibility in mind.
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - Most CSS bugs come from a small set of common mistakes.
 - Avoid specificity wars and deep selectors.

@@ -1,4 +1,4 @@
-# 🔐 What is Web Storage API?
+# What is Web Storage API?
 
 The **Web Storage API** provides a way for web applications to store data in the
 browser **locally**, **persistently**, and **without involving a server**.
@@ -18,10 +18,6 @@ It has two main types:
 - Avoid unnecessary network requests.
 - Improve performance for single-page applications (SPAs).
 
----
-
-## 📦 `localStorage` – Persistent Storage
-
 ### ✅ Key Features:
 
 - Data **never expires** unless you remove it.
@@ -29,6 +25,7 @@ It has two main types:
 
 ### 🔧 Usage:
 
+// Example demonstrating What is Web Storage API?.
 ```js
 // Store data
 localStorage.setItem('username', 'Ravi');
@@ -49,17 +46,12 @@ localStorage.clear();
 - User preferences (dark mode, language)
 - Caching API responses (if not sensitive)
 
----
-
-## 📦 `sessionStorage` – Session-based Storage
-
-### ✅ Key Features:
+## `sessionStorage` – Session-based Storage
 
 - Data is cleared **when the tab or window is closed**.
 - Not shared across tabs (even of same origin).
 
-### 🔧 Usage:
-
+// Example demonstrating What is Web Storage API?.
 ```js
 // Store data
 sessionStorage.setItem('tempToken', '123abc');
@@ -74,15 +66,11 @@ sessionStorage.removeItem('tempToken');
 sessionStorage.clear();
 ```
 
-### ✅ Use Cases:
-
 - Temporary form state
 - OTP or auth token for one-time use
 - Tab-specific app state
 
----
-
-## 🧪 Comparison: `localStorage` vs `sessionStorage`
+## Comparison: `localStorage` vs `sessionStorage`
 
 | Feature            | `localStorage`         | `sessionStorage`        |
 | ------------------ | ---------------------- | ----------------------- |
@@ -92,14 +80,13 @@ sessionStorage.clear();
 | Use Case           | Auth, preferences      | Temporary form/session  |
 | Capacity (approx.) | \~5–10MB               | \~5MB                   |
 
----
-
-## ⚠️ Limitations of Web Storage
+## ⚠ Limitations of Web Storage
 
 - Not suitable for storing **sensitive data** (not encrypted).
 - **Synchronous API** – can block main thread.
 - Can't store complex objects directly (you need to stringify).
 
+// Example demonstrating What is Web Storage API?.
 ```js
 const user = { name: 'Ravi', age: 25 };
 localStorage.setItem('user', JSON.stringify(user));
@@ -107,8 +94,6 @@ localStorage.setItem('user', JSON.stringify(user));
 const retrievedUser = JSON.parse(localStorage.getItem('user'));
 console.log(retrievedUser.name); // 'Ravi'
 ```
-
----
 
 ## 🆚 vs Other Storage Options
 
@@ -119,12 +104,11 @@ console.log(retrievedUser.name); // 'Ravi'
 | `Cookies`        | Configurable | \~4KB    | Server & client          | Session ID, CSRF tokens   |
 | `IndexedDB`      | Persistent   | GBs      | Asynchronous API         | Large structured data     |
 
----
-
 ## ✅ Best Practices
 
 - Always use `try...catch` when using local/sessionStorage:
 
+// Example demonstrating What is Web Storage API?.
 ```js
 try {
   localStorage.setItem('key', 'value');
@@ -137,15 +121,12 @@ try {
 
 - Don’t use it for:
 
-  - Storing passwords or sensitive info.
+- Storing passwords or sensitive info.
   - Large data storage (use IndexedDB instead).
-
----
-
-## 💡 Real Example
 
 ### Theme Toggle (Dark/Light Mode using localStorage)
 
+// Example demonstrating What is Web Storage API?.
 ```js
 // Set initial theme
 const savedTheme = localStorage.getItem('theme');
@@ -159,3 +140,28 @@ function toggleTheme() {
   localStorage.setItem('theme', newTheme);
 }
 ```
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

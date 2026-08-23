@@ -1,6 +1,6 @@
 # 🔰 Arrow Functions: How They Inherit `this` from Lexical Scope
 
-## 📝 Definition
+## Definition
 
 **Arrow functions** in JavaScript are a shorter way to write functions. They
 **don't have their own `this`**; instead, they **inherit `this` from the
@@ -14,10 +14,9 @@ In traditional functions, `this` can behave unexpectedly (especially in
 callbacks). Arrow functions solve this by keeping the context (`this`)
 consistent.
 
----
-
 ## 🔧 Syntax / Structure
 
+// Basic example showing the core idea.
 ```javascript
 // Traditional function
 function greet() {
@@ -30,12 +29,9 @@ const greet = () => 'Hello!';
 
 💡 Notice: No `function` keyword and optional parentheses for one parameter.
 
----
+### Basic Example
 
-## 💡 Examples
-
-### 📌 Basic Example
-
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Alice',
@@ -52,19 +48,18 @@ person.greet();
 🔍 **Why it works:** Arrow function inside `setTimeout` uses `this` from the
 surrounding `greet` function.
 
----
-
 ### 🌍 Real-World Use Case
 
 **React Component Event Handler**
 
+// Basic example showing the core idea.
 ```javascript
 class Button extends React.Component {
   handleClick = () => {
     console.log('Clicked!', this); // 'this' refers to the component instance
   };
 
-  render() {
+render() {
     return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
@@ -72,8 +67,6 @@ class Button extends React.Component {
 
 👆 Here, using an arrow function ensures that `this` correctly refers to the
 class component, **without needing to bind it manually** in the constructor.
-
----
 
 ## ✅ When / Where to Use It
 
@@ -85,14 +78,13 @@ Use arrow functions when:
   `.filter()`).
 - You want cleaner, more concise code.
 
----
-
-## ⚠️ Gotchas / Tips
+## ⚠ Gotchas / Tips
 
 - ❌ **Don’t use arrow functions for object methods** if you need dynamic
   `this`:
 
-  ```javascript
+// Basic example showing the core idea.
+```javascript
   const obj = {
     name: 'Bob',
     speak: () => {
@@ -109,3 +101,32 @@ Use arrow functions when:
 
 - 🧠 Remember: arrow functions inherit `this` from the **lexical scope**, i.e.,
   the place in the code where the function is written—not called.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
+
+## Final Understanding Check
+
+Before considering **🔰 Arrow Functions: How They Inherit `this` from Lexical Scope** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

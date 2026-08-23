@@ -1,13 +1,12 @@
-# 🚀 **MERN Stack System Design**
+# MERN Stack System Design
 
 _The Complete Guide to Building Production-Ready MERN Applications_
 
 ---
 
-## 📌 **1. MERN Stack Overview**
+### What is MERN?
 
-### **What is MERN?**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[MERN Stack] --> B[MongoDB]
@@ -15,14 +14,15 @@ graph TD
     A --> D[React.js]
     A --> E[Node.js]
 
-    B --> F[(NoSQL Database)]
+B --> F[(NoSQL Database)]
     C --> G[Backend Framework]
     D --> H[Frontend Library]
     E --> I[JavaScript Runtime]
 ```
 
-### **Full Stack Flow**
+### Full Stack Flow
 
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -30,7 +30,7 @@ sequenceDiagram
     participant E as Express (Backend)
     participant M as MongoDB (Database)
 
-    U->>R: User Action (Click/Input)
+U->>R: User Action (Click/Input)
     R->>E: API Request (Axios/Fetch)
     E->>M: Query/Update
     M->>E: Data Response
@@ -38,7 +38,7 @@ sequenceDiagram
     R->>U: Update UI
 ```
 
-### **MERN vs Other Stacks**
+### MERN vs Other Stacks
 
 | Stack        | Frontend   | Backend        | Database   | Best For               |
 | ------------ | ---------- | -------------- | ---------- | ---------------------- |
@@ -48,12 +48,9 @@ sequenceDiagram
 | **PERN**     | React      | Node + Express | PostgreSQL | Relational data        |
 | **JAMstack** | React/Next | Serverless     | Various    | Static + Dynamic sites |
 
----
+### Recommended Folder Structure
 
-## 🏗️ **2. Project Architecture**
-
-### **Recommended Folder Structure**
-
+// Example demonstrating MERN Stack System Design.
 ```
 mern-app/
 ├── client/                     # React Frontend
@@ -129,27 +126,25 @@ mern-app/
 └── README.md
 ```
 
----
+### Data Modeling Patterns
 
-## 🗄️ **3. MongoDB Design**
-
-### **Data Modeling Patterns**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[MongoDB Patterns] --> B[Embedding]
     A --> C[Referencing]
     A --> D[Hybrid]
 
-    B --> E[Sub-documents]
+B --> E[Sub-documents]
     C --> F[ObjectId references]
     D --> G[Partial embedding]
 ```
 
-### **Schema Design Examples**
+### Schema Design Examples
 
 **Embedded Approach (Posts with Comments)**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Good for one-to-many where child is small
 const postSchema = new mongoose.Schema({
@@ -170,6 +165,7 @@ const postSchema = new mongoose.Schema({
 
 **Referenced Approach (Users with Orders)**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Good for one-to-many where child is large
 const userSchema = new mongoose.Schema({
@@ -194,8 +190,9 @@ const orderSchema = new mongoose.Schema({
 });
 ```
 
-### **Indexing Strategy**
+### Indexing Strategy
 
+// Basic example showing the core idea.
 ```javascript
 // Single Field Index
 userSchema.index({ email: 1 }, { unique: true });
@@ -213,8 +210,9 @@ locationSchema.index({ coordinates: '2dsphere' });
 sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 });
 ```
 
-### **MongoDB Schema Design Tips**
+### MongoDB Schema Design Tips
 
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Use embedding for one-to-one relationships
 ✅ Use referencing for one-to-many/many-to-many
@@ -228,31 +226,28 @@ sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 });
 ✅ Set validation rules at schema level
 ```
 
----
+### Component Design Pattern
 
-## 🎨 **4. Frontend Architecture (React)**
-
-### **Component Design Pattern**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[App] --> B[Layout]
     A --> C[Routes]
 
-    B --> D[Header]
+B --> D[Header]
     B --> E[Sidebar]
     B --> F[Footer]
     B --> G[Content]
 
-    G --> H[Container Components]
+G --> H[Container Components]
     H --> I[Presentational Components]
 
-    H --> J[Data Fetching]
+H --> J[Data Fetching]
     H --> K[State Management]
     I --> L[Pure UI]
 ```
 
-### **React Component Types**
+### React Component Types
 
 | Component Type     | Description       | Example      | State |
 | ------------------ | ----------------- | ------------ | ----- |
@@ -261,15 +256,16 @@ graph TD
 | **Higher-Order**   | Wraps components  | withAuth     | ❌    |
 | **Hooks-based**    | Logic in hooks    | useFetch     | ✅    |
 
-### **Custom Hooks Examples**
+### Custom Hooks Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Authentication Hook
 export const useAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       // Verify token
@@ -282,18 +278,18 @@ export const useAuth = () => {
     }
   }, []);
 
-  const login = async (email, password) => {
+const login = async (email, password) => {
     const res = await api.post('/auth/login', { email, password });
     localStorage.setItem('token', res.data.token);
     setUser(res.data.user);
   };
 
-  const logout = () => {
+const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
   };
 
-  return { user, loading, login, logout };
+return { user, loading, login, logout };
 };
 
 // ✅ Fetch Hook with Caching
@@ -303,7 +299,7 @@ export const useFetch = (url, options = {}) => {
   const [error, setError] = useState(null);
   const cache = useRef({});
 
-  useEffect(() => {
+useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -314,14 +310,14 @@ export const useFetch = (url, options = {}) => {
           return;
         }
 
-        const response = await fetch(url, {
+const response = await fetch(url, {
           headers: { 'Content-Type': 'application/json' },
           ...options,
         });
 
-        if (!response.ok) throw new Error('Network response was not ok');
+if (!response.ok) throw new Error('Network response was not ok');
 
-        const result = await response.json();
+const result = await response.json();
         cache.current[url] = result;
         setData(result);
       } catch (err) {
@@ -331,19 +327,16 @@ export const useFetch = (url, options = {}) => {
       }
     };
 
-    fetchData();
+fetchData();
   }, [url, options]);
 
-  return { data, loading, error, refetch: () => fetchData() };
+return { data, loading, error, refetch: () => fetchData() };
 };
 ```
 
----
+### State Management Comparison
 
-## 🔄 **5. State Management**
-
-### **State Management Comparison**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[State Management] --> B[Local State]
@@ -351,13 +344,13 @@ graph TD
     A --> D[Server State]
     A --> E[URL State]
 
-    B --> F[useState/useReducer]
+B --> F[useState/useReducer]
     C --> G[Context API/Redux]
     D --> H[React Query/SWR]
     E --> I[React Router]
 ```
 
-### **When to Use What**
+### When to Use What
 
 | Tool              | Use Case             | Pros                    | Cons               |
 | ----------------- | -------------------- | ----------------------- | ------------------ |
@@ -367,8 +360,9 @@ graph TD
 | **React Query**   | Server data          | Caching, retry, refetch | Learning curve     |
 | **Zustand**       | Simple global state  | Minimal code            | New ecosystem      |
 
-### **Redux Toolkit Setup**
+### Redux Toolkit Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ store.js
 import { configureStore } from '@reduxjs/toolkit';
@@ -438,12 +432,9 @@ export const { logout, setUser } = authSlice.actions;
 export default authSlice.reducer;
 ```
 
----
+### API Client Setup
 
-## 🔗 **6. API Layer**
-
-### **API Client Setup**
-
+// Basic example showing the core idea.
 ```javascript
 // ✅ api/axiosConfig.js
 import axios from 'axios';
@@ -509,12 +500,9 @@ export const productAPI = {
 };
 ```
 
----
+### Server Setup
 
-## 🖥️ **7. Backend Architecture (Express)**
-
-### **Server Setup**
-
+// Basic example showing the core idea.
 ```javascript
 // ✅ server.js
 import express from 'express';
@@ -571,8 +559,9 @@ app.listen(PORT, () => {
 export default app;
 ```
 
-### **Mongoose Model Examples**
+### Mongoose Model Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ models/User.js
 import mongoose from 'mongoose';
@@ -636,7 +625,7 @@ const userSchema = new mongoose.Schema(
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
 
-  const salt = await bcrypt.genSalt(10);
+const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
@@ -659,8 +648,9 @@ userSchema.virtual('fullName').get(function () {
 export default mongoose.model('User', userSchema);
 ```
 
-### **Controller Example**
+### Controller Example
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ controllers/authController.js
 import jwt from 'jsonwebtoken';
@@ -686,25 +676,25 @@ export const register = async (req, res, next) => {
       throw new AppError(error.details[0].message, 400);
     }
 
-    const { name, email, password } = req.body;
+const { name, email, password } = req.body;
 
-    // Check if user exists
+// Check if user exists
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     if (existingUser) {
       throw new AppError('User already exists', 409);
     }
 
-    // Create user
+// Create user
     const user = await User.create({
       name,
       email: email.toLowerCase(),
       password,
     });
 
-    // Generate token
+// Generate token
     const token = generateToken(user._id);
 
-    // Send welcome email (async)
+// Send welcome email (async)
     await sendEmail({
       to: user.email,
       subject: 'Welcome to Our App!',
@@ -712,10 +702,10 @@ export const register = async (req, res, next) => {
       context: { name: user.name },
     });
 
-    // Remove password from response
+// Remove password from response
     user.password = undefined;
 
-    res.status(201).json({
+res.status(201).json({
       success: true,
       data: { user, token },
     });
@@ -732,34 +722,31 @@ export const login = async (req, res, next) => {
       throw new AppError(error.details[0].message, 400);
     }
 
-    const { email, password } = req.body;
+const { email, password } = req.body;
 
-    // Find user with password
+// Find user with password
     const user = await User.findOne({ email: email.toLowerCase() }).select(
       '+password'
     );
 
-    if (!user) {
+if (!user) {
       throw new AppError('Invalid credentials', 401);
     }
 
-    // Check password
+// Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       throw new AppError('Invalid credentials', 401);
     }
 
-    // Update last login
+// Update last login
     user.lastLogin = new Date();
     await user.save({ validateBeforeSave: false });
 
-    // Generate token
-    const token = generateToken(user._id);
-
-    // Remove password
+// Remove password
     user.password = undefined;
 
-    res.status(200).json({
+res.status(200).json({
       success: true,
       data: { user, token },
     });
@@ -775,7 +762,7 @@ export const getMe = async (req, res, next) => {
       throw new AppError('User not found', 404);
     }
 
-    res.status(200).json({
+res.status(200).json({
       success: true,
       data: user,
     });
@@ -793,8 +780,9 @@ export const logout = async (req, res) => {
 };
 ```
 
-### **Middleware Examples**
+### Middleware Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ middleware/auth.js
 import jwt from 'jsonwebtoken';
@@ -805,30 +793,30 @@ export const protect = async (req, res, next) => {
   try {
     let token;
 
-    // Get token from header
+// Get token from header
     if (req.headers.authorization?.startsWith('Bearer')) {
       token = req.headers.authorization.split(' ')[1];
     }
 
-    if (!token) {
+if (!token) {
       throw new AppError('You are not logged in', 401);
     }
 
-    // Verify token
+// Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Check if user still exists
+// Check if user still exists
     const user = await User.findById(decoded.id);
     if (!user) {
       throw new AppError('User no longer exists', 401);
     }
 
-    // Check if user is active
+// Check if user is active
     if (!user.isActive || user.deletedAt) {
       throw new AppError('User account is disabled', 401);
     }
 
-    req.user = user;
+req.user = user;
     next();
   } catch (error) {
     next(error);
@@ -852,23 +840,20 @@ export const validate = (validations) => {
   return async (req, res, next) => {
     await Promise.all(validations.map((validation) => validation.run(req)));
 
-    const errors = validationResult(req);
+const errors = validationResult(req);
     if (errors.isEmpty()) {
       return next();
     }
 
-    const extractedErrors = errors.array().map((err) => err.msg);
+const extractedErrors = errors.array().map((err) => err.msg);
     throw new AppError(extractedErrors.join(', '), 400);
   };
 };
 ```
 
----
+### Database Connection
 
-## 🗂️ **8. MongoDB Connection & Optimization**
-
-### **Database Connection**
-
+// Basic example showing the core idea.
 ```javascript
 // ✅ config/database.js
 import mongoose from 'mongoose';
@@ -884,18 +869,18 @@ const connectDB = async () => {
       family: 4, // Use IPv4
     });
 
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
 
-    // Handle connection events
+// Handle connection events
     mongoose.connection.on('error', (err) => {
       console.error('MongoDB connection error:', err);
     });
 
-    mongoose.connection.on('disconnected', () => {
+mongoose.connection.on('disconnected', () => {
       console.warn('MongoDB disconnected');
     });
 
-    process.on('SIGINT', async () => {
+process.on('SIGINT', async () => {
       await mongoose.connection.close();
       console.log('MongoDB connection closed due to app termination');
       process.exit(0);
@@ -909,8 +894,9 @@ const connectDB = async () => {
 export default connectDB;
 ```
 
-### **Query Optimization Tips**
+### Query Optimization Tips
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Use .lean() for read-only operations
 const users = await User.find({ active: true }).lean();
@@ -945,12 +931,9 @@ const result = await User.find({ email: 'test@example.com' }).explain(
 console.log(result);
 ```
 
----
+### JWT Authentication Flow
 
-## 🔐 **9. Authentication Flow**
-
-### **JWT Authentication Flow**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -958,7 +941,7 @@ sequenceDiagram
     participant S as Server (Express)
     participant D as Database
 
-    U->>C: Enter credentials
+U->>C: Enter credentials
     C->>S: POST /api/auth/login
     S->>D: Find user by email
     D->>S: User data
@@ -968,7 +951,7 @@ sequenceDiagram
     C->>C: Store token (localStorage)
     C->>C: Redirect to dashboard
 
-    C->>S: GET /api/users/me (with token)
+C->>S: GET /api/users/me (with token)
     S->>S: Verify JWT
     S->>D: Find user by ID
     D->>S: User data
@@ -976,8 +959,9 @@ sequenceDiagram
     C->>U: Show dashboard
 ```
 
-### **Protected Route Component**
+### Protected Route Component
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ components/ProtectedRoute.jsx
 import { Navigate, Outlet } from 'react-router-dom';
@@ -986,19 +970,19 @@ import { useAuth } from '../hooks/useAuth';
 const ProtectedRoute = ({ allowedRoles = [] }) => {
   const { user, loading } = useAuth();
 
-  if (loading) {
+if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (!user) {
+if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
+if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  return <Outlet />;
+return <Outlet />;
 };
 
 // Usage in App.jsx
@@ -1014,12 +998,9 @@ const ProtectedRoute = ({ allowedRoles = [] }) => {
 </Routes>;
 ```
 
----
+### WebSocket Setup with Socket.io
 
-## 🔄 **10. Real-time Features**
-
-### **WebSocket Setup with Socket.io**
-
+// Basic example showing the core idea.
 ```javascript
 // ✅ server.js (Add WebSocket support)
 import { Server } from 'socket.io';
@@ -1039,7 +1020,7 @@ io.use((socket, next) => {
   const token = socket.handshake.auth.token;
   if (!token) return next(new Error('Authentication required'));
 
-  try {
+try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     socket.userId = decoded.id;
     next();
@@ -1051,17 +1032,17 @@ io.use((socket, next) => {
 io.on('connection', (socket) => {
   console.log(`User ${socket.userId} connected`);
 
-  // Join user's room
+// Join user's room
   socket.join(`user:${socket.userId}`);
 
-  // Handle messages
+// Handle messages
   socket.on('message', (data) => {
     // Save to database
     // Broadcast to room
     io.to(`user:${data.recipientId}`).emit('message', data);
   });
 
-  // Handle typing indicator
+// Handle typing indicator
   socket.on('typing', (data) => {
     socket.to(`user:${data.recipientId}`).emit('typing', {
       userId: socket.userId,
@@ -1069,7 +1050,7 @@ io.on('connection', (socket) => {
     });
   });
 
-  // Handle disconnection
+// Handle disconnection
   socket.on('disconnect', () => {
     console.log(`User ${socket.userId} disconnected`);
   });
@@ -1093,33 +1074,33 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    const newSocket = io(process.env.REACT_APP_SOCKET_URL, {
+const newSocket = io(process.env.REACT_APP_SOCKET_URL, {
       auth: { token },
       transports: ['websocket'],
     });
 
-    newSocket.on('connect', () => {
+newSocket.on('connect', () => {
       setIsConnected(true);
       console.log('Socket connected');
     });
 
-    newSocket.on('disconnect', () => {
+newSocket.on('disconnect', () => {
       setIsConnected(false);
       console.log('Socket disconnected');
     });
 
-    setSocket(newSocket);
+setSocket(newSocket);
 
-    return () => {
+return () => {
       newSocket.close();
     };
   }, []);
 
-  return (
+return (
     <SocketContext.Provider value={{ socket, isConnected }}>
       {children}
     </SocketContext.Provider>
@@ -1127,33 +1108,31 @@ export const SocketProvider = ({ children }) => {
 };
 ```
 
----
+### MERN Performance Checklist
 
-## 📊 **11. Performance Optimization**
-
-### **MERN Performance Checklist**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[Performance] --> B[Frontend]
     A --> C[Backend]
     A --> D[Database]
 
-    B --> E[Code Splitting]
+B --> E[Code Splitting]
     B --> F[Lazy Loading]
     B --> G[Memoization]
 
-    C --> H[Caching]
+C --> H[Caching]
     C --> I[Compression]
     C --> J[PM2 Cluster]
 
-    D --> K[Indexing]
+D --> K[Indexing]
     D --> L[Aggregation]
     D --> M[Connection Pool]
 ```
 
-### **Frontend Optimization**
+### Frontend Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Lazy Loading Routes
 import { lazy, Suspense } from 'react';
@@ -1178,11 +1157,11 @@ const ExpensiveComponent = ({ data }) => {
     return data.filter((item) => item.active).sort((a, b) => a.value - b.value);
   }, [data]);
 
-  const handleClick = useCallback((id) => {
+const handleClick = useCallback((id) => {
     console.log('Clicked:', id);
   }, []);
 
-  return <div>{/* Render processedData */}</div>;
+return <div>{/* Render processedData */}</div>;
 };
 
 // ✅ Image Optimization
@@ -1200,8 +1179,9 @@ const OptimizedImage = ({ src, alt }) => (
 );
 ```
 
-### **Backend Optimization**
+### Backend Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Caching with Redis
 import Redis from 'ioredis';
@@ -1218,20 +1198,20 @@ export const cache = (keyPrefix, ttl = 3600) => {
       req.query
     )}`;
 
-    try {
+try {
       const cachedData = await redis.get(key);
       if (cachedData) {
         return res.json(JSON.parse(cachedData));
       }
 
-      // Store original send function
+// Store original send function
       const originalSend = res.json;
       res.json = function (data) {
         redis.setex(key, ttl, JSON.stringify(data));
         originalSend.call(this, data);
       };
 
-      next();
+next();
     } catch (err) {
       next();
     }
@@ -1257,27 +1237,25 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 ```
 
----
+### Testing Pyramid (MERN)
 
-## 🧪 **12. Testing Strategy**
-
-### **Testing Pyramid (MERN)**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[E2E Tests] --> B[Integration Tests]
     B --> C[Unit Tests]
 
-    C --> D[Component Tests]
+C --> D[Component Tests]
     C --> E[API Tests]
     B --> F[Database Tests]
     A --> G[Cypress]
 ```
 
-### **Test Examples**
+### Test Examples
 
 **React Component Test**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ client/components/__tests__/Login.test.jsx
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
@@ -1295,12 +1273,12 @@ describe('Login Component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
+expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
   });
 
-  it('handles form submission', async () => {
+it('handles form submission', async () => {
     const mockLogin = jest.fn();
     render(
       <MemoryRouter>
@@ -1310,7 +1288,7 @@ describe('Login Component', () => {
       </MemoryRouter>
     );
 
-    fireEvent.change(screen.getByLabelText(/email/i), {
+fireEvent.change(screen.getByLabelText(/email/i), {
       target: { value: 'test@example.com' },
     });
     fireEvent.change(screen.getByLabelText(/password/i), {
@@ -1318,7 +1296,7 @@ describe('Login Component', () => {
     });
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
-    await waitFor(() => {
+await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith('test@example.com', 'password123');
     });
   });
@@ -1327,6 +1305,7 @@ describe('Login Component', () => {
 
 **Express API Test**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/tests/auth.test.js
 import request from 'supertest';
@@ -1339,16 +1318,16 @@ describe('Auth API', () => {
     await mongoose.connect(process.env.TEST_DB_URI);
   });
 
-  afterAll(async () => {
+afterAll(async () => {
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
   });
 
-  beforeEach(async () => {
+beforeEach(async () => {
     await User.deleteMany({});
   });
 
-  describe('POST /api/auth/register', () => {
+describe('POST /api/auth/register', () => {
     it('should register a new user', async () => {
       const res = await request(app).post('/api/auth/register').send({
         name: 'Test User',
@@ -1356,30 +1335,30 @@ describe('Auth API', () => {
         password: 'password123',
       });
 
-      expect(res.statusCode).toBe(201);
+expect(res.statusCode).toBe(201);
       expect(res.body.success).toBe(true);
       expect(res.body.data.user).toHaveProperty('email', 'test@example.com');
     });
 
-    it('should not register duplicate user', async () => {
+it('should not register duplicate user', async () => {
       await User.create({
         name: 'Test User',
         email: 'test@example.com',
         password: 'password123',
       });
 
-      const res = await request(app).post('/api/auth/register').send({
+const res = await request(app).post('/api/auth/register').send({
         name: 'Test User',
         email: 'test@example.com',
         password: 'password123',
       });
 
-      expect(res.statusCode).toBe(409);
+expect(res.statusCode).toBe(409);
       expect(res.body.message).toContain('User already exists');
     });
   });
 
-  describe('POST /api/auth/login', () => {
+describe('POST /api/auth/login', () => {
     beforeEach(async () => {
       await User.create({
         name: 'Test User',
@@ -1388,36 +1367,33 @@ describe('Auth API', () => {
       });
     });
 
-    it('should login with valid credentials', async () => {
+it('should login with valid credentials', async () => {
       const res = await request(app).post('/api/auth/login').send({
         email: 'test@example.com',
         password: 'password123',
       });
 
-      expect(res.statusCode).toBe(200);
+expect(res.statusCode).toBe(200);
       expect(res.body.success).toBe(true);
       expect(res.body.data).toHaveProperty('token');
     });
 
-    it('should reject invalid credentials', async () => {
+it('should reject invalid credentials', async () => {
       const res = await request(app).post('/api/auth/login').send({
         email: 'test@example.com',
         password: 'wrongpassword',
       });
 
-      expect(res.statusCode).toBe(401);
+expect(res.statusCode).toBe(401);
       expect(res.body.success).toBe(false);
     });
   });
 });
 ```
 
----
+### Deployment Options
 
-## 🚀 **13. Deployment Strategy**
-
-### **Deployment Options**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[Deployment] --> B[VPS]
@@ -1425,16 +1401,17 @@ graph TD
     A --> D[Serverless]
     A --> E[Container]
 
-    B --> F[Digital Ocean, AWS EC2]
+B --> F[Digital Ocean, AWS EC2]
     C --> G[Heroku, Railway]
     D --> H[Vercel + MongoDB Atlas]
     E --> I[Docker + Kubernetes]
 ```
 
-### **Docker Setup**
+### Docker Setup
 
+// Example demonstrating MERN Stack System Design.
 ```dockerfile
-# client/Dockerfile
+## client/Dockerfile
 FROM node:18-alpine as build
 WORKDIR /app
 COPY package*.json ./
@@ -1447,7 +1424,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
-# server/Dockerfile
+## server/Dockerfile
 FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -1456,7 +1433,7 @@ COPY . .
 EXPOSE 5000
 CMD ["node", "server.js"]
 
-# docker-compose.yml
+## docker-compose.yml
 version: '3.8'
 services:
   mongodb:
@@ -1471,14 +1448,14 @@ services:
     ports:
       - "27017:27017"
 
-  redis:
+redis:
     image: redis:7-alpine
     container_name: mern_redis
     restart: always
     ports:
       - "6379:6379"
 
-  server:
+server:
     build: ./server
     container_name: mern_server
     restart: always
@@ -1493,7 +1470,7 @@ services:
       - mongodb
       - redis
 
-  client:
+client:
     build: ./client
     container_name: mern_client
     ports:
@@ -1505,46 +1482,43 @@ volumes:
   mongo_data:
 ```
 
-### **Environment Variables**
+### Environment Variables
 
+// Example demonstrating MERN Stack System Design.
 ```env
-# .env.example
-# Server
+## Server
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/mern_app
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRES_IN=7d
 
-# Redis
+## Redis
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=
 
-# Email
+## Email
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
 
-# AWS (for file uploads)
+## AWS (for file uploads)
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 AWS_REGION=us-east-1
 AWS_BUCKET_NAME=your_bucket
 
-# Frontend
+## Frontend
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_SOCKET_URL=ws://localhost:5000
 REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
 ```
 
----
+### Logging Setup
 
-## 📊 **14. Monitoring & Logging**
-
-### **Logging Setup**
-
+// Basic example showing the core idea.
 ```javascript
 // ✅ config/logger.js
 import winston from 'winston';
@@ -1594,8 +1568,9 @@ export const logRequest = (req, res, next) => {
 };
 ```
 
-### **Metrics with Prometheus**
+### Metrics with Prometheus
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/metrics.js
 import prometheus from 'prom-client';
@@ -1629,18 +1604,18 @@ const activeConnections = new prometheus.Gauge({
 export const metricsMiddleware = (req, res, next) => {
   const start = Date.now();
 
-  res.on('finish', () => {
+res.on('finish', () => {
     const duration = (Date.now() - start) / 1000;
     const route = req.route?.path || req.url;
 
-    httpRequestDuration
+httpRequestDuration
       .labels(req.method, route, res.statusCode)
       .observe(duration);
 
-    httpRequestsTotal.labels(req.method, route, res.statusCode).inc();
+httpRequestsTotal.labels(req.method, route, res.statusCode).inc();
   });
 
-  next();
+next();
 };
 
 // Metrics endpoint
@@ -1650,14 +1625,11 @@ app.get('/metrics', async (req, res) => {
 });
 ```
 
----
+### Security Checklist
 
-## 🔒 **15. Security Best Practices**
-
-### **Security Checklist**
-
+# Example configuration for the topic.
 ```yaml
-# ✅ MERN Security Checklist
+## ✅ MERN Security Checklist
 Authentication & Authorization:
   - Use bcrypt for password hashing
   - Implement JWT with expiry
@@ -1697,8 +1669,9 @@ Monitoring:
   - Implement audit trails
 ```
 
-### **Helmet.js Configuration**
+### Helmet.js Configuration
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Enhanced Helmet Setup
 import helmet from 'helmet';
@@ -1737,32 +1710,30 @@ app.use(
 );
 ```
 
----
+### Scalability Strategy
 
-## 📈 **16. Scaling MERN Applications**
-
-### **Scalability Strategy**
-
+<!-- Visual flow for MERN Stack System Design. -->
 ```mermaid
 graph TD
     A[MERN Scaling] --> B[Vertical]
     A --> C[Horizontal]
 
-    B --> D[Upgrade Server]
+B --> D[Upgrade Server]
     C --> E[Load Balancer]
     C --> F[Microservices]
 
-    E --> G[Multiple Node Instances]
+E --> G[Multiple Node Instances]
     F --> H[Split Services]
 
-    G --> I[PM2 Cluster]
+G --> I[PM2 Cluster]
     G --> J[Docker Swarm]
     H --> K[API Gateway]
     H --> L[Service Mesh]
 ```
 
-### **Production PM2 Setup**
+### Production PM2 Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ ecosystem.config.js
 module.exports = {
@@ -1792,10 +1763,11 @@ module.exports = {
 // Reload: pm2 reload ecosystem.config.js
 ```
 
-### **Load Balancer (Nginx)**
+### Load Balancer (Nginx)
 
+// Example demonstrating MERN Stack System Design.
 ```nginx
-# nginx.conf
+## nginx.conf
 upstream mern_backend {
     least_conn;
     server localhost:5000;
@@ -1808,7 +1780,7 @@ server {
     listen 80;
     server_name yourdomain.com;
 
-    # Redirect to HTTPS
+## Redirect to HTTPS
     return 301 https://$server_name$request_uri;
 }
 
@@ -1816,10 +1788,10 @@ server {
     listen 443 ssl http2;
     server_name yourdomain.com;
 
-    ssl_certificate /path/to/cert.pem;
+ssl_certificate /path/to/cert.pem;
     ssl_certificate_key /path/to/key.pem;
 
-    # Static files (React)
+## Static files (React)
     location / {
         root /var/www/client/build;
         try_files $uri $uri/ /index.html;
@@ -1827,7 +1799,7 @@ server {
         add_header Cache-Control "public, immutable";
     }
 
-    # API requests
+## API requests
     location /api {
         proxy_pass http://mern_backend;
         proxy_http_version 1.1;
@@ -1839,20 +1811,20 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
 
-        # Timeouts
+## Timeouts
         proxy_connect_timeout 60s;
         proxy_send_timeout 60s;
         proxy_read_timeout 60s;
     }
 
-    # Static assets
+## Static assets
     location /static {
         alias /var/www/client/build/static;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
 
-    # Gzip compression
+## Gzip compression
     gzip on;
     gzip_vary on;
     gzip_min_length 1024;
@@ -1862,11 +1834,7 @@ server {
 }
 ```
 
----
-
-## 🎯 **17. Decision Matrix**
-
-### **MERN vs Alternatives**
+### MERN vs Alternatives
 
 | Requirement               | MERN                  | Alternatives             |
 | ------------------------- | --------------------- | ------------------------ |
@@ -1879,8 +1847,9 @@ server {
 | **Microservices**         | ✅ Good               | ✅ Better (Spring Boot)  |
 | **GraphQL**               | ✅ Apollo GraphQL     | ✅ Hasura/GraphQL        |
 
-### **When to Choose MERN**
+### When to Choose MERN
 
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Building full-stack JavaScript applications
 ✅ Team has JavaScript/React expertise
@@ -1892,8 +1861,9 @@ server {
 ✅ RESTful APIs
 ```
 
-### **When NOT to Choose MERN**
+### When NOT to Choose MERN
 
+// Example demonstrating MERN Stack System Design.
 ```
 ❌ Complex relational data (Choose PostgreSQL)
 ❌ CPU-intensive processing (Choose Python/Java)
@@ -1904,12 +1874,9 @@ server {
 ❌ Strict ACID requirements (Choose SQL)
 ```
 
----
+### Essential Tools
 
-## 🔧 **18. Development Tools**
-
-### **Essential Tools**
-
+# Example configuration for the topic.
 ```yaml
 Editor & Extensions:
   - VS Code with MERN extensions
@@ -1938,8 +1905,9 @@ Performance:
   - MongoDB Profiler
 ```
 
-### **Package.json Setup**
+### Package.json Setup
 
+// Example demonstrating MERN Stack System Design.
 ```json
 {
   "scripts": {
@@ -1965,11 +1933,7 @@ Performance:
 }
 ```
 
----
-
-## 📝 **19. Documentation Requirements**
-
-### **Documentation Checklist**
+### Documentation Checklist
 
 - [ ] Project Overview 📄
 - [ ] Setup Instructions 🚀
@@ -1984,8 +1948,9 @@ Performance:
 - [ ] Security Policy 🔐
 - [ ] Changelog 📋
 
-### **Swagger Documentation**
+### Swagger Documentation
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/config/swagger.js
 import swaggerJsdoc from 'swagger-jsdoc';
@@ -2032,12 +1997,9 @@ const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 ```
 
----
+### Best Practices Summary
 
-## 🎓 **20. Pro Tips**
-
-### **Best Practices Summary**
-
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Always use environment variables
 ✅ Implement proper error handling
@@ -2056,8 +2018,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 ✅ Implement proper security measures
 ```
 
-### **Common Pitfalls to Avoid**
+### Common Pitfalls to Avoid
 
+// Example demonstrating MERN Stack System Design.
 ```
 ❌ Not handling errors properly
 ❌ Exposing sensitive data in API responses
@@ -2073,11 +2036,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 ❌ Not having proper logging
 ```
 
----
-
-## 📊 **21. Performance Benchmarks**
-
-### **Target Metrics**
+### Target Metrics
 
 | Metric                  | Target                | How to Achieve               |
 | ----------------------- | --------------------- | ---------------------------- |
@@ -2090,14 +2049,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 | **Uptime**              | 99.9%                 | Load balancer, redundancy    |
 | **Cache Hit Ratio**     | > 80%                 | Redis caching                |
 
----
-
-## 🚀 **Final Thoughts**
+## Final Thoughts
 
 _This MERN stack cheat sheet covers everything from basic architecture to
 advanced optimization techniques. Remember:_
 
-### **Key Takeaways**
+### Key Takeaways
 
 1. **Keep it simple**: Start with basic MVC, evolve as needed
 2. **Data modeling is crucial**: Choose embedding vs referencing wisely
@@ -2108,7 +2065,7 @@ advanced optimization techniques. Remember:_
 7. **Document decisions**: ADRs help future maintainers
 8. **Scale gradually**: Vertical first, horizontal when needed
 
-### **Success Checklist**
+### Success Checklist
 
 - [ ] ✅ Architecture documented
 - [ ] ✅ Security practices implemented

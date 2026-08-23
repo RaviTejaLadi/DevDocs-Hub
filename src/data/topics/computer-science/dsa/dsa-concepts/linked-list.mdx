@@ -1,6 +1,6 @@
 # 🔗 Complete Guide to Linked Lists in JavaScript
 
-## 🎯 What are Linked Lists?
+## What are Linked Lists?
 
 Linked Lists are data structures where elements (called nodes) are stored in a
 sequence, but unlike arrays, they don't need to be stored in consecutive memory
@@ -11,8 +11,6 @@ Think of it like a treasure hunt where each clue tells you where to find the
 next clue! 🗺️
 
 ---
-
-## 📝 Singly Linked Lists
 
 ### Definition
 
@@ -35,6 +33,7 @@ end of the list.
 
 ### Syntax/Implementation
 
+// Basic example showing the core idea.
 ```javascript
 class Node {
   constructor(data) {
@@ -53,6 +52,7 @@ class SinglyLinkedList {
 
 ### Visualization
 
+<!-- Visual flow for 🔗 Complete Guide to Linked Lists in JavaScript. -->
 ```mermaid
 flowchart LR
   H["Head"] --> N1["Node 1<br/>Data | Next"]
@@ -68,21 +68,13 @@ caboose has no car after it (null).
 
 ### Code Example
 
-```javascript
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
 class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
   }
 
-  // Add element to the beginning
+// Add element to the beginning
   prepend(data) {
     const newNode = new Node(data);
     newNode.next = this.head;
@@ -90,11 +82,11 @@ class SinglyLinkedList {
     this.size++;
   }
 
-  // Add element to the end
+// Add element to the end
   append(data) {
     const newNode = new Node(data);
 
-    if (!this.head) {
+if (!this.head) {
       this.head = newNode;
     } else {
       let current = this.head;
@@ -106,11 +98,11 @@ class SinglyLinkedList {
     this.size++;
   }
 
-  // Display the list
+// Display the list
   display() {
     if (!this.head) return 'List is empty';
 
-    let result = [];
+let result = [];
     let current = this.head;
     while (current) {
       result.push(current.data);
@@ -126,6 +118,7 @@ list.append('Apple');
 list.append('Banana');
 list.prepend('Orange');
 console.log(list.display()); // Orange → Apple → Banana
+// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
 
 ### Common Pitfalls
@@ -136,17 +129,11 @@ console.log(list.display()); // Orange → Apple → Banana
   JavaScript)
 - ❌ **Losing reference to head:** Keep track of the head node
 
----
-
-## 🔄 Doubly Linked Lists
-
-### Definition
+## Doubly Linked Lists
 
 A Doubly Linked List is similar to a singly linked list, but each node has two
 pointers: one pointing to the next node and another pointing to the previous
 node.
-
-### Key Characteristics
 
 - **Time Complexity:**
   - Access/Search: O(n) ⏰
@@ -158,8 +145,6 @@ node.
   - Easier deletion (no need to find previous node)
   - More memory overhead (extra pointer per node)
 
-### Syntax/Implementation
-
 ```javascript
 class Node {
   constructor(data) {
@@ -176,9 +161,8 @@ class DoublyLinkedList {
     this.size = 0;
   }
 }
+// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
-
-### Visualization
 
 ```mermaid
 flowchart LR
@@ -186,24 +170,12 @@ flowchart LR
   D1 <--> D2["Node 2<br/>Prev | Data | Next"]
   D2 <--> D3["Node 3 (Tail)<br/>Prev | Data | Next"]
   D3 <--> NULLR["null"]
+// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
-
-### Real-World Example
 
 Think of a **subway line** 🚇 where trains can go in both directions. You can
 travel from Station A to Station B, and also from Station B back to Station A.
 Each station knows about both its neighbors!
-
-### Code Example
-
-```javascript
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
 
 class DoublyLinkedList {
   constructor() {
@@ -212,11 +184,11 @@ class DoublyLinkedList {
     this.size = 0;
   }
 
-  // Add to the beginning
+// Add to the beginning
   prepend(data) {
     const newNode = new Node(data);
 
-    if (!this.head) {
+if (!this.head) {
       this.head = this.tail = newNode;
     } else {
       newNode.next = this.head;
@@ -226,11 +198,11 @@ class DoublyLinkedList {
     this.size++;
   }
 
-  // Add to the end
+// Add to the end
   append(data) {
     const newNode = new Node(data);
 
-    if (!this.tail) {
+if (!this.tail) {
       this.head = this.tail = newNode;
     } else {
       this.tail.next = newNode;
@@ -240,11 +212,11 @@ class DoublyLinkedList {
     this.size++;
   }
 
-  // Display forward
+// Display forward
   displayForward() {
     if (!this.head) return 'List is empty';
 
-    let result = [];
+let result = [];
     let current = this.head;
     while (current) {
       result.push(current.data);
@@ -253,11 +225,11 @@ class DoublyLinkedList {
     return result.join(' ↔ ');
   }
 
-  // Display backward
+// Display backward
   displayBackward() {
     if (!this.tail) return 'List is empty';
 
-    let result = [];
+let result = [];
     let current = this.tail;
     while (current) {
       result.push(current.data);
@@ -276,24 +248,16 @@ console.log(list.displayForward()); // Red ↔ Green ↔ Blue
 console.log(list.displayBackward()); // Blue ↔ Green ↔ Red
 ```
 
-### Common Pitfalls
-
 - ❌ **Forgetting to update both pointers:** Always update both `next` and
   `prev`
 - ❌ **Not updating tail pointer:** Keep track of both head and tail
 - ❌ **Broken links during deletion:** Ensure proper reconnection of nodes
 - ❌ **Memory overhead:** Remember it uses more memory than singly linked lists
 
----
-
-## 🔄 Circular Linked Lists
-
-### Definition
+## Circular Linked Lists
 
 A Circular Linked List is a variation where the last node points back to the
 first node instead of pointing to null, creating a circle.
-
-### Key Characteristics
 
 - **Time Complexity:**
   - Access/Search: O(n) ⏰
@@ -306,46 +270,24 @@ first node instead of pointing to null, creating a circle.
   - Useful for round-robin scheduling
   - Can be singly or doubly circular
 
-### Syntax/Implementation
-
-```javascript
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
 class CircularLinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
   }
 }
+// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
-
-### Visualization
 
 ```mermaid
 flowchart LR
   C1["Node 1 (Head)<br/>Data | Next"] --> C2["Node 2<br/>Data | Next"] --> C3["Node 3<br/>Data | Next"]
   C3 --> C1
+// Example demonstrating 🔗 Complete Guide to Linked Lists in JavaScript.
 ```
-
-### Real-World Example
 
 Think of **musical chairs** 🪑 or a **carousel** 🎠 - players/horses move in a
 circle, and after the last position, you're back to the first one!
-
-### Code Example
-
-```javascript
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
 
 class CircularLinkedList {
   constructor() {
@@ -353,11 +295,11 @@ class CircularLinkedList {
     this.size = 0;
   }
 
-  // Add element to the list
+// Add element to the list
   append(data) {
     const newNode = new Node(data);
 
-    if (!this.head) {
+if (!this.head) {
       this.head = newNode;
       newNode.next = this.head; // Points to itself
     } else {
@@ -372,24 +314,24 @@ class CircularLinkedList {
     this.size++;
   }
 
-  // Display the list (with limit to avoid infinite loop)
+// Display the list (with limit to avoid infinite loop)
   display(limit = this.size) {
     if (!this.head) return 'List is empty';
 
-    let result = [];
+let result = [];
     let current = this.head;
     let count = 0;
 
-    do {
+do {
       result.push(current.data);
       current = current.next;
       count++;
     } while (current !== this.head && count < limit);
 
-    return result.join(' → ') + ' → (back to start)';
+return result.join(' → ') + ' → (back to start)';
   }
 
-  // Useful for round-robin: get next element repeatedly
+// Useful for round-robin: get next element repeatedly
   getNext(currentNode) {
     return currentNode ? currentNode.next : this.head;
   }
@@ -411,8 +353,6 @@ for (let i = 0; i < 7; i++) {
 }
 ```
 
-### Common Pitfalls
-
 - ❌ **Infinite loops:** Be careful when traversing - always have a stopping
   condition
 - ❌ **Forgetting to connect last to first:** The "circular" part is crucial
@@ -420,9 +360,7 @@ for (let i = 0; i < 7; i++) {
 - ❌ **Breaking the circle:** When deleting nodes, maintain the circular
   structure
 
----
-
-## 📊 Comparison Summary
+## Comparison Summary
 
 | Feature                         | Singly Linked | Doubly Linked        | Circular Linked                |
 | ------------------------------- | ------------- | -------------------- | ------------------------------ |
@@ -433,7 +371,7 @@ for (let i = 0; i < 7; i++) {
 | **Best for**                    | Simple lists  | Undo/Redo operations | Round-robin, cyclic operations |
 | **Space per node**              | 1 pointer     | 2 pointers           | 1 pointer                      |
 
-### 🎯 When to Use What?
+### When to Use What?
 
 - **Singly Linked List:** When you need simple forward traversal and memory is a
   concern
@@ -443,3 +381,12 @@ for (let i = 0; i < 7; i++) {
   (games, scheduling)
 
 Remember: Choose the right tool for the job! Each type has its sweet spot. 🎯✨
+
+## Quick Reference
+
+| Operation | What it does |
+|---|---|
+| Read/inspect | Check the current value or state. |
+| Transform | Produce a new value when the API supports it. |
+| Update | Change state only when the operation is designed to mutate. |
+| Edge case | Handle empty, invalid, or boundary input explicitly. |

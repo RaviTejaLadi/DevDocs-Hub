@@ -15,10 +15,9 @@ calls (typically React.createElement() calls) before it can run in the browser.
 - Close tags must be explicit
 - class becomes className, for becomes htmlFor
 
-## 2. Basic JSX Syntax
-
 ### Syntax:
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 const element = <h1>Hello, world!</h1>;
 ```
@@ -27,6 +26,7 @@ const element = <h1>Hello, world!</h1>;
 
 This looks like HTML but is actually JSX. Under the hood, it gets compiled to:
 
+// Basic example showing the core idea.
 ```javascript
 const element = React.createElement('h1', null, 'Hello, world!');
 ```
@@ -39,6 +39,7 @@ const element = React.createElement('h1', null, 'Hello, world!');
 
 ### Example:
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function Greeting() {
   return <h1>Hello, React!</h1>;
@@ -47,19 +48,14 @@ function Greeting() {
 
 ## 3. Embedding Expressions in JSX
 
-### Syntax:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 const name = 'John';
 const element = <h1>Hello, {name}</h1>;
 ```
 
-### Explanation:
-
 - Curly braces `{}` allow embedding any valid JavaScript expression
 - The expression is evaluated and its result becomes part of the rendered output
-
-### Usage:
 
 - Display dynamic content
 - Perform calculations inline
@@ -67,6 +63,7 @@ const element = <h1>Hello, {name}</h1>;
 
 ### Examples:
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 // Variable
 const user = { firstName: 'Jane', lastName: 'Doe' };
@@ -86,22 +83,17 @@ function formatName(user) {
 const formatted = <h2>{formatName(user)}</h2>;
 ```
 
-## 4. JSX is an Expression Too
-
 ### Definition:
 
 After compilation, JSX expressions become regular JavaScript function calls and
 evaluate to JavaScript objects.
-
-### Usage:
 
 - Can use JSX in if statements and for loops
 - Can assign JSX to variables
 - Can accept JSX as arguments
 - Can return JSX from functions
 
-### Examples:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 // Conditional assignment
 const isLoggedIn = true;
@@ -118,8 +110,7 @@ function getGreeting(user) {
 
 ## 5. Specifying Attributes with JSX
 
-### Syntax:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 const element = <img src={user.avatarUrl} alt="User avatar" />;
 ```
@@ -134,8 +125,7 @@ const element = <img src={user.avatarUrl} alt="User avatar" />;
   - `for` → `htmlFor`
   - `onclick` → `onClick`
 
-### Examples:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 // String literal
 const element1 = <div className="container"></div>;
@@ -151,8 +141,7 @@ const styleExample = (
 
 ## 6. JSX Children
 
-### Syntax:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 const element = (
   <div>
@@ -162,14 +151,11 @@ const element = (
 );
 ```
 
-### Rules:
-
 - Tags can be nested like HTML
 - Must return a single root element (or Fragment)
 - Self-closing tags must end with `/>`
 
-### Examples:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 // Nested elements
 const card = (
@@ -189,28 +175,22 @@ const input = <input type="text" />;
 
 ## 7. JSX Prevents Injection Attacks
 
-### Definition:
-
 JSX automatically escapes any values embedded in it before rendering them,
 helping prevent XSS (cross-site-scripting) attacks.
 
-### Example:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 const userInput = '<script>alert("XSS")</script>';
 const safeElement = <div>{userInput}</div>;
 // Renders as text, won't execute the script
 ```
 
-## 8. JSX Represents Objects
-
 ### Under the Hood:
 
 JSX compiles to `React.createElement()` calls which return plain JavaScript
 objects called "React elements".
 
-### Example:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 // JSX:
 const element = <h1 className="greeting">Hello, world!</h1>;
@@ -232,12 +212,11 @@ const element = {
 };
 ```
 
-## 9. Advanced JSX Patterns
-
 ### 9.1 Conditional Rendering
 
 **Syntax**:
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 {
   condition && <Component />;
@@ -249,6 +228,7 @@ const element = {
 
 **Example**:
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function WelcomeMessage({ isLoggedIn }) {
   return (
@@ -259,8 +239,7 @@ function WelcomeMessage({ isLoggedIn }) {
 
 ### 9.2 Lists and Keys
 
-**Syntax**:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 <ul>
   {items.map((item) => (
@@ -269,8 +248,7 @@ function WelcomeMessage({ isLoggedIn }) {
 </ul>
 ```
 
-**Example**:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function NumberList({ numbers }) {
   return (
@@ -285,8 +263,7 @@ function NumberList({ numbers }) {
 
 ### 9.3 Fragments
 
-**Syntax**:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 <>
   <ChildA />
@@ -294,8 +271,7 @@ function NumberList({ numbers }) {
 </>
 ```
 
-**Example**:
-
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function Columns() {
   return (
@@ -328,10 +304,9 @@ function Columns() {
 | Self-closing   | Optional           | Required                   |
 | Comments       | `<!-- comment -->` | `{/* comment */}`          |
 
-## 12. Practical JSX Examples
-
 ### Example 1: Simple Component
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
@@ -340,6 +315,7 @@ function Welcome(props) {
 
 ### Example 2: Component with Conditional
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function Greeting({ isLoggedIn, username }) {
   return (
@@ -356,6 +332,7 @@ function Greeting({ isLoggedIn, username }) {
 
 ### Example 3: List Rendering
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function TodoList({ todos }) {
   return (
@@ -370,20 +347,21 @@ function TodoList({ todos }) {
 
 ### Example 4: Form with Event Handlers
 
+// Example demonstrating React JSX: Comprehensive Guide.
 ```jsx
 function NameForm() {
   const [name, setName] = useState('');
 
-  const handleChange = (event) => {
+const handleChange = (event) => {
     setName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+const handleSubmit = (event) => {
     alert('A name was submitted: ' + name);
     event.preventDefault();
   };
 
-  return (
+return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
       <input type="text" id="name" value={name} onChange={handleChange} />
@@ -400,3 +378,12 @@ intuitive by allowing HTML-like syntax in JavaScript. While it looks similar to
 HTML, it has important differences and additional capabilities that make it more
 suitable for building component-based UIs. Understanding JSX is fundamental to
 working effectively with React.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

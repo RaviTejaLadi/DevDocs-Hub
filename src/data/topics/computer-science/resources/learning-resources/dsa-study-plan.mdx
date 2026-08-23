@@ -1,4 +1,4 @@
-# 🚀 Comprehensive Data Structures & Algorithms (DSA) Study Plan
+# Comprehensive Data Structures & Algorithms (DSA) Study Plan
 
 Mastering Data Structures and Algorithms in JavaScript requires a specialized
 approach. Because JavaScript lacks built-in advanced structures (like Priority
@@ -10,8 +10,9 @@ environments, runtime complexities, and modern interview patterns.
 
 ---
 
-## 🗺️ Roadmap Core Progression
+## Roadmap Core Progression
 
+<!-- Visual flow for Comprehensive Data Structures & Algorithms (DSA) Study Plan. -->
 ```mermaid
 graph TD
     A[Weeks 1-2: JS Mechanics & Linear DS] --> B[Weeks 3-4: Recursion & Sorting/Searching]
@@ -20,20 +21,18 @@ graph TD
     D --> E[Weeks 9-10: Advanced Non-Linear: Graphs & Heaps]
     E --> F[Weeks 11-12: Dynamic Programming & Patterns]
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
+style A fill:#f9f,stroke:#333,stroke-width:2px
     style C fill:#bbf,stroke:#333,stroke-width:2px
     style F fill:#bfb,stroke:#333,stroke-width:2px
 
 ```
 
----
-
-## 🧪 Week 1-2: JavaScript Runtime Mechanics & Fundamental Linear Structures
+## Week 1-2: JavaScript Runtime Mechanics & Fundamental Linear Structures
 
 Before optimization, you must understand how JavaScript handles memory and basic
 arrays under the hood.
 
-### 🧠 JavaScript-Specific Core Concepts
+### JavaScript-Specific Core Concepts
 
 - **Array Memory Allocation:** JavaScript arrays are dynamic objects, not
   fixed-size contiguous memory blocks. Understand how V8 shifts between _Fast
@@ -56,6 +55,7 @@ arrays under the hood.
   operations (avoids prototype pollution, maintains insertion order, offers true
   $\mathcal{O}(1)$ lookup).
 
+<!-- Visual flow for Comprehensive Data Structures & Algorithms (DSA) Study Plan. -->
 ```mermaid
 graph LR
     subgraph Array Memory in V8
@@ -65,15 +65,11 @@ graph LR
     Method1[push / pop] -->|O 1 | Fast
     Method2[shift / unshift] -->|O n  re-indexing| Fast
 
-```
-
-### 🎯 Key Practice Problems
+### Key Practice Problems
 
 1. Two Sum (LeetCode 1)
 2. Valid Anagram (LeetCode 242)
 3. Container With Most Water (LeetCode 11)
-
----
 
 ## 🔁 Week 3-4: The Pillars of Logic: Recursion, Searching & Sorting
 
@@ -89,29 +85,28 @@ memory call stacks.
   support varies across JS engines (Node.js/V8 has disabled it for debugging
   clarity).
 
-### 🔍 Searching & Sorting Algorithms
+### Searching & Sorting Algorithms
 
 - **Binary Search:** Master the divide-and-conquer strategy on sorted arrays.
   Know how to calculate midpoints safely without integer overflow:
 
 ```javascript
 const mid = Math.floor(low + (high - low) / 2);
+// Example demonstrating Comprehensive Data Structures & Algorithms (DSA) Study Plan.
 ```
 
 ````
 * **Sorting Essentials:** Implement Merge Sort and Quick Sort from scratch. Understand why JavaScript’s native `Array.prototype.sort()` uses Timsort (a hybrid of Merge and Insertion sort) and why passing a custom comparator function (`(a, b) => a - b`) is mandatory for sorting numbers.
 
-### 🎯 Key Practice Problems
 1. Binary Search (LeetCode 704)
 2. Search in Rotated Sorted Array (LeetCode 33)
 3. Merge Intervals (LeetCode 56)
-
----
 
 ## 🔗 Week 5-6: Advanced Linear Structures: Custom Implementations
 
 JavaScript does not have native Linked List, Stack, or Queue structures. You must learn how to build them using ES6 Classes.
 
+<!-- Visual flow for Comprehensive Data Structures & Algorithms (DSA) Study Plan. -->
 ```mermaid
 classDiagram
     class Node {
@@ -146,19 +141,16 @@ classDiagram
   $\mathcal{O}(n)$ due to element shifting. You must learn to implement an
   optimized $\mathcal{O}(1)$ Queue using a Linked List or a pointer object hash.
 
-### 🎯 Key Practice Problems
-
 1. Reverse Linked List (LeetCode 206)
 2. Linked List Cycle (LeetCode 141)
 3. Min Stack (LeetCode 155)
-
----
 
 ## 🌳 Week 7-8: Non-Linear Hierarchies: Trees & Advanced Traversals
 
 Trees break past linear restrictions and are heavily utilized in frontend
 ecosystems (like the DOM tree).
 
+<!-- Visual flow for Comprehensive Data Structures & Algorithms (DSA) Study Plan. -->
 ```mermaid
 graph TD
     Root((10)) --> Left((5))
@@ -166,10 +158,8 @@ graph TD
     Left --> LL((3))
     Left --> LR((7))
 
-    classDef bfs fill:#bbf,stroke:#333,stroke-width:2px;
+classDef bfs fill:#bbf,stroke:#333,stroke-width:2px;
     classDef dfs fill:#f9f,stroke:#333,stroke-width:2px;
-
-```
 
 ### 🌲 Binary Trees & Binary Search Trees (BST)
 
@@ -184,26 +174,22 @@ graph TD
 - **Breadth-First Search (BFS):** Layer-by-layer traversal using an optimized
   Queue structure.
 
-### 🎯 Key Practice Problems
-
 1. Maximum Depth of Binary Tree (LeetCode 104)
 2. Validate Binary Search Tree (LeetCode 98)
 3. Binary Tree Level Order Traversal (LeetCode 102)
 
----
-
-## 🕸️ Week 9-10: Graphs & Heaps/Priority Queues
+## 🕸 Week 9-10: Graphs & Heaps/Priority Queues
 
 These represent complex network models and real-time processing queues.
 
-### 🕸️ Graphs
+### 🕸 Graphs
 
 - **Representations:** Adjacency List (preferred in JS via `Map` or Object
   mappings) vs. Adjacency Matrix.
 - **Traversals:** Applying DFS and BFS algorithms to matrix paths, graph cyclic
   evaluation, and isolating disconnected sub-graphs.
 
-### 🏔️ Binary Heaps & Priority Queues
+### 🏔 Binary Heaps & Priority Queues
 
 - **Heap Architecture:** Max and Min Heaps modeled efficiently inside flat
   structural arrays where a parent at index $i$ maps its children to $2i + 1$
@@ -218,29 +204,23 @@ graph TD
     Formula --> LeftChild[Left Child: 2i + 1]
     Formula --> RightChild[Right Child: 2i + 2]
 
-```
-
-### 🎯 Key Practice Problems
-
 1. Clone Graph (LeetCode 133)
 2. Number of Islands (LeetCode 200)
 3. Merge k Sorted Lists (LeetCode 23 — _Requires a Custom Priority Queue_)
-
----
 
 ## 🏁 Week 11-12: Dynamic Programming & High-Level Interview Patterns
 
 Synthesizing everything learned into optimization frameworks and structural
 architecture strategies.
 
-### 💡 Dynamic Programming (DP)
+### Dynamic Programming (DP)
 
 - **Memoization (Top-Down):** Using a JavaScript cache object to store the
   results of expensive, overlapping recursive function calculations.
 - **Tabulation (Bottom-Up):** Eliminating recursive call-stack consumption by
   constructing an iterative multi-dimensional array matrix.
 
-### 🛠️ Dominant Interview Patterns
+### 🛠 Dominant Interview Patterns
 
 - **Sliding Window:** Tracking contiguous subarrays efficiently without
   repeating inner evaluation loops.
@@ -250,13 +230,9 @@ architecture strategies.
 - **Top K Elements:** Extracting specialized frequency groups out of collections
   using mapping arrays or heap indices.
 
-### 🎯 Key Practice Problems
-
 1. Longest Substring Without Repeating Characters (LeetCode 3)
 2. Climb Stairs (LeetCode 70)
 3. Coin Change (LeetCode 322)
-
----
 
 ## 🏆 Checklist for Solving Problems in Interviews
 
@@ -274,3 +250,12 @@ ensure you consistently follow these steps:
   instead.
 - **Dry Run Code:** Trace your pointers and loop index states line-by-line using
   a sample input case before declaring your code complete.
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

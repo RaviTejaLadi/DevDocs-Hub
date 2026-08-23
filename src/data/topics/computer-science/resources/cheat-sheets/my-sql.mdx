@@ -1,5 +1,6 @@
 # MySQL
 
+<!-- Visual flow for MySQL. -->
 ```mermaid
 flowchart LR
     App["Application"]
@@ -10,10 +11,9 @@ flowchart LR
     MySQL --> Schema --> Tables
 ```
 
-## Getting Started {.cols-2}
-
 ### Connect MySQL
 
+-- Basic example showing the core idea.
 ```sql
 mysql -u <user> -p
 
@@ -23,8 +23,6 @@ mysql -h <host> -P <port> -u <user> -p [db_name]
 
 mysql -h <host> -u <user> -p [db_name]
 ```
-
-### Commons {.row-span-2}
 
 #### Database
 
@@ -64,28 +62,30 @@ mysql -h <host> -u <user> -p [db_name]
 
 Create a backup
 
+-- Basic example showing the core idea.
 ```sql
 mysqldump -u user -p db_name > db.sql
 ```
 
 Export db without schema
 
+// Example demonstrating MySQL.
 ```{.wrap}
 mysqldump -u user -p db_name --no-data=true --add-drop-table=false > db.sql
 ```
 
 Restore a backup
 
+-- Basic example showing the core idea.
 ```sql
 mysql -u user -p db_name < db.sql
 ```
-
-## MySQL Examples
 
 ### Managing tables
 
 Create a new table with three columns
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t (
      id    INT,
@@ -97,48 +97,56 @@ CREATE TABLE t (
 
 Delete the table from the database
 
+-- Basic example showing the core idea.
 ```sql
 DROP TABLE t ;
 ```
 
 Add a new column to the table
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t ADD column;
 ```
 
 Drop column c from the table
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t DROP COLUMN c ;
 ```
 
 Add a constraint
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t ADD constraint;
 ```
 
 Drop a constraint
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t DROP constraint;
 ```
 
 Rename a table from t1 to t2
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t1 RENAME TO t2;
 ```
 
 Rename column c1 to c2
 
+-- Basic example showing the core idea.
 ```sql
 ALTER TABLE t1 RENAME c1 TO c2 ;
 ```
 
 Remove all data in a table
 
+-- Basic example showing the core idea.
 ```sql
 TRUNCATE TABLE t;
 ```
@@ -147,18 +155,21 @@ TRUNCATE TABLE t;
 
 Query data in columns c1, c2 from a table
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 ```
 
 Query all rows and columns from a table
 
+-- Basic example showing the core idea.
 ```sql
 SELECT * FROM t
 ```
 
 Query data and filter rows with a condition
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 WHERE condition
@@ -166,6 +177,7 @@ WHERE condition
 
 Query distinct rows from a table
 
+-- Basic example showing the core idea.
 ```sql
 SELECT DISTINCT c1 FROM t
 WHERE condition
@@ -173,6 +185,7 @@ WHERE condition
 
 Sort the result set in ascending or descending order
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 ORDER BY c1 ASC [DESC]
@@ -180,6 +193,7 @@ ORDER BY c1 ASC [DESC]
 
 Skip offset of rows and return the next n rows
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 ORDER BY c1
@@ -188,6 +202,7 @@ LIMIT n OFFSET offset
 
 Group rows using an aggregate function
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, aggregate(c2)
 FROM t
@@ -196,6 +211,7 @@ GROUP BY c1
 
 Filter groups using HAVING clause
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, aggregate(c2)
 FROM t
@@ -207,6 +223,7 @@ HAVING condition
 
 Inner join t1 and t2
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1
@@ -215,6 +232,7 @@ INNER JOIN t2 ON condition
 
 Left join t1 and t1
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1
@@ -223,6 +241,7 @@ LEFT JOIN t2 ON condition
 
 Right join t1 and t2
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1
@@ -231,6 +250,7 @@ RIGHT JOIN t2 ON condition
 
 Perform full outer join
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1
@@ -239,6 +259,7 @@ FULL OUTER JOIN t2 ON condition
 
 Produce a Cartesian product of rows in tables
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1
@@ -247,6 +268,7 @@ CROSS JOIN t2
 
 Another way to perform cross join
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1, t2
@@ -254,6 +276,7 @@ FROM t1, t2
 
 Join t1 to itself using INNER JOIN clause
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2
 FROM t1 A
@@ -262,6 +285,7 @@ INNER JOIN t1 B ON condition
 
 Using SQL Operators Combine rows from two queries
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t1
 UNION [ALL]
@@ -270,6 +294,7 @@ SELECT c1, c2 FROM t2
 
 Return the intersection of two queries
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t1
 INTERSECT
@@ -278,6 +303,7 @@ SELECT c1, c2 FROM t2
 
 Subtract a result set from another result set
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t1
 MINUS
@@ -286,6 +312,7 @@ SELECT c1, c2 FROM t2
 
 Query rows using pattern matching %, \_
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t1
 WHERE c1 [NOT] LIKE pattern
@@ -293,6 +320,7 @@ WHERE c1 [NOT] LIKE pattern
 
 Query rows in a list
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 WHERE c1 [NOT] IN value_list
@@ -300,6 +328,7 @@ WHERE c1 [NOT] IN value_list
 
 Query rows between two values
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 WHERE  c1 BETWEEN low AND high
@@ -307,6 +336,7 @@ WHERE  c1 BETWEEN low AND high
 
 Check if values in a table is NULL or not
 
+-- Basic example showing the core idea.
 ```sql
 SELECT c1, c2 FROM t
 WHERE  c1 IS [NOT] NULL
@@ -316,6 +346,7 @@ WHERE  c1 IS [NOT] NULL
 
 Set c1 and c2 as a primary key
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t(
     c1 INT, c2 INT, c3 VARCHAR,
@@ -325,6 +356,7 @@ CREATE TABLE t(
 
 Set c2 column as a foreign key
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t1(
     c1 INT PRIMARY KEY,
@@ -335,6 +367,7 @@ CREATE TABLE t1(
 
 Make the values in c1 and c2 unique
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t(
     c1 INT, c1 INT,
@@ -344,6 +377,7 @@ CREATE TABLE t(
 
 Ensure c1 > 0 and values in c1 >= c2
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t(
   c1 INT, c2 INT,
@@ -353,6 +387,7 @@ CREATE TABLE t(
 
 Set values in c2 column not NULL
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TABLE t(
      c1 INT PRIMARY KEY,
@@ -364,6 +399,7 @@ CREATE TABLE t(
 
 Insert one row into a table
 
+-- Basic example showing the core idea.
 ```sql
 INSERT INTO t(column_list)
 VALUES(value_list);
@@ -371,6 +407,7 @@ VALUES(value_list);
 
 Insert multiple rows into a table
 
+-- Basic example showing the core idea.
 ```sql
 INSERT INTO t(column_list)
 VALUES (value_list),
@@ -379,6 +416,7 @@ VALUES (value_list),
 
 Insert rows from t2 into t1
 
+-- Basic example showing the core idea.
 ```sql
 INSERT INTO t1(column_list)
 SELECT column_list
@@ -387,6 +425,7 @@ FROM t2;
 
 Update new value in the column c1 for all rows
 
+-- Basic example showing the core idea.
 ```sql
 UPDATE t
 SET c1 = new_value;
@@ -394,6 +433,7 @@ SET c1 = new_value;
 
 Update values in the column c1, c2 that match the condition
 
+-- Basic example showing the core idea.
 ```sql
 UPDATE t
 SET c1 = new_value,
@@ -403,12 +443,14 @@ WHERE condition;
 
 Delete all data in a table
 
+-- Basic example showing the core idea.
 ```sql
 DELETE FROM t;
 ```
 
 Delete subset of rows in a table
 
+-- Basic example showing the core idea.
 ```sql
 DELETE FROM t
 WHERE condition;
@@ -418,6 +460,7 @@ WHERE condition;
 
 Create a new view that consists of c1 and c2
 
+-- Basic example showing the core idea.
 ```sql
 CREATE VIEW v(c1,c2)
 AS
@@ -427,6 +470,7 @@ FROM t;
 
 Create a new view with check option
 
+-- Basic example showing the core idea.
 ```sql
 CREATE VIEW v(c1,c2)
 AS
@@ -437,6 +481,7 @@ WITH [CASCADED | LOCAL] CHECK OPTION;
 
 Create a recursive view
 
+-- Basic example showing the core idea.
 ```sql
 CREATE RECURSIVE VIEW v
 AS
@@ -447,6 +492,7 @@ select-statement; -- recursive part
 
 Create a temporary view
 
+-- Basic example showing the core idea.
 ```sql
 CREATE TEMPORARY VIEW v
 AS
@@ -456,6 +502,7 @@ FROM t;
 
 Delete a view
 
+-- Basic example showing the core idea.
 ```sql
 DROP VIEW view_name;
 ```
@@ -464,6 +511,7 @@ DROP VIEW view_name;
 
 Create or modify a trigger
 
+-- Basic example showing the core idea.
 ```sql
 CREATE OR MODIFY TRIGGER trigger_name
 WHEN EVENT
@@ -497,6 +545,7 @@ EXECUTE stored_procedure;
 
 Create an index on c1 and c2 of the t table
 
+-- Basic example showing the core idea.
 ```sql
 CREATE INDEX idx_name
 ON t(c1,c2);
@@ -504,6 +553,7 @@ ON t(c1,c2);
 
 Create a unique index on c3, c4 of the t table
 
+-- Basic example showing the core idea.
 ```sql
 CREATE UNIQUE INDEX idx_name
 ON t(c3,c4)
@@ -511,11 +561,10 @@ ON t(c3,c4)
 
 Drop an index
 
+-- Basic example showing the core idea.
 ```sql
 DROP INDEX idx_name ON t;
 ```
-
-## MySQL Data Types
 
 ### Strings
 
@@ -555,8 +604,6 @@ DROP INDEX idx_name ON t;
 | `FLOAT`       | Decimal (precise to 23 digits)                                |
 | `DOUBLE`      | Decimal (24 to 53 digits)                                     |
 | `DECIMAL`     | "­DOU­BLE­" stored as string                                  |
-
-## MySQL Functions & Operators
 
 ### Strings {.row-span-2}
 
@@ -690,10 +737,6 @@ DROP INDEX idx_name ON t;
 - [YEARWEEK()](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_yearweek){data-tooltip="Return the year and week"}
 - [GET_FORMAT()](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_get-format){data-tooltip="'%m.%d.%Y'"}
 
-{.cols-2 .marker-none}
-
-### Numeric
-
 <!-- prettier-ignore -->
 - [%, MOD](https://dev.mysql.com/doc/refman/8.0/en/arithmetic-functions.html#operator_mod){data-tooltip="Modulo operator"}
 - [*](https://dev.mysql.com/doc/refman/8.0/en/arithmetic-functions.html#operator_times){data-tooltip="Multiplication operator"}
@@ -733,8 +776,6 @@ DROP INDEX idx_name ON t;
 - [TAN()](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html#function_tan){data-tooltip="Return the tangent of the argument"}
 - [TRUNCATE()](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html#function_truncate){data-tooltip="Truncate to specified number of decimal places"}
 
-{.cols-2 .marker-none}
-
 ### Aggregate
 
 <!-- prettier-ignore -->
@@ -757,8 +798,6 @@ DROP INDEX idx_name ON t;
 - [VAR_POP()](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_var-pop){data-tooltip="Return the population standard variance"}
 - [VAR_SAMP()](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_var-samp){data-tooltip="Return the sample variance"}
 - [VARIANCE()](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_variance){data-tooltip="Return the population standard variance"}
-
-{.cols-2 .marker-none}
 
 ### JSON {.row-span-4}
 
@@ -806,8 +845,6 @@ DROP INDEX idx_name ON t;
 - [CAST()](https://dev.mysql.com/doc/refman/8.0/en/cast-functions.html#function_cast){data-tooltip="Cast a value as a certain type"}
 - [CONVERT()](https://dev.mysql.com/doc/refman/8.0/en/cast-functions.html#function_convert){data-tooltip="Cast a value as a certain type"}
 
-{.cols-2 .marker-none}
-
 ### Flow Control
 
 <!-- prettier-ignore -->
@@ -815,8 +852,6 @@ DROP INDEX idx_name ON t;
 - [IF()](https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html#function_if){data-tooltip="If/else construct"}
 - [IFNULL()](https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html#function_ifnull){data-tooltip="Null if/else construct"}
 - [NULLIF()](https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html#function_nullif){data-tooltip="Return NULL if expr1 = expr2"}
-
-{.cols-2 .marker-none}
 
 ### Information
 
@@ -840,8 +875,6 @@ DROP INDEX idx_name ON t;
 - [USER()](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_user){data-tooltip="The user name and host name provided by the client"}
 - [VERSION()](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_version){data-tooltip="Return a string that indicates the MySQL server version"}
 
-{.cols-2 .marker-none}
-
 ### Encryption and Compression
 
 <!-- prettier-ignore -->
@@ -858,8 +891,6 @@ DROP INDEX idx_name ON t;
 - [UNCOMPRESSED_LENGTH()](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_uncompressed-length){data-tooltip="Return the length of a string before compression"}
 - [VALIDATE_PASSWORD_STRENGTH()](https://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html#function_validate-password-strength){data-tooltip="Determine strength of password"}
 
-{.cols-1 .marker-none}
-
 ### Locking
 
 <!-- prettier-ignore -->
@@ -868,8 +899,6 @@ DROP INDEX idx_name ON t;
 - [IS_USED_LOCK()](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html#function_is-used-lock){data-tooltip="Whether the named lock is in use; return connection identifier if true"}
 - [RELEASE_ALL_LOCKS()](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html#function_release-all-locks){data-tooltip="Release all current named locks"}
 - [RELEASE_LOCK()](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html#function_release-lock){data-tooltip="Release the named lock"}
-
-{.cols-1 .marker-none}
 
 ### Bit
 
@@ -881,8 +910,6 @@ DROP INDEX idx_name ON t;
 - [BIT_COUNT()](https://dev.mysql.com/doc/refman/8.0/en/bit-functions.html#function_bit-count){data-tooltip="Return the number of bits that are set"}
 - [|](https://dev.mysql.com/doc/refman/8.0/en/bit-functions.html#operator_bitwise-or){data-tooltip="Bitwise OR"}
 - [~](https://dev.mysql.com/doc/refman/8.0/en/bit-functions.html#operator_bitwise-invert){data-tooltip="Bitwise inversion"}
-
-{.cols-2 .marker-none}
 
 ### Miscellaneous
 
@@ -908,4 +935,11 @@ DROP INDEX idx_name ON t;
 - [UUID_TO_BIN()](https://dev.mysql.com/doc/refman/8.0/en/miscellaneous-functions.html#function_uuid-to-bin){data-tooltip="Convert string UUID to binary"}
 - [VALUES()](https://dev.mysql.com/doc/refman/8.0/en/miscellaneous-functions.html#function_values){data-tooltip="Define the values to be used during an INSERT"}
 
-{.cols-2 .marker-none}
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

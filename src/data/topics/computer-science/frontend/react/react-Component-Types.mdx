@@ -7,8 +7,6 @@ primary ways to define components: functional components and class components.
 While both serve the same purpose, they differ in syntax, capabilities, and
 modern usage patterns.
 
-## Definitions
-
 ### Functional Components
 
 Functional components are JavaScript functions that return JSX. They are
@@ -21,10 +19,9 @@ Class components are ES6 classes that extend `React.Component`. They were the
 primary way to create stateful components before hooks were introduced and
 provide access to lifecycle methods and state management through class methods.
 
-## Basic Syntax Comparison
-
 ### Functional Component Syntax
 
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React from 'react';
 
@@ -42,6 +39,7 @@ export default Welcome;
 
 ### Class Component Syntax
 
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React, { Component } from 'react';
 
@@ -50,11 +48,6 @@ class Welcome extends Component {
     return <h1>Hello, {this.props.name}!</h1>;
   }
 }
-
-export default Welcome;
-```
-
-## Component Lifecycle
 
 ### Functional Components with Hooks
 
@@ -65,12 +58,12 @@ function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Equivalent to componentDidMount and componentDidUpdate
+// Equivalent to componentDidMount and componentDidUpdate
   useEffect(() => {
     fetchUser(userId);
   }, [userId]);
 
-  // Equivalent to componentWillUnmount
+// Equivalent to componentWillUnmount
   useEffect(() => {
     return () => {
       // Cleanup function
@@ -78,7 +71,7 @@ function UserProfile({ userId }) {
     };
   }, []);
 
-  const fetchUser = async (id) => {
+const fetchUser = async (id) => {
     setLoading(true);
     try {
       const userData = await api.getUser(id);
@@ -90,22 +83,20 @@ function UserProfile({ userId }) {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+if (loading) return <div>Loading...</div>;
   if (!user) return <div>User not found</div>;
 
-  return (
+return (
     <div>
       <h2>{user.name}</h2>
       <p>{user.email}</p>
     </div>
   );
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Class Components with Lifecycle Methods
-
-```jsx
-import React, { Component } from 'react';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -116,21 +107,21 @@ class UserProfile extends Component {
     };
   }
 
-  componentDidMount() {
+componentDidMount() {
     this.fetchUser(this.props.userId);
   }
 
-  componentDidUpdate(prevProps) {
+componentDidUpdate(prevProps) {
     if (prevProps.userId !== this.props.userId) {
       this.fetchUser(this.props.userId);
     }
   }
 
-  componentWillUnmount() {
+componentWillUnmount() {
     console.log('Component unmounting');
   }
 
-  fetchUser = async (id) => {
+fetchUser = async (id) => {
     this.setState({ loading: true });
     try {
       const userData = await api.getUser(id);
@@ -142,13 +133,10 @@ class UserProfile extends Component {
     }
   };
 
-  render() {
+render() {
     const { user, loading } = this.state;
 
-    if (loading) return <div>Loading...</div>;
-    if (!user) return <div>User not found</div>;
-
-    return (
+return (
       <div>
         <h2>{user.name}</h2>
         <p>{user.email}</p>
@@ -158,10 +146,9 @@ class UserProfile extends Component {
 }
 ```
 
-## State Management
-
 ### Functional Components with useState Hook
 
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
@@ -169,11 +156,11 @@ function Counter() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('');
 
-  const increment = () => setCount(count + 1);
+const increment = () => setCount(count + 1);
   const decrement = () => setCount(count - 1);
   const reset = () => setCount(0);
 
-  return (
+return (
     <div>
       <input
         type="text"
@@ -193,9 +180,6 @@ function Counter() {
 
 ### Class Components with this.state
 
-```jsx
-import React, { Component } from 'react';
-
 class Counter extends Component {
   constructor(props) {
     super(props);
@@ -205,26 +189,26 @@ class Counter extends Component {
     };
   }
 
-  increment = () => {
+increment = () => {
     this.setState({ count: this.state.count + 1 });
   };
 
-  decrement = () => {
+decrement = () => {
     this.setState({ count: this.state.count - 1 });
   };
 
-  reset = () => {
+reset = () => {
     this.setState({ count: 0 });
   };
 
-  handleNameChange = (e) => {
+handleNameChange = (e) => {
     this.setState({ name: e.target.value });
   };
 
-  render() {
+render() {
     const { count, name } = this.state;
 
-    return (
+return (
       <div>
         <input
           type="text"
@@ -241,11 +225,10 @@ class Counter extends Component {
     );
   }
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Props Handling
-
-### Functional Components
 
 ```jsx
 // Simple props
@@ -263,7 +246,7 @@ function Greeting({ name, age, isVip = false }) {
 function ProductCard({ product, onAddToCart, showPrice = true }) {
   const { name, price, image, description } = product;
 
-  return (
+return (
     <div className="product-card">
       <img src={image} alt={name} />
       <h3>{name}</h3>
@@ -273,9 +256,8 @@ function ProductCard({ product, onAddToCart, showPrice = true }) {
     </div>
   );
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-### Class Components
 
 ```jsx
 class Greeting extends Component {
@@ -283,10 +265,10 @@ class Greeting extends Component {
     isVip: false,
   };
 
-  render() {
+render() {
     const { name, age, isVip } = this.props;
 
-    return (
+return (
       <div>
         <h2>Hello, {name}!</h2>
         <p>Age: {age}</p>
@@ -301,11 +283,11 @@ class ProductCard extends Component {
     showPrice: true,
   };
 
-  render() {
+render() {
     const { product, onAddToCart, showPrice } = this.props;
     const { name, price, image, description } = product;
 
-    return (
+return (
       <div className="product-card">
         <img src={image} alt={name} />
         <h3>{name}</h3>
@@ -316,11 +298,10 @@ class ProductCard extends Component {
     );
   }
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Event Handling
-
-### Functional Components
 
 ```jsx
 function LoginForm() {
@@ -329,7 +310,7 @@ function LoginForm() {
     password: '',
   });
 
-  const handleInputChange = (e) => {
+const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -337,16 +318,16 @@ function LoginForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
   };
 
-  const handleReset = () => {
+const handleReset = () => {
     setFormData({ email: '', password: '' });
   };
 
-  return (
+return (
     <form onSubmit={handleSubmit}>
       <input
         type="email"
@@ -369,9 +350,8 @@ function LoginForm() {
     </form>
   );
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-### Class Components
 
 ```jsx
 class LoginForm extends Component {
@@ -383,26 +363,26 @@ class LoginForm extends Component {
     };
   }
 
-  handleInputChange = (e) => {
+handleInputChange = (e) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
   };
 
-  handleSubmit = (e) => {
+handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', this.state);
   };
 
-  handleReset = () => {
+handleReset = () => {
     this.setState({ email: '', password: '' });
   };
 
-  render() {
+render() {
     const { email, password } = this.state;
 
-    return (
+return (
       <form onSubmit={this.handleSubmit}>
         <input
           type="email"
@@ -426,9 +406,8 @@ class LoginForm extends Component {
     );
   }
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-## Performance Considerations
 
 ### Functional Components Optimization
 
@@ -445,7 +424,7 @@ const ExpensiveList = memo(function ExpensiveList({ items, onItemClick }) {
     }));
   }, [items]);
 
-  // Memoize callback functions
+// Memoize callback functions
   const handleItemClick = useCallback(
     (itemId) => {
       onItemClick(itemId);
@@ -453,7 +432,7 @@ const ExpensiveList = memo(function ExpensiveList({ items, onItemClick }) {
     [onItemClick]
   );
 
-  return (
+return (
     <ul>
       {processedItems.map((item) => (
         <li key={item.id} onClick={() => handleItemClick(item.id)}>
@@ -464,6 +443,7 @@ const ExpensiveList = memo(function ExpensiveList({ items, onItemClick }) {
     </ul>
   );
 });
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Class Components Optimization
@@ -480,15 +460,15 @@ class ExpensiveList extends PureComponent {
     }));
   };
 
-  handleItemClick = (itemId) => {
+handleItemClick = (itemId) => {
     this.props.onItemClick(itemId);
   };
 
-  render() {
+render() {
     const { items } = this.props;
     const processedItems = this.processItems(items);
 
-    return (
+return (
       <ul>
         {processedItems.map((item) => (
           <li key={item.id} onClick={() => this.handleItemClick(item.id)}>
@@ -500,9 +480,8 @@ class ExpensiveList extends PureComponent {
     );
   }
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-## Modern Usage Patterns
 
 ### Custom Hooks (Functional Components)
 
@@ -515,7 +494,7 @@ function useApi(url) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -529,20 +508,20 @@ function useApi(url) {
       }
     };
 
-    fetchData();
+fetchData();
   }, [url]);
 
-  return { data, loading, error };
+return { data, loading, error };
 }
 
 // Using the custom hook
 function UserList() {
   const { data: users, loading, error } = useApi('/api/users');
 
-  if (loading) return <div>Loading users...</div>;
+if (loading) return <div>Loading users...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  return (
+return (
     <ul>
       {users?.map((user) => (
         <li key={user.id}>{user.name}</li>
@@ -550,6 +529,7 @@ function UserList() {
     </ul>
   );
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ### Higher-Order Components (Class Components)
@@ -563,28 +543,27 @@ function withLoading(WrappedComponent) {
       this.state = { loading: true };
     }
 
-    componentDidMount() {
+componentDidMount() {
       // Simulate loading
       setTimeout(() => {
         this.setState({ loading: false });
       }, 1000);
     }
 
-    render() {
+render() {
       if (this.state.loading) {
         return <div>Loading...</div>;
       }
 
-      return <WrappedComponent {...this.props} />;
+return <WrappedComponent {...this.props} />;
     }
   };
 }
 
 // Using the HOC
 const UserProfileWithLoading = withLoading(UserProfile);
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-## Migration Guidelines
 
 ### Converting Class to Functional Component
 
@@ -597,20 +576,21 @@ class Timer extends Component {
     this.state = { seconds: 0 };
   }
 
-  componentDidMount() {
+componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({ seconds: this.state.seconds + 1 });
     }, 1000);
   }
 
-  componentWillUnmount() {
+componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  render() {
+render() {
     return <div>Seconds: {this.state.seconds}</div>;
   }
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 **After (Functional Component):**
@@ -619,19 +599,18 @@ class Timer extends Component {
 function Timer() {
   const [seconds, setSeconds] = useState(0);
 
-  useEffect(() => {
+useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prev) => prev + 1);
     }, 1000);
 
-    return () => clearInterval(interval);
+return () => clearInterval(interval);
   }, []);
 
-  return <div>Seconds: {seconds}</div>;
+return <div>Seconds: {seconds}</div>;
 }
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
-
-## Best Practices
 
 ### Functional Components Best Practices
 
@@ -676,6 +655,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
 };
+// Example demonstrating React Functional vs Class Components: Complete Guide.
 ```
 
 ## Conclusion
@@ -694,3 +674,12 @@ existing codebases and making informed architectural decisions.
 - Performance optimization techniques exist for both patterns
 - Migration from class to functional components is straightforward
 - Choose the pattern that best fits your project's needs and constraints
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |

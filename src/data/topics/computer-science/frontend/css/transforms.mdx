@@ -1,4 +1,4 @@
-# 🔄 2D & 3D Transforms
+# 2D & 3D Transforms
 
 CSS Transforms allow you to **move, rotate, scale, skew, and manipulate
 elements** without affecting the document layout.
@@ -18,7 +18,7 @@ used for:
 
 ---
 
-# 🎯 What Are CSS Transforms?
+## What Are CSS Transforms?
 
 Transforms change an element's appearance and position visually.
 
@@ -28,26 +28,24 @@ Unlike margins or positioning:
 - Nearby elements don't move
 - GPU acceleration improves performance
 
----
+## How Transforms Work
 
-# 🧠 How Transforms Work
-
+<!-- Visual flow for 2D & 3D Transforms. -->
 ```mermaid
 flowchart LR
 
-    Original["Original Element"]
+Original["Original Element"]
 
-    Transform["Transform Applied"]
+Transform["Transform Applied"]
 
-    Result["Visual Change"]
+Result["Visual Change"]
 
-    Original --> Transform --> Result
+Original --> Transform --> Result
 ```
 
----
+## Transform Syntax
 
-# 📦 Transform Syntax
-
+/* Basic example showing the core idea. */
 ```css
 .element {
   transform: value;
@@ -56,66 +54,50 @@ flowchart LR
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 .box {
   transform: translateX(100px);
 }
 ```
 
----
-
-# 🎯 2D Transform Functions
+## 2D Transform Functions
 
 CSS provides several 2D transform functions:
 
+<!-- Visual flow for 2D & 3D Transforms. -->
 ```mermaid
 flowchart TB
 
-    Transform["2D Transform"]
+Transform["2D Transform"]
 
-    Translate["translate()"]
+Translate["translate()"]
     Rotate["rotate()"]
     Scale["scale()"]
     Skew["skew()"]
 
-    Transform --> Translate
+Transform --> Translate
     Transform --> Rotate
     Transform --> Scale
     Transform --> Skew
 ```
 
----
-
-# 📍 translate()
+## 📍 translate()
 
 Moves an element.
-
----
 
 ## translateX()
 
 Move horizontally.
 
-```css
-.box {
-  transform: translateX(100px);
-}
-```
-
----
-
 ### Visualization
 
-```mermaid
-flowchart LR
-
-    A["Start"]
+A["Start"]
     B["Move Right 100px"]
 
-    A --> B
+A --> B
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## translateY()
 
@@ -125,23 +107,12 @@ Move vertically.
 .box {
   transform: translateY(50px);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
+A["Start"]
 
-### Visualization
-
-```mermaid
-flowchart TB
-
-    A["Start"]
-
-    B["Move Down 50px"]
-
-    A --> B
-```
-
----
+B["Move Down 50px"]
 
 ## translate()
 
@@ -151,15 +122,12 @@ Move both directions.
 .box {
   transform: translate(100px, 50px);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🔄 rotate()
+## rotate()
 
 Rotates an element.
-
----
 
 ## Rotate 45 Degrees
 
@@ -167,9 +135,8 @@ Rotates an element.
 .box {
   transform: rotate(45deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Rotate 180 Degrees
 
@@ -177,36 +144,29 @@ Rotates an element.
 .box {
   transform: rotate(180deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ### Rotation Concept
 
-```mermaid
-flowchart LR
+A["0°"]
 
-    A["0°"]
+B["45°"]
 
-    B["45°"]
+C["90°"]
 
-    C["90°"]
+D["180°"]
 
-    D["180°"]
-
-    A --> B --> C --> D
+A --> B --> C --> D
 ```
 
----
-
-# 📏 scale()
+## 📏 scale()
 
 Changes size.
 
----
-
 ## Enlarge
 
+/* Basic example showing the core idea. */
 ```css
 .box {
   transform: scale(1.5);
@@ -215,10 +175,9 @@ Changes size.
 
 150% size.
 
----
-
 ## Shrink
 
+/* Basic example showing the core idea. */
 ```css
 .box {
   transform: scale(0.8);
@@ -227,23 +186,17 @@ Changes size.
 
 80% size.
 
----
-
 ### Scale Visualization
 
-```mermaid
-flowchart LR
+Small["Scale 0.8"]
 
-    Small["Scale 0.8"]
+Normal["Scale 1"]
 
-    Normal["Scale 1"]
+Large["Scale 1.5"]
 
-    Large["Scale 1.5"]
-
-    Small --> Normal --> Large
+Small --> Normal --> Large
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## scaleX()
 
@@ -251,11 +204,10 @@ flowchart LR
 .box {
   transform: scaleX(2);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
 Width doubles.
-
----
 
 ## scaleY()
 
@@ -263,17 +215,14 @@ Width doubles.
 .box {
   transform: scaleY(2);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
 Height doubles.
 
----
-
-# 📐 skew()
+## 📐 skew()
 
 Tilts an element.
-
----
 
 ## Skew X
 
@@ -281,9 +230,8 @@ Tilts an element.
 .box {
   transform: skewX(20deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Skew Y
 
@@ -291,28 +239,23 @@ Tilts an element.
 .box {
   transform: skewY(20deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ### Skew Concept
 
-```mermaid
-flowchart LR
+Normal["Rectangle"]
 
-    Normal["Rectangle"]
+Skewed["Parallelogram"]
 
-    Skewed["Parallelogram"]
-
-    Normal --> Skewed
+Normal --> Skewed
 ```
 
----
-
-# 🎯 Combining Multiple Transforms
+## Combining Multiple Transforms
 
 Multiple transforms can be combined.
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   transform: translateY(-10px) scale(1.05) rotate(2deg);
@@ -321,21 +264,17 @@ Multiple transforms can be combined.
 
 Execution order:
 
-```mermaid
-flowchart LR
+Translate["Translate"]
 
-    Translate["Translate"]
+Scale["Scale"]
 
-    Scale["Scale"]
+Rotate["Rotate"]
 
-    Rotate["Rotate"]
-
-    Translate --> Scale --> Rotate
+Translate --> Scale --> Rotate
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🎨 Hover Card Effect
+## Hover Card Effect
 
 ```css
 .card {
@@ -345,6 +284,7 @@ flowchart LR
 .card:hover {
   transform: translateY(-10px) scale(1.03);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
 Popular in:
@@ -353,9 +293,7 @@ Popular in:
 - Dashboards
 - Portfolio websites
 
----
-
-# 🎯 transform-origin
+## transform-origin
 
 Controls the pivot point.
 
@@ -363,72 +301,58 @@ Default:
 
 ```css
 transform-origin: center;
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Top Left
 
 ```css
 transform-origin: top left;
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Bottom Right
 
 ```css
 transform-origin: bottom right;
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ### Origin Example
 
-```mermaid
-flowchart LR
+Center["Center Origin"]
 
-    Center["Center Origin"]
+Corner["Corner Origin"]
 
-    Corner["Corner Origin"]
-
-    Center --> Corner
+Center --> Corner
 ```
 
 Rotation changes depending on origin.
 
----
-
-# 🌟 3D Transforms
+## 🌟 3D Transforms
 
 CSS can create realistic 3D effects.
 
----
-
 ## Types of 3D Transforms
 
-```mermaid
-flowchart TB
+ThreeD["3D Transforms"]
 
-    ThreeD["3D Transforms"]
+X["rotateX()"]
 
-    X["rotateX()"]
+Y["rotateY()"]
 
-    Y["rotateY()"]
+Z["rotateZ()"]
 
-    Z["rotateZ()"]
+Perspective["perspective()"]
 
-    Perspective["perspective()"]
-
-    ThreeD --> X
+ThreeD --> X
     ThreeD --> Y
     ThreeD --> Z
     ThreeD --> Perspective
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🔄 rotateX()
+## rotateX()
 
 Rotates around horizontal axis.
 
@@ -436,51 +360,36 @@ Rotates around horizontal axis.
 .box {
   transform: rotateX(45deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
+Top["Top Edge"]
 
-### Visualization
+Bottom["Bottom Edge"]
 
-```mermaid
-flowchart TB
-
-    Top["Top Edge"]
-
-    Bottom["Bottom Edge"]
-
-    Top --> Bottom
+Top --> Bottom
 ```
 
----
-
-# 🔄 rotateY()
+## rotateY()
 
 Rotates around vertical axis.
 
+/* Basic example showing the core idea. */
 ```css
 .box {
   transform: rotateY(45deg);
 }
 ```
 
----
+Left["Left Edge"]
 
-### Visualization
+Right["Right Edge"]
 
-```mermaid
-flowchart LR
-
-    Left["Left Edge"]
-
-    Right["Right Edge"]
-
-    Left --> Right
+Left --> Right
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🔄 rotateZ()
+## rotateZ()
 
 Equivalent to normal rotation.
 
@@ -488,25 +397,16 @@ Equivalent to normal rotation.
 .box {
   transform: rotateZ(45deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🎯 perspective()
+## perspective()
 
 Creates depth.
 
 Without perspective:
 
-```css
-.box {
-  transform: rotateY(45deg);
-}
-```
-
 Looks flat.
-
----
 
 With perspective:
 
@@ -514,57 +414,43 @@ With perspective:
 .container {
   perspective: 1000px;
 }
-```
-
-```css
-.box {
-  transform: rotateY(45deg);
-}
+// Example demonstrating 2D & 3D Transforms.
 ```
 
 Creates realistic depth.
 
----
-
 ### Perspective Concept
 
-```mermaid
-flowchart TB
+Flat["Flat Element"]
 
-    Flat["Flat Element"]
+Perspective["Perspective Applied"]
 
-    Perspective["Perspective Applied"]
+Depth["3D Depth"]
 
-    Depth["3D Depth"]
-
-    Flat --> Perspective --> Depth
+Flat --> Perspective --> Depth
 ```
 
----
-
-# 🎴 3D Flip Card
+## 🎴 3D Flip Card
 
 Popular interview question and real-world pattern.
 
----
-
 ## HTML
 
+<!-- Basic example showing the core idea. -->
 ```html
 <!-- Flip Card -->
 <div class="card">
   <div class="card-inner">
     <div class="front">Front</div>
 
-    <div class="back">Back</div>
+<div class="back">Back</div>
   </div>
 </div>
 ```
 
----
-
 ## CSS
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   perspective: 1000px;
@@ -573,7 +459,7 @@ Popular interview question and real-world pattern.
 .card-inner {
   transition: transform 0.6s;
 
-  transform-style: preserve-3d;
+transform-style: preserve-3d;
 }
 
 .card:hover .card-inner {
@@ -581,25 +467,19 @@ Popular interview question and real-world pattern.
 }
 ```
 
----
-
 ## Flip Animation Flow
 
-```mermaid
-flowchart LR
+Front["Front Side"]
 
-    Front["Front Side"]
+Rotate["rotateY(180deg)"]
 
-    Rotate["rotateY(180deg)"]
+Back["Back Side"]
 
-    Back["Back Side"]
-
-    Front --> Rotate --> Back
+Front --> Rotate --> Back
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🎯 transform-style
+## transform-style
 
 Required for nested 3D elements.
 
@@ -607,11 +487,10 @@ Required for nested 3D elements.
 .card-inner {
   transform-style: preserve-3d;
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# 🎯 backface-visibility
+## backface-visibility
 
 Controls visibility of the backside.
 
@@ -620,15 +499,10 @@ Controls visibility of the backside.
 .back {
   backface-visibility: hidden;
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
 Prevents mirrored content.
-
----
-
-# 🚀 Real-World Examples
-
----
 
 ## Zoom Image on Hover
 
@@ -640,9 +514,8 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Floating Button
 
@@ -650,9 +523,8 @@ img:hover {
 .button:hover {
   transform: translateY(-5px);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## Rotating Icon
 
@@ -660,9 +532,8 @@ img:hover {
 .icon:hover {
   transform: rotate(180deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
-
----
 
 ## 3D Product Card
 
@@ -670,23 +541,18 @@ img:hover {
 .card:hover {
   transform: perspective(1000px) rotateY(10deg);
 }
+// Example demonstrating 2D & 3D Transforms.
 ```
 
----
-
-# ⚡ Performance Benefits
+## Performance Benefits
 
 Transforms are GPU accelerated.
-
----
 
 ## Best Properties to Animate
 
 ✅ transform
 
 ✅ opacity
-
----
 
 ## Avoid Animating
 
@@ -700,36 +566,26 @@ Transforms are GPU accelerated.
 
 ❌ margin
 
----
-
 ### Performance Flow
 
-```mermaid
-flowchart LR
+Good["Transform & Opacity"]
 
-    Good["Transform & Opacity"]
+GPU["GPU Accelerated"]
 
-    GPU["GPU Accelerated"]
+Bad["Layout Properties"]
 
-    Bad["Layout Properties"]
+CPU["Recalculate Layout"]
 
-    CPU["Recalculate Layout"]
+Good --> GPU
 
-    Good --> GPU
-
-    Bad --> CPU
+Bad --> CPU
 ```
-
----
-
-# ⚠️ Common Mistakes
-
----
 
 ## Forgetting transition
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .card:hover {
   transform: scale(1.1);
@@ -738,29 +594,23 @@ flowchart LR
 
 Instant jump.
 
----
-
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   transition: transform 0.3s;
 }
 ```
 
----
-
 ## Extreme Rotations
 
-❌
-
+/* Basic example showing the core idea. */
 ```css
 rotate(720deg)
 ```
 
 Can feel distracting.
-
----
 
 ## Overusing 3D Effects
 
@@ -768,10 +618,9 @@ Too many 3D transforms can hurt usability.
 
 Use them sparingly.
 
----
+## Quick Cheat Sheet
 
-# 🧠 Quick Cheat Sheet
-
+/* Basic example showing the core idea. */
 ```css
 transform: translateX(100px);
 
@@ -794,9 +643,7 @@ transform-style: preserve-3d;
 backface-visibility: hidden;
 ```
 
----
-
-# ✅ Best Practices
+## ✅ Best Practices
 
 - Use transforms for movement and scaling.
 - Always combine transforms with transitions.
@@ -806,9 +653,7 @@ backface-visibility: hidden;
 - Test 3D transforms on mobile devices.
 - Avoid excessive rotation and motion.
 
----
-
-# 🚀 Key Takeaways
+## Key Takeaways
 
 - CSS Transforms visually modify elements without affecting layout.
 - `translate()`, `rotate()`, `scale()`, and `skew()` are core 2D transforms.

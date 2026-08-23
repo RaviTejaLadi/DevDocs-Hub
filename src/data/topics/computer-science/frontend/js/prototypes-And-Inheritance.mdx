@@ -1,8 +1,6 @@
-# 📚 JavaScript Prototypes & Inheritance
+# JavaScript Prototypes & Inheritance
 
 ---
-
-## 1. 🔹 What is a Prototype?
 
 ### ✅ Definition
 
@@ -14,29 +12,24 @@ from other objects.
 When we access a property or method on an object, JavaScript looks for it on the
 object. If it doesn't find it, it looks up the prototype chain.
 
----
-
-## 2. 🔹 Syntax to Access or Set Prototype
-
 ### ✅ Old Way (pre-ES6)
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 object.__proto__; // Access prototype (not recommended)
 ```
 
 ### ✅ ES6 Way (recommended)
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 Object.getPrototypeOf(object); // Get prototype
 Object.setPrototypeOf(object, prototype); // Set prototype
 ```
 
----
-
-## 3. 🔹 Creating Prototypes via Constructor Functions
-
 ### ✅ Syntax
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function Person(name) {
   this.name = name;
@@ -55,12 +48,9 @@ console.log(john.greet()); // Hello, my name is John
 - `Person` is a constructor.
 - `greet` is added to `Person.prototype`, so all instances share it.
 
----
-
-## 4. 🔹 Prototype Chain
-
 ### ✅ Visualization
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```
 john --> Person.prototype --> Object.prototype --> null
 ```
@@ -71,12 +61,9 @@ When `john.greet()` is called:
 2. Then on `Person.prototype`
 3. Then on `Object.prototype`
 
----
-
 ## 5. 🔹 Inheritance via Prototypes
 
-### ✅ Syntax
-
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function Animal(name) {
   this.name = name;
@@ -109,19 +96,16 @@ console.log(dog.bark()); // Rex barks.
   `Animal.prototype`.
 - `Dog.prototype.constructor = Dog` resets the constructor (important).
 
----
-
 ## 6. 🔹 Inheritance using ES6 Classes
 
-### ✅ Syntax
-
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 class Animal {
   constructor(name) {
     this.name = name;
   }
 
-  speak() {
+speak() {
     return `${this.name} makes a noise.`;
   }
 }
@@ -142,8 +126,6 @@ console.log(rex.bark()); // Rex barks.
 - Cleaner and clearer syntax.
 - Under the hood, still uses prototype-based inheritance.
 
----
-
 ## 7. 🔹 Prototype vs `__proto__`
 
 | Term        | Description                                                                |
@@ -151,6 +133,7 @@ console.log(rex.bark()); // Rex barks.
 | `prototype` | A property of functions that is used when creating new objects using `new` |
 | `__proto__` | A reference to the actual prototype object, used in the prototype chain    |
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 function A() {}
 const obj = new A();
@@ -158,12 +141,9 @@ const obj = new A();
 console.log(obj.__proto__ === A.prototype); // true
 ```
 
----
-
-## 8. 🔹 Checking Inheritance
-
 ### ✅ Using `instanceof`
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 console.log(dog instanceof Dog); // true
 console.log(dog instanceof Animal); // true
@@ -171,16 +151,14 @@ console.log(dog instanceof Animal); // true
 
 ### ✅ Using `isPrototypeOf`
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 console.log(Animal.prototype.isPrototypeOf(dog)); // true
 ```
 
----
-
-## 9. 🔹 Prototype Pollution (⚠️)
-
 ### ❌ Dangerous Example
 
+// Example demonstrating JavaScript Prototypes & Inheritance.
 ```js
 Object.prototype.hacked = true;
 
@@ -188,8 +166,6 @@ console.log({}.hacked); // true — affects all objects!
 ```
 
 ✅ Always avoid modifying built-in prototypes like `Object.prototype`.
-
----
 
 ## 10. 🔹 Summary
 
@@ -201,3 +177,28 @@ console.log({}.hacked); // true — affects all objects!
 | `__proto__`     | Actual reference to prototype                            |
 | `prototype`     | Property on constructor functions                        |
 | ES6 `class`     | Cleaner syntax for prototype-based inheritance           |
+
+## Quick Reference
+
+| Area | Revision point |
+|---|---|
+| Definition | State exactly what the topic means. |
+| Mechanism | Explain the steps that produce the result. |
+| Example | Use a small realistic case. |
+| Pitfalls | Know common mistakes and boundary cases. |
+
+## Decision Guide
+
+Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
+
+## Compare Related Ideas
+
+When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+
+## Self-Check
+
+After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+
+## Practical Decision
+
+A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
