@@ -56,3 +56,7 @@ Walk through one realistic request from entry point to storage or response. Then
 ## Capacity and Reliability
 
 A design should explain what happens as load and failures grow. Identify the main bottleneck, estimate where it could become a limit, and decide which component can scale horizontally or vertically. Then consider dependency failure, retries, timeouts, and data consistency. The strongest design notes connect each architectural component to a requirement and explain the trade-off introduced by that component.
+
+## Final Understanding Check
+
+Before considering **Event Loop** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
