@@ -8,7 +8,7 @@ analyze layouts, identify rendering issues, and improve website performance.
 
 ---
 
-## Why Debugging Matters
+# 🎯 Why Debugging Matters
 
 Common CSS problems:
 
@@ -24,29 +24,32 @@ Common CSS problems:
 
 ❌ Large CSS bundles
 
+---
+
 ## Debugging Workflow
 
-<!-- Visual flow for 🐛 Debugging Tools & Performance. -->
 ```mermaid
 flowchart LR
 
-Bug["🐛 Bug Found"]
+    Bug["🐛 Bug Found"]
 
-Inspect["Inspect Element"]
+    Inspect["Inspect Element"]
 
-Analyze["Analyze Styles"]
+    Analyze["Analyze Styles"]
 
-Fix["Apply Fix"]
+    Fix["Apply Fix"]
 
-Test["Test Again"]
+    Test["Test Again"]
 
-Bug --> Inspect
+    Bug --> Inspect
     Inspect --> Analyze
     Analyze --> Fix
     Fix --> Test
 ```
 
-## 🛠 Browser DevTools
+---
+
+# 🛠️ Browser DevTools
 
 Every modern browser includes developer tools.
 
@@ -59,67 +62,72 @@ Popular options:
 | Edge    | Edge DevTools           |
 | Safari  | Safari Web Inspector    |
 
+---
+
+# Opening DevTools
+
 ### Windows
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 F12
 ```
 
 or
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Ctrl + Shift + I
 ```
 
+---
+
 ### Mac
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Cmd + Option + I
 ```
 
-## Inspect Element
+---
+
+# 🔍 Inspect Element
 
 The most used debugging feature.
 
 Right-click any element:
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Inspect
 ```
 
+---
+
 ## What You Can See
 
-<!-- Visual flow for 🐛 Debugging Tools & Performance. -->
 ```mermaid
 flowchart TB
 
-Element["Selected Element"]
+    Element["Selected Element"]
 
-HTML["HTML Structure"]
+    HTML["HTML Structure"]
 
-CSS["Applied CSS"]
+    CSS["Applied CSS"]
 
-Layout["Layout Info"]
+    Layout["Layout Info"]
 
-Element --> HTML
+    Element --> HTML
     Element --> CSS
     Element --> Layout
 ```
 
-## Example
+---
 
-<!-- Basic example showing the core idea. -->
+# Example
+
 ```html
 <div class="card">Product</div>
 ```
 
 Inspecting reveals:
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 20px;
@@ -129,7 +137,9 @@ Inspecting reveals:
 
 You can modify styles live.
 
-## Styles Panel
+---
+
+# 🎨 Styles Panel
 
 Shows:
 
@@ -141,9 +151,10 @@ Shows:
 
 ✅ Source file
 
+---
+
 ## Specificity Example
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   color: blue;
@@ -156,50 +167,59 @@ Shows:
 
 DevTools shows:
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 .card      ❌ overridden
 #product   ✅ active
 ```
 
-## CSS Cascade Visualization
+---
 
-Element["Element"]
+# CSS Cascade Visualization
 
-Class["Class Selector"]
+```mermaid
+flowchart TB
 
-ID["ID Selector"]
+    Element["Element"]
 
-Result["Winning Style"]
+    Class["Class Selector"]
 
-Element --> Class
+    ID["ID Selector"]
+
+    Result["Winning Style"]
+
+    Element --> Class
     Element --> ID
 
-Class --> Result
+    Class --> Result
     ID --> Result
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## Box Model Inspector
+---
+
+# 📦 Box Model Inspector
 
 Visualizes:
 
-Margin
+```mermaid
+flowchart TB
 
-Border
+    Margin
 
-Padding
+    Border
 
-Content
+    Padding
 
-Margin --> Border
+    Content
+
+    Margin --> Border
     Border --> Padding
     Padding --> Content
 ```
 
+---
+
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   margin: 20px;
@@ -210,39 +230,50 @@ Example:
 
 DevTools visually displays each layer.
 
-## 📐 Debugging Flexbox
+---
+
+# 📐 Debugging Flexbox
 
 Chrome DevTools can visualize Flexbox layouts.
 
-/* Basic example showing the core idea. */
+Example:
+
 ```css
 .container {
   display: flex;
 }
 ```
 
+DevTools shows:
+
 - Main Axis
 - Cross Axis
 - Alignment
 - Flex Item Sizes
 
+---
+
 ## Flexbox Visualization
 
-Start["Main Axis Start"]
+```mermaid
+flowchart LR
 
-Item1["Item"]
+    Start["Main Axis Start"]
 
-Item2["Item"]
+    Item1["Item"]
 
-Item3["Item"]
+    Item2["Item"]
 
-End["Main Axis End"]
+    Item3["Item"]
 
-Start --> Item1 --> Item2 --> Item3 --> End
-// Example demonstrating 🐛 Debugging Tools & Performance.
+    End["Main Axis End"]
+
+    Start --> Item1 --> Item2 --> Item3 --> End
 ```
 
-## ⬛ Debugging CSS Grid
+---
+
+# ⬛ Debugging CSS Grid
 
 DevTools can highlight:
 
@@ -251,19 +282,26 @@ DevTools can highlight:
 - Row sizes
 - Column sizes
 
+---
+
 ## Grid Visualization
 
-Grid["Grid Container"]
+```mermaid
+flowchart TB
 
-Row1["Row 1"]
+    Grid["Grid Container"]
 
-Row2["Row 2"]
+    Row1["Row 1"]
 
-Grid --> Row1
+    Row2["Row 2"]
+
+    Grid --> Row1
     Grid --> Row2
 ```
 
-## 📱 Device Toolbar
+---
+
+# 📱 Device Toolbar
 
 Simulate:
 
@@ -271,19 +309,25 @@ Simulate:
 - Tablet
 - Desktop
 
+---
+
 ## Responsive Testing
 
-Mobile["📱 Mobile"]
+```mermaid
+flowchart LR
 
-Tablet["📲 Tablet"]
+    Mobile["📱 Mobile"]
 
-Desktop["🖥️ Desktop"]
+    Tablet["📲 Tablet"]
 
-Mobile --> Tablet --> Desktop
-// Example demonstrating 🐛 Debugging Tools & Performance.
+    Desktop["🖥️ Desktop"]
+
+    Mobile --> Tablet --> Desktop
 ```
 
-## Network Panel
+---
+
+# Network Panel
 
 Analyzes:
 
@@ -292,22 +336,30 @@ Analyzes:
 - Fonts
 - Requests
 
+---
+
 ## Performance Bottlenecks
 
-Request["Request"]
+```mermaid
+flowchart LR
 
-Download["Download"]
+    Request["Request"]
 
-Render["Render"]
+    Download["Download"]
 
-Paint["Paint"]
+    Render["Render"]
 
-Request --> Download --> Render --> Paint
+    Paint["Paint"]
+
+    Request --> Download --> Render --> Paint
 ```
+
+---
+
+# Example
 
 Large CSS file:
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 styles.css
 1.5MB
@@ -315,30 +367,36 @@ styles.css
 
 May slow page loading.
 
-## Lighthouse
+---
+
+# 🎯 Lighthouse
 
 Chrome's built-in auditing tool.
 
 Provides scores for:
 
-Lighthouse
+```mermaid
+flowchart TB
 
-Performance
+    Lighthouse
 
-Accessibility
+    Performance
 
-SEO
+    Accessibility
 
-BestPractices["Best Practices"]
+    SEO
 
-Lighthouse --> Performance
+    BestPractices["Best Practices"]
+
+    Lighthouse --> Performance
     Lighthouse --> Accessibility
     Lighthouse --> SEO
     Lighthouse --> BestPractices
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## Example Lighthouse Metrics
+---
+
+# Example Lighthouse Metrics
 
 | Metric | Ideal   |
 | ------ | ------- |
@@ -347,7 +405,9 @@ Lighthouse --> Performance
 | CLS    | < 0.1   |
 | INP    | < 200ms |
 
-## Paint Flashing
+---
+
+# 🎨 Paint Flashing
 
 Shows what parts of the page repaint.
 
@@ -359,68 +419,82 @@ Useful for finding:
 
 ❌ Re-render issues
 
-## Rendering Process
+---
 
-HTML
+# Rendering Process
 
-CSS
+```mermaid
+flowchart LR
 
-Layout
+    HTML
 
-Paint
+    CSS
 
-Composite
+    Layout
 
-HTML --> CSS --> Layout --> Paint --> Composite
+    Paint
+
+    Composite
+
+    HTML --> CSS --> Layout --> Paint --> Composite
 ```
 
-## CSS Performance Basics
+---
+
+# ⚡ CSS Performance Basics
 
 Good CSS improves rendering speed.
 
-## Avoid Expensive Selectors
+---
+
+# Avoid Expensive Selectors
 
 ❌
 
-/* Basic example showing the core idea. */
 ```css
 .sidebar ul li a span {
   color: red;
 }
 ```
 
+---
+
 ✅
 
-/* Basic example showing the core idea. */
 ```css
 .sidebar-link {
   color: red;
 }
 ```
 
+---
+
 ## Selector Complexity
 
-Deep["Deep Selectors"]
+```mermaid
+flowchart LR
 
-Slow["Harder Matching"]
+    Deep["Deep Selectors"]
 
-Class["Simple Class"]
+    Slow["Harder Matching"]
 
-Fast["Faster Matching"]
+    Class["Simple Class"]
 
-Deep --> Slow
+    Fast["Faster Matching"]
+
+    Deep --> Slow
     Class --> Fast
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## Use Class Selectors
+---
+
+# Use Class Selectors
 
 Prefer:
 
 ```css
 .card {
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Instead of:
@@ -428,16 +502,19 @@ Instead of:
 ```css
 #page .container ul li a {
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## Reduce Repaints
+---
+
+# 🎯 Reduce Repaints
 
 Prefer animating:
 
 ✅ transform
 
 ✅ opacity
+
+---
 
 Avoid:
 
@@ -451,21 +528,28 @@ Avoid:
 
 ❌ top
 
+---
+
 ## Animation Performance
 
-Transform["transform"]
+```mermaid
+flowchart LR
 
-GPU["GPU"]
+    Transform["transform"]
 
-Width["width"]
+    GPU["GPU"]
 
-Layout["Layout Recalculation"]
+    Width["width"]
 
-Transform --> GPU
+    Layout["Layout Recalculation"]
+
+    Transform --> GPU
     Width --> Layout
 ```
 
-## Minimize CSS File Size
+---
+
+# 🎨 Minimize CSS File Size
 
 Remove:
 
@@ -475,23 +559,36 @@ Remove:
 
 ❌ Old Framework Code
 
-## CSS Optimization Flow
+---
 
-Large["Large CSS"]
+# CSS Optimization Flow
 
-Purge["Remove Unused CSS"]
+```mermaid
+flowchart LR
 
-Minify["Minify"]
+    Large["Large CSS"]
 
-Small["Optimized CSS"]
+    Purge["Remove Unused CSS"]
 
-Large --> Purge --> Minify --> Small
-// Example demonstrating 🐛 Debugging Tools & Performance.
+    Minify["Minify"]
+
+    Small["Optimized CSS"]
+
+    Large --> Purge --> Minify --> Small
 ```
 
-## 🗜 Minification
+---
+
+# 🗜️ Minification
 
 Before:
+
+```css
+.card {
+  padding: 20px;
+  background: white;
+}
+```
 
 After:
 
@@ -500,94 +597,122 @@ After:
   padding: 20px;
   background: #fff;
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Smaller file size.
 
-## Critical CSS
+---
+
+# 🎯 Critical CSS
 
 Load important styles first.
 
-Critical["Critical CSS"]
+```mermaid
+flowchart LR
 
-AboveFold["Above The Fold"]
+    Critical["Critical CSS"]
 
-Full["Full Stylesheet"]
+    AboveFold["Above The Fold"]
 
-Critical --> AboveFold
+    Full["Full Stylesheet"]
+
+    Critical --> AboveFold
     AboveFold --> Full
 ```
 
 Improves perceived performance.
 
-## 🖼 Optimize Images
+---
+
+# 🖼️ Optimize Images
 
 Large images affect CSS performance indirectly.
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
+---
+
+❌
+
 ```text
 4000px Image
 ```
 
-// Example demonstrating 🐛 Debugging Tools & Performance.
+---
+
+✅
+
 ```text
 Responsive Image
 ```
 
 Use:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <img src="image.webp" alt="Product" />
 ```
 
-## Font Performance
+---
 
-/* Basic example showing the core idea. */
+# 🎯 Font Performance
+
+Use:
+
 ```css
 font-display: swap;
 ```
 
-/* Basic example showing the core idea. */
+Example:
+
 ```css
 @font-face {
   font-family: 'Inter';
 
-src: url('inter.woff2');
+  src: url('inter.woff2');
 
-font-display: swap;
+  font-display: swap;
 }
 ```
 
-## Performance Optimization Flow
+---
 
-Images
+# Performance Optimization Flow
 
-Fonts
+```mermaid
+flowchart TB
 
-JS
+    CSS
 
-CSS --> Performance
+    Images
+
+    Fonts
+
+    JS
+
+    Performance
+
+    CSS --> Performance
     Images --> Performance
     Fonts --> Performance
     JS --> Performance
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## Detect Unused CSS
+---
+
+# 🎯 Detect Unused CSS
 
 Chrome DevTools → Coverage Tab
+
+Shows:
 
 ```text
 Used CSS
 Unused CSS
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Helpful for cleanup.
 
-## CSS Containment
+---
+
+# 🚀 CSS Containment
 
 Improve rendering performance.
 
@@ -595,12 +720,13 @@ Improve rendering performance.
 .card {
   contain: layout;
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Limits layout calculations.
 
-## will-change
+---
+
+# 🎯 will-change
 
 Tell browser an element will animate.
 
@@ -608,10 +734,15 @@ Tell browser an element will animate.
 .card {
   will-change: transform;
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Use sparingly.
+
+---
+
+# ⚠️ Common Debugging Techniques
+
+---
 
 ## Add Temporary Border
 
@@ -619,10 +750,11 @@ Use sparingly.
 * {
   border: 1px solid red;
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Find layout issues quickly.
+
+---
 
 ## Highlight Overflow
 
@@ -630,10 +762,11 @@ Find layout issues quickly.
 body {
   overflow-x: hidden;
 }
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Then inspect large elements.
+
+---
 
 ## Find Missing Styles
 
@@ -641,7 +774,9 @@ Use DevTools → Computed Tab.
 
 Shows final applied values.
 
-## Quick Cheat Sheet
+---
+
+# 🧠 Quick Cheat Sheet
 
 ```text
 Inspect Element
@@ -660,11 +795,14 @@ Device Toolbar
 
 Network Tab
 
+Lighthouse
+
 Coverage Report
-// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use DevTools daily.
 - Debug with the Styles panel first.
@@ -675,7 +813,9 @@ Coverage Report
 - Test responsive layouts on multiple screen sizes.
 - Remove unused CSS before production.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - Browser DevTools are essential for CSS debugging.
 - Inspect Element helps identify styling issues quickly.

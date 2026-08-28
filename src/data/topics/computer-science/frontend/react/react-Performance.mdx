@@ -16,6 +16,8 @@ loading to provide a smooth user experience.
 
 ---
 
+## React.memo()
+
 ### Definition
 
 React.memo is a higher-order component that memoizes the result of a component.
@@ -24,7 +26,6 @@ parent components update.
 
 ### Syntax
 
-// Basic example showing the core idea.
 ```javascript
 const MemoizedComponent = React.memo(Component, areEqual?)
 ```
@@ -42,9 +43,10 @@ Use React.memo for:
 - Expensive components that don't need frequent updates
 - Child components in lists or grids
 
+### Examples
+
 #### Basic React.memo
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 
@@ -75,7 +77,7 @@ const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState({ name: 'John', age: 25 });
 
-return (
+  return (
     <div>
       <button onClick={() => setCount(count + 1)}>Count: {count}</button>
       <ExpensiveComponent name={user.name} age={user.age} />
@@ -87,7 +89,6 @@ return (
 
 #### React.memo with Custom Comparison
 
-// Basic example showing the core idea.
 ```javascript
 const UserCard = React.memo(
   ({ user, theme }) => {
@@ -108,18 +109,27 @@ const UserCard = React.memo(
 );
 ```
 
+---
+
 ## useMemo Hook
+
+### Definition
 
 useMemo is a React Hook that memoizes expensive calculations between re-renders.
 It only recalculates when its dependencies change.
 
-// Basic example showing the core idea.
+### Syntax
+
 ```javascript
 const memoizedValue = useMemo(() => expensiveCalculation(a, b), [a, b]);
 ```
 
+### Parameters
+
 - `calculateValue`: Function that returns the value to memoize
 - `dependencies`: Array of dependencies that trigger recalculation
+
+### Usage
 
 Use useMemo for:
 
@@ -127,9 +137,10 @@ Use useMemo for:
 - Creating objects or arrays that are passed as props
 - Filtering or sorting large datasets
 
+### Examples
+
 #### Basic useMemo
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useMemo, useState } from 'react';
 
@@ -139,7 +150,7 @@ const ExpensiveCalculationComponent = ({ items, filter }) => {
     .filter((item) => item.category === filter)
     .reduce((sum, item) => sum + item.price, 0);
 
-// With useMemo - calculation only runs when items or filter change
+  // With useMemo - calculation only runs when items or filter change
   const memoizedExpensiveValue = useMemo(() => {
     console.log('Calculating expensive value...');
     return items
@@ -147,7 +158,7 @@ const ExpensiveCalculationComponent = ({ items, filter }) => {
       .reduce((sum, item) => sum + item.price, 0);
   }, [items, filter]);
 
-return (
+  return (
     <div>
       <p>Total Value: ${memoizedExpensiveValue}</p>
     </div>
@@ -157,7 +168,6 @@ return (
 
 #### useMemo for Object Creation
 
-// Basic example showing the core idea.
 ```javascript
 const UserProfile = ({ userId, userData }) => {
   // Without useMemo - new object created on every render
@@ -167,7 +177,7 @@ const UserProfile = ({ userId, userData }) => {
     joinDate: new Date(userData.createdAt).toLocaleDateString(),
   };
 
-// With useMemo - object only recreated when userData changes
+  // With useMemo - object only recreated when userData changes
   const memoizedUserStats = useMemo(() => {
     return {
       totalPosts: userData.posts?.length || 0,
@@ -177,7 +187,7 @@ const UserProfile = ({ userId, userData }) => {
     };
   }, [userData]);
 
-return (
+  return (
     <div>
       <h2>User Statistics</h2>
       <p>Posts: {memoizedUserStats.totalPosts}</p>
@@ -188,20 +198,29 @@ return (
 };
 ```
 
+---
+
 ## useCallback Hook
+
+### Definition
 
 useCallback is a React Hook that memoizes callback functions between re-renders.
 It returns the same function instance when dependencies haven't changed.
 
-// Basic example showing the core idea.
+### Syntax
+
 ```javascript
 const memoizedCallback = useCallback(() => {
   // callback logic
 }, [dependencies]);
 ```
 
+### Parameters
+
 - `fn`: The callback function to memoize
 - `dependencies`: Array of dependencies that trigger function recreation
+
+### Usage
 
 Use useCallback for:
 
@@ -209,9 +228,10 @@ Use useCallback for:
 - Event handlers in child components
 - Functions used as dependencies in other hooks
 
+### Examples
+
 #### Basic useCallback
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useCallback, useState } from 'react';
 
@@ -236,7 +256,7 @@ const TodoList = () => {
     { id: 2, text: 'Build an app', completed: false },
   ]);
 
-// Without useCallback - new function created on every render
+  // Without useCallback - new function created on every render
   const handleToggle = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -245,7 +265,7 @@ const TodoList = () => {
     );
   };
 
-// With useCallback - function only recreated when todos change
+  // With useCallback - function only recreated when todos change
   const memoizedHandleToggle = useCallback(
     (id) => {
       setTodos(
@@ -257,14 +277,14 @@ const TodoList = () => {
     [todos]
   );
 
-const memoizedHandleDelete = useCallback(
+  const memoizedHandleDelete = useCallback(
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
     },
     [todos]
   );
 
-return (
+  return (
     <div>
       {todos.map((todo) => (
         <TodoItem
@@ -281,14 +301,13 @@ return (
 
 #### useCallback with Custom Hooks
 
-// Basic example showing the core idea.
 ```javascript
 const useSearch = (initialQuery = '') => {
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-const search = useCallback(async (searchTerm) => {
+  const search = useCallback(async (searchTerm) => {
     setLoading(true);
     try {
       const response = await fetch(`/api/search?q=${searchTerm}`);
@@ -301,22 +320,29 @@ const search = useCallback(async (searchTerm) => {
     }
   }, []);
 
-const debouncedSearch = useCallback(debounce(search, 300), [search]);
+  const debouncedSearch = useCallback(debounce(search, 300), [search]);
 
-return { query, setQuery, results, loading, search: debouncedSearch };
+  return { query, setQuery, results, loading, search: debouncedSearch };
 };
 ```
 
+---
+
 ## Code Splitting with React.lazy()
+
+### Definition
 
 Code splitting is a technique that splits your bundle into smaller chunks,
 loading only the necessary code for the current view. React.lazy() enables
 dynamic imports for components.
 
-// Basic example showing the core idea.
+### Syntax
+
 ```javascript
 const LazyComponent = React.lazy(() => import('./Component'));
 ```
+
+### Usage
 
 Use code splitting for:
 
@@ -324,9 +350,10 @@ Use code splitting for:
 - Large components or libraries
 - Features that aren't immediately needed
 
+### Examples
+
 #### Route-based Code Splitting
 
-// Basic example showing the core idea.
 ```javascript
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -354,7 +381,7 @@ const App = () => {
           <Link to="/dashboard">Dashboard</Link>
         </nav>
 
-<Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -370,7 +397,6 @@ const App = () => {
 
 #### Component-based Code Splitting
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useState, Suspense } from 'react';
 
@@ -380,7 +406,7 @@ const HeavyDataTable = React.lazy(() => import('./HeavyDataTable'));
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
-return (
+  return (
     <div className="dashboard">
       <div className="tabs">
         <button
@@ -403,7 +429,7 @@ return (
         </button>
       </div>
 
-<div className="tab-content">
+      <div className="tab-content">
         {activeTab === 'overview' && (
           <div>
             <h2>Dashboard Overview</h2>
@@ -411,13 +437,13 @@ return (
           </div>
         )}
 
-{activeTab === 'charts' && (
+        {activeTab === 'charts' && (
           <Suspense fallback={<div>Loading charts...</div>}>
             <HeavyChart />
           </Suspense>
         )}
 
-{activeTab === 'data' && (
+        {activeTab === 'data' && (
           <Suspense fallback={<div>Loading data table...</div>}>
             <HeavyDataTable />
           </Suspense>
@@ -428,11 +454,17 @@ return (
 };
 ```
 
+---
+
 ## Virtual Scrolling
+
+### Definition
 
 Virtual scrolling is a technique that renders only visible items in a large
 list, significantly improving performance for large datasets by reducing DOM
 nodes.
+
+### Usage
 
 Use virtual scrolling for:
 
@@ -441,9 +473,10 @@ Use virtual scrolling for:
 - Chat messages or feeds
 - Image galleries with many items
 
+### Examples
+
 #### Basic Virtual Scrolling Implementation
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -451,19 +484,19 @@ const VirtualList = ({ items, itemHeight = 50, containerHeight = 400 }) => {
   const [scrollTop, setScrollTop] = useState(0);
   const scrollElementRef = useRef();
 
-const startIndex = Math.floor(scrollTop / itemHeight);
+  const startIndex = Math.floor(scrollTop / itemHeight);
   const endIndex = Math.min(
     startIndex + Math.ceil(containerHeight / itemHeight) + 1,
     items.length
   );
 
-const visibleItems = items.slice(startIndex, endIndex);
+  const visibleItems = items.slice(startIndex, endIndex);
 
-const handleScroll = (e) => {
+  const handleScroll = (e) => {
     setScrollTop(e.target.scrollTop);
   };
 
-return (
+  return (
     <div
       ref={scrollElementRef}
       style={{
@@ -513,7 +546,7 @@ const App = () => {
     }))
   );
 
-return (
+  return (
     <div>
       <h1>Virtual Scrolling Demo</h1>
       <p>Rendering {items.length} items efficiently</p>
@@ -525,7 +558,6 @@ return (
 
 #### Advanced Virtual Grid
 
-// Basic example showing the core idea.
 ```javascript
 const VirtualGrid = ({
   items,
@@ -538,16 +570,16 @@ const VirtualGrid = ({
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-const itemsPerRow = Math.floor(containerWidth / (itemWidth + gap));
+  const itemsPerRow = Math.floor(containerWidth / (itemWidth + gap));
   const totalRows = Math.ceil(items.length / itemsPerRow);
 
-const startRow = Math.floor(scrollTop / (itemHeight + gap));
+  const startRow = Math.floor(scrollTop / (itemHeight + gap));
   const endRow = Math.min(
     startRow + Math.ceil(containerHeight / (itemHeight + gap)) + 1,
     totalRows
   );
 
-const visibleItems = [];
+  const visibleItems = [];
   for (let row = startRow; row < endRow; row++) {
     for (let col = 0; col < itemsPerRow; col++) {
       const index = row * itemsPerRow + col;
@@ -562,7 +594,7 @@ const visibleItems = [];
     }
   }
 
-return (
+  return (
     <div
       style={{
         width: containerWidth,
@@ -608,7 +640,11 @@ return (
 };
 ```
 
+---
+
 ## Bundle Analysis
+
+### Definition
 
 Bundle analysis involves examining your application's JavaScript bundles to
 identify optimization opportunities, unused code, and large dependencies.
@@ -619,6 +655,8 @@ identify optimization opportunities, unused code, and large dependencies.
 - **source-map-explorer**: Analyze bundles using source maps
 - **bundlephobia**: Check npm package sizes
 
+### Usage
+
 Use bundle analysis to:
 
 - Identify large dependencies
@@ -626,27 +664,27 @@ Use bundle analysis to:
 - Optimize import strategies
 - Monitor bundle size over time
 
+### Examples
+
 #### Setting up webpack-bundle-analyzer
 
-# Basic example showing the core idea.
 ```bash
-## Install the analyzer
+# Install the analyzer
 npm install --save-dev webpack-bundle-analyzer
 
-## Add to package.json scripts
+# Add to package.json scripts
 {
   "scripts": {
     "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js"
   }
 }
 
-## Run analysis
+# Run analysis
 npm run analyze
 ```
 
 #### Tree Shaking Optimization
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - imports entire library
 import _ from 'lodash';
@@ -669,7 +707,6 @@ const processData = (data) => {
 
 #### Dynamic Imports for Large Libraries
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - large library loaded upfront
 import { Chart } from 'chart.js';
@@ -683,20 +720,20 @@ const Dashboard = () => {
   const [chartData, setChartData] = useState(null);
   const [Chart, setChart] = useState(null);
 
-const loadChart = async () => {
+  const loadChart = async () => {
     if (!Chart) {
       const chartModule = await import('chart.js');
       setChart(chartModule.Chart);
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
     if (chartData) {
       loadChart();
     }
   }, [chartData]);
 
-return (
+  return (
     <div>
       <button onClick={() => setChartData(mockData)}>Load Chart</button>
       {Chart && chartData && <ChartComponent Chart={Chart} data={chartData} />}
@@ -705,7 +742,11 @@ return (
 };
 ```
 
+---
+
 ## Image Optimization
+
+### Definition
 
 Image optimization involves reducing image file sizes, implementing lazy
 loading, and using appropriate formats to improve loading performance.
@@ -717,9 +758,10 @@ loading, and using appropriate formats to improve loading performance.
 - **Responsive images**: Serve different sizes based on screen size
 - **Image compression**: Reduce file size without significant quality loss
 
+### Examples
+
 #### Lazy Loading Images
 
-// Basic example showing the core idea.
 ```javascript
 import React, { useState, useRef, useEffect } from 'react';
 
@@ -728,7 +770,7 @@ const LazyImage = ({ src, alt, placeholder, className }) => {
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef();
 
-useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -739,14 +781,14 @@ useEffect(() => {
       { threshold: 0.1 }
     );
 
-if (imgRef.current) {
+    if (imgRef.current) {
       observer.observe(imgRef.current);
     }
 
-return () => observer.disconnect();
+    return () => observer.disconnect();
   }, []);
 
-return (
+  return (
     <div ref={imgRef} className={className}>
       {isInView && (
         <img
@@ -771,7 +813,7 @@ const ProgressiveImage = ({ src, placeholder, alt }) => {
   const [currentSrc, setCurrentSrc] = useState(placeholder);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+  useEffect(() => {
     const img = new Image();
     img.onload = () => {
       setCurrentSrc(src);
@@ -780,7 +822,7 @@ useEffect(() => {
     img.src = src;
   }, [src]);
 
-return (
+  return (
     <img
       src={currentSrc}
       alt={alt}
@@ -795,14 +837,13 @@ return (
 
 #### Responsive Image Component
 
-// Basic example showing the core idea.
 ```javascript
 const ResponsiveImage = ({ src, alt, sizes = [400, 800, 1200], className }) => {
   const generateSrcSet = () => {
     return sizes.map((size) => `${src}?w=${size} ${size}w`).join(', ');
   };
 
-const generateSizes = () => {
+  const generateSizes = () => {
     return [
       '(max-width: 480px) 400px',
       '(max-width: 768px) 800px',
@@ -810,7 +851,7 @@ const generateSizes = () => {
     ].join(', ');
   };
 
-return (
+  return (
     <img
       src={src}
       srcSet={generateSrcSet()}
@@ -823,20 +864,27 @@ return (
 };
 ```
 
+---
+
 ## State Management Optimization
+
+### Definition
 
 State management optimization involves structuring and managing state
 efficiently to minimize unnecessary re-renders and improve application
 performance.
+
+### Techniques
 
 - **State colocation**: Keep state close to where it's used
 - **State normalization**: Flatten nested state structures
 - **Selective subscriptions**: Subscribe only to needed state slices
 - **State splitting**: Separate frequently changing state
 
+### Examples
+
 #### State Colocation
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - state lifted too high
 const App = () => {
@@ -845,7 +893,7 @@ const App = () => {
   const [comments, setComments] = useState([]);
   const [notifications, setNotifications] = useState([]);
 
-return (
+  return (
     <div>
       <Header notifications={notifications} />
       <UserProfile profile={userProfile} onUpdate={setUserProfile} />
@@ -873,14 +921,13 @@ const App = () => {
 const Header = () => {
   const [notifications, setNotifications] = useState([]);
 
-// Header-specific logic
+  // Header-specific logic
   return <header>{/* ... */}</header>;
 };
 ```
 
 #### State Normalization
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - nested state structure
 const [state, setState] = useState({
@@ -931,7 +978,6 @@ const getPostComments = (state, postId) => {
 
 #### State Splitting for Performance
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - single state causing unnecessary re-renders
 const Dashboard = () => {
@@ -942,12 +988,12 @@ const Dashboard = () => {
     settings: { theme: 'dark', language: 'en' },
   });
 
-// Any state update re-renders entire component
+  // Any state update re-renders entire component
   const updateNotifications = (newNotifications) => {
     setState((prev) => ({ ...prev, notifications: newNotifications }));
   };
 
-return (
+  return (
     <div>
       <UserInfo user={state.user} />
       <PostsList posts={state.posts} />
@@ -964,7 +1010,7 @@ const Dashboard = () => {
   const [notifications, setNotifications] = useState([]);
   const [settings, setSettings] = useState({ theme: 'dark', language: 'en' });
 
-return (
+  return (
     <div>
       <UserInfo user={user} onUpdate={setUser} />
       <PostsList posts={posts} onUpdate={setPosts} />
@@ -978,7 +1024,11 @@ return (
 };
 ```
 
+---
+
 ## Avoiding Unnecessary Re-renders
+
+### Definition
 
 Preventing unnecessary re-renders involves identifying and eliminating renders
 that don't result in actual DOM changes or user-visible updates.
@@ -990,9 +1040,10 @@ that don't result in actual DOM changes or user-visible updates.
 - Unnecessary state updates
 - Poor component structure
 
+### Examples
+
 #### Avoiding Object Creation in Render
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - new objects created on every render
 const UserCard = ({ user }) => {
@@ -1002,12 +1053,12 @@ const UserCard = ({ user }) => {
     borderRadius: '8px',
   };
 
-const buttonProps = {
+  const buttonProps = {
     type: 'button',
     className: 'btn-primary',
   };
 
-return (
+  return (
     <div style={cardStyle}>
       <h3>{user.name}</h3>
       <button {...buttonProps}>Edit</button>
@@ -1022,6 +1073,11 @@ const cardStyle = {
   borderRadius: '8px',
 };
 
+const buttonProps = {
+  type: 'button',
+  className: 'btn-primary',
+};
+
 const UserCard = ({ user }) => {
   return (
     <div style={cardStyle}>
@@ -1034,7 +1090,6 @@ const UserCard = ({ user }) => {
 
 #### Conditional Rendering Optimization
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - creates new array on every render
 const TodoList = ({ todos, filter }) => {
@@ -1044,7 +1099,7 @@ const TodoList = ({ todos, filter }) => {
     return true;
   });
 
-return (
+  return (
     <ul>
       {filteredTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
@@ -1063,7 +1118,7 @@ const TodoList = ({ todos, filter }) => {
     });
   }, [todos, filter]);
 
-return (
+  return (
     <ul>
       {filteredTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
@@ -1075,7 +1130,6 @@ return (
 
 #### Optimizing Context Usage
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - entire context value recreated on every render
 const AppProvider = ({ children }) => {
@@ -1083,7 +1137,7 @@ const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   const [notifications, setNotifications] = useState([]);
 
-// New object created on every render
+  // New object created on every render
   const contextValue = {
     user,
     setUser,
@@ -1093,7 +1147,7 @@ const AppProvider = ({ children }) => {
     setNotifications,
   };
 
-return (
+  return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
@@ -1104,7 +1158,7 @@ const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   const [notifications, setNotifications] = useState([]);
 
-const contextValue = useMemo(
+  const contextValue = useMemo(
     () => ({
       user,
       setUser,
@@ -1116,27 +1170,36 @@ const contextValue = useMemo(
     [user, theme, notifications]
   );
 
+  return (
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
+  );
+};
+
 // ✅ Even better - split contexts by update frequency
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-const value = useMemo(() => ({ user, setUser }), [user]);
+  const value = useMemo(() => ({ user, setUser }), [user]);
 
-return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
 
-const value = useMemo(() => ({ theme, setTheme }), [theme]);
+  const value = useMemo(() => ({ theme, setTheme }), [theme]);
 
-return (
+  return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 ```
 
+---
+
 ## Performance Monitoring Tools
+
+### Definition
 
 Performance monitoring tools help identify performance bottlenecks, measure
 rendering times, and track optimization improvements in React applications.
@@ -1153,9 +1216,10 @@ rendering times, and track optimization improvements in React applications.
 - **Web Vitals**: Core web performance metrics
 - **React Query DevTools**: API call optimization
 
+### Examples
+
 #### Using React DevTools Profiler
 
-// Basic example showing the core idea.
 ```javascript
 // Wrap components to profile performance
 import { Profiler } from 'react';
@@ -1200,22 +1264,21 @@ const ExpensiveComponent = () => {
 
 #### Custom Performance Monitoring
 
-// Basic example showing the core idea.
 ```javascript
 // Performance monitoring hook
 const usePerformanceMonitor = (componentName) => {
   const startTimeRef = useRef();
 
-useEffect(() => {
+  useEffect(() => {
     startTimeRef.current = performance.now();
 
-return () => {
+    return () => {
       const endTime = performance.now();
       const duration = endTime - startTimeRef.current;
 
-console.log(`${componentName} render time: ${duration.toFixed(2)}ms`);
+      console.log(`${componentName} render time: ${duration.toFixed(2)}ms`);
 
-// Send to analytics service
+      // Send to analytics service
       if (duration > 100) {
         analytics.track('slow_component_render', {
           component: componentName,
@@ -1230,13 +1293,12 @@ console.log(`${componentName} render time: ${duration.toFixed(2)}ms`);
 const SlowComponent = () => {
   usePerformanceMonitor('SlowComponent');
 
-return <div>{/* Component content */}</div>;
+  return <div>{/* Component content */}</div>;
 };
 ```
 
 #### Web Vitals Monitoring
 
-// Basic example showing the core idea.
 ```javascript
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
@@ -1266,7 +1328,7 @@ const useWebVitals = () => {
       });
     };
 
-const handleLCP = (metric) => {
+    const handleLCP = (metric) => {
       // Largest Contentful Paint
       analytics.track('web_vital', {
         name: 'LCP',
@@ -1280,13 +1342,17 @@ const handleLCP = (metric) => {
       });
     };
 
-getCLS(handleCLS);
+    getCLS(handleCLS);
     getLCP(handleLCP);
   }, []);
 };
 ```
 
+---
 
+## Best Practices Summary
+
+### Performance Optimization Checklist
 
 #### Component Optimization
 
@@ -1330,26 +1396,25 @@ getCLS(handleCLS);
 
 ### Performance Anti-patterns to Avoid
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Anti-patterns
 const BadComponent = ({ items }) => {
   // Creating objects in render
   const style = { color: 'red' };
 
-// Expensive operation in render
+  // Expensive operation in render
   const expensiveValue = items.reduce((sum, item) => sum + item.value, 0);
 
-// New function on every render
+  // New function on every render
   const handleClick = () => console.log('clicked');
 
-// Unnecessary state update
+  // Unnecessary state update
   const [count, setCount] = useState(0);
   useEffect(() => {
     setCount(count); // Same value
   }, [count]);
 
-return (
+  return (
     <div style={style}>
       {items.map((item, index) => (
         // Using index as key
@@ -1370,9 +1435,9 @@ const GoodComponent = ({ items }) => {
     [items]
   );
 
-const handleClick = useCallback(() => console.log('clicked'), []);
+  const handleClick = useCallback(() => console.log('clicked'), []);
 
-return (
+  return (
     <div style={style}>
       <div>Total: {expensiveValue}</div>
       {items.map((item) => (
@@ -1387,19 +1452,18 @@ return (
 
 ### Monitoring and Measurement
 
-// Basic example showing the core idea.
 ```javascript
 // Performance measurement utilities
 const measureComponentPerformance = (WrappedComponent, componentName) => {
   return (props) => {
     const startTime = performance.now();
 
-useEffect(() => {
+    useEffect(() => {
       const endTime = performance.now();
       console.log(`${componentName} render: ${endTime - startTime}ms`);
     });
 
-return <WrappedComponent {...props} />;
+    return <WrappedComponent {...props} />;
   };
 };
 
@@ -1448,12 +1512,3 @@ Focus on the most impactful optimizations first:
 By following these practices and using the techniques outlined in this guide,
 you can build React applications that are fast, responsive, and provide
 excellent user experiences across all devices and network conditions.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

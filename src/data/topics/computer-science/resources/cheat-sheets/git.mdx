@@ -1,8 +1,7 @@
-# GIT
+# 🎯 **GIT**
 
-## GIT ARCHITECTURE (How Git Works)
+## 📊 **GIT ARCHITECTURE (How Git Works)**
 
-<!-- Visual flow for GIT. -->
 ```mermaid
 graph LR
     A[Working Directory<br/>📁 Your files] -->|git add| B[Staging Area<br/>📋 Ready to commit]
@@ -14,7 +13,7 @@ graph LR
 
 ---
 
-## 1. SETUP & CONFIGURATION _(One-time setup)_
+## 🚀 **1. SETUP & CONFIGURATION** _(One-time setup)_
 
 | Command                                          | What it does             |
 | ------------------------------------------------ | ------------------------ |
@@ -24,9 +23,10 @@ graph LR
 | `git config --global core.editor "code --wait"`  | ✏️ Set VS Code as editor |
 | `git config --list`                              | 🔍 View all settings     |
 
-## 📁 2. STARTING A REPOSITORY
+---
 
-<!-- Visual flow for GIT. -->
+## 📁 **2. STARTING A REPOSITORY**
+
 ```mermaid
 flowchart TD
     A[Start Here] --> B{New or Existing?}
@@ -41,9 +41,10 @@ flowchart TD
 | `git clone <url>`          | 📥 Download existing repo                  |
 | `git clone <url> <folder>` | 📥 Clone to specific folder                |
 
-## 3. BASIC WORKFLOW _(Daily Commands)_
+---
 
-<!-- Visual flow for GIT. -->
+## 📝 **3. BASIC WORKFLOW** _(Daily Commands)_
+
 ```mermaid
 flowchart LR
     subgraph "Your Computer"
@@ -54,7 +55,7 @@ flowchart LR
     RR -->|git pull| WD
 ```
 
-### Essential Commands:
+### **Essential Commands:**
 
 | Command                    | What it does             | 🎯 When to use                     |
 | -------------------------- | ------------------------ | ---------------------------------- |
@@ -67,24 +68,25 @@ flowchart LR
 | `git pull`                 | Download from remote     | 📥 Get latest changes              |
 | `git log --oneline`        | View commit history      | 📜 See what happened               |
 
-### Example Workflow:
+### **Example Workflow:**
 
-# Basic example showing the core idea.
 ```bash
-## 1. Check what's changed
+# 1. Check what's changed
 git status
 
-## 2. Stage your changes
+# 2. Stage your changes
 git add index.html style.css
 
-## 3. Save with a message
+# 3. Save with a message
 git commit -m "Add homepage and styling"
 
-## 4. Share with team
+# 4. Share with team
 git push origin main
 ```
 
-## 4. VIEWING & COMPARING CHANGES
+---
+
+## 🔄 **4. VIEWING & COMPARING CHANGES**
 
 | Command                     | What it shows         | 🎨 Visual                      |
 | --------------------------- | --------------------- | ------------------------------ |
@@ -94,22 +96,22 @@ git push origin main
 | `git log --oneline --graph` | History with branches | 🌿 Visual branch tree          |
 | `git show <commit>`         | Details of a commit   | 🔍 Full commit info            |
 
-### Pretty Log Aliases:
+### **Pretty Log Aliases:**
 
-# Basic example showing the core idea.
 ```bash
-## Add these for beautiful history views
+# Add these for beautiful history views
 git config --global alias.tree "log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(blue)%an%Creset %C(green)%d%Creset' --all"
 git config --global alias.lg "log --oneline --graph --all --decorate"
 
-## Use them:
+# Use them:
 git tree
 git lg
 ```
 
-## ⏪ 5. UNDOING CHANGES _(Your Safety Net)_
+---
 
-<!-- Visual flow for GIT. -->
+## ⏪ **5. UNDOING CHANGES** _(Your Safety Net)_
+
 ```mermaid
 flowchart TD
     A[❌ Made a mistake?] --> B{Where is the change?}
@@ -123,7 +125,7 @@ flowchart TD
     B -->|Already Pushed| J[git revert commit-hash<br/>🔄 Create undo commit]
 ```
 
-### Common Undo Scenarios:
+### **Common Undo Scenarios:**
 
 | What you want                     | Command                         | ⚠️ Safety    |
 | --------------------------------- | ------------------------------- | ------------ |
@@ -134,9 +136,10 @@ flowchart TD
 | Revert a pushed commit            | `git revert <commit-hash>`      | 🟢 Safe      |
 | Remove untracked files            | `git clean -fd`                 | 🔴 Permanent |
 
-## 🌿 6. BRANCHING _(Work on features independently)_
+---
 
-<!-- Visual flow for GIT. -->
+## 🌿 **6. BRANCHING** _(Work on features independently)_
+
 ```mermaid
 gitGraph
     commit id: "Initial"
@@ -150,7 +153,7 @@ gitGraph
     commit id: "Deploy"
 ```
 
-### Branch Commands:
+### **Branch Commands:**
 
 | Command                | Purpose         | Example                          |
 | ---------------------- | --------------- | -------------------------------- |
@@ -161,7 +164,7 @@ gitGraph
 | `git branch -d <name>` | Delete branch   | 🗑️ `git branch -d old-branch`    |
 | `git branch -D <name>` | Force delete    | 💀 `git branch -D broken-branch` |
 
-### Merge vs Rebase:
+### **Merge vs Rebase:**
 
 | Merge                       | Rebase                           |
 | --------------------------- | -------------------------------- |
@@ -170,20 +173,21 @@ gitGraph
 | ❌ Creates merge commit     | ❌ Rewrites commit history       |
 | 🟢 Safe for shared branches | 🔴 Dangerous for shared branches |
 
-# Basic example showing the core idea.
 ```bash
-## Option 1: Merge (recommended for beginners)
+# Update your feature branch with latest main
+# Option 1: Merge (recommended for beginners)
 git checkout feature
 git merge main
 
-## Option 2: Rebase (cleaner history)
+# Option 2: Rebase (cleaner history)
 git checkout feature
 git rebase main
 ```
 
-## ☁ 7. REMOTE REPOSITORIES _(Working with GitHub)_
+---
 
-<!-- Visual flow for GIT. -->
+## ☁️ **7. REMOTE REPOSITORIES** _(Working with GitHub)_
+
 ```mermaid
 flowchart TD
     Local[💻 Your Computer] -->|git push| Remote[☁️ GitHub]
@@ -192,7 +196,7 @@ flowchart TD
     Local -->|git clone| Remote[📦 Copy entire repo]
 ```
 
-### Remote Commands:
+### **Remote Commands:**
 
 | Command                       | What it does                 |
 | ----------------------------- | ---------------------------- |
@@ -204,26 +208,26 @@ flowchart TD
 | `git fetch`                   | 📥 Download (no merge)       |
 | `git remote remove origin`    | 🗑️ Remove remote link        |
 
-### Push Scenarios:
+### **Push Scenarios:**
 
-# Basic example showing the core idea.
 ```bash
-## First time pushing
+# First time pushing
 git push -u origin main
 
-## Regular push
+# Regular push
 git push
 
-## Push to specific branch
+# Push to specific branch
 git push origin feature-branch
 
-## Force push (USE WITH CAUTION!)
+# Force push (USE WITH CAUTION!)
 git push --force-with-lease  # Safer than --force
 ```
 
-## 🏷 8. TAGGING _(Mark important points)_
+---
 
-<!-- Visual flow for GIT. -->
+## 🏷️ **8. TAGGING** _(Mark important points)_
+
 ```mermaid
 flowchart LR
     A[Commits] --> B[v1.0.0<br/>🏷️ Tag]
@@ -240,9 +244,10 @@ flowchart LR
 | `git tag -d v1.0.0`                      | 🗑️ Delete local tag           |
 | `git push origin :v1.0.0`                | 🗑️ Delete remote tag          |
 
-## 💾 9. STASHING _(Temporary save)_
+---
 
-<!-- Visual flow for GIT. -->
+## 💾 **9. STASHING** _(Temporary save)_
+
 ```mermaid
 flowchart LR
     A[💻 Working on feature] -->|Need to switch branch| B[📦 git stash]
@@ -252,7 +257,7 @@ flowchart LR
     E --> F[✨ Continue working]
 ```
 
-### Stash Commands:
+### **Stash Commands:**
 
 | Command           | What it does                     |
 | ----------------- | -------------------------------- |
@@ -263,78 +268,85 @@ flowchart LR
 | `git stash drop`  | 🗑️ Remove latest stash           |
 | `git stash clear` | 🧹 Remove all stashes            |
 
-### Interactive Rebase _(Clean up commit history)_
+---
 
-# Basic example showing the core idea.
+## 🔧 **10. ADVANCED COMMANDS** _(Power User Tools)_
+
+### **Interactive Rebase** _(Clean up commit history)_
+
 ```bash
-## Edit last 3 commits
+# Edit last 3 commits
 git rebase -i HEAD~3
 
-## drop = remove commit
+# Options in interactive rebase:
+# pick = use commit
+# reword = change message
+# edit = modify commit
+# squash = combine with previous
+# drop = remove commit
 ```
 
-### Cherry-Pick _(Copy specific commit)_
+### **Cherry-Pick** _(Copy specific commit)_
 
-# Basic example showing the core idea.
 ```bash
-## Copy commit from another branch
+# Copy commit from another branch
 git cherry-pick <commit-hash>
 
-## Example: Get a bug fix from main
+# Example: Get a bug fix from main
 git checkout feature
 git cherry-pick abc123  # Commit hash from main
 ```
 
-### Bisect _(Find which commit broke something)_
+### **Bisect** _(Find which commit broke something)_
 
-# Basic example showing the core idea.
 ```bash
 git bisect start
 git bisect bad HEAD      # Current is broken
 git bisect good <hash>   # Known working commit
-## Git will checkout commits for you to test
+# Git will checkout commits for you to test
 git bisect good          # If current is working
 git bisect bad           # If current is broken
 git bisect reset         # End bisect
 ```
 
-### Reflog _(Recover lost commits)_
+### **Reflog** _(Recover lost commits)_
 
-# Basic example showing the core idea.
 ```bash
 git reflog               # See all HEAD movements
 git checkout HEAD@{2}    # Go back to previous state
 git branch recovered <commit-hash>  # Create branch from lost commit
 ```
 
-## 📋 11. .GITIGNORE _(What NOT to commit)_
+---
 
-# Basic example showing the core idea.
+## 📋 **11. .GITIGNORE** _(What NOT to commit)_
+
 ```bash
+# Common patterns to ignore
 
-## Dependencies
+# Dependencies
 node_modules/
 vendor/
 __pycache__/
 
-## Build outputs
+# Build outputs
 dist/
 build/
 *.exe
 *.o
 
-## Environment files
+# Environment files
 .env
 .env.local
 *.secret
 
-## IDE files
+# IDE files
 .vscode/
 .idea/
 *.swp
 .DS_Store
 
-## Logs
+# Logs
 *.log
 npm-debug.log*
 ```
@@ -342,7 +354,9 @@ npm-debug.log*
 **Key Rule:** Always commit `.gitignore` **before** adding files it should
 ignore!
 
-## 🚨 12. TROUBLESHOOTING COMMON ISSUES
+---
+
+## 🚨 **12. TROUBLESHOOTING COMMON ISSUES**
 
 | Problem                             | Solution                                                                  |
 | ----------------------------------- | ------------------------------------------------------------------------- |
@@ -354,78 +368,81 @@ ignore!
 | 🔴 Large file committed             | Use BFG Repo-Cleaner or `git filter-branch`                               |
 | 🔴 Need to undo pushed commit       | `git revert <hash>` (safe) or `git reset --hard` + force push (dangerous) |
 
-### 🔥 New Feature Workflow:
+---
 
-# Basic example showing the core idea.
+## 🎯 **13. QUICK REFERENCE - COMMON WORKFLOWS**
+
+### **🔥 New Feature Workflow:**
+
 ```bash
-## 1. Get latest main
+# 1. Get latest main
 git checkout main
 git pull origin main
 
-## 2. Create feature branch
+# 2. Create feature branch
 git switch -c feature/login-page
 
-## 3. Work on changes
+# 3. Work on changes
 git add .
 git commit -m "Add login form"
+# Repeat as needed...
 
-## 4. Update with main (avoid conflicts)
+# 4. Update with main (avoid conflicts)
 git fetch origin
 git rebase main  # or git merge main
 
-## 5. Push to remote
+# 5. Push to remote
 git push -u origin feature/login-page
 
-## 6. Create Pull Request on GitHub
+# 6. Create Pull Request on GitHub
 ```
 
-### 🐛 Bug Fix Workflow:
+### **🐛 Bug Fix Workflow:**
 
-# Basic example showing the core idea.
 ```bash
-## 1. Create hotfix from main
+# 1. Create hotfix from main
 git checkout main
 git pull
 git switch -c hotfix/security-patch
 
-## 2. Fix bug
+# 2. Fix bug
 git add .
 git commit -m "Fix security vulnerability"
 
-## 3. Deploy immediately
+# 3. Deploy immediately
 git push origin hotfix/security-patch
 
-## 4. Merge back
+# 4. Merge back
 git checkout main
 git merge hotfix/security-patch
 git push origin main
 ```
 
-### Release Workflow:
+### **📦 Release Workflow:**
 
-# Basic example showing the core idea.
 ```bash
-## 1. Prepare release branch
+# 1. Prepare release branch
 git checkout main
 git pull
 git switch -c release/v2.0.0
 
-## 2. Final tweaks
+# 2. Final tweaks
 git commit -m "Prepare release v2.0.0"
 
-## 3. Tag release
+# 3. Tag release
 git tag -a v2.0.0 -m "Release version 2.0.0"
 
-## 4. Push everything
+# 4. Push everything
 git push origin release/v2.0.0
 git push origin v2.0.0
 ```
 
-## 14. PRODUCTIVITY ALIASES _(Time Savers)_
+---
 
-# Basic example showing the core idea.
+## 💡 **14. PRODUCTIVITY ALIASES** _(Time Savers)_
+
 ```bash
-## Add to ~/.gitconfig or use:
+# Add to ~/.gitconfig or use:
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
@@ -437,14 +454,16 @@ git config --global alias.lg "log --oneline --graph --all --decorate"
 git config --global alias.undo "reset --soft HEAD~1"
 git config --global alias.wip "commit -am 'WIP: $(date +%H:%M)'"
 
+# Use them:
 git st          # status
 git co main     # checkout
 git lg          # pretty log
 ```
 
-## 15. VISUAL SUMMARY
+---
 
-<!-- Visual flow for GIT. -->
+## 🎨 **15. VISUAL SUMMARY**
+
 ```mermaid
 graph TD
     subgraph "Daily Git Cycle"
@@ -459,7 +478,9 @@ graph TD
     end
 ```
 
-## 📚 16. BEST PRACTICES _(Golden Rules)_
+---
+
+## 📚 **16. BEST PRACTICES** _(Golden Rules)_
 
 | 🥇 Rule                      | Why                             |
 | ---------------------------- | ------------------------------- |
@@ -472,9 +493,8 @@ graph TD
 | **Don't commit secrets**     | Use `.gitignore`                |
 | **Tag releases**             | Easy to find versions           |
 
-### ✅ Good Commit Message Format:
+### **✅ Good Commit Message Format:**
 
-// Example demonstrating GIT.
 ```
 Short summary (50 chars max)
 
@@ -486,7 +506,9 @@ Detailed explanation if needed:
 Fixes #123
 ```
 
-## 🔗 17. USEFUL RESOURCES
+---
+
+## 🔗 **17. USEFUL RESOURCES**
 
 | Resource                                                          | What it's for            |
 | ----------------------------------------------------------------- | ------------------------ |
@@ -496,7 +518,9 @@ Fixes #123
 | [Git Flight Rules](https://github.com/k88hudson/git-flight-rules) | 📋 Practical solutions   |
 | [Learn Git Branching](https://learngitbranching.js.org/)          | 🎮 Visual learning game  |
 
-## ✅ REMEMBER:
+---
+
+## ✅ **REMEMBER:**
 
 > Git is like a time machine for your code. **Master these commands and you'll
 > never lose work again!** 🚀
@@ -504,19 +528,9 @@ Fixes #123
 **Final Tip:** Practice in a test repo first. Create a folder called
 `git-practice` and experiment freely!
 
-// Example demonstrating GIT.
 ```
 mkdir git-practice
 cd git-practice
 git init
-## Test everything here!
+# Test everything here!
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

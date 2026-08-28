@@ -5,6 +5,8 @@
 
 ---
 
+## 1. `let` and `const`
+
 ### ✅ Definition
 
 - `let`: Declares a block-scoped variable (can be reassigned).
@@ -12,7 +14,6 @@
 
 ### 🔤 Syntax
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 let variableName = value;
 const constantName = value;
@@ -20,7 +21,6 @@ const constantName = value;
 
 ### 🧑‍💻 Usage & Example
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
 ```js
 let name = 'John';
 name = 'Doe'; // allowed
@@ -29,16 +29,22 @@ const age = 30;
 // age = 40; ❌ Error: Assignment to constant variable
 ```
 
+---
+
 ## 2. Arrow Functions (`=>`)
+
+### ✅ Definition
 
 Shorter syntax for writing functions. Inherits `this` from parent scope.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 const functionName = (param1, param2) => expression;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 // Regular Function
 function add(a, b) {
@@ -51,16 +57,22 @@ const add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
 ```
 
+---
+
 ## 3. Template Literals (Backticks)
+
+### ✅ Definition
 
 String literals allowing embedded expressions and multi-line strings.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 `string text ${expression}`;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const name = 'Ravi';
 const greeting = `Hello, ${name}!`;
@@ -68,17 +80,23 @@ const greeting = `Hello, ${name}!`;
 console.log(greeting); // Hello, Ravi!
 ```
 
+---
+
 ## 4. Destructuring
+
+### ✅ Definition
 
 Extract values from arrays or objects into variables.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 const [a, b] = array;
 const { x, y } = object;
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 // Array Destructuring
 const nums = [1, 2];
@@ -89,16 +107,22 @@ const person = { name: 'Alice', age: 25 };
 const { name, age } = person;
 ```
 
+---
+
 ## 5. Default Parameters
+
+### ✅ Definition
 
 Set default values for function parameters.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 function func(param = defaultValue) { ... }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 function greet(name = 'Guest') {
   console.log(`Hello, ${name}`);
@@ -107,16 +131,22 @@ function greet(name = 'Guest') {
 greet(); // Hello, Guest
 ```
 
+---
+
 ## 6. Rest Parameters (`...`)
+
+### ✅ Definition
 
 Combines multiple arguments into a single array.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 function func(...args) {}
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 function sum(...numbers) {
   return numbers.reduce((a, b) => a + b);
@@ -125,16 +155,22 @@ function sum(...numbers) {
 console.log(sum(1, 2, 3)); // 6
 ```
 
+---
+
 ## 7. Spread Operator (`...`)
+
+### ✅ Definition
 
 Expands arrays or objects into individual elements.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 [...array], { ...object };
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const arr1 = [1, 2];
 const arr2 = [...arr1, 3]; // [1, 2, 3]
@@ -143,17 +179,23 @@ const obj1 = { a: 1 };
 const obj2 = { ...obj1, b: 2 }; // { a: 1, b: 2 }
 ```
 
+---
+
 ## 8. Enhanced Object Literals
+
+### ✅ Definition
 
 Shorthand syntax for object properties and methods.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 const name = "Bob";
 const user = { name, greet() { ... } };
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const name = 'Bob';
 const user = {
@@ -164,11 +206,16 @@ const user = {
 };
 ```
 
+---
+
 ## 9. Classes
+
+### ✅ Definition
 
 ES6 introduced class syntax for object-oriented programming.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 class ClassName {
   constructor() {}
@@ -176,14 +223,15 @@ class ClassName {
 }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 class Person {
   constructor(name) {
     this.name = name;
   }
 
-greet() {
+  greet() {
     console.log(`Hello, ${this.name}`);
   }
 }
@@ -192,16 +240,22 @@ const p = new Person('Ravi');
 p.greet(); // Hello, Ravi
 ```
 
+---
+
 ## 10. Promises
+
+### ✅ Definition
 
 Handle asynchronous operations in a more manageable way.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 new Promise((resolve, reject) => { ... });
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const fetchData = () =>
   new Promise((resolve, reject) => {
@@ -211,11 +265,16 @@ const fetchData = () =>
 fetchData().then(console.log); // Data loaded
 ```
 
+---
+
 ## 11. Modules (`import` / `export`)
+
+### ✅ Definition
 
 ES6 supports modular JavaScript with `import` and `export`.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 // file.js
 export const name = 'Ravi';
@@ -224,7 +283,8 @@ export const name = 'Ravi';
 import { name } from './file.js';
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 // utils.js
 export function greet(name) {
@@ -236,17 +296,23 @@ import { greet } from './utils.js';
 console.log(greet('Ravi'));
 ```
 
+---
+
 ## 12. `for...of` Loop
+
+### ✅ Definition
 
 Iterates over iterable objects (arrays, strings, etc.).
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 for (let value of iterable) {
 }
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const arr = [10, 20, 30];
 
@@ -255,16 +321,22 @@ for (let num of arr) {
 }
 ```
 
+---
+
 ## 13. Symbol
+
+### ✅ Definition
 
 A unique and immutable primitive value.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 const sym = Symbol('description');
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const id = Symbol('id');
 const user = {
@@ -275,18 +347,24 @@ const user = {
 console.log(user[id]); // 123
 ```
 
+---
+
 ## 14. `Map` and `Set`
+
+### ✅ Definition
 
 - **Map**: Key-value pairs with any type of key.
 - **Set**: Collection of unique values.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 const map = new Map();
 const set = new Set();
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const map = new Map();
 map.set('key', 'value');
@@ -296,16 +374,22 @@ set.add(1);
 set.add(1); // Won't be added again
 ```
 
+---
+
 ## 15. `Object.assign()`
+
+### ✅ Definition
 
 Copies values from source to target object.
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🔤 Syntax
+
 ```js
 Object.assign(target, ...sources);
 ```
 
-// Example demonstrating 📘 JavaScript ES6 Features – Complete Guide.
+### 🧑‍💻 Usage & Example
+
 ```js
 const target = { a: 1 };
 const source = { b: 2 };
@@ -313,6 +397,8 @@ const merged = Object.assign(target, source);
 
 console.log(merged); // { a: 1, b: 2 }
 ```
+
+---
 
 ## ✅ Summary Table
 
@@ -332,12 +418,3 @@ console.log(merged); // { a: 1, b: 2 }
 | Symbol             | Unique identifiers                |
 | `Map`, `Set`       | Data structures                   |
 | `Object.assign()`  | Merge objects                     |
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

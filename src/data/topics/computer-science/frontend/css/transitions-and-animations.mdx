@@ -10,7 +10,7 @@ CSS provides two powerful tools:
 
 ---
 
-## Why Use Animations?
+# 🎯 Why Use Animations?
 
 Animations help users understand what's happening on a page.
 
@@ -24,23 +24,26 @@ Animations help users understand what's happening on a page.
 
 ✅ Create Engaging Interactions
 
-## Transitions vs Animations
+---
 
-<!-- Visual flow for ✨ Transitions & Animations. -->
+# 🧠 Transitions vs Animations
+
 ```mermaid
 flowchart LR
 
-CSS["CSS Motion"]
+    CSS["CSS Motion"]
 
-Transition["Transitions"]
+    Transition["Transitions"]
     Animation["Animations"]
 
-CSS --> Transition
+    CSS --> Transition
     CSS --> Animation
 
-Transition --> State["State Change"]
+    Transition --> State["State Change"]
     Animation --> Timeline["Multiple Keyframes"]
 ```
+
+---
 
 | Feature            | Transition | Animation |
 | ------------------ | ---------- | --------- |
@@ -50,13 +53,14 @@ Transition --> State["State Change"]
 | Hover Effects      | ✅         | ❌        |
 | Complex Motion     | ❌         | ✅        |
 
-## CSS Transitions
+---
+
+# 🚀 CSS Transitions
 
 A transition smoothly changes property values.
 
 Without transition:
 
-<!-- Visual flow for ✨ Transitions & Animations. -->
 ```mermaid
 flowchart LR
     A["Blue Button"] --> B["Red Button"]
@@ -66,7 +70,6 @@ Instant change.
 
 With transition:
 
-<!-- Visual flow for ✨ Transitions & Animations. -->
 ```mermaid
 flowchart LR
     A["Blue Button"] --> C["Smooth Change"] --> B["Red Button"]
@@ -74,9 +77,10 @@ flowchart LR
 
 Smooth change.
 
-## Basic Transition Syntax
+---
 
-/* Basic example showing the core idea. */
+# Basic Transition Syntax
+
 ```css
 /* Smooth transition */
 button {
@@ -86,7 +90,6 @@ button {
 
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 /* Background color transition */
 button {
@@ -99,25 +102,28 @@ button:hover {
 }
 ```
 
-## Transition Properties
+---
 
-/* Basic example showing the core idea. */
+# 🎯 Transition Properties
+
 ```css
 transition: property duration timing-function delay;
 ```
 
-/* Basic example showing the core idea. */
+Example:
+
 ```css
 .card {
   transition: transform 0.4s ease 0.1s;
 }
 ```
 
-## transition-property
+---
+
+# 📌 transition-property
 
 Specify what should animate.
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   transition-property: transform;
@@ -126,50 +132,53 @@ Specify what should animate.
 
 Multiple properties:
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   transition-property: transform, background-color;
 }
 ```
 
-## ⏱ transition-duration
+---
+
+# ⏱️ transition-duration
 
 Controls speed.
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   transition-duration: 0.5s;
 }
 ```
 
+---
+
 ## Duration Comparison
 
-<!-- Visual flow for ✨ Transitions & Animations. -->
 ```mermaid
 flowchart LR
     Fast["0.2s"]
     Medium["0.5s"]
     Slow["1s"]
 
-Fast --> Medium --> Slow
+    Fast --> Medium --> Slow
 ```
 
-## transition-timing-function
+---
+
+# 🎯 transition-timing-function
 
 Controls animation speed curve.
+
+---
 
 ## linear
 
 Constant speed.
 
-/* Basic example showing the core idea. */
 ```css
 transition-timing-function: linear;
 ```
 
-<!-- Visual flow for ✨ Transitions & Animations. -->
 ```mermaid
 xychart-beta
     title "Linear"
@@ -178,56 +187,66 @@ xychart-beta
     line [5,5]
 ```
 
+---
+
 ## ease (Default)
 
 Starts slow, speeds up, slows down.
 
-/* Basic example showing the core idea. */
 ```css
 transition-timing-function: ease;
 ```
+
+---
 
 ## ease-in
 
 Slow start.
 
-/* Basic example showing the core idea. */
 ```css
 transition-timing-function: ease-in;
 ```
+
+---
 
 ## ease-out
 
 Slow end.
 
-/* Basic example showing the core idea. */
 ```css
 transition-timing-function: ease-out;
 ```
+
+---
 
 ## ease-in-out
 
 Slow start and end.
 
-/* Basic example showing the core idea. */
 ```css
 transition-timing-function: ease-in-out;
 ```
 
-## ⌛ transition-delay
+---
+
+# ⌛ transition-delay
 
 Wait before animation starts.
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   transition-delay: 0.5s;
 }
 ```
 
+---
+
+# 🎨 Hover Effects
+
+---
+
 ## Scale Effect
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   transition: transform 0.3s;
@@ -238,13 +257,21 @@ Wait before animation starts.
 }
 ```
 
+---
+
 ## Lift Effect
+
+```css
+.card {
+  transition: transform 0.3s;
+}
 
 .card:hover {
   transform: translateY(-10px);
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
+
+---
 
 ## Rotate Effect
 
@@ -256,70 +283,88 @@ Wait before animation starts.
 .icon:hover {
   transform: rotate(180deg);
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
-## CSS Animations
+---
+
+# 🚀 CSS Animations
 
 Animations can run automatically without user interaction.
 
-## How Animations Work
+---
 
-Keyframes["Keyframes"]
+# How Animations Work
 
-Start["Start State"]
+```mermaid
+flowchart LR
 
-Middle["Middle State"]
+    Keyframes["Keyframes"]
 
-End["End State"]
+    Start["Start State"]
 
-Keyframes --> Start
+    Middle["Middle State"]
+
+    End["End State"]
+
+    Keyframes --> Start
     Keyframes --> Middle
     Keyframes --> End
 ```
 
-## Step 1: Create Keyframes
+---
 
-/* Basic example showing the core idea. */
+# Step 1: Create Keyframes
+
 ```css
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
 
-to {
+  to {
     opacity: 1;
   }
 }
 ```
 
-## Step 2: Apply Animation
+---
 
-/* Basic example showing the core idea. */
+# Step 2: Apply Animation
+
 ```css
 .box {
   animation: fadeIn 1s;
 }
 ```
 
-## animation Property
+---
 
-/* Basic example showing the core idea. */
+# 🎯 animation Property
+
 ```css
 animation: name duration timing-function delay iteration-count direction
   fill-mode;
 ```
 
-/* Basic example showing the core idea. */
+Example:
+
 ```css
 .card {
   animation: slideIn 1s ease-out 0s 1;
 }
 ```
 
-## Fade In Animation
+---
 
-to {
+# 📦 Fade In Animation
+
+```css
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
     opacity: 1;
   }
 }
@@ -327,10 +372,11 @@ to {
 .box {
   animation: fadeIn 1s;
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
-## ➡ Slide In Animation
+---
+
+# ➡️ Slide In Animation
 
 ```css
 @keyframes slideIn {
@@ -339,13 +385,14 @@ to {
     opacity: 0;
   }
 
-to {
+  to {
     transform: translateX(0);
     opacity: 1;
   }
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
+
+---
 
 ## Animation Flow
 
@@ -355,17 +402,17 @@ flowchart LR
     Moving["Sliding"]
     Visible["Visible"]
 
-Hidden --> Moving --> Visible
-// Example demonstrating ✨ Transitions & Animations.
+    Hidden --> Moving --> Visible
 ```
 
-## Infinite Animation
+---
+
+# 🔄 Infinite Animation
 
 ```css
 .spinner {
   animation: spin 1s linear infinite;
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 ```css
@@ -374,12 +421,13 @@ Hidden --> Moving --> Visible
     transform: rotate(0deg);
   }
 
-to {
+  to {
     transform: rotate(360deg);
   }
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
+
+---
 
 ## Spinner Animation
 
@@ -391,58 +439,70 @@ flowchart LR
     D["270°"]
     E["360°"]
 
-A --> B --> C --> D --> E --> A
-// Example demonstrating ✨ Transitions & Animations.
+    A --> B --> C --> D --> E --> A
 ```
 
-## animation-iteration-count
+---
+
+# 🎯 animation-iteration-count
 
 Controls repetition.
 
 ```css
 animation-iteration-count: 3;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Runs 3 times.
 
+---
+
 ```css
 animation-iteration-count: infinite;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Runs forever.
+
+---
+
+# 🔄 animation-direction
+
+---
 
 ## normal
 
 ```css
 animation-direction: normal;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Forward.
+
+---
 
 ## reverse
 
 ```css
 animation-direction: reverse;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Backward.
+
+---
 
 ## alternate
 
 ```css
 animation-direction: alternate;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Forward then backward.
 
-## 🎭 animation-fill-mode
+---
+
+# 🎭 animation-fill-mode
 
 Determines final state.
+
+---
 
 ## forwards
 
@@ -450,8 +510,9 @@ Keeps last keyframe.
 
 ```css
 animation-fill-mode: forwards;
-// Example demonstrating ✨ Transitions & Animations.
 ```
+
+---
 
 ## backwards
 
@@ -459,10 +520,11 @@ Uses starting keyframe before animation starts.
 
 ```css
 animation-fill-mode: backwards;
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
-## Loading Skeleton Animation
+---
+
+# 🎨 Loading Skeleton Animation
 
 ```css
 @keyframes shimmer {
@@ -470,26 +532,25 @@ animation-fill-mode: backwards;
     background-position: -200px;
   }
 
-100% {
+  100% {
     background-position: 200px;
   }
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 ```css
 .skeleton {
   animation: shimmer 1.5s infinite;
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
-## 🛒 Product Card Hover Example
+---
+
+# 🛒 Product Card Hover Example
 
 ```html
 <!-- Product Card -->
 <div class="card">Product</div>
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 ```css
@@ -500,12 +561,13 @@ animation-fill-mode: backwards;
 .card:hover {
   transform: translateY(-8px);
 
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
-## Button Ripple Style Effect
+---
+
+# 🎯 Button Ripple Style Effect
 
 ```css
 button {
@@ -515,12 +577,13 @@ button {
 button:active {
   transform: scale(0.95);
 }
-// Example demonstrating ✨ Transitions & Animations.
 ```
 
 Provides instant click feedback.
 
-## Performance Tips
+---
+
+# ⚡ Performance Tips
 
 Animate:
 
@@ -529,6 +592,8 @@ Animate:
 ✅ opacity
 
 These use GPU acceleration.
+
+---
 
 Avoid Animating:
 
@@ -544,23 +609,29 @@ Avoid Animating:
 
 These trigger layout recalculations.
 
+---
+
 ## Performance Flow
 
-Good["Transform & Opacity"]
+```mermaid
+flowchart LR
+
+    Good["Transform & Opacity"]
     GPU["GPU Accelerated"]
 
-Bad["Width & Height"]
+    Bad["Width & Height"]
     CPU["Layout Recalculation"]
 
-Good --> GPU
+    Good --> GPU
     Bad --> CPU
 ```
 
-## ♿ Accessibility
+---
+
+# ♿ Accessibility
 
 Some users prefer reduced motion.
 
-/* Basic example showing the core idea. */
 ```css
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -572,9 +643,10 @@ Some users prefer reduced motion.
 
 Always support accessibility.
 
-## Quick Cheat Sheet
+---
 
-/* Basic example showing the core idea. */
+# 🧠 Quick Cheat Sheet
+
 ```css
 transition: all 0.3s ease;
 
@@ -596,7 +668,9 @@ animation-direction: alternate;
 animation-fill-mode: forwards;
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Keep animations subtle.
 - Use transitions for hover effects.
@@ -606,7 +680,9 @@ animation-fill-mode: forwards;
 - Respect `prefers-reduced-motion`.
 - Keep durations between 200ms–500ms for UI interactions.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - Transitions animate property changes between states.
 - Animations use keyframes for complex motion.

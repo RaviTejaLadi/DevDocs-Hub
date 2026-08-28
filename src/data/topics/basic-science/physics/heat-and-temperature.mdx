@@ -5,6 +5,8 @@
 Thermal physics deals with heat, temperature, and their effects on matter. It
 bridges microscopic atomic behavior with macroscopic observations.
 
+## Temperature and Thermal Equilibrium
+
 ### What is Temperature?
 
 Temperature is a measure of the average kinetic energy of particles in a
@@ -18,6 +20,8 @@ contact.
   other.
 - This law establishes temperature as a fundamental measurable quantity.
 - Thermal equilibrium occurs when no net heat flows between objects.
+
+### Temperature Scales
 
 #### Celsius Scale (°C)
 
@@ -38,12 +42,13 @@ contact.
 
 #### Conversion Formulas
 
-// Example demonstrating Heat & Temperature.
 ```
 °C = (°F - 32) × 5/9
 °F = °C × 9/5 + 32
 K = °C + 273.15
 ```
+
+### Thermometers and Temperature Measurement
 
 #### Types of Thermometers
 
@@ -53,12 +58,13 @@ K = °C + 273.15
 - **Infrared thermometer**: Measures thermal radiation
 - **Bimetallic strip**: Differential expansion of two metals
 
+## Thermal Expansion
+
 ### Linear Expansion
 
 When a solid is heated, its length increases proportionally to the original
 length and temperature change.
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔL = αL₀ΔT
 ```
@@ -71,14 +77,12 @@ Where:
 
 ### Area Expansion
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔA = 2αA₀ΔT
 ```
 
 ### Volume Expansion
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔV = βV₀ΔT
 ```
@@ -105,6 +109,8 @@ For most solids: β ≈ 3α
 - **Anomalous expansion of water**: Water expands when cooled below 4°C, causing
   ice to float
 
+## Heat and Calorimetry
+
 ### What is Heat?
 
 Heat is the transfer of thermal energy between systems due to temperature
@@ -121,7 +127,6 @@ difference. It flows from hot to cold objects.
 The amount of heat required to raise the temperature of 1 kg of a substance by 1
 K.
 
-// Example demonstrating Heat & Temperature.
 ```
 Q = mcΔT
 ```
@@ -149,7 +154,6 @@ For gases:
 
 Heat lost = Heat gained (in a closed system)
 
-// Example demonstrating Heat & Temperature.
 ```
 m₁c₁ΔT₁ = m₂c₂ΔT₂
 ```
@@ -158,6 +162,8 @@ m₁c₁ΔT₁ = m₂c₂ΔT₂
 
 Mass of water that would require the same heat as the calorimeter for same
 temperature change.
+
+## Phase Changes and Latent Heat
 
 ### Phase Transitions
 
@@ -172,10 +178,11 @@ temperature change.
 
 ### Latent Heat Equations
 
-// Example demonstrating Heat & Temperature.
 ```
 Q = mL
 ```
+
+Where:
 
 - L_f = 334 kJ/kg (for water)
 - L_v = 2260 kJ/kg (for water at 100°C)
@@ -201,14 +208,17 @@ Q = mL
 - Factors affecting evaporation rate: temperature, surface area, humidity, air
   movement
 
+## Heat Transfer Mechanisms
 
+### Conduction
 
 #### Fourier's Law of Conduction
 
-// Example demonstrating Heat & Temperature.
 ```
 P = (kAΔT)/L
 ```
+
+Where:
 
 - P = heat current (W)
 - k = thermal conductivity (W/m·K)
@@ -231,11 +241,12 @@ P = (kAΔT)/L
 
 #### R-Value and Thermal Resistance
 
-// Example demonstrating Heat & Temperature.
 ```
 R = L/k (for a layer)
 Total R = sum of individual R-values
 ```
+
+### Convection
 
 #### Natural Convection
 
@@ -250,19 +261,21 @@ Total R = sum of individual R-values
 
 #### Heat Transfer Coefficient
 
-// Example demonstrating Heat & Temperature.
 ```
 P = hAΔT
 ```
 
 Where h = convection heat transfer coefficient
 
+### Radiation
+
 #### Stefan-Boltzmann Law
 
-// Example demonstrating Heat & Temperature.
 ```
 P = εσAT⁴
 ```
+
+Where:
 
 - ε = emissivity (0 to 1)
 - σ = 5.67 × 10⁻⁸ W/m²·K⁴ (Stefan-Boltzmann constant)
@@ -271,7 +284,6 @@ P = εσAT⁴
 
 #### Wien's Displacement Law
 
-// Example demonstrating Heat & Temperature.
 ```
 λ_max = b/T
 ```
@@ -290,20 +302,24 @@ Where b = 2.898 × 10⁻³ m·K
 - Thermal imaging
 - Cooling of buildings
 
+## Thermodynamics
+
 ### First Law of Thermodynamics
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔU = Q - W
 ```
+
+Where:
 
 - ΔU = change in internal energy
 - Q = heat added to system
 - W = work done by system
 
+### Thermodynamic Processes
+
 #### Isothermal Process (T = constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔU = 0
 Q = W
@@ -312,7 +328,6 @@ W = nRT ln(V_f/V_i)
 
 #### Isobaric Process (P = constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 W = PΔV
 ΔU = Q - PΔV
@@ -320,7 +335,6 @@ W = PΔV
 
 #### Isochoric Process (V = constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 W = 0
 ΔU = Q
@@ -329,7 +343,6 @@ Q = nC_vΔT
 
 #### Adiabatic Process (Q = 0)
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔU = -W
 PV^γ = constant
@@ -337,6 +350,8 @@ T V^(γ-1) = constant
 ```
 
 Where γ = C_p/C_v
+
+### Second Law of Thermodynamics
 
 #### Kelvin-Planck Statement
 
@@ -348,7 +363,6 @@ Heat cannot flow spontaneously from a cold body to a hot body.
 
 #### Entropy
 
-// Example demonstrating Heat & Temperature.
 ```
 ΔS = Q_rev/T
 ```
@@ -357,9 +371,10 @@ Heat cannot flow spontaneously from a cold body to a hot body.
 - For isolated systems: ΔS ≥ 0
 - Heat engines must increase total entropy
 
+### Heat Engines
+
 #### Carnot Engine (Ideal)
 
-// Example demonstrating Heat & Temperature.
 ```
 efficiency = 1 - T_C/T_H
 ```
@@ -368,7 +383,6 @@ Where T_H = hot reservoir temperature, T_C = cold reservoir temperature
 
 #### Refrigerators and Heat Pumps
 
-// Example demonstrating Heat & Temperature.
 ```
 Coefficient of Performance (COP) = Q_C/W = Q_C/(Q_H - Q_C)
 ```
@@ -378,11 +392,12 @@ Coefficient of Performance (COP) = Q_C/W = Q_C/(Q_H - Q_C)
 - As temperature approaches absolute zero, entropy approaches a minimum value
 - Absolute zero cannot be reached in finite steps
 
+## Kinetic Theory of Gases
 
+### Gas Laws
 
 #### Boyle's Law (T constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 PV = constant
 P₁V₁ = P₂V₂
@@ -390,7 +405,6 @@ P₁V₁ = P₂V₂
 
 #### Charles's Law (P constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 V/T = constant
 V₁/T₁ = V₂/T₂
@@ -398,7 +412,6 @@ V₁/T₁ = V₂/T₂
 
 #### Gay-Lussac's Law (V constant)
 
-// Example demonstrating Heat & Temperature.
 ```
 P/T = constant
 P₁/T₁ = P₂/T₂
@@ -406,30 +419,28 @@ P₁/T₁ = P₂/T₂
 
 #### Ideal Gas Equation
 
-// Example demonstrating Heat & Temperature.
 ```
 PV = nRT
 ```
 
 Where R = 8.314 J/mol·K
 
+### Molecular Speeds
+
 #### Root Mean Square Speed
 
-// Example demonstrating Heat & Temperature.
 ```
 v_rms = √(3RT/M)
 ```
 
 #### Average Speed
 
-// Example demonstrating Heat & Temperature.
 ```
 v_avg = √(8RT/πM)
 ```
 
 #### Most Probable Speed
 
-// Example demonstrating Heat & Temperature.
 ```
 v_mp = √(2RT/M)
 ```
@@ -451,6 +462,8 @@ For ideal gases:
 
 - C_v = (f/2)R
 - C_p = C_v + R
+
+## Applications and Phenomena
 
 ### Everyday Applications
 
@@ -479,12 +492,3 @@ For ideal gases:
 - Hypothermia and hyperthermia
 - Thermal comfort
 - Fever and heat stroke
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

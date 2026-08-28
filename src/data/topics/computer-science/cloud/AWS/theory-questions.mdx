@@ -1,4 +1,4 @@
-# Top 30 AWS Interview Questions and Answers
+# **Top 30 AWS Interview Questions and Answers**
 
 ### 1. What is AWS and what are its key benefits?
 
@@ -56,6 +56,8 @@ in the cloud.
 
 ### 4. Difference between On-Demand, Reserved, and Spot instances
 
+**Answer:**
+
 | Instance Type | Description                                   | Use Case                           | Cost              |
 | ------------- | --------------------------------------------- | ---------------------------------- | ----------------- |
 | **On-Demand** | Pay per hour/second with no commitments       | Variable workloads, short-term     | Highest           |
@@ -102,6 +104,8 @@ cloud where you can launch resources in a virtual network.
 
 ### 7. Explain Security Groups vs NACLs
 
+**Answer:**
+
 | Feature             | Security Groups       | NACLs                      |
 | ------------------- | --------------------- | -------------------------- |
 | **Level**           | Instance level        | Subnet level               |
@@ -115,6 +119,8 @@ cloud where you can launch resources in a virtual network.
 
 **Answer:** Identity and Access Management (IAM) enables secure control of
 access to AWS services and resources.
+
+**Key Components:**
 
 - **Users:** Individual people or services
 - **Groups:** Collection of users with similar permissions
@@ -176,6 +182,8 @@ multiple targets to ensure high availability and fault tolerance.
 
 ### 11. Difference between EBS and Instance Store
 
+**Answer:**
+
 | Feature         | EBS                                      | Instance Store                      |
 | --------------- | ---------------------------------------- | ----------------------------------- |
 | **Persistence** | Persistent, survives instance stop/start | Temporary, lost when instance stops |
@@ -205,6 +213,8 @@ service for relational databases.
 - **Scaling:** Easy vertical and horizontal scaling
 
 ### 13. Difference between RDS and DynamoDB
+
+**Answer:**
 
 | Feature       | RDS                        | DynamoDB                           |
 | ------------- | -------------------------- | ---------------------------------- |
@@ -239,6 +249,8 @@ content with low latency and high transfer speeds.
 
 ### 15. Explain S3 versioning and lifecycle policies
 
+**Answer:**
+
 **S3 Versioning:**
 
 - Keeps multiple versions of objects in bucket
@@ -263,6 +275,8 @@ content with low latency and high transfer speeds.
 
 **Answer:** AWS Lambda is a serverless compute service that runs code without
 provisioning servers.
+
+**Key Features:**
 
 - **Event-driven:** Executes in response to events
 - **Auto-scaling:** Automatically scales with demand
@@ -296,6 +310,8 @@ provisions AWS resources using templates.
 - **Change Sets:** Preview changes before applying
 - **Drift Detection:** Identify changes made outside CloudFormation
 
+**Benefits:**
+
 - Version control infrastructure
 - Repeatable deployments
 - Rollback capabilities
@@ -310,6 +326,8 @@ provisions AWS resources using templates.
 
 **Answer:** Amazon CloudWatch is a monitoring and management service for AWS
 resources and applications.
+
+**Key Features:**
 
 - **Metrics:** Collect and track metrics
 - **Alarms:** Monitor metrics and trigger actions
@@ -353,6 +371,8 @@ registration service.
 
 ### 20. What is SNS vs SQS?
 
+**Answer:**
+
 | Feature                 | SNS                   | SQS                     |
 | ----------------------- | --------------------- | ----------------------- |
 | **Type**                | Pub/Sub messaging     | Message queue           |
@@ -380,6 +400,8 @@ publishing, and managing APIs at scale.
 - **Monitoring:** CloudWatch integration
 - **Stage Management:** Dev, test, prod environments
 
+**Benefits:**
+
 - Serverless API hosting
 - Built-in security features
 - SDK generation
@@ -387,6 +409,8 @@ publishing, and managing APIs at scale.
 - CORS support
 
 ### 22. Explain Container services: ECS vs EKS
+
+**Answer:**
 
 | Feature            | ECS                   | EKS                           |
 | ------------------ | --------------------- | ----------------------------- |
@@ -400,6 +424,8 @@ publishing, and managing APIs at scale.
 
 - **EC2:** Run containers on EC2 instances
 - **Fargate:** Serverless container platform
+
+**Common Use Cases:**
 
 - Microservices architecture
 - Application modernization
@@ -434,11 +460,15 @@ simplifies application deployment and management.
 
 - Java, .NET, PHP, Node.js, Python, Ruby, Go, Docker
 
+**Key Features:**
+
 - **Easy Deployment:** Upload code and Beanstalk handles deployment
 - **Auto Scaling:** Built-in auto scaling and load balancing
 - **Health Monitoring:** Application health dashboard
 - **Version Management:** Application version lifecycle
 - **Configuration:** Easy environment configuration
+
+**Benefits:**
 
 - Fast deployment
 - No infrastructure management
@@ -450,11 +480,15 @@ simplifies application deployment and management.
 **Answer:** AWS CloudTrail is a governance, compliance, and auditing service
 that logs AWS API calls.
 
+**Key Features:**
+
 - **Event History:** 90 days of free event history
 - **Trails:** Continuous logging to S3
 - **Data Events:** Log data-level operations (S3, Lambda)
 - **Insights:** Identify unusual activity patterns
 - **Integration:** Works with CloudWatch Logs and Events
+
+**Use Cases:**
 
 - Security analysis
 - Compliance auditing
@@ -501,6 +535,8 @@ that logs AWS API calls.
 
 **Answer:** A typical HA architecture includes:
 
+**Components:**
+
 1. **Route 53:** DNS with health checks and failover
 2. **CloudFront:** Global CDN for static content
 3. **Application Load Balancer:** Distribute traffic across AZs
@@ -511,7 +547,6 @@ that logs AWS API calls.
 
 **Architecture Pattern:**
 
-// Example demonstrating Top 30 AWS Interview Questions and Answers.
 ```
 Internet → Route 53 → CloudFront → ALB → ASG (Multi-AZ)
                                          ↓
@@ -519,6 +554,8 @@ Internet → Route 53 → CloudFront → ALB → ASG (Multi-AZ)
                                          ↓
                                     ElastiCache Cluster
 ```
+
+**Best Practices:**
 
 - Deploy across multiple AZs
 - Use managed services when possible
@@ -570,19 +607,19 @@ Internet → Route 53 → CloudFront → ALB → ASG (Multi-AZ)
 
 1. **Backup and Restore:**
 
-- RTO: Hours, RPO: Hours
+   - RTO: Hours, RPO: Hours
    - Regular backups to S3/Glacier
    - Lowest cost, higher recovery time
 
 2. **Pilot Light:**
 
-- RTO: 10s of minutes, RPO: Minutes
+   - RTO: 10s of minutes, RPO: Minutes
    - Minimal resources running in DR region
    - Core services ready, scale up during disaster
 
 3. **Warm Standby:**
 
-- RTO: Minutes, RPO: Minutes
+   - RTO: Minutes, RPO: Minutes
    - Scaled-down version running
    - Quick scale-up during disaster
 
@@ -606,31 +643,31 @@ Internet → Route 53 → CloudFront → ALB → ASG (Multi-AZ)
 
 1. **Rehosting (Lift and Shift):**
 
-- Move applications without changes
+   - Move applications without changes
    - Quick migration, minimal optimization
    - Tools: AWS Server Migration Service
 
 2. **Replatforming (Lift, Tinker, and Shift):**
 
-- Minor optimizations during migration
+   - Minor optimizations during migration
    - Example: Move to RDS instead of self-managed DB
    - Tools: AWS Database Migration Service
 
 3. **Repurchasing:**
 
-- Move to SaaS solutions
+   - Move to SaaS solutions
    - Example: CRM to Salesforce
    - Licensing and training considerations
 
 4. **Refactoring/Re-architecting:**
 
-- Redesign applications for cloud-native
+   - Redesign applications for cloud-native
    - Use serverless, microservices
    - Highest effort, maximum benefits
 
 5. **Retire:**
 
-- Decommission applications no longer needed
+   - Decommission applications no longer needed
    - Cost savings through elimination
 
 6. **Retain:**
@@ -661,12 +698,3 @@ scenarios to deepen your understanding.
 - Understand cost optimization principles
 - Study AWS Well-Architected Framework
 - Review AWS case studies and whitepapers
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

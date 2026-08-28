@@ -8,11 +8,10 @@ outside its container.
 
 ---
 
-## What is Overflow?
+# 🎯 What is Overflow?
 
 By default, content can extend outside an element's boundaries.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="box">
   This is a very long text that will overflow the container because it is larger
@@ -20,7 +19,6 @@ By default, content can extend outside an element's boundaries.
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   width: 200px;
@@ -33,9 +31,10 @@ Result:
 
 The content may spill outside the box.
 
-## The overflow Property
+---
 
-/* Basic example showing the core idea. */
+# 📦 The overflow Property
+
 ```css
 overflow: value;
 ```
@@ -49,11 +48,12 @@ Common values:
 | scroll  | Always shows scrollbars           |
 | auto    | Shows scrollbars only when needed |
 
-## 👀 overflow: visible
+---
+
+# 👀 overflow: visible
 
 Default behavior.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: visible;
@@ -62,7 +62,6 @@ Default behavior.
 
 Content extends beyond the container.
 
-// Example demonstrating 📜 Overflow & Scroll.
 ```text
 ┌─────────┐
 │ Content │
@@ -71,11 +70,12 @@ Content extends beyond the container.
 More content outside
 ```
 
-## 🚫 overflow: hidden
+---
+
+# 🚫 overflow: hidden
 
 Hides overflowing content.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: hidden;
@@ -84,7 +84,6 @@ Hides overflowing content.
 
 Only visible content remains.
 
-// Example demonstrating 📜 Overflow & Scroll.
 ```text
 ┌─────────┐
 │ Content │
@@ -94,11 +93,12 @@ Only visible content remains.
 
 Extra content is clipped.
 
-## 📜 overflow: scroll
+---
+
+# 📜 overflow: scroll
 
 Always displays scrollbars.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: scroll;
@@ -107,11 +107,12 @@ Always displays scrollbars.
 
 Even if content fits, scrollbars remain visible.
 
-## 🤖 overflow: auto
+---
+
+# 🤖 overflow: auto
 
 Shows scrollbars only when necessary.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow: auto;
@@ -120,11 +121,12 @@ Shows scrollbars only when necessary.
 
 Most commonly used option.
 
-## ↔ overflow-x and overflow-y
+---
+
+# ↔️ overflow-x and overflow-y
 
 Control horizontal and vertical scrolling separately.
 
-/* Basic example showing the core idea. */
 ```css
 .box {
   overflow-x: scroll;
@@ -132,16 +134,16 @@ Control horizontal and vertical scrolling separately.
 }
 ```
 
+---
+
 ## Horizontal Scroll Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div class="container">
   <div class="wide-content">Very wide content...</div>
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 300px;
@@ -155,13 +157,16 @@ Control horizontal and vertical scrolling separately.
 
 Users can scroll horizontally.
 
-## ✂ Text Overflow
+---
+
+# ✂️ Text Overflow
 
 Long text often needs truncation.
 
+---
+
 ## text-overflow: ellipsis
 
-/* Basic example showing the core idea. */
 ```css
 .text {
   width: 200px;
@@ -171,26 +176,27 @@ Long text often needs truncation.
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p class="text">This is a very long title that will not fit.</p>
 ```
 
-// Example demonstrating 📜 Overflow & Scroll.
+Result:
+
 ```text
 This is a very long...
 ```
 
-## 📄 Multi-line Text Truncation
+---
 
-/* Basic example showing the core idea. */
+# 📄 Multi-line Text Truncation
+
 ```css
 .description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
-overflow: hidden;
+  overflow: hidden;
 }
 ```
 
@@ -198,11 +204,12 @@ Limits text to 3 lines.
 
 Useful for cards and blog previews.
 
-## Custom Scrollbars
+---
+
+# 🎨 Custom Scrollbars
 
 Modern browsers allow scrollbar styling.
 
-/* Basic example showing the core idea. */
 ```css
 ::-webkit-scrollbar {
   width: 10px;
@@ -217,22 +224,26 @@ Modern browsers allow scrollbar styling.
 }
 ```
 
+Result:
+
 Customized scrollbar appearance.
 
-## 📍 Scroll Behavior
+---
+
+# 📍 Scroll Behavior
 
 Creates smooth scrolling.
 
-/* Basic example showing the core idea. */
 ```css
 html {
   scroll-behavior: smooth;
 }
 ```
 
+---
+
 ## Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <a href="#section">Go to Section</a>
 
@@ -241,9 +252,10 @@ html {
 
 The page scrolls smoothly.
 
-## Sticky Elements with Scrolling
+---
 
-/* Basic example showing the core idea. */
+# 📌 Sticky Elements with Scrolling
+
 ```css
 .header {
   position: sticky;
@@ -259,11 +271,12 @@ Common uses:
 - Sidebars
 - Table headers
 
-## 🔥 Scroll Snap
+---
+
+# 🔥 Scroll Snap
 
 Creates app-like scrolling experiences.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   scroll-snap-type: y mandatory;
@@ -282,11 +295,12 @@ Perfect for:
 - Image galleries
 - Story-style layouts
 
-## 🎮 Scroll Padding
+---
+
+# 🎮 Scroll Padding
 
 Useful with sticky headers.
 
-/* Basic example showing the core idea. */
 ```css
 html {
   scroll-padding-top: 80px;
@@ -295,13 +309,14 @@ html {
 
 Prevents content from being hidden behind a fixed navbar.
 
-## Performance Tip
+---
+
+# ⚡ Performance Tip
 
 Avoid nesting too many scrollable containers.
 
 ❌ Bad
 
-/* Basic example showing the core idea. */
 ```css
 .parent {
   overflow: auto;
@@ -314,16 +329,16 @@ Avoid nesting too many scrollable containers.
 
 Can create confusing scroll behavior.
 
-## Real-World Card Example
+---
 
-<!-- Basic example showing the core idea. -->
+# 🧩 Real-World Card Example
+
 ```html
 <div class="card">
   <p>Long product description...</p>
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   height: 150px;
@@ -333,11 +348,12 @@ Can create confusing scroll behavior.
 
 Users can scroll only inside the card.
 
-## 📱 Mobile Considerations
+---
+
+# 📱 Mobile Considerations
 
 Enable momentum scrolling on iOS.
 
-/* Basic example showing the core idea. */
 ```css
 .scroll-area {
   -webkit-overflow-scrolling: touch;
@@ -346,9 +362,10 @@ Enable momentum scrolling on iOS.
 
 Provides smoother scrolling.
 
-## Quick Cheat Sheet
+---
 
-/* Basic example showing the core idea. */
+# 🧠 Quick Cheat Sheet
+
 ```css
 overflow: visible;
 overflow: hidden;
@@ -365,7 +382,9 @@ scroll-behavior: smooth;
 scroll-snap-type: y mandatory;
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use `overflow: auto` in most cases.
 - Use `text-overflow: ellipsis` for long titles.
@@ -374,18 +393,12 @@ scroll-snap-type: y mandatory;
 - Use scroll snapping sparingly.
 - Test scroll behavior on mobile devices.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - Overflow controls what happens when content exceeds container size.
 - `auto` is usually the best overflow value.
 - Text can be truncated using `ellipsis`.
 - Smooth scrolling and scroll snapping improve user experience.
 - Proper overflow handling prevents broken layouts.
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
-
-## Practical Edge Cases
-
-Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.

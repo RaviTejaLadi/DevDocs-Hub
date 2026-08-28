@@ -5,9 +5,8 @@ daily usage.
 
 ---
 
-## ES6 Overview
+# ES6 Overview
 
-<!-- Visual flow for ES6+ JavaScript. -->
 ```mermaid
 mindmap
   root((ES6+))
@@ -33,6 +32,10 @@ mindmap
       Private Fields
 ```
 
+---
+
+# Variables
+
 ## var vs let vs const
 
 | Feature            | var      | let   | const |
@@ -44,9 +47,10 @@ mindmap
 | Temporal Dead Zone | No       | Yes   | Yes   |
 | Recommended        | ❌       | ✅    | ✅    |
 
+---
+
 ## let
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 let count = 1;
 
@@ -64,16 +68,16 @@ console.log(count); // 1
 - Loops
 - Mutable values
 
+---
+
 ## const
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const API_URL = 'https://api.com';
 ```
 
 ### Important
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const user = { name: 'Ravi' };
 
@@ -82,17 +86,21 @@ user.name = 'Teja'; // valid
 
 `const` prevents reassignment, not mutation.
 
+---
+
+# Template Literals
+
 ## Interpolation
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const name = 'Ravi';
 const message = `Hello ${name}`;
 ```
 
+---
+
 ## Multi-line Strings
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const text = `
 Line 1
@@ -100,9 +108,10 @@ Line 2
 `;
 ```
 
+---
+
 ## Real-world Usage
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const html = `
   <div>
@@ -111,7 +120,9 @@ const html = `
 `;
 ```
 
-## Number Features
+---
+
+# Number Features
 
 | Feature          | Example                | Result |
 | ---------------- | ---------------------- | ------ |
@@ -121,7 +132,9 @@ const html = `
 | Number.isInteger | `Number.isInteger(10)` | true   |
 | Number.isNaN     | `Number.isNaN(NaN)`    | true   |
 
-## String Methods
+---
+
+# String Methods
 
 | Method     | Example                    | Result |
 | ---------- | -------------------------- | ------ |
@@ -131,6 +144,10 @@ const html = `
 | repeat     | `'ha'.repeat(3)`           | hahaha |
 | padStart   | `'5'.padStart(3,'0')`      | 005    |
 | padEnd     | `'5'.padEnd(3,'0')`        | 500    |
+
+---
+
+# Array Methods
 
 ## Most Important Array Methods
 
@@ -144,46 +161,54 @@ const html = `
 | every    | All items match  | Boolean      |
 | includes | Check existence  | Boolean      |
 
+---
+
 ## map
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const nums = [1, 2, 3];
 
 const doubled = nums.map((n) => n * 2);
 ```
 
+---
+
 ## filter
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const users = users.filter((u) => u.active);
 ```
 
+---
+
 ## reduce
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const total = [1, 2, 3].reduce((acc, curr) => acc + curr, 0);
 ```
 
+---
+
 ## find
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const user = users.find((u) => u.id === 1);
 ```
 
+---
+
+# Destructuring
+
 ## Array Destructuring
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const [first, second] = [10, 20];
 ```
 
+---
+
 ## Object Destructuring
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const user = {
   name: 'Ravi',
@@ -193,23 +218,26 @@ const user = {
 const { name, age } = user;
 ```
 
+---
+
 ## Default Values
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const { city = 'Hyderabad' } = user;
 ```
 
+---
+
 ## Rename Variables
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const { name: fullName } = user;
 ```
 
+---
+
 ## Nested Destructuring
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const user = {
   profile: {
@@ -222,24 +250,28 @@ const {
 } = user;
 ```
 
-## Spread vs Rest Operator
+---
+
+# Spread vs Rest Operator
 
 | Operator | Purpose         | Example     |
 | -------- | --------------- | ----------- |
 | Spread   | Expands values  | `[...arr]`  |
 | Rest     | Collects values | `(...args)` |
 
+---
+
 ## Spread Operator
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const arr1 = [1, 2];
 const arr2 = [...arr1, 3];
 ```
 
+---
+
 ## Object Spread
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const updated = {
   ...user,
@@ -247,32 +279,38 @@ const updated = {
 };
 ```
 
+---
+
 ## Rest Parameters
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 function sum(...nums) {
   return nums.reduce((a, b) => a + b, 0);
 }
 ```
 
+---
+
+# Functions
+
 ## Arrow Functions
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const add = (a, b) => a + b;
 ```
 
+---
+
 ## Implicit Return
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const square = (n) => n * n;
 ```
 
+---
+
 ## Returning Object
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const getUser = () => ({
   id: 1,
@@ -280,25 +318,26 @@ const getUser = () => ({
 });
 ```
 
+---
+
 ## Default Parameters
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 function greet(name = 'Guest') {
   return `Hello ${name}`;
 }
 ```
 
+---
+
 ## Lexical this
 
-<!-- Visual flow for ES6+ JavaScript. -->
 ```mermaid
 flowchart LR
   A[Arrow Function] --> B[Uses Parent this]
   C[Normal Function] --> D[Creates Own this]
 ```
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class Timer {
   start() {
@@ -309,18 +348,22 @@ class Timer {
 }
 ```
 
+---
+
+# Objects
+
 ## Property Shorthand
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const name = 'Ravi';
 
 const user = { name };
 ```
 
+---
+
 ## Method Shorthand
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const app = {
   start() {
@@ -329,9 +372,10 @@ const app = {
 };
 ```
 
+---
+
 ## Computed Properties
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const key = 'role';
 
@@ -339,6 +383,8 @@ const user = {
   [key]: 'admin',
 };
 ```
+
+---
 
 ## Object Utility Methods
 
@@ -349,23 +395,24 @@ const user = {
 | Object.entries() | Returns key-value pairs |
 | Object.assign()  | Merge objects           |
 
-## Optional Chaining
+---
 
-// Example demonstrating ES6+ JavaScript.
+# Optional Chaining
+
 ```js
 const city = user?.address?.city;
 ```
 
 ### Prevents
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 Cannot read properties of undefined
 ```
 
-## Nullish Coalescing
+---
 
-// Example demonstrating ES6+ JavaScript.
+# Nullish Coalescing
+
 ```js
 const username = value ?? 'Guest';
 ```
@@ -377,31 +424,34 @@ const username = value ?? 'Guest';
 | `        |                       | `   | Falsy values |
 | `??`     | null / undefined only |     |              |
 
+---
+
+# Classes
+
 ## Basic Class
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class User {
   constructor(name) {
     this.name = name;
   }
 
-greet() {
+  greet() {
     return `Hello ${this.name}`;
   }
 }
 ```
 
+---
+
 ## Inheritance
 
-<!-- Visual flow for ES6+ JavaScript. -->
 ```mermaid
 flowchart TD
   Animal --> Dog
   Dog --> Puppy
 ```
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class Animal {
   speak() {
@@ -416,9 +466,10 @@ class Dog extends Animal {
 }
 ```
 
+---
+
 ## super
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class Admin extends User {
   constructor(name, role) {
@@ -428,9 +479,10 @@ class Admin extends User {
 }
 ```
 
+---
+
 ## Static Methods
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class MathUtil {
   static add(a, b) {
@@ -439,36 +491,41 @@ class MathUtil {
 }
 ```
 
+---
+
 ## Private Fields
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 class Bank {
   #balance = 0;
 
-deposit(amount) {
+  deposit(amount) {
     this.#balance += amount;
   }
 }
 ```
 
+---
+
+# Promises
+
 ## Promise Lifecycle
 
-<!-- Visual flow for ES6+ JavaScript. -->
 ```mermaid
 flowchart LR
   A[Pending] --> B[Fulfilled]
   A --> C[Rejected]
 ```
 
+---
+
 ## Creating Promise
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const promise = new Promise((resolve, reject) => {
   const success = true;
 
-if (success) {
+  if (success) {
     resolve('Done');
   } else {
     reject('Error');
@@ -476,15 +533,18 @@ if (success) {
 });
 ```
 
+---
+
 ## Using Promise
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 promise
   .then((res) => console.log(res))
   .catch((err) => console.log(err))
   .finally(() => console.log('Completed'));
 ```
+
+---
 
 ## Promise Methods
 
@@ -496,9 +556,10 @@ promise
 | Promise.resolve    | Create resolved promise  |
 | Promise.reject     | Create rejected promise  |
 
-## Async / Await
+---
 
-<!-- Visual flow for ES6+ JavaScript. -->
+# Async / Await
+
 ```mermaid
 flowchart TD
   A[Call Function] --> B[await API]
@@ -507,7 +568,6 @@ flowchart TD
   D --> E[Continue Execution]
 ```
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 async function fetchUser() {
   try {
@@ -519,44 +579,54 @@ async function fetchUser() {
 }
 ```
 
+---
+
+# Modules
+
 ## Export Default
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 export default function App() {}
 ```
 
+---
+
 ## Named Export
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 export const PI = 3.14;
 ```
 
+---
+
 ## Import Default
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 import App from './App.js';
 ```
 
+---
+
 ## Named Import
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 import { PI } from './math.js';
 ```
 
+---
+
 ## Dynamic Import
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const module = await import('./utils.js');
 ```
 
+---
+
+# Iterators & Generators
+
 ## Generator Function
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 function* counter() {
   yield 1;
@@ -565,16 +635,19 @@ function* counter() {
 }
 ```
 
+---
+
 ## for...of
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 for (const value of [1, 2, 3]) {
   console.log(value);
 }
 ```
 
-## Set vs Map
+---
+
+# Set vs Map
 
 | Feature           | Set           | Map             |
 | ----------------- | ------------- | --------------- |
@@ -583,32 +656,38 @@ for (const value of [1, 2, 3]) {
 | Ordered           | Yes           | Yes             |
 | Iterable          | Yes           | Yes             |
 
+---
+
 ## Set
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const set = new Set([1, 2, 2, 3]);
 ```
 
-// Example demonstrating ES6+ JavaScript.
+---
+
+## Map
+
 ```js
 const map = new Map();
 
 map.set('name', 'Ravi');
 ```
 
-## Symbols
+---
 
-// Example demonstrating ES6+ JavaScript.
+# Symbols
+
 ```js
 const id = Symbol('id');
 ```
 
 Used for unique property identifiers.
 
-## Import Patterns
+---
 
-<!-- Visual flow for ES6+ JavaScript. -->
+# Import Patterns
+
 ```mermaid
 flowchart TD
   A[Module] --> B[Default Export]
@@ -616,35 +695,43 @@ flowchart TD
   A --> D[Dynamic Import]
 ```
 
+---
+
+# Common Modern JavaScript Patterns
+
 ## Ternary Operator
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const role = isAdmin ? 'Admin' : 'User';
 ```
 
+---
+
 ## Logical AND
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 isLoggedIn && showDashboard();
 ```
 
+---
+
 ## Logical OR
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const value = input || 'default';
 ```
 
+---
+
 ## Optional Chaining + Nullish Coalescing
 
-// Example demonstrating ES6+ JavaScript.
 ```js
 const city = user?.address?.city ?? 'Unknown';
 ```
 
-## ES6 Feature Popularity in Real Projects
+---
+
+# ES6 Feature Popularity in Real Projects
 
 | Feature           | Usage Frequency |
 | ----------------- | --------------- |
@@ -657,7 +744,9 @@ const city = user?.address?.city ?? 'Unknown';
 | Generators        | ⭐⭐            |
 | Symbols           | ⭐⭐            |
 
-## Most Important ES6 Features To Master
+---
+
+# Most Important ES6 Features To Master
 
 1. let / const
 2. Arrow functions
@@ -669,12 +758,3 @@ const city = user?.address?.city ?? 'Unknown';
 8. Modules
 9. Optional chaining
 10. Classes
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

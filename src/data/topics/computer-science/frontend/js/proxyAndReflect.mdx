@@ -1,4 +1,4 @@
-# JavaScript Proxy & Reflect — Complete Guide
+# 🧠 JavaScript Proxy & Reflect — Complete Guide
 
 ## 📘 1. What is `Proxy` in JavaScript?
 
@@ -13,9 +13,8 @@ performed on it (like reading, writing, deleting properties).
 
 ---
 
-## 2. Proxy Syntax
+## 🧪 2. Proxy Syntax
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const proxy = new Proxy(target, handler);
 ```
@@ -23,9 +22,12 @@ const proxy = new Proxy(target, handler);
 - `target`: The original object you want to wrap.
 - `handler`: An object with **trap methods** that intercept operations.
 
+---
+
+## 🧰 3. Basic Usage of Proxy
+
 ### ✅ Example: Intercepting `get`
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const user = {
   name: 'Ravi',
@@ -42,7 +44,9 @@ console.log(proxy.name); // Ravi
 console.log(proxy.age); // Not Found
 ```
 
-## 🛠 4. Common Proxy Traps (Handler Methods)
+---
+
+## 🛠️ 4. Common Proxy Traps (Handler Methods)
 
 | Trap             | Description                           | Example                  |
 | ---------------- | ------------------------------------- | ------------------------ |
@@ -54,9 +58,10 @@ console.log(proxy.age); // Not Found
 | `construct`      | Intercepts `new proxy()` construction | `new proxy()`            |
 | `ownKeys`        | Intercepts keys during iteration      | `Object.keys(proxy)`     |
 
-## 5. Proxy Example with `set` and `deleteProperty`
+---
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
+## 🧪 5. Proxy Example with `set` and `deleteProperty`
+
 ```js
 const user = {};
 
@@ -81,20 +86,27 @@ proxy.age = 25; // Only strings are allowed
 delete proxy.name; // Deleting name
 ```
 
+---
+
 ## 📘 6. What is `Reflect` in JavaScript?
 
 `Reflect` is a built-in object that provides methods for **interacting with
 object internals**, mirroring the default behavior of `Proxy` traps.
 
+### 🔑 Definition:
+
 > `Reflect` provides **default behavior methods** that correspond to the same
 > operations that Proxy traps can intercept.
 
-## 7. Reflect Syntax
+---
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
+## 🧪 7. Reflect Syntax
+
 ```js
 Reflect.method(target, ...args);
 ```
+
+---
 
 ## 📋 8. Common Reflect Methods
 
@@ -111,13 +123,14 @@ Reflect.method(target, ...args);
 | `Reflect.getPrototypeOf()` | Get prototype                        |
 | `Reflect.setPrototypeOf()` | Set prototype                        |
 
+---
+
 ## 🔁 9. Using Reflect with Proxy (Best Practice)
 
 Using `Reflect` inside proxy traps ensures **default behavior is preserved**.
 
 ### ✅ Example:
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
 ```js
 const user = { name: 'Ravi' };
 
@@ -136,9 +149,10 @@ proxy.name = 'Amit'; // Setting name = Amit
 console.log(proxy.name); // Getting name → Amit
 ```
 
-## 10. Example: Logging All Operations
+---
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
+## 📦 10. Example: Logging All Operations
+
 ```js
 const data = { count: 0 };
 
@@ -162,9 +176,10 @@ loggerProxy.count = 10; // Changed: count = 10
 delete loggerProxy.count; // Deleted: count
 ```
 
-## 11. Example: Access Control with Proxy
+---
 
-// Example demonstrating JavaScript Proxy & Reflect — Complete Guide.
+## 🔐 11. Example: Access Control with Proxy
+
 ```js
 const privateData = {
   secret: '1234',
@@ -184,7 +199,9 @@ console.log(secureProxy.public); // Hello
 console.log(secureProxy.secret); // ❌ Error: Access denied
 ```
 
-## 12. Why Use Proxy + Reflect?
+---
+
+## 🧠 12. Why Use Proxy + Reflect?
 
 | Reason                 | Description                                      |
 | ---------------------- | ------------------------------------------------ |
@@ -195,6 +212,8 @@ console.log(secureProxy.secret); // ❌ Error: Access denied
 | **Security**           | Restrict access to private/internal properties   |
 | **Default delegation** | `Reflect` avoids rewriting native logic manually |
 
+---
+
 ## 🏁 Summary
 
 | Feature  | Proxy                         | Reflect                           |
@@ -202,16 +221,3 @@ console.log(secureProxy.secret); // ❌ Error: Access denied
 | Purpose  | Intercepts & customizes ops   | Provides default behavior methods |
 | Use Case | Validation, logging, security | Used inside Proxy traps           |
 | Usage    | `new Proxy(target, handler)`  | `Reflect.method(target, args...)` |
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.

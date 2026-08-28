@@ -1,4 +1,4 @@
-# ↘ Bending Stress
+# ↘️ Bending Stress
 
 Bending stress is the stress developed in a beam when it is subjected to bending
 moments caused by external loads.
@@ -14,7 +14,7 @@ bridges, machines, and vehicles.
 
 ---
 
-## Why Study Bending Stress?
+# 🎯 Why Study Bending Stress?
 
 Engineers use bending stress analysis to:
 
@@ -32,11 +32,12 @@ Applications include:
 - Crane booms
 - Machine frames
 
-## What Happens During Bending?
+---
+
+# 🏗️ What Happens During Bending?
 
 Consider a simply supported beam carrying a load.
 
-<!-- Visual flow for ↘ Bending Stress. -->
 ```mermaid
 graph LR
 A[Support] --- B[Beam]
@@ -49,9 +50,10 @@ As the load acts:
 - Top fibers shorten (compression)
 - Bottom fibers elongate (tension)
 
-## Fiber Behavior During Bending
+---
 
-<!-- Visual flow for ↘ Bending Stress. -->
+# 📊 Fiber Behavior During Bending
+
 ```mermaid
 graph TD
 A[Compression Zone]
@@ -62,6 +64,8 @@ A --> B
 B --> C
 ```
 
+---
+
 ## Compression Zone
 
 Located above the neutral axis.
@@ -70,10 +74,11 @@ Fibers become shorter.
 
 Stress developed:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 Compressive Stress
 ```
+
+---
 
 ## Tension Zone
 
@@ -81,23 +86,27 @@ Located below the neutral axis.
 
 Fibers become longer.
 
-// Example demonstrating ↘ Bending Stress.
+Stress developed:
+
 ```
 Tensile Stress
 ```
+
+---
 
 ## Neutral Axis
 
 An imaginary line inside the beam where:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 Stress = 0
 ```
 
 Fibers on the neutral axis neither elongate nor shorten.
 
-## Neutral Surface
+---
+
+# 🔍 Neutral Surface
 
 The surface passing through all neutral axis points along the beam is called the
 neutral surface.
@@ -107,13 +116,14 @@ It separates:
 - Compression region
 - Tension region
 
-## 📏 Bending Moment
+---
+
+# 📏 Bending Moment
 
 The tendency of a load to bend a beam is called the bending moment.
 
 Formula:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 M = F × d
 ```
@@ -126,19 +136,19 @@ Where:
 
 Unit:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 N·m
 ```
 
 or
 
-// Example demonstrating ↘ Bending Stress.
 ```
 kN·m
 ```
 
-## 📚 Theory of Simple Bending
+---
+
+# 📚 Theory of Simple Bending
 
 The theory of simple bending is based on the following assumptions:
 
@@ -149,14 +159,17 @@ The theory of simple bending is based on the following assumptions:
 5. Plane sections remain plane after bending.
 6. Young's modulus remains constant.
 
-## Bending Equation
+---
+
+# ⚡ Bending Equation
 
 The fundamental bending equation is:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 M/I = σ/y = E/R
 ```
+
+Where:
 
 - M = Bending Moment
 - I = Moment of Inertia
@@ -165,35 +178,42 @@ M/I = σ/y = E/R
 - E = Young's Modulus
 - R = Radius of Curvature
 
-## Bending Stress Formula
+---
+
+# 📖 Bending Stress Formula
 
 From the bending equation:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 σ = My/I
 ```
+
+Where:
 
 - σ = Bending Stress
 - M = Bending Moment
 - y = Distance from Neutral Axis
 - I = Moment of Inertia
 
+---
+
+# 📌 Important Observations
+
 ## At Neutral Axis
 
-// Example demonstrating ↘ Bending Stress.
 ```
 y = 0
 ```
 
 Therefore,
 
-// Example demonstrating ↘ Bending Stress.
 ```
 σ = 0
 ```
 
 Stress is zero.
+
+---
 
 ## At Outer Fibers
 
@@ -201,18 +221,18 @@ Maximum value of y occurs.
 
 Therefore:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 Stress = Maximum
 ```
 
 Failure usually begins at outer surfaces.
 
-## Stress Distribution
+---
+
+# 📊 Stress Distribution
 
 Stress varies linearly across beam depth.
 
-<!-- Visual flow for ↘ Bending Stress. -->
 ```mermaid
 graph TD
 A[Maximum Compression]
@@ -227,36 +247,45 @@ C --> D
 D --> E
 ```
 
-## 🧮 Section Modulus
+---
+
+# 🧮 Section Modulus
 
 Section modulus indicates the bending strength of a section.
 
-// Example demonstrating ↘ Bending Stress.
+Formula:
+
 ```
 Z = I/ymax
 ```
+
+Where:
 
 - Z = Section Modulus
 - I = Moment of Inertia
 - ymax = Distance to Extreme Fiber
 
-// Example demonstrating ↘ Bending Stress.
+Unit:
+
 ```
 mm³
 ```
 
-## Alternative Bending Stress Formula
+---
+
+# 📖 Alternative Bending Stress Formula
 
 Using section modulus:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 σ = M/Z
 ```
 
 This formula is commonly used in design calculations.
 
-## Example
+---
+
+# 📌 Example
 
 A beam has:
 
@@ -265,33 +294,41 @@ A beam has:
 
 Convert moment:
 
-// Example demonstrating ↘ Bending Stress.
 ```
 M = 10 × 10⁶ N·mm
 ```
 
 Using:
 
-// Example demonstrating ↘ Bending Stress.
+```
+σ = M/Z
+```
+
 ```
 σ = (10 × 10⁶)/(200 × 10³)
 ```
 
-// Example demonstrating ↘ Bending Stress.
 ```
 σ = 50 N/mm²
 ```
 
-// Example demonstrating ↘ Bending Stress.
+Therefore,
+
 ```
 Bending Stress = 50 MPa
 ```
+
+---
+
+# 📚 Types of Bending
 
 ## Simple Bending
 
 Only bending moment acts.
 
 No shear force effect considered.
+
+---
 
 ## Pure Bending
 
@@ -300,6 +337,8 @@ Constant bending moment exists throughout a region.
 Example:
 
 Beam loaded by equal and opposite couples.
+
+---
 
 ## Unsymmetrical Bending
 
@@ -310,7 +349,9 @@ Common in:
 - Angle sections
 - Channel sections
 
-## Common Beam Sections
+---
+
+# 🏗️ Common Beam Sections
 
 Different beam shapes are used to resist bending efficiently.
 
@@ -318,9 +359,13 @@ Different beam shapes are used to resist bending efficiently.
 
 Simple and easy to manufacture.
 
+---
+
 ## Circular Section
 
 Used in shafts and poles.
+
+---
 
 ## I-Section
 
@@ -332,30 +377,45 @@ Advantages:
 - Low weight
 - Excellent bending resistance
 
-<!-- Visual flow for ↘ Bending Stress. -->
 ```mermaid
 graph TD
 A[Top Flange]
 B[Web]
 C[Bottom Flange]
 
+A --> B
+B --> C
+```
+
+---
+
+# ⚙️ Factors Affecting Bending Stress
+
 ## Applied Load
 
 Higher load produces higher stress.
+
+---
 
 ## Span Length
 
 Longer span increases bending moment.
 
+---
+
 ## Cross Section
 
 Larger section reduces stress.
+
+---
 
 ## Material Properties
 
 Stronger materials withstand higher stresses.
 
-## 🚨 Beam Failure Due to Bending
+---
+
+# 🚨 Beam Failure Due to Bending
 
 Failure may occur when:
 
@@ -366,33 +426,63 @@ Failure may occur when:
 
 Engineers apply a factor of safety to prevent failure.
 
+---
+
+# 🌍 Real-Life Examples
+
 ## Building Beam
 
 Supports floor loads.
+
+---
 
 ## Bridge Girder
 
 Carries vehicle loads.
 
+---
+
 ## Crane Arm
 
 Experiences heavy bending moments.
+
+---
 
 ## Shelf Bracket
 
 Supports objects placed on shelves.
 
-## Key Formulas
+---
+
+# 📝 Key Formulas
 
 Bending Moment:
 
+```
+M = F × d
+```
+
 Bending Stress:
+
+```
+σ = My/I
+```
 
 Section Modulus:
 
+```
+Z = I/ymax
+```
+
 Design Formula:
 
-## 🎓 Summary
+```
+σ = M/Z
+```
+
+---
+
+# 🎓 Summary
 
 Bending stress develops when a beam is subjected to external loads that cause
 bending.
@@ -404,12 +494,3 @@ bending.
 
 The bending equation and section modulus are fundamental tools used in beam
 design and structural analysis.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

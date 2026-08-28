@@ -37,7 +37,6 @@ attributes solve this.
 - **How it works:** The browser calculates the best image to download based on
   the user's screen resolution and current bandwidth.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <img
   src="small.jpg"
@@ -61,7 +60,6 @@ The `<audio>` element is used to play sound files.
 - **Structure:** You can use a single `src` or nested `<source>` tags for better
   compatibility.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <audio controls>
   <source src="song.mp3" type="audio/mpeg" />
@@ -87,7 +85,6 @@ The `<video>` element works similarly to audio but includes dimensions.
 - **`muted`:** Starts the video without sound.
 - **`loop`:** Replays the video automatically when finished.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <video width="320" height="240" controls poster="thumbnail.jpg">
   <source src="movie.mp4" type="video/mp4" />
@@ -107,16 +104,3 @@ provide fallbacks.
 | **Images (Transparency)**   | **PNG / WebP**  | Use when you need a transparent background.                                  |
 | **Video**                   | **MP4 (H.264)** | The safest bet. Supported by virtually 100% of browsers.                     |
 | **Audio**                   | **MP3**         | universally supported.                                                       |
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.

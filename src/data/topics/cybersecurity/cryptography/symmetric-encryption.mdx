@@ -1,4 +1,4 @@
-# Symmetric Encryption
+# 🔐 Symmetric Encryption
 
 Symmetric encryption, also known as secret-key cryptography, is the oldest and
 most widely used method for encrypting data. It relies on a single, shared
@@ -12,12 +12,11 @@ the most prominent algorithms (especially AES), delve into block cipher modes of
 operation, and outline the best practices for using symmetric cryptography
 securely.
 
-## 1. ⚙ How Symmetric Encryption Works
+## 1. ⚙️ How Symmetric Encryption Works
 
 In a symmetric cryptosystem, the sender and the receiver must agree on a shared
 secret key before they can communicate securely.
 
-<!-- Visual flow for Symmetric Encryption. -->
 ```mermaid
 graph LR
     A[📄 Plaintext P] -->|E: Encryption| B((🔒 Ciphertext C))
@@ -44,7 +43,7 @@ The absolute, fundamental requirement of symmetric encryption is that the key
 entire system is compromised, and they can read all past and future messages
 encrypted with that key.
 
-### 1.2 The Key Distribution Problem
+### 1.2 📦 The Key Distribution Problem
 
 The primary challenge of symmetric encryption is key distribution. How do Alice
 and Bob safely share the secret key over an insecure network (like the internet)
@@ -73,7 +72,7 @@ they process the data.
 > XOR the two ciphertexts together to eliminate the keystream and reveal the XOR
 > of the two plaintexts, which is often enough to read both messages.
 
-## 3. The Advanced Encryption Standard (AES)
+## 3. 🛡️ The Advanced Encryption Standard (AES)
 
 AES is the gold standard of symmetric encryption. It was adopted by the U.S.
 government in 2001 after a public competition to replace the aging DES. The
@@ -91,7 +90,7 @@ different key sizes, offering varying levels of security and computational cost:
 | **AES-192** | 192-bit  | 12 rounds        | High security                |
 | **AES-256** | 256-bit  | 14 rounds        | Top Secret government data   |
 
-### 3.2 How AES Works (The Rijndael Design)
+### 3.2 🔄 How AES Works (The Rijndael Design)
 
 AES is a Substitution-Permutation Network (SPN). It takes the 128-bit block of
 plaintext, arranges it into a 4x4 grid of bytes (the "state"), and applies a
@@ -115,35 +114,34 @@ A single round of AES consists of four distinct steps:
 _Code Example: High-level Python (using cryptography library) demonstrating
 AES-256 encryption:_
 
-# Basic example showing the core idea.
 ```python
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.backends import default_backend
 import os
 
-## 1. Generate a 256-bit (32-byte) random key
+# 1. Generate a 256-bit (32-byte) random key
 key = os.urandom(32)
 
-## 2. Generate a 128-bit (16-byte) Initialization Vector (IV) for CBC mode
+# 2. Generate a 128-bit (16-byte) Initialization Vector (IV) for CBC mode
 iv = os.urandom(16)
 
-## 3. Create the Cipher object using AES and CBC mode
+# 3. Create the Cipher object using AES and CBC mode
 cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
 encryptor = cipher.encryptor()
 
-## 4. Data to encrypt (must be padded to 128-bit blocks)
+# 4. Data to encrypt (must be padded to 128-bit blocks)
 plaintext = b"This is a highly secret message that needs encryption."
 padder = padding.PKCS7(128).padder()
 padded_data = padder.update(plaintext) + padder.finalize()
 
-## 5. Encrypt the data
+# 5. Encrypt the data
 ciphertext = encryptor.update(padded_data) + encryptor.finalize()
 
 print(f"Ciphertext (hex): {ciphertext.hex()}")
 ```
 
-## 4. Block Cipher Modes of Operation
+## 4. 🧩 Block Cipher Modes of Operation
 
 Because block ciphers like AES only encrypt fixed-size blocks (e.g., 16 bytes at
 a time), we need a "mode of operation" to define how to encrypt messages that
@@ -157,9 +155,8 @@ security.
 | **Counter Mode**          | CTR     | Turns a block cipher into a stream cipher using an incrementing counter.              | ⚠️ Use with caution (needs MAC) |
 | **Galois/Counter Mode**   | GCM     | Combines CTR mode with GMAC for Authenticated Encryption with Associated Data (AEAD). | ✅ **THE STANDARD**             |
 
-### 4.1 ⛓ Cipher Block Chaining (CBC) Mechanics
+### 4.1 ⛓️ Cipher Block Chaining (CBC) Mechanics
 
-<!-- Visual flow for Symmetric Encryption. -->
 ```mermaid
 graph TD
     IV[🎲 IV] --> XOR1((⊕))
@@ -168,7 +165,7 @@ graph TD
     K[🔑 Key] --> E1
     E1 --> C1[🔒 Ciphertext Block 1]
 
-C1 --> XOR2((⊕))
+    C1 --> XOR2((⊕))
     P2[📄 Plaintext Block 2] --> XOR2
     XOR2 --> E2[🔐 AES Encryption]
     K --> E2
@@ -181,7 +178,7 @@ C1 --> XOR2((⊕))
 > encrypted with standard modes like CBC or CTR, but they could theoretically
 > alter the ciphertext in transit (bit-flipping attacks). AEAD prevents this.
 
-## 5. ChaCha20 and Poly1305
+## 5. ⚡ ChaCha20 and Poly1305
 
 While AES is hardware-accelerated on most modern CPUs (via AES-NI instructions),
 making it incredibly fast, it can be slower on low-power devices (like older
@@ -197,6 +194,8 @@ Enter **ChaCha20**, a modern stream cipher designed by Daniel J. Bernstein.
 - **Adoption:** ChaCha20-Poly1305 is standardized in TLS 1.3 and is the primary
   cipher suite used by Google on Android devices and Chrome browsers
   communicating with Google servers.
+
+## 6. 🚨 Real-World Case Studies and Attacks
 
 ### 6.1 🎭 The Padding Oracle Attack (Against CBC)
 
@@ -257,12 +256,3 @@ between block and stream ciphers, the critical importance of modes of operation
 (especially AEAD), and the necessity of rigorous key management, developers can
 build robust systems that protect sensitive information against sophisticated
 attacks.
-
-## Quick Reference
-
-| Part | Revision point |
-|---|---|
-| Input | Know the allowed values and constraints. |
-| Core idea | Identify the invariant, recurrence, or search rule. |
-| Complexity | Track time and space costs. |
-| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |

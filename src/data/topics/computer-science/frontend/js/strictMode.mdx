@@ -1,4 +1,4 @@
-# JavaScript Strict Mode
+# 🔐 JavaScript Strict Mode
 
 ## 📘 Definition
 
@@ -13,7 +13,6 @@ language behave more consistently.
 
 ## 🔤 Syntax
 
-// Basic example showing the core idea.
 ```javascript
 'use strict'; // at the top of a script or function
 ```
@@ -22,7 +21,6 @@ You can enable strict mode in:
 
 ### ✅ Entire Script
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 
@@ -31,7 +29,6 @@ let x = 3.14; // valid
 
 ### ✅ Function Scope
 
-// Basic example showing the core idea.
 ```javascript
 function myFunction() {
   'use strict';
@@ -39,13 +36,17 @@ function myFunction() {
 }
 ```
 
-## Why Use Strict Mode?
+---
+
+## 🎯 Why Use Strict Mode?
 
 - Makes debugging easier (throws more errors)
 - Prevents the use of undeclared variables
 - Eliminates `this` coercion to `window` (in functions)
 - Disallows duplicate parameter names
 - Prepares your code for future JavaScript versions
+
+---
 
 ## 📛 Common Errors Prevented by Strict Mode
 
@@ -57,9 +58,12 @@ function myFunction() {
 | Octal literals       | Prohibits usage of octal number literals (`0755`)             |
 | Duplicate parameters | Disallows repeating function parameter names                  |
 
+---
+
+## ⚠️ Differences in Behavior (Strict Mode vs. Non-Strict)
+
 ### 🔸 Without Strict Mode
 
-// Basic example showing the core idea.
 ```javascript
 x = 10; // no error, x becomes a global variable
 console.log(x); // 10
@@ -67,15 +71,17 @@ console.log(x); // 10
 
 ### 🔹 With Strict Mode
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 x = 10; // ReferenceError: x is not defined
 ```
 
+---
+
+## ✅ Examples
+
 ### 1. ✅ Prevent Accidental Globals
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 x = 3.14; // ❌ ReferenceError
@@ -83,7 +89,6 @@ x = 3.14; // ❌ ReferenceError
 
 ### 2. ✅ Catch Silent Failures
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 const obj = {};
@@ -94,7 +99,6 @@ obj.name = 'Kumar'; // ❌ TypeError: Cannot assign to read only property
 
 ### 3. ✅ Disallow Duplicates
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 function sum(a, a, c) {
@@ -105,7 +109,6 @@ function sum(a, a, c) {
 
 ### 4. ✅ `this` is undefined in functions
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 function showThis() {
@@ -116,29 +119,33 @@ showThis();
 
 ### 5. ✅ Invalid delete usage
 
-// Basic example showing the core idea.
 ```javascript
 'use strict';
 let x = 5;
 delete x; // ❌ SyntaxError
 ```
 
-## Best Practices
+---
+
+## 🧠 Best Practices
 
 - Always use `'use strict';` at the top of your JavaScript files.
 - Modern JavaScript modules (`import/export`) and classes are **always in strict
   mode**.
 - Helps enforce **clean code** and avoid **sloppy mistakes**.
 
-## Auto-Strict (ES6 Modules)
+---
 
-// Example demonstrating JavaScript Strict Mode.
+## 🚀 Auto-Strict (ES6 Modules)
+
 ```js
 // modules are strict by default
 export function test() {
   undeclaredVar = 10; // ReferenceError
 }
 ```
+
+---
 
 ## 📎 Summary Table
 
@@ -150,34 +157,11 @@ export function test() {
 | Octal literals            | Error       | Allowed         |
 | `delete` on variables     | Error       | Allowed         |
 
-## Final Tip
+---
+
+## 📌 Final Tip
 
 Use strict mode to:
 
 - Write **cleaner**, more **secure**, and **predictable** JavaScript.
 - Help your code prepare for the **future of ECMAScript**.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

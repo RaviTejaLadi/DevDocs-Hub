@@ -11,7 +11,6 @@ or overflow issues.
 
 **Example:**
 
-// Basic example showing the core idea.
 ```javascript
 import ReactDOM from 'react-dom';
 
@@ -21,7 +20,7 @@ const Modal = () => {
     // parent component hierarchy
     <div className="modal">This is rendered using a portal</div>,
 
-// This is the DOM node where the portal content will be injected
+    // This is the DOM node where the portal content will be injected
     document.getElementById('portal-root')
   );
 };
@@ -29,7 +28,6 @@ const Modal = () => {
 
 In your `index.html` file, you should have:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div id="root"></div>
 <div id="portal-root"></div>
@@ -46,7 +44,6 @@ experience, especially when displaying long data lists.
 
 Here's how you can implement it using the IntersectionObserver API:
 
-// Basic example showing the core idea.
 ```javascript
 import { useEffect, useRef, useState } from 'react';
 
@@ -54,10 +51,10 @@ function InfiniteScroll() {
   // Initialize 20 dummy items (0 to 19)
   const [items, setItems] = useState([...Array(20).keys()]);
 
-// Ref to track the loader element (used to detect scroll end)
+  // Ref to track the loader element (used to detect scroll end)
   const loaderRef = useRef(null);
 
-// Function to load more items
+  // Function to load more items
   const loadMore = () => {
     // Generate 10 new items based on current length
     const newItems = Array.from({ length: 10 }, (_, i) => i + items.length);
@@ -65,7 +62,7 @@ function InfiniteScroll() {
     setItems((prev) => [...prev, ...newItems]);
   };
 
-useEffect(() => {
+  useEffect(() => {
     // Create an IntersectionObserver to detect when loader is visible
     const observer = new IntersectionObserver((entries) => {
       // If loader div is in the viewport, trigger loadMore
@@ -74,22 +71,22 @@ useEffect(() => {
       }
     });
 
-// Get the loader DOM element
+    // Get the loader DOM element
     const loader = loaderRef.current;
     if (loader) observer.observe(loader); // Start observing loader
 
-// Cleanup: unobserve the loader when component updates/unmounts
+    // Cleanup: unobserve the loader when component updates/unmounts
     return () => loader && observer.unobserve(loader);
   }, [items]); // Re-run effect when items change
 
-return (
+  return (
     <>
       {/* Render each item in the list */}
       {items.map((item) => (
         <div key={item}>Item #{item}</div>
       ))}
 
-{/* This div is the trigger for infinite scrolling */}
+      {/* This div is the trigger for infinite scrolling */}
       <div ref={loaderRef}>Loading more...</div>
     </>
   );
@@ -110,7 +107,6 @@ Here's how you can do that using the useEffect hook.
 
 **Example: Attaching a Scroll Event to the Window**
 
-// Basic example showing the core idea.
 ```javascript
 import { useEffect } from 'react';
 
@@ -120,16 +116,16 @@ function ScrollComponent() {
       console.log('User is scrolling');
     };
 
-// Attach event listener
+    // Attach event listener
     window.addEventListener('scroll', handleScroll);
 
-// Clean up to prevent memory leaks
+    // Clean up to prevent memory leaks
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-return <div>Scroll the page to see the console log in action.</div>;
+  return <div>Scroll the page to see the console log in action.</div>;
 }
 ```
 
@@ -173,7 +169,8 @@ has changed.
    or remove elements. With keys, React can identify items accurately and reuse
    existing DOM elements.
 
-// Basic example showing the core idea.
+**Example:**
+
 ```javascript
 // An array of fruit names
 const fruits = ['Apple', 'Banana', 'Mango'];
@@ -323,7 +320,6 @@ when building extensible UI systems.
 | **Returns**  | The result of the function | The function itself                          |
 | **Use Case** | Expensive calculations     | Passing stable callbacks to child components |
 
-// Basic example showing the core idea.
 ```javascript
 // useMemo example
 const sortedList = useMemo(() => {
@@ -344,38 +340,39 @@ const handleClick = useCallback(() => {
 - **Value Persistence:** Store mutable values that don't trigger updates
 - **Previous Value Tracking:** Capture previous state/props
 
-// Basic example showing the core idea.
 ```javascript
 function Timer() {
   const intervalRef = useRef(); // Stores interval ID
   const [count, setCount] = useState(0);
 
-useEffect(() => {
+  useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCount((c) => c + 1);
     }, 1000);
 
-return () => clearInterval(intervalRef.current);
+    return () => clearInterval(intervalRef.current);
   }, []);
 
-return <div>Count: {count}</div>;
+  return <div>Count: {count}</div>;
 }
 ```
+
+## Question 13. What are the React Performance Optimization Techniques?
 
 ### Core Optimization Strategies:
 
 1. **Memoization**
 
-- `React.memo()` for components
+   - `React.memo()` for components
    - `useMemo`/`useCallback` for values/functions
 
 2. **Virtualization**
 
-- `react-window` or `react-virtualized` for large lists
+   - `react-window` or `react-virtualized` for large lists
 
 3. **Code Splitting**
 
-- Route-based splitting with `React.lazy()`
+   - Route-based splitting with `React.lazy()`
    - Component-level splitting
 
 4. **Bundle Optimization**
@@ -385,7 +382,6 @@ return <div>Count: {count}</div>;
 
 ### Advanced Techniques:
 
-// Basic example showing the core idea.
 ```javascript
 // Preloading components before they're needed
 const Chat = React.lazy(() => import('./Chat'));
@@ -398,7 +394,6 @@ const Chat = React.lazy(() => import('./Chat'));
 
 **A function that takes a component and returns an enhanced component:**
 
-// Basic example showing the core idea.
 ```javascript
 function withLogger(WrappedComponent) {
   return function (props) {
@@ -407,7 +402,7 @@ function withLogger(WrappedComponent) {
       return () => console.log(`${WrappedComponent.name} unmounted`);
     }, []);
 
-return <WrappedComponent {...props} />;
+    return <WrappedComponent {...props} />;
   };
 }
 
@@ -426,13 +421,12 @@ const EnhancedComponent = withLogger(MyComponent);
 **A technique for sharing code between components using a prop that's a
 function:**
 
-// Basic example showing the core idea.
 ```javascript
 function DataFetcher({ url, children }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+  useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -441,7 +435,7 @@ useEffect(() => {
       });
   }, [url]);
 
-return children({ data, loading });
+  return children({ data, loading });
 }
 
 // Usage
@@ -457,6 +451,8 @@ return children({ data, loading });
 
 Here's a well-structured Q&A format for your React interview questions:
 
+---
+
 ## Question 16. What are the alternatives to Prop Drilling?
 
 Prop drilling occurs when passing data through multiple nested components,
@@ -464,11 +460,10 @@ leading to messy code. Alternatives include:
 
 1. **Context API** – Best for global values (e.g., theme, user data):
 
-// Example demonstrating Top 20 ReactJS Interview Questions.
-```jsx
+   ```jsx
    const ThemeContext = React.createContext('light');
 
-function App() {
+   function App() {
      return (
        <ThemeContext.Provider value="dark">
          <Dashboard />
@@ -476,7 +471,7 @@ function App() {
      );
    }
 
-function Dashboard() {
+   function Dashboard() {
      const theme = useContext(ThemeContext);
      return <div>Theme is {theme}</div>;
    }
@@ -485,6 +480,8 @@ function Dashboard() {
 2. **State Management Libraries** – Redux, Zustand, or Recoil for app-wide
    state.
 3. **Higher-Order Components (HOCs)** – Wrap components to inject props.
+
+---
 
 ## Question 17. What is `React.memo` and how does it work?
 
@@ -496,7 +493,6 @@ const Greeting = React.memo(({ name }) => {
   console.log("Rendered only if 'name' changes!");
   return <p>Hello, {name}</p>;
 });
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 - **Custom Comparison:**
@@ -506,11 +502,13 @@ const Greeting = React.memo(({ name }) => {
   });
   ```
 
+---
+
 ## Question 18. Explain `useImperativeHandle`, `useLayoutEffect`, and `useDebugValue`.
 
 1. **`useImperativeHandle`** – Customizes ref behavior for parent components:
 
-```jsx
+   ```jsx
    useImperativeHandle(ref, () => ({
      focusInput: () => inputRef.current.focus(),
    }));
@@ -519,8 +517,7 @@ const Greeting = React.memo(({ name }) => {
 2. **`useLayoutEffect`** – Runs synchronously after DOM mutations (use for
    layout measurements):
 
-// Example demonstrating Top 20 ReactJS Interview Questions.
-```jsx
+   ```jsx
    useLayoutEffect(() => {
      const height = ref.current.offsetHeight;
    }, []);
@@ -530,6 +527,8 @@ const Greeting = React.memo(({ name }) => {
    ```jsx
    useDebugValue(value, (v) => `Formatted: ${v}`);
    ```
+
+---
 
 ## Question 19. Differences between Class-based and Function-based Components?
 
@@ -563,6 +562,8 @@ const Greeting = React.memo(({ name }) => {
   }
   ```
 
+---
+
 ## Question 20. What are Error Boundaries in React?
 
 Error boundaries catch JavaScript errors in child components and display
@@ -572,11 +573,11 @@ fallback UI (class components only):
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
 
-static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-render() {
+  render() {
     if (this.state.hasError) {
       return <h2>Oops! Something went wrong.</h2>;
     }
@@ -588,7 +589,6 @@ render() {
 <ErrorBoundary>
   <Profile /> {/* Errors here show fallback UI */}
 </ErrorBoundary>;
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 - **Limitations:** Does not catch errors in event handlers or async code.
@@ -604,6 +604,8 @@ stages of a component's life — mounting, updating, and unmounting.
 - `componentWillUnmount` runs right before the component disappears — clean up
   timers, listeners here.
 
+**Example:**
+
 ```javascript
 class Timer extends React.Component {
   // Runs once after the component mounts
@@ -613,25 +615,24 @@ class Timer extends React.Component {
     this.timerID = setInterval(() => console.log('Tick'), 1000);
   }
 
-// Runs after every update; checks if 'start' prop changed
+  // Runs after every update; checks if 'start' prop changed
   componentDidUpdate(prevProps) {
     if (prevProps.start !== this.props.start) {
       console.log('Start prop changed');
     }
   }
 
-// Runs before the component unmounts; clean up the interval timer
+  // Runs before the component unmounts; clean up the interval timer
   componentWillUnmount() {
     clearInterval(this.timerID);
     console.log('Timer cleaned up');
   }
 
-// Render method outputs some text
+  // Render method outputs some text
   render() {
     return <div>Timer is running</div>;
   }
 }
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 In functional components, you handle these with `useEffect`:
@@ -641,11 +642,12 @@ useEffect(() => {
   // Runs once when the component mounts
   console.log('Mounted');
 
-// Cleanup function runs when the component unmounts
+  // Cleanup function runs when the component unmounts
   return () => console.log('Cleanup on unmount');
 }, []); // Empty dependency array means this runs only on mount and unmount
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
+
+---
 
 ## Question 22. What is the difference between Redux, Redux Toolkit, Redux Thunk, and Zustand in ReactJS?
 
@@ -682,7 +684,6 @@ export const { increment, decrement } = counterSlice.actions;
 
 // Export the reducer to configure the store
 export default counterSlice.reducer;
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 **Zustand example:**
@@ -694,7 +695,7 @@ import create from 'zustand';
 const useStore = create((set) => ({
   count: 0, // Initial count value
 
-// Action to increment the count
+  // Action to increment the count
   increment: () => set((state) => ({ count: state.count + 1 })),
 }));
 
@@ -703,10 +704,12 @@ const useStore = create((set) => ({
 // const increment = useStore(state => state.increment);
 ```
 
+---
+
 ## Question 23. What is React Router and RBAC (Route-Based Access Control)? How to implement private protected routes?
 
 React Router lets you declare routes in your React app, like `/home`,
-`/profile`, etc.
+`/profile`, etc.  
 RBAC means controlling access based on user roles (admin, user, guest).
 
 To protect routes, wrap components in a private route that checks auth:
@@ -719,10 +722,9 @@ const PrivateRoute = ({ children }) => {
   // Check if the user is logged in by looking for token in localStorage
   const isLoggedIn = Boolean(localStorage.getItem('token'));
 
-// If logged in, render children components; otherwise redirect to login
+  // If logged in, render children components; otherwise redirect to login
   return isLoggedIn ? children : <Navigate to="/login" />;
 };
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 Use it like this:
@@ -738,7 +740,6 @@ Use it like this:
     </PrivateRoute>
   }
 />
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 You can extend it for roles:
@@ -749,22 +750,23 @@ const RoleProtectedRoute = ({ children, allowedRoles }) => {
   // context, or a utility)
   const userRole = getUserRole();
 
-// Check if the user's role is allowed to access this route
+  // Check if the user's role is allowed to access this route
   if (!allowedRoles.includes(userRole)) {
     // If not allowed, redirect to an "unauthorized" page
     return <Navigate to="/unauthorized" />;
   }
 
-// If allowed, render the child components
+  // If allowed, render the child components
   return children;
 };
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
+
+---
 
 ## Question 24. Explain React testing. Like Unit-testing, JEST, react-testing-library, etc.
 
-Unit testing tests small pieces (functions, components) individually.
-Jest is the test runner and assertion library.
+Unit testing tests small pieces (functions, components) individually.  
+Jest is the test runner and assertion library.  
 React Testing Library (RTL) helps test React components from a user's
 perspective.
 
@@ -778,19 +780,20 @@ test('calls onClick when clicked', () => {
   // Create a mock function to track clicks
   const onClick = jest.fn();
 
-// Render the Button component with label and mock click handler
+  // Render the Button component with label and mock click handler
   render(<Button label="Click me" onClick={onClick} />);
 
-// Simulate a user clicking the button by finding it via its text
+  // Simulate a user clicking the button by finding it via its text
   fireEvent.click(screen.getByText('Click me'));
 
-// Assert that the click handler was called exactly once
+  // Assert that the click handler was called exactly once
   expect(onClick).toHaveBeenCalledTimes(1);
 });
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 This tests that clicking the button calls the click handler.
+
+---
 
 ### Question 25. Why would you choose Next.js instead of React.js?
 
@@ -813,7 +816,6 @@ Next.js is built on React but comes with many features out of the box:
 export default function About() {
   return <h1>About Us</h1>; // Render a heading on the page
 }
-// Example demonstrating Top 20 ReactJS Interview Questions.
 ```
 
 No router setup needed — the filename becomes the route.
@@ -823,12 +825,3 @@ No router setup needed — the filename becomes the route.
 - Better SEO out of the box
 - Faster initial page loads
 - A full-stack React framework
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

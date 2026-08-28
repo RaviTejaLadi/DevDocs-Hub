@@ -1,4 +1,4 @@
-# npm, Yarn & pnpm
+# 📦 npm, Yarn & pnpm
 
 npm, Yarn, and pnpm are JavaScript package managers used to install, update, and
 manage project dependencies.
@@ -12,7 +12,7 @@ They help developers:
 
 ---
 
-## What is a Package Manager?
+## 🚀 What is a Package Manager?
 
 Instead of manually downloading libraries:
 
@@ -26,7 +26,9 @@ npm install axios
 
 The package manager downloads and manages dependencies automatically.
 
-## npm
+---
+
+## 📦 npm
 
 npm comes bundled with Node.js.
 
@@ -42,6 +44,8 @@ Skip prompts:
 
 npm init -y
 
+---
+
 ## 🧶 Yarn
 
 Yarn was created to improve:
@@ -50,11 +54,17 @@ Yarn was created to improve:
 - Reliability
 - Dependency resolution
 
+Check version:
+
 yarn -v
+
+Initialize project:
 
 yarn init
 
-## pnpm
+---
+
+## ⚡ pnpm
 
 pnpm focuses on:
 
@@ -62,26 +72,43 @@ pnpm focuses on:
 - Less disk usage
 - Better monorepo support
 
+Check version:
+
 pnpm -v
 
 Create project:
 
 pnpm init
 
+---
 
+## 📥 Installing Packages
+
+### npm
+
+npm install axios
 
 ### Yarn
 
 yarn add axios
 
+### pnpm
 
 pnpm add axios
 
+---
+
 ## 📤 Install Development Dependencies
+
+### npm
 
 npm install -D eslint
 
+### Yarn
+
 yarn add -D eslint
+
+### pnpm
 
 pnpm add -D eslint
 
@@ -92,25 +119,45 @@ Used for:
 - TypeScript
 - Testing libraries
 
-## 🗑 Remove Packages
+---
+
+## 🗑️ Remove Packages
+
+### npm
 
 npm uninstall axios
 
+### Yarn
+
 yarn remove axios
+
+### pnpm
 
 pnpm remove axios
 
-## ⬆ Update Packages
+---
+
+## ⬆️ Update Packages
+
+### npm
 
 npm update
 
+### Yarn
+
 yarn upgrade
 
+### pnpm
+
 pnpm update
+
+---
 
 ## 📋 Package.json
 
 Central project configuration file.
+
+Example:
 
 { "name": "my-app", "version": "1.0.0", "scripts": { "dev": "vite", "build":
 "vite build" } }
@@ -122,13 +169,21 @@ Contains:
 - Scripts
 - Versions
 
-## Lock Files
+---
+
+## 🔒 Lock Files
 
 Package managers generate lock files.
 
+### npm
+
 package-lock.json
 
+### Yarn
+
 yarn.lock
+
+### pnpm
 
 pnpm-lock.yaml
 
@@ -140,29 +195,51 @@ Purpose:
 
 Always commit lock files.
 
-## ▶ Running Scripts
+---
+
+## ▶️ Running Scripts
 
 package.json:
 
 { "scripts": { "dev": "vite", "build": "vite build" } }
 
+### npm
+
 npm run dev
+
+### Yarn
 
 yarn dev
 
+### pnpm
+
 pnpm dev
 
-## List Installed Packages
+---
+
+## 🔍 List Installed Packages
+
+### npm
 
 npm list
 
+### Yarn
+
 yarn list
 
+### pnpm
+
 pnpm list
+
+---
+
+## 📂 Dependency Types
 
 ### Dependencies
 
 Required in production.
+
+Example:
 
 react axios
 
@@ -170,7 +247,13 @@ react axios
 
 Needed during development.
 
+Example:
+
 eslint typescript prettier
+
+---
+
+## ⚛️ Create React App
 
 ### Vite + npm
 
@@ -184,7 +267,9 @@ yarn create vite
 
 pnpm create vite
 
-## Why pnpm is Fast
+---
+
+## ⚡ Why pnpm is Fast
 
 Traditional approach:
 
@@ -206,6 +291,8 @@ Benefits:
 - Reduced disk space
 - Better performance
 
+---
+
 ## 🏢 Monorepo Support
 
 pnpm is widely used for:
@@ -222,6 +309,8 @@ packages/ ├── ui ├── utils
 
 pnpm handles shared dependencies efficiently.
 
+---
+
 ## 🔥 Useful Commands
 
 Check outdated packages:
@@ -232,17 +321,25 @@ yarn outdated
 
 pnpm outdated
 
+---
+
 Audit vulnerabilities:
 
 npm audit
 
 pnpm audit
 
+---
+
 Clean install:
 
 npm ci
 
 Useful in CI/CD pipelines.
+
+---
+
+## 🚨 Common Issues
 
 ### node_modules Corruption
 
@@ -258,6 +355,8 @@ or
 
 pnpm install
 
+---
+
 ### Version Mismatch
 
 Check:
@@ -269,13 +368,17 @@ Use a version manager like:
 - nvm
 - fnm
 
+---
+
 ### Dependency Conflicts
 
 Check peer dependency warnings.
 
 Keep package versions compatible.
 
-## ⚛ Recommended Setup for React
+---
+
+## ⚛️ Recommended Setup for React
 
 Install:
 
@@ -285,7 +388,9 @@ Development tools:
 
 pnpm add -D typescript pnpm add -D eslint pnpm add -D prettier
 
-## Quick Command Comparison
+---
+
+## 📊 Quick Command Comparison
 
 Install Package
 
@@ -303,7 +408,11 @@ Install Dependencies
 
 npm install yarn pnpm install
 
+---
+
 ## ⭐ Which One Should You Use?
+
+### npm
 
 Good for:
 
@@ -311,8 +420,16 @@ Good for:
 - Small projects
 - Default Node.js setup
 
+### Yarn
+
+Good for:
+
 - Existing Yarn projects
 - Teams already using Yarn
+
+### pnpm
+
+Good for:
 
 - React applications
 - Monorepos
@@ -322,34 +439,3 @@ Good for:
 For modern React and Next.js projects, pnpm is often the preferred choice
 because of its performance, efficient storage usage, and excellent workspace
 support.
-
-## Example
-
-Start with the smallest useful case before combining the idea with other features.
-
-// Basic example showing the core idea.
-```javascript
-const value = "example";
-console.log(value);
-```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.

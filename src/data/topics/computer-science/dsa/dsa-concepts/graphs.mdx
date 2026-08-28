@@ -1,4 +1,6 @@
-# Complete Guide to Graphs in JavaScript
+# 📊 Complete Guide to Graphs in JavaScript
+
+## 🔗 Directed vs. Undirected Graphs
 
 ### Definition
 
@@ -18,7 +20,6 @@ streets. If you can go from A to B, you can also go from B to A.
 
 ### Visualization
 
-<!-- Visual flow for Complete Guide to Graphs in JavaScript. -->
 ```mermaid
 flowchart LR
   subgraph Directed["Directed Graph"]
@@ -43,7 +44,6 @@ flowchart LR
 
 ### Code Example
 
-// Basic example showing the core idea.
 ```javascript
 class Graph {
   constructor(isDirected = false) {
@@ -51,16 +51,16 @@ class Graph {
     this.adjacencyList = {};
   }
 
-addVertex(vertex) {
+  addVertex(vertex) {
     if (!this.adjacencyList[vertex]) {
       this.adjacencyList[vertex] = [];
     }
   }
 
-addEdge(vertex1, vertex2) {
+  addEdge(vertex1, vertex2) {
     this.adjacencyList[vertex1].push(vertex2);
 
-// For undirected graphs, add edge in both directions
+    // For undirected graphs, add edge in both directions
     if (!this.isDirected) {
       this.adjacencyList[vertex2].push(vertex1);
     }
@@ -79,19 +79,24 @@ const undirectedGraph = new Graph(false);
 
 ---
 
-## ⚖ Weighted vs. Unweighted Graphs
+## ⚖️ Weighted vs. Unweighted Graphs
+
+### Definition
 
 **Weighted Graph**: Each edge has a numerical value (weight) representing cost,
 distance, or any metric.
 
 **Unweighted Graph**: All edges are considered equal with no associated values.
 
+### Key Characteristics
+
 - **Weighted**: Edges have associated costs/weights
 - **Unweighted**: All edges treated equally
 - **Storage**: Weighted graphs need extra space to store weights
 - **Algorithms**: Some algorithms only work with weighted graphs
 
-<!-- Visual flow for Complete Guide to Graphs in JavaScript. -->
+### Visualization
+
 ```mermaid
 flowchart LR
   subgraph Weighted["Weighted Graph"]
@@ -108,17 +113,26 @@ flowchart LR
   end
 ```
 
+### Example
+
 - **Weighted**: Road networks (distances between cities), flight routes (costs)
 - **Unweighted**: Social networks (friend connections), web page links
 
-// Basic example showing the core idea.
+### Code Example
+
 ```javascript
 class WeightedGraph {
   constructor() {
     this.adjacencyList = {};
   }
 
-addEdge(vertex1, vertex2, weight) {
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge(vertex1, vertex2, weight) {
     this.adjacencyList[vertex1].push({ node: vertex2, weight });
     this.adjacencyList[vertex2].push({ node: vertex1, weight });
   }
@@ -131,15 +145,23 @@ graph.addVertex('B');
 graph.addEdge('A', 'B', 5); // Edge with weight 5
 ```
 
+### Common Pitfalls
+
 - Using unweighted algorithms on weighted graphs
 - Forgetting to handle negative weights in some algorithms
 
-## 🗂 Graph Representation: Adjacency List/Matrix
+---
+
+## 🗂️ Graph Representation: Adjacency List/Matrix
+
+### Definition
 
 **Adjacency List**: Each vertex stores a list of its connected vertices.
 
 **Adjacency Matrix**: A 2D array where matrix[i][j] represents if there's an
 edge between vertex i and j.
+
+### Key Characteristics
 
 | Aspect         | Adjacency List | Adjacency Matrix |
 | -------------- | -------------- | ---------------- |
@@ -150,7 +172,6 @@ edge between vertex i and j.
 
 ### Syntax/Implementation
 
-// Basic example showing the core idea.
 ```javascript
 // Adjacency List
 const adjacencyList = {
@@ -169,19 +190,22 @@ const adjacencyMatrix = [
 ];
 ```
 
+### Example
+
 Think of it like storing contacts in your phone:
 
 - **Adjacency List**: Each person has a list of their friends
 - **Adjacency Matrix**: A grid showing all possible friendships (marked yes/no)
 
-// Basic example showing the core idea.
+### Code Example
+
 ```javascript
 class AdjacencyListGraph {
   constructor() {
     this.list = {};
   }
 
-addEdge(v1, v2) {
+  addEdge(v1, v2) {
     this.list[v1] = this.list[v1] || [];
     this.list[v2] = this.list[v2] || [];
     this.list[v1].push(v2);
@@ -197,17 +221,23 @@ class AdjacencyMatrixGraph {
     this.size = size;
   }
 
-addEdge(v1, v2) {
+  addEdge(v1, v2) {
     this.matrix[v1][v2] = 1;
     this.matrix[v2][v1] = 1;
   }
 }
 ```
 
+### Common Pitfalls
+
 - Using adjacency matrix for sparse graphs (wastes memory)
 - Using adjacency list when you frequently check if edges exist
 
+---
+
 ## 🚶 Graph Traversals: BFS and DFS
+
+### Definition
 
 **BFS (Breadth-First Search)**: Explores graph level by level, visiting all
 neighbors before going deeper.
@@ -215,12 +245,15 @@ neighbors before going deeper.
 **DFS (Depth-First Search)**: Explores as far as possible along each branch
 before backtracking.
 
+### Key Characteristics
+
 | Algorithm | Time     | Space | Data Structure  |
 | --------- | -------- | ----- | --------------- |
 | **BFS**   | O(V + E) | O(V)  | Queue           |
 | **DFS**   | O(V + E) | O(V)  | Stack/Recursion |
 
-<!-- Visual flow for Complete Guide to Graphs in JavaScript. -->
+### Visualization
+
 ```mermaid
 flowchart TB
   A["A"] --> B["B"]
@@ -233,30 +266,33 @@ flowchart TB
   E -.-> DFS
 ```
 
+### Example
+
 - **BFS**: Finding shortest path in unweighted graphs, social network "degrees
   of separation"
 - **DFS**: Maze solving, detecting cycles, topological sorting
 
-// Basic example showing the core idea.
+### Code Example
+
 ```javascript
 class Graph {
   constructor() {
     this.adjacencyList = {};
   }
 
-// BFS Implementation
+  // BFS Implementation
   bfs(start) {
     const queue = [start];
     const result = [];
     const visited = {};
 
-visited[start] = true;
+    visited[start] = true;
 
-while (queue.length) {
+    while (queue.length) {
       const vertex = queue.shift();
       result.push(vertex);
 
-this.adjacencyList[vertex].forEach((neighbor) => {
+      this.adjacencyList[vertex].forEach((neighbor) => {
         if (!visited[neighbor]) {
           visited[neighbor] = true;
           queue.push(neighbor);
@@ -266,43 +302,52 @@ this.adjacencyList[vertex].forEach((neighbor) => {
     return result;
   }
 
-// DFS Implementation (Recursive)
+  // DFS Implementation (Recursive)
   dfs(start) {
     const result = [];
     const visited = {};
 
-const dfsHelper = (vertex) => {
+    const dfsHelper = (vertex) => {
       visited[vertex] = true;
       result.push(vertex);
 
-this.adjacencyList[vertex].forEach((neighbor) => {
+      this.adjacencyList[vertex].forEach((neighbor) => {
         if (!visited[neighbor]) {
           dfsHelper(neighbor);
         }
       });
     };
 
-dfsHelper(start);
+    dfsHelper(start);
     return result;
   }
 }
 ```
 
+### Common Pitfalls
+
 - Forgetting to mark vertices as visited (causes infinite loops)
 - Using DFS when you need shortest path (use BFS instead)
 - Stack overflow with recursive DFS on large graphs
 
+---
+
 ## 📋 Topological Sorting
+
+### Definition
 
 Arranging vertices in a directed acyclic graph (DAG) so that for every edge (u,
 v), vertex u comes before v in the ordering.
+
+### Key Characteristics
 
 - **Time Complexity**: O(V + E)
 - **Space Complexity**: O(V)
 - **Requirement**: Only works on DAGs (no cycles)
 - **Applications**: Course scheduling, build systems, dependency resolution
 
-<!-- Visual flow for Complete Guide to Graphs in JavaScript. -->
+### Visualization
+
 ```mermaid
 flowchart LR
   TA["A"] --> TB["B"] --> TD["D"]
@@ -315,40 +360,50 @@ flowchart LR
   TD -.-> O3
 ```
 
+### Example
+
 Course prerequisites: You must take Calculus I before Calculus II, and Math
 before Calculus I.
 
-// Kahn's Algorithm (BFS-based)
+### Code Example
+
+```javascript
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  // Kahn's Algorithm (BFS-based)
   topologicalSort() {
     const inDegree = {};
     const queue = [];
     const result = [];
 
-// Initialize in-degree count
+    // Initialize in-degree count
     for (let vertex in this.adjacencyList) {
       inDegree[vertex] = 0;
     }
 
-// Calculate in-degrees
+    // Calculate in-degrees
     for (let vertex in this.adjacencyList) {
       this.adjacencyList[vertex].forEach((neighbor) => {
         inDegree[neighbor]++;
       });
     }
 
-// Find vertices with no incoming edges
+    // Find vertices with no incoming edges
     for (let vertex in inDegree) {
       if (inDegree[vertex] === 0) {
         queue.push(vertex);
       }
     }
 
-// Process vertices
+    // Process vertices
     while (queue.length) {
       const vertex = queue.shift();
       result.push(vertex);
 
-this.adjacencyList[vertex].forEach((neighbor) => {
+      this.adjacencyList[vertex].forEach((neighbor) => {
         inDegree[neighbor]--;
         if (inDegree[neighbor] === 0) {
           queue.push(neighbor);
@@ -356,22 +411,29 @@ this.adjacencyList[vertex].forEach((neighbor) => {
       });
     }
 
-return result.length === Object.keys(this.adjacencyList).length
+    return result.length === Object.keys(this.adjacencyList).length
       ? result
       : [];
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
+
+### Common Pitfalls
 
 - Trying to use on graphs with cycles
 - Not handling disconnected components
 - Forgetting that multiple valid orderings exist
 
+---
+
 ## 🌲 Minimum Spanning Tree
+
+### Definition
 
 A subset of edges that connects all vertices with minimum total weight, forming
 a tree (no cycles).
+
+### Key Characteristics
 
 **Prim's Algorithm**:
 
@@ -384,6 +446,8 @@ a tree (no cycles).
 - Time: O(E log E) due to sorting
 - Space: O(V) for Union-Find
 - Considers all edges, uses Union-Find
+
+### Visualization
 
 ```mermaid
 flowchart LR
@@ -399,11 +463,14 @@ flowchart LR
     MA ---|4| MC["C"]
     MB ---|2| MD["D"]
   end
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
+
+### Example
 
 Connecting cities with minimum cable length, designing efficient network
 infrastructure.
+
+### Code Example
 
 ```javascript
 // Prim's Algorithm
@@ -412,19 +479,19 @@ class PrimMST {
     this.graph = graph;
   }
 
-findMST() {
+  findMST() {
     const vertices = Object.keys(this.graph);
     const visited = new Set();
     const mst = [];
     let totalWeight = 0;
 
-// Start from first vertex
+    // Start from first vertex
     visited.add(vertices[0]);
 
-while (visited.size < vertices.length) {
+    while (visited.size < vertices.length) {
       let minEdge = { weight: Infinity };
 
-// Find minimum edge connecting visited to unvisited
+      // Find minimum edge connecting visited to unvisited
       for (let vertex of visited) {
         for (let edge of this.graph[vertex]) {
           if (!visited.has(edge.node) && edge.weight < minEdge.weight) {
@@ -437,7 +504,7 @@ while (visited.size < vertices.length) {
         }
       }
 
-// Add minimum edge to MST
+      // Add minimum edge to MST
       if (minEdge.weight !== Infinity) {
         mst.push(minEdge);
         totalWeight += minEdge.weight;
@@ -445,7 +512,7 @@ while (visited.size < vertices.length) {
       }
     }
 
-return { mst, totalWeight };
+    return { mst, totalWeight };
   }
 }
 
@@ -455,28 +522,28 @@ class KruskalMST {
     // Sort edges by weight
     edges.sort((a, b) => a.weight - b.weight);
 
-const parent = {};
+    const parent = {};
     const rank = {};
     const mst = [];
 
-// Initialize Union-Find
+    // Initialize Union-Find
     vertices.forEach((v) => {
       parent[v] = v;
       rank[v] = 0;
     });
 
-const find = (vertex) => {
+    const find = (vertex) => {
       if (parent[vertex] !== vertex) {
         parent[vertex] = find(parent[vertex]);
       }
       return parent[vertex];
     };
 
-const union = (x, y) => {
+    const union = (x, y) => {
       const rootX = find(x);
       const rootY = find(y);
 
-if (rootX !== rootY) {
+      if (rootX !== rootY) {
         if (rank[rootX] < rank[rootY]) {
           parent[rootX] = rootY;
         } else if (rank[rootX] > rank[rootY]) {
@@ -490,7 +557,7 @@ if (rootX !== rootY) {
       return false;
     };
 
-// Process edges
+    // Process edges
     for (let edge of edges) {
       if (union(edge.from, edge.to)) {
         mst.push(edge);
@@ -498,25 +565,34 @@ if (rootX !== rootY) {
       }
     }
 
-return mst;
+    return mst;
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
+
+### Common Pitfalls
 
 - Forgetting that MST only works on connected graphs
 - Not handling edge cases with equal weights
 - Confusing MST with shortest path problems
 
-## 🛣 Shortest Path Algorithms
+---
+
+## 🛣️ Shortest Path Algorithms
+
+### Definition
 
 Finding the path with minimum total weight between two vertices.
+
+### Key Characteristics
 
 | Algorithm          | Use Case                               | Time       | Handles Negative? |
 | ------------------ | -------------------------------------- | ---------- | ----------------- |
 | **Dijkstra**       | Single source, non-negative weights    | O(E log V) | No                |
 | **Bellman-Ford**   | Single source, detects negative cycles | O(VE)      | Yes               |
 | **Floyd-Warshall** | All pairs shortest path                | O(V³)      | Yes               |
+
+### Syntax/Implementation
 
 ```javascript
 // Dijkstra's basic structure
@@ -526,12 +602,15 @@ function dijkstra(graph, start) {
   const priorityQueue = new PriorityQueue();
   // Implementation details...
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
+
+### Example
 
 - **Dijkstra**: GPS navigation (roads have positive distances)
 - **Bellman-Ford**: Currency exchange (can have negative rates)
 - **Floyd-Warshall**: Finding shortest paths between all city pairs
+
+### Code Example
 
 ```javascript
 // Dijkstra's Algorithm
@@ -541,28 +620,28 @@ class DijkstraAlgorithm {
     const previous = {};
     const visited = new Set();
 
-// Initialize distances
+    // Initialize distances
     for (let vertex in graph) {
       distances[vertex] = vertex === start ? 0 : Infinity;
       previous[vertex] = null;
     }
 
-while (visited.size < Object.keys(graph).length) {
+    while (visited.size < Object.keys(graph).length) {
       // Find unvisited vertex with minimum distance
       let current = null;
       let minDistance = Infinity;
 
-for (let vertex in distances) {
+      for (let vertex in distances) {
         if (!visited.has(vertex) && distances[vertex] < minDistance) {
           minDistance = distances[vertex];
           current = vertex;
         }
       }
 
-if (current === null) break;
+      if (current === null) break;
       visited.add(current);
 
-// Update distances to neighbors
+      // Update distances to neighbors
       graph[current].forEach((neighbor) => {
         if (!visited.has(neighbor.node)) {
           const newDistance = distances[current] + neighbor.weight;
@@ -574,7 +653,7 @@ if (current === null) break;
       });
     }
 
-// Reconstruct path
+    // Reconstruct path
     const path = [];
     let current = end;
     while (current !== null) {
@@ -582,7 +661,7 @@ if (current === null) break;
       current = previous[current];
     }
 
-return {
+    return {
       distance: distances[end],
       path: distances[end] === Infinity ? [] : path,
     };
@@ -594,12 +673,12 @@ class BellmanFordAlgorithm {
   findShortestPath(edges, vertices, start) {
     const distances = {};
 
-// Initialize distances
+    // Initialize distances
     vertices.forEach((vertex) => {
       distances[vertex] = vertex === start ? 0 : Infinity;
     });
 
-// Relax edges V-1 times
+    // Relax edges V-1 times
     for (let i = 0; i < vertices.length - 1; i++) {
       edges.forEach((edge) => {
         if (distances[edge.from] + edge.weight < distances[edge.to]) {
@@ -608,7 +687,7 @@ class BellmanFordAlgorithm {
       });
     }
 
-// Check for negative cycles
+    // Check for negative cycles
     let hasNegativeCycle = false;
     edges.forEach((edge) => {
       if (distances[edge.from] + edge.weight < distances[edge.to]) {
@@ -616,7 +695,7 @@ class BellmanFordAlgorithm {
       }
     });
 
-return { distances, hasNegativeCycle };
+    return { distances, hasNegativeCycle };
   }
 }
 
@@ -626,7 +705,7 @@ class FloydWarshallAlgorithm {
     const vertices = Object.keys(graph);
     const dist = {};
 
-// Initialize distance matrix
+    // Initialize distance matrix
     vertices.forEach((i) => {
       dist[i] = {};
       vertices.forEach((j) => {
@@ -638,14 +717,14 @@ class FloydWarshallAlgorithm {
       });
     });
 
-// Set direct edge distances
+    // Set direct edge distances
     for (let vertex in graph) {
       graph[vertex].forEach((edge) => {
         dist[vertex][edge.node] = edge.weight;
       });
     }
 
-// Floyd-Warshall main loop
+    // Floyd-Warshall main loop
     vertices.forEach((k) => {
       vertices.forEach((i) => {
         vertices.forEach((j) => {
@@ -656,18 +735,21 @@ class FloydWarshallAlgorithm {
       });
     });
 
-return dist;
+    return dist;
   }
 }
-// Example demonstrating Complete Guide to Graphs in JavaScript.
 ```
+
+### Common Pitfalls
 
 - Using Dijkstra with negative weights (gives wrong results)
 - Not checking for negative cycles in Bellman-Ford
 - Forgetting that Floyd-Warshall needs O(V²) space
 - Not handling unreachable vertices properly
 
-## Summary
+---
+
+## 🎯 Summary
 
 Graphs are powerful data structures that model relationships and connections.
 Choose the right representation and algorithm based on your specific needs:

@@ -1,4 +1,4 @@
-# CSS Filters & Blend Modes
+# 🎭 CSS Filters & Blend Modes
 
 CSS Filters and Blend Modes allow you to create powerful visual effects directly
 in CSS without using image editing software.
@@ -19,28 +19,28 @@ You can:
 
 ---
 
-## What Are CSS Filters?
+# 🎯 What Are CSS Filters?
 
 Filters modify the visual appearance of an element.
 
 Think of filters like Instagram photo effects applied through CSS.
 
-<!-- Visual flow for CSS Filters & Blend Modes. -->
 ```mermaid
 flowchart LR
 
-Original["Original Image"]
+    Original["Original Image"]
 
-Filter["CSS Filter"]
+    Filter["CSS Filter"]
 
-Result["Modified Image"]
+    Result["Modified Image"]
 
-Original --> Filter --> Result
+    Original --> Filter --> Result
 ```
 
-## Filter Syntax
+---
 
-/* Basic example showing the core idea. */
+# 📦 Filter Syntax
+
 ```css
 .element {
   filter: value;
@@ -49,7 +49,6 @@ Original --> Filter --> Result
 
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 /* Blur effect */
 img {
@@ -57,15 +56,16 @@ img {
 }
 ```
 
-## Available CSS Filters
+---
 
-<!-- Visual flow for CSS Filters & Blend Modes. -->
+# 🎨 Available CSS Filters
+
 ```mermaid
 flowchart TB
 
-Filters["CSS Filters"]
+    Filters["CSS Filters"]
 
-Blur["blur()"]
+    Blur["blur()"]
     Brightness["brightness()"]
     Contrast["contrast()"]
     Grayscale["grayscale()"]
@@ -74,7 +74,7 @@ Blur["blur()"]
     Hue["hue-rotate()"]
     Shadow["drop-shadow()"]
 
-Filters --> Blur
+    Filters --> Blur
     Filters --> Brightness
     Filters --> Contrast
     Filters --> Grayscale
@@ -84,32 +84,41 @@ Filters --> Blur
     Filters --> Shadow
 ```
 
-## 🌫 blur()
+---
+
+# 🌫️ blur()
 
 Blurs an element.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: blur(5px);
 }
 ```
 
+---
+
 ## Blur Visualization
 
-Sharp["Sharp Image"]
+```mermaid
+flowchart LR
 
-Blur["Blur(5px)"]
+    Sharp["Sharp Image"]
 
-Blurred["Blurred Image"]
+    Blur["Blur(5px)"]
 
-Sharp --> Blur --> Blurred
-// Example demonstrating CSS Filters & Blend Modes.
+    Blurred["Blurred Image"]
+
+    Sharp --> Blur --> Blurred
 ```
 
-## ☀ brightness()
+---
+
+# ☀️ brightness()
 
 Adjusts brightness.
+
+---
 
 ## Increase Brightness
 
@@ -117,8 +126,9 @@ Adjusts brightness.
 img {
   filter: brightness(150%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Decrease Brightness
 
@@ -126,25 +136,30 @@ img {
 img {
   filter: brightness(50%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Brightness Levels
 
-Dark["50%"]
+```mermaid
+flowchart LR
 
-Normal["100%"]
+    Dark["50%"]
 
-Bright["150%"]
+    Normal["100%"]
 
-Dark --> Normal --> Bright
+    Bright["150%"]
+
+    Dark --> Normal --> Bright
 ```
 
-## contrast()
+---
+
+# 🎯 contrast()
 
 Controls contrast.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: contrast(200%);
@@ -153,20 +168,22 @@ img {
 
 Higher contrast makes dark colors darker and light colors lighter.
 
-## ⚫ grayscale()
+---
+
+# ⚫ grayscale()
 
 Converts image to black and white.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: grayscale(100%);
 }
 ```
 
+---
+
 ## Hover Effect
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: grayscale(100%);
@@ -180,21 +197,27 @@ img:hover {
 
 Popular portfolio effect.
 
+---
+
 ## Grayscale Flow
 
-Color["Color Image"]
+```mermaid
+flowchart LR
 
-BW["Black & White"]
+    Color["Color Image"]
 
-Hover["Hover"]
+    BW["Black & White"]
 
-Color --> BW
+    Hover["Hover"]
+
+    Color --> BW
     BW --> Hover
     Hover --> Color
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## 🟤 sepia()
+---
+
+# 🟤 sepia()
 
 Creates vintage photo effect.
 
@@ -202,64 +225,79 @@ Creates vintage photo effect.
 img {
   filter: sepia(100%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Sepia Effect
 
-Normal["Normal"]
+```mermaid
+flowchart LR
 
-Vintage["Vintage Look"]
+    Normal["Normal"]
 
-Normal --> Vintage
+    Vintage["Vintage Look"]
+
+    Normal --> Vintage
 ```
 
-## 🌈 saturate()
+---
+
+# 🌈 saturate()
 
 Controls color intensity.
 
+---
+
 ## Increase Saturation
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: saturate(200%);
 }
 ```
 
+---
+
 ## Decrease Saturation
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: saturate(50%);
 }
 ```
 
-## hue-rotate()
+---
+
+# 🎨 hue-rotate()
 
 Shifts colors around the color wheel.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: hue-rotate(90deg);
 }
 ```
 
+---
+
 ## Hue Rotation Concept
 
-Red["Red"]
+```mermaid
+flowchart LR
 
-Green["Green"]
+    Red["Red"]
 
-Blue["Blue"]
+    Green["Green"]
 
-Red --> Green --> Blue --> Red
-// Example demonstrating CSS Filters & Blend Modes.
+    Blue["Blue"]
+
+    Red --> Green --> Blue --> Red
 ```
 
-## 🌑 invert()
+---
+
+# 🌑 invert()
 
 Inverts colors.
 
@@ -267,21 +305,23 @@ Inverts colors.
 img {
   filter: invert(100%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## Dark Mode Trick
+---
+
+# Dark Mode Trick
 
 ```css
 .dark-logo {
   filter: invert(1);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Useful for logos in dark themes.
 
-## 💨 opacity()
+---
+
+# 💨 opacity()
 
 Changes transparency.
 
@@ -289,10 +329,11 @@ Changes transparency.
 img {
   filter: opacity(50%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## 🌟 drop-shadow()
+---
+
+# 🌟 drop-shadow()
 
 Creates shadows following the element shape.
 
@@ -300,54 +341,65 @@ Creates shadows following the element shape.
 img {
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## Difference from box-shadow
+---
 
-Box["box-shadow"]
+# Difference from box-shadow
 
-Shape["Rectangle Shadow"]
+```mermaid
+flowchart LR
 
-Drop["drop-shadow"]
+    Box["box-shadow"]
 
-Real["Follows Actual Shape"]
+    Shape["Rectangle Shadow"]
 
-Box --> Shape
+    Drop["drop-shadow"]
+
+    Real["Follows Actual Shape"]
+
+    Box --> Shape
     Drop --> Real
 ```
 
-## Multiple Filters
+---
+
+# 🎯 Multiple Filters
 
 Filters can be combined.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   filter: brightness(120%) contrast(110%) saturate(150%);
 }
 ```
 
+---
+
 ## Processing Flow
 
-Original["Image"]
+```mermaid
+flowchart LR
 
-Bright["Brightness"]
+    Original["Image"]
 
-Contrast["Contrast"]
+    Bright["Brightness"]
 
-Saturate["Saturation"]
+    Contrast["Contrast"]
 
-Result["Final Result"]
+    Saturate["Saturation"]
 
-Original --> Bright
+    Result["Final Result"]
+
+    Original --> Bright
     Bright --> Contrast
     Contrast --> Saturate
     Saturate --> Result
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## Real-World Card Hover Effect
+---
+
+# 🎨 Real-World Card Hover Effect
 
 ```css
 .card img {
@@ -357,62 +409,76 @@ Original --> Bright
 .card:hover img {
   filter: brightness(110%) saturate(120%);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Makes images look more vibrant on hover.
 
-## 🎭 What Are Blend Modes?
+---
+
+# 🎭 What Are Blend Modes?
 
 Blend Modes determine how layers interact visually.
 
-Layer1["Layer 1"]
+```mermaid
+flowchart TB
 
-Layer2["Layer 2"]
+    Layer1["Layer 1"]
 
-Blend["Blend Mode"]
+    Layer2["Layer 2"]
 
-Result["Final Output"]
+    Blend["Blend Mode"]
 
-Layer1 --> Blend
+    Result["Final Output"]
+
+    Layer1 --> Blend
     Layer2 --> Blend
 
-Blend --> Result
+    Blend --> Result
 ```
 
-## Types of Blend Modes
+---
+
+# Types of Blend Modes
 
 There are two main CSS properties:
 
-/* Basic example showing the core idea. */
 ```css
 mix-blend-mode
 background-blend-mode
 ```
 
-## mix-blend-mode
+---
+
+# 🎯 mix-blend-mode
 
 Blends an element with content behind it.
 
-/* Basic example showing the core idea. */
 ```css
 .text {
   mix-blend-mode: multiply;
 }
 ```
 
+---
+
 ## Blend Layer Concept
 
-Background["Background"]
+```mermaid
+flowchart TB
 
-Text["Text Layer"]
+    Background["Background"]
 
-Background --> Blend
+    Text["Text Layer"]
+
+    Blend["Blend Mode"]
+
+    Background --> Blend
     Text --> Blend
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## Common Blend Modes
+---
+
+# Common Blend Modes
 
 | Blend Mode | Effect               |
 | ---------- | -------------------- |
@@ -425,7 +491,9 @@ Background --> Blend
 | difference | Inverts overlap      |
 | exclusion  | Softer difference    |
 
-## multiply
+---
+
+# multiply
 
 Darkens overlapping areas.
 
@@ -433,42 +501,57 @@ Darkens overlapping areas.
 .element {
   mix-blend-mode: multiply;
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Multiply Concept
 
-Color1["Color A"]
+```mermaid
+flowchart LR
 
-Color2["Color B"]
+    Color1["Color A"]
 
-Darker["Darker Result"]
+    Color2["Color B"]
 
-Color1 --> Darker
+    Darker["Darker Result"]
+
+    Color1 --> Darker
     Color2 --> Darker
 ```
 
-## screen
+---
+
+# screen
 
 Lightens overlapping areas.
 
-/* Basic example showing the core idea. */
 ```css
 .element {
   mix-blend-mode: screen;
 }
 ```
 
+---
+
 ## Screen Concept
 
-Lighter["Lighter Result"]
+```mermaid
+flowchart LR
 
-Color1 --> Lighter
+    Color1["Color A"]
+
+    Color2["Color B"]
+
+    Lighter["Lighter Result"]
+
+    Color1 --> Lighter
     Color2 --> Lighter
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## overlay
+---
+
+# overlay
 
 Combines multiply and screen.
 
@@ -476,14 +559,17 @@ Combines multiply and screen.
 .element {
   mix-blend-mode: overlay;
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Produces vibrant, high-contrast results.
 
-## background-blend-mode
+---
+
+# 🎨 background-blend-mode
 
 Blends background layers.
+
+---
 
 ## Example
 
@@ -492,48 +578,58 @@ Blends background layers.
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(hero.jpg);
 
-background-blend-mode: multiply;
+  background-blend-mode: multiply;
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Background Layer Flow
 
-Image["Background Image"]
+```mermaid
+flowchart TB
 
-Gradient["Gradient Overlay"]
+    Image["Background Image"]
 
-Blend["Multiply"]
+    Gradient["Gradient Overlay"]
 
-Result["Dark Hero Banner"]
+    Blend["Multiply"]
 
-Image --> Blend
+    Result["Dark Hero Banner"]
+
+    Image --> Blend
     Gradient --> Blend
     Blend --> Result
 ```
 
-## 🌅 Hero Banner Example
+---
 
-<!-- Basic example showing the core idea. -->
+# 🌅 Hero Banner Example
+
 ```html
 <section class="hero">
   <h1>Welcome</h1>
 </section>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .hero {
   height: 500px;
 
-background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(hero.jpg);
 
-background-size: cover;
+  background-size: cover;
+
+  background-blend-mode: multiply;
+}
+```
 
 Very common on landing pages.
 
-## Glassmorphism Effect
+---
+
+# 🚀 Glassmorphism Effect
 
 Modern UI trend.
 
@@ -541,51 +637,61 @@ Modern UI trend.
 .card {
   backdrop-filter: blur(15px);
 
-background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 
-border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
 
 ## Glassmorphism Flow
 
-Blur["Backdrop Blur"]
+```mermaid
+flowchart LR
 
-Glass["Glass Card"]
+    Background["Background"]
 
-Background --> Blur --> Glass
+    Blur["Backdrop Blur"]
+
+    Glass["Glass Card"]
+
+    Background --> Blur --> Glass
 ```
 
-## 🌈 Neon Glow Effect
+---
 
-/* Basic example showing the core idea. */
+# 🌈 Neon Glow Effect
+
 ```css
 .logo {
   filter: drop-shadow(0 0 10px cyan);
 }
 ```
 
-## Image Hover Gallery
+---
 
-/* Basic example showing the core idea. */
+# 🎯 Image Hover Gallery
+
 ```css
 .gallery img {
   filter: grayscale(100%);
 
-transition: filter 0.3s, transform 0.3s;
+  transition: filter 0.3s, transform 0.3s;
 }
 
 .gallery img:hover {
   filter: grayscale(0);
 
-transform: scale(1.05);
+  transform: scale(1.05);
 }
 ```
 
 Creates an engaging gallery experience.
 
-## Performance Considerations
+---
+
+# ⚡ Performance Considerations
 
 Filters can be expensive.
 
@@ -597,16 +703,20 @@ Especially:
 
 ❌ multiple large shadows
 
+---
+
 ## Performance Ranking
 
-Fast["Fast"]
+```mermaid
+flowchart TB
 
-Medium["Medium"]
+    Fast["Fast"]
 
-Slow["Slow"]
+    Medium["Medium"]
 
-Fast --> Medium --> Slow
-// Example demonstrating CSS Filters & Blend Modes.
+    Slow["Slow"]
+
+    Fast --> Medium --> Slow
 ```
 
 Typical order:
@@ -619,8 +729,13 @@ grayscale
 drop-shadow
 blur
 backdrop-filter
-// Example demonstrating CSS Filters & Blend Modes.
 ```
+
+---
+
+# ⚠️ Common Mistakes
+
+---
 
 ## Excessive Blur
 
@@ -628,19 +743,23 @@ backdrop-filter
 
 ```css
 filter: blur(50px);
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 May hurt performance.
 
+---
+
 ## Too Many Filters
+
+❌
 
 ```css
 filter: brightness(120%) contrast(130%) saturate(180%) hue-rotate(120deg) blur(5px);
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Can look unnatural.
+
+---
 
 ## Overusing Blend Modes
 
@@ -648,7 +767,9 @@ Not all blend modes behave consistently across designs.
 
 Always test visually.
 
-## Quick Cheat Sheet
+---
+
+# 🧠 Quick Cheat Sheet
 
 ```css
 filter: blur(5px);
@@ -676,10 +797,11 @@ mix-blend-mode: multiply;
 background-blend-mode: overlay;
 
 backdrop-filter: blur(15px);
-// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use filters sparingly.
 - Keep blur values reasonable.
@@ -689,7 +811,9 @@ backdrop-filter: blur(15px);
 - Test performance on mobile devices.
 - Avoid stacking too many effects.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - CSS Filters modify the visual appearance of elements.
 - Common filters include `blur()`, `grayscale()`, `brightness()`, and

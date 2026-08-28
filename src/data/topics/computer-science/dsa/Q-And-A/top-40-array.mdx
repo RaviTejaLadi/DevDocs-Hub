@@ -1,4 +1,6 @@
-#  Top 40 DSA Array Interview Questions in JavaScript
+# **📚 Top 40 DSA Array Interview Questions in JavaScript**
+
+## 🟢 Easy Questions
 
 ### 1. Two Sum
 
@@ -9,7 +11,6 @@
 
 **Concept**: Hash Map for O(1) lookups to find complement values.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -21,19 +22,19 @@
 function twoSum(nums, target) {
   const map = new Map(); // Hash map to store value -> index
 
-for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     const complement = target - nums[i]; // Find what we need
 
-// If complement exists in map, we found our pair
+    // If complement exists in map, we found our pair
     if (map.has(complement)) {
       return [map.get(complement), i];
     }
 
-// Store current number and its index
+    // Store current number and its index
     map.set(nums[i], i);
   }
 
-return []; // No solution found
+  return []; // No solution found
 }
 ```
 
@@ -47,7 +48,6 @@ price of a given stock on the ith day. Find the maximum profit you can achieve.
 **Concept**: Track minimum price seen so far and calculate max profit at each
 step.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} prices
@@ -59,7 +59,7 @@ function maxProfit(prices) {
   let minPrice = Infinity; // Track minimum price seen so far
   let maxProfit = 0; // Track maximum profit possible
 
-for (let price of prices) {
+  for (let price of prices) {
     // Update minimum price if current price is lower
     if (price < minPrice) {
       minPrice = price;
@@ -70,7 +70,7 @@ for (let price of prices) {
     }
   }
 
-return maxProfit;
+  return maxProfit;
 }
 ```
 
@@ -83,7 +83,6 @@ appears at least twice in the array.
 
 **Concept**: Use Set to track seen elements for O(1) lookup time.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -94,7 +93,7 @@ appears at least twice in the array.
 function containsDuplicate(nums) {
   const seen = new Set(); // Set to track seen numbers
 
-for (let num of nums) {
+  for (let num of nums) {
     // If number already exists in set, we found a duplicate
     if (seen.has(num)) {
       return true;
@@ -102,11 +101,13 @@ for (let num of nums) {
     seen.add(num); // Add number to set
   }
 
-return false; // No duplicates found
+  return false; // No duplicates found
 }
 ```
 
 ### 4. Maximum Subarray
+
+**Company**: _Amazon, Microsoft_ 🏢
 
 **Problem Statement**: Given an integer array nums, find the contiguous subarray
 with the largest sum, and return its sum.
@@ -114,7 +115,6 @@ with the largest sum, and return its sum.
 **Concept**: Kadane's Algorithm - keep track of current sum and reset when it
 becomes negative.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -126,14 +126,14 @@ function maxSubArray(nums) {
   let currentSum = nums[0]; // Current subarray sum
   let maxSum = nums[0]; // Maximum sum found so far
 
-for (let i = 1; i < nums.length; i++) {
+  for (let i = 1; i < nums.length; i++) {
     // Either extend existing subarray or start new one
     currentSum = Math.max(nums[i], currentSum + nums[i]);
     // Update maximum sum if current is better
     maxSum = Math.max(maxSum, currentSum);
   }
 
-return maxSum;
+  return maxSum;
 }
 ```
 
@@ -146,7 +146,6 @@ sorted order.
 
 **Concept**: Two pointers from the end to avoid overwriting elements.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums1
@@ -162,7 +161,7 @@ function merge(nums1, m, nums2, n) {
   let j = n - 1; // Pointer for nums2
   let k = m + n - 1; // Pointer for merged position
 
-// Merge from the end to avoid overwriting
+  // Merge from the end to avoid overwriting
   while (i >= 0 && j >= 0) {
     if (nums1[i] > nums2[j]) {
       nums1[k] = nums1[i];
@@ -174,7 +173,7 @@ function merge(nums1, m, nums2, n) {
     k--;
   }
 
-// Copy remaining elements from nums2
+  // Copy remaining elements from nums2
   while (j >= 0) {
     nums1[k] = nums2[j];
     j--;
@@ -192,7 +191,6 @@ integer, plus one to the integer.
 
 **Concept**: Handle carry propagation from right to left.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} digits
@@ -212,7 +210,7 @@ function plusOne(digits) {
     digits[i] = 0;
   }
 
-// If we reach here, all digits were 9
+  // If we reach here, all digits were 9
   // Need to add 1 at the beginning
   return [1, ...digits];
 }
@@ -228,7 +226,6 @@ relative order of non-zero elements.
 **Concept**: Two pointers - one for placing non-zero elements, another for
 iterating.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -239,7 +236,7 @@ iterating.
 function moveZeroes(nums) {
   let writeIndex = 0; // Position to place next non-zero element
 
-// Move all non-zero elements to the front
+  // Move all non-zero elements to the front
   for (let readIndex = 0; readIndex < nums.length; readIndex++) {
     if (nums[readIndex] !== 0) {
       nums[writeIndex] = nums[readIndex];
@@ -247,7 +244,7 @@ function moveZeroes(nums) {
     }
   }
 
-// Fill remaining positions with zeros
+  // Fill remaining positions with zeros
   while (writeIndex < nums.length) {
     nums[writeIndex] = 0;
     writeIndex++;
@@ -264,7 +261,6 @@ the new length.
 
 **Concept**: Two pointers to overwrite duplicates while maintaining order.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -275,9 +271,9 @@ the new length.
 function removeDuplicates(nums) {
   if (nums.length === 0) return 0;
 
-let writeIndex = 1; // Position for next unique element
+  let writeIndex = 1; // Position for next unique element
 
-for (let readIndex = 1; readIndex < nums.length; readIndex++) {
+  for (let readIndex = 1; readIndex < nums.length; readIndex++) {
     // If current element is different from previous
     if (nums[readIndex] !== nums[readIndex - 1]) {
       nums[writeIndex] = nums[readIndex];
@@ -285,7 +281,7 @@ for (let readIndex = 1; readIndex < nums.length; readIndex++) {
     }
   }
 
-return writeIndex; // New length of array
+  return writeIndex; // New length of array
 }
 ```
 
@@ -298,7 +294,6 @@ for one, find that single element.
 
 **Concept**: XOR operation - x ^ x = 0, x ^ 0 = x.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -309,24 +304,25 @@ for one, find that single element.
 function singleNumber(nums) {
   let result = 0; // XOR of all elements
 
-// XOR all numbers together
+  // XOR all numbers together
   // Duplicates will cancel out, single number remains
   for (let num of nums) {
     result ^= num;
   }
 
-return result;
+  return result;
 }
 ```
 
 ### 10. Intersection of Two Arrays II
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Return the intersection of two arrays, including
 duplicates.
 
 **Concept**: Use frequency map to count occurrences in first array.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums1
@@ -339,12 +335,12 @@ function intersect(nums1, nums2) {
   const map = new Map(); // Frequency map for nums1
   const result = [];
 
-// Count frequency of elements in nums1
+  // Count frequency of elements in nums1
   for (let num of nums1) {
     map.set(num, (map.get(num) || 0) + 1);
   }
 
-// Check each element in nums2
+  // Check each element in nums2
   for (let num of nums2) {
     if (map.has(num) && map.get(num) > 0) {
       result.push(num); // Add to result
@@ -352,7 +348,13 @@ function intersect(nums1, nums2) {
     }
   }
 
+  return result;
+}
+```
+
 ---
+
+## 🟡 Medium Questions
 
 ### 11. 3Sum
 
@@ -374,25 +376,25 @@ function threeSum(nums) {
   nums.sort((a, b) => a - b); // Sort for two pointer approach
   const result = [];
 
-for (let i = 0; i < nums.length - 2; i++) {
+  for (let i = 0; i < nums.length - 2; i++) {
     // Skip duplicates for first element
     if (i > 0 && nums[i] === nums[i - 1]) continue;
 
-let left = i + 1;
+    let left = i + 1;
     let right = nums.length - 1;
 
-while (left < right) {
+    while (left < right) {
       const sum = nums[i] + nums[left] + nums[right];
 
-if (sum === 0) {
+      if (sum === 0) {
         result.push([nums[i], nums[left], nums[right]]);
 
-// Skip duplicates for second element
+        // Skip duplicates for second element
         while (left < right && nums[left] === nums[left + 1]) left++;
         // Skip duplicates for third element
         while (left < right && nums[right] === nums[right - 1]) right--;
 
-left++;
+        left++;
         right--;
       } else if (sum < 0) {
         left++; // Need larger sum
@@ -402,7 +404,13 @@ left++;
     }
   }
 
+  return result;
+}
+```
+
 ### 12. Container With Most Water
+
+**Company**: _Amazon, Microsoft_ 🏢
 
 **Problem Statement**: Find two lines that together with x-axis forms a
 container that holds the most water.
@@ -410,7 +418,6 @@ container that holds the most water.
 **Concept**: Two pointers from ends, move pointer with smaller height to
 potentially find larger area.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} height
@@ -423,13 +430,13 @@ function maxArea(height) {
   let right = height.length - 1;
   let maxWater = 0;
 
-while (left < right) {
+  while (left < right) {
     // Calculate current water area
     const width = right - left;
     const currentArea = Math.min(height[left], height[right]) * width;
     maxWater = Math.max(maxWater, currentArea);
 
-// Move pointer with smaller height
+    // Move pointer with smaller height
     if (height[left] < height[right]) {
       left++;
     } else {
@@ -437,18 +444,19 @@ while (left < right) {
     }
   }
 
-return maxWater;
+  return maxWater;
 }
 ```
 
 ### 13. Product of Array Except Self
+
+**Company**: _Amazon, Facebook_ 🏢
 
 **Problem Statement**: Return an array where each element is the product of all
 elements except itself, without using division.
 
 **Concept**: Two passes - left products and right products.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -459,18 +467,22 @@ elements except itself, without using division.
 function productExceptSelf(nums) {
   const result = new Array(nums.length);
 
-// First pass: calculate left products
+  // First pass: calculate left products
   result[0] = 1;
   for (let i = 1; i < nums.length; i++) {
     result[i] = result[i - 1] * nums[i - 1];
   }
 
-// Second pass: multiply with right products
+  // Second pass: multiply with right products
   let rightProduct = 1;
   for (let i = nums.length - 1; i >= 0; i--) {
     result[i] *= rightProduct;
     rightProduct *= nums[i];
   }
+
+  return result;
+}
+```
 
 ### 14. Find All Duplicates in an Array
 
@@ -492,10 +504,10 @@ positions.
 function findDuplicates(nums) {
   const duplicates = [];
 
-for (let num of nums) {
+  for (let num of nums) {
     const index = Math.abs(num) - 1; // Convert to 0-based index
 
-// If value at index is already negative, we found duplicate
+    // If value at index is already negative, we found duplicate
     if (nums[index] < 0) {
       duplicates.push(Math.abs(num));
     } else {
@@ -504,9 +516,8 @@ for (let num of nums) {
     }
   }
 
-return duplicates;
+  return duplicates;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 15. Rotate Array
@@ -529,7 +540,7 @@ reverse remaining elements.
 function rotate(nums, k) {
   k = k % nums.length; // Handle k larger than array length
 
-// Helper function to reverse array portion
+  // Helper function to reverse array portion
   function reverse(start, end) {
     while (start < end) {
       [nums[start], nums[end]] = [nums[end], nums[start]];
@@ -538,19 +549,20 @@ function rotate(nums, k) {
     }
   }
 
-// Step 1: Reverse entire array
+  // Step 1: Reverse entire array
   reverse(0, nums.length - 1);
 
-// Step 2: Reverse first k elements
+  // Step 2: Reverse first k elements
   reverse(0, k - 1);
 
-// Step 3: Reverse remaining elements
+  // Step 3: Reverse remaining elements
   reverse(k, nums.length - 1);
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 16. Search in Rotated Sorted Array
+
+**Company**: _Amazon, Facebook_ 🏢
 
 **Problem Statement**: Search for a target in a rotated sorted array.
 
@@ -569,14 +581,14 @@ function search(nums, target) {
   let left = 0;
   let right = nums.length - 1;
 
-while (left <= right) {
+  while (left <= right) {
     const mid = Math.floor((left + right) / 2);
 
-if (nums[mid] === target) {
+    if (nums[mid] === target) {
       return mid;
     }
 
-// Check if left half is sorted
+    // Check if left half is sorted
     if (nums[left] <= nums[mid]) {
       // Target is in sorted left half
       if (target >= nums[left] && target < nums[mid]) {
@@ -595,9 +607,8 @@ if (nums[mid] === target) {
     }
   }
 
-return -1; // Target not found
+  return -1; // Target not found
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 17. Sort Colors
@@ -620,7 +631,7 @@ function sortColors(nums) {
   let mid = 0; // Current element pointer
   let high = nums.length - 1; // Pointer for 2s
 
-while (mid <= high) {
+  while (mid <= high) {
     if (nums[mid] === 0) {
       // Swap with low pointer and advance both
       [nums[low], nums[mid]] = [nums[mid], nums[low]];
@@ -637,7 +648,6 @@ while (mid <= high) {
     }
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 18. Subarray Sum Equals K
@@ -661,24 +671,23 @@ function subarraySum(nums, k) {
   const prefixSumCount = new Map(); // Map to store prefix sum frequencies
   prefixSumCount.set(0, 1); // Initialize with sum 0
 
-let count = 0;
+  let count = 0;
   let prefixSum = 0;
 
-for (let num of nums) {
+  for (let num of nums) {
     prefixSum += num;
 
-// If (prefixSum - k) exists, we found subarrays ending at current position
+    // If (prefixSum - k) exists, we found subarrays ending at current position
     if (prefixSumCount.has(prefixSum - k)) {
       count += prefixSumCount.get(prefixSum - k);
     }
 
-// Update frequency of current prefix sum
+    // Update frequency of current prefix sum
     prefixSumCount.set(prefixSum, (prefixSumCount.get(prefixSum) || 0) + 1);
   }
 
-return count;
+  return count;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 19. Find Peak Element
@@ -702,10 +711,10 @@ function findPeakElement(nums) {
   let left = 0;
   let right = nums.length - 1;
 
-while (left < right) {
+  while (left < right) {
     const mid = Math.floor((left + right) / 2);
 
-// If mid element is less than next, peak is on right side
+    // If mid element is less than next, peak is on right side
     if (nums[mid] < nums[mid + 1]) {
       left = mid + 1;
     } else {
@@ -714,12 +723,13 @@ while (left < right) {
     }
   }
 
-return left; // left === right at this point
+  return left; // left === right at this point
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 20. Spiral Matrix
+
+**Company**: _Amazon, Microsoft_ 🏢
 
 **Problem Statement**: Return all elements of the matrix in spiral order.
 
@@ -735,26 +745,26 @@ return left; // left === right at this point
 function spiralOrder(matrix) {
   if (!matrix.length || !matrix[0].length) return [];
 
-const result = [];
+  const result = [];
   let top = 0,
     bottom = matrix.length - 1;
   let left = 0,
     right = matrix[0].length - 1;
 
-while (top <= bottom && left <= right) {
+  while (top <= bottom && left <= right) {
     // Traverse top row from left to right
     for (let col = left; col <= right; col++) {
       result.push(matrix[top][col]);
     }
     top++;
 
-// Traverse right column from top to bottom
+    // Traverse right column from top to bottom
     for (let row = top; row <= bottom; row++) {
       result.push(matrix[row][right]);
     }
     right--;
 
-if (top <= bottom) {
+    if (top <= bottom) {
       // Traverse bottom row from right to left
       for (let col = right; col >= left; col--) {
         result.push(matrix[bottom][col]);
@@ -762,7 +772,7 @@ if (top <= bottom) {
       bottom--;
     }
 
-if (left <= right) {
+    if (left <= right) {
       // Traverse left column from bottom to top
       for (let row = bottom; row >= top; row--) {
         result.push(matrix[row][left]);
@@ -771,7 +781,17 @@ if (left <= right) {
     }
   }
 
+  return result;
+}
+```
+
+---
+
+## 🔴 Hard Questions
+
 ### 21. Trapping Rain Water
+
+**Company**: _Amazon, Google_ 🏢
 
 **Problem Statement**: Calculate how much water can be trapped after raining
 given elevation heights.
@@ -779,7 +799,6 @@ given elevation heights.
 **Concept**: Two pointers approach - water level is determined by minimum of max
 heights on both sides.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} height
@@ -790,13 +809,13 @@ heights on both sides.
 function trap(height) {
   if (height.length < 3) return 0;
 
-let left = 0,
+  let left = 0,
     right = height.length - 1;
   let leftMax = 0,
     rightMax = 0;
   let waterTrapped = 0;
 
-while (left < right) {
+  while (left < right) {
     if (height[left] < height[right]) {
       // Process left side
       if (height[left] >= leftMax) {
@@ -818,11 +837,13 @@ while (left < right) {
     }
   }
 
-return waterTrapped;
+  return waterTrapped;
 }
 ```
 
 ### 22. First Missing Positive
+
+**Company**: _Facebook, Amazon_ 🏢
 
 **Problem Statement**: Find the smallest missing positive integer in unsorted
 array.
@@ -830,7 +851,6 @@ array.
 **Concept**: Use array itself as hash table by placing each number at its
 corresponding index.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -841,7 +861,7 @@ corresponding index.
 function firstMissingPositive(nums) {
   const n = nums.length;
 
-// Step 1: Place each positive number at its correct position
+  // Step 1: Place each positive number at its correct position
   for (let i = 0; i < n; i++) {
     // Keep swapping until current position has correct number
     while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] !== nums[i]) {
@@ -851,25 +871,26 @@ function firstMissingPositive(nums) {
     }
   }
 
-// Step 2: Find first position with incorrect number
+  // Step 2: Find first position with incorrect number
   for (let i = 0; i < n; i++) {
     if (nums[i] !== i + 1) {
       return i + 1;
     }
   }
 
-// All numbers 1 to n are present
+  // All numbers 1 to n are present
   return n + 1;
 }
 ```
 
 ### 23. Merge Intervals
 
+**Company**: _Facebook, Google_ 🏢
+
 **Problem Statement**: Merge all overlapping intervals.
 
 **Concept**: Sort intervals by start time, then merge overlapping ones.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[][]} intervals
@@ -880,16 +901,16 @@ function firstMissingPositive(nums) {
 function merge(intervals) {
   if (intervals.length <= 1) return intervals;
 
-// Sort intervals by start time
+  // Sort intervals by start time
   intervals.sort((a, b) => a[0] - b[0]);
 
-const merged = [intervals[0]];
+  const merged = [intervals[0]];
 
-for (let i = 1; i < intervals.length; i++) {
+  for (let i = 1; i < intervals.length; i++) {
     const current = intervals[i];
     const lastMerged = merged[merged.length - 1];
 
-// Check if current interval overlaps with last merged
+    // Check if current interval overlaps with last merged
     if (current[0] <= lastMerged[1]) {
       // Merge intervals by extending end time
       lastMerged[1] = Math.max(lastMerged[1], current[1]);
@@ -899,11 +920,13 @@ for (let i = 1; i < intervals.length; i++) {
     }
   }
 
-return merged;
+  return merged;
 }
 ```
 
 ### 24. Largest Rectangle in Histogram
+
+**Company**: _Amazon, Google_ 🏢
 
 **Problem Statement**: Find the area of largest rectangle that can be formed in
 histogram.
@@ -911,7 +934,6 @@ histogram.
 **Concept**: Use stack to keep track of increasing heights and calculate area
 when decreasing height is found.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} heights
@@ -923,11 +945,11 @@ function largestRectangleArea(heights) {
   const stack = []; // Stack to store indices
   let maxArea = 0;
 
-for (let i = 0; i <= heights.length; i++) {
+  for (let i = 0; i <= heights.length; i++) {
     // Use 0 for last iteration to pop all remaining elements
     const currentHeight = i === heights.length ? 0 : heights[i];
 
-// Pop from stack while current height is smaller
+    // Pop from stack while current height is smaller
     while (
       stack.length > 0 &&
       currentHeight < heights[stack[stack.length - 1]]
@@ -937,21 +959,22 @@ for (let i = 0; i <= heights.length; i++) {
       maxArea = Math.max(maxArea, height * width);
     }
 
-stack.push(i);
+    stack.push(i);
   }
 
-return maxArea;
+  return maxArea;
 }
 ```
 
 ### 25. Jump Game II
+
+**Company**: _Google, Amazon_ 🏢
 
 **Problem Statement**: Find minimum number of jumps to reach the last index.
 
 **Concept**: Greedy approach - keep track of furthest reachable position and
 jump when necessary.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -962,29 +985,31 @@ jump when necessary.
 function jump(nums) {
   if (nums.length <= 1) return 0;
 
-let jumps = 0;
+  let jumps = 0;
   let currentEnd = 0; // End of current jump range
   let farthest = 0; // Farthest position reachable
 
-for (let i = 0; i < nums.length - 1; i++) {
+  for (let i = 0; i < nums.length - 1; i++) {
     // Update farthest position we can reach
     farthest = Math.max(farthest, i + nums[i]);
 
-// If we've reached the end of current jump range
+    // If we've reached the end of current jump range
     if (i === currentEnd) {
       jumps++; // We need another jump
       currentEnd = farthest; // Update jump range end
 
-// Early termination if we can reach the end
+      // Early termination if we can reach the end
       if (currentEnd >= nums.length - 1) break;
     }
   }
 
-return jumps;
+  return jumps;
 }
 ```
 
 ### 26. Candy
+
+**Company**: _Facebook, Google_ 🏢
 
 **Problem Statement**: Distribute candies to children where each child gets at
 least one candy and children with higher rating get more candies than neighbors.
@@ -992,7 +1017,6 @@ least one candy and children with higher rating get more candies than neighbors.
 **Concept**: Two passes - left to right for increasing ratings, right to left
 for decreasing ratings.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} ratings
@@ -1004,26 +1028,28 @@ function candy(ratings) {
   const n = ratings.length;
   const candies = new Array(n).fill(1); // Each child gets at least 1 candy
 
-// Left to right pass: handle increasing ratings
+  // Left to right pass: handle increasing ratings
   for (let i = 1; i < n; i++) {
     if (ratings[i] > ratings[i - 1]) {
       candies[i] = candies[i - 1] + 1;
     }
   }
 
-// Right to left pass: handle decreasing ratings
+  // Right to left pass: handle decreasing ratings
   for (let i = n - 2; i >= 0; i--) {
     if (ratings[i] > ratings[i + 1]) {
       candies[i] = Math.max(candies[i], candies[i + 1] + 1);
     }
   }
 
-// Return total candies needed
+  // Return total candies needed
   return candies.reduce((sum, candy) => sum + candy, 0);
 }
 ```
 
 ### 27. Maximum Gap
+
+**Company**: _Google, Amazon_ 🏢
 
 **Problem Statement**: Find maximum difference between successive elements in
 sorted form.
@@ -1031,7 +1057,6 @@ sorted form.
 **Concept**: Bucket sort approach - divide range into buckets and find gaps
 between buckets.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1042,17 +1067,17 @@ between buckets.
 function maximumGap(nums) {
   if (nums.length < 2) return 0;
 
-const n = nums.length;
+  const n = nums.length;
   const minNum = Math.min(...nums);
   const maxNum = Math.max(...nums);
 
-if (minNum === maxNum) return 0;
+  if (minNum === maxNum) return 0;
 
-// Calculate bucket size and count
+  // Calculate bucket size and count
   const bucketSize = Math.ceil((maxNum - minNum) / (n - 1));
   const bucketCount = Math.floor((maxNum - minNum) / bucketSize) + 1;
 
-// Initialize buckets
+  // Initialize buckets
   const buckets = Array(bucketCount)
     .fill(null)
     .map(() => ({
@@ -1061,7 +1086,7 @@ if (minNum === maxNum) return 0;
       hasNum: false,
     }));
 
-// Place numbers in buckets
+  // Place numbers in buckets
   for (let num of nums) {
     const bucketIndex = Math.floor((num - minNum) / bucketSize);
     buckets[bucketIndex].min = Math.min(buckets[bucketIndex].min, num);
@@ -1069,28 +1094,29 @@ if (minNum === maxNum) return 0;
     buckets[bucketIndex].hasNum = true;
   }
 
-// Find maximum gap between buckets
+  // Find maximum gap between buckets
   let maxGap = 0;
   let prevMax = minNum;
 
-for (let bucket of buckets) {
+  for (let bucket of buckets) {
     if (bucket.hasNum) {
       maxGap = Math.max(maxGap, bucket.min - prevMax);
       prevMax = bucket.max;
     }
   }
 
-return maxGap;
+  return maxGap;
 }
 ```
 
 ### 28. Sliding Window Maximum
 
+**Company**: _Amazon, Google_ 🏢
+
 **Problem Statement**: Find maximum element in each sliding window of size k.
 
 **Concept**: Use deque to maintain potential maximums in decreasing order.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1103,26 +1129,32 @@ function maxSlidingWindow(nums, k) {
   const result = [];
   const deque = []; // Store indices in decreasing order of values
 
-for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     // Remove indices outside current window
     while (deque.length > 0 && deque[0] <= i - k) {
       deque.shift();
     }
 
-// Remove smaller elements from back (they can't be maximum)
+    // Remove smaller elements from back (they can't be maximum)
     while (deque.length > 0 && nums[deque[deque.length - 1]] <= nums[i]) {
       deque.pop();
     }
 
-deque.push(i); // Add current index
+    deque.push(i); // Add current index
 
-// Add maximum to result if window is complete
+    // Add maximum to result if window is complete
     if (i >= k - 1) {
       result.push(nums[deque[0]]);
     }
   }
 
+  return result;
+}
+```
+
 ### 29. Median of Two Sorted Arrays
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Find median of two sorted arrays in O(log(m+n)) time.
 
@@ -1143,24 +1175,24 @@ function findMedianSortedArrays(nums1, nums2) {
     [nums1, nums2] = [nums2, nums1];
   }
 
-const m = nums1.length;
+  const m = nums1.length;
   const n = nums2.length;
   let low = 0,
     high = m;
 
-while (low <= high) {
+  while (low <= high) {
     // Partition positions
     const partitionX = Math.floor((low + high) / 2);
     const partitionY = Math.floor((m + n + 1) / 2) - partitionX;
 
-// Elements around partitions
+    // Elements around partitions
     const maxLeftX = partitionX === 0 ? -Infinity : nums1[partitionX - 1];
     const minRightX = partitionX === m ? Infinity : nums1[partitionX];
 
-const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];
+    const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];
     const minRightY = partitionY === n ? Infinity : nums2[partitionY];
 
-// Check if partition is correct
+    // Check if partition is correct
     if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
       // Found correct partition
       if ((m + n) % 2 === 0) {
@@ -1179,12 +1211,13 @@ const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];
     }
   }
 
-throw new Error('Input arrays are not sorted');
+  throw new Error('Input arrays are not sorted');
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 30. Minimum Window Substring
+
+**Company**: _Facebook, Amazon_ 🏢
 
 **Problem Statement**: Find minimum window substring in s that contains all
 characters of t.
@@ -1202,27 +1235,27 @@ characters of t.
 function minWindow(s, t) {
   if (s.length < t.length) return '';
 
-// Count characters in t
+  // Count characters in t
   const targetCount = new Map();
   for (let char of t) {
     targetCount.set(char, (targetCount.get(char) || 0) + 1);
   }
 
-let left = 0,
+  let left = 0,
     right = 0;
   let formed = 0; // Number of unique characters in current window with desired frequency
   const required = targetCount.size;
 
-const windowCounts = new Map();
+  const windowCounts = new Map();
   let minLen = Infinity;
   let minLeft = 0;
 
-while (right < s.length) {
+  while (right < s.length) {
     // Expand window by including character at right
     const char = s[right];
     windowCounts.set(char, (windowCounts.get(char) || 0) + 1);
 
-// Check if current character contributes to desired count
+    // Check if current character contributes to desired count
     if (
       targetCount.has(char) &&
       windowCounts.get(char) === targetCount.get(char)
@@ -1230,7 +1263,7 @@ while (right < s.length) {
       formed++;
     }
 
-// Try to shrink window from left
+    // Try to shrink window from left
     while (left <= right && formed === required) {
       // Update minimum window if current is smaller
       if (right - left + 1 < minLen) {
@@ -1238,29 +1271,34 @@ while (right < s.length) {
         minLeft = left;
       }
 
-// Remove character at left from window
+      // Remove character at left from window
       const leftChar = s[left];
       windowCounts.set(leftChar, windowCounts.get(leftChar) - 1);
 
-if (
+      if (
         targetCount.has(leftChar) &&
         windowCounts.get(leftChar) < targetCount.get(leftChar)
       ) {
         formed--;
       }
 
-left++;
+      left++;
     }
 
-right++;
+    right++;
   }
 
-return minLen === Infinity ? '' : s.substring(minLeft, minLeft + minLen);
+  return minLen === Infinity ? '' : s.substring(minLeft, minLeft + minLen);
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
+---
+
+## ⚫ Expert Questions
+
 ### 31. Count of Smaller Numbers After Self
+
+**Company**: _Google, Amazon_ 🏢
 
 **Problem Statement**: Count how many numbers after each element are smaller
 than it.
@@ -1278,22 +1316,22 @@ function countSmaller(nums) {
   const result = new Array(nums.length).fill(0);
   const indices = nums.map((_, i) => i); // Track original indices
 
-function mergeSort(start, end) {
+  function mergeSort(start, end) {
     if (start >= end) return;
 
-const mid = Math.floor((start + end) / 2);
+    const mid = Math.floor((start + end) / 2);
     mergeSort(start, mid);
     mergeSort(mid + 1, end);
     merge(start, mid, end);
   }
 
-function merge(start, mid, end) {
+  function merge(start, mid, end) {
     const temp = [];
     let i = start,
       j = mid + 1,
       k = 0;
 
-while (i <= mid && j <= end) {
+    while (i <= mid && j <= end) {
       if (nums[indices[i]] <= nums[indices[j]]) {
         // Count how many elements from right half are smaller
         result[indices[i]] += j - (mid + 1);
@@ -1303,30 +1341,31 @@ while (i <= mid && j <= end) {
       }
     }
 
-// Add remaining elements from left half
+    // Add remaining elements from left half
     while (i <= mid) {
       result[indices[i]] += j - (mid + 1);
       temp[k++] = indices[i++];
     }
 
-// Add remaining elements from right half
+    // Add remaining elements from right half
     while (j <= end) {
       temp[k++] = indices[j++];
     }
 
-// Copy back to original array
+    // Copy back to original array
     for (let i = start; i <= end; i++) {
       indices[i] = temp[i - start];
     }
   }
 
-mergeSort(0, nums.length - 1);
+  mergeSort(0, nums.length - 1);
   return result;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 32. Reverse Pairs
+
+**Company**: _Google, Microsoft_ 🏢
 
 **Problem Statement**: Count reverse pairs where i < j and nums[i] > 2 \*
 nums[j].
@@ -1343,11 +1382,14 @@ nums[j].
 function reversePairs(nums) {
   let count = 0;
 
-const mid = Math.floor((start + end) / 2);
+  function mergeSort(start, end) {
+    if (start >= end) return;
+
+    const mid = Math.floor((start + end) / 2);
     mergeSort(start, mid);
     mergeSort(mid + 1, end);
 
-// Count reverse pairs
+    // Count reverse pairs
     let i = start,
       j = mid + 1;
     while (i <= mid && j <= end) {
@@ -1359,10 +1401,16 @@ const mid = Math.floor((start + end) / 2);
       }
     }
 
-merge(start, mid, end);
+    merge(start, mid, end);
   }
 
-while (i <= mid && j <= end) {
+  function merge(start, mid, end) {
+    const temp = [];
+    let i = start,
+      j = mid + 1,
+      k = 0;
+
+    while (i <= mid && j <= end) {
       if (nums[i] <= nums[j]) {
         temp[k++] = nums[i++];
       } else {
@@ -1370,21 +1418,22 @@ while (i <= mid && j <= end) {
       }
     }
 
-while (i <= mid) temp[k++] = nums[i++];
+    while (i <= mid) temp[k++] = nums[i++];
     while (j <= end) temp[k++] = nums[j++];
 
-for (let i = start; i <= end; i++) {
+    for (let i = start; i <= end; i++) {
       nums[i] = temp[i - start];
     }
   }
 
-mergeSort(0, nums.length - 1);
+  mergeSort(0, nums.length - 1);
   return count;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 33. Russian Doll Envelopes
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Find maximum number of envelopes that can be nested
 inside each other.
@@ -1403,15 +1452,15 @@ function maxEnvelopes(envelopes) {
   // Sort by width ascending, height descending
   envelopes.sort((a, b) => (a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]));
 
-// Find LIS on heights using binary search
+  // Find LIS on heights using binary search
   const tails = []; // tails[i] = smallest tail of increasing subsequence of length i+1
 
-for (let [width, height] of envelopes) {
+  for (let [width, height] of envelopes) {
     // Binary search for position to place current height
     let left = 0,
       right = tails.length;
 
-while (left < right) {
+    while (left < right) {
       const mid = Math.floor((left + right) / 2);
       if (tails[mid] < height) {
         left = mid + 1;
@@ -1420,7 +1469,7 @@ while (left < right) {
       }
     }
 
-// If left == tails.length, append; otherwise replace
+    // If left == tails.length, append; otherwise replace
     if (left === tails.length) {
       tails.push(height);
     } else {
@@ -1428,12 +1477,13 @@ while (left < right) {
     }
   }
 
-return tails.length;
+  return tails.length;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 34. Maximum Rectangle
+
+**Company**: _Amazon, Google_ 🏢
 
 **Problem Statement**: Find largest rectangle containing only 1s in binary
 matrix.
@@ -1451,31 +1501,31 @@ rectangle.
 function maximalRectangle(matrix) {
   if (!matrix.length || !matrix[0].length) return 0;
 
-const rows = matrix.length;
+  const rows = matrix.length;
   const cols = matrix[0].length;
   const heights = new Array(cols).fill(0);
   let maxArea = 0;
 
-for (let row = 0; row < rows; row++) {
+  for (let row = 0; row < rows; row++) {
     // Update heights array for current row
     for (let col = 0; col < cols; col++) {
       heights[col] = matrix[row][col] === '1' ? heights[col] + 1 : 0;
     }
 
-// Find largest rectangle in histogram
+    // Find largest rectangle in histogram
     maxArea = Math.max(maxArea, largestRectangleInHistogram(heights));
   }
 
-return maxArea;
+  return maxArea;
 
-function largestRectangleInHistogram(heights) {
+  function largestRectangleInHistogram(heights) {
     const stack = [];
     let maxArea = 0;
 
-for (let i = 0; i <= heights.length; i++) {
+    for (let i = 0; i <= heights.length; i++) {
       const currentHeight = i === heights.length ? 0 : heights[i];
 
-while (
+      while (
         stack.length > 0 &&
         currentHeight < heights[stack[stack.length - 1]]
       ) {
@@ -1484,13 +1534,17 @@ while (
         maxArea = Math.max(maxArea, height * width);
       }
 
-return maxArea;
+      stack.push(i);
+    }
+
+    return maxArea;
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 35. Burst Balloons
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Burst balloons to get maximum coins where coins = left _
 current _ right.
@@ -1510,23 +1564,23 @@ function maxCoins(nums) {
   const balloons = [1, ...nums, 1];
   const n = balloons.length;
 
-// dp[i][j] = max coins from bursting balloons between i and j (exclusive)
+  // dp[i][j] = max coins from bursting balloons between i and j (exclusive)
   const dp = Array(n)
     .fill(null)
     .map(() => Array(n).fill(0));
 
-// Length of interval
+  // Length of interval
   for (let length = 2; length < n; length++) {
     // Start position of interval
     for (let left = 0; left < n - length; left++) {
       const right = left + length;
 
-// Try each balloon as last to burst in interval (left, right)
+      // Try each balloon as last to burst in interval (left, right)
       for (let k = left + 1; k < right; k++) {
         // Coins from bursting balloon k last
         const coins = balloons[left] * balloons[k] * balloons[right];
 
-// Total coins = coins from k + coins from left interval + coins from right interval
+        // Total coins = coins from k + coins from left interval + coins from right interval
         dp[left][right] = Math.max(
           dp[left][right],
           coins + dp[left][k] + dp[k][right]
@@ -1535,12 +1589,13 @@ function maxCoins(nums) {
     }
   }
 
-return dp[0][n - 1];
+  return dp[0][n - 1];
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 36. Create Maximum Number
+
+**Company**: _Google, Amazon_ 🏢
 
 **Problem Statement**: Create maximum number of length k from two arrays while
 preserving relative order.
@@ -1560,7 +1615,7 @@ array, then merge optimally.
 function maxNumber(nums1, nums2, k) {
   let result = [];
 
-// Try all possible ways to split k between two arrays
+  // Try all possible ways to split k between two arrays
   for (
     let i = Math.max(0, k - nums2.length);
     i <= Math.min(k, nums1.length);
@@ -1571,19 +1626,19 @@ function maxNumber(nums1, nums2, k) {
       maxSubsequence(nums2, k - i)
     );
 
-if (isGreater(candidate, result)) {
+    if (isGreater(candidate, result)) {
       result = candidate;
     }
   }
 
-return result;
+  return result;
 
-// Get maximum subsequence of length k from array
+  // Get maximum subsequence of length k from array
   function maxSubsequence(nums, k) {
     const result = [];
     let toRemove = nums.length - k;
 
-for (let num of nums) {
+    for (let num of nums) {
       // Remove smaller elements if we can still remove more
       while (
         result.length > 0 &&
@@ -1596,16 +1651,16 @@ for (let num of nums) {
       result.push(num);
     }
 
-return result.slice(0, k);
+    return result.slice(0, k);
   }
 
-// Merge two arrays to get maximum possible number
+  // Merge two arrays to get maximum possible number
   function merge(nums1, nums2) {
     const result = [];
     let i = 0,
       j = 0;
 
-while (i < nums1.length || j < nums2.length) {
+    while (i < nums1.length || j < nums2.length) {
       if (isArrayGreater(nums1, i, nums2, j)) {
         result.push(nums1[i++]);
       } else {
@@ -1613,10 +1668,10 @@ while (i < nums1.length || j < nums2.length) {
       }
     }
 
-return result;
+    return result;
   }
 
-// Check if nums1[i:] > nums2[j:]
+  // Check if nums1[i:] > nums2[j:]
   function isArrayGreater(nums1, i, nums2, j) {
     while (i < nums1.length && j < nums2.length && nums1[i] === nums2[j]) {
       i++;
@@ -1625,7 +1680,7 @@ return result;
     return j === nums2.length || (i < nums1.length && nums1[i] > nums2[j]);
   }
 
-// Check if arr1 > arr2 lexicographically
+  // Check if arr1 > arr2 lexicographically
   function isGreater(arr1, arr2) {
     for (let i = 0; i < Math.max(arr1.length, arr2.length); i++) {
       const a = i < arr1.length ? arr1[i] : -1;
@@ -1636,10 +1691,11 @@ return result;
     return false;
   }
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 37. Shortest Subarray with Sum at Least K
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Find length of shortest subarray with sum at least K.
 
@@ -1658,21 +1714,21 @@ function shortestSubarray(nums, k) {
   const prefixSum = new Array(n + 1);
   prefixSum[0] = 0;
 
-// Calculate prefix sums
+  // Calculate prefix sums
   for (let i = 0; i < n; i++) {
     prefixSum[i + 1] = prefixSum[i] + nums[i];
   }
 
-const deque = []; // Store indices in increasing order of prefix sums
+  const deque = []; // Store indices in increasing order of prefix sums
   let minLength = Infinity;
 
-for (let i = 0; i <= n; i++) {
+  for (let i = 0; i <= n; i++) {
     // Remove indices where current prefix sum - their prefix sum >= k
     while (deque.length > 0 && prefixSum[i] - prefixSum[deque[0]] >= k) {
       minLength = Math.min(minLength, i - deque.shift());
     }
 
-// Remove indices with greater or equal prefix sums (they're not useful)
+    // Remove indices with greater or equal prefix sums (they're not useful)
     while (
       deque.length > 0 &&
       prefixSum[i] <= prefixSum[deque[deque.length - 1]]
@@ -1680,15 +1736,16 @@ for (let i = 0; i <= n; i++) {
       deque.pop();
     }
 
-deque.push(i);
+    deque.push(i);
   }
 
-return minLength === Infinity ? -1 : minLength;
+  return minLength === Infinity ? -1 : minLength;
 }
-// Example demonstrating  Top 40 DSA Array Interview Questions in JavaScript.
 ```
 
 ### 38. Number of Subarrays with Bounded Maximum
+
+**Company**: _Google, Amazon_ 🏢
 
 **Problem Statement**: Count number of subarrays where maximum element is
 between L and R.
@@ -1710,7 +1767,7 @@ function numSubarrayBoundedMax(nums, left, right) {
   let validSubarrays = 0; // Number of valid subarrays ending at current position
   let lastInvalidIndex = -1; // Last index where nums[i] > right
 
-for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     if (nums[i] > right) {
       // Reset count as this element breaks all previous subarrays
       validSubarrays = 0;
@@ -1721,10 +1778,16 @@ for (let i = 0; i < nums.length; i++) {
     }
     // If nums[i] < left, validSubarrays remains same
 
-count += validSubarrays;
+    count += validSubarrays;
   }
 
+  return count;
+}
+```
+
 ### 39. Split Array Largest Sum
+
+**Company**: _Google, Facebook_ 🏢
 
 **Problem Statement**: Split array into m non-empty continuous subarrays to
 minimize the largest sum.
@@ -1732,7 +1795,6 @@ minimize the largest sum.
 **Concept**: Binary search on answer - check if we can split array with max sum
 ≤ target.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1745,43 +1807,47 @@ function splitArray(nums, m) {
   let left = Math.max(...nums); // Minimum possible largest sum
   let right = nums.reduce((sum, num) => sum + num, 0); // Maximum possible largest sum
 
-if (canSplit(nums, m, mid)) {
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (canSplit(nums, m, mid)) {
       right = mid; // Try smaller maximum sum
     } else {
       left = mid + 1; // Need larger maximum sum
     }
   }
 
-return left;
+  return left;
 
-// Check if we can split array into m subarrays with max sum ≤ maxSum
+  // Check if we can split array into m subarrays with max sum ≤ maxSum
   function canSplit(nums, m, maxSum) {
     let subarrays = 1;
     let currentSum = 0;
 
-for (let num of nums) {
+    for (let num of nums) {
       if (currentSum + num <= maxSum) {
         currentSum += num;
       } else {
         subarrays++;
         currentSum = num;
 
-if (subarrays > m) return false;
+        if (subarrays > m) return false;
       }
     }
 
-return true;
+    return true;
   }
 }
 ```
 
 ### 40. Count of Range Sum
 
+**Company**: _Google, Microsoft_ 🏢
+
 **Problem Statement**: Count number of range sums that lie in [lower, upper].
 
 **Concept**: Modified merge sort with prefix sums to count valid ranges.
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * @param {number[]} nums
@@ -1794,20 +1860,20 @@ return true;
 function countRangeSum(nums, lower, upper) {
   const prefixSums = [0];
 
-// Calculate prefix sums
+  // Calculate prefix sums
   for (let num of nums) {
     prefixSums.push(prefixSums[prefixSums.length - 1] + num);
   }
 
-return mergeSort(0, prefixSums.length - 1);
+  return mergeSort(0, prefixSums.length - 1);
 
-function mergeSort(start, end) {
+  function mergeSort(start, end) {
     if (start >= end) return 0;
 
-const mid = Math.floor((start + end) / 2);
+    const mid = Math.floor((start + end) / 2);
     let count = mergeSort(start, mid) + mergeSort(mid + 1, end);
 
-// Count valid ranges across the split
+    // Count valid ranges across the split
     let j = mid + 1,
       k = mid + 1;
     for (let i = start; i <= mid; i++) {
@@ -1817,13 +1883,13 @@ const mid = Math.floor((start + end) / 2);
       count += k - j;
     }
 
-// Merge the two sorted halves
+    // Merge the two sorted halves
     const temp = [];
     let i = start,
       l = mid + 1,
       idx = 0;
 
-while (i <= mid && l <= end) {
+    while (i <= mid && l <= end) {
       if (prefixSums[i] <= prefixSums[l]) {
         temp[idx++] = prefixSums[i++];
       } else {
@@ -1831,179 +1897,21 @@ while (i <= mid && l <= end) {
       }
     }
 
-while (i <= mid) temp[idx++] = prefixSums[i++];
+    while (i <= mid) temp[idx++] = prefixSums[i++];
     while (l <= end) temp[idx++] = prefixSums[l++];
 
-for (let i = start; i <= end; i++) {
+    for (let i = start; i <= end; i++) {
       prefixSums[i] = temp[i - start];
     }
 
-return count;
+    return count;
   }
 }
 ```
 
-## Summary
+---
+
+## 🎯 Summary
 
 This comprehensive guide covers **40 essential DSA array questions** commonly
 asked in technical interviews at
-
-## JavaScript Array Methods by Purpose
-
-For a broad array-method topic, these are the core operations to revise. The important distinction is whether the method returns a new array/value or mutates the original array.
-
-### filter()
-
-Creates a new array containing elements that pass a test.
-
-// Practical example of filter().
-```javascript
-const adults = [15, 22, 17, 30].filter(age => age >= 18);
-```
-
-### reduce()
-
-Combines the elements into one accumulated result.
-
-// Practical example of reduce().
-```javascript
-const total = [10, 20, 30].reduce((sum, n) => sum + n, 0);
-```
-
-### forEach()
-
-Runs a callback for each element and returns undefined.
-
-// Practical example of forEach().
-```javascript
-["a", "b"].forEach(value => console.log(value));
-```
-
-### find()
-
-Returns the first element that matches a condition.
-
-// Practical example of find().
-```javascript
-const user = [{ id: 1 }, { id: 2 }].find(item => item.id === 2);
-```
-
-### findIndex()
-
-Returns the index of the first matching element, or -1.
-
-// Practical example of findIndex().
-```javascript
-const index = [10, 20, 30].findIndex(n => n === 20);
-```
-
-### some()
-
-Returns true when at least one element passes the test.
-
-// Practical example of some().
-```javascript
-const hasLarge = [10, 25, 5].some(n => n > 20);
-```
-
-### every()
-
-Returns true only when every element passes the test.
-
-// Practical example of every().
-```javascript
-const allPositive = [1, 2, 3].every(n => n > 0);
-```
-
-### includes()
-
-Checks whether an array contains a value.
-
-// Practical example of includes().
-```javascript
-const hasReact = ["React", "Vue"].includes("React");
-```
-
-### indexOf()
-
-Returns the first matching index, or -1.
-
-// Practical example of indexOf().
-```javascript
-const position = ["a", "b", "a"].indexOf("a");
-```
-
-### push() / pop()
-
-Add or remove an element at the end and mutate the array.
-
-// Practical example of push() / pop().
-```javascript
-const values = [1, 2];
-values.push(3);
-const last = values.pop();
-```
-
-### slice()
-
-Returns a shallow copy of part of an array without mutating it.
-
-// Practical example of slice().
-```javascript
-const middle = [10, 20, 30, 40].slice(1, 3);
-```
-
-### splice()
-
-Adds, removes, or replaces elements and mutates the array.
-
-// Practical example of splice().
-```javascript
-const values = [1, 2, 4];
-values.splice(2, 0, 3);
-```
-
-### concat()
-
-Creates a new array by combining arrays or values.
-
-// Practical example of concat().
-```javascript
-const merged = [1, 2].concat([3, 4]);
-```
-
-### flat()
-
-Flattens nested arrays to the requested depth.
-
-// Practical example of flat().
-```javascript
-const flat = [1, [2, [3]]].flat(2);
-```
-
-### flatMap()
-
-Maps each element and flattens one level of the result.
-
-// Practical example of flatMap().
-```javascript
-const pairs = [1, 2].flatMap(n => [n, n * 2]);
-```
-
-### sort()
-
-Sorts the array in place; numeric sorting needs a comparator.
-
-// Practical example of sort().
-```javascript
-const numbers = [10, 2, 5].sort((a, b) => a - b);
-```
-
-### reverse()
-
-Reverses the array in place.
-
-// Practical example of reverse().
-```javascript
-const reversed = [1, 2, 3].reverse();
-```

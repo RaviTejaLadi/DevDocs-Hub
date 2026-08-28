@@ -8,7 +8,7 @@ ensures consistent formatting, and shares knowledge across the engineering team.
 
 ---
 
-## Why Do Code Reviews Matter?
+## 🎯 Why Do Code Reviews Matter?
 
 Code reviews are not about micromanagement or finger-pointing. They serve as a
 critical quality assurance step for healthy engineering teams:
@@ -22,12 +22,13 @@ critical quality assurance step for healthy engineering teams:
 - **Maintaining Standards:** It ensures that variables, folder structures, and
   styling guidelines match the team's established formatting rules.
 
-## 🛠 The Code Review Workflow on GitHub
+---
+
+## 🛠️ The Code Review Workflow on GitHub
 
 When you review a pull request on GitHub, you use a specialized interface to
 inspect the code delta (the difference between the old and new files).
 
-<!-- Visual flow for 👀 Code Review. -->
 ```mermaid
 graph TD
     A[Author Opens PR] --> B[Reviewer Inspects Files Changed]
@@ -39,12 +40,14 @@ graph TD
 
 ```
 
-## Best Practices for Reviewers & Authors
+---
+
+## 📝 Best Practices for Reviewers & Authors
 
 To keep code reviews productive and positive, both the author and the reviewer
 should follow clear communication guidelines.
 
-### For Reviewers
+### For Reviewers 🔍
 
 - **Be Constructive:** Focus on the code, not the person. Instead of saying
   _"Your logic here is bad,"_ try saying _"Can we refactor this function to
@@ -59,13 +62,15 @@ should follow clear communication guidelines.
 - `[Blocker]` - A critical bug or architectural issue that must be fixed before
   merging.
 
-### For Authors ✍
+### For Authors ✍️
 
 - **Don't Take it Personally:** Code feedback is a tool for professional growth
   and a safer production app, not a reflection of your worth as a developer.
 - **Respond to Every Comment:** If a reviewer asks a question or suggests a
   change, either make the adjustment or leave a comment explaining why you chose
   your specific approach.
+
+---
 
 ## 🟢 Submitting Your Review Verdict
 
@@ -78,27 +83,4 @@ options to close out the review session:
 | **Approve**         | Give the green light to merge the changes into the main branch.                                    |
 | **Request Changes** | Block the PR from being merged until the author resolves specific bugs or requested modifications. |
 
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
+---

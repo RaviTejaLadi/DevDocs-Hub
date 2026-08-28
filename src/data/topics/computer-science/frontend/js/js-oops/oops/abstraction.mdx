@@ -1,18 +1,20 @@
-# Abstraction
+# 🧠 Abstraction
 
-## Definition
+## 🔍 Definition
 
 **Abstraction** is the concept of hiding complex implementation details and
 showing only the essential features of an object or function.
 
 ---
 
-## Why is it Important?
+## 🎯 Why is it Important?
 
 Abstraction makes code **simpler to use**, **easier to maintain**, and **less
 error-prone** by focusing on _what_ an object does rather than _how_ it does it.
 
-## 🛠 Syntax / Structure
+---
+
+## 🛠️ Syntax / Structure
 
 There’s no built-in keyword for abstraction in JavaScript, but it’s achieved
 using:
@@ -21,23 +23,25 @@ using:
 - **Objects/Classes**
 - **Private properties or methods** (using `#` or closures)
 
-// Basic example showing the core idea.
 ```javascript
 class Car {
   #startEngine() {
     console.log('Engine started');
   }
 
-drive() {
+  drive() {
     this.#startEngine(); // Abstracted internal logic
     console.log('Car is driving');
   }
 }
 ```
 
+---
+
+## 💡 Examples
+
 ### 🔹 Basic Example
 
-// Basic example showing the core idea.
 ```javascript
 function greetUser(name) {
   return `Hello, ${name}!`;
@@ -49,14 +53,13 @@ console.log(greetUser('Alice')); // Output: Hello, Alice!
 
 ### 🔸 Real-World Use Case
 
-// Basic example showing the core idea.
 ```javascript
 class PaymentProcessor {
   #connectToGateway() {
     console.log('Connecting to payment gateway...');
   }
 
-processPayment(amount) {
+  processPayment(amount) {
     this.#connectToGateway();
     console.log(`Processing payment of $${amount}`);
   }
@@ -69,7 +72,9 @@ payment.processPayment(100); // Only uses exposed method
 Here, `#connectToGateway()` is hidden (abstracted) from the outside — you only
 use `processPayment()`.
 
-## When/Where to Use It
+---
+
+## 📌 When/Where to Use It
 
 Use abstraction when:
 
@@ -78,7 +83,9 @@ Use abstraction when:
 - Working with APIs or services.
 - Writing large-scale applications that require separation of concerns.
 
-## ⚠ Gotchas / Tips
+---
+
+## ⚠️ Gotchas / Tips
 
 ✅ **Do**:
 
@@ -92,38 +99,3 @@ Use abstraction when:
 
 📝 **Tip**: Use private fields (`#fieldName`) or closures to hide implementation
 details.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **Abstraction** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
-
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.

@@ -1,24 +1,23 @@
-#  Simple Search
+# **🔍 Simple Search**
 
 ### JavaScript Version
 
-// Example demonstrating  Simple Search.
 ```jsx
 import React, { useState } from 'react';
 
 const Search = ({ items, onSearch, searchKeys = [] }) => {
   const [query, setQuery] = useState('');
 
-const handleSearch = (e) => {
+  const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
 
-if (!value) {
+    if (!value) {
       onSearch(items);
       return;
     }
 
-const filteredItems = items.filter((item) => {
+    const filteredItems = items.filter((item) => {
       if (searchKeys.length > 0) {
         return searchKeys.some((key) =>
           String(item[key]).toLowerCase().includes(value.toLowerCase())
@@ -29,10 +28,10 @@ const filteredItems = items.filter((item) => {
       );
     });
 
-onSearch(filteredItems);
+    onSearch(filteredItems);
   };
 
-return (
+  return (
     <div className="search">
       <input
         type="text"
@@ -49,7 +48,6 @@ export default Search;
 
 ### TypeScript Version
 
-// Example demonstrating  Simple Search.
 ```tsx
 import React, { useState } from 'react';
 
@@ -66,44 +64,40 @@ const Search = <T extends Record<string, any>>({
 }: SearchProps<T>) => {
   const [query, setQuery] = useState<string>('');
 
-const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
 
-## Quick Reference
+    if (!value) {
+      onSearch(items);
+      return;
+    }
 
-| Part | Revision point |
-|---|---|
-| Input | Know the allowed values and constraints. |
-| Core idea | Identify the invariant, recurrence, or search rule. |
-| Complexity | Track time and space costs. |
-| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |
+    const filteredItems = items.filter((item) => {
+      if (searchKeys.length > 0) {
+        return searchKeys.some((key) =>
+          String(item[key]).toLowerCase().includes(value.toLowerCase())
+        );
+      }
+      return Object.values(item).some((val) =>
+        String(val).toLowerCase().includes(value.toLowerCase())
+      );
+    });
 
-## Correctness Check
+    onSearch(filteredItems);
+  };
 
-Write the invariant, recurrence, or decision rule in one sentence. During each iteration or recursive call, identify what part of the problem is already solved. At the stopping condition, connect that known state to the required output. This is a stronger explanation than memorising one input-output trace.
+  return (
+    <div className="search">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={query}
+        onChange={handleSearch}
+      />
+    </div>
+  );
+};
 
-## Complexity
-
-State time and auxiliary-space complexity separately. Then compare the result with the problem constraints. A simple linear solution is often preferable to a more complex technique when the input is small, while large constraints may require logarithmic, linearithmic, or specialised approaches.
-
-## Testing Strategy
-
-Trace one tiny example by hand, then test the smallest valid input, a boundary case, duplicates when relevant, and a larger case. When a result is wrong, inspect the intermediate state that should satisfy the invariant. This usually locates the bug faster than checking only the final output.
-
-## Proof and Testing
-
-A convincing algorithm explanation links the implementation to correctness. State what remains true after each major step, explain why the stopping condition is sufficient, and then give the complexity. Testing should include boundary inputs and cases that stress the part of the algorithm most likely to fail. When two approaches produce the same output, prefer the one whose correctness argument and complexity are easier to communicate under the problem constraints.
-
-## Final Understanding Check
-
-Before considering ** Simple Search** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
-
-
-Write the invariant, recurrence, or decision rule in one sentence. During each iteration or recursive call, identify what part of the problem is already solved. At the stopping condition, connect that known state to the required output. This is a stronger explanation than memorising one input-output trace.
-
-
-State time and auxiliary-space complexity separately. Then compare the result with the problem constraints. A simple linear solution is often preferable to a more complex technique when the input is small, while large constraints may require logarithmic, linearithmic, or specialised approaches.
-
-
-Trace one tiny example by hand, then test the smallest valid input, a boundary case, duplicates when relevant, and a larger case. When a result is wrong, inspect the intermediate state that should satisfy the invariant. This usually locates the bug faster than checking only the final output.
+export default Search;
+```

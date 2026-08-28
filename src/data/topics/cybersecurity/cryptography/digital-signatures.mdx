@@ -1,4 +1,4 @@
-# ✍ Digital Signatures
+# ✍️ Digital Signatures
 
 In the physical world, a handwritten signature binds a person's identity to a
 document, signaling intent and agreement. In the digital realm, a scanned image
@@ -15,7 +15,7 @@ This comprehensive guide breaks down the mechanics of digital signatures, the
 algorithms used to generate them, and their critical role in proving identity
 and non-repudiation in modern computing.
 
-## 1. The Core Objectives of a Digital Signature
+## 1. 🎯 The Core Objectives of a Digital Signature
 
 Digital signatures are designed to fulfill three primary security objectives:
 
@@ -33,14 +33,14 @@ attacker intercepts Bob's signed message to Alice and changes "Transfer $100" to
 "Transfer $10,000", the digital signature verification will fail, alerting Alice
 to the tampering.
 
-### 1.3 ⚖ Non-Repudiation
+### 1.3 ⚖️ Non-Repudiation
 
 Because only Bob possesses his private key, Bob cannot later deny having signed
 the message. If Bob signs a digital contract, he cannot later claim in court
 that someone else forged his signature (unless he can prove his private key was
 stolen). This is a critical legal and commercial requirement.
 
-## 2. ⚙ How Digital Signatures Work (The Mechanics)
+## 2. ⚙️ How Digital Signatures Work (The Mechanics)
 
 Digital signatures are built upon the foundations of two other cryptographic
 primitives: **Asymmetric Encryption** (Public Key Cryptography) and
@@ -52,7 +52,6 @@ Recall the rule of asymmetric encryption:
 - _Crucially:_ Data encrypted with the **Private Key** can only be decrypted by
   the **Public Key**.
 
-<!-- Visual flow for ✍ Digital Signatures. -->
 ```mermaid
 graph TD
   subgraph "🧑 Sender (Bob)"
@@ -62,7 +61,7 @@ graph TD
     encrypt --> sig[✍️ Digital Signature]
   end
 
-subgraph "👩 Receiver (Alice)"
+  subgraph "👩 Receiver (Alice)"
     sig --> decrypt[🔓 Decrypt with Bob's Public Key]
     decrypt --> digest2[🔢 Hash Digest A]
     doc2[📄 Document] --> hash2[#️⃣ Hash Function]
@@ -73,7 +72,7 @@ subgraph "👩 Receiver (Alice)"
     compare -->|No| invalid[❌ Signature Invalid]
   end
 
-doc -.-> doc2
+  doc -.-> doc2
   sig -.-> sig
 ```
 
@@ -148,7 +147,7 @@ The Elliptic Curve equivalent of the older DSA algorithm.
   generated during signing. If a poor random number generator is used, or if the
   same nonce is ever reused, the private key can be instantly recovered.
 
-### 3.3 EdDSA (Edwards-curve Digital Signature Algorithm)
+### 3.3 🛡️ EdDSA (Edwards-curve Digital Signature Algorithm)
 
 Designed by Daniel J. Bernstein to fix the cryptographic footguns of ECDSA.
 
@@ -159,7 +158,7 @@ Designed by Daniel J. Bernstein to fix the cryptographic footguns of ECDSA.
 - **Status:** Ed25519 is the modern gold standard for digital signatures and
   should be preferred over ECDSA and RSA.
 
-## 4. 🏛 Public Key Infrastructure (PKI) and Certificates
+## 4. 🏛️ Public Key Infrastructure (PKI) and Certificates
 
 The entire digital signature ecosystem hinges on one critical question: **How
 does Alice know that "Bob's Public Key" actually belongs to Bob?**
@@ -189,7 +188,7 @@ When Alice visits Bob's website:
 4.  If valid, Alice knows the CA mathematically vouches that the public key
     belongs to Bob.
 
-## 5. 🛠 Practical Use Cases for Digital Signatures
+## 5. 🛠️ Practical Use Cases for Digital Signatures
 
 Digital signatures are not just theoretical; they secure nearly every
 transaction on the internet.
@@ -214,12 +213,3 @@ encryption, they provide unbreakable proof of origin and integrity.
 Understanding how they work, and the PKI infrastructure that supports them, is
 fundamental to comprehending how trust is established and maintained on the
 global internet.
-
-## Quick Reference
-
-| Part | Revision point |
-|---|---|
-| Input | Know the allowed values and constraints. |
-| Core idea | Identify the invariant, recurrence, or search rule. |
-| Complexity | Track time and space costs. |
-| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |

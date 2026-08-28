@@ -1,4 +1,4 @@
-# Git Bisect
+## 🔍 Git Bisect
 
 Imagine waking up to find a critical bug in production. You know for a fact that
 the app worked perfectly two weeks ago, but since then, your team has merged
@@ -21,7 +21,6 @@ second half of the timeline entirely and splits the remaining 100 commits in
 half again. Using this method, you can pinpoint the broken commit out of
 hundreds in fewer than 8 steps!
 
-<!-- Visual flow for Git Bisect. -->
 ```mermaid
 graph LR
     C1[Commit 1: Good Baseline] --> C2[Commit 2]
@@ -29,7 +28,7 @@ graph LR
     C3 --> C4[Commit 4]
     C4 --> C5[Commit 5: Broken Production]
 
-C5 -->|1. Start Bisect| B[Git Jumps to Middle: Commit 3]
+    C5 -->|1. Start Bisect| B[Git Jumps to Middle: Commit 3]
     B -->|2. Test it| T{Is it broken?}
     T -->|Yes| End[Bug Found at Commit 3! 🎯]
 
@@ -45,10 +44,11 @@ Here is how to run an interactive debugging session to trap a bug.
 
 First, tell Git you want to start a debugging investigation.
 
-# Basic example showing the core idea.
 ```bash
 // Start the automated binary search wizard
 git bisect start
+
+```
 
 #### 2. Label Your Markers
 
@@ -62,18 +62,21 @@ git bisect bad
 // Tell Git that a specific commit hash from last week was safe
 git bisect good a1b2c3d
 
+```
+
 #### 3. Test and Answer
 
 Git will instantly check out a commit right in the middle of that timeline. Look
 at your code or run your app, and tell Git whether it works or fails.
 
-# Basic example showing the core idea.
 ```bash
 // If the app is broken on this commit, run:
 git bisect bad
 
 // If the app works fine on this commit, run:
 git bisect good
+
+```
 
 Repeat this simple answering process. Git will keep jumping to the middle of the
 remaining possibilities until it prints out the exact commit hash, author, and
@@ -88,30 +91,20 @@ return your workspace back to normal.
 // End the search session and return to your original working branch
 git bisect reset
 
-### Extra Pro Tip: Automated Bisecting
+```
+
+---
+
+### 💡 Extra Pro Tip: Automated Bisecting
 
 If you have an automated script or a test command (like `npm run test:auth`)
 that returns a failure code whenever the bug is present, you can automate this
 entire process! Git will test every commit for you without asking questions:
 
-# Basic example showing the core idea.
 ```bash
 // Tell Git to run the test script automatically across the timeline
 git bisect run npm run test:auth
 
-## Quick Reference
+```
 
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
+---

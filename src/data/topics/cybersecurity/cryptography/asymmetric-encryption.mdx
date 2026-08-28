@@ -1,4 +1,4 @@
-# 🗝 Asymmetric Encryption (Public Key Cryptography)
+# 🗝️ Asymmetric Encryption (Public Key Cryptography)
 
 Before the 1970s, all cryptographic systems relied on a shared secret key. The
 insurmountable problem was **key distribution**: how do two parties who have
@@ -12,7 +12,7 @@ This comprehensive guide explores the profound mathematics behind asymmetric
 cryptography, detailed breakdowns of RSA and ECC, key exchange mechanisms, and
 the real-world infrastructure that relies on these algorithms.
 
-## 1. The Core Concept: Key Pairs
+## 1. 🎯 The Core Concept: Key Pairs
 
 Unlike symmetric encryption, which uses one key for both encryption and
 decryption, asymmetric encryption uses two distinct, but mathematically related,
@@ -22,7 +22,7 @@ keys:
     Anyone can use it.
 2.  **Private Key:** This key must be kept absolutely secret by its owner.
 
-### 1.1 🕳 The One-Way Mathematical Trapdoor
+### 1.1 🕳️ The One-Way Mathematical Trapdoor
 
 The security of asymmetric cryptography relies on "trapdoor one-way functions."
 
@@ -35,7 +35,7 @@ The security of asymmetric cryptography relies on "trapdoor one-way functions."
 > **Note:** The security of asymmetric cryptography fundamentally depends on the
 > difficulty of reversing these mathematical one-way functions.
 
-### 1.2 ✌ Two Primary Use Cases
+### 1.2 ✌️ Two Primary Use Cases
 
 The relationship between the public and private key enables two distinct
 operations:
@@ -100,7 +100,7 @@ the ciphertext $C$ is calculated as: $$C \equiv M^e \pmod n$$
 To recover the plaintext $M$ from the ciphertext $C$, the receiver uses their
 private exponent $d$: $$M \equiv C^d \pmod n$$
 
-### 2.2 ⚠ Vulnerabilities and Padding
+### 2.2 ⚠️ Vulnerabilities and Padding
 
 Raw RSA (textbook RSA) is vulnerable to several attacks:
 
@@ -136,7 +136,7 @@ The **ECDLP** states that given the starting point $G$ and the final point $P$,
 it is computationally infeasible to figure out how many times $G$ was added to
 itself (i.e., you cannot deduce the private key $k$).
 
-### 3.2 ⚖ The Advantage of ECC over RSA
+### 3.2 ⚖️ The Advantage of ECC over RSA
 
 The primary advantage of ECC is that it offers the same level of cryptographic
 strength as RSA but with vastly smaller key sizes.
@@ -155,7 +155,7 @@ strength as RSA but with vastly smaller key sizes.
 3.  **Less bandwidth:** Certificates and keys take up less space in network
     handshakes.
 
-### 3.3 Common ECC Curves
+### 3.3 🧬 Common ECC Curves
 
 Not all curves are secure. The cryptographic community relies on standardized
 curves that have been vetted for mathematical weaknesses.
@@ -171,7 +171,7 @@ While RSA can be used to encrypt a symmetric key and send it to a receiver,
 **Diffie-Hellman** allows two parties to mutually generate a shared secret over
 a public channel without ever transmitting the secret itself.
 
-### 4.1 How Diffie-Hellman Works (The Paint Analogy)
+### 4.1 🎨 How Diffie-Hellman Works (The Paint Analogy)
 
 Imagine Alice and Bob want to agree on a secret color over a public network
 where Eve is listening.
@@ -206,7 +206,7 @@ secret colors.
 Because $B^a = (g^b)^a = g^{ba} = g^{ab} = (g^a)^b = A^b$, they both arrive at
 the exact same secret $S$.
 
-### 4.3 🕵‍♂ Ephemeral Diffie-Hellman (DHE / ECDHE)
+### 4.3 🕵️‍♂️ Ephemeral Diffie-Hellman (DHE / ECDHE)
 
 In modern systems (like TLS 1.3), Diffie-Hellman is used in an **ephemeral**
 mode. This means new private integers ($a$ and $b$) are generated for _every
@@ -218,7 +218,7 @@ single connection_ and then discarded.
   The server's RSA key is only used to authenticate the connection, while the
   ECDHE handshake generates the temporary encryption keys.
 
-## 5. The Hybrid Cryptosystem
+## 5. 🧬 The Hybrid Cryptosystem
 
 Asymmetric encryption is mathematically profound, but it is extremely
 slow—typically 1,000 to 10,000 times slower than symmetric encryption. It is
@@ -226,7 +226,6 @@ completely impractical to use RSA or ECC to encrypt a 1GB video file.
 
 Therefore, the modern internet uses a **Hybrid Cryptosystem**:
 
-<!-- Visual flow for 🗝 Asymmetric Encryption (Public Key Cryptography). -->
 ```mermaid
 graph TD
     A[🧑 Alice] -->|1. Generate Symmetric Key| SK[🔑 Symmetric Key]
@@ -234,11 +233,11 @@ graph TD
     EK -->|3. Send Over Network| B[👨 Bob]
     B -->|4. Decrypt with Private Key| SK2[🔑 Symmetric Key]
 
-A -->|5. Encrypt Bulk Data with Symmetric Key| ED[🔒 Encrypted Data]
+    A -->|5. Encrypt Bulk Data with Symmetric Key| ED[🔒 Encrypted Data]
     ED -->|6. Send Over Network| B
     B -->|7. Decrypt Data with Symmetric Key| D[📄 Plaintext Data]
 
-style SK fill:#fff9c4,stroke:#f57f17
+    style SK fill:#fff9c4,stroke:#f57f17
     style SK2 fill:#fff9c4,stroke:#f57f17
     style EK fill:#ffebee,stroke:#b71c1c
     style ED fill:#ffebee,stroke:#b71c1c
@@ -254,7 +253,7 @@ style SK fill:#fff9c4,stroke:#f57f17
 This combines the key-distribution benefits of asymmetric cryptography with the
 blazing speed of symmetric cryptography.
 
-## 6. 🏛 Public Key Infrastructure (PKI)
+## 6. 🏛️ Public Key Infrastructure (PKI)
 
 If Bob sends Alice his public key over the internet, how does Alice know the key
 actually belongs to Bob, and not to an attacker (Eve) who intercepted the
@@ -281,12 +280,3 @@ Diffie-Hellman, we can appreciate the robust architecture that secures our
 digital lives. As we move forward, the transition from traditional asymmetric
 algorithms to Post-Quantum Cryptography will be the next great challenge in this
 domain.
-
-## Quick Reference
-
-| Part | Revision point |
-|---|---|
-| Input | Know the allowed values and constraints. |
-| Core idea | Identify the invariant, recurrence, or search rule. |
-| Complexity | Track time and space costs. |
-| Edge cases | Test empty, minimum, maximum, and duplicate inputs. |

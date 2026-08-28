@@ -1,4 +1,4 @@
-# Secure Coding: Building Defenses from the Ground Up
+# 🔒 Secure Coding: Building Defenses from the Ground Up
 
 Secure coding is the practice of developing computer software in a way that
 guards against the accidental introduction of security vulnerabilities. It
@@ -27,7 +27,7 @@ coding practices is immense.
 > ⚠️ **Warning:** Fixing a bug in production can be up to 100x more expensive
 > than fixing it during the design phase!
 
-## Core Secure Coding Principles
+## 🛡️ Core Secure Coding Principles
 
 Effective secure coding relies on a set of foundational principles that should
 guide every architectural decision and line of code written.
@@ -38,7 +38,6 @@ Never rely on a single security control. Assume that any single defense
 mechanism might fail or be bypassed. Implement multiple layers of security
 controls throughout the application stack.
 
-<!-- Visual flow for Secure Coding: Building Defenses from the Ground Up. -->
 ```mermaid
 graph TD
     A[Attacker 🦹‍♂️] --> B(WAF 🧱)
@@ -73,7 +72,7 @@ permission must be required for access.
   document throws an unexpected exception, the exception handler should default
   to denying access, not granting it.
 
-### 4. Keep It Simple (Economy of Mechanism)
+### 4. 🧩 Keep It Simple (Economy of Mechanism)
 
 Complexity is the enemy of security. Complex designs are harder to understand,
 harder to test, and more likely to contain subtle flaws. Keep architectures,
@@ -108,7 +107,7 @@ databases) must be considered untrusted and potentially malicious.
 > ⚠️ **Critical:** If you only remember one rule, make it this: **All input is
 > evil until proven otherwise.**
 
-## 🛠 Key Secure Coding Practices
+## 🛠️ Key Secure Coding Practices
 
 Translating principles into practice requires specific techniques during the
 development process.
@@ -139,7 +138,7 @@ executable code.
   these protections (e.g., using `dangerouslySetInnerHTML` in React without
   extreme caution).
 
-### Secure Authentication and Session Management
+### 🔐 Secure Authentication and Session Management
 
 - 🔒 **Use Strong Cryptography:** Never store passwords in plaintext. Use
   strong, slow cryptographic hashing algorithms with a unique salt per user
@@ -156,7 +155,7 @@ executable code.
   session ID when a user's privilege level changes (e.g., post-login) to prevent
   session fixation attacks.
 
-### Parameterized Queries (Preventing SQL Injection)
+### 🛡️ Parameterized Queries (Preventing SQL Injection)
 
 SQL injection occurs when untrusted data is concatenated directly into a
 database query string. The definitive solution is to use parameterized queries
@@ -167,7 +166,6 @@ database query string. The definitive solution is to use parameterized queries
 
 **Vulnerable Example (Node.js/PostgreSQL):**
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ DANGEROUS: String concatenation allows SQL injection
 const username = req.body.user;
@@ -182,7 +180,6 @@ username = 'admin' --'`, bypassing authentication.\*
 
 **Secure Example (Parameterized Query):**
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ SECURE: Parameterization separates code from data
 const username = req.body.user;
@@ -195,7 +192,7 @@ db.query(query, [username], (err, res) => {
 _The database driver ensures the input `$1` is treated strictly as a literal
 value, regardless of its content._
 
-### Error Handling and Logging
+### 📝 Error Handling and Logging
 
 - 🤐 **Fail Securely and Silently to the User:** When exceptions occur, do not
   leak sensitive system information (stack traces, database structures, internal
@@ -208,12 +205,11 @@ value, regardless of its content._
   card numbers, PII) is never written to log files. Be wary of Log Injection
   attacks; sanitize data before writing it to logs.
 
-## Integrating Secure Coding into the SDLC (DevSecOps)
+## 🔄 Integrating Secure Coding into the SDLC (DevSecOps)
 
 Secure coding cannot be effective if it relies solely on developer memory. It
 must be integrated into the Software Development Life Cycle (SDLC).
 
-<!-- Visual flow for Secure Coding: Building Defenses from the Ground Up. -->
 ```mermaid
 sequenceDiagram
     participant Dev as 👨‍💻 Developer
@@ -222,7 +218,7 @@ sequenceDiagram
     participant SCA as 📦 SCA Tool
     participant SAST as 🔍 SAST Tool
 
-Dev->>Git: Push Code
+    Dev->>Git: Push Code
     Git->>CI: Trigger Build
     CI->>SCA: Scan Dependencies
     SCA-->>CI: Report CVEs
@@ -260,12 +256,3 @@ into the development pipeline, development teams can build robust applications
 capable of withstanding the sophisticated attacks of the modern digital
 landscape. Security must become an integral part of the engineering culture,
 owned by developers and supported by security professionals. 🛡️💻
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

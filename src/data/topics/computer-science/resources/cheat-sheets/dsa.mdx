@@ -12,7 +12,6 @@
 | O(2ⁿ)      | Exponential  | Doubles with each addition         | Recursive Fibonacci         |
 | O(n!)      | Factorial    | Extremely slow growth              | Permutations                |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart LR
     subgraph growth["Complexity growth (input size →)"]
@@ -75,7 +74,6 @@ flowchart LR
 | Is Empty  | `length === 0` | O(1) | O(1)  | `stack.length === 0`      |
 | Size      | `length`       | O(1) | O(1)  | `stack.length`            |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart TB
     push["push() →"] --> top["Top"]
@@ -84,7 +82,6 @@ flowchart TB
     pop["← pop()"] --> top
 ```
 
-// Basic example showing the core idea.
 ```javascript
 class Stack {
   constructor() {
@@ -118,7 +115,6 @@ class Stack {
 | Is Empty  | `length === 0` | O(1) | O(1)  | `queue.length === 0` |
 | Size      | `length`       | O(1) | O(1)  | `queue.length`       |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart LR
     enqueue["enqueue() →"] --> front["Front (dequeue)"]
@@ -126,7 +122,6 @@ flowchart LR
     mid --> rear["Rear"]
 ```
 
-// Basic example showing the core idea.
 ```javascript
 class Queue {
   constructor() {
@@ -160,13 +155,11 @@ class Queue {
 | Search         | O(n) | O(1)  | Find node        |
 | Access         | O(n) | O(1)  | Get by index     |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart LR
     head["head"] --> n1["val | next"] --> n2["val | next"] --> n3["val | null"]
 ```
 
-// Basic example showing the core idea.
 ```javascript
 class ListNode {
   constructor(val, next = null) {
@@ -180,11 +173,11 @@ class LinkedList {
     this.head = null;
   }
 
-prepend(val) {
+  prepend(val) {
     this.head = new ListNode(val, this.head);
   }
 
-append(val) {
+  append(val) {
     if (!this.head) {
       this.head = new ListNode(val);
       return;
@@ -205,7 +198,6 @@ append(val) {
 | Delete    | O(log n) - O(n) | O(1)  | Remove node     |
 | Traversal | O(n)            | O(h)  | Visit all nodes |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart TB
     root["root (8)"] --> left["left (3)"]
@@ -214,7 +206,6 @@ flowchart TB
     left --> lr["right (6)"]
 ```
 
-// Basic example showing the core idea.
 ```javascript
 class TreeNode {
   constructor(val, left = null, right = null) {
@@ -229,11 +220,11 @@ class BST {
     this.root = null;
   }
 
-insert(val) {
+  insert(val) {
     this.root = this.insertNode(this.root, val);
   }
 
-insertNode(node, val) {
+  insertNode(node, val) {
     if (!node) return new TreeNode(val);
     if (val < node.val) node.left = this.insertNode(node.left, val);
     else node.right = this.insertNode(node.right, val);
@@ -293,7 +284,6 @@ insertNode(node, val) {
 | Adjacency Matrix | O(V²)  | O(V²)      | O(1)     | O(V²)         | O(1)        | O(1)       |
 | Adjacency List   | O(V+E) | O(1)       | O(1)     | O(V+E)        | O(E)        | O(E)       |
 
-// Basic example showing the core idea.
 ```javascript
 // Adjacency List
 class Graph {
@@ -301,13 +291,13 @@ class Graph {
     this.adjacencyList = {};
   }
 
-addVertex(vertex) {
+  addVertex(vertex) {
     if (!this.adjacencyList[vertex]) {
       this.adjacencyList[vertex] = [];
     }
   }
 
-addEdge(v1, v2) {
+  addEdge(v1, v2) {
     this.adjacencyList[v1].push(v2);
     this.adjacencyList[v2].push(v1);
   }
@@ -322,7 +312,6 @@ addEdge(v1, v2) {
 | DFS (Iterative) | O(V+E) | O(V)  | Same as recursive              | Use stack instead of recursion                                                                                                                                       |
 | BFS             | O(V+E) | O(V)  | Shortest path, level order     | Use queue: `while(queue.length) { vertex = queue.shift(); for(neighbor of adj[vertex]) if(!visited[neighbor]) { visited[neighbor] = true; queue.push(neighbor); } }` |
 
-<!-- Visual flow for Data Structures & Algorithms - JavaScript. -->
 ```mermaid
 flowchart TB
     subgraph DFS["DFS — depth first (stack / recursion)"]
@@ -395,14 +384,13 @@ flowchart TB
 | Peek            | O(1)     | View min/max      | Return first element           |
 | Build Heap      | O(n)     | Create from array | Heapify from bottom up         |
 
-// Basic example showing the core idea.
 ```javascript
 class MinHeap {
   constructor() {
     this.heap = [];
   }
 
-parent(i) {
+  parent(i) {
     return Math.floor((i - 1) / 2);
   }
   leftChild(i) {
@@ -412,12 +400,12 @@ parent(i) {
     return 2 * i + 2;
   }
 
-insert(val) {
+  insert(val) {
     this.heap.push(val);
     this.bubbleUp(this.heap.length - 1);
   }
 
-bubbleUp(i) {
+  bubbleUp(i) {
     while (i > 0 && this.heap[this.parent(i)] > this.heap[i]) {
       [this.heap[i], this.heap[this.parent(i)]] = [
         this.heap[this.parent(i)],
@@ -428,12 +416,3 @@ bubbleUp(i) {
   }
 }
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

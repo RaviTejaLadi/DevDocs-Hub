@@ -12,16 +12,16 @@ mistakes, and makes your Redux code simpler and easier to maintain.
 - Comes with Redux Thunk middleware by default
 - Includes DevTools integration
 
+## Complete Setup Guide
+
 ### 1. Install Required Packages
 
-# Basic example showing the core idea.
 ```bash
 npm install @reduxjs/toolkit react-redux
 ```
 
 ### 2. Create a Basic Store
 
-// Basic example showing the core idea.
 ```javascript
 // app/store.js
 import { configureStore } from '@reduxjs/toolkit';
@@ -38,7 +38,6 @@ export const store = configureStore({
 
 ### 3. Provide the Store to Your React App
 
-// Basic example showing the core idea.
 ```javascript
 // index.js
 import React from 'react';
@@ -55,9 +54,10 @@ ReactDOM.render(
 );
 ```
 
+## Creating Two Basic Slices
+
 ### 1. Counter Slice Example
 
-// Basic example showing the core idea.
 ```javascript
 // features/counter/counterSlice.js
 import { createSlice } from '@reduxjs/toolkit';
@@ -100,7 +100,6 @@ export default counterSlice.reducer;
 
 ### 2. User Slice Example with Async Thunk
 
-// Basic example showing the core idea.
 ```javascript
 // features/users/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -161,9 +160,10 @@ export const selectUsersError = (state) => state.users.error;
 export default userSlice.reducer;
 ```
 
+## Using Redux in Components
+
 ### Counter Component Example
 
-// Basic example showing the core idea.
 ```javascript
 // features/counter/Counter.js
 import React from 'react';
@@ -180,7 +180,7 @@ export function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
 
-return (
+  return (
     <div>
       <h1>Counter: {count}</h1>
       <button onClick={() => dispatch(increment())}>Increment</button>
@@ -194,7 +194,6 @@ return (
 
 ### Users Component Example
 
-// Basic example showing the core idea.
 ```javascript
 // features/users/UsersList.js
 import React, { useEffect } from 'react';
@@ -212,15 +211,15 @@ export function UsersList() {
   const error = useSelector(selectUsersError);
   const dispatch = useDispatch();
 
-useEffect(() => {
+  useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchUsers());
     }
   }, [status, dispatch]);
 
-let content;
+  let content;
 
-if (status === 'loading') {
+  if (status === 'loading') {
     content = <div>Loading...</div>;
   } else if (status === 'succeeded') {
     content = users.map((user) => (
@@ -233,7 +232,7 @@ if (status === 'loading') {
     content = <div>{error}</div>;
   }
 
-return (
+  return (
     <section>
       <h2>Users</h2>
       {content}
@@ -265,7 +264,7 @@ return (
 
 1. **In Async Thunks**:
 
-- Use the `rejected` case in `extraReducers`
+   - Use the `rejected` case in `extraReducers`
    - Store error messages in state
    - Display meaningful error messages to users
 
@@ -273,7 +272,6 @@ return (
    - Check status and error from state
    - Show loading/error states appropriately
 
-// Basic example showing the core idea.
 ```javascript
 // Example error handling in component
 if (status === 'failed') {
@@ -285,14 +283,13 @@ if (status === 'failed') {
 
 1. **Redux DevTools**:
 
-- Included automatically with Redux Toolkit
+   - Included automatically with Redux Toolkit
    - Access via browser extension
    - View action history, state diffs, and dispatch actions manually
 
 2. **Logging Middleware**:
 
-// Basic example showing the core idea.
-```javascript
+   ```javascript
    const store = configureStore({
      reducer: rootReducer,
      middleware: (getDefaultMiddleware) =>
@@ -310,22 +307,22 @@ if (status === 'failed') {
 
 1. **Setup**:
 
-- `configureStore` for store
+   - `configureStore` for store
    - `Provider` at top level
 
 2. **Slices**:
 
-- `createSlice` for reducers + actions
+   - `createSlice` for reducers + actions
    - `createAsyncThunk` for async
 
 3. **Components**:
 
-- `useSelector` to read state
+   - `useSelector` to read state
    - `useDispatch` to send actions
 
 4. **Best Practices**:
 
-- Feature organization
+   - Feature organization
    - Selector functions
    - Status tracking
 
@@ -335,12 +332,3 @@ if (status === 'failed') {
 
 Redux Toolkit simplifies Redux by providing these utilities while enforcing best
 practices, making your Redux code more maintainable and less error-prone.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

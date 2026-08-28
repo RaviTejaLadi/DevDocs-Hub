@@ -6,6 +6,8 @@ developers spend their days working with high-level frameworks like React or
 Next.js, understanding the underlying mechanics of how data is stored and
 manipulated is what separates a coder from an architect.
 
+## 1. Introduction
+
 ### What is DSA?
 
 **Data Structures** are specialized formats for organizing, processing,
@@ -33,6 +35,8 @@ server costs. DSA provides the tools to write code that scales.
 ## 2. Core Concepts & Breakdown
 
 To master DSA, we must look at the two halves of the whole.
+
+### Part A: Data Structures (The "How" of Storage)
 
 #### 1. Arrays
 
@@ -64,6 +68,8 @@ To master DSA, we must look at the two halves of the whole.
 - **Where it is used:** The **DOM (Document Object Model)** in your browser is a
   tree structure.
 
+### Part B: Algorithms (The "How" of Logic)
+
 #### 1. Sorting Algorithms (e.g., QuickSort, MergeSort)
 
 - **What it is:** Procedures to put elements of a list in a specific order
@@ -79,6 +85,8 @@ To master DSA, we must look at the two halves of the whole.
   is too slow for large datasets.
 - **Where it is used:** Looking up a user in a database of millions.
 
+---
+
 ## 3. Practical Example: Solving a Common Task
 
 Imagine you are building a search feature for a massive list of usernames. Using
@@ -87,7 +95,6 @@ list grows.
 
 ### Using a Set (Hash-based) for Instant Lookups
 
-// Basic example showing the core idea.
 ```javascript
 // The Data: 1 million usernames
 const usersArray = ['alice', 'bob', 'charlie' /* ... 999,997 more */];
@@ -118,6 +125,8 @@ console.log(checkUser('zach'));
 3.  **Performance:** Regardless of whether the list has 10 users or 10 million,
     the lookup time remains virtually the same.
 
+---
+
 ## 4. Performance & Optimization: Big O Notation
 
 In DSA, we measure efficiency using **Big O Notation**.
@@ -133,6 +142,8 @@ In DSA, we measure efficiency using **Big O Notation**.
 
 > **Pro Tip:** Always aim to move from $O(n^2)$ to $O(n \log n)$ or $O(n)$ when
 > dealing with front-end data processing.
+
+---
 
 ## 5. Actionable Tips for Developers
 
@@ -163,12 +174,3 @@ foundation for navigating complex Tree structures like the DOM or file systems.
 
 Would you like me to create a deep-dive guide on **Recursion** or perhaps
 explain **Big O Notation** with more visual examples?
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

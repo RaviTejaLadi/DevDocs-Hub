@@ -2,7 +2,6 @@
 
 ## 1. Write a simple HTTP server
 
-// Basic example showing the core idea.
 ```javascript
 const http = require('http');
 
@@ -18,7 +17,6 @@ server.listen(3000, () => {
 
 ## 2. Read a file asynchronously
 
-// Basic example showing the core idea.
 ```javascript
 const fs = require('fs');
 
@@ -45,7 +43,6 @@ async function readFileAsync() {
 
 ## 3. Create a custom EventEmitter
 
-// Basic example showing the core idea.
 ```javascript
 const EventEmitter = require('events');
 
@@ -65,14 +62,14 @@ class CustomEventEmitter {
     this.events = {};
   }
 
-on(event, listener) {
+  on(event, listener) {
     if (!this.events[event]) {
       this.events[event] = [];
     }
     this.events[event].push(listener);
   }
 
-emit(event, ...args) {
+  emit(event, ...args) {
     if (this.events[event]) {
       this.events[event].forEach((listener) => listener(...args));
     }
@@ -82,7 +79,6 @@ emit(event, ...args) {
 
 ## 4. Implement a middleware function
 
-// Basic example showing the core idea.
 ```javascript
 const express = require('express');
 const app = express();
@@ -112,7 +108,6 @@ app.get('/', (req, res) => {
 
 ## 5. Create a readable stream
 
-// Basic example showing the core idea.
 ```javascript
 const { Readable } = require('stream');
 
@@ -123,7 +118,7 @@ class NumberStream extends Readable {
     this.max = 10;
   }
 
-_read() {
+  _read() {
     if (this.current < this.max) {
       this.push(`Number: ${this.current}\n`);
       this.current++;
@@ -140,7 +135,6 @@ numberStream.on('end', () => console.log('Stream ended'));
 
 ## 6. Implement file upload handling
 
-// Basic example showing the core idea.
 ```javascript
 const express = require('express');
 const multer = require('multer');
@@ -165,7 +159,7 @@ const upload = multer({
     );
     const mimetype = allowedTypes.test(file.mimetype);
 
-if (mimetype && extname) {
+    if (mimetype && extname) {
       return cb(null, true);
     }
     cb(new Error('Only image files allowed'));
@@ -184,7 +178,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 ## 7. Connect to MongoDB
 
-// Basic example showing the core idea.
 ```javascript
 const mongoose = require('mongoose');
 
@@ -225,7 +218,6 @@ async function updateUser(id, updates) {
 
 ## 8. Implement JWT authentication
 
-// Basic example showing the core idea.
 ```javascript
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -251,16 +243,16 @@ function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
-if (!token) {
+  if (!token) {
     return res.sendStatus(401);
   }
 
-const decoded = verifyToken(token);
+  const decoded = verifyToken(token);
   if (!decoded) {
     return res.sendStatus(403);
   }
 
-req.user = decoded;
+  req.user = decoded;
   next();
 }
 
@@ -277,7 +269,6 @@ async function comparePassword(password, hash) {
 
 ## 9. Create a rate limiter
 
-// Basic example showing the core idea.
 ```javascript
 const rateLimit = require('express-rate-limit');
 
@@ -296,20 +287,20 @@ class RateLimiter {
     this.requests = new Map();
   }
 
-isAllowed(ip) {
+  isAllowed(ip) {
     const now = Date.now();
     const userRequests = this.requests.get(ip) || [];
 
-// Remove old requests outside the window
+    // Remove old requests outside the window
     const validRequests = userRequests.filter(
       (timestamp) => now - timestamp < this.windowMs
     );
 
-if (validRequests.length >= this.maxRequests) {
+    if (validRequests.length >= this.maxRequests) {
       return false;
     }
 
-validRequests.push(now);
+    validRequests.push(now);
     this.requests.set(ip, validRequests);
     return true;
   }
@@ -328,7 +319,6 @@ function rateLimitMiddleware(req, res, next) {
 
 ## 10. Implement caching with Redis
 
-// Basic example showing the core idea.
 ```javascript
 const redis = require('redis');
 const client = redis.createClient();
@@ -344,13 +334,13 @@ function cache(duration = 300) {
   return async (req, res, next) => {
     const key = req.originalUrl;
 
-try {
+    try {
       const cachedData = await client.get(key);
       if (cachedData) {
         return res.json(JSON.parse(cachedData));
       }
 
-// Store original send function
+      // Store original send function
       const originalSend = res.json;
       res.json = function (data) {
         // Cache the response
@@ -359,7 +349,7 @@ try {
         originalSend.call(this, data);
       };
 
-next();
+      next();
     } catch (error) {
       next();
     }
@@ -374,7 +364,6 @@ app.get('/api/data', cache(300), (req, res) => {
 
 ## 11. Create a WebSocket server
 
-// Basic example showing the core idea.
 ```javascript
 const WebSocket = require('ws');
 const http = require('http');
@@ -385,10 +374,10 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws, req) => {
   console.log('New client connected');
 
-ws.on('message', (message) => {
+  ws.on('message', (message) => {
     console.log('Received:', message.toString());
 
-// Broadcast to all clients
+    // Broadcast to all clients
     wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(message);
@@ -396,11 +385,11 @@ ws.on('message', (message) => {
     });
   });
 
-ws.on('close', () => {
+  ws.on('close', () => {
     console.log('Client disconnected');
   });
 
-// Send welcome message
+  // Send welcome message
   ws.send(JSON.stringify({ type: 'welcome', message: 'Connected to server' }));
 });
 
@@ -411,26 +400,25 @@ server.listen(8080, () => {
 
 ## 12. Implement error handling
 
-// Basic example showing the core idea.
 ```javascript
 // Global error handler
 function errorHandler(err, req, res, next) {
   console.error(err.stack);
 
-if (err.name === 'ValidationError') {
+  if (err.name === 'ValidationError') {
     return res.status(400).json({
       error: 'Validation Error',
       details: err.message,
     });
   }
 
-if (err.name === 'CastError') {
+  if (err.name === 'CastError') {
     return res.status(400).json({
       error: 'Invalid ID format',
     });
   }
 
-res.status(500).json({
+  res.status(500).json({
     error: 'Internal Server Error',
     message:
       process.env.NODE_ENV === 'production'
@@ -453,7 +441,7 @@ class AppError extends Error {
     this.statusCode = statusCode;
     this.isOperational = true;
 
-Error.captureStackTrace(this, this.constructor);
+    Error.captureStackTrace(this, this.constructor);
   }
 }
 
@@ -474,7 +462,6 @@ app.use(errorHandler);
 
 ## 13. Create a worker thread pool
 
-// Basic example showing the core idea.
 ```javascript
 const {
   Worker,
@@ -493,13 +480,13 @@ if (isMainThread) {
       this.queue = [];
     }
 
-async execute(data) {
+    async execute(data) {
       return new Promise((resolve, reject) => {
         const worker = this.getWorker();
 
-worker.postMessage(data);
+        worker.postMessage(data);
 
-worker.once('message', (result) => {
+        worker.once('message', (result) => {
           if (result.error) {
             reject(new Error(result.error));
           } else {
@@ -508,26 +495,26 @@ worker.once('message', (result) => {
           this.releaseWorker(worker);
         });
 
-worker.once('error', reject);
+        worker.once('error', reject);
       });
     }
 
-getWorker() {
+    getWorker() {
       if (this.workers.length > 0) {
         return this.workers.pop();
       }
 
-return new Worker(__filename);
+      return new Worker(__filename);
     }
 
-releaseWorker(worker) {
+    releaseWorker(worker) {
       this.workers.push(worker);
     }
   }
 
-const pool = new WorkerPool(4);
+  const pool = new WorkerPool(4);
 
-// Example usage
+  // Example usage
   async function processData() {
     try {
       const result = await pool.execute({ numbers: [1, 2, 3, 4, 5] });
@@ -544,7 +531,7 @@ const pool = new WorkerPool(4);
       const sum = data.numbers.reduce((acc, num) => acc + num, 0);
       const result = sum * 2;
 
-parentPort.postMessage({ data: result });
+      parentPort.postMessage({ data: result });
     } catch (error) {
       parentPort.postMessage({ error: error.message });
     }
@@ -554,7 +541,6 @@ parentPort.postMessage({ data: result });
 
 ## 14. Implement file system watcher
 
-// Basic example showing the core idea.
 ```javascript
 const fs = require('fs');
 const path = require('path');
@@ -574,7 +560,7 @@ function watchWithChokidar(dirPath) {
     persistent: true,
   });
 
-watcher
+  watcher
     .on('add', (path) => console.log(`File ${path} has been added`))
     .on('change', (path) => console.log(`File ${path} has been changed`))
     .on('unlink', (path) => console.log(`File ${path} has been removed`))
@@ -593,15 +579,15 @@ class FileWatcher {
     this.timeouts = new Map();
   }
 
-watch(filePath, callback) {
+  watch(filePath, callback) {
     fs.watchFile(filePath, (curr, prev) => {
       const key = filePath;
 
-if (this.timeouts.has(key)) {
+      if (this.timeouts.has(key)) {
         clearTimeout(this.timeouts.get(key));
       }
 
-this.timeouts.set(
+      this.timeouts.set(
         key,
         setTimeout(() => {
           callback(curr, prev);
@@ -614,6 +600,10 @@ this.timeouts.set(
 ```
 
 ## 15. Create a REST API with CRUD operations
+
+```javascript
+const express = require('express');
+const app = express();
 
 app.use(express.json());
 
@@ -629,7 +619,7 @@ app.get('/api/users', (req, res) => {
   const { page = 1, limit = 10, search } = req.query;
   let filteredUsers = users;
 
-if (search) {
+  if (search) {
     filteredUsers = users.filter(
       (user) =>
         user.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -637,11 +627,11 @@ if (search) {
     );
   }
 
-const startIndex = (page - 1) * limit;
+  const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
 
-res.json({
+  res.json({
     users: paginatedUsers,
     pagination: {
       currentPage: parseInt(page),
@@ -664,16 +654,16 @@ app.get('/api/users/:id', (req, res) => {
 app.post('/api/users', (req, res) => {
   const { name, email } = req.body;
 
-if (!name || !email) {
+  if (!name || !email) {
     return res.status(400).json({ error: 'Name and email are required' });
   }
 
-const existingUser = users.find((u) => u.email === email);
+  const existingUser = users.find((u) => u.email === email);
   if (existingUser) {
     return res.status(409).json({ error: 'Email already exists' });
   }
 
-const newUser = { id: nextId++, name, email };
+  const newUser = { id: nextId++, name, email };
   users.push(newUser);
   res.status(201).json(newUser);
 });
@@ -685,11 +675,11 @@ app.put('/api/users/:id', (req, res) => {
     return res.status(404).json({ error: 'User not found' });
   }
 
-const { name, email } = req.body;
+  const { name, email } = req.body;
   if (name) users[userIndex].name = name;
   if (email) users[userIndex].email = email;
 
-res.json(users[userIndex]);
+  res.json(users[userIndex]);
 });
 
 // DELETE user
@@ -699,10 +689,9 @@ app.delete('/api/users/:id', (req, res) => {
     return res.status(404).json({ error: 'User not found' });
   }
 
-users.splice(userIndex, 1);
+  users.splice(userIndex, 1);
   res.status(204).send();
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 16. Implement request validation
@@ -774,7 +763,6 @@ app.post('/api/users', validateUser, (req, res) => {
 app.post('/api/users-alt', userValidationRules(), validate, (req, res) => {
   res.json({ message: 'User created successfully' });
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 17. Create a task queue with Bull
@@ -800,7 +788,7 @@ const transporter = nodemailer.createTransporter({
 emailQueue.process(async (job) => {
   const { to, subject, text } = job.data;
 
-try {
+  try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to,
@@ -808,7 +796,7 @@ try {
       text,
     });
 
-console.log(`Email sent to ${to}`);
+    console.log(`Email sent to ${to}`);
     return { success: true };
   } catch (error) {
     console.error('Email sending failed:', error);
@@ -820,11 +808,11 @@ console.log(`Email sent to ${to}`);
 imageQueue.process(async (job) => {
   const { imagePath, operations } = job.data;
 
-// Simulate image processing
+  // Simulate image processing
   console.log(`Processing image: ${imagePath}`);
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-return { processedPath: `processed_${imagePath}` };
+  return { processedPath: `processed_${imagePath}` };
 });
 
 // Add jobs to queue
@@ -838,7 +826,7 @@ async function sendEmail(emailData) {
     },
   });
 
-return job.id;
+  return job.id;
 }
 
 async function processImage(imageData) {
@@ -846,6 +834,9 @@ async function processImage(imageData) {
     priority: 10,
     delay: 1000,
   });
+
+  return job.id;
+}
 
 // Queue event listeners
 emailQueue.on('completed', (job) => {
@@ -865,7 +856,6 @@ app.post('/send-email', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 18. Implement database connection pooling
@@ -906,7 +896,7 @@ class Database {
     this.type = type;
   }
 
-async query(sql, params = []) {
+  async query(sql, params = []) {
     try {
       if (this.type === 'mysql') {
         const [rows] = await this.pool.execute(sql, params);
@@ -921,19 +911,19 @@ async query(sql, params = []) {
     }
   }
 
-async transaction(queries) {
+  async transaction(queries) {
     const connection = await this.pool.getConnection();
 
-try {
+    try {
       await connection.beginTransaction();
 
-const results = [];
+      const results = [];
       for (const { sql, params } of queries) {
         const result = await connection.execute(sql, params);
         results.push(result);
       }
 
-await connection.commit();
+      await connection.commit();
       return results;
     } catch (error) {
       await connection.rollback();
@@ -943,7 +933,7 @@ await connection.commit();
     }
   }
 
-async close() {
+  async close() {
     await this.pool.end();
   }
 }
@@ -959,7 +949,6 @@ app.get('/users', async (req, res) => {
     res.status(500).json({ error: 'Database error' });
   }
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 19. Create a GraphQL server
@@ -989,28 +978,28 @@ const typeDefs = gql`
     posts: [Post!]!
   }
 
-type Post {
+  type Post {
     id: ID!
     title: String!
     content: String!
     author: User!
   }
 
-type Query {
+  type Query {
     users: [User!]!
     user(id: ID!): User
     posts: [Post!]!
     post(id: ID!): Post
   }
 
-type Mutation {
+  type Mutation {
     createUser(name: String!, email: String!): User!
     createPost(title: String!, content: String!, authorId: ID!): Post!
     updateUser(id: ID!, name: String, email: String): User
     deleteUser(id: ID!): Boolean!
   }
 
-type Subscription {
+  type Subscription {
     userAdded: User!
     postAdded: Post!
   }
@@ -1025,7 +1014,7 @@ const resolvers = {
     post: (_, { id }) => posts.find((post) => post.id === id),
   },
 
-Mutation: {
+  Mutation: {
     createUser: (_, { name, email }) => {
       const newUser = {
         id: String(users.length + 1),
@@ -1037,7 +1026,7 @@ Mutation: {
       return newUser;
     },
 
-createPost: (_, { title, content, authorId }) => {
+    createPost: (_, { title, content, authorId }) => {
       const newPost = {
         id: String(posts.length + 1),
         title,
@@ -1046,39 +1035,39 @@ createPost: (_, { title, content, authorId }) => {
       };
       posts.push(newPost);
 
-// Update user's posts
+      // Update user's posts
       const user = users.find((u) => u.id === authorId);
       if (user) {
         user.posts.push(newPost.id);
       }
 
-return newPost;
+      return newPost;
     },
 
-updateUser: (_, { id, name, email }) => {
+    updateUser: (_, { id, name, email }) => {
       const user = users.find((u) => u.id === id);
       if (!user) return null;
 
-if (name) user.name = name;
+      if (name) user.name = name;
       if (email) user.email = email;
 
-return user;
+      return user;
     },
 
-deleteUser: (_, { id }) => {
+    deleteUser: (_, { id }) => {
       const index = users.findIndex((u) => u.id === id);
       if (index === -1) return false;
 
-users.splice(index, 1);
+      users.splice(index, 1);
       return true;
     },
   },
 
-User: {
+  User: {
     posts: (user) => posts.filter((post) => user.posts.includes(post.id)),
   },
 
-Post: {
+  Post: {
     author: (post) => users.find((user) => user.id === post.authorId),
   },
 };
@@ -1086,7 +1075,7 @@ Post: {
 async function startServer() {
   const app = express();
 
-const server = new ApolloServer({
+  const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: ({ req }) => ({
@@ -1094,16 +1083,15 @@ const server = new ApolloServer({
     }),
   });
 
-await server.start();
+  await server.start();
   server.applyMiddleware({ app });
 
-app.listen(4000, () => {
+  app.listen(4000, () => {
     console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
   });
 }
 
 startServer();
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 20. Implement session management
@@ -1113,6 +1101,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
+
+const app = express();
 
 // Redis session store
 const redisClient = redis.createClient({
@@ -1156,7 +1146,7 @@ class SessionManager {
     this.sessions = new Map();
   }
 
-create(userId, data = {}) {
+  create(userId, data = {}) {
     const sessionId = this.generateSessionId();
     const session = {
       id: sessionId,
@@ -1166,11 +1156,11 @@ create(userId, data = {}) {
       lastAccessed: new Date(),
     };
 
-this.sessions.set(sessionId, session);
+    this.sessions.set(sessionId, session);
     return sessionId;
   }
 
-get(sessionId) {
+  get(sessionId) {
     const session = this.sessions.get(sessionId);
     if (session) {
       session.lastAccessed = new Date();
@@ -1179,7 +1169,7 @@ get(sessionId) {
     return null;
   }
 
-update(sessionId, data) {
+  update(sessionId, data) {
     const session = this.sessions.get(sessionId);
     if (session) {
       session.data = { ...session.data, ...data };
@@ -1189,11 +1179,11 @@ update(sessionId, data) {
     return null;
   }
 
-destroy(sessionId) {
+  destroy(sessionId) {
     return this.sessions.delete(sessionId);
   }
 
-cleanup(maxAge = 24 * 60 * 60 * 1000) {
+  cleanup(maxAge = 24 * 60 * 60 * 1000) {
     const now = new Date();
     for (const [sessionId, session] of this.sessions) {
       if (now - session.lastAccessed > maxAge) {
@@ -1202,7 +1192,7 @@ cleanup(maxAge = 24 * 60 * 60 * 1000) {
     }
   }
 
-generateSessionId() {
+  generateSessionId() {
     return require('crypto').randomBytes(32).toString('hex');
   }
 }
@@ -1221,10 +1211,10 @@ function requireAuth(req, res, next) {
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-// Verify credentials (implement your logic)
+  // Verify credentials (implement your logic)
   const user = await authenticateUser(email, password);
 
-if (user) {
+  if (user) {
     req.session.userId = user.id;
     req.session.email = user.email;
     res.json({
@@ -1254,7 +1244,6 @@ app.get('/profile', requireAuth, (req, res) => {
     email: req.session.email,
   });
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 21. Create a proxy server
@@ -1292,13 +1281,13 @@ class LoadBalancer {
     this.currentIndex = 0;
   }
 
-getNextServer() {
+  getNextServer() {
     const server = this.servers[this.currentIndex];
     this.currentIndex = (this.currentIndex + 1) % this.servers.length;
     return server;
   }
 
-createProxy() {
+  createProxy() {
     return (req, res) => {
       const target = this.getNextServer();
       const proxy = httpProxy.createProxyMiddleware({
@@ -1316,7 +1305,7 @@ createProxy() {
         },
       });
 
-proxy(req, res);
+      proxy(req, res);
     };
   }
 }
@@ -1334,7 +1323,7 @@ function createCustomProxy(target) {
   return (req, res) => {
     const url = new URL(target);
 
-const options = {
+    const options = {
       hostname: url.hostname,
       port: url.port,
       path: req.url,
@@ -1342,22 +1331,21 @@ const options = {
       headers: req.headers,
     };
 
-const proxyReq = http.request(options, (proxyRes) => {
+    const proxyReq = http.request(options, (proxyRes) => {
       res.writeHead(proxyRes.statusCode, proxyRes.headers);
       proxyRes.pipe(res);
     });
 
-proxyReq.on('error', (err) => {
+    proxyReq.on('error', (err) => {
       console.error('Proxy request error:', err);
       res.status(500).json({ error: 'Proxy error' });
     });
 
-req.pipe(proxyReq);
+    req.pipe(proxyReq);
   };
 }
 
 app.use('/custom-proxy', createCustomProxy('http://localhost:3001'));
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 22. Implement file compression
@@ -1375,7 +1363,7 @@ function compressFile(inputPath, outputPath) {
     const source = fs.createReadStream(inputPath);
     const destination = fs.createWriteStream(outputPath);
 
-pipeline(source, gzip, destination, (err) => {
+    pipeline(source, gzip, destination, (err) => {
       if (err) {
         reject(err);
       } else {
@@ -1392,7 +1380,7 @@ function decompressFile(inputPath, outputPath) {
     const source = fs.createReadStream(inputPath);
     const destination = fs.createWriteStream(outputPath);
 
-pipeline(source, gunzip, destination, (err) => {
+    pipeline(source, gunzip, destination, (err) => {
       if (err) {
         reject(err);
       } else {
@@ -1422,10 +1410,10 @@ app.use(
 function customCompressionMiddleware(req, res, next) {
   const acceptEncoding = req.headers['accept-encoding'] || '';
 
-if (acceptEncoding.includes('gzip')) {
+  if (acceptEncoding.includes('gzip')) {
     res.setHeader('Content-Encoding', 'gzip');
 
-const originalSend = res.send;
+    const originalSend = res.send;
     res.send = function (data) {
       if (typeof data === 'string' && data.length > 1024) {
         zlib.gzip(data, (err, compressed) => {
@@ -1441,7 +1429,7 @@ const originalSend = res.send;
     };
   }
 
-next();
+  next();
 }
 
 // Archive multiple files
@@ -1452,17 +1440,17 @@ function createZipArchive(files, outputPath) {
     const output = fs.createWriteStream(outputPath);
     const archive = archiver('zip', { zlib: { level: 9 } });
 
-output.on('close', () => {
+    output.on('close', () => {
       resolve(outputPath);
     });
 
-archive.on('error', (err) => {
+    archive.on('error', (err) => {
       reject(err);
     });
 
-archive.pipe(output);
+    archive.pipe(output);
 
-files.forEach((file) => {
+    files.forEach((file) => {
       if (fs.statSync(file.path).isDirectory()) {
         archive.directory(file.path, file.name);
       } else {
@@ -1470,7 +1458,7 @@ files.forEach((file) => {
       }
     });
 
-archive.finalize();
+    archive.finalize();
   });
 }
 
@@ -1484,7 +1472,6 @@ app.post('/compress', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 23. Create a CLI application
@@ -1550,7 +1537,7 @@ program
       },
     ]);
 
-await initProject(answers);
+    await initProject(answers);
   });
 
 // Progress bar example
@@ -1566,12 +1553,12 @@ program
       total: files.length,
     });
 
-for (const file of files) {
+    for (const file of files) {
       await processFile(file);
       bar.tick();
     }
 
-console.log(chalk.green('\nAll files processed!'));
+    console.log(chalk.green('\nAll files processed!'));
   });
 
 // Config command
@@ -1584,7 +1571,7 @@ program
   .action(async (options) => {
     const configPath = path.join(require('os').homedir(), '.myapp-config.json');
 
-if (options.set) {
+    if (options.set) {
       const [key, value] = options.set.split('=');
       await setConfig(configPath, key, value);
       console.log(chalk.green(`✓ Set ${key} = ${value}`));
@@ -1601,13 +1588,13 @@ if (options.set) {
 async function createFile(name, template) {
   let content = '';
 
-if (template === 'js') {
+  if (template === 'js') {
     content = `// ${name}\nconsole.log('Hello from ${name}');\n`;
   } else if (template === 'json') {
     content = JSON.stringify({ name }, null, 2);
   }
 
-await fs.writeFile(name, content);
+  await fs.writeFile(name, content);
 }
 
 async function createDirectory(name) {
@@ -1617,11 +1604,11 @@ async function createDirectory(name) {
 async function initProject(config) {
   const { projectName, template, git } = config;
 
-console.log(chalk.blue(`Creating project: ${projectName}`));
+  console.log(chalk.blue(`Creating project: ${projectName}`));
 
-await fs.mkdir(projectName, { recursive: true });
+  await fs.mkdir(projectName, { recursive: true });
 
-const packageJson = {
+  const packageJson = {
     name: projectName,
     version: '1.0.0',
     description: '',
@@ -1631,12 +1618,12 @@ const packageJson = {
     },
   };
 
-await fs.writeFile(
+  await fs.writeFile(
     path.join(projectName, 'package.json'),
     JSON.stringify(packageJson, null, 2)
   );
 
-if (template === 'express') {
+  if (template === 'express') {
     const expressApp = `const express = require('express');
 const app = express();
 
@@ -1648,15 +1635,15 @@ app.listen(3000, () => {
   console.log('Server running on port 3000');
 });`;
 
-await fs.writeFile(path.join(projectName, 'index.js'), expressApp);
+    await fs.writeFile(path.join(projectName, 'index.js'), expressApp);
   }
 
-if (git) {
+  if (git) {
     const { execSync } = require('child_process');
     execSync('git init', { cwd: projectName });
   }
 
-console.log(chalk.green(`✓ Project ${projectName} created successfully`));
+  console.log(chalk.green(`✓ Project ${projectName} created successfully`));
 }
 
 async function processFile(file) {
@@ -1673,7 +1660,7 @@ async function setConfig(configPath, key, value) {
     // File doesn't exist or is invalid
   }
 
-config[key] = value;
+  config[key] = value;
   await fs.writeFile(configPath, JSON.stringify(config, null, 2));
 }
 
@@ -1704,7 +1691,6 @@ program.on('command:*', () => {
 });
 
 program.parse();
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 24. Implement real-time notifications
@@ -1743,18 +1729,18 @@ class NotificationManager {
     this.setupRedisSubscription();
   }
 
-subscribe(userId, socket) {
+  subscribe(userId, socket) {
     if (!this.subscribers.has(userId)) {
       this.subscribers.set(userId, new Set());
     }
     this.subscribers.get(userId).add(socket);
 
-socket.on('disconnect', () => {
+    socket.on('disconnect', () => {
       this.unsubscribe(userId, socket);
     });
   }
 
-unsubscribe(userId, socket) {
+  unsubscribe(userId, socket) {
     if (this.subscribers.has(userId)) {
       this.subscribers.get(userId).delete(socket);
       if (this.subscribers.get(userId).size === 0) {
@@ -1763,18 +1749,18 @@ unsubscribe(userId, socket) {
     }
   }
 
-async sendNotification(userId, notification) {
+  async sendNotification(userId, notification) {
     // Store in database/cache
     await this.storeNotification(userId, notification);
 
-// Send via WebSocket if user is online
+    // Send via WebSocket if user is online
     if (this.subscribers.has(userId)) {
       this.subscribers.get(userId).forEach((socket) => {
         socket.emit('notification', notification);
       });
     }
 
-// Publish to Redis for other server instances
+    // Publish to Redis for other server instances
     await pub.publish(
       'notifications',
       JSON.stringify({
@@ -1783,17 +1769,17 @@ async sendNotification(userId, notification) {
       })
     );
 
-// Send push notification if user is offline
+    // Send push notification if user is offline
     if (!this.subscribers.has(userId)) {
       await this.sendPushNotification(userId, notification);
     }
   }
 
-async sendBroadcast(notification) {
+  async sendBroadcast(notification) {
     // Send to all connected users
     io.emit('broadcast', notification);
 
-// Store as system notification
+    // Store as system notification
     await redis.setex(
       `broadcast:${Date.now()}`,
       3600,
@@ -1801,41 +1787,41 @@ async sendBroadcast(notification) {
     );
   }
 
-async getUserNotifications(userId, page = 1, limit = 20) {
+  async getUserNotifications(userId, page = 1, limit = 20) {
     const start = (page - 1) * limit;
     const end = start + limit - 1;
 
-const notifications = await redis.lrange(
+    const notifications = await redis.lrange(
       `notifications:${userId}`,
       start,
       end
     );
 
-return notifications.map((n) => JSON.parse(n));
+    return notifications.map((n) => JSON.parse(n));
   }
 
-async markAsRead(userId, notificationId) {
+  async markAsRead(userId, notificationId) {
     await redis.sadd(`read:${userId}`, notificationId);
   }
 
-async storeNotification(userId, notification) {
+  async storeNotification(userId, notification) {
     notification.id = `${Date.now()}_${Math.random()}`;
     notification.timestamp = new Date().toISOString();
     notification.read = false;
 
-await redis.lpush(`notifications:${userId}`, JSON.stringify(notification));
+    await redis.lpush(`notifications:${userId}`, JSON.stringify(notification));
 
-// Keep only last 100 notifications
+    // Keep only last 100 notifications
     await redis.ltrim(`notifications:${userId}`, 0, 99);
   }
 
-setupRedisSubscription() {
+  setupRedisSubscription() {
     sub.subscribe('notifications');
     sub.on('message', (channel, message) => {
       if (channel === 'notifications') {
         const { userId, notification } = JSON.parse(message);
 
-if (this.subscribers.has(userId)) {
+        if (this.subscribers.has(userId)) {
           this.subscribers.get(userId).forEach((socket) => {
             socket.emit('notification', notification);
           });
@@ -1844,7 +1830,7 @@ if (this.subscribers.has(userId)) {
     });
   }
 
-async sendPushNotification(userId, notification) {
+  async sendPushNotification(userId, notification) {
     // Implement push notification logic
     // Using services like FCM, APNS, etc.
     console.log(`Sending push notification to ${userId}:`, notification);
@@ -1857,15 +1843,15 @@ const notificationManager = new NotificationManager();
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
 
-socket.on('authenticate', async (data) => {
+  socket.on('authenticate', async (data) => {
     const { userId, token } = data;
 
-// Verify token (implement your auth logic)
+    // Verify token (implement your auth logic)
     if (await verifyToken(token)) {
       socket.userId = userId;
       notificationManager.subscribe(userId, socket);
 
-// Send unread notifications
+      // Send unread notifications
       const notifications = await notificationManager.getUserNotifications(
         userId
       );
@@ -1875,13 +1861,13 @@ socket.on('authenticate', async (data) => {
     }
   });
 
-socket.on('mark_read', async (notificationId) => {
+  socket.on('mark_read', async (notificationId) => {
     if (socket.userId) {
       await notificationManager.markAsRead(socket.userId, notificationId);
     }
   });
 
-socket.on('disconnect', () => {
+  socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
   });
 });
@@ -1893,14 +1879,14 @@ app.post('/api/notifications/send', async (req, res) => {
   try {
     const { userId, type, title, message, data } = req.body;
 
-const notification = {
+    const notification = {
       type,
       title,
       message,
       data: data || {},
     };
 
-await notificationManager.sendNotification(userId, notification);
+    await notificationManager.sendNotification(userId, notification);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -1911,14 +1897,14 @@ app.post('/api/notifications/broadcast', async (req, res) => {
   try {
     const { type, title, message } = req.body;
 
-const notification = {
+    const notification = {
       type,
       title,
       message,
       timestamp: new Date().toISOString(),
     };
 
-await notificationManager.sendBroadcast(notification);
+    await notificationManager.sendBroadcast(notification);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -1930,13 +1916,13 @@ app.get('/api/notifications/:userId', async (req, res) => {
     const { userId } = req.params;
     const { page = 1, limit = 20 } = req.query;
 
-const notifications = await notificationManager.getUserNotifications(
+    const notifications = await notificationManager.getUserNotifications(
       userId,
       parseInt(page),
       parseInt(limit)
     );
 
-res.json(notifications);
+    res.json(notifications);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -1946,14 +1932,4 @@ async function verifyToken(token) {
   // Implement token verification
   return token === 'valid-token';
 }
-// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

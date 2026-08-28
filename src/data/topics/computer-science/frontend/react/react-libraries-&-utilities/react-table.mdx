@@ -18,18 +18,18 @@ the UI rendering.
 6. **Hooks-based**: Uses React hooks for composition
 7. **Server-side or Client-side**: Works with both approaches
 
+## Complete Setup Guide (TypeScript)
+
 ### 1. Installation
 
-# Basic example showing the core idea.
 ```bash
 npm install @tanstack/react-table
-## or
+# or
 yarn add @tanstack/react-table
 ```
 
 ### 2. Basic Table Implementation (TSX)
 
-// Example demonstrating React-Table: Complete Guide with TypeScript (TSX).
 ```tsx
 import {
   useReactTable,
@@ -73,7 +73,7 @@ function DataTable() {
     getCoreRowModel: getCoreRowModel(),
   });
 
-return (
+  return (
     <div className="p-2">
       <table className="border">
         <thead>
@@ -113,7 +113,6 @@ export default DataTable;
 
 Here's an enhanced version with common features:
 
-// Example demonstrating React-Table: Complete Guide with TypeScript (TSX).
 ```tsx
 import {
   useReactTable,
@@ -134,7 +133,7 @@ function EnhancedDataTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-const table = useReactTable({
+  const table = useReactTable({
     data,
     columns,
     state: {
@@ -149,7 +148,7 @@ const table = useReactTable({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-return (
+  return (
     <div className="p-2">
       <div className="mb-4">
         <input
@@ -162,7 +161,7 @@ return (
         />
       </div>
 
-<table className="border">
+      <table className="border">
         {/* Header */}
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -188,7 +187,7 @@ return (
           ))}
         </thead>
 
-{/* Body */}
+        {/* Body */}
         <tbody>
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id}>
@@ -202,7 +201,7 @@ return (
         </tbody>
       </table>
 
-{/* Pagination */}
+      {/* Pagination */}
       <div className="flex items-center gap-2 mt-4">
         <button
           onClick={() => table.setPageIndex(0)}
@@ -269,7 +268,6 @@ React-Table supports many advanced features:
 
 Here's an example of row selection:
 
-// Example demonstrating React-Table: Complete Guide with TypeScript (TSX).
 ```tsx
 import {
   getCoreRowModel,
@@ -283,7 +281,7 @@ import { useState } from 'react';
 function TableWithRowSelection() {
   const [rowSelection, setRowSelection] = useState({});
 
-const table = useReactTable({
+  const table = useReactTable({
     data,
     columns,
     state: {
@@ -296,7 +294,7 @@ const table = useReactTable({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-// Add a selection column to your columns definition
+  // Add a selection column to your columns definition
   const columnsWithSelection: ColumnDef<Person>[] = [
     {
       id: 'select',
@@ -319,7 +317,7 @@ const table = useReactTable({
     ...columns,
   ];
 
-// Then use columnsWithSelection in your table config
+  // Then use columnsWithSelection in your table config
 }
 ```
 
@@ -335,12 +333,3 @@ const table = useReactTable({
 React-Table's headless approach means you can integrate it with any styling
 solution (CSS, Tailwind, Material-UI, etc.) and customize the table behavior to
 your exact needs.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

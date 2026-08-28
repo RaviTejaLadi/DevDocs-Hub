@@ -18,6 +18,8 @@ SQL is pronounced as "sequel" or by saying each letter "S-Q-L".
    etc.
 4. **Powerful yet simple**: Basic queries can be learned quickly
 
+## Basic SQL Commands Categories
+
 ### 1. Data Query Language (DQL)
 
 - `SELECT`: Retrieve data from databases
@@ -46,7 +48,6 @@ SQL is pronounced as "sequel" or by saying each letter "S-Q-L".
 
 ## Basic SQL Syntax Examples
 
--- Basic example showing the core idea.
 ```sql
 -- Create a table
 CREATE TABLE employees (
@@ -79,32 +80,3 @@ DELETE FROM employees WHERE id = 1;
 
 SQL remains one of the most valuable skills for anyone working with data, from
 analysts to software developers to data scientists.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Trade-offs
-
-Architecture decisions are rarely about a single “best” technology. Compare options using scale, latency, consistency, availability, operational cost, complexity, and team capability. State which requirement matters most because the priority determines the design.
-
-## Failure Thinking
-
-Assume a dependency can fail. Decide how the system detects the failure, limits its impact, recovers, and avoids creating a second failure during recovery. Timeouts, retries, idempotency, circuit breakers, and backpressure should be discussed only when they solve a real failure mode.
-
-## Practical Validation
-
-Walk through one realistic request from entry point to storage or response. Then change one condition: a dependency is slow, a node disappears, or traffic spikes. A good design explanation should still make sense after that change.
-
-## Capacity and Reliability
-
-A design should explain what happens as load and failures grow. Identify the main bottleneck, estimate where it could become a limit, and decide which component can scale horizontally or vertically. Then consider dependency failure, retries, timeouts, and data consistency. The strongest design notes connect each architectural component to a requirement and explain the trade-off introduced by that component.
-
-## Final Understanding Check
-
-Before considering **Introduction to SQL** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

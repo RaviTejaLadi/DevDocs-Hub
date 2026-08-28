@@ -5,7 +5,7 @@ trusted internal networks and untrusted external networks (like the Internet).
 They enforce access control policies, inspecting traffic as it crosses the
 network boundary to permit or deny packets based on predefined rules. 🛡️
 
-## 🕰 The Evolution of Firewalls
+## 🕰️ The Evolution of Firewalls
 
 Understanding the history of firewalls is essential for grasping why modern
 networks require layered defenses.
@@ -25,7 +25,7 @@ Deep Packet Inspection is what makes NGFWs and modern IPS effective. Instead of
 just reading the packet headers (IP and TCP/UDP), DPI examines the data payload
 of the packet. 📦
 
-### ⚙ How DPI Works:
+### ⚙️ How DPI Works:
 
 1. **Flow Reassembly:** 🧩 The firewall buffers and reassembles fragmented IP
    packets and out-of-order TCP segments into a continuous stream.
@@ -38,7 +38,9 @@ of the packet. 📦
    like unusually large DNS packets (indicating DNS tunneling) or excessive
    connection rates.
 
-## Firewall Architecture Patterns
+---
+
+## 🏗️ Firewall Architecture Patterns
 
 Deploying a firewall effectively requires a well-thought-out architectural
 topology.
@@ -55,7 +57,6 @@ The most common enterprise architecture. It uses one or more firewalls to create
 an isolated subnet for servers that must be publicly accessible (Web servers,
 email gateways).
 
-<!-- Visual flow for 🧱 Firewalls: Perimeter and Internal Defense. -->
 ```mermaid
 graph TD
     Internet((🌐 Internet)) --> |Untrusted| FW1[🧱 Edge Firewall]
@@ -67,7 +68,7 @@ graph TD
     Internal --> DBServer[🗄️ Database Server]
     Internal --> Workstations[🧑‍💻 Employee Workstations]
 
-style Internet fill:#f9f,stroke:#333,stroke-width:2px
+    style Internet fill:#f9f,stroke:#333,stroke-width:2px
     style DMZ fill:#ffcc00,stroke:#333,stroke-width:2px
     style Internal fill:#99ccff,stroke:#333,stroke-width:2px
 ```
@@ -84,6 +85,8 @@ style Internet fill:#f9f,stroke:#333,stroke-width:2px
 - **Multi-Homed:** A firewall with three or more interfaces (Inside, Outside,
   DMZ, Guest Wi-Fi, Management). This allows for complex security zoning.
 
+---
+
 ## 💻 Configuration Example: iptables (Linux)
 
 While enterprise environments use GUI-driven NGFWs (like Palo Alto, Fortinet, or
@@ -93,45 +96,46 @@ Check Point), understanding underlying command-line configurations like
 Here is an example of a strict, stateful firewall script using `iptables` for a
 web server:
 
-# Basic example showing the core idea.
 ```bash
 #!/bin/bash
-## Flush existing rules
+# Flush existing rules
 iptables -F
 iptables -X
 
-## Set default policies to DROP everything
+# Set default policies to DROP everything
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
 
-## Allow loopback traffic (internal host processes)
+# Allow loopback traffic (internal host processes)
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
 
-## Allow established and related incoming connections (Stateful tracking)
+# Allow established and related incoming connections (Stateful tracking)
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
-## Allow outbound traffic, keeping state
+# Allow outbound traffic, keeping state
 iptables -A OUTPUT -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 
-## Allow inbound SSH (Port 22) - Ideally restrict by source IP
+# Allow inbound SSH (Port 22) - Ideally restrict by source IP
 iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -s 203.0.113.50 -j ACCEPT
 
-## Allow inbound HTTP/HTTPS (Ports 80, 443)
+# Allow inbound HTTP/HTTPS (Ports 80, 443)
 iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW -j ACCEPT
 
-## Drop invalid packets
+# Drop invalid packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
-## Log dropped packets for debugging (optional, rate-limited)
+# Log dropped packets for debugging (optional, rate-limited)
 iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables-dropped: "
 ```
 
 > ⚠️ **Warning:** When configuring remote firewalls, always ensure you have an
 > explicit ALLOW rule for your SSH connection before applying DROP policies, or
 > you will lock yourself out of the server!
+
+---
 
 ## 🌟 Firewall Best Practices
 
@@ -164,7 +168,7 @@ operational best practices:
 > inadvertently leave critical ports exposed or block necessary traffic. Always
 > review rule order!
 
-## 🕸 Web Application Firewalls (WAF)
+## 🕸️ Web Application Firewalls (WAF)
 
 While traditional and NGFWs focus on network layers and broad payload
 inspection, Web Application Firewalls (WAFs) are purpose-built to protect web
@@ -191,12 +195,3 @@ Firewalls remain a critical layer in the defense-in-depth strategy. From the
 humble stateful filters built into Linux kernels to the massive, AI-driven NGFW
 chassis in enterprise data centers, mastering firewall concepts is fundamental
 to securing network perimeters and internal segments. 🛡️🔐
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

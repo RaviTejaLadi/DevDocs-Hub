@@ -1,4 +1,4 @@
-# HTML Canvas & SVG
+# 🎨 HTML Canvas & SVG
 
 HTML provides two powerful ways to create graphics on web pages: **Canvas** and
 **SVG**. Both can be used to draw shapes, charts, animations, games, and
@@ -11,7 +11,7 @@ Think of it like drawing on paper:
 
 ---
 
-## 🖼 What is HTML Canvas?
+# 🖼️ What is HTML Canvas?
 
 The `<canvas>` element provides a drawable area where JavaScript can create
 graphics dynamically.
@@ -20,7 +20,6 @@ Canvas is pixel-based, meaning everything is drawn as pixels.
 
 ## Basic Canvas Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Basic canvas element -->
 <canvas id="myCanvas" width="300" height="150"></canvas>
@@ -28,9 +27,10 @@ Canvas is pixel-based, meaning everything is drawn as pixels.
 
 By itself, the canvas is empty. JavaScript is required to draw on it.
 
+---
+
 ## Drawing a Rectangle
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Draw a rectangle on canvas -->
 <canvas id="myCanvas" width="300" height="150"></canvas>
@@ -39,14 +39,13 @@ By itself, the canvas is empty. JavaScript is required to draw on it.
   const canvas = document.getElementById('myCanvas');
   const ctx = canvas.getContext('2d');
 
-ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'blue';
   ctx.fillRect(20, 20, 150, 80);
 </script>
 ```
 
 ### Output
 
-// Example demonstrating HTML Canvas & SVG.
 ```text
 ┌─────────────────┐
 │ ██████████████  │
@@ -54,46 +53,63 @@ ctx.fillStyle = 'blue';
 └─────────────────┘
 ```
 
+---
+
 ## Drawing a Line
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Draw a line -->
 <canvas id="myCanvas" width="300" height="150"></canvas>
 
-ctx.beginPath();
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  ctx.beginPath();
   ctx.moveTo(20, 20);
   ctx.lineTo(250, 100);
   ctx.stroke();
 </script>
 ```
 
+---
+
 ## Drawing a Circle
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Draw a circle -->
 <canvas id="myCanvas" width="300" height="200"></canvas>
 
-ctx.beginPath();
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  ctx.beginPath();
   ctx.arc(150, 100, 50, 0, 2 * Math.PI);
   ctx.stroke();
 </script>
 ```
 
+---
+
 ## Adding Text
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Draw text -->
 <canvas id="myCanvas" width="300" height="150"></canvas>
 
-ctx.font = '30px Arial';
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  ctx.font = '30px Arial';
   ctx.fillText('Hello Canvas', 20, 80);
 </script>
 ```
 
-## Common Canvas Methods
+---
+
+# 🎯 Common Canvas Methods
 
 | Method         | Purpose               |
 | -------------- | --------------------- |
@@ -106,7 +122,9 @@ ctx.font = '30px Arial';
 | `fillText()`   | Draw text             |
 | `drawImage()`  | Draw images           |
 
-## ✨ What is SVG?
+---
+
+# ✨ What is SVG?
 
 SVG stands for **Scalable Vector Graphics**.
 
@@ -115,9 +133,10 @@ Unlike Canvas, SVG uses XML-based elements to create graphics.
 Each shape remains a separate element that can be styled, animated, and
 manipulated.
 
+---
+
 ## Basic SVG Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Simple SVG -->
 <svg width="300" height="150">
@@ -125,7 +144,10 @@ manipulated.
 </svg>
 ```
 
-<!-- Basic example showing the core idea. -->
+---
+
+## Drawing a Circle
+
 ```html
 <!-- SVG circle -->
 <svg width="300" height="200">
@@ -141,7 +163,10 @@ manipulated.
 | `cy`      | Center Y |
 | `r`       | Radius   |
 
-<!-- Basic example showing the core idea. -->
+---
+
+## Drawing a Line
+
 ```html
 <!-- SVG line -->
 <svg width="300" height="150">
@@ -156,9 +181,10 @@ manipulated.
 </svg>
 ```
 
+---
+
 ## Drawing Text
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- SVG text -->
 <svg width="300" height="150">
@@ -166,19 +192,22 @@ manipulated.
 </svg>
 ```
 
+---
+
 ## Drawing Multiple Shapes
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Multiple SVG shapes -->
 <svg width="400" height="200">
   <rect x="20" y="20" width="100" height="100" fill="red"></rect>
 
-<circle cx="220" cy="70" r="50" fill="blue"></circle>
+  <circle cx="220" cy="70" r="50" fill="blue"></circle>
 </svg>
 ```
 
-## Canvas vs SVG
+---
+
+# 🔄 Canvas vs SVG
 
 | Feature       | Canvas                       | SVG                        |
 | ------------- | ---------------------------- | -------------------------- |
@@ -190,7 +219,9 @@ manipulated.
 | Interactivity | Manual handling              | Built-in                   |
 | Best For      | Games, charts, image editing | Icons, logos, diagrams     |
 
-## When to Use Canvas
+---
+
+# 📊 When to Use Canvas
 
 Use Canvas when building:
 
@@ -206,14 +237,15 @@ Particle animations
 
 Example:
 
-// Example demonstrating HTML Canvas & SVG.
 ```text
 Game Engine
      ↓
    Canvas
 ```
 
-## When to Use SVG
+---
+
+# 📊 When to Use SVG
 
 Use SVG when building:
 
@@ -227,16 +259,18 @@ Use SVG when building:
 
 Interactive maps
 
-// Example demonstrating HTML Canvas & SVG.
+Example:
+
 ```text
 Company Logo
       ↓
       SVG
 ```
 
-## Canvas Example: Animated Rectangle
+---
 
-<!-- Basic example showing the core idea. -->
+# 🚀 Canvas Example: Animated Rectangle
+
 ```html
 <!-- Moving rectangle animation -->
 <canvas id="canvas" width="400" height="200"></canvas>
@@ -245,26 +279,27 @@ Company Logo
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
-let x = 0;
+  let x = 0;
 
-function animate() {
+  function animate() {
     ctx.clearRect(0, 0, 400, 200);
 
-ctx.fillStyle = 'blue';
+    ctx.fillStyle = 'blue';
     ctx.fillRect(x, 50, 50, 50);
 
-x += 2;
+    x += 2;
 
-requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
   }
 
-animate();
+  animate();
 </script>
 ```
 
-## SVG Example: CSS Animation
+---
 
-<!-- Basic example showing the core idea. -->
+# 🚀 SVG Example: CSS Animation
+
 ```html
 <!-- Animated SVG circle -->
 <svg width="300" height="150">
@@ -276,53 +311,57 @@ animate();
     animation: move 3s infinite alternate;
   }
 
-@keyframes move {
+  @keyframes move {
     from {
       transform: translateX(0);
     }
 
-to {
+    to {
       transform: translateX(200px);
     }
   }
 </style>
 ```
 
+---
+
+# ⚠️ Common Mistakes
+
 ### Forgetting Width and Height
 
 ❌ Wrong
 
-<!-- Basic example showing the core idea. -->
 ```html
 <canvas></canvas>
 ```
 
 ✅ Correct
 
-<!-- Basic example showing the core idea. -->
 ```html
 <canvas width="300" height="150"></canvas>
 ```
+
+---
 
 ### Using Canvas for Simple Icons
 
 ❌ Not Recommended
 
-// Example demonstrating HTML Canvas & SVG.
 ```text
 Canvas → Small Logo
 ```
 
 ✅ Better
 
-// Example demonstrating HTML Canvas & SVG.
 ```text
 SVG → Small Logo
 ```
 
 SVG scales better and is easier to maintain.
 
-## Quick Summary
+---
+
+# 🎯 Quick Summary
 
 | Technology | Best Use Case                    |
 | ---------- | -------------------------------- |
@@ -331,7 +370,6 @@ SVG scales better and is easier to maintain.
 
 ### Simple Comparison
 
-// Example demonstrating HTML Canvas & SVG.
 ```text
 Canvas
    ↓
@@ -345,12 +383,3 @@ Draw Shapes
 💡 **Tip:** Use **SVG** for logos, icons, and UI graphics because it stays sharp
 at any size. Use **Canvas** for games, real-time visualizations, and graphics
 that require frequent updates or thousands of moving objects.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

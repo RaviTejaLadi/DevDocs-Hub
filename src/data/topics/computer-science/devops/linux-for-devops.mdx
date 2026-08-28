@@ -1,4 +1,4 @@
-# Linux for DevOps
+# 🐧 Linux for DevOps
 
 Linux is the backbone of modern cloud infrastructure. Most servers, containers,
 and cloud tools run on top of Linux. As a DevOps engineer, you need to know how
@@ -8,7 +8,6 @@ Think of the Linux operating system as a giant, well-organized file warehouse.
 Everything in Linux—including hardware components, processes, and directories—is
 treated as a file that you can view, edit, and manage using standard commands.
 
-<!-- Visual flow for Linux for DevOps. -->
 ```mermaid
 graph TD
     A[/"Root Directory (/)"/] --> B["/bin (Essential Binaries)"]
@@ -28,10 +27,11 @@ graph TD
   server.
 - `df -h`: Displays available disk space in a human-readable format.
 
-# Basic example showing the core idea.
 ```bash
 // Check system resource usage and memory stats
 free -m
+
+```
 
 ---
 
@@ -50,6 +50,8 @@ graph LR
     A[Code: main.tf] --> B[IaC Tool: Terraform]
     B --> C[Cloud Provider: AWS/Azure/GCP]
 
+```
+
 #### Why Use IaC?
 
 - **Speed:** Provision an entire data center in minutes.
@@ -57,19 +59,22 @@ graph LR
   environments.
 - **Version Control:** Track infrastructure changes using Git history.
 
-// Example demonstrating Linux for DevOps.
 ```hcl
 // Define an AWS EC2 instance using Terraform
 resource "aws_instance" "web_server" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
 
-tags = {
+  tags = {
     Name = "ReviseStack-Web-Dev"
   }
 }
 
-### Kubernetes
+```
+
+---
+
+### ☸️ Kubernetes
 
 Kubernetes (K8s) is an open-source container orchestration platform. It
 automates the deployment, scaling, and management of containerized applications
@@ -92,6 +97,8 @@ graph TD
     A --> C
     A --> F
 
+```
+
 #### Core Components
 
 - **Pod:** The smallest deployable unit in Kubernetes, which holds one or more
@@ -101,9 +108,8 @@ graph TD
 - **Deployment:** A configuration file that tells Kubernetes how many copies of
   a pod should run.
 
-# Example configuration for the topic.
 ```yaml
-## A simple Kubernetes deployment for an Nginx web app
+# A simple Kubernetes deployment for an Nginx web app
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -125,7 +131,9 @@ spec:
             - containerPort: 80
 ```
 
-### CI/CD Pipelines
+---
+
+### 🔄 CI/CD Pipelines
 
 CI/CD stands for Continuous Integration and Continuous Deployment. It is an
 automated workflow that handles building, testing, and deploying your code
@@ -135,12 +143,13 @@ Think of CI/CD as a factory assembly line. Raw code goes in at one end, passes
 through automated safety inspection tests, gets packaged up, and ships out to
 users automatically.
 
-<!-- Visual flow for Linux for DevOps. -->
 ```mermaid
 graph LR
     A[Code Commit] --> B[Build]
     B --> C[Run Tests]
     C --> D[Deploy to Production]
+
+```
 
 #### The Two Main Parts
 
@@ -150,7 +159,7 @@ graph LR
   production without manual steps.
 
 ```yaml
-## A basic GitHub Actions pipeline configuration file
+# A basic GitHub Actions pipeline configuration file
 name: CI-Pipeline
 on: [push]
 jobs:
@@ -160,10 +169,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Application Tests
         run: npm test
-// Example demonstrating Linux for DevOps.
 ```
 
-### Monitoring & Observability
+---
+
+### 📊 Monitoring & Observability
 
 Monitoring and Observability keep track of the overall health, performance, and
 stability of your live infrastructure applications. They tell you if your
@@ -189,14 +199,4 @@ function handleUserRequest(req, res) {
   metricsClient.increment('http_requests_total', ['method:GET', 'path:/home']);
   res.send('Welcome to ReviseStack!');
 }
-// Example demonstrating Linux for DevOps.
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

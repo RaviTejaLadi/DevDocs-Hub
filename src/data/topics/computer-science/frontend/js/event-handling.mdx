@@ -1,16 +1,17 @@
-# Event Handling
+# Event Handling 🎯
 
-### Event Listener
+## Definitions 📚
+
+### **Event Listener**
 
 A function that waits for a specific event to occur on an HTML element and
 executes code when that event happens.
 
-### Event Bubbling
+### **Event Bubbling**
 
 It is a mechanism by which an event triggered on an element propagates up the
 document object model (Dom) hierarchy
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@ document object model (Dom) hierarchy
     </style>
   </head>
 
-<body>
+  <body>
     <!-- event bubbling -->
     <div id="grandParent">
       grandParent
@@ -36,16 +37,16 @@ document object model (Dom) hierarchy
       </div>
     </div>
 
-<script>
+    <script>
       // by default it is false means bubbling
       // if we pass true then it is capturing
 
-// with the help of e.stopPropagation() we can stop propagation
+      // with the help of e.stopPropagation() we can stop propagation
 
-document.querySelector('#grandParent').addEventListener('click', (e) => {
+      document.querySelector('#grandParent').addEventListener('click', (e) => {
         e.stopPropagation();
 
-console.log('grand Parent');
+        console.log('grand Parent');
       });
       document.querySelector('#parent').addEventListener('click', (e) => {
         e.stopPropagation();
@@ -60,17 +61,48 @@ console.log('grand Parent');
 </html>
 ```
 
-### Event Capturing
+### **Event Capturing**
 
 The opposite of bubbling - events start at the document root and propagate
 downward to the target element before bubbling back up.
 
-document.querySelector('#grandParent').addEventListener(
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px solid #ccc;
+        padding: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- event bubbling -->
+    <div id="grandParent">
+      grandParent
+      <div id="parent">
+        parent
+        <div id="child">child</div>
+      </div>
+    </div>
+
+    <script>
+      // by default it is false means bubbling
+      // if we pass true then it is capturing
+
+      // with the help of e.stopPropagation() we can stop propagation
+
+      document.querySelector('#grandParent').addEventListener(
         'click',
         (e) => {
           e.stopPropagation();
 
-console.log('grand Parent');
+          console.log('grand Parent');
         },
         true
       );
@@ -93,10 +125,9 @@ console.log('grand Parent');
     </script>
   </body>
 </html>
-// Example demonstrating Event Handling.
 ```
 
-### Event Delegation
+### **Event Delegation**
 
 A technique where you attach a single event listener to a parent element to
 handle events for multiple child elements, taking advantage of event bubbling.
@@ -110,7 +141,7 @@ handle events for multiple child elements, taking advantage of event bubbling.
     <title>Document</title>
   </head>
 
-<body>
+  <body>
     <ul id="event-delegation">
       <li>item 1</li>
       <li>item 2</li>
@@ -119,7 +150,7 @@ handle events for multiple child elements, taking advantage of event bubbling.
     <script>
       const list = document.getElementById('event-delegation');
 
-list.addEventListener('click', (e) => {
+      list.addEventListener('click', (e) => {
         if ((e.target.tagName = 'li')) {
           console.log(e.target.textContent);
         }
@@ -127,10 +158,11 @@ list.addEventListener('click', (e) => {
     </script>
   </body>
 </html>
-// Example demonstrating Event Handling.
 ```
 
 ---
+
+# Detailed Explanations with Visuals 🎨
 
 ## What are Event Listeners? 👂
 
@@ -143,14 +175,12 @@ and then takes action.
 ├── 🚪 Door 1 (Button) → 👮 Guard: "Watch for clicks!"
 ├── 🚪 Door 2 (Input) → 👮 Guard: "Watch for typing!"
 └── 🚪 Door 3 (Form) → 👮 Guard: "Watch for submissions!"
-// Example demonstrating Event Handling.
 ```
 
 **Basic Syntax:**
 
 ```javascript
 element.addEventListener('event', function)
-// Example demonstrating Event Handling.
 ```
 
 **Example:**
@@ -159,25 +189,25 @@ element.addEventListener('event', function)
 button.addEventListener('click', function () {
   alert('Button was clicked!');
 });
-// Example demonstrating Event Handling.
 ```
+
+---
 
 ## Event Bubbling vs Capturing 🫧
 
 Imagine a **pond with ripples** - when you throw a stone, ripples spread
 outward. That's how events travel through HTML elements!
 
-### The HTML Structure (Like Nested Boxes )
+### The HTML Structure (Like Nested Boxes 📦)
 
 ```jsx
 🏠 Document
  └── 📦 Grandparent (div)
       └── 📦 Parent (div)
            └── 📦 Child (button)
-// Example demonstrating Event Handling.
 ```
 
-### Event Bubbling (Default) - Bottom to Top ⬆
+### Event Bubbling (Default) - Bottom to Top ⬆️
 
 Like **bubbles rising in water** - starts from the target and goes UP to
 parents.
@@ -192,12 +222,14 @@ Click on button! 👆
 📦 Grandparent (div)  ← 3️⃣ Finally reaches here
  ↑
 🏠 Document           ← 4️⃣ Ends at document
-// Example demonstrating Event Handling.
 ```
 
-### Event Capturing - Top to Bottom ⬇
+### Event Capturing - Top to Bottom ⬇️
 
 Like **rain falling down** - starts from document and goes DOWN to target.
+
+```jsx
+Click on button! 👆
 
 🏠 Document           ← 1️⃣ Event starts here
  ↓
@@ -210,7 +242,6 @@ Like **rain falling down** - starts from document and goes DOWN to target.
 
 **Code Example:**
 
-// Basic example showing the core idea.
 ```javascript
 // Bubbling (default)
 element.addEventListener('click', handler);
@@ -219,6 +250,8 @@ element.addEventListener('click', handler);
 element.addEventListener('click', handler, true);
 ```
 
+---
+
 ## Event Delegation 🎪
 
 Think of event delegation like having **one smart manager** instead of hiring
@@ -226,7 +259,6 @@ individual workers for each task.
 
 ### Without Delegation (Inefficient) ❌
 
-// Example demonstrating Event Handling.
 ```jsx
 🎪 Circus Tent
 ├── 🎭 Performer 1 → 👨‍💼 Individual Manager
@@ -237,7 +269,6 @@ individual workers for each task.
 
 ### With Delegation (Efficient) ✅
 
-// Example demonstrating Event Handling.
 ```jsx
 🎪 Circus Tent → 👨‍💼 ONE Smart Manager
 ├── 🎭 Performer 1
@@ -253,7 +284,8 @@ individual workers for each task.
 3. Parent checks **which child** triggered the event
 4. Parent handles the event accordingly
 
-<!-- Basic example showing the core idea. -->
+**Example:**
+
 ```html
 <ul id="todo-list">
   <li>Task 1 <button class="delete">❌</button></li>
@@ -262,7 +294,6 @@ individual workers for each task.
 </ul>
 ```
 
-// Basic example showing the core idea.
 ```javascript
 // Instead of adding listener to each button:
 document.getElementById('todo-list').addEventListener('click', function (e) {
@@ -273,21 +304,26 @@ document.getElementById('todo-list').addEventListener('click', function (e) {
 });
 ```
 
-### Event Bubbling:
+---
+
+## Memory Tricks 🧠
+
+### **Event Bubbling**:
 
 > "**B**ubbles go **B**ottom-to-top" (B for Bubbling & Bottom)
 
-### Event Capturing:
+### **Event Capturing**:
 
 > "**C**apture from **C**eiling down" (C for Capturing & Ceiling)
 
-### Event Delegation:
+### **Event Delegation**:
 
 > "**D**ad **D**elegates tasks to kids" (D for Delegation & Dad)
 
-## Visual Summary
+---
 
-// Example demonstrating Event Handling.
+## Visual Summary 🎨
+
 ```jsx
 EVENT FLOW DIAGRAM:
 
@@ -312,12 +348,3 @@ Legend:
 ```
 
 This way, you can remember: **Capture Down, Bubble Up!** 🎈⬆️
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

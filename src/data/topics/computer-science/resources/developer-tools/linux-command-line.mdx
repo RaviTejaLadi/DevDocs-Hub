@@ -1,4 +1,4 @@
-# Linux Command Line
+# 🐧 Linux Command Line
 
 The Linux command line is one of the most powerful tools for developers. It
 allows you to manage files, run applications, automate tasks, and work
@@ -9,7 +9,7 @@ system.
 
 ---
 
-## Opening the Terminal
+## 🚀 Opening the Terminal
 
 Common terminal applications:
 
@@ -27,6 +27,10 @@ Check current directory:
 
 pwd
 
+---
+
+## 📂 File & Directory Commands
+
 ### List Files
 
 ls
@@ -34,6 +38,8 @@ ls
 Detailed view:
 
 ls -la
+
+---
 
 ### Change Directory
 
@@ -47,6 +53,8 @@ Go to home directory:
 
 cd ~
 
+---
+
 ### Create Directory
 
 mkdir projects
@@ -55,6 +63,8 @@ Create nested directories:
 
 mkdir -p apps/frontend
 
+---
+
 ### Create File
 
 touch app.js
@@ -62,6 +72,8 @@ touch app.js
 Multiple files:
 
 touch index.html style.css script.js
+
+---
 
 ### Remove Files
 
@@ -77,7 +89,9 @@ rm -rf folder-name
 
 ⚠️ Use carefully.
 
-## View File Contents
+---
+
+## 📖 View File Contents
 
 Display file:
 
@@ -99,7 +113,9 @@ Follow logs:
 
 tail -f app.log
 
-## ✏ Edit Files
+---
+
+## ✏️ Edit Files
 
 Nano editor:
 
@@ -117,7 +133,9 @@ Exit:
 
 Ctrl + X
 
-## Search Commands
+---
+
+## 🔍 Search Commands
 
 Search files:
 
@@ -130,6 +148,8 @@ grep "login" app.js
 Recursive search:
 
 grep -r "axios" .
+
+---
 
 ## 📋 Copy, Move & Rename
 
@@ -149,7 +169,9 @@ Rename file:
 
 mv app.js main.js
 
-## File Permissions
+---
+
+## 📦 File Permissions
 
 View permissions:
 
@@ -167,9 +189,13 @@ Run script:
 
 ./script.sh
 
+---
+
 ## 👤 User Commands
 
 Current user:
+
+whoami
 
 User information:
 
@@ -187,7 +213,9 @@ Example:
 
 sudo apt update
 
-## System Information
+---
+
+## 📊 System Information
 
 Operating system:
 
@@ -205,7 +233,9 @@ Disk usage:
 
 df -h
 
-## ⚙ Process Management
+---
+
+## ⚙️ Process Management
 
 View running processes:
 
@@ -227,6 +257,8 @@ Force kill:
 
 kill -9 PID
 
+---
+
 ## 🌐 Networking Commands
 
 Check IP:
@@ -241,15 +273,23 @@ View open ports:
 
 netstat -tulpn
 
+Or:
+
 ss -tulpn
 
 Test API:
 
 curl https://api.github.com
 
+---
+
+## 📦 Package Management
+
 ### Ubuntu / Debian
 
 Update packages:
+
+sudo apt update
 
 Upgrade packages:
 
@@ -262,6 +302,8 @@ sudo apt install git
 Remove package:
 
 sudo apt remove git
+
+---
 
 ## 🔥 Archive Commands
 
@@ -281,7 +323,9 @@ Extract tar:
 
 tar -xvf backup.tar
 
-## ⚛ Node.js Development
+---
+
+## ⚛️ Node.js Development
 
 Check Node version:
 
@@ -298,6 +342,8 @@ node app.js
 Install packages:
 
 npm install
+
+---
 
 ## 🐳 Docker Commands
 
@@ -317,6 +363,8 @@ Stop container:
 
 docker stop container_id
 
+---
+
 ## 🔧 Git Commands
 
 Clone repository:
@@ -335,6 +383,8 @@ Push changes:
 
 git push
 
+---
+
 ## 📄 Redirect Output
 
 Write output to file:
@@ -349,17 +399,23 @@ Read from file:
 
 cat < notes.txt
 
-## ⛓ Pipe Commands
+---
+
+## ⛓️ Pipe Commands
 
 Combine commands:
 
 cat users.txt | grep admin
 
+Example:
+
 ps aux | grep node
 
 Think of pipes as connecting multiple commands together.
 
-## Useful Shortcuts
+---
+
+## 🔄 Useful Shortcuts
 
 Previous command:
 
@@ -368,6 +424,8 @@ Previous command:
 Clear terminal:
 
 clear
+
+Or:
 
 Ctrl + L
 
@@ -378,6 +436,8 @@ Ctrl + C
 Search command history:
 
 Ctrl + R
+
+---
 
 ## 📜 Command History
 
@@ -391,6 +451,10 @@ Run command again:
 
 Where 100 is command number.
 
+---
+
+## 🚨 Common Troubleshooting
+
 ### Permission Denied
 
 Fix:
@@ -400,6 +464,8 @@ chmod +x filename
 Or use:
 
 sudo
+
+---
 
 ### Command Not Found
 
@@ -411,13 +477,21 @@ Verify PATH variable:
 
 echo $PATH
 
+---
+
 ### Port Already in Use
 
 Find process:
 
 lsof -i :3000
 
-## Productivity Tips
+Kill process:
+
+kill -9 PID
+
+---
+
+## ⚡ Productivity Tips
 
 Create aliases:
 
@@ -437,7 +511,9 @@ Reload configuration:
 
 source ~/.bashrc
 
-## Typical React Developer Workflow
+---
+
+## 🏗️ Typical React Developer Workflow
 
 Navigate project:
 
@@ -459,7 +535,11 @@ Build production app:
 
 pnpm build
 
+Commit changes:
+
 git add . git commit -m "Add authentication" git push
+
+---
 
 ## ⭐ Must-Know Commands
 
@@ -469,21 +549,3 @@ docker
 Mastering these commands will significantly improve your productivity as a
 developer and make working with servers, containers, and development
 environments much easier.
-
-## Example
-
-Start with the smallest useful case before combining the idea with other features.
-
-# Basic example showing the core idea.
-```bash
-echo "example"
-```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,10 +1,9 @@
-# OWASP Best Practices with JS/HTML/React Examples 
+# **OWASP Best Practices with JS/HTML/React Examples 🔐**
 
 ## Input Validation and XSS Prevention
 
 **HTML - Escaping User Input:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- ❌ Bad - Direct insertion -->
 <div id="output"></div>
@@ -21,7 +20,6 @@
 
 **React - Safe Rendering:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ❌ Bad - dangerouslySetInnerHTML without sanitization
 function UserComment({ comment }) {
@@ -46,7 +44,6 @@ function RichComment({ htmlContent }) {
 
 **JavaScript - Secure Cookie Handling:**
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Setting secure cookies
 document.cookie =
@@ -56,7 +53,7 @@ document.cookie =
 const LoginComponent = () => {
   const [token, setToken] = useState(null);
 
-const handleLogin = async (credentials) => {
+  const handleLogin = async (credentials) => {
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -64,9 +61,9 @@ const handleLogin = async (credentials) => {
         body: JSON.stringify(credentials),
       });
 
-const data = await response.json();
+      const data = await response.json();
 
-// Store token securely (consider httpOnly cookies instead)
+      // Store token securely (consider httpOnly cookies instead)
       localStorage.setItem('token', data.token); // ⚠️ Better in httpOnly cookie
       setToken(data.token);
     } catch (error) {
@@ -74,7 +71,7 @@ const data = await response.json();
     }
   };
 
-return <form onSubmit={handleLogin}>{/* Login form */} 🔐</form>;
+  return <form onSubmit={handleLogin}>{/* Login form */} 🔐</form>;
 };
 ```
 
@@ -82,23 +79,22 @@ return <form onSubmit={handleLogin}>{/* Login form */} 🔐</form>;
 
 **React - CSRF Token Implementation:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ CSRF protection in forms
 function SecureForm() {
   const [csrfToken, setCsrfToken] = useState('');
 
-useEffect(() => {
+  useEffect(() => {
     // Get CSRF token from server
     fetch('/api/csrf-token')
       .then((res) => res.json())
       .then((data) => setCsrfToken(data.token));
   }, []);
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-await fetch('/api/sensitive-action', {
+    await fetch('/api/sensitive-action', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +104,7 @@ await fetch('/api/sensitive-action', {
     });
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <input type="hidden" name="csrf_token" value={csrfToken} />
       {/* Form fields */} 📝
@@ -121,7 +117,6 @@ return (
 
 **HTML - CSP Headers:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 <html>
@@ -129,14 +124,14 @@ return (
     <!-- ✅ Strict CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self';
-                 script-src 'self' 'unsafe-inline';
+      content="default-src 'self'; 
+                 script-src 'self' 'unsafe-inline'; 
                  style-src 'self' 'unsafe-inline';
                  img-src 'self' data: https:;
                  connect-src 'self';"
     />
 
-<!-- ✅ Additional security headers -->
+    <!-- ✅ Additional security headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
@@ -152,45 +147,44 @@ return (
 
 **React - File Upload Component:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure file upload
 function SecureFileUpload() {
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
 
-const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
   const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 
-const validateFile = (file) => {
+  const validateFile = (file) => {
     if (!ALLOWED_TYPES.includes(file.type)) {
       setError('❌ Invalid file type. Only JPG, PNG, GIF allowed.');
       return false;
     }
 
-if (file.size > MAX_SIZE) {
+    if (file.size > MAX_SIZE) {
       setError('❌ File too large. Max 5MB allowed.');
       return false;
     }
 
-setError('');
+    setError('');
     return true;
   };
 
-const handleFileChange = (e) => {
+  const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile && validateFile(selectedFile)) {
       setFile(selectedFile);
     }
   };
 
-const handleUpload = async () => {
+  const handleUpload = async () => {
     if (!file) return;
 
-const formData = new FormData();
+    const formData = new FormData();
     formData.append('file', file);
 
-try {
+    try {
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
@@ -199,7 +193,7 @@ try {
         },
       });
 
-if (response.ok) {
+      if (response.ok) {
         alert('✅ File uploaded successfully!');
       }
     } catch (error) {
@@ -207,7 +201,7 @@ if (response.ok) {
     }
   };
 
-return (
+  return (
     <div>
       <input
         type="file"
@@ -227,7 +221,6 @@ return (
 
 **JavaScript - Client-side Rate Limiting:**
 
-// Basic example showing the core idea.
 ```javascript
 // ✅ Debounced API calls
 class RateLimiter {
@@ -237,17 +230,17 @@ class RateLimiter {
     this.requests = [];
   }
 
-canMakeRequest() {
+  canMakeRequest() {
     const now = Date.now();
     this.requests = this.requests.filter(
       (time) => now - time < this.timeWindow
     );
 
-if (this.requests.length >= this.maxRequests) {
+    if (this.requests.length >= this.maxRequests) {
       return false; // ❌ Rate limit exceeded
     }
 
-this.requests.push(now);
+    this.requests.push(now);
     return true; // ✅ Request allowed
   }
 }
@@ -256,13 +249,13 @@ this.requests.push(now);
 function ApiComponent() {
   const rateLimiter = new RateLimiter(5, 60000); // 5 requests per minute
 
-const makeApiCall = async () => {
+  const makeApiCall = async () => {
     if (!rateLimiter.canMakeRequest()) {
       alert('⚠️ Too many requests. Please wait before trying again.');
       return;
     }
 
-try {
+    try {
       const response = await fetch('/api/data');
       // Handle response 📊
     } catch (error) {
@@ -270,7 +263,7 @@ try {
     }
   };
 
-return <button onClick={makeApiCall}>Fetch Data 🔄</button>;
+  return <button onClick={makeApiCall}>Fetch Data 🔄</button>;
 }
 ```
 
@@ -278,7 +271,6 @@ return <button onClick={makeApiCall}>Fetch Data 🔄</button>;
 
 **React - Secure Data Storage:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure storage utilities
 class SecureStorage {
@@ -288,33 +280,33 @@ class SecureStorage {
       expiry: Date.now() + expirationMinutes * 60 * 1000,
     };
 
-try {
+    try {
       localStorage.setItem(key, JSON.stringify(item));
     } catch (error) {
       console.error('Failed to store item:', error);
     }
   }
 
-static getItem(key) {
+  static getItem(key) {
     try {
       const itemStr = localStorage.getItem(key);
       if (!itemStr) return null;
 
-const item = JSON.parse(itemStr);
+      const item = JSON.parse(itemStr);
 
-if (Date.now() > item.expiry) {
+      if (Date.now() > item.expiry) {
         localStorage.removeItem(key); // 🗑️ Auto-cleanup expired items
         return null;
       }
 
-return item.value;
+      return item.value;
     } catch (error) {
       console.error('Failed to retrieve item:', error);
       return null;
     }
   }
 
-static removeItem(key) {
+  static removeItem(key) {
     localStorage.removeItem(key);
   }
 }
@@ -323,7 +315,7 @@ static removeItem(key) {
 function UserProfile() {
   const [userData, setUserData] = useState(null);
 
-useEffect(() => {
+  useEffect(() => {
     // ✅ Get user data with expiration
     const storedData = SecureStorage.getItem('userData');
     if (storedData) {
@@ -331,13 +323,13 @@ useEffect(() => {
     }
   }, []);
 
-const logout = () => {
+  const logout = () => {
     SecureStorage.removeItem('userData'); // 🧹 Clean logout
     SecureStorage.removeItem('sessionToken');
     // Redirect to login
   };
 
-return (
+  return (
     <div>
       <h1>Welcome {userData?.name}! 👋</h1>
       <button onClick={logout}>Logout 🚪</button>
@@ -350,7 +342,6 @@ return (
 
 **React - Secure Error Boundaries:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Secure error boundary
 class SecureErrorBoundary extends React.Component {
@@ -359,22 +350,22 @@ class SecureErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-componentDidCatch(error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     // ✅ Log error securely (no sensitive data)
     console.error('Application error:', {
       message: error.message,
       stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
     });
 
-// Send to error reporting service (sanitized)
+    // Send to error reporting service (sanitized)
     // this.reportError(error);
   }
 
-render() {
+  render() {
     if (this.state.hasError) {
       return (
         <div style={{ padding: '20px', textAlign: 'center' }}>
@@ -387,7 +378,7 @@ render() {
       );
     }
 
-return this.props.children;
+    return this.props.children;
   }
 }
 
@@ -407,13 +398,12 @@ function App() {
 
 **React - Custom Security Hook:**
 
-// Example demonstrating OWASP Best Practices with JS/HTML/React Examples .
 ```jsx
 // ✅ Custom hook for input sanitization
 function useSanitizedInput(initialValue = '') {
   const [value, setValue] = useState(initialValue);
 
-const sanitize = (input) => {
+  const sanitize = (input) => {
     return input
       .replace(/[<>]/g, '') // Remove < and >
       .replace(/javascript:/gi, '') // Remove javascript: protocol
@@ -421,12 +411,12 @@ const sanitize = (input) => {
       .trim();
   };
 
-const setSanitizedValue = (newValue) => {
+  const setSanitizedValue = (newValue) => {
     const sanitized = sanitize(newValue);
     setValue(sanitized);
   };
 
-return [value, setSanitizedValue];
+  return [value, setSanitizedValue];
 }
 
 // Usage
@@ -434,13 +424,13 @@ function CommentForm() {
   const [comment, setComment] = useSanitizedInput('');
   const [name, setName] = useSanitizedInput('');
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Submit sanitized data ✨
     console.log({ name, comment });
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -461,12 +451,3 @@ return (
 
 These examples provide practical, client-side security implementations that
 align with OWASP best practices! 🎯✨
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

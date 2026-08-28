@@ -13,7 +13,7 @@ defenses, like traditional firewalls, are often ineffective because API traffic
 typically flows over standard web ports (80 and 443) and looks like legitimate
 traffic. Therefore, a specialized approach to API security is required. 🚦
 
-## Why APIs are Unique Security Targets
+## 🎯 Why APIs are Unique Security Targets
 
 APIs differ from traditional web applications in several ways that impact their
 security posture:
@@ -99,7 +99,6 @@ the business.
 SSRF occurs when an API fetches a remote resource based on a user-provided URI
 without validating it, coercing the server to connect to internal systems.
 
-<!-- Visual flow for 🔌 API Security: Protecting the Connective Tissue of the Web. -->
 ```mermaid
 graph LR
     A[Attacker 🦹‍♂️] -- "Webhook URL: http://169.254.169.254" --> B[API Server 🖥️]
@@ -111,7 +110,7 @@ graph LR
 - **Mitigation:** Validate all URLs against an allowlist. Disable following
   redirects. Restrict the API server's network access to internal resources. 🧱
 
-### 🛠 API8:2023 - Security Misconfiguration
+### 🛠️ API8:2023 - Security Misconfiguration
 
 Encompasses unpatched systems, misconfigured CORS policies, unencrypted data,
 and verbose error messages.
@@ -121,7 +120,7 @@ and verbose error messages.
 - **Mitigation:** Implement automated hardening, restrict CORS, use generic
   error messages, and patch regularly. ⚙️
 
-### API9:2023 - Improper Inventory Management
+### 📦 API9:2023 - Improper Inventory Management
 
 Lack of an accurate inventory of all APIs (Shadow and Zombie APIs). You cannot
 secure what you don't know exists.
@@ -169,12 +168,3 @@ vulnerabilities of APIs, adhering to the OWASP API Security Top 10, and
 implementing comprehensive security controls at the gateway, code, and runtime
 levels, organizations can protect their critical data and ensure the reliability
 of their digital ecosystems. 🛡️🔌
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

@@ -11,7 +11,7 @@ differ in how combustion occurs.
 
 ---
 
-## 🚗 Otto Cycle
+# 🚗 Otto Cycle
 
 The Otto Cycle is the ideal thermodynamic cycle for spark-ignition (SI) engines.
 
@@ -28,11 +28,10 @@ In an Otto engine:
 - A spark plug ignites the mixture.
 - Combustion occurs rapidly at nearly constant volume.
 
-## ⚙ Processes of Otto Cycle
+## ⚙️ Processes of Otto Cycle
 
 The Otto Cycle consists of four processes.
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     A[1]
@@ -40,13 +39,15 @@ flowchart LR
     C[3]
     D[4]
 
-A --> B
+    A --> B
     B --> C
     C --> D
     D --> A
 ```
 
-## 1⃣ Isentropic Compression (1 → 2)
+---
+
+## 1️⃣ Isentropic Compression (1 → 2)
 
 The piston compresses the air-fuel mixture.
 
@@ -57,73 +58,82 @@ Characteristics:
 - Volume decreases
 - No heat transfer
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     A[Air-Fuel Mixture]
     B[Compression]
     C[High Pressure & Temperature]
 
-A --> B --> C
+    A --> B --> C
 ```
 
-## 2⃣ Constant Volume Heat Addition (2 → 3)
+---
+
+## 2️⃣ Constant Volume Heat Addition (2 → 3)
 
 The spark plug ignites the mixture.
+
+Characteristics:
 
 - Rapid combustion
 - Heat added
 - Volume remains constant
 - Pressure rises sharply
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     F[Fuel Ignition]
     H[Heat Release]
     P[Pressure Increases]
 
-F --> H --> P
+    F --> H --> P
 ```
 
-## 3⃣ Isentropic Expansion (3 → 4)
+---
+
+## 3️⃣ Isentropic Expansion (3 → 4)
 
 The high-pressure gases expand and push the piston downward.
+
+Characteristics:
 
 - Useful work produced
 - Pressure decreases
 - Temperature decreases
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     G[Combustion Gas]
     E[Expansion]
     W[Work Output]
 
-G --> E --> W
+    G --> E --> W
 ```
 
-## 4⃣ Constant Volume Heat Rejection (4 → 1)
+---
+
+## 4️⃣ Constant Volume Heat Rejection (4 → 1)
 
 Exhaust gases release heat.
+
+Characteristics:
 
 - Heat rejected
 - Volume remains constant
 - Cycle returns to initial state
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     H[Heat Rejection]
     I[Initial State Restored]
 
-H --> I
+    H --> I
 ```
 
-## 📈 Otto Cycle P-V Diagram
+---
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
+# 📈 Otto Cycle P-V Diagram
+
 ```mermaid
 flowchart TD
     A[1 Compression Start]
@@ -131,13 +141,20 @@ flowchart TD
     C[3 Combustion]
     D[4 Expansion End]
 
-## Otto Cycle Efficiency
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+# ⚡ Otto Cycle Efficiency
 
 The thermal efficiency of the Otto Cycle is:
 
 ```
 η = 1 - (1 / r^(γ-1))
-// Example demonstrating 🚗 Otto & Diesel Cycles.
 ```
 
 Where:
@@ -150,10 +167,14 @@ Where:
 
 Higher compression ratio → Higher efficiency
 
-## 🚚 Diesel Cycle
+---
+
+# 🚚 Diesel Cycle
 
 The Diesel Cycle is the ideal thermodynamic cycle for compression-ignition (CI)
 engines.
+
+Examples:
 
 - Trucks
 - Buses
@@ -167,11 +188,32 @@ In a diesel engine:
 - Fuel is injected near the end of compression.
 - Combustion occurs due to high temperature created by compression.
 
-## ⚙ Processes of Diesel Cycle
+---
+
+# ⚙️ Processes of Diesel Cycle
 
 The Diesel Cycle consists of four processes.
 
+```mermaid
+flowchart LR
+    A[1]
+    B[2]
+    C[3]
+    D[4]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+## 1️⃣ Isentropic Compression (1 → 2)
+
 Only air is compressed.
+
+Characteristics:
 
 - Pressure increases
 - Temperature increases
@@ -183,38 +225,56 @@ flowchart LR
     B[Compression]
     C[High Temperature]
 
-## 2⃣ Constant Pressure Heat Addition (2 → 3)
+    A --> B --> C
+```
+
+---
+
+## 2️⃣ Constant Pressure Heat Addition (2 → 3)
 
 Fuel is injected into hot compressed air.
 
 Combustion begins automatically.
 
+Characteristics:
+
 - Heat added
 - Pressure remains nearly constant
 - Volume increases
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     F[Fuel Injection]
     C[Combustion]
     P[Constant Pressure]
 
-F --> C --> P
+    F --> C --> P
 ```
 
+---
+
+## 3️⃣ Isentropic Expansion (3 → 4)
+
 Hot gases expand and perform work.
+
+Characteristics:
 
 - Work output produced
 - Pressure decreases
 - Temperature decreases
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
 ```mermaid
 flowchart LR
     G[Hot Gas]
     E[Expansion]
     W[Work Output]
+
+    G --> E --> W
+```
+
+---
+
+## 4️⃣ Constant Volume Heat Rejection (4 → 1)
 
 Heat is rejected to surroundings.
 
@@ -225,9 +285,13 @@ flowchart LR
     H[Heat Rejection]
     I[Initial State]
 
-## 📈 Diesel Cycle P-V Diagram
+    H --> I
+```
 
-<!-- Visual flow for 🚗 Otto & Diesel Cycles. -->
+---
+
+# 📈 Diesel Cycle P-V Diagram
+
 ```mermaid
 flowchart TD
     A[1 Compression Start]
@@ -235,21 +299,32 @@ flowchart TD
     C[3 Fuel Combustion]
     D[4 Expansion End]
 
-## Diesel Cycle Efficiency
+    A --> B
+    B --> C
+    C --> D
+    D --> A
+```
+
+---
+
+# ⚡ Diesel Cycle Efficiency
 
 The efficiency of the Diesel Cycle is:
 
 ```
 η = 1 - (1 / r^(γ-1)) × ((ρ^γ - 1) / (γ(ρ - 1)))
-// Example demonstrating 🚗 Otto & Diesel Cycles.
 ```
+
+Where:
 
 - η = Thermal Efficiency
 - r = Compression Ratio
 - ρ = Cut-off Ratio
 - γ = Specific Heat Ratio
 
-## Otto Cycle vs Diesel Cycle
+---
+
+# 🔍 Otto Cycle vs Diesel Cycle
 
 | Feature           | Otto Cycle         | Diesel Cycle         |
 | ----------------- | ------------------ | -------------------- |
@@ -262,7 +337,9 @@ The efficiency of the Diesel Cycle is:
 | Weight            | Lighter            | Heavier              |
 | Fuel Economy      | Lower              | Better               |
 
-## 🚗 Four-Stroke Engine Relation
+---
+
+# 🚗 Four-Stroke Engine Relation
 
 Both Otto and Diesel cycles are commonly implemented using four strokes:
 
@@ -278,9 +355,12 @@ flowchart LR
     P[Power]
     E[Exhaust]
 
-I --> C --> P --> E
-// Example demonstrating 🚗 Otto & Diesel Cycles.
+    I --> C --> P --> E
 ```
+
+---
+
+# 🏭 Applications
 
 ## Otto Cycle Applications
 
@@ -298,7 +378,9 @@ I --> C --> P --> E
 - Construction equipment
 - Power generators
 
-## Key Points
+---
+
+# 💡 Key Points
 
 ✅ Otto Cycle represents petrol engines.
 
@@ -316,19 +398,12 @@ I --> C --> P --> E
 
 ✅ Both cycles convert fuel energy into mechanical work.
 
-## 📚 Quick Summary
+---
+
+# 📚 Quick Summary
 
 The Otto Cycle and Diesel Cycle are ideal thermodynamic models for petrol and
 diesel engines. The Otto Cycle uses spark ignition and constant-volume heat
 addition, while the Diesel Cycle uses compression ignition and constant-pressure
 heat addition. These cycles form the foundation of modern transportation and
 power-generation engines.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

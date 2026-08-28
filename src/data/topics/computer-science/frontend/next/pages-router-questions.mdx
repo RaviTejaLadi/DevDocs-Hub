@@ -1,10 +1,11 @@
-# Pages Router Interview Questions & Answers
+# 📖 Pages Router Interview Questions & Answers 🚀
+
+## 🛣️ Routing Basics
 
 ### 1. 📁 Creating Routes in Pages-Based Routing
 
 **Answer:** Create a directory in the `pages` directory and add an `index` file:
 
-// Basic example showing the core idea.
 ```javascript
 pages / index.jsx; // Routes to: /
 pages / blog / index.jsx; // Routes to: /blog
@@ -14,7 +15,6 @@ pages / blog / index.jsx; // Routes to: /blog
 
 **Answer:** Use square brackets `[]` in the filename to create dynamic routes:
 
-// Basic example showing the core idea.
 ```javascript
 pages / blogs / [id].js; // Routes to: /blogs/1, /blogs/2, etc.
 blogs / [id] / index.js; // Routes to: /blogs/1, /blogs/2, etc.
@@ -33,14 +33,16 @@ pages.
 **Answer:** Use `next/router` to handle routing and navigation within a Next.js
 app.
 
-### 5. 🛣 How Routing Works in Next.js
+### 5. 🛣️ How Routing Works in Next.js
 
 **Answer:** Next.js uses a file-based routing system in the pages directory
 where each file automatically becomes a route.
 
 ---
 
-### 6. The `_app.js` File
+## 📄 Special Files
+
+### 6. 🏗️ The `_app.js` File
 
 **Answer:** A custom App component that initializes pages and can add global
 styles or layout components.
@@ -55,7 +57,7 @@ error messages.
 **Answer:** A custom Document component that allows customization of the HTML
 document structure.
 
-### 9. Creating a 404 Page
+### 9. 🔍 Creating a 404 Page
 
 **Answer:** Add a `404.js` file in the pages directory to create a custom 404
 error page.
@@ -64,14 +66,13 @@ error page.
 
 **Answer:** Create a `500.js` file in the pages directory:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export default function Custom500() {
   return <h1>500 - Server-side error occurred</h1>;
 }
 ```
 
-### 11. ⚖ \_app.js vs \_document.js
+### 11. ⚖️ \_app.js vs \_document.js
 
 **Answer:**
 
@@ -83,18 +84,23 @@ export default function Custom500() {
 **Answer:** The `next-env.d.ts` file provides type definitions for TypeScript
 support in Next.js.
 
-### 13. ⚖ getStaticProps vs getServerSideProps
+---
+
+## 📊 Data Fetching
+
+### 13. ⚖️ getStaticProps vs getServerSideProps
+
+**Answer:**
 
 - **getStaticProps**: 🏗️ Fetches data at build time (Static Site Generation)
 - **getServerSideProps**: 🔄 Fetches data on each request (Server-Side
   Rendering)
 
-### 14. getStaticProps
+### 14. 🏗️ getStaticProps
 
 **Answer:** A function used for static site generation to fetch data at build
 time:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getStaticProps() {
   const res = await fetch('https://api.github.com/repos/vercel/next.js');
@@ -107,12 +113,11 @@ export default function Page({ repo }) {
 }
 ```
 
-### 15. getServerSideProps
+### 15. 🔄 getServerSideProps
 
 **Answer:** A function used for server-side rendering to fetch data on each
 request:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getServerSideProps() {
   const res = await fetch('https://api.github.com/repos/vercel/next.js');
@@ -129,12 +134,11 @@ export default function Page({ repo }) {
 }
 ```
 
-### 16. 🛤 getStaticPaths
+### 16. 🛤️ getStaticPaths
 
 **Answer:** A function used with `getStaticProps` to specify dynamic routes for
 pre-rendering:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export async function getStaticPaths() {
   return {
@@ -155,7 +159,12 @@ export async function getStaticProps() {
   return { props: { repo } };
 }
 
-### 17. 🖥 Client-Side Data Fetching
+export default function Page({ repo }) {
+  return <div>⭐ {repo.stargazers_count}</div>;
+}
+```
+
+### 17. 🖥️ Client-Side Data Fetching
 
 **Answer:** Fetch data on the client-side using `useEffect` and `fetch`:
 
@@ -167,7 +176,7 @@ import { useState, useEffect } from 'react';
 export function Posts() {
   const [posts, setPosts] = useState(null);
 
-useEffect(() => {
+  useEffect(() => {
     async function fetchPosts() {
       const res = await fetch('https://api.vercel.app/blog');
       const data = await res.json();
@@ -176,9 +185,9 @@ useEffect(() => {
     fetchPosts();
   }, []);
 
-if (!posts) return <div>⏳ Loading...</div>;
+  if (!posts) return <div>⏳ Loading...</div>;
 
-return (
+  return (
     <ul>
       {posts.map((post) => (
         <li key={post.id}>📝 {post.title}</li>
@@ -186,29 +195,34 @@ return (
     </ul>
   );
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
-### 18. Client-side vs Server-side Rendering
+### 18. 🔄 Client-side vs Server-side Rendering
+
+**Answer:**
 
 - **Client-side rendering**: 🖥️ Happens in the browser
 - **Server-side rendering**: 🔄 Happens on the server
 
-### 19. Static Optimization
+### 19. ⚡ Static Optimization
 
 **Answer:** Automatically determine if a page can be statically generated for
 better performance.
 
-### 20. ISR (Incremental Static Regeneration)
+### 20. 🔄 ISR (Incremental Static Regeneration)
 
 **Answer:** Update static pages after build without redeploying the entire
 application.
+
+---
+
+## 🎨 Styling
 
 ### 21. 🌍 Global CSS
 
 **Answer:** Import CSS files in `_app.js` to add global styles.
 
-### 22. 🖼 Image Optimization
+### 22. 🖼️ Image Optimization
 
 **Answer:** Use the `next/image` component to optimize and serve images
 efficiently.
@@ -218,7 +232,7 @@ efficiently.
 **Answer:** Use libraries like styled-components or Emotion for CSS-in-JS
 solutions.
 
-### 24. Sass Support
+### 24. 🎨 Sass Support
 
 **Answer:** Install sass and import `.scss` files in your components:
 
@@ -234,7 +248,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 **app/variables.module.scss:**
@@ -245,7 +258,6 @@ $primary-color: #64ff00;
 :export {
   primaryColor: $primary-color;
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
 **app/page.jsx:**
@@ -256,27 +268,37 @@ import variables from './variables.module.scss';
 export default function Page() {
   return <h1 style={{ color: variables.primaryColor }}>🎨 Hello, Next.js!</h1>;
 }
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```
 
-### 25. 🛠 Creating API Endpoints
+---
+
+## 🔌 API Routes
+
+### 25. 🛠️ Creating API Endpoints
 
 **Answer:** Add files to the `pages/api` or `app/api` directory to create API
 endpoints.
 
-### 26. Form Handling
+### 26. 📝 Form Handling
 
 **Answer:** Handle form submissions using client-side form handling or API
 routes for server-side processing.
 
-### 27. Authentication
+---
+
+## 🚀 Advanced Features
+
+### 27. 🔐 Authentication
 
 **Answer:** Implement authentication using libraries like AuthJS, JWT, or custom
 authentication logic.
 
-### 28. Code Splitting with Dynamic Imports
+### 28. 📦 Code Splitting with Dynamic Imports
 
 **Answer:** Use `next/dynamic` to enable dynamic imports and code splitting:
+
+```jsx
+'use client';
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -288,28 +310,27 @@ const ComponentC = dynamic(() => import('../components/C'), { ssr: false });
 export default function ClientComponentExample() {
   const [showMore, setShowMore] = useState(false);
 
-return (
+  return (
     <div>
       {/* 🚀 Load immediately, but in a separate client bundle */}
       <ComponentA />
 
-{/* 🔄 Load on demand, only when condition is met */}
+      {/* 🔄 Load on demand, only when condition is met */}
       {showMore && <ComponentB />}
       <button onClick={() => setShowMore(!showMore)}>🔄 Toggle</button>
 
-{/* 🖥️ Load only on the client side */}
+      {/* 🖥️ Load only on the client side */}
       <ComponentC />
     </div>
   );
 }
 ```
 
-### 29. 🏷 Meta Tags
+### 29. 🏷️ Meta Tags
 
 **Answer:** Add meta tags using the Head component from `next/head` or metadata
 export:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```jsx
 export const metadata = {
   title: 'NextJS',
@@ -326,7 +347,7 @@ export default function Page() {
 **Answer:** Use the `useTranslation` hook for handling translations when using
 i18n.
 
-### 31. AMP (Accelerated Mobile Pages)
+### 31. ⚡ AMP (Accelerated Mobile Pages)
 
 **Answer:** Enable AMP by adding the `amp` attribute to a page component for
 fast-loading mobile pages.
@@ -336,11 +357,14 @@ fast-loading mobile pages.
 **Answer:** Set up Redux in a Next.js project by creating a Redux store and
 integrating it with `_app.js`.
 
-### 33. Webpack Configuration
+---
+
+## ⚙️ Configuration
+
+### 33. 📦 Webpack Configuration
 
 **Answer:** Extend the Webpack configuration in `next.config.js`:
 
-// Example demonstrating Pages Router Interview Questions & Answers.
 ```js
 module.exports = {
   webpack: (
@@ -363,7 +387,7 @@ module.exports = {
 **Answer:** Use the `basePath` option to specify a base path for the
 application.
 
-### 36. 🖥 Server Runtime Config
+### 36. 🖥️ Server Runtime Config
 
 **Answer:** Use `serverRuntimeConfig` for configuration only available on the
 server side.
@@ -373,30 +397,42 @@ server side.
 **Answer:** Add polyfills by customizing the webpack configuration in
 `next.config.js`.
 
-### 38. Custom Error Pages
+---
+
+## 🚨 Error Handling
+
+### 38. 🔍 Custom Error Pages
 
 **Answer:** Create custom error pages by adding `_error.js` in the pages
 directory.
 
-### 39. Middleware
+### 39. 🛡️ Middleware
 
 **Answer:** Handle middleware using middleware functions in `next.config.js`.
 
+---
+
+## 📚 Key Concepts
+
 ### 40. 📁 Directory Structure
+
+**Answer:**
 
 - **pages**: 🛣️ Contains routable components
 - **components**: 🧩 Contains reusable UI components
 
-### 41. 🖥 Client Runtime Configuration
+### 41. 🖥️ Client Runtime Configuration
 
 **Answer:** Configuration available on both client and server sides.
 
-### 42. Purpose of \_error.js
+### 42. 🔄 Purpose of \_error.js
 
 **Answer:** To customize the error page for HTTP errors and provide better user
 experience during failures.
 
-## Best Practices
+---
+
+## 🎯 Best Practices
 
 ✅ **Do:**
 
@@ -412,14 +448,7 @@ experience during failures.
 - Skip image optimization
 - Ignore accessibility requirements
 
+---
+
 _This guide covers the essential aspects of Next.js Pages Router. For more
 advanced topics and updates, refer to the official Next.js documentation._
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

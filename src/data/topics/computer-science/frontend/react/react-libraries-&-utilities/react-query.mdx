@@ -1,4 +1,4 @@
-# React-Query: Complete Guide with TypeScript
+# **React-Query: Complete Guide with TypeScript**
 
 ## What is React-Query?
 
@@ -22,12 +22,13 @@ React-Query is a powerful data-fetching library for React applications that:
 8. **Window Focus Refetching**: Automatically refetches data when window regains
    focus
 
+## Complete Setup Guide with TypeScript (TSX)
+
 ### 1. Installation
 
-# Basic example showing the core idea.
 ```bash
 npm install @tanstack/react-query @tanstack/react-query-devtools
-## or
+# or
 yarn add @tanstack/react-query @tanstack/react-query-devtools
 ```
 
@@ -35,7 +36,6 @@ yarn add @tanstack/react-query @tanstack/react-query-devtools
 
 Create a `QueryClientProvider` at the root of your application:
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/App.tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -50,7 +50,7 @@ function App() {
       {/* Your application components */}
       <Todos />
 
-{/* Devtools (optional) */}
+      {/* Devtools (optional) */}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
@@ -63,7 +63,6 @@ export default App;
 
 Customize the default behavior:
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -79,7 +78,6 @@ const queryClient = new QueryClient({
 
 ### 4. Basic Query Example
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/Todos.tsx
 import { useQuery } from '@tanstack/react-query';
@@ -104,10 +102,10 @@ function Todos() {
     queryFn: fetchTodos,
   });
 
-if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
-return (
+  return (
     <div>
       <h1>Todos</h1>
       <ul>
@@ -126,7 +124,6 @@ export default Todos;
 
 ### 5. Mutations (Creating/Updating Data)
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/AddTodo.tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -160,17 +157,17 @@ function AddTodo() {
     },
   });
 
-const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const title = formData.get('title') as string;
 
-mutation.mutate({ title, completed: false });
+    mutation.mutate({ title, completed: false });
     form.reset();
   };
 
-return (
+  return (
     <div>
       <h2>Add Todo</h2>
       <form onSubmit={handleSubmit}>
@@ -190,11 +187,16 @@ export default AddTodo;
 
 ### 6. Paginated Queries
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/PaginatedTodos.tsx
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 const fetchPaginatedTodos = async (page: number): Promise<Todo[]> => {
   const response = await fetch(
@@ -214,7 +216,7 @@ function PaginatedTodos() {
     keepPreviousData: true,
   });
 
-return (
+  return (
     <div>
       <h1>Paginated Todos</h1>
       {isLoading ? (
@@ -260,10 +262,15 @@ export default PaginatedTodos;
 
 ### 7. Infinite Queries
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
 ```tsx
 // src/components/InfiniteTodos.tsx
 import { useInfiniteQuery } from '@tanstack/react-query';
+
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 const fetchInfiniteTodos = async ({
   pageParam = 1,
@@ -300,7 +307,7 @@ function InfiniteTodos() {
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 
-return (
+  return (
     <div>
       <h1>Infinite Todos</h1>
       {isLoading ? (
@@ -342,18 +349,17 @@ export default InfiniteTodos;
 1. **Query Keys**: Use structured query keys for better organization and
    invalidation
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
-```tsx
+   ```tsx
    // Good
    ['todos', { status: 'done', page: 1 }];
 
-// Bad
+   // Bad
    ('todos-done-page-1');
    ```
 
 2. **Custom Hooks**: Encapsulate queries in custom hooks for reusability
 
-```tsx
+   ```tsx
    export function useTodos() {
      return useQuery({
        queryKey: ['todos'],
@@ -364,8 +370,7 @@ export default InfiniteTodos;
 
 3. **Error Handling**: Create a global error handler
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
-```tsx
+   ```tsx
    const queryClient = new QueryClient({
      defaultOptions: {
        queries: {
@@ -380,7 +385,7 @@ export default InfiniteTodos;
 
 4. **Suspense**: Use with React Suspense for better loading states
 
-```tsx
+   ```tsx
    const { data } = useQuery({
      queryKey: ['todos'],
      queryFn: fetchTodos,
@@ -390,23 +395,13 @@ export default InfiniteTodos;
 
 5. **Prefetching**: Prefetch data for better UX
 
-// Example demonstrating React-Query: Complete Guide with TypeScript.
-```tsx
+   ```tsx
    const queryClient = useQueryClient();
 
-// Prefetch on hover
+   // Prefetch on hover
    <div onMouseEnter={() => queryClient.prefetchQuery(...)}>
    ```
 
 React-Query significantly simplifies data management in React applications while
 providing powerful features out of the box. The TypeScript integration ensures
 type safety throughout your data fetching logic.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

@@ -2,21 +2,18 @@
 
 ## Array Syntax
 
-// Example demonstrating Arrays.
 ```ts
 const numbers: number[] = [1, 2, 3];
 ```
 
 ## Generic Array Syntax
 
-// Example demonstrating Arrays.
 ```ts
 const users: Array<string> = ['A', 'B'];
 ```
 
 ## Readonly Array
 
-// Example demonstrating Arrays.
 ```ts
 const ids: readonly number[] = [1, 2];
 ```
@@ -27,7 +24,6 @@ Array questions test type modeling, immutability, and safe transforms.
 
 ## Common Patterns
 
-// Example demonstrating Arrays.
 ```ts
 type User = { id: number; name: string };
 
@@ -48,196 +44,3 @@ const names = users.map((u) => u.name); // string[]
 ## Practice Prompt
 
 "Given `Product[]`, return only in-stock product ids as `number[]`."
-
-## JavaScript Array Methods by Purpose
-
-For a broad array-method topic, these are the core operations to revise. The important distinction is whether the method returns a new array/value or mutates the original array.
-
-### map()
-
-Creates a new array by transforming every element.
-
-// Practical example of map().
-```javascript
-const doubled = [1, 2, 3].map(n => n * 2);
-```
-
-### filter()
-
-Creates a new array containing elements that pass a test.
-
-// Practical example of filter().
-```javascript
-const adults = [15, 22, 17, 30].filter(age => age >= 18);
-```
-
-### reduce()
-
-Combines the elements into one accumulated result.
-
-// Practical example of reduce().
-```javascript
-const total = [10, 20, 30].reduce((sum, n) => sum + n, 0);
-```
-
-### forEach()
-
-Runs a callback for each element and returns undefined.
-
-// Practical example of forEach().
-```javascript
-["a", "b"].forEach(value => console.log(value));
-```
-
-### find()
-
-Returns the first element that matches a condition.
-
-// Practical example of find().
-```javascript
-const user = [{ id: 1 }, { id: 2 }].find(item => item.id === 2);
-```
-
-### findIndex()
-
-Returns the index of the first matching element, or -1.
-
-// Practical example of findIndex().
-```javascript
-const index = [10, 20, 30].findIndex(n => n === 20);
-```
-
-### some()
-
-Returns true when at least one element passes the test.
-
-// Practical example of some().
-```javascript
-const hasLarge = [10, 25, 5].some(n => n > 20);
-```
-
-### every()
-
-Returns true only when every element passes the test.
-
-// Practical example of every().
-```javascript
-const allPositive = [1, 2, 3].every(n => n > 0);
-```
-
-### includes()
-
-Checks whether an array contains a value.
-
-// Practical example of includes().
-```javascript
-const hasReact = ["React", "Vue"].includes("React");
-```
-
-### indexOf()
-
-Returns the first matching index, or -1.
-
-// Practical example of indexOf().
-```javascript
-const position = ["a", "b", "a"].indexOf("a");
-```
-
-### push() / pop()
-
-Add or remove an element at the end and mutate the array.
-
-// Practical example of push() / pop().
-```javascript
-const values = [1, 2];
-values.push(3);
-const last = values.pop();
-```
-
-### shift() / unshift()
-
-Remove or add an element at the beginning and mutate the array.
-
-// Practical example of shift() / unshift().
-```javascript
-const values = [2, 3];
-values.unshift(1);
-const first = values.shift();
-```
-
-### slice()
-
-Returns a shallow copy of part of an array without mutating it.
-
-// Practical example of slice().
-```javascript
-const middle = [10, 20, 30, 40].slice(1, 3);
-```
-
-### splice()
-
-Adds, removes, or replaces elements and mutates the array.
-
-// Practical example of splice().
-```javascript
-const values = [1, 2, 4];
-values.splice(2, 0, 3);
-```
-
-### concat()
-
-Creates a new array by combining arrays or values.
-
-// Practical example of concat().
-```javascript
-const merged = [1, 2].concat([3, 4]);
-```
-
-### flat()
-
-Flattens nested arrays to the requested depth.
-
-// Practical example of flat().
-```javascript
-const flat = [1, [2, [3]]].flat(2);
-```
-
-### flatMap()
-
-Maps each element and flattens one level of the result.
-
-// Practical example of flatMap().
-```javascript
-const pairs = [1, 2].flatMap(n => [n, n * 2]);
-```
-
-### sort()
-
-Sorts the array in place; numeric sorting needs a comparator.
-
-// Practical example of sort().
-```javascript
-const numbers = [10, 2, 5].sort((a, b) => a - b);
-```
-
-### reverse()
-
-Reverses the array in place.
-
-// Practical example of reverse().
-```javascript
-const reversed = [1, 2, 3].reverse();
-```
-
-## Quick Reference
-
-| Operation | What it does |
-|---|---|
-| Read/inspect | Check the current value or state. |
-| Transform | Produce a new value when the API supports it. |
-| Update | Change state only when the operation is designed to mutate. |
-| Edge case | Handle empty, invalid, or boundary input explicitly. |
-
-## Return Values and Mutation
-
-For every method, check what it returns and whether it mutates the original value. A transformation method commonly returns a new collection, while a mutating method changes the receiver. Knowing this difference prevents subtle bugs when the same data is reused in several parts of an application.

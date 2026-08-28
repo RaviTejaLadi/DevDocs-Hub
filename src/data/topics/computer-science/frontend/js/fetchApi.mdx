@@ -1,6 +1,6 @@
-# JavaScript Fetch API Guide
+# 📦 JavaScript Fetch API Guide
 
-## 1. Definition
+## 📖 1. Definition
 
 The **Fetch API** provides a modern interface for making HTTP requests in the
 browser. It replaces the older `XMLHttpRequest` and returns a `Promise`, making
@@ -10,9 +10,8 @@ it easy to work with asynchronous code.
 
 ---
 
-## 2. Syntax
+## 🧩 2. Syntax
 
-// Basic example showing the core idea.
 ```javascript
 fetch(url, options)
   .then((response) => {
@@ -30,9 +29,12 @@ fetch(url, options)
 | `url`     | `string` | The URL to which the request is sent          |
 | `options` | `object` | (Optional) An object containing custom config |
 
+---
+
+## ⚙️ 3. Basic Usage
+
 ### ✅ GET Request (Default)
 
-// Basic example showing the core idea.
 ```javascript
 fetch('https://jsonplaceholder.typicode.com/posts/1')
   .then((response) => response.json())
@@ -40,9 +42,10 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
   .catch((error) => console.error('Error:', error));
 ```
 
+---
+
 ## 🧾 4. Common Options
 
-// Basic example showing the core idea.
 ```javascript
 {
   method: 'GET', // or 'POST', 'PUT', 'DELETE'
@@ -54,9 +57,10 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
 }
 ```
 
+---
+
 ## 📨 5. POST Request Example
 
-// Basic example showing the core idea.
 ```javascript
 const newPost = {
   title: 'New Article',
@@ -76,11 +80,12 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
   .catch((error) => console.error('Error:', error));
 ```
 
-## 6. Handling Non-OK Responses
+---
+
+## 🧪 6. Handling Non-OK Responses
 
 Fetch **does not reject** the promise on HTTP errors (like 404/500).
 
-// Basic example showing the core idea.
 ```javascript
 fetch('https://jsonplaceholder.typicode.com/posts/invalid')
   .then((response) => {
@@ -93,9 +98,10 @@ fetch('https://jsonplaceholder.typicode.com/posts/invalid')
   .catch((error) => console.error('Fetch failed:', error));
 ```
 
-## 7. Async/Await Version
+---
 
-// Basic example showing the core idea.
+## 🔄 7. Async/Await Version
+
 ```javascript
 async function fetchData() {
   try {
@@ -113,9 +119,10 @@ async function fetchData() {
 fetchData();
 ```
 
-## 8. Advanced Example: PUT Request
+---
 
-// Basic example showing the core idea.
+## 🧠 8. Advanced Example: PUT Request
+
 ```javascript
 const updatedData = {
   id: 1,
@@ -136,6 +143,8 @@ fetch('https://jsonplaceholder.typicode.com/posts/1', {
   .catch((error) => console.error('Error:', error));
 ```
 
+---
+
 ## 🧱 9. Use Cases
 
 - Fetch data from APIs
@@ -144,11 +153,15 @@ fetch('https://jsonplaceholder.typicode.com/posts/1', {
 - Load JSON/config files dynamically
 - Communicate with RESTful services
 
+---
+
 ## 🧯 10. Error Handling Patterns
 
 - **Network error** → `.catch()`
 - **HTTP error** → Check `response.ok`
 - **Parsing error** → Try/catch when calling `.json()`
+
+---
 
 ## 🔁 11. Fetch vs Axios
 
@@ -159,34 +172,11 @@ fetch('https://jsonplaceholder.typicode.com/posts/1', {
 | Interceptors       | ❌ No  | ✅ Yes                   |
 | Progress events    | ❌ No  | ✅ Yes                   |
 
-## 12. Summary
+---
+
+## 📌 12. Summary
 
 - `fetch()` is a modern way to make HTTP requests.
 - It returns a **Promise**, making it ideal for **async/await**.
 - Always check `response.ok` before consuming the body.
 - Use `JSON.stringify()` and `Content-Type` headers when sending data.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

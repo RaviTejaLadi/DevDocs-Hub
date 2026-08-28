@@ -1,4 +1,4 @@
-# ⚖ Fluid Statics
+# ⚖️ Fluid Statics
 
 Fluid Statics is the branch of fluid mechanics that deals with fluids at rest.
 Since the fluid is not moving, there are no shear stresses caused by motion. The
@@ -9,7 +9,7 @@ submarines, and ships.
 
 ---
 
-## What is Fluid Statics?
+# 📌 What is Fluid Statics?
 
 Fluid statics studies fluids that are completely at rest or moving as a rigid
 body without relative motion between fluid layers.
@@ -24,6 +24,8 @@ body without relative motion between fluid layers.
 
 ✅ Liquid inside a hydraulic jack
 
+---
+
 ## Characteristics of Fluid at Rest
 
 When a fluid is at rest:
@@ -33,7 +35,6 @@ When a fluid is at rest:
 - Pressure increases with depth
 - Pressure at the same horizontal level is equal
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Fluid at Rest]
@@ -43,7 +44,9 @@ graph TD
     A --> E[Equal Pressure at Same Level]
 ```
 
-## 1⃣ Pressure in a Fluid
+---
+
+# 1️⃣ Pressure in a Fluid
 
 Pressure is the normal force acting per unit area.
 
@@ -63,6 +66,8 @@ Pascal (Pa)
 
 [ 1 , Pa = 1 , N/m^2 ]
 
+---
+
 ## Example
 
 A force of 500 N acts on an area of 0.5 m².
@@ -71,22 +76,29 @@ A force of 500 N acts on an area of 0.5 m².
 
 [ P = 1000 , Pa ]
 
-## 2⃣ Hydrostatic Pressure
+---
+
+# 2️⃣ Hydrostatic Pressure
 
 Hydrostatic pressure is the pressure exerted by a fluid at rest due to its
 weight.
 
 Pressure increases as depth increases.
 
+### Formula
+
 [ P = \rho g h ]
+
+Where:
 
 - ρ = Density (kg/m³)
 - g = Gravitational acceleration (9.81 m/s²)
 - h = Depth below fluid surface (m)
 
+---
+
 ## Pressure Variation with Depth
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Free Surface]
@@ -94,12 +106,16 @@ graph TD
     B --> C[Depth h2]
     C --> D[Depth h3]
 
-B --- E[Low Pressure]
+    B --- E[Low Pressure]
     C --- F[Medium Pressure]
     D --- G[High Pressure]
 ```
 
 The deeper we go, the greater the pressure.
+
+---
+
+## Example
 
 Find pressure at a depth of 5 m in water.
 
@@ -115,20 +131,23 @@ Given:
 
 [ P = 49.05 , kPa ]
 
-## 3⃣ Absolute, Atmospheric, and Gauge Pressure
+---
+
+# 3️⃣ Absolute, Atmospheric, and Gauge Pressure
 
 Pressure can be measured relative to different reference points.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph LR
     A[Absolute Pressure]
     B[Atmospheric Pressure]
     C[Gauge Pressure]
 
-A --> B
+    A --> B
     A --> C
 ```
+
+---
 
 ## Atmospheric Pressure
 
@@ -138,30 +157,41 @@ At sea level:
 
 [ P_{atm}=101.325,kPa ]
 
+---
+
 ## Gauge Pressure
 
 Pressure measured relative to atmospheric pressure.
 
+### Formula
+
 [ P_g=P_{abs}-P_{atm} ]
+
+---
 
 ## Absolute Pressure
 
 Pressure measured relative to a perfect vacuum.
 
+### Formula
+
 [ P_{abs}=P_{atm}+P_g ]
 
-## 4⃣ Pascal's Law
+---
+
+# 4️⃣ Pascal's Law
 
 Pascal's Law states:
 
 > Pressure applied at any point in a confined fluid is transmitted equally in
 > all directions.
 
+---
+
 ## Hydraulic Principle
 
 Hydraulic machines work using Pascal's Law.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph LR
     A[Small Force]
@@ -171,14 +201,20 @@ graph LR
     D --> E[Large Force]
 ```
 
+---
+
 ## Mathematical Form
 
 [ \frac{F_1}{A_1}=\frac{F_2}{A_2} ]
+
+Where:
 
 - F₁ = Input force
 - F₂ = Output force
 - A₁ = Small piston area
 - A₂ = Large piston area
+
+---
 
 ## Applications
 
@@ -187,17 +223,20 @@ graph LR
 - Hydraulic lift
 - Automobile braking system
 
-## 5⃣ Pressure Measurement Devices
+---
+
+# 5️⃣ Pressure Measurement Devices
 
 Pressure is commonly measured using manometers and gauges.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Pressure Measurement]
     A --> B[Manometers]
     A --> C[Pressure Gauges]
 ```
+
+---
 
 ## Manometer
 
@@ -207,6 +246,8 @@ A device that measures pressure using liquid columns.
 
 - Simple manometer
 - Differential manometer
+
+---
 
 ## Bourdon Pressure Gauge
 
@@ -218,23 +259,27 @@ Applications:
 - Compressors
 - Pipelines
 
-## 6⃣ Hydrostatic Law
+---
+
+# 6️⃣ Hydrostatic Law
 
 Hydrostatic law states that the rate of increase of pressure with depth equals
 the specific weight of the fluid.
 
+### Mathematical Form
 
 [ \frac{dP}{dh}=\rho g ]
 
 This explains why pressure increases linearly with depth.
 
-## 7⃣ Pressure on Submerged Surfaces
+---
+
+# 7️⃣ Pressure on Submerged Surfaces
 
 When a surface is submerged in a fluid, pressure acts over the entire area.
 
 Since pressure varies with depth, the total force is called hydrostatic force.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Submerged Surface]
@@ -242,14 +287,20 @@ graph TD
     B --> C[Hydrostatic Force]
 ```
 
+---
+
 ## Total Hydrostatic Force
 
 [ F=\rho g h_c A ]
 
+Where:
+
 - hₙ = Depth of centroid
 - A = Area
 
-## 8⃣ Center of Pressure
+---
+
+# 8️⃣ Center of Pressure
 
 The center of pressure is the point where the resultant hydrostatic force acts.
 
@@ -258,11 +309,12 @@ Important facts:
 - Always lies below the centroid for vertical surfaces.
 - Used in dam and gate design.
 
-## 9⃣ Buoyancy
+---
+
+# 9️⃣ Buoyancy
 
 Buoyancy is the upward force exerted by a fluid on a submerged or floating body.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Object in Fluid]
@@ -270,19 +322,29 @@ graph TD
     A --> C[Buoyant Force Upward]
 ```
 
-## Archimedes' Principle
+---
+
+# Archimedes' Principle
 
 Archimedes stated:
 
 > A body immersed in a fluid experiences an upward force equal to the weight of
 > the displaced fluid.
 
+---
+
 ## Buoyant Force Formula
 
 [ F_B=\rho g V ]
 
+Where:
+
 - ρ = Fluid density
 - V = Displaced fluid volume
+
+---
+
+# Floating and Sinking
 
 ### Floating Condition
 
@@ -302,7 +364,6 @@ Weight exceeds buoyant force.
 
 Buoyant force exceeds weight.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph TD
     A[Object in Fluid]
@@ -311,7 +372,9 @@ graph TD
     A --> D[FB > W → Rising]
 ```
 
-## 🔟 Stability of Floating Bodies
+---
+
+# 🔟 Stability of Floating Bodies
 
 A floating body should return to its original position after a small
 disturbance.
@@ -328,7 +391,6 @@ Moves farther away.
 
 Remains in the new position.
 
-<!-- Visual flow for ⚖ Fluid Statics. -->
 ```mermaid
 graph LR
     A[Stability]
@@ -336,6 +398,10 @@ graph LR
     A --> C[Unstable]
     A --> D[Neutral]
 ```
+
+---
+
+# Engineering Applications
 
 ## Dams
 
@@ -357,6 +423,10 @@ Use Pascal's Law to multiply force.
 
 Pressure calculations help determine tank design.
 
+---
+
+# Real-Life Examples
+
 ### Dam Walls
 
 Dam walls are thicker at the bottom because pressure increases with depth.
@@ -365,6 +435,7 @@ Dam walls are thicker at the bottom because pressure increases with depth.
 
 Divers experience higher pressure as they go deeper underwater.
 
+### Ships
 
 Large ships float because they displace enough water to create buoyant force.
 
@@ -372,7 +443,9 @@ Large ships float because they displace enough water to create buoyant force.
 
 A small force lifts a heavy vehicle using Pascal's Law.
 
-## 📋 Summary
+---
+
+# 📋 Summary
 
 | Concept              | Formula          |
 | -------------------- | ---------------- |
@@ -383,7 +456,9 @@ A small force lifts a heavy vehicle using Pascal's Law.
 | Pascal's Law         | F₁/A₁ = F₂/A₂    |
 | Buoyant Force        | FB = ρgV         |
 
-## Key Takeaways
+---
+
+# 🎯 Key Takeaways
 
 - Fluid statics deals with fluids at rest.
 - Pressure acts normal to surfaces.

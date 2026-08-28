@@ -1,6 +1,6 @@
 # Files & Folder Structure (Vue 3 + Vite)
 
-## Introduction
+# Introduction
 
 A good folder structure helps with:
 
@@ -15,11 +15,10 @@ Modern Vue applications usually follow a **feature-driven + modular structure**.
 
 ---
 
-## Default Vue Project Structure
+# Default Vue Project Structure
 
 After creating a Vue app using Vite:
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 my-vue-app/
 │
@@ -35,11 +34,16 @@ my-vue-app/
 └── README.md
 ```
 
-## node_modules/
+---
+
+# Root Level Files & Folders
+
+---
+
+# node_modules/
 
 Contains all installed dependencies.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 node_modules/
 ```
@@ -52,6 +56,8 @@ Examples:
 - vue-router
 - axios
 
+---
+
 ## Important
 
 - Automatically generated
@@ -60,31 +66,34 @@ Examples:
 
 Ignored using:
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 .gitignore
 ```
 
-## public/
+---
+
+# public/
 
 Contains static files.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 public/
 ```
 
 Files inside `public` are copied directly during build.
 
+---
+
 ## Example
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 public/
 ├── favicon.ico
 ├── robots.txt
 └── images/
 ```
+
+---
 
 ## Use Cases
 
@@ -95,27 +104,30 @@ public/
 | robots.txt    | SEO         |
 | manifest.json | PWA         |
 
+---
+
 ## Accessing Public Files
 
-<!-- Basic example showing the core idea. -->
 ```html
 <img src="/images/logo.png" />
 ```
 
-## src/
+---
+
+# src/
 
 Main application source code.
 
 Most development happens here.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 src/
 ```
 
-## Typical Professional Structure
+---
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+# Typical Professional Structure
+
 ```txt
 src/
 │
@@ -138,11 +150,15 @@ src/
 └── main.js
 ```
 
-## src/main.js
+---
+
+# src/main.js
 
 Application entry point.
 
 This is where Vue app starts.
+
+---
 
 ## Responsibilities
 
@@ -151,7 +167,10 @@ This is where Vue app starts.
 - Mount application
 - Import global CSS
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```js
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -163,18 +182,27 @@ const app = createApp(App);
 app.mount('#app');
 ```
 
-## src/App.vue
+---
+
+# src/App.vue
 
 Root component of the application.
 
 Every component renders inside this component.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```vue
 <template>
   <router-view />
 </template>
 ```
+
+---
+
+## Responsibilities
 
 | Responsibility  | Description      |
 | --------------- | ---------------- |
@@ -182,18 +210,20 @@ Every component renders inside this component.
 | Shared UI       | Navbar/Footer    |
 | Route Rendering | router-view      |
 
-## assets/
+---
+
+# assets/
 
 Contains processed assets.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 assets/
 ```
 
+---
+
 ## Examples
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 assets/
 ├── images/
@@ -202,6 +232,10 @@ assets/
 └── styles/
 ```
 
+---
+
+## Use Cases
+
 | Asset Type | Example       |
 | ---------- | ------------- |
 | Images     | PNG, JPG, SVG |
@@ -209,24 +243,30 @@ assets/
 | CSS        | Global styles |
 | Icons      | SVG icons     |
 
+---
+
 ## Import Example
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```js
 import logo from '@/assets/images/logo.png';
 ```
 
-## components/
+---
+
+# components/
 
 Reusable UI components.
 
-## Purpose
+---
+
+# Purpose
 
 Build modular UI.
 
+---
+
 ## Example Structure
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```txt
 components/
 │
@@ -237,11 +277,16 @@ components/
 └── cards/
 ```
 
-## ui/
+---
+
+# ui/
 
 Reusable low-level components.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Examples
+
 ```txt
 ui/
 ├── Button.vue
@@ -250,17 +295,24 @@ ui/
 └── Dialog.vue
 ```
 
+---
+
 ## Characteristics
 
 - Highly reusable
 - Generic
 - No business logic
 
-## common/
+---
+
+# common/
 
 Shared components used across application.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Examples
+
 ```txt
 common/
 ├── Navbar.vue
@@ -269,9 +321,10 @@ common/
 └── Loader.vue
 ```
 
-## Feature Components Example
+---
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+# Feature Components Example
+
 ```txt
 components/
 └── users/
@@ -280,13 +333,22 @@ components/
     └── UserForm.vue
 ```
 
-## views/ or pages/
+---
+
+# views/ or pages/
 
 Page-level components.
 
+---
+
+## Purpose
+
 Represent routes/pages.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```txt
 views/
 ├── HomeView.vue
@@ -295,7 +357,9 @@ views/
 └── DashboardView.vue
 ```
 
-## Difference Between components and views
+---
+
+# Difference Between components and views
 
 | components          | views          |
 | ------------------- | -------------- |
@@ -303,22 +367,32 @@ views/
 | Small UI parts      | Full page      |
 | Used multiple times | Usually once   |
 
-## router/
+---
+
+# router/
 
 Contains routing configuration.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+# Example Structure
+
 ```txt
 router/
 ├── index.js
 └── routes.js
 ```
 
-## router/index.js
+---
+
+# router/index.js
 
 Creates Vue Router instance.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```js
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -330,13 +404,22 @@ export const router = createRouter({
 });
 ```
 
-## stores/
+---
+
+# stores/
 
 Contains Pinia stores.
 
+---
+
+# Purpose
+
 Global state management.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```txt
 stores/
 ├── authStore.js
@@ -344,9 +427,10 @@ stores/
 └── cartStore.js
 ```
 
-## Example Store
+---
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+# Example Store
+
 ```js
 import { defineStore } from 'pinia';
 
@@ -357,15 +441,24 @@ export const useAuthStore = defineStore('auth', {
 });
 ```
 
-## composables/
+---
+
+# composables/
 
 Vue Composition API reusable logic.
 
 Equivalent to React custom hooks.
 
+---
+
+# Purpose
+
 Reuse business logic.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Examples
+
 ```txt
 composables/
 ├── useAuth.js
@@ -374,35 +467,47 @@ composables/
 └── useDebounce.js
 ```
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+# Example
+
 ```js
 import { ref } from 'vue';
 
 export function useCounter() {
   const count = ref(0);
 
-const increment = () => {
+  const increment = () => {
     count.value++;
   };
 
-return {
+  return {
     count,
     increment,
   };
 }
 ```
 
-## services/
+---
+
+# services/
 
 Contains API and external service logic.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+# Example Structure
+
 ```txt
 services/
 ├── api.js
 ├── auth.service.js
 └── user.service.js
 ```
+
+---
+
+# Purpose
 
 Separate:
 
@@ -412,7 +517,10 @@ Separate:
 
 from UI components.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+# Example
+
 ```js
 import axios from 'axios';
 
@@ -421,11 +529,16 @@ export async function getUsers() {
 }
 ```
 
-## api/
+---
+
+# api/
 
 Sometimes used separately for API clients.
 
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
+---
+
+## Example
+
 ```txt
 api/
 ├── axios.js
@@ -433,27 +546,44 @@ api/
 └── interceptors.js
 ```
 
-## Example Axios Instance
+---
+
+# Example Axios Instance
+
+```js
+import axios from 'axios';
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## layouts/
+---
+
+# layouts/
 
 Application layouts.
+
+---
+
+## Examples
 
 ```txt
 layouts/
 ├── DefaultLayout.vue
 ├── AuthLayout.vue
 └── DashboardLayout.vue
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
+---
+
+# Purpose
+
 Different page structures.
+
+---
+
+## Example
 
 ```txt
 Auth Pages
@@ -461,12 +591,17 @@ Auth Pages
 
 Dashboard Pages
 → Sidebar + Navbar
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## utils/
+---
+
+# utils/
 
 Utility/helper functions.
+
+---
+
+# Examples
 
 ```txt
 utils/
@@ -474,8 +609,11 @@ utils/
 ├── debounce.js
 ├── currency.js
 └── validators.js
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
+
+---
+
+# Example
 
 ```js
 export function formatCurrency(value) {
@@ -484,22 +622,28 @@ export function formatCurrency(value) {
     currency: 'INR',
   }).format(value);
 }
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## constants/
+---
+
+# constants/
 
 Application constants.
+
+---
+
+## Example
 
 ```txt
 constants/
 ├── routes.js
 ├── roles.js
 └── config.js
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Why Use Constants
+---
+
+# Why Use Constants
 
 Avoid hardcoded values.
 
@@ -507,44 +651,60 @@ Bad:
 
 ```js
 if (role === 'admin')
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
 Better:
 
 ```js
 if (role === ROLES.ADMIN)
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## styles/
+---
+
+# styles/
 
 Global styles.
+
+---
+
+## Example
 
 ```txt
 styles/
 ├── main.css
 ├── variables.css
 └── animations.css
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
+
+---
+
+# Purpose
 
 - Global CSS
 - Tailwind imports
 - CSS variables
 - Themes
 
-## types/
+---
+
+# types/
 
 TypeScript types/interfaces.
+
+---
+
+## Example
 
 ```txt
 types/
 ├── user.ts
 ├── api.ts
 └── auth.ts
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
+
+---
+
+# Example
 
 ```ts
 export interface User {
@@ -552,20 +712,28 @@ export interface User {
   name: string;
   email: string;
 }
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## index.html
+---
+
+# index.html
 
 Main HTML file.
 
 Located outside `src`.
 
+---
+
+# Purpose
+
 Vite injects app here.
+
+---
+
+## Example
 
 ```html
 <div id="app"></div>
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
 Vue mounts application into:
@@ -574,11 +742,15 @@ Vue mounts application into:
 #app
 ```
 
-## package.json
+---
+
+# package.json
 
 Most important project configuration file.
 
-## Contains
+---
+
+# Contains
 
 | Property     | Purpose      |
 | ------------ | ------------ |
@@ -587,6 +759,10 @@ Most important project configuration file.
 | version      | App version  |
 | name         | Project name |
 
+---
+
+# Example
+
 ```json
 {
   "scripts": {
@@ -594,17 +770,26 @@ Most important project configuration file.
     "build": "vite build"
   }
 }
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## vite.config.js
+---
+
+# vite.config.js
 
 Vite configuration file.
+
+---
+
+# Responsibilities
 
 - Plugins
 - Aliases
 - Build configuration
 - Environment setup
+
+---
+
+## Example
 
 ```js
 import { defineConfig } from 'vite';
@@ -613,35 +798,45 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
 });
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## .env Files
+---
+
+# .env Files
 
 Environment variables.
+
+---
+
+# Examples
 
 ```txt
 .env
 .env.development
 .env.production
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
+
+---
+
+# Example
 
 ```env
 VITE_API_URL=https://api.example.com
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Important Rule
+---
+
+# Important Rule
 
 Vite environment variables must start with:
 
 ```txt
 VITE_
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Professional Large Scale Structure
+---
+
+# Professional Large Scale Structure
 
 ```txt
 src/
@@ -670,12 +865,17 @@ src/
 │
 ├── App.vue
 └── main.js
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Feature-Based Structure
+---
+
+# Feature-Based Structure
 
 Modern scalable architecture.
+
+---
+
+# Example
 
 ```txt
 features/
@@ -685,10 +885,11 @@ features/
     ├── services/
     ├── stores/
     └── pages/
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Benefits
+---
+
+# Benefits
 
 | Benefit            | Description        |
 | ------------------ | ------------------ |
@@ -697,29 +898,41 @@ features/
 | Cleaner imports    | Organized code     |
 | Team collaboration | Clear ownership    |
 
-## Keep Components Small
+---
+
+# Best Practices
+
+---
+
+# Keep Components Small
 
 Each component should do one thing well.
 
-## Use Feature-Based Architecture
+---
+
+# Use Feature-Based Architecture
 
 Better for medium-large apps.
 
-## Avoid Deep Nesting
+---
+
+# Avoid Deep Nesting
+
+Bad:
 
 ```txt
 components/common/ui/shared/base/
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
 Good:
 
 ```txt
 components/ui/
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Separate Business Logic
+---
+
+# Separate Business Logic
 
 Use:
 
@@ -729,21 +942,25 @@ Use:
 
 instead of putting everything inside components.
 
-## Use Aliases
+---
+
+# Use Aliases
 
 Instead of:
 
 ```js
 ../../../components/Button.vue
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
+
+Use:
 
 ```js
 @/components/Button.vue
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Recommended Structure for Most Projects
+---
+
+# Recommended Structure for Most Projects
 
 ```txt
 src/
@@ -761,10 +978,11 @@ src/
 │
 ├── App.vue
 └── main.js
-// Example demonstrating Files & Folder Structure (Vue 3 + Vite).
 ```
 
-## Folder Responsibilities Summary
+---
+
+# Folder Responsibilities Summary
 
 | Folder      | Responsibility          |
 | ----------- | ----------------------- |
@@ -780,12 +998,3 @@ src/
 | styles      | Global styling          |
 | constants   | App constants           |
 | types       | TypeScript types        |
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

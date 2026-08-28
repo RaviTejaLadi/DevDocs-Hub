@@ -1,11 +1,11 @@
-# Next.js
+# Next.js 🚀
 
 Next.js is a React framework for building full-stack web applications with
 Server Components, API routes, SSR, SSG, and modern routing.
 
 ---
 
-## Project Creation
+# Project Creation
 
 | Command                      | Description              |
 | ---------------------------- | ------------------------ |
@@ -15,13 +15,14 @@ Server Components, API routes, SSR, SSG, and modern routing.
 | `npm run start`              | Run production server    |
 | `npm run lint`               | Run ESLint               |
 
-# Basic example showing the core idea.
 ```bash
-## Create a Next.js project
+# Create a Next.js project
 npx create-next-app@latest my-app
 ```
 
-## Project Structure
+---
+
+# Project Structure
 
 | Folder          | Purpose             |
 | --------------- | ------------------- |
@@ -35,7 +36,6 @@ npx create-next-app@latest my-app
 | `middleware.ts` | Middleware          |
 | `types/`        | TypeScript types    |
 
-// Example demonstrating Next.js.
 ```text
 src/
 ├── app/
@@ -48,7 +48,9 @@ src/
 └── public/
 ```
 
-## App Router Basics
+---
+
+# App Router Basics
 
 | File            | Purpose          |
 | --------------- | ---------------- |
@@ -60,46 +62,51 @@ src/
 | `template.tsx`  | Re-render layout |
 | `route.ts`      | API endpoint     |
 
+---
+
+# Routes
+
 ## Static Route
 
-// Example demonstrating Next.js.
 ```text
 app/about/page.tsx
 ```
 
 URL:
 
-// Example demonstrating Next.js.
 ```text
 /about
 ```
 
+---
+
 ## Nested Route
 
-// Example demonstrating Next.js.
 ```text
 app/blog/page.tsx
 ```
 
-// Example demonstrating Next.js.
+URL:
+
 ```text
 /blog
 ```
 
+---
+
 ## Dynamic Route
 
-// Example demonstrating Next.js.
 ```text
 app/blog/[slug]/page.tsx
 ```
 
-// Example demonstrating Next.js.
+URL:
+
 ```text
 /blog/react
 /blog/nextjs
 ```
 
-// Example demonstrating Next.js.
 ```tsx
 // Access dynamic params
 export default async function Page({
@@ -109,43 +116,46 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-return <h1>{slug}</h1>;
+  return <h1>{slug}</h1>;
 }
 ```
 
+---
+
 ## Catch All Route
 
-// Example demonstrating Next.js.
 ```text
 app/docs/[...slug]/page.tsx
 ```
 
 Matches:
 
-// Example demonstrating Next.js.
 ```text
 /docs/react
 /docs/react/hooks
 /docs/react/hooks/useState
 ```
 
+---
+
 ## Optional Catch All
 
-// Example demonstrating Next.js.
 ```text
 app/docs/[[...slug]]/page.tsx
 ```
 
-// Example demonstrating Next.js.
+Matches:
+
 ```text
 /docs
 /docs/react
 /docs/react/hooks
 ```
 
-## Layouts
+---
 
-// Example demonstrating Next.js.
+# Layouts
+
 ```tsx
 // app/layout.tsx
 export default function RootLayout({
@@ -161,11 +171,12 @@ export default function RootLayout({
 }
 ```
 
-## Client Components
+---
+
+# Client Components
 
 By default all components are Server Components.
 
-// Example demonstrating Next.js.
 ```tsx
 // Client Component
 'use client';
@@ -175,19 +186,20 @@ import { useState } from 'react';
 export default function Counter() {
   const [count, setCount] = useState(0);
 
-return <button onClick={() => setCount(count + 1)}>{count}</button>;
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
 }
 ```
 
-## Server Components
+---
 
-// Example demonstrating Next.js.
+# Server Components
+
 ```tsx
 // Server Component
 export default async function Users() {
   const users = await getUsers();
 
-return (
+  return (
     <div>
       {users.map((user) => (
         <p key={user.id}>{user.name}</p>
@@ -197,9 +209,12 @@ return (
 }
 ```
 
+---
+
+# Data Fetching
+
 ## Server Side Fetch
 
-// Example demonstrating Next.js.
 ```tsx
 // Fetch data on server
 const res = await fetch('https://api.example.com/users');
@@ -207,18 +222,20 @@ const res = await fetch('https://api.example.com/users');
 const users = await res.json();
 ```
 
+---
+
 ## Disable Cache
 
-// Example demonstrating Next.js.
 ```tsx
 const data = await fetch(url, {
   cache: 'no-store',
 });
 ```
 
+---
+
 ## Revalidate
 
-// Example demonstrating Next.js.
 ```tsx
 const data = await fetch(url, {
   next: {
@@ -227,9 +244,10 @@ const data = await fetch(url, {
 });
 ```
 
-## Server Actions
+---
 
-// Example demonstrating Next.js.
+# Server Actions
+
 ```tsx
 // app/actions/user.ts
 'use server';
@@ -241,21 +259,20 @@ export async function createUser(formData: FormData) {
 
 Usage:
 
-// Example demonstrating Next.js.
 ```tsx
 <form action={createUser}>
   <input name="name" />
 </form>
 ```
 
-## Route Handlers (API Routes)
+---
 
-// Example demonstrating Next.js.
+# Route Handlers (API Routes)
+
 ```text
 app/api/users/route.ts
 ```
 
-// Example demonstrating Next.js.
 ```tsx
 // GET endpoint
 export async function GET() {
@@ -265,18 +282,21 @@ export async function GET() {
 }
 ```
 
+---
+
 ## POST Route
 
-// Example demonstrating Next.js.
 ```tsx
 export async function POST(req: Request) {
   const body = await req.json();
 
-return Response.json(body);
+  return Response.json(body);
 }
 ```
 
-## Navigation
+---
+
+# Navigation
 
 | Hook            | Usage                   |
 | --------------- | ----------------------- |
@@ -285,9 +305,10 @@ return Response.json(body);
 | useSearchParams | Query params            |
 | redirect        | Server redirect         |
 
+---
+
 ## Link Component
 
-// Example demonstrating Next.js.
 ```tsx
 // Client navigation
 import Link from 'next/link';
@@ -295,9 +316,10 @@ import Link from 'next/link';
 <Link href="/dashboard">Dashboard</Link>;
 ```
 
+---
+
 ## Router Navigation
 
-// Example demonstrating Next.js.
 ```tsx
 'use client';
 
@@ -309,14 +331,16 @@ router.back();
 router.refresh();
 ```
 
-## Query Parameters
+---
 
-// Example demonstrating Next.js.
+# Query Parameters
+
+URL:
+
 ```text
 /products?page=1
 ```
 
-// Example demonstrating Next.js.
 ```tsx
 // Access search params
 export default function Page({
@@ -330,9 +354,10 @@ export default function Page({
 }
 ```
 
-## Metadata API
+---
 
-// Example demonstrating Next.js.
+# Metadata API
+
 ```tsx
 // SEO metadata
 export const metadata = {
@@ -341,9 +366,10 @@ export const metadata = {
 };
 ```
 
+---
+
 ## Dynamic Metadata
 
-// Example demonstrating Next.js.
 ```tsx
 export async function generateMetadata() {
   return {
@@ -352,9 +378,10 @@ export async function generateMetadata() {
 }
 ```
 
-## Images
+---
 
-// Example demonstrating Next.js.
+# Images
+
 ```tsx
 // Optimized image
 import Image from 'next/image';
@@ -362,9 +389,10 @@ import Image from 'next/image';
 <Image src="/hero.png" alt="Hero" width={500} height={300} />;
 ```
 
-## Fonts
+---
 
-// Example demonstrating Next.js.
+# Fonts
+
 ```tsx
 // Google Font optimization
 import { Inter } from 'next/font/google';
@@ -374,9 +402,10 @@ const inter = Inter({
 });
 ```
 
-## Middleware
+---
 
-// Example demonstrating Next.js.
+# Middleware
+
 ```tsx
 // middleware.ts
 import { NextResponse } from 'next/server';
@@ -386,18 +415,20 @@ export function middleware() {
 }
 ```
 
-## Redirect
+---
 
-// Example demonstrating Next.js.
+# Redirect
+
 ```tsx
 import { redirect } from 'next/navigation';
 
 redirect('/login');
 ```
 
-## Not Found
+---
 
-// Example demonstrating Next.js.
+# Not Found
+
 ```tsx
 import { notFound } from 'next/navigation';
 
@@ -406,9 +437,10 @@ if (!user) {
 }
 ```
 
-## Loading UI
+---
 
-// Example demonstrating Next.js.
+# Loading UI
+
 ```tsx
 // app/loading.tsx
 export default function Loading() {
@@ -416,13 +448,21 @@ export default function Loading() {
 }
 ```
 
-## Error Boundary
+---
+
+# Error Boundary
+
+```tsx
+'use client';
 
 export default function Error({ error }: { error: Error }) {
   return <h1>Error</h1>;
 }
-// Example demonstrating Next.js.
 ```
+
+---
+
+# Cookies
 
 ## Read Cookie
 
@@ -432,17 +472,19 @@ import { cookies } from 'next/headers';
 
 const cookieStore = await cookies();
 const token = cookieStore.get('token');
-// Example demonstrating Next.js.
 ```
+
+---
 
 ## Set Cookie
 
 ```tsx
 cookieStore.set('theme', 'dark');
-// Example demonstrating Next.js.
 ```
 
-## Headers
+---
+
+# Headers
 
 ```tsx
 import { headers } from 'next/headers';
@@ -450,38 +492,37 @@ import { headers } from 'next/headers';
 const headerList = await headers();
 
 const userAgent = headerList.get('user-agent');
-// Example demonstrating Next.js.
 ```
 
-## Environment Variables
+---
+
+# Environment Variables
 
 ```env
 NEXT_PUBLIC_API_URL=https://api.com
 SECRET_KEY=123
-// Example demonstrating Next.js.
 ```
 
 Client Access:
 
 ```tsx
 process.env.NEXT_PUBLIC_API_URL;
-// Example demonstrating Next.js.
 ```
 
 Server Access:
 
 ```tsx
 process.env.SECRET_KEY;
-// Example demonstrating Next.js.
 ```
 
-## Parallel Routes
+---
+
+# Parallel Routes
 
 ```text
 app/
 ├── @team
 ├── @analytics
-// Example demonstrating Next.js.
 ```
 
 ```tsx
@@ -499,21 +540,23 @@ export default function Layout({
     </>
   );
 }
-// Example demonstrating Next.js.
 ```
 
-## Intercepting Routes
+---
+
+# Intercepting Routes
 
 ```text
 (.)login
 (..)login
 (...)login
-// Example demonstrating Next.js.
 ```
 
 Used for modals and overlays.
 
-## Caching
+---
+
+# Caching
 
 | Method        | Description |
 | ------------- | ----------- |
@@ -522,21 +565,24 @@ Used for modals and overlays.
 | revalidate    | ISR         |
 | force-cache   | Force cache |
 
-## Authentication Pattern
+---
+
+# Authentication Pattern
 
 ```tsx
 // Middleware auth check
 export function middleware(req: Request) {
   const token = req.cookies.get('token');
 
-if (!token) {
+  if (!token) {
     return Response.redirect(new URL('/login', req.url));
   }
 }
-// Example demonstrating Next.js.
 ```
 
-## Streaming
+---
+
+# Streaming
 
 ```tsx
 import { Suspense } from 'react';
@@ -544,10 +590,11 @@ import { Suspense } from 'react';
 <Suspense fallback={<Loading />}>
   <Users />
 </Suspense>;
-// Example demonstrating Next.js.
 ```
 
-## Common Hooks
+---
+
+# Common Hooks
 
 | Hook            | Purpose              |
 | --------------- | -------------------- |
@@ -559,7 +606,12 @@ import { Suspense } from 'react';
 | useOptimistic   | Optimistic UI        |
 | useActionState  | Server actions       |
 
-## useParams
+---
+
+# useParams
+
+```tsx
+'use client';
 
 import { useParams } from 'next/navigation';
 
@@ -568,25 +620,29 @@ const params = useParams();
 console.log(params.id);
 ```
 
-## useOptimistic
+---
 
-// Example demonstrating Next.js.
+# useOptimistic
+
 ```tsx
 const [optimisticTodos, addTodo] = useOptimistic(todos);
 ```
 
 Used for instant UI updates.
 
-## useActionState
+---
 
-// Example demonstrating Next.js.
+# useActionState
+
 ```tsx
 const [state, action] = useActionState(createUser, null);
 ```
 
 Used with server actions.
 
-## Common File Conventions
+---
+
+# Common File Conventions
 
 | File          | Usage            |
 | ------------- | ---------------- |
@@ -598,25 +654,29 @@ Used with server actions.
 | middleware.ts | Request handling |
 | not-found.tsx | 404 page         |
 
-## Static Generation
+---
 
-// Example demonstrating Next.js.
+# Static Generation
+
 ```tsx
 export async function generateStaticParams() {
   return [{ slug: 'react' }, { slug: 'nextjs' }];
 }
 ```
 
-## Revalidation
+---
 
-// Example demonstrating Next.js.
+# Revalidation
+
 ```tsx
 import { revalidatePath } from 'next/cache';
 
 revalidatePath('/products');
 ```
 
-## Common Imports
+---
+
+# Common Imports
 
 | Package  | Import            |
 | -------- | ----------------- |
@@ -627,7 +687,9 @@ revalidatePath('/products');
 | Cookies  | `next/headers`    |
 | Redirect | `next/navigation` |
 
-## Next.js Rendering Modes
+---
+
+# Next.js Rendering Modes
 
 | Mode      | Description                     |
 | --------- | ------------------------------- |
@@ -638,7 +700,9 @@ revalidatePath('/products');
 | Streaming | Progressive Rendering           |
 | RSC       | React Server Components         |
 
-## Production Best Practices
+---
+
+# Production Best Practices
 
 | Practice                 | Why                    |
 | ------------------------ | ---------------------- |
@@ -651,7 +715,9 @@ revalidatePath('/products');
 | Keep Secrets on Server   | Security               |
 | Use Suspense             | Better UX              |
 
-## Most Asked Next.js Interview Questions
+---
+
+# Most Asked Next.js Interview Questions
 
 | Question                   | Answer                                        |
 | -------------------------- | --------------------------------------------- |
@@ -665,12 +731,3 @@ revalidatePath('/products');
 | Streaming                  | Send UI progressively                         |
 | Suspense                   | Async UI loading                              |
 | Revalidation               | Refresh cached data                           |
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

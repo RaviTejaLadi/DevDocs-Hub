@@ -1,30 +1,31 @@
-# 🕵‍♂ Private Methods in JavaScript - Explained Simply
+# 🕵️‍♂️ Private Methods in JavaScript - Explained Simply
 
-## Definition
+## 🔍 Definition
 
 **Private methods** are class methods that can only be accessed from **within
 the class** they are defined in — not from outside.
 
 ---
 
-## Why is it Important?
+## 🎯 Why is it Important?
 
 Private methods help **encapsulate logic** and protect internal code from being
 accidentally accessed or modified from outside the class. This promotes **clean,
 secure, and maintainable code**.
 
+---
+
 ## 🧱 Syntax/Structure
 
 You define a private method by prefixing it with a `#` symbol inside a class:
 
-// Example demonstrating 🕵‍♂ Private Methods in JavaScript - Explained Simply.
 ```js
 class MyClass {
   #privateMethod() {
     console.log('This is private');
   }
 
-publicMethod() {
+  publicMethod() {
     this.#privateMethod(); // Allowed
   }
 }
@@ -32,18 +33,21 @@ publicMethod() {
 
 Trying to access `#privateMethod` from outside the class will throw an error.
 
-### Basic Example
+---
 
-// Example demonstrating 🕵‍♂ Private Methods in JavaScript - Explained Simply.
+## 💡 Examples
+
+### 🧪 Basic Example
+
 ```js
 class Counter {
   #count = 0;
 
-#logCount() {
+  #logCount() {
     console.log(`Count is: ${this.#count}`);
   }
 
-increment() {
+  increment() {
     this.#count++;
     this.#logCount();
   }
@@ -54,29 +58,30 @@ counter.increment(); // ✅ Works fine
 // counter.#logCount(); ❌ Error: Private method
 ```
 
-### Real-World Use Case
+---
+
+### 🏗️ Real-World Use Case
 
 Imagine you're building a **Bank Account** class. You want to keep sensitive
 operations like calculating interest private:
 
-// Example demonstrating 🕵‍♂ Private Methods in JavaScript - Explained Simply.
 ```js
 class BankAccount {
   #balance = 0;
 
-deposit(amount) {
+  deposit(amount) {
     this.#balance += amount;
     this.#logTransaction('deposit', amount);
   }
 
-withdraw(amount) {
+  withdraw(amount) {
     if (amount <= this.#balance) {
       this.#balance -= amount;
       this.#logTransaction('withdraw', amount);
     }
   }
 
-#logTransaction(type, amount) {
+  #logTransaction(type, amount) {
     console.log(`Transaction: ${type} of $${amount}`);
   }
 }
@@ -86,7 +91,9 @@ account.deposit(100);
 // account.#logTransaction("hack", 1000); ❌ Not allowed
 ```
 
-## When/Where to Use It
+---
+
+## 📌 When/Where to Use It
 
 Use private methods when:
 
@@ -94,7 +101,9 @@ Use private methods when:
 - You want to **prevent misuse** of internal logic by external code.
 - You're designing a **secure component** or library.
 
-## ⚠ Gotchas/Tips
+---
+
+## ⚠️ Gotchas/Tips
 
 ✅ **Do:**
 
@@ -109,32 +118,3 @@ Use private methods when:
 
 💡 Tip: This feature works only in **modern JavaScript environments (ES2022+)**
 — make sure your environment supports it!
-
-## Quick Reference
-
-| Operation | What it does |
-|---|---|
-| Read/inspect | Check the current value or state. |
-| Transform | Produce a new value when the API supports it. |
-| Update | Change state only when the operation is designed to mutate. |
-| Edge case | Handle empty, invalid, or boundary input explicitly. |
-
-## Return Values and Mutation
-
-For every method, check what it returns and whether it mutates the original value. A transformation method commonly returns a new collection, while a mutating method changes the receiver. Knowing this difference prevents subtle bugs when the same data is reused in several parts of an application.
-
-## Edge Cases Worth Testing
-
-Test an empty collection, one element, duplicate values, invalid values, and a larger realistic input. Also check “not found” results and callback behavior for falsey values. Similar method names can have different return types or mutation rules, so verify them instead of relying on memory.
-
-## Choosing the Right Operation
-
-Choose an operation by intent. Use a filtering operation when you need a subset, a mapping operation when every item becomes a new value, a reduction when many values become one result, and a search operation when you only need the first matching item. Clear intent makes code easier to review and maintain.
-
-## API Selection Notes
-
-Choose an operation by the result you need, not by the shortest syntax. Check whether it preserves the original value, what it returns when nothing matches, and whether callbacks receive an index or the containing collection. For APIs used inside hot paths, also consider the number of passes over the data and temporary allocations. A clear method choice often communicates intent better than a manual loop, but only when the semantics match the requirement.
-
-## Final Understanding Check
-
-Before considering **🕵‍♂ Private Methods in JavaScript - Explained Simply** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

@@ -1,4 +1,4 @@
-# Authentication Security: The Front Door of Your Application
+# 🔐 Authentication Security: The Front Door of Your Application
 
 Authentication is the process of verifying the identity of a user, device, or
 system. It answers the fundamental question: "Are you who you claim to be?" In
@@ -17,7 +17,7 @@ years underscores this reality. ⚠️
 The methods used to authenticate users have evolved significantly in response to
 increasing computational power and sophisticated attack techniques.
 
-### 1⃣ Single-Factor Authentication (SFA)
+### 1️⃣ Single-Factor Authentication (SFA)
 
 Historically, authentication relied almost exclusively on a single factor:
 something the user knows, namely a username and password. While simple to
@@ -25,7 +25,7 @@ implement, passwords have proven to be exceptionally fragile. They are
 susceptible to weak choices, reuse across multiple sites, phishing, brute-force
 attacks, and credential stuffing. 🔑
 
-### 2⃣ Multi-Factor Authentication (MFA)
+### 2️⃣ Multi-Factor Authentication (MFA)
 
 To combat the weaknesses of passwords, Multi-Factor Authentication (MFA)
 requires users to provide two or more distinct types of verification factors
@@ -53,7 +53,7 @@ entirely, replacing them with more secure and user-friendly methods such as:
   of modern devices and their built-in biometric sensors (e.g., Apple FaceID,
   Windows Hello) to authenticate users locally and securely.
 
-## 🦹‍♂ Common Authentication Attacks
+## 🦹‍♂️ Common Authentication Attacks
 
 Attackers employ a wide array of techniques to compromise authentication
 systems. Understanding these attacks is crucial for designing robust defenses.
@@ -102,7 +102,7 @@ appropriate cookie flags (`HttpOnly`, `Secure`, `SameSite`). 🛡️
 > ⚠️ **Critical:** If an application must store passwords, they must never be
 > stored in plaintext. They must be cryptographically hashed and salted.
 
-### #⃣ Hashing
+### #️⃣ Hashing
 
 A cryptographic hash function is a one-way mathematical algorithm that takes an
 input (the password) and produces a fixed-size string of characters. **Bad
@@ -116,7 +116,6 @@ Attackers use precomputed tables of hashes (Rainbow Tables) to quickly reverse
 weak hashes. To defeat rainbow tables, a unique, random string called a "salt"
 is appended to the password _before_ it is hashed.
 
-<!-- Visual flow for Authentication Security: The Front Door of Your Application. -->
 ```mermaid
 graph LR
     A[Password 🔑] --> C(Combine + Hash ⚙️)
@@ -124,7 +123,7 @@ graph LR
     C --> D[Stored Hash 💾]
 ```
 
-### ⏱ Modern Password Hashing Algorithms
+### ⏱️ Modern Password Hashing Algorithms
 
 Modern password hashing algorithms are designed to be intentionally slow and
 resource-intensive (key stretching), making brute-force attacks economically
@@ -148,7 +147,6 @@ utilized. 🧱
 OAuth 2.0 is an authorization framework that enables applications to obtain
 limited access to user accounts on an HTTP service. It does not share passwords.
 
-<!-- Visual flow for Authentication Security: The Front Door of Your Application. -->
 ```mermaid
 sequenceDiagram
     participant User as 👤 Resource Owner
@@ -156,7 +154,7 @@ sequenceDiagram
     participant Auth as 🛡️ Authorization Server
     participant API as 🗄️ Resource Server
 
-User->>App: "Connect my account"
+    User->>App: "Connect my account"
     App->>Auth: Request Authorization
     Auth->>User: "Do you allow this app?"
     User-->>Auth: Grants Access
@@ -211,12 +209,3 @@ practices:
 By implementing these robust authentication controls, organizations can
 significantly harden their applications against unauthorized access and protect
 sensitive user data from compromise. 🛡️
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

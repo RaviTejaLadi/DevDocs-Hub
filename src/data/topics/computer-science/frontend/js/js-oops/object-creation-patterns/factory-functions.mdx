@@ -1,4 +1,4 @@
-# Factory Functions
+# 🏭 Factory Functions
 
 Factory functions are a powerful concept in JavaScript that helps you create
 objects more efficiently. Let’s break it down!
@@ -10,15 +10,18 @@ objects more efficiently. Let’s break it down!
 A **factory function** is a function that returns a new object every time it's
 called. It’s an alternative to using classes or constructor functions.
 
+---
+
 ## ❓ Why Is It Important?
 
 Factory functions provide a **simple and flexible** way to create multiple
 similar objects without using `class` or `new`. They help in **code reuse** and
 can **encapsulate private data** using closures.
 
+---
+
 ## 🔧 Syntax/Structure
 
-// Basic example showing the core idea.
 ```javascript
 function createItem(name, price) {
   return {
@@ -33,9 +36,12 @@ function createItem(name, price) {
 
 Call `createItem()` to generate a new object.
 
+---
+
+## 💡 Examples
+
 ### Basic Example
 
-// Basic example showing the core idea.
 ```javascript
 function createUser(name, age) {
   return {
@@ -51,11 +57,12 @@ const user1 = createUser('Alice', 30);
 user1.greet(); // Hi, I'm Alice and I'm 30 years old.
 ```
 
+---
+
 ### Real-World Use Case
 
 Imagine you're building a shopping cart system:
 
-// Basic example showing the core idea.
 ```javascript
 function createProduct(id, title, price) {
   return {
@@ -75,6 +82,8 @@ console.log(laptop.getTotal(2)); // 1798
 Here, each product is created with a factory function and can calculate totals
 independently.
 
+---
+
 ## 📍 When/Where to Use It
 
 - When you need to create **multiple similar objects**
@@ -82,7 +91,9 @@ independently.
 - In **functional programming** or when avoiding `this`
 - In **React or frontend logic** for component configuration
 
-## ⚠ Gotchas/Tips
+---
+
+## ⚠️ Gotchas/Tips
 
 ✅ **Do:**
 
@@ -96,7 +107,6 @@ independently.
 
 🔒 Want private data? Use closure:
 
-// Basic example showing the core idea.
 ```javascript
 function createCounter() {
   let count = 0;
@@ -114,32 +124,3 @@ const counter = createCounter();
 counter.increment();
 console.log(counter.getCount()); // 1
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **Factory Functions** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

@@ -6,7 +6,6 @@ small examples with TypeScript typing.
 
 ## 1. Basic Counter Example
 
-// Example demonstrating State Management with useReducer and useContext in TypeScript.
 ```tsx
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
 
@@ -52,7 +51,7 @@ const CounterProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
 
-return (
+  return (
     <CounterContext.Provider value={{ state, dispatch }}>
       {children}
     </CounterContext.Provider>
@@ -72,7 +71,7 @@ function useCounter() {
 const CounterComponent: React.FC = () => {
   const { state, dispatch } = useCounter();
 
-return (
+  return (
     <div>
       <h2>Counter: {state.count}</h2>
       <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
@@ -96,7 +95,6 @@ export default App;
 
 ## 2. Todo List Example
 
-// Example demonstrating State Management with useReducer and useContext in TypeScript.
 ```tsx
 // Todo List Example
 type Todo = {
@@ -155,7 +153,7 @@ const TodoProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(todoReducer, { todos: [] });
 
-return (
+  return (
     <TodoContext.Provider value={{ state, dispatch }}>
       {children}
     </TodoContext.Provider>
@@ -174,7 +172,7 @@ const TodoList: React.FC = () => {
   const { state, dispatch } = useTodos();
   const [input, setInput] = React.useState('');
 
-const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
       dispatch({ type: 'add', text: input });
@@ -182,7 +180,7 @@ const handleSubmit = (e: React.FormEvent) => {
     }
   };
 
-return (
+  return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
@@ -221,7 +219,6 @@ return (
 
 ## 3. Theme Toggle Example
 
-// Example demonstrating State Management with useReducer and useContext in TypeScript.
 ```tsx
 // Theme Toggle Example
 type ThemeState = {
@@ -254,7 +251,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(themeReducer, { theme: 'light' });
 
-return (
+  return (
     <ThemeContext.Provider value={{ state, dispatch }}>
       {children}
     </ThemeContext.Provider>
@@ -272,7 +269,7 @@ function useTheme() {
 const ThemeToggle: React.FC = () => {
   const { state, dispatch } = useTheme();
 
-return (
+  return (
     <div
       style={{
         background: state.theme === 'light' ? '#fff' : '#333',
@@ -295,7 +292,6 @@ return (
 
 ## 4. Form State Example
 
-// Example demonstrating State Management with useReducer and useContext in TypeScript.
 ```tsx
 // Form State Example
 type FormState = {
@@ -361,7 +357,7 @@ const FormProvider: React.FC<{ children: React.ReactNode }> = ({
     errors: {},
   });
 
-return (
+  return (
     <FormContext.Provider value={{ state, dispatch }}>
       {children}
     </FormContext.Provider>
@@ -379,17 +375,17 @@ function useForm() {
 const FormComponent: React.FC = () => {
   const { state, dispatch } = useForm();
 
-const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: 'validate' });
 
-// Check if there are no errors
+    // Check if there are no errors
     if (Object.values(state.errors).every((error) => !error)) {
       alert(`Form submitted: ${JSON.stringify(state, null, 2)}`);
     }
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>First Name:</label>
@@ -457,7 +453,6 @@ return (
 
 Here's how you could combine all these examples in a single app:
 
-// Example demonstrating State Management with useReducer and useContext in TypeScript.
 ```tsx
 const App: React.FC = () => {
   return (
@@ -467,23 +462,26 @@ const App: React.FC = () => {
         <CounterComponent />
       </CounterProvider>
 
-<TodoProvider>
+      <TodoProvider>
         <h1>Todo List Example</h1>
         <TodoList />
       </TodoProvider>
 
-<ThemeProvider>
+      <ThemeProvider>
         <h1>Theme Toggle Example</h1>
         <ThemeToggle />
       </ThemeProvider>
 
-<FormProvider>
+      <FormProvider>
         <h1>Form Example</h1>
         <FormComponent />
       </FormProvider>
     </div>
   );
 };
+
+export default App;
+```
 
 This setup demonstrates how to use `useReducer` and `useContext` for state
 management in React with TypeScript. Each example follows the same pattern:
@@ -497,12 +495,3 @@ management in React with TypeScript. Each example follows the same pattern:
 
 This pattern provides a clean separation of concerns and makes your state
 management predictable and type-safe.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

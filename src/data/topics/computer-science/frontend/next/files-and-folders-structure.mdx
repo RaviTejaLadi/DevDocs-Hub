@@ -1,8 +1,7 @@
 # 📁 Next JS Project – Default Files and Folders structure
 
-## Next.js Default Folder Structure
+# Next.js Default Folder Structure
 
-# Basic example showing the core idea.
 ```bash
 my-nextjs-app/
 ├── 📁 .next/                    # Build output directory (auto-generated)
@@ -30,11 +29,12 @@ my-nextjs-app/
 └── 📄 tsconfig.json            # TypeScript configuration
 ```
 
+## 🏗️ Key Directories Explained
+
 ### 📁 `app/` Directory (App Router)
 
 The heart of your Next.js 13+ application using the new App Router:
 
-# Basic example showing the core idea.
 ```bash
 app/
 ├── 📄 layout.tsx        # 🏠 Root layout wrapping all pages
@@ -61,7 +61,6 @@ app/
 
 Static assets served directly from the root URL:
 
-# Basic example showing the core idea.
 ```bash
 public/
 ├── 🖼️ favicon.ico       # Browser tab icon
@@ -74,7 +73,7 @@ public/
     └── 🖼️ android-chrome-192x192.png
 ```
 
-## Special Files & Their Purposes
+## 🎯 Special Files & Their Purposes
 
 | File            | Purpose                         | Icon |
 | --------------- | ------------------------------- | ---- |
@@ -86,9 +85,8 @@ public/
 | `route.ts`      | API endpoint handler            | 🔗   |
 | `middleware.ts` | Request/response middleware     | ⚙️   |
 
-## 🛠 Configuration Files
+## 🛠️ Configuration Files
 
-# Basic example showing the core idea.
 ```bash
 Root Level Configs:
 ├── 📄 next.config.js     # ⚙️ Next.js configuration
@@ -99,9 +97,10 @@ Root Level Configs:
 └── 📄 .env.local         # 🔐 Environment variables
 ```
 
+## 🚀 Routing Examples
+
 ### File-based Routing Structure:
 
-# Basic example showing the core idea.
 ```bash
 app/
 ├── 📄 page.tsx                    # → /
@@ -120,7 +119,7 @@ app/
         └── 📄 page.tsx           # → /dashboard/analytics
 ```
 
-## Notes
+## 📝 Notes
 
 - **🆕 App Router**: Next.js 13+ uses the `app/` directory for routing
 - **🔄 Pages Router**: Legacy Next.js uses `pages/` directory (still supported)
@@ -128,28 +127,3 @@ app/
 - **🏗️ `.next/`**: Auto-generated build files (never edit manually)
 - **📦 `node_modules/`**: Installed dependencies (managed by npm/yarn)
 - **🌐 `public/`**: Static files accessible via root URL (e.g., `/favicon.ico`)
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

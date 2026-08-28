@@ -1,4 +1,4 @@
-# Penetration Testing: Methodologies and Execution
+# 🎯 Penetration Testing: Methodologies and Execution
 
 Penetration testing (often referred to as pentesting) is a rigorous, structured
 process of simulating a cyberattack against a computer system, network, or web
@@ -13,7 +13,7 @@ test.
 
 ---
 
-## ⚖ 1. Penetration Testing vs. Vulnerability Assessment vs. Red Teaming
+## ⚖️ 1. Penetration Testing vs. Vulnerability Assessment vs. Red Teaming
 
 It is crucial to understand the distinction between these often-confused
 security services.
@@ -26,7 +26,9 @@ security services.
 | **Duration**  | Days to Weeks (automated).                    | Weeks.                                                  | Months (continuous).                                  |
 | **Outcome**   | List of prioritized CVEs.                     | Proof of exploitation, risk analysis, remediation.      | Analysis of defensive posture and attack paths.       |
 
-## 2. Types of Penetration Tests
+---
+
+## 📦 2. Types of Penetration Tests
 
 Pentests are categorized by the amount of information provided to the testing
 team prior to the engagement.
@@ -37,7 +39,9 @@ team prior to the engagement.
 | **⬜ White Box** | Full transparency (source code, network maps). | Insider threat or compromised source code. | **Pro:** Extremely thorough, rapid bug finding. <br/> **Con:** Doesn't simulate initial external intrusion. |
 | **🔲 Gray Box**  | Limited knowledge (low-level credentials).     | Compromised user or rogue employee.        | **Pro:** Balances realism and efficiency, focuses on privilege escalation.                                  |
 
-## 3. Industry Frameworks and Standards
+---
+
+## 🏗️ 3. Industry Frameworks and Standards
 
 Professional pentesting is not random hacking; it is governed by structured
 methodologies to ensure thoroughness, repeatability, and safety.
@@ -50,11 +54,12 @@ methodologies to ensure thoroughness, repeatability, and safety.
 4.  **OWASP WSTG:** The definitive standard for web application penetration
     testing.
 
-## 4. The PTES Lifecycle: A Deep Dive
+---
+
+## 🔄 4. The PTES Lifecycle: A Deep Dive
 
 The **Penetration Testing Execution Standard (PTES)** outlines seven phases.
 
-<!-- Visual flow for Penetration Testing: Methodologies and Execution. -->
 ```mermaid
 graph TD
     A[📝 1. Pre-engagement] --> B[🔍 2. Intelligence Gathering]
@@ -64,7 +69,7 @@ graph TD
     E --> F[👑 6. Post-Exploitation]
     F --> G[📋 7. Reporting]
 
-style A fill:#e3f2fd,stroke:#1565c0,color:#000
+    style A fill:#e3f2fd,stroke:#1565c0,color:#000
     style B fill:#fff3e0,stroke:#ef6c00,color:#000
     style C fill:#ffebee,stroke:#c62828,color:#000
     style D fill:#e8f5e9,stroke:#2e7d32,color:#000
@@ -73,7 +78,7 @@ style A fill:#e3f2fd,stroke:#1565c0,color:#000
     style G fill:#c8e6c9,stroke:#388e3c,color:#000
 ```
 
-### Phase 1: Pre-engagement Interactions
+### 📝 Phase 1: Pre-engagement Interactions
 
 Before any technical work begins, the business and legal foundation must be
 established.
@@ -84,21 +89,21 @@ established.
 - **Legal Documentation:** NDA, MSA, SOW, and the **Authorization to Test** (Get
   Out of Jail Free Card).
 
-### Phase 2: Intelligence Gathering (Reconnaissance)
+### 🔍 Phase 2: Intelligence Gathering (Reconnaissance)
 
 Gathering OSINT and active probing data.
 
 - _Passive:_ WHOIS, DNS enumeration, Shodan.
 - _Active:_ Port scanning (Nmap), directory brute-forcing.
 
-### 🕵 Phase 3: Threat Modeling
+### 🕵️ Phase 3: Threat Modeling
 
 Identifying assets and likely threat actors.
 
 - Mapping paths to high-value data (customer PII, source code).
 - Profiling threat actors (script kiddie vs. APT).
 
-### ⚠ Phase 4: Vulnerability Analysis
+### ⚠️ Phase 4: Vulnerability Analysis
 
 Analyzing recon data to find specific, exploitable flaws.
 
@@ -143,6 +148,8 @@ A successful hack is useless if not communicated effectively.
 2.  **Technical Details:** CVSS scores, step-by-step Proof of Concept (PoC)
     screenshots, and actionable remediation advice for developers.
 
+---
+
 ## 🌐 5. Specialized Penetration Testing Domains
 
 Pentesting is a broad field with deep specializations:
@@ -153,7 +160,9 @@ Pentesting is a broad field with deep specializations:
 | **☁️ Cloud**    | AWS/Azure IAM audits, SSRF, S3 bucket misconfigurations. | Pacu, ScoutSuite, CloudMapper.      |
 | **🏢 Physical** | Bypassing locks, cloning RFID badges, testing guards.    | Lockpicks, Proxmark3, Rubber Ducky. |
 
-## ⚖ 6. Ethics and Liability
+---
+
+## ⚖️ 6. Ethics and Liability
 
 A professional penetration tester walks a thin line. Strict adherence to ethics
 is mandatory.
@@ -168,6 +177,8 @@ is mandatory.
 >   client using emergency protocols. Covering up mistakes destroys trust and
 >   carries severe legal liability.
 
+---
+
 ## 🏁 Conclusion
 
 Penetration testing is a highly structured, analytical process requiring
@@ -175,12 +186,3 @@ technical prowess, excellent communication, and strict ethical boundaries. By
 following established frameworks like PTES, pentesters provide organizations
 with invaluable insights into their actual security posture, allowing them to
 patch critical vulnerabilities before malicious actors exploit them.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

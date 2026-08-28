@@ -14,18 +14,18 @@ Redux or Context API.
 - Built-in middleware support
 - Excellent TypeScript support
 
+## Complete Setup Guide
+
 ### 1. Install Zustand
 
-# Basic example showing the core idea.
 ```bash
 npm install zustand
-## or
+# or
 yarn add zustand
 ```
 
 ## Example 1: Basic Counter Store
 
-// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
 // stores/counterStore.ts
 import { create } from 'zustand';
@@ -50,7 +50,7 @@ import { useCounterStore } from '../stores/counterStore';
 export function Counter() {
   const { count, increment, decrement, reset } = useCounterStore();
 
-return (
+  return (
     <div>
       <h2>Count: {count}</h2>
       <button onClick={increment}>Increment</button>
@@ -63,7 +63,6 @@ return (
 
 ## Example 2: Todo List with Async Actions
 
-// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
 // stores/todoStore.ts
 import { create } from 'zustand';
@@ -119,14 +118,14 @@ export function TodoList() {
   const { todos, loading, error, addTodo, toggleTodo, fetchTodos } =
     useTodoStore();
 
-useEffect(() => {
+  useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
 
-if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-return (
+  return (
     <div>
       <h2>Todos</h2>
       <ul>
@@ -162,18 +161,17 @@ return (
 2. **Type Safety**: Always define interfaces for your state
 3. **Selective State**: Use selectors to prevent unnecessary re-renders
 
-// Example demonstrating Zustand: A Simple State Management Solution.
-```tsx
+   ```tsx
    // Instead of:
    const { count } = useCounterStore();
 
-// Better:
+   // Better:
    const count = useCounterStore((state) => state.count);
    ```
 
 4. **Derived State**: Compute derived values in the store
 
-```tsx
+   ```tsx
    // In your store:
    totalTodos: (state) => state.todos.length,
    completedTodos: (state) => state.todos.filter(todo => todo.completed).length,
@@ -181,12 +179,11 @@ return (
 
 5. **Middleware**: Use middleware for logging, persistence, etc.
 
-// Example demonstrating Zustand: A Simple State Management Solution.
-```tsx
+   ```tsx
    import { create } from 'zustand';
    import { persist } from 'zustand/middleware';
 
-export const useStore = create(persist(
+   export const useStore = create(persist(
      (set) => ({ ... }),
      { name: 'store-name' }
    ));
@@ -196,7 +193,7 @@ export const useStore = create(persist(
 
 1. **Async Actions**: Always handle errors in async operations
 
-```tsx
+   ```tsx
    fetchTodos: async () => {
      set({ loading: true, error: null });
      try {
@@ -222,24 +219,23 @@ export const useStore = create(persist(
 
 1. **Log State Changes**:
 
-// Example demonstrating Zustand: A Simple State Management Solution.
-```tsx
+   ```tsx
    import { devtools } from 'zustand/middleware';
 
-export const useStore = create(devtools(store));
+   export const useStore = create(devtools(store));
    ```
 
 2. **React DevTools**: Inspect the Zustand store in React DevTools
 
 3. **Console Logging**:
 
-```tsx
+   ```tsx
    // Subscribe to store changes
    const unsubscribe = useStore.subscribe((state) =>
      console.log('State changed:', state)
    );
 
-// Remember to unsubscribe in useEffect cleanup
+   // Remember to unsubscribe in useEffect cleanup
    useEffect(() => () => unsubscribe(), []);
    ```
 
@@ -255,12 +251,3 @@ export const useStore = create(devtools(store));
 
 Zustand keeps state management simple while being powerful enough for most
 applications!
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

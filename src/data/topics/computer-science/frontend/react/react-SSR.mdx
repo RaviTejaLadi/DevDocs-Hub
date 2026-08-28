@@ -1,4 +1,4 @@
-# React Server-Side Rendering (SSR) Complete Guide
+# **React Server-Side Rendering (SSR) Complete Guide**
 
 ## Introduction
 
@@ -6,6 +6,8 @@ React Server-Side Rendering (SSR) is a technique where React components are
 rendered on the server instead of the client browser. The server generates the
 initial HTML markup and sends it to the client, where React then "hydrates" the
 static HTML to make it interactive.
+
+## Key Definitions
 
 ### Server-Side Rendering (SSR)
 
@@ -38,6 +40,8 @@ The time between the initial request and when the server starts sending data.
 
 The time when the browser renders the first piece of content.
 
+## How SSR Works
+
 ### Traditional CSR Flow
 
 1. Browser requests page
@@ -55,6 +59,8 @@ The time when the browser renders the first piece of content.
 5. JavaScript bundle loads and hydrates the page
 6. Page becomes fully interactive
 
+## Benefits and Drawbacks
+
 ### Benefits
 
 - **Improved SEO**: Search engines can crawl the fully rendered HTML
@@ -71,11 +77,12 @@ The time when the browser renders the first piece of content.
 - **Development Complexity**: Need to handle server and client environments
 - **Hosting Costs**: Requires server infrastructure instead of static hosting
 
+## Core APIs and Syntax
 
+### Server-Side APIs
 
 #### `renderToString()`
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToString } from 'react-dom/server';
 
@@ -86,7 +93,6 @@ Renders a React component to its initial HTML string.
 
 #### `renderToStaticMarkup()`
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -98,7 +104,6 @@ uses internally.
 
 #### `renderToPipeableStream()` (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToPipeableStream } from 'react-dom/server';
 
@@ -112,9 +117,10 @@ const stream = renderToPipeableStream(<App />, {
 
 Renders to a stream for better performance with large applications.
 
+### Client-Side APIs
+
 #### `hydrate()` (Legacy)
 
-// Basic example showing the core idea.
 ```javascript
 import { hydrate } from 'react-dom';
 
@@ -123,16 +129,16 @@ hydrate(<App />, document.getElementById('root'));
 
 #### `hydrateRoot()` (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { hydrateRoot } from 'react-dom/client';
 
 hydrateRoot(document.getElementById('root'), <App />);
 ```
 
+## Basic Implementation
+
 ### 1. Project Structure
 
-// Example demonstrating React Server-Side Rendering (SSR) Complete Guide.
 ```tsx
 project/
 ├── src/
@@ -147,14 +153,13 @@ project/
 
 ### 2. Shared Component (src/components/App.js)
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 
 const App = ({ initialData }) => {
   const [count, setCount] = React.useState(initialData?.count || 0);
 
-return (
+  return (
     <div>
       <h1>SSR React App</h1>
       <p>Count: {count}</p>
@@ -168,7 +173,6 @@ export default App;
 
 ### 3. Server Implementation (src/server.js)
 
-// Basic example showing the core idea.
 ```javascript
 import express from 'express';
 import React from 'react';
@@ -182,9 +186,9 @@ app.use(express.static('public'));
 app.get('*', (req, res) => {
   const initialData = { count: 5 };
 
-const html = renderToString(<App initialData={initialData} />);
+  const html = renderToString(<App initialData={initialData} />);
 
-const fullHtml = `
+  const fullHtml = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -200,7 +204,7 @@ const fullHtml = `
     </html>
   `;
 
-res.send(fullHtml);
+  res.send(fullHtml);
 });
 
 app.listen(3000, () => {
@@ -210,7 +214,6 @@ app.listen(3000, () => {
 
 ### 4. Client Implementation (src/client.js)
 
-// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
@@ -221,11 +224,12 @@ const initialData = window.__INITIAL_DATA__;
 hydrateRoot(document.getElementById('root'), <App initialData={initialData} />);
 ```
 
+## Advanced Patterns
 
+### Data Fetching Patterns
 
 #### 1. Data Fetching on Server
 
-// Basic example showing the core idea.
 ```javascript
 // In your server route
 app.get('/users/:id', async (req, res) => {
@@ -233,7 +237,7 @@ app.get('/users/:id', async (req, res) => {
     const userData = await fetchUserData(req.params.id);
     const html = renderToString(<UserProfile user={userData} />);
 
-const fullHtml = `
+    const fullHtml = `
       <!DOCTYPE html>
       <html>
         <body>
@@ -246,7 +250,7 @@ const fullHtml = `
       </html>
     `;
 
-res.send(fullHtml);
+    res.send(fullHtml);
   } catch (error) {
     res.status(500).send('Error loading user data');
   }
@@ -255,7 +259,6 @@ res.send(fullHtml);
 
 #### 2. Component-Level Data Requirements
 
-// Basic example showing the core idea.
 ```javascript
 // Higher-order component pattern
 const withServerData = (WrappedComponent, dataFetcher) => {
@@ -263,7 +266,7 @@ const withServerData = (WrappedComponent, dataFetcher) => {
     return <WrappedComponent {...props} />;
   };
 
-WithServerDataComponent.getServerData = dataFetcher;
+  WithServerDataComponent.getServerData = dataFetcher;
   return WithServerDataComponent;
 };
 
@@ -281,7 +284,6 @@ export default withServerData(UserProfile, async (params) => {
 
 ### Streaming SSR (React 18+)
 
-// Basic example showing the core idea.
 ```javascript
 import { renderToPipeableStream } from 'react-dom/server';
 import { Suspense } from 'react';
@@ -314,11 +316,12 @@ app.get('*', (req, res) => {
 });
 ```
 
+## Frameworks and Tools
+
 ### Next.js
 
 The most popular React SSR framework with built-in optimizations.
 
-// Basic example showing the core idea.
 ```javascript
 // pages/index.js
 export default function Home({ posts }) {
@@ -353,22 +356,23 @@ Full-stack web framework focused on web standards.
 
 Using tools like Webpack, Babel, and Express for custom SSR setups.
 
+## Performance Considerations
 
+### Caching Strategies
 
 #### 1. Page-Level Caching
 
-// Basic example showing the core idea.
 ```javascript
 const cache = new Map();
 
 app.get('/product/:id', (req, res) => {
   const cacheKey = `product-${req.params.id}`;
 
-if (cache.has(cacheKey)) {
+  if (cache.has(cacheKey)) {
     return res.send(cache.get(cacheKey));
   }
 
-const html = renderProductPage(req.params.id);
+  const html = renderProductPage(req.params.id);
   cache.set(cacheKey, html);
   res.send(html);
 });
@@ -376,7 +380,6 @@ const html = renderProductPage(req.params.id);
 
 #### 2. Component-Level Caching
 
-// Basic example showing the core idea.
 ```javascript
 import LRU from 'lru-cache';
 
@@ -385,11 +388,11 @@ const componentCache = new LRU({ max: 100 });
 const CacheableComponent = ({ data }) => {
   const cacheKey = JSON.stringify(data);
 
-if (componentCache.has(cacheKey)) {
+  if (componentCache.has(cacheKey)) {
     return componentCache.get(cacheKey);
   }
 
-const rendered = <ExpensiveComponent data={data} />;
+  const rendered = <ExpensiveComponent data={data} />;
   componentCache.set(cacheKey, rendered);
   return rendered;
 };
@@ -397,7 +400,6 @@ const rendered = <ExpensiveComponent data={data} />;
 
 ### Code Splitting for SSR
 
-// Basic example showing the core idea.
 ```javascript
 import { lazy, Suspense } from 'react';
 
@@ -413,9 +415,10 @@ const App = () => (
 );
 ```
 
+## Best Practices
+
 ### 1. Environment Detection
 
-// Basic example showing the core idea.
 ```javascript
 const isServer = typeof window === 'undefined';
 
@@ -427,34 +430,32 @@ const MyComponent = () => {
     }
   }, []);
 
-return <div>Content</div>;
+  return <div>Content</div>;
 };
 ```
 
 ### 2. Handling Different Data on Server vs Client
 
-// Basic example showing the core idea.
 ```javascript
 const MyComponent = () => {
   const [data, setData] = React.useState(
     typeof window !== 'undefined' ? window.__INITIAL_DATA__ : null
   );
 
-React.useEffect(() => {
+  React.useEffect(() => {
     if (!data) {
       fetchData().then(setData);
     }
   }, []);
 
-if (!data) return <div>Loading...</div>;
+  if (!data) return <div>Loading...</div>;
 
-return <div>{data.content}</div>;
+  return <div>{data.content}</div>;
 };
 ```
 
 ### 3. CSS-in-JS Considerations
 
-// Basic example showing the core idea.
 ```javascript
 import styled, { ServerStyleSheet } from 'styled-components';
 
@@ -466,7 +467,6 @@ const styleTags = sheet.getStyleTags();
 
 ### 4. Error Boundaries for SSR
 
-// Basic example showing the core idea.
 ```javascript
 class SSRErrorBoundary extends React.Component {
   constructor(props) {
@@ -474,31 +474,32 @@ class SSRErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-componentDidCatch(error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     if (typeof window === 'undefined') {
       console.error('SSR Error:', error, errorInfo);
     }
   }
 
-render() {
+  render() {
     if (this.state.hasError) {
       return <h1>Something went wrong during rendering.</h1>;
     }
 
-return this.props.children;
+    return this.props.children;
   }
 }
 ```
+
+## Common Pitfalls
 
 ### 1. Hydration Mismatches
 
 **Problem**: Server and client render different content.
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Different content on server vs client
 const BadComponent = () => {
@@ -510,17 +511,16 @@ const BadComponent = () => {
 const GoodComponent = () => {
   const [time, setTime] = React.useState(null);
 
-React.useEffect(() => {
+  React.useEffect(() => {
     setTime(new Date().toISOString());
   }, []);
 
-return <div>Current time: {time || 'Loading...'}</div>;
+  return <div>Current time: {time || 'Loading...'}</div>;
 };
 ```
 
 ### 2. Browser-Only APIs
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Using browser APIs directly
 const BadComponent = () => {
@@ -532,17 +532,16 @@ const BadComponent = () => {
 const GoodComponent = () => {
   const [width, setWidth] = React.useState(0);
 
-React.useEffect(() => {
+  React.useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
 
-return <div>Width: {width}</div>;
+  return <div>Width: {width}</div>;
 };
 ```
 
 ### 3. Memory Leaks
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad: Not cleaning up server-side resources
 app.get('*', (req, res) => {
@@ -564,15 +563,16 @@ app.get('*', (req, res) => {
 });
 ```
 
+## Examples
+
 ### Example 1: Basic E-commerce Product Page
 
-// Basic example showing the core idea.
 ```javascript
 // ProductPage.js
 const ProductPage = ({ product, reviews }) => {
   const [selectedImage, setSelectedImage] = React.useState(0);
 
-return (
+  return (
     <div className="product-page">
       <div className="product-images">
         <img src={product.images[selectedImage]} alt={product.name} />
@@ -588,15 +588,15 @@ return (
         </div>
       </div>
 
-<div className="product-info">
+      <div className="product-info">
         <h1>{product.name}</h1>
         <p className="price">${product.price}</p>
         <p className="description">{product.description}</p>
 
-<button className="add-to-cart">Add to Cart</button>
+        <button className="add-to-cart">Add to Cart</button>
       </div>
 
-<div className="reviews">
+      <div className="reviews">
         <h2>Customer Reviews</h2>
         {reviews.map((review) => (
           <div key={review.id} className="review">
@@ -617,31 +617,30 @@ app.get('/product/:id', async (req, res) => {
     fetchProductReviews(req.params.id),
   ]);
 
-const html = renderToString(
+  const html = renderToString(
     <ProductPage product={product} reviews={reviews} />
   );
 
-res.send(createHtmlTemplate(html, { product, reviews }));
+  res.send(createHtmlTemplate(html, { product, reviews }));
 });
 ```
 
 ### Example 2: Blog with Dynamic Content
 
-// Basic example showing the core idea.
 ```javascript
 // BlogPost.js
 const BlogPost = ({ post, relatedPosts }) => {
   const [comments, setComments] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
-const loadComments = async () => {
+  const loadComments = async () => {
     setLoading(true);
     const fetchedComments = await fetch(`/api/posts/${post.id}/comments`);
     setComments(await fetchedComments.json());
     setLoading(false);
   };
 
-return (
+  return (
     <article className="blog-post">
       <header>
         <h1>{post.title}</h1>
@@ -651,12 +650,12 @@ return (
         <div className="author">By {post.author.name}</div>
       </header>
 
-<div
+      <div
         className="content"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
-<aside className="related-posts">
+      <aside className="related-posts">
         <h2>Related Posts</h2>
         {relatedPosts.map((related) => (
           <a key={related.id} href={`/blog/${related.slug}`}>
@@ -666,13 +665,13 @@ return (
         ))}
       </aside>
 
-<section className="comments">
+      <section className="comments">
         <h2>Comments</h2>
         <button onClick={loadComments} disabled={loading}>
           {loading ? 'Loading...' : 'Load Comments'}
         </button>
 
-{comments.map((comment) => (
+        {comments.map((comment) => (
           <div key={comment.id} className="comment">
             <strong>{comment.author}</strong>
             <p>{comment.content}</p>
@@ -687,14 +686,13 @@ return (
 
 ### Example 3: Dashboard with Real-time Data
 
-// Basic example showing the core idea.
 ```javascript
 // Dashboard.js
 const Dashboard = ({ initialMetrics, userRole }) => {
   const [metrics, setMetrics] = React.useState(initialMetrics);
   const [lastUpdate, setLastUpdate] = React.useState(new Date());
 
-React.useEffect(() => {
+  React.useEffect(() => {
     const interval = setInterval(async () => {
       if (userRole === 'admin') {
         const updatedMetrics = await fetch('/api/metrics').then((r) =>
@@ -705,17 +703,17 @@ React.useEffect(() => {
       }
     }, 30000); // Update every 30 seconds
 
-return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, [userRole]);
 
-return (
+  return (
     <div className="dashboard">
       <header>
         <h1>Analytics Dashboard</h1>
         <p>Last updated: {lastUpdate.toLocaleTimeString()}</p>
       </header>
 
-<div className="metrics-grid">
+      <div className="metrics-grid">
         <MetricCard
           title="Total Users"
           value={metrics.totalUsers}
@@ -733,7 +731,7 @@ return (
         />
       </div>
 
-{userRole === 'admin' && (
+      {userRole === 'admin' && (
         <div className="admin-section">
           <h2>Admin Controls</h2>
           <button>Export Data</button>
@@ -760,12 +758,3 @@ This comprehensive guide covers all aspects of React Server-Side Rendering, from
 basic concepts to advanced implementation patterns. Each section builds upon the
 previous one, providing a structured learning path for understanding and
 implementing SSR in React applications.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

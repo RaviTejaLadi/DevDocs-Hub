@@ -19,7 +19,6 @@ in the Node.js ecosystem.
 
 Here's how to set up a basic Express server:
 
-// Basic example showing the core idea.
 ```javascript
 // 1. Import Express
 const express = require('express');
@@ -39,12 +38,13 @@ app.listen(PORT, () => {
 });
 ```
 
+## Core Concepts
+
 ### Middleware
 
 Middleware functions have access to the request object (`req`), the response
 object (`res`), and the next middleware function in the cycle.
 
-// Basic example showing the core idea.
 ```javascript
 app.use((req, res, next) => {
   console.log('Time:', Date.now());
@@ -57,7 +57,6 @@ app.use((req, res, next) => {
 Express provides methods that correspond to HTTP methods (`get`, `post`, `put`,
 `delete`, etc.)
 
-// Basic example showing the core idea.
 ```javascript
 app.get('/about', (req, res) => {
   res.send('About Page');
@@ -74,7 +73,6 @@ app.post('/users', (req, res) => {
   headers, etc.)
 - `res`: Used to send the HTTP response
 
-// Basic example showing the core idea.
 ```javascript
 app.get('/users/:userId', (req, res) => {
   res.send(`User ID: ${req.params.userId}`);
@@ -100,32 +98,3 @@ app.get('/users/:userId', (req, res) => {
 Express provides just the core features you need while allowing you to add other
 libraries as needed (for databases, authentication, etc.), making it extremely
 flexible for various use cases.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Trade-offs
-
-Architecture decisions are rarely about a single “best” technology. Compare options using scale, latency, consistency, availability, operational cost, complexity, and team capability. State which requirement matters most because the priority determines the design.
-
-## Failure Thinking
-
-Assume a dependency can fail. Decide how the system detects the failure, limits its impact, recovers, and avoids creating a second failure during recovery. Timeouts, retries, idempotency, circuit breakers, and backpressure should be discussed only when they solve a real failure mode.
-
-## Practical Validation
-
-Walk through one realistic request from entry point to storage or response. Then change one condition: a dependency is slow, a node disappears, or traffic spikes. A good design explanation should still make sense after that change.
-
-## Capacity and Reliability
-
-A design should explain what happens as load and failures grow. Identify the main bottleneck, estimate where it could become a limit, and decide which component can scale horizontally or vertically. Then consider dependency failure, retries, timeouts, and data consistency. The strongest design notes connect each architectural component to a requirement and explain the trade-off introduced by that component.
-
-## Final Understanding Check
-
-Before considering **Introduction to Express.js** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

@@ -7,13 +7,12 @@ Think of them as special selectors that make your CSS smarter and cleaner.
 
 ---
 
-## What are Pseudo-classes?
+# 🎯 What are Pseudo-classes?
 
 A pseudo-class targets an element in a particular state.
 
 Syntax:
 
-/* Basic example showing the core idea. */
 ```css
 selector:pseudo-class {
   property: value;
@@ -22,7 +21,6 @@ selector:pseudo-class {
 
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 button:hover {
   background-color: blue;
@@ -31,38 +29,42 @@ button:hover {
 
 When the user hovers over the button, the background changes.
 
-## 🖱 :hover
+---
+
+# Common Pseudo-classes
+
+## 🖱️ :hover
 
 Applies styles when the mouse is over an element.
 
-/* Basic example showing the core idea. */
 ```css
 a:hover {
   color: red;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <a href="#">Hover Me</a>
 ```
+
+---
 
 ## 👆 :active
 
 Applies while an element is being clicked.
 
-/* Basic example showing the core idea. */
 ```css
 button:active {
   transform: scale(0.95);
 }
 ```
 
-## ⌨ :focus
+---
+
+## ⌨️ :focus
 
 Applies when an input receives focus.
 
-/* Basic example showing the core idea. */
 ```css
 input:focus {
   border-color: blue;
@@ -70,32 +72,32 @@ input:focus {
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input type="text" placeholder="Enter Name" />
 ```
+
+---
 
 ## ✅ :checked
 
 Targets checked checkboxes and radio buttons.
 
-/* Basic example showing the core idea. */
 ```css
 input:checked {
   accent-color: green;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <input type="checkbox" checked />
 ```
+
+---
 
 ## 🚫 :disabled
 
 Targets disabled form controls.
 
-/* Basic example showing the core idea. */
 ```css
 button:disabled {
   opacity: 0.5;
@@ -103,18 +105,18 @@ button:disabled {
 }
 ```
 
-## :first-child
+---
+
+## 🎯 :first-child
 
 Selects the first child element.
 
-/* Basic example showing the core idea. */
 ```css
 li:first-child {
   font-weight: bold;
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <ul>
   <li>First</li>
@@ -122,22 +124,24 @@ li:first-child {
 </ul>
 ```
 
-## :last-child
+---
+
+## 🎯 :last-child
 
 Selects the last child element.
 
-/* Basic example showing the core idea. */
 ```css
 li:last-child {
   color: red;
 }
 ```
 
-## :nth-child()
+---
+
+## 🎯 :nth-child()
 
 Selects elements based on position.
 
-/* Basic example showing the core idea. */
 ```css
 li:nth-child(2) {
   color: blue;
@@ -146,7 +150,6 @@ li:nth-child(2) {
 
 Even rows:
 
-/* Basic example showing the core idea. */
 ```css
 tr:nth-child(even) {
   background: #f5f5f5;
@@ -155,29 +158,32 @@ tr:nth-child(even) {
 
 Odd rows:
 
-/* Basic example showing the core idea. */
 ```css
 tr:nth-child(odd) {
   background: #eee;
 }
 ```
 
-## :not()
+---
+
+## 🎯 :not()
 
 Selects everything except matching elements.
 
-/* Basic example showing the core idea. */
 ```css
 p:not(.highlight) {
   color: gray;
 }
 ```
 
-## What are Pseudo-elements?
+---
+
+# 🧩 What are Pseudo-elements?
 
 Pseudo-elements style a specific part of an element.
 
-/* Basic example showing the core idea. */
+Syntax:
+
 ```css
 selector::pseudo-element {
   property: value;
@@ -186,50 +192,54 @@ selector::pseudo-element {
 
 Notice the double colon `::`.
 
-## ::before
+---
+
+# Common Pseudo-elements
+
+## 📝 ::before
 
 Adds content before an element.
 
-/* Basic example showing the core idea. */
 ```css
 .title::before {
   content: '🔥 ';
 }
 ```
 
-<!-- Basic example showing the core idea. -->
 ```html
 <h2 class="title">Trending</h2>
 ```
 
 Output:
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
 ```text
 🔥 Trending
 ```
 
-## ::after
+---
+
+## 📝 ::after
 
 Adds content after an element.
 
-/* Basic example showing the core idea. */
 ```css
 .title::after {
   content: ' 🚀';
 }
 ```
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
+Output:
+
 ```text
 Trending 🚀
 ```
+
+---
 
 ## ✨ ::first-letter
 
 Styles the first letter.
 
-/* Basic example showing the core idea. */
 ```css
 p::first-letter {
   font-size: 2rem;
@@ -237,22 +247,24 @@ p::first-letter {
 }
 ```
 
-## ::first-line
+---
+
+## 📖 ::first-line
 
 Styles only the first line.
 
-/* Basic example showing the core idea. */
 ```css
 p::first-line {
   color: blue;
 }
 ```
 
-## ::selection
+---
+
+## 🎨 ::selection
 
 Styles highlighted text.
 
-/* Basic example showing the core idea. */
 ```css
 ::selection {
   background: yellow;
@@ -260,25 +272,26 @@ Styles highlighted text.
 }
 ```
 
-## ::placeholder
+---
+
+## 📌 ::placeholder
 
 Styles placeholder text.
 
-/* Basic example showing the core idea. */
 ```css
 input::placeholder {
   color: gray;
 }
 ```
 
-## Real-World Card Example
+---
 
-<!-- Basic example showing the core idea. -->
+# Real-World Card Example
+
 ```html
 <div class="card">New Product</div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .card::before {
   content: '🆕 ';
@@ -296,9 +309,10 @@ Result:
 
 No extra HTML required.
 
-## Combining Pseudo-classes and Pseudo-elements
+---
 
-/* Basic example showing the core idea. */
+# Combining Pseudo-classes and Pseudo-elements
+
 ```css
 button:hover::after {
   content: ' 🚀';
@@ -307,19 +321,18 @@ button:hover::after {
 
 When hovering:
 
-// Example demonstrating ✨ Pseudo-classes & Pseudo-elements.
 ```text
 Submit 🚀
 ```
 
-## Useful Form Example
+---
 
-<!-- Basic example showing the core idea. -->
+# Useful Form Example
+
 ```html
 <input type="email" required />
 ```
 
-/* Basic example showing the core idea. */
 ```css
 input:focus {
   border-color: blue;
@@ -336,11 +349,14 @@ input:valid {
 
 This provides instant validation feedback.
 
+---
+
+# Modern CSS Selectors Worth Knowing
+
 ## :is()
 
 Reduces repetition.
 
-/* Basic example showing the core idea. */
 ```css
 :is(h1, h2, h3) {
   color: navy;
@@ -349,7 +365,6 @@ Reduces repetition.
 
 Instead of:
 
-/* Basic example showing the core idea. */
 ```css
 h1,
 h2,
@@ -358,11 +373,12 @@ h3 {
 }
 ```
 
+---
+
 ## :where()
 
 Like `:is()` but adds zero specificity.
 
-/* Basic example showing the core idea. */
 ```css
 :where(.card .title) {
   margin: 0;
@@ -371,11 +387,12 @@ Like `:is()` but adds zero specificity.
 
 Useful in large projects.
 
+---
+
 ## :has() ⭐
 
 Parent selector.
 
-/* Basic example showing the core idea. */
 ```css
 .card:has(img) {
   padding: 20px;
@@ -386,7 +403,9 @@ Selects cards containing images.
 
 Modern browsers now support it.
 
-## Quick Cheat Sheet
+---
+
+# 🧠 Quick Cheat Sheet
 
 | Pseudo-class | Purpose                   |
 | ------------ | ------------------------- |
@@ -403,6 +422,8 @@ Modern browsers now support it.
 | :where()     | Zero specificity grouping |
 | :has()       | Parent selector           |
 
+---
+
 | Pseudo-element | Purpose          |
 | -------------- | ---------------- |
 | ::before       | Content before   |
@@ -412,7 +433,9 @@ Modern browsers now support it.
 | ::selection    | Selected text    |
 | ::placeholder  | Placeholder text |
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use pseudo-elements to avoid unnecessary HTML.
 - Use `:focus` for accessibility.
@@ -420,18 +443,12 @@ Modern browsers now support it.
 - Use `:has()` carefully on large DOM trees.
 - Keep hover effects subtle and performant.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - Pseudo-classes target element states and positions.
 - Pseudo-elements target specific parts of elements.
 - They reduce extra markup and improve maintainability.
 - Modern selectors like `:is()`, `:where()`, and `:has()` make CSS more powerful
   than ever.
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
-
-## Practical Edge Cases
-
-Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.

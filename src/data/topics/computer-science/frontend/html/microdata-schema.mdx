@@ -1,4 +1,4 @@
-# HTML Microdata & Schema
+# 🔍 HTML Microdata & Schema
 
 **Microdata** is a way to add structured information to HTML content so that
 search engines can better understand your webpage. **Schema.org** provides a
@@ -16,13 +16,12 @@ ratings, prices, FAQs, recipes, and event information.
 
 ---
 
-## What is Structured Data?
+# 📌 What is Structured Data?
 
 Structured data organizes information in a format that machines can understand.
 
 Without structured data:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p>iPhone 17 Pro - ₹1,29,900</p>
 ```
@@ -31,7 +30,6 @@ A search engine only sees text.
 
 With structured data:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p itemprop="name">iPhone 17 Pro</p>
 <p itemprop="price">129900</p>
@@ -39,7 +37,9 @@ With structured data:
 
 Now the search engine knows this content represents a product and its price.
 
-## What is Schema.org?
+---
+
+# 🏗️ What is Schema.org?
 
 [Schema.org](https://schema.org?utm_source=chatgpt.com) is a collaborative
 project that provides standardized structured data types.
@@ -57,7 +57,9 @@ Common schema types include:
 | FAQPage      | Frequently asked questions |
 | Review       | Product or service reviews |
 
-## What is HTML Microdata?
+---
+
+# 📖 What is HTML Microdata?
 
 Microdata uses special HTML attributes to add structured data.
 
@@ -71,15 +73,18 @@ Microdata uses special HTML attributes to add structured data.
 | `itemid`    | Unique identifier              |
 | `itemref`   | References external properties |
 
+---
+
+# 🎯 Basic Microdata Example
+
 ## Person Schema
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Person microdata -->
 <div itemscope itemtype="https://schema.org/Person">
   <h2 itemprop="name">John Doe</h2>
 
-<p itemprop="jobTitle">Frontend Developer</p>
+  <p itemprop="jobTitle">Frontend Developer</p>
 </div>
 ```
 
@@ -92,52 +97,54 @@ Microdata uses special HTML attributes to add structured data.
 | `itemprop="name"`     | Person's name      |
 | `itemprop="jobTitle"` | Person's job title |
 
-## 🛍 Product Schema Example
+---
+
+# 🛍️ Product Schema Example
 
 One of the most common uses of microdata is product information.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Product microdata -->
 <div itemscope itemtype="https://schema.org/Product">
   <h2 itemprop="name">Laptop Pro X</h2>
 
-<p itemprop="description">High-performance laptop for developers.</p>
+  <p itemprop="description">High-performance laptop for developers.</p>
 
-<span itemprop="price"> 85000 </span>
+  <span itemprop="price"> 85000 </span>
 </div>
 ```
 
 Search engines can recognize:
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Product Name: Laptop Pro X
 Price: 85000
 Description: High-performance laptop
 ```
 
-## ⭐ Review Schema Example
+---
 
-<!-- Basic example showing the core idea. -->
+# ⭐ Review Schema Example
+
 ```html
 <!-- Product review -->
 <div itemscope itemtype="https://schema.org/Review">
   <span itemprop="author"> Ravi </span>
 
-<p itemprop="reviewBody">Excellent product.</p>
+  <p itemprop="reviewBody">Excellent product.</p>
 </div>
 ```
 
-## 🏢 Organization Schema
+---
 
-<!-- Basic example showing the core idea. -->
+# 🏢 Organization Schema
+
 ```html
 <!-- Organization schema -->
 <div itemscope itemtype="https://schema.org/Organization">
   <h2 itemprop="name">Tech Solutions</h2>
 
-<p itemprop="address">Hyderabad, India</p>
+  <p itemprop="address">Hyderabad, India</p>
 </div>
 ```
 
@@ -148,46 +155,51 @@ Useful for:
 - Educational institutions
 - Non-profit organizations
 
-## 📰 Article Schema
+---
+
+# 📰 Article Schema
 
 For blogs and news websites.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Blog article schema -->
 <article itemscope itemtype="https://schema.org/Article">
   <h1 itemprop="headline">Learn HTML Microdata</h1>
 
-<p itemprop="author">John Doe</p>
+  <p itemprop="author">John Doe</p>
 </article>
 ```
 
-## 📅 Event Schema
+---
 
-<!-- Basic example showing the core idea. -->
+# 📅 Event Schema
+
 ```html
 <!-- Event schema -->
 <div itemscope itemtype="https://schema.org/Event">
   <h2 itemprop="name">Web Development Workshop</h2>
 
-<p itemprop="startDate">2026-07-15</p>
+  <p itemprop="startDate">2026-07-15</p>
 </div>
 ```
+
+Useful for:
 
 - Conferences
 - Workshops
 - Meetups
 - Webinars
 
-## 🍕 Recipe Schema
+---
 
-<!-- Basic example showing the core idea. -->
+# 🍕 Recipe Schema
+
 ```html
 <!-- Recipe schema -->
 <div itemscope itemtype="https://schema.org/Recipe">
   <h2 itemprop="name">Margherita Pizza</h2>
 
-<p itemprop="cookTime">PT30M</p>
+  <p itemprop="cookTime">PT30M</p>
 </div>
 ```
 
@@ -198,17 +210,18 @@ Search engines may display:
 - Ratings
 - Nutrition information
 
-## Nested Microdata
+---
+
+# 🧩 Nested Microdata
 
 Microdata items can contain other items.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Person with address -->
 <div itemscope itemtype="https://schema.org/Person">
   <span itemprop="name"> John Doe </span>
 
-<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+  <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     <span itemprop="addressLocality"> Hyderabad </span>
   </div>
 </div>
@@ -216,7 +229,6 @@ Microdata items can contain other items.
 
 Structure:
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Person
 │
@@ -226,7 +238,9 @@ Person
      └── City
 ```
 
-## Rich Results
+---
+
+# 🚀 Rich Results
 
 Structured data can help search engines create rich results.
 
@@ -234,7 +248,6 @@ Examples:
 
 ### Product Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 ★★★★★ 4.8
 Laptop Pro X
@@ -242,24 +255,28 @@ Laptop Pro X
 In Stock
 ```
 
+---
+
 ### FAQ Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 Q: What is HTML?
 A: HTML is the standard markup language...
 ```
 
+---
+
 ### Recipe Result
 
-// Example demonstrating HTML Microdata & Schema.
 ```text
 🍕 Margherita Pizza
 ⏱️ 30 Minutes
 ⭐ 4.9 Rating
 ```
 
-## Microdata vs JSON-LD
+---
+
+# 📊 Microdata vs JSON-LD
 
 There are multiple ways to add structured data.
 
@@ -271,11 +288,12 @@ There are multiple ways to add structured data.
 | HTML clutter           | More         | Less         |
 | Maintenance            | Harder       | Easier       |
 
-## 🌟 JSON-LD Example (Modern Approach)
+---
+
+# 🌟 JSON-LD Example (Modern Approach)
 
 Today, most websites use JSON-LD instead of Microdata.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- JSON-LD structured data -->
 <script type="application/ld+json">
@@ -294,37 +312,46 @@ Advantages:
 - Easier maintenance
 - Google's preferred format
 
+---
+
+# ⚠️ Common Mistakes
+
 ## Missing `itemscope`
 
 ❌ Wrong
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemtype="https://schema.org/Person"></div>
 ```
 
 ✅ Correct
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemscope itemtype="https://schema.org/Person"></div>
 ```
 
+---
+
 ## Invalid Schema Type
 
-<!-- Basic example showing the core idea. -->
+❌ Wrong
+
 ```html
 itemtype="Person"
 ```
 
-<!-- Basic example showing the core idea. -->
+✅ Correct
+
 ```html
 itemtype="https://schema.org/Person"
 ```
 
+---
+
 ## Using Incorrect Properties
 
-<!-- Basic example showing the core idea. -->
+❌ Wrong
+
 ```html
 <span itemprop="username"></span>
 ```
@@ -333,7 +360,9 @@ If the schema doesn't define `username`, search engines may ignore it.
 
 Always use valid Schema.org properties.
 
-## Best Practices
+---
+
+# 🎯 Best Practices
 
 ✅ Use official Schema.org types
 
@@ -347,7 +376,9 @@ Always use valid Schema.org properties.
 
 ✅ Add structured data to important pages
 
-## 🌐 Common Schema Types
+---
+
+# 🌐 Common Schema Types
 
 | Website Type    | Recommended Schema |
 | --------------- | ------------------ |
@@ -359,9 +390,10 @@ Always use valid Schema.org properties.
 | Food Blog       | Recipe             |
 | Help Center     | FAQPage            |
 
-## Quick Summary
+---
 
-// Example demonstrating HTML Microdata & Schema.
+# 🚀 Quick Summary
+
 ```text
 Schema.org
       ↓
@@ -376,14 +408,14 @@ Rich Search Results
 
 ### Microdata Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div itemscope itemtype="https://schema.org/Product">
   <h2 itemprop="name">Laptop Pro X</h2>
 </div>
 ```
 
-// Example demonstrating HTML Microdata & Schema.
+### Main Attributes
+
 ```text
 itemscope → Create item
 itemtype  → Define type
@@ -394,12 +426,3 @@ itemprop  → Define property
 use **JSON-LD** because it keeps HTML clean and is the preferred structured data
 format for major search engines. Understanding Microdata is still valuable
 because you'll encounter it in existing websites and legacy projects.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

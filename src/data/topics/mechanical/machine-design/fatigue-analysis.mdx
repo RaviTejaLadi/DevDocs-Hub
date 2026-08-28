@@ -1,4 +1,4 @@
-# Fatigue Analysis
+# 🔄 Fatigue Analysis
 
 Fatigue is one of the most common causes of machine component failure. Many
 machine parts fail not because of a single large load, but because of repeated
@@ -10,7 +10,7 @@ below the material's yield strength, failure can still occur due to fatigue.
 
 ---
 
-## Why Fatigue is Important
+# 🎯 Why Fatigue is Important
 
 Studies show that a large percentage of machine failures occur because of
 fatigue.
@@ -27,7 +27,9 @@ Examples:
 A component may appear perfectly safe but can suddenly fail after thousands or
 millions of load cycles.
 
-## What is Fatigue?
+---
+
+# 💡 What is Fatigue?
 
 Fatigue is the progressive weakening and eventual failure of a material caused
 by repeated or fluctuating stresses.
@@ -37,18 +39,21 @@ Unlike static failure:
 - Static failure occurs due to one large load.
 - Fatigue failure occurs due to many repeated loads.
 
-## ⚙ Fatigue Failure Process
+---
+
+# ⚙️ Fatigue Failure Process
 
 Fatigue failure usually occurs in three stages.
 
-<!-- Visual flow for Fatigue Analysis. -->
 ```mermaid
 flowchart LR
 A[Crack Initiation] --> B[Crack Propagation]
 B --> C[Sudden Fracture]
 ```
 
-## 1⃣ Crack Initiation
+---
+
+# 1️⃣ Crack Initiation
 
 Tiny cracks begin to form at:
 
@@ -60,7 +65,9 @@ Tiny cracks begin to form at:
 
 These locations are called stress concentration points.
 
-## 2⃣ Crack Propagation
+---
+
+# 2️⃣ Crack Propagation
 
 As loading continues:
 
@@ -70,7 +77,9 @@ As loading continues:
 
 The crack grows gradually over many cycles.
 
-## 3⃣ Final Fracture
+---
+
+# 3️⃣ Final Fracture
 
 Once the remaining area becomes too small:
 
@@ -78,17 +87,24 @@ Once the remaining area becomes too small:
 - Failure is often catastrophic
 - Little warning is observed
 
-## Cyclic Loading
+---
+
+# 🔄 Cyclic Loading
 
 Fatigue occurs due to repeated stresses.
 
-<!-- Visual flow for Fatigue Analysis. -->
+Examples:
+
 ```mermaid
 graph LR
 A[Load Applied] --> B[Load Removed]
 B --> C[Load Applied Again]
 C --> D[Repeated Millions of Times]
 ```
+
+---
+
+# Types of Cyclic Stress
 
 ## Completely Reversed Stress
 
@@ -98,34 +114,41 @@ Example:
 
 - Rotating shafts
 
-// Example demonstrating Fatigue Analysis.
 ```
 +σ → 0 → -σ → 0 → +σ
 ```
+
+---
 
 ## Repeated Stress
 
 Stress varies from zero to a maximum value.
 
+Example:
+
 - Crane cables
 
-// Example demonstrating Fatigue Analysis.
 ```
 0 → +σ → 0 → +σ
 ```
+
+---
 
 ## Fluctuating Stress
 
 Stress varies between two unequal values.
 
+Example:
+
 - Engine components
 
-// Example demonstrating Fatigue Analysis.
 ```
 σ₁ ↔ σ₂
 ```
 
-## S-N Curve (Wöhler Curve)
+---
+
+# 📊 S-N Curve (Wöhler Curve)
 
 The relationship between stress and fatigue life is represented by the S-N
 Curve.
@@ -135,7 +158,6 @@ Where:
 - S = Stress Amplitude
 - N = Number of Cycles to Failure
 
-<!-- Visual flow for Fatigue Analysis. -->
 ```mermaid
 graph LR
 A[High Stress] --> B[Few Cycles]
@@ -144,7 +166,9 @@ C --> D[Many Cycles]
 D --> E[Endurance Limit]
 ```
 
-## Endurance Limit
+---
+
+# Endurance Limit
 
 The endurance limit is the maximum stress a material can withstand indefinitely
 without fatigue failure.
@@ -154,7 +178,9 @@ For many steels:
 - If stress remains below endurance limit,
 - The component can theoretically survive infinite cycles.
 
-## 📈 Fatigue Life Regions
+---
+
+# 📈 Fatigue Life Regions
 
 | Region               | Description             |
 | -------------------- | ----------------------- |
@@ -162,9 +188,13 @@ For many steels:
 | High Cycle Fatigue   | Low stress, many cycles |
 | Infinite Life Region | Below endurance limit   |
 
-## Stress Concentration
+---
+
+# 🏗️ Stress Concentration
 
 Fatigue cracks usually start where stress is highest.
+
+Examples:
 
 - Keyways
 - Holes
@@ -172,7 +202,6 @@ Fatigue cracks usually start where stress is highest.
 - Sharp corners
 - Grooves
 
-<!-- Visual flow for Fatigue Analysis. -->
 ```mermaid
 flowchart TD
 A[Sharp Corner]
@@ -181,22 +210,29 @@ B --> C[Crack Formation]
 C --> D[Fatigue Failure]
 ```
 
-## Stress Concentration Factor
+---
+
+# Stress Concentration Factor
 
 The severity of stress concentration is represented by:
 
-// Example demonstrating Fatigue Analysis.
 ```
 Kt = Maximum Stress / Nominal Stress
 ```
+
+Where:
 
 - Kt = Stress Concentration Factor
 
 Higher Kt means higher fatigue risk.
 
-## 🔧 Factors Affecting Fatigue Strength
+---
+
+# 🔧 Factors Affecting Fatigue Strength
 
 Several factors influence fatigue life.
+
+---
 
 ## Surface Finish
 
@@ -209,6 +245,8 @@ Result:
 
 Better polished surfaces improve fatigue resistance.
 
+---
+
 ## Size of Component
 
 Larger components generally have:
@@ -220,12 +258,16 @@ Therefore:
 
 - Fatigue strength decreases as size increases.
 
+---
+
 ## Temperature
 
 High temperatures:
 
 - Reduce material strength
 - Accelerate fatigue damage
+
+---
 
 ## Corrosion
 
@@ -234,6 +276,10 @@ Corrosion creates pits on the surface.
 These pits act as crack initiation points.
 
 This phenomenon is called:
+
+### Corrosion Fatigue
+
+---
 
 ## Residual Stresses
 
@@ -246,27 +292,31 @@ Methods:
 
 These processes delay crack formation.
 
-## 🧮 Mean Stress and Alternating Stress
+---
+
+# 🧮 Mean Stress and Alternating Stress
 
 For fluctuating loads:
 
 ## Mean Stress
 
-// Example demonstrating Fatigue Analysis.
 ```
 σm = (σmax + σmin) / 2
 ```
 
+---
+
 ## Alternating Stress
 
-// Example demonstrating Fatigue Analysis.
 ```
 σa = (σmax - σmin) / 2
 ```
 
 These values are used in fatigue design calculations.
 
-## Goodman Failure Criterion
+---
+
+# Goodman Failure Criterion
 
 One of the most common fatigue design methods.
 
@@ -276,7 +326,6 @@ It relates:
 - Alternating stress
 - Material strength
 
-<!-- Visual flow for Fatigue Analysis. -->
 ```mermaid
 graph TD
 A[Mean Stress]
@@ -287,9 +336,13 @@ B --> D[Safe Region]
 B --> E[Failure Region]
 ```
 
-## Design Against Fatigue Failure
+---
+
+# Design Against Fatigue Failure
 
 Engineers use several methods to improve fatigue life.
+
+---
 
 ## Increase Fillet Radius
 
@@ -299,14 +352,17 @@ Solution:
 
 - Use smooth fillets
 
-<!-- Visual flow for Fatigue Analysis. -->
 ```mermaid
 graph LR
 A[Sharp Corner] --> B[High Stress]
 C[Fillet Radius] --> D[Reduced Stress]
 ```
 
+---
+
 ## Improve Surface Finish
+
+Methods:
 
 - Grinding
 - Polishing
@@ -316,16 +372,24 @@ Benefits:
 
 - Fewer crack initiation sites
 
+---
+
 ## Use Stronger Materials
 
 Materials with higher fatigue strength survive more cycles.
 
+Examples:
+
 - Alloy steels
 - Heat-treated steels
+
+---
 
 ## Reduce Operating Stress
 
 Lower stress levels greatly increase fatigue life.
+
+---
 
 ## Apply Surface Treatments
 
@@ -335,8 +399,14 @@ Methods include:
 - Carburizing
 - Nitriding
 
+Benefits:
+
 - Improved surface strength
 - Better fatigue resistance
+
+---
+
+# 🏭 Practical Examples
 
 ## Rotating Shaft
 
@@ -347,6 +417,8 @@ Experiences:
 
 Fatigue design is critical.
 
+---
+
 ## Gear Teeth
 
 Repeated contact causes:
@@ -354,11 +426,15 @@ Repeated contact causes:
 - Surface fatigue
 - Tooth root fatigue
 
+---
+
 ## Springs
 
 Undergo continuous loading cycles.
 
 Must be designed using fatigue principles.
+
+---
 
 ## Aircraft Components
 
@@ -369,7 +445,9 @@ Aircraft structures experience:
 
 Fatigue analysis is mandatory.
 
-## ⚠ Characteristics of Fatigue Failure
+---
+
+# ⚠️ Characteristics of Fatigue Failure
 
 Fatigue failures usually:
 
@@ -379,7 +457,9 @@ Fatigue failures usually:
 - Occur below yield strength
 - Are dangerous and difficult to predict
 
-## Key Points
+---
+
+# 📝 Key Points
 
 - Fatigue failure occurs due to repeated loading.
 - It can occur even below yield strength.
@@ -391,12 +471,3 @@ Fatigue failures usually:
 - Good surface finish and smooth geometry improve fatigue strength.
 - Fatigue analysis is essential for shafts, gears, springs, bolts, and aircraft
   components.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

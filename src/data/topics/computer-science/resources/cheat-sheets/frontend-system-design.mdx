@@ -1,11 +1,11 @@
-# Frontend System Design
+# 🚀 **Frontend System Design**
 
 _The Ultimate Guide to Building Scalable, Performant, and Maintainable
 Frontends_
 
 ---
 
-## 1. Core Principles
+## 📌 **1. Core Principles**
 
 | Principle                       | Description                           | Emoji |
 | ------------------------------- | ------------------------------------- | ----- |
@@ -15,9 +15,10 @@ Frontends_
 | **Loose Coupling**              | Minimize dependencies between modules | 🔗    |
 | **High Cohesion**               | Related code stays together           | 🧲    |
 
-## 2. Architecture Patterns
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🏗️ **2. Architecture Patterns**
+
 ```mermaid
 graph TD
     A[User] --> B[UI Layer]
@@ -28,7 +29,7 @@ graph TD
     B --> G[Routing]
 ```
 
-### Popular Patterns
+### **Popular Patterns**
 
 | Pattern            | Use Case                 | Pros                    | Cons                  |
 | ------------------ | ------------------------ | ----------------------- | --------------------- |
@@ -37,9 +38,12 @@ graph TD
 | **MVVM**           | Data-binding (React/Vue) | Reactive                | Complex reactivity    |
 | **Microfrontends** | Large teams              | Independent deployments | Coordination overhead |
 
-### Component Hierarchy
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🎨 **3. Component Design**
+
+### **Component Hierarchy**
+
 ```mermaid
 graph TD
     A[App Shell] --> B[Layout]
@@ -51,7 +55,7 @@ graph TD
     G --> H[Dumb Components]
 ```
 
-### Component Types
+### **Component Types**
 
 | Type                   | Description            | Example      | State? |
 | ---------------------- | ---------------------- | ------------ | ------ |
@@ -60,9 +64,12 @@ graph TD
 | **Higher-Order (HOC)** | Wraps components       | withAuth     | ❌     |
 | **Render Props**       | Shares logic via props | DataFetcher  | ❌     |
 
-### State Types
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 📦 **4. State Management**
+
+### **State Types**
+
 ```mermaid
 graph LR
     A[State] --> B[Local]
@@ -75,7 +82,7 @@ graph LR
     E --> I[React Router]
 ```
 
-### State Management Comparison
+### **State Management Comparison**
 
 | Tool              | Best For            | Size   | Learning Curve |
 | ----------------- | ------------------- | ------ | -------------- |
@@ -85,9 +92,12 @@ graph LR
 | **Recoil**        | Fine-grained state  | Medium | Moderate       |
 | **MobX**          | Reactive state      | Medium | Moderate       |
 
-### Unidirectional Data Flow
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🔄 **5. Data Flow**
+
+### **Unidirectional Data Flow**
+
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -96,14 +106,14 @@ sequenceDiagram
     participant S as Store
     participant V as View
 
-U->>C: Click/Input
+    U->>C: Click/Input
     C->>A: Dispatch Action
     A->>S: Update State
     S->>V: Re-render
     V->>U: Display Update
 ```
 
-### Data Fetching Strategies
+### **Data Fetching Strategies**
 
 | Strategy              | When to Use            | Example         |
 | --------------------- | ---------------------- | --------------- |
@@ -112,7 +122,11 @@ U->>C: Click/Input
 | **Static (SSG)**      | Never-changing content | Blog posts      |
 | **Incremental (ISR)** | Frequently updated     | News, CMS       |
 
-### Critical Metrics
+---
+
+## 🧪 **6. Performance Optimization**
+
+### **Critical Metrics**
 
 | Metric                             | Target  | Emoji |
 | ---------------------------------- | ------- | ----- |
@@ -122,9 +136,8 @@ U->>C: Click/Input
 | **TTI** (Time to Interactive)      | < 5s    | ⚡    |
 | **FCP** (First Contentful Paint)   | < 1.8s  | 🎨    |
 
-### Optimization Techniques
+### **Optimization Techniques**
 
-<!-- Visual flow for Frontend System Design. -->
 ```mermaid
 graph TD
     A[Performance] --> B[Code Splitting]
@@ -133,14 +146,18 @@ graph TD
     A --> E[Caching]
     A --> F[Image Optimization]
 
-B --> G[React.lazy]
+    B --> G[React.lazy]
     C --> H[Intersection Observer]
     D --> I[Tree Shaking]
     E --> J[Service Workers]
     F --> K[WebP/SVG]
 ```
 
-### Essential Toolchain
+---
+
+## 🛠️ **7. Development Tools**
+
+### **Essential Toolchain**
 
 | Category          | Tools                          | Emoji |
 | ----------------- | ------------------------------ | ----- |
@@ -150,9 +167,8 @@ B --> G[React.lazy]
 | **Type Checking** | TypeScript, Flow               | 🔍    |
 | **Dev Server**    | Vite, Next.js dev              | 🚀    |
 
-### Build Pipeline
+### **Build Pipeline**
 
-<!-- Visual flow for Frontend System Design. -->
 ```mermaid
 graph LR
     A[Source Code] --> B[Bundler]
@@ -164,23 +180,26 @@ graph LR
     G --> H[CDN]
 ```
 
-### API Layer Design
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🌐 **8. API Integration**
+
+### **API Layer Design**
+
 ```mermaid
 graph TD
     A[API Client] --> B[HTTP]
     A --> C[WebSocket]
     A --> D[GraphQL]
 
-B --> E[REST]
+    B --> E[REST]
     B --> F[Axios/Fetch]
 
-C --> G[Socket.io]
+    C --> G[Socket.io]
     D --> H[Apollo Client]
 ```
 
-### Error Handling Strategy
+### **Error Handling Strategy**
 
 | Error Type  | Handling               | User Feedback      |
 | ----------- | ---------------------- | ------------------ |
@@ -189,9 +208,12 @@ C --> G[Socket.io]
 | **Network** | Offline mode           | Offline indicator  |
 | **Timeout** | Show spinner           | "Still loading..." |
 
-### Code Reuse Strategies
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🧩 **9. Reusability Patterns**
+
+### **Code Reuse Strategies**
+
 ```mermaid
 graph TD
     A[Reusability] --> B[Components]
@@ -200,14 +222,13 @@ graph TD
     A --> E[Higher-Order Components]
     A --> F[Render Props]
 
-B --> G[Storybook]
+    B --> G[Storybook]
     C --> H[Custom Hooks]
     D --> I[Helper Functions]
 ```
 
-### Design System Structure
+### **Design System Structure**
 
-<!-- Visual flow for Frontend System Design. -->
 ```mermaid
 graph TD
     A[Design Tokens] --> B[Colors]
@@ -215,18 +236,22 @@ graph TD
     A --> D[Spacing]
     A --> E[Shadows]
 
-B --> F[Components]
+    B --> F[Components]
     C --> F
     D --> F
     E --> F
 
-F --> G[Atoms]
+    F --> G[Atoms]
     F --> H[Molecules]
     F --> I[Organisms]
     F --> J[Templates]
 ```
 
-### Common Vulnerabilities
+---
+
+## 🔒 **10. Security Best Practices**
+
+### **Common Vulnerabilities**
 
 | Attack             | Prevention                  | Emoji |
 | ------------------ | --------------------------- | ----- |
@@ -236,7 +261,7 @@ F --> G[Atoms]
 | **Sensitive Data** | Never store in localStorage | 🔐    |
 | **Dependency**     | Regular updates             | 📦    |
 
-### Security Checklist
+### **Security Checklist**
 
 - [ ] HTTPS everywhere 🔒
 - [ ] Environment variables for secrets 🤫
@@ -245,9 +270,12 @@ F --> G[Atoms]
 - [ ] Content Security Policy (CSP) 🛡️
 - [ ] Rate limiting 🚦
 
-### Recommended Structure
+---
 
-// Example demonstrating Frontend System Design.
+## 🗂️ **11. Project Structure**
+
+### **Recommended Structure**
+
 ```
 src/
 ├── components/
@@ -266,20 +294,23 @@ src/
 └── tests/             # Test files
 ```
 
-### Testing Pyramid
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 📊 **12. Testing Strategy**
+
+### **Testing Pyramid**
+
 ```mermaid
 graph TD
     A[End-to-End] --> B[Integration]
     B --> C[Unit Tests]
 
-C --> D[Jest + Testing Library]
+    C --> D[Jest + Testing Library]
     B --> E[React Testing Library]
     A --> F[Cypress/Playwright]
 ```
 
-### Test Coverage Goals
+### **Test Coverage Goals**
 
 | Test Type       | Coverage | Focus                  |
 | --------------- | -------- | ---------------------- |
@@ -287,9 +318,12 @@ C --> D[Jest + Testing Library]
 | **Integration** | 60-70%   | Feature workflows      |
 | **E2E**         | 30-40%   | Critical user journeys |
 
-### Pipeline Stages
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🚀 **13. CI/CD Pipeline**
+
+### **Pipeline Stages**
+
 ```mermaid
 graph LR
     A[Commit] --> B[Lint]
@@ -301,7 +335,7 @@ graph LR
     G --> H[Deploy to Production]
 ```
 
-### Git Workflow
+### **Git Workflow**
 
 | Branch       | Purpose             |
 | ------------ | ------------------- |
@@ -311,9 +345,12 @@ graph LR
 | **hotfix/**  | Urgent fixes        |
 | **release/** | Release preparation |
 
-### What to Monitor
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 📈 **14. Monitoring & Observability**
+
+### **What to Monitor**
+
 ```mermaid
 graph TD
     A[Monitoring] --> B[Performance]
@@ -321,13 +358,13 @@ graph TD
     A --> D[User Behavior]
     A --> E[Health Checks]
 
-B --> F[LCP, FID, CLS]
+    B --> F[LCP, FID, CLS]
     C --> G[Sentry, LogRocket]
     D --> H[Analytics]
     E --> I[Uptime checks]
 ```
 
-### Alerting Rules
+### **Alerting Rules**
 
 | Metric           | Threshold | Action             |
 | ---------------- | --------- | ------------------ |
@@ -336,7 +373,11 @@ B --> F[LCP, FID, CLS]
 | **LCP**          | >4s       | Performance review |
 | **Bounce Rate**  | >60%      | UX investigation   |
 
-### Scale Readiness Checklist
+---
+
+## 🧠 **15. Scalability Considerations**
+
+### **Scale Readiness Checklist**
 
 | Aspect             | Check                         |
 | ------------------ | ----------------------------- |
@@ -348,7 +389,11 @@ B --> F[LCP, FID, CLS]
 | **API Caching**    | React Query/SWR ✅            |
 | **Web Vitals**     | Green scores ✅               |
 
-### When to Use What
+---
+
+## 🎯 **16. Decision Matrix**
+
+### **When to Use What**
 
 | Scenario          | Recommendation            |
 | ----------------- | ------------------------- |
@@ -359,7 +404,11 @@ B --> F[LCP, FID, CLS]
 | **Static site**   | Gatsby/Vite               |
 | **Mobile-first**  | Responsive design + PWA   |
 
-### Must-Have Docs
+---
+
+## 📝 **17. Documentation Requirements**
+
+### **Must-Have Docs**
 
 - [ ] README with setup instructions 📖
 - [ ] Component API documentation 📚
@@ -369,9 +418,12 @@ B --> F[LCP, FID, CLS]
 - [ ] Troubleshooting guide 🛠️
 - [ ] Contributing guidelines 🤝
 
-### Microfrontends Architecture
+---
 
-<!-- Visual flow for Frontend System Design. -->
+## 🔥 **18. Advanced Patterns**
+
+### **Microfrontends Architecture**
+
 ```mermaid
 graph TD
     A[Container App] --> B[Team A - Checkout]
@@ -380,9 +432,8 @@ graph TD
     A --> E[Team D - User Profile]
 ```
 
-### Feature Toggles
+### **Feature Toggles**
 
-// Basic example showing the core idea.
 ```javascript
 const features = {
   newCheckout: false,
@@ -395,7 +446,11 @@ if (features.newCheckout) {
 }
 ```
 
-### Debt Types
+---
+
+## 🧹 **19. Technical Debt Management**
+
+### **Debt Types**
 
 | Type                      | Example           | Fix               |
 | ------------------------- | ----------------- | ----------------- |
@@ -405,7 +460,11 @@ if (features.newCheckout) {
 | **No Tests**              | Untested features | Add tests         |
 | **Magic Numbers**         | Hardcoded values  | Use constants     |
 
-### Before Release
+---
+
+## 📋 **20. Final Checklist**
+
+### **Before Release**
 
 - [ ] Performance budget met 🎯
 - [ ] Accessibility checks (WCAG) ♿
@@ -418,17 +477,10 @@ if (features.newCheckout) {
 - [ ] Bundle analysis 📦
 - [ ] Environment configs 🔧
 
-## 🎓 Pro Tips
+---
 
-> 💡 **"Premature optimization is the root of all evil"** – Donald Knuth
-> 📐 **"Make it work, make it right, make it fast"** – Kent Beck
+## 🎓 **Pro Tips**
+
+> 💡 **"Premature optimization is the root of all evil"** – Donald Knuth  
+> 📐 **"Make it work, make it right, make it fast"** – Kent Beck  
 > 🔄 **"Design for change, not for permanence"** – Eric Evans
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

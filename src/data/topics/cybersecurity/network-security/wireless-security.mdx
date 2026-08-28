@@ -11,7 +11,7 @@ traffic. 🌬️📶
 Securing the RF (Radio Frequency) airspace is a critical component of any
 comprehensive cybersecurity program.
 
-## 🕰 The Evolution of Wi-Fi Security Standards
+## 🕰️ The Evolution of Wi-Fi Security Standards
 
 Wireless security has evolved through several major iterations as cryptographic
 flaws in earlier standards were discovered and exploited.
@@ -29,7 +29,7 @@ flaws in earlier standards were discovered and exploited.
 
 ---
 
-## Authentication Architectures: Personal vs. Enterprise
+## 🏗️ Authentication Architectures: Personal vs. Enterprise
 
 Both WPA2 and WPA3 offer two distinct modes of authentication: Personal and
 Enterprise.
@@ -49,14 +49,13 @@ Enterprise.
 - Instead of a single password, users authenticate using their individual
   corporate credentials (username/password) or digital certificates. 🪪
 
-<!-- Visual flow for 📡 Wireless Security (Wi-Fi). -->
 ```mermaid
 sequenceDiagram
     participant Supplicant as 💻 Client (Supplicant)
     participant AP as 📡 Access Point (Authenticator)
     participant RADIUS as 🗄️ RADIUS Server (Auth Server)
 
-Supplicant->>AP: Association Request
+    Supplicant->>AP: Association Request
     AP->>Supplicant: EAP Request / Identity
     Supplicant->>AP: EAP Response / Identity (Credentials/Cert)
     AP->>RADIUS: RADIUS Access-Request
@@ -74,12 +73,14 @@ Supplicant->>AP: Association Request
     present digital certificates. Passwords are eliminated entirely. If a laptop
     is stolen, its certificate is simply revoked on the CA.
 
+---
+
 ## 🥷 Common Wireless Threats and Attacks
 
 Wireless networks face a unique set of attacks targeting the physical RF layer
 and network protocols.
 
-### 1. 🧟‍♂ Rogue Access Points
+### 1. 🧟‍♂️ Rogue Access Points
 
 An unauthorized AP connected to the corporate network. An employee might plug a
 cheap home router into a wall jack in their cubicle for better signal. This
@@ -89,7 +90,7 @@ an open door for attackers in the parking lot.
 - **🛡️ Defense:** Physical port security on switches, NAC (Network Access
   Control), and WIPS (Wireless Intrusion Prevention Systems).
 
-### 2. 👯‍♀ Evil Twin Attack
+### 2. 👯‍♀️ Evil Twin Attack
 
 An attacker sets up a malicious Access Point broadcasting the exact same SSID
 (network name) as the legitimate corporate or public network, often with a
@@ -100,7 +101,7 @@ credentials and traffic.
 - **🛡️ Defense:** WPA3-Enterprise, VPNs, Certificate Pinning, and WIPS
   monitoring for MAC address spoofing and anomalous BSSIDs.
 
-### 3. ✂ Deauthentication Attacks
+### 3. ✂️ Deauthentication Attacks
 
 Because 802.11 management frames (prior to 802.11w) are sent unencrypted and
 unauthenticated, an attacker can spoof a "Deauth" frame from the AP to a client.
@@ -121,6 +122,8 @@ vulnerable wireless networks.
 - **🛡️ Defense:** Reduce AP transmit power so signals do not bleed far past the
   physical building boundaries. Use directional antennas and strong WPA3
   cryptography.
+
+---
 
 ## 🌟 Wireless Security Best Practices (Enterprise)
 
@@ -152,12 +155,3 @@ cryptographic authentication. As the perimeter of the modern office becomes
 increasingly fluid, relying on strong 802.1X authentication, migrating to WPA3,
 and continuous monitoring via WIPS are foundational requirements for network
 engineers and security professionals. 🛡️📶
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

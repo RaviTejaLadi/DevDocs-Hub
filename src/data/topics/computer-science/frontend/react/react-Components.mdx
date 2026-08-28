@@ -1,10 +1,14 @@
 # React Components and Props - Complete Guide
 
+## React Components
+
 ### Definition
 
 React Components are reusable, independent pieces of code that return JSX
 elements to be rendered to the screen. They are the building blocks of React
 applications, allowing you to split the UI into independent, reusable pieces.
+
+### Types of Components
 
 #### 1. Functional Components
 
@@ -14,9 +18,10 @@ Modern, preferred approach using JavaScript functions.
 
 Legacy approach using ES6 classes (still supported but less common).
 
+### Syntax
+
 #### Functional Component Syntax
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Basic functional component
 function ComponentName() {
@@ -42,7 +47,6 @@ const ComponentName = () => <h1>Hello, World!</h1>;
 
 #### Class Component Syntax
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import React, { Component } from 'react';
 
@@ -57,6 +61,8 @@ class ComponentName extends Component {
 }
 ```
 
+### Usage Guidelines
+
 #### Component Naming
 
 - Always start with a capital letter
@@ -69,9 +75,10 @@ class ComponentName extends Component {
 - One component per file (recommended)
 - Export components for reuse
 
+### Examples
+
 #### Simple Functional Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function Welcome() {
   return <h1>Welcome to React!</h1>;
@@ -80,14 +87,13 @@ function Welcome() {
 
 #### Component with State (Using Hooks)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
 
-return (
+  return (
     <div>
       <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
@@ -98,7 +104,6 @@ return (
 
 #### Component with Multiple Elements
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function UserProfile() {
   return (
@@ -116,6 +121,8 @@ function UserProfile() {
 
 ## React Props
 
+### Definition
+
 Props (short for "properties") are read-only data passed from parent components
 to child components. They allow components to be dynamic and reusable by
 accepting different data inputs.
@@ -127,9 +134,10 @@ accepting different data inputs.
 - **Dynamic**: Can pass any JavaScript value (strings, numbers, objects,
   functions, etc.)
 
+### Syntax
+
 #### Passing Props (Parent Component)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Passing different types of props
 <ChildComponent
@@ -142,9 +150,10 @@ accepting different data inputs.
 />
 ```
 
+#### Receiving Props (Child Component)
+
 ##### Functional Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Method 1: Destructuring in parameters
 function ChildComponent({ name, age, isActive }) {
@@ -171,7 +180,6 @@ function ChildComponent(props) {
 
 ##### Class Component
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 class ChildComponent extends React.Component {
   render() {
@@ -187,9 +195,10 @@ class ChildComponent extends React.Component {
 }
 ```
 
+### Usage Patterns
+
 #### Default Props
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Functional component with default props
 function Greeting({ name = 'Guest', message = 'Welcome!' }) {
@@ -207,7 +216,7 @@ class Greeting extends React.Component {
     message: 'Welcome!',
   };
 
-render() {
+  render() {
     return (
       <h1>
         {this.props.message} {this.props.name}
@@ -219,7 +228,6 @@ render() {
 
 #### Props Validation (PropTypes)
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 import PropTypes from 'prop-types';
 
@@ -242,9 +250,10 @@ UserCard.propTypes = {
 };
 ```
 
+### Examples
+
 #### Basic Props Usage
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function App() {
@@ -278,17 +287,16 @@ function PersonCard({ name, occupation, location }) {
 
 #### Passing Functions as Props
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function TodoApp() {
   const [todos, setTodos] = useState([]);
 
-const addTodo = (text) => {
+  const addTodo = (text) => {
     setTodos([...todos, { id: Date.now(), text, completed: false }]);
   };
 
-const toggleTodo = (id) => {
+  const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -296,7 +304,7 @@ const toggleTodo = (id) => {
     );
   };
 
-return (
+  return (
     <div>
       <TodoForm onAddTodo={addTodo} />
       <TodoList todos={todos} onToggleTodo={toggleTodo} />
@@ -308,7 +316,7 @@ return (
 function TodoForm({ onAddTodo }) {
   const [input, setInput] = useState('');
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
       onAddTodo(input);
@@ -316,7 +324,7 @@ const handleSubmit = (e) => {
     }
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <input
         value={input}
@@ -360,7 +368,6 @@ function TodoItem({ todo, onToggle }) {
 
 #### Passing Complex Objects
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Parent Component
 function Dashboard() {
@@ -371,14 +378,14 @@ function Dashboard() {
     joinDate: '2023-01-15',
   };
 
-const userProfile = {
+  const userProfile = {
     name: 'Sarah Wilson',
     avatar: 'https://example.com/avatar.jpg',
     bio: 'Full-stack developer passionate about React',
     location: 'Seattle, WA',
   };
 
-return (
+  return (
     <div>
       <ProfileHeader user={userProfile} />
       <StatsWidget stats={userStats} />
@@ -421,12 +428,15 @@ function StatItem({ label, value }) {
 }
 ```
 
+---
+
+## Combining Components and Props
+
 ### Component Composition
 
 Components can be composed together to build complex UIs while maintaining
 reusability through props.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function App() {
   const products = [
@@ -435,7 +445,7 @@ function App() {
     { id: 3, name: 'Tablet', price: 399, rating: 4.0 },
   ];
 
-return (
+  return (
     <div>
       <Header title="Product Catalog" />
       <ProductGrid products={products} />
@@ -493,19 +503,22 @@ function Footer() {
 }
 ```
 
+---
 
+## Best Practices
+
+### Component Best Practices
 
 #### 1. Single Responsibility
 
 Each component should have one clear purpose.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good: Focused component
 function SearchInput({ onSearch, placeholder }) {
   const [query, setQuery] = useState('');
 
-return (
+  return (
     <input
       type="text"
       value={query}
@@ -526,7 +539,6 @@ function SearchInputWithResultsAndPagination() {
 
 Use clear, descriptive names for components.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good
 function UserProfileCard({ user }) {
@@ -549,7 +561,6 @@ function Filter({ onFilter }) {
 
 Break down large components into smaller, manageable pieces.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good: Broken down into smaller components
 function BlogPost({ post }) {
@@ -572,11 +583,12 @@ function PostHeader({ title, author, date }) {
 }
 ```
 
+### Props Best Practices
+
 #### 1. Destructure Props
 
 Use destructuring for cleaner code.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 // Good
 function UserCard({ name, email, avatar, isOnline }) {
@@ -607,7 +619,6 @@ function UserCard(props) {
 
 Provide sensible defaults to make components more robust.
 
-// Example demonstrating React Components and Props - Complete Guide.
 ```jsx
 function Button({
   text = 'Click me',
@@ -632,6 +643,9 @@ function Button({
 
 Use PropTypes for runtime type checking in development.
 
+```jsx
+import PropTypes from 'prop-types';
+
 function ProductCard({ product, onAddToCart }) {
   return (
     <div>
@@ -650,7 +664,6 @@ ProductCard.propTypes = {
   }).isRequired,
   onAddToCart: PropTypes.func.isRequired,
 };
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 #### 4. Avoid Prop Drilling
@@ -689,8 +702,9 @@ function UserMenu() {
   const user = useContext(UserContext);
   return <div>Welcome, {user.name}!</div>;
 }
-// Example demonstrating React Components and Props - Complete Guide.
 ```
+
+### Performance Considerations
 
 #### 1. Memoization
 
@@ -706,7 +720,7 @@ const ExpensiveComponent = React.memo(function ExpensiveComponent({
     return data.map((item) => ({ ...item, processed: true }));
   }, [data]);
 
-return (
+  return (
     <div>
       {processedData.map((item) => (
         <div key={item.id}>{item.name}</div>
@@ -714,7 +728,6 @@ return (
     </div>
   );
 });
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 #### 2. Callback Optimization
@@ -725,7 +738,7 @@ Use useCallback to prevent unnecessary re-renders.
 function TodoApp() {
   const [todos, setTodos] = useState([]);
 
-// Memoize callback to prevent child re-renders
+  // Memoize callback to prevent child re-renders
   const handleToggle = useCallback((id) => {
     setTodos((prev) =>
       prev.map((todo) =>
@@ -734,7 +747,7 @@ function TodoApp() {
     );
   }, []);
 
-return (
+  return (
     <div>
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} onToggle={handleToggle} />
@@ -742,18 +755,8 @@ return (
     </div>
   );
 }
-// Example demonstrating React Components and Props - Complete Guide.
 ```
 
 This comprehensive guide covers the fundamental concepts of React Components and
 Props, providing you with the knowledge needed to build effective, reusable
 React applications.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

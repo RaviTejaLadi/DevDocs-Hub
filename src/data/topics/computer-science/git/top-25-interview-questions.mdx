@@ -1,6 +1,8 @@
-# Top 25 Interview Questions
+# 📌 Top 25 Interview Questions
 
 ---
+
+# 1. Core Git Fundamentals
 
 ## Q1. What is the difference between Git and GitHub?
 
@@ -17,6 +19,8 @@ Git is a version control tool used to track source code changes locally. GitHub
 is a hosting platform that stores Git repositories online and enables team
 collaboration.
 
+---
+
 ## Q2. What is the difference between `git clone` and `git fork`?
 
 | `git clone`                          | `git fork`                                                   |
@@ -28,17 +32,17 @@ collaboration.
 
 ### Example Workflow
 
-# Basic example showing the core idea.
 ```bash
-## Clone repository locally
+# Clone repository locally
 git clone https://github.com/user/project.git
 ```
+
+---
 
 ## Q3. What does `git init` do internally?
 
 When you run:
 
-# Basic example showing the core idea.
 ```bash
 git init
 ```
@@ -62,6 +66,8 @@ Git creates a hidden `.git` directory containing:
 | `.git/index`   | Staging area data                |
 | `.git/HEAD`    | Points to current branch         |
 
+---
+
 ## Q4. Explain the three core Git stages.
 
 Git mainly works with three stages:
@@ -74,7 +80,6 @@ Git mainly works with three stages:
 
 ### Workflow Diagram
 
-<!-- Visual flow for Top 25 Interview Questions. -->
 ```mermaid
 graph LR
     A[Working Directory] -->|git add| B[Staging Area]
@@ -83,14 +88,15 @@ graph LR
 
 ### Common Commands
 
-# Basic example showing the core idea.
 ```bash
-## Add changes to staging
+# Add changes to staging
 git add .
 
-## Commit staged changes
+# Commit staged changes
 git commit -m "feat: add authentication"
 ```
+
+---
 
 ## Q5. What is the purpose of `.gitignore`?
 
@@ -98,7 +104,6 @@ git commit -m "feat: add authentication"
 
 ### Commonly Ignored Files
 
-// Example demonstrating Top 25 Interview Questions.
 ```gitignore
 node_modules/
 .env
@@ -114,6 +119,8 @@ coverage/
 - Avoids committing generated files
 - Keeps commits clean
 
+---
+
 ## Q6. What is the default branch name in Git?
 
 Modern repositories generally use `main` as the default branch instead of
@@ -121,17 +128,17 @@ Modern repositories generally use `main` as the default branch instead of
 
 ### Rename Current Branch
 
-# Basic example showing the core idea.
 ```bash
 git branch -M main
 ```
 
 ### Rename Existing Branch
 
-# Basic example showing the core idea.
 ```bash
 git branch -m old-name new-name
 ```
+
+---
 
 ## Q7. What is a detached HEAD state?
 
@@ -140,7 +147,6 @@ branch.
 
 ### Example
 
-# Basic example showing the core idea.
 ```bash
 git checkout a1b2c3d
 ```
@@ -153,10 +159,13 @@ New commits created here can become unreachable later.
 
 ### Fix
 
-# Basic example showing the core idea.
 ```bash
 git checkout -b rescue-branch
 ```
+
+---
+
+# 2. Daily Git Workflows
 
 ## Q8. What is the difference between `git pull` and `git fetch`?
 
@@ -168,18 +177,18 @@ git checkout -b rescue-branch
 
 ### Internal Behavior
 
-# Basic example showing the core idea.
 ```bash
 git pull
 ```
 
 is equivalent to:
 
-# Basic example showing the core idea.
 ```bash
 git fetch
 git merge
 ```
+
+---
 
 ## Q9. What is the difference between `git merge` and `git rebase`?
 
@@ -191,21 +200,18 @@ git merge
 
 ### Merge Example
 
-# Basic example showing the core idea.
 ```bash
 git merge feature-branch
 ```
 
 ### Rebase Example
 
-# Basic example showing the core idea.
 ```bash
 git rebase main
 ```
 
 ### Visualization
 
-<!-- Visual flow for Top 25 Interview Questions. -->
 ```mermaid
 graph TD
     A[Main Branch] --> B[New Commit]
@@ -214,9 +220,10 @@ graph TD
     C --> D
 ```
 
+---
+
 ## Q10. How do you fix the latest commit message?
 
-# Basic example showing the core idea.
 ```bash
 git commit --amend -m "feat: correct auth validation"
 ```
@@ -226,6 +233,8 @@ git commit --amend -m "feat: correct auth validation"
 Avoid amending commits that were already pushed to shared branches unless your
 team allows force pushes.
 
+---
+
 ## Q11. What is the difference between `git reset` and `git revert`?
 
 | `git reset`                  | `git revert`                             |
@@ -234,17 +243,19 @@ team allows force pushes.
 | Rewrites history             | Preserves history                        |
 | Best for local work          | Best for shared/public branches          |
 
-# Basic example showing the core idea.
+### Example
+
 ```bash
-## Remove latest commit locally
+# Remove latest commit locally
 git reset --hard HEAD~1
 ```
 
-# Basic example showing the core idea.
 ```bash
-## Safely reverse commit
+# Safely reverse commit
 git revert a1b2c3d
 ```
+
+---
 
 ## Q12. What is a merge conflict?
 
@@ -258,7 +269,6 @@ A merge conflict happens when Git cannot automatically combine changes.
 
 ### Conflict Markers Example
 
-// Example demonstrating Top 25 Interview Questions.
 ```txt
 <<<<<<< HEAD
 Current branch code
@@ -275,21 +285,21 @@ Incoming branch code
 4. Stage resolved file
 5. Complete merge/rebase
 
+---
+
 ## Q13. How do you temporarily save uncommitted work?
 
-# Basic example showing the core idea.
 ```bash
 git stash
 ```
 
 ### Useful Commands
 
-# Basic example showing the core idea.
 ```bash
-## View stashes
+# View stashes
 git stash list
 
-## Restore latest stash
+# Restore latest stash
 git stash pop
 ```
 
@@ -299,26 +309,27 @@ git stash pop
 - Pulling urgent hotfixes
 - Testing another feature temporarily
 
+---
+
 ## Q14. How do you view history for a specific file?
 
-# Basic example showing the core idea.
 ```bash
 git log --oneline src/components/Button.jsx
 ```
 
 ### Additional Useful Flags
 
-# Basic example showing the core idea.
 ```bash
-## Show line-level modifications
+# Show line-level modifications
 git log -p src/components/Button.jsx
 ```
 
-# Basic example showing the core idea.
 ```bash
-## Show author information
+# Show author information
 git blame src/components/Button.jsx
 ```
+
+---
 
 ## Q15. Fast-forward merge vs three-way merge
 
@@ -330,7 +341,6 @@ git blame src/components/Button.jsx
 
 ### Fast-Forward Example
 
-<!-- Visual flow for Top 25 Interview Questions. -->
 ```mermaid
 graph LR
     A --> B --> C
@@ -338,7 +348,6 @@ graph LR
 
 ### Three-Way Merge Example
 
-<!-- Visual flow for Top 25 Interview Questions. -->
 ```mermaid
 graph TD
     A --> B
@@ -346,6 +355,10 @@ graph TD
     B --> D
     C --> D
 ```
+
+---
+
+# 3. Advanced Git Concepts
 
 ## Q16. What is `git reflog`?
 
@@ -359,7 +372,8 @@ graph TD
 | Shared branch history | Local-only recovery history                |
 | Visible commits only  | Includes resets, rebases, deleted branches |
 
-# Basic example showing the core idea.
+### Example
+
 ```bash
 git reflog
 ```
@@ -368,13 +382,14 @@ git reflog
 
 Recover accidentally deleted commits.
 
+---
+
 ## Q17. How does `git bisect` help find bugs?
 
 `git bisect` uses binary search to identify the commit that introduced a bug.
 
 ### Workflow
 
-# Basic example showing the core idea.
 ```bash
 git bisect start
 git bisect bad
@@ -388,6 +403,8 @@ Git automatically jumps through commits until the problematic commit is found.
 Instead of checking 100 commits manually, binary search drastically reduces
 checks.
 
+---
+
 ## Q18. What is a dangling commit?
 
 A dangling commit is a commit not referenced by:
@@ -397,6 +414,8 @@ A dangling commit is a commit not referenced by:
 - HEAD
 - Other references
 
+### Common Causes
+
 - Deleted branches
 - Hard resets
 - Amended commits
@@ -405,16 +424,18 @@ A dangling commit is a commit not referenced by:
 
 Git eventually removes them using garbage collection:
 
-# Basic example showing the core idea.
 ```bash
 git gc
 ```
+
+---
 
 ## Q19. What is `git cherry-pick` used for?
 
 `git cherry-pick` copies a specific commit into another branch.
 
-# Basic example showing the core idea.
+### Example
+
 ```bash
 git cherry-pick a1b2c3d
 ```
@@ -425,19 +446,29 @@ git cherry-pick a1b2c3d
 - Copying isolated features
 - Avoiding full merges
 
+---
+
+## Q20. How do you delete branches locally and remotely?
+
 ### Delete Local Branch
 
-# Basic example showing the core idea.
 ```bash
 git branch -d feature-login
 ```
 
+### Force Delete Local Branch
+
+```bash
+git branch -D feature-login
+```
+
 ### Delete Remote Branch
 
-# Basic example showing the core idea.
 ```bash
 git push origin --delete feature-login
 ```
+
+---
 
 ## Q21. What are Git Hooks?
 
@@ -452,18 +483,23 @@ Git Hooks are scripts that run automatically during Git events.
 | `pre-push`   | Before push                  |
 | `post-merge` | After merge                  |
 
+### Common Use Cases
+
 - Running ESLint
 - Running tests
 - Enforcing commit conventions
 - Preventing broken code pushes
 
+---
+
 ## Q22. What is Git squashing?
 
 Squashing combines multiple commits into one.
 
+### Example
+
 Before squashing:
 
-// Example demonstrating Top 25 Interview Questions.
 ```txt
 fix typo
 fix typo again
@@ -473,7 +509,6 @@ final fix
 
 After squashing:
 
-// Example demonstrating Top 25 Interview Questions.
 ```txt
 feat: complete navbar implementation
 ```
@@ -486,30 +521,32 @@ feat: complete navbar implementation
 
 ### Common Command
 
-# Basic example showing the core idea.
 ```bash
 git rebase -i HEAD~4
 ```
 
+---
+
 ## Q23. How do you recover a deleted file?
 
-# Basic example showing the core idea.
 ```bash
 git checkout HEAD -- src/config/app.json
 ```
 
 ### Modern Alternative
 
-# Basic example showing the core idea.
 ```bash
 git restore src/config/app.json
 ```
+
+---
 
 ## Q24. What is `.gitmodules`?
 
 `.gitmodules` stores configuration for Git submodules.
 
-// Example demonstrating Top 25 Interview Questions.
+### Example
+
 ```ini
 [submodule "ui-library"]
     path = libs/ui-library
@@ -520,13 +557,16 @@ git restore src/config/app.json
 
 Allows one Git repository to include another repository as a dependency.
 
+---
+
+## Q25. How do you force local branch to match remote exactly?
+
 ### Warning
 
 This removes all local uncommitted and divergent commits.
 
 ### Commands
 
-# Basic example showing the core idea.
 ```bash
 git fetch origin
 git reset --hard origin/main
@@ -538,7 +578,9 @@ git reset --hard origin/main
 - Discard experimental work
 - Match CI/CD deployment state
 
-## Common Git Commands Cheat Sheet
+---
+
+# Common Git Commands Cheat Sheet
 
 | Command               | Purpose                         |
 | --------------------- | ------------------------------- |
@@ -559,6 +601,10 @@ git reset --hard origin/main
 | `git reflog`          | View HEAD history               |
 | `git revert`          | Reverse commit safely           |
 | `git reset`           | Move branch pointer             |
+
+---
+
+# Interview Tips
 
 ## What Interviewers Usually Expect
 
@@ -582,9 +628,10 @@ than memorizing obscure Git flags.
 - Pull frequently to avoid large conflicts
 - Use hooks for linting/testing automation
 
-## Recommended Learning Path
+---
 
-<!-- Visual flow for Top 25 Interview Questions. -->
+# Recommended Learning Path
+
 ```mermaid
 graph TD
     A[Git Basics] --> B[Branching]
@@ -594,7 +641,9 @@ graph TD
     E --> F[Advanced Recovery & Debugging]
 ```
 
-## Summary
+---
+
+# Summary
 
 Git is more than just a tool for saving code. It is a collaboration system that
 enables:

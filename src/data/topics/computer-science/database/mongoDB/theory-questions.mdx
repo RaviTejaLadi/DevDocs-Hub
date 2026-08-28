@@ -1,5 +1,7 @@
 # Top 30 Theory Interview Questions and Answers
 
+## Fundamentals
+
 ### 1. What is MongoDB?
 
 **Answer:** MongoDB is a document-oriented NoSQL database that stores data in
@@ -38,7 +40,11 @@ Documents can contain nested structures and arrays.
 RDBMS. Collections don't enforce a schema, so documents within a collection can
 have different fields.
 
+## Data Modeling
+
 ### 6. What are the different data modeling approaches in MongoDB?
+
+**Answer:**
 
 1. **Embedded Data Model:** Stores related data in a single document (good for
    one-to-one or one-to-few relationships)
@@ -46,6 +52,8 @@ have different fields.
    related data (good for one-to-many or many-to-many relationships)
 
 ### 7. When would you choose embedded vs. referenced documents?
+
+**Answer:**
 
 - **Embedded** when:
   - Data is frequently accessed together
@@ -56,6 +64,8 @@ have different fields.
   - Embedded would cause duplication
   - Data changes frequently
 
+## Indexing
+
 ### 8. What is indexing in MongoDB?
 
 **Answer:** Indexing is a technique to improve query performance by creating
@@ -63,6 +73,8 @@ special data structures that store a small portion of the collection's data in
 an easy-to-traverse form.
 
 ### 9. What types of indexes does MongoDB support?
+
+**Answer:**
 
 - Single field index
 - Compound index
@@ -78,13 +90,19 @@ an easy-to-traverse form.
 
 ### 10. What is the difference between a covered query and a non-covered query?
 
+**Answer:**
+
 - **Covered query:** All fields in the query are part of an index, and all
   fields returned are in the same index. MongoDB can fulfill the query using
   only the index without examining documents.
 - **Non-covered query:** MongoDB needs to examine documents to return results,
   which is slower.
 
+## Performance
+
 ### 11. How can you improve MongoDB performance?
+
+**Answer:**
 
 - Create appropriate indexes
 - Use projection to return only necessary fields
@@ -100,6 +118,8 @@ an easy-to-traverse form.
 including query plan, index usage, and execution statistics. It helps in
 analyzing and optimizing queries.
 
+## Aggregation
+
 ### 13. What is the aggregation framework in MongoDB?
 
 **Answer:** The aggregation framework is a powerful tool for data processing
@@ -107,6 +127,8 @@ that allows you to transform and combine documents in a collection through a
 pipeline of stages (like $match, $group, $sort, etc.).
 
 ### 14. Name some common aggregation pipeline stages.
+
+**Answer:**
 
 - $match: Filters documents
 - $project: Reshapes documents
@@ -116,6 +138,8 @@ pipeline of stages (like $match, $group, $sort, etc.).
 - $limit: Limits documents
 - $unwind: Deconstructs array fields
 - $lookup: Performs a left outer join
+
+## Replication and Sharding
 
 ### 15. What is replication in MongoDB?
 
@@ -141,9 +165,13 @@ shards.
 
 ### 18. What are the components of a sharded cluster?
 
+**Answer:**
+
 - **Shards:** Store the data (each shard can be a replica set)
 - **Config servers:** Store metadata and configuration
 - **Query routers (mongos):** Route operations to appropriate shards
+
+## Transactions
 
 ### 19. Does MongoDB support transactions?
 
@@ -152,7 +180,11 @@ version 4.0 (for replica sets) and 4.2 (for sharded clusters). Transactions
 allow operations across multiple documents to be executed as a single atomic
 unit.
 
+## Security
+
 ### 20. What security features does MongoDB offer?
+
+**Answer:**
 
 - Authentication (SCRAM, x.509, LDAP, Kerberos)
 - Authorization (role-based access control)
@@ -161,7 +193,11 @@ unit.
 - Auditing
 - Field-level encryption (client-side)
 
+## Administration
+
 ### 21. What tools are available for MongoDB administration?
+
+**Answer:**
 
 - mongodump/mongorestore (backup/restore)
 - mongoimport/mongoexport (import/export data)
@@ -172,10 +208,14 @@ unit.
 
 ### 22. How do you backup data in MongoDB?
 
+**Answer:**
+
 - Use mongodump for binary backups
 - Use filesystem snapshots
 - Use MongoDB Atlas backup for cloud deployments
 - Use Ops Manager for enterprise deployments
+
+## Advanced Concepts
 
 ### 23. What is GridFS in MongoDB?
 
@@ -185,6 +225,8 @@ exceed the BSON document size limit of 16MB. It divides files into chunks
 fs.chunks (data).
 
 ### 24. What is the difference between find() and findOne() in MongoDB?
+
+**Answer:**
 
 - find() returns a cursor to all matching documents
 - findOne() returns the first matching document (or null if none found)
@@ -198,7 +240,11 @@ field in documents. It consists of:
 - 5 bytes random value
 - 3 bytes incrementing counter
 
+## Optimization
+
 ### 26. How do you handle slow queries in MongoDB?
+
+**Answer:**
 
 - Use explain() to analyze the query plan
 - Create appropriate indexes
@@ -216,6 +262,8 @@ operations. It has three levels:
 - 1: Log slow operations (threshold configurable)
 - 2: Log all operations
 
+## Miscellaneous
+
 ### 28. What is the difference between MongoDB and CouchDB?
 
 **Answer:** | MongoDB | CouchDB | |---------|---------| | Uses BSON documents |
@@ -225,6 +273,8 @@ Better for offline-first apps |
 
 ### 29. What are some limitations of MongoDB?
 
+**Answer:**
+
 - No joins (must handle in application or use $lookup)
 - Document size limit (16MB)
 - Transactions can impact performance
@@ -233,27 +283,10 @@ Better for offline-first apps |
 
 ### 30. When would you not choose MongoDB?
 
+**Answer:**
+
 - When you need complex transactions across many tables/documents
 - For applications requiring complex joins
 - When your data is highly relational
 - For applications requiring strong schema enforcement at database level
 - When your team has strong RDBMS expertise but no MongoDB experience
-
-## Example
-
-Start with the smallest useful case before combining the idea with other features.
-
-// Basic example showing the core idea.
-```javascript
-const value = "example";
-console.log(value);
-```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

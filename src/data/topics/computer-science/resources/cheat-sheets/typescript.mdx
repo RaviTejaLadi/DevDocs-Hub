@@ -1,11 +1,11 @@
-# TypeScript
+# TypeScript 🚀
 
 TypeScript adds static typing on top of JavaScript. It helps catch errors early,
 improves IDE support, and makes large applications easier to maintain.
 
 ---
 
-## Basic Types
+# Basic Types
 
 | Type      | Example                        | Description             |
 | --------- | ------------------------------ | ----------------------- |
@@ -21,7 +21,6 @@ improves IDE support, and makes large applications easier to maintain.
 | never     | `function fail(): never`       | Never returns           |
 | void      | `function log(): void`         | No return value         |
 
-// Example demonstrating TypeScript.
 ```ts
 // Basic types
 let username: string = 'John';
@@ -29,7 +28,9 @@ let age: number = 25;
 let isAdmin: boolean = false;
 ```
 
-## Type Inference
+---
+
+# Type Inference
 
 | Syntax                | Result  |
 | --------------------- | ------- |
@@ -37,13 +38,14 @@ let isAdmin: boolean = false;
 | `let age = 25`        | number  |
 | `const active = true` | boolean |
 
-// Example demonstrating TypeScript.
 ```ts
 const message = 'Hello';
 // TypeScript infers string automatically
 ```
 
-## Arrays
+---
+
+# Arrays
 
 | Syntax      | Example                |
 | ----------- | ---------------------- |
@@ -51,13 +53,14 @@ const message = 'Hello';
 | Array<Type> | `Array<string>`        |
 | Mixed Array | `(string \| number)[]` |
 
-// Example demonstrating TypeScript.
 ```ts
 const users: string[] = ['John', 'Alex'];
 const ids: Array<number> = [1, 2, 3];
 ```
 
-## Tuples
+---
+
+# Tuples
 
 | Syntax         | Example                 |
 | -------------- | ----------------------- |
@@ -65,14 +68,14 @@ const ids: Array<number> = [1, 2, 3];
 | Optional Value | `[string, number?]`     |
 | Rest Element   | `[string, ...number[]]` |
 
-// Example demonstrating TypeScript.
 ```ts
 const user: [string, number] = ['John', 25];
 ```
 
-## Objects
+---
 
-// Example demonstrating TypeScript.
+# Objects
+
 ```ts
 const user: {
   name: string;
@@ -90,7 +93,9 @@ const user: {
 | Optional Property | `name?: string`       |
 | Readonly          | `readonly id: number` |
 
-## Functions
+---
+
+# Functions
 
 | Syntax         | Example            |
 | -------------- | ------------------ |
@@ -100,7 +105,6 @@ const user: {
 | Default Param  | `name = "Guest"`   |
 | Rest Param     | `...args:number[]` |
 
-// Example demonstrating TypeScript.
 ```ts
 // Function with types
 function greet(name: string): string {
@@ -108,16 +112,19 @@ function greet(name: string): string {
 }
 ```
 
-## Function Type
+---
 
-// Example demonstrating TypeScript.
+# Function Type
+
 ```ts
 let calculate: (a: number, b: number) => number;
 
 calculate = (a, b) => a + b;
 ```
 
-## Interfaces
+---
+
+# Interfaces
 
 | Syntax             | Example              |
 | ------------------ | -------------------- |
@@ -126,7 +133,6 @@ calculate = (a, b) => a + b;
 | Readonly Property  | `readonly id:number` |
 | Function Signature | `login(): void`      |
 
-// Example demonstrating TypeScript.
 ```ts
 interface User {
   id: number;
@@ -135,9 +141,10 @@ interface User {
 }
 ```
 
-## Type Alias
+---
 
-// Example demonstrating TypeScript.
+# Type Alias
+
 ```ts
 type User = {
   id: number;
@@ -151,7 +158,9 @@ type User = {
 | Object     | `type User = {}`                     |
 | Union      | `type Status = "success" \| "error"` |
 
-## Interface vs Type
+---
+
+# Interface vs Type
 
 | Interface           | Type          |
 | ------------------- | ------------- |
@@ -161,9 +170,10 @@ type User = {
 | Complex Types       | Limited       |
 | Recommended For     | Object shapes |
 
-## Union Types
+---
 
-// Example demonstrating TypeScript.
+# Union Types
+
 ```ts
 type ID = string | number;
 ```
@@ -174,9 +184,10 @@ type ID = string | number;
 | `"yes" \| "no"`    | Literal values  |
 | `User \| null`     | Nullable object |
 
-## Intersection Types
+---
 
-// Example demonstrating TypeScript.
+# Intersection Types
+
 ```ts
 type User = {
   name: string;
@@ -189,21 +200,22 @@ type Admin = {
 type SuperAdmin = User & Admin;
 ```
 
-## Literal Types
+---
 
-// Example demonstrating TypeScript.
+# Literal Types
+
 ```ts
 type Theme = 'light' | 'dark';
 ```
 
-// Example demonstrating TypeScript.
 ```ts
 let theme: Theme = 'light';
 ```
 
-## Enums
+---
 
-// Example demonstrating TypeScript.
+# Enums
+
 ```ts
 enum Role {
   Admin,
@@ -214,7 +226,6 @@ enum Role {
 
 ### String Enum
 
-// Example demonstrating TypeScript.
 ```ts
 enum Status {
   Success = 'SUCCESS',
@@ -222,9 +233,10 @@ enum Status {
 }
 ```
 
-## Type Assertions
+---
 
-// Example demonstrating TypeScript.
+# Type Assertions
+
 ```ts
 const input = document.getElementById('name') as HTMLInputElement;
 
@@ -233,14 +245,14 @@ input.value = 'John';
 
 ### Alternative
 
-// Example demonstrating TypeScript.
 ```ts
 const input = <HTMLInputElement>document.getElementById('name');
 ```
 
-## Type Narrowing
+---
 
-// Example demonstrating TypeScript.
+# Type Narrowing
+
 ```ts
 function print(id: string | number) {
   if (typeof id === 'string') {
@@ -258,9 +270,10 @@ function print(id: string | number) {
 | in           | `"name" in obj`             |
 | Custom Guard | `isUser(data)`              |
 
-## Type Guards
+---
 
-// Example demonstrating TypeScript.
+# Type Guards
+
 ```ts
 interface User {
   name: string;
@@ -271,26 +284,27 @@ function isUser(data: any): data is User {
 }
 ```
 
-## Generics
+---
+
+# Generics
 
 Generics create reusable type-safe code.
 
-// Example demonstrating TypeScript.
 ```ts
 function identity<T>(value: T): T {
   return value;
 }
 ```
 
-// Example demonstrating TypeScript.
 ```ts
 identity<string>('hello');
 identity<number>(100);
 ```
 
-## Generic Interfaces
+---
 
-// Example demonstrating TypeScript.
+# Generic Interfaces
+
 ```ts
 interface ApiResponse<T> {
   success: boolean;
@@ -298,7 +312,6 @@ interface ApiResponse<T> {
 }
 ```
 
-// Example demonstrating TypeScript.
 ```ts
 const response: ApiResponse<User> = {
   success: true,
@@ -309,9 +322,10 @@ const response: ApiResponse<User> = {
 };
 ```
 
-## Generic Constraints
+---
 
-// Example demonstrating TypeScript.
+# Generic Constraints
+
 ```ts
 interface HasId {
   id: number;
@@ -322,9 +336,10 @@ function getId<T extends HasId>(item: T) {
 }
 ```
 
-## keyof
+---
 
-// Example demonstrating TypeScript.
+# keyof
+
 ```ts
 interface User {
   name: string;
@@ -336,14 +351,14 @@ type Keys = keyof User;
 
 Result:
 
-// Example demonstrating TypeScript.
 ```ts
 'name' | 'age';
 ```
 
-## typeof
+---
 
-// Example demonstrating TypeScript.
+# typeof
+
 ```ts
 const user = {
   name: 'John',
@@ -353,9 +368,10 @@ const user = {
 type UserType = typeof user;
 ```
 
-## Mapped Types
+---
 
-// Example demonstrating TypeScript.
+# Mapped Types
+
 ```ts
 type User = {
   name: string;
@@ -367,92 +383,113 @@ type ReadonlyUser = {
 };
 ```
 
+---
+
+# Utility Types
+
 ## Partial
 
+```ts
+type User = {
+  name: string;
+  age: number;
+};
+
 type PartialUser = Partial<User>;
-// Example demonstrating TypeScript.
 ```
 
 All properties become optional.
+
+---
 
 ## Required
 
 ```ts
 Required<User>;
-// Example demonstrating TypeScript.
 ```
 
 All properties required.
+
+---
 
 ## Readonly
 
 ```ts
 Readonly<User>;
-// Example demonstrating TypeScript.
 ```
 
 All properties readonly.
+
+---
 
 ## Pick
 
 ```ts
 type UserPreview = Pick<User, 'name'>;
-// Example demonstrating TypeScript.
 ```
+
+---
 
 ## Omit
 
 ```ts
 type UserWithoutAge = Omit<User, 'age'>;
-// Example demonstrating TypeScript.
 ```
+
+---
 
 ## Record
 
 ```ts
 type Users = Record<string, number>;
-// Example demonstrating TypeScript.
 ```
+
+Result:
 
 ```ts
 {
   john: 1;
   alex: 2;
 }
-// Example demonstrating TypeScript.
 ```
+
+---
 
 ## Exclude
 
 ```ts
 type Status = Exclude<'success' | 'error' | 'loading', 'loading'>;
-// Example demonstrating TypeScript.
 ```
+
+---
 
 ## Extract
 
 ```ts
 type Result = Extract<string | number, string>;
-// Example demonstrating TypeScript.
 ```
+
+---
 
 ## NonNullable
 
 ```ts
 type Name = NonNullable<string | null | undefined>;
-// Example demonstrating TypeScript.
 ```
 
-## Classes
+---
+
+# Classes
 
 ```ts
 class User {
   constructor(public name: string, private age: number) {}
 }
-// Example demonstrating TypeScript.
 ```
 
-## Access Modifiers
+---
+
+# Access Modifiers
 
 | Modifier  | Accessible    |
 | --------- | ------------- |
@@ -461,54 +498,60 @@ class User {
 | protected | Class + Child |
 | readonly  | Read only     |
 
-## Abstract Class
+---
+
+# Abstract Class
 
 ```ts
 abstract class Animal {
   abstract speak(): void;
 }
-// Example demonstrating TypeScript.
 ```
 
-## Async/Await
+---
+
+# Async/Await
 
 ```ts
 async function getUsers(): Promise<User[]> {
   const res = await fetch('/api/users');
   return res.json();
 }
-// Example demonstrating TypeScript.
 ```
 
-## Promise
+---
+
+# Promise
 
 ```ts
 const promise: Promise<string> = Promise.resolve('Hello');
-// Example demonstrating TypeScript.
 ```
+
+---
+
+# Modules
 
 ### Export
 
 ```ts
 export const API_URL = '/api';
-// Example demonstrating TypeScript.
 ```
 
 ### Default Export
 
 ```ts
 export default App;
-// Example demonstrating TypeScript.
 ```
 
 ### Import
 
 ```ts
 import App from './App';
-// Example demonstrating TypeScript.
 ```
 
-## Declaration Files
+---
+
+# Declaration Files
 
 | File          | Purpose               |
 | ------------- | --------------------- |
@@ -516,7 +559,9 @@ import App from './App';
 | `global.d.ts` | Global types          |
 | `env.d.ts`    | Environment variables |
 
-## Common React Types
+---
+
+# Common React Types
 
 | Type        | Example                         |
 | ----------- | ------------------------------- |
@@ -527,7 +572,9 @@ import App from './App';
 | ChangeEvent | `ChangeEvent<HTMLInputElement>` |
 | RefObject   | `RefObject<HTMLInputElement>`   |
 
-## tsconfig Important Options
+---
+
+# tsconfig Important Options
 
 | Option        | Purpose              |
 | ------------- | -------------------- |
@@ -540,7 +587,9 @@ import App from './App';
 | paths         | Alias support        |
 | skipLibCheck  | Faster builds        |
 
-## Most Used Advanced Types
+---
+
+# Most Used Advanced Types
 
 ```ts
 type Nullable<T> = T | null;
@@ -553,10 +602,11 @@ type ApiResponse<T> = {
 type AsyncFunction<T> = () => Promise<T>;
 
 type ValueOf<T> = T[keyof T];
-// Example demonstrating TypeScript.
 ```
 
-## Frequently Used Interview Concepts
+---
+
+# Frequently Used Interview Concepts
 
 | Concept            | Example                 |
 | ------------------ | ----------------------- |
@@ -571,23 +621,27 @@ type ValueOf<T> = T[keyof T];
 | Conditional Types  | `T extends U ? X : Y`   |
 | Infer Keyword      | Extract nested types    |
 
-## Conditional Types
+---
+
+# Conditional Types
 
 ```ts
 type IsString<T> = T extends string ? true : false;
 
 type Result = IsString<string>; // true
-// Example demonstrating TypeScript.
 ```
 
-## Infer Keyword
+---
+
+# Infer Keyword
 
 ```ts
 type ReturnTypeOf<T> = T extends (...args: any[]) => infer R ? R : never;
-// Example demonstrating TypeScript.
 ```
 
-## Useful TypeScript Patterns for React
+---
+
+# Useful TypeScript Patterns for React
 
 ```ts
 // API Response
@@ -607,14 +661,4 @@ type ButtonProps = {
 function useLocalStorage<T>(key: string, initialValue: T) {
   // implementation
 }
-// Example demonstrating TypeScript.
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

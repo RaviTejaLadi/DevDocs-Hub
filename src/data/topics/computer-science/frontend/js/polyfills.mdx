@@ -5,28 +5,27 @@
 **Asked by:** Google, Amazon, Microsoft, Meta **Question:** Implement a polyfill
 for Array.prototype.map()
 
-// Basic example showing the core idea.
 ```javascript
 Array.prototype.myMap = function (callback, thisArg) {
   if (this == null) {
     throw new TypeError('Array.prototype.map called on null or undefined');
   }
 
-if (typeof callback !== 'function') {
+  if (typeof callback !== 'function') {
     throw new TypeError(callback + ' is not a function');
   }
 
-const O = Object(this);
+  const O = Object(this);
   const len = parseInt(O.length) || 0;
   const result = new Array(len);
 
-for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       result[i] = callback.call(thisArg, O[i], i, O);
     }
   }
 
-return result;
+  return result;
 };
 ```
 
@@ -35,24 +34,31 @@ return result;
 **Asked by:** Netflix, Uber, Airbnb **Question:** Create a polyfill for
 Array.prototype.filter()
 
-// Basic example showing the core idea.
 ```javascript
 Array.prototype.myFilter = function (callback, thisArg) {
   if (this == null) {
     throw new TypeError('Array.prototype.filter called on null or undefined');
   }
 
-const O = Object(this);
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
   const len = parseInt(O.length) || 0;
   const result = [];
 
-for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       if (callback.call(thisArg, O[i], i, O)) {
         result.push(O[i]);
       }
     }
   }
+
+  return result;
+};
+```
 
 ## 3. Array.prototype.reduce()
 
@@ -65,19 +71,23 @@ Array.prototype.myReduce = function (callback, initialValue) {
     throw new TypeError('Array.prototype.reduce called on null or undefined');
   }
 
-const O = Object(this);
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
   const len = parseInt(O.length) || 0;
   let k = 0;
   let accumulator;
 
-if (arguments.length >= 2) {
+  if (arguments.length >= 2) {
     accumulator = initialValue;
   } else {
     if (len === 0) {
       throw new TypeError('Reduce of empty array with no initial value');
     }
 
-let kPresent = false;
+    let kPresent = false;
     while (!kPresent && k < len) {
       kPresent = k in O;
       if (kPresent) {
@@ -86,21 +96,20 @@ let kPresent = false;
       k++;
     }
 
-if (!kPresent) {
+    if (!kPresent) {
       throw new TypeError('Reduce of empty array with no initial value');
     }
   }
 
-while (k < len) {
+  while (k < len) {
     if (k in O) {
       accumulator = callback(accumulator, O[k], k, O);
     }
     k++;
   }
 
-return accumulator;
+  return accumulator;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 4. Array.prototype.forEach()
@@ -114,16 +123,19 @@ Array.prototype.myForEach = function (callback, thisArg) {
     throw new TypeError('Array.prototype.forEach called on null or undefined');
   }
 
-const O = Object(this);
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
   const len = parseInt(O.length) || 0;
 
-for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       callback.call(thisArg, O[i], i, O);
     }
   }
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 5. Function.prototype.bind()
@@ -139,7 +151,7 @@ Function.prototype.myBind = function (context, ...args) {
     );
   }
 
-const fn = this;
+  const fn = this;
   const boundFunction = function (...newArgs) {
     return fn.apply(
       this instanceof boundFunction ? this : context,
@@ -147,13 +159,12 @@ const fn = this;
     );
   };
 
-if (this.prototype) {
+  if (this.prototype) {
     boundFunction.prototype = Object.create(this.prototype);
   }
 
-return boundFunction;
+  return boundFunction;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 6. Function.prototype.call()
@@ -169,19 +180,22 @@ Function.prototype.myCall = function (context, ...args) {
     );
   }
 
-context = context || globalThis;
+  context = context || globalThis;
   const fnSymbol = Symbol('fn');
   context[fnSymbol] = this;
 
-const result = context[fnSymbol](...args);
+  const result = context[fnSymbol](...args);
   delete context[fnSymbol];
+
+  return result;
+};
+```
 
 ## 7. Function.prototype.apply()
 
 **Asked by:** Netflix, Uber, Dropbox **Question:** Implement
 Function.prototype.apply() polyfill
 
-// Basic example showing the core idea.
 ```javascript
 Function.prototype.myApply = function (context, args) {
   if (typeof this !== 'function') {
@@ -190,11 +204,18 @@ Function.prototype.myApply = function (context, args) {
     );
   }
 
-context = context || globalThis;
+  context = context || globalThis;
   args = args || [];
 
-const fnSymbol = Symbol('fn');
+  const fnSymbol = Symbol('fn');
   context[fnSymbol] = this;
+
+  const result = context[fnSymbol](...args);
+  delete context[fnSymbol];
+
+  return result;
+};
+```
 
 ## 8. Promise
 
@@ -209,7 +230,7 @@ function MyPromise(executor) {
   this.onFulfilledCallbacks = [];
   this.onRejectedCallbacks = [];
 
-const resolve = (value) => {
+  const resolve = (value) => {
     if (this.state === 'pending') {
       this.state = 'fulfilled';
       this.value = value;
@@ -217,7 +238,7 @@ const resolve = (value) => {
     }
   };
 
-const reject = (reason) => {
+  const reject = (reason) => {
     if (this.state === 'pending') {
       this.state = 'rejected';
       this.reason = reason;
@@ -225,7 +246,7 @@ const reject = (reason) => {
     }
   };
 
-try {
+  try {
     executor(resolve, reject);
   } catch (error) {
     reject(error);
@@ -258,7 +279,7 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
         }
       });
 
-this.onRejectedCallbacks.push((reason) => {
+      this.onRejectedCallbacks.push((reason) => {
         try {
           const result = onRejected ? onRejected(reason) : reason;
           resolve(result);
@@ -269,7 +290,6 @@ this.onRejectedCallbacks.push((reason) => {
     }
   });
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 9. Object.create()
@@ -283,17 +303,16 @@ Object.myCreate = function (proto, propertiesObject) {
     throw new TypeError('Object prototype may only be an Object or null');
   }
 
-function F() {}
+  function F() {}
   F.prototype = proto;
   const obj = new F();
 
-if (propertiesObject !== undefined) {
+  if (propertiesObject !== undefined) {
     Object.defineProperties(obj, propertiesObject);
   }
 
-return obj;
+  return obj;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 10. Array.prototype.find()
@@ -307,7 +326,14 @@ Array.prototype.myFind = function (callback, thisArg) {
     throw new TypeError('Array.prototype.find called on null or undefined');
   }
 
-for (let i = 0; i < len; i++) {
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
+  const len = parseInt(O.length) || 0;
+
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       const value = O[i];
       if (callback.call(thisArg, value, i, O)) {
@@ -316,9 +342,8 @@ for (let i = 0; i < len; i++) {
     }
   }
 
-return undefined;
+  return undefined;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 11. Array.prototype.includes()
@@ -332,12 +357,15 @@ Array.prototype.myIncludes = function (searchElement, fromIndex) {
     throw new TypeError('Array.prototype.includes called on null or undefined');
   }
 
-if (len === 0) return false;
+  const O = Object(this);
+  const len = parseInt(O.length) || 0;
 
-let n = parseInt(fromIndex) || 0;
+  if (len === 0) return false;
+
+  let n = parseInt(fromIndex) || 0;
   let k = n >= 0 ? n : Math.max(len + n, 0);
 
-while (k < len) {
+  while (k < len) {
     if (
       O[k] === searchElement ||
       (Number.isNaN(O[k]) && Number.isNaN(searchElement))
@@ -347,9 +375,8 @@ while (k < len) {
     k++;
   }
 
-return false;
+  return false;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 12. String.prototype.startsWith()
@@ -365,12 +392,11 @@ String.prototype.myStartsWith = function (searchString, position) {
     );
   }
 
-const str = String(this);
+  const str = String(this);
   const pos = Math.max(0, Math.floor(position) || 0);
 
-return str.slice(pos, pos + searchString.length) === searchString;
+  return str.slice(pos, pos + searchString.length) === searchString;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 13. String.prototype.endsWith()
@@ -386,15 +412,14 @@ String.prototype.myEndsWith = function (searchString, length) {
     );
   }
 
-const str = String(this);
+  const str = String(this);
   const len =
     length === undefined ? str.length : Math.max(0, Math.floor(length));
   const end = Math.min(len, str.length);
   const start = end - searchString.length;
 
-return start >= 0 && str.slice(start, end) === searchString;
+  return start >= 0 && str.slice(start, end) === searchString;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 14. Array.prototype.flat()
@@ -408,10 +433,10 @@ Array.prototype.myFlat = function (depth = 1) {
     throw new TypeError('Array.prototype.flat called on null or undefined');
   }
 
-const flattenHelper = (arr, currentDepth) => {
+  const flattenHelper = (arr, currentDepth) => {
     const result = [];
 
-for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       if (Array.isArray(arr[i]) && currentDepth > 0) {
         result.push(...flattenHelper(arr[i], currentDepth - 1));
       } else {
@@ -419,12 +444,11 @@ for (let i = 0; i < arr.length; i++) {
       }
     }
 
-return result;
+    return result;
   };
 
-return flattenHelper(this, depth);
+  return flattenHelper(this, depth);
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 15. Array.from()
@@ -438,34 +462,37 @@ Array.myFrom = function (arrayLike, mapFn, thisArg) {
     throw new TypeError('Array.from requires an array-like object');
   }
 
-const items = Object(arrayLike);
+  const items = Object(arrayLike);
   const len = parseInt(items.length) || 0;
   const result = new Array(len);
 
-for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     if (i in items) {
       result[i] = mapFn ? mapFn.call(thisArg, items[i], i) : items[i];
     }
   }
+
+  return result;
+};
+```
 
 ## 16. Object.assign()
 
 **Asked by:** Microsoft, Apple, Oracle **Question:** Create a polyfill for
 Object.assign()
 
-// Basic example showing the core idea.
 ```javascript
 Object.myAssign = function (target, ...sources) {
   if (target == null) {
     throw new TypeError('Cannot convert undefined or null to object');
   }
 
-const to = Object(target);
+  const to = Object(target);
 
-for (let i = 0; i < sources.length; i++) {
+  for (let i = 0; i < sources.length; i++) {
     const source = sources[i];
 
-if (source != null) {
+    if (source != null) {
       for (const key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           to[key] = source[key];
@@ -474,7 +501,7 @@ if (source != null) {
     }
   }
 
-return to;
+  return to;
 };
 ```
 
@@ -483,7 +510,6 @@ return to;
 **Asked by:** Facebook, Amazon, PayPal **Question:** Implement a basic
 JSON.stringify() polyfill
 
-// Basic example showing the core idea.
 ```javascript
 JSON.myStringify = function (value, replacer, space) {
   const stringify = (val, depth = 0) => {
@@ -493,7 +519,7 @@ JSON.myStringify = function (value, replacer, space) {
     if (typeof val === 'number') return isFinite(val) ? val.toString() : 'null';
     if (typeof val === 'string') return `"${val.replace(/"/g, '\\"')}"`;
 
-if (Array.isArray(val)) {
+    if (Array.isArray(val)) {
       const items = val.map((item) => {
         const result = stringify(item, depth + 1);
         return result === undefined ? 'null' : result;
@@ -501,7 +527,7 @@ if (Array.isArray(val)) {
       return `[${items.join(',')}]`;
     }
 
-if (typeof val === 'object') {
+    if (typeof val === 'object') {
       const pairs = [];
       for (const key in val) {
         if (val.hasOwnProperty(key)) {
@@ -514,10 +540,10 @@ if (typeof val === 'object') {
       return `{${pairs.join(',')}}`;
     }
 
-return undefined;
+    return undefined;
   };
 
-return stringify(value);
+  return stringify(value);
 };
 ```
 
@@ -526,27 +552,26 @@ return stringify(value);
 **Asked by:** Google, Meta, TikTok **Question:** Implement setTimeout and
 clearTimeout polyfills
 
-// Basic example showing the core idea.
 ```javascript
 const MyTimer = (function () {
   let timerId = 0;
   const timers = {};
 
-function mySetTimeout(callback, delay, ...args) {
+  function mySetTimeout(callback, delay, ...args) {
     const id = ++timerId;
 
-timers[id] = {
+    timers[id] = {
       callback,
       args,
       startTime: Date.now(),
       delay,
     };
 
-const runner = () => {
+    const runner = () => {
       const timer = timers[id];
       if (!timer) return;
 
-const elapsed = Date.now() - timer.startTime;
+      const elapsed = Date.now() - timer.startTime;
       if (elapsed >= timer.delay) {
         delete timers[id];
         timer.callback.apply(null, timer.args);
@@ -555,15 +580,15 @@ const elapsed = Date.now() - timer.startTime;
       }
     };
 
-setTimeout(runner, delay);
+    setTimeout(runner, delay);
     return id;
   }
 
-function myClearTimeout(id) {
+  function myClearTimeout(id) {
     delete timers[id];
   }
 
-return { mySetTimeout, myClearTimeout };
+  return { mySetTimeout, myClearTimeout };
 })();
 ```
 
@@ -571,17 +596,16 @@ return { mySetTimeout, myClearTimeout };
 
 **Asked by:** Uber, Airbnb, Stripe **Question:** Create a debounce function
 
-// Basic example showing the core idea.
 ```javascript
 function debounce(func, delay) {
   let timeoutId;
 
-return function (...args) {
+  return function (...args) {
     const context = this;
 
-clearTimeout(timeoutId);
+    clearTimeout(timeoutId);
 
-timeoutId = setTimeout(() => {
+    timeoutId = setTimeout(() => {
       func.apply(context, args);
     }, delay);
   };
@@ -593,16 +617,18 @@ timeoutId = setTimeout(() => {
 **Asked by:** Twitter, LinkedIn, Snapchat **Question:** Implement a throttle
 function
 
-// Basic example showing the core idea.
 ```javascript
 function throttle(func, limit) {
   let inThrottle;
 
-if (!inThrottle) {
+  return function (...args) {
+    const context = this;
+
+    if (!inThrottle) {
       func.apply(context, args);
       inThrottle = true;
 
-setTimeout(() => {
+      setTimeout(() => {
         inThrottle = false;
       }, limit);
     }
@@ -615,20 +641,30 @@ setTimeout(() => {
 **Asked by:** Adobe, Salesforce, Zoom **Question:** Create a polyfill for
 Array.prototype.some()
 
-// Basic example showing the core idea.
 ```javascript
 Array.prototype.mySome = function (callback, thisArg) {
   if (this == null) {
     throw new TypeError('Array.prototype.some called on null or undefined');
   }
 
-for (let i = 0; i < len; i++) {
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
+  const len = parseInt(O.length) || 0;
+
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       if (callback.call(thisArg, O[i], i, O)) {
         return true;
       }
     }
   }
+
+  return false;
+};
+```
 
 ## 22. Array.prototype.every()
 
@@ -641,7 +677,14 @@ Array.prototype.myEvery = function (callback, thisArg) {
     throw new TypeError('Array.prototype.every called on null or undefined');
   }
 
-for (let i = 0; i < len; i++) {
+  if (typeof callback !== 'function') {
+    throw new TypeError(callback + ' is not a function');
+  }
+
+  const O = Object(this);
+  const len = parseInt(O.length) || 0;
+
+  for (let i = 0; i < len; i++) {
     if (i in O) {
       if (!callback.call(thisArg, O[i], i, O)) {
         return false;
@@ -649,9 +692,8 @@ for (let i = 0; i < len; i++) {
     }
   }
 
-return true;
+  return true;
 };
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 23. deep clone
@@ -665,15 +707,15 @@ function deepClone(obj) {
     return obj;
   }
 
-if (obj instanceof Date) {
+  if (obj instanceof Date) {
     return new Date(obj.getTime());
   }
 
-if (obj instanceof Array) {
+  if (obj instanceof Array) {
     return obj.map((item) => deepClone(item));
   }
 
-if (typeof obj === 'object') {
+  if (typeof obj === 'object') {
     const cloned = {};
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
@@ -683,9 +725,8 @@ if (typeof obj === 'object') {
     return cloned;
   }
 
-return obj;
+  return obj;
 }
-// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## Tips for Interview Success
@@ -701,12 +742,3 @@ return obj;
 These polyfills demonstrate understanding of JavaScript fundamentals, prototype
 manipulation, and modern ES6+ features that are essential for frontend
 development roles.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

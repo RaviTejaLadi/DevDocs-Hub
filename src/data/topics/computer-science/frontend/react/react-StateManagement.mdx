@@ -1,5 +1,7 @@
 # React State Management - Complete Guide
 
+## Introduction to State
+
 ### Definition
 
 State in React represents data that can change over time and affects what gets
@@ -33,27 +35,29 @@ component to reflect the new state.
 
 ## useState Hook
 
+### Definition
+
 `useState` is a React Hook that allows functional components to have local
 state. It returns an array with the current state value and a function to update
 it.
 
 ### Syntax
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 const [state, setState] = useState(initialValue);
 ```
 
+### Basic Usage
+
 #### Simple State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
 
-return (
+  return (
     <div>
       <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
@@ -66,7 +70,6 @@ return (
 
 #### Multiple State Variables
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function UserForm() {
   const [name, setName] = useState('');
@@ -74,7 +77,7 @@ function UserForm() {
   const [age, setAge] = useState(0);
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-return (
+  return (
     <form>
       <input
         type="text"
@@ -107,9 +110,10 @@ return (
 }
 ```
 
+### Advanced useState Patterns
+
 #### Object State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function UserProfile() {
   const [user, setUser] = useState({
@@ -121,14 +125,14 @@ function UserProfile() {
     },
   });
 
-const updateUser = (field, value) => {
+  const updateUser = (field, value) => {
     setUser((prevUser) => ({
       ...prevUser,
       [field]: value,
     }));
   };
 
-const updatePreference = (preference, value) => {
+  const updatePreference = (preference, value) => {
     setUser((prevUser) => ({
       ...prevUser,
       preferences: {
@@ -138,7 +142,7 @@ const updatePreference = (preference, value) => {
     }));
   };
 
-return (
+  return (
     <div>
       <input
         type="text"
@@ -174,13 +178,12 @@ return (
 
 #### Array State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-const addTodo = () => {
+  const addTodo = () => {
     if (inputValue.trim()) {
       setTodos((prevTodos) => [
         ...prevTodos,
@@ -194,11 +197,11 @@ const addTodo = () => {
     }
   };
 
-const removeTodo = (id) => {
+  const removeTodo = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
-const toggleTodo = (id) => {
+  const toggleTodo = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -206,7 +209,7 @@ const toggleTodo = (id) => {
     );
   };
 
-return (
+  return (
     <div>
       <div>
         <input
@@ -243,17 +246,16 @@ return (
 
 #### Functional State Updates
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function Calculator() {
   const [result, setResult] = useState(0);
   const [history, setHistory] = useState([]);
 
-const performOperation = (operation, value) => {
+  const performOperation = (operation, value) => {
     setResult((prevResult) => {
       const newResult = operation(prevResult, value);
 
-// Update history using functional update
+      // Update history using functional update
       setHistory((prevHistory) => [
         ...prevHistory,
         {
@@ -262,21 +264,21 @@ const performOperation = (operation, value) => {
         },
       ]);
 
-return newResult;
+      return newResult;
     });
   };
 
-const add = (value) => performOperation((a, b) => a + b, value);
+  const add = (value) => performOperation((a, b) => a + b, value);
   const subtract = (value) => performOperation((a, b) => a - b, value);
   const multiply = (value) => performOperation((a, b) => a * b, value);
   const divide = (value) => performOperation((a, b) => a / b, value);
 
-const clear = () => {
+  const clear = () => {
     setResult(0);
     setHistory([]);
   };
 
-return (
+  return (
     <div>
       <div>Result: {result}</div>
       <div>
@@ -301,7 +303,6 @@ return (
 
 #### Lazy Initial State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function ExpensiveComponent() {
   // Expensive computation only runs once
@@ -313,7 +314,7 @@ function ExpensiveComponent() {
     }));
   });
 
-const refreshData = () => {
+  const refreshData = () => {
     setData((prevData) =>
       prevData.map((item) => ({
         ...item,
@@ -322,7 +323,7 @@ const refreshData = () => {
     );
   };
 
-return (
+  return (
     <div>
       <button onClick={refreshData}>Refresh Data</button>
       <div>Items: {data.length}</div>
@@ -331,20 +332,26 @@ return (
 }
 ```
 
+---
+
 ## useReducer Hook
+
+### Definition
 
 `useReducer` is a React Hook that provides an alternative to `useState` for
 managing complex state logic. It's particularly useful when state transitions
 depend on the previous state or when managing multiple related state variables.
 
-// Example demonstrating React State Management - Complete Guide.
+### Syntax
+
 ```jsx
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
+### Basic Usage
+
 #### Simple Counter with useReducer
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { useReducer } from 'react';
 
@@ -367,7 +374,7 @@ function counterReducer(state, action) {
 function Counter() {
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
 
-return (
+  return (
     <div>
       <p>Count: {state.count}</p>
       <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
@@ -381,9 +388,10 @@ return (
 }
 ```
 
+### Complex State Management
+
 #### Todo Application with useReducer
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function todoReducer(state, action) {
   switch (action.type) {
@@ -400,13 +408,13 @@ function todoReducer(state, action) {
         ],
       };
 
-case 'REMOVE_TODO':
+    case 'REMOVE_TODO':
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
 
-case 'TOGGLE_TODO':
+    case 'TOGGLE_TODO':
       return {
         ...state,
         todos: state.todos.map((todo) =>
@@ -416,7 +424,7 @@ case 'TOGGLE_TODO':
         ),
       };
 
-case 'EDIT_TODO':
+    case 'EDIT_TODO':
       return {
         ...state,
         todos: state.todos.map((todo) =>
@@ -426,19 +434,19 @@ case 'EDIT_TODO':
         ),
       };
 
-case 'SET_FILTER':
+    case 'SET_FILTER':
       return {
         ...state,
         filter: action.payload,
       };
 
-case 'CLEAR_COMPLETED':
+    case 'CLEAR_COMPLETED':
       return {
         ...state,
         todos: state.todos.filter((todo) => !todo.completed),
       };
 
-default:
+    default:
       return state;
   }
 }
@@ -449,22 +457,22 @@ function TodoApp() {
     filter: 'all',
   });
 
-const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
-const addTodo = () => {
+  const addTodo = () => {
     if (inputValue.trim()) {
       dispatch({ type: 'ADD_TODO', payload: inputValue });
       setInputValue('');
     }
   };
 
-const filteredTodos = state.todos.filter((todo) => {
+  const filteredTodos = state.todos.filter((todo) => {
     if (state.filter === 'active') return !todo.completed;
     if (state.filter === 'completed') return todo.completed;
     return true;
   });
 
-return (
+  return (
     <div>
       <div>
         <input
@@ -476,7 +484,7 @@ return (
         <button onClick={addTodo}>Add</button>
       </div>
 
-<div>
+      <div>
         <button
           onClick={() => dispatch({ type: 'SET_FILTER', payload: 'all' })}
           style={{ fontWeight: state.filter === 'all' ? 'bold' : 'normal' }}
@@ -502,7 +510,7 @@ return (
         </button>
       </div>
 
-<ul>
+      <ul>
         {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -526,12 +534,12 @@ function TodoItem({ todo, onToggle, onRemove, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
 
-const handleEdit = () => {
+  const handleEdit = () => {
     onEdit(editText);
     setIsEditing(false);
   };
 
-return (
+  return (
     <li>
       <input type="checkbox" checked={todo.completed} onChange={onToggle} />
       {isEditing ? (
@@ -564,7 +572,6 @@ return (
 
 #### Form State Management
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function formReducer(state, action) {
   switch (action.type) {
@@ -581,7 +588,7 @@ function formReducer(state, action) {
         },
       };
 
-case 'SET_ERROR':
+    case 'SET_ERROR':
       return {
         ...state,
         errors: {
@@ -590,18 +597,23 @@ case 'SET_ERROR':
         },
       };
 
-case 'SET_LOADING':
+    case 'SET_LOADING':
       return {
         ...state,
         isLoading: action.payload,
       };
 
-case 'RESET_FORM':
+    case 'RESET_FORM':
       return {
         values: { name: '', email: '', password: '' },
         errors: {},
         isLoading: false,
       };
+
+    default:
+      return state;
+  }
+}
 
 function RegistrationForm() {
   const [state, dispatch] = useReducer(formReducer, {
@@ -610,10 +622,10 @@ function RegistrationForm() {
     isLoading: false,
   });
 
-const validateField = (field, value) => {
+  const validateField = (field, value) => {
     let error = '';
 
-switch (field) {
+    switch (field) {
       case 'name':
         if (!value.trim()) error = 'Name is required';
         else if (value.length < 2) error = 'Name must be at least 2 characters';
@@ -629,32 +641,32 @@ switch (field) {
         break;
     }
 
-if (error) {
+    if (error) {
       dispatch({ type: 'SET_ERROR', field, error });
     }
 
-return !error;
+    return !error;
   };
 
-const handleChange = (field, value) => {
+  const handleChange = (field, value) => {
     dispatch({ type: 'SET_FIELD', field, value });
   };
 
-const handleBlur = (field) => {
+  const handleBlur = (field) => {
     validateField(field, state.values[field]);
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-const isValid = Object.keys(state.values).every((field) =>
+    const isValid = Object.keys(state.values).every((field) =>
       validateField(field, state.values[field])
     );
 
-if (isValid) {
+    if (isValid) {
       dispatch({ type: 'SET_LOADING', payload: true });
 
-try {
+      try {
         // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 2000));
         console.log('Form submitted:', state.values);
@@ -667,7 +679,7 @@ try {
     }
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <div>
         <input
@@ -682,7 +694,7 @@ return (
         )}
       </div>
 
-<div>
+      <div>
         <input
           type="email"
           placeholder="Email"
@@ -695,7 +707,7 @@ return (
         )}
       </div>
 
-<div>
+      <div>
         <input
           type="password"
           placeholder="Password"
@@ -708,7 +720,7 @@ return (
         )}
       </div>
 
-<button type="submit" disabled={state.isLoading}>
+      <button type="submit" disabled={state.isLoading}>
         {state.isLoading ? 'Registering...' : 'Register'}
       </button>
     </form>
@@ -716,15 +728,20 @@ return (
 }
 ```
 
+---
+
 ## Context API
+
+### Definition
 
 The Context API provides a way to share data between components without having
 to pass props down manually at every level. It's designed for sharing data that
 can be considered "global" for a tree of React components.
 
+### Basic Context Setup
+
 #### Creating and Using Context
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { createContext, useContext, useState } from 'react';
 
@@ -735,16 +752,16 @@ const ThemeContext = createContext();
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
 
-const toggleTheme = () => {
+  const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-const value = {
+  const value = {
     theme,
     toggleTheme,
   };
 
-return (
+  return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
@@ -772,7 +789,7 @@ function App() {
 function Header() {
   const { theme, toggleTheme } = useTheme();
 
-return (
+  return (
     <header
       style={{
         backgroundColor: theme === 'light' ? '#fff' : '#333',
@@ -790,7 +807,7 @@ return (
 function MainContent() {
   const { theme } = useTheme();
 
-return (
+  return (
     <main
       style={{
         backgroundColor: theme === 'light' ? '#f5f5f5' : '#222',
@@ -807,7 +824,7 @@ return (
 function UserProfile() {
   const { theme } = useTheme();
 
-return (
+  return (
     <div
       style={{
         border: `1px solid ${theme === 'light' ? '#ccc' : '#555'}`,
@@ -824,7 +841,7 @@ return (
 function Footer() {
   const { theme } = useTheme();
 
-return (
+  return (
     <footer
       style={{
         backgroundColor: theme === 'light' ? '#e9e9e9' : '#111',
@@ -839,9 +856,10 @@ return (
 }
 ```
 
+### Complex Context with useReducer
+
 #### Authentication Context
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
@@ -858,7 +876,7 @@ function authReducer(state, action) {
         error: null,
       };
 
-case 'LOGIN_SUCCESS':
+    case 'LOGIN_SUCCESS':
       return {
         ...state,
         isLoading: false,
@@ -867,7 +885,7 @@ case 'LOGIN_SUCCESS':
         error: null,
       };
 
-case 'LOGIN_FAILURE':
+    case 'LOGIN_FAILURE':
       return {
         ...state,
         isLoading: false,
@@ -876,7 +894,7 @@ case 'LOGIN_FAILURE':
         error: action.payload,
       };
 
-case 'LOGOUT':
+    case 'LOGOUT':
       return {
         ...state,
         isAuthenticated: false,
@@ -884,11 +902,16 @@ case 'LOGOUT':
         error: null,
       };
 
-case 'UPDATE_USER':
+    case 'UPDATE_USER':
       return {
         ...state,
         user: { ...state.user, ...action.payload },
       };
+
+    default:
+      return state;
+  }
+}
 
 // Auth Provider
 function AuthProvider({ children }) {
@@ -899,7 +922,7 @@ function AuthProvider({ children }) {
     error: null,
   });
 
-// Check for existing session on mount
+  // Check for existing session on mount
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -908,7 +931,7 @@ function AuthProvider({ children }) {
     }
   }, []);
 
-const validateToken = async (token) => {
+  const validateToken = async (token) => {
     dispatch({ type: 'LOGIN_START' });
     try {
       // Simulate API call
@@ -916,7 +939,7 @@ const validateToken = async (token) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-if (response.ok) {
+      if (response.ok) {
         const user = await response.json();
         dispatch({ type: 'LOGIN_SUCCESS', payload: user });
       } else {
@@ -928,13 +951,13 @@ if (response.ok) {
     }
   };
 
-const login = async (credentials) => {
+  const login = async (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     try {
       // Simulate login API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-if (
+      if (
         credentials.email === 'user@example.com' &&
         credentials.password === 'password'
       ) {
@@ -945,7 +968,7 @@ if (
         };
         const token = 'fake-jwt-token';
 
-localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
         dispatch({ type: 'LOGIN_SUCCESS', payload: user });
       } else {
         dispatch({ type: 'LOGIN_FAILURE', payload: 'Invalid credentials' });
@@ -955,23 +978,23 @@ localStorage.setItem('token', token);
     }
   };
 
-const logout = () => {
+  const logout = () => {
     localStorage.removeItem('token');
     dispatch({ type: 'LOGOUT' });
   };
 
-const updateUser = (userData) => {
+  const updateUser = (userData) => {
     dispatch({ type: 'UPDATE_USER', payload: userData });
   };
 
-const value = {
+  const value = {
     ...state,
     login,
     logout,
     updateUser,
   };
 
-return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 // Custom hook
@@ -988,12 +1011,12 @@ function LoginForm() {
   const { login, isLoading, error } = useAuth();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     login(credentials);
   };
 
-return (
+  return (
     <form onSubmit={handleSubmit}>
       <div>
         <input
@@ -1035,11 +1058,11 @@ return (
 function ProtectedRoute({ children }) {
   const { isAuthenticated, isLoading } = useAuth();
 
-if (isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-return isAuthenticated ? children : <LoginForm />;
+  return isAuthenticated ? children : <LoginForm />;
 }
 
 // Dashboard Component
@@ -1048,19 +1071,19 @@ function Dashboard() {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(user?.name || '');
 
-const handleUpdateName = () => {
+  const handleUpdateName = () => {
     updateUser({ name });
     setIsEditing(false);
   };
 
-return (
+  return (
     <div>
       <h1>Dashboard</h1>
       <div>
         <p>Welcome, {user?.name}!</p>
         <p>Email: {user?.email}</p>
 
-{isEditing ? (
+        {isEditing ? (
           <div>
             <input
               type="text"
@@ -1074,7 +1097,7 @@ return (
           <button onClick={() => setIsEditing(true)}>Edit Name</button>
         )}
 
-<button onClick={logout}>Logout</button>
+        <button onClick={logout}>Logout</button>
       </div>
     </div>
   );
@@ -1094,7 +1117,6 @@ function App() {
 
 ### Multiple Contexts
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Multiple context providers
 function AppProviders({ children }) {
@@ -1116,12 +1138,12 @@ function Header() {
   const { showNotification } = useNotification();
   const { settings } = useSettings();
 
-const handleLogout = () => {
+  const handleLogout = () => {
     logout();
     showNotification('Logged out successfully', 'success');
   };
 
-return (
+  return (
     <header className={`header ${theme}`}>
       <h1>Welcome, {user?.name}</h1>
       <button onClick={toggleTheme}>Toggle Theme</button>
@@ -1131,7 +1153,11 @@ return (
 }
 ```
 
+---
+
 ## State Lifting
+
+### Definition
 
 State lifting is the process of moving state up to the closest common ancestor
 of components that need to share that state. This allows multiple child
@@ -1139,28 +1165,27 @@ components to access and modify the same state.
 
 ### Basic State Lifting Example
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Parent component manages shared state
 function TemperatureApp() {
   const [temperature, setTemperature] = useState(0);
   const [scale, setScale] = useState('celsius');
 
-const handleCelsiusChange = (value) => {
+  const handleCelsiusChange = (value) => {
     setTemperature(value);
     setScale('celsius');
   };
 
-const handleFahrenheitChange = (value) => {
+  const handleFahrenheitChange = (value) => {
     setTemperature(value);
     setScale('fahrenheit');
   };
 
-const celsius = scale === 'fahrenheit' ? toCelsius(temperature) : temperature;
+  const celsius = scale === 'fahrenheit' ? toCelsius(temperature) : temperature;
   const fahrenheit =
     scale === 'celsius' ? toFahrenheit(temperature) : temperature;
 
-return (
+  return (
     <div>
       <TemperatureInput
         scale="celsius"
@@ -1184,7 +1209,7 @@ function TemperatureInput({ scale, temperature, onTemperatureChange }) {
     fahrenheit: 'Fahrenheit',
   };
 
-return (
+  return (
     <fieldset>
       <legend>Enter temperature in {scaleNames[scale]}:</legend>
       <input
@@ -1214,7 +1239,6 @@ function toFahrenheit(celsius) {
 
 ### Complex State Lifting Example
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Shopping Cart Application
 function ShoppingApp() {
@@ -1224,14 +1248,14 @@ function ShoppingApp() {
     { id: 3, name: 'Tablet', price: 399, stock: 8 },
   ]);
 
-const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   const [user, setUser] = useState({ name: 'John Doe', balance: 2000 });
 
-const addToCart = (productId, quantity = 1) => {
+  const addToCart = (productId, quantity = 1) => {
     const product = products.find((p) => p.id === productId);
     if (!product || product.stock < quantity) return;
 
-setCart((prevCart) => {
+    setCart((prevCart) => {
       const existingItem = prevCart.find(
         (item) => item.productId === productId
       );
@@ -1246,26 +1270,26 @@ setCart((prevCart) => {
     });
   };
 
-const removeFromCart = (productId) => {
+  const removeFromCart = (productId) => {
     setCart((prevCart) =>
       prevCart.filter((item) => item.productId !== productId)
     );
   };
 
-const updateQuantity = (productId, quantity) => {
+  const updateQuantity = (productId, quantity) => {
     if (quantity <= 0) {
       removeFromCart(productId);
       return;
     }
 
-setCart((prevCart) =>
+    setCart((prevCart) =>
       prevCart.map((item) =>
         item.productId === productId ? { ...item, quantity } : item
       )
     );
   };
 
-const checkout = () => {
+  const checkout = () => {
     const total = getCartTotal();
     if (user.balance >= total) {
       setUser((prevUser) => ({
@@ -1279,15 +1303,15 @@ const checkout = () => {
     }
   };
 
-const getCartTotal = () => {
+  const getCartTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-const getCartItemsCount = () => {
+  const getCartItemsCount = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
-return (
+  return (
     <div>
       <Header user={user} cartItemsCount={getCartItemsCount()} />
       <ProductList products={products} onAddToCart={addToCart} />
@@ -1361,7 +1385,7 @@ function Cart({
     return <div>Your cart is empty</div>;
   }
 
-return (
+  return (
     <div>
       <h2>Shopping Cart</h2>
       {cart.map((item) => {
@@ -1411,6 +1435,10 @@ function CartItem({ item, product, onUpdateQuantity, onRemove }) {
 }
 ```
 
+---
+
+## Local vs Global State
+
 ### Local State
 
 State that belongs to a single component and doesn't need to be shared.
@@ -1424,21 +1452,20 @@ State that belongs to a single component and doesn't need to be shared.
 
 #### Examples of Local State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Modal component with local state
 function Modal({ isOpen, onClose, children }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       setIsAnimating(true);
     }
   }, [isOpen]);
 
-if (!isOpen && !isAnimating) return null;
+  if (!isOpen && !isAnimating) return null;
 
-return (
+  return (
     <div
       className={`modal ${isAnimating ? 'modal-open' : ''}`}
       onClick={onClose}
@@ -1457,7 +1484,7 @@ function SearchComponent({ onSearch }) {
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     if (query.length > 2) {
       setIsLoading(true);
       // Simulate API call for suggestions
@@ -1474,7 +1501,7 @@ useEffect(() => {
     }
   }, [query]);
 
-return (
+  return (
     <div className="search-component">
       <input
         type="text"
@@ -1519,7 +1546,6 @@ State that needs to be accessed by multiple components across the application.
 
 #### Global State Implementation
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Global App State using Context + useReducer
 const AppStateContext = createContext();
@@ -1529,16 +1555,16 @@ function appStateReducer(state, action) {
     case 'SET_USER':
       return { ...state, user: action.payload };
 
-case 'SET_THEME':
+    case 'SET_THEME':
       return { ...state, theme: action.payload };
 
-case 'ADD_NOTIFICATION':
+    case 'ADD_NOTIFICATION':
       return {
         ...state,
         notifications: [...state.notifications, action.payload],
       };
 
-case 'REMOVE_NOTIFICATION':
+    case 'REMOVE_NOTIFICATION':
       return {
         ...state,
         notifications: state.notifications.filter(
@@ -1546,14 +1572,19 @@ case 'REMOVE_NOTIFICATION':
         ),
       };
 
-case 'SET_LANGUAGE':
+    case 'SET_LANGUAGE':
       return { ...state, language: action.payload };
 
-case 'UPDATE_SETTINGS':
+    case 'UPDATE_SETTINGS':
       return {
         ...state,
         settings: { ...state.settings, ...action.payload },
       };
+
+    default:
+      return state;
+  }
+}
 
 function AppStateProvider({ children }) {
   const [state, dispatch] = useReducer(appStateReducer, {
@@ -1568,17 +1599,17 @@ function AppStateProvider({ children }) {
     },
   });
 
-// Actions
+  // Actions
   const setUser = (user) => {
     dispatch({ type: 'SET_USER', payload: user });
   };
 
-const setTheme = (theme) => {
+  const setTheme = (theme) => {
     dispatch({ type: 'SET_THEME', payload: theme });
     localStorage.setItem('theme', theme);
   };
 
-const addNotification = (message, type = 'info') => {
+  const addNotification = (message, type = 'info') => {
     const notification = {
       id: Date.now(),
       message,
@@ -1587,26 +1618,26 @@ const addNotification = (message, type = 'info') => {
     };
     dispatch({ type: 'ADD_NOTIFICATION', payload: notification });
 
-// Auto-remove after 5 seconds
+    // Auto-remove after 5 seconds
     setTimeout(() => {
       dispatch({ type: 'REMOVE_NOTIFICATION', payload: notification.id });
     }, 5000);
   };
 
-const removeNotification = (id) => {
+  const removeNotification = (id) => {
     dispatch({ type: 'REMOVE_NOTIFICATION', payload: id });
   };
 
-const setLanguage = (language) => {
+  const setLanguage = (language) => {
     dispatch({ type: 'SET_LANGUAGE', payload: language });
     localStorage.setItem('language', language);
   };
 
-const updateSettings = (newSettings) => {
+  const updateSettings = (newSettings) => {
     dispatch({ type: 'UPDATE_SETTINGS', payload: newSettings });
   };
 
-const value = {
+  const value = {
     ...state,
     setUser,
     setTheme,
@@ -1616,7 +1647,7 @@ const value = {
     updateSettings,
   };
 
-return (
+  return (
     <AppStateContext.Provider value={value}>
       {children}
     </AppStateContext.Provider>
@@ -1635,13 +1666,13 @@ function useAppState() {
 function Navbar() {
   const { user, theme, setTheme, addNotification } = useAppState();
 
-const toggleTheme = () => {
+  const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     addNotification(`Switched to ${newTheme} theme`, 'success');
   };
 
-return (
+  return (
     <nav className={`navbar ${theme}`}>
       <div>Welcome, {user?.name || 'Guest'}</div>
       <button onClick={toggleTheme}>{theme === 'light' ? '🌙' : '☀️'}</button>
@@ -1652,7 +1683,7 @@ return (
 function NotificationCenter() {
   const { notifications, removeNotification } = useAppState();
 
-return (
+  return (
     <div className="notification-center">
       {notifications.map((notification) => (
         <div
@@ -1668,9 +1699,12 @@ return (
 }
 ```
 
+---
+
+## Advanced State Patterns
+
 ### Custom Hooks for State Logic
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Custom hook for form state management
 function useForm(initialValues, validationSchema) {
@@ -1679,27 +1713,27 @@ function useForm(initialValues, validationSchema) {
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-const setValue = (name, value) => {
+  const setValue = (name, value) => {
     setValues((prev) => ({ ...prev, [name]: value }));
 
-// Clear error when user starts typing
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
-const setTouched = (name) => {
+  const setTouched = (name) => {
     setTouched((prev) => ({ ...prev, [name]: true }));
   };
 
-const validate = () => {
+  const validate = () => {
     const newErrors = {};
 
-Object.keys(validationSchema).forEach((field) => {
+    Object.keys(validationSchema).forEach((field) => {
       const rules = validationSchema[field];
       const value = values[field];
 
-for (const rule of rules) {
+      for (const rule of rules) {
         if (!rule.test(value)) {
           newErrors[field] = rule.message;
           break;
@@ -1707,21 +1741,21 @@ for (const rule of rules) {
       }
     });
 
-setErrors(newErrors);
+    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (onSubmit) => {
+  const handleSubmit = async (onSubmit) => {
     setIsSubmitting(true);
 
-// Mark all fields as touched
+    // Mark all fields as touched
     const allTouched = Object.keys(initialValues).reduce((acc, key) => {
       acc[key] = true;
       return acc;
     }, {});
     setTouched(allTouched);
 
-if (validate()) {
+    if (validate()) {
       try {
         await onSubmit(values);
       } catch (error) {
@@ -1729,17 +1763,17 @@ if (validate()) {
       }
     }
 
-setIsSubmitting(false);
+    setIsSubmitting(false);
   };
 
-const reset = () => {
+  const reset = () => {
     setValues(initialValues);
     setErrors({});
     setTouched({});
     setIsSubmitting(false);
   };
 
-return {
+  return {
     values,
     errors,
     touched,
@@ -1787,16 +1821,16 @@ function ContactForm() {
     ],
   };
 
-const form = useForm({ name: '', email: '', message: '' }, validationSchema);
+  const form = useForm({ name: '', email: '', message: '' }, validationSchema);
 
-const onSubmit = async (values) => {
+  const onSubmit = async (values) => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log('Form submitted:', values);
     form.reset();
   };
 
-return (
+  return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -1816,7 +1850,7 @@ return (
         )}
       </div>
 
-<div>
+      <div>
         <input
           type="email"
           placeholder="Email"
@@ -1829,7 +1863,7 @@ return (
         )}
       </div>
 
-<div>
+      <div>
         <textarea
           placeholder="Message"
           value={form.values.message}
@@ -1841,7 +1875,7 @@ return (
         )}
       </div>
 
-<button type="submit" disabled={form.isSubmitting || !form.isValid}>
+      <button type="submit" disabled={form.isSubmitting || !form.isValid}>
         {form.isSubmitting ? 'Sending...' : 'Send Message'}
       </button>
     </form>
@@ -1851,7 +1885,6 @@ return (
 
 ### State Machine Pattern
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Simple state machine for data fetching
 function useAsyncState() {
@@ -1861,10 +1894,10 @@ function useAsyncState() {
     error: null,
   });
 
-const execute = async (asyncFunction) => {
+  const execute = async (asyncFunction) => {
     setState({ status: 'loading', data: null, error: null });
 
-try {
+    try {
       const data = await asyncFunction();
       setState({ status: 'success', data, error: null });
       return data;
@@ -1874,11 +1907,11 @@ try {
     }
   };
 
-const reset = () => {
+  const reset = () => {
     setState({ status: 'idle', data: null, error: null });
   };
 
-return {
+  return {
     ...state,
     execute,
     reset,
@@ -1893,7 +1926,7 @@ return {
 function UserProfile({ userId }) {
   const asyncState = useAsyncState();
 
-useEffect(() => {
+  useEffect(() => {
     if (userId) {
       asyncState.execute(async () => {
         const response = await fetch(`/api/users/${userId}`);
@@ -1905,15 +1938,15 @@ useEffect(() => {
     }
   }, [userId]);
 
-if (asyncState.isIdle) {
+  if (asyncState.isIdle) {
     return <div>Select a user to view profile</div>;
   }
 
-if (asyncState.isLoading) {
+  if (asyncState.isLoading) {
     return <div>Loading user profile...</div>;
   }
 
-if (asyncState.isError) {
+  if (asyncState.isError) {
     return (
       <div>
         <div>Error: {asyncState.error.message}</div>
@@ -1924,7 +1957,7 @@ if (asyncState.isError) {
     );
   }
 
-if (asyncState.isSuccess && asyncState.data) {
+  if (asyncState.isSuccess && asyncState.data) {
     return (
       <div>
         <h2>{asyncState.data.name}</h2>
@@ -1934,15 +1967,18 @@ if (asyncState.isSuccess && asyncState.data) {
     );
   }
 
-return null;
+  return null;
 }
 ```
 
+---
 
+## Best Practices
+
+### State Structure Best Practices
 
 #### 1. Keep State Flat
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Flat state structure
 const [user, setUser] = useState({
@@ -1971,7 +2007,6 @@ const [appState, setAppState] = useState({
 
 #### 2. Group Related State
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Related state grouped together
 const [formState, setFormState] = useState({
@@ -1988,7 +2023,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
 #### 3. Use Proper State Updates
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Functional updates for state that depends on previous state
 const increment = () => {
@@ -2007,9 +2041,10 @@ const badUpdate = () => {
 };
 ```
 
+### Performance Optimization
+
 #### 1. Minimize Re-renders
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Use React.memo for expensive components
 const ExpensiveComponent = React.memo(function ExpensiveComponent({
@@ -2024,13 +2059,13 @@ const ExpensiveComponent = React.memo(function ExpensiveComponent({
 function ParentComponent() {
   const [items, setItems] = useState([]);
 
-const handleItemUpdate = useCallback((id, newData) => {
+  const handleItemUpdate = useCallback((id, newData) => {
     setItems((prevItems) =>
       prevItems.map((item) => (item.id === id ? { ...item, ...newData } : item))
     );
   }, []);
 
-return (
+  return (
     <div>
       {items.map((item) => (
         <ExpensiveComponent
@@ -2046,7 +2081,6 @@ return (
 
 #### 2. Optimize Context Usage
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Split contexts to prevent unnecessary re-renders
 const UserContext = createContext();
@@ -2059,13 +2093,12 @@ const AppContext = createContext();
 
 #### 3. Use Local State When Possible
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Keep UI state local
 function Dropdown({ options, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
 
-return (
+  return (
     <div>
       <button onClick={() => setIsOpen(!isOpen)}>Toggle Dropdown</button>
       {isOpen && (
@@ -2082,6 +2115,8 @@ return (
 }
 ```
 
+### State Management Guidelines
+
 #### 1. Choose the Right Tool
 
 - **useState**: Simple local state
@@ -2091,7 +2126,6 @@ return (
 
 #### 2. Error Boundaries for State Errors
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 class StateErrorBoundary extends React.Component {
   constructor(props) {
@@ -2099,37 +2133,36 @@ class StateErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error) {
     return { hasError: true };
   }
 
-componentDidCatch(error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     console.error('State error:', error, errorInfo);
   }
 
-render() {
+  render() {
     if (this.state.hasError) {
       return <h1>Something went wrong with the application state.</h1>;
     }
 
-return this.props.children;
+    return this.props.children;
   }
 }
 ```
 
 #### 3. Testing State Logic
 
-// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Custom hook for testing
 function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
 
-const increment = () => setCount((prev) => prev + 1);
+  const increment = () => setCount((prev) => prev + 1);
   const decrement = () => setCount((prev) => prev - 1);
   const reset = () => setCount(initialValue);
 
-return { count, increment, decrement, reset };
+  return { count, increment, decrement, reset };
 }
 
 // Test example (using React Testing Library)
@@ -2138,11 +2171,11 @@ import { renderHook, act } from '@testing-library/react';
 test('useCounter should increment count', () => {
   const { result } = renderHook(() => useCounter(0));
 
-act(() => {
+  act(() => {
     result.current.increment();
   });
 
-expect(result.current.count).toBe(1);
+  expect(result.current.count).toBe(1);
 });
 ```
 
@@ -2150,12 +2183,3 @@ This comprehensive guide covers all aspects of React State Management, from
 basic useState to complex patterns with Context API and custom hooks. Each
 section provides practical examples and best practices to help you effectively
 manage state in your React applications.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

@@ -1,10 +1,9 @@
 # Template Syntax (Important Concepts Only)
 
-## What is Template Syntax?
+# What is Template Syntax?
 
 Vue templates allow you to connect:
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```txt
 JavaScript Data → HTML UI
 ```
@@ -13,9 +12,8 @@ Vue automatically updates the UI whenever data changes.
 
 ---
 
-## Basic Example
+# Basic Example
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <h1>{{ title }}</h1>
@@ -26,7 +24,9 @@ const title = 'Hello Vue';
 </script>
 ```
 
-## Core Template Syntax
+---
+
+# Core Template Syntax
 
 | Feature        | Purpose               |
 | -------------- | --------------------- |
@@ -37,20 +37,24 @@ const title = 'Hello Vue';
 | `v-for`        | Loop through lists    |
 | `v-model`      | Two-way form binding  |
 
-## 1. Text Interpolation
+---
+
+# 1. Text Interpolation
 
 Used to display data.
 
+---
+
 ## Syntax
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 {{ variable }}
 ```
 
+---
+
 ## Example
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <h1>{{ message }}</h1>
@@ -61,29 +65,38 @@ const message = 'Welcome to Vue';
 </script>
 ```
 
-## Expressions
+---
+
+# Expressions
 
 Vue supports JavaScript expressions.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <p>{{ count + 1 }}</p>
 
-<p>{{ isAdmin ? 'Admin' : 'User' }}</p>
+  <p>{{ isAdmin ? 'Admin' : 'User' }}</p>
 </template>
 ```
 
-## 2. Attribute Binding (`v-bind`)
+---
+
+# 2. Attribute Binding (`v-bind`)
 
 Used to bind dynamic values to HTML attributes.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Syntax
+
 ```vue
 :attribute="value"
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <img :src="imageUrl" :alt="title" />
@@ -95,9 +108,10 @@ const title = 'Vue Logo';
 </script>
 ```
 
-## Dynamic Classes
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Dynamic Classes
+
 ```vue
 <template>
   <button :class="{ active: isActive }">Save</button>
@@ -108,9 +122,10 @@ const isActive = true;
 </script>
 ```
 
-## Dynamic Styles
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Dynamic Styles
+
 ```vue
 <template>
   <p :style="{ color: textColor }">Vue Styling</p>
@@ -121,16 +136,24 @@ const textColor = 'red';
 </script>
 ```
 
-## 3. Event Handling (`v-on`)
+---
+
+# 3. Event Handling (`v-on`)
 
 Used to listen to user actions.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Syntax
+
 ```vue
 @click="function"
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <button @click="increment">Increment</button>
@@ -143,16 +166,19 @@ const increment = () => {
 </script>
 ```
 
-## Inline Events
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Inline Events
+
 ```vue
 <button @click="count++">
   Add
 </button>
 ```
 
-## Event Modifiers
+---
+
+# Event Modifiers
 
 | Modifier   | Purpose             |
 | ---------- | ------------------- |
@@ -160,22 +186,30 @@ const increment = () => {
 | `.stop`    | Stop event bubbling |
 | `.once`    | Trigger once        |
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <form @submit.prevent="submitForm">
 </form>
 ```
 
-## 4. Conditional Rendering (`v-if`)
+---
+
+# 4. Conditional Rendering (`v-if`)
 
 Render UI conditionally.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <p v-if="isLoggedIn">Welcome Back</p>
 
-<p v-else>Please Login</p>
+  <p v-else>Please Login</p>
 </template>
 
 <script setup>
@@ -183,25 +217,35 @@ const isLoggedIn = true;
 </script>
 ```
 
-## `v-if` vs `v-show`
+---
+
+# `v-if` vs `v-show`
 
 | v-if                   | v-show                     |
 | ---------------------- | -------------------------- |
 | Adds/removes DOM       | Uses display:none          |
 | Better for rare toggle | Better for frequent toggle |
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+# Example
+
 ```vue
 <p v-show="visible">
   Hello Vue
 </p>
 ```
 
-## 5. List Rendering (`v-for`)
+---
+
+# 5. List Rendering (`v-for`)
 
 Used to render arrays.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <li v-for="user in users" :key="user.id">
@@ -217,43 +261,49 @@ const users = [
 </script>
 ```
 
-## Why `key` is Important
+---
+
+# Why `key` is Important
 
 Vue uses `key` to track elements efficiently.
 
 ✅ Good
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 :key="user.id"
 ```
 
 ❌ Bad
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 :key="index"
 ```
 
-## Access Index
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Access Index
+
 ```vue
 <li v-for="(user, index) in users" :key="user.id">
   {{ index }} - {{ user.name }}
 </li>
 ```
 
-## 6. Two-Way Binding (`v-model`)
+---
+
+# 6. Two-Way Binding (`v-model`)
 
 Sync input value with state.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <input v-model="name" />
 
-<p>{{ name }}</p>
+  <p>{{ name }}</p>
 </template>
 
 <script setup>
@@ -263,48 +313,60 @@ const name = ref('');
 </script>
 ```
 
-## Works Like
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Works Like
+
 ```vue
 <input :value="name" @input="name = $event.target.value" />
 ```
 
+---
+
+# Form Examples
+
 ## Text Input
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <input v-model="username" />
 ```
 
+---
+
 ## Textarea
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <textarea v-model="message"></textarea>
 ```
 
+---
+
 ## Checkbox
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <input type="checkbox" v-model="isChecked" />
 ```
 
+---
+
 ## Select
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <select v-model="selected">
   <option value="vue">Vue</option>
 </select>
 ```
 
-## 7. Computed Properties
+---
+
+# 7. Computed Properties
 
 Used for derived/calculated values.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <h1>{{ fullName }}</h1>
@@ -322,7 +384,9 @@ const fullName = computed(() => {
 </script>
 ```
 
-## Why Use Computed?
+---
+
+# Why Use Computed?
 
 | Benefit           | Reason                 |
 | ----------------- | ---------------------- |
@@ -330,11 +394,16 @@ const fullName = computed(() => {
 | Reactive          | Auto updates           |
 | Cleaner templates | Less logic inside HTML |
 
-## 8. Template Refs
+---
+
+# 8. Template Refs
 
 Access DOM elements directly.
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+---
+
+## Example
+
 ```vue
 <template>
   <input ref="inputRef" />
@@ -351,22 +420,26 @@ onMounted(() => {
 </script>
 ```
 
-## 9. Slots
+---
+
+# 9. Slots
 
 Used for reusable layouts/components.
 
+---
+
 ## Parent Component
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <Card>
   <h1>Hello</h1>
 </Card>
 ```
 
+---
+
 ## Child Component
 
-// Example demonstrating Template Syntax (Important Concepts Only).
 ```vue
 <template>
   <div class="card">
@@ -375,7 +448,9 @@ Used for reusable layouts/components.
 </template>
 ```
 
-## Important Directives Summary
+---
+
+# Important Directives Summary
 
 | Directive | Purpose               |
 | --------- | --------------------- |
@@ -386,25 +461,37 @@ Used for reusable layouts/components.
 | `v-model` | Form binding          |
 | `v-show`  | Toggle visibility     |
 
-## Use Computed for Complex Logic
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Best Practices
+
+---
+
+# Use Computed for Complex Logic
+
+❌ Bad
+
 ```vue
 {{ users.filter((user) => user.active).length }}
 ```
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+✅ Good
+
 ```js
 const activeUsers = computed(() => {
   return users.filter((user) => user.active);
 });
 ```
 
-## Always Use `key` in `v-for`
+---
+
+# Always Use `key` in `v-for`
 
 Improves rendering performance.
 
-## Keep Templates Clean
+---
+
+# Keep Templates Clean
 
 Move business logic to:
 
@@ -412,25 +499,28 @@ Move business logic to:
 - computed
 - methods
 
-## Avoid Large Components
+---
+
+# Avoid Large Components
 
 Break UI into smaller reusable components.
 
-## Real World Example
+---
 
-// Example demonstrating Template Syntax (Important Concepts Only).
+# Real World Example
+
 ```vue
 <template>
   <section>
     <input v-model="search" placeholder="Search users" />
 
-<ul>
+    <ul>
       <li v-for="user in filteredUsers" :key="user.id">
         {{ user.name }}
       </li>
     </ul>
 
-<p v-if="filteredUsers.length === 0">No users found</p>
+    <p v-if="filteredUsers.length === 0">No users found</p>
   </section>
 </template>
 
@@ -452,7 +542,9 @@ const filteredUsers = computed(() => {
 </script>
 ```
 
-## Most Important Things to Learn First
+---
+
+# Most Important Things to Learn First
 
 1. Interpolation
 2. v-bind
@@ -463,12 +555,3 @@ const filteredUsers = computed(() => {
 7. computed
 8. components
 9. slots
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

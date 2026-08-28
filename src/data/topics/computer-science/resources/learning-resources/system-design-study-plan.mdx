@@ -10,27 +10,28 @@ building blocks to designing complex, production-ready enterprise systems.
 
 ---
 
-## Roadmap Core Progression
+## 🗺️ Roadmap Core Progression
 
-<!-- Visual flow for 🏢 Comprehensive System Design Study Plan. -->
 ```mermaid
 graph TD
     A[Weeks 1-3: System Design Foundations] --> B[Weeks 4-6: Data Tier & Communication Layers]
     B --> C[Weeks 7-9: Key Distributed Patterns]
     C --> D[E10-12: Real-World Architecture Profiles]
 
-style A fill:#f9f,stroke:#333,stroke-width:2px
+    style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#bbf,stroke:#333,stroke-width:2px
     style D fill:#bfb,stroke:#333,stroke-width:2px
 
 ```
+
+---
 
 ## 🧱 Week 1-3: System Design Foundations & Horizontal Scaling
 
 Before architecting massive ecosystems, you must understand how a single server
 scales to millions of users and where bottlenecks occur.
 
-### ⚖ Scaling Concepts
+### ⚖️ Scaling Concepts
 
 - **Vertical vs. Horizontal Scaling:** Moving from bigger machines (scale-up) to
   a fleet of commodity servers (scale-out).
@@ -51,7 +52,7 @@ scales to millions of users and where bottlenecks occur.
   within a data center ($\approx 500,000 \text{ ns}$), and Continental network
   round-trip ($\approx 150 \text{ ms}$).
 
-### Caching & Content Delivery Networks (CDNs)
+### 📦 Caching & Content Delivery Networks (CDNs)
 
 - **CDN Topologies:** Edge servers caching static assets (images, video, JS/CSS
   files) physically closer to users.
@@ -61,7 +62,6 @@ scales to millions of users and where bottlenecks occur.
   Write-Behind, and eviction algorithms like LRU (Least Recently Used) and LFU
   (Least Frequently Used).
 
-<!-- Visual flow for 🏢 Comprehensive System Design Study Plan. -->
 ```mermaid
 graph LR
     User[Client Browser] -->|Static Content Request| CDN[CDN Edge Server]
@@ -70,7 +70,9 @@ graph LR
     LB --> App2[App Server 2]
     App1 & App2 --> SharedCache[(Shared Redis Cache)]
 
-### Core Concepts to Deep Dive
+```
+
+### 🧠 Core Concepts to Deep Dive
 
 1. **The CAP Theorem:** In a distributed system, you can only guarantee two out
    of three: Consistency, Availability, or Partition Tolerance. In reality,
@@ -79,6 +81,8 @@ graph LR
    Tolerance).
 2. **SLA vs. SLO vs. SLI:** Service Level Agreements (legal), Objectives (target
    internal goals), and Indicators (exact real-world metrics).
+
+---
 
 ## 💾 Week 4-6: Data Architecture, Storage & Network Communication
 
@@ -97,7 +101,7 @@ access records dictates your system's final latency profiles.
 - _Graph Databases:_ Neo4j (for heavy entity-relationship tracking like social
   graphs).
 
-### ⚙ Scaling the Data Layer
+### ⚙️ Scaling the Data Layer
 
 - **Replication:** Master-Slave configuration (read replicas for read-heavy
   systems) vs. Multi-Master configurations.
@@ -115,11 +119,15 @@ graph TD
     Master -->|Asynchronous Replication| Slave2[(Read Replica 2)]
     Read[Read Requests] --> Slave1 & Slave2
 
+```
+
 ### 🔌 API Paradigms & Networking
 
 - **Communication Protocols:** When to choose REST (simple CRUD), GraphQL
   (flexible data querying), gRPC (high-performance internal microservices over
   HTTP/2), or WebSockets/Server-Sent Events (real-time stream updates).
+
+---
 
 ## 🔀 Week 7-9: Core Distributed Systems Patterns
 
@@ -135,7 +143,7 @@ distributed failure patterns.
 - **Delivery Guarantees:** Understand At-Most-Once, At-Least-Once (requires your
   downstream operations to be idempotent), and Exactly-Once execution flows.
 
-### System Resiliency & Rate Limiting
+### 🛡️ System Resiliency & Rate Limiting
 
 - **Rate Limiting Algorithms:** Protecting downstream APIs from overload. Master
   Token Bucket, Leaky Bucket, Fixed Window Counter, and Sliding Window Log
@@ -144,7 +152,6 @@ distributed failure patterns.
   downstream microservices crash to protect the parent caller) and Bulkhead
   isolation strategies.
 
-<!-- Visual flow for 🏢 Comprehensive System Design Study Plan. -->
 ```mermaid
 stateDiagram-v2
     [*] --> Closed : System Healthy
@@ -152,6 +159,10 @@ stateDiagram-v2
     Open --> HalfOpen : Sleep Timer Expires
     HalfOpen --> Closed : Success Rate High
     HalfOpen --> Open : Single Failure
+
+```
+
+---
 
 ## 🏢 Week 10-12: Architectural Blueprints & Real-World Profiles
 
@@ -192,7 +203,9 @@ flowchart TD
     Check -->|No| Push[Push Model: Inject into Followers cached Timelines in Redis]
     Check -->|Yes| Pull[Pull Model: Save to Celeb DB Table only. Stitch on follower read]
 
-### Profile 3: Design a Geolocation-Based Service (e.g., Uber / Yelp)
+```
+
+### 🗺️ Profile 3: Design a Geolocation-Based Service (e.g., Uber / Yelp)
 
 - **Core Problems:** Efficiently querying geometric multi-dimensional
   coordinates in real time.
@@ -204,6 +217,8 @@ flowchart TD
   into quadrants).
 - Use an in-memory storage array like Redis Geospatial indexes to match active
   drivers or restaurants near users dynamically.
+
+---
 
 ## 🏆 System Design Framework for Interviews
 
@@ -222,12 +237,3 @@ boxes. Follow this clear 4-step execution plan:
 4. **Identify Bottlenecks & Wrap-Up (5 mins):** Discuss single points of failure
    (SPOFs), logging/observability configurations, and alternative architectural
    trade-offs.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

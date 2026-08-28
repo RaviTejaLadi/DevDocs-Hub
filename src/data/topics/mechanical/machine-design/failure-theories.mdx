@@ -1,4 +1,4 @@
-# ⚠ Failure Theories
+# ⚠️ Failure Theories
 
 Machine components are often subjected to multiple stresses at the same time. A
 shaft may experience bending and torsion simultaneously, while a pressure vessel
@@ -9,7 +9,7 @@ complex loading conditions and determine safe design limits.
 
 ---
 
-## Why Do We Need Failure Theories?
+# 🎯 Why Do We Need Failure Theories?
 
 In practical applications:
 
@@ -20,7 +20,9 @@ In practical applications:
 Failure theories provide a method to compare complex stress states with material
 strength.
 
-## Example
+---
+
+# Example
 
 Consider a transmission shaft.
 
@@ -29,7 +31,6 @@ It experiences:
 - Bending Stress
 - Torsional Stress
 
-<!-- Visual flow for ⚠ Failure Theories. -->
 ```mermaid
 flowchart TD
 A[Shaft]
@@ -42,7 +43,9 @@ D --> E[Failure Theory Analysis]
 
 Without failure theories, safe design would be difficult.
 
-## Classification of Materials
+---
+
+# 📊 Classification of Materials
 
 Before studying failure theories, materials are classified into two categories.
 
@@ -62,23 +65,30 @@ Characteristics:
 
 ✅ Large deformation before failure
 
+---
+
 ## Brittle Materials
 
 Materials that fracture with little or no plastic deformation.
+
+Examples:
 
 - Cast Iron
 - Glass
 - Ceramics
 
+Characteristics:
+
 ❌ Sudden fracture
 
 ❌ Little warning before failure
 
-## Why Different Theories?
+---
+
+# Why Different Theories?
 
 Different materials fail differently.
 
-<!-- Visual flow for ⚠ Failure Theories. -->
 ```mermaid
 flowchart LR
 A[Material]
@@ -90,7 +100,9 @@ C --> F[Maximum Principal Stress Theory]
 C --> G[Mohr Theory]
 ```
 
-## Principal Stresses
+---
+
+# Principal Stresses
 
 When a component is loaded, stresses can be transformed into principal stresses.
 
@@ -100,7 +112,6 @@ These are:
 - Intermediate Principal Stress (σ₂)
 - Minimum Principal Stress (σ₃)
 
-<!-- Visual flow for ⚠ Failure Theories. -->
 ```mermaid
 graph LR
 A[Complex Stress State]
@@ -112,6 +123,10 @@ B --> E[σ₃]
 
 Most failure theories use principal stresses.
 
+---
+
+# 1️⃣ Maximum Principal Stress Theory
+
 ### (Rankine Theory)
 
 This theory states:
@@ -119,43 +134,64 @@ This theory states:
 Failure occurs when the maximum principal stress reaches the material's ultimate
 strength.
 
+---
+
 ## Criterion
 
 Failure occurs if:
 
-// Example demonstrating ⚠ Failure Theories.
 ```
 σ₁ ≥ σ_allowable
 ```
 
-## Assumptions
+---
+
+# Assumptions
 
 - Material fails due to normal stress.
 - Shear effects are neglected.
 
-## Suitable For
+---
+
+# Suitable For
 
 ✅ Brittle Materials
+
+Examples:
 
 - Cast Iron
 - Concrete
 - Glass
 
-## Advantages
+---
+
+# Advantages
 
 - Simple
 - Easy calculations
 
-## Limitations
+---
+
+# Limitations
 
 - Not suitable for ductile materials.
 - Ignores shear stress effects.
+
+---
+
+# 2️⃣ Maximum Shear Stress Theory
 
 ### (Guest-Tresca Theory)
 
 One of the most widely used theories for ductile materials.
 
+This theory states:
+
 Failure occurs when maximum shear stress equals the shear stress at yielding.
+
+---
+
+## Criterion
 
 Maximum shear stress:
 
@@ -163,41 +199,76 @@ Maximum shear stress:
 
 Yielding occurs when:
 
-// Example demonstrating ⚠ Failure Theories.
 ```
 τmax ≥ τyield
 ```
 
-## Physical Meaning
+---
+
+# Physical Meaning
 
 Yielding begins because of shear deformation inside the material.
 
+---
+
+# Suitable For
+
 ✅ Ductile Materials
+
+Examples:
 
 - Steel shafts
 - Bolts
 - Machine frames
 
+---
+
+# Advantages
+
 - Simple
 - Conservative design
 
+---
+
+# Limitations
+
 - Can overestimate failure in some cases.
+
+---
+
+# 3️⃣ Maximum Strain Theory
 
 ### (Saint-Venant Theory)
 
+This theory states:
+
 Failure occurs when maximum strain reaches the strain at failure in a tensile
 test.
+
+---
+
+# Criterion
 
 Based on:
 
 - Normal stress
 - Poisson's ratio effects
 
-## Applications
+---
+
+# Applications
 
 Historically important but rarely used today.
 
+---
+
+# Limitations
+
 - Less accurate than modern theories.
+
+---
+
+# 4️⃣ Total Strain Energy Theory
 
 ### (Haigh Theory)
 
@@ -205,16 +276,30 @@ According to this theory:
 
 Failure occurs when total strain energy reaches the strain energy at yield.
 
-## Energy Components
+---
+
+# Energy Components
 
 Total energy includes:
 
 - Normal stress energy
 - Shear stress energy
 
+---
+
+# Advantages
+
 - Better than maximum strain theory.
 
+---
+
+# Limitations
+
 - Less accurate than distortion energy theory.
+
+---
+
+# 5️⃣ Distortion Energy Theory
 
 ### (Von Mises Theory)
 
@@ -224,31 +309,47 @@ It states:
 
 Failure occurs when distortion energy reaches the distortion energy at yielding.
 
-## Von Mises Equivalent Stress
+---
+
+# Von Mises Equivalent Stress
 
 For a two-dimensional stress state:
 
 :contentReference[oaicite:1]{index=1}
 
-## Failure Criterion
+---
 
-// Example demonstrating ⚠ Failure Theories.
+# Failure Criterion
+
 ```
 σv ≥ Yield Strength
 ```
+
+---
+
+# Suitable For
+
+✅ Ductile Materials
+
+Examples:
 
 - Shafts
 - Pressure vessels
 - Automotive components
 - Aircraft structures
 
+---
+
+# Advantages
+
 - Highly accurate
 - Widely accepted
 - Used in Finite Element Analysis (FEA)
 
-## Why Engineers Prefer Von Mises Theory
+---
 
-<!-- Visual flow for ⚠ Failure Theories. -->
+# Why Engineers Prefer Von Mises Theory
+
 ```mermaid
 flowchart LR
 A[Multiple Stresses]
@@ -259,7 +360,9 @@ A[Multiple Stresses]
 
 It converts a complex stress state into a single equivalent stress.
 
-## 6⃣ Coulomb-Mohr Theory
+---
+
+# 6️⃣ Coulomb-Mohr Theory
 
 Used mainly for brittle materials.
 
@@ -268,15 +371,25 @@ This theory accounts for:
 - Different tensile strengths
 - Different compressive strengths
 
+---
+
+# Suitable For
+
 ✅ Cast Iron
 
 ✅ Ceramics
 
 ✅ Concrete
 
+---
+
+# Advantages
+
 - More realistic for brittle materials.
 
-## Comparison of Failure Theories
+---
+
+# Comparison of Failure Theories
 
 | Theory                        | Material Type | Accuracy  | Usage          |
 | ----------------------------- | ------------- | --------- | -------------- |
@@ -287,9 +400,10 @@ This theory accounts for:
 | Distortion Energy (Von Mises) | Ductile       | Excellent | Most Popular   |
 | Coulomb-Mohr                  | Brittle       | Good      | Brittle Design |
 
-## 📈 Failure Theory Selection Guide
+---
 
-<!-- Visual flow for ⚠ Failure Theories. -->
+# 📈 Failure Theory Selection Guide
+
 ```mermaid
 flowchart TD
 A[Material Type?]
@@ -302,6 +416,10 @@ B --> E[Von Mises Theory]
 C --> F[Rankine Theory]
 C --> G[Coulomb-Mohr Theory]
 ```
+
+---
+
+# 🏭 Practical Applications
 
 ## Shafts
 
@@ -316,30 +434,62 @@ Preferred Theory:
 
 ✅ Tresca
 
+---
+
 ## Bolts
+
+Loading:
 
 - Tension
 - Shear
 
+Preferred Theory:
+
+✅ Tresca
+
+---
+
 ## Pressure Vessels
+
+Loading:
 
 - Multi-axial stress
 
+Preferred Theory:
+
+✅ Von Mises
+
+---
+
 ## Cast Iron Components
 
+Loading:
+
 - Brittle behavior
+
+Preferred Theory:
 
 ✅ Rankine
 
 ✅ Coulomb-Mohr
 
+---
+
 ## Automotive Components
+
+Examples:
 
 - Axles
 - Suspension arms
 - Steering components
 
-## ⚠ Factors Affecting Failure
+Preferred Theory:
+
+✅ Von Mises
+
+---
+
+# ⚠️ Factors Affecting Failure
 
 Even if theoretical calculations show safety, failure can still occur because
 of:
@@ -359,18 +509,21 @@ Therefore, engineers use:
 
 along with failure theories.
 
-## Factor of Safety
+---
+
+# 🛡️ Factor of Safety
 
 Safe design requires:
 
-// Example demonstrating ⚠ Failure Theories.
 ```
 Factor of Safety = Failure Strength / Working Stress
 ```
 
 The chosen failure theory is used to calculate the working stress.
 
-## Key Points
+---
+
+# 📝 Key Points
 
 - Failure theories predict component failure under combined stresses.
 - Different theories are used for ductile and brittle materials.
@@ -382,12 +535,3 @@ The chosen failure theory is used to calculate the working stress.
 - Modern machine design and FEA software primarily use Von Mises stress.
 - Proper failure theory selection is essential for safe and economical machine
   design.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

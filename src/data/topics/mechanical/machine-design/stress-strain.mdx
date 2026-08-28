@@ -1,4 +1,4 @@
-# Stress & Strain
+# 📊 Stress & Strain
 
 Stress and Strain are the fundamental concepts of Machine Design. Every machine
 component such as shafts, gears, bolts, springs, and beams experiences forces
@@ -9,7 +9,7 @@ behave under these forces.
 
 ---
 
-## Why Study Stress and Strain?
+# 🎯 Why Study Stress and Strain?
 
 Machine components are subjected to:
 
@@ -30,7 +30,9 @@ Understanding stress and strain helps engineers:
 
 ✅ Improve reliability
 
-## What is Stress?
+---
+
+# 🏗️ What is Stress?
 
 Stress is the internal resisting force developed within a material when an
 external force acts on it.
@@ -47,7 +49,9 @@ Where:
 - F = Applied Force (N)
 - A = Cross-sectional Area (m²)
 
-## Simple Example
+---
+
+# 💡 Simple Example
 
 Imagine pulling a rope.
 
@@ -55,13 +59,16 @@ The rope develops internal resistance against the pulling force.
 
 That internal resistance per unit area is called stress.
 
-## 📏 What is Strain?
+---
+
+# 📏 What is Strain?
 
 Strain is the deformation produced in a material due to applied stress.
 
 It indicates how much a material changes in shape or size.
 
-// Example demonstrating Stress & Strain.
+## Mathematical Expression
+
 ```
 Strain = Change in Length / Original Length
 ```
@@ -70,11 +77,15 @@ Or
 
 :contentReference[oaicite:1]{index=1}
 
+Where:
+
 - ε = Strain
 - ΔL = Change in Length
 - L = Original Length
 
-## Difference Between Stress and Strain
+---
+
+# 🔍 Difference Between Stress and Strain
 
 | Stress                    | Strain                          |
 | ------------------------- | ------------------------------- |
@@ -83,9 +94,10 @@ Or
 | Caused by force           | Caused by stress                |
 | Represents load intensity | Represents material deformation |
 
-## ⚙ Types of Stress
+---
 
-<!-- Visual flow for Stress & Strain. -->
+# ⚙️ Types of Stress
+
 ```mermaid
 flowchart TD
 A[Stress]
@@ -96,7 +108,9 @@ A --> E[Bending Stress]
 A --> F[Torsional Stress]
 ```
 
-## 1⃣ Tensile Stress
+---
+
+# 1️⃣ Tensile Stress
 
 Occurs when a component is stretched.
 
@@ -106,7 +120,6 @@ Examples:
 - Suspension bridge wires
 - Lifting chains
 
-<!-- Visual flow for Stress & Strain. -->
 ```mermaid
 graph LR
 A[← Force] --> B[Rod]
@@ -115,15 +128,18 @@ B --> C[Force →]
 
 The rod elongates under the applied load.
 
-## 2⃣ Compressive Stress
+---
+
+# 2️⃣ Compressive Stress
 
 Occurs when a component is compressed.
+
+Examples:
 
 - Building columns
 - Hydraulic press members
 - Machine supports
 
-<!-- Visual flow for Stress & Strain. -->
 ```mermaid
 graph LR
 A[Force →] --> B[Block]
@@ -132,9 +148,13 @@ C[← Force] --> B
 
 The component shortens due to compression.
 
-## 3⃣ Shear Stress
+---
+
+# 3️⃣ Shear Stress
 
 Occurs when forces act parallel to the surface.
+
+Examples:
 
 - Rivets
 - Bolts
@@ -144,21 +164,28 @@ Occurs when forces act parallel to the surface.
 
 :contentReference[oaicite:2]{index=2}
 
+Where:
+
 - τ = Shear Stress
+
+---
 
 ## Example
 
 A bolt joining two plates experiences shear stress when the plates try to slide.
 
-## 4⃣ Bending Stress
+---
+
+# 4️⃣ Bending Stress
 
 Occurs when a member bends due to transverse loads.
+
+Examples:
 
 - Beams
 - Shafts
 - Crane arms
 
-<!-- Visual flow for Stress & Strain. -->
 ```mermaid
 graph TD
 A[Load] --> B[Beam]
@@ -166,24 +193,28 @@ A[Load] --> B[Beam]
 
 Upper fibers compress while lower fibers stretch.
 
-## 5⃣ Torsional Stress
+---
+
+# 5️⃣ Torsional Stress
 
 Occurs when torque twists a component.
+
+Examples:
 
 - Transmission shafts
 - Screwdrivers
 - Motor shafts
 
-<!-- Visual flow for Stress & Strain. -->
 ```mermaid
 flowchart LR
 A[Torque] --> B[Shaft]
 B --> C[Torque]
 ```
 
-## Types of Strain
+---
 
-<!-- Visual flow for Stress & Strain. -->
+# 🔄 Types of Strain
+
 ```mermaid
 flowchart TD
 A[Strain]
@@ -193,13 +224,17 @@ A --> D[Shear Strain]
 A --> E[Volumetric Strain]
 ```
 
-## 1⃣ Longitudinal Strain
+---
+
+# 1️⃣ Longitudinal Strain
 
 Change in length divided by original length.
 
 Occurs during tension or compression.
 
-## 2⃣ Lateral Strain
+---
+
+# 2️⃣ Lateral Strain
 
 Change in dimensions perpendicular to applied force.
 
@@ -207,23 +242,28 @@ Example:
 
 When a rod stretches, its diameter decreases.
 
-## 3⃣ Shear Strain
+---
+
+# 3️⃣ Shear Strain
 
 Angular deformation caused by shear stress.
 
 Common in rivets and bolts.
 
-## 4⃣ Volumetric Strain
+---
+
+# 4️⃣ Volumetric Strain
 
 Change in volume divided by original volume.
 
 Observed in pressure vessels and hydraulic systems.
 
-## 📈 Stress-Strain Curve
+---
+
+# 📈 Stress-Strain Curve
 
 The Stress-Strain Curve shows how materials behave under loading.
 
-<!-- Visual flow for Stress & Strain. -->
 ```mermaid
 graph LR
 A[O Elastic Region] --> B[Yield Point]
@@ -232,34 +272,50 @@ C --> D[Ultimate Stress]
 D --> E[Fracture]
 ```
 
+---
+
+# Important Regions
+
 ## Elastic Region
 
 - Material returns to original shape after load removal.
 - Obeys Hooke's Law.
+
+---
 
 ## Yield Point
 
 - Permanent deformation begins.
 - Material no longer fully recovers.
 
+---
+
 ## Plastic Region
 
 - Large deformation occurs.
 - Permanent changes remain.
 
+---
+
 ## Ultimate Stress
 
 Maximum stress the material can withstand.
+
+---
 
 ## Fracture Point
 
 Final failure of the material.
 
-## 🔗 Hooke's Law
+---
+
+# 🔗 Hooke's Law
 
 Within the elastic limit:
 
 :contentReference[oaicite:3]{index=3}
+
+Where:
 
 - E = Young's Modulus
 
@@ -267,16 +323,19 @@ This means:
 
 Stress is directly proportional to strain.
 
-## 📐 Young's Modulus
+---
+
+# 📐 Young's Modulus
 
 Young's Modulus measures material stiffness.
 
-// Example demonstrating Stress & Strain.
 ```
 Young's Modulus = Stress / Strain
 ```
 
 Higher value ⇒ Stiffer material
+
+Examples:
 
 | Material | Young's Modulus |
 | -------- | --------------- |
@@ -284,22 +343,26 @@ Higher value ⇒ Stiffer material
 | Aluminum | Moderate        |
 | Steel    | High            |
 
-## ⚠ Working Stress
+---
+
+# ⚠️ Working Stress
 
 Machine components should not operate at ultimate stress.
 
 Safe design uses:
 
-// Example demonstrating Stress & Strain.
 ```
 Working Stress = Ultimate Stress / Factor of Safety
 ```
 
-## Factor of Safety (FOS)
+---
+
+# 🛡️ Factor of Safety (FOS)
 
 Factor of Safety accounts for uncertainties.
 
-// Example demonstrating Stress & Strain.
+## Formula
+
 ```
 FOS = Failure Stress / Working Stress
 ```
@@ -311,6 +374,10 @@ Typical values:
 | Machine Parts      | 2–4 |
 | Pressure Vessels   | 3–6 |
 | Structural Members | 4–8 |
+
+---
+
+# 🏭 Practical Applications
 
 ## Shafts
 
@@ -337,7 +404,9 @@ Typical values:
 - Hoop stress
 - Longitudinal stress
 
-## 🚨 Failure Due to Excess Stress
+---
+
+# 🚨 Failure Due to Excess Stress
 
 Common failures include:
 
@@ -349,7 +418,9 @@ Common failures include:
 
 Engineers design components to avoid these failures.
 
-## Key Points
+---
+
+# 📝 Key Points
 
 - Stress is force per unit area.
 - Strain is deformation per unit length.
@@ -360,12 +431,3 @@ Engineers design components to avoid these failures.
 - Young's Modulus indicates material stiffness.
 - Factor of Safety ensures safe operation.
 - Understanding stress and strain is essential for machine design.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

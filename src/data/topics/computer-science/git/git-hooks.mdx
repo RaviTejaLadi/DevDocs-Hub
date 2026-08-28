@@ -15,7 +15,6 @@ door. When you run `git commit`, the bouncer stops you, inspects your code with
 a code linter or runs your tests, and says, _"Hold on, you forgot a semicolon on
 line 42. Fix that before I let you commit this."_
 
-<!-- Visual flow for 🪝 Git Hooks. -->
 ```mermaid
 graph LR
     A[git commit] --> B{Pre-Commit Hook Runs}
@@ -37,6 +36,8 @@ Git hooks are split into two categories based on where they run:
   handle server tasks like rejecting pushes if they don't match team standards
   (`pre-receive`).
 
+---
+
 ### How to Install and Use a Git Hook
 
 Git hooks live right inside your repository in a hidden folder called
@@ -48,13 +49,14 @@ ending in `.sample`.
 To turn a sample hook into a live hook, all you have to do is remove the
 `.sample` extension from the filename and make the file executable.
 
-# Basic example showing the core idea.
 ```bash
-## Rename the sample pre-commit file to make it active
+# Rename the sample pre-commit file to make it active
 mv .git/hooks/pre-commit.sample .git/hooks/pre-commit
 
-## Make the script executable on Unix systems
+# Make the script executable on Unix systems
 chmod +x .git/hooks/pre-commit
+
+```
 
 #### 2. Writing a Simple Pre-Commit Script
 
@@ -64,16 +66,20 @@ linter finds errors:
 
 ```bash
 #!/bin/sh
-## Run the project code linter before completing the commit
+# Run the project code linter before completing the commit
 
 echo "🔍 Running code quality checks..."
 npm run lint
 
-## Check if the linter failed (returned a non-zero exit code)
+# Check if the linter failed (returned a non-zero exit code)
 if [ $? -ne 0 ]; then
     echo "❌ Linter failed! Please fix your code formatting before committing."
     exit 1
 fi
+
+```
+
+---
 
 ### Making Hooks Easy: Husky 🐾
 
@@ -85,7 +91,6 @@ In the modern JavaScript ecosystem, developers use a popular package called
 **Husky** to easily manage and share hooks through your standard `package.json`
 file.
 
-// Basic example showing the core idea.
 ```javascript
 // Example Husky configuration inside package.json
 {
@@ -97,7 +102,11 @@ file.
   }
 }
 
-### Bypassing a Hook
+```
+
+---
+
+### 💡 Bypassing a Hook
 
 If you are in the middle of a messy experiment and absolutely _must_ commit your
 code without waiting for long test suites or linters to finish, you can bypass
@@ -107,23 +116,6 @@ client-side hooks by adding the `--no-verify` flag to your command:
 // Force a commit through, completely skipping the pre-commit checks
 git commit -m "WIP: Experimental changes" --no-verify
 
-## Quick Reference
+```
 
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+---

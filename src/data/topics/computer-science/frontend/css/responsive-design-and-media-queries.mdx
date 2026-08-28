@@ -8,7 +8,7 @@ to different screen sizes and devices.
 
 ---
 
-## What is Responsive Design?
+# 🎯 What is Responsive Design?
 
 Responsive Design allows a single website to adjust its layout, typography,
 images, and spacing based on the screen size.
@@ -25,11 +25,12 @@ You create:
 
 ✅ One Responsive Website
 
-## 🌍 Why Responsive Design Matters
+---
+
+# 🌍 Why Responsive Design Matters
 
 Today users browse from many devices.
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart LR
     Mobile["📱 Mobile"]
@@ -37,7 +38,7 @@ flowchart LR
     Laptop["💻 Laptop"]
     Desktop["🖥️ Desktop"]
 
-Mobile --> Website["Responsive Website"]
+    Mobile --> Website["Responsive Website"]
     Tablet --> Website
     Laptop --> Website
     Desktop --> Website
@@ -55,26 +56,28 @@ Benefits:
 
 ✅ Higher Conversion Rates
 
-## 📐 The Viewport Meta Tag
+---
+
+# 📐 The Viewport Meta Tag
 
 The first step of responsive design.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Responsive viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
 
+---
+
 ## What It Does
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart TB
     Device["Device Width"]
     Viewport["Viewport"]
     Website["Website Layout"]
 
-Device --> Viewport
+    Device --> Viewport
     Viewport --> Website
 ```
 
@@ -84,11 +87,12 @@ Without this tag:
 
 ❌ Layouts appear tiny
 
-## What Are Media Queries?
+---
+
+# 🎯 What Are Media Queries?
 
 Media Queries allow CSS to apply different styles based on screen size.
 
-/* Basic example showing the core idea. */
 ```css
 /* Media Query Example */
 @media (max-width: 768px) {
@@ -100,7 +104,9 @@ Media Queries allow CSS to apply different styles based on screen size.
 
 When screen width becomes 768px or smaller, the styles are applied.
 
-## 📏 Common Breakpoints
+---
+
+# 📏 Common Breakpoints
 
 There are no official breakpoints, but these are widely used.
 
@@ -111,7 +117,9 @@ There are no official breakpoints, but these are widely used.
 | Laptop  | 1024px - 1440px |
 | Desktop | 1440px+         |
 
-## 📱 Mobile First Approach
+---
+
+# 📱 Mobile First Approach
 
 Modern development prefers **Mobile First**.
 
@@ -119,21 +127,23 @@ Start with mobile styles.
 
 Then enhance for larger screens.
 
+---
+
 ## Mobile First Flow
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart LR
     Mobile["Mobile Design"]
     Tablet["Tablet Enhancements"]
     Desktop["Desktop Enhancements"]
 
-Mobile --> Tablet --> Desktop
+    Mobile --> Tablet --> Desktop
 ```
+
+---
 
 ## Example
 
-/* Basic example showing the core idea. */
 ```css
 /* Mobile styles */
 .card {
@@ -155,11 +165,16 @@ Mobile --> Tablet --> Desktop
 }
 ```
 
+---
+
+# 📱 max-width vs min-width
+
+---
+
 ## max-width
 
 Applies styles below a certain size.
 
-/* Basic example showing the core idea. */
 ```css
 @media (max-width: 768px) {
   body {
@@ -170,16 +185,16 @@ Applies styles below a certain size.
 
 Meaning:
 
-// Example demonstrating 📱 Responsive Design & Media Queries.
 ```text
 768px and below
 ```
+
+---
 
 ## min-width
 
 Applies styles above a size.
 
-/* Basic example showing the core idea. */
 ```css
 @media (min-width: 768px) {
   body {
@@ -188,27 +203,30 @@ Applies styles above a size.
 }
 ```
 
-// Example demonstrating 📱 Responsive Design & Media Queries.
+Meaning:
+
 ```text
 768px and above
 ```
 
-## Responsive Containers
+---
+
+# 📦 Responsive Containers
 
 Avoid fixed widths.
 
 ❌
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 1200px;
 }
 ```
 
+---
+
 ✅
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: 100%;
@@ -217,11 +235,12 @@ Avoid fixed widths.
 }
 ```
 
-## 🖼 Responsive Images
+---
+
+# 🖼️ Responsive Images
 
 Images should scale automatically.
 
-/* Basic example showing the core idea. */
 ```css
 img {
   max-width: 100%;
@@ -229,9 +248,10 @@ img {
 }
 ```
 
+---
+
 ## Responsive Image Flow
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart TB
     Original["Large Image"]
@@ -240,16 +260,17 @@ flowchart TB
     Tablet["Tablet"]
     Desktop["Desktop"]
 
-Original --> Resize
+    Original --> Resize
 
-Resize --> Mobile
+    Resize --> Mobile
     Resize --> Tablet
     Resize --> Desktop
 ```
 
-## 🔲 Responsive Flexbox Layout
+---
 
-/* Basic example showing the core idea. */
+# 🔲 Responsive Flexbox Layout
+
 ```css
 .container {
   display: flex;
@@ -258,65 +279,72 @@ Resize --> Mobile
 }
 ```
 
+---
+
 ## Mobile Layout
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart TB
     A["Card 1"]
     B["Card 2"]
     C["Card 3"]
 
-A --> B --> C
+    A --> B --> C
 ```
+
+---
 
 ## Desktop Layout
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart LR
     A["Card 1"]
     B["Card 2"]
     C["Card 3"]
 
-A --- B --- C
+    A --- B --- C
 ```
 
-## ⬛ Responsive Grid Layout
+---
+
+# ⬛ Responsive Grid Layout
 
 The most common modern pattern.
 
-/* Basic example showing the core idea. */
 ```css
 .products {
   display: grid;
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-gap: 20px;
+  gap: 20px;
 }
 ```
 
+---
+
 ## How It Behaves
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart TB
 
-Desktop["4 Columns"]
+    Desktop["4 Columns"]
     Tablet["2 Columns"]
     Mobile["1 Column"]
 
-Desktop --> Tablet --> Mobile
+    Desktop --> Tablet --> Mobile
 ```
 
-## Orientation Queries
+---
+
+# 🎯 Orientation Queries
 
 Detect portrait and landscape mode.
 
+---
+
 ## Portrait
 
-/* Basic example showing the core idea. */
 ```css
 @media (orientation: portrait) {
   body {
@@ -325,9 +353,10 @@ Detect portrait and landscape mode.
 }
 ```
 
+---
+
 ## Landscape
 
-/* Basic example showing the core idea. */
 ```css
 @media (orientation: landscape) {
   body {
@@ -336,11 +365,12 @@ Detect portrait and landscape mode.
 }
 ```
 
-## 🌙 Dark Mode Support
+---
+
+# 🌙 Dark Mode Support
 
 Modern browsers support color scheme detection.
 
-/* Basic example showing the core idea. */
 ```css
 @media (prefers-color-scheme: dark) {
   body {
@@ -350,42 +380,52 @@ Modern browsers support color scheme detection.
 }
 ```
 
+---
+
 ## Dark Mode Flow
 
-<!-- Visual flow for 📱 Responsive Design & Media Queries. -->
 ```mermaid
 flowchart LR
 
-User["User Preference"]
+    User["User Preference"]
 
-Dark["Dark Mode"]
+    Dark["Dark Mode"]
     Light["Light Mode"]
 
-User --> Dark
+    User --> Dark
     User --> Light
 ```
 
-## Responsive Typography
+---
+
+# 🎯 Responsive Typography
 
 Avoid fixed font sizes.
 
-/* Basic example showing the core idea. */
+---
+
+❌
+
 ```css
 h1 {
   font-size: 40px;
 }
 ```
 
-/* Basic example showing the core idea. */
+---
+
+✅
+
 ```css
 h1 {
   font-size: clamp(2rem, 5vw, 4rem);
 }
 ```
 
+---
+
 ## Understanding clamp()
 
-/* Basic example showing the core idea. */
 ```css
 clamp(
   minimum,
@@ -396,56 +436,64 @@ clamp(
 
 Example:
 
-/* Basic example showing the core idea. */
 ```css
 font-size: clamp(1rem, 3vw, 2rem);
 ```
 
+---
+
+# 📐 Modern Responsive Units
+
+---
+
 ## %
 
-/* Basic example showing the core idea. */
 ```css
 width: 50%;
 ```
 
 Based on parent size.
 
+---
+
 ## vw
 
 Viewport width.
 
-/* Basic example showing the core idea. */
 ```css
 width: 50vw;
 ```
 
 50% of screen width.
 
+---
+
 ## vh
 
 Viewport height.
 
-/* Basic example showing the core idea. */
 ```css
 height: 100vh;
 ```
 
 Full screen height.
 
+---
+
 ## rem
 
 Relative to root font size.
 
-/* Basic example showing the core idea. */
 ```css
 padding: 2rem;
 ```
 
 Recommended for typography.
 
-## Responsive Navigation Example
+---
 
-<!-- Basic example showing the core idea. -->
+# 📊 Responsive Navigation Example
+
 ```html
 <nav class="navbar">
   <div>Logo</div>
@@ -457,7 +505,6 @@ Recommended for typography.
 </nav>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 .navbar {
   display: flex;
@@ -465,9 +512,10 @@ Recommended for typography.
 }
 ```
 
+---
+
 ### Mobile Navigation
 
-/* Basic example showing the core idea. */
 ```css
 @media (max-width: 768px) {
   .navbar {
@@ -476,17 +524,23 @@ Recommended for typography.
 }
 ```
 
+---
+
 ## Navigation Flow
 
-Desktop["Horizontal Menu"]
+```mermaid
+flowchart LR
 
-Mobile["Vertical Menu"]
+    Desktop["Horizontal Menu"]
 
-Desktop --> Mobile
-// Example demonstrating 📱 Responsive Design & Media Queries.
+    Mobile["Vertical Menu"]
+
+    Desktop --> Mobile
 ```
 
-## Container Queries (Modern CSS)
+---
+
+# ⚡ Container Queries (Modern CSS)
 
 Media Queries respond to viewport size.
 
@@ -502,36 +556,60 @@ Container Queries respond to parent size.
     display: flex;
   }
 }
-// Example demonstrating 📱 Responsive Design & Media Queries.
 ```
+
+---
 
 ## Container Query Concept
 
-Parent["Parent Container"]
+```mermaid
+flowchart TB
 
-Child["Child Component"]
+    Parent["Parent Container"]
 
-Parent --> Child
+    Child["Child Component"]
 
-Note["Child reacts to parent size"]
+    Parent --> Child
 
-Child --> Note
+    Note["Child reacts to parent size"]
+
+    Child --> Note
 ```
 
+---
 
+# ⚠️ Common Mistakes
+
+---
+
+## Fixed Width Layouts
+
+❌
+
+```css
+.container {
+  width: 1200px;
+}
+```
+
+---
 
 ## Huge Images
 
-/* Basic example showing the core idea. */
+❌
+
 ```css
 img {
   width: 2000px;
 }
 ```
 
+---
+
 ## Too Many Breakpoints
 
-/* Basic example showing the core idea. */
+❌
+
 ```css
 500px
 550px
@@ -542,15 +620,18 @@ img {
 
 Use meaningful breakpoints.
 
+---
+
 ## Ignoring Mobile
 
 Mobile traffic is often higher than desktop traffic.
 
 Always test on mobile.
 
-## Quick Cheat Sheet
+---
 
-/* Basic example showing the core idea. */
+# 🧠 Quick Cheat Sheet
+
 ```css
 /* Mobile First */
 @media (min-width: 768px) {
@@ -575,7 +656,9 @@ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 font-size: clamp(1rem, 3vw, 2rem);
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use Mobile First development.
 - Use CSS Grid and Flexbox.
@@ -586,7 +669,9 @@ font-size: clamp(1rem, 3vw, 2rem);
 - Support dark mode when possible.
 - Test on real devices.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - Responsive Design ensures websites work on all devices.
 - Media Queries apply styles based on screen size.

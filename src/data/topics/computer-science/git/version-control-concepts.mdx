@@ -1,4 +1,4 @@
-# Version Control Concepts
+# 📚 Version Control Concepts
 
 To truly understand Git, we need to look under the hood at how it thinks. Git is
 a **Distributed Version Control System (DVCS)**, which fundamentally changes how
@@ -16,7 +16,6 @@ Git uses a **Distributed** model. When you copy a project, you do not just get
 the latest files—you download the **entire history** of the project onto your
 local machine.
 
-<!-- Visual flow for Version Control Concepts. -->
 ```mermaid
 graph TD
     subgraph Centralized SVN
@@ -24,7 +23,7 @@ graph TD
     Server --- DevB[Developer B: Only Current Files]
     end
 
-subgraph Distributed Git
+    subgraph Distributed Git
     Remote[GitHub Remote Server] --- LocalA[Dev A: Full Local History]
     Remote --- LocalB[Dev B: Full Local History]
     end
@@ -40,6 +39,8 @@ subgraph Distributed Git
 - **Safety:** Every single developer's machine acts as a full backup. If the
   main server fries itself, any developer can restore it instantly.
 
+---
+
 ## 🕒 The Three States of Git
 
 Git manages your files across three distinct virtual zones. Understanding these
@@ -51,6 +52,8 @@ zones is the secret to mastering the Git workflow. 🧱
 | **Staging Area**               | A prep zone. You pick which modified files you want to include in your next save. |
 | **Git Directory (Repository)** | The official database where Git permanently stores your project snapshots.        |
 
+---
+
 ## 📸 Snapshots, Not Differences
 
 Older systems track history by storing a base file and a list of continuous file
@@ -61,31 +64,4 @@ picture (**snapshot**) of what all your files look like at that exact
 millisecond. If a file has not changed, Git does not copy it again—it simply
 links back to the previous version to save space. ⚡
 
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **Version Control Concepts** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
+---

@@ -1,8 +1,10 @@
 # React.js Interview Questions
 
+## Core React Concepts
+
 ### 1. What is the Virtual DOM and how does it work?
 
-**Answer:**
+**Answer:**  
 Virtual DOM is a lightweight copy of the real DOM. When state changes, React:
 
 1. Creates a new Virtual DOM
@@ -15,14 +17,14 @@ changed parts of the house.
 
 ### 2. Explain React's component lifecycle in class components
 
-**Answer:**
+**Answer:**  
 Three main phases:
 
-1. **Mounting:**
+1. **Mounting:**  
    `constructor` → `render` → `componentDidMount`
-2. **Updating:**
+2. **Updating:**  
    `shouldComponentUpdate` → `render` → `componentDidUpdate`
-3. **Unmounting:**
+3. **Unmounting:**  
    `componentWillUnmount`
 
 **Remember:** "Mount, Update, Unmount" - like a photo frame you put up, change,
@@ -39,7 +41,7 @@ then take down.
 
 ### 4. What is JSX and how does it work?
 
-**Answer:**
+**Answer:**  
 JSX is syntax sugar for `React.createElement()`. It:
 
 1. Looks like HTML but is JavaScript
@@ -51,7 +53,7 @@ calls.
 
 ### 5. What are keys in React and why are they important?
 
-**Answer:**
+**Answer:**  
 Keys help React identify which items have changed, are added, or removed. They:
 
 1. Must be unique among siblings
@@ -63,9 +65,11 @@ them.
 
 ---
 
+## Performance Optimization
+
 ### 6. How do you optimize React application performance?
 
-**Answer:**
+**Answer:**  
 Key techniques:
 
 1. `React.memo` for component memoization
@@ -77,6 +81,8 @@ Key techniques:
 **Remember:** "Memoize, Split, Virtualize" - the performance mantra.
 
 ### 7. When should you use useMemo and useCallback?
+
+**Answer:**
 
 - `useMemo`: Cache expensive calculations between re-renders
 - `useCallback`: Cache function references between re-renders
@@ -91,10 +97,9 @@ Use when:
 
 ### 8. What is code splitting and how do you implement it in React?
 
-**Answer:**
+**Answer:**  
 Splitting code into smaller chunks loaded on demand:
 
-// Example demonstrating React.js Interview Questions.
 ```jsx
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
@@ -106,7 +111,7 @@ it.
 
 ### 9. How does React Fiber improve performance?
 
-**Answer:**
+**Answer:**  
 Fiber is React's new reconciliation engine that:
 
 1. Enables incremental rendering
@@ -119,7 +124,7 @@ blocking worker.
 
 ### 10. What are pure components and when should you use them?
 
-**Answer:**
+**Answer:**  
 `PureComponent` (class) or `React.memo` (function) only re-render when
 props/state change. Use when:
 
@@ -130,7 +135,13 @@ props/state change. Use when:
 **Remember:** Pure components are like calculators - only recalculate when
 inputs change.
 
+---
+
+## State Management
+
 ### 11. What are the differences between Redux and Context API?
+
+**Answer:**
 
 - **Redux:**
   - Single global store
@@ -147,7 +158,7 @@ inputs change.
 
 ### 12. When would you choose Redux over React's built-in state management?
 
-**Answer:**
+**Answer:**  
 Choose Redux when:
 
 - App state is complex
@@ -159,7 +170,7 @@ Choose Redux when:
 
 ### 13. What is the Flux pattern?
 
-**Answer:**
+**Answer:**  
 Unidirectional data flow pattern:
 
 1. **Actions** describe events
@@ -171,7 +182,7 @@ Unidirectional data flow pattern:
 
 ### 14. How would you implement global state without Redux?
 
-**Answer:**
+**Answer:**  
 Options:
 
 1. Context API + `useReducer`
@@ -183,6 +194,8 @@ Options:
 
 ### 15. What are the common pitfalls with React state management?
 
+**Answer:**
+
 1. Overusing Context causing unnecessary re-renders
 2. Mutating state directly
 3. Storing derived state instead of computing it
@@ -193,9 +206,13 @@ Options:
 
 Here's the continuation of the React.js Senior Developer Interview Questions:
 
+---
+
+## Advanced Patterns
+
 ### 16. What are Higher-Order Components (HOCs) and when would you use them?
 
-**Answer:**
+**Answer:**  
 HOCs are functions that take a component and return a new enhanced component.
 Use them for:
 
@@ -208,10 +225,9 @@ Use them for:
 
 ### 17. What is the Render Props pattern?
 
-**Answer:**
+**Answer:**  
 A pattern where a component's children is a function that receives values:
 
-// Example demonstrating React.js Interview Questions.
 ```jsx
 <DataProvider render={(data) => <Child data={data} />} />
 ```
@@ -223,10 +239,9 @@ rendering.
 
 ### 18. What are Compound Components?
 
-**Answer:**
+**Answer:**  
 Components that work together sharing implicit state:
 
-// Example demonstrating React.js Interview Questions.
 ```jsx
 <Tabs>
   <TabList>...</TabList>
@@ -240,10 +255,9 @@ Like HTML `<select>` and `<option>`.
 
 ### 19. What is the Provider Pattern in React?
 
-**Answer:**
+**Answer:**  
 A component that provides data to its descendants via Context:
 
-// Example demonstrating React.js Interview Questions.
 ```jsx
 <ThemeProvider value="dark">
   <App />
@@ -256,7 +270,7 @@ Children access via `useContext`.
 
 ### 20. When would you use the Observer Pattern in React?
 
-**Answer:**
+**Answer:**  
 Use when components need to react to changes outside React's flow:
 
 - WebSocket updates
@@ -268,7 +282,13 @@ Use when components need to react to changes outside React's flow:
 
 **Remember:** Observer pattern connects React to the outside world.
 
+---
+
+## React Ecosystem
+
 ### 21. How does Next.js differ from Create React App?
+
+**Answer:**
 
 - **Next.js:**
   - Server-side rendering
@@ -284,6 +304,8 @@ Use when components need to react to changes outside React's flow:
 
 ### 22. What problems does React Router solve?
 
+**Answer:**
+
 - Client-side routing without page reloads
 - Nested route configuration
 - URL parameter handling
@@ -293,7 +315,7 @@ Use when components need to react to changes outside React's flow:
 
 ### 23. When would you choose GraphQL with React over REST?
 
-**Answer:**
+**Answer:**  
 Choose GraphQL when:
 
 - You need to reduce over-fetching
@@ -305,7 +327,7 @@ Choose GraphQL when:
 
 ### 24. What are React Server Components?
 
-**Answer:**
+**Answer:**  
 Components that render on the server:
 
 - Zero bundle size
@@ -316,6 +338,9 @@ Components that render on the server:
 **Remember:** Server Components = less JS sent to client.
 
 ### 25. How would you implement internationalization in React?
+
+**Answer:**  
+Options:
 
 1. `react-i18next` (i18next integration)
 2. FormatJS (React Intl)
@@ -328,7 +353,13 @@ Components that render on the server:
 
 **Remember:** i18n = prepare your app for multiple languages.
 
+---
+
+## Testing
+
 ### 26. What testing strategies do you use for React apps?
+
+**Answer:**
 
 1. **Unit Tests:** Jest + React Testing Library for components
 2. **Integration Tests:** Testing component interactions
@@ -339,6 +370,8 @@ Components that render on the server:
 
 ### 27. What's the difference between Jest and React Testing Library?
 
+**Answer:**
+
 - **Jest:** Test runner with assertion library
 - **RTL:** Light utility for testing React components They complement each
   other:
@@ -348,6 +381,8 @@ Components that render on the server:
 **Remember:** Jest is the engine, RTL is the steering wheel.
 
 ### 28. How do you test custom hooks?
+
+**Answer:**
 
 1. Use `@testing-library/react-hooks`
 2. Render hook in test component
@@ -361,6 +396,8 @@ Components that render on the server:
 
 ### 29. What are some common testing anti-patterns in React?
 
+**Answer:**
+
 1. Testing implementation details
 2. Overusing snapshot tests
 3. Not mocking external dependencies
@@ -371,6 +408,8 @@ Components that render on the server:
 
 ### 30. How would you test a component connected to Redux?
 
+**Answer:**
+
 1. Wrap in `<Provider>` with test store
 2. Mock selectors/actions if needed
 3. Test connected and unconnected versions
@@ -378,12 +417,15 @@ Components that render on the server:
 
 **Remember:** Isolate Redux logic from presentation.
 
+---
+
+## Architecture
+
 ### 31. How would you structure a large React application?
 
-**Answer:**
+**Answer:**  
 Feature-based structure:
 
-// Example demonstrating React.js Interview Questions.
 ```
 /src
   /features
@@ -408,6 +450,8 @@ Key principles:
 
 ### 32. What are some common React architectural patterns?
 
+**Answer:**
+
 1. Container/Presentational components
 2. Atomic Design
 3. Feature-Sliced Design
@@ -418,7 +462,7 @@ Key principles:
 
 ### 33. How do you handle authentication in React apps?
 
-**Answer:**
+**Answer:**  
 Common approach:
 
 1. Auth provider (Context/Redux)
@@ -437,6 +481,8 @@ Libraries:
 
 ### 34. What strategies would you use for error handling?
 
+**Answer:**
+
 1. Error boundaries for UI errors
 2. Global error handler
 3. API error normalization
@@ -447,12 +493,13 @@ Libraries:
 
 ### 35. How would you implement feature flags in React?
 
+**Answer:**
+
 1. Context/Redux for flag state
 2. Environment-based flags
 3. API-driven flags
 4. Wrapper components
 
-// Example demonstrating React.js Interview Questions.
 ```jsx
 <FeatureFlag name="new-ui">
   <NewComponent />
@@ -461,9 +508,13 @@ Libraries:
 
 **Remember:** Feature flags = controlled rollout.
 
+---
+
+## Hooks
+
 ### 36. How do hooks work under the hood?
 
-**Answer:**
+**Answer:**  
 Hooks:
 
 1. Rely on call order (must be unconditional)
@@ -475,7 +526,7 @@ Hooks:
 
 ### 37. When would you create a custom hook?
 
-**Answer:**
+**Answer:**  
 When you need to:
 
 1. Reuse stateful logic
@@ -487,6 +538,8 @@ When you need to:
 
 ### 38. What's the difference between useEffect and useLayoutEffect?
 
+**Answer:**
+
 - `useEffect`: Async, after paint
 - `useLayoutEffect`: Sync, before paint Use `useLayoutEffect` when you need to:
 - Measure DOM
@@ -496,7 +549,7 @@ When you need to:
 
 ### 39. How would you handle data fetching with hooks?
 
-**Answer:**
+**Answer:**  
 Common patterns:
 
 1. `useEffect` + state
@@ -511,6 +564,8 @@ Common patterns:
 
 ### 40. What are some common hook pitfalls?
 
+**Answer:**
+
 1. Missing dependencies
 2. Infinite loops
 3. Stale closures
@@ -519,9 +574,13 @@ Common patterns:
 
 **Remember:** Follow the Rules of Hooks religiously.
 
+---
+
+## React Internals
+
 ### 41. How does React's reconciliation algorithm work?
 
-**Answer:**
+**Answer:**  
 React:
 
 1. Compares element types
@@ -533,7 +592,7 @@ React:
 
 ### 42. What is the significance of keys in reconciliation?
 
-**Answer:**
+**Answer:**  
 Keys help React:
 
 1. Identify elements between renders
@@ -545,6 +604,9 @@ Keys help React:
 
 ### 43. How does React handle events differently from DOM?
 
+**Answer:**  
+React:
+
 1. Uses synthetic events
 2. Pools event objects
 3. Handles delegation at root
@@ -554,7 +616,7 @@ Keys help React:
 
 ### 44. What is Concurrent Mode in React?
 
-**Answer:**
+**Answer:**  
 New rendering mechanism that:
 
 1. Enables interruptible rendering
@@ -566,7 +628,7 @@ New rendering mechanism that:
 
 ### 45. How does React's fiber architecture work?
 
-**Answer:**
+**Answer:**  
 Fiber:
 
 1. Breaks work into chunks
@@ -576,7 +638,13 @@ Fiber:
 
 **Remember:** Fiber = React's new rendering engine.
 
+---
+
+## Best Practices
+
 ### 46. What are some React performance best practices?
+
+**Answer:**
 
 1. Memoize expensive calculations
 2. Virtualize long lists
@@ -588,6 +656,8 @@ Fiber:
 
 ### 47. How do you ensure accessibility in React apps?
 
+**Answer:**
+
 1. Semantic HTML
 2. ARIA attributes
 3. Keyboard navigation
@@ -597,6 +667,9 @@ Fiber:
 **Remember:** a11y = built-in, not bolted-on.
 
 ### 48. What's your approach to styling in React?
+
+**Answer:**  
+Options:
 
 1. CSS-in-JS (styled-components)
 2. CSS Modules
@@ -611,7 +684,7 @@ Fiber:
 
 ### 49. How do you handle forms in React?
 
-**Answer:**
+**Answer:**  
 Approaches:
 
 1. Controlled components
@@ -626,6 +699,8 @@ Approaches:
 
 ### 50. What are your code quality practices for React?
 
+**Answer:**
+
 1. Type checking (TypeScript/PropTypes)
 2. ESLint (react-hooks plugin)
 3. Prettier for formatting
@@ -633,12 +708,3 @@ Approaches:
 5. Code reviews
 
 **Remember:** Quality = consistency + tooling + process.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

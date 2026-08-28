@@ -1,4 +1,4 @@
-# JavaScript Callback Functions
+# 📚 JavaScript Callback Functions
 
 ---
 
@@ -10,9 +10,10 @@ function and is **executed later**, usually after a task is completed.
 > A callback gives you **control over the execution flow** in asynchronous and
 > functional programming.
 
+---
+
 ## 🔹 2. Syntax
 
-// Basic example showing the core idea.
 ```javascript
 function mainFunction(callback) {
   // Do something
@@ -29,6 +30,8 @@ mainFunction(sayHello);
 - `mainFunction` takes a function (`callback`) as a parameter.
 - `sayHello` is passed to it and called within `mainFunction`.
 
+---
+
 ## 🔹 3. Types of Callback Functions
 
 | Type           | Example                    |
@@ -36,6 +39,8 @@ mainFunction(sayHello);
 | Named Callback | `main(callbackFunction)`   |
 | Anonymous      | `main(function() { ... })` |
 | Arrow Function | `main(() => { ... })`      |
+
+---
 
 ## 🔹 4. Use Cases
 
@@ -45,9 +50,12 @@ mainFunction(sayHello);
 | Event Handling          | `onclick`, `onchange`, etc.     |
 | Functional Patterns     | `map`, `filter`, `reduce`, etc. |
 
+---
+
+## 🔹 5. Real-World Examples
+
 ### ✅ Example 1: Basic Callback
 
-// Basic example showing the core idea.
 ```javascript
 function greetUser(name, callback) {
   console.log('Hi ' + name);
@@ -63,15 +71,15 @@ greetUser('Ravi', sayBye);
 
 **Output:**
 
-// Example demonstrating JavaScript Callback Functions.
 ```
 Hi Ravi
 Bye!
 ```
 
+---
+
 ### ✅ Example 2: Callback with Anonymous Function
 
-// Basic example showing the core idea.
 ```javascript
 function processUserInput(callback) {
   let name = 'Ravi';
@@ -83,9 +91,10 @@ processUserInput(function (name) {
 });
 ```
 
+---
+
 ### ✅ Example 3: Callback in Asynchronous Code
 
-// Basic example showing the core idea.
 ```javascript
 console.log('Start');
 
@@ -96,16 +105,18 @@ setTimeout(function () {
 console.log('End');
 ```
 
-// Example demonstrating JavaScript Callback Functions.
+**Output:**
+
 ```
 Start
 End
 This runs after 2 seconds
 ```
 
+---
+
 ### ✅ Example 4: Array Method (Functional Style)
 
-// Basic example showing the core idea.
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
@@ -116,6 +127,8 @@ const squared = numbers.map(function (num) {
 console.log(squared); // [1, 4, 9, 16, 25]
 ```
 
+---
+
 ## 🔹 6. Synchronous vs Asynchronous Callback
 
 | Type         | Description                                    | Example                   |
@@ -123,9 +136,10 @@ console.log(squared); // [1, 4, 9, 16, 25]
 | Synchronous  | Executes immediately                           | `map()`, `filter()`       |
 | Asynchronous | Executes after a task completes (non-blocking) | `setTimeout()`, `fetch()` |
 
+---
+
 ### ✅ Example: Async Callback
 
-// Basic example showing the core idea.
 ```javascript
 function fetchData(callback) {
   setTimeout(() => {
@@ -139,12 +153,13 @@ fetchData(() => {
 });
 ```
 
+---
+
 ## 🔹 7. Callback Hell 😖
 
 When callbacks are nested within callbacks, the code becomes hard to read and
 maintain.
 
-// Basic example showing the core idea.
 ```javascript
 doTask1(() => {
   doTask2(() => {
@@ -157,11 +172,15 @@ doTask1(() => {
 
 ➡️ **Solution**: Use **Promises** or **async/await** to avoid callback hell.
 
+---
+
 ## 🔹 8. Benefits
 
 - Controls execution flow
 - Enables async operations
 - Encourages modular code
+
+---
 
 ## 🔹 9. Drawbacks
 
@@ -169,11 +188,15 @@ doTask1(() => {
 - Can lead to callback hell
 - Error handling is tricky
 
+---
+
 ## 🔹 10. Best Practices
 
 ✅ Name your callback functions clearly ✅ Avoid deep nesting ✅ Use Promises or
 async/await for better readability ✅ Always handle errors if the callback can
 fail
+
+---
 
 ## ✅ Conclusion
 
@@ -181,32 +204,3 @@ Callback functions are a **powerful concept** in JavaScript for handling
 **asynchronous operations**, **event-driven programming**, and **functional
 patterns**. Understanding callbacks is essential for writing non-blocking,
 efficient JavaScript code.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **JavaScript Callback Functions** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

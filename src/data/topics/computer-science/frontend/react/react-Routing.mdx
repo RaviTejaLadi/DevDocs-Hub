@@ -4,6 +4,8 @@ React Router is the standard routing library for React applications, enabling
 navigation between different components while maintaining a single-page
 application (SPA) architecture.
 
+## Core Concepts
+
 ### 1. Router
 
 The top-level component that wraps your entire application and enables routing
@@ -32,16 +34,18 @@ A component for creating navigation links that don't trigger page reloads.
 
 ## Installation
 
-# Basic example showing the core idea.
 ```bash
 npm install react-router-dom
-## or
+# or
 yarn add react-router-dom
 ```
 
+---
+
+## Basic Routing
+
 ### Syntax
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -66,19 +70,22 @@ function App() {
   - `path`: URL path to match
   - `element`: Component to render when path matches
 
+---
+
+## Route Parameters
+
 ### Dynamic Segments
 
 Extract values from the URL.
 
+#### Syntax
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/users/:userId" element={<UserProfile />} />
 ```
 
 #### Accessing Parameters
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useParams } from 'react-router-dom';
 
@@ -90,14 +97,16 @@ function UserProfile() {
 
 ### Optional Parameters
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/products/:category?/:id?" element={<Products />} />
 ```
 
+---
+
+## Nested Routes
+
 ### Parent Route Setup
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/dashboard" element={<Dashboard />}>
   <Route path="profile" element={<Profile />} />
@@ -109,7 +118,6 @@ function UserProfile() {
 
 Parent component must render an `<Outlet />` where nested routes should appear.
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { Outlet } from 'react-router-dom';
 
@@ -124,11 +132,14 @@ function Dashboard() {
 }
 ```
 
+---
+
+## Navigation
+
 ### Link Component
 
 Creates navigation links that don't reload the page.
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { Link } from 'react-router-dom';
 
@@ -147,7 +158,6 @@ function Navbar() {
 
 Special Link that adds styling attributes when active.
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <NavLink
   to="/about"
@@ -157,27 +167,29 @@ Special Link that adds styling attributes when active.
 </NavLink>
 ```
 
+---
+
+## Programmatic Navigation
+
 ### useNavigate Hook
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useNavigate } from 'react-router-dom';
 
 function LoginButton() {
   const navigate = useNavigate();
 
-const handleLogin = () => {
+  const handleLogin = () => {
     // Perform login logic
     navigate('/dashboard');
   };
 
-return <button onClick={handleLogin}>Login</button>;
+  return <button onClick={handleLogin}>Login</button>;
 }
 ```
 
 ### Navigation Options
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 // Navigate with state
 navigate('/dashboard', { state: { from: 'login' } });
@@ -189,25 +201,27 @@ navigate('/dashboard', { replace: true });
 navigate(-1);
 ```
 
+---
+
+## Protected Routes
+
 ### Authentication Wrapper
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 function PrivateRoute({ children }) {
   const { user } = useAuth(); // Your authentication logic
   const location = useLocation();
 
-if (!user) {
+  if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-return children;
+  return children;
 }
 ```
 
 ### Usage
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route
   path="/dashboard"
@@ -219,16 +233,18 @@ return children;
 />
 ```
 
+---
+
+## 404 Handling
+
 ### Catch-all Route
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="*" element={<NotFound />} />
 ```
 
 ### Example Component
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 function NotFound() {
   return (
@@ -241,9 +257,12 @@ function NotFound() {
 }
 ```
 
+---
+
+## Advanced Features
+
 ### Lazy Loading with React.lazy
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 const About = React.lazy(() => import('./About'));
 
@@ -259,7 +278,6 @@ const About = React.lazy(() => import('./About'));
 
 ### Location State
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 // Sending state
 <Link to="/dashboard" state={{ from: 'home' }}>
@@ -273,7 +291,6 @@ console.log(location.state.from); // 'home'
 
 ### Query Parameters
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useSearchParams } from 'react-router-dom';
 
@@ -281,15 +298,16 @@ function SearchResults() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
 
-return <div>Search Query: {query}</div>;
+  return <div>Search Query: {query}</div>;
 }
 
 // URL: /search?q=react
 ```
 
+---
+
 ## Complete Example
 
-// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import {
   BrowserRouter as Router,
@@ -310,16 +328,16 @@ function App() {
         <Link to="/users">Users</Link>
       </nav>
 
-<Routes>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
 
-<Route path="/users" element={<UsersLayout />}>
+        <Route path="/users" element={<UsersLayout />}>
           <Route index element={<UserList />} />
           <Route path=":userId" element={<UserProfile />} />
         </Route>
 
-<Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
@@ -346,7 +364,7 @@ function UserList() {
   const users = ['alice', 'bob', 'charlie'];
   const navigate = useNavigate();
 
-return (
+  return (
     <ul>
       {users.map((user) => (
         <li key={user}>
@@ -369,12 +387,3 @@ function NotFound() {
 
 This comprehensive guide covers all the essential aspects of React Router with
 clear definitions, syntax examples, and practical usage patterns.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

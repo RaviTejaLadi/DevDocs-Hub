@@ -6,7 +6,6 @@ display the content on a web page.
 
 ### Basic HTML Document Structure
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Basic HTML document structure -->
 <!DOCTYPE html>
@@ -25,9 +24,10 @@ display the content on a web page.
 
 ---
 
+## 🔍 Understanding Each Part
+
 ### 1. `<!DOCTYPE html>`
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 ```
@@ -36,9 +36,10 @@ display the content on a web page.
 - Must be the first line of every HTML page.
 - Helps browsers render the page correctly.
 
+---
+
 ### 2. `<html>` Element
 
-<!-- Basic example showing the core idea. -->
 ```html
 <html lang="en"></html>
 ```
@@ -49,14 +50,18 @@ display the content on a web page.
 
 Example:
 
-<!-- Basic example showing the core idea. -->
+```html
+<html lang="en"></html>
+```
+
 ```html
 <html lang="fr"></html>
 ```
 
+---
+
 ### 3. `<head>` Section
 
-<!-- Basic example showing the core idea. -->
 ```html
 <head>
   ...
@@ -68,15 +73,22 @@ The `<head>` contains metadata about the webpage.
 This information is not displayed directly on the page but is used by browsers
 and search engines.
 
+---
+
 ### 4. Character Encoding
 
-<!-- Basic example showing the core idea. -->
 ```html
 <meta charset="UTF-8" />
 ```
 
 - Defines the character encoding.
 - UTF-8 supports most languages and symbols.
+
+Example:
+
+```html
+<meta charset="UTF-8" />
+```
 
 Supports:
 
@@ -86,9 +98,10 @@ Supports:
 - العربية
 - Emojis 😊
 
+---
+
 ### 5. Viewport Meta Tag
 
-<!-- Basic example showing the core idea. -->
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
@@ -98,9 +111,10 @@ Supports:
 
 Without it, pages may appear zoomed out on smartphones.
 
+---
+
 ### 6. `<title>` Element
 
-<!-- Basic example showing the core idea. -->
 ```html
 <title>My First Web Page</title>
 ```
@@ -109,21 +123,22 @@ Without it, pages may appear zoomed out on smartphones.
 - Appears in the browser tab.
 - Important for SEO.
 
-<!-- Basic example showing the core idea. -->
+Example:
+
 ```html
 <title>HTML Tutorial for Beginners</title>
 ```
 
 Browser Tab:
 
-// Example demonstrating 📄 HTML Document Structure.
 ```text
 HTML Tutorial for Beginners
 ```
 
+---
+
 ### 7. `<body>` Section
 
-<!-- Basic example showing the core idea. -->
 ```html
 <body>
   ...
@@ -135,7 +150,6 @@ HTML Tutorial for Beginners
 
 Examples:
 
-<!-- Basic example showing the core idea. -->
 ```html
 <body>
   <h1>Heading</h1>
@@ -145,9 +159,10 @@ Examples:
 </body>
 ```
 
-## Visual Structure
+---
 
-// Example demonstrating 📄 HTML Document Structure.
+## 🏗️ Visual Structure
+
 ```text
 HTML Document
 │
@@ -168,9 +183,10 @@ HTML Document
         └── buttons
 ```
 
+---
+
 ## 📋 Real-World Example
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Portfolio webpage structure -->
 <!DOCTYPE html>
@@ -185,22 +201,25 @@ HTML Document
       <h1>John Doe</h1>
     </header>
 
-<main>
+    <main>
       <p>Frontend Developer</p>
     </main>
 
-<footer>
+    <footer>
       <p>© 2026 John Doe</p>
     </footer>
   </body>
 </html>
 ```
 
+---
+
+## ⚠️ Common Mistakes
+
 ### Missing DOCTYPE
 
 ❌ Wrong
 
-<!-- Basic example showing the core idea. -->
 ```html
 <html>
   <body>
@@ -211,7 +230,6 @@ HTML Document
 
 ✅ Correct
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!DOCTYPE html>
 <html>
@@ -221,37 +239,47 @@ HTML Document
 </html>
 ```
 
+---
+
 ### Missing Title
 
-<!-- Basic example showing the core idea. -->
+❌ Wrong
+
 ```html
 <head> </head>
 ```
 
-<!-- Basic example showing the core idea. -->
+✅ Correct
+
 ```html
 <head>
   <title>My Website</title>
 </head>
 ```
 
+---
+
 ### Content Outside Body
 
-<!-- Basic example showing the core idea. -->
+❌ Wrong
+
 ```html
 <h1>Hello World</h1>
 
 <body></body>
 ```
 
-<!-- Basic example showing the core idea. -->
+✅ Correct
+
 ```html
 <body>
   <h1>Hello World</h1>
 </body>
 ```
 
-## Quick Summary
+---
+
+## 🎯 Quick Summary
 
 | Element           | Purpose                               |
 | ----------------- | ------------------------------------- |
@@ -264,7 +292,6 @@ HTML Document
 
 ### Simple Formula to Remember
 
-// Example demonstrating 📄 HTML Document Structure.
 ```text
 DOCTYPE
    ↓
@@ -276,24 +303,3 @@ HTML
 💡 **Tip:** Every HTML page you create should start with this structure. It
 provides a solid foundation for adding headings, images, links, forms, CSS, and
 JavaScript later.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
-
-## Practical Edge Cases
-
-Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
-
-## Maintainable Usage
-
-Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.

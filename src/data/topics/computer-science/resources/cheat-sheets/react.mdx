@@ -11,7 +11,6 @@
 | **Props**           | `function Greet({name}) { return <h1>Hello {name}</h1> }`                                   | Passing data to components                    |
 | **Children Prop**   | `<Box>Child content</Box>` then `function Box({children}) { return <div>{children}</div> }` | Access content between component tags         |
 
-<!-- Visual flow for React. -->
 ```mermaid
 flowchart TB
     App["App"]
@@ -97,7 +96,6 @@ flowchart TB
 | **Consumer**        | `<MyContext.Consumer>{value => <div>{value}</div>}</MyContext.Consumer>` | Legacy way to consume context |
 | **useContext Hook** | `const value = useContext(MyContext)`                                    | Modern way to consume context |
 
-<!-- Visual flow for React. -->
 ```mermaid
 flowchart TB
     Provider["Context.Provider<br/>value={state}"]
@@ -200,12 +198,3 @@ flowchart TB
 This cheat sheet covers most React concepts up to version 18. For more detailed
 information, always refer to the
 [official React documentation](https://react.dev/).
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

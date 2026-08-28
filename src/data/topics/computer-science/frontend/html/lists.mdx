@@ -12,7 +12,6 @@ Used when the order of items **does not matter**.
   squares) by default.
 - **Common Use Case:** Navigation bars, feature lists, or shopping lists.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <ul>
   <li>HTML</li>
@@ -37,7 +36,6 @@ Used when the sequence or hierarchy **is important**.
   10).
 - `reversed`: Numbers the list in descending order (3, 2, 1).
 
-<!-- Basic example showing the core idea. -->
 ```html
 <ol type="1" start="1">
   <li>Step One: Mix ingredients</li>
@@ -57,13 +55,12 @@ Used for displaying **key-value pairs**, terms and definitions, or metadata.
 - **Behavior:** You can have multiple `<dd>` tags for a single `<dt>`, or vice
   versa.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <dl>
   <dt>HTML</dt>
   <dd>Standard markup language for documents.</dd>
 
-<dt>CSS</dt>
+  <dt>CSS</dt>
   <dd>Style sheet language used for describing the presentation.</dd>
 </dl>
 ```
@@ -80,7 +77,6 @@ You can place a list inside another list to create a hierarchy (sub-points).
 
 **Correct Syntax:**
 
-<!-- Basic example showing the core idea. -->
 ```html
 <ul>
   <li>
@@ -100,7 +96,6 @@ While `<nav>` is the semantic wrapper for navigation, the actual links are
 almost always structured using a `<ul>`. Developers use CSS to remove the bullet
 points and align the `<li>` items horizontally.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <nav>
   <ul>
@@ -109,28 +104,3 @@ points and align the `<li>` items horizontally.
   </ul>
 </nav>
 ```
-
-## Quick Reference
-
-| Operation | What it does |
-|---|---|
-| Read/inspect | Check the current value or state. |
-| Transform | Produce a new value when the API supports it. |
-| Update | Change state only when the operation is designed to mutate. |
-| Edge case | Handle empty, invalid, or boundary input explicitly. |
-
-## Return Values and Mutation
-
-For every method, check what it returns and whether it mutates the original value. A transformation method commonly returns a new collection, while a mutating method changes the receiver. Knowing this difference prevents subtle bugs when the same data is reused in several parts of an application.
-
-## Edge Cases Worth Testing
-
-Test an empty collection, one element, duplicate values, invalid values, and a larger realistic input. Also check “not found” results and callback behavior for falsey values. Similar method names can have different return types or mutation rules, so verify them instead of relying on memory.
-
-## Choosing the Right Operation
-
-Choose an operation by intent. Use a filtering operation when you need a subset, a mapping operation when every item becomes a new value, a reduction when many values become one result, and a search operation when you only need the first matching item. Clear intent makes code easier to review and maintain.
-
-## API Selection Notes
-
-Choose an operation by the result you need, not by the shortest syntax. Check whether it preserves the original value, what it returns when nothing matches, and whether callbacks receive an index or the containing collection. For APIs used inside hot paths, also consider the number of passes over the data and temporary allocations. A clear method choice often communicates intent better than a manual loop, but only when the semantics match the requirement.

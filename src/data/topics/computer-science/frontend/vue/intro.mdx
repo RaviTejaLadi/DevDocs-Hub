@@ -1,4 +1,4 @@
-# Introduction to Vue.js
+# **Introduction to Vue.js**
 
 Vue.js (commonly referred to as Vue) is a progressive JavaScript framework for
 building user interfaces. Created by Evan You in 2014, Vue has gained tremendous
@@ -25,9 +25,10 @@ popularity due to its simplicity, flexibility, and performance.
 6. **Single File Components**: Vue allows you to write components that
    encapsulate HTML, JavaScript, and CSS in a single `.vue` file.
 
+## Basic Concepts
+
 ### Declarative Rendering
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div id="app">{{ message }}</div>
 
@@ -43,7 +44,6 @@ popularity due to its simplicity, flexibility, and performance.
 
 ### Directives
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div id="app">
   <p v-if="seen">Now you see me</p>
@@ -67,7 +67,6 @@ popularity due to its simplicity, flexibility, and performance.
 
 ### Components
 
-<!-- Basic example showing the core idea. -->
 ```html
 <div id="app">
   <todo-item
@@ -83,7 +82,7 @@ popularity due to its simplicity, flexibility, and performance.
     template: '<li>{{ todo.text }}</li>',
   });
 
-const app = new Vue({
+  const app = new Vue({
     el: '#app',
     data: {
       groceryList: [
@@ -115,32 +114,3 @@ const app = new Vue({
 Vue.js is an excellent choice for developers who want a framework that's
 powerful yet approachable, with a gentle learning curve that doesn't sacrifice
 capability.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **Introduction to Vue.js** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.

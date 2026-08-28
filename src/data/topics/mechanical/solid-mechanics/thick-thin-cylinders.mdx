@@ -1,4 +1,4 @@
-# 🛢 Thick & Thin Cylinders
+# 🛢️ Thick & Thin Cylinders
 
 Cylinders are commonly used to store fluids under pressure.
 
@@ -16,7 +16,7 @@ The analysis of these stresses is an important part of Solid Mechanics.
 
 ---
 
-## Why Study Cylinders?
+# 🎯 Why Study Cylinders?
 
 Engineers study cylinders to:
 
@@ -26,17 +26,18 @@ Engineers study cylinders to:
 - Select suitable materials
 - Ensure safe operation under pressure
 
-## 📚 Classification of Cylinders
+---
+
+# 📚 Classification of Cylinders
 
 Based on wall thickness, cylinders are classified into:
 
-## 1⃣ Thin Cylinders
+## 1️⃣ Thin Cylinders
 
 Wall thickness is small compared to diameter.
 
 Condition:
 
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 t ≤ d/20
 ```
@@ -52,21 +53,28 @@ Examples:
 - Air tanks
 - Domestic storage vessels
 
-## 2⃣ Thick Cylinders
+---
+
+## 2️⃣ Thick Cylinders
 
 Wall thickness is relatively large.
 
-// Example demonstrating 🛢 Thick & Thin Cylinders.
+Condition:
+
 ```
 t > d/20
 ```
+
+Examples:
 
 - Gun barrels
 - Hydraulic presses
 - High-pressure cylinders
 - Pressure reactors
 
-## Thin Cylinder
+---
+
+# 🏗️ Thin Cylinder
 
 For thin cylinders:
 
@@ -74,7 +82,6 @@ For thin cylinders:
 - Radial stress is neglected.
 - Analysis becomes simple.
 
-<!-- Visual flow for 🛢 Thick & Thin Cylinders. -->
 ```mermaid
 graph TD
 A[Internal Pressure]
@@ -82,7 +89,9 @@ B[Thin Cylinder Wall]
 A --> B
 ```
 
-## Stresses Developed in Thin Cylinders
+---
+
+# ⚡ Stresses Developed in Thin Cylinders
 
 Two major stresses are developed:
 
@@ -90,20 +99,24 @@ Two major stresses are developed:
 
 Also called:
 
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 Circumferential Stress
 ```
 
 Acts around the circumference.
 
+---
+
 ## Longitudinal Stress
 
 Acts along the axis of the cylinder.
 
+---
+
+# 📊 Hoop Stress
+
 Hoop stress tends to split the cylinder along its length.
 
-<!-- Visual flow for 🛢 Thick & Thin Cylinders. -->
 ```mermaid
 graph LR
 A[Pressure]
@@ -116,46 +129,68 @@ C --> B
 
 It is the most critical stress in thin cylinders.
 
-## Hoop Stress Formula
+---
 
-// Example demonstrating 🛢 Thick & Thin Cylinders.
+# 📖 Hoop Stress Formula
+
 ```
 σh = pd / 2t
 ```
+
+Where:
 
 - σh = Hoop Stress
 - p = Internal Pressure
 - d = Diameter
 - t = Thickness
 
+---
+
+# 📊 Longitudinal Stress
+
 Longitudinal stress tends to separate the cylinder into two parts across a
 transverse section.
 
-<!-- Visual flow for 🛢 Thick & Thin Cylinders. -->
 ```mermaid
 graph TD
 A[Pressure]
 B[Cylinder Axis]
 C[Pressure]
 
-## Longitudinal Stress Formula
+A --> B
+C --> B
+```
+
+---
+
+# 📖 Longitudinal Stress Formula
 
 ```
 σl = pd / 4t
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
+
+Where:
 
 - σl = Longitudinal Stress
 
-## Relationship Between Stresses
+---
+
+# 🔍 Relationship Between Stresses
 
 Comparing formulas:
+
+```
+σh = pd / 2t
+```
+
+```
+σl = pd / 4t
+```
 
 Therefore:
 
 ```
 σh = 2σl
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
 Important conclusion:
@@ -164,7 +199,9 @@ Important conclusion:
 
 Hence cylinder design is generally based on hoop stress.
 
-## Example
+---
+
+# 📌 Example
 
 Given:
 
@@ -175,20 +212,25 @@ Given:
 Using hoop stress formula:
 
 ```
+σh = pd / 2t
+```
+
+```
 σh = (2 × 1000)/(2 × 10)
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
 ```
 σh = 100 MPa
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
 Longitudinal stress:
 
 ```
+σl = pd / 4t
+```
+
+```
 σl = 50 MPa
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
 Result:
@@ -196,41 +238,63 @@ Result:
 ```
 Hoop Stress = 100 MPa
 Longitudinal Stress = 50 MPa
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
-## 📏 Thin Cylinder Design Formula
+---
+
+# 📏 Thin Cylinder Design Formula
 
 Required thickness:
 
 ```
 t = pd / 2σallow
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
+
+Where:
 
 - σallow = Allowable Stress
 
 Used during pressure vessel design.
 
-## Thick Cylinders
+---
+
+# 🏗️ Thick Cylinders
 
 When wall thickness becomes large:
+
+```
+t > d/20
+```
 
 Stress distribution is no longer uniform.
 
 Simple thin-cylinder formulas cannot be used.
 
-## Stresses in Thick Cylinders
+---
+
+# ⚡ Stresses in Thick Cylinders
 
 Three stresses exist:
 
+## Hoop Stress
+
 Circumferential stress.
+
+---
 
 ## Radial Stress
 
 Acts from center outward.
 
+---
+
+## Longitudinal Stress
+
 Acts along cylinder axis.
+
+---
+
+# 🔍 Radial Stress
 
 Unlike thin cylinders, radial stress becomes significant.
 
@@ -247,35 +311,40 @@ C[Minimum Radial Stress]
 
 A --> B
 B --> C
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
-## 📚 Lame's Theory
+---
+
+# 📚 Lame's Theory
 
 French engineer Gabriel Lame developed the theory for thick cylinders.
 
 The theory provides stress distribution throughout the wall thickness.
 
-## Lame's Equations
+---
+
+# 📖 Lame's Equations
 
 Radial Stress:
 
 ```
 σr = A - B/r²
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
 
 Hoop Stress:
 
 ```
 σh = A + B/r²
-// Example demonstrating 🛢 Thick & Thin Cylinders.
 ```
+
+Where:
 
 - A and B are constants
 - r = Radius at the point considered
 
-## Stress Distribution in Thick Cylinders
+---
+
+# 📊 Stress Distribution in Thick Cylinders
 
 ```mermaid
 graph TD
@@ -283,15 +352,25 @@ A[Inner Surface]
 B[Middle Region]
 C[Outer Surface]
 
+A --> B
+B --> C
+```
+
+Characteristics:
+
+### Hoop Stress
 
 - Maximum at inner surface
 - Decreases toward outer surface
 
+### Radial Stress
 
 - Maximum internally
 - Approaches zero externally
 
-## 🚨 Failure of Cylinders
+---
+
+# 🚨 Failure of Cylinders
 
 Failure may occur due to:
 
@@ -303,16 +382,19 @@ Failure may occur due to:
 
 Bursting generally starts at the inner surface where stress is highest.
 
-## Pressure Vessels
+---
+
+# 🏗️ Pressure Vessels
 
 Pressure vessels are containers designed to hold fluids under pressure.
+
+Examples:
 
 - LPG cylinders
 - Boilers
 - Air receivers
 - Chemical reactors
 
-<!-- Visual flow for 🛢 Thick & Thin Cylinders. -->
 ```mermaid
 graph LR
 A[Pressure Vessel]
@@ -321,7 +403,9 @@ B[Stores Fluid Under Pressure]
 A --> B
 ```
 
-## 🌍 Applications of Thin Cylinders
+---
+
+# 🌍 Applications of Thin Cylinders
 
 - Water tanks
 - Air compressors
@@ -329,7 +413,9 @@ A --> B
 - Pipelines
 - Storage vessels
 
-## 🌍 Applications of Thick Cylinders
+---
+
+# 🌍 Applications of Thick Cylinders
 
 - Gun barrels
 - Hydraulic cylinders
@@ -337,7 +423,9 @@ A --> B
 - High-pressure pumps
 - Heavy industrial pressure vessels
 
-## Thin vs Thick Cylinders
+---
+
+# 📊 Thin vs Thick Cylinders
 
 | Thin Cylinder             | Thick Cylinder              |
 | ------------------------- | --------------------------- |
@@ -347,23 +435,53 @@ A --> B
 | Simple analysis           | Complex analysis            |
 | Hoop stress dominant      | Multiple stresses important |
 
-## Important Formulas
+---
+
+# 📝 Important Formulas
 
 Thin Cylinder Hoop Stress:
 
+```
+σh = pd / 2t
+```
+
 Thin Cylinder Longitudinal Stress:
+
+```
+σl = pd / 4t
+```
 
 Relationship:
 
+```
+σh = 2σl
+```
+
 Design Thickness:
+
+```
+t = pd / 2σallow
+```
 
 Lame's Radial Stress:
 
+```
+σr = A - B/r²
+```
+
 Lame's Hoop Stress:
 
-## 🎓 Summary
+```
+σh = A + B/r²
+```
+
+---
+
+# 🎓 Summary
 
 Cylinders subjected to internal pressure develop stresses within their walls.
+
+For thin cylinders:
 
 - Hoop stress and longitudinal stress are considered.
 - Hoop stress is twice the longitudinal stress.
@@ -376,12 +494,3 @@ For thick cylinders:
 
 Understanding thick and thin cylinders is essential for designing safe pressure
 vessels, tanks, boilers, pipelines, and hydraulic systems.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

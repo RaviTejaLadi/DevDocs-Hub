@@ -9,7 +9,7 @@ styling conflicts and write maintainable CSS.
 
 ---
 
-## 🌊 What is the Cascade?
+# 🌊 What is the Cascade?
 
 The cascade determines which CSS rule is applied when multiple rules target the
 same element.
@@ -20,12 +20,10 @@ The browser considers:
 2. Specificity
 3. Source order
 
-<!-- Basic example showing the core idea. -->
 ```html
 <p class="text">Hello World</p>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 p {
   color: blue;
@@ -38,14 +36,15 @@ p {
 
 Result:
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```text
 Red
 ```
 
 The class selector has higher specificity than the element selector.
 
-## CSS Specificity
+---
+
+# 🎯 CSS Specificity
 
 Specificity is a scoring system used to determine which CSS rule wins.
 
@@ -56,44 +55,69 @@ Specificity is a scoring system used to determine which CSS rule wins.
 | Class, Attribute, Pseudo-class | 10    |
 | Element, Pseudo-element        | 1     |
 
+---
+
 ## Example 1
 
-<!-- Basic example showing the core idea. -->
+```css
+p {
+  color: blue;
+}
+
+.text {
+  color: red;
+}
+```
+
 ```html
 <p class="text">Hello</p>
 ```
 
+Result:
+
+```text
+Red
+```
+
 Score:
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```text
 p      = 1
 .text  = 10
 ```
 
+---
+
 ## Example 2
 
-/* Basic example showing the core idea. */
 ```css
 #title {
   color: green;
 }
 
+.text {
+  color: red;
+}
+```
+
 ```html
 <h1 id="title" class="text">Heading</h1>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
+
+Result:
 
 ```text
 Green
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
+
+Score:
 
 ```text
 #title = 100
 .text  = 10
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
+
+---
 
 ## Example 3
 
@@ -105,14 +129,18 @@ Green
 #hero .title {
   color: red;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```html
 <div id="hero" class="card">
   <h2 class="title">Welcome</h2>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
+```
+
+Result:
+
+```text
+Red
 ```
 
 Because:
@@ -122,7 +150,9 @@ Because:
 #hero .title = 110
 ```
 
-## ⚠ Using !important
+---
+
+# ⚠️ Using !important
 
 `!important` overrides normal specificity rules.
 
@@ -131,7 +161,13 @@ p {
   color: blue !important;
 }
 
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
+.text {
+  color: red;
+}
+```
+
+Result:
+
 ```text
 Blue
 ```
@@ -144,19 +180,33 @@ Avoid excessive use of `!important`.
 
 ✅ Use only when absolutely necessary
 
-## 📚 Source Order
+---
+
+# 📚 Source Order
 
 If specificity is equal, the last rule wins.
 
-/* Basic example showing the core idea. */
 ```css
 .text {
   color: blue;
 }
 
+.text {
+  color: red;
+}
+```
+
+Result:
+
+```text
+Red
+```
+
 The second rule appears later.
 
-## CSS Inheritance
+---
+
+# 🧬 CSS Inheritance
 
 Some CSS properties automatically pass from parent to child elements.
 
@@ -166,22 +216,23 @@ Example:
 <div class="container">
   <p>Hello World</p>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```css
 .container {
   color: blue;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
+
+Result:
 
 ```text
 Hello World → Blue
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The paragraph inherits the color.
+
+---
 
 ## Common Inherited Properties
 
@@ -197,6 +248,8 @@ The paragraph inherits the color.
 
 ✅ visibility
 
+---
+
 ## Common Non-Inherited Properties
 
 ❌ margin
@@ -211,7 +264,9 @@ The paragraph inherits the color.
 
 ❌ background
 
-## Using inherit
+---
+
+# Using inherit
 
 You can force inheritance.
 
@@ -219,21 +274,23 @@ You can force inheritance.
 button {
   color: inherit;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The button uses its parent's text color.
 
-## Using initial
+---
+
+# Using initial
 
 Resets a property to the browser default.
 
 ```css
 color: initial;
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
-## Using unset
+---
+
+# Using unset
 
 Behaves like:
 
@@ -242,16 +299,16 @@ Behaves like:
 
 ```css
 color: unset;
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
-## Real-World Example
+---
+
+# 🎯 Real-World Example
 
 ```html
 <div class="card">
   <h2 class="title">Product</h2>
 </div>
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 ```css
@@ -262,21 +319,21 @@ color: unset;
 .title {
   color: inherit;
 }
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 The heading automatically follows the card's text color.
 
 This makes themes easier to manage.
 
-## Quick Specificity Cheat Sheet
+---
+
+# 🧠 Quick Specificity Cheat Sheet
 
 ```text
 Inline Style      = 1000
 ID Selector       = 100
 Class Selector    = 10
 Element Selector  = 1
-// Example demonstrating 🌊 Cascade, Specificity & Inheritance.
 ```
 
 Examples:
@@ -288,7 +345,9 @@ div p               = 2
 #header .menu p     = 111
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Prefer classes over IDs.
 - Avoid deep nested selectors.
@@ -297,26 +356,12 @@ div p               = 2
 - Use inheritance when possible.
 - Follow a consistent CSS architecture.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - The cascade decides which style wins.
 - Specificity determines selector priority.
 - Source order matters when specificity is equal.
 - Inheritance allows child elements to receive certain styles automatically.
 - Lower specificity leads to more maintainable CSS.
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
-
-## Practical Edge Cases
-
-Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
-
-## Maintainable Usage
-
-Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.
-
-## Practical Decision
-
-Before using a feature, ask whether it improves correctness, readability, or performance for the specific problem. Small language features can have large semantic differences around mutation, scope, exceptions, coercion, and asynchronous execution. Prefer examples that reveal those differences rather than examples that only demonstrate syntax. When input comes from users or external systems, add validation and define the failure behavior explicitly.

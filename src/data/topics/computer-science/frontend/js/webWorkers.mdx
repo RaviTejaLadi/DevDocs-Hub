@@ -1,6 +1,6 @@
 # 🧵 JavaScript Web Workers
 
-## Definition
+## 🧠 Definition
 
 A **Web Worker** is a JavaScript feature that allows you to run scripts in
 **background threads**. This prevents blocking the main thread (UI thread),
@@ -11,9 +11,10 @@ enhancing performance and responsiveness—especially for CPU-intensive tasks.
 
 ---
 
+## 📜 Syntax
+
 ### Main Thread (main.js)
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 const worker = new Worker('worker.js');
 
@@ -26,13 +27,16 @@ worker.onmessage = function (event) {
 
 ### Worker Thread (worker.js)
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 onmessage = function (event) {
   console.log('Message from main thread:', event.data);
   postMessage('Hello from worker');
 };
 ```
+
+---
+
+## 🧰 Usage
 
 ### ✅ When to Use
 
@@ -45,9 +49,12 @@ onmessage = function (event) {
 - For simple tasks
 - Tasks that require DOM access (not allowed in workers)
 
+---
+
+## 🧪 Example: Fibonacci in Web Worker
+
 ### 📁 File Structure
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 index.html
 main.js
@@ -56,7 +63,6 @@ worker.js
 
 ### 🧱 worker.js
 
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```js
 // Heavy computation logic
 onmessage = function (e) {
@@ -71,6 +77,9 @@ onmessage = function (e) {
 
 ### 📜 main.js
 
+```js
+const worker = new Worker('worker.js');
+
 worker.postMessage(40); // Large Fibonacci number
 
 worker.onmessage = function (e) {
@@ -80,7 +89,6 @@ worker.onmessage = function (e) {
 worker.onerror = function (e) {
   console.error('Worker Error:', e);
 };
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
 
 ### 📄 index.html
@@ -95,8 +103,9 @@ worker.onerror = function (e) {
     <script src="main.js"></script>
   </body>
 </html>
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
+
+---
 
 ## 🧷 Methods & Properties
 
@@ -107,18 +116,24 @@ worker.onerror = function (e) {
 | `worker.terminate()`       |                        |
 | `worker.onmessage`         | `onerror`, `onmessage` |
 
+---
+
 ## 🚫 Limitations
 
 - ❌ Cannot access DOM
 - ❌ Limited access to `window`, `document`, or `alert()`
 - ✅ Can use `XMLHttpRequest`, `fetch`, `WebSockets`, and ES6 features
 
-## Security
+---
+
+## 🔐 Security
 
 Web workers follow the **same-origin policy** and have **sandboxed
 environments**, making them safe for parallel operations.
 
-## Types of Web Workers
+---
+
+## 🧩 Types of Web Workers
 
 | Type                  | Description                                                 |
 | --------------------- | ----------------------------------------------------------- |
@@ -126,12 +141,15 @@ environments**, making them safe for parallel operations.
 | **Shared Workers**    | Can be shared across different scripts/pages                |
 | **Service Workers**   | Special type for caching and background sync (used in PWAs) |
 
+---
+
 ## 🪛 Advanced: Terminating a Worker
 
 ```js
 worker.terminate(); // Immediately stops the worker
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
+
+---
 
 ## 📚 Real Use Cases
 
@@ -140,7 +158,9 @@ worker.terminate(); // Immediately stops the worker
 - Real-time chart updates
 - Video/Audio processing
 
-## Communication Flow Diagram
+---
+
+## 🔄 Communication Flow Diagram
 
 ```bash
 Main Thread               Web Worker
@@ -148,8 +168,9 @@ Main Thread               Web Worker
     │ --- postMessage() --->  │
     │                         │
     │ <-- onmessage() ------  │
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
+
+---
 
 ## 🧼 Cleanup & Best Practices
 
@@ -158,7 +179,9 @@ Main Thread               Web Worker
 - Use transferable objects (`ArrayBuffer`) for performance when passing large
   data
 
-## Bonus: Inline Worker (no separate file)
+---
+
+## 🧩 Bonus: Inline Worker (no separate file)
 
 ```js
 const code = `
@@ -171,30 +194,4 @@ const blob = new Blob([code], { type: 'application/javascript' });
 const worker = new Worker(URL.createObjectURL(blob));
 
 worker.postMessage(5); // → 10
-// Example demonstrating 🧵 JavaScript Web Workers.
 ```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

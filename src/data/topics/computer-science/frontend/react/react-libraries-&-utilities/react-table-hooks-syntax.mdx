@@ -1,10 +1,9 @@
-# React Table Hooks Syntax Guide
+# **React Table Hooks Syntax Guide**
 
 ### 1. useReactTable (Core Hook)
 
 The main hook that creates a table instance.
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const table = useReactTable({
   data: TData[],                // Your array of data
@@ -30,9 +29,10 @@ const table = useReactTable({
 
 ---
 
-#### `getCoreRowModel`
+### 2. Row Model Hooks
 
-// Example demonstrating React Table Hooks Syntax Guide.
+#### **`getCoreRowModel`**
+
 ```tsx
 getCoreRowModel: getCoreRowModel(),
 ```
@@ -41,9 +41,8 @@ getCoreRowModel: getCoreRowModel(),
 - Transforms your data into rows
 - Without this, no rows will be rendered
 
-#### `getSortedRowModel`
+#### **`getSortedRowModel`**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getSortedRowModel: getSortedRowModel(),
 ```
@@ -51,9 +50,8 @@ getSortedRowModel: getSortedRowModel(),
 - Enables sorting functionality
 - Must be used with `sorting` state and `onSortingChange`
 
-#### `getFilteredRowModel`
+#### **`getFilteredRowModel`**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getFilteredRowModel: getFilteredRowModel(),
 ```
@@ -61,9 +59,8 @@ getFilteredRowModel: getFilteredRowModel(),
 - Enables filtering functionality
 - Requires `columnFilters` state and `onColumnFiltersChange`
 
-#### `getPaginationRowModel`
+#### **`getPaginationRowModel`**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 getPaginationRowModel: getPaginationRowModel(),
 ```
@@ -71,9 +68,12 @@ getPaginationRowModel: getPaginationRowModel(),
 - Enables pagination
 - Requires `pagination` state and `onPaginationChange`
 
-#### Sorting State
+---
 
-// Example demonstrating React Table Hooks Syntax Guide.
+### 3. State Management Hooks
+
+#### **Sorting State**
+
 ```tsx
 const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -84,7 +84,6 @@ onSortingChange: setSorting,
 
 **Example Usage:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 columnHelper.accessor('age', {
   header: () => 'Age',
@@ -94,9 +93,8 @@ columnHelper.accessor('age', {
 });
 ```
 
-#### Filtering State
+#### **Filtering State**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -107,7 +105,6 @@ onColumnFiltersChange: setColumnFilters,
 
 **Example Filter Input:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <input
   value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
@@ -115,9 +112,8 @@ onColumnFiltersChange: setColumnFilters,
 />
 ```
 
-#### Pagination State
+#### **Pagination State**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
   pageIndex: 0,
@@ -129,9 +125,10 @@ state: { pagination: { pageIndex, pageSize } },
 onPaginationChange: setPagination,
 ```
 
+---
+
 ### 4. Row Selection Hooks
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [rowSelection, setRowSelection] = useState({});
 
@@ -143,7 +140,6 @@ enableRowSelection: true, // or a function
 
 **Example Column Definition:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 {
   id: 'select',
@@ -162,9 +158,10 @@ enableRowSelection: true, // or a function
 }
 ```
 
+---
+
 ### 5. Column Visibility
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -175,7 +172,6 @@ onColumnVisibilityChange: setColumnVisibility,
 
 **Example Toggle:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <button
   onClick={() => table.toggleAllColumnsVisible(!table.getIsAllColumnsVisible())}
@@ -184,9 +180,10 @@ onColumnVisibilityChange: setColumnVisibility,
 </button>
 ```
 
+---
+
 ### 6. Expanded Rows
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [expanded, setExpanded] = useState<ExpandedState>({});
 
@@ -198,7 +195,6 @@ getSubRows: row => row.subRows, // if you have nested data
 
 **Example Expandable Column:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 {
   id: 'expander',
@@ -211,9 +207,10 @@ getSubRows: row => row.subRows, // if you have nested data
 }
 ```
 
+---
+
 ### 7. Column Ordering (Drag and Drop)
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [columnOrder, setColumnOrder] = useState<string[]>();
 
@@ -222,9 +219,10 @@ state: { columnOrder },
 onColumnOrderChange: setColumnOrder,
 ```
 
+---
+
 ### 8. Global Filtering
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const [globalFilter, setGlobalFilter] = useState('');
 
@@ -235,7 +233,6 @@ onGlobalFilterChange: setGlobalFilter,
 
 **Example Search Input:**
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 <input
   value={globalFilter}
@@ -244,11 +241,12 @@ onGlobalFilterChange: setGlobalFilter,
 />
 ```
 
+---
+
 ### Key Utility Methods
 
 Once you have your table instance, you'll use these frequently:
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 // Table methods
 table.getHeaderGroups();
@@ -269,9 +267,10 @@ row.getVisibleCells();
 row.getIsExpanded();
 ```
 
+---
+
 ### Complete Feature Setup Example
 
-// Example demonstrating React Table Hooks Syntax Guide.
 ```tsx
 const table = useReactTable({
   data,
@@ -305,24 +304,3 @@ Each hook integrates with the table instance to provide specific functionality
 while maintaining a clean, composable API. The headless nature means you're
 responsible for rendering the UI, but you get complete control over the markup
 and styling.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Syntax vs. Behavior
-
-Syntax shows how to write the feature; behavior explains what the runtime actually does. Learn both. Pay attention to scope, evaluation order, return values, mutation, exceptions, and asynchronous behavior when they apply. These details are where small-looking examples often become surprising.
-
-## Practical Edge Cases
-
-Test empty input, invalid input, duplicate values, missing properties, and error paths when the feature accepts user or external data. A short example is useful for learning syntax, but a realistic example should also show validation and a predictable result.
-
-## Maintainable Usage
-
-Prefer the clearest correct construct before reaching for clever shortcuts. Keep transformations small, name intermediate values when they improve readability, and avoid hidden side effects. In revision notes, the goal is not only to remember a feature but also to know when using it makes the code easier to understand.

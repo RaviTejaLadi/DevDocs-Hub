@@ -9,7 +9,7 @@ page layouts, and complex responsive designs.
 
 ---
 
-## Why CSS Grid?
+# 🎯 Why CSS Grid?
 
 Before Grid, developers used:
 
@@ -30,11 +30,12 @@ Grid provides a cleaner solution.
 
 ✅ Create modern web layouts
 
-## Grid Basics
+---
+
+# 🏗️ Grid Basics
 
 To create a grid, set `display: grid` on a container.
 
-<!-- Basic example showing the core idea. -->
 ```html
 <!-- Basic Grid Container -->
 <div class="container">
@@ -45,7 +46,6 @@ To create a grid, set `display: grid` on a container.
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 /* Create a grid */
 .container {
@@ -53,19 +53,20 @@ To create a grid, set `display: grid` on a container.
 }
 ```
 
-## How Grid Works
+---
 
-<!-- Visual flow for ⬛ CSS Grid. -->
+# 🧠 How Grid Works
+
 ```mermaid
 flowchart TB
     Container["Grid Container"]
 
-Item1["Grid Item 1"]
+    Item1["Grid Item 1"]
     Item2["Grid Item 2"]
     Item3["Grid Item 3"]
     Item4["Grid Item 4"]
 
-Container --> Item1
+    Container --> Item1
     Container --> Item2
     Container --> Item3
     Container --> Item4
@@ -73,11 +74,12 @@ Container --> Item1
 
 The parent becomes a **Grid Container** and children become **Grid Items**.
 
-## 📐 Creating Columns
+---
+
+# 📐 Creating Columns
 
 Use `grid-template-columns`.
 
-/* Basic example showing the core idea. */
 ```css
 /* Three equal columns */
 .container {
@@ -86,23 +88,25 @@ Use `grid-template-columns`.
 }
 ```
 
+---
+
 ## Visual Representation
 
-<!-- Visual flow for ⬛ CSS Grid. -->
 ```mermaid
 flowchart LR
     A["Column 1"]
     B["Column 2"]
     C["Column 3"]
 
-A --- B --- C
+    A --- B --- C
 ```
 
-## 📏 Understanding fr Unit
+---
+
+# 📏 Understanding fr Unit
 
 `fr` means **fraction of available space**.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   grid-template-columns: 1fr 1fr 1fr;
@@ -111,31 +115,35 @@ A --- B --- C
 
 Each column gets equal space.
 
+---
+
 ## Unequal Columns
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   grid-template-columns: 1fr 2fr 1fr;
 }
 ```
 
-<!-- Visual flow for ⬛ CSS Grid. -->
 ```mermaid
 flowchart LR
     A["1fr"]
     B["2fr"]
     C["1fr"]
 
+    A --- B --- C
+```
+
 The middle column gets twice the width.
 
-## 📐 Creating Rows
+---
+
+# 📐 Creating Rows
 
 ```css
 .container {
   grid-template-rows: 100px 200px;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Creates:
@@ -145,11 +153,12 @@ flowchart TB
     A["Row 1 - 100px"]
     B["Row 2 - 200px"]
 
-A --> B
-// Example demonstrating ⬛ CSS Grid.
+    A --> B
 ```
 
-## Gap
+---
+
+# 🧩 Gap
 
 Adds spacing between rows and columns.
 
@@ -157,7 +166,6 @@ Adds spacing between rows and columns.
 .container {
   gap: 20px;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Equivalent to:
@@ -167,28 +175,29 @@ Equivalent to:
   row-gap: 20px;
   column-gap: 20px;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
-## 🔁 Repeat Function
+---
+
+# 🔁 Repeat Function
 
 Instead of:
 
 ```css
 grid-template-columns: 1fr 1fr 1fr 1fr;
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Use:
 
 ```css
 grid-template-columns: repeat(4, 1fr);
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Cleaner and easier to maintain.
 
-## 📱 Responsive Grid
+---
+
+# 📱 Responsive Grid
 
 One of Grid's most useful features.
 
@@ -196,12 +205,13 @@ One of Grid's most useful features.
 .products {
   display: grid;
 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-gap: 20px;
+  gap: 20px;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
+
+---
 
 ## Responsive Behavior
 
@@ -211,36 +221,43 @@ flowchart TB
     Tablet["Tablet - 2 Columns"]
     Mobile["Mobile - 1 Column"]
 
-Desktop --> Tablet
+    Desktop --> Tablet
     Tablet --> Mobile
-// Example demonstrating ⬛ CSS Grid.
 ```
+
+---
+
+# 📦 auto-fit vs auto-fill
 
 ## auto-fit
 
 ```css
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Empty columns collapse.
 
 Best for most layouts.
 
+---
+
 ## auto-fill
 
 ```css
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 Empty tracks remain.
 
 Useful for advanced layouts.
 
-## 📍 Positioning Items
+---
+
+# 📍 Positioning Items
 
 Grid items can span multiple rows and columns.
+
+---
 
 ## grid-column
 
@@ -248,18 +265,24 @@ Grid items can span multiple rows and columns.
 .item {
   grid-column: 1 / 3;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
-A --- B
+```mermaid
+flowchart LR
+    A["Column 1"]
+    B["Column 2"]
+    C["Column 3"]
+
+    A --- B
     B --- C
 ```
 
 Item spans columns 1 to 2.
 
+---
+
 ## grid-row
 
-/* Basic example showing the core idea. */
 ```css
 .item {
   grid-row: 1 / 3;
@@ -268,31 +291,32 @@ Item spans columns 1 to 2.
 
 Item spans multiple rows.
 
-## Example: Full Width Header
+---
 
-/* Basic example showing the core idea. */
+# Example: Full Width Header
+
 ```css
 .header {
   grid-column: 1 / 4;
 }
 ```
 
-<!-- Visual flow for ⬛ CSS Grid. -->
 ```mermaid
 flowchart TB
     Header["Header Spans All Columns"]
 ```
 
-## Grid Template Areas
+---
+
+# 🎨 Grid Template Areas
 
 Creates readable layouts.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   display: grid;
 
-grid-template-areas:
+  grid-template-areas:
     'header header'
     'sidebar main'
     'footer footer';
@@ -301,7 +325,6 @@ grid-template-areas:
 
 Assign areas:
 
-/* Basic example showing the core idea. */
 ```css
 .header {
   grid-area: header;
@@ -320,31 +343,37 @@ Assign areas:
 }
 ```
 
-## Visual Layout
+---
 
-<!-- Visual flow for ⬛ CSS Grid. -->
+# Visual Layout
+
 ```mermaid
 flowchart TB
 
-Header["Header"]
+    Header["Header"]
 
-Sidebar["Sidebar"]
+    Sidebar["Sidebar"]
     Main["Main Content"]
 
-Footer["Footer"]
+    Footer["Footer"]
 
-Header --> Sidebar
+    Header --> Sidebar
     Header --> Main
 
-Sidebar --> Footer
+    Sidebar --> Footer
     Main --> Footer
 ```
+
+---
+
+# 🎯 Aligning Items
+
+---
 
 ## justify-items
 
 Horizontal alignment inside cells.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   justify-items: center;
@@ -353,7 +382,6 @@ Horizontal alignment inside cells.
 
 Options:
 
-/* Basic example showing the core idea. */
 ```css
 start
 center
@@ -361,64 +389,74 @@ end
 stretch
 ```
 
+---
+
 ## align-items
 
 Vertical alignment inside cells.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   align-items: center;
 }
 ```
 
+---
+
 ## place-items
 
 Shortcut for both.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   place-items: center;
 }
 ```
 
+---
+
+# 🎯 Aligning Entire Grid
+
+---
+
 ## justify-content
 
 Align grid horizontally.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   justify-content: center;
 }
 ```
 
+---
+
 ## align-content
 
 Align grid vertically.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   align-content: center;
 }
 ```
 
+---
+
 ## place-content
 
 Shorthand.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   place-content: center;
 }
 ```
 
-## 🛒 Real-World Product Grid
+---
 
-<!-- Basic example showing the core idea. -->
+# 🛒 Real-World Product Grid
+
 ```html
 <!-- Product Grid -->
 <div class="products">
@@ -429,11 +467,18 @@ Shorthand.
 </div>
 ```
 
-/* Basic example showing the core idea. */
 ```css
 /* Responsive Product Grid */
 .products {
   display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 20px;
+}
+```
+
+---
 
 ## Product Grid Layout
 
@@ -444,42 +489,54 @@ flowchart LR
     P3["Product 3"]
     P4["Product 4"]
 
-P1 --- P2
+    P1 --- P2
     P2 --- P3
     P3 --- P4
-// Example demonstrating ⬛ CSS Grid.
 ```
 
-## Dashboard Layout Example
+---
+
+# 📊 Dashboard Layout Example
 
 ```css
 .dashboard {
   display: grid;
 
-grid-template-columns: 250px 1fr;
+  grid-template-columns: 250px 1fr;
 
-grid-template-rows: 80px 1fr;
+  grid-template-rows: 80px 1fr;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
+
+---
 
 ## Dashboard Structure
 
-Sidebar["Sidebar Menu"]
+```mermaid
+flowchart TB
 
-Content["Main Content"]
+    Header["Header"]
 
-Header --> Sidebar
+    Sidebar["Sidebar Menu"]
+
+    Content["Main Content"]
+
+    Header --> Sidebar
     Header --> Content
 ```
 
-## Auto Placement
+---
+
+# ⚡ Auto Placement
 
 Grid automatically places items.
 
-grid-template-columns: repeat(3, 1fr);
+```css
+.container {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 ```mermaid
@@ -489,25 +546,25 @@ flowchart LR
     C["Item 3"]
     D["Item 4"]
 
-A --> B
+    A --> B
     B --> C
     C --> D
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 No manual positioning required.
 
-## 🔲 Flexbox vs Grid
+---
+
+# 🔲 Flexbox vs Grid
 
 ```mermaid
 flowchart LR
 
-Flexbox["Flexbox"]
+    Flexbox["Flexbox"]
     Grid["Grid"]
 
-Flexbox --> OneD["1-Dimensional"]
+    Flexbox --> OneD["1-Dimensional"]
     Grid --> TwoD["2-Dimensional"]
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 | Feature            | Flexbox | Grid      |
@@ -518,7 +575,9 @@ Flexbox --> OneD["1-Dimensional"]
 | Responsive Layouts | Good    | Excellent |
 | Complex Layouts    | Limited | Excellent |
 
-## When to Use Flexbox
+---
+
+# 🎯 When to Use Flexbox
 
 Use Flexbox for:
 
@@ -532,7 +591,9 @@ Use Flexbox for:
 
 ✅ Small UI components
 
-## When to Use Grid
+---
+
+# 🎯 When to Use Grid
 
 Use Grid for:
 
@@ -548,37 +609,60 @@ Use Grid for:
 
 ✅ Landing pages
 
+---
+
+# ⚠️ Common Mistakes
+
 ## Fixed Width Columns
 
 ❌
 
 ```css
 grid-template-columns: 300px 300px 300px;
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 ✅
 
+```css
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+```
+
+---
+
 ## Forgetting Gap
+
+❌
 
 ```css
 .card {
   margin: 10px;
 }
-// Example demonstrating ⬛ CSS Grid.
 ```
 
+✅
+
+```css
+.container {
+  gap: 20px;
+}
+```
+
+---
+
 ## Using Grid for Simple Centering
+
+❌
 
 ```css
 display: grid;
 place-items: center;
-// Example demonstrating ⬛ CSS Grid.
 ```
 
 For simple layouts, Flexbox may be easier.
 
-## Quick Cheat Sheet
+---
+
+# 🧠 Quick Cheat Sheet
 
 ```css
 display: grid;
@@ -600,10 +684,11 @@ place-content: center;
 grid-template-areas:
   'header header'
   'sidebar main';
-// Example demonstrating ⬛ CSS Grid.
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Use Grid for two-dimensional layouts.
 - Prefer `fr` units over fixed widths.
@@ -613,7 +698,9 @@ grid-template-areas:
 - Use Grid Template Areas for large layouts.
 - Keep layouts mobile-friendly.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - CSS Grid is a two-dimensional layout system.
 - It controls rows and columns simultaneously.

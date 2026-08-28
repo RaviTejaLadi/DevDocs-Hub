@@ -1,4 +1,4 @@
-# ⚖ Merge vs Rebase
+# ⚖️ Merge vs Rebase
 
 Both `git merge` and `git rebase` solve the exact same problem: they integrate
 changes from one branch into another. However, they approach this task with
@@ -31,7 +31,6 @@ or do you want a **clean, easily readable story**? 📖
 - **Cons:** Rewrites history by generating entirely new commits. If handled
   incorrectly on shared branches, it can cause major sync issues for teammates.
 
-<!-- Visual flow for ⚖ Merge vs Rebase. -->
 ```mermaid
 graph TD
     subgraph Git Merge History
@@ -39,13 +38,15 @@ graph TD
     M1 --> M3[Feature Commit] --> MM
     end
 
-subgraph Git Rebase History
+    subgraph Git Rebase History
     R1[Base] --> R2[Main Commit] --> R3[Feature Commit Rewritten]
     end
 
 ```
 
-## Side-by-Side Comparison
+---
+
+## 📊 Side-by-Side Comparison
 
 | Feature            | Git Merge                                  | Git Rebase                                 |
 | ------------------ | ------------------------------------------ | ------------------------------------------ |
@@ -54,7 +55,9 @@ subgraph Git Rebase History
 | **Merge Commits**  | Explicitly creates an extra merge commit   | Never creates an extra merge commit        |
 | **When to Use**    | On public/shared branches with your team   | On local branches before sharing your code |
 
-## 🛠 Which One Should You Use?
+---
+
+## 🛠️ Which One Should You Use?
 
 A fantastic industry best practice used by many engineering teams is to combine
 both methods safely:
@@ -66,31 +69,4 @@ both methods safely:
    ready to go into the main production line, use a merge (or a squash-and-merge
    on GitHub) to log the official integration of that feature. 🚀
 
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.
-
-## Final Understanding Check
-
-Before considering **⚖ Merge vs Rebase** revised, make sure you can state the definition without relying on the example, explain the mechanism in the correct order, and predict what happens when one important input or assumption changes. Then check one boundary case and one practical use case. The example should support the explanation rather than replace it. When a result is surprising, inspect the rule that produced it and verify the relevant precondition. This approach is more reliable than memorising a code snippet, formula, command, or interview answer because the same reasoning can be applied to a new problem. For technical topics, also distinguish what is guaranteed by the language, library, protocol, or mathematical rule from what is merely a common convention. That distinction helps you choose the correct solution when the context changes.
+---

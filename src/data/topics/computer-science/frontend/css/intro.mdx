@@ -7,6 +7,8 @@ CSS is the language that defines the "look and feel" of every website you visit.
 
 ---
 
+## 1. Introduction to CSS
+
 ### What it is
 
 CSS is a stylesheet language used to describe the presentation of a document
@@ -25,6 +27,8 @@ accessibility, and professional aesthetics.
 Everywhere there is a browser. From landing pages and complex web applications
 (like Gmail or Facebook) to hybrid mobile apps and even some desktop software
 interfaces.
+
+---
 
 ## 2. Core Concepts & Breakdown
 
@@ -70,11 +74,12 @@ To master CSS, you must understand the "Rules of the Game."
 - **Where it is used:** Full-page layouts, photo galleries, and dashboard
   interfaces.
 
+---
+
 ## 3. Visual Understanding: The Rendering Flow
 
 Understanding how CSS is applied helps in debugging layout shifts.
 
-<!-- Visual flow for A Comprehensive Guide to CSS. -->
 ```mermaid
 graph TD
     A[HTML Document] --> B[DOM Tree]
@@ -86,13 +91,14 @@ graph TD
     G --> H[Displayed on Screen]
 ```
 
+---
+
 ## 4. Practical Examples
 
 Let's look at how we build a modern, responsive card component.
 
 ### The Code (React/JSX Style)
 
-// Example demonstrating A Comprehensive Guide to CSS.
 ```jsx
 // Card.js
 const Card = () => {
@@ -152,6 +158,8 @@ const Card = () => {
 - **Common Mistake:** Using fixed widths (e.g., `width: 500px`). This breaks on
   mobile. Use `max-width: 100%` or `clamp()` instead.
 
+---
+
 ## 5. Tools & Ecosystem
 
 | Tool                | What it is                 | Why it is used                                                                                       |
@@ -161,7 +169,11 @@ const Card = () => {
 | **PostCSS**         | A JS-based CSS transformer | Automatically adds "vendor prefixes" (like `-webkit-`) so your CSS works in older browsers.          |
 | **Chrome DevTools** | Browser debugging tool     | Essential for inspecting elements, changing colors in real-time, and debugging the Box Model.        |
 
+---
+
 ## 6. Performance & Optimization
+
+### Why it matters
 
 Large CSS files slow down the "Time to First Paint." If your CSS is messy, the
 user stares at a white screen longer.
@@ -172,6 +184,8 @@ user stares at a white screen longer.
   production CSS files.
 - **Avoid `@import`:** Using `@import` inside a CSS file creates a "waterfall"
   effect, delaying the download of secondary files. Link them in HTML instead.
+
+---
 
 ## 7. Actionable Tips for Developers
 
@@ -186,6 +200,8 @@ user stares at a white screen longer.
     using a brand-new CSS feature to ensure your users aren't seeing a broken
     site.
 
+---
+
 ## 8. Conclusion
 
 CSS is more than just colors and fonts; it is a powerful engine for layout,
@@ -196,12 +212,3 @@ look okay" to "building professional-grade interfaces."
 **What to learn next?** Explore **CSS Animations** to add motion, or dive into
 **Tailwind CSS** to speed up your professional workflow. The web is your
 canvas—start painting!
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

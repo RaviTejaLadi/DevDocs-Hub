@@ -9,16 +9,14 @@ room for it by displacing its surroundings.
 
 The symbol for enthalpy is:
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 H
 ```
 
-## What is Enthalpy?
+## 🎯 What is Enthalpy?
 
 Enthalpy is defined as:
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 H = U + PV
 ```
@@ -35,7 +33,7 @@ This equation shows that enthalpy includes:
 - Internal energy stored in the system
 - Flow energy (PV energy)
 
-## 🌡 Why Do We Need Enthalpy?
+## 🌡️ Why Do We Need Enthalpy?
 
 In many engineering systems, fluids flow continuously.
 
@@ -52,17 +50,16 @@ account for the energy required to push the fluid into or out of the system.
 
 This combined energy is called enthalpy.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     U[Internal Energy]
     PV[Flow Energy PV]
 
-U --> H[Enthalpy]
+    U --> H[Enthalpy]
     PV --> H
 ```
 
-## Understanding Flow Energy
+## 📦 Understanding Flow Energy
 
 Consider water flowing through a pipe.
 
@@ -73,14 +70,12 @@ To move the water forward:
 
 This energy is called **flow energy**.
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 Flow Energy = PV
 ```
 
 Therefore:
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 Enthalpy = Internal Energy + Flow Energy
 ```
@@ -91,21 +86,27 @@ In engineering, specific enthalpy is commonly used.
 
 Specific enthalpy is enthalpy per unit mass.
 
+```
+h = u + Pv
+```
+
+Where:
+
 - h = Specific Enthalpy (kJ/kg)
 - u = Specific Internal Energy (kJ/kg)
 - P = Pressure
 - v = Specific Volume (m³/kg)
 
+## 📊 Units of Enthalpy
+
 ### Total Enthalpy
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 Joule (J)
 ```
 
 ### Specific Enthalpy
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 kJ/kg
 ```
@@ -118,10 +119,11 @@ calculations.
 Most practical applications involve enthalpy change rather than absolute
 enthalpy.
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 ΔH = H₂ - H₁
 ```
+
+Where:
 
 - H₁ = Initial Enthalpy
 - H₂ = Final Enthalpy
@@ -131,11 +133,10 @@ enthalpy.
 - Positive ΔH → Heat absorbed
 - Negative ΔH → Heat released
 
-## 🌡 Constant Pressure Process
+## 🌡️ Constant Pressure Process
 
 At constant pressure:
 
-// Example demonstrating 🔥 Enthalpy.
 ```
 Q = ΔH
 ```
@@ -144,13 +145,12 @@ This means the heat transferred equals the change in enthalpy.
 
 This is one reason enthalpy is extremely useful in engineering calculations.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     Q[Heat Transfer]
     H[Enthalpy Change]
 
-Q --> H
+    Q --> H
 ```
 
 ## ☕ Example: Heating Water
@@ -163,7 +163,6 @@ As heat is supplied:
 - Internal energy increases.
 - Enthalpy increases.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart TD
     A[Heat Added]
@@ -171,7 +170,7 @@ flowchart TD
     C[Internal Energy Increases]
     D[Enthalpy Increases]
 
-A --> B --> C --> D
+    A --> B --> C --> D
 ```
 
 ## 💨 Enthalpy in Phase Changes
@@ -202,14 +201,13 @@ Heat is released.
 
 Enthalpy decreases.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     S[Solid]
     L[Liquid]
     G[Gas]
 
-S -->|Heat Added| L
+    S -->|Heat Added| L
     L -->|Heat Added| G
     G -->|Heat Removed| L
 ```
@@ -235,14 +233,13 @@ Enthalpy changes are used to calculate:
 
 A boiler adds heat to water.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     W[Water]
     B[Boiler]
     S[Steam]
 
-W --> B --> S
+    W --> B --> S
 ```
 
 Result:
@@ -252,7 +249,7 @@ Result:
 
 Heat supplied is reflected as an increase in enthalpy.
 
-## ⚙ Enthalpy in Turbines
+## ⚙️ Enthalpy in Turbines
 
 Steam enters a turbine with high enthalpy.
 
@@ -261,18 +258,17 @@ As steam expands:
 - Enthalpy decreases.
 - Useful work is produced.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     H1[High Enthalpy Steam]
     T[Turbine]
     H2[Low Enthalpy Steam]
 
-H1 --> T --> H2
+    H1 --> T --> H2
     T --> W[Work Output]
 ```
 
-## ❄ Enthalpy in Refrigeration
+## ❄️ Enthalpy in Refrigeration
 
 Refrigeration cycles are analyzed using enthalpy differences.
 
@@ -289,16 +285,15 @@ In many substances:
 - Increasing temperature increases enthalpy.
 - Decreasing temperature decreases enthalpy.
 
-<!-- Visual flow for 🔥 Enthalpy. -->
 ```mermaid
 flowchart LR
     T[Temperature Increases]
     H[Enthalpy Increases]
 
-T --> H
+    T --> H
 ```
 
-## Enthalpy vs Internal Energy
+## 📊 Enthalpy vs Internal Energy
 
 | Property                  | Internal Energy | Enthalpy    |
 | ------------------------- | --------------- | ----------- |
@@ -308,6 +303,8 @@ T --> H
 | Formula                   | U               | U + PV      |
 | Used in Flow Systems      | Limited         | Widely Used |
 
+## 🏭 Engineering Applications
+
 ### 🏭 Power Plants
 
 Used to analyze steam generation and turbine work.
@@ -316,19 +313,19 @@ Used to analyze steam generation and turbine work.
 
 Helps evaluate energy transfer during combustion.
 
-### ❄ Refrigeration Systems
+### ❄️ Refrigeration Systems
 
 Used to calculate cooling capacity and efficiency.
 
-### ⚙ Heat Exchangers
+### ⚙️ Heat Exchangers
 
 Determines heat transfer between fluids.
 
-### ✈ Gas Turbines
+### ✈️ Gas Turbines
 
 Used to evaluate work output and performance.
 
-## Key Points
+## 💡 Key Points
 
 ✅ Enthalpy represents the total heat content of a system.
 
@@ -352,12 +349,3 @@ energy. It represents the total energy content of a system and is especially
 useful for analyzing flowing fluids and constant-pressure processes. Engineers
 use enthalpy extensively in power plants, refrigeration systems, turbines,
 boilers, and heat exchangers.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

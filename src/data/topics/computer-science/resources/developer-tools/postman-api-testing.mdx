@@ -1,9 +1,9 @@
-# Postman & API Testing
+# 📮 Postman & API Testing
 
 Postman is a popular API development and testing tool. It helps developers send
 requests, inspect responses, automate testing, and collaborate on APIs.
 
-## What is Postman?
+## 🚀 What is Postman?
 
 Postman allows you to:
 
@@ -18,6 +18,8 @@ Think of Postman as a browser for APIs.
 
 ---
 
+## 🌐 HTTP Methods
+
 ### GET
 
 Retrieve data.
@@ -30,11 +32,15 @@ GET /api/users
 
 Create new data.
 
+Example:
+
 POST /api/users
 
 ### PUT
 
 Update existing data.
+
+Example:
 
 PUT /api/users/1
 
@@ -42,15 +48,23 @@ PUT /api/users/1
 
 Partially update data.
 
+Example:
+
 PATCH /api/users/1
 
 ### DELETE
 
 Remove data.
 
+Example:
+
 DELETE /api/users/1
 
+---
+
 ## 📤 Sending a GET Request
+
+Example:
 
 GET https://jsonplaceholder.typicode.com/users
 
@@ -65,7 +79,11 @@ Response:
 
 [ { "id": 1, "name": "Leanne Graham" } ]
 
+---
+
 ## 📥 Sending a POST Request
+
+Example:
 
 POST https://jsonplaceholder.typicode.com/posts
 
@@ -77,17 +95,27 @@ Content-Type: application/json
 
 { "title": "Hello", "body": "Testing API", "userId": 1 }
 
+---
+
+## 📦 Request Components
+
 ### URL
 
 Endpoint location.
 
 https://api.example.com/users
 
+### Headers
+
 Metadata about request.
 
 Authorization: Bearer token
 
+Content-Type: application/json
+
 ### Query Parameters
+
+Example:
 
 /users?page=1&limit=10
 
@@ -98,6 +126,10 @@ Used in:
 - POST
 - PUT
 - PATCH
+
+---
+
+## 🔑 Authentication Types
 
 ### Bearer Token
 
@@ -114,11 +146,17 @@ Uses:
 
 ### API Key
 
+Example:
+
 x-api-key: abc123
+
+---
 
 ## 🌍 Environment Variables
 
 Create reusable values.
+
+Example:
 
 baseUrl = https://api.example.com
 
@@ -131,35 +169,57 @@ Benefits:
 - Switch between dev and production
 - Avoid hardcoded URLs
 
+---
+
 ## 📂 Collections
 
 Collections help organize requests.
 
+Example:
+
 User API ├── GET Users ├── GET User ├── POST User ├── PUT User └── DELETE User
+
+Benefits:
 
 - Better organization
 - Easy sharing
 - Automated execution
 
-## Writing Tests
+---
+
+## 🧪 Writing Tests
 
 Open Tests tab.
 
+Example:
+
 pm.test("Status code is 200", () => { pm.response.to.have.status(200); });
 
+---
+
 ## ✅ Validate Response Data
+
+Example:
 
 pm.test("Response contains users", () => { const data = pm.response.json();
 pm.expect(data.length).to.be.above(0); });
 
-## Validate Response Time
+---
+
+## 🔍 Validate Response Time
+
+Example:
 
 pm.test("Response time under 500ms", () => {
 pm.expect(pm.response.responseTime).to.be.below(500); });
 
-## 🛠 Pre-request Scripts
+---
+
+## 🛠️ Pre-request Scripts
 
 Run code before request.
+
+Example:
 
 pm.environment.set( "timestamp", Date.now() );
 
@@ -169,17 +229,25 @@ Useful for:
 - Authentication
 - Token generation
 
-## Collection Runner
+---
+
+## 🔄 Collection Runner
 
 Execute multiple requests automatically.
+
+Uses:
 
 - Regression testing
 - API validation
 - Automated workflows
 
+Steps:
+
 1. Open Collection Runner
 2. Select collection
 3. Run all requests
+
+---
 
 ## 📄 Import API Collections
 
@@ -190,9 +258,15 @@ Supported formats:
 - Swagger
 - Curl commands
 
+Example:
+
 curl -X GET https://api.example.com/users
 
 Paste into Postman to generate request.
+
+---
+
+## 🐛 API Debugging Checklist
 
 ### Request Side
 
@@ -206,10 +280,14 @@ Check:
 
 ### Response Side
 
+Check:
+
 - Status code
 - Response body
 - Error messages
 - Response time
+
+---
 
 ## 🚨 Common Status Codes
 
@@ -226,7 +304,9 @@ Check:
 | 422  | Validation Error      |
 | 500  | Internal Server Error |
 
-## ⚛ Testing a React App Backend
+---
+
+## ⚛️ Testing a React App Backend
 
 Typical flow:
 
@@ -241,6 +321,10 @@ This helps determine whether the issue is in:
 - Frontend
 - Backend
 - Network
+
+---
+
+## 🔥 Useful Features
 
 ### Generate Code Snippets
 
@@ -261,6 +345,8 @@ Store successful responses for documentation.
 
 Simulate APIs before backend development.
 
+---
+
 ## ⭐ Best Practices
 
 - Use environments for URLs and tokens
@@ -274,30 +360,3 @@ Simulate APIs before backend development.
 
 Postman is an essential tool for frontend and backend developers because it
 makes API development faster, easier, and more reliable.
-
-## Example
-
-Start with the smallest useful case before combining the idea with other features.
-
-// Basic example showing the core idea.
-```javascript
-const value = "example";
-console.log(value);
-```
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.

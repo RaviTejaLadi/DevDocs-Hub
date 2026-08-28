@@ -1,4 +1,4 @@
-# Trusses & Frames
+# 🏗️ Trusses & Frames
 
 Trusses and Frames are structural systems used to support loads and transfer
 forces safely to supports.
@@ -12,7 +12,7 @@ design.
 
 ---
 
-## Why Study Trusses & Frames?
+# 🎯 Why Study Trusses & Frames?
 
 Engineers use trusses and frames because they:
 
@@ -26,7 +26,9 @@ Engineers use trusses and frames because they:
 
 ✅ Simplify force analysis
 
-## 🌍 Real-Life Applications
+---
+
+# 🌍 Real-Life Applications
 
 🌉 Bridge Structures
 
@@ -40,7 +42,9 @@ Engineers use trusses and frames because they:
 
 🏟️ Stadium Roof Systems
 
-## What is a Truss?
+---
+
+# 🧩 What is a Truss?
 
 A truss is a structure made up of straight members connected at their ends by
 pin joints.
@@ -52,23 +56,26 @@ Each member carries either:
 - Tension
 - Compression
 
-## Simple Truss Structure
+---
 
-<!-- Visual flow for Trusses & Frames. -->
+# Simple Truss Structure
+
 ```mermaid
 graph TD
     A((A))
     B((B))
     C((C))
 
-A --- B
+    A --- B
     B --- C
     A --- C
 ```
 
 This triangular arrangement is the simplest and most stable truss.
 
-## Characteristics of an Ideal Truss
+---
+
+# Characteristics of an Ideal Truss
 
 ✅ Members are straight
 
@@ -80,6 +87,12 @@ This triangular arrangement is the simplest and most stable truss.
 
 ✅ Members carry only axial forces
 
+---
+
+# 📌 Components of a Truss
+
+---
+
 ## Joint
 
 A point where members meet.
@@ -88,11 +101,15 @@ Examples:
 
 A, B, C in a truss structure.
 
+---
+
 ## Member
 
 A structural element connecting two joints.
 
 Members carry internal forces.
+
+---
 
 ## Support
 
@@ -103,19 +120,26 @@ Common supports:
 - Pin Support
 - Roller Support
 
-## Truss Components
+---
 
-<!-- Visual flow for Trusses & Frames. -->
+# Truss Components
+
 ```mermaid
 graph TD
     A((Joint A))
     B((Joint B))
     C((Joint C))
 
-A ---|Member| B
+    A ---|Member| B
     B ---|Member| C
     A ---|Member| C
 ```
+
+---
+
+# 📊 Types of Trusses
+
+---
 
 ## Simple Truss
 
@@ -125,7 +149,6 @@ Example:
 
 Roof trusses.
 
-<!-- Visual flow for Trusses & Frames. -->
 ```mermaid
 graph TD
     A((A))
@@ -133,12 +156,14 @@ graph TD
     C((C))
     D((D))
 
-A --- B
+    A --- B
     B --- C
     C --- D
     A --- C
     B --- D
 ```
+
+---
 
 ## Compound Truss
 
@@ -146,27 +171,36 @@ Two or more simple trusses connected together.
 
 Used for long-span bridges.
 
+---
+
 ## Complex Truss
 
 Trusses that cannot be analyzed directly using simple methods.
 
 Require advanced analysis techniques.
 
+---
+
+# Common Truss Shapes
+
+---
+
 ## Pratt Truss
 
 Used in railway and highway bridges.
 
-<!-- Visual flow for Trusses & Frames. -->
 ```mermaid
 graph LR
     A --- B
     B --- C
     C --- D
 
-A --- E
+    A --- E
     E --- C
     B --- D
 ```
+
+---
 
 ## Warren Truss
 
@@ -174,14 +208,21 @@ Uses a series of triangles.
 
 Provides uniform force distribution.
 
-A --- E
+```mermaid
+graph LR
+    A --- B
+    B --- C
+    C --- D
+
+    A --- E
     E --- B
     B --- F
     F --- C
     C --- G
     G --- D
-// Example demonstrating Trusses & Frames.
 ```
+
+---
 
 ## Howe Truss
 
@@ -189,20 +230,25 @@ Commonly used in roof structures.
 
 Diagonal members typically experience compression.
 
-## Internal Forces in Truss Members
+---
+
+# 🔄 Internal Forces in Truss Members
 
 A truss member experiences either:
+
+---
 
 ## Tension
 
 Member is being stretched.
+
+Example:
 
 Rope pulling a load.
 
 ```mermaid
 graph LR
     A <-- Tension --> B
-// Example demonstrating Trusses & Frames.
 ```
 
 Characteristics:
@@ -211,29 +257,35 @@ Characteristics:
 
 ✅ Force acts away from the joint
 
+---
+
 ## Compression
 
 Member is being squeezed.
+
+Example:
 
 Building column.
 
 ```mermaid
 graph LR
     A --> Compression <-- B
-// Example demonstrating Trusses & Frames.
 ```
+
+Characteristics:
 
 ✅ Member shortens
 
 ✅ Force acts toward the joint
 
-## 📐 Truss Stability
+---
+
+# 📐 Truss Stability
 
 For a planar truss:
 
 ```text
 m = 2j - 3
-// Example demonstrating Trusses & Frames.
 ```
 
 Where:
@@ -249,7 +301,9 @@ Conditions:
 | m > 2j - 3 | Redundant Truss |
 | m < 2j - 3 | Unstable Truss  |
 
-## Force Flow in a Truss
+---
+
+# Force Flow in a Truss
 
 ```mermaid
 flowchart TD
@@ -259,16 +313,21 @@ flowchart TD
     D[Supports]
     E[Ground]
 
-A --> B
+    A --> B
     B --> C
     C --> D
     D --> E
-// Example demonstrating Trusses & Frames.
 ```
 
 Loads are transferred through members to supports.
 
-## 1⃣ Method of Joints
+---
+
+# 🧮 Methods of Truss Analysis
+
+---
+
+# 1️⃣ Method of Joints
 
 Based on equilibrium of individual joints.
 
@@ -277,7 +336,6 @@ At every joint:
 ```text
 ΣFx = 0
 ΣFy = 0
-// Example demonstrating Trusses & Frames.
 ```
 
 Procedure:
@@ -293,7 +351,9 @@ Advantages:
 
 ✅ Accurate
 
-## Method of Joints Workflow
+---
+
+# Method of Joints Workflow
 
 ```mermaid
 flowchart TD
@@ -303,23 +363,30 @@ flowchart TD
     D[Find Member Forces]
     E[Move to Next Joint]
 
-A --> B --> C --> D --> E
-// Example demonstrating Trusses & Frames.
+    A --> B --> C --> D --> E
 ```
 
-## 2⃣ Method of Sections
+---
+
+# 2️⃣ Method of Sections
 
 Used when only a few member forces are required.
+
+Procedure:
 
 1. Cut through the truss.
 2. Isolate one side.
 3. Apply equilibrium equations.
 
+Advantages:
+
 ✅ Faster for large trusses
 
 ✅ Reduces calculations
 
-## Method of Sections
+---
+
+# Method of Sections
 
 ```mermaid
 graph LR
@@ -327,11 +394,12 @@ graph LR
     B[Imaginary Cut]
     C[Analyze Section]
 
-A --> B --> C
-// Example demonstrating Trusses & Frames.
+    A --> B --> C
 ```
 
-## What is a Frame?
+---
+
+# 🏗️ What is a Frame?
 
 A frame is a structure consisting of connected members that may experience:
 
@@ -342,7 +410,9 @@ A frame is a structure consisting of connected members that may experience:
 
 Unlike trusses, loads can act anywhere on frame members.
 
-## Truss vs Frame
+---
+
+# Truss vs Frame
 
 | Feature       | Truss       | Frame           |
 | ------------- | ----------- | --------------- |
@@ -351,7 +421,9 @@ Unlike trusses, loads can act anywhere on frame members.
 | Joint Type    | Pin joint   | Rigid or pin    |
 | Analysis      | Simpler     | More complex    |
 
-## Example of a Frame
+---
+
+# Example of a Frame
 
 ```mermaid
 graph TD
@@ -359,19 +431,28 @@ graph TD
     B[Beam]
     C[Column]
 
-A --- B --- C
-// Example demonstrating Trusses & Frames.
+    A --- B --- C
 ```
 
 Building structures are common examples of frames.
+
+---
+
+# Types of Frames
+
+---
 
 ## Rigid Frame
 
 Connections resist rotation.
 
+Examples:
+
 🏢 Buildings
 
 🌉 Industrial structures
+
+---
 
 ## Pin-Jointed Frame
 
@@ -379,15 +460,21 @@ Members connected using pin joints.
 
 Used in lightweight structures.
 
+---
+
 ## Machine Frame
 
 Used in machines to support moving components.
+
+Examples:
 
 🚜 Excavators
 
 🏗️ Cranes
 
-## Applications of Trusses
+---
+
+# Applications of Trusses
 
 🌉 Bridges
 
@@ -395,11 +482,17 @@ Used in machines to support moving components.
 
 🏢 Roof Structures
 
+⚡ Transmission Towers
+
 ✈️ Aircraft Wings
 
 🏗️ Construction Platforms
 
-## Applications of Frames
+---
+
+# Applications of Frames
+
+🏢 Buildings
 
 🏗️ Industrial Structures
 
@@ -409,7 +502,9 @@ Used in machines to support moving components.
 
 ⚙️ Machinery Supports
 
-## Advantages of Trusses
+---
+
+# Advantages of Trusses
 
 ✅ High strength-to-weight ratio
 
@@ -421,7 +516,9 @@ Used in machines to support moving components.
 
 ✅ Efficient load transfer
 
-## Advantages of Frames
+---
+
+# Advantages of Frames
 
 ✅ Greater rigidity
 
@@ -431,7 +528,9 @@ Used in machines to support moving components.
 
 ✅ Suitable for complex structures
 
-## ❌ Common Mistakes
+---
+
+# ❌ Common Mistakes
 
 - Assuming all members are in tension
 - Ignoring support reactions
@@ -439,7 +538,9 @@ Used in machines to support moving components.
 - Incorrectly identifying member force directions
 - Confusing frames with trusses
 
-## Key Takeaways
+---
+
+# 📝 Key Takeaways
 
 ✅ Trusses are structures made of straight members connected by pin joints.
 

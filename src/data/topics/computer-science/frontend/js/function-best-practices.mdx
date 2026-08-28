@@ -1,12 +1,11 @@
-# JavaScript Function Best Practices
+# 🚀 JavaScript Function Best Practices
 
-## 1. 🏷 Naming Conventions
+## 1. 🏷️ Naming Conventions
 
 - ✅ **Use descriptive names**: Functions should be named based on what they do
 - 🐫 **Use camelCase**: Standard JavaScript convention
 - 🔤 **Start with verbs**: `getUser()`, `calculateTotal()`, `validateInput()`
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function x(a, b) {
@@ -26,7 +25,6 @@ function calculateSum(num1, num2) {
 - ⚒️ Each function should do one thing and do it well
 - ✂️ If a function does multiple things, consider breaking it up
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function processUser(user) {
@@ -43,13 +41,14 @@ function processUser(user) {
 }
 ```
 
-## 3. 🎛 Parameter Handling
+---
+
+## 3. 🎛️ Parameter Handling
 
 - 📉 **Limit parameters**: Ideally 3 or fewer
 - 🎯 **Use default parameters** instead of conditionals
 - 🧩 **Destructure objects** when appropriate
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function createUser(name, age, email, isAdmin = false) { ... }
@@ -58,13 +57,14 @@ function createUser(name, age, email, isAdmin = false) { ... }
 function createUser({ name, age, email, isAdmin = false }) { ... }
 ```
 
+---
+
 ## 4. 🔁 Return Values
 
 - 🧍‍♂️ Be consistent with return types
 - ⚠️ Avoid returning different types conditionally
 - ⏩ Return early when it makes sense
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function getValue(condition) {
@@ -84,13 +84,14 @@ function getValue(condition) {
 }
 ```
 
-## 5. 🛠 Error Handling
+---
+
+## 5. 🛠️ Error Handling
 
 - 🧪 Use `try/catch` for synchronous code that might throw
 - 🧾 Return error objects for expected issues
 - 📘 Document potential errors in JSDoc
 
-// Basic example showing the core idea.
 ```javascript
 function divide(a, b) {
   if (b === 0) {
@@ -100,12 +101,13 @@ function divide(a, b) {
 }
 ```
 
+---
+
 ## 6. 🧼 Pure Functions
 
 - ✔️ Favor **pure functions** (same input → same output, no side effects)
 - 🔍 Easier to test, debug, and reason about
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Impure
 let total = 0;
@@ -119,13 +121,14 @@ function addNumbers(a, b) {
 }
 ```
 
+---
+
 ## 7. 🏹 Arrow Functions
 
 - 💡 Use for anonymous functions and callbacks
 - 🔒 Maintains `this` context
 - ✂️ More concise syntax
 
-// Basic example showing the core idea.
 ```javascript
 // 🧓 Traditional
 const numbers = [1, 2, 3].map(function (n) {
@@ -136,17 +139,20 @@ const numbers = [1, 2, 3].map(function (n) {
 const numbers = [1, 2, 3].map((n) => n * 2);
 ```
 
+---
+
 ## 8. 📏 Function Length
 
 - 🎯 Keep functions **short** (ideally under 20 lines)
 - ✂️ Break up long functions into smaller ones
 
-## 9. Documentation
+---
+
+## 9. 📝 Documentation
 
 - 📚 Use **JSDoc** for complex functions
 - 🏷️ Document params, returns, and exceptions
 
-// Basic example showing the core idea.
 ```javascript
 /**
  * Calculates the total price including tax
@@ -159,12 +165,13 @@ function calculateTotal(subtotal, taxRate) {
 }
 ```
 
-## 10. 🕸 Avoid Callback Hell
+---
+
+## 10. 🕸️ Avoid Callback Hell
 
 - 🔁 Use **promises** or `async/await`
 - 🧠 Prefer **named functions** over deeply nested anonymous callbacks
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Callback hell
 getUser(userId, function (user) {
@@ -183,30 +190,7 @@ async function processUserOrders(userId) {
 }
 ```
 
+---
+
 🧠 **Following these best practices will help you write cleaner, more
 maintainable, and bug-resistant JavaScript functions.** Happy coding! 💻✨
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
-
-## Practical Decision
-
-A concept becomes easier to revise when it is tied to a decision you may actually make. Identify the problem, the available choices, and the condition that makes one choice appropriate. Then state one case where the concept should not be used. That negative example is useful because it marks the boundary of the idea and reduces confusion with related concepts.

@@ -17,6 +17,8 @@ up resources, and optimize performance.
 
 ---
 
+## Component Lifecycle Overview
+
 ### The Three Main Phases
 
 1. **Mounting**: Component is being created and inserted into the DOM
@@ -26,7 +28,6 @@ up resources, and optimize performance.
 
 ### Lifecycle Flow Diagram
 
-// Example demonstrating React Component Lifecycle Guide.
 ```
 Mounting → Updating → Unmounting
     ↓         ↓          ↓
@@ -36,6 +37,8 @@ render   componentDidUpdate
     ↓
 componentDidMount
 ```
+
+---
 
 ## Mounting Phase
 
@@ -48,7 +51,6 @@ used for initializing state and binding methods.
 
 **Syntax**:
 
-// Basic example showing the core idea.
 ```javascript
 constructor(props) {
   super(props);
@@ -65,7 +67,6 @@ constructor(props) {
 
 **Example**:
 
-// Basic example showing the core idea.
 ```javascript
 class MyComponent extends React.Component {
   constructor(props) {
@@ -77,11 +78,11 @@ class MyComponent extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-handleClick() {
+  handleClick() {
     this.setState({ count: this.state.count + 1 });
   }
 
-render() {
+  render() {
     return (
       <div>
         <p>Count: {this.state.count}</p>
@@ -97,7 +98,8 @@ render() {
 **Definition**: The render method is required and returns the JSX that
 represents the component's UI.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 render() {
   return (
@@ -106,20 +108,23 @@ render() {
 }
 ```
 
+**Usage**:
+
 - Must be pure (no side effects)
 - Should not modify component state
 - Returns JSX, null, or false
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 render() {
   const { isLoading } = this.state;
 
-if (isLoading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-return (
+  return (
     <div>
       <h1>Welcome!</h1>
       <p>Content loaded successfully</p>
@@ -133,19 +138,23 @@ return (
 **Definition**: Called immediately after the component is mounted. Perfect for
 side effects and API calls.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 componentDidMount() {
   // Side effects code here
 }
 ```
 
+**Usage**:
+
 - API calls and data fetching
 - Setting up subscriptions
 - DOM manipulation
 - Starting timers
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 class UserProfile extends React.Component {
   constructor(props) {
@@ -156,7 +165,7 @@ class UserProfile extends React.Component {
     };
   }
 
-componentDidMount() {
+  componentDidMount() {
     // API call
     fetch(`/api/users/${this.props.userId}`)
       .then((response) => response.json())
@@ -168,26 +177,26 @@ componentDidMount() {
         this.setState({ loading: false });
       });
 
-// Set up a timer
+    // Set up a timer
     this.timer = setInterval(() => {
       console.log('Timer tick');
     }, 1000);
   }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     // Cleanup timer
     if (this.timer) {
       clearInterval(this.timer);
     }
   }
 
-render() {
+  render() {
     const { user, loading } = this.state;
 
-if (loading) return <div>Loading user...</div>;
+    if (loading) return <div>Loading user...</div>;
     if (!user) return <div>User not found</div>;
 
-return (
+    return (
       <div>
         <h2>{user.name}</h2>
         <p>{user.email}</p>
@@ -196,6 +205,8 @@ return (
   }
 }
 ```
+
+---
 
 ## Updating Phase
 
@@ -212,7 +223,8 @@ Components update when props or state changes occur.
 **Definition**: Called immediately after the component updates. Useful for side
 effects based on prop/state changes.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 componentDidUpdate(prevProps, prevState, snapshot) {
   // Code to run after update
@@ -225,11 +237,14 @@ componentDidUpdate(prevProps, prevState, snapshot) {
 - `prevState`: Previous state object
 - `snapshot`: Value returned from getSnapshotBeforeUpdate()
 
+**Usage**:
+
 - API calls when props change
 - DOM operations after update
 - Comparing previous and current props/state
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 class SearchResults extends React.Component {
   constructor(props) {
@@ -240,38 +255,38 @@ class SearchResults extends React.Component {
     };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.fetchResults(this.props.searchTerm);
   }
 
-componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     // Only fetch if search term changed
     if (prevProps.searchTerm !== this.props.searchTerm) {
       this.fetchResults(this.props.searchTerm);
     }
 
-// Scroll to top when results change
+    // Scroll to top when results change
     if (prevProps.searchTerm !== this.props.searchTerm) {
       window.scrollTo(0, 0);
     }
   }
 
-fetchResults(searchTerm) {
+  fetchResults(searchTerm) {
     if (!searchTerm) return;
 
-this.setState({ loading: true });
+    this.setState({ loading: true });
 
-fetch(`/api/search?q=${searchTerm}`)
+    fetch(`/api/search?q=${searchTerm}`)
       .then((response) => response.json())
       .then((results) => {
         this.setState({ results, loading: false });
       });
   }
 
-render() {
+  render() {
     const { results, loading } = this.state;
 
-return (
+    return (
       <div>
         <h2>Search Results for: {this.props.searchTerm}</h2>
         {loading ? (
@@ -294,18 +309,22 @@ return (
 **Definition**: Called right before the DOM is updated. Captures information
 from the DOM before it changes.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 getSnapshotBeforeUpdate(prevProps, prevState) {
   // Return snapshot value or null
 }
 ```
 
+**Usage**:
+
 - Capture scroll position
 - Measure DOM elements before update
 - Pass data to componentDidUpdate
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 class ChatWindow extends React.Component {
   constructor(props) {
@@ -316,7 +335,7 @@ class ChatWindow extends React.Component {
     };
   }
 
-getSnapshotBeforeUpdate(prevProps, prevState) {
+  getSnapshotBeforeUpdate(prevProps, prevState) {
     // Capture scroll position before new messages are added
     const list = this.listRef.current;
     if (prevState.messages.length < this.state.messages.length) {
@@ -325,7 +344,7 @@ getSnapshotBeforeUpdate(prevProps, prevState) {
     return null;
   }
 
-componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     // Adjust scroll position to maintain user's view
     if (snapshot !== null) {
       const list = this.listRef.current;
@@ -333,7 +352,7 @@ componentDidUpdate(prevProps, prevState, snapshot) {
     }
   }
 
-render() {
+  render() {
     return (
       <div ref={this.listRef} style={{ height: '400px', overflow: 'auto' }}>
         {this.state.messages.map((message) => (
@@ -345,24 +364,32 @@ render() {
 }
 ```
 
+---
+
+## Unmounting Phase
+
 ### componentWillUnmount()
 
 **Definition**: Called immediately before a component is unmounted and
 destroyed. Used for cleanup.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 componentWillUnmount() {
   // Cleanup code here
 }
 ```
 
+**Usage**:
+
 - Clear timers and intervals
 - Cancel network requests
 - Remove event listeners
 - Clean up subscriptions
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 class Timer extends React.Component {
   constructor(props) {
@@ -370,7 +397,7 @@ class Timer extends React.Component {
     this.state = { seconds: 0 };
   }
 
-componentDidMount() {
+  componentDidMount() {
     // Set up interval
     this.interval = setInterval(() => {
       this.setState((prevState) => ({
@@ -378,62 +405,70 @@ componentDidMount() {
       }));
     }, 1000);
 
-// Add event listener
+    // Add event listener
     this.handleResize = () => {
       console.log('Window resized');
     };
     window.addEventListener('resize', this.handleResize);
 
-// Set up WebSocket connection
+    // Set up WebSocket connection
     this.websocket = new WebSocket('ws://localhost:8080');
     this.websocket.onmessage = (event) => {
       console.log('Received:', event.data);
     };
   }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     // Clean up interval
     if (this.interval) {
       clearInterval(this.interval);
     }
 
-// Remove event listener
+    // Remove event listener
     window.removeEventListener('resize', this.handleResize);
 
-// Close WebSocket connection
+    // Close WebSocket connection
     if (this.websocket) {
       this.websocket.close();
     }
 
-// Cancel any pending network requests
+    // Cancel any pending network requests
     if (this.abortController) {
       this.abortController.abort();
     }
   }
 
-render() {
+  render() {
     return <div>Timer: {this.state.seconds} seconds</div>;
   }
 }
 ```
+
+---
+
+## Error Handling Phase
 
 ### componentDidCatch()
 
 **Definition**: Called when an error occurs during rendering, in lifecycle
 methods, or in constructors of child components.
 
-// Basic example showing the core idea.
+**Syntax**:
+
 ```javascript
 componentDidCatch(error, errorInfo) {
   // Handle error
 }
 ```
 
+**Usage**:
+
 - Log error information
 - Display fallback UI
 - Report errors to error tracking services
 
-// Basic example showing the core idea.
+**Example**:
+
 ```javascript
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -441,23 +476,23 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false, error: null };
   }
 
-static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error) {
     // Update state to show fallback UI
     return { hasError: true };
   }
 
-componentDidCatch(error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     // Log error details
     console.error('Error caught by boundary:', error);
     console.error('Error info:', errorInfo);
 
-// Report to error tracking service
+    // Report to error tracking service
     // logErrorToService(error, errorInfo);
 
-this.setState({ error: error.message });
+    this.setState({ error: error.message });
   }
 
-render() {
+  render() {
     if (this.state.hasError) {
       return (
         <div style={{ padding: '20px', border: '1px solid red' }}>
@@ -472,7 +507,7 @@ render() {
       );
     }
 
-return this.props.children;
+    return this.props.children;
   }
 }
 
@@ -487,13 +522,16 @@ function App() {
 }
 ```
 
+---
+
+## Hooks vs Class Components
+
 ### Function Components with Hooks
 
 Modern React uses hooks to handle lifecycle events in function components:
 
 **useState**: Replaces constructor and state management
 
-// Basic example showing the core idea.
 ```javascript
 const [count, setCount] = useState(0);
 ```
@@ -501,33 +539,32 @@ const [count, setCount] = useState(0);
 **useEffect**: Replaces componentDidMount, componentDidUpdate, and
 componentWillUnmount
 
-// Basic example showing the core idea.
 ```javascript
 function MyComponent() {
   const [data, setData] = useState(null);
 
-// Equivalent to componentDidMount
+  // Equivalent to componentDidMount
   useEffect(() => {
     fetchData().then(setData);
   }, []); // Empty dependency array
 
-// Equivalent to componentDidUpdate (when count changes)
+  // Equivalent to componentDidUpdate (when count changes)
   useEffect(() => {
     document.title = `Count: ${count}`;
   }, [count]); // Dependency array with count
 
-// Equivalent to componentWillUnmount
+  // Equivalent to componentWillUnmount
   useEffect(() => {
     const timer = setInterval(() => {
       console.log('Timer tick');
     }, 1000);
 
-return () => {
+    return () => {
       clearInterval(timer); // Cleanup function
     };
   }, []);
 
-return <div>{data ? data.name : 'Loading...'}</div>;
+  return <div>{data ? data.name : 'Loading...'}</div>;
 }
 ```
 
@@ -535,7 +572,6 @@ return <div>{data ? data.name : 'Loading...'}</div>;
 
 **Class Component**:
 
-// Basic example showing the core idea.
 ```javascript
 class UserProfile extends React.Component {
   constructor(props) {
@@ -543,23 +579,23 @@ class UserProfile extends React.Component {
     this.state = { user: null, loading: true };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.fetchUser();
   }
 
-componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.userId !== this.props.userId) {
       this.fetchUser();
     }
   }
 
-fetchUser() {
+  fetchUser() {
     fetch(`/api/users/${this.props.userId}`)
       .then((res) => res.json())
       .then((user) => this.setState({ user, loading: false }));
   }
 
-render() {
+  render() {
     const { user, loading } = this.state;
     if (loading) return <div>Loading...</div>;
     return <div>{user.name}</div>;
@@ -569,13 +605,12 @@ render() {
 
 **Function Component with Hooks**:
 
-// Basic example showing the core idea.
 ```javascript
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     fetch(`/api/users/${userId}`)
       .then((res) => res.json())
@@ -585,16 +620,19 @@ useEffect(() => {
       });
   }, [userId]); // Re-run when userId changes
 
-if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
   return <div>{user.name}</div>;
 }
 ```
+
+---
+
+## Best Practices
 
 ### 1. Cleanup in componentWillUnmount
 
 Always clean up resources to prevent memory leaks:
 
-// Basic example showing the core idea.
 ```javascript
 componentDidMount() {
   this.timer = setInterval(this.tick, 1000);
@@ -611,14 +649,13 @@ componentWillUnmount() {
 
 Always check if props/state actually changed:
 
-// Basic example showing the core idea.
 ```javascript
 componentDidUpdate(prevProps, prevState) {
   if (prevProps.userId !== this.props.userId) {
     this.fetchUserData();
   }
 
-if (prevState.searchTerm !== this.state.searchTerm) {
+  if (prevState.searchTerm !== this.state.searchTerm) {
     this.performSearch();
   }
 }
@@ -628,7 +665,6 @@ if (prevState.searchTerm !== this.state.searchTerm) {
 
 Wrap components that might fail:
 
-// Basic example showing the core idea.
 ```javascript
 <ErrorBoundary>
   <UserProfile userId={userId} />
@@ -639,7 +675,6 @@ Wrap components that might fail:
 
 Keep render method pure:
 
-// Basic example showing the core idea.
 ```javascript
 // ❌ Wrong
 render() {
@@ -657,9 +692,12 @@ render() {
 }
 ```
 
+---
+
+## Common Patterns
+
 ### 1. Data Fetching Pattern
 
-// Basic example showing the core idea.
 ```javascript
 class DataComponent extends React.Component {
   constructor(props) {
@@ -671,7 +709,7 @@ class DataComponent extends React.Component {
     };
   }
 
-async componentDidMount() {
+  async componentDidMount() {
     try {
       const response = await fetch('/api/data');
       const data = await response.json();
@@ -681,21 +719,20 @@ async componentDidMount() {
     }
   }
 
-render() {
+  render() {
     const { data, loading, error } = this.state;
 
-if (loading) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!data) return <div>No data</div>;
 
-return <div>{/* Render data */}</div>;
+    return <div>{/* Render data */}</div>;
   }
 }
 ```
 
 ### 2. Subscription Pattern
 
-// Basic example showing the core idea.
 ```javascript
 class SubscriptionComponent extends React.Component {
   constructor(props) {
@@ -703,13 +740,13 @@ class SubscriptionComponent extends React.Component {
     this.state = { data: null };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.subscription = DataService.subscribe(this.props.topic, (data) =>
       this.setState({ data })
     );
   }
 
-componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.topic !== this.props.topic) {
       this.subscription.unsubscribe();
       this.subscription = DataService.subscribe(this.props.topic, (data) =>
@@ -718,13 +755,13 @@ componentDidUpdate(prevProps) {
     }
   }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
 
-render() {
+  render() {
     return <div>{this.state.data}</div>;
   }
 }
@@ -732,7 +769,6 @@ render() {
 
 ### 3. Timer Pattern
 
-// Basic example showing the core idea.
 ```javascript
 class TimerComponent extends React.Component {
   constructor(props) {
@@ -740,17 +776,17 @@ class TimerComponent extends React.Component {
     this.state = { time: new Date() };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.timerID = setInterval(() => {
       this.setState({ time: new Date() });
     }, 1000);
   }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     clearInterval(this.timerID);
   }
 
-render() {
+  render() {
     return <div>Current time: {this.state.time.toLocaleTimeString()}</div>;
   }
 }
@@ -759,12 +795,3 @@ render() {
 This comprehensive guide covers all aspects of React component lifecycle methods
 with practical examples and best practices for both class components and modern
 function components with hooks.
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

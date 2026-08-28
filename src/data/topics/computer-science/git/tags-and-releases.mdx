@@ -1,4 +1,4 @@
-# 🏷 Tags & Releases
+# 🏷️ Tags & Releases
 
 As your project grows, your commit history will quickly accumulate hundreds of
 log entries. Amidst all those daily commits, it becomes difficult to point to a
@@ -15,14 +15,13 @@ bright physical post-it note directly onto a single frame of that reel. No
 matter how much more film you add to the reel later, you can instantly rewind
 straight back to that exact post-it note.
 
-<!-- Visual flow for 🏷 Tags & Releases. -->
 ```mermaid
 graph LR
     A[Commit: Initial UI] --> B[Commit: Bugfix]
     B --> C[Commit: Add Analytics]
     C --> D[Commit: Polish Forms]
 
-C -.-> T[Tag: v1.0.0]
+    C -.-> T[Tag: v1.0.0]
     style T fill:#f9f,stroke:#333,stroke-width:2px
 
 ```
@@ -40,6 +39,8 @@ to store:
   tagger’s name, email, date, and a descriptive message. **This is the
   recommended approach for public releases.**
 
+---
+
 ### Working with Tags
 
 Here are the essential commands for creating, viewing, and sharing tags.
@@ -49,10 +50,11 @@ Here are the essential commands for creating, viewing, and sharing tags.
 To mark your current position with an annotated tag, use the `-a` flag along
 with a message descriptive flag `-m`.
 
-# Basic example showing the core idea.
 ```bash
 // Create an annotated tag for version 1.0.0
 git tag -a v1.0.0 -m "First stable production release"
+
+```
 
 #### 2. View Existing Tags
 
@@ -63,13 +65,16 @@ your version history.
 // List all tags in alphabetical order
 git tag
 
+```
+
 To see the specific details and metadata of an annotated tag, use the `show`
 command:
 
-# Basic example showing the core idea.
 ```bash
 // View the author details, date, and commit connected to a tag
 git show v1.0.0
+
+```
 
 #### 3. Share Your Tags
 
@@ -83,6 +88,10 @@ git push origin v1.0.0
 // Push every single local tag up to GitHub at once
 git push origin --tags
 
+```
+
+---
+
 ### What is a GitHub Release?
 
 While Git handles the underlying tags, platforms like GitHub introduce a wrapper
@@ -93,7 +102,9 @@ Git tag. It lets you bundle release notes, changelogs, and production-ready
 compiled binaries (like an `.apk`, `.exe`, or `.zip` file) so non-technical
 users can download your software without interacting with a terminal.
 
-### Quick Best Practice: Semantic Versioning
+---
+
+### 💡 Quick Best Practice: Semantic Versioning
 
 When naming your tags, stick to **Semantic Versioning (SemVer)** patterns like
 `vMAJOR.MINOR.PATCH` (e.g., `v2.1.4`):
@@ -102,23 +113,4 @@ When naming your tags, stick to **Semantic Versioning (SemVer)** patterns like
 - **MINOR:** New features added that don't break existing setups.
 - **PATCH:** Small bug fixes and optimizations.
 
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |
-
-## Decision Guide
-
-Connect the definition to a practical decision: what problem does the concept solve, what assumptions does it make, and what evidence tells you it is working? This turns a memorised sentence into a usable mental model.
-
-## Compare Related Ideas
-
-When two concepts look similar, compare their purpose, inputs, guarantees, lifecycle, and trade-offs. A short comparison is often more useful for revision than another paragraph repeating the same definition.
-
-## Self-Check
-
-After reading an example, change one input and predict the result before running it. Then explain what changed and why. This exposes gaps in understanding and gives you a quick test without needing a separate exercise set.
+---

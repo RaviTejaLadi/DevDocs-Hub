@@ -1,11 +1,11 @@
-# Backend System Design
+# 🚀 **Backend System Design**
 
 _The Ultimate Guide to Building Robust, Scalable, and Distributed Backend
 Systems_
 
 ---
 
-## 1. Core Principles
+## 📌 **1. Core Principles**
 
 | Principle           | Description                  | Emoji |
 | ------------------- | ---------------------------- | ----- |
@@ -17,23 +17,25 @@ Systems_
 | **Maintainability** | Easy to update/debug         | 🔧    |
 | **Cost Efficiency** | Optimize resource usage      | 💰    |
 
-### CAP Theorem
+### **CAP Theorem**
 
-<!-- Visual flow for Backend System Design. -->
 ```mermaid
 graph TD
     A[CAP Theorem] --> B[Consistency]
     A --> C[Availability]
     A --> D[Partition Tolerance]
 
-B --> E[CP - Banking Systems]
+    B --> E[CP - Banking Systems]
     C --> F[AP - Social Media]
     D --> G[CA - Not Distributed]
 ```
 
-### Monolithic vs Microservices
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🏗️ **2. Architecture Patterns**
+
+### **Monolithic vs Microservices**
+
 ```mermaid
 graph LR
     subgraph Monolith
@@ -41,7 +43,7 @@ graph LR
         M2 --> M3[Database]
     end
 
-subgraph Microservices
+    subgraph Microservices
         S1[Auth Service] --> DB1[(Auth DB)]
         S2[Order Service] --> DB2[(Order DB)]
         S3[Payment Service] --> DB3[(Payment DB)]
@@ -51,7 +53,7 @@ subgraph Microservices
     end
 ```
 
-### Architecture Patterns Comparison
+### **Architecture Patterns Comparison**
 
 | Pattern           | Best For                          | Trade-offs                           |
 | ----------------- | --------------------------------- | ------------------------------------ |
@@ -62,9 +64,12 @@ subgraph Microservices
 | **Hexagonal**     | Testability, business logic focus | Clean separation, more files         |
 | **Service Mesh**  | Service-to-service communication  | Observability, network control       |
 
-### RESTful API Guidelines
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 📦 **3. API Design**
+
+### **RESTful API Guidelines**
+
 ```mermaid
 graph TD
     A[API Design] --> B[Resources]
@@ -72,13 +77,13 @@ graph TD
     A --> D[Status Codes]
     A --> E[Versioning]
 
-B --> F[/users, /orders]
+    B --> F[/users, /orders]
     C --> G[GET, POST, PUT, DELETE, PATCH]
     D --> H[200, 400, 401, 403, 404, 500]
     E --> I[/v1/api, Accept header]
 ```
 
-### API Comparison
+### **API Comparison**
 
 | Feature         | REST          | GraphQL         | gRPC          | WebSocket   |
 | --------------- | ------------- | --------------- | ------------- | ----------- |
@@ -89,9 +94,8 @@ B --> F[/users, /orders]
 | **Batching**    | ❌            | ✅              | ❌            | ✅          |
 | **Type Safety** | ❌            | ✅ Strong       | ✅ Strong     | ❌          |
 
-### RESTful Best Practices
+### **RESTful Best Practices**
 
-// Example demonstrating Backend System Design.
 ```
 ✅ Use plural nouns: /users, /products
 ✅ Nested resources: /users/{id}/orders
@@ -104,26 +108,29 @@ B --> F[/users, /orders]
 ✅ Sorting: /users?sort=createdAt:desc
 ```
 
-### Database Decision Tree
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🗄️ **4. Database Selection**
+
+### **Database Decision Tree**
+
 ```mermaid
 graph TD
     A[Data Type] --> B[Structured?]
     B -->|Yes| C[Relationships?]
     B -->|No| D[Document/JSON?]
 
-C -->|Yes| E[PostgreSQL/MySQL]
+    C -->|Yes| E[PostgreSQL/MySQL]
     C -->|No| F[NoSQL]
 
-D -->|Yes| G[MongoDB]
+    D -->|Yes| G[MongoDB]
     D -->|No| H[Key-Value: Redis]
 
-F --> I[Graph: Neo4j]
+    F --> I[Graph: Neo4j]
     F --> J[Column: Cassandra]
 ```
 
-### Database Comparison
+### **Database Comparison**
 
 | Database          | Best For                 | Consistency | Scaling    | Query     |
 | ----------------- | ------------------------ | ----------- | ---------- | --------- |
@@ -136,9 +143,8 @@ F --> I[Graph: Neo4j]
 | **Neo4j**         | Graph relationships      | ACID        | Vertical   | Cypher    |
 | **DynamoDB**      | Serverless, key-value    | Strong      | Automatic  | Key-Value |
 
-### Database Selection Criteria
+### **Database Selection Criteria**
 
-<!-- Visual flow for Backend System Design. -->
 ```mermaid
 graph TD
     A[Selection Criteria] --> B[Data Structure]
@@ -149,9 +155,12 @@ graph TD
     A --> G[Budget]
 ```
 
-### Cache Types
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🔄 **5. Caching Strategies**
+
+### **Cache Types**
+
 ```mermaid
 graph TD
     A[Caching] --> B[Client-Side]
@@ -159,13 +168,13 @@ graph TD
     A --> D[Application Cache]
     A --> E[Database Cache]
 
-B --> F[Browser Cache]
+    B --> F[Browser Cache]
     C --> G[CloudFront, CloudFlare]
     D --> H[Redis, Memcached]
     E --> I[Query Cache, Buffer Pool]
 ```
 
-### Caching Patterns
+### **Caching Patterns**
 
 | Pattern                  | Description                | Use Case              |
 | ------------------------ | -------------------------- | --------------------- |
@@ -176,9 +185,8 @@ B --> F[Browser Cache]
 | **Cache-Aside with TTL** | Cache with expiry          | Stale data acceptable |
 | **Refresh-Ahead**        | Auto-refresh before expiry | Predictable access    |
 
-### Cache Invalidation Strategies
+### **Cache Invalidation Strategies**
 
-// Example demonstrating Backend System Design.
 ```
 💡 TTL (Time-To-Live): Auto-expiry
 💡 Event-Based: Invalidate on updates
@@ -187,9 +195,8 @@ B --> F[Browser Cache]
 💡 Lazy Loading: Load on demand
 ```
 
-### Caching Best Practices
+### **Caching Best Practices**
 
-// Example demonstrating Backend System Design.
 ```
 ✅ Set appropriate TTL (5-60 minutes)
 ✅ Use eviction policies: LRU, LFU, TTL
@@ -200,7 +207,11 @@ B --> F[Browser Cache]
 ✅ Handle cache stampede (mutex locks)
 ```
 
-### Message Broker Comparison
+---
+
+## 📊 **6. Message Queues & Async Processing**
+
+### **Message Broker Comparison**
 
 | Feature            | RabbitMQ          | Kafka           | SQS           | Redis Pub/Sub |
 | ------------------ | ----------------- | --------------- | ------------- | ------------- |
@@ -211,9 +222,8 @@ B --> F[Browser Cache]
 | **Throughput**     | High              | Very High       | High          | Very High     |
 | **Complexity**     | Medium            | High            | Low           | Low           |
 
-### Event-Driven Architecture
+### **Event-Driven Architecture**
 
-<!-- Visual flow for Backend System Design. -->
 ```mermaid
 graph LR
     A[Producer] --> B[Message Queue]
@@ -221,17 +231,16 @@ graph LR
     B --> D[Consumer 2]
     B --> E[Consumer 3]
 
-C --> F[Process]
+    C --> F[Process]
     D --> F
     E --> F
 
-F --> G[Dead Letter Queue]
+    F --> G[Dead Letter Queue]
     G --> H[Error Handling]
 ```
 
-### When to Use Async Processing
+### **When to Use Async Processing**
 
-// Example demonstrating Backend System Design.
 ```
 ✅ Email/SMS notifications
 ✅ Image/video processing
@@ -243,9 +252,12 @@ F --> G[Dead Letter Queue]
 ✅ PDF generation
 ```
 
-### Load Balancing Algorithms
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🌐 **7. Load Balancing & Reverse Proxy**
+
+### **Load Balancing Algorithms**
+
 ```mermaid
 graph TD
     A[Load Balancer] --> B[Round Robin]
@@ -254,14 +266,14 @@ graph TD
     A --> E[Weighted Round Robin]
     A --> F[Least Response Time]
 
-B --> G[Even Distribution]
+    B --> G[Even Distribution]
     C --> H[Session-Aware]
     D --> I[Sticky Sessions]
     E --> J[Server Capability]
     F --> K[Performance-Based]
 ```
 
-### Reverse Proxy vs Load Balancer
+### **Reverse Proxy vs Load Balancer**
 
 | Feature             | Load Balancer      | Reverse Proxy   |
 | ------------------- | ------------------ | --------------- |
@@ -271,9 +283,8 @@ B --> G[Even Distribution]
 | **Compression**     | ❌                 | ✅              |
 | **Security**        | Basic              | Advanced        |
 
-### Proxy Tools
+### **Proxy Tools**
 
-// Example demonstrating Backend System Design.
 ```
 🔄 Nginx - Most popular, high performance
 🔄 HAProxy - TCP/HTTP load balancing
@@ -282,9 +293,12 @@ B --> G[Even Distribution]
 🔄 Apache - Traditional, feature-rich
 ```
 
-### Authentication Methods
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🔐 **8. Authentication & Authorization**
+
+### **Authentication Methods**
+
 ```mermaid
 graph TD
     A[Authentication] --> B[Session-Based]
@@ -293,16 +307,15 @@ graph TD
     A --> E[SSO]
     A --> F[API Keys]
 
-B --> G[Cookie + Session]
+    B --> G[Cookie + Session]
     C --> H[JWT]
     D --> I[Third-party auth]
     E --> J[SAML, OpenID]
     F --> K[Service-to-service]
 ```
 
-### JWT Structure
+### **JWT Structure**
 
-// Example demonstrating Backend System Design.
 ```
 Header: {
   "alg": "HS256",
@@ -321,7 +334,7 @@ Signature: HMACSHA256(
 )
 ```
 
-### Authorization Models
+### **Authorization Models**
 
 | Model            | Description             | Example            |
 | ---------------- | ----------------------- | ------------------ |
@@ -330,9 +343,8 @@ Signature: HMACSHA256(
 | **ACL**          | Access Control Lists    | User → Permissions |
 | **Policy-Based** | Rules defined in policy | Rego (OPA)         |
 
-### Security Checklist
+### **Security Checklist**
 
-// Example demonstrating Backend System Design.
 ```
 ✅ Hash passwords: bcrypt, Argon2
 ✅ Use HTTPS (TLS 1.2+)
@@ -347,24 +359,27 @@ Signature: HMACSHA256(
 ✅ Secret management (Vault, AWS Secrets)
 ```
 
-### Scaling Types
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 📈 **9. Scaling Strategies**
+
+### **Scaling Types**
+
 ```mermaid
 graph TD
     A[Scaling] --> B[Vertical]
     A --> C[Horizontal]
     A --> D[Database Scaling]
 
-B --> E[Bigger server]
+    B --> E[Bigger server]
     C --> F[More servers]
 
-D --> G[Sharding]
+    D --> G[Sharding]
     D --> H[Replication]
     D --> I[Read Replicas]
 ```
 
-### Database Scaling Techniques
+### **Database Scaling Techniques**
 
 | Technique           | Description         | Pros          | Cons             |
 | ------------------- | ------------------- | ------------- | ---------------- |
@@ -374,9 +389,8 @@ D --> G[Sharding]
 | **Indexing**        | Speed up queries    | Fast reads    | Slower writes    |
 | **Partitioning**    | Split tables        | Management    | Query complexity |
 
-### Microservices Scaling Considerations
+### **Microservices Scaling Considerations**
 
-<!-- Visual flow for Backend System Design. -->
 ```mermaid
 graph TD
     A[Service A] --> B[Service B]
@@ -384,13 +398,16 @@ graph TD
     B --> D[Database]
     C --> D
 
-B --> E[Cache]
+    B --> E[Cache]
     C --> F[Queue]
 ```
 
-### Resilience Patterns
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🛡️ **10. Resilience & Fault Tolerance**
+
+### **Resilience Patterns**
+
 ```mermaid
 graph TD
     A[Resilience] --> B[Retry]
@@ -401,7 +418,7 @@ graph TD
     A --> G[Fallback]
     A --> H[Health Check]
 
-B --> I[Exponential Backoff]
+    B --> I[Exponential Backoff]
     C --> J[Hystrix, Resilience4j]
     D --> K[Context Deadline]
     E --> L[Pool Isolation]
@@ -410,9 +427,8 @@ B --> I[Exponential Backoff]
     H --> O[Liveness/Readiness]
 ```
 
-### Fault Tolerance Strategies
+### **Fault Tolerance Strategies**
 
-// Example demonstrating Backend System Design.
 ```
 🛡️ Retry with Exponential Backoff
 🛡️ Circuit Breaker (Open/Closed/Half-Open)
@@ -426,21 +442,24 @@ B --> I[Exponential Backoff]
 🛡️ Dead letter queues
 ```
 
-### Three Pillars of Observability
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 📊 **11. Monitoring & Observability**
+
+### **Three Pillars of Observability**
+
 ```mermaid
 graph TD
     A[Observability] --> B[Logs]
     A --> C[Metrics]
     A --> D[Traces]
 
-B --> E[ELK Stack, Loki]
+    B --> E[ELK Stack, Loki]
     C --> F[Prometheus, Graphite]
     D --> G[Jaeger, Zipkin]
 ```
 
-### Key Metrics to Monitor
+### **Key Metrics to Monitor**
 
 | Category        | Metrics                             | Tools               |
 | --------------- | ----------------------------------- | ------------------- |
@@ -450,9 +469,8 @@ B --> E[ELK Stack, Loki]
 | **Application** | Request count, Success rate         | Custom metrics      |
 | **Business**    | Revenue, Active users               | DataDog, NewRelic   |
 
-### Alerting Best Practices
+### **Alerting Best Practices**
 
-// Example demonstrating Backend System Design.
 ```
 🚨 Use multiple severity levels (P1-P4)
 🚨 Avoid alert fatigue (group alerts)
@@ -463,9 +481,12 @@ B --> E[ELK Stack, Loki]
 🚨 Track alert resolution time
 ```
 
-### Deployment Strategies
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🔄 **12. CI/CD & Deployment Strategies**
+
+### **Deployment Strategies**
+
 ```mermaid
 graph TD
     A[Deployment] --> B[Blue-Green]
@@ -474,14 +495,14 @@ graph TD
     A --> E[A/B Testing]
     A --> F[Feature Flags]
 
-B --> G[Zero downtime]
+    B --> G[Zero downtime]
     C --> H[Gradual rollout]
     D --> I[Phased update]
     E --> J[User segment testing]
     F --> K[Toggle features]
 ```
 
-### Deployment Comparison
+### **Deployment Comparison**
 
 | Strategy       | Risk   | Complexity | Rollback | User Impact |
 | -------------- | ------ | ---------- | -------- | ----------- |
@@ -490,9 +511,8 @@ B --> G[Zero downtime]
 | **Rolling**    | Medium | Low        | Gradual  | Some        |
 | **Recreate**   | High   | Low        | Slow     | High        |
 
-### CI/CD Pipeline
+### **CI/CD Pipeline**
 
-<!-- Visual flow for Backend System Design. -->
 ```mermaid
 graph LR
     A[Code Commit] --> B[Build]
@@ -506,23 +526,25 @@ graph LR
     I --> J[Monitor]
 ```
 
-### Storage Types
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🗄️ **13. Storage & Data Management**
+
+### **Storage Types**
+
 ```mermaid
 graph TD
     A[Storage] --> B[Block Storage]
     A --> C[File Storage]
     A --> D[Object Storage]
 
-B --> E[EBS, SAN]
+    B --> E[EBS, SAN]
     C --> F[NFS, EFS]
     D --> G[S3, GCS]
 ```
 
-### Data Lifecycle Management
+### **Data Lifecycle Management**
 
-// Example demonstrating Backend System Design.
 ```
 📊 Hot Data: Frequently accessed → Cache/SSD
 📊 Warm Data: Occasionally accessed → Standard storage
@@ -531,7 +553,7 @@ B --> E[EBS, SAN]
 📊 Data Backup: Daily, Weekly, Monthly
 ```
 
-### Backup Strategies
+### **Backup Strategies**
 
 | Type            | RTO       | RPO              | Cost   |
 | --------------- | --------- | ---------------- | ------ |
@@ -540,9 +562,12 @@ B --> E[EBS, SAN]
 | **Snapshot**    | Very fast | Last snapshot    | Low    |
 | **Replication** | Minimal   | Real-time        | High   |
 
-### Network Layers
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🌐 **14. Networking & Protocols**
+
+### **Network Layers**
+
 ```mermaid
 graph TD
     A[Application Layer] --> B[HTTP/HTTPS, WebSocket]
@@ -553,7 +578,7 @@ graph TD
     E --> G[Network Access]
 ```
 
-### Protocol Comparison
+### **Protocol Comparison**
 
 | Protocol      | Use Case      | Features               | Security          |
 | ------------- | ------------- | ---------------------- | ----------------- |
@@ -564,20 +589,23 @@ graph TD
 | **WebSocket** | Real-time     | Full-duplex            | WSS               |
 | **MQTT**      | IoT devices   | Lightweight            | TLS               |
 
-### Testing Pyramid (Backend)
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🧪 **15. Testing Strategies**
+
+### **Testing Pyramid (Backend)**
+
 ```mermaid
 graph TD
     A[End-to-End Tests] --> B[Integration Tests]
     B --> C[Unit Tests]
 
-C --> D[Fast, Small]
+    C --> D[Fast, Small]
     B --> E[API, DB tests]
     A --> F[Full flow tests]
 ```
 
-### Test Types
+### **Test Types**
 
 | Test Type       | Focus                | Tools                 |
 | --------------- | -------------------- | --------------------- |
@@ -588,9 +616,12 @@ C --> D[Fast, Small]
 | **Performance** | Load, stress         | JMeter, K6            |
 | **Security**    | Vulnerabilities      | OWASP ZAP, Burp       |
 
-### Performance Bottlenecks
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 📈 **16. Performance Optimization**
+
+### **Performance Bottlenecks**
+
 ```mermaid
 graph TD
     A[Bottlenecks] --> B[Database]
@@ -599,16 +630,15 @@ graph TD
     A --> E[Memory]
     A --> F[I/O]
 
-B --> G[Slow queries, locks]
+    B --> G[Slow queries, locks]
     C --> H[Bandwidth, latency]
     D --> I[Processing, threads]
     E --> J[GC, memory leaks]
     F --> K[Disk speed, I/O wait]
 ```
 
-### Optimization Techniques
+### **Optimization Techniques**
 
-// Example demonstrating Backend System Design.
 ```
 ⚡ Database: Indexing, query optimization, connection pooling
 ⚡ Caching: Redis, CDN, in-memory cache
@@ -622,7 +652,11 @@ B --> G[Slow queries, locks]
 ⚡ Batch processing: Bulk operations
 ```
 
-### When to Use What
+---
+
+## 🎯 **17. System Design Decision Matrix**
+
+### **When to Use What**
 
 | Scenario             | Recommendation                              |
 | -------------------- | ------------------------------------------- |
@@ -635,7 +669,7 @@ B --> G[Slow queries, locks]
 | **File Storage**     | S3 + CDN + NoSQL metadata                   |
 | **Machine Learning** | Python microservices + GPU + Model registry |
 
-### Trade-off Matrix
+### **Trade-off Matrix**
 
 | Requirement            | Trade-off                   |
 | ---------------------- | --------------------------- |
@@ -646,9 +680,12 @@ B --> G[Slow queries, locks]
 | **Security**           | Performance overhead        |
 | **Scalability**        | Increased complexity        |
 
-### Essential Backend Stack
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🛠️ **18. Tools & Technologies**
+
+### **Essential Backend Stack**
+
 ```mermaid
 graph TD
     A[Backend Stack] --> B[Language]
@@ -658,7 +695,7 @@ graph TD
     A --> F[Queue]
     A --> G[Monitoring]
 
-B --> H[Node.js, Python, Java, Go, C#, Ruby]
+    B --> H[Node.js, Python, Java, Go, C#, Ruby]
     C --> I[Express, Django, Spring, .NET, Rails]
     D --> J[PostgreSQL, MySQL, MongoDB]
     E --> K[Redis, Memcached]
@@ -666,7 +703,7 @@ B --> H[Node.js, Python, Java, Go, C#, Ruby]
     G --> M[Prometheus, Grafana, ELK]
 ```
 
-### Cloud Provider Comparison
+### **Cloud Provider Comparison**
 
 | Service        | AWS           | GCP                | Azure        |
 | -------------- | ------------- | ------------------ | ------------ |
@@ -677,7 +714,11 @@ B --> H[Node.js, Python, Java, Go, C#, Ruby]
 | **Storage**    | S3            | Cloud Storage      | Blob Storage |
 | **Queue**      | SQS           | Pub/Sub            | Service Bus  |
 
-### Must-Have Documents
+---
+
+## 📝 **19. Documentation & Communication**
+
+### **Must-Have Documents**
 
 - [ ] Architecture Decision Records (ADR) 📋
 - [ ] API Documentation (Swagger/OpenAPI) 📖
@@ -688,10 +729,10 @@ B --> H[Node.js, Python, Java, Go, C#, Ruby]
 - [ ] System Design Overview 🏗️
 - [ ] Security Policy 🔒
 
-### ADR Template
+### **ADR Template**
 
-// Example demonstrating Backend System Design.
 ```markdown
+# ADR-001: Choose PostgreSQL over MongoDB
 
 ## Context
 
@@ -716,9 +757,12 @@ Accepted
 - Cassandra: Better for write-heavy workloads
 ```
 
-### Event Sourcing & CQRS
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🔥 **20. Advanced Patterns**
+
+### **Event Sourcing & CQRS**
+
 ```mermaid
 graph TD
     A[Command] --> B[Event Store]
@@ -726,14 +770,14 @@ graph TD
     C --> D[Read Model]
     C --> E[Write Model]
 
-D --> F[Query]
+    D --> F[Query]
     E --> G[Command]
 
-H[User] --> A
+    H[User] --> A
     H --> F
 ```
 
-### Distributed Transactions
+### **Distributed Transactions**
 
 | Pattern    | Description               | Use When                      |
 | ---------- | ------------------------- | ----------------------------- |
@@ -742,9 +786,8 @@ H[User] --> A
 | **TCC**    | Try-Confirm-Cancel        | Complex business logic        |
 | **Outbox** | Reliable messaging        | Guaranteed delivery           |
 
-### Idempotency Patterns
+### **Idempotency Patterns**
 
-// Example demonstrating Backend System Design.
 ```
 🔁 Idempotency Key: Unique request ID
 🔁 Check-Then-Act: Check if already processed
@@ -753,9 +796,12 @@ H[User] --> A
 🔁 Timeline: Store operation timestamps
 ```
 
-### Estimation Formulas
+---
 
-// Example demonstrating Backend System Design.
+## 📊 **21. Capacity Planning**
+
+### **Estimation Formulas**
+
 ```
 📐 Users: DAU × Requests per user × 20% peak
 📐 Storage: Users × Data per user × Retention period
@@ -765,7 +811,7 @@ H[User] --> A
 📐 Database connections: Pools = CPUs × 2
 ```
 
-### Sizing Guide
+### **Sizing Guide**
 
 | Component    | Rule of Thumb                    |
 | ------------ | -------------------------------- |
@@ -776,9 +822,12 @@ H[User] --> A
 | **Disk**     | SSD for DB, HDD for logs/backups |
 | **CPU**      | 70% max utilization              |
 
-### System Design Interview Framework
+---
 
-<!-- Visual flow for Backend System Design. -->
+## 🧠 **22. Interview Tips**
+
+### **System Design Interview Framework**
+
 ```mermaid
 graph TD
     A[1. Requirements] --> B[2. Estimations]
@@ -790,9 +839,8 @@ graph TD
     G --> H[8. Summary]
 ```
 
-### Common Questions Checklist
+### **Common Questions Checklist**
 
-// Example demonstrating Backend System Design.
 ```
 ✅ Functional requirements (features)
 ✅ Non-functional requirements (SLA, performance)
@@ -808,7 +856,11 @@ graph TD
 ✅ Security (auth, encryption)
 ```
 
-### Before Going Live
+---
+
+## 🎯 **23. Final Checklist**
+
+### **Before Going Live**
 
 - [ ] Load testing complete 🔥
 - [ ] Security audit done 🛡️
@@ -825,20 +877,13 @@ graph TD
 - [ ] Health checks implemented 💚
 - [ ] Rollback plan ready ↩️
 
-## 🎓 Pro Tips
+---
 
-> 💡 **"Design for failure and it won't fail"** – Michael Nygard
-> 📊 **"Optimize for the 90th percentile, not the average"**
-> 🔄 **"If it hurts, do it more often"** – Continuous Deployment
-> 📈 **"Measure everything, trust nothing"**
-> 🧩 **"Make it scalable before you make it fast"**
+## 🎓 **Pro Tips**
+
+> 💡 **"Design for failure and it won't fail"** – Michael Nygard  
+> 📊 **"Optimize for the 90th percentile, not the average"**  
+> 🔄 **"If it hurts, do it more often"** – Continuous Deployment  
+> 📈 **"Measure everything, trust nothing"**  
+> 🧩 **"Make it scalable before you make it fast"**  
 > 🔐 **"Security is not a feature, it's a requirement"**
-
-## Quick Reference
-
-| Area | Revision point |
-|---|---|
-| Definition | State exactly what the topic means. |
-| Mechanism | Explain the steps that produce the result. |
-| Example | Use a small realistic case. |
-| Pitfalls | Know common mistakes and boundary cases. |

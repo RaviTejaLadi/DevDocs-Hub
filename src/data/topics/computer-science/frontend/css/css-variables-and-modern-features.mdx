@@ -1,4 +1,4 @@
-# CSS Variables & Modern Features
+# 💡 CSS Variables & Modern Features
 
 Modern CSS has evolved significantly. Features like **CSS Variables**,
 **Container Queries**, **Logical Properties**, **Nesting**, and **Modern Color
@@ -7,7 +7,7 @@ stylesheets.
 
 ---
 
-## Why Modern CSS Matters
+# 🎯 Why Modern CSS Matters
 
 Older CSS often led to:
 
@@ -21,22 +21,23 @@ Older CSS often led to:
 
 Modern CSS solves these problems.
 
-<!-- Visual flow for CSS Variables & Modern Features. -->
 ```mermaid
 flowchart LR
 
-Old["Traditional CSS"]
+    Old["Traditional CSS"]
 
-Modern["Modern CSS"]
+    Modern["Modern CSS"]
 
-Old --> Modern
+    Old --> Modern
 
-Modern --> Theme["Themes"]
+    Modern --> Theme["Themes"]
     Modern --> Responsive["Responsive UI"]
     Modern --> Maintainable["Maintainable Code"]
 ```
 
-## CSS Variables (Custom Properties)
+---
+
+# 🎨 CSS Variables (Custom Properties)
 
 CSS Variables allow you to store reusable values.
 
@@ -44,7 +45,6 @@ Instead of repeating values:
 
 ❌
 
-/* Basic example showing the core idea. */
 ```css
 .button {
   background: #2563eb;
@@ -59,9 +59,10 @@ Instead of repeating values:
 }
 ```
 
+---
+
 ✅
 
-/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -80,20 +81,26 @@ Instead of repeating values:
 }
 ```
 
-## Variable Structure
+---
 
-Variable["--primary-color"]
+# 🧠 Variable Structure
 
-Value["#2563eb"]
+```mermaid
+flowchart LR
 
-Usage["var(--primary-color)"]
+    Variable["--primary-color"]
 
-Variable --> Value
+    Value["#2563eb"]
+
+    Usage["var(--primary-color)"]
+
+    Variable --> Value
     Variable --> Usage
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
-## 🌍 Global Variables
+---
+
+# 🌍 Global Variables
 
 Store variables in `:root`.
 
@@ -103,12 +110,13 @@ Store variables in `:root`.
   --secondary: #10b981;
   --danger: #ef4444;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Available everywhere.
 
-## Component Variables
+---
+
+# 📦 Component Variables
 
 Variables can be scoped.
 
@@ -116,34 +124,37 @@ Variables can be scoped.
 .card {
   --card-padding: 20px;
 
-padding: var(--card-padding);
+  padding: var(--card-padding);
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Only available inside `.card`.
 
-## Fallback Values
+---
+
+# 🎯 Fallback Values
 
 Useful when a variable doesn't exist.
 
 ```css
 color: var(--text-color, black);
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 If `--text-color` is missing:
 
 ```text
 black
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 will be used.
 
-## 🌙 Theme Switching
+---
+
+# 🌙 Theme Switching
 
 One of the most common use cases.
+
+---
 
 ## Light Theme
 
@@ -152,8 +163,9 @@ One of the most common use cases.
   --bg: white;
   --text: black;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Dark Theme
 
@@ -162,8 +174,9 @@ One of the most common use cases.
   --bg: #121212;
   --text: white;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Usage
 
@@ -172,35 +185,41 @@ body {
   background: var(--bg);
   color: var(--text);
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Theme Flow
 
-Theme["Theme"]
+```mermaid
+flowchart LR
 
-Light["Light Mode"]
+    Theme["Theme"]
 
-Dark["Dark Mode"]
+    Light["Light Mode"]
 
-Theme --> Light
+    Dark["Dark Mode"]
+
+    Theme --> Light
     Theme --> Dark
 ```
 
-## calc()
+---
+
+# 🎯 calc()
 
 Perform calculations in CSS.
 
-/* Basic example showing the core idea. */
 ```css
 .container {
   width: calc(100% - 40px);
 }
 ```
 
+---
+
 ## Example
 
-/* Basic example showing the core idea. */
 ```css
 .sidebar {
   width: 250px;
@@ -211,26 +230,33 @@ Perform calculations in CSS.
 }
 ```
 
+---
+
 ## Calculation Flow
 
-Full["100% Width"]
+```mermaid
+flowchart LR
 
-Minus["-250px"]
+    Full["100% Width"]
 
-Result["Remaining Width"]
+    Minus["-250px"]
 
-Full --> Minus --> Result
-// Example demonstrating CSS Variables & Modern Features.
+    Result["Remaining Width"]
+
+    Full --> Minus --> Result
 ```
 
-## clamp()
+---
+
+# 🎯 clamp()
 
 Responsive sizing made easy.
 
 ```css
 font-size: clamp(1rem, 3vw, 2rem);
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Structure
 
@@ -240,29 +266,36 @@ clamp(
   preferred,
   maximum
 )
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Visualization
 
-Min["1rem"]
+```mermaid
+flowchart LR
 
-Preferred["3vw"]
+    Min["1rem"]
 
-Max["2rem"]
+    Preferred["3vw"]
 
-Min --> Preferred --> Max
+    Max["2rem"]
+
+    Min --> Preferred --> Max
 ```
 
-## 📱 Container Queries
+---
+
+# 📱 Container Queries
 
 Media Queries react to screen size.
 
 Container Queries react to parent size.
 
+---
+
 ## Traditional Media Query
 
-/* Basic example showing the core idea. */
 ```css
 @media (min-width: 768px) {
   .card {
@@ -271,9 +304,10 @@ Container Queries react to parent size.
 }
 ```
 
+---
+
 ## Container Query
 
-/* Basic example showing the core idea. */
 ```css
 .card-wrapper {
   container-type: inline-size;
@@ -286,28 +320,32 @@ Container Queries react to parent size.
 }
 ```
 
+---
+
 ## Container Query Concept
 
-<!-- Visual flow for CSS Variables & Modern Features. -->
 ```mermaid
 flowchart TB
 
-Parent["Parent Container"]
+    Parent["Parent Container"]
 
-Child["Component"]
+    Child["Component"]
 
-Parent --> Child
+    Parent --> Child
 
-Child --> Responsive["Responds To Parent Width"]
+    Child --> Responsive["Responds To Parent Width"]
 ```
 
-## CSS Nesting
+---
+
+# 🎯 CSS Nesting
 
 Modern CSS now supports nesting.
 
+---
+
 ## Before
 
-/* Basic example showing the core idea. */
 ```css
 .card {
 }
@@ -319,50 +357,59 @@ Modern CSS now supports nesting.
 }
 ```
 
+---
+
 ## After
 
-/* Basic example showing the core idea. */
 ```css
 .card {
   .title {
     font-size: 20px;
   }
 
-.button {
+  .button {
     background: blue;
   }
 }
 ```
 
+---
+
 ## Nesting Structure
 
-Card[".card"]
+```mermaid
+flowchart TB
 
-Title[".title"]
+    Card[".card"]
 
-Button[".button"]
+    Title[".title"]
 
-Card --> Title
+    Button[".button"]
+
+    Card --> Title
     Card --> Button
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
-## 🌍 Logical Properties
+---
+
+# 🌍 Logical Properties
 
 Traditional properties assume left-to-right layouts.
+
+---
 
 ## Traditional
 
 ```css
 margin-left: 20px;
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Logical Property
 
 ```css
 margin-inline-start: 20px;
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Automatically adapts for:
@@ -372,7 +419,9 @@ Automatically adapts for:
 - Hebrew
 - Japanese
 
-## Logical Property Examples
+---
+
+# Logical Property Examples
 
 | Traditional  | Logical              |
 | ------------ | -------------------- |
@@ -382,67 +431,84 @@ Automatically adapts for:
 | width        | inline-size          |
 | height       | block-size           |
 
-## Modern Color Functions
+---
+
+# 🎨 Modern Color Functions
 
 CSS now supports advanced color systems.
 
-## rgb()
+---
+
+# rgb()
 
 ```css
 color: rgb(255 0 0);
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Modern syntax:
 
 ```css
 color: rgb(255 0 0 / 50%);
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
-## hsl()
+---
+
+# hsl()
 
 ```css
 color: hsl(220deg 90% 56%);
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## HSL Structure
 
-H["Hue"]
+```mermaid
+flowchart LR
 
-S["Saturation"]
+    H["Hue"]
 
-L["Lightness"]
+    S["Saturation"]
 
-H --> S --> L
+    L["Lightness"]
+
+    H --> S --> L
 ```
 
-## color-mix()
+---
+
+# color-mix()
 
 Mix colors directly in CSS.
 
-/* Basic example showing the core idea. */
 ```css
 background: color-mix(in srgb, blue 70%, white 30%);
 ```
 
+---
+
 ## Mixing Concept
 
-Blue["Blue"]
+```mermaid
+flowchart LR
 
-White["White"]
+    Blue["Blue"]
 
-Result["Mixed Color"]
+    White["White"]
 
-Blue --> Result
+    Result["Mixed Color"]
+
+    Blue --> Result
     White --> Result
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
-## aspect-ratio
+---
+
+# 🎯 aspect-ratio
 
 Maintain proportions automatically.
+
+---
 
 ## Square
 
@@ -450,8 +516,9 @@ Maintain proportions automatically.
 .card {
   aspect-ratio: 1;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Video
 
@@ -459,23 +526,34 @@ Maintain proportions automatically.
 .video {
   aspect-ratio: 16 / 9;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
-Square["1:1"]
+---
 
-Wide["16:9"]
+## Visualization
 
-Portrait["9:16"]
+```mermaid
+flowchart LR
 
-Square --> Wide --> Portrait
+    Square["1:1"]
+
+    Wide["16:9"]
+
+    Portrait["9:16"]
+
+    Square --> Wide --> Portrait
 ```
 
-## :is()
+---
+
+# 🎯 :is()
 
 Reduce selector repetition.
 
-/* Basic example showing the core idea. */
+---
+
+❌
+
 ```css
 h1,
 h2,
@@ -484,18 +562,22 @@ h3 {
 }
 ```
 
-/* Basic example showing the core idea. */
+---
+
+✅
+
 ```css
 :is(h1, h2, h3) {
   color: navy;
 }
 ```
 
-## :where()
+---
+
+# 🎯 :where()
 
 Like `:is()` but adds zero specificity.
 
-/* Basic example showing the core idea. */
 ```css
 :where(.card .title) {
   margin: 0;
@@ -504,30 +586,37 @@ Like `:is()` but adds zero specificity.
 
 Great for large projects.
 
-## :has()
+---
+
+# 🎯 :has()
 
 The long-awaited parent selector.
 
-/* Basic example showing the core idea. */
 ```css
 .card:has(img) {
   padding: 20px;
 }
 ```
 
+---
+
 ## Concept
 
-Card["Card"]
+```mermaid
+flowchart TB
 
-Image["Contains Image"]
+    Card["Card"]
 
-Style["Apply Styles"]
+    Image["Contains Image"]
 
-Card --> Image --> Style
-// Example demonstrating CSS Variables & Modern Features.
+    Style["Apply Styles"]
+
+    Card --> Image --> Style
 ```
 
-## Scroll-Driven Animations (Modern)
+---
+
+# 🎯 Scroll-Driven Animations (Modern)
 
 Animate based on scrolling.
 
@@ -535,12 +624,13 @@ Animate based on scrolling.
 .progress {
   animation-timeline: scroll();
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Creates advanced scroll effects without JavaScript.
 
-## Accent Color
+---
+
+# 🎯 Accent Color
 
 Style form controls easily.
 
@@ -548,7 +638,6 @@ Style form controls easily.
 input {
   accent-color: #2563eb;
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Changes:
@@ -559,7 +648,9 @@ Changes:
 
 ✅ Range slider color
 
-## Backdrop Filter
+---
+
+# 🎯 Backdrop Filter
 
 Creates glassmorphism effects.
 
@@ -567,23 +658,28 @@ Creates glassmorphism effects.
 .glass {
   backdrop-filter: blur(15px);
 }
-// Example demonstrating CSS Variables & Modern Features.
 ```
+
+---
 
 ## Glassmorphism Flow
 
-Background["Background"]
+```mermaid
+flowchart LR
 
-Blur["Backdrop Blur"]
+    Background["Background"]
 
-Glass["Glass Effect"]
+    Blur["Backdrop Blur"]
 
-Background --> Blur --> Glass
+    Glass["Glass Effect"]
+
+    Background --> Blur --> Glass
 ```
 
-## Modern Responsive Card Example
+---
 
-/* Basic example showing the core idea. */
+# 🚀 Modern Responsive Card Example
+
 ```css
 :root {
   --card-padding: 1rem;
@@ -593,11 +689,11 @@ Background --> Blur --> Glass
 .card {
   padding: var(--card-padding);
 
-border-radius: var(--card-radius);
+  border-radius: var(--card-radius);
 
-width: clamp(250px, 50vw, 400px);
+  width: clamp(250px, 50vw, 400px);
 
-aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 3;
 }
 ```
 
@@ -607,18 +703,28 @@ Combines:
 - Clamp
 - Aspect Ratio
 
+---
+
+# ⚠️ Common Mistakes
+
+---
+
 ## Overusing Variables
 
-/* Basic example showing the core idea. */
+❌
+
 ```css
 --margin-small: 3px;
 ```
 
 Not every value needs a variable.
 
+---
+
 ## Deep Nesting
 
-/* Basic example showing the core idea. */
+❌
+
 ```css
 .card {
   .header {
@@ -632,6 +738,8 @@ Not every value needs a variable.
 
 Hard to maintain.
 
+---
+
 ## Ignoring Browser Support
 
 Always verify support for:
@@ -640,9 +748,10 @@ Always verify support for:
 - :has()
 - New Color Functions
 
-## Quick Cheat Sheet
+---
 
-/* Basic example showing the core idea. */
+# 🧠 Quick Cheat Sheet
+
 ```css
 :root {
   --primary: #2563eb;
@@ -672,7 +781,9 @@ backdrop-filter: blur(10px);
 accent-color: #2563eb;
 ```
 
-## ✅ Best Practices
+---
+
+# ✅ Best Practices
 
 - Store design tokens in CSS variables.
 - Use `clamp()` for responsive typography.
@@ -682,7 +793,9 @@ accent-color: #2563eb;
 - Leverage modern selectors like `:is()` and `:has()`.
 - Test browser support for newer features.
 
-## Key Takeaways
+---
+
+# 🚀 Key Takeaways
 
 - CSS Variables make styles reusable and maintainable.
 - `calc()` and `clamp()` simplify responsive sizing.
