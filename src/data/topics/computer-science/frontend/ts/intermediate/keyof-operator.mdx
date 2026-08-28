@@ -6,6 +6,7 @@
 
 ## Example
 
+// Example demonstrating keyof Operator.
 ```ts
 type User = { name: string; age: number };
 type UserKeys = keyof User; // "name" | "age"
@@ -15,6 +16,7 @@ type UserKeys = keyof User; // "name" | "age"
 
 Often used with generics to build safe access helpers.
 
+// Example demonstrating keyof Operator.
 ```ts
 function getValue<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];

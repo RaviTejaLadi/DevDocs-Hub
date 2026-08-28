@@ -63,6 +63,7 @@ Store reusable values in one place.
 
 ## Good
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -99,6 +100,7 @@ Classes are reusable and have lower specificity.
 
 ## Avoid
 
+/* Basic example showing the core idea. */
 ```css
 #header {
   background: black;
@@ -107,6 +109,7 @@ Classes are reusable and have lower specificity.
 
 ## Prefer
 
+/* Basic example showing the core idea. */
 ```css
 .header {
   background: black;
@@ -126,21 +129,23 @@ Inline["Inline (1000)"]
 Element --> Class
     Class --> ID
     ID --> Inline
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## Keep Selectors Simple
 
 ```css
 .sidebar ul li a span {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ```css
 .sidebar-link {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Selector Comparison
@@ -158,13 +163,13 @@ Deep --> Complex
 Simple --> Easy
 ```
 
-```
 ## 📱 Design Mobile First
 
 Start with mobile styles and enhance for larger screens.
 
 ## Mobile First Example
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 100%;
@@ -186,9 +191,9 @@ Tablet["📲 Tablet"]
 Desktop["🖥️ Desktop"]
 
 Mobile --> Tablet --> Desktop
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## Use Flexbox and Grid
 
 Modern layouts should use:
@@ -203,6 +208,7 @@ Modern layouts should use:
 .container {
   display: flex;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Grid
@@ -211,6 +217,7 @@ Modern layouts should use:
 .container {
   display: grid;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Layout Evolution
@@ -224,15 +231,16 @@ Grid["Grid"]
 Float --> Flex --> Grid
 ```
 
-```
 ## Use Gap Instead of Margins
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   margin-right: 20px;
 }
 ```
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -249,9 +257,9 @@ Gap["Gap"]
 Margin --> Problems["Layout Problems"]
 
 Gap --> Clean["Cleaner Layout"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## Organize CSS Properly
 
 Use a predictable folder structure.
@@ -265,6 +273,7 @@ styles/
 ├── utilities/
 ├── pages/
 └── main.css
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Architecture Flow
@@ -285,13 +294,13 @@ Base --> Layout
     Utilities --> Pages
 ```
 
-```
 ## Follow a Naming Convention
 
 Popular choice:
 
 ### BEM
 
+/* Basic example showing the core idea. */
 ```css
 .card {
 }
@@ -313,21 +322,23 @@ Modifier["Modifier"]
 
 Block --> Element
     Block --> Modifier
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## 🚫 Avoid !important
 
 ```css
 .button {
   color: red !important;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ```css
 .button--danger {
   color: red;
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Specificity Wars
@@ -341,13 +352,14 @@ Chaos["Maintenance Chaos"]
 Important --> More --> Chaos
 ```
 
-```
 ## Use Relative Units
 
+/* Basic example showing the core idea. */
 ```css
 font-size: 32px;
 ```
 
+/* Basic example showing the core idea. */
 ```css
 font-size: 2rem;
 ```
@@ -360,9 +372,9 @@ Scaling["Better Scaling"]
 
 Rem --> Accessibility
     Rem --> Scaling
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## Optimize Animations
 
 Animate:
@@ -395,9 +407,9 @@ Transform --> GPU
     Width --> Layout
 ```
 
-```
 ## Keep Nesting Shallow
 
+// Example demonstrating ✅ CSS Best Practices.
 ```scss
 .card {
   .header {
@@ -411,6 +423,7 @@ Transform --> GPU
 
 ## Better
 
+// Example demonstrating ✅ CSS Best Practices.
 ```scss
 .card {
   .title {
@@ -427,9 +440,9 @@ Bad["Deep Nesting"]
 Good --> Maintainable["Maintainable"]
 
 Bad --> Complex["Complex CSS"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## Build Reusable Components
 
 Instead of:
@@ -443,6 +456,7 @@ Instead of:
 
 .button-success {
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 Create:
@@ -459,6 +473,7 @@ Create:
 
 .button--success {
 }
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
 ## Component Flow
@@ -472,15 +487,16 @@ Reusable["Reusable UI"]
 Base --> Variants --> Reusable
 ```
 
-```
 ## Bad
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 1200px;
 }
 ```
 
+/* Basic example showing the core idea. */
 ```css
 .layout {
   max-width: 1200px;
@@ -513,12 +529,14 @@ Desktop
 
 Always maintain focus indicators.
 
+/* Basic example showing the core idea. */
 ```css
 button:focus {
   outline: none;
 }
 ```
 
+/* Basic example showing the core idea. */
 ```css
 button:focus {
   outline: 2px solid blue;
@@ -534,9 +552,9 @@ Focus["Visible Focus"]
 Accessibility["Accessible Interface"]
 
 Keyboard --> Focus --> Accessibility
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ## 🧹 Remove Unused CSS
 
 Unused CSS increases bundle size.
@@ -560,7 +578,6 @@ Small["Optimized CSS"]
 Large --> Remove --> Minify --> Small
 ```
 
-```
 ## Use Modern CSS Features
 
 Prefer modern solutions.
@@ -585,9 +602,9 @@ Old --> Modern
 Modern --> Grid
     Modern --> Variables
     Modern --> ContainerQueries["Container Queries"]
+// Example demonstrating ✅ CSS Best Practices.
 ```
 
-```
 ### Architecture
 
 ✅ Organize CSS files
@@ -652,6 +669,4 @@ Visual["Visual Design"]
 Quality["Quality & Best Practices"]
 
 Basics --> Layout --> Visual --> Modern --> Quality
-```
-
 ```

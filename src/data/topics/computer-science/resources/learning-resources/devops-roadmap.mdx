@@ -87,7 +87,6 @@ graph LR
     MultiStage --> OCI[Minimal Distroless Image]
     OCI --> Registry[Secure Container Registry]
 
-```
 ## 🧱 Week 5-6: Infrastructure as Code (IaC) & GitOps Declarative Patterns
 
 Treating infrastructure identical to application code—version-controlled,
@@ -123,7 +122,6 @@ graph TD
     Service --> Pod1[Pod: Container A]
     Service --> Pod2[Pod: Container B]
 
-```
 ### Core Architecture Elements
 
 - **Control Plane vs. Node Internals:** How `etcd`, `kube-apiserver`,
@@ -180,7 +178,6 @@ graph TD
     OTel -->|Metrics| Prom[Prometheus Server]
     OTel -->|Traces| Tempo[Jaeger / Tempo]
 
-```
 ### ☁ Cloud Architectures (AWS / GCP / Azure)
 
 - **Core Compute Foundations:** Virtual Machines (EC2), Managed Kubernetes

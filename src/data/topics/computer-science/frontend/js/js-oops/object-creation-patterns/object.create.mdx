@@ -20,6 +20,7 @@ working with inheritance.
 
 ## 🧱 Syntax / Structure
 
+// Basic example showing the core idea.
 ```javascript
 Object.create(proto, propertiesObject?)
 ```
@@ -30,6 +31,7 @@ Object.create(proto, propertiesObject?)
 
 ### ⚙ Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 const animal = {
   sound: 'Roar',
@@ -49,6 +51,7 @@ lion.speak(); // Grrr
 
 **Scenario**: Reusing behavior across similar objects, like a user role system.
 
+// Basic example showing the core idea.
 ```javascript
 const user = {
   login() {
@@ -80,6 +83,7 @@ Use `Object.create()` when you:
 
 🔸 **Avoid null prototypes unless needed**
 
+// Basic example showing the core idea.
 ```javascript
 Object.create(null); // Creates an object with no prototype (no toString, etc.)
 ```

@@ -32,6 +32,7 @@ Instead, operations on strings create new string values.
 
 ## Syntax/Implementation 💻
 
+// Basic example showing the core idea.
 ```javascript
 // String creation methods
 let str1 = 'Hello World'; // String literal (most common)
@@ -86,6 +87,7 @@ remain unchanged.
 
 ## Code Example 🛠
 
+// Basic example showing the core idea.
 ```javascript
 // String creation and basic operations
 let firstName = 'John';
@@ -147,6 +149,7 @@ console.log(validateEmail('invalid-email')); // false
 
 ### 1. Thinking Strings are Mutable 🚫
 
+// Basic example showing the core idea.
 ```javascript
 // WRONG ASSUMPTION
 let str = 'Hello';
@@ -161,6 +164,7 @@ console.log(str); // "hello"
 
 ### 2. Confusing `==` vs `===` with Strings 🚫
 
+// Basic example showing the core idea.
 ```javascript
 let num = 42;
 let str = '42';
@@ -173,6 +177,7 @@ console.log(num === str); // false (strict comparison)
 
 ### 3. Inefficient String Concatenation in Loops 🚫
 
+// Basic example showing the core idea.
 ```javascript
 // INEFFICIENT
 let result = '';
@@ -190,6 +195,7 @@ let result = parts.join(''); // Single concatenation
 
 ### 4. Forgetting String Methods Return New Strings 🚫
 
+// Basic example showing the core idea.
 ```javascript
 let text = 'hello world';
 text.toUpperCase(); // Method called but result ignored
@@ -203,6 +209,7 @@ console.log(upperText); // "HELLO WORLD"
 
 ### 5. Index Out of Bounds 🚫
 
+// Basic example showing the core idea.
 ```javascript
 let str = 'Hello';
 console.log(str[10]); // undefined (no error thrown)
@@ -215,6 +222,7 @@ if (index >= 0 && index < str.length) {
 
 ### 6. Template Literal Syntax Errors 🚫
 
+// Basic example showing the core idea.
 ```javascript
 // WRONG - Using single/double quotes
 let name = 'Alice';

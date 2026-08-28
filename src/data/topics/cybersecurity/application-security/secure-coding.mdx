@@ -167,6 +167,7 @@ database query string. The definitive solution is to use parameterized queries
 
 **Vulnerable Example (Node.js/PostgreSQL):**
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ DANGEROUS: String concatenation allows SQL injection
 const username = req.body.user;
@@ -181,6 +182,7 @@ username = 'admin' --'`, bypassing authentication.\*
 
 **Secure Example (Parameterized Query):**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ SECURE: Parameterization separates code from data
 const username = req.body.user;

@@ -26,6 +26,7 @@ up resources, and optimize performance.
 
 ### Lifecycle Flow Diagram
 
+// Example demonstrating React Component Lifecycle Guide.
 ```
 Mounting → Updating → Unmounting
     ↓         ↓          ↓
@@ -47,6 +48,7 @@ used for initializing state and binding methods.
 
 **Syntax**:
 
+// Basic example showing the core idea.
 ```javascript
 constructor(props) {
   super(props);
@@ -63,6 +65,7 @@ constructor(props) {
 
 **Example**:
 
+// Basic example showing the core idea.
 ```javascript
 class MyComponent extends React.Component {
   constructor(props) {
@@ -94,6 +97,7 @@ render() {
 **Definition**: The render method is required and returns the JSX that
 represents the component's UI.
 
+// Basic example showing the core idea.
 ```javascript
 render() {
   return (
@@ -106,6 +110,7 @@ render() {
 - Should not modify component state
 - Returns JSX, null, or false
 
+// Basic example showing the core idea.
 ```javascript
 render() {
   const { isLoading } = this.state;
@@ -128,6 +133,7 @@ return (
 **Definition**: Called immediately after the component is mounted. Perfect for
 side effects and API calls.
 
+// Basic example showing the core idea.
 ```javascript
 componentDidMount() {
   // Side effects code here
@@ -139,6 +145,7 @@ componentDidMount() {
 - DOM manipulation
 - Starting timers
 
+// Basic example showing the core idea.
 ```javascript
 class UserProfile extends React.Component {
   constructor(props) {
@@ -205,6 +212,7 @@ Components update when props or state changes occur.
 **Definition**: Called immediately after the component updates. Useful for side
 effects based on prop/state changes.
 
+// Basic example showing the core idea.
 ```javascript
 componentDidUpdate(prevProps, prevState, snapshot) {
   // Code to run after update
@@ -221,6 +229,7 @@ componentDidUpdate(prevProps, prevState, snapshot) {
 - DOM operations after update
 - Comparing previous and current props/state
 
+// Basic example showing the core idea.
 ```javascript
 class SearchResults extends React.Component {
   constructor(props) {
@@ -285,6 +294,7 @@ return (
 **Definition**: Called right before the DOM is updated. Captures information
 from the DOM before it changes.
 
+// Basic example showing the core idea.
 ```javascript
 getSnapshotBeforeUpdate(prevProps, prevState) {
   // Return snapshot value or null
@@ -295,6 +305,7 @@ getSnapshotBeforeUpdate(prevProps, prevState) {
 - Measure DOM elements before update
 - Pass data to componentDidUpdate
 
+// Basic example showing the core idea.
 ```javascript
 class ChatWindow extends React.Component {
   constructor(props) {
@@ -339,6 +350,7 @@ render() {
 **Definition**: Called immediately before a component is unmounted and
 destroyed. Used for cleanup.
 
+// Basic example showing the core idea.
 ```javascript
 componentWillUnmount() {
   // Cleanup code here
@@ -350,6 +362,7 @@ componentWillUnmount() {
 - Remove event listeners
 - Clean up subscriptions
 
+// Basic example showing the core idea.
 ```javascript
 class Timer extends React.Component {
   constructor(props) {
@@ -409,6 +422,7 @@ render() {
 **Definition**: Called when an error occurs during rendering, in lifecycle
 methods, or in constructors of child components.
 
+// Basic example showing the core idea.
 ```javascript
 componentDidCatch(error, errorInfo) {
   // Handle error
@@ -419,6 +433,7 @@ componentDidCatch(error, errorInfo) {
 - Display fallback UI
 - Report errors to error tracking services
 
+// Basic example showing the core idea.
 ```javascript
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -478,6 +493,7 @@ Modern React uses hooks to handle lifecycle events in function components:
 
 **useState**: Replaces constructor and state management
 
+// Basic example showing the core idea.
 ```javascript
 const [count, setCount] = useState(0);
 ```
@@ -485,6 +501,7 @@ const [count, setCount] = useState(0);
 **useEffect**: Replaces componentDidMount, componentDidUpdate, and
 componentWillUnmount
 
+// Basic example showing the core idea.
 ```javascript
 function MyComponent() {
   const [data, setData] = useState(null);
@@ -518,6 +535,7 @@ return <div>{data ? data.name : 'Loading...'}</div>;
 
 **Class Component**:
 
+// Basic example showing the core idea.
 ```javascript
 class UserProfile extends React.Component {
   constructor(props) {
@@ -551,6 +569,7 @@ render() {
 
 **Function Component with Hooks**:
 
+// Basic example showing the core idea.
 ```javascript
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
@@ -575,6 +594,7 @@ if (loading) return <div>Loading...</div>;
 
 Always clean up resources to prevent memory leaks:
 
+// Basic example showing the core idea.
 ```javascript
 componentDidMount() {
   this.timer = setInterval(this.tick, 1000);
@@ -591,6 +611,7 @@ componentWillUnmount() {
 
 Always check if props/state actually changed:
 
+// Basic example showing the core idea.
 ```javascript
 componentDidUpdate(prevProps, prevState) {
   if (prevProps.userId !== this.props.userId) {
@@ -607,6 +628,7 @@ if (prevState.searchTerm !== this.state.searchTerm) {
 
 Wrap components that might fail:
 
+// Basic example showing the core idea.
 ```javascript
 <ErrorBoundary>
   <UserProfile userId={userId} />
@@ -617,6 +639,7 @@ Wrap components that might fail:
 
 Keep render method pure:
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Wrong
 render() {
@@ -636,6 +659,7 @@ render() {
 
 ### 1. Data Fetching Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class DataComponent extends React.Component {
   constructor(props) {
@@ -671,6 +695,7 @@ return <div>{/* Render data */}</div>;
 
 ### 2. Subscription Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class SubscriptionComponent extends React.Component {
   constructor(props) {
@@ -707,6 +732,7 @@ render() {
 
 ### 3. Timer Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class TimerComponent extends React.Component {
   constructor(props) {

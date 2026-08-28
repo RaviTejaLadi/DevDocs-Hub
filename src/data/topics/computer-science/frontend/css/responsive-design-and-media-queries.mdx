@@ -59,6 +59,7 @@ Benefits:
 
 The first step of responsive design.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <!-- Responsive viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,6 +88,7 @@ Without this tag:
 
 Media Queries allow CSS to apply different styles based on screen size.
 
+/* Basic example showing the core idea. */
 ```css
 /* Media Query Example */
 @media (max-width: 768px) {
@@ -131,6 +133,7 @@ Mobile --> Tablet --> Desktop
 
 ## Example
 
+/* Basic example showing the core idea. */
 ```css
 /* Mobile styles */
 .card {
@@ -156,6 +159,7 @@ Mobile --> Tablet --> Desktop
 
 Applies styles below a certain size.
 
+/* Basic example showing the core idea. */
 ```css
 @media (max-width: 768px) {
   body {
@@ -166,6 +170,7 @@ Applies styles below a certain size.
 
 Meaning:
 
+// Example demonstrating 📱 Responsive Design & Media Queries.
 ```text
 768px and below
 ```
@@ -174,6 +179,7 @@ Meaning:
 
 Applies styles above a size.
 
+/* Basic example showing the core idea. */
 ```css
 @media (min-width: 768px) {
   body {
@@ -182,6 +188,7 @@ Applies styles above a size.
 }
 ```
 
+// Example demonstrating 📱 Responsive Design & Media Queries.
 ```text
 768px and above
 ```
@@ -192,6 +199,7 @@ Avoid fixed widths.
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   width: 1200px;
@@ -200,6 +208,7 @@ Avoid fixed widths.
 
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   width: 100%;
@@ -212,6 +221,7 @@ Avoid fixed widths.
 
 Images should scale automatically.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   max-width: 100%;
@@ -239,6 +249,7 @@ Resize --> Mobile
 
 ## 🔲 Responsive Flexbox Layout
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -275,6 +286,7 @@ A --- B --- C
 
 The most common modern pattern.
 
+/* Basic example showing the core idea. */
 ```css
 .products {
   display: grid;
@@ -304,6 +316,7 @@ Detect portrait and landscape mode.
 
 ## Portrait
 
+/* Basic example showing the core idea. */
 ```css
 @media (orientation: portrait) {
   body {
@@ -314,6 +327,7 @@ Detect portrait and landscape mode.
 
 ## Landscape
 
+/* Basic example showing the core idea. */
 ```css
 @media (orientation: landscape) {
   body {
@@ -326,6 +340,7 @@ Detect portrait and landscape mode.
 
 Modern browsers support color scheme detection.
 
+/* Basic example showing the core idea. */
 ```css
 @media (prefers-color-scheme: dark) {
   body {
@@ -354,12 +369,14 @@ User --> Dark
 
 Avoid fixed font sizes.
 
+/* Basic example showing the core idea. */
 ```css
 h1 {
   font-size: 40px;
 }
 ```
 
+/* Basic example showing the core idea. */
 ```css
 h1 {
   font-size: clamp(2rem, 5vw, 4rem);
@@ -368,6 +385,7 @@ h1 {
 
 ## Understanding clamp()
 
+/* Basic example showing the core idea. */
 ```css
 clamp(
   minimum,
@@ -378,12 +396,14 @@ clamp(
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 font-size: clamp(1rem, 3vw, 2rem);
 ```
 
 ## %
 
+/* Basic example showing the core idea. */
 ```css
 width: 50%;
 ```
@@ -394,6 +414,7 @@ Based on parent size.
 
 Viewport width.
 
+/* Basic example showing the core idea. */
 ```css
 width: 50vw;
 ```
@@ -404,6 +425,7 @@ width: 50vw;
 
 Viewport height.
 
+/* Basic example showing the core idea. */
 ```css
 height: 100vh;
 ```
@@ -414,6 +436,7 @@ Full screen height.
 
 Relative to root font size.
 
+/* Basic example showing the core idea. */
 ```css
 padding: 2rem;
 ```
@@ -422,6 +445,7 @@ Recommended for typography.
 
 ## Responsive Navigation Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <nav class="navbar">
   <div>Logo</div>
@@ -433,6 +457,7 @@ Recommended for typography.
 </nav>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 .navbar {
   display: flex;
@@ -442,6 +467,7 @@ Recommended for typography.
 
 ### Mobile Navigation
 
+/* Basic example showing the core idea. */
 ```css
 @media (max-width: 768px) {
   .navbar {
@@ -457,9 +483,9 @@ Desktop["Horizontal Menu"]
 Mobile["Vertical Menu"]
 
 Desktop --> Mobile
+// Example demonstrating 📱 Responsive Design & Media Queries.
 ```
 
-```
 ## Container Queries (Modern CSS)
 
 Media Queries respond to viewport size.
@@ -476,6 +502,7 @@ Container Queries respond to parent size.
     display: flex;
   }
 }
+// Example demonstrating 📱 Responsive Design & Media Queries.
 ```
 
 ## Container Query Concept
@@ -493,9 +520,9 @@ Child --> Note
 
 
 
-```
 ## Huge Images
 
+/* Basic example showing the core idea. */
 ```css
 img {
   width: 2000px;
@@ -504,6 +531,7 @@ img {
 
 ## Too Many Breakpoints
 
+/* Basic example showing the core idea. */
 ```css
 500px
 550px
@@ -522,6 +550,7 @@ Always test on mobile.
 
 ## Quick Cheat Sheet
 
+/* Basic example showing the core idea. */
 ```css
 /* Mobile First */
 @media (min-width: 768px) {

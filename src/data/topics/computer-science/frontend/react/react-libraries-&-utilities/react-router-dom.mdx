@@ -22,16 +22,16 @@ browser URL to be changed, and keeps the UI in sync with the URL.
 
 First, install the package:
 
+# Basic example showing the core idea.
 ```bash
 npm install react-router-dom
-```
 ## or
 yarn add react-router-dom
 ```
 
-```
 ### 2. Basic Setup
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // main.tsx or App.tsx
 import React from 'react';
@@ -66,6 +66,7 @@ createRoot(document.getElementById('root')!).render(
 
 #### 1. Basic Routing
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // App.tsx
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -90,6 +91,7 @@ function App() {
 
 #### 2. URL Parameters
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // App.tsx
 <Routes>
@@ -107,6 +109,7 @@ function UserProfile() {
 
 #### 1. Route Configuration File
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // routes.tsx
 import { RouteObject } from 'react-router-dom';
@@ -143,6 +146,7 @@ function App() {
 
 #### 2. Lazy Loading with Code Splitting
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // routes.tsx
 import { lazy, Suspense } from 'react';
@@ -174,6 +178,7 @@ const routes: RouteObject[] = [
 
 #### 3. Nested Routes with Layouts
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // routes.tsx
 const routes: RouteObject[] = [
@@ -199,6 +204,7 @@ const routes: RouteObject[] = [
 
 #### 4. Protected Routes (Authentication)
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // ProtectedRoute.tsx
 import { Navigate, Outlet } from 'react-router-dom';
@@ -236,6 +242,7 @@ const routes: RouteObject[] = [
 
 ### 1. Programmatic Navigation
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 import { useNavigate } from 'react-router-dom';
 
@@ -253,6 +260,7 @@ return <button onClick={handleLogin}>Login</button>;
 
 ### 2. Query Parameters
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 import { useSearchParams } from 'react-router-dom';
 
@@ -266,6 +274,7 @@ return <div>Search results for: {query}</div>;
 
 ### 3. Route Loaders (Data Fetching)
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // routes.tsx
 const router = createBrowserRouter([
@@ -300,6 +309,7 @@ function UserProfile() {
 
 ## Example: Complete Small App Structure
 
+# Basic example showing the core idea.
 ```bash
 /src
   /components
@@ -313,6 +323,7 @@ function UserProfile() {
   main.tsx
 ```
 
+// Example demonstrating React Router DOM: A Complete Guide.
 ```tsx
 // /src/routes/index.tsx
 import { RouteObject } from 'react-router-dom';
@@ -344,7 +355,6 @@ React Router DOM provides a flexible and powerful way to handle routing in React
 applications, from small single-page apps to large enterprise applications with
 complex routing needs.
 
-```
 ## Quick Reference
 
 | Area | Revision point |

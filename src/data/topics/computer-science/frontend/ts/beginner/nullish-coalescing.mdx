@@ -6,12 +6,14 @@ Provides fallback only for `null` or `undefined`.
 
 ## Syntax
 
+// Example demonstrating Nullish Coalescing.
 ```ts
 const username = value ?? 'Guest';
 ```
 
 ## Difference from ||
 
+// Example demonstrating Nullish Coalescing.
 ```ts
 const result = 0 || 10; // 10
 const safe = 0 ?? 10; // 0
@@ -23,6 +25,7 @@ Interviewers check whether you understand when `||` breaks valid falsy values.
 
 ## Good Defaults Pattern
 
+// Example demonstrating Nullish Coalescing.
 ```ts
 function getPageSize(value: number | null | undefined): number {
   return value ?? 20;

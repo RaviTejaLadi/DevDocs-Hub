@@ -49,11 +49,11 @@ Here are the essential commands for creating, viewing, and sharing tags.
 To mark your current position with an annotated tag, use the `-a` flag along
 with a message descriptive flag `-m`.
 
+# Basic example showing the core idea.
 ```bash
 // Create an annotated tag for version 1.0.0
 git tag -a v1.0.0 -m "First stable production release"
 
-```
 #### 2. View Existing Tags
 
 You can list all tags currently available in your local repository to verify
@@ -66,12 +66,11 @@ git tag
 To see the specific details and metadata of an annotated tag, use the `show`
 command:
 
-```
+# Basic example showing the core idea.
 ```bash
 // View the author details, date, and commit connected to a tag
 git show v1.0.0
 
-```
 #### 3. Share Your Tags
 
 By default, running `git push` does **not** send tags to remote servers like
@@ -84,7 +83,6 @@ git push origin v1.0.0
 // Push every single local tag up to GitHub at once
 git push origin --tags
 
-```
 ### What is a GitHub Release?
 
 While Git handles the underlying tags, platforms like GitHub introduce a wrapper

@@ -24,6 +24,7 @@ parent components update.
 
 ### Syntax
 
+// Basic example showing the core idea.
 ```javascript
 const MemoizedComponent = React.memo(Component, areEqual?)
 ```
@@ -43,6 +44,7 @@ Use React.memo for:
 
 #### Basic React.memo
 
+// Basic example showing the core idea.
 ```javascript
 import React from 'react';
 
@@ -85,6 +87,7 @@ return (
 
 #### React.memo with Custom Comparison
 
+// Basic example showing the core idea.
 ```javascript
 const UserCard = React.memo(
   ({ user, theme }) => {
@@ -110,6 +113,7 @@ const UserCard = React.memo(
 useMemo is a React Hook that memoizes expensive calculations between re-renders.
 It only recalculates when its dependencies change.
 
+// Basic example showing the core idea.
 ```javascript
 const memoizedValue = useMemo(() => expensiveCalculation(a, b), [a, b]);
 ```
@@ -125,6 +129,7 @@ Use useMemo for:
 
 #### Basic useMemo
 
+// Basic example showing the core idea.
 ```javascript
 import React, { useMemo, useState } from 'react';
 
@@ -152,6 +157,7 @@ return (
 
 #### useMemo for Object Creation
 
+// Basic example showing the core idea.
 ```javascript
 const UserProfile = ({ userId, userData }) => {
   // Without useMemo - new object created on every render
@@ -187,6 +193,7 @@ return (
 useCallback is a React Hook that memoizes callback functions between re-renders.
 It returns the same function instance when dependencies haven't changed.
 
+// Basic example showing the core idea.
 ```javascript
 const memoizedCallback = useCallback(() => {
   // callback logic
@@ -204,6 +211,7 @@ Use useCallback for:
 
 #### Basic useCallback
 
+// Basic example showing the core idea.
 ```javascript
 import React, { useCallback, useState } from 'react';
 
@@ -273,6 +281,7 @@ return (
 
 #### useCallback with Custom Hooks
 
+// Basic example showing the core idea.
 ```javascript
 const useSearch = (initialQuery = '') => {
   const [query, setQuery] = useState(initialQuery);
@@ -304,6 +313,7 @@ Code splitting is a technique that splits your bundle into smaller chunks,
 loading only the necessary code for the current view. React.lazy() enables
 dynamic imports for components.
 
+// Basic example showing the core idea.
 ```javascript
 const LazyComponent = React.lazy(() => import('./Component'));
 ```
@@ -316,6 +326,7 @@ Use code splitting for:
 
 #### Route-based Code Splitting
 
+// Basic example showing the core idea.
 ```javascript
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -359,6 +370,7 @@ const App = () => {
 
 #### Component-based Code Splitting
 
+// Basic example showing the core idea.
 ```javascript
 import React, { useState, Suspense } from 'react';
 
@@ -431,6 +443,7 @@ Use virtual scrolling for:
 
 #### Basic Virtual Scrolling Implementation
 
+// Basic example showing the core idea.
 ```javascript
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -512,6 +525,7 @@ return (
 
 #### Advanced Virtual Grid
 
+// Basic example showing the core idea.
 ```javascript
 const VirtualGrid = ({
   items,
@@ -614,6 +628,7 @@ Use bundle analysis to:
 
 #### Setting up webpack-bundle-analyzer
 
+# Basic example showing the core idea.
 ```bash
 ## Install the analyzer
 npm install --save-dev webpack-bundle-analyzer
@@ -631,6 +646,7 @@ npm run analyze
 
 #### Tree Shaking Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - imports entire library
 import _ from 'lodash';
@@ -653,6 +669,7 @@ const processData = (data) => {
 
 #### Dynamic Imports for Large Libraries
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - large library loaded upfront
 import { Chart } from 'chart.js';
@@ -702,6 +719,7 @@ loading, and using appropriate formats to improve loading performance.
 
 #### Lazy Loading Images
 
+// Basic example showing the core idea.
 ```javascript
 import React, { useState, useRef, useEffect } from 'react';
 
@@ -777,6 +795,7 @@ return (
 
 #### Responsive Image Component
 
+// Basic example showing the core idea.
 ```javascript
 const ResponsiveImage = ({ src, alt, sizes = [400, 800, 1200], className }) => {
   const generateSrcSet = () => {
@@ -817,6 +836,7 @@ performance.
 
 #### State Colocation
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - state lifted too high
 const App = () => {
@@ -860,6 +880,7 @@ const Header = () => {
 
 #### State Normalization
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - nested state structure
 const [state, setState] = useState({
@@ -910,6 +931,7 @@ const getPostComments = (state, postId) => {
 
 #### State Splitting for Performance
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - single state causing unnecessary re-renders
 const Dashboard = () => {
@@ -970,6 +992,7 @@ that don't result in actual DOM changes or user-visible updates.
 
 #### Avoiding Object Creation in Render
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - new objects created on every render
 const UserCard = ({ user }) => {
@@ -1011,6 +1034,7 @@ const UserCard = ({ user }) => {
 
 #### Conditional Rendering Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - creates new array on every render
 const TodoList = ({ todos, filter }) => {
@@ -1051,6 +1075,7 @@ return (
 
 #### Optimizing Context Usage
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad - entire context value recreated on every render
 const AppProvider = ({ children }) => {
@@ -1130,6 +1155,7 @@ rendering times, and track optimization improvements in React applications.
 
 #### Using React DevTools Profiler
 
+// Basic example showing the core idea.
 ```javascript
 // Wrap components to profile performance
 import { Profiler } from 'react';
@@ -1174,6 +1200,7 @@ const ExpensiveComponent = () => {
 
 #### Custom Performance Monitoring
 
+// Basic example showing the core idea.
 ```javascript
 // Performance monitoring hook
 const usePerformanceMonitor = (componentName) => {
@@ -1209,6 +1236,7 @@ return <div>{/* Component content */}</div>;
 
 #### Web Vitals Monitoring
 
+// Basic example showing the core idea.
 ```javascript
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
@@ -1302,6 +1330,7 @@ getCLS(handleCLS);
 
 ### Performance Anti-patterns to Avoid
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Anti-patterns
 const BadComponent = ({ items }) => {
@@ -1358,6 +1387,7 @@ return (
 
 ### Monitoring and Measurement
 
+// Basic example showing the core idea.
 ```javascript
 // Performance measurement utilities
 const measureComponentPerformance = (WrappedComponent, componentName) => {

@@ -102,6 +102,7 @@ with table aliases to distinguish between the two instances of the same table.
 
 Example: Finding employees who work in the same department:
 
+-- Basic example showing the core idea.
 ```sql
 SELECT A.EmployeeName, B.EmployeeName, A.Department
 FROM Employees A, Employees B
@@ -250,6 +251,7 @@ Benefits include:
 
 Example:
 
+-- Basic example showing the core idea.
 ```sql
 WITH SalesCTE AS (
     SELECT SalesPerson, SUM(Amount) AS TotalSales
@@ -275,6 +277,7 @@ it less efficient than non-correlated subqueries.
 
 Example: Find employees whose salary is above the average in their department
 
+-- Basic example showing the core idea.
 ```sql
 SELECT e1.Name, e1.Salary, e1.Department
 FROM Employees e1

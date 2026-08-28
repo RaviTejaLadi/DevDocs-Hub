@@ -41,6 +41,7 @@ the dead.
 
 To view your complete movement history, run the reflog command.
 
+# Basic example showing the core idea.
 ```bash
 // View a clean history of every local Git action you have taken
 git reflog
@@ -52,7 +53,6 @@ something like this:
 > `HEAD@{1}: commit: feat: added stripe checkout integration` _(🎯 This is the
 > work we lost!)_ > `HEAD@{2}: checkout: moving from feature-auth to main`
 
-```
 #### 2. Find the Golden Commit ID
 
 Look down the list until you find the action you took right before everything
@@ -77,12 +77,11 @@ git branch rescued-feature a1b2c3d
 Use this if you just want to immediately undo your last bad command and wipe out
 the mistake.
 
-```
+# Basic example showing the core idea.
 ```bash
 // Force your current branch back to the exact state before the error
 git reset --hard a1b2c3d
 
-```
 ### Things to Keep in Mind
 
 - **Reflog is completely local:** Your reflog history is saved strictly on your

@@ -13,6 +13,7 @@ When you create new commits locally, they only exist on your machine. To publish
 those milestones to GitHub so your team can see them, you use the `push`
 command.
 
+# Basic example showing the core idea.
 ```bash
 // Push your local branch commits up to the remote server
 git push origin main
@@ -34,11 +35,11 @@ branches, or tags your team has added. However, **fetch is completely safe**—i
 only downloads the data into your hidden `.git` folder. It will _never_
 overwrite or alter any code inside your active working directory. 🛡️
 
+# Basic example showing the core idea.
 ```bash
 // Download remote updates without touching your local files
 git fetch origin
 
-```
 ## 📥 Downloading and Merging Updates (`git pull`)
 
 If you want to download your teammate's latest changes and immediately mix them
@@ -67,7 +68,6 @@ subgraph git pull
 ```Bash
 git pull = git fetch + git merge
 
-```
 ## Quick Reference
 
 | Area | Revision point |

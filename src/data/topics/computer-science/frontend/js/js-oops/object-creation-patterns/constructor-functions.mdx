@@ -16,6 +16,7 @@ and behavior**—great for code reuse and object-oriented programming.
 
 ## 🧱 Syntax / Structure
 
+// Basic example showing the core idea.
 ```javascript
 function Person(name, age) {
   this.name = name;
@@ -29,6 +30,7 @@ function Person(name, age) {
 
 ### Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 function Car(make, model) {
   this.make = make;
@@ -43,6 +45,7 @@ console.log(myCar.model); // Output: Corolla
 
 ### 🌍 Real-World Use Case
 
+// Basic example showing the core idea.
 ```javascript
 function User(username, email) {
   this.username = username;
@@ -68,18 +71,21 @@ This is useful in web apps where you manage multiple users.
 
 ✅ **Always use `new`** when calling constructor functions:
 
+// Example demonstrating Constructor Functions.
 ```js
 const obj = new MyConstructor(); // Correct ✅
 ```
 
 ❌ Calling without `new` won't create an object:
 
+// Example demonstrating Constructor Functions.
 ```js
 const obj = MyConstructor(); // Incorrect ❌
 ```
 
 💡 Use methods on the prototype to save memory:
 
+// Example demonstrating Constructor Functions.
 ```js
 function Animal(name) {
   this.name = name;

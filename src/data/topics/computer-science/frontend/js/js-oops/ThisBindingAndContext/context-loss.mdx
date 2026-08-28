@@ -15,6 +15,7 @@ callbacks and event handlers.
 
 ## 🧱 Syntax/Structure
 
+// Basic example showing the core idea.
 ```javascript
 const obj = {
   name: 'Alice',
@@ -28,6 +29,7 @@ setTimeout(obj.greet, 1000); // ❌ `this` is lost
 
 ### 🔹 Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'John',
@@ -42,6 +44,7 @@ greet(); // ❌ undefined, because `this` is lost
 
 ✅ **Fix using `.bind()`**:
 
+// Basic example showing the core idea.
 ```javascript
 const greetBound = person.sayHi.bind(person);
 greetBound(); // ✅ Hi, I'm John
@@ -49,6 +52,7 @@ greetBound(); // ✅ Hi, I'm John
 
 ### 🌍 Real-World Use Case
 
+// Basic example showing the core idea.
 ```javascript
 class Button {
   constructor(label) {
@@ -72,6 +76,7 @@ btn.attach();
 
 ✅ **Fix using arrow function or `bind`:**
 
+// Basic example showing the core idea.
 ```javascript
 addEventListener('click', () => this.clickHandler()); // ✅ keeps `this`
 ```

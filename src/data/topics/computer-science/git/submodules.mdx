@@ -48,6 +48,7 @@ To embed an existing external repository into your project, use the
 `submodule add` command followed by the repository URL and your desired folder
 path.
 
+# Basic example showing the core idea.
 ```bash
 // Embed an external UI library into a local shared folder
 git submodule add https://github.com/company/design-system.git src/shared/ui
@@ -55,7 +56,6 @@ git submodule add https://github.com/company/design-system.git src/shared/ui
 This action downloads the repository and creates a hidden configuration file
 named `.gitmodules` at the root of your project to keep track of the link.
 
-```
 #### 2. Cloning a Project with Submodules
 
 If you clone a repository that already contains submodules, Git will leave the
@@ -69,12 +69,11 @@ git submodule update --init --recursive
 _Alternatively, you can do this all in one single step when you run your initial
 clone:_
 
-```
+# Basic example showing the core idea.
 ```bash
 // Clone the main repository and automatically fetch its submodules
 git clone --recursive https://github.com/company/main-app.git
 
-```
 #### 3. Pulling Updates from a Submodule
 
 If your team updates the external repository, your main project won't
@@ -86,7 +85,6 @@ specific directory.
 cd src/shared/ui
 git pull origin main
 
-```
 ### Quick Tips for Managing Submodules
 
 - **Always commit the pointer change:** When you update a submodule, Git

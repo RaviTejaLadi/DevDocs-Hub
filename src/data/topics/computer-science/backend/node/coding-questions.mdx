@@ -2,6 +2,7 @@
 
 ## 1. Write a simple HTTP server
 
+// Basic example showing the core idea.
 ```javascript
 const http = require('http');
 
@@ -17,6 +18,7 @@ server.listen(3000, () => {
 
 ## 2. Read a file asynchronously
 
+// Basic example showing the core idea.
 ```javascript
 const fs = require('fs');
 
@@ -43,6 +45,7 @@ async function readFileAsync() {
 
 ## 3. Create a custom EventEmitter
 
+// Basic example showing the core idea.
 ```javascript
 const EventEmitter = require('events');
 
@@ -79,6 +82,7 @@ emit(event, ...args) {
 
 ## 4. Implement a middleware function
 
+// Basic example showing the core idea.
 ```javascript
 const express = require('express');
 const app = express();
@@ -108,6 +112,7 @@ app.get('/', (req, res) => {
 
 ## 5. Create a readable stream
 
+// Basic example showing the core idea.
 ```javascript
 const { Readable } = require('stream');
 
@@ -135,6 +140,7 @@ numberStream.on('end', () => console.log('Stream ended'));
 
 ## 6. Implement file upload handling
 
+// Basic example showing the core idea.
 ```javascript
 const express = require('express');
 const multer = require('multer');
@@ -178,6 +184,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 ## 7. Connect to MongoDB
 
+// Basic example showing the core idea.
 ```javascript
 const mongoose = require('mongoose');
 
@@ -218,6 +225,7 @@ async function updateUser(id, updates) {
 
 ## 8. Implement JWT authentication
 
+// Basic example showing the core idea.
 ```javascript
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -269,6 +277,7 @@ async function comparePassword(password, hash) {
 
 ## 9. Create a rate limiter
 
+// Basic example showing the core idea.
 ```javascript
 const rateLimit = require('express-rate-limit');
 
@@ -319,6 +328,7 @@ function rateLimitMiddleware(req, res, next) {
 
 ## 10. Implement caching with Redis
 
+// Basic example showing the core idea.
 ```javascript
 const redis = require('redis');
 const client = redis.createClient();
@@ -364,6 +374,7 @@ app.get('/api/data', cache(300), (req, res) => {
 
 ## 11. Create a WebSocket server
 
+// Basic example showing the core idea.
 ```javascript
 const WebSocket = require('ws');
 const http = require('http');
@@ -400,6 +411,7 @@ server.listen(8080, () => {
 
 ## 12. Implement error handling
 
+// Basic example showing the core idea.
 ```javascript
 // Global error handler
 function errorHandler(err, req, res, next) {
@@ -462,6 +474,7 @@ app.use(errorHandler);
 
 ## 13. Create a worker thread pool
 
+// Basic example showing the core idea.
 ```javascript
 const {
   Worker,
@@ -541,6 +554,7 @@ parentPort.postMessage({ data: result });
 
 ## 14. Implement file system watcher
 
+// Basic example showing the core idea.
 ```javascript
 const fs = require('fs');
 const path = require('path');
@@ -603,7 +617,6 @@ this.timeouts.set(
 
 app.use(express.json());
 
-```javascript
 // In-memory storage (use database in production)
 let users = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },
@@ -689,6 +702,7 @@ app.delete('/api/users/:id', (req, res) => {
 users.splice(userIndex, 1);
   res.status(204).send();
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 16. Implement request validation
@@ -760,6 +774,7 @@ app.post('/api/users', validateUser, (req, res) => {
 app.post('/api/users-alt', userValidationRules(), validate, (req, res) => {
   res.json({ message: 'User created successfully' });
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 17. Create a task queue with Bull
@@ -850,6 +865,7 @@ app.post('/send-email', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 18. Implement database connection pooling
@@ -943,6 +959,7 @@ app.get('/users', async (req, res) => {
     res.status(500).json({ error: 'Database error' });
   }
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 19. Create a GraphQL server
@@ -1086,6 +1103,7 @@ app.listen(4000, () => {
 }
 
 startServer();
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 20. Implement session management
@@ -1236,6 +1254,7 @@ app.get('/profile', requireAuth, (req, res) => {
     email: req.session.email,
   });
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 21. Create a proxy server
@@ -1338,6 +1357,7 @@ req.pipe(proxyReq);
 }
 
 app.use('/custom-proxy', createCustomProxy('http://localhost:3001'));
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 22. Implement file compression
@@ -1464,6 +1484,7 @@ app.post('/compress', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 23. Create a CLI application
@@ -1683,6 +1704,7 @@ program.on('command:*', () => {
 });
 
 program.parse();
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## 24. Implement real-time notifications
@@ -1924,6 +1946,7 @@ async function verifyToken(token) {
   // Implement token verification
   return token === 'valid-token';
 }
+// Example demonstrating Top 24 Coding Interview Questions & Answers.
 ```
 
 ## Quick Reference

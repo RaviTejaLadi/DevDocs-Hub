@@ -10,6 +10,7 @@ Next.js is a React framework for building full-stack web applications. ⚛️
 **Answer:**
 Using command:
 
+# Basic example showing the core idea.
 ```bash
 npx create-next-app@latest
 ```
@@ -66,6 +67,7 @@ the entire site. 🔄
 **Answer:**
 A component for client side navigation between pages: 🔗
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import Link from 'next/link'
 
@@ -78,6 +80,7 @@ import Link from 'next/link'
 **Answer:**
 A hook that allows access to the router object and perform navigation: 🧭
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 const router = useRouter();
 router.push('/path');
@@ -88,6 +91,7 @@ router.push('/path');
 **Answer:**
 Using useRouter() hook:
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 const router = useRouter();
 function handleClick() {
@@ -102,6 +106,7 @@ function handleClick() {
 **Answer:**
 Code that runs before a request is completed: 🛡️
 
+// Example demonstrating Common Interview Questions & Answers.
 ```js
 import { NextResponse } from 'next/server';
 
@@ -115,6 +120,7 @@ export function middleware(request) {
 **Answer:**
 Using CSS modules: 🎨
 
+/* Basic example showing the core idea. */
 ```css
 /* styles.module.css */
 .example {
@@ -122,6 +128,7 @@ Using CSS modules: 🎨
 }
 ```
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import styles from './styles.module.css';
 <div className={styles.example}>Hello</div>;
@@ -132,6 +139,7 @@ import styles from './styles.module.css';
 **Answer:**
 Pre-rendering pages at build time: 🏗️
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 export async function getStaticProps() {
   const res = await fetch('https://api.example.com/data');
@@ -144,6 +152,7 @@ export async function getStaticProps() {
 **Answer:**
 Rendering pages on each request: 🌐
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 export async function getServerSideProps() {
   const res = await fetch('https://api.example.com/data');
@@ -156,6 +165,7 @@ export async function getServerSideProps() {
 **Answer:**
 Re-generating static pages at runtime: ♻️
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 export async function getStaticProps() {
   return { props: { data }, revalidate: 60 }; // Revalidate every 60 seconds
@@ -167,6 +177,7 @@ export async function getStaticProps() {
 **Answer:**
 Optimized image component: 🖼️
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import Image from 'next/image';
 <Image src={pic} alt="Picture" width={500} height={500} />;
@@ -177,6 +188,7 @@ import Image from 'next/image';
 **Answer:**
 Configuration file for Next.js settings: ⚙️
 
+// Example demonstrating Common Interview Questions & Answers.
 ```js
 module.exports = {
   /* config options */
@@ -213,6 +225,7 @@ SSG pre-renders at build time, SSR pre-renders on each request. 🔄
 **Answer:**
 In next.config.js:
 
+// Example demonstrating Common Interview Questions & Answers.
 ```js
 module.exports = {
   async redirects() {
@@ -228,6 +241,7 @@ module.exports = {
 **Answer:**
 For modifying the `<head>` of a page: 🧠
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import Head from 'next/head';
 <Head>
@@ -250,6 +264,7 @@ Using getStaticProps or getServerSideProps. 📡
 **Answer:**
 Lazy loading components: 💤
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 const Component = dynamic(() => import('../components/Component'));
 ```
@@ -291,6 +306,7 @@ Port 3000. 🔢
 
 ### 35. How to change default port?
 
+// Example demonstrating Common Interview Questions & Answers.
 ```json
 "scripts": {
   "dev": "next dev -p 8080"
@@ -316,6 +332,7 @@ Via babel.config.js. 🧬
 
 ### 39. How do you handle i18n in Next.js?
 
+// Example demonstrating Common Interview Questions & Answers.
 ```js
 module.exports = {
   i18n: {
@@ -342,6 +359,7 @@ Single router instance across the app. 🛣️
 **Answer:**
 Using useEffect and fetch:
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 const [data, setData] = useState(null);
 useEffect(() => {
@@ -371,6 +389,7 @@ Install and set up in next.config.js. 🌐
 **Answer:**
 Optimizing third-party scripts: 📝
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import Script from 'next/script';
 <Script src="https://example.com/script.js" />;
@@ -381,6 +400,7 @@ import Script from 'next/script';
 **Answer:**
 Using next/font:
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
@@ -430,6 +450,7 @@ Using next-pwa plugin. 📱
 
 ### 56. How do you add Google Analytics?
 
+// Example demonstrating Common Interview Questions & Answers.
 ```jsx
 import { GoogleAnalytics } from '@next/third-parties/google';
 <GoogleAnalytics gaId="G-XYZ" />;

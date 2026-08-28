@@ -46,6 +46,7 @@ mindmap
 
 ## let
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 let count = 1;
 
@@ -65,12 +66,14 @@ console.log(count); // 1
 
 ## const
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const API_URL = 'https://api.com';
 ```
 
 ### Important
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const user = { name: 'Ravi' };
 
@@ -81,6 +84,7 @@ user.name = 'Teja'; // valid
 
 ## Interpolation
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const name = 'Ravi';
 const message = `Hello ${name}`;
@@ -88,6 +92,7 @@ const message = `Hello ${name}`;
 
 ## Multi-line Strings
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const text = `
 Line 1
@@ -97,6 +102,7 @@ Line 2
 
 ## Real-world Usage
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const html = `
   <div>
@@ -140,6 +146,7 @@ const html = `
 
 ## map
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const nums = [1, 2, 3];
 
@@ -148,30 +155,35 @@ const doubled = nums.map((n) => n * 2);
 
 ## filter
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const users = users.filter((u) => u.active);
 ```
 
 ## reduce
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const total = [1, 2, 3].reduce((acc, curr) => acc + curr, 0);
 ```
 
 ## find
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const user = users.find((u) => u.id === 1);
 ```
 
 ## Array Destructuring
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const [first, second] = [10, 20];
 ```
 
 ## Object Destructuring
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const user = {
   name: 'Ravi',
@@ -183,18 +195,21 @@ const { name, age } = user;
 
 ## Default Values
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const { city = 'Hyderabad' } = user;
 ```
 
 ## Rename Variables
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const { name: fullName } = user;
 ```
 
 ## Nested Destructuring
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const user = {
   profile: {
@@ -216,6 +231,7 @@ const {
 
 ## Spread Operator
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const arr1 = [1, 2];
 const arr2 = [...arr1, 3];
@@ -223,6 +239,7 @@ const arr2 = [...arr1, 3];
 
 ## Object Spread
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const updated = {
   ...user,
@@ -232,6 +249,7 @@ const updated = {
 
 ## Rest Parameters
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 function sum(...nums) {
   return nums.reduce((a, b) => a + b, 0);
@@ -240,18 +258,21 @@ function sum(...nums) {
 
 ## Arrow Functions
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const add = (a, b) => a + b;
 ```
 
 ## Implicit Return
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const square = (n) => n * n;
 ```
 
 ## Returning Object
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const getUser = () => ({
   id: 1,
@@ -261,6 +282,7 @@ const getUser = () => ({
 
 ## Default Parameters
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 function greet(name = 'Guest') {
   return `Hello ${name}`;
@@ -276,6 +298,7 @@ flowchart LR
   C[Normal Function] --> D[Creates Own this]
 ```
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class Timer {
   start() {
@@ -288,6 +311,7 @@ class Timer {
 
 ## Property Shorthand
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const name = 'Ravi';
 
@@ -296,6 +320,7 @@ const user = { name };
 
 ## Method Shorthand
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const app = {
   start() {
@@ -306,6 +331,7 @@ const app = {
 
 ## Computed Properties
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const key = 'role';
 
@@ -325,18 +351,21 @@ const user = {
 
 ## Optional Chaining
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const city = user?.address?.city;
 ```
 
 ### Prevents
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 Cannot read properties of undefined
 ```
 
 ## Nullish Coalescing
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const username = value ?? 'Guest';
 ```
@@ -350,6 +379,7 @@ const username = value ?? 'Guest';
 
 ## Basic Class
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class User {
   constructor(name) {
@@ -371,6 +401,7 @@ flowchart TD
   Dog --> Puppy
 ```
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class Animal {
   speak() {
@@ -387,6 +418,7 @@ class Dog extends Animal {
 
 ## super
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class Admin extends User {
   constructor(name, role) {
@@ -398,6 +430,7 @@ class Admin extends User {
 
 ## Static Methods
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class MathUtil {
   static add(a, b) {
@@ -408,6 +441,7 @@ class MathUtil {
 
 ## Private Fields
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 class Bank {
   #balance = 0;
@@ -429,6 +463,7 @@ flowchart LR
 
 ## Creating Promise
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const promise = new Promise((resolve, reject) => {
   const success = true;
@@ -443,6 +478,7 @@ if (success) {
 
 ## Using Promise
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 promise
   .then((res) => console.log(res))
@@ -471,6 +507,7 @@ flowchart TD
   D --> E[Continue Execution]
 ```
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 async function fetchUser() {
   try {
@@ -484,36 +521,42 @@ async function fetchUser() {
 
 ## Export Default
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 export default function App() {}
 ```
 
 ## Named Export
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 export const PI = 3.14;
 ```
 
 ## Import Default
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 import App from './App.js';
 ```
 
 ## Named Import
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 import { PI } from './math.js';
 ```
 
 ## Dynamic Import
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const module = await import('./utils.js');
 ```
 
 ## Generator Function
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 function* counter() {
   yield 1;
@@ -524,6 +567,7 @@ function* counter() {
 
 ## for...of
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 for (const value of [1, 2, 3]) {
   console.log(value);
@@ -541,10 +585,12 @@ for (const value of [1, 2, 3]) {
 
 ## Set
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const set = new Set([1, 2, 2, 3]);
 ```
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const map = new Map();
 
@@ -553,6 +599,7 @@ map.set('name', 'Ravi');
 
 ## Symbols
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const id = Symbol('id');
 ```
@@ -571,24 +618,28 @@ flowchart TD
 
 ## Ternary Operator
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const role = isAdmin ? 'Admin' : 'User';
 ```
 
 ## Logical AND
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 isLoggedIn && showDashboard();
 ```
 
 ## Logical OR
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const value = input || 'default';
 ```
 
 ## Optional Chaining + Nullish Coalescing
 
+// Example demonstrating ES6+ JavaScript.
 ```js
 const city = user?.address?.city ?? 'Unknown';
 ```

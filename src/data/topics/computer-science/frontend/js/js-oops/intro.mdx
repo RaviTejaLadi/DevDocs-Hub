@@ -32,6 +32,7 @@
 
 ### Object Literals
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'John',
@@ -48,6 +49,7 @@ const person = {
 
 ### 🏭 Constructor Functions
 
+// Basic example showing the core idea.
 ```javascript
 function Person(name, age) {
   this.name = name;
@@ -65,6 +67,7 @@ const john = new Person('John', 30);
 
 ### 🏪 Factory Functions
 
+// Basic example showing the core idea.
 ```javascript
 function createPerson(name, age) {
   return {
@@ -84,6 +87,7 @@ const john = createPerson('John', 30);
 
 ### 🔧 Object.create()
 
+// Basic example showing the core idea.
 ```javascript
 const personPrototype = {
   greet() {
@@ -101,6 +105,7 @@ john.age = 30;
 
 ### 📋 Class Declaration
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   constructor(name, age) {
@@ -120,6 +125,7 @@ greet() {
 
 ### Constructor Method
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   constructor(name, age) {
@@ -135,6 +141,7 @@ class Person {
 
 ### Instance Methods
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   greet() {
@@ -152,6 +159,7 @@ class Person {
 
 ### 🏢 Static Methods
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   static species() {
@@ -169,6 +177,7 @@ class Person {
 
 ### Getters and Setters
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   constructor(name) {
@@ -190,6 +199,7 @@ get name() {
 
 ### Prototypal Inheritance
 
+// Basic example showing the core idea.
 ```javascript
 const animal = { species: 'Unknown' };
 const dog = Object.create(animal);
@@ -202,6 +212,7 @@ dog.breed = 'Labrador';
 
 ### ⛓ Prototype Chain
 
+// Basic example showing the core idea.
 ```javascript
 function Animal(species) {
   this.species = species;
@@ -222,6 +233,7 @@ Dog.prototype = Object.create(Animal.prototype);
 
 ### 👨‍👩‍👧‍👦 Class Inheritance
 
+// Basic example showing the core idea.
 ```javascript
 class Animal {
   constructor(species) {
@@ -249,6 +261,7 @@ class Dog extends Animal {
 
 ### 🦸‍♂ Super Keyword
 
+// Basic example showing the core idea.
 ```javascript
 class Dog extends Animal {
   constructor(breed) {
@@ -268,6 +281,7 @@ speak() {
 
 ### Private Fields
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   #ssn; // Private field
@@ -289,6 +303,7 @@ constructor(name, ssn) {
 
 ### 🤫 Private Methods
 
+// Basic example showing the core idea.
 ```javascript
 class Calculator {
   #validate(number) {
@@ -310,6 +325,7 @@ add(a, b) {
 
 ### Method Overriding
 
+// Basic example showing the core idea.
 ```javascript
 class Animal {
   speak() {
@@ -330,6 +346,7 @@ class Dog extends Animal {
 
 ### 📐 Abstract Classes
 
+// Basic example showing the core idea.
 ```javascript
 class Shape {
   constructor() {
@@ -350,6 +367,7 @@ area() {
 
 ### 🔗 Method Binding
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'John',
@@ -369,6 +387,7 @@ greetFunc(); // "Hello, I'm undefined" (context lost)
 
 ### 🏹 Arrow Functions
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'John',
@@ -388,6 +407,7 @@ delayedGreet() {
 
 ### 🎮 Explicit Binding
 
+// Basic example showing the core idea.
 ```javascript
 function greet() {
   return `Hello, I'm ${this.name}`;
@@ -406,6 +426,7 @@ boundGreet(); // "Hello, I'm John"
 
 ### ⚠ Context Loss
 
+// Basic example showing the core idea.
 ```javascript
 // Problem
 const button = document.getElementById('myButton');
@@ -422,6 +443,7 @@ button.addEventListener('click', person.greet.bind(person));
 
 ### 👑 Singleton Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class Database {
   static instance = null;
@@ -441,6 +463,7 @@ static getInstance() {
 
 ### 🏭 Factory Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class ShapeFactory {
   static createShape(type, ...args) {
@@ -462,6 +485,7 @@ class ShapeFactory {
 
 ### 👀 Observer Pattern
 
+// Basic example showing the core idea.
 ```javascript
 class Subject {
   constructor() {
@@ -486,6 +510,7 @@ subscribe(observer) {
 
 ### Module Pattern
 
+// Basic example showing the core idea.
 ```javascript
 const UserModule = (function () {
   let users = []; // Private
@@ -507,6 +532,7 @@ return {
 
 ### 🎪 Mixins
 
+// Basic example showing the core idea.
 ```javascript
 const CanFly = {
   fly() {
@@ -535,6 +561,7 @@ Object.assign(Duck.prototype, CanFly, CanSwim);
 
 ### Composition over Inheritance
 
+// Basic example showing the core idea.
 ```javascript
 class Engine {
   start() {
@@ -559,6 +586,7 @@ start() {
 
 ### 🤝 Delegation
 
+// Basic example showing the core idea.
 ```javascript
 const calculator = {
   add(a, b) {

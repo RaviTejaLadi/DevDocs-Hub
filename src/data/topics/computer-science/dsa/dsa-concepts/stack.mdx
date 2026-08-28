@@ -27,6 +27,7 @@ you take off.
 
 ### Basic Stack Operations:
 
+// Basic example showing the core idea.
 ```javascript
 // Using JavaScript Array (built-in stack methods)
 let stack = [];
@@ -79,6 +80,7 @@ flowchart TB
 
 ## Code Example
 
+// Basic example showing the core idea.
 ```javascript
 class Stack {
   constructor() {
@@ -144,6 +146,7 @@ myStack.display(); // Stack: ["First"]
 
 ### 🔥 Practical Use Case - Undo Functionality:
 
+// Basic example showing the core idea.
 ```javascript
 class TextEditor {
   constructor() {
@@ -179,6 +182,7 @@ editor.undo(); // After undo: "Hello"
 
 ### 1. 🚫 Stack Overflow
 
+// Basic example showing the core idea.
 ```javascript
 // BAD: Infinite recursion
 function badRecursion() {
@@ -195,6 +199,7 @@ function goodRecursion(n) {
 
 ### 2. 🚫 Popping from Empty Stack
 
+// Basic example showing the core idea.
 ```javascript
 // BAD: No check for empty stack
 let stack = [];
@@ -210,6 +215,7 @@ if (stack.length > 0) {
 
 ### 3. 🚫 Confusing Array Index with Stack Operations
 
+// Basic example showing the core idea.
 ```javascript
 // BAD: Direct array access breaks stack principle
 let stack = [1, 2, 3];
@@ -221,6 +227,7 @@ let top = stack[stack.length - 1]; // Only access the top
 
 ### 4. 🚫 Memory Leaks
 
+// Basic example showing the core idea.
 ```javascript
 // BAD: Not clearing references
 class Stack {

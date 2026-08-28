@@ -40,6 +40,7 @@ To steal a commit cleanly, you only need to complete three simple steps.
 First, switch over to the branch that has the changes you want and view the
 commit history to copy the unique SHA-1 commit hash.
 
+# Basic example showing the core idea.
 ```bash
 // View a clean, one-line list of recent commits to find the hash
 git log --oneline
@@ -48,7 +49,6 @@ _Output looks like this:_
 
 > `a1b2c3d Fix bug in auth helper` > `e5f6g7h Messy experimental UI adjustments`
 
-```
 #### 2. Apply the Commit
 
 Switch back to your destination branch and tell Git to pluck that specific
@@ -59,13 +59,13 @@ commit hash.
 git checkout main
 git cherry-pick a1b2c3d
 
-```
 #### 3. Handle Conflicts (If They Happen)
 
 If the code around that specific commit looks different in your branch, Git
 might get confused and throw a conflict. Don't panic! Open your code editor, fix
 the conflicting lines, and tell Git to keep moving forward.
 
+# Basic example showing the core idea.
 ```bash
 // After fixing conflicts in your editor, save and resume the process
 git add .

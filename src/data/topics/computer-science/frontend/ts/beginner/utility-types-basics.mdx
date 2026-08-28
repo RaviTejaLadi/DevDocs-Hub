@@ -4,6 +4,7 @@
 
 Makes all properties optional.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type User = {
   name: string;
@@ -17,6 +18,7 @@ type PartialUser = Partial<User>;
 
 Makes all properties required.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type RequiredUser = Required<User>;
 ```
@@ -25,6 +27,7 @@ type RequiredUser = Required<User>;
 
 Makes properties immutable.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type ReadonlyUser = Readonly<User>;
 ```
@@ -33,6 +36,7 @@ type ReadonlyUser = Readonly<User>;
 
 Select specific properties.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type UserPreview = Pick<User, 'name'>;
 ```
@@ -41,6 +45,7 @@ type UserPreview = Pick<User, 'name'>;
 
 Remove specific properties.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type UserWithoutAge = Omit<User, 'age'>;
 ```
@@ -49,6 +54,7 @@ type UserWithoutAge = Omit<User, 'age'>;
 
 Create object types dynamically.
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type Users = Record<string, number>;
 ```
@@ -59,6 +65,7 @@ Utility types are asked frequently because they reduce duplication in real code.
 
 ## Practical Example
 
+// Example demonstrating Utility Types Basics.
 ```ts
 type User = { id: string; name: string; email: string; age: number };
 type UserPatch = Partial<Pick<User, 'name' | 'email'>>;

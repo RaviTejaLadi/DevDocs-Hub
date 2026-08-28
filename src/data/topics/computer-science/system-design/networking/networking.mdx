@@ -4,6 +4,7 @@
 
 Think of the internet like a massive postal system:
 
+# Basic example showing the core idea.
 ```bash
 🧑‍💻 You (Client)
      |
@@ -69,6 +70,7 @@ effectively.
 
 ### 4. DNS and IP Addresses Working Together
 
+# Basic example showing the core idea.
 ```bash
 User types: www.google.com
      ↓
@@ -117,6 +119,7 @@ resources that can be accessed and manipulated using standard HTTP methods.
 
 ### 7. Client-Server Architecture
 
+# Basic example showing the core idea.
 ```bash
 Client (Frontend)          Server (Backend)
 ┌─────────────────┐       ┌─────────────────┐
@@ -172,6 +175,7 @@ Client (Frontend)          Server (Backend)
 **Stateless means:** Each request must contain all information needed to
 understand and process it.
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```tsx
 ❌ Stateful (Bad):
 Request 1: Login user
@@ -189,6 +193,7 @@ Request 2: Get user profile + token
 
 ### 11. Basic GraphQL Query Structure
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```graphql
 ## Basic Query Structure
 query {
@@ -201,8 +206,6 @@ query {
 
 ## Example: Get user with posts
 query GetUserWithPosts {
-```
-
   user(id: "123") {
     name
     email
@@ -229,6 +232,7 @@ query GetUserWithPosts {
 | **Over-fetching**  | `GET /users` returns all user fields when you only need name and email                | Query only specific fields: `{ users { name email } }`                       |
 | **Under-fetching** | Need multiple requests: `GET /users/1`, `GET /users/1/posts`, `GET /users/1/comments` | Single request: `{ user(id: 1) { name posts { title } comments { text } } }` |
 
+# Basic example showing the core idea.
 ```bash
 REST (Multiple Requests):
 GET /users/1        → { id, name, email, avatar, bio, ... }
@@ -251,6 +255,7 @@ query {
 A schema defines the structure of your API - what data is available and how it
 can be accessed.
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```graphql
 ## Type Definitions
 type User {
@@ -283,7 +288,6 @@ type Query {
 - **Type Safety:** Prevents runtime errors
 - **Tooling:** Enables powerful developer tools
 
-```
 ### 14. GraphQL Advantages Over REST
 
 | Aspect             | GraphQL                           | REST                      |
@@ -299,6 +303,7 @@ type Query {
 
 **DataLoader Pattern:**
 
+// Basic example showing the core idea.
 ```javascript
 // Without batching (N+1 problem)
 users.forEach((user) => {
@@ -353,6 +358,7 @@ const postLoader = new DataLoader(async (userIds) => {
 
 **Purpose:** Remove a resource from the server
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```http
 DELETE /users/123 HTTP/1.1
 Host: api.example.com
@@ -377,6 +383,7 @@ Authorization: Bearer token123
 
 **Purpose:** Apply partial updates to a resource
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```http
 PATCH /users/123 HTTP/1.1
 Content-Type: application/json
@@ -402,6 +409,7 @@ Content-Type: application/json
 
 **Purpose:** Discover allowed methods and capabilities
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```http
 OPTIONS /users HTTP/1.1
 Host: api.example.com
@@ -430,6 +438,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 | `text/plain`                        | Plain text   | Simple text data |
 | `application/xml`                   | XML data     | SOAP services    |
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```http
 POST /api/users HTTP/1.1
 Content-Type: application/json
@@ -444,6 +453,7 @@ Content-Type: application/json
 
 **Purpose:** Identifies the client making the request
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```http
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 ```
@@ -461,6 +471,7 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 **gRPC (Google Remote Procedure Call)** is a high-performance RPC framework that
 uses HTTP/2 and Protocol Buffers.
 
+# Basic example showing the core idea.
 ```bash
 Traditional REST:
 Client → HTTP/1.1 + JSON → Server
@@ -490,6 +501,7 @@ Client → HTTP/2 + Protobuf → Server
 
 **Example:**
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```protobuf
 // user.proto
 syntax = "proto3";
@@ -504,6 +516,7 @@ message User {
 
 ### 26. Service Definitions in gRPC
 
+// Example demonstrating Networking Interview Questions & Answers Guide.
 ```protobuf
 // userservice.proto
 service UserService {

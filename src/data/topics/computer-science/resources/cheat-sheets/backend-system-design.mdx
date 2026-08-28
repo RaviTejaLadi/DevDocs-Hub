@@ -91,6 +91,7 @@ B --> F[/users, /orders]
 
 ### RESTful Best Practices
 
+// Example demonstrating Backend System Design.
 ```
 ✅ Use plural nouns: /users, /products
 ✅ Nested resources: /users/{id}/orders
@@ -177,6 +178,7 @@ B --> F[Browser Cache]
 
 ### Cache Invalidation Strategies
 
+// Example demonstrating Backend System Design.
 ```
 💡 TTL (Time-To-Live): Auto-expiry
 💡 Event-Based: Invalidate on updates
@@ -187,6 +189,7 @@ B --> F[Browser Cache]
 
 ### Caching Best Practices
 
+// Example demonstrating Backend System Design.
 ```
 ✅ Set appropriate TTL (5-60 minutes)
 ✅ Use eviction policies: LRU, LFU, TTL
@@ -228,6 +231,7 @@ F --> G[Dead Letter Queue]
 
 ### When to Use Async Processing
 
+// Example demonstrating Backend System Design.
 ```
 ✅ Email/SMS notifications
 ✅ Image/video processing
@@ -269,6 +273,7 @@ B --> G[Even Distribution]
 
 ### Proxy Tools
 
+// Example demonstrating Backend System Design.
 ```
 🔄 Nginx - Most popular, high performance
 🔄 HAProxy - TCP/HTTP load balancing
@@ -297,6 +302,7 @@ B --> G[Cookie + Session]
 
 ### JWT Structure
 
+// Example demonstrating Backend System Design.
 ```
 Header: {
   "alg": "HS256",
@@ -326,6 +332,7 @@ Signature: HMACSHA256(
 
 ### Security Checklist
 
+// Example demonstrating Backend System Design.
 ```
 ✅ Hash passwords: bcrypt, Argon2
 ✅ Use HTTPS (TLS 1.2+)
@@ -405,6 +412,7 @@ B --> I[Exponential Backoff]
 
 ### Fault Tolerance Strategies
 
+// Example demonstrating Backend System Design.
 ```
 🛡️ Retry with Exponential Backoff
 🛡️ Circuit Breaker (Open/Closed/Half-Open)
@@ -444,6 +452,7 @@ B --> E[ELK Stack, Loki]
 
 ### Alerting Best Practices
 
+// Example demonstrating Backend System Design.
 ```
 🚨 Use multiple severity levels (P1-P4)
 🚨 Avoid alert fatigue (group alerts)
@@ -513,6 +522,7 @@ B --> E[EBS, SAN]
 
 ### Data Lifecycle Management
 
+// Example demonstrating Backend System Design.
 ```
 📊 Hot Data: Frequently accessed → Cache/SSD
 📊 Warm Data: Occasionally accessed → Standard storage
@@ -598,6 +608,7 @@ B --> G[Slow queries, locks]
 
 ### Optimization Techniques
 
+// Example demonstrating Backend System Design.
 ```
 ⚡ Database: Indexing, query optimization, connection pooling
 ⚡ Caching: Redis, CDN, in-memory cache
@@ -679,9 +690,9 @@ B --> H[Node.js, Python, Java, Go, C#, Ruby]
 
 ### ADR Template
 
+// Example demonstrating Backend System Design.
 ```markdown
 
-```
 ## Context
 
 We need a database for our e-commerce platform with complex relationships.
@@ -705,7 +716,6 @@ Accepted
 - Cassandra: Better for write-heavy workloads
 ```
 
-```
 ### Event Sourcing & CQRS
 
 <!-- Visual flow for Backend System Design. -->
@@ -734,6 +744,7 @@ H[User] --> A
 
 ### Idempotency Patterns
 
+// Example demonstrating Backend System Design.
 ```
 🔁 Idempotency Key: Unique request ID
 🔁 Check-Then-Act: Check if already processed
@@ -744,6 +755,7 @@ H[User] --> A
 
 ### Estimation Formulas
 
+// Example demonstrating Backend System Design.
 ```
 📐 Users: DAU × Requests per user × 20% peak
 📐 Storage: Users × Data per user × Retention period
@@ -780,6 +792,7 @@ graph TD
 
 ### Common Questions Checklist
 
+// Example demonstrating Backend System Design.
 ```
 ✅ Functional requirements (features)
 ✅ Non-functional requirements (SLA, performance)

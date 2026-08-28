@@ -26,6 +26,7 @@ Flexbox helps you:
 
 To use Flexbox, set a container's display to `flex`.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="container">
   <div class="item">1</div>
@@ -34,6 +35,7 @@ To use Flexbox, set a container's display to `flex`.
 </div>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Create a flex container */
 .container {
@@ -72,6 +74,7 @@ By default:
 
 Controls the direction of flex items.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -81,30 +84,35 @@ Controls the direction of flex items.
 
 ## row (Default)
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: row;
 }
 ```
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 1  2  3
 ```
 
 ## row-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: row-reverse;
 }
 ```
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 3  2  1
 ```
 
 ## column
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: column;
@@ -113,6 +121,7 @@ Controls the direction of flex items.
 
 ## column-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-direction: column-reverse;
@@ -123,6 +132,7 @@ Controls the direction of flex items.
 
 Aligns items along the **main axis**.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   justify-content: center;
@@ -141,6 +151,7 @@ Equal spacing everywhere.
 
 Aligns items on the **cross axis**.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   align-items: center;
@@ -157,6 +168,7 @@ Aligns items on the **cross axis**.
 
 Items stretch to fill the container height.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   align-items: stretch;
@@ -167,6 +179,7 @@ Items stretch to fill the container height.
 
 One of Flexbox's most popular use cases.
 
+/* Basic example showing the core idea. */
 ```css
 /* Center content both horizontally and vertically */
 .container {
@@ -184,6 +197,7 @@ Controls whether items wrap onto new lines.
 
 ## nowrap (Default)
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: nowrap;
@@ -194,6 +208,7 @@ Items stay on one line.
 
 ## wrap
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: wrap;
@@ -204,6 +219,7 @@ Items move to a new line if necessary.
 
 ## wrap-reverse
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   flex-wrap: wrap-reverse;
@@ -216,6 +232,7 @@ Wraps in reverse order.
 
 Adds spacing between flex items.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -229,6 +246,7 @@ Better than using margins.
 
 Controls how items expand.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-grow: 1;
@@ -237,6 +255,7 @@ Controls how items expand.
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 .item1 {
   flex-grow: 1;
@@ -249,6 +268,7 @@ Example:
 
 Result:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 Item 2 is twice as wide as Item 1
 ```
@@ -257,6 +277,7 @@ Item 2 is twice as wide as Item 1
 
 Controls how items shrink.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-shrink: 1;
@@ -269,6 +290,7 @@ Default value is `1`.
 
 Defines the initial size of an item.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-basis: 200px;
@@ -279,6 +301,7 @@ Defines the initial size of an item.
 
 Instead of:
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex-grow: 1;
@@ -289,6 +312,7 @@ Instead of:
 
 Use:
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   flex: 1;
@@ -301,6 +325,7 @@ Very common in layouts.
 
 Changes visual order without changing HTML.
 
+/* Basic example showing the core idea. */
 ```css
 .item1 {
   order: 3;
@@ -317,6 +342,7 @@ Changes visual order without changing HTML.
 
 Display order:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 Item2
 Item3
@@ -327,6 +353,7 @@ Item1
 
 Overrides alignment for a single item.
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   align-self: flex-end;
@@ -337,6 +364,7 @@ Only that item moves.
 
 ## Responsive Navigation Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <nav class="navbar">
   <div>Logo</div>
@@ -344,6 +372,7 @@ Only that item moves.
 </nav>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Responsive navbar using Flexbox */
 .navbar {
@@ -353,12 +382,14 @@ Only that item moves.
 }
 ```
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 Logo                    Menu
 ```
 
 ## 🛒 Product Card Layout
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">
   <img src="product.jpg" alt="Product" />
@@ -367,6 +398,7 @@ Logo                    Menu
 </div>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 /* Vertical card layout */
 .card {
@@ -378,6 +410,7 @@ Logo                    Menu
 
 ## 📱 Responsive Row Layout
 
+/* Basic example showing the core idea. */
 ```css
 /* Responsive flex layout */
 .container {
@@ -399,6 +432,7 @@ Each item:
 
 ## Quick Cheat Sheet
 
+/* Basic example showing the core idea. */
 ```css
 display: flex;
 
@@ -425,6 +459,7 @@ Won't work.
 
 You must use:
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -435,6 +470,7 @@ You must use:
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .item {
   margin-right: 20px;
@@ -443,6 +479,7 @@ You must use:
 
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   gap: 20px;
@@ -453,6 +490,7 @@ You must use:
 
 Remember:
 
+// Example demonstrating 🔲 Flexbox.
 ```text
 justify-content → Main Axis
 align-items     → Cross Axis

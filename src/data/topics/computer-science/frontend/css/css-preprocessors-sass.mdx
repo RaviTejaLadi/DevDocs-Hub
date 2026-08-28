@@ -26,6 +26,7 @@ SASS code is compiled into regular CSS that browsers understand.
 
 Without SASS:
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   background: #2563eb;
@@ -44,6 +45,7 @@ Repeated values make maintenance harder.
 
 With SASS:
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 $primary-color: #2563eb;
 
@@ -87,6 +89,7 @@ SASS supports two syntaxes.
 
 ## SASS Syntax
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```sass
 $primary: blue
 
@@ -98,6 +101,7 @@ No braces or semicolons.
 
 ## SCSS Syntax ⭐
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 $primary: blue;
 
@@ -114,6 +118,7 @@ Variables store reusable values.
 
 ## SCSS Variable
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 $primary-color: #2563eb;
 $border-radius: 12px;
@@ -121,6 +126,7 @@ $border-radius: 12px;
 
 Usage:
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .button {
   background: $primary-color;
@@ -138,9 +144,9 @@ Components["Buttons, Cards, Links"]
 
 Variable --> Value
     Variable --> Components
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
-```
 ## Nesting
 
 One of the most popular SASS features.
@@ -156,6 +162,7 @@ One of the most popular SASS features.
 
 .card .button {
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## With Nesting
@@ -170,6 +177,7 @@ One of the most popular SASS features.
     background: blue;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Nesting Structure
@@ -185,6 +193,7 @@ Button[".button"]
 
 Card --> Title
     Card --> Button
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## ⚠ Avoid Deep Nesting
@@ -200,6 +209,7 @@ Bad:
     }
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 Too much nesting creates difficult CSS.
@@ -211,12 +221,14 @@ Recommended:
   .title {
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 Maximum:
 
 ```text
 3 Levels
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Parent Selector (&)
@@ -231,6 +243,7 @@ Represents the current selector.
     background: red;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 Compiles to:
@@ -239,6 +252,7 @@ Compiles to:
 .button:hover {
   background: red;
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Modifier Example
@@ -249,12 +263,14 @@ Compiles to:
     border: 2px solid gold;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ```css
 .card--featured {
   border: 2px solid gold;
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Parent Selector Flow
@@ -268,13 +284,13 @@ Result[".card--featured"]
 Parent --> Modifier --> Result
 ```
 
-```
 ## Partials
 
 Split SASS into smaller files.
 
 ## Example Structure
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```text
 scss/
 
@@ -290,6 +306,7 @@ Files beginning with `_` are partials.
 
 ## Importing Partials
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @use 'variables';
 @use 'buttons';
@@ -312,9 +329,9 @@ Main --> Variables
     Main --> Buttons
     Main --> Cards
     Main --> Layout
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
-```
 ## Mixins
 
 Mixins allow reusable blocks of CSS.
@@ -327,6 +344,7 @@ Mixins allow reusable blocks of CSS.
   justify-content: center;
   align-items: center;
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 Use it:
@@ -335,6 +353,7 @@ Use it:
 .hero {
   @include center;
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 Compiled CSS:
@@ -345,6 +364,7 @@ Compiled CSS:
   justify-content: center;
   align-items: center;
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Mixin Flow
@@ -358,9 +378,9 @@ CSS["Generated CSS"]
 Mixin --> Include --> CSS
 ```
 
-```
 ## Mixins with Parameters
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @mixin button($bg) {
   background: $bg;
@@ -371,6 +391,7 @@ border-radius: 8px;
 }
 ```
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .primary {
   @include button(blue);
@@ -385,12 +406,14 @@ border-radius: 8px;
 
 Functions return values.
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @function rem($px) {
   @return $px / 16 * 1rem;
 }
 ```
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .title {
   font-size: rem(32);
@@ -399,6 +422,7 @@ Functions return values.
 
 Result:
 
+/* Basic example showing the core idea. */
 ```css
 .title {
   font-size: 2rem;
@@ -414,9 +438,9 @@ Function["rem()"]
 Output["2rem"]
 
 Input --> Function --> Output
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
-```
 ## Extend
 
 Share styles between selectors.
@@ -425,6 +449,7 @@ Share styles between selectors.
 .button-base {
   padding: 10px;
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .primary {
   @extend .button-base;
@@ -433,11 +458,11 @@ Share styles between selectors.
 
 Compiled CSS merges selectors.
 
-```
 ## SASS Maps
 
 Store structured data.
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 $colors: (
   primary: #2563eb,
@@ -446,6 +471,7 @@ $colors: (
 );
 ```
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .button {
   color: map-get($colors, primary);
@@ -458,6 +484,7 @@ Generate repetitive CSS.
 
 ## @for Loop
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @for $i from 1 through 5 {
   .m-#{$i} {
@@ -468,6 +495,7 @@ Generate repetitive CSS.
 
 Produces:
 
+/* Basic example showing the core idea. */
 ```css
 .m-1 { margin: 1rem; }
 .m-2 { margin: 2rem; }
@@ -484,9 +512,9 @@ Generate["Generate Classes"]
 Output[".m-1 .m-2 .m-3"]
 
 Loop --> Generate --> Output
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
-```
 ## Conditionals
 
 SASS supports logic.
@@ -501,6 +529,7 @@ SASS supports logic.
     color: black;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## 📱 Responsive Mixins
@@ -513,6 +542,7 @@ Very common pattern.
     @content;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ```scss
@@ -523,6 +553,7 @@ Very common pattern.
     width: 50%;
   }
 }
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
 ## Responsive Flow
@@ -536,23 +567,25 @@ Desktop["Desktop"]
 Mobile --> Tablet --> Desktop
 ```
 
-```
 ## Modern SASS @use
 
 Older:
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @import 'variables';
 ```
 
 Deprecated.
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 @use 'variables';
 ```
 
 Access:
 
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```scss
 .button {
   color: variables.$primary;
@@ -579,9 +612,9 @@ Access:
 │   ├── _footer.scss
 │
 └── main.scss
+// Example demonstrating 🎀 CSS Preprocessors (SASS).
 ```
 
-```
 ## SASS vs Modern CSS
 
 Many SASS features now exist in CSS.
@@ -656,7 +689,6 @@ Use:
 @use 'variables';
 ```
 
-```
 ## ✅ Best Practices
 
 - Prefer SCSS syntax over SASS syntax.

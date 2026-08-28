@@ -38,6 +38,7 @@ easy to work with.
 
 ### Basic Heap Structure
 
+// Basic example showing the core idea.
 ```javascript
 class MinHeap {
   constructor() {
@@ -124,7 +125,6 @@ flowchart TB
 
 ### Complete MinHeap Implementation
 
-```javascript
 // 👀 Peek at minimum element
   peek() {
     return this.heap.length === 0 ? null : this.heap[0];
@@ -211,6 +211,7 @@ console.log('Heap:', minHeap.display()); // [1, 4, 3, 10, 8, 15]
 console.log('Min:', minHeap.peek()); // 1
 console.log('Extract:', minHeap.extractMin()); // 1
 console.log('New Min:', minHeap.peek()); // 3
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### MaxHeap (Quick Implementation)
@@ -261,6 +262,7 @@ if (largest !== index) {
     }
   }
 }
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 1. 🔢 Index Calculation Errors
@@ -271,6 +273,7 @@ parent = (index - 1) % 2; // Incorrect formula
 
 // ✅ Correct
 parent = Math.floor((index - 1) / 2);
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 2. Forgetting to Heapify
@@ -282,6 +285,7 @@ this.heap.push(value); // Missing heapifyUp!
 // ✅ Correct
 this.heap.push(value);
 this.heapifyUp(this.heap.length - 1);
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 3. Confusing Min-Heap vs Max-Heap Logic
@@ -290,6 +294,7 @@ this.heapifyUp(this.heap.length - 1);
 // ❌ Wrong - Using > in Min-Heap comparison
 if (this.heap[parentIndex] > this.heap[index]) // This is for Min-Heap
 if (this.heap[parentIndex] < this.heap[index]) // This is for Max-Heap
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 4. 🚫 Empty Heap Handling
@@ -306,6 +311,7 @@ extractMin() {
     if (this.heap.length === 0) return null;
     // ... rest of code
 }
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 5. 🔀 Incorrect Swapping
@@ -318,6 +324,7 @@ this.heap[j] = temp;
 
 // ✅ Correct - Destructuring swap
 [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+// Example demonstrating Complete Guide to Heaps (Min-Heap & Max-Heap) in JavaScript.
 ```
 
 ### 6. Not Understanding Array Representation

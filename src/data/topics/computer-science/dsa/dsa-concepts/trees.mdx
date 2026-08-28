@@ -15,6 +15,7 @@ have at most two children.
 
 ### Syntax/Implementation
 
+// Basic example showing the core idea.
 ```javascript
 class TreeNode {
   constructor(val) {
@@ -43,6 +44,7 @@ imagine a decision tree where each question has only "yes" or "no" answers.
 
 ### Code Example
 
+// Basic example showing the core idea.
 ```javascript
 class BinaryTree {
   constructor() {
@@ -113,6 +115,7 @@ like an organized filing cabinet.
 - **Key Properties**: Left subtree < Node < Right subtree, enables efficient
   searching
 
+// Basic example showing the core idea.
 ```javascript
 class BSTNode {
   constructor(val) {
@@ -140,6 +143,7 @@ Like a phone book where names are organized alphabetically - you can quickly
 find someone by knowing whether to look left (earlier alphabetically) or right
 (later alphabetically).
 
+// Basic example showing the core idea.
 ```javascript
 class BST {
   constructor() {
@@ -198,6 +202,7 @@ balanced like a tightrope walker.
 - **Key Properties**: Height-balanced, balance factor ∈ {-1, 0, 1}, automatic
   rebalancing
 
+// Basic example showing the core idea.
 ```javascript
 class AVLNode {
   constructor(val) {
@@ -224,6 +229,7 @@ flowchart LR
 Like a balanced mobile sculpture where adding weight to one side automatically
 adjusts to maintain balance.
 
+// Basic example showing the core idea.
 ```javascript
 class AVLTree {
   constructor() {
@@ -326,6 +332,7 @@ It's like a traffic light system for trees.
   have red children, all paths from root to leaves have same number of black
   nodes
 
+// Basic example showing the core idea.
 ```javascript
 class RBNode {
   constructor(val, color = 'RED') {
@@ -354,6 +361,7 @@ flowchart TB
 Like a well-organized parking garage with colored levels where certain rules
 ensure no level gets too crowded compared to others.
 
+// Basic example showing the core idea.
 ```javascript
 class RedBlackTree {
   constructor() {
@@ -458,6 +466,7 @@ filing cabinet with multiple folders per drawer.
 - **Key Properties**: All leaves at same level, nodes can have multiple keys,
   optimized for disk I/O
 
+// Basic example showing the core idea.
 ```javascript
 class BTreeNode {
   constructor(isLeaf = false) {
@@ -488,6 +497,7 @@ flowchart TB
 Like a library's card catalog system where each drawer can hold multiple cards,
 and you can fit more information per "access" to storage.
 
+// Basic example showing the core idea.
 ```javascript
 class BTree {
   constructor(minDegree = 3) {
@@ -607,6 +617,7 @@ prefix-based operations like autocomplete.
 - **Key Properties**: Shared prefixes, efficient prefix operations, good for
   autocomplete
 
+// Basic example showing the core idea.
 ```javascript
 class TrieNode {
   constructor() {
@@ -630,6 +641,7 @@ flowchart TB
 Like a dictionary where words sharing the same beginning letters are grouped
 together, making it easy to find all words starting with "cat".
 
+// Basic example showing the core idea.
 ```javascript
 class Trie {
   constructor() {
@@ -729,6 +741,7 @@ range queries like sum, minimum, or maximum over an array.
 - **Space Complexity**: O(4n) ≈ O(n)
 - **Key Properties**: Perfect binary tree, supports range queries, updatable
 
+// Basic example showing the core idea.
 ```javascript
 class SegmentTree {
   constructor(arr) {
@@ -757,6 +770,7 @@ flowchart TB
 Like a corporate hierarchy where each manager knows the total sales of their
 department, making it quick to find the total sales of any sub-department.
 
+// Basic example showing the core idea.
 ```javascript
 class SegmentTree {
   constructor(arr) {
@@ -858,6 +872,7 @@ with less space than segment trees.
 - **Key Properties**: Uses bit manipulation, 1-indexed typically, efficient
   prefix sums
 
+// Basic example showing the core idea.
 ```javascript
 class FenwickTree {
   constructor(size) {
@@ -880,6 +895,7 @@ flowchart TB
 Like a cashier's counting system where each slot holds cumulative totals for
 specific ranges, allowing quick calculation of any range sum.
 
+// Basic example showing the core idea.
 ```javascript
 class FenwickTree {
   constructor(size) {

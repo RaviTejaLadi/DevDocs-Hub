@@ -49,6 +49,7 @@ graph LR
 
 #### Example Request:
 
+// Example demonstrating HTTP.
 ```http
 POST /api/users HTTP/1.1
 Host: example.com
@@ -72,6 +73,7 @@ graph LR
 
 #### Example Response:
 
+// Example demonstrating HTTP.
 ```http
 HTTP/1.1 201 Created
 Date: Mon, 01 Jan 2024 12:00:00 GMT
@@ -272,6 +274,7 @@ E --> E1[image/jpeg]
 
 ### GET Request - Fetch Data:
 
+// Basic example showing the core idea.
 ```javascript
 // JavaScript fetch
 fetch('https://api.example.com/users/123', {
@@ -285,6 +288,7 @@ fetch('https://api.example.com/users/123', {
   .then((data) => console.log(data));
 ```
 
+# Basic example showing the core idea.
 ```bash
 ## cURL command
 curl -X GET https://api.example.com/users/123 \
@@ -294,6 +298,7 @@ curl -X GET https://api.example.com/users/123 \
 
 ### ✍ POST Request - Create Data:
 
+// Basic example showing the core idea.
 ```javascript
 // JavaScript fetch
 fetch('https://api.example.com/users', {
@@ -312,6 +317,7 @@ fetch('https://api.example.com/users', {
   .then((data) => console.log(data));
 ```
 
+# Basic example showing the core idea.
 ```bash
 curl -X POST https://api.example.com/users \
   -H "Content-Type: application/json" \
@@ -321,6 +327,7 @@ curl -X POST https://api.example.com/users \
 
 ### PUT Request - Full Update:
 
+# Basic example showing the core idea.
 ```bash
 curl -X PUT https://api.example.com/users/123 \
   -H "Content-Type: application/json" \
@@ -330,6 +337,7 @@ curl -X PUT https://api.example.com/users/123 \
 
 ### 🔧 PATCH Request - Partial Update:
 
+# Basic example showing the core idea.
 ```bash
 curl -X PATCH https://api.example.com/users/123 \
   -H "Content-Type: application/json" \
@@ -339,6 +347,7 @@ curl -X PATCH https://api.example.com/users/123 \
 
 ### 🗑 DELETE Request:
 
+# Basic example showing the core idea.
 ```bash
 curl -X DELETE https://api.example.com/users/123 \
   -H "Authorization: Bearer token123"
@@ -346,6 +355,7 @@ curl -X DELETE https://api.example.com/users/123 \
 
 ### 📤 Upload File:
 
+// Basic example showing the core idea.
 ```javascript
 // JavaScript - Multipart form upload
 const formData = new FormData();
@@ -361,6 +371,7 @@ fetch('https://api.example.com/upload', {
 });
 ```
 
+# Basic example showing the core idea.
 ```bash
 ## cURL - File upload
 curl -X POST https://api.example.com/upload \
@@ -387,6 +398,7 @@ B --> B1["Authorization: Bearer eyJhbGci..."]
 
 ### Implementation Examples:
 
+// Basic example showing the core idea.
 ```javascript
 // 1. Bearer Token (JWT)
 fetch('https://api.example.com/data', {
@@ -432,6 +444,7 @@ flowchart LR
 
 ### CORS Headers:
 
+// Example demonstrating HTTP.
 ```http
 Access-Control-Allow-Origin: https://example.com
 Access-Control-Allow-Methods: GET, POST, PUT, DELETE
@@ -482,6 +495,7 @@ D --> D1[✓ Faster connections]
 
 ### Success (2xx):
 
+// Example demonstrating HTTP.
 ```
 200 - ✅ OK
 201 - ✅ Created
@@ -491,6 +505,7 @@ D --> D1[✓ Faster connections]
 
 ### Redirection (3xx):
 
+// Example demonstrating HTTP.
 ```
 301 - 🔄 Moved Permanently
 302 - 🔄 Found (Temporary)
@@ -499,6 +514,7 @@ D --> D1[✓ Faster connections]
 
 ### Client Errors (4xx):
 
+// Example demonstrating HTTP.
 ```
 400 - ❌ Bad Request
 401 - ❌ Unauthorized
@@ -513,6 +529,7 @@ D --> D1[✓ Faster connections]
 
 ### Server Errors (5xx):
 
+// Example demonstrating HTTP.
 ```
 500 - 💥 Internal Server Error
 501 - 💥 Not Implemented
@@ -523,6 +540,7 @@ D --> D1[✓ Faster connections]
 
 ### 📱 Building a REST API:
 
+// Basic example showing the core idea.
 ```javascript
 // Express.js example
 app.get('/api/users', (req, res) => {
@@ -552,6 +570,7 @@ app.delete('/api/users/:id', (req, res) => {
 
 ### Handling Errors Gracefully:
 
+// Basic example showing the core idea.
 ```javascript
 // Error handling pattern
 fetch('https://api.example.com/data')
@@ -578,6 +597,7 @@ fetch('https://api.example.com/data')
 
 ### Rate Limiting:
 
+// Example demonstrating HTTP.
 ```http
 ## Server response headers
 X-RateLimit-Limit: 100
@@ -585,8 +605,6 @@ X-RateLimit-Remaining: 75
 X-RateLimit-Reset: 1704115200
 
 ## Client should wait when 429 received
-```
-
 If (status === 429) {
     // Wait for reset time
     setTimeout(retry, resetTime - Date.now());
@@ -595,6 +613,7 @@ If (status === 429) {
 
 ### Browser DevTools:
 
+// Example demonstrating HTTP.
 ```
 1. Open DevTools (F12)
 2. Go to Network tab
@@ -620,6 +639,7 @@ If (status === 429) {
 
 ### cURL Cheat Sheet:
 
+# Basic example showing the core idea.
 ```bash
 ## GET request
 curl https://api.example.com/users
@@ -663,6 +683,7 @@ graph TD
 
 ### Optimization Tips:
 
+// Example demonstrating HTTP.
 ```
 🚀 Use compression (gzip/brotli)
 📦 Minimize payload size
@@ -688,6 +709,7 @@ flowchart TD
 
 ### Security Headers to Add:
 
+// Example demonstrating HTTP.
 ```http
 ## Security Headers
 Strict-Transport-Security: max-age=31536000; includeSubDomains
@@ -712,6 +734,7 @@ Permissions-Policy: geolocation=(), microphone=()
 
 ### Response Status Quick Guide:
 
+// Example demonstrating HTTP.
 ```
 2xx: 😊 All good
 3xx: 🔄 Go somewhere else
@@ -750,6 +773,7 @@ Permissions-Policy: geolocation=(), microphone=()
 **Final Challenge:** Try building a small REST API with Express, Flask, or any
 framework to practice these concepts! 🚀
 
+# Basic example showing the core idea.
 ```bash
 ## Test your knowledge:
 curl -X POST https://httpbin.org/post \

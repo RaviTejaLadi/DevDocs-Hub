@@ -33,11 +33,11 @@ Here is how to make your first open-source contribution step-by-step.
 Click the "Fork" button on GitHub to create a copy of the repository under your
 own account. Then, clone your fork to your local machine.
 
+# Basic example showing the core idea.
 ```bash
 // Clone your personal fork to your computer
 git clone https://github.com/your-username/open-source-project.git
 
-```
 #### 2. Track the Original Project
 
 You need to keep track of the original repository to pull in new updates. In
@@ -48,17 +48,16 @@ is named `origin`.
 // Link your local repository to the original project
 git remote add upstream https://github.com/original-author/open-source-project.git
 
-```
 #### 3. Create a Feature Branch
 
 Never work directly on the `main` or `master` branch. Creating a dedicated
 branch keeps your changes isolated and clean.
 
+# Basic example showing the core idea.
 ```bash
 // Create and switch to a new descriptive branch
 git checkout -b fix-login-bug
 
-```
 #### 4. Make Changes and Sync Updates
 
 While you are working, other developers might merge new code into the original
@@ -69,17 +68,16 @@ project. Before submitting your work, grab the latest changes from the
 // Fetch the latest changes from the original author and merge them
 git pull upstream main
 
-```
 #### 5. Push and Open a Pull Request (PR)
 
 Push your feature branch up to your GitHub fork, then head over to the original
 repository on GitHub to open a Pull Request.
 
+# Basic example showing the core idea.
 ```bash
 // Push your local branch to your GitHub fork
 git push origin fix-login-bug
 
-```
 ### Quick Best Practices for Contributors
 
 - **Read the `CONTRIBUTING.md` file:** Most major projects have specific rules

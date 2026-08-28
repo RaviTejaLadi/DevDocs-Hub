@@ -32,16 +32,16 @@ A component for creating navigation links that don't trigger page reloads.
 
 ## Installation
 
+# Basic example showing the core idea.
 ```bash
 npm install react-router-dom
-```
 ## or
 yarn add react-router-dom
 ```
 
-```
 ### Syntax
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -71,12 +71,14 @@ function App() {
 Extract values from the URL.
 
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/users/:userId" element={<UserProfile />} />
 ```
 
 #### Accessing Parameters
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useParams } from 'react-router-dom';
 
@@ -88,12 +90,14 @@ function UserProfile() {
 
 ### Optional Parameters
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/products/:category?/:id?" element={<Products />} />
 ```
 
 ### Parent Route Setup
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="/dashboard" element={<Dashboard />}>
   <Route path="profile" element={<Profile />} />
@@ -105,6 +109,7 @@ function UserProfile() {
 
 Parent component must render an `<Outlet />` where nested routes should appear.
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { Outlet } from 'react-router-dom';
 
@@ -123,6 +128,7 @@ function Dashboard() {
 
 Creates navigation links that don't reload the page.
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { Link } from 'react-router-dom';
 
@@ -141,6 +147,7 @@ function Navbar() {
 
 Special Link that adds styling attributes when active.
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <NavLink
   to="/about"
@@ -152,6 +159,7 @@ Special Link that adds styling attributes when active.
 
 ### useNavigate Hook
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useNavigate } from 'react-router-dom';
 
@@ -169,6 +177,7 @@ return <button onClick={handleLogin}>Login</button>;
 
 ### Navigation Options
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 // Navigate with state
 navigate('/dashboard', { state: { from: 'login' } });
@@ -182,6 +191,7 @@ navigate(-1);
 
 ### Authentication Wrapper
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 function PrivateRoute({ children }) {
   const { user } = useAuth(); // Your authentication logic
@@ -197,6 +207,7 @@ return children;
 
 ### Usage
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route
   path="/dashboard"
@@ -210,12 +221,14 @@ return children;
 
 ### Catch-all Route
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 <Route path="*" element={<NotFound />} />
 ```
 
 ### Example Component
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 function NotFound() {
   return (
@@ -230,6 +243,7 @@ function NotFound() {
 
 ### Lazy Loading with React.lazy
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 const About = React.lazy(() => import('./About'));
 
@@ -245,6 +259,7 @@ const About = React.lazy(() => import('./About'));
 
 ### Location State
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 // Sending state
 <Link to="/dashboard" state={{ from: 'home' }}>
@@ -258,6 +273,7 @@ console.log(location.state.from); // 'home'
 
 ### Query Parameters
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import { useSearchParams } from 'react-router-dom';
 
@@ -273,6 +289,7 @@ return <div>Search Query: {query}</div>;
 
 ## Complete Example
 
+// Example demonstrating React Router: Comprehensive Guide.
 ```jsx
 import {
   BrowserRouter as Router,

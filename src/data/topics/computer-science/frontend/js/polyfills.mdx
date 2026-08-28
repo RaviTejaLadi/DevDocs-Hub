@@ -5,6 +5,7 @@
 **Asked by:** Google, Amazon, Microsoft, Meta **Question:** Implement a polyfill
 for Array.prototype.map()
 
+// Basic example showing the core idea.
 ```javascript
 Array.prototype.myMap = function (callback, thisArg) {
   if (this == null) {
@@ -34,6 +35,7 @@ return result;
 **Asked by:** Netflix, Uber, Airbnb **Question:** Create a polyfill for
 Array.prototype.filter()
 
+// Basic example showing the core idea.
 ```javascript
 Array.prototype.myFilter = function (callback, thisArg) {
   if (this == null) {
@@ -52,7 +54,6 @@ for (let i = 0; i < len; i++) {
     }
   }
 
-```
 ## 3. Array.prototype.reduce()
 
 **Asked by:** Google, Facebook, Amazon **Question:** Implement
@@ -99,6 +100,7 @@ while (k < len) {
 
 return accumulator;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 4. Array.prototype.forEach()
@@ -121,6 +123,7 @@ for (let i = 0; i < len; i++) {
     }
   }
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 5. Function.prototype.bind()
@@ -150,6 +153,7 @@ if (this.prototype) {
 
 return boundFunction;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 6. Function.prototype.call()
@@ -172,12 +176,12 @@ context = context || globalThis;
 const result = context[fnSymbol](...args);
   delete context[fnSymbol];
 
-```
 ## 7. Function.prototype.apply()
 
 **Asked by:** Netflix, Uber, Dropbox **Question:** Implement
 Function.prototype.apply() polyfill
 
+// Basic example showing the core idea.
 ```javascript
 Function.prototype.myApply = function (context, args) {
   if (typeof this !== 'function') {
@@ -192,7 +196,6 @@ context = context || globalThis;
 const fnSymbol = Symbol('fn');
   context[fnSymbol] = this;
 
-```
 ## 8. Promise
 
 **Asked by:** Google, Facebook, Amazon, Microsoft **Question:** Create a basic
@@ -266,6 +269,7 @@ this.onRejectedCallbacks.push((reason) => {
     }
   });
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 9. Object.create()
@@ -289,6 +293,7 @@ if (propertiesObject !== undefined) {
 
 return obj;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 10. Array.prototype.find()
@@ -313,6 +318,7 @@ for (let i = 0; i < len; i++) {
 
 return undefined;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 11. Array.prototype.includes()
@@ -343,6 +349,7 @@ while (k < len) {
 
 return false;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 12. String.prototype.startsWith()
@@ -363,6 +370,7 @@ const str = String(this);
 
 return str.slice(pos, pos + searchString.length) === searchString;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 13. String.prototype.endsWith()
@@ -386,6 +394,7 @@ const str = String(this);
 
 return start >= 0 && str.slice(start, end) === searchString;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 14. Array.prototype.flat()
@@ -415,6 +424,7 @@ return result;
 
 return flattenHelper(this, depth);
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 15. Array.from()
@@ -438,12 +448,12 @@ for (let i = 0; i < len; i++) {
     }
   }
 
-```
 ## 16. Object.assign()
 
 **Asked by:** Microsoft, Apple, Oracle **Question:** Create a polyfill for
 Object.assign()
 
+// Basic example showing the core idea.
 ```javascript
 Object.myAssign = function (target, ...sources) {
   if (target == null) {
@@ -473,6 +483,7 @@ return to;
 **Asked by:** Facebook, Amazon, PayPal **Question:** Implement a basic
 JSON.stringify() polyfill
 
+// Basic example showing the core idea.
 ```javascript
 JSON.myStringify = function (value, replacer, space) {
   const stringify = (val, depth = 0) => {
@@ -515,6 +526,7 @@ return stringify(value);
 **Asked by:** Google, Meta, TikTok **Question:** Implement setTimeout and
 clearTimeout polyfills
 
+// Basic example showing the core idea.
 ```javascript
 const MyTimer = (function () {
   let timerId = 0;
@@ -559,6 +571,7 @@ return { mySetTimeout, myClearTimeout };
 
 **Asked by:** Uber, Airbnb, Stripe **Question:** Create a debounce function
 
+// Basic example showing the core idea.
 ```javascript
 function debounce(func, delay) {
   let timeoutId;
@@ -580,6 +593,7 @@ timeoutId = setTimeout(() => {
 **Asked by:** Twitter, LinkedIn, Snapchat **Question:** Implement a throttle
 function
 
+// Basic example showing the core idea.
 ```javascript
 function throttle(func, limit) {
   let inThrottle;
@@ -601,6 +615,7 @@ setTimeout(() => {
 **Asked by:** Adobe, Salesforce, Zoom **Question:** Create a polyfill for
 Array.prototype.some()
 
+// Basic example showing the core idea.
 ```javascript
 Array.prototype.mySome = function (callback, thisArg) {
   if (this == null) {
@@ -615,7 +630,6 @@ for (let i = 0; i < len; i++) {
     }
   }
 
-```
 ## 22. Array.prototype.every()
 
 **Asked by:** Netflix, Spotify, Slack **Question:** Implement
@@ -637,6 +651,7 @@ for (let i = 0; i < len; i++) {
 
 return true;
 };
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## 23. deep clone
@@ -670,6 +685,7 @@ if (typeof obj === 'object') {
 
 return obj;
 }
+// Example demonstrating JavaScript Polyfills for Technical Interviews.
 ```
 
 ## Tips for Interview Success

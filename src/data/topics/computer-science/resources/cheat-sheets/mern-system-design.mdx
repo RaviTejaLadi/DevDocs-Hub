@@ -50,6 +50,7 @@ U->>R: User Action (Click/Input)
 
 ### Recommended Folder Structure
 
+// Example demonstrating MERN Stack System Design.
 ```
 mern-app/
 ├── client/                     # React Frontend
@@ -143,6 +144,7 @@ B --> E[Sub-documents]
 
 **Embedded Approach (Posts with Comments)**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Good for one-to-many where child is small
 const postSchema = new mongoose.Schema({
@@ -163,6 +165,7 @@ const postSchema = new mongoose.Schema({
 
 **Referenced Approach (Users with Orders)**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Good for one-to-many where child is large
 const userSchema = new mongoose.Schema({
@@ -189,6 +192,7 @@ const orderSchema = new mongoose.Schema({
 
 ### Indexing Strategy
 
+// Basic example showing the core idea.
 ```javascript
 // Single Field Index
 userSchema.index({ email: 1 }, { unique: true });
@@ -208,6 +212,7 @@ sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 });
 
 ### MongoDB Schema Design Tips
 
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Use embedding for one-to-one relationships
 ✅ Use referencing for one-to-many/many-to-many
@@ -253,6 +258,7 @@ H --> J[Data Fetching]
 
 ### Custom Hooks Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Authentication Hook
 export const useAuth = () => {
@@ -356,6 +362,7 @@ B --> F[useState/useReducer]
 
 ### Redux Toolkit Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ store.js
 import { configureStore } from '@reduxjs/toolkit';
@@ -427,6 +434,7 @@ export default authSlice.reducer;
 
 ### API Client Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ api/axiosConfig.js
 import axios from 'axios';
@@ -494,6 +502,7 @@ export const productAPI = {
 
 ### Server Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server.js
 import express from 'express';
@@ -552,6 +561,7 @@ export default app;
 
 ### Mongoose Model Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ models/User.js
 import mongoose from 'mongoose';
@@ -640,6 +650,7 @@ export default mongoose.model('User', userSchema);
 
 ### Controller Example
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ controllers/authController.js
 import jwt from 'jsonwebtoken';
@@ -771,6 +782,7 @@ export const logout = async (req, res) => {
 
 ### Middleware Examples
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ middleware/auth.js
 import jwt from 'jsonwebtoken';
@@ -841,6 +853,7 @@ const extractedErrors = errors.array().map((err) => err.msg);
 
 ### Database Connection
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ config/database.js
 import mongoose from 'mongoose';
@@ -883,6 +896,7 @@ export default connectDB;
 
 ### Query Optimization Tips
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Use .lean() for read-only operations
 const users = await User.find({ active: true }).lean();
@@ -947,6 +961,7 @@ C->>S: GET /api/users/me (with token)
 
 ### Protected Route Component
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ components/ProtectedRoute.jsx
 import { Navigate, Outlet } from 'react-router-dom';
@@ -985,6 +1000,7 @@ return <Outlet />;
 
 ### WebSocket Setup with Socket.io
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server.js (Add WebSocket support)
 import { Server } from 'socket.io';
@@ -1116,6 +1132,7 @@ D --> K[Indexing]
 
 ### Frontend Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Lazy Loading Routes
 import { lazy, Suspense } from 'react';
@@ -1164,6 +1181,7 @@ const OptimizedImage = ({ src, alt }) => (
 
 ### Backend Optimization
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Caching with Redis
 import Redis from 'ioredis';
@@ -1237,6 +1255,7 @@ C --> D[Component Tests]
 
 **React Component Test**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ client/components/__tests__/Login.test.jsx
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
@@ -1286,6 +1305,7 @@ await waitFor(() => {
 
 **Express API Test**
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/tests/auth.test.js
 import request from 'supertest';
@@ -1389,6 +1409,7 @@ B --> F[Digital Ocean, AWS EC2]
 
 ### Docker Setup
 
+// Example demonstrating MERN Stack System Design.
 ```dockerfile
 ## client/Dockerfile
 FROM node:18-alpine as build
@@ -1463,6 +1484,7 @@ volumes:
 
 ### Environment Variables
 
+// Example demonstrating MERN Stack System Design.
 ```env
 ## Server
 NODE_ENV=development
@@ -1496,6 +1518,7 @@ REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
 
 ### Logging Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ config/logger.js
 import winston from 'winston';
@@ -1547,6 +1570,7 @@ export const logRequest = (req, res, next) => {
 
 ### Metrics with Prometheus
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/metrics.js
 import prometheus from 'prom-client';
@@ -1647,6 +1671,7 @@ Monitoring:
 
 ### Helmet.js Configuration
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ Enhanced Helmet Setup
 import helmet from 'helmet';
@@ -1708,6 +1733,7 @@ G --> I[PM2 Cluster]
 
 ### Production PM2 Setup
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ ecosystem.config.js
 module.exports = {
@@ -1739,6 +1765,7 @@ module.exports = {
 
 ### Load Balancer (Nginx)
 
+// Example demonstrating MERN Stack System Design.
 ```nginx
 ## nginx.conf
 upstream mern_backend {
@@ -1822,6 +1849,7 @@ ssl_certificate /path/to/cert.pem;
 
 ### When to Choose MERN
 
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Building full-stack JavaScript applications
 ✅ Team has JavaScript/React expertise
@@ -1835,6 +1863,7 @@ ssl_certificate /path/to/cert.pem;
 
 ### When NOT to Choose MERN
 
+// Example demonstrating MERN Stack System Design.
 ```
 ❌ Complex relational data (Choose PostgreSQL)
 ❌ CPU-intensive processing (Choose Python/Java)
@@ -1878,6 +1907,7 @@ Performance:
 
 ### Package.json Setup
 
+// Example demonstrating MERN Stack System Design.
 ```json
 {
   "scripts": {
@@ -1920,6 +1950,7 @@ Performance:
 
 ### Swagger Documentation
 
+// Basic example showing the core idea.
 ```javascript
 // ✅ server/config/swagger.js
 import swaggerJsdoc from 'swagger-jsdoc';
@@ -1968,6 +1999,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 ### Best Practices Summary
 
+// Example demonstrating MERN Stack System Design.
 ```
 ✅ Always use environment variables
 ✅ Implement proper error handling
@@ -1988,6 +2020,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 ### Common Pitfalls to Avoid
 
+// Example demonstrating MERN Stack System Design.
 ```
 ❌ Not handling errors properly
 ❌ Exposing sensitive data in API responses

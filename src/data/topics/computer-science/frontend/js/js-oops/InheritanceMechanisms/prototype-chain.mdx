@@ -21,6 +21,7 @@ can define shared methods on a prototype and have all similar objects reuse them
 
 ## 🧱 Syntax/Structure
 
+// Basic example showing the core idea.
 ```javascript
 function Animal(name) {
   this.name = name;
@@ -38,6 +39,7 @@ console.log(dog.__proto__ === Animal.prototype); // true
 
 You can also use `Object.create()` to set the prototype manually:
 
+// Basic example showing the core idea.
 ```javascript
 const animal = {
   speak() {
@@ -51,6 +53,7 @@ dog.speak(); // Inherited from animal
 
 ### Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 function Person(name) {
   this.name = name;
@@ -69,6 +72,7 @@ prototype chain.
 
 ### 🌐 Real-World Use Case
 
+// Basic example showing the core idea.
 ```javascript
 const vehicle = {
   start() {

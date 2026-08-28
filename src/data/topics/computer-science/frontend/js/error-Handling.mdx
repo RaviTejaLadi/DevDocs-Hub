@@ -23,6 +23,7 @@ crashing** the program.
 
 ## 🔧 3. Basic Syntax: `try...catch`
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   // Code that might throw an error
@@ -33,6 +34,7 @@ try {
 
 ## 🔁 4. Full Syntax: `try...catch...finally`
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   // Code that might throw an error
@@ -45,6 +47,7 @@ try {
 
 ### ASCII Flow Diagram
 
+# Basic example showing the core idea.
 ```bash
              +-------------+
              | try block   |
@@ -72,6 +75,7 @@ try {
 
 ## ✅ 5. Example – Basic Try Catch
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   const result = 10 / 0;
@@ -83,12 +87,14 @@ try {
 
 📝 **Output**:
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Result: Infinity
 ```
 
 Try again with a real error:
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   const data = undefinedVariable; // ReferenceError
@@ -97,12 +103,14 @@ try {
 }
 ```
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Caught: undefinedVariable is not defined
 ```
 
 ## 🧱 6. `finally` Block Example
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   console.log('Trying...');
@@ -114,6 +122,7 @@ try {
 }
 ```
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```
 Trying...
 Caught: Something broke!
@@ -122,6 +131,7 @@ Cleanup done!
 
 ## 7. Throwing Custom Errors
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 function validateAge(age) {
   if (age < 18) {
@@ -145,6 +155,7 @@ try {
 | `message` | Error message                     |
 | `stack`   | Stack trace at error location     |
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 try {
   throw new TypeError('Wrong type!');
@@ -157,6 +168,7 @@ try {
 
 ## 9. Creating Custom Error Types
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 class ValidationError extends Error {
   constructor(message) {
@@ -182,6 +194,7 @@ for resource cleanup
 
 ## Bonus: Async Error Handling (with Promises)
 
+// Example demonstrating 🛠 JavaScript Error Handling.
 ```js
 async function fetchData() {
   try {

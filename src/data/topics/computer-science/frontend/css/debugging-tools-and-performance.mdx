@@ -61,18 +61,21 @@ Popular options:
 
 ### Windows
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 F12
 ```
 
 or
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Ctrl + Shift + I
 ```
 
 ### Mac
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Cmd + Option + I
 ```
@@ -83,6 +86,7 @@ The most used debugging feature.
 
 Right-click any element:
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Inspect
 ```
@@ -108,12 +112,14 @@ Element --> HTML
 
 ## Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="card">Product</div>
 ```
 
 Inspecting reveals:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 20px;
@@ -137,6 +143,7 @@ Shows:
 
 ## Specificity Example
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   color: blue;
@@ -149,6 +156,7 @@ Shows:
 
 DevTools shows:
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 .card      ❌ overridden
 #product   ✅ active
@@ -169,9 +177,9 @@ Element --> Class
 
 Class --> Result
     ID --> Result
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## Box Model Inspector
 
 Visualizes:
@@ -191,6 +199,7 @@ Margin --> Border
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   margin: 20px;
@@ -201,11 +210,11 @@ Example:
 
 DevTools visually displays each layer.
 
-```
 ## 📐 Debugging Flexbox
 
 Chrome DevTools can visualize Flexbox layouts.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   display: flex;
@@ -230,9 +239,9 @@ Item3["Item"]
 End["Main Axis End"]
 
 Start --> Item1 --> Item2 --> Item3 --> End
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## ⬛ Debugging CSS Grid
 
 DevTools can highlight:
@@ -254,7 +263,6 @@ Grid --> Row1
     Grid --> Row2
 ```
 
-```
 ## 📱 Device Toolbar
 
 Simulate:
@@ -272,9 +280,9 @@ Tablet["📲 Tablet"]
 Desktop["🖥️ Desktop"]
 
 Mobile --> Tablet --> Desktop
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## Network Panel
 
 Analyzes:
@@ -299,6 +307,7 @@ Request --> Download --> Render --> Paint
 
 Large CSS file:
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 styles.css
 1.5MB
@@ -306,7 +315,6 @@ styles.css
 
 May slow page loading.
 
-```
 ## Lighthouse
 
 Chrome's built-in auditing tool.
@@ -327,9 +335,9 @@ Lighthouse --> Performance
     Lighthouse --> Accessibility
     Lighthouse --> SEO
     Lighthouse --> BestPractices
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## Example Lighthouse Metrics
 
 | Metric | Ideal   |
@@ -366,7 +374,6 @@ Composite
 HTML --> CSS --> Layout --> Paint --> Composite
 ```
 
-```
 ## CSS Performance Basics
 
 Good CSS improves rendering speed.
@@ -375,6 +382,7 @@ Good CSS improves rendering speed.
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .sidebar ul li a span {
   color: red;
@@ -383,6 +391,7 @@ Good CSS improves rendering speed.
 
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 .sidebar-link {
   color: red;
@@ -401,9 +410,9 @@ Fast["Faster Matching"]
 
 Deep --> Slow
     Class --> Fast
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## Use Class Selectors
 
 Prefer:
@@ -411,6 +420,7 @@ Prefer:
 ```css
 .card {
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Instead of:
@@ -418,6 +428,7 @@ Instead of:
 ```css
 #page .container ul li a {
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 ## Reduce Repaints
@@ -454,7 +465,6 @@ Transform --> GPU
     Width --> Layout
 ```
 
-```
 ## Minimize CSS File Size
 
 Remove:
@@ -476,9 +486,9 @@ Minify["Minify"]
 Small["Optimized CSS"]
 
 Large --> Purge --> Minify --> Small
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## 🗜 Minification
 
 Before:
@@ -490,6 +500,7 @@ After:
   padding: 20px;
   background: #fff;
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Smaller file size.
@@ -510,31 +521,35 @@ Critical --> AboveFold
 
 Improves perceived performance.
 
-```
 ## 🖼 Optimize Images
 
 Large images affect CSS performance indirectly.
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 4000px Image
 ```
 
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```text
 Responsive Image
 ```
 
 Use:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <img src="image.webp" alt="Product" />
 ```
 
 ## Font Performance
 
+/* Basic example showing the core idea. */
 ```css
 font-display: swap;
 ```
 
+/* Basic example showing the core idea. */
 ```css
 @font-face {
   font-family: 'Inter';
@@ -557,9 +572,9 @@ CSS --> Performance
     Images --> Performance
     Fonts --> Performance
     JS --> Performance
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
-```
 ## Detect Unused CSS
 
 Chrome DevTools → Coverage Tab
@@ -567,6 +582,7 @@ Chrome DevTools → Coverage Tab
 ```text
 Used CSS
 Unused CSS
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Helpful for cleanup.
@@ -579,6 +595,7 @@ Improve rendering performance.
 .card {
   contain: layout;
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Limits layout calculations.
@@ -591,6 +608,7 @@ Tell browser an element will animate.
 .card {
   will-change: transform;
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Use sparingly.
@@ -601,6 +619,7 @@ Use sparingly.
 * {
   border: 1px solid red;
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Find layout issues quickly.
@@ -611,6 +630,7 @@ Find layout issues quickly.
 body {
   overflow-x: hidden;
 }
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 Then inspect large elements.
@@ -641,6 +661,7 @@ Device Toolbar
 Network Tab
 
 Coverage Report
+// Example demonstrating 🐛 Debugging Tools & Performance.
 ```
 
 ## ✅ Best Practices

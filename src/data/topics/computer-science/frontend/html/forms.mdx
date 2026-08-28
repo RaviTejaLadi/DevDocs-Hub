@@ -37,6 +37,7 @@ readers) and User Experience (UX).
 - **UX Benefit:** When a user clicks the **text** of the label, the browser
   automatically focuses the corresponding input box.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <label for="user-email">Email Address:</label>
 <input type="email" id="user-email" name="email" />
@@ -56,6 +57,7 @@ _(Note: `for="user-email"` matches `id="user-email"`)_
 - _Grouping:_ To make radios mutually exclusive (choosing one deselects the
   other), they **must share the exact same `name` attribute**.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <input type="radio" name="gender" value="male" /> Male
 <input type="radio" name="gender" value="female" /> Female
@@ -69,6 +71,7 @@ Used when you have many options and want to save screen space.
 - **`<option>`:** The individual items. The `value` attribute is what gets sent
   to the server; the text between tags is what the user sees.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <select name="country">
   <option value="US">United States</option>
@@ -84,6 +87,7 @@ text, like comments or bios.
 - **Attributes:** `rows` and `cols` control the default size.
 - **Note:** Default text goes _between_ the tags, not in a value attribute.
 
+<!-- Basic example showing the core idea. -->
 ```html
 <textarea rows="4">Default text here...</textarea>
 ```

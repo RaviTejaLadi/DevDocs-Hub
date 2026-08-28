@@ -44,6 +44,7 @@ Instead of repeating values:
 
 ❌
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   background: #2563eb;
@@ -60,6 +61,7 @@ Instead of repeating values:
 
 ✅
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --primary-color: #2563eb;
@@ -88,9 +90,9 @@ Usage["var(--primary-color)"]
 
 Variable --> Value
     Variable --> Usage
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
-```
 ## 🌍 Global Variables
 
 Store variables in `:root`.
@@ -101,6 +103,7 @@ Store variables in `:root`.
   --secondary: #10b981;
   --danger: #ef4444;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Available everywhere.
@@ -115,6 +118,7 @@ Variables can be scoped.
 
 padding: var(--card-padding);
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Only available inside `.card`.
@@ -125,12 +129,14 @@ Useful when a variable doesn't exist.
 
 ```css
 color: var(--text-color, black);
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 If `--text-color` is missing:
 
 ```text
 black
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 will be used.
@@ -146,6 +152,7 @@ One of the most common use cases.
   --bg: white;
   --text: black;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Dark Theme
@@ -155,6 +162,7 @@ One of the most common use cases.
   --bg: #121212;
   --text: white;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Usage
@@ -164,6 +172,7 @@ body {
   background: var(--bg);
   color: var(--text);
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Theme Flow
@@ -178,11 +187,11 @@ Theme --> Light
     Theme --> Dark
 ```
 
-```
 ## calc()
 
 Perform calculations in CSS.
 
+/* Basic example showing the core idea. */
 ```css
 .container {
   width: calc(100% - 40px);
@@ -191,6 +200,7 @@ Perform calculations in CSS.
 
 ## Example
 
+/* Basic example showing the core idea. */
 ```css
 .sidebar {
   width: 250px;
@@ -210,15 +220,16 @@ Minus["-250px"]
 Result["Remaining Width"]
 
 Full --> Minus --> Result
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
-```
 ## clamp()
 
 Responsive sizing made easy.
 
 ```css
 font-size: clamp(1rem, 3vw, 2rem);
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Structure
@@ -229,6 +240,7 @@ clamp(
   preferred,
   maximum
 )
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Visualization
@@ -242,7 +254,6 @@ Max["2rem"]
 Min --> Preferred --> Max
 ```
 
-```
 ## 📱 Container Queries
 
 Media Queries react to screen size.
@@ -251,6 +262,7 @@ Container Queries react to parent size.
 
 ## Traditional Media Query
 
+/* Basic example showing the core idea. */
 ```css
 @media (min-width: 768px) {
   .card {
@@ -261,6 +273,7 @@ Container Queries react to parent size.
 
 ## Container Query
 
+/* Basic example showing the core idea. */
 ```css
 .card-wrapper {
   container-type: inline-size;
@@ -294,6 +307,7 @@ Modern CSS now supports nesting.
 
 ## Before
 
+/* Basic example showing the core idea. */
 ```css
 .card {
 }
@@ -307,6 +321,7 @@ Modern CSS now supports nesting.
 
 ## After
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   .title {
@@ -329,9 +344,9 @@ Button[".button"]
 
 Card --> Title
     Card --> Button
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
-```
 ## 🌍 Logical Properties
 
 Traditional properties assume left-to-right layouts.
@@ -340,12 +355,14 @@ Traditional properties assume left-to-right layouts.
 
 ```css
 margin-left: 20px;
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Logical Property
 
 ```css
 margin-inline-start: 20px;
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Automatically adapts for:
@@ -373,18 +390,21 @@ CSS now supports advanced color systems.
 
 ```css
 color: rgb(255 0 0);
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Modern syntax:
 
 ```css
 color: rgb(255 0 0 / 50%);
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## hsl()
 
 ```css
 color: hsl(220deg 90% 56%);
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## HSL Structure
@@ -398,11 +418,11 @@ L["Lightness"]
 H --> S --> L
 ```
 
-```
 ## color-mix()
 
 Mix colors directly in CSS.
 
+/* Basic example showing the core idea. */
 ```css
 background: color-mix(in srgb, blue 70%, white 30%);
 ```
@@ -417,9 +437,9 @@ Result["Mixed Color"]
 
 Blue --> Result
     White --> Result
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
-```
 ## aspect-ratio
 
 Maintain proportions automatically.
@@ -430,6 +450,7 @@ Maintain proportions automatically.
 .card {
   aspect-ratio: 1;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Video
@@ -438,6 +459,7 @@ Maintain proportions automatically.
 .video {
   aspect-ratio: 16 / 9;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Square["1:1"]
@@ -449,11 +471,11 @@ Portrait["9:16"]
 Square --> Wide --> Portrait
 ```
 
-```
 ## :is()
 
 Reduce selector repetition.
 
+/* Basic example showing the core idea. */
 ```css
 h1,
 h2,
@@ -462,6 +484,7 @@ h3 {
 }
 ```
 
+/* Basic example showing the core idea. */
 ```css
 :is(h1, h2, h3) {
   color: navy;
@@ -472,6 +495,7 @@ h3 {
 
 Like `:is()` but adds zero specificity.
 
+/* Basic example showing the core idea. */
 ```css
 :where(.card .title) {
   margin: 0;
@@ -484,6 +508,7 @@ Great for large projects.
 
 The long-awaited parent selector.
 
+/* Basic example showing the core idea. */
 ```css
 .card:has(img) {
   padding: 20px;
@@ -499,9 +524,9 @@ Image["Contains Image"]
 Style["Apply Styles"]
 
 Card --> Image --> Style
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
-```
 ## Scroll-Driven Animations (Modern)
 
 Animate based on scrolling.
@@ -510,6 +535,7 @@ Animate based on scrolling.
 .progress {
   animation-timeline: scroll();
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Creates advanced scroll effects without JavaScript.
@@ -522,6 +548,7 @@ Style form controls easily.
 input {
   accent-color: #2563eb;
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 Changes:
@@ -540,6 +567,7 @@ Creates glassmorphism effects.
 .glass {
   backdrop-filter: blur(15px);
 }
+// Example demonstrating CSS Variables & Modern Features.
 ```
 
 ## Glassmorphism Flow
@@ -553,9 +581,9 @@ Glass["Glass Effect"]
 Background --> Blur --> Glass
 ```
 
-```
 ## Modern Responsive Card Example
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --card-padding: 1rem;
@@ -581,6 +609,7 @@ Combines:
 
 ## Overusing Variables
 
+/* Basic example showing the core idea. */
 ```css
 --margin-small: 3px;
 ```
@@ -589,6 +618,7 @@ Not every value needs a variable.
 
 ## Deep Nesting
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   .header {
@@ -612,6 +642,7 @@ Always verify support for:
 
 ## Quick Cheat Sheet
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --primary: #2563eb;

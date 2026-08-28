@@ -18,6 +18,7 @@ document.
 
 ### ✅ Methods
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 document.getElementById('id');
 document.getElementsByClassName('class');
@@ -28,6 +29,7 @@ document.querySelectorAll('selector');
 
 ### ✅ Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <p id="myText">Hello</p>
 <script>
@@ -38,11 +40,13 @@ document.querySelectorAll('selector');
 
 ### ✅ Syntax
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.textContent = 'new text';
 element.innerHTML = '<b>bold text</b>';
 ```
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div id="demo">Old Content</div>
 <script>
@@ -52,12 +56,14 @@ element.innerHTML = '<b>bold text</b>';
 
 ## 🔹 Changing Element Attributes
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.setAttribute('attribute', 'value');
 element.getAttribute('attribute');
 element.removeAttribute('attribute');
 ```
 
+<!-- Basic example showing the core idea. -->
 ```html
 <img id="myImg" src="old.png" />
 <script>
@@ -68,10 +74,12 @@ element.removeAttribute('attribute');
 
 ## 🔹 Changing Element Style
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.style.property = 'value';
 ```
 
+<!-- Basic example showing the core idea. -->
 ```html
 <p id="styleMe">Style me!</p>
 <script>
@@ -83,10 +91,12 @@ element.style.property = 'value';
 
 ## 🔹 Creating New Elements
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 document.createElement('tag');
 ```
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 const newPara = document.createElement('p');
 newPara.textContent = 'This is new!';
@@ -94,11 +104,13 @@ newPara.textContent = 'This is new!';
 
 ## 🔹 Appending Elements
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 parent.appendChild(child);
 parent.append(...children); // Modern
 ```
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 const div = document.getElementById('container');
 const newItem = document.createElement('li');
@@ -108,11 +120,13 @@ div.appendChild(newItem);
 
 ## 🔹 Removing Elements
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.remove(); // Modern
 parent.removeChild(child); // Traditional
 ```
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 const item = document.getElementById('itemToRemove');
 item.remove(); // removes it from the DOM
@@ -120,10 +134,12 @@ item.remove(); // removes it from the DOM
 
 ## 🔹 Event Handling
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.addEventListener('event', callback);
 ```
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 const btn = document.getElementById('clickBtn');
 btn.addEventListener('click', function () {
@@ -133,6 +149,7 @@ btn.addEventListener('click', function () {
 
 ## 🔹 DOM Traversal
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 element.parentNode;
 element.children;
@@ -142,6 +159,7 @@ element.nextElementSibling;
 element.previousElementSibling;
 ```
 
+// Example demonstrating JavaScript DOM Manipulation.
 ```js
 const list = document.getElementById('myList');
 console.log(list.children); // HTMLCollection of <li> elements

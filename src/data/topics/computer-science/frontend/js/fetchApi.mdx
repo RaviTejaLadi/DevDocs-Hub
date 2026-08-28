@@ -12,6 +12,7 @@ it easy to work with asynchronous code.
 
 ## 2. Syntax
 
+// Basic example showing the core idea.
 ```javascript
 fetch(url, options)
   .then((response) => {
@@ -31,6 +32,7 @@ fetch(url, options)
 
 ### ✅ GET Request (Default)
 
+// Basic example showing the core idea.
 ```javascript
 fetch('https://jsonplaceholder.typicode.com/posts/1')
   .then((response) => response.json())
@@ -40,6 +42,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
 
 ## 🧾 4. Common Options
 
+// Basic example showing the core idea.
 ```javascript
 {
   method: 'GET', // or 'POST', 'PUT', 'DELETE'
@@ -53,6 +56,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
 
 ## 📨 5. POST Request Example
 
+// Basic example showing the core idea.
 ```javascript
 const newPost = {
   title: 'New Article',
@@ -76,6 +80,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
 
 Fetch **does not reject** the promise on HTTP errors (like 404/500).
 
+// Basic example showing the core idea.
 ```javascript
 fetch('https://jsonplaceholder.typicode.com/posts/invalid')
   .then((response) => {
@@ -90,6 +95,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/invalid')
 
 ## 7. Async/Await Version
 
+// Basic example showing the core idea.
 ```javascript
 async function fetchData() {
   try {
@@ -109,6 +115,7 @@ fetchData();
 
 ## 8. Advanced Example: PUT Request
 
+// Basic example showing the core idea.
 ```javascript
 const updatedData = {
   id: 1,

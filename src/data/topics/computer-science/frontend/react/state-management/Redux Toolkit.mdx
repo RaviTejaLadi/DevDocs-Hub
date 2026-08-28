@@ -14,12 +14,14 @@ mistakes, and makes your Redux code simpler and easier to maintain.
 
 ### 1. Install Required Packages
 
+# Basic example showing the core idea.
 ```bash
 npm install @reduxjs/toolkit react-redux
 ```
 
 ### 2. Create a Basic Store
 
+// Basic example showing the core idea.
 ```javascript
 // app/store.js
 import { configureStore } from '@reduxjs/toolkit';
@@ -36,6 +38,7 @@ export const store = configureStore({
 
 ### 3. Provide the Store to Your React App
 
+// Basic example showing the core idea.
 ```javascript
 // index.js
 import React from 'react';
@@ -54,6 +57,7 @@ ReactDOM.render(
 
 ### 1. Counter Slice Example
 
+// Basic example showing the core idea.
 ```javascript
 // features/counter/counterSlice.js
 import { createSlice } from '@reduxjs/toolkit';
@@ -96,6 +100,7 @@ export default counterSlice.reducer;
 
 ### 2. User Slice Example with Async Thunk
 
+// Basic example showing the core idea.
 ```javascript
 // features/users/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -158,6 +163,7 @@ export default userSlice.reducer;
 
 ### Counter Component Example
 
+// Basic example showing the core idea.
 ```javascript
 // features/counter/Counter.js
 import React from 'react';
@@ -188,6 +194,7 @@ return (
 
 ### Users Component Example
 
+// Basic example showing the core idea.
 ```javascript
 // features/users/UsersList.js
 import React, { useEffect } from 'react';
@@ -266,6 +273,7 @@ return (
    - Check status and error from state
    - Show loading/error states appropriately
 
+// Basic example showing the core idea.
 ```javascript
 // Example error handling in component
 if (status === 'failed') {
@@ -283,6 +291,7 @@ if (status === 'failed') {
 
 2. **Logging Middleware**:
 
+// Basic example showing the core idea.
 ```javascript
    const store = configureStore({
      reducer: rootReducer,

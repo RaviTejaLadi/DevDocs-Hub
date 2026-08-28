@@ -13,6 +13,7 @@ one argument at a time.
 
 ## 🔣 2. Syntax
 
+// Basic example showing the core idea.
 ```javascript
 // Normal Function
 function add(a, b) {
@@ -41,6 +42,7 @@ const curriedAddArrow = (a) => (b) => a + b;
 
 ## 4. Basic Example
 
+// Basic example showing the core idea.
 ```javascript
 // Without Currying
 function multiply(a, b) {
@@ -62,6 +64,7 @@ console.log(double(3)); // 6
 
 ## ⚙ 5. Advanced Example – Using Arrow Functions
 
+// Basic example showing the core idea.
 ```javascript
 const greet = (greeting) => (name) => `${greeting}, ${name}!`;
 
@@ -79,6 +82,7 @@ console.log(sayHello('Ravi')); // Hello, Ravi!
 
 ## 7. Real-world Use Case (DOM Example)
 
+// Basic example showing the core idea.
 ```javascript
 const updateStyle = (property) => (value) => (element) =>
   (element.style[property] = value);
@@ -89,6 +93,7 @@ setColorRed(document.querySelector('h1'));
 
 ## 🛠 8. Implement Your Own Curry Function
 
+// Basic example showing the core idea.
 ```javascript
 function curry(fn) {
   return function curried(...args) {
@@ -130,6 +135,7 @@ all part of functional programming in JavaScript.
 
 ## 🔁 Currying – Visual Diagram
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 // Original function
 f(a, b, c)
@@ -149,10 +155,12 @@ f(a)(b)(c)
 
 **Definition:** Compose **runs functions right to left**
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 compose(f, g, h)(x) → f(g(h(x)))
 ```
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 const compose =
   (...fns) =>
@@ -169,6 +177,7 @@ console.log(composed(3)); // add(double(3)) → 7
 
 ### Diagram:
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```
 x → h → g → f → result
 ```
@@ -177,10 +186,12 @@ x → h → g → f → result
 
 **Definition:** Pipe **runs functions left to right**
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 pipe(h, g, f)(x) → f(g(h(x)))
 ```
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```js
 const pipe =
   (...fns) =>
@@ -191,6 +202,7 @@ const piped = pipe(double, add);
 console.log(piped(3)); // add(double(3)) → 7
 ```
 
+// Example demonstrating 🔁 JavaScript Currying Functions.
 ```
 x → double → add → result
 ```

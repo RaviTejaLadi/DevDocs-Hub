@@ -16,16 +16,16 @@ Redux or Context API.
 
 ### 1. Install Zustand
 
+# Basic example showing the core idea.
 ```bash
 npm install zustand
-```
 ## or
 yarn add zustand
 ```
 
-```
 ## Example 1: Basic Counter Store
 
+// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
 // stores/counterStore.ts
 import { create } from 'zustand';
@@ -63,6 +63,7 @@ return (
 
 ## Example 2: Todo List with Async Actions
 
+// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
 // stores/todoStore.ts
 import { create } from 'zustand';
@@ -161,6 +162,7 @@ return (
 2. **Type Safety**: Always define interfaces for your state
 3. **Selective State**: Use selectors to prevent unnecessary re-renders
 
+// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
    // Instead of:
    const { count } = useCounterStore();
@@ -179,6 +181,7 @@ return (
 
 5. **Middleware**: Use middleware for logging, persistence, etc.
 
+// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
    import { create } from 'zustand';
    import { persist } from 'zustand/middleware';
@@ -219,6 +222,7 @@ export const useStore = create(persist(
 
 1. **Log State Changes**:
 
+// Example demonstrating Zustand: A Simple State Management Solution.
 ```tsx
    import { devtools } from 'zustand/middleware';
 

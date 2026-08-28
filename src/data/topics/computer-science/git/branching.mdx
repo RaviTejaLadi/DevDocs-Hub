@@ -38,6 +38,7 @@ graph LR
 Managing branches inside your local repository requires just a few
 straightforward commands:
 
+# Basic example showing the core idea.
 ```bash
 // List all local branches (the one with an asterisk * is your current branch)
 git branch
@@ -46,6 +47,7 @@ git branch
 // Create a new branch named 'feat-login' (but don't switch to it yet)
 git branch feat-login
 
+# Basic example showing the core idea.
 ```bash
 // Switch your working directory over to your new branch
 git checkout feat-login
@@ -54,7 +56,6 @@ git checkout feat-login
 > instantly in a single command by running: `git checkout -b feat-login` (or
 > `git switch -c feat-login` in newer Git versions).
 
-```
 ## 🏃‍♂ A Real Feature-Branch Sequence
 
 Let's look at how a clean feature-branch workflow runs inside your terminal:
@@ -80,7 +81,6 @@ When you hop back to `main`, your project directory snaps back to exactly how it
 looked before you started the sidebar. Your experimental work is safely tucked
 away in its own isolated timeline. 🛡️
 
-```
 ## Quick Reference
 
 | Area | Revision point |

@@ -12,6 +12,7 @@ functionality.
 
 ## ❌ Bad Example
 
+// Example demonstrating 3⃣ Liskov Substitution Principle (LSP).
 ```jsx
 function TextInput({ value, onChange }) {
   return <input type="text" value={value} onChange={onChange} />;
@@ -30,6 +31,7 @@ function SearchInput({ query, onSearch }) {
 
 ## ✅ Good Example
 
+// Example demonstrating 3⃣ Liskov Substitution Principle (LSP).
 ```jsx
 function TextInput({ value, onChange, ...props }) {
   return <input type="text" value={value} onChange={onChange} {...props} />;

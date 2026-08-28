@@ -13,12 +13,14 @@ easier to reuse.
 **Definition:** Lets you add state to functional components.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const [state, setState] = useState(initialValue);
 ```
 
 **Example (Counter):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useState } from 'react';
 
@@ -39,6 +41,7 @@ return (
 **Definition:** Runs side effects (like API calls, timers) after render.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useEffect(() => {
   /* effect */
@@ -47,6 +50,7 @@ useEffect(() => {
 
 **Example (Fetch Data):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useState, useEffect } from 'react';
 
@@ -68,12 +72,14 @@ return <div>{data ? data.message : 'Loading...'}</div>;
 **Definition:** Lets you use React Context (global state) without nesting.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const value = useContext(MyContext);
 ```
 
 **Example (Theme Toggler):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useContext, createContext, useState } from 'react';
 
@@ -103,12 +109,14 @@ function Toolbar() {
 **Definition:** Like `useState` but for complex state logic (like Redux).
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
 **Example (Todo List):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useReducer } from 'react';
 
@@ -144,6 +152,7 @@ return (
 **Definition:** Memoizes a function to prevent unnecessary re-renders.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const memoizedFn = useCallback(() => {
   /* function */
@@ -152,6 +161,7 @@ const memoizedFn = useCallback(() => {
 
 **Example (Optimized Button):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useCallback, useState } from 'react';
 
@@ -168,12 +178,14 @@ return <button onClick={increment}>Count: {count}</button>;
 **Definition:** Memoizes a value to avoid expensive calculations.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
 **Example (Expensive Calculation):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useMemo, useState } from 'react';
 
@@ -192,12 +204,14 @@ return <div>Result: {result}</div>;
 **Definition:** Keeps a mutable ref object (like `document.getElementById`).
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 const ref = useRef(initialValue);
 ```
 
 **Example (Focus Input):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useRef } from 'react';
 
@@ -218,12 +232,14 @@ return (
 **Definition:** Customizes what a parent component sees in `ref`.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useImperativeHandle(ref, () => ({ method: () => {} }), [deps]);
 ```
 
 **Example (Exposing Child Methods):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
@@ -250,6 +266,7 @@ function Parent() {
 **Definition:** Like `useEffect` but runs synchronously after DOM updates.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useLayoutEffect(() => {
   /* effect */
@@ -258,6 +275,7 @@ useLayoutEffect(() => {
 
 **Example (Measure DOM Element):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useLayoutEffect, useRef, useState } from 'react';
 
@@ -278,12 +296,14 @@ return <div ref={divRef}>Width: {width}px</div>;
 **Definition:** Adds a label to custom hooks in React DevTools.
 **Syntax:**
 
+// Example demonstrating React Hooks Guide.
 ```js
 useDebugValue(value);
 ```
 
 **Example (Debug Custom Hook):**
 
+// Example demonstrating React Hooks Guide.
 ```jsx
 import { useDebugValue, useState } from 'react';
 

@@ -71,7 +71,6 @@ M --> D
 - **Rule:** Developers never interact with `main` directly; changes pass through
   several staging environments first.
 
-```
 #### 3. Trunk-Based Development (Best for high-velocity engineering)
 
 Used by tech giants like Google and Meta, this strategy focuses on speed and
@@ -82,7 +81,6 @@ avoiding massive merge conflicts.
 git checkout main
 git pull
 git checkout -b short-lived-fix
-```
 ## ...make a tiny change...
 git add . && git commit -m "fix: update button padding"
 git push origin short-lived-fix

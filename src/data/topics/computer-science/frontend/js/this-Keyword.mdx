@@ -9,6 +9,7 @@ value is determined **by how a function is called**, not where it is defined.
 
 ## 2. Syntax 🧾
 
+// Basic example showing the core idea.
 ```javascript
 this;
 ```
@@ -19,18 +20,21 @@ It is used within functions, methods, constructors, or globally.
 
 In the browser:
 
+// Basic example showing the core idea.
 ```javascript
 console.log(this); // window (global object)
 ```
 
 In Node.js:
 
+// Basic example showing the core idea.
 ```javascript
 console.log(this); // {}
 ```
 
 ### B. Inside Regular Functions
 
+// Basic example showing the core idea.
 ```javascript
 function show() {
   console.log(this);
@@ -41,6 +45,7 @@ show(); // In browser: window, In strict mode: undefined
 
 ### C. Inside Object Methods 🧱
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Ravi',
@@ -56,6 +61,7 @@ person.greet(); // Ravi
 
 ### D. With Arrow Functions 🏹
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Ravi',
@@ -72,6 +78,7 @@ person.greet(); // undefined
 
 ### E. Constructor Functions
 
+// Basic example showing the core idea.
 ```javascript
 function Person(name) {
   this.name = name;
@@ -85,6 +92,7 @@ console.log(p1.name); // Ravi
 
 ### F. Class Context 🏫
 
+// Basic example showing the core idea.
 ```javascript
 class Person {
   constructor(name) {
@@ -103,6 +111,7 @@ p.greet(); // Ravi
 
 ### G. In `setTimeout` or `setInterval` ⏱
 
+// Basic example showing the core idea.
 ```javascript
 const person = {
   name: 'Ravi',
@@ -113,7 +122,6 @@ const person = {
   },
 };
 
-```
 #### ✅ Using Arrow Function to Fix It:
 
 ```javascript
@@ -126,9 +134,9 @@ const person = {
   },
 };
 
-```
 #### 🔹 `call()` - invokes the function with a given `this`
 
+// Basic example showing the core idea.
 ```javascript
 function show() {
   console.log(this.name);
@@ -140,12 +148,14 @@ show.call(user); // Ravi
 
 #### 🔹 `apply()` - same as `call` but takes an array of arguments
 
+// Basic example showing the core idea.
 ```javascript
 show.apply(user); // Ravi
 ```
 
 #### 🔹 `bind()` - returns a new function with bound `this`
 
+// Basic example showing the core idea.
 ```javascript
 const boundShow = show.bind(user);
 boundShow(); // Ravi
@@ -153,6 +163,7 @@ boundShow(); // Ravi
 
 ### I. In Event Handlers
 
+// Basic example showing the core idea.
 ```javascript
 const btn = document.querySelector('button');
 btn.addEventListener('click', function () {
@@ -162,6 +173,7 @@ btn.addEventListener('click', function () {
 
 > ⚠️ Arrow functions in event handlers will not refer to the element:
 
+// Basic example showing the core idea.
 ```javascript
 btn.addEventListener('click', () => {
   console.log(this); // undefined or window
@@ -189,6 +201,7 @@ btn.addEventListener('click', () => {
 - Use `bind`, `call`, or `apply` when passing methods as callbacks.
 - Prefer class fields with arrow functions for auto-binding in React:
 
+// Example demonstrating JavaScript `this` Keyword.
 ```js
   class App {
     handleClick = () => {

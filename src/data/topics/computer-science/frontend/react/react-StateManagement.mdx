@@ -39,12 +39,14 @@ it.
 
 ### Syntax
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 const [state, setState] = useState(initialValue);
 ```
 
 #### Simple State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { useState } from 'react';
 
@@ -64,6 +66,7 @@ return (
 
 #### Multiple State Variables
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function UserForm() {
   const [name, setName] = useState('');
@@ -106,6 +109,7 @@ return (
 
 #### Object State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function UserProfile() {
   const [user, setUser] = useState({
@@ -170,6 +174,7 @@ return (
 
 #### Array State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -238,6 +243,7 @@ return (
 
 #### Functional State Updates
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function Calculator() {
   const [result, setResult] = useState(0);
@@ -295,6 +301,7 @@ return (
 
 #### Lazy Initial State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function ExpensiveComponent() {
   // Expensive computation only runs once
@@ -330,12 +337,14 @@ return (
 managing complex state logic. It's particularly useful when state transitions
 depend on the previous state or when managing multiple related state variables.
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
 #### Simple Counter with useReducer
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { useReducer } from 'react';
 
@@ -374,6 +383,7 @@ return (
 
 #### Todo Application with useReducer
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function todoReducer(state, action) {
   switch (action.type) {
@@ -554,6 +564,7 @@ return (
 
 #### Form State Management
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 function formReducer(state, action) {
   switch (action.type) {
@@ -713,6 +724,7 @@ can be considered "global" for a tree of React components.
 
 #### Creating and Using Context
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { createContext, useContext, useState } from 'react';
 
@@ -829,6 +841,7 @@ return (
 
 #### Authentication Context
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
@@ -1081,6 +1094,7 @@ function App() {
 
 ### Multiple Contexts
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Multiple context providers
 function AppProviders({ children }) {
@@ -1125,6 +1139,7 @@ components to access and modify the same state.
 
 ### Basic State Lifting Example
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Parent component manages shared state
 function TemperatureApp() {
@@ -1199,6 +1214,7 @@ function toFahrenheit(celsius) {
 
 ### Complex State Lifting Example
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Shopping Cart Application
 function ShoppingApp() {
@@ -1408,6 +1424,7 @@ State that belongs to a single component and doesn't need to be shared.
 
 #### Examples of Local State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Modal component with local state
 function Modal({ isOpen, onClose, children }) {
@@ -1502,6 +1519,7 @@ State that needs to be accessed by multiple components across the application.
 
 #### Global State Implementation
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Global App State using Context + useReducer
 const AppStateContext = createContext();
@@ -1652,6 +1670,7 @@ return (
 
 ### Custom Hooks for State Logic
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Custom hook for form state management
 function useForm(initialValues, validationSchema) {
@@ -1832,6 +1851,7 @@ return (
 
 ### State Machine Pattern
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Simple state machine for data fetching
 function useAsyncState() {
@@ -1922,6 +1942,7 @@ return null;
 
 #### 1. Keep State Flat
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Flat state structure
 const [user, setUser] = useState({
@@ -1950,6 +1971,7 @@ const [appState, setAppState] = useState({
 
 #### 2. Group Related State
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Related state grouped together
 const [formState, setFormState] = useState({
@@ -1966,6 +1988,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
 #### 3. Use Proper State Updates
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Functional updates for state that depends on previous state
 const increment = () => {
@@ -1986,6 +2009,7 @@ const badUpdate = () => {
 
 #### 1. Minimize Re-renders
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Use React.memo for expensive components
 const ExpensiveComponent = React.memo(function ExpensiveComponent({
@@ -2022,6 +2046,7 @@ return (
 
 #### 2. Optimize Context Usage
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Split contexts to prevent unnecessary re-renders
 const UserContext = createContext();
@@ -2034,6 +2059,7 @@ const AppContext = createContext();
 
 #### 3. Use Local State When Possible
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Good: Keep UI state local
 function Dropdown({ options, onSelect }) {
@@ -2065,6 +2091,7 @@ return (
 
 #### 2. Error Boundaries for State Errors
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 class StateErrorBoundary extends React.Component {
   constructor(props) {
@@ -2092,6 +2119,7 @@ return this.props.children;
 
 #### 3. Testing State Logic
 
+// Example demonstrating React State Management - Complete Guide.
 ```jsx
 // Custom hook for testing
 function useCounter(initialValue = 0) {

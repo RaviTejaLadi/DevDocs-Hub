@@ -70,6 +70,7 @@ A good architecture should be:
 
 For medium and large projects:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 styles/
 │
@@ -125,6 +126,7 @@ Base styles define global defaults.
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 /* Base Typography */
 body {
@@ -150,6 +152,7 @@ Examples:
 - Sidebar
 - Grid Layouts
 
+/* Basic example showing the core idea. */
 ```css
 .layout {
   display: grid;
@@ -167,6 +170,7 @@ Components are reusable UI pieces.
 - Modals
 - Alerts
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 1rem;
@@ -181,6 +185,7 @@ background: white;
 
 Utility classes do one thing.
 
+/* Basic example showing the core idea. */
 ```css
 .mt-4 {
   margin-top: 1rem;
@@ -216,6 +221,7 @@ One of the most popular CSS architectures.
 
 BEM stands for:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Block
 Element
@@ -232,9 +238,9 @@ Modifier["Modifier"]
 
 Block --> Element
     Block --> Modifier
+// Example demonstrating CSS Architecture & Organization.
 ```
 
-```
 ## Block
 
 Standalone component.
@@ -242,6 +248,7 @@ Standalone component.
 ```css
 .card {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## Element
@@ -254,6 +261,7 @@ Part of a block.
 
 .card__image {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## Modifier
@@ -266,6 +274,7 @@ Variation of a block.
 
 .card--large {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## BEM Example
@@ -274,6 +283,7 @@ Variation of a block.
 <div class="card card--featured">
   <h2 class="card__title">Product</h2>
 </div>
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ```css
@@ -286,6 +296,7 @@ Variation of a block.
 .card--featured {
   border: 2px solid gold;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## BEM Visualization
@@ -300,11 +311,11 @@ Card --> Title
     Card --> Featured
 ```
 
-```
 ## SMACSS Architecture
 
 SMACSS stands for:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Scalable
 Modular
@@ -328,9 +339,9 @@ SMACSS --> Base
     SMACSS --> Module
     SMACSS --> State
     SMACSS --> Theme
+// Example demonstrating CSS Architecture & Organization.
 ```
 
-```
 ## Example
 
 State styles:
@@ -343,6 +354,7 @@ State styles:
 .is-hidden {
   display: none;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## ITCSS
@@ -351,6 +363,7 @@ ITCSS stands for:
 
 ```text
 Inverted Triangle CSS
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Organizes styles from generic to specific.
@@ -377,13 +390,13 @@ Settings --> Tools
 
 Specificity increases as you move down.
 
-```
 ## CUBE CSS
 
 Modern CSS architecture.
 
 CUBE means:
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Composition
 Utility
@@ -404,9 +417,9 @@ Exception
 Composition --> Utility
     Utility --> Block
     Block --> Exception
+// Example demonstrating CSS Architecture & Organization.
 ```
 
-```
 ## Design Tokens
 
 Store design values centrally.
@@ -421,6 +434,7 @@ Store design values centrally.
 
 --radius-md: 12px;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## Design Token Flow
@@ -436,9 +450,9 @@ Tokens --> Button
     Tokens --> Navbar
 ```
 
-```
 ## CSS Variables for Organization
 
+/* Basic example showing the core idea. */
 ```css
 :root {
   --color-primary: #2563eb;
@@ -449,6 +463,7 @@ Tokens --> Button
 
 Usage:
 
+/* Basic example showing the core idea. */
 ```css
 .button {
   background: var(--color-primary);
@@ -477,6 +492,7 @@ JS["JavaScript"]
 Component --> HTML
     Component --> CSS
     Component --> JS
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ```text
@@ -484,9 +500,9 @@ Card/
 ├── Card.jsx
 ├── Card.css
 └── Card.test.js
+// Example demonstrating CSS Architecture & Organization.
 ```
 
-```
 ## CSS Modules
 
 Avoid global naming conflicts.
@@ -495,6 +511,7 @@ Avoid global naming conflicts.
 .button {
   background: blue;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Import:
@@ -504,6 +521,7 @@ Import:
 import styles from './Button.module.css';
 
 <button className={styles.button}>Save</button>;
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## CSS Modules Flow
@@ -518,13 +536,13 @@ CSS --> Hash
     Hash --> Component
 ```
 
-```
 ## Utility-First CSS
 
 Popularized by Tailwind CSS.
 
 Instead of:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   padding: 1rem;
@@ -534,6 +552,7 @@ Instead of:
 
 Use:
 
+<!-- Basic example showing the core idea. -->
 ```html
 <div class="p-4 rounded-lg">Content</div>
 ```
@@ -545,9 +564,9 @@ Utility["Small Utilities"]
 UI["Build Components"]
 
 Utility --> UI
+// Example demonstrating CSS Architecture & Organization.
 ```
 
-```
 ## Naming Conventions
 
 Good:
@@ -561,6 +580,7 @@ Good:
 
 .product-card--featured {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Bad:
@@ -574,6 +594,7 @@ Bad:
 
 .blue-box {
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 Names should describe purpose, not appearance.
@@ -586,6 +607,7 @@ Names should describe purpose, not appearance.
 .sidebar ul li a span {
   color: red;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ✅
@@ -594,6 +616,7 @@ Names should describe purpose, not appearance.
 .sidebar-link {
   color: red;
 }
+// Example demonstrating CSS Architecture & Organization.
 ```
 
 ## Selector Complexity
@@ -610,9 +633,9 @@ Deep --> Hard
     Simple --> Easy
 ```
 
-```
 ## Excessive Nesting
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   .header {
@@ -626,6 +649,7 @@ Deep --> Hard
 
 ## High Specificity
 
+/* Basic example showing the core idea. */
 ```css
 #page .sidebar ul li a {
 }
@@ -637,6 +661,7 @@ Prefer classes.
 
 Avoid:
 
+/* Basic example showing the core idea. */
 ```css
 .card {
   width: 1200px;
@@ -647,6 +672,7 @@ Layout should live separately.
 
 ## Quick Cheat Sheet
 
+// Example demonstrating CSS Architecture & Organization.
 ```text
 Base Styles
 Layout Styles

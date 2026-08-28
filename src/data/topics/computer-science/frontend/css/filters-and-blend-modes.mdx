@@ -40,6 +40,7 @@ Original --> Filter --> Result
 
 ## Filter Syntax
 
+/* Basic example showing the core idea. */
 ```css
 .element {
   filter: value;
@@ -48,6 +49,7 @@ Original --> Filter --> Result
 
 Example:
 
+/* Basic example showing the core idea. */
 ```css
 /* Blur effect */
 img {
@@ -86,6 +88,7 @@ Filters --> Blur
 
 Blurs an element.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: blur(5px);
@@ -101,9 +104,9 @@ Blur["Blur(5px)"]
 Blurred["Blurred Image"]
 
 Sharp --> Blur --> Blurred
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## ☀ brightness()
 
 Adjusts brightness.
@@ -114,6 +117,7 @@ Adjusts brightness.
 img {
   filter: brightness(150%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Decrease Brightness
@@ -122,6 +126,7 @@ img {
 img {
   filter: brightness(50%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Brightness Levels
@@ -135,11 +140,11 @@ Bright["150%"]
 Dark --> Normal --> Bright
 ```
 
-```
 ## contrast()
 
 Controls contrast.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: contrast(200%);
@@ -152,6 +157,7 @@ Higher contrast makes dark colors darker and light colors lighter.
 
 Converts image to black and white.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: grayscale(100%);
@@ -160,6 +166,7 @@ img {
 
 ## Hover Effect
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: grayscale(100%);
@@ -184,9 +191,9 @@ Hover["Hover"]
 Color --> BW
     BW --> Hover
     Hover --> Color
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## 🟤 sepia()
 
 Creates vintage photo effect.
@@ -195,6 +202,7 @@ Creates vintage photo effect.
 img {
   filter: sepia(100%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Sepia Effect
@@ -206,13 +214,13 @@ Vintage["Vintage Look"]
 Normal --> Vintage
 ```
 
-```
 ## 🌈 saturate()
 
 Controls color intensity.
 
 ## Increase Saturation
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: saturate(200%);
@@ -221,6 +229,7 @@ img {
 
 ## Decrease Saturation
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: saturate(50%);
@@ -231,6 +240,7 @@ img {
 
 Shifts colors around the color wheel.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: hue-rotate(90deg);
@@ -246,9 +256,9 @@ Green["Green"]
 Blue["Blue"]
 
 Red --> Green --> Blue --> Red
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## 🌑 invert()
 
 Inverts colors.
@@ -257,6 +267,7 @@ Inverts colors.
 img {
   filter: invert(100%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Dark Mode Trick
@@ -265,6 +276,7 @@ img {
 .dark-logo {
   filter: invert(1);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Useful for logos in dark themes.
@@ -277,6 +289,7 @@ Changes transparency.
 img {
   filter: opacity(50%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## 🌟 drop-shadow()
@@ -287,6 +300,7 @@ Creates shadows following the element shape.
 img {
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Difference from box-shadow
@@ -303,11 +317,11 @@ Box --> Shape
     Drop --> Real
 ```
 
-```
 ## Multiple Filters
 
 Filters can be combined.
 
+/* Basic example showing the core idea. */
 ```css
 img {
   filter: brightness(120%) contrast(110%) saturate(150%);
@@ -330,9 +344,9 @@ Original --> Bright
     Bright --> Contrast
     Contrast --> Saturate
     Saturate --> Result
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## Real-World Card Hover Effect
 
 ```css
@@ -343,6 +357,7 @@ Original --> Bright
 .card:hover img {
   filter: brightness(110%) saturate(120%);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Makes images look more vibrant on hover.
@@ -365,11 +380,11 @@ Layer1 --> Blend
 Blend --> Result
 ```
 
-```
 ## Types of Blend Modes
 
 There are two main CSS properties:
 
+/* Basic example showing the core idea. */
 ```css
 mix-blend-mode
 background-blend-mode
@@ -379,6 +394,7 @@ background-blend-mode
 
 Blends an element with content behind it.
 
+/* Basic example showing the core idea. */
 ```css
 .text {
   mix-blend-mode: multiply;
@@ -393,9 +409,9 @@ Text["Text Layer"]
 
 Background --> Blend
     Text --> Blend
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## Common Blend Modes
 
 | Blend Mode | Effect               |
@@ -417,6 +433,7 @@ Darkens overlapping areas.
 .element {
   mix-blend-mode: multiply;
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Multiply Concept
@@ -431,11 +448,11 @@ Color1 --> Darker
     Color2 --> Darker
 ```
 
-```
 ## screen
 
 Lightens overlapping areas.
 
+/* Basic example showing the core idea. */
 ```css
 .element {
   mix-blend-mode: screen;
@@ -448,9 +465,9 @@ Lighter["Lighter Result"]
 
 Color1 --> Lighter
     Color2 --> Lighter
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## overlay
 
 Combines multiply and screen.
@@ -459,6 +476,7 @@ Combines multiply and screen.
 .element {
   mix-blend-mode: overlay;
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Produces vibrant, high-contrast results.
@@ -476,6 +494,7 @@ Blends background layers.
 
 background-blend-mode: multiply;
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Background Layer Flow
@@ -493,15 +512,16 @@ Image --> Blend
     Blend --> Result
 ```
 
-```
 ## 🌅 Hero Banner Example
 
+<!-- Basic example showing the core idea. -->
 ```html
 <section class="hero">
   <h1>Welcome</h1>
 </section>
 ```
 
+/* Basic example showing the core idea. */
 ```css
 .hero {
   height: 500px;
@@ -513,7 +533,6 @@ background-size: cover;
 
 Very common on landing pages.
 
-```
 ## Glassmorphism Effect
 
 Modern UI trend.
@@ -526,6 +545,7 @@ background: rgba(255, 255, 255, 0.15);
 
 border: 1px solid rgba(255, 255, 255, 0.2);
 }
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## Glassmorphism Flow
@@ -537,9 +557,9 @@ Glass["Glass Card"]
 Background --> Blur --> Glass
 ```
 
-```
 ## 🌈 Neon Glow Effect
 
+/* Basic example showing the core idea. */
 ```css
 .logo {
   filter: drop-shadow(0 0 10px cyan);
@@ -548,6 +568,7 @@ Background --> Blur --> Glass
 
 ## Image Hover Gallery
 
+/* Basic example showing the core idea. */
 ```css
 .gallery img {
   filter: grayscale(100%);
@@ -585,6 +606,7 @@ Medium["Medium"]
 Slow["Slow"]
 
 Fast --> Medium --> Slow
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Typical order:
@@ -597,15 +619,16 @@ grayscale
 drop-shadow
 blur
 backdrop-filter
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
-```
 ## Excessive Blur
 
 ❌
 
 ```css
 filter: blur(50px);
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 May hurt performance.
@@ -614,6 +637,7 @@ May hurt performance.
 
 ```css
 filter: brightness(120%) contrast(130%) saturate(180%) hue-rotate(120deg) blur(5px);
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 Can look unnatural.
@@ -652,6 +676,7 @@ mix-blend-mode: multiply;
 background-blend-mode: overlay;
 
 backdrop-filter: blur(15px);
+// Example demonstrating CSS Filters & Blend Modes.
 ```
 
 ## ✅ Best Practices

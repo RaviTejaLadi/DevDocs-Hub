@@ -4,6 +4,7 @@
 
 Computed properties are:
 
+// Example demonstrating Computed Properties.
 ```txt
 Derived reactive values
 ```
@@ -12,6 +13,7 @@ They automatically calculate values based on reactive state.
 
 When dependencies change:
 
+// Example demonstrating Computed Properties.
 ```txt
 Computed value updates automatically
 ```
@@ -22,6 +24,7 @@ Computed value updates automatically
 
 Without computed:
 
+// Example demonstrating Computed Properties.
 ```vue
 {{ firstName + ' ' + lastName }}
 ```
@@ -37,6 +40,7 @@ With computed:
 
 ## Basic Example
 
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <h1>{{ fullName }}</h1>
@@ -69,6 +73,7 @@ B -->|Recalculate| C
 
 ## Syntax
 
+// Example demonstrating Computed Properties.
 ```js
 const value = computed(() => {
   return derivedValue;
@@ -91,6 +96,7 @@ This is the biggest advantage.
 
 ## Example
 
+// Example demonstrating Computed Properties.
 ```js
 const fullName = computed(() => {
   console.log('Running');
@@ -105,6 +111,7 @@ The function runs only when dependencies change.
 
 Vue automatically tracks:
 
+// Example demonstrating Computed Properties.
 ```txt
 firstName.value
 lastName.value
@@ -114,12 +121,14 @@ These are dependencies.
 
 When they change:
 
+// Example demonstrating Computed Properties.
 ```txt
 computed recalculates
 ```
 
 ## Using Method
 
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <h1>{{ getFullName() }}</h1>
@@ -134,12 +143,14 @@ const getFullName = () => {
 
 Problem:
 
+// Example demonstrating Computed Properties.
 ```txt
 Runs every render
 ```
 
 ## Using Computed
 
+// Example demonstrating Computed Properties.
 ```js
 const fullName = computed(() => {
   return `${firstName.value} ${lastName.value}`;
@@ -148,6 +159,7 @@ const fullName = computed(() => {
 
 Benefit:
 
+// Example demonstrating Computed Properties.
 ```txt
 Cached until dependency changes
 ```
@@ -162,6 +174,7 @@ Cached until dependency changes
 
 ## Search Filtering
 
+// Example demonstrating Computed Properties.
 ```vue
 <template>
   <input v-model="search" />
@@ -191,10 +204,12 @@ const filteredUsers = computed(() => {
 
 ## Why Computed Here?
 
+// Example demonstrating Computed Properties.
 ```txt
 Filtering runs every render
 ```
 
+// Example demonstrating Computed Properties.
 ```txt
 Runs only when search/users change
 ```
@@ -203,6 +218,7 @@ Runs only when search/users change
 
 Computed can depend on multiple reactive values.
 
+// Example demonstrating Computed Properties.
 ```js
 const totalPrice = computed(() => {
   return price.value * quantity.value;
@@ -216,6 +232,7 @@ Dependencies:
 
 ## Computed with reactive()
 
+// Example demonstrating Computed Properties.
 ```vue
 <script setup>
 import { computed, reactive } from 'vue';
@@ -237,6 +254,7 @@ Normally computed is read-only.
 
 But Vue supports getter/setter.
 
+// Example demonstrating Computed Properties.
 ```vue
 <script setup>
 import { computed, ref } from 'vue';
@@ -258,12 +276,14 @@ firstName.value = names[0];
 
 ## Usage
 
+// Example demonstrating Computed Properties.
 ```js
 fullName.value = 'Jane Smith';
 ```
 
 Updates:
 
+// Example demonstrating Computed Properties.
 ```txt
 firstName → Jane
 lastName → Smith
@@ -282,7 +302,6 @@ lastName → Smith
 
 ## Example: Cart Total
 
-```javascript
 const cart = ref([
   { price: 100, quantity: 2 },
   { price: 50, quantity: 1 },
@@ -294,6 +313,7 @@ const total = computed(() => {
   }, 0);
 });
 </script>
+// Example demonstrating Computed Properties.
 ```
 
 ## Example: Form Validation
@@ -302,12 +322,14 @@ const total = computed(() => {
 const isFormValid = computed(() => {
   return email.value.length > 0 && password.value.length >= 6;
 });
+// Example demonstrating Computed Properties.
 ```
 
 ## Example: Dynamic Classes
 
 ```vue
 <button :class="{ active: isActive }">
+// Example demonstrating Computed Properties.
 ```
 
 Better:
@@ -319,12 +341,14 @@ const buttonClass = computed(() => {
     disabled: loading.value,
   };
 });
+// Example demonstrating Computed Properties.
 ```
 
 ## Then Use
 
 ```vue
 <button :class="buttonClass">
+// Example demonstrating Computed Properties.
 ```
 
 ## Computed Chain
@@ -339,6 +363,7 @@ const fullName = computed(() => {
 const greeting = computed(() => {
   return `Hello ${fullName.value}`;
 });
+// Example demonstrating Computed Properties.
 ```
 
 ## Lazy Evaluation
@@ -351,12 +376,14 @@ const expensiveCalculation = computed(() => {
 
 return heavyOperation();
 });
+// Example demonstrating Computed Properties.
 ```
 
 If unused:
 
 ```txt
 Function never runs
+// Example demonstrating Computed Properties.
 ```
 
 ## Using computed for Side Effects
@@ -367,6 +394,7 @@ Function never runs
 computed(() => {
   fetchUsers();
 });
+// Example demonstrating Computed Properties.
 ```
 
 Use `watch()` instead.
@@ -379,6 +407,7 @@ Use `watch()` instead.
 const total = computed(() => {
   count.value++;
 });
+// Example demonstrating Computed Properties.
 ```
 
 Computed should stay pure.
@@ -387,6 +416,7 @@ Computed should stay pure.
 
 ```vue
 {{ users.filter((user) => user.active).length }}
+// Example demonstrating Computed Properties.
 ```
 
 ✅ Better
@@ -395,6 +425,7 @@ Computed should stay pure.
 const activeUsers = computed(() => {
   return users.value.filter((user) => user.active);
 });
+// Example demonstrating Computed Properties.
 ```
 
 ## computed vs watch
@@ -452,6 +483,7 @@ Avoid giant computed functions.
 const completedTasks = computed(() => {
   return tasks.value.filter((task) => task.completed);
 });
+// Example demonstrating Computed Properties.
 ```
 
 ## Quick Summary

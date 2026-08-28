@@ -9,6 +9,7 @@ promises.
 **"All or nothing"** - Waits for ALL promises to succeed, fails if ANY promise
 fails.
 
+// Basic example showing the core idea.
 ```javascript
 const promise1 = fetch('/api/user');
 const promise2 = fetch('/api/posts');
@@ -32,6 +33,7 @@ Promise.all([promise1, promise2, promise3])
 **"Tell me everything"** - Waits for ALL promises to complete (succeed or fail),
 then tells you what happened to each one.
 
+// Basic example showing the core idea.
 ```javascript
 const promises = [
   fetch('/api/user'),
@@ -57,6 +59,7 @@ Promise.allSettled(promises).then((results) => {
 **"First one wins"** - Returns as soon as the FIRST promise settles (succeeds or
 fails).
 
+// Basic example showing the core idea.
 ```javascript
 const slowPromise = new Promise((resolve) =>
   setTimeout(() => resolve('slow'), 3000)
@@ -77,6 +80,7 @@ Promise.race([slowPromise, fastPromise]).then((result) => {
 **"First success wins"** - Returns as soon as the FIRST promise SUCCEEDS.
 Ignores failures unless ALL fail.
 
+// Basic example showing the core idea.
 ```javascript
 const promises = [
   fetch('/unreliable-server-1'), // Might fail
@@ -108,6 +112,7 @@ Promise.any(promises)
 
 **Loading a dashboard (use `Promise.all`)**:
 
+// Basic example showing the core idea.
 ```javascript
 // Need user info, notifications, AND settings before showing dashboard
 Promise.all([getUserInfo(), getNotifications(), getSettings()]).then(
@@ -119,6 +124,7 @@ Promise.all([getUserInfo(), getNotifications(), getSettings()]).then(
 
 **Trying multiple CDNs (use `Promise.any`)**:
 
+// Basic example showing the core idea.
 ```javascript
 // Try multiple CDNs, use whichever responds first successfully
 Promise.any([
@@ -132,6 +138,7 @@ Promise.any([
 
 **Adding a timeout (use `Promise.race`)**:
 
+// Basic example showing the core idea.
 ```javascript
 const dataPromise = fetch('/api/slow-endpoint');
 const timeoutPromise = new Promise((_, reject) =>

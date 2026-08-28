@@ -50,6 +50,7 @@
 
 - Answer:
 
+// Basic example showing the core idea.
 ```javascript
      // GET request
      app.get('/route', (req, res) => {
@@ -106,10 +107,9 @@ app.use(myMiddleware);
 13. **What is the purpose of the next() function in middleware?**
 
 - Answer: The `next()` function passes control to the next middleware
-```javascript
       function in the stack. If not called, the request will hang, and no
       subsequent middleware or route handler will execute.
-```
+
 14. **How do you handle errors in middleware?**
 
 - Answer: Error-handling middleware takes four arguments (err, req, res,
@@ -161,6 +161,7 @@ app.use(myMiddleware);
 
 - Answer: Using middleware like multer:
 
+// Basic example showing the core idea.
 ```javascript
       const multer = require('multer');
       const upload = multer({ dest: 'uploads/' });

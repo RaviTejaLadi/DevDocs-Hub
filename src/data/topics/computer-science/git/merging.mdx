@@ -45,7 +45,6 @@ graph LR
     A[Base Commit] --> B[Commit on main] --> M[New Merge Commit: main]
     A --> C[Commit on feature] --> M
 
-```
 ## 🛠 Merging in Action
 
 To pull changes from a feature branch into `main`, you must always follow this
@@ -58,18 +57,17 @@ git checkout main
 // 2. Pull the changes from your feature branch into your current branch
 git merge feat-sidebar
 
-```
 ## 🧹 Cleaning Up After a Merge
 
 Once your feature is safely merged into `main`, keeping the old branch hanging
 around cluttering up your repository is bad practice. You can safely delete it
 without losing any code history. 🗑️
 
+# Basic example showing the core idea.
 ```bash
 // Delete a local branch that has been fully merged
 git branch -d feat-sidebar
 
-```
 ## Quick Reference
 
 | Area | Revision point |

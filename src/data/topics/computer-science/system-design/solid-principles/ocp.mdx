@@ -11,6 +11,7 @@ implementation.
 
 ## ❌ Bad Example
 
+// Example demonstrating 2⃣ Open/Closed Principle (OCP).
 ```jsx
 function Button({ type, children }) {
   if (type === 'primary') {
@@ -28,6 +29,7 @@ function Button({ type, children }) {
 
 ## ✅ Good Example
 
+// Example demonstrating 2⃣ Open/Closed Principle (OCP).
 ```jsx
 function Button({ className, children, ...props }) {
   return (

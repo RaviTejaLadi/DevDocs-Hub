@@ -6,6 +6,7 @@
 - 🐫 **Use camelCase**: Standard JavaScript convention
 - 🔤 **Start with verbs**: `getUser()`, `calculateTotal()`, `validateInput()`
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function x(a, b) {
@@ -25,6 +26,7 @@ function calculateSum(num1, num2) {
 - ⚒️ Each function should do one thing and do it well
 - ✂️ If a function does multiple things, consider breaking it up
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function processUser(user) {
@@ -47,6 +49,7 @@ function processUser(user) {
 - 🎯 **Use default parameters** instead of conditionals
 - 🧩 **Destructure objects** when appropriate
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function createUser(name, age, email, isAdmin = false) { ... }
@@ -61,6 +64,7 @@ function createUser({ name, age, email, isAdmin = false }) { ... }
 - ⚠️ Avoid returning different types conditionally
 - ⏩ Return early when it makes sense
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Bad
 function getValue(condition) {
@@ -86,6 +90,7 @@ function getValue(condition) {
 - 🧾 Return error objects for expected issues
 - 📘 Document potential errors in JSDoc
 
+// Basic example showing the core idea.
 ```javascript
 function divide(a, b) {
   if (b === 0) {
@@ -100,6 +105,7 @@ function divide(a, b) {
 - ✔️ Favor **pure functions** (same input → same output, no side effects)
 - 🔍 Easier to test, debug, and reason about
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Impure
 let total = 0;
@@ -119,6 +125,7 @@ function addNumbers(a, b) {
 - 🔒 Maintains `this` context
 - ✂️ More concise syntax
 
+// Basic example showing the core idea.
 ```javascript
 // 🧓 Traditional
 const numbers = [1, 2, 3].map(function (n) {
@@ -139,6 +146,7 @@ const numbers = [1, 2, 3].map((n) => n * 2);
 - 📚 Use **JSDoc** for complex functions
 - 🏷️ Document params, returns, and exceptions
 
+// Basic example showing the core idea.
 ```javascript
 /**
  * Calculates the total price including tax
@@ -156,6 +164,7 @@ function calculateTotal(subtotal, taxRate) {
 - 🔁 Use **promises** or `async/await`
 - 🧠 Prefer **named functions** over deeply nested anonymous callbacks
 
+// Basic example showing the core idea.
 ```javascript
 // ❌ Callback hell
 getUser(userId, function (user) {

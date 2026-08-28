@@ -2,6 +2,7 @@
 
 ## Promise Type
 
+// Example demonstrating Promise Typing.
 ```ts
 function fetchUser(): Promise<string> {
   return Promise.resolve('Ravi');
@@ -10,6 +11,7 @@ function fetchUser(): Promise<string> {
 
 ## Async Return Type
 
+// Example demonstrating Promise Typing.
 ```ts
 async function getUser(): Promise<string> {
   return 'Ravi';
@@ -22,6 +24,7 @@ Promise typing shows whether you can model async API contracts correctly.
 
 ## Generic Promise Response
 
+// Example demonstrating Promise Typing.
 ```ts
 type ApiResult<T> = Promise<{ data: T; error: string | null }>;
 

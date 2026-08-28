@@ -13,6 +13,7 @@ execution step-by-step.
 
 ## 2. Syntax
 
+// Basic example showing the core idea.
 ```javascript
 function* generatorFunction() {
   yield value1;
@@ -27,6 +28,7 @@ function* generatorFunction() {
 
 ## ⚙ 3. Basic Usage
 
+// Basic example showing the core idea.
 ```javascript
 function* simpleGenerator() {
   yield 'Hello';
@@ -42,6 +44,7 @@ console.log(gen.next()); // { value: undefined, done: true }
 
 ## 🔁 4. Looping Through a Generator
 
+// Basic example showing the core idea.
 ```javascript
 function* countToThree() {
   yield 1;
@@ -57,6 +60,7 @@ for (let value of countToThree()) {
 
 ## 🧰 5. Use Case: Custom Iterators
 
+// Basic example showing the core idea.
 ```javascript
 function* idGenerator() {
   let id = 1;
@@ -73,6 +77,7 @@ console.log(ids.next().value); // 3
 
 ## 🔁 6. Generator with Parameters
 
+// Basic example showing the core idea.
 ```javascript
 function* multiplyGenerator(num) {
   yield num * 1;
@@ -88,6 +93,7 @@ console.log(gen.next().value); // 15
 
 ## 7. Passing Data to Generator with `.next(value)`
 
+// Basic example showing the core idea.
 ```javascript
 function* interactGenerator() {
   const name = yield "What's your name?";
@@ -106,6 +112,7 @@ console.log(gen.next('Ravi').value); // "Hello, Ravi"
 - It finishes execution
   - Or it hits a `return` statement
 
+// Basic example showing the core idea.
 ```javascript
 function* doneExample() {
   yield 1;
@@ -121,6 +128,7 @@ console.log(gen.next()); // { value: undefined, done: true }
 
 ## ⚠ 9. Error Handling in Generators
 
+// Basic example showing the core idea.
 ```javascript
 function* errorGen() {
   try {
@@ -137,6 +145,7 @@ gen.throw(new Error('Something went wrong')); // Caught: Error
 
 ## 10. Delegating with `yield`
 
+// Basic example showing the core idea.
 ```javascript
 function* subGenerator() {
   yield 'A';
@@ -164,6 +173,7 @@ console.log([...gen]); // [1, "A", "B", 3]
 
 ## 12. Async Generators (Bonus)
 
+// Basic example showing the core idea.
 ```javascript
 async function* asyncNumbers() {
   yield 1;
